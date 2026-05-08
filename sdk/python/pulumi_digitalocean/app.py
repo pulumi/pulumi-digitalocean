@@ -21,10 +21,10 @@ __all__ = ['AppArgs', 'App']
 @pulumi.input_type
 class AppArgs:
     def __init__(__self__, *,
-                 dedicated_ips: Optional[pulumi.Input[Sequence[pulumi.Input['AppDedicatedIpArgs']]]] = None,
-                 deployment_per_page: Optional[pulumi.Input[_builtins.int]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec: Optional[pulumi.Input['AppSpecArgs']] = None):
+                 dedicated_ips: pulumi.Input[Optional[Sequence[pulumi.Input['AppDedicatedIpArgs']]]] = None,
+                 deployment_per_page: pulumi.Input[Optional[_builtins.int]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec: pulumi.Input[Optional['AppSpecArgs']] = None):
         """
         The set of arguments for constructing a App resource.
 
@@ -48,31 +48,31 @@ class AppArgs:
 
     @_builtins.property
     @pulumi.getter(name="dedicatedIps")
-    def dedicated_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppDedicatedIpArgs']]]]:
+    def dedicated_ips(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AppDedicatedIpArgs']]]]:
         """
         The dedicated egress IP addresses associated with the app.
         """
         return pulumi.get(self, "dedicated_ips")
 
     @dedicated_ips.setter
-    def dedicated_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppDedicatedIpArgs']]]]):
+    def dedicated_ips(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AppDedicatedIpArgs']]]]):
         pulumi.set(self, "dedicated_ips", value)
 
     @_builtins.property
     @pulumi.getter(name="deploymentPerPage")
-    def deployment_per_page(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def deployment_per_page(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Optional) Controls how many deployments are requested per API page when listing deployments during create/update waits. Defaults to `20`. Reduce this value (for example `5`) if you experience API timeouts when listing deployments.
         """
         return pulumi.get(self, "deployment_per_page")
 
     @deployment_per_page.setter
-    def deployment_per_page(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def deployment_per_page(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "deployment_per_page", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project that the app is assigned to.
 
@@ -83,36 +83,36 @@ class AppArgs:
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def spec(self) -> Optional[pulumi.Input['AppSpecArgs']]:
+    def spec(self) -> pulumi.Input[Optional['AppSpecArgs']]:
         """
         A DigitalOcean App spec describing the app.
         """
         return pulumi.get(self, "spec")
 
     @spec.setter
-    def spec(self, value: Optional[pulumi.Input['AppSpecArgs']]):
+    def spec(self, value: pulumi.Input[Optional['AppSpecArgs']]):
         pulumi.set(self, "spec", value)
 
 
 @pulumi.input_type
 class _AppState:
     def __init__(__self__, *,
-                 active_deployment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 app_urn: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 dedicated_ips: Optional[pulumi.Input[Sequence[pulumi.Input['AppDedicatedIpArgs']]]] = None,
-                 default_ingress: Optional[pulumi.Input[_builtins.str]] = None,
-                 deployment_per_page: Optional[pulumi.Input[_builtins.int]] = None,
-                 live_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 live_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec: Optional[pulumi.Input['AppSpecArgs']] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.str]] = None):
+                 active_deployment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 app_urn: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 dedicated_ips: pulumi.Input[Optional[Sequence[pulumi.Input['AppDedicatedIpArgs']]]] = None,
+                 default_ingress: pulumi.Input[Optional[_builtins.str]] = None,
+                 deployment_per_page: pulumi.Input[Optional[_builtins.int]] = None,
+                 live_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 live_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec: pulumi.Input[Optional['AppSpecArgs']] = None,
+                 updated_at: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering App resources.
 
@@ -157,103 +157,103 @@ class _AppState:
 
     @_builtins.property
     @pulumi.getter(name="activeDeploymentId")
-    def active_deployment_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def active_deployment_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID the app's currently active deployment.
         """
         return pulumi.get(self, "active_deployment_id")
 
     @active_deployment_id.setter
-    def active_deployment_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def active_deployment_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "active_deployment_id", value)
 
     @_builtins.property
     @pulumi.getter(name="appUrn")
-    def app_urn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def app_urn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The uniform resource identifier for the app.
         """
         return pulumi.get(self, "app_urn")
 
     @app_urn.setter
-    def app_urn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def app_urn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app_urn", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date and time of when the app was created.
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="dedicatedIps")
-    def dedicated_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppDedicatedIpArgs']]]]:
+    def dedicated_ips(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AppDedicatedIpArgs']]]]:
         """
         The dedicated egress IP addresses associated with the app.
         """
         return pulumi.get(self, "dedicated_ips")
 
     @dedicated_ips.setter
-    def dedicated_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppDedicatedIpArgs']]]]):
+    def dedicated_ips(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AppDedicatedIpArgs']]]]):
         pulumi.set(self, "dedicated_ips", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultIngress")
-    def default_ingress(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_ingress(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default URL to access the app.
         """
         return pulumi.get(self, "default_ingress")
 
     @default_ingress.setter
-    def default_ingress(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_ingress(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_ingress", value)
 
     @_builtins.property
     @pulumi.getter(name="deploymentPerPage")
-    def deployment_per_page(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def deployment_per_page(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Optional) Controls how many deployments are requested per API page when listing deployments during create/update waits. Defaults to `20`. Reduce this value (for example `5`) if you experience API timeouts when listing deployments.
         """
         return pulumi.get(self, "deployment_per_page")
 
     @deployment_per_page.setter
-    def deployment_per_page(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def deployment_per_page(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "deployment_per_page", value)
 
     @_builtins.property
     @pulumi.getter(name="liveDomain")
-    def live_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def live_domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The live domain of the app.
         """
         return pulumi.get(self, "live_domain")
 
     @live_domain.setter
-    def live_domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def live_domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "live_domain", value)
 
     @_builtins.property
     @pulumi.getter(name="liveUrl")
-    def live_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def live_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The live URL of the app.
         """
         return pulumi.get(self, "live_url")
 
     @live_url.setter
-    def live_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def live_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "live_url", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project that the app is assigned to.
 
@@ -264,31 +264,31 @@ class _AppState:
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def spec(self) -> Optional[pulumi.Input['AppSpecArgs']]:
+    def spec(self) -> pulumi.Input[Optional['AppSpecArgs']]:
         """
         A DigitalOcean App spec describing the app.
         """
         return pulumi.get(self, "spec")
 
     @spec.setter
-    def spec(self, value: Optional[pulumi.Input['AppSpecArgs']]):
+    def spec(self, value: pulumi.Input[Optional['AppSpecArgs']]):
         pulumi.set(self, "spec", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date and time of when the app was last updated.
         """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated_at", value)
 
 
@@ -298,10 +298,10 @@ class App(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dedicated_ips: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AppDedicatedIpArgs', 'AppDedicatedIpArgsDict']]]]] = None,
-                 deployment_per_page: Optional[pulumi.Input[_builtins.int]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec: Optional[pulumi.Input[Union['AppSpecArgs', 'AppSpecArgsDict']]] = None,
+                 dedicated_ips: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppDedicatedIpArgs', 'AppDedicatedIpArgsDict']]]]] = None,
+                 deployment_per_page: pulumi.Input[Optional[_builtins.int]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec: pulumi.Input[Optional[Union['AppSpecArgs', 'AppSpecArgsDict']]] = None,
                  __props__=None):
         """
         Provides a DigitalOcean App resource.
@@ -615,10 +615,10 @@ class App(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dedicated_ips: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AppDedicatedIpArgs', 'AppDedicatedIpArgsDict']]]]] = None,
-                 deployment_per_page: Optional[pulumi.Input[_builtins.int]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec: Optional[pulumi.Input[Union['AppSpecArgs', 'AppSpecArgsDict']]] = None,
+                 dedicated_ips: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppDedicatedIpArgs', 'AppDedicatedIpArgsDict']]]]] = None,
+                 deployment_per_page: pulumi.Input[Optional[_builtins.int]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec: pulumi.Input[Optional[Union['AppSpecArgs', 'AppSpecArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -649,17 +649,17 @@ class App(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            active_deployment_id: Optional[pulumi.Input[_builtins.str]] = None,
-            app_urn: Optional[pulumi.Input[_builtins.str]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            dedicated_ips: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AppDedicatedIpArgs', 'AppDedicatedIpArgsDict']]]]] = None,
-            default_ingress: Optional[pulumi.Input[_builtins.str]] = None,
-            deployment_per_page: Optional[pulumi.Input[_builtins.int]] = None,
-            live_domain: Optional[pulumi.Input[_builtins.str]] = None,
-            live_url: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            spec: Optional[pulumi.Input[Union['AppSpecArgs', 'AppSpecArgsDict']]] = None,
-            updated_at: Optional[pulumi.Input[_builtins.str]] = None) -> 'App':
+            active_deployment_id: pulumi.Input[Optional[_builtins.str]] = None,
+            app_urn: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            dedicated_ips: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppDedicatedIpArgs', 'AppDedicatedIpArgsDict']]]]] = None,
+            default_ingress: pulumi.Input[Optional[_builtins.str]] = None,
+            deployment_per_page: pulumi.Input[Optional[_builtins.int]] = None,
+            live_domain: pulumi.Input[Optional[_builtins.str]] = None,
+            live_url: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            spec: pulumi.Input[Optional[Union['AppSpecArgs', 'AppSpecArgsDict']]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None) -> 'App':
         """
         Get an existing App resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

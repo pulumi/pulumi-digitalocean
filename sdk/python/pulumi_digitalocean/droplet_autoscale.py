@@ -23,7 +23,7 @@ class DropletAutoscaleArgs:
     def __init__(__self__, *,
                  config: pulumi.Input['DropletAutoscaleConfigArgs'],
                  droplet_template: pulumi.Input['DropletAutoscaleDropletTemplateArgs'],
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a DropletAutoscale resource.
 
@@ -66,27 +66,27 @@ class DropletAutoscaleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Droplet Autoscale pool.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
 class _DropletAutoscaleState:
     def __init__(__self__, *,
-                 config: Optional[pulumi.Input['DropletAutoscaleConfigArgs']] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 current_utilizations: Optional[pulumi.Input[Sequence[pulumi.Input['DropletAutoscaleCurrentUtilizationArgs']]]] = None,
-                 droplet_template: Optional[pulumi.Input['DropletAutoscaleDropletTemplateArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.str]] = None):
+                 config: pulumi.Input[Optional['DropletAutoscaleConfigArgs']] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 current_utilizations: pulumi.Input[Optional[Sequence[pulumi.Input['DropletAutoscaleCurrentUtilizationArgs']]]] = None,
+                 droplet_template: pulumi.Input[Optional['DropletAutoscaleDropletTemplateArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 updated_at: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DropletAutoscale resources.
 
@@ -119,7 +119,7 @@ class _DropletAutoscaleState:
 
     @_builtins.property
     @pulumi.getter
-    def config(self) -> Optional[pulumi.Input['DropletAutoscaleConfigArgs']]:
+    def config(self) -> pulumi.Input[Optional['DropletAutoscaleConfigArgs']]:
         """
         The configuration parameters for Droplet Autoscale pool, the supported arguments are 
         documented below.
@@ -127,24 +127,24 @@ class _DropletAutoscaleState:
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: Optional[pulumi.Input['DropletAutoscaleConfigArgs']]):
+    def config(self, value: pulumi.Input[Optional['DropletAutoscaleConfigArgs']]):
         pulumi.set(self, "config", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Created at timestamp for the Droplet Autoscale pool.
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="currentUtilizations")
-    def current_utilizations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DropletAutoscaleCurrentUtilizationArgs']]]]:
+    def current_utilizations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DropletAutoscaleCurrentUtilizationArgs']]]]:
         """
         The current average resource utilization of the Droplet Autoscale pool, this attribute further
         embeds `memory` and `cpu` attributes to respectively report utilization data.
@@ -152,12 +152,12 @@ class _DropletAutoscaleState:
         return pulumi.get(self, "current_utilizations")
 
     @current_utilizations.setter
-    def current_utilizations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DropletAutoscaleCurrentUtilizationArgs']]]]):
+    def current_utilizations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DropletAutoscaleCurrentUtilizationArgs']]]]):
         pulumi.set(self, "current_utilizations", value)
 
     @_builtins.property
     @pulumi.getter(name="dropletTemplate")
-    def droplet_template(self) -> Optional[pulumi.Input['DropletAutoscaleDropletTemplateArgs']]:
+    def droplet_template(self) -> pulumi.Input[Optional['DropletAutoscaleDropletTemplateArgs']]:
         """
         The droplet template parameters for Droplet Autoscale pool, the supported arguments 
         are documented below.
@@ -165,24 +165,24 @@ class _DropletAutoscaleState:
         return pulumi.get(self, "droplet_template")
 
     @droplet_template.setter
-    def droplet_template(self, value: Optional[pulumi.Input['DropletAutoscaleDropletTemplateArgs']]):
+    def droplet_template(self, value: pulumi.Input[Optional['DropletAutoscaleDropletTemplateArgs']]):
         pulumi.set(self, "droplet_template", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Droplet Autoscale pool.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Droplet Autoscale pool health status; this reflects if the pool is currently healthy and ready to accept
         traffic, or in an error state and needs user intervention.
@@ -190,19 +190,19 @@ class _DropletAutoscaleState:
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Updated at timestamp for the Droplet Autoscale pool.
         """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated_at", value)
 
 
@@ -212,9 +212,9 @@ class DropletAutoscale(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: Optional[pulumi.Input[Union['DropletAutoscaleConfigArgs', 'DropletAutoscaleConfigArgsDict']]] = None,
-                 droplet_template: Optional[pulumi.Input[Union['DropletAutoscaleDropletTemplateArgs', 'DropletAutoscaleDropletTemplateArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 config: pulumi.Input[Optional[Union['DropletAutoscaleConfigArgs', 'DropletAutoscaleConfigArgsDict']]] = None,
+                 droplet_template: pulumi.Input[Optional[Union['DropletAutoscaleDropletTemplateArgs', 'DropletAutoscaleDropletTemplateArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a DigitalOcean Droplet Autoscale resource. This can be used to create, modify,
@@ -347,9 +347,9 @@ class DropletAutoscale(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: Optional[pulumi.Input[Union['DropletAutoscaleConfigArgs', 'DropletAutoscaleConfigArgsDict']]] = None,
-                 droplet_template: Optional[pulumi.Input[Union['DropletAutoscaleDropletTemplateArgs', 'DropletAutoscaleDropletTemplateArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 config: pulumi.Input[Optional[Union['DropletAutoscaleConfigArgs', 'DropletAutoscaleConfigArgsDict']]] = None,
+                 droplet_template: pulumi.Input[Optional[Union['DropletAutoscaleDropletTemplateArgs', 'DropletAutoscaleDropletTemplateArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -380,13 +380,13 @@ class DropletAutoscale(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            config: Optional[pulumi.Input[Union['DropletAutoscaleConfigArgs', 'DropletAutoscaleConfigArgsDict']]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            current_utilizations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DropletAutoscaleCurrentUtilizationArgs', 'DropletAutoscaleCurrentUtilizationArgsDict']]]]] = None,
-            droplet_template: Optional[pulumi.Input[Union['DropletAutoscaleDropletTemplateArgs', 'DropletAutoscaleDropletTemplateArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            updated_at: Optional[pulumi.Input[_builtins.str]] = None) -> 'DropletAutoscale':
+            config: pulumi.Input[Optional[Union['DropletAutoscaleConfigArgs', 'DropletAutoscaleConfigArgsDict']]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            current_utilizations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DropletAutoscaleCurrentUtilizationArgs', 'DropletAutoscaleCurrentUtilizationArgsDict']]]]] = None,
+            droplet_template: pulumi.Input[Optional[Union['DropletAutoscaleDropletTemplateArgs', 'DropletAutoscaleDropletTemplateArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None) -> 'DropletAutoscale':
         """
         Get an existing DropletAutoscale resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

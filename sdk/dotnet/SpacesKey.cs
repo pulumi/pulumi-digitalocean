@@ -36,7 +36,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foobar = new DigitalOcean.Index.SpacesKey("foobar", new()
+    ///     var foobar = new DigitalOcean.SpacesKey("foobar", new()
     ///     {
     ///         Name = "foobar",
     ///     });
@@ -54,7 +54,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foobar = new DigitalOcean.Index.SpacesKey("foobar", new()
+    ///     var foobar = new DigitalOcean.SpacesKey("foobar", new()
     ///     {
     ///         Name = "foobar",
     ///         Grants = new[]
@@ -80,7 +80,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foobar = new DigitalOcean.Index.SpacesKey("foobar", new()
+    ///     var foobar = new DigitalOcean.SpacesKey("foobar", new()
     ///     {
     ///         Name = "foobar",
     ///         Grants = new[]

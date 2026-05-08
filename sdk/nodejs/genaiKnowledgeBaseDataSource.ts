@@ -86,9 +86,9 @@ export interface GenaiKnowledgeBaseDataSourceState {
     /**
      * UUID of the Knowledge Base
      */
-    knowledgeBaseUuid?: pulumi.Input<string>;
-    spacesDataSource?: pulumi.Input<inputs.GenaiKnowledgeBaseDataSourceSpacesDataSource>;
-    webCrawlerDataSource?: pulumi.Input<inputs.GenaiKnowledgeBaseDataSourceWebCrawlerDataSource>;
+    knowledgeBaseUuid?: pulumi.Input<string | undefined>;
+    spacesDataSource?: pulumi.Input<inputs.GenaiKnowledgeBaseDataSourceSpacesDataSource | undefined>;
+    webCrawlerDataSource?: pulumi.Input<inputs.GenaiKnowledgeBaseDataSourceWebCrawlerDataSource | undefined>;
 }
 
 /**
@@ -99,6 +99,6 @@ export interface GenaiKnowledgeBaseDataSourceArgs {
      * UUID of the Knowledge Base
      */
     knowledgeBaseUuid: pulumi.Input<string>;
-    spacesDataSource?: pulumi.Input<inputs.GenaiKnowledgeBaseDataSourceSpacesDataSource>;
-    webCrawlerDataSource?: pulumi.Input<inputs.GenaiKnowledgeBaseDataSourceWebCrawlerDataSource>;
+    spacesDataSource?: pulumi.Input<inputs.GenaiKnowledgeBaseDataSourceSpacesDataSource | undefined>;
+    webCrawlerDataSource?: pulumi.Input<inputs.GenaiKnowledgeBaseDataSourceWebCrawlerDataSource | undefined>;
 }

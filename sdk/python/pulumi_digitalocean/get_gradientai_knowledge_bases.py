@@ -95,8 +95,8 @@ def get_gradientai_knowledge_bases(filters: Optional[Sequence[Union['GetGradient
         id=pulumi.get(__ret__, 'id'),
         knowledge_bases=pulumi.get(__ret__, 'knowledge_bases'),
         sorts=pulumi.get(__ret__, 'sorts'))
-def get_gradientai_knowledge_bases_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetGradientaiKnowledgeBasesFilterArgs', 'GetGradientaiKnowledgeBasesFilterArgsDict']]]]] = None,
-                                          sorts: Optional[pulumi.Input[Optional[Sequence[Union['GetGradientaiKnowledgeBasesSortArgs', 'GetGradientaiKnowledgeBasesSortArgsDict']]]]] = None,
+def get_gradientai_knowledge_bases_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetGradientaiKnowledgeBasesFilterArgs', 'GetGradientaiKnowledgeBasesFilterArgsDict']]]]] = None,
+                                          sorts: pulumi.Input[Optional[Optional[Sequence[Union['GetGradientaiKnowledgeBasesSortArgs', 'GetGradientaiKnowledgeBasesSortArgsDict']]]]] = None,
                                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGradientaiKnowledgeBasesResult]:
     """
     Use this data source to access information about an existing resource.

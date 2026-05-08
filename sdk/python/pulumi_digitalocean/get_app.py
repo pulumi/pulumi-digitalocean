@@ -221,8 +221,8 @@ def get_app(app_id: Optional[_builtins.str] = None,
         specs=pulumi.get(__ret__, 'specs'),
         updated_at=pulumi.get(__ret__, 'updated_at'),
         urn=pulumi.get(__ret__, 'urn'))
-def get_app_output(app_id: Optional[pulumi.Input[_builtins.str]] = None,
-                   dedicated_ips: Optional[pulumi.Input[Optional[Sequence[Union['GetAppDedicatedIpArgs', 'GetAppDedicatedIpArgsDict']]]]] = None,
+def get_app_output(app_id: pulumi.Input[Optional[_builtins.str]] = None,
+                   dedicated_ips: pulumi.Input[Optional[Optional[Sequence[Union['GetAppDedicatedIpArgs', 'GetAppDedicatedIpArgsDict']]]]] = None,
                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAppResult]:
     """
     Get information on a DigitalOcean App.

@@ -113,20 +113,20 @@ export interface DomainState {
     /**
      * The uniform resource name of the domain
      */
-    domainUrn?: pulumi.Input<string>;
+    domainUrn?: pulumi.Input<string | undefined>;
     /**
      * The IP address of the domain. If specified, this IP
      * is used to created an initial A record for the domain.
      */
-    ipAddress?: pulumi.Input<string>;
+    ipAddress?: pulumi.Input<string | undefined>;
     /**
      * The name of the domain
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The TTL value of the domain
      */
-    ttl?: pulumi.Input<number>;
+    ttl?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -137,7 +137,7 @@ export interface DomainArgs {
      * The IP address of the domain. If specified, this IP
      * is used to created an initial A record for the domain.
      */
-    ipAddress?: pulumi.Input<string>;
+    ipAddress?: pulumi.Input<string | undefined>;
     /**
      * The name of the domain
      */

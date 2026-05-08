@@ -213,10 +213,10 @@ def get_droplet_snapshot(most_recent: Optional[_builtins.bool] = None,
         region=pulumi.get(__ret__, 'region'),
         regions=pulumi.get(__ret__, 'regions'),
         size=pulumi.get(__ret__, 'size'))
-def get_droplet_snapshot_output(most_recent: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                                name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_droplet_snapshot_output(most_recent: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                                name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDropletSnapshotResult]:
     """
     Droplet snapshots are saved instances of a Droplet. Use this data

@@ -178,9 +178,9 @@ def get_vpc_peering(id: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         status=pulumi.get(__ret__, 'status'),
         vpc_ids=pulumi.get(__ret__, 'vpc_ids'))
-def get_vpc_peering_output(id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                           name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                           vpc_ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
+def get_vpc_peering_output(id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                           name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                           vpc_ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVpcPeeringResult]:
     """
     Retrieve information about a VPC Peering for use in other resources.

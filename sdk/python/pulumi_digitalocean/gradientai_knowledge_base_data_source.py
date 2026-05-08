@@ -22,8 +22,8 @@ __all__ = ['GradientaiKnowledgeBaseDataSourceInitArgs', 'GradientaiKnowledgeBase
 class GradientaiKnowledgeBaseDataSourceInitArgs:
     def __init__(__self__, *,
                  knowledge_base_uuid: pulumi.Input[_builtins.str],
-                 spaces_data_source: Optional[pulumi.Input['GradientaiKnowledgeBaseDataSourceSpacesDataSourceArgs']] = None,
-                 web_crawler_data_source: Optional[pulumi.Input['GradientaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs']] = None):
+                 spaces_data_source: pulumi.Input[Optional['GradientaiKnowledgeBaseDataSourceSpacesDataSourceArgs']] = None,
+                 web_crawler_data_source: pulumi.Input[Optional['GradientaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs']] = None):
         """
         The set of arguments for constructing a GradientaiKnowledgeBaseDataSource resource.
 
@@ -49,29 +49,29 @@ class GradientaiKnowledgeBaseDataSourceInitArgs:
 
     @_builtins.property
     @pulumi.getter(name="spacesDataSource")
-    def spaces_data_source(self) -> Optional[pulumi.Input['GradientaiKnowledgeBaseDataSourceSpacesDataSourceArgs']]:
+    def spaces_data_source(self) -> pulumi.Input[Optional['GradientaiKnowledgeBaseDataSourceSpacesDataSourceArgs']]:
         return pulumi.get(self, "spaces_data_source")
 
     @spaces_data_source.setter
-    def spaces_data_source(self, value: Optional[pulumi.Input['GradientaiKnowledgeBaseDataSourceSpacesDataSourceArgs']]):
+    def spaces_data_source(self, value: pulumi.Input[Optional['GradientaiKnowledgeBaseDataSourceSpacesDataSourceArgs']]):
         pulumi.set(self, "spaces_data_source", value)
 
     @_builtins.property
     @pulumi.getter(name="webCrawlerDataSource")
-    def web_crawler_data_source(self) -> Optional[pulumi.Input['GradientaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs']]:
+    def web_crawler_data_source(self) -> pulumi.Input[Optional['GradientaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs']]:
         return pulumi.get(self, "web_crawler_data_source")
 
     @web_crawler_data_source.setter
-    def web_crawler_data_source(self, value: Optional[pulumi.Input['GradientaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs']]):
+    def web_crawler_data_source(self, value: pulumi.Input[Optional['GradientaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs']]):
         pulumi.set(self, "web_crawler_data_source", value)
 
 
 @pulumi.input_type
 class _GradientaiKnowledgeBaseDataSourceState:
     def __init__(__self__, *,
-                 knowledge_base_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 spaces_data_source: Optional[pulumi.Input['GradientaiKnowledgeBaseDataSourceSpacesDataSourceArgs']] = None,
-                 web_crawler_data_source: Optional[pulumi.Input['GradientaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs']] = None):
+                 knowledge_base_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 spaces_data_source: pulumi.Input[Optional['GradientaiKnowledgeBaseDataSourceSpacesDataSourceArgs']] = None,
+                 web_crawler_data_source: pulumi.Input[Optional['GradientaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs']] = None):
         """
         Input properties used for looking up and filtering GradientaiKnowledgeBaseDataSource resources.
 
@@ -86,32 +86,32 @@ class _GradientaiKnowledgeBaseDataSourceState:
 
     @_builtins.property
     @pulumi.getter(name="knowledgeBaseUuid")
-    def knowledge_base_uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def knowledge_base_uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         UUID of the Knowledge Base
         """
         return pulumi.get(self, "knowledge_base_uuid")
 
     @knowledge_base_uuid.setter
-    def knowledge_base_uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def knowledge_base_uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "knowledge_base_uuid", value)
 
     @_builtins.property
     @pulumi.getter(name="spacesDataSource")
-    def spaces_data_source(self) -> Optional[pulumi.Input['GradientaiKnowledgeBaseDataSourceSpacesDataSourceArgs']]:
+    def spaces_data_source(self) -> pulumi.Input[Optional['GradientaiKnowledgeBaseDataSourceSpacesDataSourceArgs']]:
         return pulumi.get(self, "spaces_data_source")
 
     @spaces_data_source.setter
-    def spaces_data_source(self, value: Optional[pulumi.Input['GradientaiKnowledgeBaseDataSourceSpacesDataSourceArgs']]):
+    def spaces_data_source(self, value: pulumi.Input[Optional['GradientaiKnowledgeBaseDataSourceSpacesDataSourceArgs']]):
         pulumi.set(self, "spaces_data_source", value)
 
     @_builtins.property
     @pulumi.getter(name="webCrawlerDataSource")
-    def web_crawler_data_source(self) -> Optional[pulumi.Input['GradientaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs']]:
+    def web_crawler_data_source(self) -> pulumi.Input[Optional['GradientaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs']]:
         return pulumi.get(self, "web_crawler_data_source")
 
     @web_crawler_data_source.setter
-    def web_crawler_data_source(self, value: Optional[pulumi.Input['GradientaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs']]):
+    def web_crawler_data_source(self, value: pulumi.Input[Optional['GradientaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs']]):
         pulumi.set(self, "web_crawler_data_source", value)
 
 
@@ -121,9 +121,9 @@ class GradientaiKnowledgeBaseDataSource(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 knowledge_base_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 spaces_data_source: Optional[pulumi.Input[Union['GradientaiKnowledgeBaseDataSourceSpacesDataSourceArgs', 'GradientaiKnowledgeBaseDataSourceSpacesDataSourceArgsDict']]] = None,
-                 web_crawler_data_source: Optional[pulumi.Input[Union['GradientaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs', 'GradientaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgsDict']]] = None,
+                 knowledge_base_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 spaces_data_source: pulumi.Input[Optional[Union['GradientaiKnowledgeBaseDataSourceSpacesDataSourceArgs', 'GradientaiKnowledgeBaseDataSourceSpacesDataSourceArgsDict']]] = None,
+                 web_crawler_data_source: pulumi.Input[Optional[Union['GradientaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs', 'GradientaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgsDict']]] = None,
                  __props__=None):
         """
         Create a GradientaiKnowledgeBaseDataSource resource with the given unique name, props, and options.
@@ -156,9 +156,9 @@ class GradientaiKnowledgeBaseDataSource(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 knowledge_base_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 spaces_data_source: Optional[pulumi.Input[Union['GradientaiKnowledgeBaseDataSourceSpacesDataSourceArgs', 'GradientaiKnowledgeBaseDataSourceSpacesDataSourceArgsDict']]] = None,
-                 web_crawler_data_source: Optional[pulumi.Input[Union['GradientaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs', 'GradientaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgsDict']]] = None,
+                 knowledge_base_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 spaces_data_source: pulumi.Input[Optional[Union['GradientaiKnowledgeBaseDataSourceSpacesDataSourceArgs', 'GradientaiKnowledgeBaseDataSourceSpacesDataSourceArgsDict']]] = None,
+                 web_crawler_data_source: pulumi.Input[Optional[Union['GradientaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs', 'GradientaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -185,9 +185,9 @@ class GradientaiKnowledgeBaseDataSource(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            knowledge_base_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-            spaces_data_source: Optional[pulumi.Input[Union['GradientaiKnowledgeBaseDataSourceSpacesDataSourceArgs', 'GradientaiKnowledgeBaseDataSourceSpacesDataSourceArgsDict']]] = None,
-            web_crawler_data_source: Optional[pulumi.Input[Union['GradientaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs', 'GradientaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgsDict']]] = None) -> 'GradientaiKnowledgeBaseDataSource':
+            knowledge_base_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+            spaces_data_source: pulumi.Input[Optional[Union['GradientaiKnowledgeBaseDataSourceSpacesDataSourceArgs', 'GradientaiKnowledgeBaseDataSourceSpacesDataSourceArgsDict']]] = None,
+            web_crawler_data_source: pulumi.Input[Optional[Union['GradientaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs', 'GradientaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgsDict']]] = None) -> 'GradientaiKnowledgeBaseDataSource':
         """
         Get an existing GradientaiKnowledgeBaseDataSource resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -24,12 +24,12 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.Index.GetDatabaseCluster.Invoke(new()
+        ///     var example = DigitalOcean.GetDatabaseCluster.Invoke(new()
         ///     {
         ///         Name = "example-cluster",
         ///     });
         /// 
-        ///     var read_only = DigitalOcean.Index.GetDatabaseReplica.Invoke(new()
+        ///     var read_only = DigitalOcean.GetDatabaseReplica.Invoke(new()
         ///     {
         ///         ClusterId = example.Apply(getDatabaseClusterResult =&gt; getDatabaseClusterResult.Id),
         ///         Name = "terra-test-ro",
@@ -58,12 +58,12 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.Index.GetDatabaseCluster.Invoke(new()
+        ///     var example = DigitalOcean.GetDatabaseCluster.Invoke(new()
         ///     {
         ///         Name = "example-cluster",
         ///     });
         /// 
-        ///     var read_only = DigitalOcean.Index.GetDatabaseReplica.Invoke(new()
+        ///     var read_only = DigitalOcean.GetDatabaseReplica.Invoke(new()
         ///     {
         ///         ClusterId = example.Apply(getDatabaseClusterResult =&gt; getDatabaseClusterResult.Id),
         ///         Name = "terra-test-ro",
@@ -92,12 +92,12 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.Index.GetDatabaseCluster.Invoke(new()
+        ///     var example = DigitalOcean.GetDatabaseCluster.Invoke(new()
         ///     {
         ///         Name = "example-cluster",
         ///     });
         /// 
-        ///     var read_only = DigitalOcean.Index.GetDatabaseReplica.Invoke(new()
+        ///     var read_only = DigitalOcean.GetDatabaseReplica.Invoke(new()
         ///     {
         ///         ClusterId = example.Apply(getDatabaseClusterResult =&gt; getDatabaseClusterResult.Id),
         ///         Name = "terra-test-ro",

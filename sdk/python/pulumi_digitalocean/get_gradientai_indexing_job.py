@@ -211,7 +211,7 @@ def get_gradientai_indexing_job(uuid: Optional[_builtins.str] = None,
         total_items_skipped=pulumi.get(__ret__, 'total_items_skipped'),
         updated_at=pulumi.get(__ret__, 'updated_at'),
         uuid=pulumi.get(__ret__, 'uuid'))
-def get_gradientai_indexing_job_output(uuid: Optional[pulumi.Input[_builtins.str]] = None,
+def get_gradientai_indexing_job_output(uuid: pulumi.Input[Optional[_builtins.str]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGradientaiIndexingJobResult]:
     """
     Use this data source to access information about an existing resource.

@@ -323,163 +323,163 @@ export interface GenaiAgentState {
     /**
      * AgentGuardrail represents a Guardrail attached to Gen AI Agent
      */
-    agentGuardrails?: pulumi.Input<pulumi.Input<inputs.GenaiAgentAgentGuardrail>[]>;
+    agentGuardrails?: pulumi.Input<pulumi.Input<inputs.GenaiAgentAgentGuardrail>[] | undefined>;
     /**
      * Anthropic API Key information
      */
-    anthropicApiKeys?: pulumi.Input<pulumi.Input<inputs.GenaiAgentAnthropicApiKey>[]>;
+    anthropicApiKeys?: pulumi.Input<pulumi.Input<inputs.GenaiAgentAnthropicApiKey>[] | undefined>;
     /**
      * Optional Anthropic API key ID to use with Anthropic models
      */
-    anthropicKeyUuid?: pulumi.Input<string>;
+    anthropicKeyUuid?: pulumi.Input<string | undefined>;
     /**
      * List of API Key Infos
      */
-    apiKeyInfos?: pulumi.Input<pulumi.Input<inputs.GenaiAgentApiKeyInfo>[]>;
+    apiKeyInfos?: pulumi.Input<pulumi.Input<inputs.GenaiAgentApiKeyInfo>[] | undefined>;
     /**
      * List of API Keys
      */
-    apiKeys?: pulumi.Input<pulumi.Input<inputs.GenaiAgentApiKey>[]>;
+    apiKeys?: pulumi.Input<pulumi.Input<inputs.GenaiAgentApiKey>[] | undefined>;
     /**
      * List of Chatbot Identifiers
      */
-    chatbotIdentifiers?: pulumi.Input<pulumi.Input<inputs.GenaiAgentChatbotIdentifier>[]>;
+    chatbotIdentifiers?: pulumi.Input<pulumi.Input<inputs.GenaiAgentChatbotIdentifier>[] | undefined>;
     /**
      * ChatBot configuration
      */
-    chatbots?: pulumi.Input<pulumi.Input<inputs.GenaiAgentChatbot>[]>;
+    chatbots?: pulumi.Input<pulumi.Input<inputs.GenaiAgentChatbot>[] | undefined>;
     /**
      * List of child agents
      */
-    childAgents?: pulumi.Input<pulumi.Input<inputs.GenaiAgentChildAgent>[]>;
+    childAgents?: pulumi.Input<pulumi.Input<inputs.GenaiAgentChildAgent>[] | undefined>;
     /**
      * Timestamp when the Agent was created
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * List of API Key Infos
      */
-    deployments?: pulumi.Input<pulumi.Input<inputs.GenaiAgentDeployment>[]>;
+    deployments?: pulumi.Input<pulumi.Input<inputs.GenaiAgentDeployment>[] | undefined>;
     /**
      * Description for the Agent
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * List of Functions
      */
-    functions?: pulumi.Input<pulumi.Input<inputs.GenaiAgentFunction>[]>;
+    functions?: pulumi.Input<pulumi.Input<inputs.GenaiAgentFunction>[] | undefined>;
     /**
      * If case condition
      */
-    ifCase?: pulumi.Input<string>;
+    ifCase?: pulumi.Input<string | undefined>;
     /**
      * Instruction for the Agent
      */
-    instruction?: pulumi.Input<string>;
+    instruction?: pulumi.Input<string | undefined>;
     /**
      * K value
      */
-    k?: pulumi.Input<number>;
+    k?: pulumi.Input<number | undefined>;
     /**
      * Ids of the knowledge base(s) to attach to the agent
      */
-    knowledgeBaseUuids?: pulumi.Input<pulumi.Input<string>[]>;
+    knowledgeBaseUuids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of Knowledge Bases
      */
-    knowledgeBases?: pulumi.Input<pulumi.Input<inputs.GenaiAgentKnowledgeBase>[]>;
+    knowledgeBases?: pulumi.Input<pulumi.Input<inputs.GenaiAgentKnowledgeBase>[] | undefined>;
     /**
      * Maximum tokens allowed
      */
-    maxTokens?: pulumi.Input<number>;
+    maxTokens?: pulumi.Input<number | undefined>;
     /**
      * Model UUID of the Agent
      */
-    modelUuid?: pulumi.Input<string>;
+    modelUuid?: pulumi.Input<string | undefined>;
     /**
      * Model of the Agent
      */
-    models?: pulumi.Input<pulumi.Input<inputs.GenaiAgentModel>[]>;
+    models?: pulumi.Input<pulumi.Input<inputs.GenaiAgentModel>[] | undefined>;
     /**
      * Name of the Agent
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * OpenAI API Key information
      */
-    openAiApiKeys?: pulumi.Input<pulumi.Input<inputs.GenaiAgentOpenAiApiKey>[]>;
+    openAiApiKeys?: pulumi.Input<pulumi.Input<inputs.GenaiAgentOpenAiApiKey>[] | undefined>;
     /**
      * Optional OpenAI API key ID to use with OpenAI models
      */
-    openAiKeyUuid?: pulumi.Input<string>;
+    openAiKeyUuid?: pulumi.Input<string | undefined>;
     /**
      * List of child agents
      */
-    parentAgents?: pulumi.Input<pulumi.Input<inputs.GenaiAgentParentAgent>[]>;
+    parentAgents?: pulumi.Input<pulumi.Input<inputs.GenaiAgentParentAgent>[] | undefined>;
     /**
      * Project ID of the Agent
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Indicates if the agent should provide citations in responses
      */
-    provideCitations?: pulumi.Input<boolean>;
+    provideCitations?: pulumi.Input<boolean | undefined>;
     /**
      * Region where the Agent is deployed
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Retrieval method used
      */
-    retrievalMethod?: pulumi.Input<string>;
+    retrievalMethod?: pulumi.Input<string | undefined>;
     /**
      * Timestamp when the route was created
      */
-    routeCreatedAt?: pulumi.Input<string>;
+    routeCreatedAt?: pulumi.Input<string | undefined>;
     /**
      * User who created the route
      */
-    routeCreatedBy?: pulumi.Input<string>;
+    routeCreatedBy?: pulumi.Input<string | undefined>;
     /**
      * Route name
      */
-    routeName?: pulumi.Input<string>;
+    routeName?: pulumi.Input<string | undefined>;
     /**
      * Route UUID
      */
-    routeUuid?: pulumi.Input<string>;
+    routeUuid?: pulumi.Input<string | undefined>;
     /**
      * List of Tags
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Agent temperature setting
      */
-    temperature?: pulumi.Input<number>;
+    temperature?: pulumi.Input<number | undefined>;
     /**
      * Agent Template
      */
-    templates?: pulumi.Input<pulumi.Input<inputs.GenaiAgentTemplate>[]>;
+    templates?: pulumi.Input<pulumi.Input<inputs.GenaiAgentTemplate>[] | undefined>;
     /**
      * Top P sampling parameter
      */
-    topP?: pulumi.Input<number>;
+    topP?: pulumi.Input<number | undefined>;
     /**
      * Timestamp when the Agent was updated
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * URL for the Agent
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * User ID linked with the Agent
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
     /**
      * Identifier for the workspace
      */
-    workspaceUuid?: pulumi.Input<string>;
+    workspaceUuid?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -489,55 +489,55 @@ export interface GenaiAgentArgs {
     /**
      * AgentGuardrail represents a Guardrail attached to Gen AI Agent
      */
-    agentGuardrails?: pulumi.Input<pulumi.Input<inputs.GenaiAgentAgentGuardrail>[]>;
+    agentGuardrails?: pulumi.Input<pulumi.Input<inputs.GenaiAgentAgentGuardrail>[] | undefined>;
     /**
      * Anthropic API Key information
      */
-    anthropicApiKeys?: pulumi.Input<pulumi.Input<inputs.GenaiAgentAnthropicApiKey>[]>;
+    anthropicApiKeys?: pulumi.Input<pulumi.Input<inputs.GenaiAgentAnthropicApiKey>[] | undefined>;
     /**
      * Optional Anthropic API key ID to use with Anthropic models
      */
-    anthropicKeyUuid?: pulumi.Input<string>;
+    anthropicKeyUuid?: pulumi.Input<string | undefined>;
     /**
      * List of API Key Infos
      */
-    apiKeyInfos?: pulumi.Input<pulumi.Input<inputs.GenaiAgentApiKeyInfo>[]>;
+    apiKeyInfos?: pulumi.Input<pulumi.Input<inputs.GenaiAgentApiKeyInfo>[] | undefined>;
     /**
      * List of API Keys
      */
-    apiKeys?: pulumi.Input<pulumi.Input<inputs.GenaiAgentApiKey>[]>;
+    apiKeys?: pulumi.Input<pulumi.Input<inputs.GenaiAgentApiKey>[] | undefined>;
     /**
      * List of Chatbot Identifiers
      */
-    chatbotIdentifiers?: pulumi.Input<pulumi.Input<inputs.GenaiAgentChatbotIdentifier>[]>;
+    chatbotIdentifiers?: pulumi.Input<pulumi.Input<inputs.GenaiAgentChatbotIdentifier>[] | undefined>;
     /**
      * ChatBot configuration
      */
-    chatbots?: pulumi.Input<pulumi.Input<inputs.GenaiAgentChatbot>[]>;
+    chatbots?: pulumi.Input<pulumi.Input<inputs.GenaiAgentChatbot>[] | undefined>;
     /**
      * List of child agents
      */
-    childAgents?: pulumi.Input<pulumi.Input<inputs.GenaiAgentChildAgent>[]>;
+    childAgents?: pulumi.Input<pulumi.Input<inputs.GenaiAgentChildAgent>[] | undefined>;
     /**
      * Timestamp when the Agent was created
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * List of API Key Infos
      */
-    deployments?: pulumi.Input<pulumi.Input<inputs.GenaiAgentDeployment>[]>;
+    deployments?: pulumi.Input<pulumi.Input<inputs.GenaiAgentDeployment>[] | undefined>;
     /**
      * Description for the Agent
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * List of Functions
      */
-    functions?: pulumi.Input<pulumi.Input<inputs.GenaiAgentFunction>[]>;
+    functions?: pulumi.Input<pulumi.Input<inputs.GenaiAgentFunction>[] | undefined>;
     /**
      * If case condition
      */
-    ifCase?: pulumi.Input<string>;
+    ifCase?: pulumi.Input<string | undefined>;
     /**
      * Instruction for the Agent
      */
@@ -545,19 +545,19 @@ export interface GenaiAgentArgs {
     /**
      * K value
      */
-    k?: pulumi.Input<number>;
+    k?: pulumi.Input<number | undefined>;
     /**
      * Ids of the knowledge base(s) to attach to the agent
      */
-    knowledgeBaseUuids?: pulumi.Input<pulumi.Input<string>[]>;
+    knowledgeBaseUuids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of Knowledge Bases
      */
-    knowledgeBases?: pulumi.Input<pulumi.Input<inputs.GenaiAgentKnowledgeBase>[]>;
+    knowledgeBases?: pulumi.Input<pulumi.Input<inputs.GenaiAgentKnowledgeBase>[] | undefined>;
     /**
      * Maximum tokens allowed
      */
-    maxTokens?: pulumi.Input<number>;
+    maxTokens?: pulumi.Input<number | undefined>;
     /**
      * Model UUID of the Agent
      */
@@ -565,23 +565,23 @@ export interface GenaiAgentArgs {
     /**
      * Model of the Agent
      */
-    models?: pulumi.Input<pulumi.Input<inputs.GenaiAgentModel>[]>;
+    models?: pulumi.Input<pulumi.Input<inputs.GenaiAgentModel>[] | undefined>;
     /**
      * Name of the Agent
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * OpenAI API Key information
      */
-    openAiApiKeys?: pulumi.Input<pulumi.Input<inputs.GenaiAgentOpenAiApiKey>[]>;
+    openAiApiKeys?: pulumi.Input<pulumi.Input<inputs.GenaiAgentOpenAiApiKey>[] | undefined>;
     /**
      * Optional OpenAI API key ID to use with OpenAI models
      */
-    openAiKeyUuid?: pulumi.Input<string>;
+    openAiKeyUuid?: pulumi.Input<string | undefined>;
     /**
      * List of child agents
      */
-    parentAgents?: pulumi.Input<pulumi.Input<inputs.GenaiAgentParentAgent>[]>;
+    parentAgents?: pulumi.Input<pulumi.Input<inputs.GenaiAgentParentAgent>[] | undefined>;
     /**
      * Project ID of the Agent
      */
@@ -589,7 +589,7 @@ export interface GenaiAgentArgs {
     /**
      * Indicates if the agent should provide citations in responses
      */
-    provideCitations?: pulumi.Input<boolean>;
+    provideCitations?: pulumi.Input<boolean | undefined>;
     /**
      * Region where the Agent is deployed
      */
@@ -597,45 +597,45 @@ export interface GenaiAgentArgs {
     /**
      * Retrieval method used
      */
-    retrievalMethod?: pulumi.Input<string>;
+    retrievalMethod?: pulumi.Input<string | undefined>;
     /**
      * User who created the route
      */
-    routeCreatedBy?: pulumi.Input<string>;
+    routeCreatedBy?: pulumi.Input<string | undefined>;
     /**
      * Route name
      */
-    routeName?: pulumi.Input<string>;
+    routeName?: pulumi.Input<string | undefined>;
     /**
      * Route UUID
      */
-    routeUuid?: pulumi.Input<string>;
+    routeUuid?: pulumi.Input<string | undefined>;
     /**
      * List of Tags
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Agent temperature setting
      */
-    temperature?: pulumi.Input<number>;
+    temperature?: pulumi.Input<number | undefined>;
     /**
      * Agent Template
      */
-    templates?: pulumi.Input<pulumi.Input<inputs.GenaiAgentTemplate>[]>;
+    templates?: pulumi.Input<pulumi.Input<inputs.GenaiAgentTemplate>[] | undefined>;
     /**
      * Top P sampling parameter
      */
-    topP?: pulumi.Input<number>;
+    topP?: pulumi.Input<number | undefined>;
     /**
      * URL for the Agent
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * User ID linked with the Agent
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
     /**
      * Identifier for the workspace
      */
-    workspaceUuid?: pulumi.Input<string>;
+    workspaceUuid?: pulumi.Input<string | undefined>;
 }

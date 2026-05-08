@@ -150,8 +150,8 @@ def get_images(filters: Optional[Sequence[Union['GetImagesFilterArgs', 'GetImage
         id=pulumi.get(__ret__, 'id'),
         images=pulumi.get(__ret__, 'images'),
         sorts=pulumi.get(__ret__, 'sorts'))
-def get_images_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetImagesFilterArgs', 'GetImagesFilterArgsDict']]]]] = None,
-                      sorts: Optional[pulumi.Input[Optional[Sequence[Union['GetImagesSortArgs', 'GetImagesSortArgsDict']]]]] = None,
+def get_images_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetImagesFilterArgs', 'GetImagesFilterArgsDict']]]]] = None,
+                      sorts: pulumi.Input[Optional[Optional[Sequence[Union['GetImagesSortArgs', 'GetImagesSortArgsDict']]]]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetImagesResult]:
     """
     Get information on images for use in other resources (e.g. creating a Droplet

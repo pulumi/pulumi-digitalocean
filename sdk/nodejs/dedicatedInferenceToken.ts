@@ -131,19 +131,19 @@ export interface DedicatedInferenceTokenState {
     /**
      * The date and time when the token was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The ID of the dedicated inference endpoint this token belongs to. Changing this forces a new resource.
      */
-    dedicatedInferenceId?: pulumi.Input<string>;
+    dedicatedInferenceId?: pulumi.Input<string | undefined>;
     /**
      * A human-readable name for the token. Changing this forces a new resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * (Sensitive) The token value. Only available immediately after creation and not retrievable afterwards.
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -157,5 +157,5 @@ export interface DedicatedInferenceTokenArgs {
     /**
      * A human-readable name for the token. Changing this forces a new resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

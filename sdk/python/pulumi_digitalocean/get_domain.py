@@ -131,7 +131,7 @@ def get_domain(name: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         ttl=pulumi.get(__ret__, 'ttl'),
         zone_file=pulumi.get(__ret__, 'zone_file'))
-def get_domain_output(name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_domain_output(name: pulumi.Input[Optional[_builtins.str]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDomainResult]:
     """
     Get information on a domain. This data source provides the name, TTL, and zone

@@ -43,21 +43,21 @@ class GradientaiIndexingJobCancelArgs:
 @pulumi.input_type
 class _GradientaiIndexingJobCancelState:
     def __init__(__self__, *,
-                 completed_datasources: Optional[pulumi.Input[_builtins.int]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_source_uuids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 finished_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 knowledge_base_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 phase: Optional[pulumi.Input[_builtins.str]] = None,
-                 started_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tokens: Optional[pulumi.Input[_builtins.int]] = None,
-                 total_datasources: Optional[pulumi.Input[_builtins.int]] = None,
-                 total_items_failed: Optional[pulumi.Input[_builtins.int]] = None,
-                 total_items_indexed: Optional[pulumi.Input[_builtins.int]] = None,
-                 total_items_skipped: Optional[pulumi.Input[_builtins.int]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 uuid: Optional[pulumi.Input[_builtins.str]] = None):
+                 completed_datasources: pulumi.Input[Optional[_builtins.int]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_source_uuids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 finished_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 knowledge_base_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 phase: pulumi.Input[Optional[_builtins.str]] = None,
+                 started_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tokens: pulumi.Input[Optional[_builtins.int]] = None,
+                 total_datasources: pulumi.Input[Optional[_builtins.int]] = None,
+                 total_items_failed: pulumi.Input[Optional[_builtins.int]] = None,
+                 total_items_indexed: pulumi.Input[Optional[_builtins.int]] = None,
+                 total_items_skipped: pulumi.Input[Optional[_builtins.int]] = None,
+                 updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 uuid: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GradientaiIndexingJobCancel resources.
 
@@ -110,182 +110,182 @@ class _GradientaiIndexingJobCancelState:
 
     @_builtins.property
     @pulumi.getter(name="completedDatasources")
-    def completed_datasources(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def completed_datasources(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of data sources that were completed before cancellation.
         """
         return pulumi.get(self, "completed_datasources")
 
     @completed_datasources.setter
-    def completed_datasources(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def completed_datasources(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "completed_datasources", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When the indexing job was created.
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="dataSourceUuids")
-    def data_source_uuids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def data_source_uuids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of data source UUIDs associated with this indexing job.
         """
         return pulumi.get(self, "data_source_uuids")
 
     @data_source_uuids.setter
-    def data_source_uuids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def data_source_uuids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "data_source_uuids", value)
 
     @_builtins.property
     @pulumi.getter(name="finishedAt")
-    def finished_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def finished_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When the indexing job was finished.
         """
         return pulumi.get(self, "finished_at")
 
     @finished_at.setter
-    def finished_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def finished_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "finished_at", value)
 
     @_builtins.property
     @pulumi.getter(name="knowledgeBaseUuid")
-    def knowledge_base_uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def knowledge_base_uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The UUID of the knowledge base associated with this indexing job.
         """
         return pulumi.get(self, "knowledge_base_uuid")
 
     @knowledge_base_uuid.setter
-    def knowledge_base_uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def knowledge_base_uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "knowledge_base_uuid", value)
 
     @_builtins.property
     @pulumi.getter
-    def phase(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def phase(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Current phase of the indexing job.
         """
         return pulumi.get(self, "phase")
 
     @phase.setter
-    def phase(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def phase(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "phase", value)
 
     @_builtins.property
     @pulumi.getter(name="startedAt")
-    def started_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def started_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When the indexing job was started.
         """
         return pulumi.get(self, "started_at")
 
     @started_at.setter
-    def started_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def started_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "started_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the indexing job after cancellation.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tokens(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def tokens(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of tokens processed before cancellation.
         """
         return pulumi.get(self, "tokens")
 
     @tokens.setter
-    def tokens(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def tokens(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "tokens", value)
 
     @_builtins.property
     @pulumi.getter(name="totalDatasources")
-    def total_datasources(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def total_datasources(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Total number of data sources in the indexing job.
         """
         return pulumi.get(self, "total_datasources")
 
     @total_datasources.setter
-    def total_datasources(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def total_datasources(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "total_datasources", value)
 
     @_builtins.property
     @pulumi.getter(name="totalItemsFailed")
-    def total_items_failed(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def total_items_failed(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Total number of items that failed during indexing.
         """
         return pulumi.get(self, "total_items_failed")
 
     @total_items_failed.setter
-    def total_items_failed(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def total_items_failed(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "total_items_failed", value)
 
     @_builtins.property
     @pulumi.getter(name="totalItemsIndexed")
-    def total_items_indexed(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def total_items_indexed(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Total number of items that were successfully indexed.
         """
         return pulumi.get(self, "total_items_indexed")
 
     @total_items_indexed.setter
-    def total_items_indexed(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def total_items_indexed(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "total_items_indexed", value)
 
     @_builtins.property
     @pulumi.getter(name="totalItemsSkipped")
-    def total_items_skipped(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def total_items_skipped(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Total number of items that were skipped during indexing.
         """
         return pulumi.get(self, "total_items_skipped")
 
     @total_items_skipped.setter
-    def total_items_skipped(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def total_items_skipped(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "total_items_skipped", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When the indexing job was last updated.
         """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The UUID of the indexing job to cancel.
         """
         return pulumi.get(self, "uuid")
 
     @uuid.setter
-    def uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uuid", value)
 
 
@@ -295,7 +295,7 @@ class GradientaiIndexingJobCancel(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 uuid: Optional[pulumi.Input[_builtins.str]] = None,
+                 uuid: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Create a GradientaiIndexingJobCancel resource with the given unique name, props, and options.
@@ -328,7 +328,7 @@ class GradientaiIndexingJobCancel(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 uuid: Optional[pulumi.Input[_builtins.str]] = None,
+                 uuid: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -367,21 +367,21 @@ class GradientaiIndexingJobCancel(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            completed_datasources: Optional[pulumi.Input[_builtins.int]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            data_source_uuids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            finished_at: Optional[pulumi.Input[_builtins.str]] = None,
-            knowledge_base_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-            phase: Optional[pulumi.Input[_builtins.str]] = None,
-            started_at: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tokens: Optional[pulumi.Input[_builtins.int]] = None,
-            total_datasources: Optional[pulumi.Input[_builtins.int]] = None,
-            total_items_failed: Optional[pulumi.Input[_builtins.int]] = None,
-            total_items_indexed: Optional[pulumi.Input[_builtins.int]] = None,
-            total_items_skipped: Optional[pulumi.Input[_builtins.int]] = None,
-            updated_at: Optional[pulumi.Input[_builtins.str]] = None,
-            uuid: Optional[pulumi.Input[_builtins.str]] = None) -> 'GradientaiIndexingJobCancel':
+            completed_datasources: pulumi.Input[Optional[_builtins.int]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            data_source_uuids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            finished_at: pulumi.Input[Optional[_builtins.str]] = None,
+            knowledge_base_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+            phase: pulumi.Input[Optional[_builtins.str]] = None,
+            started_at: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tokens: pulumi.Input[Optional[_builtins.int]] = None,
+            total_datasources: pulumi.Input[Optional[_builtins.int]] = None,
+            total_items_failed: pulumi.Input[Optional[_builtins.int]] = None,
+            total_items_indexed: pulumi.Input[Optional[_builtins.int]] = None,
+            total_items_skipped: pulumi.Input[Optional[_builtins.int]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+            uuid: pulumi.Input[Optional[_builtins.str]] = None) -> 'GradientaiIndexingJobCancel':
         """
         Get an existing GradientaiIndexingJobCancel resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

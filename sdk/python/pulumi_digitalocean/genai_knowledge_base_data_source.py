@@ -22,8 +22,8 @@ __all__ = ['GenaiKnowledgeBaseDataSourceArgs', 'GenaiKnowledgeBaseDataSource']
 class GenaiKnowledgeBaseDataSourceArgs:
     def __init__(__self__, *,
                  knowledge_base_uuid: pulumi.Input[_builtins.str],
-                 spaces_data_source: Optional[pulumi.Input['GenaiKnowledgeBaseDataSourceSpacesDataSourceArgs']] = None,
-                 web_crawler_data_source: Optional[pulumi.Input['GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs']] = None):
+                 spaces_data_source: pulumi.Input[Optional['GenaiKnowledgeBaseDataSourceSpacesDataSourceArgs']] = None,
+                 web_crawler_data_source: pulumi.Input[Optional['GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs']] = None):
         """
         The set of arguments for constructing a GenaiKnowledgeBaseDataSource resource.
 
@@ -49,29 +49,29 @@ class GenaiKnowledgeBaseDataSourceArgs:
 
     @_builtins.property
     @pulumi.getter(name="spacesDataSource")
-    def spaces_data_source(self) -> Optional[pulumi.Input['GenaiKnowledgeBaseDataSourceSpacesDataSourceArgs']]:
+    def spaces_data_source(self) -> pulumi.Input[Optional['GenaiKnowledgeBaseDataSourceSpacesDataSourceArgs']]:
         return pulumi.get(self, "spaces_data_source")
 
     @spaces_data_source.setter
-    def spaces_data_source(self, value: Optional[pulumi.Input['GenaiKnowledgeBaseDataSourceSpacesDataSourceArgs']]):
+    def spaces_data_source(self, value: pulumi.Input[Optional['GenaiKnowledgeBaseDataSourceSpacesDataSourceArgs']]):
         pulumi.set(self, "spaces_data_source", value)
 
     @_builtins.property
     @pulumi.getter(name="webCrawlerDataSource")
-    def web_crawler_data_source(self) -> Optional[pulumi.Input['GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs']]:
+    def web_crawler_data_source(self) -> pulumi.Input[Optional['GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs']]:
         return pulumi.get(self, "web_crawler_data_source")
 
     @web_crawler_data_source.setter
-    def web_crawler_data_source(self, value: Optional[pulumi.Input['GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs']]):
+    def web_crawler_data_source(self, value: pulumi.Input[Optional['GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs']]):
         pulumi.set(self, "web_crawler_data_source", value)
 
 
 @pulumi.input_type
 class _GenaiKnowledgeBaseDataSourceState:
     def __init__(__self__, *,
-                 knowledge_base_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 spaces_data_source: Optional[pulumi.Input['GenaiKnowledgeBaseDataSourceSpacesDataSourceArgs']] = None,
-                 web_crawler_data_source: Optional[pulumi.Input['GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs']] = None):
+                 knowledge_base_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 spaces_data_source: pulumi.Input[Optional['GenaiKnowledgeBaseDataSourceSpacesDataSourceArgs']] = None,
+                 web_crawler_data_source: pulumi.Input[Optional['GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs']] = None):
         """
         Input properties used for looking up and filtering GenaiKnowledgeBaseDataSource resources.
 
@@ -86,32 +86,32 @@ class _GenaiKnowledgeBaseDataSourceState:
 
     @_builtins.property
     @pulumi.getter(name="knowledgeBaseUuid")
-    def knowledge_base_uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def knowledge_base_uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         UUID of the Knowledge Base
         """
         return pulumi.get(self, "knowledge_base_uuid")
 
     @knowledge_base_uuid.setter
-    def knowledge_base_uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def knowledge_base_uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "knowledge_base_uuid", value)
 
     @_builtins.property
     @pulumi.getter(name="spacesDataSource")
-    def spaces_data_source(self) -> Optional[pulumi.Input['GenaiKnowledgeBaseDataSourceSpacesDataSourceArgs']]:
+    def spaces_data_source(self) -> pulumi.Input[Optional['GenaiKnowledgeBaseDataSourceSpacesDataSourceArgs']]:
         return pulumi.get(self, "spaces_data_source")
 
     @spaces_data_source.setter
-    def spaces_data_source(self, value: Optional[pulumi.Input['GenaiKnowledgeBaseDataSourceSpacesDataSourceArgs']]):
+    def spaces_data_source(self, value: pulumi.Input[Optional['GenaiKnowledgeBaseDataSourceSpacesDataSourceArgs']]):
         pulumi.set(self, "spaces_data_source", value)
 
     @_builtins.property
     @pulumi.getter(name="webCrawlerDataSource")
-    def web_crawler_data_source(self) -> Optional[pulumi.Input['GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs']]:
+    def web_crawler_data_source(self) -> pulumi.Input[Optional['GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs']]:
         return pulumi.get(self, "web_crawler_data_source")
 
     @web_crawler_data_source.setter
-    def web_crawler_data_source(self, value: Optional[pulumi.Input['GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs']]):
+    def web_crawler_data_source(self, value: pulumi.Input[Optional['GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs']]):
         pulumi.set(self, "web_crawler_data_source", value)
 
 
@@ -126,9 +126,9 @@ class GenaiKnowledgeBaseDataSource(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 knowledge_base_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 spaces_data_source: Optional[pulumi.Input[Union['GenaiKnowledgeBaseDataSourceSpacesDataSourceArgs', 'GenaiKnowledgeBaseDataSourceSpacesDataSourceArgsDict']]] = None,
-                 web_crawler_data_source: Optional[pulumi.Input[Union['GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs', 'GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgsDict']]] = None,
+                 knowledge_base_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 spaces_data_source: pulumi.Input[Optional[Union['GenaiKnowledgeBaseDataSourceSpacesDataSourceArgs', 'GenaiKnowledgeBaseDataSourceSpacesDataSourceArgsDict']]] = None,
+                 web_crawler_data_source: pulumi.Input[Optional[Union['GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs', 'GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgsDict']]] = None,
                  __props__=None):
         """
         Create a GenaiKnowledgeBaseDataSource resource with the given unique name, props, and options.
@@ -161,9 +161,9 @@ class GenaiKnowledgeBaseDataSource(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 knowledge_base_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 spaces_data_source: Optional[pulumi.Input[Union['GenaiKnowledgeBaseDataSourceSpacesDataSourceArgs', 'GenaiKnowledgeBaseDataSourceSpacesDataSourceArgsDict']]] = None,
-                 web_crawler_data_source: Optional[pulumi.Input[Union['GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs', 'GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgsDict']]] = None,
+                 knowledge_base_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 spaces_data_source: pulumi.Input[Optional[Union['GenaiKnowledgeBaseDataSourceSpacesDataSourceArgs', 'GenaiKnowledgeBaseDataSourceSpacesDataSourceArgsDict']]] = None,
+                 web_crawler_data_source: pulumi.Input[Optional[Union['GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs', 'GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgsDict']]] = None,
                  __props__=None):
         pulumi.log.warn("""GenaiKnowledgeBaseDataSource is deprecated: digitalocean.GenaiKnowledgeBaseDataSource has been deprecated in favor of digitalocean.GradientaiKnowledgeBaseDataSource""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -189,9 +189,9 @@ class GenaiKnowledgeBaseDataSource(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            knowledge_base_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-            spaces_data_source: Optional[pulumi.Input[Union['GenaiKnowledgeBaseDataSourceSpacesDataSourceArgs', 'GenaiKnowledgeBaseDataSourceSpacesDataSourceArgsDict']]] = None,
-            web_crawler_data_source: Optional[pulumi.Input[Union['GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs', 'GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgsDict']]] = None) -> 'GenaiKnowledgeBaseDataSource':
+            knowledge_base_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+            spaces_data_source: pulumi.Input[Optional[Union['GenaiKnowledgeBaseDataSourceSpacesDataSourceArgs', 'GenaiKnowledgeBaseDataSourceSpacesDataSourceArgsDict']]] = None,
+            web_crawler_data_source: pulumi.Input[Optional[Union['GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs', 'GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgsDict']]] = None) -> 'GenaiKnowledgeBaseDataSource':
         """
         Get an existing GenaiKnowledgeBaseDataSource resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

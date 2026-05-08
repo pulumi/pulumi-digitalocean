@@ -135,31 +135,31 @@ export interface VolumeSnapshotState {
     /**
      * The date and time the volume snapshot was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The minimum size in gigabytes required for a volume to be created based on this volume snapshot.
      */
-    minDiskSize?: pulumi.Input<number>;
+    minDiskSize?: pulumi.Input<number | undefined>;
     /**
      * A name for the volume snapshot.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * A list of DigitalOcean region "slugs" indicating where the volume snapshot is available.
      */
-    regions?: pulumi.Input<pulumi.Input<string>[]>;
+    regions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The billable size of the volume snapshot in gigabytes.
      */
-    size?: pulumi.Input<number>;
+    size?: pulumi.Input<number | undefined>;
     /**
      * A list of the tags to be applied to this volume snapshot.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the volume from which the volume snapshot originated.
      */
-    volumeId?: pulumi.Input<string>;
+    volumeId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -169,11 +169,11 @@ export interface VolumeSnapshotArgs {
     /**
      * A name for the volume snapshot.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * A list of the tags to be applied to this volume snapshot.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the volume from which the volume snapshot originated.
      */

@@ -20,33 +20,33 @@ __all__ = ['DatabaseMysqlConfigArgs', 'DatabaseMysqlConfig']
 class DatabaseMysqlConfigArgs:
     def __init__(__self__, *,
                  cluster_id: pulumi.Input[_builtins.str],
-                 backup_hour: Optional[pulumi.Input[_builtins.int]] = None,
-                 backup_minute: Optional[pulumi.Input[_builtins.int]] = None,
-                 binlog_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 connect_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 default_time_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_concat_max_len: Optional[pulumi.Input[_builtins.int]] = None,
-                 information_schema_stats_expiry: Optional[pulumi.Input[_builtins.int]] = None,
-                 innodb_ft_min_token_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 innodb_ft_server_stopword_table: Optional[pulumi.Input[_builtins.str]] = None,
-                 innodb_lock_wait_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 innodb_log_buffer_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 innodb_online_alter_log_max_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 innodb_print_all_deadlocks: Optional[pulumi.Input[_builtins.bool]] = None,
-                 innodb_rollback_on_timeout: Optional[pulumi.Input[_builtins.bool]] = None,
-                 interactive_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 internal_tmp_mem_storage_engine: Optional[pulumi.Input[_builtins.str]] = None,
-                 long_query_time: Optional[pulumi.Input[_builtins.float]] = None,
-                 max_allowed_packet: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_heap_table_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 net_read_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 net_write_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 slow_query_log: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sort_buffer_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 sql_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 sql_require_primary_key: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tmp_table_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 wait_timeout: Optional[pulumi.Input[_builtins.int]] = None):
+                 backup_hour: pulumi.Input[Optional[_builtins.int]] = None,
+                 backup_minute: pulumi.Input[Optional[_builtins.int]] = None,
+                 binlog_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 connect_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 default_time_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_concat_max_len: pulumi.Input[Optional[_builtins.int]] = None,
+                 information_schema_stats_expiry: pulumi.Input[Optional[_builtins.int]] = None,
+                 innodb_ft_min_token_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 innodb_ft_server_stopword_table: pulumi.Input[Optional[_builtins.str]] = None,
+                 innodb_lock_wait_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 innodb_log_buffer_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 innodb_online_alter_log_max_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 innodb_print_all_deadlocks: pulumi.Input[Optional[_builtins.bool]] = None,
+                 innodb_rollback_on_timeout: pulumi.Input[Optional[_builtins.bool]] = None,
+                 interactive_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 internal_tmp_mem_storage_engine: pulumi.Input[Optional[_builtins.str]] = None,
+                 long_query_time: pulumi.Input[Optional[_builtins.float]] = None,
+                 max_allowed_packet: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_heap_table_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 net_read_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 net_write_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 slow_query_log: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sort_buffer_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 sql_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 sql_require_primary_key: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tmp_table_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 wait_timeout: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a DatabaseMysqlConfig resource.
 
@@ -149,360 +149,360 @@ class DatabaseMysqlConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="backupHour")
-    def backup_hour(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def backup_hour(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The hour of day (in UTC) when backup for the service starts. New backup only starts if previous backup has already completed.
         """
         return pulumi.get(self, "backup_hour")
 
     @backup_hour.setter
-    def backup_hour(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def backup_hour(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "backup_hour", value)
 
     @_builtins.property
     @pulumi.getter(name="backupMinute")
-    def backup_minute(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def backup_minute(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minute of the backup hour when backup for the service starts. New backup only starts if previous backup has already completed.
         """
         return pulumi.get(self, "backup_minute")
 
     @backup_minute.setter
-    def backup_minute(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def backup_minute(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "backup_minute", value)
 
     @_builtins.property
     @pulumi.getter(name="binlogRetentionPeriod")
-    def binlog_retention_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def binlog_retention_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum amount of time, in seconds, to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default, for example if using the MySQL Debezium Kafka connector.
         """
         return pulumi.get(self, "binlog_retention_period")
 
     @binlog_retention_period.setter
-    def binlog_retention_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def binlog_retention_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "binlog_retention_period", value)
 
     @_builtins.property
     @pulumi.getter(name="connectTimeout")
-    def connect_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def connect_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of seconds that the mysqld server waits for a connect packet before responding with bad handshake.
         """
         return pulumi.get(self, "connect_timeout")
 
     @connect_timeout.setter
-    def connect_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def connect_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "connect_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultTimeZone")
-    def default_time_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_time_zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Default server time zone, in the form of an offset from UTC (from -12:00 to +12:00), a time zone name (EST), or `SYSTEM` to use the MySQL server default.
         """
         return pulumi.get(self, "default_time_zone")
 
     @default_time_zone.setter
-    def default_time_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_time_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_time_zone", value)
 
     @_builtins.property
     @pulumi.getter(name="groupConcatMaxLen")
-    def group_concat_max_len(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def group_concat_max_len(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum permitted result length, in bytes, for the `GROUP_CONCAT()` function.
         """
         return pulumi.get(self, "group_concat_max_len")
 
     @group_concat_max_len.setter
-    def group_concat_max_len(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def group_concat_max_len(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "group_concat_max_len", value)
 
     @_builtins.property
     @pulumi.getter(name="informationSchemaStatsExpiry")
-    def information_schema_stats_expiry(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def information_schema_stats_expiry(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The time, in seconds, before cached statistics expire.
         """
         return pulumi.get(self, "information_schema_stats_expiry")
 
     @information_schema_stats_expiry.setter
-    def information_schema_stats_expiry(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def information_schema_stats_expiry(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "information_schema_stats_expiry", value)
 
     @_builtins.property
     @pulumi.getter(name="innodbFtMinTokenSize")
-    def innodb_ft_min_token_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def innodb_ft_min_token_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum length of words that an InnoDB FULLTEXT index stores.
         """
         return pulumi.get(self, "innodb_ft_min_token_size")
 
     @innodb_ft_min_token_size.setter
-    def innodb_ft_min_token_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def innodb_ft_min_token_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "innodb_ft_min_token_size", value)
 
     @_builtins.property
     @pulumi.getter(name="innodbFtServerStopwordTable")
-    def innodb_ft_server_stopword_table(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def innodb_ft_server_stopword_table(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The InnoDB FULLTEXT index stopword list for all InnoDB tables.
         """
         return pulumi.get(self, "innodb_ft_server_stopword_table")
 
     @innodb_ft_server_stopword_table.setter
-    def innodb_ft_server_stopword_table(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def innodb_ft_server_stopword_table(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "innodb_ft_server_stopword_table", value)
 
     @_builtins.property
     @pulumi.getter(name="innodbLockWaitTimeout")
-    def innodb_lock_wait_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def innodb_lock_wait_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The time, in seconds, that an InnoDB transaction waits for a row lock. before giving up.
         """
         return pulumi.get(self, "innodb_lock_wait_timeout")
 
     @innodb_lock_wait_timeout.setter
-    def innodb_lock_wait_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def innodb_lock_wait_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "innodb_lock_wait_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="innodbLogBufferSize")
-    def innodb_log_buffer_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def innodb_log_buffer_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The size of the buffer, in bytes, that InnoDB uses to write to the log files. on disk.
         """
         return pulumi.get(self, "innodb_log_buffer_size")
 
     @innodb_log_buffer_size.setter
-    def innodb_log_buffer_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def innodb_log_buffer_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "innodb_log_buffer_size", value)
 
     @_builtins.property
     @pulumi.getter(name="innodbOnlineAlterLogMaxSize")
-    def innodb_online_alter_log_max_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def innodb_online_alter_log_max_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The upper limit, in bytes, of the size of the temporary log files used during online DDL operations for InnoDB tables.
         """
         return pulumi.get(self, "innodb_online_alter_log_max_size")
 
     @innodb_online_alter_log_max_size.setter
-    def innodb_online_alter_log_max_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def innodb_online_alter_log_max_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "innodb_online_alter_log_max_size", value)
 
     @_builtins.property
     @pulumi.getter(name="innodbPrintAllDeadlocks")
-    def innodb_print_all_deadlocks(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def innodb_print_all_deadlocks(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When enabled, records information about all deadlocks in InnoDB user transactions in the error log. Disabled by default.
         """
         return pulumi.get(self, "innodb_print_all_deadlocks")
 
     @innodb_print_all_deadlocks.setter
-    def innodb_print_all_deadlocks(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def innodb_print_all_deadlocks(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "innodb_print_all_deadlocks", value)
 
     @_builtins.property
     @pulumi.getter(name="innodbRollbackOnTimeout")
-    def innodb_rollback_on_timeout(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def innodb_rollback_on_timeout(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When enabled, transaction timeouts cause InnoDB to abort and roll back the entire transaction.
         """
         return pulumi.get(self, "innodb_rollback_on_timeout")
 
     @innodb_rollback_on_timeout.setter
-    def innodb_rollback_on_timeout(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def innodb_rollback_on_timeout(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "innodb_rollback_on_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="interactiveTimeout")
-    def interactive_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def interactive_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The time, in seconds, the server waits for activity on an interactive. connection before closing it.
         """
         return pulumi.get(self, "interactive_timeout")
 
     @interactive_timeout.setter
-    def interactive_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def interactive_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "interactive_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="internalTmpMemStorageEngine")
-    def internal_tmp_mem_storage_engine(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def internal_tmp_mem_storage_engine(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The storage engine for in-memory internal temporary tables. Supported values are: `TempTable`, `MEMORY`.
         """
         return pulumi.get(self, "internal_tmp_mem_storage_engine")
 
     @internal_tmp_mem_storage_engine.setter
-    def internal_tmp_mem_storage_engine(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def internal_tmp_mem_storage_engine(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "internal_tmp_mem_storage_engine", value)
 
     @_builtins.property
     @pulumi.getter(name="longQueryTime")
-    def long_query_time(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def long_query_time(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The time, in seconds, for a query to take to execute before being captured by `slow_query_logs`. Default is `10` seconds.
         """
         return pulumi.get(self, "long_query_time")
 
     @long_query_time.setter
-    def long_query_time(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def long_query_time(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "long_query_time", value)
 
     @_builtins.property
     @pulumi.getter(name="maxAllowedPacket")
-    def max_allowed_packet(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_allowed_packet(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The size of the largest message, in bytes, that can be received by the server. Default is `67108864` (64M).
         """
         return pulumi.get(self, "max_allowed_packet")
 
     @max_allowed_packet.setter
-    def max_allowed_packet(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_allowed_packet(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_allowed_packet", value)
 
     @_builtins.property
     @pulumi.getter(name="maxHeapTableSize")
-    def max_heap_table_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_heap_table_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum size, in bytes, of internal in-memory tables. Also set `tmp_table_size`. Default is `16777216` (16M)
         """
         return pulumi.get(self, "max_heap_table_size")
 
     @max_heap_table_size.setter
-    def max_heap_table_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_heap_table_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_heap_table_size", value)
 
     @_builtins.property
     @pulumi.getter(name="netReadTimeout")
-    def net_read_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def net_read_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The time, in seconds, to wait for more data from an existing connection. aborting the read.
         """
         return pulumi.get(self, "net_read_timeout")
 
     @net_read_timeout.setter
-    def net_read_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def net_read_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "net_read_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="netWriteTimeout")
-    def net_write_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def net_write_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of seconds to wait for a block to be written to a connection before aborting the write.
         """
         return pulumi.get(self, "net_write_timeout")
 
     @net_write_timeout.setter
-    def net_write_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def net_write_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "net_write_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="slowQueryLog")
-    def slow_query_log(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def slow_query_log(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When enabled, captures slow queries. When disabled, also truncates the mysql.slow_log table. Default is false.
         """
         return pulumi.get(self, "slow_query_log")
 
     @slow_query_log.setter
-    def slow_query_log(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def slow_query_log(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "slow_query_log", value)
 
     @_builtins.property
     @pulumi.getter(name="sortBufferSize")
-    def sort_buffer_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def sort_buffer_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The sort buffer size, in bytes, for `ORDER BY` optimization. Default is `262144`. (256K).
         """
         return pulumi.get(self, "sort_buffer_size")
 
     @sort_buffer_size.setter
-    def sort_buffer_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def sort_buffer_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "sort_buffer_size", value)
 
     @_builtins.property
     @pulumi.getter(name="sqlMode")
-    def sql_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sql_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Global SQL mode. If empty, uses MySQL server defaults. Must only include uppercase alphabetic characters, underscores, and commas.
         """
         return pulumi.get(self, "sql_mode")
 
     @sql_mode.setter
-    def sql_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sql_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sql_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="sqlRequirePrimaryKey")
-    def sql_require_primary_key(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def sql_require_primary_key(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them.
         """
         return pulumi.get(self, "sql_require_primary_key")
 
     @sql_require_primary_key.setter
-    def sql_require_primary_key(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def sql_require_primary_key(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "sql_require_primary_key", value)
 
     @_builtins.property
     @pulumi.getter(name="tmpTableSize")
-    def tmp_table_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def tmp_table_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum size, in bytes, of internal in-memory tables. Also set `max_heap_table_size`. Default is `16777216` (16M).
         """
         return pulumi.get(self, "tmp_table_size")
 
     @tmp_table_size.setter
-    def tmp_table_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def tmp_table_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "tmp_table_size", value)
 
     @_builtins.property
     @pulumi.getter(name="waitTimeout")
-    def wait_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def wait_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of seconds the server waits for activity on a noninteractive connection before closing it.
         """
         return pulumi.get(self, "wait_timeout")
 
     @wait_timeout.setter
-    def wait_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def wait_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "wait_timeout", value)
 
 
 @pulumi.input_type
 class _DatabaseMysqlConfigState:
     def __init__(__self__, *,
-                 backup_hour: Optional[pulumi.Input[_builtins.int]] = None,
-                 backup_minute: Optional[pulumi.Input[_builtins.int]] = None,
-                 binlog_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 connect_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 default_time_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_concat_max_len: Optional[pulumi.Input[_builtins.int]] = None,
-                 information_schema_stats_expiry: Optional[pulumi.Input[_builtins.int]] = None,
-                 innodb_ft_min_token_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 innodb_ft_server_stopword_table: Optional[pulumi.Input[_builtins.str]] = None,
-                 innodb_lock_wait_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 innodb_log_buffer_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 innodb_online_alter_log_max_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 innodb_print_all_deadlocks: Optional[pulumi.Input[_builtins.bool]] = None,
-                 innodb_rollback_on_timeout: Optional[pulumi.Input[_builtins.bool]] = None,
-                 interactive_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 internal_tmp_mem_storage_engine: Optional[pulumi.Input[_builtins.str]] = None,
-                 long_query_time: Optional[pulumi.Input[_builtins.float]] = None,
-                 max_allowed_packet: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_heap_table_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 net_read_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 net_write_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 slow_query_log: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sort_buffer_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 sql_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 sql_require_primary_key: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tmp_table_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 wait_timeout: Optional[pulumi.Input[_builtins.int]] = None):
+                 backup_hour: pulumi.Input[Optional[_builtins.int]] = None,
+                 backup_minute: pulumi.Input[Optional[_builtins.int]] = None,
+                 binlog_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 connect_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 default_time_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_concat_max_len: pulumi.Input[Optional[_builtins.int]] = None,
+                 information_schema_stats_expiry: pulumi.Input[Optional[_builtins.int]] = None,
+                 innodb_ft_min_token_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 innodb_ft_server_stopword_table: pulumi.Input[Optional[_builtins.str]] = None,
+                 innodb_lock_wait_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 innodb_log_buffer_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 innodb_online_alter_log_max_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 innodb_print_all_deadlocks: pulumi.Input[Optional[_builtins.bool]] = None,
+                 innodb_rollback_on_timeout: pulumi.Input[Optional[_builtins.bool]] = None,
+                 interactive_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 internal_tmp_mem_storage_engine: pulumi.Input[Optional[_builtins.str]] = None,
+                 long_query_time: pulumi.Input[Optional[_builtins.float]] = None,
+                 max_allowed_packet: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_heap_table_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 net_read_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 net_write_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 slow_query_log: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sort_buffer_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 sql_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 sql_require_primary_key: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tmp_table_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 wait_timeout: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering DatabaseMysqlConfig resources.
 
@@ -594,338 +594,338 @@ class _DatabaseMysqlConfigState:
 
     @_builtins.property
     @pulumi.getter(name="backupHour")
-    def backup_hour(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def backup_hour(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The hour of day (in UTC) when backup for the service starts. New backup only starts if previous backup has already completed.
         """
         return pulumi.get(self, "backup_hour")
 
     @backup_hour.setter
-    def backup_hour(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def backup_hour(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "backup_hour", value)
 
     @_builtins.property
     @pulumi.getter(name="backupMinute")
-    def backup_minute(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def backup_minute(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minute of the backup hour when backup for the service starts. New backup only starts if previous backup has already completed.
         """
         return pulumi.get(self, "backup_minute")
 
     @backup_minute.setter
-    def backup_minute(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def backup_minute(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "backup_minute", value)
 
     @_builtins.property
     @pulumi.getter(name="binlogRetentionPeriod")
-    def binlog_retention_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def binlog_retention_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum amount of time, in seconds, to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default, for example if using the MySQL Debezium Kafka connector.
         """
         return pulumi.get(self, "binlog_retention_period")
 
     @binlog_retention_period.setter
-    def binlog_retention_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def binlog_retention_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "binlog_retention_period", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the target MySQL cluster.
         """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
-    def cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="connectTimeout")
-    def connect_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def connect_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of seconds that the mysqld server waits for a connect packet before responding with bad handshake.
         """
         return pulumi.get(self, "connect_timeout")
 
     @connect_timeout.setter
-    def connect_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def connect_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "connect_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultTimeZone")
-    def default_time_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_time_zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Default server time zone, in the form of an offset from UTC (from -12:00 to +12:00), a time zone name (EST), or `SYSTEM` to use the MySQL server default.
         """
         return pulumi.get(self, "default_time_zone")
 
     @default_time_zone.setter
-    def default_time_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_time_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_time_zone", value)
 
     @_builtins.property
     @pulumi.getter(name="groupConcatMaxLen")
-    def group_concat_max_len(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def group_concat_max_len(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum permitted result length, in bytes, for the `GROUP_CONCAT()` function.
         """
         return pulumi.get(self, "group_concat_max_len")
 
     @group_concat_max_len.setter
-    def group_concat_max_len(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def group_concat_max_len(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "group_concat_max_len", value)
 
     @_builtins.property
     @pulumi.getter(name="informationSchemaStatsExpiry")
-    def information_schema_stats_expiry(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def information_schema_stats_expiry(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The time, in seconds, before cached statistics expire.
         """
         return pulumi.get(self, "information_schema_stats_expiry")
 
     @information_schema_stats_expiry.setter
-    def information_schema_stats_expiry(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def information_schema_stats_expiry(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "information_schema_stats_expiry", value)
 
     @_builtins.property
     @pulumi.getter(name="innodbFtMinTokenSize")
-    def innodb_ft_min_token_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def innodb_ft_min_token_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum length of words that an InnoDB FULLTEXT index stores.
         """
         return pulumi.get(self, "innodb_ft_min_token_size")
 
     @innodb_ft_min_token_size.setter
-    def innodb_ft_min_token_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def innodb_ft_min_token_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "innodb_ft_min_token_size", value)
 
     @_builtins.property
     @pulumi.getter(name="innodbFtServerStopwordTable")
-    def innodb_ft_server_stopword_table(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def innodb_ft_server_stopword_table(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The InnoDB FULLTEXT index stopword list for all InnoDB tables.
         """
         return pulumi.get(self, "innodb_ft_server_stopword_table")
 
     @innodb_ft_server_stopword_table.setter
-    def innodb_ft_server_stopword_table(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def innodb_ft_server_stopword_table(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "innodb_ft_server_stopword_table", value)
 
     @_builtins.property
     @pulumi.getter(name="innodbLockWaitTimeout")
-    def innodb_lock_wait_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def innodb_lock_wait_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The time, in seconds, that an InnoDB transaction waits for a row lock. before giving up.
         """
         return pulumi.get(self, "innodb_lock_wait_timeout")
 
     @innodb_lock_wait_timeout.setter
-    def innodb_lock_wait_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def innodb_lock_wait_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "innodb_lock_wait_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="innodbLogBufferSize")
-    def innodb_log_buffer_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def innodb_log_buffer_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The size of the buffer, in bytes, that InnoDB uses to write to the log files. on disk.
         """
         return pulumi.get(self, "innodb_log_buffer_size")
 
     @innodb_log_buffer_size.setter
-    def innodb_log_buffer_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def innodb_log_buffer_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "innodb_log_buffer_size", value)
 
     @_builtins.property
     @pulumi.getter(name="innodbOnlineAlterLogMaxSize")
-    def innodb_online_alter_log_max_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def innodb_online_alter_log_max_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The upper limit, in bytes, of the size of the temporary log files used during online DDL operations for InnoDB tables.
         """
         return pulumi.get(self, "innodb_online_alter_log_max_size")
 
     @innodb_online_alter_log_max_size.setter
-    def innodb_online_alter_log_max_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def innodb_online_alter_log_max_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "innodb_online_alter_log_max_size", value)
 
     @_builtins.property
     @pulumi.getter(name="innodbPrintAllDeadlocks")
-    def innodb_print_all_deadlocks(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def innodb_print_all_deadlocks(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When enabled, records information about all deadlocks in InnoDB user transactions in the error log. Disabled by default.
         """
         return pulumi.get(self, "innodb_print_all_deadlocks")
 
     @innodb_print_all_deadlocks.setter
-    def innodb_print_all_deadlocks(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def innodb_print_all_deadlocks(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "innodb_print_all_deadlocks", value)
 
     @_builtins.property
     @pulumi.getter(name="innodbRollbackOnTimeout")
-    def innodb_rollback_on_timeout(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def innodb_rollback_on_timeout(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When enabled, transaction timeouts cause InnoDB to abort and roll back the entire transaction.
         """
         return pulumi.get(self, "innodb_rollback_on_timeout")
 
     @innodb_rollback_on_timeout.setter
-    def innodb_rollback_on_timeout(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def innodb_rollback_on_timeout(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "innodb_rollback_on_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="interactiveTimeout")
-    def interactive_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def interactive_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The time, in seconds, the server waits for activity on an interactive. connection before closing it.
         """
         return pulumi.get(self, "interactive_timeout")
 
     @interactive_timeout.setter
-    def interactive_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def interactive_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "interactive_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="internalTmpMemStorageEngine")
-    def internal_tmp_mem_storage_engine(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def internal_tmp_mem_storage_engine(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The storage engine for in-memory internal temporary tables. Supported values are: `TempTable`, `MEMORY`.
         """
         return pulumi.get(self, "internal_tmp_mem_storage_engine")
 
     @internal_tmp_mem_storage_engine.setter
-    def internal_tmp_mem_storage_engine(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def internal_tmp_mem_storage_engine(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "internal_tmp_mem_storage_engine", value)
 
     @_builtins.property
     @pulumi.getter(name="longQueryTime")
-    def long_query_time(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def long_query_time(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The time, in seconds, for a query to take to execute before being captured by `slow_query_logs`. Default is `10` seconds.
         """
         return pulumi.get(self, "long_query_time")
 
     @long_query_time.setter
-    def long_query_time(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def long_query_time(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "long_query_time", value)
 
     @_builtins.property
     @pulumi.getter(name="maxAllowedPacket")
-    def max_allowed_packet(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_allowed_packet(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The size of the largest message, in bytes, that can be received by the server. Default is `67108864` (64M).
         """
         return pulumi.get(self, "max_allowed_packet")
 
     @max_allowed_packet.setter
-    def max_allowed_packet(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_allowed_packet(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_allowed_packet", value)
 
     @_builtins.property
     @pulumi.getter(name="maxHeapTableSize")
-    def max_heap_table_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_heap_table_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum size, in bytes, of internal in-memory tables. Also set `tmp_table_size`. Default is `16777216` (16M)
         """
         return pulumi.get(self, "max_heap_table_size")
 
     @max_heap_table_size.setter
-    def max_heap_table_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_heap_table_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_heap_table_size", value)
 
     @_builtins.property
     @pulumi.getter(name="netReadTimeout")
-    def net_read_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def net_read_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The time, in seconds, to wait for more data from an existing connection. aborting the read.
         """
         return pulumi.get(self, "net_read_timeout")
 
     @net_read_timeout.setter
-    def net_read_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def net_read_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "net_read_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="netWriteTimeout")
-    def net_write_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def net_write_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of seconds to wait for a block to be written to a connection before aborting the write.
         """
         return pulumi.get(self, "net_write_timeout")
 
     @net_write_timeout.setter
-    def net_write_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def net_write_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "net_write_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="slowQueryLog")
-    def slow_query_log(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def slow_query_log(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When enabled, captures slow queries. When disabled, also truncates the mysql.slow_log table. Default is false.
         """
         return pulumi.get(self, "slow_query_log")
 
     @slow_query_log.setter
-    def slow_query_log(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def slow_query_log(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "slow_query_log", value)
 
     @_builtins.property
     @pulumi.getter(name="sortBufferSize")
-    def sort_buffer_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def sort_buffer_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The sort buffer size, in bytes, for `ORDER BY` optimization. Default is `262144`. (256K).
         """
         return pulumi.get(self, "sort_buffer_size")
 
     @sort_buffer_size.setter
-    def sort_buffer_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def sort_buffer_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "sort_buffer_size", value)
 
     @_builtins.property
     @pulumi.getter(name="sqlMode")
-    def sql_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sql_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Global SQL mode. If empty, uses MySQL server defaults. Must only include uppercase alphabetic characters, underscores, and commas.
         """
         return pulumi.get(self, "sql_mode")
 
     @sql_mode.setter
-    def sql_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sql_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sql_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="sqlRequirePrimaryKey")
-    def sql_require_primary_key(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def sql_require_primary_key(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them.
         """
         return pulumi.get(self, "sql_require_primary_key")
 
     @sql_require_primary_key.setter
-    def sql_require_primary_key(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def sql_require_primary_key(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "sql_require_primary_key", value)
 
     @_builtins.property
     @pulumi.getter(name="tmpTableSize")
-    def tmp_table_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def tmp_table_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum size, in bytes, of internal in-memory tables. Also set `max_heap_table_size`. Default is `16777216` (16M).
         """
         return pulumi.get(self, "tmp_table_size")
 
     @tmp_table_size.setter
-    def tmp_table_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def tmp_table_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "tmp_table_size", value)
 
     @_builtins.property
     @pulumi.getter(name="waitTimeout")
-    def wait_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def wait_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of seconds the server waits for activity on a noninteractive connection before closing it.
         """
         return pulumi.get(self, "wait_timeout")
 
     @wait_timeout.setter
-    def wait_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def wait_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "wait_timeout", value)
 
 
@@ -935,34 +935,34 @@ class DatabaseMysqlConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backup_hour: Optional[pulumi.Input[_builtins.int]] = None,
-                 backup_minute: Optional[pulumi.Input[_builtins.int]] = None,
-                 binlog_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 connect_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 default_time_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_concat_max_len: Optional[pulumi.Input[_builtins.int]] = None,
-                 information_schema_stats_expiry: Optional[pulumi.Input[_builtins.int]] = None,
-                 innodb_ft_min_token_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 innodb_ft_server_stopword_table: Optional[pulumi.Input[_builtins.str]] = None,
-                 innodb_lock_wait_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 innodb_log_buffer_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 innodb_online_alter_log_max_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 innodb_print_all_deadlocks: Optional[pulumi.Input[_builtins.bool]] = None,
-                 innodb_rollback_on_timeout: Optional[pulumi.Input[_builtins.bool]] = None,
-                 interactive_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 internal_tmp_mem_storage_engine: Optional[pulumi.Input[_builtins.str]] = None,
-                 long_query_time: Optional[pulumi.Input[_builtins.float]] = None,
-                 max_allowed_packet: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_heap_table_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 net_read_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 net_write_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 slow_query_log: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sort_buffer_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 sql_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 sql_require_primary_key: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tmp_table_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 wait_timeout: Optional[pulumi.Input[_builtins.int]] = None,
+                 backup_hour: pulumi.Input[Optional[_builtins.int]] = None,
+                 backup_minute: pulumi.Input[Optional[_builtins.int]] = None,
+                 binlog_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 connect_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 default_time_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_concat_max_len: pulumi.Input[Optional[_builtins.int]] = None,
+                 information_schema_stats_expiry: pulumi.Input[Optional[_builtins.int]] = None,
+                 innodb_ft_min_token_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 innodb_ft_server_stopword_table: pulumi.Input[Optional[_builtins.str]] = None,
+                 innodb_lock_wait_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 innodb_log_buffer_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 innodb_online_alter_log_max_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 innodb_print_all_deadlocks: pulumi.Input[Optional[_builtins.bool]] = None,
+                 innodb_rollback_on_timeout: pulumi.Input[Optional[_builtins.bool]] = None,
+                 interactive_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 internal_tmp_mem_storage_engine: pulumi.Input[Optional[_builtins.str]] = None,
+                 long_query_time: pulumi.Input[Optional[_builtins.float]] = None,
+                 max_allowed_packet: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_heap_table_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 net_read_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 net_write_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 slow_query_log: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sort_buffer_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 sql_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 sql_require_primary_key: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tmp_table_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 wait_timeout: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a virtual resource that can be used to change advanced configuration
@@ -1084,34 +1084,34 @@ class DatabaseMysqlConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backup_hour: Optional[pulumi.Input[_builtins.int]] = None,
-                 backup_minute: Optional[pulumi.Input[_builtins.int]] = None,
-                 binlog_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 connect_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 default_time_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_concat_max_len: Optional[pulumi.Input[_builtins.int]] = None,
-                 information_schema_stats_expiry: Optional[pulumi.Input[_builtins.int]] = None,
-                 innodb_ft_min_token_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 innodb_ft_server_stopword_table: Optional[pulumi.Input[_builtins.str]] = None,
-                 innodb_lock_wait_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 innodb_log_buffer_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 innodb_online_alter_log_max_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 innodb_print_all_deadlocks: Optional[pulumi.Input[_builtins.bool]] = None,
-                 innodb_rollback_on_timeout: Optional[pulumi.Input[_builtins.bool]] = None,
-                 interactive_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 internal_tmp_mem_storage_engine: Optional[pulumi.Input[_builtins.str]] = None,
-                 long_query_time: Optional[pulumi.Input[_builtins.float]] = None,
-                 max_allowed_packet: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_heap_table_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 net_read_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 net_write_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 slow_query_log: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sort_buffer_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 sql_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 sql_require_primary_key: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tmp_table_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 wait_timeout: Optional[pulumi.Input[_builtins.int]] = None,
+                 backup_hour: pulumi.Input[Optional[_builtins.int]] = None,
+                 backup_minute: pulumi.Input[Optional[_builtins.int]] = None,
+                 binlog_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 connect_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 default_time_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_concat_max_len: pulumi.Input[Optional[_builtins.int]] = None,
+                 information_schema_stats_expiry: pulumi.Input[Optional[_builtins.int]] = None,
+                 innodb_ft_min_token_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 innodb_ft_server_stopword_table: pulumi.Input[Optional[_builtins.str]] = None,
+                 innodb_lock_wait_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 innodb_log_buffer_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 innodb_online_alter_log_max_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 innodb_print_all_deadlocks: pulumi.Input[Optional[_builtins.bool]] = None,
+                 innodb_rollback_on_timeout: pulumi.Input[Optional[_builtins.bool]] = None,
+                 interactive_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 internal_tmp_mem_storage_engine: pulumi.Input[Optional[_builtins.str]] = None,
+                 long_query_time: pulumi.Input[Optional[_builtins.float]] = None,
+                 max_allowed_packet: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_heap_table_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 net_read_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 net_write_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 slow_query_log: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sort_buffer_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 sql_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 sql_require_primary_key: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tmp_table_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 wait_timeout: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1161,34 +1161,34 @@ class DatabaseMysqlConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            backup_hour: Optional[pulumi.Input[_builtins.int]] = None,
-            backup_minute: Optional[pulumi.Input[_builtins.int]] = None,
-            binlog_retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-            cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            connect_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-            default_time_zone: Optional[pulumi.Input[_builtins.str]] = None,
-            group_concat_max_len: Optional[pulumi.Input[_builtins.int]] = None,
-            information_schema_stats_expiry: Optional[pulumi.Input[_builtins.int]] = None,
-            innodb_ft_min_token_size: Optional[pulumi.Input[_builtins.int]] = None,
-            innodb_ft_server_stopword_table: Optional[pulumi.Input[_builtins.str]] = None,
-            innodb_lock_wait_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-            innodb_log_buffer_size: Optional[pulumi.Input[_builtins.int]] = None,
-            innodb_online_alter_log_max_size: Optional[pulumi.Input[_builtins.int]] = None,
-            innodb_print_all_deadlocks: Optional[pulumi.Input[_builtins.bool]] = None,
-            innodb_rollback_on_timeout: Optional[pulumi.Input[_builtins.bool]] = None,
-            interactive_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-            internal_tmp_mem_storage_engine: Optional[pulumi.Input[_builtins.str]] = None,
-            long_query_time: Optional[pulumi.Input[_builtins.float]] = None,
-            max_allowed_packet: Optional[pulumi.Input[_builtins.int]] = None,
-            max_heap_table_size: Optional[pulumi.Input[_builtins.int]] = None,
-            net_read_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-            net_write_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-            slow_query_log: Optional[pulumi.Input[_builtins.bool]] = None,
-            sort_buffer_size: Optional[pulumi.Input[_builtins.int]] = None,
-            sql_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            sql_require_primary_key: Optional[pulumi.Input[_builtins.bool]] = None,
-            tmp_table_size: Optional[pulumi.Input[_builtins.int]] = None,
-            wait_timeout: Optional[pulumi.Input[_builtins.int]] = None) -> 'DatabaseMysqlConfig':
+            backup_hour: pulumi.Input[Optional[_builtins.int]] = None,
+            backup_minute: pulumi.Input[Optional[_builtins.int]] = None,
+            binlog_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            connect_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            default_time_zone: pulumi.Input[Optional[_builtins.str]] = None,
+            group_concat_max_len: pulumi.Input[Optional[_builtins.int]] = None,
+            information_schema_stats_expiry: pulumi.Input[Optional[_builtins.int]] = None,
+            innodb_ft_min_token_size: pulumi.Input[Optional[_builtins.int]] = None,
+            innodb_ft_server_stopword_table: pulumi.Input[Optional[_builtins.str]] = None,
+            innodb_lock_wait_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            innodb_log_buffer_size: pulumi.Input[Optional[_builtins.int]] = None,
+            innodb_online_alter_log_max_size: pulumi.Input[Optional[_builtins.int]] = None,
+            innodb_print_all_deadlocks: pulumi.Input[Optional[_builtins.bool]] = None,
+            innodb_rollback_on_timeout: pulumi.Input[Optional[_builtins.bool]] = None,
+            interactive_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            internal_tmp_mem_storage_engine: pulumi.Input[Optional[_builtins.str]] = None,
+            long_query_time: pulumi.Input[Optional[_builtins.float]] = None,
+            max_allowed_packet: pulumi.Input[Optional[_builtins.int]] = None,
+            max_heap_table_size: pulumi.Input[Optional[_builtins.int]] = None,
+            net_read_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            net_write_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            slow_query_log: pulumi.Input[Optional[_builtins.bool]] = None,
+            sort_buffer_size: pulumi.Input[Optional[_builtins.int]] = None,
+            sql_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            sql_require_primary_key: pulumi.Input[Optional[_builtins.bool]] = None,
+            tmp_table_size: pulumi.Input[Optional[_builtins.int]] = None,
+            wait_timeout: pulumi.Input[Optional[_builtins.int]] = None) -> 'DatabaseMysqlConfig':
         """
         Get an existing DatabaseMysqlConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

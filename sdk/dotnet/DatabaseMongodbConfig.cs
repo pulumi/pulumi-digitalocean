@@ -25,7 +25,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleDatabaseCluster = new DigitalOcean.Index.DatabaseCluster("example", new()
+    ///     var exampleDatabaseCluster = new DigitalOcean.DatabaseCluster("example", new()
     ///     {
     ///         Name = "example-mongodb-cluster",
     ///         Engine = "mongodb",
@@ -35,7 +35,7 @@ namespace Pulumi.DigitalOcean
     ///         NodeCount = 1,
     ///     });
     /// 
-    ///     var example = new DigitalOcean.Index.DatabaseMongodbConfig("example", new()
+    ///     var example = new DigitalOcean.DatabaseMongodbConfig("example", new()
     ///     {
     ///         ClusterId = exampleDatabaseCluster.Id,
     ///         DefaultReadConcern = "majority",

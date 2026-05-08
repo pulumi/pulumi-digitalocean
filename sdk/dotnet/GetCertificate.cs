@@ -31,7 +31,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.Index.GetCertificate.Invoke(new()
+        ///     var example = DigitalOcean.GetCertificate.Invoke(new()
         ///     {
         ///         Name = "example",
         ///     });
@@ -62,7 +62,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.Index.GetCertificate.Invoke(new()
+        ///     var example = DigitalOcean.GetCertificate.Invoke(new()
         ///     {
         ///         Name = "example",
         ///     });
@@ -93,7 +93,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.Index.GetCertificate.Invoke(new()
+        ///     var example = DigitalOcean.GetCertificate.Invoke(new()
         ///     {
         ///         Name = "example",
         ///     });

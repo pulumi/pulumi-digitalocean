@@ -24,7 +24,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new DigitalOcean.Index.DedicatedInference("example", new()
+    ///     var example = new DigitalOcean.DedicatedInference("example", new()
     ///     {
     ///         Name = "my-inference-endpoint",
     ///         Region = "tor1",
@@ -60,7 +60,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @public = new DigitalOcean.Index.DedicatedInference("public", new()
+    ///     var @public = new DigitalOcean.DedicatedInference("public", new()
     ///     {
     ///         Name = "my-public-inference",
     ///         Region = "tor1",
@@ -97,7 +97,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @private = new DigitalOcean.Index.DedicatedInference("private", new()
+    ///     var @private = new DigitalOcean.DedicatedInference("private", new()
     ///     {
     ///         Name = "my-private-inference",
     ///         Region = "tor1",

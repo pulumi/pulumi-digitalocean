@@ -184,51 +184,51 @@ export interface DatabaseConnectionPoolState {
     /**
      * The ID of the source database cluster. Note: This must be a PostgreSQL cluster.
      */
-    clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * The database for use with the connection pool.
      */
-    dbName?: pulumi.Input<string>;
+    dbName?: pulumi.Input<string | undefined>;
     /**
      * The hostname used to connect to the database connection pool.
      */
-    host?: pulumi.Input<string>;
+    host?: pulumi.Input<string | undefined>;
     /**
      * The PGBouncer transaction mode for the connection pool. The allowed values are session, transaction, and statement.
      */
-    mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string | undefined>;
     /**
      * The name for the database connection pool.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Password for the connection pool's user.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * Network port that the database connection pool is listening on.
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * Same as `host`, but only accessible from resources within the account and in the same region.
      */
-    privateHost?: pulumi.Input<string>;
+    privateHost?: pulumi.Input<string | undefined>;
     /**
      * Same as `uri`, but only accessible from resources within the account and in the same region.
      */
-    privateUri?: pulumi.Input<string>;
+    privateUri?: pulumi.Input<string | undefined>;
     /**
      * The desired size of the PGBouncer connection pool.
      */
-    size?: pulumi.Input<number>;
+    size?: pulumi.Input<number | undefined>;
     /**
      * The full URI for connecting to the database connection pool.
      */
-    uri?: pulumi.Input<string>;
+    uri?: pulumi.Input<string | undefined>;
     /**
      * The name of the database user for use with the connection pool. When excluded, all sessions connect to the database as the inbound user.
      */
-    user?: pulumi.Input<string>;
+    user?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -250,7 +250,7 @@ export interface DatabaseConnectionPoolArgs {
     /**
      * The name for the database connection pool.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The desired size of the PGBouncer connection pool.
      */
@@ -258,5 +258,5 @@ export interface DatabaseConnectionPoolArgs {
     /**
      * The name of the database user for use with the connection pool. When excluded, all sessions connect to the database as the inbound user.
      */
-    user?: pulumi.Input<string>;
+    user?: pulumi.Input<string | undefined>;
 }

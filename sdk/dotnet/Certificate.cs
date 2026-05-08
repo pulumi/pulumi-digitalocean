@@ -30,19 +30,19 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var cert = new DigitalOcean.Index.Certificate("cert", new()
+    ///     var cert = new DigitalOcean.Certificate("cert", new()
     ///     {
     ///         Name = "custom-terraform-example",
     ///         Type = DigitalOcean.CertificateType.Custom,
-    ///         PrivateKey = Std.Index.File.Invoke(new()
+    ///         PrivateKey = Std.File.Invoke(new()
     ///         {
     ///             Input = "/Users/terraform/certs/privkey.pem",
     ///         }).Apply(invoke =&gt; invoke.Result),
-    ///         LeafCertificate = Std.Index.File.Invoke(new()
+    ///         LeafCertificate = Std.File.Invoke(new()
     ///         {
     ///             Input = "/Users/terraform/certs/cert.pem",
     ///         }).Apply(invoke =&gt; invoke.Result),
-    ///         CertificateChain = Std.Index.File.Invoke(new()
+    ///         CertificateChain = Std.File.Invoke(new()
     ///         {
     ///             Input = "/Users/terraform/certs/fullchain.pem",
     ///         }).Apply(invoke =&gt; invoke.Result),
@@ -61,7 +61,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var cert = new DigitalOcean.Index.Certificate("cert", new()
+    ///     var cert = new DigitalOcean.Certificate("cert", new()
     ///     {
     ///         Name = "le-terraform-example",
     ///         Type = DigitalOcean.CertificateType.LetsEncrypt,
@@ -87,7 +87,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var cert = new DigitalOcean.Index.Certificate("cert", new()
+    ///     var cert = new DigitalOcean.Certificate("cert", new()
     ///     {
     ///         Name = "le-terraform-example",
     ///         Type = DigitalOcean.CertificateType.LetsEncrypt,
@@ -98,7 +98,7 @@ namespace Pulumi.DigitalOcean
     ///     });
     /// 
     ///     // Create a new Load Balancer with TLS termination
-    ///     var @public = new DigitalOcean.Index.LoadBalancer("public", new()
+    ///     var @public = new DigitalOcean.LoadBalancer("public", new()
     ///     {
     ///         Name = "secure-loadbalancer-1",
     ///         Region = DigitalOcean.Region.NYC3,

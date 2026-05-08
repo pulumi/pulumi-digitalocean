@@ -23,7 +23,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var postgres_example = new DigitalOcean.Index.DatabaseCluster("postgres-example", new()
+    ///     var postgres_example = new DigitalOcean.DatabaseCluster("postgres-example", new()
     ///     {
     ///         Name = "example-postgres-cluster",
     ///         Engine = "pg",
@@ -33,7 +33,7 @@ namespace Pulumi.DigitalOcean
     ///         NodeCount = 1,
     ///     });
     /// 
-    ///     var replica_example = new DigitalOcean.Index.DatabaseReplica("replica-example", new()
+    ///     var replica_example = new DigitalOcean.DatabaseReplica("replica-example", new()
     ///     {
     ///         ClusterId = postgres_example.Id,
     ///         Name = "replica-example",
@@ -42,7 +42,7 @@ namespace Pulumi.DigitalOcean
     ///     });
     /// 
     ///     // Create firewall rule for database replica
-    ///     var example_fw = new DigitalOcean.Index.DatabaseFirewall("example-fw", new()
+    ///     var example_fw = new DigitalOcean.DatabaseFirewall("example-fw", new()
     ///     {
     ///         ClusterId = replica_example.Uuid,
     ///         Rules = new[]

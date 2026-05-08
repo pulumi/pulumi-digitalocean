@@ -176,53 +176,53 @@ export interface DatabaseRedisConfigState {
     /**
      * Determines default pub/sub channels' ACL for new users if an ACL is not supplied. When this option is not defined, `allchannels` is assumed to keep backward compatibility. This option doesn't affect Redis' `acl-pubsub-default` configuration. Supported values are: `allchannels` and `resetchannels`
      */
-    aclChannelsDefault?: pulumi.Input<string>;
+    aclChannelsDefault?: pulumi.Input<string | undefined>;
     /**
      * The ID of the target Redis cluster.
      */
-    clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * The Redis IO thread count.
      */
-    ioThreads?: pulumi.Input<number>;
+    ioThreads?: pulumi.Input<number | undefined>;
     /**
      * The LFU maxmemory policy counter decay time in minutes.
      */
-    lfuDecayTime?: pulumi.Input<number>;
+    lfuDecayTime?: pulumi.Input<number | undefined>;
     /**
      * The counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory policies.
      */
-    lfuLogFactor?: pulumi.Input<number>;
+    lfuLogFactor?: pulumi.Input<number | undefined>;
     /**
      * A string specifying the desired eviction policy for the Redis cluster.Supported values are: `noeviction`, `allkeys-lru`, `allkeys-random`, `volatile-lru`, `volatile-random`, `volatile-ttl`
      */
-    maxmemoryPolicy?: pulumi.Input<string>;
+    maxmemoryPolicy?: pulumi.Input<string | undefined>;
     /**
      * The `notify-keyspace-events` option. Requires at least `K` or `E`.
      */
-    notifyKeyspaceEvents?: pulumi.Input<string>;
+    notifyKeyspaceEvents?: pulumi.Input<string | undefined>;
     /**
      * The number of Redis databases. Changing this will cause a restart of Redis service.
      */
-    numberOfDatabases?: pulumi.Input<number>;
+    numberOfDatabases?: pulumi.Input<number | undefined>;
     /**
      * When persistence is `rdb`, Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is `off`, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
      */
-    persistence?: pulumi.Input<string>;
+    persistence?: pulumi.Input<string | undefined>;
     /**
      * The output buffer limit for pub/sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan.
      */
-    pubsubClientOutputBufferLimit?: pulumi.Input<number>;
+    pubsubClientOutputBufferLimit?: pulumi.Input<number | undefined>;
     /**
      * A boolean indicating whether to require SSL to access Redis.
      * - When enabled, Redis accepts only SSL connections on port `25061`.
      * - When disabled, port `25060` is opened for non-SSL connections, while port `25061` remains available for SSL connections.
      */
-    ssl?: pulumi.Input<boolean>;
+    ssl?: pulumi.Input<boolean | undefined>;
     /**
      * The Redis idle connection timeout in seconds.
      */
-    timeout?: pulumi.Input<number>;
+    timeout?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -232,7 +232,7 @@ export interface DatabaseRedisConfigArgs {
     /**
      * Determines default pub/sub channels' ACL for new users if an ACL is not supplied. When this option is not defined, `allchannels` is assumed to keep backward compatibility. This option doesn't affect Redis' `acl-pubsub-default` configuration. Supported values are: `allchannels` and `resetchannels`
      */
-    aclChannelsDefault?: pulumi.Input<string>;
+    aclChannelsDefault?: pulumi.Input<string | undefined>;
     /**
      * The ID of the target Redis cluster.
      */
@@ -240,43 +240,43 @@ export interface DatabaseRedisConfigArgs {
     /**
      * The Redis IO thread count.
      */
-    ioThreads?: pulumi.Input<number>;
+    ioThreads?: pulumi.Input<number | undefined>;
     /**
      * The LFU maxmemory policy counter decay time in minutes.
      */
-    lfuDecayTime?: pulumi.Input<number>;
+    lfuDecayTime?: pulumi.Input<number | undefined>;
     /**
      * The counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory policies.
      */
-    lfuLogFactor?: pulumi.Input<number>;
+    lfuLogFactor?: pulumi.Input<number | undefined>;
     /**
      * A string specifying the desired eviction policy for the Redis cluster.Supported values are: `noeviction`, `allkeys-lru`, `allkeys-random`, `volatile-lru`, `volatile-random`, `volatile-ttl`
      */
-    maxmemoryPolicy?: pulumi.Input<string>;
+    maxmemoryPolicy?: pulumi.Input<string | undefined>;
     /**
      * The `notify-keyspace-events` option. Requires at least `K` or `E`.
      */
-    notifyKeyspaceEvents?: pulumi.Input<string>;
+    notifyKeyspaceEvents?: pulumi.Input<string | undefined>;
     /**
      * The number of Redis databases. Changing this will cause a restart of Redis service.
      */
-    numberOfDatabases?: pulumi.Input<number>;
+    numberOfDatabases?: pulumi.Input<number | undefined>;
     /**
      * When persistence is `rdb`, Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is `off`, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
      */
-    persistence?: pulumi.Input<string>;
+    persistence?: pulumi.Input<string | undefined>;
     /**
      * The output buffer limit for pub/sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan.
      */
-    pubsubClientOutputBufferLimit?: pulumi.Input<number>;
+    pubsubClientOutputBufferLimit?: pulumi.Input<number | undefined>;
     /**
      * A boolean indicating whether to require SSL to access Redis.
      * - When enabled, Redis accepts only SSL connections on port `25061`.
      * - When disabled, port `25060` is opened for non-SSL connections, while port `25061` remains available for SSL connections.
      */
-    ssl?: pulumi.Input<boolean>;
+    ssl?: pulumi.Input<boolean | undefined>;
     /**
      * The Redis idle connection timeout in seconds.
      */
-    timeout?: pulumi.Input<number>;
+    timeout?: pulumi.Input<number | undefined>;
 }

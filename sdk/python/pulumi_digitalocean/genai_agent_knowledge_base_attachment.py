@@ -58,8 +58,8 @@ class GenaiAgentKnowledgeBaseAttachmentArgs:
 @pulumi.input_type
 class _GenaiAgentKnowledgeBaseAttachmentState:
     def __init__(__self__, *,
-                 agent_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 knowledge_base_uuid: Optional[pulumi.Input[_builtins.str]] = None):
+                 agent_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 knowledge_base_uuid: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GenaiAgentKnowledgeBaseAttachment resources.
 
@@ -73,26 +73,26 @@ class _GenaiAgentKnowledgeBaseAttachmentState:
 
     @_builtins.property
     @pulumi.getter(name="agentUuid")
-    def agent_uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def agent_uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A unique identifier for an agent.
         """
         return pulumi.get(self, "agent_uuid")
 
     @agent_uuid.setter
-    def agent_uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def agent_uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "agent_uuid", value)
 
     @_builtins.property
     @pulumi.getter(name="knowledgeBaseUuid")
-    def knowledge_base_uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def knowledge_base_uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A unique identifier for a knowledge base.
         """
         return pulumi.get(self, "knowledge_base_uuid")
 
     @knowledge_base_uuid.setter
-    def knowledge_base_uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def knowledge_base_uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "knowledge_base_uuid", value)
 
 
@@ -107,8 +107,8 @@ class GenaiAgentKnowledgeBaseAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 agent_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 knowledge_base_uuid: Optional[pulumi.Input[_builtins.str]] = None,
+                 agent_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 knowledge_base_uuid: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Create a GenaiAgentKnowledgeBaseAttachment resource with the given unique name, props, and options.
@@ -142,8 +142,8 @@ class GenaiAgentKnowledgeBaseAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 agent_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 knowledge_base_uuid: Optional[pulumi.Input[_builtins.str]] = None,
+                 agent_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 knowledge_base_uuid: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         pulumi.log.warn("""GenaiAgentKnowledgeBaseAttachment is deprecated: digitalocean.GenaiAgentKnowledgeBaseAttachment has been deprecated in favor of digitalocean.GradientaiAgentKnowledgeBaseAttachment""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -170,8 +170,8 @@ class GenaiAgentKnowledgeBaseAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            agent_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-            knowledge_base_uuid: Optional[pulumi.Input[_builtins.str]] = None) -> 'GenaiAgentKnowledgeBaseAttachment':
+            agent_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+            knowledge_base_uuid: pulumi.Input[Optional[_builtins.str]] = None) -> 'GenaiAgentKnowledgeBaseAttachment':
         """
         Get an existing GenaiAgentKnowledgeBaseAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

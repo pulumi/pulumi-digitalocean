@@ -131,31 +131,31 @@ export interface ContainerRegistryState {
     /**
      * The date and time when the registry was created
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The URL endpoint of the container registry. Ex: `registry.digitalocean.com/my_registry`
      */
-    endpoint?: pulumi.Input<string>;
+    endpoint?: pulumi.Input<string | undefined>;
     /**
      * The name of the container_registry
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The slug identifier of for region where registry data will be stored. When not provided, a region will be selected automatically.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The domain of the container registry. Ex: `registry.digitalocean.com`
      */
-    serverUrl?: pulumi.Input<string>;
+    serverUrl?: pulumi.Input<string | undefined>;
     /**
      * The amount of storage used in the registry in bytes.
      */
-    storageUsageBytes?: pulumi.Input<number>;
+    storageUsageBytes?: pulumi.Input<number | undefined>;
     /**
      * The slug identifier for the subscription tier to use (`starter`, `basic`, or `professional`)
      */
-    subscriptionTierSlug?: pulumi.Input<string>;
+    subscriptionTierSlug?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -165,11 +165,11 @@ export interface ContainerRegistryArgs {
     /**
      * The name of the container_registry
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The slug identifier of for region where registry data will be stored. When not provided, a region will be selected automatically.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The slug identifier for the subscription tier to use (`starter`, `basic`, or `professional`)
      */

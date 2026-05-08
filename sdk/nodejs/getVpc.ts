@@ -168,13 +168,13 @@ export interface GetVpcOutputArgs {
     /**
      * The unique identifier of an existing VPC.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The name of an existing VPC.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The DigitalOcean region slug for the VPC's location.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

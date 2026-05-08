@@ -34,7 +34,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var staging = DigitalOcean.Index.GetProjects.Invoke(new()
+        ///     var staging = DigitalOcean.GetProjects.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -62,7 +62,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var non_default_production = DigitalOcean.Index.GetProjects.Invoke(new()
+        ///     var non_default_production = DigitalOcean.GetProjects.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -122,7 +122,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var staging = DigitalOcean.Index.GetProjects.Invoke(new()
+        ///     var staging = DigitalOcean.GetProjects.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -150,7 +150,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var non_default_production = DigitalOcean.Index.GetProjects.Invoke(new()
+        ///     var non_default_production = DigitalOcean.GetProjects.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -210,7 +210,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var staging = DigitalOcean.Index.GetProjects.Invoke(new()
+        ///     var staging = DigitalOcean.GetProjects.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -238,7 +238,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var non_default_production = DigitalOcean.Index.GetProjects.Invoke(new()
+        ///     var non_default_production = DigitalOcean.GetProjects.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {

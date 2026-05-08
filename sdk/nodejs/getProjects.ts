@@ -167,10 +167,10 @@ export interface GetProjectsOutputArgs {
      * Filter the results.
      * The `filter` block is documented below.
      */
-    filters?: pulumi.Input<pulumi.Input<inputs.GetProjectsFilterArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetProjectsFilterArgs>[] | undefined>;
     /**
      * Sort the results.
      * The `sort` block is documented below.
      */
-    sorts?: pulumi.Input<pulumi.Input<inputs.GetProjectsSortArgs>[]>;
+    sorts?: pulumi.Input<pulumi.Input<inputs.GetProjectsSortArgs>[] | undefined>;
 }

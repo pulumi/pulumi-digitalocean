@@ -184,59 +184,59 @@ export interface CustomImageState {
     /**
      * A time value given in ISO8601 combined date and time format that represents when the image was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * An optional description for the image.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * An optional distribution name for the image. Valid values are documented [here](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images/operation/images_create_custom)
      */
-    distribution?: pulumi.Input<string>;
+    distribution?: pulumi.Input<string | undefined>;
     /**
      * A unique number that can be used to identify and reference a specific image.
      */
-    imageId?: pulumi.Input<number>;
+    imageId?: pulumi.Input<number | undefined>;
     /**
      * The minimum disk size in GB required for a Droplet to use this image.
      */
-    minDiskSize?: pulumi.Input<number>;
+    minDiskSize?: pulumi.Input<number | undefined>;
     /**
      * A name for the Custom Image.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the image in question is public or not.
      */
-    public?: pulumi.Input<boolean>;
+    public?: pulumi.Input<boolean | undefined>;
     /**
      * A list of regions. (Currently only one is supported).
      */
-    regions?: pulumi.Input<pulumi.Input<string>[]>;
+    regions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The size of the image in gigabytes.
      */
-    sizeGigabytes?: pulumi.Input<number>;
+    sizeGigabytes?: pulumi.Input<number | undefined>;
     /**
      * A uniquely identifying string for each image.
      */
-    slug?: pulumi.Input<string>;
+    slug?: pulumi.Input<string | undefined>;
     /**
      * A status string indicating the state of a custom image.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * A list of optional tags for the image.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Describes the kind of image.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * A URL from which the custom Linux virtual machine image may be retrieved.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -246,15 +246,15 @@ export interface CustomImageArgs {
     /**
      * An optional description for the image.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * An optional distribution name for the image. Valid values are documented [here](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images/operation/images_create_custom)
      */
-    distribution?: pulumi.Input<string>;
+    distribution?: pulumi.Input<string | undefined>;
     /**
      * A name for the Custom Image.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * A list of regions. (Currently only one is supported).
      */
@@ -262,7 +262,7 @@ export interface CustomImageArgs {
     /**
      * A list of optional tags for the image.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A URL from which the custom Linux virtual machine image may be retrieved.
      */

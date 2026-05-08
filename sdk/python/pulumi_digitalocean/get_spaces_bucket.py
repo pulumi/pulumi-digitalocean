@@ -146,8 +146,8 @@ def get_spaces_bucket(name: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         region=pulumi.get(__ret__, 'region'),
         urn=pulumi.get(__ret__, 'urn'))
-def get_spaces_bucket_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                             region: Optional[pulumi.Input[_builtins.str]] = None,
+def get_spaces_bucket_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                             region: pulumi.Input[Optional[_builtins.str]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSpacesBucketResult]:
     """
     Get information on a Spaces bucket for use in other resources. This is useful if the Spaces bucket in question

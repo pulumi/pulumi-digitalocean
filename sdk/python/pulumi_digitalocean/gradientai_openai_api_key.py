@@ -22,8 +22,8 @@ __all__ = ['GradientaiOpenaiApiKeyArgs', 'GradientaiOpenaiApiKey']
 class GradientaiOpenaiApiKeyArgs:
     def __init__(__self__, *,
                  api_key: pulumi.Input[_builtins.str],
-                 models: Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiOpenaiApiKeyModelArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 models: pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiOpenaiApiKeyModelArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a GradientaiOpenaiApiKey resource.
 
@@ -51,40 +51,40 @@ class GradientaiOpenaiApiKeyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def models(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiOpenaiApiKeyModelArgs']]]]:
+    def models(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiOpenaiApiKeyModelArgs']]]]:
         """
         Models associated with the OpenAI API key
         """
         return pulumi.get(self, "models")
 
     @models.setter
-    def models(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiOpenaiApiKeyModelArgs']]]]):
+    def models(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiOpenaiApiKeyModelArgs']]]]):
         pulumi.set(self, "models", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A name for the API key.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
 class _GradientaiOpenaiApiKeyState:
     def __init__(__self__, *,
-                 api_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_by: Optional[pulumi.Input[_builtins.str]] = None,
-                 deleted_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 models: Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiOpenaiApiKeyModelArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 uuid: Optional[pulumi.Input[_builtins.str]] = None):
+                 api_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_by: pulumi.Input[Optional[_builtins.str]] = None,
+                 deleted_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 models: pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiOpenaiApiKeyModelArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 uuid: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GradientaiOpenaiApiKey resources.
 
@@ -116,98 +116,98 @@ class _GradientaiOpenaiApiKeyState:
 
     @_builtins.property
     @pulumi.getter(name="apiKey")
-    def api_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The OpenAI API key.
         """
         return pulumi.get(self, "api_key")
 
     @api_key.setter
-    def api_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api_key", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When the API key was created.
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="createdBy")
-    def created_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_by(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Who created the API key.
         """
         return pulumi.get(self, "created_by")
 
     @created_by.setter
-    def created_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_by(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_by", value)
 
     @_builtins.property
     @pulumi.getter(name="deletedAt")
-    def deleted_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deleted_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When the API key was deleted.
         """
         return pulumi.get(self, "deleted_at")
 
     @deleted_at.setter
-    def deleted_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deleted_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deleted_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def models(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiOpenaiApiKeyModelArgs']]]]:
+    def models(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiOpenaiApiKeyModelArgs']]]]:
         """
         Models associated with the OpenAI API key
         """
         return pulumi.get(self, "models")
 
     @models.setter
-    def models(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiOpenaiApiKeyModelArgs']]]]):
+    def models(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiOpenaiApiKeyModelArgs']]]]):
         pulumi.set(self, "models", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A name for the API key.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When the API key was last updated.
         """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The UUID of the API key.
         """
         return pulumi.get(self, "uuid")
 
     @uuid.setter
-    def uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uuid", value)
 
 
@@ -217,9 +217,9 @@ class GradientaiOpenaiApiKey(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 models: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GradientaiOpenaiApiKeyModelArgs', 'GradientaiOpenaiApiKeyModelArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 api_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 models: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiOpenaiApiKeyModelArgs', 'GradientaiOpenaiApiKeyModelArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Create a GradientaiOpenaiApiKey resource with the given unique name, props, and options.
@@ -254,9 +254,9 @@ class GradientaiOpenaiApiKey(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 models: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GradientaiOpenaiApiKeyModelArgs', 'GradientaiOpenaiApiKeyModelArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 api_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 models: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiOpenaiApiKeyModelArgs', 'GradientaiOpenaiApiKeyModelArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -288,14 +288,14 @@ class GradientaiOpenaiApiKey(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            api_key: Optional[pulumi.Input[_builtins.str]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            created_by: Optional[pulumi.Input[_builtins.str]] = None,
-            deleted_at: Optional[pulumi.Input[_builtins.str]] = None,
-            models: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GradientaiOpenaiApiKeyModelArgs', 'GradientaiOpenaiApiKeyModelArgsDict']]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            updated_at: Optional[pulumi.Input[_builtins.str]] = None,
-            uuid: Optional[pulumi.Input[_builtins.str]] = None) -> 'GradientaiOpenaiApiKey':
+            api_key: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            created_by: pulumi.Input[Optional[_builtins.str]] = None,
+            deleted_at: pulumi.Input[Optional[_builtins.str]] = None,
+            models: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiOpenaiApiKeyModelArgs', 'GradientaiOpenaiApiKeyModelArgsDict']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+            uuid: pulumi.Input[Optional[_builtins.str]] = None) -> 'GradientaiOpenaiApiKey':
         """
         Get an existing GradientaiOpenaiApiKey resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

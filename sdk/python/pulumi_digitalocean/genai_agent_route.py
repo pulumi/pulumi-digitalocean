@@ -21,9 +21,9 @@ class GenaiAgentRouteArgs:
     def __init__(__self__, *,
                  child_agent_uuid: pulumi.Input[_builtins.str],
                  parent_agent_uuid: pulumi.Input[_builtins.str],
-                 if_case: Optional[pulumi.Input[_builtins.str]] = None,
-                 rollback: Optional[pulumi.Input[_builtins.bool]] = None,
-                 route_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 if_case: pulumi.Input[Optional[_builtins.str]] = None,
+                 rollback: pulumi.Input[Optional[_builtins.bool]] = None,
+                 route_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a GenaiAgentRoute resource.
 
@@ -67,47 +67,47 @@ class GenaiAgentRouteArgs:
 
     @_builtins.property
     @pulumi.getter(name="ifCase")
-    def if_case(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def if_case(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         if-case condition for the route.
         """
         return pulumi.get(self, "if_case")
 
     @if_case.setter
-    def if_case(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def if_case(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "if_case", value)
 
     @_builtins.property
     @pulumi.getter
-    def rollback(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def rollback(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "rollback")
 
     @rollback.setter
-    def rollback(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def rollback(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "rollback", value)
 
     @_builtins.property
     @pulumi.getter(name="routeName")
-    def route_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def route_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A name for the route.
         """
         return pulumi.get(self, "route_name")
 
     @route_name.setter
-    def route_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def route_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "route_name", value)
 
 
 @pulumi.input_type
 class _GenaiAgentRouteState:
     def __init__(__self__, *,
-                 child_agent_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 if_case: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_agent_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 rollback: Optional[pulumi.Input[_builtins.bool]] = None,
-                 route_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 uuid: Optional[pulumi.Input[_builtins.str]] = None):
+                 child_agent_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 if_case: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_agent_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 rollback: pulumi.Input[Optional[_builtins.bool]] = None,
+                 route_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 uuid: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GenaiAgentRoute resources.
 
@@ -132,71 +132,71 @@ class _GenaiAgentRouteState:
 
     @_builtins.property
     @pulumi.getter(name="childAgentUuid")
-    def child_agent_uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def child_agent_uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The UUID of the child agent.
         """
         return pulumi.get(self, "child_agent_uuid")
 
     @child_agent_uuid.setter
-    def child_agent_uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def child_agent_uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "child_agent_uuid", value)
 
     @_builtins.property
     @pulumi.getter(name="ifCase")
-    def if_case(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def if_case(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         if-case condition for the route.
         """
         return pulumi.get(self, "if_case")
 
     @if_case.setter
-    def if_case(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def if_case(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "if_case", value)
 
     @_builtins.property
     @pulumi.getter(name="parentAgentUuid")
-    def parent_agent_uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent_agent_uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The UUID of the parent agent.
         """
         return pulumi.get(self, "parent_agent_uuid")
 
     @parent_agent_uuid.setter
-    def parent_agent_uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent_agent_uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent_agent_uuid", value)
 
     @_builtins.property
     @pulumi.getter
-    def rollback(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def rollback(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "rollback")
 
     @rollback.setter
-    def rollback(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def rollback(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "rollback", value)
 
     @_builtins.property
     @pulumi.getter(name="routeName")
-    def route_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def route_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A name for the route.
         """
         return pulumi.get(self, "route_name")
 
     @route_name.setter
-    def route_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def route_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "route_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The UUID of the linkage
         """
         return pulumi.get(self, "uuid")
 
     @uuid.setter
-    def uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uuid", value)
 
 
@@ -211,11 +211,11 @@ class GenaiAgentRoute(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 child_agent_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 if_case: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_agent_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 rollback: Optional[pulumi.Input[_builtins.bool]] = None,
-                 route_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 child_agent_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 if_case: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_agent_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 rollback: pulumi.Input[Optional[_builtins.bool]] = None,
+                 route_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Create a GenaiAgentRoute resource with the given unique name, props, and options.
@@ -251,11 +251,11 @@ class GenaiAgentRoute(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 child_agent_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 if_case: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_agent_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 rollback: Optional[pulumi.Input[_builtins.bool]] = None,
-                 route_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 child_agent_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 if_case: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_agent_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 rollback: pulumi.Input[Optional[_builtins.bool]] = None,
+                 route_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         pulumi.log.warn("""GenaiAgentRoute is deprecated: digitalocean.GenaiAgentRoute has been deprecated in favor of digitalocean.GradientaiAgentRoute""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -286,12 +286,12 @@ class GenaiAgentRoute(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            child_agent_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-            if_case: Optional[pulumi.Input[_builtins.str]] = None,
-            parent_agent_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-            rollback: Optional[pulumi.Input[_builtins.bool]] = None,
-            route_name: Optional[pulumi.Input[_builtins.str]] = None,
-            uuid: Optional[pulumi.Input[_builtins.str]] = None) -> 'GenaiAgentRoute':
+            child_agent_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+            if_case: pulumi.Input[Optional[_builtins.str]] = None,
+            parent_agent_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+            rollback: pulumi.Input[Optional[_builtins.bool]] = None,
+            route_name: pulumi.Input[Optional[_builtins.str]] = None,
+            uuid: pulumi.Input[Optional[_builtins.str]] = None) -> 'GenaiAgentRoute':
         """
         Get an existing GenaiAgentRoute resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

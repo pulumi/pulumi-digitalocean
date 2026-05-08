@@ -26,16 +26,16 @@ class DatabaseClusterArgs:
                  node_count: pulumi.Input[_builtins.int],
                  region: pulumi.Input[Union[_builtins.str, 'Region']],
                  size: pulumi.Input[Union[_builtins.str, 'DatabaseSlug']],
-                 backup_restore: Optional[pulumi.Input['DatabaseClusterBackupRestoreArgs']] = None,
-                 eviction_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintenance_windows: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseClusterMaintenanceWindowArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_network_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sql_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_size_mib: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None):
+                 backup_restore: pulumi.Input[Optional['DatabaseClusterBackupRestoreArgs']] = None,
+                 eviction_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintenance_windows: pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseClusterMaintenanceWindowArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_network_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sql_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_size_mib: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a DatabaseCluster resource.
 
@@ -129,112 +129,112 @@ class DatabaseClusterArgs:
 
     @_builtins.property
     @pulumi.getter(name="backupRestore")
-    def backup_restore(self) -> Optional[pulumi.Input['DatabaseClusterBackupRestoreArgs']]:
+    def backup_restore(self) -> pulumi.Input[Optional['DatabaseClusterBackupRestoreArgs']]:
         return pulumi.get(self, "backup_restore")
 
     @backup_restore.setter
-    def backup_restore(self, value: Optional[pulumi.Input['DatabaseClusterBackupRestoreArgs']]):
+    def backup_restore(self, value: pulumi.Input[Optional['DatabaseClusterBackupRestoreArgs']]):
         pulumi.set(self, "backup_restore", value)
 
     @_builtins.property
     @pulumi.getter(name="evictionPolicy")
-    def eviction_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def eviction_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A string specifying the eviction policy for a Valkey cluster. Valid values are: `noeviction`, `allkeys_lru`, `allkeys_random`, `volatile_lru`, `volatile_random`, or `volatile_ttl`.
         """
         return pulumi.get(self, "eviction_policy")
 
     @eviction_policy.setter
-    def eviction_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def eviction_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "eviction_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="maintenanceWindows")
-    def maintenance_windows(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseClusterMaintenanceWindowArgs']]]]:
+    def maintenance_windows(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseClusterMaintenanceWindowArgs']]]]:
         """
         Defines when the automatic maintenance should be performed for the database cluster.
         """
         return pulumi.get(self, "maintenance_windows")
 
     @maintenance_windows.setter
-    def maintenance_windows(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseClusterMaintenanceWindowArgs']]]]):
+    def maintenance_windows(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseClusterMaintenanceWindowArgs']]]]):
         pulumi.set(self, "maintenance_windows", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the database cluster.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="privateNetworkUuid")
-    def private_network_uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_network_uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the VPC where the database cluster will be located.
         """
         return pulumi.get(self, "private_network_uuid")
 
     @private_network_uuid.setter
-    def private_network_uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_network_uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_network_uuid", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project that the database cluster is assigned to. If excluded when creating a new database cluster, it will be assigned to your default project.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sqlMode")
-    def sql_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sql_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A comma separated string specifying the  SQL modes for a MySQL cluster.
         """
         return pulumi.get(self, "sql_mode")
 
     @sql_mode.setter
-    def sql_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sql_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sql_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="storageSizeMib")
-    def storage_size_mib(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_size_mib(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostgreSQL clusters based on predefined ranges for each slug/droplet size.
         """
         return pulumi.get(self, "storage_size_mib")
 
     @storage_size_mib.setter
-    def storage_size_mib(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_size_mib(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_size_mib", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of tag names to be applied to the database cluster.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Engine version used by the cluster (ex. `14` for PostgreSQL 14).
         When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Databases/operation/databases_update_major_version) API operation is made with the new version.
@@ -242,43 +242,43 @@ class DatabaseClusterArgs:
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
 
 @pulumi.input_type
 class _DatabaseClusterState:
     def __init__(__self__, *,
-                 backup_restore: Optional[pulumi.Input['DatabaseClusterBackupRestoreArgs']] = None,
-                 cluster_urn: Optional[pulumi.Input[_builtins.str]] = None,
-                 database: Optional[pulumi.Input[_builtins.str]] = None,
-                 engine: Optional[pulumi.Input[_builtins.str]] = None,
-                 eviction_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintenance_windows: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseClusterMaintenanceWindowArgs']]]] = None,
-                 metrics_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 private_host: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_network_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[Union[_builtins.str, 'Region']]] = None,
-                 size: Optional[pulumi.Input[Union[_builtins.str, 'DatabaseSlug']]] = None,
-                 sql_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_size_mib: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ui_database: Optional[pulumi.Input[_builtins.str]] = None,
-                 ui_host: Optional[pulumi.Input[_builtins.str]] = None,
-                 ui_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 ui_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 ui_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 ui_user: Optional[pulumi.Input[_builtins.str]] = None,
-                 uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 user: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None):
+                 backup_restore: pulumi.Input[Optional['DatabaseClusterBackupRestoreArgs']] = None,
+                 cluster_urn: pulumi.Input[Optional[_builtins.str]] = None,
+                 database: pulumi.Input[Optional[_builtins.str]] = None,
+                 engine: pulumi.Input[Optional[_builtins.str]] = None,
+                 eviction_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintenance_windows: pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseClusterMaintenanceWindowArgs']]]] = None,
+                 metrics_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 private_host: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_network_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[Union[_builtins.str, 'Region']]] = None,
+                 size: pulumi.Input[Optional[Union[_builtins.str, 'DatabaseSlug']]] = None,
+                 sql_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_size_mib: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ui_database: pulumi.Input[Optional[_builtins.str]] = None,
+                 ui_host: pulumi.Input[Optional[_builtins.str]] = None,
+                 ui_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 ui_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 ui_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 ui_user: pulumi.Input[Optional[_builtins.str]] = None,
+                 uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 user: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DatabaseCluster resources.
 
@@ -376,352 +376,352 @@ class _DatabaseClusterState:
 
     @_builtins.property
     @pulumi.getter(name="backupRestore")
-    def backup_restore(self) -> Optional[pulumi.Input['DatabaseClusterBackupRestoreArgs']]:
+    def backup_restore(self) -> pulumi.Input[Optional['DatabaseClusterBackupRestoreArgs']]:
         return pulumi.get(self, "backup_restore")
 
     @backup_restore.setter
-    def backup_restore(self, value: Optional[pulumi.Input['DatabaseClusterBackupRestoreArgs']]):
+    def backup_restore(self, value: pulumi.Input[Optional['DatabaseClusterBackupRestoreArgs']]):
         pulumi.set(self, "backup_restore", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterUrn")
-    def cluster_urn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_urn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The uniform resource name of the database cluster.
         """
         return pulumi.get(self, "cluster_urn")
 
     @cluster_urn.setter
-    def cluster_urn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_urn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_urn", value)
 
     @_builtins.property
     @pulumi.getter
-    def database(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def database(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the cluster's default database.
         """
         return pulumi.get(self, "database")
 
     @database.setter
-    def database(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def database(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "database", value)
 
     @_builtins.property
     @pulumi.getter
-    def engine(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def engine(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `valkey` for Valkey, `mongodb` for MongoDB, or `kafka` for Kafka).
         """
         return pulumi.get(self, "engine")
 
     @engine.setter
-    def engine(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def engine(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "engine", value)
 
     @_builtins.property
     @pulumi.getter(name="evictionPolicy")
-    def eviction_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def eviction_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A string specifying the eviction policy for a Valkey cluster. Valid values are: `noeviction`, `allkeys_lru`, `allkeys_random`, `volatile_lru`, `volatile_random`, or `volatile_ttl`.
         """
         return pulumi.get(self, "eviction_policy")
 
     @eviction_policy.setter
-    def eviction_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def eviction_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "eviction_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Database cluster's hostname.
         """
         return pulumi.get(self, "host")
 
     @host.setter
-    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host", value)
 
     @_builtins.property
     @pulumi.getter(name="maintenanceWindows")
-    def maintenance_windows(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseClusterMaintenanceWindowArgs']]]]:
+    def maintenance_windows(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseClusterMaintenanceWindowArgs']]]]:
         """
         Defines when the automatic maintenance should be performed for the database cluster.
         """
         return pulumi.get(self, "maintenance_windows")
 
     @maintenance_windows.setter
-    def maintenance_windows(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseClusterMaintenanceWindowArgs']]]]):
+    def maintenance_windows(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseClusterMaintenanceWindowArgs']]]]):
         pulumi.set(self, "maintenance_windows", value)
 
     @_builtins.property
     @pulumi.getter(name="metricsEndpoints")
-    def metrics_endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def metrics_endpoints(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of metrics endpoints for the database cluster, providing URLs to access Prometheus-compatible metrics.
         """
         return pulumi.get(self, "metrics_endpoints")
 
     @metrics_endpoints.setter
-    def metrics_endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def metrics_endpoints(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "metrics_endpoints", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the database cluster.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeCount")
-    def node_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def node_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of nodes that will be included in the cluster. For `kafka` clusters, this must be 3.
         """
         return pulumi.get(self, "node_count")
 
     @node_count.setter
-    def node_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def node_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "node_count", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Password for the cluster's default user.
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Network port that the database cluster is listening on.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter(name="privateHost")
-    def private_host(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_host(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Same as `host`, but only accessible from resources within the account and in the same region.
         """
         return pulumi.get(self, "private_host")
 
     @private_host.setter
-    def private_host(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_host(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_host", value)
 
     @_builtins.property
     @pulumi.getter(name="privateNetworkUuid")
-    def private_network_uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_network_uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the VPC where the database cluster will be located.
         """
         return pulumi.get(self, "private_network_uuid")
 
     @private_network_uuid.setter
-    def private_network_uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_network_uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_network_uuid", value)
 
     @_builtins.property
     @pulumi.getter(name="privateUri")
-    def private_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Same as `uri`, but only accessible from resources within the account and in the same region.
         """
         return pulumi.get(self, "private_uri")
 
     @private_uri.setter
-    def private_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_uri", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project that the database cluster is assigned to. If excluded when creating a new database cluster, it will be assigned to your default project.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[Union[_builtins.str, 'Region']]]:
+    def region(self) -> pulumi.Input[Optional[Union[_builtins.str, 'Region']]]:
         """
         DigitalOcean region where the cluster will reside.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[Union[_builtins.str, 'Region']]]):
+    def region(self, value: pulumi.Input[Optional[Union[_builtins.str, 'Region']]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def size(self) -> Optional[pulumi.Input[Union[_builtins.str, 'DatabaseSlug']]]:
+    def size(self) -> pulumi.Input[Optional[Union[_builtins.str, 'DatabaseSlug']]]:
         """
         Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See the DigitalOcean API for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Databases/operation/databases_list_options).
         """
         return pulumi.get(self, "size")
 
     @size.setter
-    def size(self, value: Optional[pulumi.Input[Union[_builtins.str, 'DatabaseSlug']]]):
+    def size(self, value: pulumi.Input[Optional[Union[_builtins.str, 'DatabaseSlug']]]):
         pulumi.set(self, "size", value)
 
     @_builtins.property
     @pulumi.getter(name="sqlMode")
-    def sql_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sql_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A comma separated string specifying the  SQL modes for a MySQL cluster.
         """
         return pulumi.get(self, "sql_mode")
 
     @sql_mode.setter
-    def sql_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sql_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sql_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="storageSizeMib")
-    def storage_size_mib(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_size_mib(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostgreSQL clusters based on predefined ranges for each slug/droplet size.
         """
         return pulumi.get(self, "storage_size_mib")
 
     @storage_size_mib.setter
-    def storage_size_mib(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_size_mib(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_size_mib", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of tag names to be applied to the database cluster.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="uiDatabase")
-    def ui_database(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ui_database(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the OpenSearch dashboard db.
         """
         return pulumi.get(self, "ui_database")
 
     @ui_database.setter
-    def ui_database(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ui_database(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ui_database", value)
 
     @_builtins.property
     @pulumi.getter(name="uiHost")
-    def ui_host(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ui_host(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Hostname for the OpenSearch dashboard.
         """
         return pulumi.get(self, "ui_host")
 
     @ui_host.setter
-    def ui_host(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ui_host(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ui_host", value)
 
     @_builtins.property
     @pulumi.getter(name="uiPassword")
-    def ui_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ui_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Password for the OpenSearch dashboard's default user.
         """
         return pulumi.get(self, "ui_password")
 
     @ui_password.setter
-    def ui_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ui_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ui_password", value)
 
     @_builtins.property
     @pulumi.getter(name="uiPort")
-    def ui_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ui_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Network port that the OpenSearch dashboard is listening on.
         """
         return pulumi.get(self, "ui_port")
 
     @ui_port.setter
-    def ui_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ui_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ui_port", value)
 
     @_builtins.property
     @pulumi.getter(name="uiUri")
-    def ui_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ui_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The full URI for connecting to the OpenSearch dashboard.
         """
         return pulumi.get(self, "ui_uri")
 
     @ui_uri.setter
-    def ui_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ui_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ui_uri", value)
 
     @_builtins.property
     @pulumi.getter(name="uiUser")
-    def ui_user(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ui_user(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Username for OpenSearch dashboard's default user.
         """
         return pulumi.get(self, "ui_user")
 
     @ui_user.setter
-    def ui_user(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ui_user(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ui_user", value)
 
     @_builtins.property
     @pulumi.getter
-    def uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The full URI for connecting to the database cluster.
         """
         return pulumi.get(self, "uri")
 
     @uri.setter
-    def uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uri", value)
 
     @_builtins.property
     @pulumi.getter
-    def user(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Username for the cluster's default user.
         """
         return pulumi.get(self, "user")
 
     @user.setter
-    def user(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Engine version used by the cluster (ex. `14` for PostgreSQL 14).
         When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Databases/operation/databases_update_major_version) API operation is made with the new version.
@@ -729,7 +729,7 @@ class _DatabaseClusterState:
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
 
@@ -739,20 +739,20 @@ class DatabaseCluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backup_restore: Optional[pulumi.Input[Union['DatabaseClusterBackupRestoreArgs', 'DatabaseClusterBackupRestoreArgsDict']]] = None,
-                 engine: Optional[pulumi.Input[_builtins.str]] = None,
-                 eviction_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintenance_windows: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DatabaseClusterMaintenanceWindowArgs', 'DatabaseClusterMaintenanceWindowArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 private_network_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[Union[_builtins.str, 'Region']]] = None,
-                 size: Optional[pulumi.Input[Union[_builtins.str, 'DatabaseSlug']]] = None,
-                 sql_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_size_mib: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None,
+                 backup_restore: pulumi.Input[Optional[Union['DatabaseClusterBackupRestoreArgs', 'DatabaseClusterBackupRestoreArgsDict']]] = None,
+                 engine: pulumi.Input[Optional[_builtins.str]] = None,
+                 eviction_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintenance_windows: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabaseClusterMaintenanceWindowArgs', 'DatabaseClusterMaintenanceWindowArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 private_network_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[Union[_builtins.str, 'Region']]] = None,
+                 size: pulumi.Input[Optional[Union[_builtins.str, 'DatabaseSlug']]] = None,
+                 sql_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_size_mib: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a DigitalOcean database cluster resource.
@@ -1044,20 +1044,20 @@ class DatabaseCluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backup_restore: Optional[pulumi.Input[Union['DatabaseClusterBackupRestoreArgs', 'DatabaseClusterBackupRestoreArgsDict']]] = None,
-                 engine: Optional[pulumi.Input[_builtins.str]] = None,
-                 eviction_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintenance_windows: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DatabaseClusterMaintenanceWindowArgs', 'DatabaseClusterMaintenanceWindowArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 private_network_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[Union[_builtins.str, 'Region']]] = None,
-                 size: Optional[pulumi.Input[Union[_builtins.str, 'DatabaseSlug']]] = None,
-                 sql_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_size_mib: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None,
+                 backup_restore: pulumi.Input[Optional[Union['DatabaseClusterBackupRestoreArgs', 'DatabaseClusterBackupRestoreArgsDict']]] = None,
+                 engine: pulumi.Input[Optional[_builtins.str]] = None,
+                 eviction_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintenance_windows: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabaseClusterMaintenanceWindowArgs', 'DatabaseClusterMaintenanceWindowArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 private_network_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[Union[_builtins.str, 'Region']]] = None,
+                 size: pulumi.Input[Optional[Union[_builtins.str, 'DatabaseSlug']]] = None,
+                 sql_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_size_mib: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1117,36 +1117,36 @@ class DatabaseCluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            backup_restore: Optional[pulumi.Input[Union['DatabaseClusterBackupRestoreArgs', 'DatabaseClusterBackupRestoreArgsDict']]] = None,
-            cluster_urn: Optional[pulumi.Input[_builtins.str]] = None,
-            database: Optional[pulumi.Input[_builtins.str]] = None,
-            engine: Optional[pulumi.Input[_builtins.str]] = None,
-            eviction_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            host: Optional[pulumi.Input[_builtins.str]] = None,
-            maintenance_windows: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DatabaseClusterMaintenanceWindowArgs', 'DatabaseClusterMaintenanceWindowArgsDict']]]]] = None,
-            metrics_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            node_count: Optional[pulumi.Input[_builtins.int]] = None,
-            password: Optional[pulumi.Input[_builtins.str]] = None,
-            port: Optional[pulumi.Input[_builtins.int]] = None,
-            private_host: Optional[pulumi.Input[_builtins.str]] = None,
-            private_network_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-            private_uri: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[Union[_builtins.str, 'Region']]] = None,
-            size: Optional[pulumi.Input[Union[_builtins.str, 'DatabaseSlug']]] = None,
-            sql_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            storage_size_mib: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            ui_database: Optional[pulumi.Input[_builtins.str]] = None,
-            ui_host: Optional[pulumi.Input[_builtins.str]] = None,
-            ui_password: Optional[pulumi.Input[_builtins.str]] = None,
-            ui_port: Optional[pulumi.Input[_builtins.int]] = None,
-            ui_uri: Optional[pulumi.Input[_builtins.str]] = None,
-            ui_user: Optional[pulumi.Input[_builtins.str]] = None,
-            uri: Optional[pulumi.Input[_builtins.str]] = None,
-            user: Optional[pulumi.Input[_builtins.str]] = None,
-            version: Optional[pulumi.Input[_builtins.str]] = None) -> 'DatabaseCluster':
+            backup_restore: pulumi.Input[Optional[Union['DatabaseClusterBackupRestoreArgs', 'DatabaseClusterBackupRestoreArgsDict']]] = None,
+            cluster_urn: pulumi.Input[Optional[_builtins.str]] = None,
+            database: pulumi.Input[Optional[_builtins.str]] = None,
+            engine: pulumi.Input[Optional[_builtins.str]] = None,
+            eviction_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            host: pulumi.Input[Optional[_builtins.str]] = None,
+            maintenance_windows: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabaseClusterMaintenanceWindowArgs', 'DatabaseClusterMaintenanceWindowArgsDict']]]]] = None,
+            metrics_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            node_count: pulumi.Input[Optional[_builtins.int]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            port: pulumi.Input[Optional[_builtins.int]] = None,
+            private_host: pulumi.Input[Optional[_builtins.str]] = None,
+            private_network_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+            private_uri: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[Union[_builtins.str, 'Region']]] = None,
+            size: pulumi.Input[Optional[Union[_builtins.str, 'DatabaseSlug']]] = None,
+            sql_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_size_mib: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            ui_database: pulumi.Input[Optional[_builtins.str]] = None,
+            ui_host: pulumi.Input[Optional[_builtins.str]] = None,
+            ui_password: pulumi.Input[Optional[_builtins.str]] = None,
+            ui_port: pulumi.Input[Optional[_builtins.int]] = None,
+            ui_uri: pulumi.Input[Optional[_builtins.str]] = None,
+            ui_user: pulumi.Input[Optional[_builtins.str]] = None,
+            uri: pulumi.Input[Optional[_builtins.str]] = None,
+            user: pulumi.Input[Optional[_builtins.str]] = None,
+            version: pulumi.Input[Optional[_builtins.str]] = None) -> 'DatabaseCluster':
         """
         Get an existing DatabaseCluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -219,8 +219,8 @@ def get_vpc_nat_gateway(id: Optional[_builtins.str] = None,
         udp_timeout_seconds=pulumi.get(__ret__, 'udp_timeout_seconds'),
         updated_at=pulumi.get(__ret__, 'updated_at'),
         vpcs=pulumi.get(__ret__, 'vpcs'))
-def get_vpc_nat_gateway_output(id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_vpc_nat_gateway_output(id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVpcNatGatewayResult]:
     """
     Get information on a VPC NAT Gateway for use with other managed resources  This datasource provides all the VPC

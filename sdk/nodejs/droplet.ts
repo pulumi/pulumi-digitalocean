@@ -305,17 +305,17 @@ export interface DropletState {
     /**
      * An object specifying the backup policy for the Droplet. If omitted and `backups` is `true`, the backup plan will default to daily.
      */
-    backupPolicy?: pulumi.Input<inputs.DropletBackupPolicy>;
+    backupPolicy?: pulumi.Input<inputs.DropletBackupPolicy | undefined>;
     /**
      * Boolean controlling if backups are made. Defaults to
      * false.
      */
-    backups?: pulumi.Input<boolean>;
-    createdAt?: pulumi.Input<string>;
+    backups?: pulumi.Input<boolean | undefined>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The size of the instance's disk in GB
      */
-    disk?: pulumi.Input<number>;
+    disk?: pulumi.Input<number | undefined>;
     /**
      * A boolean indicating whether to install the
      * DigitalOcean agent used for providing access to the Droplet web console in
@@ -324,69 +324,69 @@ export interface DropletState {
      * being installed, set to `false`. To make installation errors fatal, explicitly
      * set it to `true`.
      */
-    dropletAgent?: pulumi.Input<boolean>;
+    dropletAgent?: pulumi.Input<boolean | undefined>;
     /**
      * The uniform resource name of the Droplet
      */
-    dropletUrn?: pulumi.Input<string>;
+    dropletUrn?: pulumi.Input<string | undefined>;
     /**
      * A boolean indicating whether the droplet
      * should be gracefully shut down before it is deleted.
      */
-    gracefulShutdown?: pulumi.Input<boolean>;
+    gracefulShutdown?: pulumi.Input<boolean | undefined>;
     /**
      * The Droplet image ID or slug. This could be either image ID or droplet snapshot ID. You can find image IDs and slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images).
      */
-    image?: pulumi.Input<string>;
+    image?: pulumi.Input<string | undefined>;
     /**
      * The IPv4 address
      */
-    ipv4Address?: pulumi.Input<string>;
+    ipv4Address?: pulumi.Input<string | undefined>;
     /**
      * The private networking IPv4 address
      */
-    ipv4AddressPrivate?: pulumi.Input<string>;
+    ipv4AddressPrivate?: pulumi.Input<string | undefined>;
     /**
      * Boolean controlling if IPv6 is enabled. Defaults to false.
      * Once enabled for a Droplet, IPv6 can not be disabled. When enabling IPv6 on
      * an existing Droplet, [additional OS-level configuration](https://docs.digitalocean.com/products/networking/ipv6/how-to/enable/#on-existing-droplets)
      * is required.
      */
-    ipv6?: pulumi.Input<boolean>;
+    ipv6?: pulumi.Input<boolean | undefined>;
     /**
      * The IPv6 address
      */
-    ipv6Address?: pulumi.Input<string>;
+    ipv6Address?: pulumi.Input<string | undefined>;
     /**
      * Is the Droplet locked
      */
-    locked?: pulumi.Input<boolean>;
-    memory?: pulumi.Input<number>;
+    locked?: pulumi.Input<boolean | undefined>;
+    memory?: pulumi.Input<number | undefined>;
     /**
      * Boolean controlling whether monitoring agent is installed.
      * Defaults to false. If set to `true`, you can configure monitor alert policies
      * [monitor alert resource](https://www.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/monitor_alert)
      */
-    monitoring?: pulumi.Input<boolean>;
+    monitoring?: pulumi.Input<boolean | undefined>;
     /**
      * The Droplet name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Droplet hourly price
      */
-    priceHourly?: pulumi.Input<number>;
+    priceHourly?: pulumi.Input<number | undefined>;
     /**
      * Droplet monthly price
      */
-    priceMonthly?: pulumi.Input<number>;
+    priceMonthly?: pulumi.Input<number | undefined>;
     /**
      * **Deprecated** Boolean controlling if private networking
      * is enabled. This parameter has been deprecated. Use `vpcUuid` instead to specify a VPC network for the Droplet. If no `vpcUuid` is provided, the Droplet will be placed in your account's default VPC for the region.
      *
      * @deprecated This parameter has been deprecated. Use `vpcUuid` instead to specify a VPC network for the Droplet. If no `vpcUuid` is provided, the Droplet will be placed in your account's default VPC for the region.
      */
-    privateNetworking?: pulumi.Input<boolean>;
+    privateNetworking?: pulumi.Input<boolean | undefined>;
     /**
      * A boolean indicating whether to enables public networking for the Droplet or not.
      * By default, this is always enabled on new droplets.
@@ -394,22 +394,22 @@ export interface DropletState {
      *
      * > **NOTE:** If you use `volumeIds` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
      */
-    publicNetworking?: pulumi.Input<boolean>;
+    publicNetworking?: pulumi.Input<boolean | undefined>;
     /**
      * The region where the Droplet will be created.
      */
-    region?: pulumi.Input<string | enums.Region>;
+    region?: pulumi.Input<string | enums.Region | undefined>;
     /**
      * Boolean controlling whether to increase the disk
      * size when resizing a Droplet. It defaults to `true`. When set to `false`,
      * only the Droplet's RAM and CPU will be resized. **Increasing a Droplet's disk
      * size is a permanent change**. Increasing only RAM and CPU is reversible.
      */
-    resizeDisk?: pulumi.Input<boolean>;
+    resizeDisk?: pulumi.Input<boolean | undefined>;
     /**
      * The unique slug that identifies the type of Droplet. You may list the available slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Sizes).
      */
-    size?: pulumi.Input<string | enums.DropletSlug>;
+    size?: pulumi.Input<string | enums.DropletSlug | undefined>;
     /**
      * A list of SSH key IDs or fingerprints to enable in
      * the format `[12345, 123456]`. To retrieve this info, use the
@@ -418,31 +418,31 @@ export interface DropletState {
      * be added or removed via this provider. Modifying this field will prompt you
      * to destroy and recreate the Droplet.
      */
-    sshKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    sshKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The status of the Droplet
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * A list of the tags to be applied to this Droplet.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A string of the desired User Data provided [during Droplet creation](https://docs.digitalocean.com/products/droplets/how-to/provide-user-data/). Changing this forces a new resource to be created.
      */
-    userData?: pulumi.Input<string>;
+    userData?: pulumi.Input<string | undefined>;
     /**
      * The number of the instance's virtual CPUs
      */
-    vcpus?: pulumi.Input<number>;
+    vcpus?: pulumi.Input<number | undefined>;
     /**
      * A list of the IDs of each [block storage volume](https://www.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/volume) to be attached to the Droplet.
      */
-    volumeIds?: pulumi.Input<pulumi.Input<string>[]>;
+    volumeIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the VPC where the Droplet will be located.
      */
-    vpcUuid?: pulumi.Input<string>;
+    vpcUuid?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -452,12 +452,12 @@ export interface DropletArgs {
     /**
      * An object specifying the backup policy for the Droplet. If omitted and `backups` is `true`, the backup plan will default to daily.
      */
-    backupPolicy?: pulumi.Input<inputs.DropletBackupPolicy>;
+    backupPolicy?: pulumi.Input<inputs.DropletBackupPolicy | undefined>;
     /**
      * Boolean controlling if backups are made. Defaults to
      * false.
      */
-    backups?: pulumi.Input<boolean>;
+    backups?: pulumi.Input<boolean | undefined>;
     /**
      * A boolean indicating whether to install the
      * DigitalOcean agent used for providing access to the Droplet web console in
@@ -466,12 +466,12 @@ export interface DropletArgs {
      * being installed, set to `false`. To make installation errors fatal, explicitly
      * set it to `true`.
      */
-    dropletAgent?: pulumi.Input<boolean>;
+    dropletAgent?: pulumi.Input<boolean | undefined>;
     /**
      * A boolean indicating whether the droplet
      * should be gracefully shut down before it is deleted.
      */
-    gracefulShutdown?: pulumi.Input<boolean>;
+    gracefulShutdown?: pulumi.Input<boolean | undefined>;
     /**
      * The Droplet image ID or slug. This could be either image ID or droplet snapshot ID. You can find image IDs and slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images).
      */
@@ -482,28 +482,28 @@ export interface DropletArgs {
      * an existing Droplet, [additional OS-level configuration](https://docs.digitalocean.com/products/networking/ipv6/how-to/enable/#on-existing-droplets)
      * is required.
      */
-    ipv6?: pulumi.Input<boolean>;
+    ipv6?: pulumi.Input<boolean | undefined>;
     /**
      * The IPv6 address
      */
-    ipv6Address?: pulumi.Input<string>;
+    ipv6Address?: pulumi.Input<string | undefined>;
     /**
      * Boolean controlling whether monitoring agent is installed.
      * Defaults to false. If set to `true`, you can configure monitor alert policies
      * [monitor alert resource](https://www.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/monitor_alert)
      */
-    monitoring?: pulumi.Input<boolean>;
+    monitoring?: pulumi.Input<boolean | undefined>;
     /**
      * The Droplet name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * **Deprecated** Boolean controlling if private networking
      * is enabled. This parameter has been deprecated. Use `vpcUuid` instead to specify a VPC network for the Droplet. If no `vpcUuid` is provided, the Droplet will be placed in your account's default VPC for the region.
      *
      * @deprecated This parameter has been deprecated. Use `vpcUuid` instead to specify a VPC network for the Droplet. If no `vpcUuid` is provided, the Droplet will be placed in your account's default VPC for the region.
      */
-    privateNetworking?: pulumi.Input<boolean>;
+    privateNetworking?: pulumi.Input<boolean | undefined>;
     /**
      * A boolean indicating whether to enables public networking for the Droplet or not.
      * By default, this is always enabled on new droplets.
@@ -511,18 +511,18 @@ export interface DropletArgs {
      *
      * > **NOTE:** If you use `volumeIds` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
      */
-    publicNetworking?: pulumi.Input<boolean>;
+    publicNetworking?: pulumi.Input<boolean | undefined>;
     /**
      * The region where the Droplet will be created.
      */
-    region?: pulumi.Input<string | enums.Region>;
+    region?: pulumi.Input<string | enums.Region | undefined>;
     /**
      * Boolean controlling whether to increase the disk
      * size when resizing a Droplet. It defaults to `true`. When set to `false`,
      * only the Droplet's RAM and CPU will be resized. **Increasing a Droplet's disk
      * size is a permanent change**. Increasing only RAM and CPU is reversible.
      */
-    resizeDisk?: pulumi.Input<boolean>;
+    resizeDisk?: pulumi.Input<boolean | undefined>;
     /**
      * The unique slug that identifies the type of Droplet. You may list the available slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Sizes).
      */
@@ -535,21 +535,21 @@ export interface DropletArgs {
      * be added or removed via this provider. Modifying this field will prompt you
      * to destroy and recreate the Droplet.
      */
-    sshKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    sshKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of the tags to be applied to this Droplet.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A string of the desired User Data provided [during Droplet creation](https://docs.digitalocean.com/products/droplets/how-to/provide-user-data/). Changing this forces a new resource to be created.
      */
-    userData?: pulumi.Input<string>;
+    userData?: pulumi.Input<string | undefined>;
     /**
      * A list of the IDs of each [block storage volume](https://www.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/volume) to be attached to the Droplet.
      */
-    volumeIds?: pulumi.Input<pulumi.Input<string>[]>;
+    volumeIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the VPC where the Droplet will be located.
      */
-    vpcUuid?: pulumi.Input<string>;
+    vpcUuid?: pulumi.Input<string | undefined>;
 }

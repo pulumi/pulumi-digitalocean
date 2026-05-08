@@ -170,8 +170,8 @@ def get_sizes(filters: Optional[Sequence[Union['GetSizesFilterArgs', 'GetSizesFi
         id=pulumi.get(__ret__, 'id'),
         sizes=pulumi.get(__ret__, 'sizes'),
         sorts=pulumi.get(__ret__, 'sorts'))
-def get_sizes_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetSizesFilterArgs', 'GetSizesFilterArgsDict']]]]] = None,
-                     sorts: Optional[pulumi.Input[Optional[Sequence[Union['GetSizesSortArgs', 'GetSizesSortArgsDict']]]]] = None,
+def get_sizes_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetSizesFilterArgs', 'GetSizesFilterArgsDict']]]]] = None,
+                     sorts: pulumi.Input[Optional[Optional[Sequence[Union['GetSizesSortArgs', 'GetSizesSortArgsDict']]]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSizesResult]:
     """
     Retrieves information about the Droplet sizes that DigitalOcean supports, with

@@ -107,9 +107,9 @@ def get_gradientai_agent_versions(agent_id: Optional[_builtins.str] = None,
         filters=pulumi.get(__ret__, 'filters'),
         id=pulumi.get(__ret__, 'id'),
         sorts=pulumi.get(__ret__, 'sorts'))
-def get_gradientai_agent_versions_output(agent_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                         filters: Optional[pulumi.Input[Optional[Sequence[Union['GetGradientaiAgentVersionsFilterArgs', 'GetGradientaiAgentVersionsFilterArgsDict']]]]] = None,
-                                         sorts: Optional[pulumi.Input[Optional[Sequence[Union['GetGradientaiAgentVersionsSortArgs', 'GetGradientaiAgentVersionsSortArgsDict']]]]] = None,
+def get_gradientai_agent_versions_output(agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                         filters: pulumi.Input[Optional[Optional[Sequence[Union['GetGradientaiAgentVersionsFilterArgs', 'GetGradientaiAgentVersionsFilterArgsDict']]]]] = None,
+                                         sorts: pulumi.Input[Optional[Optional[Sequence[Union['GetGradientaiAgentVersionsSortArgs', 'GetGradientaiAgentVersionsSortArgsDict']]]]] = None,
                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGradientaiAgentVersionsResult]:
     """
     Use this data source to access information about an existing resource.

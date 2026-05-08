@@ -202,45 +202,45 @@ export interface SpacesBucketState {
     /**
      * Canned ACL applied on bucket creation: `private` or `public-read` (Defaults to `private`)
      */
-    acl?: pulumi.Input<string>;
+    acl?: pulumi.Input<string | undefined>;
     /**
      * The FQDN of the bucket (e.g. bucket-name.nyc3.digitaloceanspaces.com)
      */
-    bucketDomainName?: pulumi.Input<string>;
+    bucketDomainName?: pulumi.Input<string | undefined>;
     /**
      * The uniform resource name for the bucket
      */
-    bucketUrn?: pulumi.Input<string>;
+    bucketUrn?: pulumi.Input<string | undefined>;
     /**
      * A rule of Cross-Origin Resource Sharing (documented below).
      *
      * @deprecated Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean.SpacesBucketCorsConfiguration` instead.
      */
-    corsRules?: pulumi.Input<pulumi.Input<inputs.SpacesBucketCorsRule>[]>;
+    corsRules?: pulumi.Input<pulumi.Input<inputs.SpacesBucketCorsRule>[] | undefined>;
     /**
      * The FQDN of the bucket without the bucket name (e.g. nyc3.digitaloceanspaces.com)
      */
-    endpoint?: pulumi.Input<string>;
+    endpoint?: pulumi.Input<string | undefined>;
     /**
      * Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
      */
-    forceDestroy?: pulumi.Input<boolean>;
+    forceDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * A configuration of object lifecycle management (documented below).
      */
-    lifecycleRules?: pulumi.Input<pulumi.Input<inputs.SpacesBucketLifecycleRule>[]>;
+    lifecycleRules?: pulumi.Input<pulumi.Input<inputs.SpacesBucketLifecycleRule>[] | undefined>;
     /**
      * The name of the bucket
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The region where the bucket resides (Defaults to `nyc3`)
      */
-    region?: pulumi.Input<string | enums.Region>;
+    region?: pulumi.Input<string | enums.Region | undefined>;
     /**
      * A state of versioning (documented below)
      */
-    versioning?: pulumi.Input<inputs.SpacesBucketVersioning>;
+    versioning?: pulumi.Input<inputs.SpacesBucketVersioning | undefined>;
 }
 
 /**
@@ -250,31 +250,31 @@ export interface SpacesBucketArgs {
     /**
      * Canned ACL applied on bucket creation: `private` or `public-read` (Defaults to `private`)
      */
-    acl?: pulumi.Input<string>;
+    acl?: pulumi.Input<string | undefined>;
     /**
      * A rule of Cross-Origin Resource Sharing (documented below).
      *
      * @deprecated Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean.SpacesBucketCorsConfiguration` instead.
      */
-    corsRules?: pulumi.Input<pulumi.Input<inputs.SpacesBucketCorsRule>[]>;
+    corsRules?: pulumi.Input<pulumi.Input<inputs.SpacesBucketCorsRule>[] | undefined>;
     /**
      * Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
      */
-    forceDestroy?: pulumi.Input<boolean>;
+    forceDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * A configuration of object lifecycle management (documented below).
      */
-    lifecycleRules?: pulumi.Input<pulumi.Input<inputs.SpacesBucketLifecycleRule>[]>;
+    lifecycleRules?: pulumi.Input<pulumi.Input<inputs.SpacesBucketLifecycleRule>[] | undefined>;
     /**
      * The name of the bucket
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The region where the bucket resides (Defaults to `nyc3`)
      */
-    region?: pulumi.Input<string | enums.Region>;
+    region?: pulumi.Input<string | enums.Region | undefined>;
     /**
      * A state of versioning (documented below)
      */
-    versioning?: pulumi.Input<inputs.SpacesBucketVersioning>;
+    versioning?: pulumi.Input<inputs.SpacesBucketVersioning | undefined>;
 }

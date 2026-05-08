@@ -37,8 +37,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.digitalocean.ContainerRegistryDockerCredentials;
  * import com.pulumi.digitalocean.ContainerRegistryDockerCredentialsArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -74,8 +74,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.digitalocean.inputs.GetContainerRegistryArgs;
  * import com.pulumi.digitalocean.ContainerRegistryDockerCredentials;
  * import com.pulumi.digitalocean.ContainerRegistryDockerCredentialsArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -118,8 +118,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.digitalocean.inputs.GetKubernetesClusterArgs;
  * import com.pulumi.kubernetes.Secret;
  * import com.pulumi.kubernetes.SecretArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -140,7 +140,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleSecret = new Secret("exampleSecret", SecretArgs.builder()
- *             .metadata(List.of(Map.of("name", "docker-cfg")))
+ *             .metadata(Arrays.asList(Map.of("name", "docker-cfg")))
  *             .data(Map.of(".dockerconfigjson", exampleContainerRegistryDockerCredentials.dockerCredentials()))
  *             .type("kubernetes.io/dockerconfigjson")
  *             .build());

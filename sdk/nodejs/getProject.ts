@@ -116,10 +116,10 @@ export interface GetProjectOutputArgs {
     /**
      * the ID of the project to retrieve
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * the name of the project to retrieve. The data source will raise an error if more than
      * one project has the provided name or if no project has that name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

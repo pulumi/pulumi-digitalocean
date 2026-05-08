@@ -136,54 +136,54 @@ export class PartnerAttachment extends pulumi.CustomResource {
  * Input properties used for looking up and filtering PartnerAttachment resources.
  */
 export interface PartnerAttachmentState {
-    bgp?: pulumi.Input<inputs.PartnerAttachmentBgp>;
+    bgp?: pulumi.Input<inputs.PartnerAttachmentBgp | undefined>;
     /**
      * The children uuids of Partner Attachment
      */
-    childrens?: pulumi.Input<pulumi.Input<string>[]>;
+    childrens?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The connection bandwidth in Mbps
      */
-    connectionBandwidthInMbps?: pulumi.Input<number>;
+    connectionBandwidthInMbps?: pulumi.Input<number | undefined>;
     /**
      * The date and time when the Partner Attachment was created
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The NaaS provider
      */
-    naasProvider?: pulumi.Input<string>;
+    naasProvider?: pulumi.Input<string | undefined>;
     /**
      * The name of the Partner Attachment
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The UUID of the Parent Partner Attachment
      */
-    parentUuid?: pulumi.Input<string>;
+    parentUuid?: pulumi.Input<string | undefined>;
     /**
      * The redundancy zone for the NaaS
      */
-    redundancyZone?: pulumi.Input<string>;
+    redundancyZone?: pulumi.Input<string | undefined>;
     /**
      * The region where the Partner Attachment will be created
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The state of the Partner Attachment
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The list of VPC IDs to attach the Partner Attachment to
      */
-    vpcIds?: pulumi.Input<pulumi.Input<string>[]>;
+    vpcIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
  * The set of arguments for constructing a PartnerAttachment resource.
  */
 export interface PartnerAttachmentArgs {
-    bgp?: pulumi.Input<inputs.PartnerAttachmentBgp>;
+    bgp?: pulumi.Input<inputs.PartnerAttachmentBgp | undefined>;
     /**
      * The connection bandwidth in Mbps
      */
@@ -195,15 +195,15 @@ export interface PartnerAttachmentArgs {
     /**
      * The name of the Partner Attachment
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The UUID of the Parent Partner Attachment
      */
-    parentUuid?: pulumi.Input<string>;
+    parentUuid?: pulumi.Input<string | undefined>;
     /**
      * The redundancy zone for the NaaS
      */
-    redundancyZone?: pulumi.Input<string>;
+    redundancyZone?: pulumi.Input<string | undefined>;
     /**
      * The region where the Partner Attachment will be created
      */

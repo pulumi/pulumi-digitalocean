@@ -210,8 +210,8 @@ def get_record(domain: Optional[_builtins.str] = None,
         ttl=pulumi.get(__ret__, 'ttl'),
         type=pulumi.get(__ret__, 'type'),
         weight=pulumi.get(__ret__, 'weight'))
-def get_record_output(domain: Optional[pulumi.Input[_builtins.str]] = None,
-                      name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_record_output(domain: pulumi.Input[Optional[_builtins.str]] = None,
+                      name: pulumi.Input[Optional[_builtins.str]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRecordResult]:
     """
     Get information on a DNS record. This data source provides the name, TTL, and zone

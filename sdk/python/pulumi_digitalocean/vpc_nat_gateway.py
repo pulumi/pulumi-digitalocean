@@ -25,11 +25,11 @@ class VpcNatGatewayArgs:
                  size: pulumi.Input[_builtins.int],
                  type: pulumi.Input[_builtins.str],
                  vpcs: pulumi.Input[Sequence[pulumi.Input['VpcNatGatewayVpcArgs']]],
-                 icmp_timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tcp_timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 udp_timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None):
+                 icmp_timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tcp_timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 udp_timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a VpcNatGateway resource.
 
@@ -110,81 +110,81 @@ class VpcNatGatewayArgs:
 
     @_builtins.property
     @pulumi.getter(name="icmpTimeoutSeconds")
-    def icmp_timeout_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def icmp_timeout_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The egress timeout value for ICMP connections of the VPC NAT Gateway.
         """
         return pulumi.get(self, "icmp_timeout_seconds")
 
     @icmp_timeout_seconds.setter
-    def icmp_timeout_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def icmp_timeout_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "icmp_timeout_seconds", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the VPC NAT Gateway.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the project to which the VPC NAT Gateway will be assigned.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="tcpTimeoutSeconds")
-    def tcp_timeout_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def tcp_timeout_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The egress timeout value for TCP connections of the VPC NAT Gateway.
         """
         return pulumi.get(self, "tcp_timeout_seconds")
 
     @tcp_timeout_seconds.setter
-    def tcp_timeout_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def tcp_timeout_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "tcp_timeout_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="udpTimeoutSeconds")
-    def udp_timeout_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def udp_timeout_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The egress timeout value for UDP connections of the VPC NAT Gateway.
         """
         return pulumi.get(self, "udp_timeout_seconds")
 
     @udp_timeout_seconds.setter
-    def udp_timeout_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def udp_timeout_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "udp_timeout_seconds", value)
 
 
 @pulumi.input_type
 class _VpcNatGatewayState:
     def __init__(__self__, *,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 egresses: Optional[pulumi.Input[Sequence[pulumi.Input['VpcNatGatewayEgressArgs']]]] = None,
-                 icmp_timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 size: Optional[pulumi.Input[_builtins.int]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 tcp_timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 udp_timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpcs: Optional[pulumi.Input[Sequence[pulumi.Input['VpcNatGatewayVpcArgs']]]] = None):
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 egresses: pulumi.Input[Optional[Sequence[pulumi.Input['VpcNatGatewayEgressArgs']]]] = None,
+                 icmp_timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 size: pulumi.Input[Optional[_builtins.int]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 tcp_timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 udp_timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpcs: pulumi.Input[Optional[Sequence[pulumi.Input['VpcNatGatewayVpcArgs']]]] = None):
         """
         Input properties used for looking up and filtering VpcNatGateway resources.
 
@@ -233,19 +233,19 @@ class _VpcNatGatewayState:
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Created at timestamp for the VPC NAT Gateway.
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def egresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VpcNatGatewayEgressArgs']]]]:
+    def egresses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VpcNatGatewayEgressArgs']]]]:
         """
         Embeds the list of public egresses assigned to the VPC NAT Gateway: resolves as list of
         `public_gateways` embedding the reserved `ipv4` addresses.
@@ -253,132 +253,132 @@ class _VpcNatGatewayState:
         return pulumi.get(self, "egresses")
 
     @egresses.setter
-    def egresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VpcNatGatewayEgressArgs']]]]):
+    def egresses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VpcNatGatewayEgressArgs']]]]):
         pulumi.set(self, "egresses", value)
 
     @_builtins.property
     @pulumi.getter(name="icmpTimeoutSeconds")
-    def icmp_timeout_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def icmp_timeout_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The egress timeout value for ICMP connections of the VPC NAT Gateway.
         """
         return pulumi.get(self, "icmp_timeout_seconds")
 
     @icmp_timeout_seconds.setter
-    def icmp_timeout_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def icmp_timeout_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "icmp_timeout_seconds", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the VPC NAT Gateway.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the project to which the VPC NAT Gateway will be assigned.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region for the VPC NAT Gateway.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The size of the VPC NAT Gateway.
         """
         return pulumi.get(self, "size")
 
     @size.setter
-    def size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "size", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         State of the VPC NAT Gateway
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="tcpTimeoutSeconds")
-    def tcp_timeout_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def tcp_timeout_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The egress timeout value for TCP connections of the VPC NAT Gateway.
         """
         return pulumi.get(self, "tcp_timeout_seconds")
 
     @tcp_timeout_seconds.setter
-    def tcp_timeout_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def tcp_timeout_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "tcp_timeout_seconds", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the VPC NAT Gateway.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter(name="udpTimeoutSeconds")
-    def udp_timeout_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def udp_timeout_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The egress timeout value for UDP connections of the VPC NAT Gateway.
         """
         return pulumi.get(self, "udp_timeout_seconds")
 
     @udp_timeout_seconds.setter
-    def udp_timeout_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def udp_timeout_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "udp_timeout_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Updated at timestamp for the VPC NAT Gateway.
         """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def vpcs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VpcNatGatewayVpcArgs']]]]:
+    def vpcs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VpcNatGatewayVpcArgs']]]]:
         """
         The ingress VPC configuration of the VPC NAT Gateway, the supported arguments are
         documented below.
@@ -386,7 +386,7 @@ class _VpcNatGatewayState:
         return pulumi.get(self, "vpcs")
 
     @vpcs.setter
-    def vpcs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VpcNatGatewayVpcArgs']]]]):
+    def vpcs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VpcNatGatewayVpcArgs']]]]):
         pulumi.set(self, "vpcs", value)
 
 
@@ -396,15 +396,15 @@ class VpcNatGateway(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 icmp_timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 size: Optional[pulumi.Input[_builtins.int]] = None,
-                 tcp_timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 udp_timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 vpcs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VpcNatGatewayVpcArgs', 'VpcNatGatewayVpcArgsDict']]]]] = None,
+                 icmp_timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 size: pulumi.Input[Optional[_builtins.int]] = None,
+                 tcp_timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 udp_timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 vpcs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VpcNatGatewayVpcArgs', 'VpcNatGatewayVpcArgsDict']]]]] = None,
                  __props__=None):
         """
         Provides a DigitalOcean VPC NAT Gateway resource. This can be used to create, modify,
@@ -514,15 +514,15 @@ class VpcNatGateway(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 icmp_timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 size: Optional[pulumi.Input[_builtins.int]] = None,
-                 tcp_timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 udp_timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 vpcs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VpcNatGatewayVpcArgs', 'VpcNatGatewayVpcArgsDict']]]]] = None,
+                 icmp_timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 size: pulumi.Input[Optional[_builtins.int]] = None,
+                 tcp_timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 udp_timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 vpcs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VpcNatGatewayVpcArgs', 'VpcNatGatewayVpcArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -563,19 +563,19 @@ class VpcNatGateway(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            egresses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VpcNatGatewayEgressArgs', 'VpcNatGatewayEgressArgsDict']]]]] = None,
-            icmp_timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            size: Optional[pulumi.Input[_builtins.int]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            tcp_timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None,
-            udp_timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-            updated_at: Optional[pulumi.Input[_builtins.str]] = None,
-            vpcs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VpcNatGatewayVpcArgs', 'VpcNatGatewayVpcArgsDict']]]]] = None) -> 'VpcNatGateway':
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            egresses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VpcNatGatewayEgressArgs', 'VpcNatGatewayEgressArgsDict']]]]] = None,
+            icmp_timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            size: pulumi.Input[Optional[_builtins.int]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            tcp_timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            udp_timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+            vpcs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VpcNatGatewayVpcArgs', 'VpcNatGatewayVpcArgsDict']]]]] = None) -> 'VpcNatGateway':
         """
         Get an existing VpcNatGateway resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

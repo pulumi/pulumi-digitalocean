@@ -165,9 +165,9 @@ def get_droplets(filters: Optional[Sequence[Union['GetDropletsFilterArgs', 'GetD
         gpus=pulumi.get(__ret__, 'gpus'),
         id=pulumi.get(__ret__, 'id'),
         sorts=pulumi.get(__ret__, 'sorts'))
-def get_droplets_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetDropletsFilterArgs', 'GetDropletsFilterArgsDict']]]]] = None,
-                        gpus: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                        sorts: Optional[pulumi.Input[Optional[Sequence[Union['GetDropletsSortArgs', 'GetDropletsSortArgsDict']]]]] = None,
+def get_droplets_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetDropletsFilterArgs', 'GetDropletsFilterArgsDict']]]]] = None,
+                        gpus: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                        sorts: pulumi.Input[Optional[Optional[Sequence[Union['GetDropletsSortArgs', 'GetDropletsSortArgsDict']]]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDropletsResult]:
     """
     Get information on Droplets for use in other resources, with the ability to filter and sort the results.

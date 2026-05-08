@@ -152,15 +152,15 @@ export interface SpacesBucketCorsConfigurationState {
     /**
      * The name of the bucket to which to apply the CORS configuration.
      */
-    bucket?: pulumi.Input<string>;
+    bucket?: pulumi.Input<string | undefined>;
     /**
      * Set of origins and methods (cross-origin access that you want to allow). See below. You can configure up to 100 rules.
      */
-    corsRules?: pulumi.Input<pulumi.Input<inputs.SpacesBucketCorsConfigurationCorsRule>[]>;
+    corsRules?: pulumi.Input<pulumi.Input<inputs.SpacesBucketCorsConfigurationCorsRule>[] | undefined>;
     /**
      * The region where the bucket resides.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }
 
 /**

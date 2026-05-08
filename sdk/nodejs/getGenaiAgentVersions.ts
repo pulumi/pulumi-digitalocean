@@ -56,6 +56,6 @@ export function getGenaiAgentVersionsOutput(args: GetGenaiAgentVersionsOutputArg
  */
 export interface GetGenaiAgentVersionsOutputArgs {
     agentId: pulumi.Input<string>;
-    filters?: pulumi.Input<pulumi.Input<inputs.GetGenaiAgentVersionsFilterArgs>[]>;
-    sorts?: pulumi.Input<pulumi.Input<inputs.GetGenaiAgentVersionsSortArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetGenaiAgentVersionsFilterArgs>[] | undefined>;
+    sorts?: pulumi.Input<pulumi.Input<inputs.GetGenaiAgentVersionsSortArgs>[] | undefined>;
 }

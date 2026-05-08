@@ -22,13 +22,13 @@ class VolumeArgs:
     def __init__(__self__, *,
                  region: pulumi.Input[Union[_builtins.str, 'Region']],
                  size: pulumi.Input[_builtins.int],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 filesystem_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 initial_filesystem_label: Optional[pulumi.Input[_builtins.str]] = None,
-                 initial_filesystem_type: Optional[pulumi.Input[Union[_builtins.str, 'FileSystemType']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 snapshot_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 filesystem_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 initial_filesystem_label: pulumi.Input[Optional[_builtins.str]] = None,
+                 initial_filesystem_type: pulumi.Input[Optional[Union[_builtins.str, 'FileSystemType']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Volume resource.
 
@@ -88,105 +88,105 @@ class VolumeArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A free-form text field up to a limit of 1024 bytes to describe a block storage volume.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="filesystemType")
     @_utilities.deprecated("""This fields functionality has been replaced by `initial_filesystem_type`. The property will still remain as a computed attribute representing the current volumes filesystem type.""")
-    def filesystem_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def filesystem_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Filesystem type (`xfs` or `ext4`) for the block storage volume.
         """
         return pulumi.get(self, "filesystem_type")
 
     @filesystem_type.setter
-    def filesystem_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def filesystem_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filesystem_type", value)
 
     @_builtins.property
     @pulumi.getter(name="initialFilesystemLabel")
-    def initial_filesystem_label(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def initial_filesystem_label(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Initial filesystem label for the block storage volume.
         """
         return pulumi.get(self, "initial_filesystem_label")
 
     @initial_filesystem_label.setter
-    def initial_filesystem_label(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def initial_filesystem_label(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "initial_filesystem_label", value)
 
     @_builtins.property
     @pulumi.getter(name="initialFilesystemType")
-    def initial_filesystem_type(self) -> Optional[pulumi.Input[Union[_builtins.str, 'FileSystemType']]]:
+    def initial_filesystem_type(self) -> pulumi.Input[Optional[Union[_builtins.str, 'FileSystemType']]]:
         """
         Initial filesystem type (`xfs` or `ext4`) for the block storage volume.
         """
         return pulumi.get(self, "initial_filesystem_type")
 
     @initial_filesystem_type.setter
-    def initial_filesystem_type(self, value: Optional[pulumi.Input[Union[_builtins.str, 'FileSystemType']]]):
+    def initial_filesystem_type(self, value: pulumi.Input[Optional[Union[_builtins.str, 'FileSystemType']]]):
         pulumi.set(self, "initial_filesystem_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters. The name must begin with a letter.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="snapshotId")
-    def snapshot_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def snapshot_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limited on creation to that of the referenced snapshot
         """
         return pulumi.get(self, "snapshot_id")
 
     @snapshot_id.setter
-    def snapshot_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def snapshot_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "snapshot_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of the tags to be applied to this Volume.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _VolumeState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 droplet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 filesystem_label: Optional[pulumi.Input[_builtins.str]] = None,
-                 filesystem_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 initial_filesystem_label: Optional[pulumi.Input[_builtins.str]] = None,
-                 initial_filesystem_type: Optional[pulumi.Input[Union[_builtins.str, 'FileSystemType']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[Union[_builtins.str, 'Region']]] = None,
-                 size: Optional[pulumi.Input[_builtins.int]] = None,
-                 snapshot_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 volume_urn: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 droplet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 filesystem_label: pulumi.Input[Optional[_builtins.str]] = None,
+                 filesystem_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 initial_filesystem_label: pulumi.Input[Optional[_builtins.str]] = None,
+                 initial_filesystem_type: pulumi.Input[Optional[Union[_builtins.str, 'FileSystemType']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[Union[_builtins.str, 'Region']]] = None,
+                 size: pulumi.Input[Optional[_builtins.int]] = None,
+                 snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 volume_urn: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Volume resources.
 
@@ -233,147 +233,147 @@ class _VolumeState:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A free-form text field up to a limit of 1024 bytes to describe a block storage volume.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="dropletIds")
-    def droplet_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+    def droplet_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
         """
         A list of associated droplet ids.
         """
         return pulumi.get(self, "droplet_ids")
 
     @droplet_ids.setter
-    def droplet_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+    def droplet_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "droplet_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="filesystemLabel")
-    def filesystem_label(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def filesystem_label(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Filesystem label for the block storage volume.
         """
         return pulumi.get(self, "filesystem_label")
 
     @filesystem_label.setter
-    def filesystem_label(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def filesystem_label(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filesystem_label", value)
 
     @_builtins.property
     @pulumi.getter(name="filesystemType")
     @_utilities.deprecated("""This fields functionality has been replaced by `initial_filesystem_type`. The property will still remain as a computed attribute representing the current volumes filesystem type.""")
-    def filesystem_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def filesystem_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Filesystem type (`xfs` or `ext4`) for the block storage volume.
         """
         return pulumi.get(self, "filesystem_type")
 
     @filesystem_type.setter
-    def filesystem_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def filesystem_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filesystem_type", value)
 
     @_builtins.property
     @pulumi.getter(name="initialFilesystemLabel")
-    def initial_filesystem_label(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def initial_filesystem_label(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Initial filesystem label for the block storage volume.
         """
         return pulumi.get(self, "initial_filesystem_label")
 
     @initial_filesystem_label.setter
-    def initial_filesystem_label(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def initial_filesystem_label(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "initial_filesystem_label", value)
 
     @_builtins.property
     @pulumi.getter(name="initialFilesystemType")
-    def initial_filesystem_type(self) -> Optional[pulumi.Input[Union[_builtins.str, 'FileSystemType']]]:
+    def initial_filesystem_type(self) -> pulumi.Input[Optional[Union[_builtins.str, 'FileSystemType']]]:
         """
         Initial filesystem type (`xfs` or `ext4`) for the block storage volume.
         """
         return pulumi.get(self, "initial_filesystem_type")
 
     @initial_filesystem_type.setter
-    def initial_filesystem_type(self, value: Optional[pulumi.Input[Union[_builtins.str, 'FileSystemType']]]):
+    def initial_filesystem_type(self, value: pulumi.Input[Optional[Union[_builtins.str, 'FileSystemType']]]):
         pulumi.set(self, "initial_filesystem_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters. The name must begin with a letter.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[Union[_builtins.str, 'Region']]]:
+    def region(self) -> pulumi.Input[Optional[Union[_builtins.str, 'Region']]]:
         """
         The region that the block storage volume will be created in.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[Union[_builtins.str, 'Region']]]):
+    def region(self, value: pulumi.Input[Optional[Union[_builtins.str, 'Region']]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The size of the block storage volume in GiB. If updated, can only be expanded.
         """
         return pulumi.get(self, "size")
 
     @size.setter
-    def size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "size", value)
 
     @_builtins.property
     @pulumi.getter(name="snapshotId")
-    def snapshot_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def snapshot_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limited on creation to that of the referenced snapshot
         """
         return pulumi.get(self, "snapshot_id")
 
     @snapshot_id.setter
-    def snapshot_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def snapshot_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "snapshot_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of the tags to be applied to this Volume.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="volumeUrn")
-    def volume_urn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def volume_urn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The uniform resource name for the volume.
         """
         return pulumi.get(self, "volume_urn")
 
     @volume_urn.setter
-    def volume_urn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def volume_urn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "volume_urn", value)
 
 
@@ -383,15 +383,15 @@ class Volume(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 filesystem_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 initial_filesystem_label: Optional[pulumi.Input[_builtins.str]] = None,
-                 initial_filesystem_type: Optional[pulumi.Input[Union[_builtins.str, 'FileSystemType']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[Union[_builtins.str, 'Region']]] = None,
-                 size: Optional[pulumi.Input[_builtins.int]] = None,
-                 snapshot_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 filesystem_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 initial_filesystem_label: pulumi.Input[Optional[_builtins.str]] = None,
+                 initial_filesystem_type: pulumi.Input[Optional[Union[_builtins.str, 'FileSystemType']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[Union[_builtins.str, 'Region']]] = None,
+                 size: pulumi.Input[Optional[_builtins.int]] = None,
+                 snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a DigitalOcean Block Storage volume which can be attached to a Droplet in order to provide expanded storage.
@@ -414,7 +414,7 @@ class Volume(pulumi.CustomResource):
             image="ubuntu-18-04-x64",
             region=digitalocean.Region.NYC1)
         foobar_volume_attachment = digitalocean.VolumeAttachment("foobar",
-            droplet_id=foobar_droplet.id,
+            droplet_id=foobar_droplet.id.apply(lambda x: int(x)),
             volume_id=foobar.id)
         ```
 
@@ -480,7 +480,7 @@ class Volume(pulumi.CustomResource):
             image="ubuntu-18-04-x64",
             region=digitalocean.Region.NYC1)
         foobar_volume_attachment = digitalocean.VolumeAttachment("foobar",
-            droplet_id=foobar_droplet.id,
+            droplet_id=foobar_droplet.id.apply(lambda x: int(x)),
             volume_id=foobar.id)
         ```
 
@@ -522,15 +522,15 @@ class Volume(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 filesystem_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 initial_filesystem_label: Optional[pulumi.Input[_builtins.str]] = None,
-                 initial_filesystem_type: Optional[pulumi.Input[Union[_builtins.str, 'FileSystemType']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[Union[_builtins.str, 'Region']]] = None,
-                 size: Optional[pulumi.Input[_builtins.int]] = None,
-                 snapshot_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 filesystem_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 initial_filesystem_label: pulumi.Input[Optional[_builtins.str]] = None,
+                 initial_filesystem_type: pulumi.Input[Optional[Union[_builtins.str, 'FileSystemType']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[Union[_builtins.str, 'Region']]] = None,
+                 size: pulumi.Input[Optional[_builtins.int]] = None,
+                 snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -566,18 +566,18 @@ class Volume(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            droplet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-            filesystem_label: Optional[pulumi.Input[_builtins.str]] = None,
-            filesystem_type: Optional[pulumi.Input[_builtins.str]] = None,
-            initial_filesystem_label: Optional[pulumi.Input[_builtins.str]] = None,
-            initial_filesystem_type: Optional[pulumi.Input[Union[_builtins.str, 'FileSystemType']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[Union[_builtins.str, 'Region']]] = None,
-            size: Optional[pulumi.Input[_builtins.int]] = None,
-            snapshot_id: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            volume_urn: Optional[pulumi.Input[_builtins.str]] = None) -> 'Volume':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            droplet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+            filesystem_label: pulumi.Input[Optional[_builtins.str]] = None,
+            filesystem_type: pulumi.Input[Optional[_builtins.str]] = None,
+            initial_filesystem_label: pulumi.Input[Optional[_builtins.str]] = None,
+            initial_filesystem_type: pulumi.Input[Optional[Union[_builtins.str, 'FileSystemType']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[Union[_builtins.str, 'Region']]] = None,
+            size: pulumi.Input[Optional[_builtins.int]] = None,
+            snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            volume_urn: pulumi.Input[Optional[_builtins.str]] = None) -> 'Volume':
         """
         Get an existing Volume resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

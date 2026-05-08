@@ -24,7 +24,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foo = new DigitalOcean.Index.KubernetesCluster("foo", new()
+    ///     var foo = new DigitalOcean.KubernetesCluster("foo", new()
     ///     {
     ///         Name = "foo",
     ///         Region = DigitalOcean.Region.NYC1,
@@ -37,7 +37,7 @@ namespace Pulumi.DigitalOcean
     ///         },
     ///     });
     /// 
-    ///     var bar = new DigitalOcean.Index.KubernetesNodePool("bar", new()
+    ///     var bar = new DigitalOcean.KubernetesNodePool("bar", new()
     ///     {
     ///         ClusterId = foo.Id,
     ///         Name = "backend-pool",
@@ -79,7 +79,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var autoscale_pool_01 = new DigitalOcean.Index.KubernetesNodePool("autoscale-pool-01", new()
+    ///     var autoscale_pool_01 = new DigitalOcean.KubernetesNodePool("autoscale-pool-01", new()
     ///     {
     ///         ClusterId = foo.Id,
     ///         Name = "autoscale-pool-01",

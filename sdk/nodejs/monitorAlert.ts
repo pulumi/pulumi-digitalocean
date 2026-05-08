@@ -175,28 +175,28 @@ export interface MonitorAlertState {
      * Note that for Slack, the DigitalOcean app needs to have permissions for your workspace. You can
      * read more in [Slack's documentation](https://slack.com/intl/en-dk/help/articles/222386767-Manage-app-installation-settings-for-your-workspace)
      */
-    alerts?: pulumi.Input<inputs.MonitorAlertAlerts>;
+    alerts?: pulumi.Input<inputs.MonitorAlertAlerts | undefined>;
     /**
      * The comparison for `value`.
      * This may be either `GreaterThan` or `LessThan`.
      */
-    compare?: pulumi.Input<string>;
+    compare?: pulumi.Input<string | undefined>;
     /**
      * The description of the alert.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The status of the alert.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * A list of IDs for the resources to which the alert policy applies.
      */
-    entities?: pulumi.Input<pulumi.Input<string>[]>;
+    entities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of tags. When an included tag is added to a resource, the alert policy will apply to it.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The type of the alert.
      * This may be one of `v1/insights/droplet/load_1`, `v1/insights/droplet/load_5`, `v1/insights/droplet/load_15`,
@@ -213,20 +213,20 @@ export interface MonitorAlertState {
      * `v1/dbaas/alerts/load_15_alerts`, `v1/dbaas/alerts/cpu_alerts`, `v1/dbaas/alerts/memory_utilization_alerts`, or
      * `v1/dbaas/alerts/disk_utilization_alerts`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * The uuid of the alert.
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
     /**
      * The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number.
      * DigitalOcean will show the correct unit in the web panel.
      */
-    value?: pulumi.Input<number>;
+    value?: pulumi.Input<number | undefined>;
     /**
      * The time frame of the alert. Either `5m`, `10m`, `30m`, or `1h`.
      */
-    window?: pulumi.Input<string>;
+    window?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -251,15 +251,15 @@ export interface MonitorAlertArgs {
     /**
      * The status of the alert.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * A list of IDs for the resources to which the alert policy applies.
      */
-    entities?: pulumi.Input<pulumi.Input<string>[]>;
+    entities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of tags. When an included tag is added to a resource, the alert policy will apply to it.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The type of the alert.
      * This may be one of `v1/insights/droplet/load_1`, `v1/insights/droplet/load_5`, `v1/insights/droplet/load_15`,

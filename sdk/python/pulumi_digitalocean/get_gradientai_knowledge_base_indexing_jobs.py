@@ -92,7 +92,7 @@ def get_gradientai_knowledge_base_indexing_jobs(knowledge_base_uuid: Optional[_b
         jobs=pulumi.get(__ret__, 'jobs'),
         knowledge_base_uuid=pulumi.get(__ret__, 'knowledge_base_uuid'),
         metas=pulumi.get(__ret__, 'metas'))
-def get_gradientai_knowledge_base_indexing_jobs_output(knowledge_base_uuid: Optional[pulumi.Input[_builtins.str]] = None,
+def get_gradientai_knowledge_base_indexing_jobs_output(knowledge_base_uuid: pulumi.Input[Optional[_builtins.str]] = None,
                                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGradientaiKnowledgeBaseIndexingJobsResult]:
     """
     Use this data source to access information about an existing resource.

@@ -49,6 +49,6 @@ export function getGradientaiOpenaiApiKeysOutput(args?: GetGradientaiOpenaiApiKe
  * A collection of arguments for invoking getGradientaiOpenaiApiKeys.
  */
 export interface GetGradientaiOpenaiApiKeysOutputArgs {
-    filters?: pulumi.Input<pulumi.Input<inputs.GetGradientaiOpenaiApiKeysFilterArgs>[]>;
-    sorts?: pulumi.Input<pulumi.Input<inputs.GetGradientaiOpenaiApiKeysSortArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetGradientaiOpenaiApiKeysFilterArgs>[] | undefined>;
+    sorts?: pulumi.Input<pulumi.Input<inputs.GetGradientaiOpenaiApiKeysSortArgs>[] | undefined>;
 }

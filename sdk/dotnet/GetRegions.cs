@@ -32,7 +32,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var available = DigitalOcean.Index.GetRegions.Invoke(new()
+        ///     var available = DigitalOcean.GetRegions.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -60,7 +60,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var available = DigitalOcean.Index.GetRegions.Invoke(new()
+        ///     var available = DigitalOcean.GetRegions.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -118,7 +118,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var available = DigitalOcean.Index.GetRegions.Invoke(new()
+        ///     var available = DigitalOcean.GetRegions.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -146,7 +146,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var available = DigitalOcean.Index.GetRegions.Invoke(new()
+        ///     var available = DigitalOcean.GetRegions.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -204,7 +204,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var available = DigitalOcean.Index.GetRegions.Invoke(new()
+        ///     var available = DigitalOcean.GetRegions.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -232,7 +232,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var available = DigitalOcean.Index.GetRegions.Invoke(new()
+        ///     var available = DigitalOcean.GetRegions.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {

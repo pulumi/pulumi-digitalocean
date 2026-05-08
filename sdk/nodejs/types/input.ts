@@ -10,65 +10,65 @@ export interface AppDedicatedIp {
     /**
      * The ID of the app.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The IP address of the dedicated egress IP.
      */
-    ip?: pulumi.Input<string>;
+    ip?: pulumi.Input<string | undefined>;
     /**
      * The status of the dedicated egress IP: 'UNKNOWN', 'ASSIGNING', 'ASSIGNED', or 'REMOVED'
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 export interface AppSpec {
     /**
      * Describes an alert policy for the component.
      */
-    alerts?: pulumi.Input<pulumi.Input<inputs.AppSpecAlert>[]>;
-    databases?: pulumi.Input<pulumi.Input<inputs.AppSpecDatabase>[]>;
+    alerts?: pulumi.Input<pulumi.Input<inputs.AppSpecAlert>[] | undefined>;
+    databases?: pulumi.Input<pulumi.Input<inputs.AppSpecDatabase>[] | undefined>;
     /**
      * A boolean indicating whether to disable the edge cache for this app. Default: `false`. Available only for non-static sites. Requires custom domains and applies to all the domains of the app.
      */
-    disableEdgeCache?: pulumi.Input<boolean>;
+    disableEdgeCache?: pulumi.Input<boolean | undefined>;
     /**
      * A boolean indicating whether to disable email obfuscation for this app. Default: `false`. Requires custom domains and applies to all the domains of the app.
      */
-    disableEmailObfuscation?: pulumi.Input<boolean>;
+    disableEmailObfuscation?: pulumi.Input<boolean | undefined>;
     /**
      * Describes a domain where the application will be made available.
      */
-    domainNames?: pulumi.Input<pulumi.Input<inputs.AppSpecDomainName>[]>;
+    domainNames?: pulumi.Input<pulumi.Input<inputs.AppSpecDomainName>[] | undefined>;
     /**
      * @deprecated This attribute has been replaced by `domain` which supports additional functionality.
      */
-    domains?: pulumi.Input<pulumi.Input<string>[]>;
+    domains?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Specification for app egress configurations.
      */
-    egresses?: pulumi.Input<pulumi.Input<inputs.AppSpecEgress>[]>;
+    egresses?: pulumi.Input<pulumi.Input<inputs.AppSpecEgress>[] | undefined>;
     /**
      * A boolean, when set to `true`, enables enhanced analyzing of incoming traffic to prevent layer 7 DDoS attacks. Default: `false`. Requires custom domains and applies to all the domains of the app.
      */
-    enhancedThreatControlEnabled?: pulumi.Input<boolean>;
+    enhancedThreatControlEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Describes an environment variable made available to an app competent.
      */
-    envs?: pulumi.Input<pulumi.Input<inputs.AppSpecEnv>[]>;
+    envs?: pulumi.Input<pulumi.Input<inputs.AppSpecEnv>[] | undefined>;
     /**
      * A list of the features applied to the app. The default buildpack can be overridden here. List of available buildpacks can be found using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/reference/apps/list-buildpacks/)
      */
-    features?: pulumi.Input<pulumi.Input<string>[]>;
-    functions?: pulumi.Input<pulumi.Input<inputs.AppSpecFunction>[]>;
+    features?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    functions?: pulumi.Input<pulumi.Input<inputs.AppSpecFunction>[] | undefined>;
     /**
      * Specification for component routing, rewrites, and redirects.
      */
-    ingress?: pulumi.Input<inputs.AppSpecIngress>;
-    jobs?: pulumi.Input<pulumi.Input<inputs.AppSpecJob>[]>;
+    ingress?: pulumi.Input<inputs.AppSpecIngress | undefined>;
+    jobs?: pulumi.Input<pulumi.Input<inputs.AppSpecJob>[] | undefined>;
     /**
      * Specification to configure maintenance settings for the app, such as maintenance mode and archiving the app.
      */
-    maintenance?: pulumi.Input<inputs.AppSpecMaintenance>;
+    maintenance?: pulumi.Input<inputs.AppSpecMaintenance | undefined>;
     /**
      * The name of the component.
      */
@@ -76,25 +76,25 @@ export interface AppSpec {
     /**
      * The slug for the DigitalOcean data center region hosting the app.
      */
-    region?: pulumi.Input<string>;
-    services?: pulumi.Input<pulumi.Input<inputs.AppSpecService>[]>;
-    staticSites?: pulumi.Input<pulumi.Input<inputs.AppSpecStaticSite>[]>;
+    region?: pulumi.Input<string | undefined>;
+    services?: pulumi.Input<pulumi.Input<inputs.AppSpecService>[] | undefined>;
+    staticSites?: pulumi.Input<pulumi.Input<inputs.AppSpecStaticSite>[] | undefined>;
     /**
      * Specification for VPC.
      */
-    vpcs?: pulumi.Input<pulumi.Input<inputs.AppSpecVpc>[]>;
-    workers?: pulumi.Input<pulumi.Input<inputs.AppSpecWorker>[]>;
+    vpcs?: pulumi.Input<pulumi.Input<inputs.AppSpecVpc>[] | undefined>;
+    workers?: pulumi.Input<pulumi.Input<inputs.AppSpecWorker>[] | undefined>;
 }
 
 export interface AppSpecAlert {
     /**
      * Specification for alert destination.
      */
-    destinations?: pulumi.Input<inputs.AppSpecAlertDestinations>;
+    destinations?: pulumi.Input<inputs.AppSpecAlertDestinations | undefined>;
     /**
      * Determines whether or not the alert is disabled (default: `false`).
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
      */
@@ -105,11 +105,11 @@ export interface AppSpecAlertDestinations {
     /**
      * Determines which emails receive alerts. The emails must be team members. If not set, the team's email is used by default.
      */
-    emails?: pulumi.Input<pulumi.Input<string>[]>;
+    emails?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Determines which slack channels or users receive alerts.
      */
-    slackWebhooks?: pulumi.Input<pulumi.Input<inputs.AppSpecAlertDestinationsSlackWebhook>[]>;
+    slackWebhooks?: pulumi.Input<pulumi.Input<inputs.AppSpecAlertDestinationsSlackWebhook>[] | undefined>;
 }
 
 export interface AppSpecAlertDestinationsSlackWebhook {
@@ -127,33 +127,33 @@ export interface AppSpecDatabase {
     /**
      * The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
      */
-    clusterName?: pulumi.Input<string>;
+    clusterName?: pulumi.Input<string | undefined>;
     /**
      * The name of the MySQL or PostgreSQL database to configure.
      */
-    dbName?: pulumi.Input<string>;
+    dbName?: pulumi.Input<string | undefined>;
     /**
      * The name of the MySQL or PostgreSQL user to configure.
      *
      * This resource supports customized create timeouts. The default timeout is 30 minutes.
      */
-    dbUser?: pulumi.Input<string>;
+    dbUser?: pulumi.Input<string | undefined>;
     /**
      * The database engine to use (`MYSQL`, `PG`, `REDIS`, `MONGODB`, `KAFKA`, or `OPENSEARCH`).
      */
-    engine?: pulumi.Input<string>;
+    engine?: pulumi.Input<string | undefined>;
     /**
      * The name of the component.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Whether this is a production or dev database.
      */
-    production?: pulumi.Input<boolean>;
+    production?: pulumi.Input<boolean | undefined>;
     /**
      * The version of the database engine.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }
 
 export interface AppSpecDomainName {
@@ -167,78 +167,78 @@ export interface AppSpecDomainName {
      * - `PRIMARY`: The primary domain for this app that is displayed as the default in the control panel, used in bindable environment variables, and any other places that reference an app's live URL. Only one domain may be set as primary.
      * - `ALIAS`: A non-primary domain.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * A boolean indicating whether the domain includes all sub-domains, in addition to the given domain.
      */
-    wildcard?: pulumi.Input<boolean>;
+    wildcard?: pulumi.Input<boolean | undefined>;
     /**
      * If the domain uses DigitalOcean DNS and you would like App Platform to automatically manage it for you, set this to the name of the domain on your account.
      */
-    zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string | undefined>;
 }
 
 export interface AppSpecEgress {
     /**
      * The app egress type: `AUTOASSIGN`, `DEDICATED_IP`
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 export interface AppSpecEnv {
     /**
      * The name of the environment variable.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
      */
-    scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string | undefined>;
     /**
      * The type of the environment variable, `GENERAL` or `SECRET`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * The value of the environment variable.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface AppSpecFunction {
     /**
      * Describes an alert policy for the component.
      */
-    alerts?: pulumi.Input<pulumi.Input<inputs.AppSpecFunctionAlert>[]>;
+    alerts?: pulumi.Input<pulumi.Input<inputs.AppSpecFunctionAlert>[] | undefined>;
     /**
      * A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
      */
-    bitbucket?: pulumi.Input<inputs.AppSpecFunctionBitbucket>;
+    bitbucket?: pulumi.Input<inputs.AppSpecFunctionBitbucket | undefined>;
     /**
      * The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
      *
      * @deprecated Service level CORS rules are deprecated in favor of ingresses
      */
-    cors?: pulumi.Input<inputs.AppSpecFunctionCors>;
+    cors?: pulumi.Input<inputs.AppSpecFunctionCors | undefined>;
     /**
      * Describes an environment variable made available to an app competent.
      */
-    envs?: pulumi.Input<pulumi.Input<inputs.AppSpecFunctionEnv>[]>;
+    envs?: pulumi.Input<pulumi.Input<inputs.AppSpecFunctionEnv>[] | undefined>;
     /**
      * A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
      */
-    git?: pulumi.Input<inputs.AppSpecFunctionGit>;
+    git?: pulumi.Input<inputs.AppSpecFunctionGit | undefined>;
     /**
      * A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
      */
-    github?: pulumi.Input<inputs.AppSpecFunctionGithub>;
+    github?: pulumi.Input<inputs.AppSpecFunctionGithub | undefined>;
     /**
      * A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
      */
-    gitlab?: pulumi.Input<inputs.AppSpecFunctionGitlab>;
+    gitlab?: pulumi.Input<inputs.AppSpecFunctionGitlab | undefined>;
     /**
      * Describes a log forwarding destination.
      */
-    logDestinations?: pulumi.Input<pulumi.Input<inputs.AppSpecFunctionLogDestination>[]>;
+    logDestinations?: pulumi.Input<pulumi.Input<inputs.AppSpecFunctionLogDestination>[] | undefined>;
     /**
      * The name of the component.
      */
@@ -248,22 +248,22 @@ export interface AppSpecFunction {
      *
      * @deprecated Service level routes are deprecated in favor of ingresses
      */
-    routes?: pulumi.Input<pulumi.Input<inputs.AppSpecFunctionRoute>[]>;
+    routes?: pulumi.Input<pulumi.Input<inputs.AppSpecFunctionRoute>[] | undefined>;
     /**
      * An optional path to the working directory to use for the build.
      */
-    sourceDir?: pulumi.Input<string>;
+    sourceDir?: pulumi.Input<string | undefined>;
 }
 
 export interface AppSpecFunctionAlert {
     /**
      * Specification for alert destination.
      */
-    destinations?: pulumi.Input<inputs.AppSpecFunctionAlertDestinations>;
+    destinations?: pulumi.Input<inputs.AppSpecFunctionAlertDestinations | undefined>;
     /**
      * Determines whether or not the alert is disabled (default: `false`).
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
      */
@@ -286,11 +286,11 @@ export interface AppSpecFunctionAlertDestinations {
     /**
      * Determines which emails receive alerts. The emails must be team members. If not set, the team's email is used by default.
      */
-    emails?: pulumi.Input<pulumi.Input<string>[]>;
+    emails?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Determines which slack channels or users receive alerts.
      */
-    slackWebhooks?: pulumi.Input<pulumi.Input<inputs.AppSpecFunctionAlertDestinationsSlackWebhook>[]>;
+    slackWebhooks?: pulumi.Input<pulumi.Input<inputs.AppSpecFunctionAlertDestinationsSlackWebhook>[] | undefined>;
 }
 
 export interface AppSpecFunctionAlertDestinationsSlackWebhook {
@@ -308,130 +308,130 @@ export interface AppSpecFunctionBitbucket {
     /**
      * The name of the branch to use.
      */
-    branch?: pulumi.Input<string>;
+    branch?: pulumi.Input<string | undefined>;
     /**
      * Whether to automatically deploy new commits made to the repo.
      */
-    deployOnPush?: pulumi.Input<boolean>;
+    deployOnPush?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the repo in the format `owner/repo`.
      */
-    repo?: pulumi.Input<string>;
+    repo?: pulumi.Input<string | undefined>;
 }
 
 export interface AppSpecFunctionCors {
     /**
      * Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
      */
-    allowCredentials?: pulumi.Input<boolean>;
+    allowCredentials?: pulumi.Input<boolean | undefined>;
     /**
      * The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
      */
-    allowHeaders?: pulumi.Input<pulumi.Input<string>[]>;
+    allowHeaders?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
      */
-    allowMethods?: pulumi.Input<pulumi.Input<string>[]>;
+    allowMethods?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
      */
-    allowOrigins?: pulumi.Input<inputs.AppSpecFunctionCorsAllowOrigins>;
+    allowOrigins?: pulumi.Input<inputs.AppSpecFunctionCorsAllowOrigins | undefined>;
     /**
      * The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
      */
-    exposeHeaders?: pulumi.Input<pulumi.Input<string>[]>;
+    exposeHeaders?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
      */
-    maxAge?: pulumi.Input<string>;
+    maxAge?: pulumi.Input<string | undefined>;
 }
 
 export interface AppSpecFunctionCorsAllowOrigins {
     /**
      * Exact string match.
      */
-    exact?: pulumi.Input<string>;
+    exact?: pulumi.Input<string | undefined>;
     /**
      * Prefix-based match.
      *
      * @deprecated Prefix-based matching has been deprecated in favor of regex-based matching.
      */
-    prefix?: pulumi.Input<string>;
+    prefix?: pulumi.Input<string | undefined>;
     /**
      * RE2 style regex-based match.
      */
-    regex?: pulumi.Input<string>;
+    regex?: pulumi.Input<string | undefined>;
 }
 
 export interface AppSpecFunctionEnv {
     /**
      * The name of the environment variable.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
      */
-    scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string | undefined>;
     /**
      * The type of the environment variable, `GENERAL` or `SECRET`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * The value of the environment variable.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface AppSpecFunctionGit {
     /**
      * The name of the branch to use.
      */
-    branch?: pulumi.Input<string>;
+    branch?: pulumi.Input<string | undefined>;
     /**
      * The clone URL of the repo.
      */
-    repoCloneUrl?: pulumi.Input<string>;
+    repoCloneUrl?: pulumi.Input<string | undefined>;
 }
 
 export interface AppSpecFunctionGithub {
     /**
      * The name of the branch to use.
      */
-    branch?: pulumi.Input<string>;
+    branch?: pulumi.Input<string | undefined>;
     /**
      * Whether to automatically deploy new commits made to the repo.
      */
-    deployOnPush?: pulumi.Input<boolean>;
+    deployOnPush?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the repo in the format `owner/repo`.
      */
-    repo?: pulumi.Input<string>;
+    repo?: pulumi.Input<string | undefined>;
 }
 
 export interface AppSpecFunctionGitlab {
     /**
      * The name of the branch to use.
      */
-    branch?: pulumi.Input<string>;
+    branch?: pulumi.Input<string | undefined>;
     /**
      * Whether to automatically deploy new commits made to the repo.
      */
-    deployOnPush?: pulumi.Input<boolean>;
+    deployOnPush?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the repo in the format `owner/repo`.
      */
-    repo?: pulumi.Input<string>;
+    repo?: pulumi.Input<string | undefined>;
 }
 
 export interface AppSpecFunctionLogDestination {
     /**
      * Datadog configuration.
      */
-    datadog?: pulumi.Input<inputs.AppSpecFunctionLogDestinationDatadog>;
+    datadog?: pulumi.Input<inputs.AppSpecFunctionLogDestinationDatadog | undefined>;
     /**
      * Logtail configuration.
      */
-    logtail?: pulumi.Input<inputs.AppSpecFunctionLogDestinationLogtail>;
+    logtail?: pulumi.Input<inputs.AppSpecFunctionLogDestinationLogtail | undefined>;
     /**
      * Name of the log destination. Minimum length: 2. Maximum length: 42.
      */
@@ -439,11 +439,11 @@ export interface AppSpecFunctionLogDestination {
     /**
      * OpenSearch configuration.
      */
-    openSearch?: pulumi.Input<inputs.AppSpecFunctionLogDestinationOpenSearch>;
+    openSearch?: pulumi.Input<inputs.AppSpecFunctionLogDestinationOpenSearch | undefined>;
     /**
      * Papertrail configuration.
      */
-    papertrail?: pulumi.Input<inputs.AppSpecFunctionLogDestinationPapertrail>;
+    papertrail?: pulumi.Input<inputs.AppSpecFunctionLogDestinationPapertrail | undefined>;
 }
 
 export interface AppSpecFunctionLogDestinationDatadog {
@@ -454,7 +454,7 @@ export interface AppSpecFunctionLogDestinationDatadog {
     /**
      * Datadog HTTP log intake endpoint.
      */
-    endpoint?: pulumi.Input<string>;
+    endpoint?: pulumi.Input<string | undefined>;
 }
 
 export interface AppSpecFunctionLogDestinationLogtail {
@@ -472,26 +472,26 @@ export interface AppSpecFunctionLogDestinationOpenSearch {
     /**
      * The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
      */
-    clusterName?: pulumi.Input<string>;
+    clusterName?: pulumi.Input<string | undefined>;
     /**
      * OpenSearch endpoint.
      */
-    endpoint?: pulumi.Input<string>;
+    endpoint?: pulumi.Input<string | undefined>;
     /**
      * OpenSearch index name.
      */
-    indexName?: pulumi.Input<string>;
+    indexName?: pulumi.Input<string | undefined>;
 }
 
 export interface AppSpecFunctionLogDestinationOpenSearchBasicAuth {
     /**
      * Password for basic authentication.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * user for basic authentication.
      */
-    user?: pulumi.Input<string>;
+    user?: pulumi.Input<string | undefined>;
 }
 
 export interface AppSpecFunctionLogDestinationPapertrail {
@@ -505,204 +505,204 @@ export interface AppSpecFunctionRoute {
     /**
      * Paths must start with `/` and must be unique within the app.
      */
-    path?: pulumi.Input<string>;
+    path?: pulumi.Input<string | undefined>;
     /**
      * An optional flag to preserve the path that is forwarded to the backend service.
      */
-    preservePathPrefix?: pulumi.Input<boolean>;
+    preservePathPrefix?: pulumi.Input<boolean | undefined>;
 }
 
 export interface AppSpecIngress {
     /**
      * Rules for configuring HTTP ingress for component routes, CORS, rewrites, and redirects.
      */
-    rules?: pulumi.Input<pulumi.Input<inputs.AppSpecIngressRule>[]>;
-    secureHeader?: pulumi.Input<inputs.AppSpecIngressSecureHeader>;
+    rules?: pulumi.Input<pulumi.Input<inputs.AppSpecIngressRule>[] | undefined>;
+    secureHeader?: pulumi.Input<inputs.AppSpecIngressSecureHeader | undefined>;
 }
 
 export interface AppSpecIngressRule {
     /**
      * The component to route to. Only one of `component` or `redirect` may be set.
      */
-    component?: pulumi.Input<inputs.AppSpecIngressRuleComponent>;
+    component?: pulumi.Input<inputs.AppSpecIngressRuleComponent | undefined>;
     /**
      * The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
      */
-    cors?: pulumi.Input<inputs.AppSpecIngressRuleCors>;
+    cors?: pulumi.Input<inputs.AppSpecIngressRuleCors | undefined>;
     /**
      * The match configuration for the rule
      */
-    match?: pulumi.Input<inputs.AppSpecIngressRuleMatch>;
+    match?: pulumi.Input<inputs.AppSpecIngressRuleMatch | undefined>;
     /**
      * The redirect configuration for the rule. Only one of `component` or `redirect` may be set.
      */
-    redirect?: pulumi.Input<inputs.AppSpecIngressRuleRedirect>;
+    redirect?: pulumi.Input<inputs.AppSpecIngressRuleRedirect | undefined>;
 }
 
 export interface AppSpecIngressRuleComponent {
     /**
      * The name of the component to route to.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * An optional boolean flag to preserve the path that is forwarded to the backend service. By default, the HTTP request path will be trimmed from the left when forwarded to the component.
      */
-    preservePathPrefix?: pulumi.Input<boolean>;
+    preservePathPrefix?: pulumi.Input<boolean | undefined>;
     /**
      * An optional field that will rewrite the path of the component to be what is specified here. This is mutually exclusive with `preservePathPrefix`.
      */
-    rewrite?: pulumi.Input<string>;
+    rewrite?: pulumi.Input<string | undefined>;
 }
 
 export interface AppSpecIngressRuleCors {
     /**
      * Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
      */
-    allowCredentials?: pulumi.Input<boolean>;
+    allowCredentials?: pulumi.Input<boolean | undefined>;
     /**
      * The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
      */
-    allowHeaders?: pulumi.Input<pulumi.Input<string>[]>;
+    allowHeaders?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
      */
-    allowMethods?: pulumi.Input<pulumi.Input<string>[]>;
+    allowMethods?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The `Access-Control-Allow-Origin` can be
      */
-    allowOrigins?: pulumi.Input<inputs.AppSpecIngressRuleCorsAllowOrigins>;
+    allowOrigins?: pulumi.Input<inputs.AppSpecIngressRuleCorsAllowOrigins | undefined>;
     /**
      * The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
      */
-    exposeHeaders?: pulumi.Input<pulumi.Input<string>[]>;
+    exposeHeaders?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
      */
-    maxAge?: pulumi.Input<string>;
+    maxAge?: pulumi.Input<string | undefined>;
 }
 
 export interface AppSpecIngressRuleCorsAllowOrigins {
     /**
      * The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
      */
-    exact?: pulumi.Input<string>;
+    exact?: pulumi.Input<string | undefined>;
     /**
      * The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
      *
      * @deprecated Prefix-based matching has been deprecated in favor of regex-based matching.
      */
-    prefix?: pulumi.Input<string>;
+    prefix?: pulumi.Input<string | undefined>;
     /**
      * The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
      */
-    regex?: pulumi.Input<string>;
+    regex?: pulumi.Input<string | undefined>;
 }
 
 export interface AppSpecIngressRuleMatch {
     /**
      * The authority (domain) to match on.
      */
-    authority?: pulumi.Input<inputs.AppSpecIngressRuleMatchAuthority>;
+    authority?: pulumi.Input<inputs.AppSpecIngressRuleMatchAuthority | undefined>;
     /**
      * The path to match on.
      */
-    path?: pulumi.Input<inputs.AppSpecIngressRuleMatchPath>;
+    path?: pulumi.Input<inputs.AppSpecIngressRuleMatchPath | undefined>;
 }
 
 export interface AppSpecIngressRuleMatchAuthority {
     /**
      * Exact match.
      */
-    exact?: pulumi.Input<string>;
+    exact?: pulumi.Input<string | undefined>;
 }
 
 export interface AppSpecIngressRuleMatchPath {
     /**
      * Prefix-based match.
      */
-    prefix?: pulumi.Input<string>;
+    prefix?: pulumi.Input<string | undefined>;
 }
 
 export interface AppSpecIngressRuleRedirect {
     /**
      * The authority/host to redirect to. This can be a hostname or IP address.
      */
-    authority?: pulumi.Input<string>;
+    authority?: pulumi.Input<string | undefined>;
     /**
      * The port to redirect to.
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * The redirect code to use. Supported values are `300`, `301`, `302`, `303`, `304`, `307`, `308`.
      */
-    redirectCode?: pulumi.Input<number>;
+    redirectCode?: pulumi.Input<number | undefined>;
     /**
      * The scheme to redirect to. Supported values are `http` or `https`
      */
-    scheme?: pulumi.Input<string>;
+    scheme?: pulumi.Input<string | undefined>;
     /**
      * An optional URI path to redirect to.
      */
-    uri?: pulumi.Input<string>;
+    uri?: pulumi.Input<string | undefined>;
 }
 
 export interface AppSpecIngressSecureHeader {
     /**
      * The name of the environment variable.
      */
-    key?: pulumi.Input<string>;
-    value?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface AppSpecJob {
     /**
      * Describes an alert policy for the component.
      */
-    alerts?: pulumi.Input<pulumi.Input<inputs.AppSpecJobAlert>[]>;
+    alerts?: pulumi.Input<pulumi.Input<inputs.AppSpecJobAlert>[] | undefined>;
     /**
      * A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
      */
-    bitbucket?: pulumi.Input<inputs.AppSpecJobBitbucket>;
+    bitbucket?: pulumi.Input<inputs.AppSpecJobBitbucket | undefined>;
     /**
      * An optional build command to run while building this component from source.
      */
-    buildCommand?: pulumi.Input<string>;
+    buildCommand?: pulumi.Input<string | undefined>;
     /**
      * The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
      */
-    dockerfilePath?: pulumi.Input<string>;
+    dockerfilePath?: pulumi.Input<string | undefined>;
     /**
      * An environment slug describing the type of this app.
      */
-    environmentSlug?: pulumi.Input<string>;
+    environmentSlug?: pulumi.Input<string | undefined>;
     /**
      * Describes an environment variable made available to an app competent.
      */
-    envs?: pulumi.Input<pulumi.Input<inputs.AppSpecJobEnv>[]>;
+    envs?: pulumi.Input<pulumi.Input<inputs.AppSpecJobEnv>[] | undefined>;
     /**
      * A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
      */
-    git?: pulumi.Input<inputs.AppSpecJobGit>;
+    git?: pulumi.Input<inputs.AppSpecJobGit | undefined>;
     /**
      * A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
      */
-    github?: pulumi.Input<inputs.AppSpecJobGithub>;
+    github?: pulumi.Input<inputs.AppSpecJobGithub | undefined>;
     /**
      * A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
      */
-    gitlab?: pulumi.Input<inputs.AppSpecJobGitlab>;
+    gitlab?: pulumi.Input<inputs.AppSpecJobGitlab | undefined>;
     /**
      * An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
      */
-    image?: pulumi.Input<inputs.AppSpecJobImage>;
+    image?: pulumi.Input<inputs.AppSpecJobImage | undefined>;
     /**
      * The amount of instances that this component should be scaled to.
      */
-    instanceCount?: pulumi.Input<number>;
+    instanceCount?: pulumi.Input<number | undefined>;
     /**
      * The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Apps/operation/apps_list_instanceSizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
      */
-    instanceSizeSlug?: pulumi.Input<string>;
+    instanceSizeSlug?: pulumi.Input<string | undefined>;
     /**
      * The type of job and when it will be run during the deployment process. It may be one of:
      * - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
@@ -710,11 +710,11 @@ export interface AppSpecJob {
      * - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
      * - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * Describes a log forwarding destination.
      */
-    logDestinations?: pulumi.Input<pulumi.Input<inputs.AppSpecJobLogDestination>[]>;
+    logDestinations?: pulumi.Input<pulumi.Input<inputs.AppSpecJobLogDestination>[] | undefined>;
     /**
      * The name of the component.
      */
@@ -722,26 +722,26 @@ export interface AppSpecJob {
     /**
      * An optional run command to override the component's default.
      */
-    runCommand?: pulumi.Input<string>;
+    runCommand?: pulumi.Input<string | undefined>;
     /**
      * An optional path to the working directory to use for the build.
      */
-    sourceDir?: pulumi.Input<string>;
+    sourceDir?: pulumi.Input<string | undefined>;
     /**
      * Contains a component's termination parameters.
      */
-    termination?: pulumi.Input<inputs.AppSpecJobTermination>;
+    termination?: pulumi.Input<inputs.AppSpecJobTermination | undefined>;
 }
 
 export interface AppSpecJobAlert {
     /**
      * Specification for alert destination.
      */
-    destinations?: pulumi.Input<inputs.AppSpecJobAlertDestinations>;
+    destinations?: pulumi.Input<inputs.AppSpecJobAlertDestinations | undefined>;
     /**
      * Determines whether or not the alert is disabled (default: `false`).
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
      */
@@ -764,11 +764,11 @@ export interface AppSpecJobAlertDestinations {
     /**
      * Determines which emails receive alerts. The emails must be team members. If not set, the team's email is used by default.
      */
-    emails?: pulumi.Input<pulumi.Input<string>[]>;
+    emails?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Determines which slack channels or users receive alerts.
      */
-    slackWebhooks?: pulumi.Input<pulumi.Input<inputs.AppSpecJobAlertDestinationsSlackWebhook>[]>;
+    slackWebhooks?: pulumi.Input<pulumi.Input<inputs.AppSpecJobAlertDestinationsSlackWebhook>[] | undefined>;
 }
 
 export interface AppSpecJobAlertDestinationsSlackWebhook {
@@ -786,94 +786,94 @@ export interface AppSpecJobBitbucket {
     /**
      * The name of the branch to use.
      */
-    branch?: pulumi.Input<string>;
+    branch?: pulumi.Input<string | undefined>;
     /**
      * Whether to automatically deploy new commits made to the repo.
      */
-    deployOnPush?: pulumi.Input<boolean>;
+    deployOnPush?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the repo in the format `owner/repo`.
      */
-    repo?: pulumi.Input<string>;
+    repo?: pulumi.Input<string | undefined>;
 }
 
 export interface AppSpecJobEnv {
     /**
      * The name of the environment variable.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
      */
-    scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string | undefined>;
     /**
      * The type of the environment variable, `GENERAL` or `SECRET`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * The value of the environment variable.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface AppSpecJobGit {
     /**
      * The name of the branch to use.
      */
-    branch?: pulumi.Input<string>;
+    branch?: pulumi.Input<string | undefined>;
     /**
      * The clone URL of the repo.
      */
-    repoCloneUrl?: pulumi.Input<string>;
+    repoCloneUrl?: pulumi.Input<string | undefined>;
 }
 
 export interface AppSpecJobGithub {
     /**
      * The name of the branch to use.
      */
-    branch?: pulumi.Input<string>;
+    branch?: pulumi.Input<string | undefined>;
     /**
      * Whether to automatically deploy new commits made to the repo.
      */
-    deployOnPush?: pulumi.Input<boolean>;
+    deployOnPush?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the repo in the format `owner/repo`.
      */
-    repo?: pulumi.Input<string>;
+    repo?: pulumi.Input<string | undefined>;
 }
 
 export interface AppSpecJobGitlab {
     /**
      * The name of the branch to use.
      */
-    branch?: pulumi.Input<string>;
+    branch?: pulumi.Input<string | undefined>;
     /**
      * Whether to automatically deploy new commits made to the repo.
      */
-    deployOnPush?: pulumi.Input<boolean>;
+    deployOnPush?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the repo in the format `owner/repo`.
      */
-    repo?: pulumi.Input<string>;
+    repo?: pulumi.Input<string | undefined>;
 }
 
 export interface AppSpecJobImage {
     /**
      * Configures automatically deploying images pushed to DOCR.
      */
-    deployOnPushes?: pulumi.Input<pulumi.Input<inputs.AppSpecJobImageDeployOnPush>[]>;
+    deployOnPushes?: pulumi.Input<pulumi.Input<inputs.AppSpecJobImageDeployOnPush>[] | undefined>;
     /**
      * The image digest. Cannot be specified if `tag` is provided.
      */
-    digest?: pulumi.Input<string>;
+    digest?: pulumi.Input<string | undefined>;
     /**
      * The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
      */
-    registry?: pulumi.Input<string>;
+    registry?: pulumi.Input<string | undefined>;
     /**
      * The credentials required to access a private Docker Hub or GitHub registry, in the following syntax `<username>:<token>`.
      */
-    registryCredentials?: pulumi.Input<string>;
+    registryCredentials?: pulumi.Input<string | undefined>;
     /**
      * The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
      */
@@ -885,25 +885,25 @@ export interface AppSpecJobImage {
     /**
      * The repository tag. Defaults to `latest` if not provided.
      */
-    tag?: pulumi.Input<string>;
+    tag?: pulumi.Input<string | undefined>;
 }
 
 export interface AppSpecJobImageDeployOnPush {
     /**
      * Whether to automatically deploy images pushed to DOCR.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
 }
 
 export interface AppSpecJobLogDestination {
     /**
      * Datadog configuration.
      */
-    datadog?: pulumi.Input<inputs.AppSpecJobLogDestinationDatadog>;
+    datadog?: pulumi.Input<inputs.AppSpecJobLogDestinationDatadog | undefined>;
     /**
      * Logtail configuration.
      */
-    logtail?: pulumi.Input<inputs.AppSpecJobLogDestinationLogtail>;
+    logtail?: pulumi.Input<inputs.AppSpecJobLogDestinationLogtail | undefined>;
     /**
      * Name of the log destination. Minimum length: 2. Maximum length: 42.
      */
@@ -911,11 +911,11 @@ export interface AppSpecJobLogDestination {
     /**
      * OpenSearch configuration.
      */
-    openSearch?: pulumi.Input<inputs.AppSpecJobLogDestinationOpenSearch>;
+    openSearch?: pulumi.Input<inputs.AppSpecJobLogDestinationOpenSearch | undefined>;
     /**
      * Papertrail configuration.
      */
-    papertrail?: pulumi.Input<inputs.AppSpecJobLogDestinationPapertrail>;
+    papertrail?: pulumi.Input<inputs.AppSpecJobLogDestinationPapertrail | undefined>;
 }
 
 export interface AppSpecJobLogDestinationDatadog {
@@ -926,7 +926,7 @@ export interface AppSpecJobLogDestinationDatadog {
     /**
      * Datadog HTTP log intake endpoint.
      */
-    endpoint?: pulumi.Input<string>;
+    endpoint?: pulumi.Input<string | undefined>;
 }
 
 export interface AppSpecJobLogDestinationLogtail {
@@ -944,26 +944,26 @@ export interface AppSpecJobLogDestinationOpenSearch {
     /**
      * The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
      */
-    clusterName?: pulumi.Input<string>;
+    clusterName?: pulumi.Input<string | undefined>;
     /**
      * OpenSearch endpoint.
      */
-    endpoint?: pulumi.Input<string>;
+    endpoint?: pulumi.Input<string | undefined>;
     /**
      * OpenSearch index name.
      */
-    indexName?: pulumi.Input<string>;
+    indexName?: pulumi.Input<string | undefined>;
 }
 
 export interface AppSpecJobLogDestinationOpenSearchBasicAuth {
     /**
      * Password for basic authentication.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * user for basic authentication.
      */
-    user?: pulumi.Input<string>;
+    user?: pulumi.Input<string | undefined>;
 }
 
 export interface AppSpecJobLogDestinationPapertrail {
@@ -979,99 +979,99 @@ export interface AppSpecJobTermination {
      *
      * A `function` component can contain:
      */
-    gracePeriodSeconds?: pulumi.Input<number>;
+    gracePeriodSeconds?: pulumi.Input<number | undefined>;
 }
 
 export interface AppSpecMaintenance {
     /**
      * Indicates whether the app should be archived. Setting this to true implies that enabled is set to true.
      */
-    archive?: pulumi.Input<boolean>;
+    archive?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether maintenance mode should be enabled for the app.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * A custom offline page to display when maintenance mode is enabled or the app is archived.
      */
-    offlinePageUrl?: pulumi.Input<string>;
+    offlinePageUrl?: pulumi.Input<string | undefined>;
 }
 
 export interface AppSpecService {
     /**
      * Describes an alert policy for the component.
      */
-    alerts?: pulumi.Input<pulumi.Input<inputs.AppSpecServiceAlert>[]>;
+    alerts?: pulumi.Input<pulumi.Input<inputs.AppSpecServiceAlert>[] | undefined>;
     /**
      * Configuration for automatically scaling this component based on metrics.
      */
-    autoscaling?: pulumi.Input<inputs.AppSpecServiceAutoscaling>;
+    autoscaling?: pulumi.Input<inputs.AppSpecServiceAutoscaling | undefined>;
     /**
      * A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
      */
-    bitbucket?: pulumi.Input<inputs.AppSpecServiceBitbucket>;
+    bitbucket?: pulumi.Input<inputs.AppSpecServiceBitbucket | undefined>;
     /**
      * An optional build command to run while building this component from source.
      */
-    buildCommand?: pulumi.Input<string>;
+    buildCommand?: pulumi.Input<string | undefined>;
     /**
      * The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
      *
      * @deprecated Service level CORS rules are deprecated in favor of ingresses
      */
-    cors?: pulumi.Input<inputs.AppSpecServiceCors>;
+    cors?: pulumi.Input<inputs.AppSpecServiceCors | undefined>;
     /**
      * The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
      */
-    dockerfilePath?: pulumi.Input<string>;
+    dockerfilePath?: pulumi.Input<string | undefined>;
     /**
      * An environment slug describing the type of this app.
      */
-    environmentSlug?: pulumi.Input<string>;
+    environmentSlug?: pulumi.Input<string | undefined>;
     /**
      * Describes an environment variable made available to an app competent.
      */
-    envs?: pulumi.Input<pulumi.Input<inputs.AppSpecServiceEnv>[]>;
+    envs?: pulumi.Input<pulumi.Input<inputs.AppSpecServiceEnv>[] | undefined>;
     /**
      * A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
      */
-    git?: pulumi.Input<inputs.AppSpecServiceGit>;
+    git?: pulumi.Input<inputs.AppSpecServiceGit | undefined>;
     /**
      * A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
      */
-    github?: pulumi.Input<inputs.AppSpecServiceGithub>;
+    github?: pulumi.Input<inputs.AppSpecServiceGithub | undefined>;
     /**
      * A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
      */
-    gitlab?: pulumi.Input<inputs.AppSpecServiceGitlab>;
+    gitlab?: pulumi.Input<inputs.AppSpecServiceGitlab | undefined>;
     /**
      * A health check to determine the availability of this component.
      */
-    healthCheck?: pulumi.Input<inputs.AppSpecServiceHealthCheck>;
+    healthCheck?: pulumi.Input<inputs.AppSpecServiceHealthCheck | undefined>;
     /**
      * The internal port on which this service's run command will listen.
      */
-    httpPort?: pulumi.Input<number>;
+    httpPort?: pulumi.Input<number | undefined>;
     /**
      * An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
      */
-    image?: pulumi.Input<inputs.AppSpecServiceImage>;
+    image?: pulumi.Input<inputs.AppSpecServiceImage | undefined>;
     /**
      * The amount of instances that this component should be scaled to.
      */
-    instanceCount?: pulumi.Input<number>;
+    instanceCount?: pulumi.Input<number | undefined>;
     /**
      * The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Apps/operation/apps_list_instanceSizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
      */
-    instanceSizeSlug?: pulumi.Input<string>;
+    instanceSizeSlug?: pulumi.Input<string | undefined>;
     /**
      * A list of ports on which this service will listen for internal traffic.
      */
-    internalPorts?: pulumi.Input<pulumi.Input<number>[]>;
+    internalPorts?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * Describes a log forwarding destination.
      */
-    logDestinations?: pulumi.Input<pulumi.Input<inputs.AppSpecServiceLogDestination>[]>;
+    logDestinations?: pulumi.Input<pulumi.Input<inputs.AppSpecServiceLogDestination>[] | undefined>;
     /**
      * The name of the component.
      */
@@ -1081,30 +1081,30 @@ export interface AppSpecService {
      *
      * @deprecated Service level routes are deprecated in favor of ingresses
      */
-    routes?: pulumi.Input<pulumi.Input<inputs.AppSpecServiceRoute>[]>;
+    routes?: pulumi.Input<pulumi.Input<inputs.AppSpecServiceRoute>[] | undefined>;
     /**
      * An optional run command to override the component's default.
      */
-    runCommand?: pulumi.Input<string>;
+    runCommand?: pulumi.Input<string | undefined>;
     /**
      * An optional path to the working directory to use for the build.
      */
-    sourceDir?: pulumi.Input<string>;
+    sourceDir?: pulumi.Input<string | undefined>;
     /**
      * Contains a component's termination parameters.
      */
-    termination?: pulumi.Input<inputs.AppSpecServiceTermination>;
+    termination?: pulumi.Input<inputs.AppSpecServiceTermination | undefined>;
 }
 
 export interface AppSpecServiceAlert {
     /**
      * Specification for alert destination.
      */
-    destinations?: pulumi.Input<inputs.AppSpecServiceAlertDestinations>;
+    destinations?: pulumi.Input<inputs.AppSpecServiceAlertDestinations | undefined>;
     /**
      * Determines whether or not the alert is disabled (default: `false`).
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
      */
@@ -1127,11 +1127,11 @@ export interface AppSpecServiceAlertDestinations {
     /**
      * Determines which emails receive alerts. The emails must be team members. If not set, the team's email is used by default.
      */
-    emails?: pulumi.Input<pulumi.Input<string>[]>;
+    emails?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Determines which slack channels or users receive alerts.
      */
-    slackWebhooks?: pulumi.Input<pulumi.Input<inputs.AppSpecServiceAlertDestinationsSlackWebhook>[]>;
+    slackWebhooks?: pulumi.Input<pulumi.Input<inputs.AppSpecServiceAlertDestinationsSlackWebhook>[] | undefined>;
 }
 
 export interface AppSpecServiceAlertDestinationsSlackWebhook {
@@ -1164,7 +1164,7 @@ export interface AppSpecServiceAutoscalingMetrics {
     /**
      * Settings for scaling the component based on CPU utilization.
      */
-    cpu?: pulumi.Input<inputs.AppSpecServiceAutoscalingMetricsCpu>;
+    cpu?: pulumi.Input<inputs.AppSpecServiceAutoscalingMetricsCpu | undefined>;
 }
 
 export interface AppSpecServiceAutoscalingMetricsCpu {
@@ -1178,169 +1178,169 @@ export interface AppSpecServiceBitbucket {
     /**
      * The name of the branch to use.
      */
-    branch?: pulumi.Input<string>;
+    branch?: pulumi.Input<string | undefined>;
     /**
      * Whether to automatically deploy new commits made to the repo.
      */
-    deployOnPush?: pulumi.Input<boolean>;
+    deployOnPush?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the repo in the format `owner/repo`.
      */
-    repo?: pulumi.Input<string>;
+    repo?: pulumi.Input<string | undefined>;
 }
 
 export interface AppSpecServiceCors {
     /**
      * Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
      */
-    allowCredentials?: pulumi.Input<boolean>;
+    allowCredentials?: pulumi.Input<boolean | undefined>;
     /**
      * The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
      */
-    allowHeaders?: pulumi.Input<pulumi.Input<string>[]>;
+    allowHeaders?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
      */
-    allowMethods?: pulumi.Input<pulumi.Input<string>[]>;
+    allowMethods?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
      */
-    allowOrigins?: pulumi.Input<inputs.AppSpecServiceCorsAllowOrigins>;
+    allowOrigins?: pulumi.Input<inputs.AppSpecServiceCorsAllowOrigins | undefined>;
     /**
      * The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
      */
-    exposeHeaders?: pulumi.Input<pulumi.Input<string>[]>;
+    exposeHeaders?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
      */
-    maxAge?: pulumi.Input<string>;
+    maxAge?: pulumi.Input<string | undefined>;
 }
 
 export interface AppSpecServiceCorsAllowOrigins {
     /**
      * Exact string match.
      */
-    exact?: pulumi.Input<string>;
+    exact?: pulumi.Input<string | undefined>;
     /**
      * Prefix-based match.
      *
      * @deprecated Prefix-based matching has been deprecated in favor of regex-based matching.
      */
-    prefix?: pulumi.Input<string>;
+    prefix?: pulumi.Input<string | undefined>;
     /**
      * RE2 style regex-based match.
      */
-    regex?: pulumi.Input<string>;
+    regex?: pulumi.Input<string | undefined>;
 }
 
 export interface AppSpecServiceEnv {
     /**
      * The name of the environment variable.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
      */
-    scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string | undefined>;
     /**
      * The type of the environment variable, `GENERAL` or `SECRET`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * The value of the environment variable.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface AppSpecServiceGit {
     /**
      * The name of the branch to use.
      */
-    branch?: pulumi.Input<string>;
+    branch?: pulumi.Input<string | undefined>;
     /**
      * The clone URL of the repo.
      */
-    repoCloneUrl?: pulumi.Input<string>;
+    repoCloneUrl?: pulumi.Input<string | undefined>;
 }
 
 export interface AppSpecServiceGithub {
     /**
      * The name of the branch to use.
      */
-    branch?: pulumi.Input<string>;
+    branch?: pulumi.Input<string | undefined>;
     /**
      * Whether to automatically deploy new commits made to the repo.
      */
-    deployOnPush?: pulumi.Input<boolean>;
+    deployOnPush?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the repo in the format `owner/repo`.
      */
-    repo?: pulumi.Input<string>;
+    repo?: pulumi.Input<string | undefined>;
 }
 
 export interface AppSpecServiceGitlab {
     /**
      * The name of the branch to use.
      */
-    branch?: pulumi.Input<string>;
+    branch?: pulumi.Input<string | undefined>;
     /**
      * Whether to automatically deploy new commits made to the repo.
      */
-    deployOnPush?: pulumi.Input<boolean>;
+    deployOnPush?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the repo in the format `owner/repo`.
      */
-    repo?: pulumi.Input<string>;
+    repo?: pulumi.Input<string | undefined>;
 }
 
 export interface AppSpecServiceHealthCheck {
     /**
      * The number of failed health checks before considered unhealthy.
      */
-    failureThreshold?: pulumi.Input<number>;
+    failureThreshold?: pulumi.Input<number | undefined>;
     /**
      * The route path used for the HTTP health check ping.
      */
-    httpPath?: pulumi.Input<string>;
+    httpPath?: pulumi.Input<string | undefined>;
     /**
      * The number of seconds to wait before beginning health checks.
      */
-    initialDelaySeconds?: pulumi.Input<number>;
+    initialDelaySeconds?: pulumi.Input<number | undefined>;
     /**
      * The number of seconds to wait between health checks.
      */
-    periodSeconds?: pulumi.Input<number>;
+    periodSeconds?: pulumi.Input<number | undefined>;
     /**
      * The health check will be performed on this port instead of component's HTTP port.
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * The number of successful health checks before considered healthy.
      */
-    successThreshold?: pulumi.Input<number>;
+    successThreshold?: pulumi.Input<number | undefined>;
     /**
      * The number of seconds after which the check times out.
      */
-    timeoutSeconds?: pulumi.Input<number>;
+    timeoutSeconds?: pulumi.Input<number | undefined>;
 }
 
 export interface AppSpecServiceImage {
     /**
      * Configures automatically deploying images pushed to DOCR.
      */
-    deployOnPushes?: pulumi.Input<pulumi.Input<inputs.AppSpecServiceImageDeployOnPush>[]>;
+    deployOnPushes?: pulumi.Input<pulumi.Input<inputs.AppSpecServiceImageDeployOnPush>[] | undefined>;
     /**
      * The image digest. Cannot be specified if `tag` is provided.
      */
-    digest?: pulumi.Input<string>;
+    digest?: pulumi.Input<string | undefined>;
     /**
      * The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
      */
-    registry?: pulumi.Input<string>;
+    registry?: pulumi.Input<string | undefined>;
     /**
      * The credentials required to access a private Docker Hub or GitHub registry, in the following syntax `<username>:<token>`.
      */
-    registryCredentials?: pulumi.Input<string>;
+    registryCredentials?: pulumi.Input<string | undefined>;
     /**
      * The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
      */
@@ -1352,25 +1352,25 @@ export interface AppSpecServiceImage {
     /**
      * The repository tag. Defaults to `latest` if not provided.
      */
-    tag?: pulumi.Input<string>;
+    tag?: pulumi.Input<string | undefined>;
 }
 
 export interface AppSpecServiceImageDeployOnPush {
     /**
      * Whether to automatically deploy images pushed to DOCR.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
 }
 
 export interface AppSpecServiceLogDestination {
     /**
      * Datadog configuration.
      */
-    datadog?: pulumi.Input<inputs.AppSpecServiceLogDestinationDatadog>;
+    datadog?: pulumi.Input<inputs.AppSpecServiceLogDestinationDatadog | undefined>;
     /**
      * Logtail configuration.
      */
-    logtail?: pulumi.Input<inputs.AppSpecServiceLogDestinationLogtail>;
+    logtail?: pulumi.Input<inputs.AppSpecServiceLogDestinationLogtail | undefined>;
     /**
      * Name of the log destination. Minimum length: 2. Maximum length: 42.
      */
@@ -1378,11 +1378,11 @@ export interface AppSpecServiceLogDestination {
     /**
      * OpenSearch configuration.
      */
-    openSearch?: pulumi.Input<inputs.AppSpecServiceLogDestinationOpenSearch>;
+    openSearch?: pulumi.Input<inputs.AppSpecServiceLogDestinationOpenSearch | undefined>;
     /**
      * Papertrail configuration.
      */
-    papertrail?: pulumi.Input<inputs.AppSpecServiceLogDestinationPapertrail>;
+    papertrail?: pulumi.Input<inputs.AppSpecServiceLogDestinationPapertrail | undefined>;
 }
 
 export interface AppSpecServiceLogDestinationDatadog {
@@ -1393,7 +1393,7 @@ export interface AppSpecServiceLogDestinationDatadog {
     /**
      * Datadog HTTP log intake endpoint.
      */
-    endpoint?: pulumi.Input<string>;
+    endpoint?: pulumi.Input<string | undefined>;
 }
 
 export interface AppSpecServiceLogDestinationLogtail {
@@ -1411,26 +1411,26 @@ export interface AppSpecServiceLogDestinationOpenSearch {
     /**
      * The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
      */
-    clusterName?: pulumi.Input<string>;
+    clusterName?: pulumi.Input<string | undefined>;
     /**
      * OpenSearch endpoint.
      */
-    endpoint?: pulumi.Input<string>;
+    endpoint?: pulumi.Input<string | undefined>;
     /**
      * OpenSearch index name.
      */
-    indexName?: pulumi.Input<string>;
+    indexName?: pulumi.Input<string | undefined>;
 }
 
 export interface AppSpecServiceLogDestinationOpenSearchBasicAuth {
     /**
      * Password for basic authentication.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * user for basic authentication.
      */
-    user?: pulumi.Input<string>;
+    user?: pulumi.Input<string | undefined>;
 }
 
 export interface AppSpecServiceLogDestinationPapertrail {
@@ -1444,11 +1444,11 @@ export interface AppSpecServiceRoute {
     /**
      * Paths must start with `/` and must be unique within the app.
      */
-    path?: pulumi.Input<string>;
+    path?: pulumi.Input<string | undefined>;
     /**
      * An optional flag to preserve the path that is forwarded to the backend service.
      */
-    preservePathPrefix?: pulumi.Input<boolean>;
+    preservePathPrefix?: pulumi.Input<boolean | undefined>;
 }
 
 export interface AppSpecServiceTermination {
@@ -1457,66 +1457,66 @@ export interface AppSpecServiceTermination {
      *
      * A `staticSite` can contain:
      */
-    drainSeconds?: pulumi.Input<number>;
+    drainSeconds?: pulumi.Input<number | undefined>;
     /**
      * The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
      *
      * A `function` component can contain:
      */
-    gracePeriodSeconds?: pulumi.Input<number>;
+    gracePeriodSeconds?: pulumi.Input<number | undefined>;
 }
 
 export interface AppSpecStaticSite {
     /**
      * A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
      */
-    bitbucket?: pulumi.Input<inputs.AppSpecStaticSiteBitbucket>;
+    bitbucket?: pulumi.Input<inputs.AppSpecStaticSiteBitbucket | undefined>;
     /**
      * An optional build command to run while building this component from source.
      */
-    buildCommand?: pulumi.Input<string>;
+    buildCommand?: pulumi.Input<string | undefined>;
     /**
      * The name of the document to use as the fallback for any requests to documents that are not found when serving this static site.
      */
-    catchallDocument?: pulumi.Input<string>;
+    catchallDocument?: pulumi.Input<string | undefined>;
     /**
      * The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
      *
      * @deprecated Service level CORS rules are deprecated in favor of ingresses
      */
-    cors?: pulumi.Input<inputs.AppSpecStaticSiteCors>;
+    cors?: pulumi.Input<inputs.AppSpecStaticSiteCors | undefined>;
     /**
      * The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
      */
-    dockerfilePath?: pulumi.Input<string>;
+    dockerfilePath?: pulumi.Input<string | undefined>;
     /**
      * An environment slug describing the type of this app.
      */
-    environmentSlug?: pulumi.Input<string>;
+    environmentSlug?: pulumi.Input<string | undefined>;
     /**
      * Describes an environment variable made available to an app competent.
      */
-    envs?: pulumi.Input<pulumi.Input<inputs.AppSpecStaticSiteEnv>[]>;
+    envs?: pulumi.Input<pulumi.Input<inputs.AppSpecStaticSiteEnv>[] | undefined>;
     /**
      * The name of the error document to use when serving this static site.
      */
-    errorDocument?: pulumi.Input<string>;
+    errorDocument?: pulumi.Input<string | undefined>;
     /**
      * A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
      */
-    git?: pulumi.Input<inputs.AppSpecStaticSiteGit>;
+    git?: pulumi.Input<inputs.AppSpecStaticSiteGit | undefined>;
     /**
      * A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
      */
-    github?: pulumi.Input<inputs.AppSpecStaticSiteGithub>;
+    github?: pulumi.Input<inputs.AppSpecStaticSiteGithub | undefined>;
     /**
      * A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
      */
-    gitlab?: pulumi.Input<inputs.AppSpecStaticSiteGitlab>;
+    gitlab?: pulumi.Input<inputs.AppSpecStaticSiteGitlab | undefined>;
     /**
      * The name of the index document to use when serving this static site.
      */
-    indexDocument?: pulumi.Input<string>;
+    indexDocument?: pulumi.Input<string | undefined>;
     /**
      * The name of the component.
      */
@@ -1524,147 +1524,147 @@ export interface AppSpecStaticSite {
     /**
      * An optional path to where the built assets will be located, relative to the build context. If not set, App Platform will automatically scan for these directory names: `_static`, `dist`, `public`.
      */
-    outputDir?: pulumi.Input<string>;
+    outputDir?: pulumi.Input<string | undefined>;
     /**
      * An HTTP paths that should be routed to this component.
      *
      * @deprecated Service level routes are deprecated in favor of ingresses
      */
-    routes?: pulumi.Input<pulumi.Input<inputs.AppSpecStaticSiteRoute>[]>;
+    routes?: pulumi.Input<pulumi.Input<inputs.AppSpecStaticSiteRoute>[] | undefined>;
     /**
      * An optional path to the working directory to use for the build.
      */
-    sourceDir?: pulumi.Input<string>;
+    sourceDir?: pulumi.Input<string | undefined>;
 }
 
 export interface AppSpecStaticSiteBitbucket {
     /**
      * The name of the branch to use.
      */
-    branch?: pulumi.Input<string>;
+    branch?: pulumi.Input<string | undefined>;
     /**
      * Whether to automatically deploy new commits made to the repo.
      */
-    deployOnPush?: pulumi.Input<boolean>;
+    deployOnPush?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the repo in the format `owner/repo`.
      */
-    repo?: pulumi.Input<string>;
+    repo?: pulumi.Input<string | undefined>;
 }
 
 export interface AppSpecStaticSiteCors {
     /**
      * Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
      */
-    allowCredentials?: pulumi.Input<boolean>;
+    allowCredentials?: pulumi.Input<boolean | undefined>;
     /**
      * The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
      */
-    allowHeaders?: pulumi.Input<pulumi.Input<string>[]>;
+    allowHeaders?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
      */
-    allowMethods?: pulumi.Input<pulumi.Input<string>[]>;
+    allowMethods?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
      */
-    allowOrigins?: pulumi.Input<inputs.AppSpecStaticSiteCorsAllowOrigins>;
+    allowOrigins?: pulumi.Input<inputs.AppSpecStaticSiteCorsAllowOrigins | undefined>;
     /**
      * The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
      */
-    exposeHeaders?: pulumi.Input<pulumi.Input<string>[]>;
+    exposeHeaders?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
      */
-    maxAge?: pulumi.Input<string>;
+    maxAge?: pulumi.Input<string | undefined>;
 }
 
 export interface AppSpecStaticSiteCorsAllowOrigins {
     /**
      * Exact string match.
      */
-    exact?: pulumi.Input<string>;
+    exact?: pulumi.Input<string | undefined>;
     /**
      * Prefix-based match.
      *
      * @deprecated Prefix-based matching has been deprecated in favor of regex-based matching.
      */
-    prefix?: pulumi.Input<string>;
+    prefix?: pulumi.Input<string | undefined>;
     /**
      * RE2 style regex-based match.
      */
-    regex?: pulumi.Input<string>;
+    regex?: pulumi.Input<string | undefined>;
 }
 
 export interface AppSpecStaticSiteEnv {
     /**
      * The name of the environment variable.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
      */
-    scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string | undefined>;
     /**
      * The type of the environment variable, `GENERAL` or `SECRET`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * The value of the environment variable.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface AppSpecStaticSiteGit {
     /**
      * The name of the branch to use.
      */
-    branch?: pulumi.Input<string>;
+    branch?: pulumi.Input<string | undefined>;
     /**
      * The clone URL of the repo.
      */
-    repoCloneUrl?: pulumi.Input<string>;
+    repoCloneUrl?: pulumi.Input<string | undefined>;
 }
 
 export interface AppSpecStaticSiteGithub {
     /**
      * The name of the branch to use.
      */
-    branch?: pulumi.Input<string>;
+    branch?: pulumi.Input<string | undefined>;
     /**
      * Whether to automatically deploy new commits made to the repo.
      */
-    deployOnPush?: pulumi.Input<boolean>;
+    deployOnPush?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the repo in the format `owner/repo`.
      */
-    repo?: pulumi.Input<string>;
+    repo?: pulumi.Input<string | undefined>;
 }
 
 export interface AppSpecStaticSiteGitlab {
     /**
      * The name of the branch to use.
      */
-    branch?: pulumi.Input<string>;
+    branch?: pulumi.Input<string | undefined>;
     /**
      * Whether to automatically deploy new commits made to the repo.
      */
-    deployOnPush?: pulumi.Input<boolean>;
+    deployOnPush?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the repo in the format `owner/repo`.
      */
-    repo?: pulumi.Input<string>;
+    repo?: pulumi.Input<string | undefined>;
 }
 
 export interface AppSpecStaticSiteRoute {
     /**
      * Paths must start with `/` and must be unique within the app.
      */
-    path?: pulumi.Input<string>;
+    path?: pulumi.Input<string | undefined>;
     /**
      * An optional flag to preserve the path that is forwarded to the backend service.
      */
-    preservePathPrefix?: pulumi.Input<boolean>;
+    preservePathPrefix?: pulumi.Input<boolean | undefined>;
 }
 
 export interface AppSpecVpc {
@@ -1678,59 +1678,59 @@ export interface AppSpecWorker {
     /**
      * Describes an alert policy for the component.
      */
-    alerts?: pulumi.Input<pulumi.Input<inputs.AppSpecWorkerAlert>[]>;
+    alerts?: pulumi.Input<pulumi.Input<inputs.AppSpecWorkerAlert>[] | undefined>;
     /**
      * Configuration for automatically scaling this component based on metrics.
      */
-    autoscaling?: pulumi.Input<inputs.AppSpecWorkerAutoscaling>;
+    autoscaling?: pulumi.Input<inputs.AppSpecWorkerAutoscaling | undefined>;
     /**
      * A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
      */
-    bitbucket?: pulumi.Input<inputs.AppSpecWorkerBitbucket>;
+    bitbucket?: pulumi.Input<inputs.AppSpecWorkerBitbucket | undefined>;
     /**
      * An optional build command to run while building this component from source.
      */
-    buildCommand?: pulumi.Input<string>;
+    buildCommand?: pulumi.Input<string | undefined>;
     /**
      * The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
      */
-    dockerfilePath?: pulumi.Input<string>;
+    dockerfilePath?: pulumi.Input<string | undefined>;
     /**
      * An environment slug describing the type of this app.
      */
-    environmentSlug?: pulumi.Input<string>;
+    environmentSlug?: pulumi.Input<string | undefined>;
     /**
      * Describes an environment variable made available to an app competent.
      */
-    envs?: pulumi.Input<pulumi.Input<inputs.AppSpecWorkerEnv>[]>;
+    envs?: pulumi.Input<pulumi.Input<inputs.AppSpecWorkerEnv>[] | undefined>;
     /**
      * A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
      */
-    git?: pulumi.Input<inputs.AppSpecWorkerGit>;
+    git?: pulumi.Input<inputs.AppSpecWorkerGit | undefined>;
     /**
      * A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
      */
-    github?: pulumi.Input<inputs.AppSpecWorkerGithub>;
+    github?: pulumi.Input<inputs.AppSpecWorkerGithub | undefined>;
     /**
      * A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
      */
-    gitlab?: pulumi.Input<inputs.AppSpecWorkerGitlab>;
+    gitlab?: pulumi.Input<inputs.AppSpecWorkerGitlab | undefined>;
     /**
      * An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
      */
-    image?: pulumi.Input<inputs.AppSpecWorkerImage>;
+    image?: pulumi.Input<inputs.AppSpecWorkerImage | undefined>;
     /**
      * The amount of instances that this component should be scaled to.
      */
-    instanceCount?: pulumi.Input<number>;
+    instanceCount?: pulumi.Input<number | undefined>;
     /**
      * The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Apps/operation/apps_list_instanceSizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
      */
-    instanceSizeSlug?: pulumi.Input<string>;
+    instanceSizeSlug?: pulumi.Input<string | undefined>;
     /**
      * Describes a log forwarding destination.
      */
-    logDestinations?: pulumi.Input<pulumi.Input<inputs.AppSpecWorkerLogDestination>[]>;
+    logDestinations?: pulumi.Input<pulumi.Input<inputs.AppSpecWorkerLogDestination>[] | undefined>;
     /**
      * The name of the component.
      */
@@ -1738,26 +1738,26 @@ export interface AppSpecWorker {
     /**
      * An optional run command to override the component's default.
      */
-    runCommand?: pulumi.Input<string>;
+    runCommand?: pulumi.Input<string | undefined>;
     /**
      * An optional path to the working directory to use for the build.
      */
-    sourceDir?: pulumi.Input<string>;
+    sourceDir?: pulumi.Input<string | undefined>;
     /**
      * Contains a component's termination parameters.
      */
-    termination?: pulumi.Input<inputs.AppSpecWorkerTermination>;
+    termination?: pulumi.Input<inputs.AppSpecWorkerTermination | undefined>;
 }
 
 export interface AppSpecWorkerAlert {
     /**
      * Specification for alert destination.
      */
-    destinations?: pulumi.Input<inputs.AppSpecWorkerAlertDestinations>;
+    destinations?: pulumi.Input<inputs.AppSpecWorkerAlertDestinations | undefined>;
     /**
      * Determines whether or not the alert is disabled (default: `false`).
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
      */
@@ -1780,11 +1780,11 @@ export interface AppSpecWorkerAlertDestinations {
     /**
      * Determines which emails receive alerts. The emails must be team members. If not set, the team's email is used by default.
      */
-    emails?: pulumi.Input<pulumi.Input<string>[]>;
+    emails?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Determines which slack channels or users receive alerts.
      */
-    slackWebhooks?: pulumi.Input<pulumi.Input<inputs.AppSpecWorkerAlertDestinationsSlackWebhook>[]>;
+    slackWebhooks?: pulumi.Input<pulumi.Input<inputs.AppSpecWorkerAlertDestinationsSlackWebhook>[] | undefined>;
 }
 
 export interface AppSpecWorkerAlertDestinationsSlackWebhook {
@@ -1817,7 +1817,7 @@ export interface AppSpecWorkerAutoscalingMetrics {
     /**
      * Settings for scaling the component based on CPU utilization.
      */
-    cpu?: pulumi.Input<inputs.AppSpecWorkerAutoscalingMetricsCpu>;
+    cpu?: pulumi.Input<inputs.AppSpecWorkerAutoscalingMetricsCpu | undefined>;
 }
 
 export interface AppSpecWorkerAutoscalingMetricsCpu {
@@ -1831,94 +1831,94 @@ export interface AppSpecWorkerBitbucket {
     /**
      * The name of the branch to use.
      */
-    branch?: pulumi.Input<string>;
+    branch?: pulumi.Input<string | undefined>;
     /**
      * Whether to automatically deploy new commits made to the repo.
      */
-    deployOnPush?: pulumi.Input<boolean>;
+    deployOnPush?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the repo in the format `owner/repo`.
      */
-    repo?: pulumi.Input<string>;
+    repo?: pulumi.Input<string | undefined>;
 }
 
 export interface AppSpecWorkerEnv {
     /**
      * The name of the environment variable.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
      */
-    scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string | undefined>;
     /**
      * The type of the environment variable, `GENERAL` or `SECRET`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * The value of the environment variable.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface AppSpecWorkerGit {
     /**
      * The name of the branch to use.
      */
-    branch?: pulumi.Input<string>;
+    branch?: pulumi.Input<string | undefined>;
     /**
      * The clone URL of the repo.
      */
-    repoCloneUrl?: pulumi.Input<string>;
+    repoCloneUrl?: pulumi.Input<string | undefined>;
 }
 
 export interface AppSpecWorkerGithub {
     /**
      * The name of the branch to use.
      */
-    branch?: pulumi.Input<string>;
+    branch?: pulumi.Input<string | undefined>;
     /**
      * Whether to automatically deploy new commits made to the repo.
      */
-    deployOnPush?: pulumi.Input<boolean>;
+    deployOnPush?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the repo in the format `owner/repo`.
      */
-    repo?: pulumi.Input<string>;
+    repo?: pulumi.Input<string | undefined>;
 }
 
 export interface AppSpecWorkerGitlab {
     /**
      * The name of the branch to use.
      */
-    branch?: pulumi.Input<string>;
+    branch?: pulumi.Input<string | undefined>;
     /**
      * Whether to automatically deploy new commits made to the repo.
      */
-    deployOnPush?: pulumi.Input<boolean>;
+    deployOnPush?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the repo in the format `owner/repo`.
      */
-    repo?: pulumi.Input<string>;
+    repo?: pulumi.Input<string | undefined>;
 }
 
 export interface AppSpecWorkerImage {
     /**
      * Configures automatically deploying images pushed to DOCR.
      */
-    deployOnPushes?: pulumi.Input<pulumi.Input<inputs.AppSpecWorkerImageDeployOnPush>[]>;
+    deployOnPushes?: pulumi.Input<pulumi.Input<inputs.AppSpecWorkerImageDeployOnPush>[] | undefined>;
     /**
      * The image digest. Cannot be specified if `tag` is provided.
      */
-    digest?: pulumi.Input<string>;
+    digest?: pulumi.Input<string | undefined>;
     /**
      * The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
      */
-    registry?: pulumi.Input<string>;
+    registry?: pulumi.Input<string | undefined>;
     /**
      * The credentials required to access a private Docker Hub or GitHub registry, in the following syntax `<username>:<token>`.
      */
-    registryCredentials?: pulumi.Input<string>;
+    registryCredentials?: pulumi.Input<string | undefined>;
     /**
      * The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
      */
@@ -1930,25 +1930,25 @@ export interface AppSpecWorkerImage {
     /**
      * The repository tag. Defaults to `latest` if not provided.
      */
-    tag?: pulumi.Input<string>;
+    tag?: pulumi.Input<string | undefined>;
 }
 
 export interface AppSpecWorkerImageDeployOnPush {
     /**
      * Whether to automatically deploy images pushed to DOCR.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
 }
 
 export interface AppSpecWorkerLogDestination {
     /**
      * Datadog configuration.
      */
-    datadog?: pulumi.Input<inputs.AppSpecWorkerLogDestinationDatadog>;
+    datadog?: pulumi.Input<inputs.AppSpecWorkerLogDestinationDatadog | undefined>;
     /**
      * Logtail configuration.
      */
-    logtail?: pulumi.Input<inputs.AppSpecWorkerLogDestinationLogtail>;
+    logtail?: pulumi.Input<inputs.AppSpecWorkerLogDestinationLogtail | undefined>;
     /**
      * Name of the log destination. Minimum length: 2. Maximum length: 42.
      */
@@ -1956,11 +1956,11 @@ export interface AppSpecWorkerLogDestination {
     /**
      * OpenSearch configuration.
      */
-    openSearch?: pulumi.Input<inputs.AppSpecWorkerLogDestinationOpenSearch>;
+    openSearch?: pulumi.Input<inputs.AppSpecWorkerLogDestinationOpenSearch | undefined>;
     /**
      * Papertrail configuration.
      */
-    papertrail?: pulumi.Input<inputs.AppSpecWorkerLogDestinationPapertrail>;
+    papertrail?: pulumi.Input<inputs.AppSpecWorkerLogDestinationPapertrail | undefined>;
 }
 
 export interface AppSpecWorkerLogDestinationDatadog {
@@ -1971,7 +1971,7 @@ export interface AppSpecWorkerLogDestinationDatadog {
     /**
      * Datadog HTTP log intake endpoint.
      */
-    endpoint?: pulumi.Input<string>;
+    endpoint?: pulumi.Input<string | undefined>;
 }
 
 export interface AppSpecWorkerLogDestinationLogtail {
@@ -1989,26 +1989,26 @@ export interface AppSpecWorkerLogDestinationOpenSearch {
     /**
      * The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
      */
-    clusterName?: pulumi.Input<string>;
+    clusterName?: pulumi.Input<string | undefined>;
     /**
      * OpenSearch endpoint.
      */
-    endpoint?: pulumi.Input<string>;
+    endpoint?: pulumi.Input<string | undefined>;
     /**
      * OpenSearch index name.
      */
-    indexName?: pulumi.Input<string>;
+    indexName?: pulumi.Input<string | undefined>;
 }
 
 export interface AppSpecWorkerLogDestinationOpenSearchBasicAuth {
     /**
      * Password for basic authentication.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * user for basic authentication.
      */
-    user?: pulumi.Input<string>;
+    user?: pulumi.Input<string | undefined>;
 }
 
 export interface AppSpecWorkerLogDestinationPapertrail {
@@ -2024,7 +2024,7 @@ export interface AppSpecWorkerTermination {
      *
      * A `function` component can contain:
      */
-    gracePeriodSeconds?: pulumi.Input<number>;
+    gracePeriodSeconds?: pulumi.Input<number | undefined>;
 }
 
 export interface DatabaseClusterBackupRestore {
@@ -2033,7 +2033,7 @@ export interface DatabaseClusterBackupRestore {
      *
      * This resource supports customized create timeouts. The default timeout is 30 minutes.
      */
-    backupCreatedAt?: pulumi.Input<string>;
+    backupCreatedAt?: pulumi.Input<string | undefined>;
     /**
      * The name of an existing database cluster from which the backup will be restored.
      */
@@ -2055,7 +2055,7 @@ export interface DatabaseFirewallRule {
     /**
      * The date and time when the firewall rule was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The type of resource that the firewall rule allows to access the database cluster. The possible values are: `droplet`, `k8s`, `ipAddr`, `tag`, or `app`.
      */
@@ -2063,7 +2063,7 @@ export interface DatabaseFirewallRule {
     /**
      * A unique identifier for the firewall rule.
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
     /**
      * The ID of the specific resource, the name of a tag applied to a group of resources, or the IP address that the firewall rule allows to access the database cluster.
      */
@@ -2075,93 +2075,93 @@ export interface DatabaseKafkaTopicConfig {
      * The topic cleanup policy that describes whether messages should be deleted, compacted, or both when retention policies are violated.
      * This may be one of "delete", "compact", or "compactDelete".
      */
-    cleanupPolicy?: pulumi.Input<string>;
+    cleanupPolicy?: pulumi.Input<string | undefined>;
     /**
      * The topic compression codecs used for a given topic.
      * This may be one of "uncompressed", "gzip", "snappy", "lz4", "producer", "zstd". "uncompressed" indicates that there is no compression and "producer" retains the original compression codec set by the producer.
      */
-    compressionType?: pulumi.Input<string>;
+    compressionType?: pulumi.Input<string | undefined>;
     /**
      * The amount of time, in ms, that deleted records are retained.
      */
-    deleteRetentionMs?: pulumi.Input<string>;
+    deleteRetentionMs?: pulumi.Input<string | undefined>;
     /**
      * The amount of time, in ms, to wait before deleting a topic log segment from the filesystem.
      */
-    fileDeleteDelayMs?: pulumi.Input<string>;
+    fileDeleteDelayMs?: pulumi.Input<string | undefined>;
     /**
      * The number of messages accumulated on a topic partition before they are flushed to disk.
      */
-    flushMessages?: pulumi.Input<string>;
+    flushMessages?: pulumi.Input<string | undefined>;
     /**
      * The maximum time, in ms, that a topic is kept in memory before being flushed to disk.
      */
-    flushMs?: pulumi.Input<string>;
+    flushMs?: pulumi.Input<string | undefined>;
     /**
      * The interval, in bytes, in which entries are added to the offset index.
      */
-    indexIntervalBytes?: pulumi.Input<string>;
+    indexIntervalBytes?: pulumi.Input<string | undefined>;
     /**
      * The maximum time, in ms, that a particular message will remain uncompacted. This will not apply if the `compressionType` is set to "uncompressed" or it is set to `producer` and the producer is not using compression.
      */
-    maxCompactionLagMs?: pulumi.Input<string>;
+    maxCompactionLagMs?: pulumi.Input<string | undefined>;
     /**
      * The maximum size, in bytes, of a message.
      */
-    maxMessageBytes?: pulumi.Input<string>;
+    maxMessageBytes?: pulumi.Input<string | undefined>;
     /**
      * Determines whether down-conversion of message formats for consumers is enabled.
      */
-    messageDownConversionEnable?: pulumi.Input<boolean>;
+    messageDownConversionEnable?: pulumi.Input<boolean | undefined>;
     /**
      * The version of the inter-broker protocol that will be used. This may be one of "0.8.0", "0.8.1", "0.8.2", "0.9.0", "0.10.0", "0.10.0-IV0", "0.10.0-IV1", "0.10.1", "0.10.1-IV0", "0.10.1-IV1", "0.10.1-IV2", "0.10.2", "0.10.2-IV0", "0.11.0", "0.11.0-IV0", "0.11.0-IV1", "0.11.0-IV2", "1.0", "1.0-IV0", "1.1", "1.1-IV0", "2.0", "2.0-IV0", "2.0-IV1", "2.1", "2.1-IV0", "2.1-IV1", "2.1-IV2", "2.2", "2.2-IV0", "2.2-IV1", "2.3", "2.3-IV0", "2.3-IV1", "2.4", "2.4-IV0", "2.4-IV1", "2.5", "2.5-IV0", "2.6", "2.6-IV0", "2.7", "2.7-IV0", "2.7-IV1", "2.7-IV2", "2.8", "2.8-IV0", "2.8-IV1", "3.0", "3.0-IV0", "3.0-IV1", "3.1", "3.1-IV0", "3.2", "3.2-IV0", "3.3", "3.3-IV0", "3.3-IV1", "3.3-IV2", "3.3-IV3", "3.4", "3.4-IV0", "3.5", "3.5-IV0", "3.5-IV1", "3.5-IV2", "3.6", "3.6-IV0", "3.6-IV1", "3.6-IV2".
      */
-    messageFormatVersion?: pulumi.Input<string>;
+    messageFormatVersion?: pulumi.Input<string | undefined>;
     /**
      * The maximum difference, in ms, between the timestamp specific in a message and when the broker receives the message.
      */
-    messageTimestampDifferenceMaxMs?: pulumi.Input<string>;
+    messageTimestampDifferenceMaxMs?: pulumi.Input<string | undefined>;
     /**
      * Specifies which timestamp to use for the message. This may be one of "createTime" or "logAppendTime".
      */
-    messageTimestampType?: pulumi.Input<string>;
+    messageTimestampType?: pulumi.Input<string | undefined>;
     /**
      * A scale between 0.0 and 1.0 which controls the frequency of the compactor. Larger values mean more frequent compactions. This is often paired with `maxCompactionLagMs` to control the compactor frequency.
      */
-    minCleanableDirtyRatio?: pulumi.Input<number>;
-    minCompactionLagMs?: pulumi.Input<string>;
+    minCleanableDirtyRatio?: pulumi.Input<number | undefined>;
+    minCompactionLagMs?: pulumi.Input<string | undefined>;
     /**
      * The number of replicas that must acknowledge a write before it is considered successful. -1 is a special setting to indicate that all nodes must ack a message before a write is considered successful. Default is 1, indicating at least 1 replica must acknowledge a write to be considered successful.
      */
-    minInsyncReplicas?: pulumi.Input<number>;
+    minInsyncReplicas?: pulumi.Input<number | undefined>;
     /**
      * Determines whether to preallocate a file on disk when creating a new log segment within a topic.
      */
-    preallocate?: pulumi.Input<boolean>;
+    preallocate?: pulumi.Input<boolean | undefined>;
     /**
      * The maximum size, in bytes, of a topic before messages are deleted. -1 is a special setting indicating that this setting has no limit.
      */
-    retentionBytes?: pulumi.Input<string>;
+    retentionBytes?: pulumi.Input<string | undefined>;
     /**
      * The maximum time, in ms, that a topic log file is retained before deleting it. -1 is a special setting indicating that this setting has no limit.
      */
-    retentionMs?: pulumi.Input<string>;
+    retentionMs?: pulumi.Input<string | undefined>;
     /**
      * The maximum size, in bytes, of a single topic log file.
      */
-    segmentBytes?: pulumi.Input<string>;
+    segmentBytes?: pulumi.Input<string | undefined>;
     /**
      * The maximum size, in bytes, of the offset index.
      */
-    segmentIndexBytes?: pulumi.Input<string>;
+    segmentIndexBytes?: pulumi.Input<string | undefined>;
     /**
      * The maximum time, in ms, subtracted from the scheduled segment disk flush time to avoid the thundering herd problem for segment flushing.
      */
-    segmentJitterMs?: pulumi.Input<string>;
+    segmentJitterMs?: pulumi.Input<string | undefined>;
     /**
      * The maximum time, in ms, before the topic log will flush to disk.
      */
-    segmentMs?: pulumi.Input<string>;
+    segmentMs?: pulumi.Input<string | undefined>;
 }
 
 export interface DatabaseOnlineMigrationSource {
@@ -2188,19 +2188,19 @@ export interface DatabaseOnlineMigrationSource {
 }
 
 export interface DatabasePostgresqlConfigPgbouncer {
-    autodbIdleTimeout?: pulumi.Input<number>;
-    autodbMaxDbConnections?: pulumi.Input<number>;
-    autodbPoolMode?: pulumi.Input<string>;
-    autodbPoolSize?: pulumi.Input<number>;
-    ignoreStartupParameters?: pulumi.Input<pulumi.Input<string>[]>;
-    minPoolSize?: pulumi.Input<number>;
-    serverIdleTimeout?: pulumi.Input<number>;
-    serverLifetime?: pulumi.Input<number>;
-    serverResetQueryAlways?: pulumi.Input<boolean>;
+    autodbIdleTimeout?: pulumi.Input<number | undefined>;
+    autodbMaxDbConnections?: pulumi.Input<number | undefined>;
+    autodbPoolMode?: pulumi.Input<string | undefined>;
+    autodbPoolSize?: pulumi.Input<number | undefined>;
+    ignoreStartupParameters?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    minPoolSize?: pulumi.Input<number | undefined>;
+    serverIdleTimeout?: pulumi.Input<number | undefined>;
+    serverLifetime?: pulumi.Input<number | undefined>;
+    serverResetQueryAlways?: pulumi.Input<boolean | undefined>;
 }
 
 export interface DatabasePostgresqlConfigTimescaledb {
-    maxBackgroundWorkers?: pulumi.Input<number>;
+    maxBackgroundWorkers?: pulumi.Input<number | undefined>;
 }
 
 export interface DatabaseUserSetting {
@@ -2209,15 +2209,15 @@ export interface DatabaseUserSetting {
      *
      * An individual ACL includes the following:
      */
-    acls?: pulumi.Input<pulumi.Input<inputs.DatabaseUserSettingAcl>[]>;
-    opensearchAcls?: pulumi.Input<pulumi.Input<inputs.DatabaseUserSettingOpensearchAcl>[]>;
+    acls?: pulumi.Input<pulumi.Input<inputs.DatabaseUserSettingAcl>[] | undefined>;
+    opensearchAcls?: pulumi.Input<pulumi.Input<inputs.DatabaseUserSettingOpensearchAcl>[] | undefined>;
 }
 
 export interface DatabaseUserSettingAcl {
     /**
      * An identifier for the ACL, this will be automatically assigned when you create an ACL entry
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The permission level applied to the ACL. This includes "admin", "consume", "produce", and "produceconsume". "admin" allows for producing and consuming as well as add/delete/update permission for topics. "consume" allows only for reading topic messages. "produce" allows only for writing topic messages. "produceconsume" allows for both reading and writing topic messages.
      */
@@ -2244,7 +2244,7 @@ export interface DedicatedInferenceModelDeployment {
     /**
      * The unique ID of the model.
      */
-    modelId?: pulumi.Input<string>;
+    modelId?: pulumi.Input<string | undefined>;
     /**
      * The provider of the model (e.g. `digitalocean`, `huggingface`).
      */
@@ -2256,7 +2256,7 @@ export interface DedicatedInferenceModelDeployment {
     /**
      * The provider-specific model ID. Required when modelProvider is 'hugging_face', optional for 'modelcatalog'.
      */
-    providerModelId?: pulumi.Input<string>;
+    providerModelId?: pulumi.Input<string | undefined>;
 }
 
 export interface DedicatedInferenceModelDeploymentAccelerator {
@@ -2278,40 +2278,40 @@ export interface DropletAutoscaleConfig {
     /**
      * The cooldown duration between scaling events for the Droplet Autoscale pool.
      */
-    cooldownMinutes?: pulumi.Input<number>;
+    cooldownMinutes?: pulumi.Input<number | undefined>;
     /**
      * The maximum number of instances to maintain in the Droplet Autoscale pool.
      */
-    maxInstances?: pulumi.Input<number>;
+    maxInstances?: pulumi.Input<number | undefined>;
     /**
      * The minimum number of instances to maintain in the Droplet Autoscale pool.
      */
-    minInstances?: pulumi.Input<number>;
+    minInstances?: pulumi.Input<number | undefined>;
     /**
      * The target average CPU load (in range `[0, 1]`) to maintain in the Droplet Autoscale pool.
      */
-    targetCpuUtilization?: pulumi.Input<number>;
+    targetCpuUtilization?: pulumi.Input<number | undefined>;
     /**
      * The target average Memory load (in range `[0, 1]`) to maintain in the Droplet Autoscale 
      * pool.
      */
-    targetMemoryUtilization?: pulumi.Input<number>;
+    targetMemoryUtilization?: pulumi.Input<number | undefined>;
     /**
      * The static number of instances to maintain in the pool Droplet Autoscale pool. This
      * argument cannot be used with any other config options.
      */
-    targetNumberInstances?: pulumi.Input<number>;
+    targetNumberInstances?: pulumi.Input<number | undefined>;
 }
 
 export interface DropletAutoscaleCurrentUtilization {
     /**
      * Average CPU utilization
      */
-    cpu?: pulumi.Input<number>;
+    cpu?: pulumi.Input<number | undefined>;
     /**
      * Average Memory utilization
      */
-    memory?: pulumi.Input<number>;
+    memory?: pulumi.Input<number | undefined>;
 }
 
 export interface DropletAutoscaleDropletTemplate {
@@ -2322,15 +2322,15 @@ export interface DropletAutoscaleDropletTemplate {
     /**
      * Boolean flag to enable IPv6 networking on the Droplet Autoscale pool underlying resource(s).
      */
-    ipv6?: pulumi.Input<boolean>;
+    ipv6?: pulumi.Input<boolean | undefined>;
     /**
      * Project UUID to create the Droplet Autoscale pool underlying resource(s).
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * A boolean indicating whether to enables public networking for the Droplet or not. By default, this is always enabled on new droplets. But, by explicitly setting it to false, you can create a droplet with public networking entirely disabled.
      */
-    publicNetworking?: pulumi.Input<boolean>;
+    publicNetworking?: pulumi.Input<boolean | undefined>;
     /**
      * Region slug of the Droplet Autoscale pool underlying resource(s).
      */
@@ -2346,37 +2346,37 @@ export interface DropletAutoscaleDropletTemplate {
     /**
      * List of tags to add to the Droplet Autoscale pool underlying resource(s).
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Custom user data that can be added to the Droplet Autoscale pool underlying resource(s). This can be a 
      * cloud init script that user may configure to setup their application workload.
      */
-    userData?: pulumi.Input<string>;
+    userData?: pulumi.Input<string | undefined>;
     /**
      * VPC UUID to create the Droplet Autoscale pool underlying resource(s). If not provided, this is inferred
      * from the specified `region` (default VPC).
      */
-    vpcUuid?: pulumi.Input<string>;
+    vpcUuid?: pulumi.Input<string | undefined>;
     /**
      * Boolean flag to enable metric agent on the Droplet Autoscale pool underlying resource(s). The
      * metric agent enables collecting resource utilization metrics, which allows making resource based scaling decisions.
      */
-    withDropletAgent?: pulumi.Input<boolean>;
+    withDropletAgent?: pulumi.Input<boolean | undefined>;
 }
 
 export interface DropletBackupPolicy {
     /**
      * The hour of the day that the backup window will start (`0`, `4`, `8`, `12`, `16`, `20`).
      */
-    hour?: pulumi.Input<number>;
+    hour?: pulumi.Input<number | undefined>;
     /**
      * The backup plan used for the Droplet. The plan can be either `daily` or `weekly`.
      */
-    plan?: pulumi.Input<string>;
+    plan?: pulumi.Input<string | undefined>;
     /**
      * The day of the week on which the backup will occur (`SUN`, `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`).
      */
-    weekday?: pulumi.Input<string>;
+    weekday?: pulumi.Input<string | undefined>;
 }
 
 export interface FirewallInboundRule {
@@ -2386,7 +2386,7 @@ export interface FirewallInboundRule {
      * or "1-65535" to open all ports for a protocol. Required for when protocol is
      * `tcp` or `udp`.
      */
-    portRange?: pulumi.Input<string>;
+    portRange?: pulumi.Input<string | undefined>;
     /**
      * The type of traffic to be allowed.
      * This may be one of "tcp", "udp", or "icmp".
@@ -2397,28 +2397,28 @@ export interface FirewallInboundRule {
      * addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs from which the
      * inbound traffic will be accepted.
      */
-    sourceAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    sourceAddresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * An array containing the IDs of
      * the Droplets from which the inbound traffic will be accepted.
      */
-    sourceDropletIds?: pulumi.Input<pulumi.Input<number>[]>;
+    sourceDropletIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * An array containing the IDs of
      * the Kubernetes clusters from which the inbound traffic will be accepted.
      */
-    sourceKubernetesIds?: pulumi.Input<pulumi.Input<string>[]>;
+    sourceKubernetesIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * An array containing the IDs
      * of the Load Balancers from which the inbound traffic will be accepted.
      */
-    sourceLoadBalancerUids?: pulumi.Input<pulumi.Input<string>[]>;
+    sourceLoadBalancerUids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * An array containing the names of Tags
      * corresponding to groups of Droplets from which the inbound traffic
      * will be accepted.
      */
-    sourceTags?: pulumi.Input<pulumi.Input<string>[]>;
+    sourceTags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface FirewallOutboundRule {
@@ -2427,35 +2427,35 @@ export interface FirewallOutboundRule {
      * addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the
      * outbound traffic will be allowed.
      */
-    destinationAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    destinationAddresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * An array containing the IDs of
      * the Droplets to which the outbound traffic will be allowed.
      */
-    destinationDropletIds?: pulumi.Input<pulumi.Input<number>[]>;
+    destinationDropletIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * An array containing the IDs of
      * the Kubernetes clusters to which the outbound traffic will be allowed.
      */
-    destinationKubernetesIds?: pulumi.Input<pulumi.Input<string>[]>;
+    destinationKubernetesIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * An array containing the IDs
      * of the Load Balancers to which the outbound traffic will be allowed.
      */
-    destinationLoadBalancerUids?: pulumi.Input<pulumi.Input<string>[]>;
+    destinationLoadBalancerUids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * An array containing the names of Tags
      * corresponding to groups of Droplets to which the outbound traffic will
      * be allowed.
      */
-    destinationTags?: pulumi.Input<pulumi.Input<string>[]>;
+    destinationTags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ports on which traffic will be allowed
      * specified as a string containing a single port, a range (e.g. "8000-9000"),
      * or "1-65535" to open all ports for a protocol. Required for when protocol is
      * `tcp` or `udp`.
      */
-    portRange?: pulumi.Input<string>;
+    portRange?: pulumi.Input<string | undefined>;
     /**
      * The type of traffic to be allowed.
      * This may be one of "tcp", "udp", or "icmp".
@@ -2464,191 +2464,191 @@ export interface FirewallOutboundRule {
 }
 
 export interface FirewallPendingChange {
-    dropletId?: pulumi.Input<number>;
-    removing?: pulumi.Input<boolean>;
+    dropletId?: pulumi.Input<number | undefined>;
+    removing?: pulumi.Input<boolean | undefined>;
     /**
      * A status string indicating the current state of the Firewall.
      * This can be "waiting", "succeeded", or "failed".
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 export interface GenaiAgentAgentGuardrail {
     /**
      * Agent UUID for the Guardrail
      */
-    agentUuid?: pulumi.Input<string>;
+    agentUuid?: pulumi.Input<string | undefined>;
     /**
      * Created At timestamp for the Guardrail
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Default response for the Guardrail
      */
-    defaultResponse?: pulumi.Input<string>;
+    defaultResponse?: pulumi.Input<string | undefined>;
     /**
      * Description of the Guardrail
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Guardrail UUID
      */
-    guardrailUuid?: pulumi.Input<string>;
+    guardrailUuid?: pulumi.Input<string | undefined>;
     /**
      * Indicates if the Guardrail is attached
      */
-    isAttached?: pulumi.Input<boolean>;
+    isAttached?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates if the Guardrail is default
      */
-    isDefault?: pulumi.Input<boolean>;
+    isDefault?: pulumi.Input<boolean | undefined>;
     /**
      * Name of Guardrail
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Priority of the Guardrail
      */
-    priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number | undefined>;
     /**
      * Type of the Guardrail
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * Updated At timestamp for the Guardrail
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * Guardrail UUID
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 export interface GenaiAgentAnthropicApiKey {
     /**
      * Timestamp when the API Key was created
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Created By user ID for the API Key
      */
-    createdBy?: pulumi.Input<string>;
+    createdBy?: pulumi.Input<string | undefined>;
     /**
      * Deleted At timestamp for the API Key
      */
-    deletedAt?: pulumi.Input<string>;
+    deletedAt?: pulumi.Input<string | undefined>;
     /**
      * Name of the API Key
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Updated At timestamp for the API Key
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * API Key value
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 export interface GenaiAgentApiKey {
     /**
      * API Key value
      */
-    apiKey?: pulumi.Input<string>;
+    apiKey?: pulumi.Input<string | undefined>;
 }
 
 export interface GenaiAgentApiKeyInfo {
     /**
      * API Key value
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Created By user ID for the API Key
      */
-    createdBy?: pulumi.Input<string>;
+    createdBy?: pulumi.Input<string | undefined>;
     /**
      * Deleted At timestamp for the API Key
      */
-    deletedAt?: pulumi.Input<string>;
+    deletedAt?: pulumi.Input<string | undefined>;
     /**
      * Name of the API Key
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Updated At timestamp for the API Key
      */
-    secretKey?: pulumi.Input<string>;
+    secretKey?: pulumi.Input<string | undefined>;
     /**
      * API Key value
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 export interface GenaiAgentChatbot {
     /**
      * Background color for the chatbot button
      */
-    buttonBackgroundColor?: pulumi.Input<string>;
+    buttonBackgroundColor?: pulumi.Input<string | undefined>;
     /**
      * Logo for the chatbot
      */
-    logo?: pulumi.Input<string>;
+    logo?: pulumi.Input<string | undefined>;
     /**
      * Name of the chatbot
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Primary color for the chatbot
      */
-    primaryColor?: pulumi.Input<string>;
+    primaryColor?: pulumi.Input<string | undefined>;
     /**
      * Secondary color for the chatbot
      */
-    secondaryColor?: pulumi.Input<string>;
+    secondaryColor?: pulumi.Input<string | undefined>;
     /**
      * Starting message for the chatbot
      */
-    startingMessage?: pulumi.Input<string>;
+    startingMessage?: pulumi.Input<string | undefined>;
 }
 
 export interface GenaiAgentChatbotIdentifier {
-    chatbotId?: pulumi.Input<string>;
+    chatbotId?: pulumi.Input<string | undefined>;
 }
 
 export interface GenaiAgentChildAgent {
     /**
      * ID of the child agent
      */
-    agentId?: pulumi.Input<string>;
+    agentId?: pulumi.Input<string | undefined>;
     /**
      * Anthropic API Key information
      */
-    anthropicApiKeys?: pulumi.Input<pulumi.Input<inputs.GenaiAgentChildAgentAnthropicApiKey>[]>;
+    anthropicApiKeys?: pulumi.Input<pulumi.Input<inputs.GenaiAgentChildAgentAnthropicApiKey>[] | undefined>;
     /**
      * List of API Key Infos
      */
-    apiKeyInfos?: pulumi.Input<pulumi.Input<inputs.GenaiAgentChildAgentApiKeyInfo>[]>;
+    apiKeyInfos?: pulumi.Input<pulumi.Input<inputs.GenaiAgentChildAgentApiKeyInfo>[] | undefined>;
     /**
      * List of API Keys
      */
-    apiKeys?: pulumi.Input<pulumi.Input<inputs.GenaiAgentChildAgentApiKey>[]>;
+    apiKeys?: pulumi.Input<pulumi.Input<inputs.GenaiAgentChildAgentApiKey>[] | undefined>;
     /**
      * List of Chatbot Identifiers
      */
-    chatbotIdentifiers?: pulumi.Input<pulumi.Input<inputs.GenaiAgentChildAgentChatbotIdentifier>[]>;
+    chatbotIdentifiers?: pulumi.Input<pulumi.Input<inputs.GenaiAgentChildAgentChatbotIdentifier>[] | undefined>;
     /**
      * ChatBot configuration
      */
-    chatbots?: pulumi.Input<pulumi.Input<inputs.GenaiAgentChildAgentChatbot>[]>;
+    chatbots?: pulumi.Input<pulumi.Input<inputs.GenaiAgentChildAgentChatbot>[] | undefined>;
     /**
      * List of API Key Infos
      */
-    deployments?: pulumi.Input<pulumi.Input<inputs.GenaiAgentChildAgentDeployment>[]>;
+    deployments?: pulumi.Input<pulumi.Input<inputs.GenaiAgentChildAgentDeployment>[] | undefined>;
     /**
      * Description for the Agent
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Instruction for the Agent
      */
@@ -2675,450 +2675,450 @@ export interface GenaiAgentChildAgentAnthropicApiKey {
     /**
      * Timestamp when the API Key was created
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Created By user ID for the API Key
      */
-    createdBy?: pulumi.Input<string>;
+    createdBy?: pulumi.Input<string | undefined>;
     /**
      * Deleted At timestamp for the API Key
      */
-    deletedAt?: pulumi.Input<string>;
+    deletedAt?: pulumi.Input<string | undefined>;
     /**
      * Name of the API Key
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Updated At timestamp for the API Key
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * API Key value
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 export interface GenaiAgentChildAgentApiKey {
     /**
      * API Key value
      */
-    apiKey?: pulumi.Input<string>;
+    apiKey?: pulumi.Input<string | undefined>;
 }
 
 export interface GenaiAgentChildAgentApiKeyInfo {
     /**
      * API Key value
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Created By user ID for the API Key
      */
-    createdBy?: pulumi.Input<string>;
+    createdBy?: pulumi.Input<string | undefined>;
     /**
      * Deleted At timestamp for the API Key
      */
-    deletedAt?: pulumi.Input<string>;
+    deletedAt?: pulumi.Input<string | undefined>;
     /**
      * Name of the API Key
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Updated At timestamp for the API Key
      */
-    secretKey?: pulumi.Input<string>;
+    secretKey?: pulumi.Input<string | undefined>;
     /**
      * API Key value
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 export interface GenaiAgentChildAgentChatbot {
     /**
      * Background color for the chatbot button
      */
-    buttonBackgroundColor?: pulumi.Input<string>;
+    buttonBackgroundColor?: pulumi.Input<string | undefined>;
     /**
      * Logo for the chatbot
      */
-    logo?: pulumi.Input<string>;
+    logo?: pulumi.Input<string | undefined>;
     /**
      * Name of the chatbot
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Primary color for the chatbot
      */
-    primaryColor?: pulumi.Input<string>;
+    primaryColor?: pulumi.Input<string | undefined>;
     /**
      * Secondary color for the chatbot
      */
-    secondaryColor?: pulumi.Input<string>;
+    secondaryColor?: pulumi.Input<string | undefined>;
     /**
      * Starting message for the chatbot
      */
-    startingMessage?: pulumi.Input<string>;
+    startingMessage?: pulumi.Input<string | undefined>;
 }
 
 export interface GenaiAgentChildAgentChatbotIdentifier {
-    chatbotId?: pulumi.Input<string>;
+    chatbotId?: pulumi.Input<string | undefined>;
 }
 
 export interface GenaiAgentChildAgentDeployment {
     /**
      * API Key value
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Name of the API Key
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Status of the Deployment
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Updated At timestamp for the Agent
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * Url of the Deployment
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * API Key value
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
     /**
      * Visibility of the Deployment
      */
-    visibility?: pulumi.Input<string>;
+    visibility?: pulumi.Input<string | undefined>;
 }
 
 export interface GenaiAgentDeployment {
     /**
      * API Key value
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Name of the API Key
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Status of the Deployment
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Updated At timestamp for the Agent
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * Url of the Deployment
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * API Key value
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
     /**
      * Visibility of the Deployment
      */
-    visibility?: pulumi.Input<string>;
+    visibility?: pulumi.Input<string | undefined>;
 }
 
 export interface GenaiAgentFunction {
     /**
      * API Key value
      */
-    apiKey?: pulumi.Input<string>;
+    apiKey?: pulumi.Input<string | undefined>;
     /**
      * Created At timestamp for the Function
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Description of the Function
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Name of function
      */
-    faasname?: pulumi.Input<string>;
+    faasname?: pulumi.Input<string | undefined>;
     /**
      * Namespace of function
      */
-    faasnamespace?: pulumi.Input<string>;
+    faasnamespace?: pulumi.Input<string | undefined>;
     /**
      * Guardrail UUID for the Function
      */
-    guardrailUuid?: pulumi.Input<string>;
+    guardrailUuid?: pulumi.Input<string | undefined>;
     /**
      * Name of function
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Updated At timestamp for the Agent
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * Url of the Deployment
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * API Key value
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 export interface GenaiAgentKnowledgeBase {
     /**
      * Timestamp when the Knowledge Base was added to the Agent
      */
-    addedToAgentAt?: pulumi.Input<string>;
+    addedToAgentAt?: pulumi.Input<string | undefined>;
     /**
      * Created At timestamp for the Knowledge Base
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Database ID of the Knowledge Base
      */
-    databaseId?: pulumi.Input<string>;
+    databaseId?: pulumi.Input<string | undefined>;
     /**
      * Embedding model UUID for the Knowledge Base
      */
-    embeddingModelUuid?: pulumi.Input<string>;
+    embeddingModelUuid?: pulumi.Input<string | undefined>;
     /**
      * Indicates if the Knowledge Base is public
      */
-    isPublic?: pulumi.Input<boolean>;
+    isPublic?: pulumi.Input<boolean | undefined>;
     /**
      * Last indexing job for the Knowledge Base
      */
-    lastIndexingJob?: pulumi.Input<inputs.GenaiAgentKnowledgeBaseLastIndexingJob>;
+    lastIndexingJob?: pulumi.Input<inputs.GenaiAgentKnowledgeBaseLastIndexingJob | undefined>;
     /**
      * Name of the Knowledge Base
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Project ID of the Knowledge Base
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Region of the Knowledge Base
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * List of tags
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Timestamp when the Knowledge Base was updated
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * User ID of the Knowledge Base
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
     /**
      * UUID of the Knowledge Base
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 export interface GenaiAgentKnowledgeBaseLastIndexingJob {
     /**
      * Number of completed datasources in the last indexing job
      */
-    completedDatasources?: pulumi.Input<number>;
+    completedDatasources?: pulumi.Input<number | undefined>;
     /**
      * Created At timestamp for the last indexing job
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Datasource UUIDs for the last indexing job
      */
-    dataSourceUuids?: pulumi.Input<pulumi.Input<string>[]>;
+    dataSourceUuids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Timestamp when the last indexing job finished
      */
-    finishedAt?: pulumi.Input<string>;
+    finishedAt?: pulumi.Input<string | undefined>;
     /**
      * UUID  of the Knowledge Base for the last indexing job
      */
-    knowledgeBaseUuid?: pulumi.Input<string>;
+    knowledgeBaseUuid?: pulumi.Input<string | undefined>;
     /**
      * Phase of the last indexing job
      */
-    phase?: pulumi.Input<string>;
+    phase?: pulumi.Input<string | undefined>;
     /**
      * Timestamp when the last indexing job started
      */
-    startedAt?: pulumi.Input<string>;
+    startedAt?: pulumi.Input<string | undefined>;
     /**
      * Number of tokens processed in the last indexing job
      */
-    tokens?: pulumi.Input<number>;
+    tokens?: pulumi.Input<number | undefined>;
     /**
      * Total number of datasources in the last indexing job
      */
-    totalDatasources?: pulumi.Input<number>;
+    totalDatasources?: pulumi.Input<number | undefined>;
     /**
      * Timestamp when the last indexing job updated
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * UUID  of the last indexing job
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 export interface GenaiAgentModel {
     /**
      * Agreement information for the model
      */
-    agreements?: pulumi.Input<pulumi.Input<inputs.GenaiAgentModelAgreement>[]>;
+    agreements?: pulumi.Input<pulumi.Input<inputs.GenaiAgentModelAgreement>[] | undefined>;
     /**
      * Created At timestamp for the Knowledge Base
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Inference name of the model
      */
-    inferenceName?: pulumi.Input<string>;
+    inferenceName?: pulumi.Input<string | undefined>;
     /**
      * Infernce version of the model
      */
-    inferenceVersion?: pulumi.Input<string>;
+    inferenceVersion?: pulumi.Input<string | undefined>;
     /**
      * Indicates if the Model Base is foundational
      */
-    isFoundational?: pulumi.Input<boolean>;
+    isFoundational?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the Knowledge Base
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Parent UUID of the Model
      */
-    parentUuid?: pulumi.Input<string>;
+    parentUuid?: pulumi.Input<string | undefined>;
     /**
      * Provider of the Model
      */
-    provider?: pulumi.Input<string>;
+    provider?: pulumi.Input<string | undefined>;
     /**
      * Timestamp when the Knowledge Base was updated
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * Indicates if the Model upload is complete
      */
-    uploadComplete?: pulumi.Input<boolean>;
+    uploadComplete?: pulumi.Input<boolean | undefined>;
     /**
      * URL of the Model
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * List of Usecases for the Model
      */
-    usecases?: pulumi.Input<pulumi.Input<string>[]>;
+    usecases?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * URL of the Model
      */
-    versions?: pulumi.Input<pulumi.Input<inputs.GenaiAgentModelVersion>[]>;
+    versions?: pulumi.Input<pulumi.Input<inputs.GenaiAgentModelVersion>[] | undefined>;
 }
 
 export interface GenaiAgentModelAgreement {
     /**
      * Description of the agreement
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Name of the agreement
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * URL of the agreement
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * UUID of the agreement
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 export interface GenaiAgentModelVersion {
     /**
      * Major version of the model
      */
-    major?: pulumi.Input<number>;
+    major?: pulumi.Input<number | undefined>;
     /**
      * Minor version of the model
      */
-    minor?: pulumi.Input<number>;
+    minor?: pulumi.Input<number | undefined>;
     /**
      * Patch version of the model
      */
-    patch?: pulumi.Input<number>;
+    patch?: pulumi.Input<number | undefined>;
 }
 
 export interface GenaiAgentOpenAiApiKey {
     /**
      * Timestamp when the API Key was created
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Created By user ID for the API Key
      */
-    createdBy?: pulumi.Input<string>;
+    createdBy?: pulumi.Input<string | undefined>;
     /**
      * Deleted At timestamp for the API Key
      */
-    deletedAt?: pulumi.Input<string>;
+    deletedAt?: pulumi.Input<string | undefined>;
     /**
      * Name of the API Key
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Updated At timestamp for the API Key
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * API Key value
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 export interface GenaiAgentParentAgent {
     /**
      * ID of the child agent
      */
-    agentId?: pulumi.Input<string>;
+    agentId?: pulumi.Input<string | undefined>;
     /**
      * Anthropic API Key information
      */
-    anthropicApiKeys?: pulumi.Input<pulumi.Input<inputs.GenaiAgentParentAgentAnthropicApiKey>[]>;
+    anthropicApiKeys?: pulumi.Input<pulumi.Input<inputs.GenaiAgentParentAgentAnthropicApiKey>[] | undefined>;
     /**
      * List of API Key Infos
      */
-    apiKeyInfos?: pulumi.Input<pulumi.Input<inputs.GenaiAgentParentAgentApiKeyInfo>[]>;
+    apiKeyInfos?: pulumi.Input<pulumi.Input<inputs.GenaiAgentParentAgentApiKeyInfo>[] | undefined>;
     /**
      * List of API Keys
      */
-    apiKeys?: pulumi.Input<pulumi.Input<inputs.GenaiAgentParentAgentApiKey>[]>;
+    apiKeys?: pulumi.Input<pulumi.Input<inputs.GenaiAgentParentAgentApiKey>[] | undefined>;
     /**
      * List of Chatbot Identifiers
      */
-    chatbotIdentifiers?: pulumi.Input<pulumi.Input<inputs.GenaiAgentParentAgentChatbotIdentifier>[]>;
+    chatbotIdentifiers?: pulumi.Input<pulumi.Input<inputs.GenaiAgentParentAgentChatbotIdentifier>[] | undefined>;
     /**
      * ChatBot configuration
      */
-    chatbots?: pulumi.Input<pulumi.Input<inputs.GenaiAgentParentAgentChatbot>[]>;
+    chatbots?: pulumi.Input<pulumi.Input<inputs.GenaiAgentParentAgentChatbot>[] | undefined>;
     /**
      * List of API Key Infos
      */
-    deployments?: pulumi.Input<pulumi.Input<inputs.GenaiAgentParentAgentDeployment>[]>;
+    deployments?: pulumi.Input<pulumi.Input<inputs.GenaiAgentParentAgentDeployment>[] | undefined>;
     /**
      * Description for the Agent
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Instruction for the Agent
      */
@@ -3145,387 +3145,387 @@ export interface GenaiAgentParentAgentAnthropicApiKey {
     /**
      * Timestamp when the API Key was created
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Created By user ID for the API Key
      */
-    createdBy?: pulumi.Input<string>;
+    createdBy?: pulumi.Input<string | undefined>;
     /**
      * Deleted At timestamp for the API Key
      */
-    deletedAt?: pulumi.Input<string>;
+    deletedAt?: pulumi.Input<string | undefined>;
     /**
      * Name of the API Key
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Updated At timestamp for the API Key
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * API Key value
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 export interface GenaiAgentParentAgentApiKey {
     /**
      * API Key value
      */
-    apiKey?: pulumi.Input<string>;
+    apiKey?: pulumi.Input<string | undefined>;
 }
 
 export interface GenaiAgentParentAgentApiKeyInfo {
     /**
      * API Key value
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Created By user ID for the API Key
      */
-    createdBy?: pulumi.Input<string>;
+    createdBy?: pulumi.Input<string | undefined>;
     /**
      * Deleted At timestamp for the API Key
      */
-    deletedAt?: pulumi.Input<string>;
+    deletedAt?: pulumi.Input<string | undefined>;
     /**
      * Name of the API Key
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Updated At timestamp for the API Key
      */
-    secretKey?: pulumi.Input<string>;
+    secretKey?: pulumi.Input<string | undefined>;
     /**
      * API Key value
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 export interface GenaiAgentParentAgentChatbot {
     /**
      * Background color for the chatbot button
      */
-    buttonBackgroundColor?: pulumi.Input<string>;
+    buttonBackgroundColor?: pulumi.Input<string | undefined>;
     /**
      * Logo for the chatbot
      */
-    logo?: pulumi.Input<string>;
+    logo?: pulumi.Input<string | undefined>;
     /**
      * Name of the chatbot
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Primary color for the chatbot
      */
-    primaryColor?: pulumi.Input<string>;
+    primaryColor?: pulumi.Input<string | undefined>;
     /**
      * Secondary color for the chatbot
      */
-    secondaryColor?: pulumi.Input<string>;
+    secondaryColor?: pulumi.Input<string | undefined>;
     /**
      * Starting message for the chatbot
      */
-    startingMessage?: pulumi.Input<string>;
+    startingMessage?: pulumi.Input<string | undefined>;
 }
 
 export interface GenaiAgentParentAgentChatbotIdentifier {
-    chatbotId?: pulumi.Input<string>;
+    chatbotId?: pulumi.Input<string | undefined>;
 }
 
 export interface GenaiAgentParentAgentDeployment {
     /**
      * API Key value
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Name of the API Key
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Status of the Deployment
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Updated At timestamp for the Agent
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * Url of the Deployment
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * API Key value
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
     /**
      * Visibility of the Deployment
      */
-    visibility?: pulumi.Input<string>;
+    visibility?: pulumi.Input<string | undefined>;
 }
 
 export interface GenaiAgentTemplate {
     /**
      * Created At timestamp for the Knowledge Base
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Description of the Agent Template
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Instruction for the Agent
      */
-    instruction?: pulumi.Input<string>;
+    instruction?: pulumi.Input<string | undefined>;
     /**
      * K value for the Agent Template
      */
-    k?: pulumi.Input<number>;
+    k?: pulumi.Input<number | undefined>;
     /**
      * List of Knowledge Bases
      */
-    knowledgeBases?: pulumi.Input<pulumi.Input<inputs.GenaiAgentTemplateKnowledgeBase>[]>;
+    knowledgeBases?: pulumi.Input<pulumi.Input<inputs.GenaiAgentTemplateKnowledgeBase>[] | undefined>;
     /**
      * Maximum tokens allowed
      */
-    maxTokens?: pulumi.Input<number>;
+    maxTokens?: pulumi.Input<number | undefined>;
     /**
      * Model of the Agent Template
      */
-    models?: pulumi.Input<pulumi.Input<inputs.GenaiAgentTemplateModel>[]>;
+    models?: pulumi.Input<pulumi.Input<inputs.GenaiAgentTemplateModel>[] | undefined>;
     /**
      * Name of the Agent Template
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Agent temperature setting
      */
-    temperature?: pulumi.Input<number>;
+    temperature?: pulumi.Input<number | undefined>;
     /**
      * Top P sampling parameter
      */
-    topP?: pulumi.Input<number>;
+    topP?: pulumi.Input<number | undefined>;
     /**
      * Updated At timestamp for the Agent Template
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * uuid of the Agent Template
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 export interface GenaiAgentTemplateKnowledgeBase {
     /**
      * Timestamp when the Knowledge Base was added to the Agent
      */
-    addedToAgentAt?: pulumi.Input<string>;
+    addedToAgentAt?: pulumi.Input<string | undefined>;
     /**
      * Created At timestamp for the Knowledge Base
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Database ID of the Knowledge Base
      */
-    databaseId?: pulumi.Input<string>;
+    databaseId?: pulumi.Input<string | undefined>;
     /**
      * Embedding model UUID for the Knowledge Base
      */
-    embeddingModelUuid?: pulumi.Input<string>;
+    embeddingModelUuid?: pulumi.Input<string | undefined>;
     /**
      * Indicates if the Knowledge Base is public
      */
-    isPublic?: pulumi.Input<boolean>;
+    isPublic?: pulumi.Input<boolean | undefined>;
     /**
      * Last indexing job for the Knowledge Base
      */
-    lastIndexingJob?: pulumi.Input<inputs.GenaiAgentTemplateKnowledgeBaseLastIndexingJob>;
+    lastIndexingJob?: pulumi.Input<inputs.GenaiAgentTemplateKnowledgeBaseLastIndexingJob | undefined>;
     /**
      * Name of the Knowledge Base
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Project ID of the Knowledge Base
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Region of the Knowledge Base
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * List of tags
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Timestamp when the Knowledge Base was updated
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * User ID of the Knowledge Base
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
     /**
      * UUID of the Knowledge Base
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 export interface GenaiAgentTemplateKnowledgeBaseLastIndexingJob {
     /**
      * Number of completed datasources in the last indexing job
      */
-    completedDatasources?: pulumi.Input<number>;
+    completedDatasources?: pulumi.Input<number | undefined>;
     /**
      * Created At timestamp for the last indexing job
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Datasource UUIDs for the last indexing job
      */
-    dataSourceUuids?: pulumi.Input<pulumi.Input<string>[]>;
+    dataSourceUuids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Timestamp when the last indexing job finished
      */
-    finishedAt?: pulumi.Input<string>;
+    finishedAt?: pulumi.Input<string | undefined>;
     /**
      * UUID  of the Knowledge Base for the last indexing job
      */
-    knowledgeBaseUuid?: pulumi.Input<string>;
+    knowledgeBaseUuid?: pulumi.Input<string | undefined>;
     /**
      * Phase of the last indexing job
      */
-    phase?: pulumi.Input<string>;
+    phase?: pulumi.Input<string | undefined>;
     /**
      * Timestamp when the last indexing job started
      */
-    startedAt?: pulumi.Input<string>;
+    startedAt?: pulumi.Input<string | undefined>;
     /**
      * Number of tokens processed in the last indexing job
      */
-    tokens?: pulumi.Input<number>;
+    tokens?: pulumi.Input<number | undefined>;
     /**
      * Total number of datasources in the last indexing job
      */
-    totalDatasources?: pulumi.Input<number>;
+    totalDatasources?: pulumi.Input<number | undefined>;
     /**
      * Timestamp when the last indexing job updated
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * UUID  of the last indexing job
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 export interface GenaiAgentTemplateModel {
     /**
      * Agreement information for the model
      */
-    agreements?: pulumi.Input<pulumi.Input<inputs.GenaiAgentTemplateModelAgreement>[]>;
+    agreements?: pulumi.Input<pulumi.Input<inputs.GenaiAgentTemplateModelAgreement>[] | undefined>;
     /**
      * Created At timestamp for the Knowledge Base
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Inference name of the model
      */
-    inferenceName?: pulumi.Input<string>;
+    inferenceName?: pulumi.Input<string | undefined>;
     /**
      * Infernce version of the model
      */
-    inferenceVersion?: pulumi.Input<string>;
+    inferenceVersion?: pulumi.Input<string | undefined>;
     /**
      * Indicates if the Model Base is foundational
      */
-    isFoundational?: pulumi.Input<boolean>;
+    isFoundational?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the Knowledge Base
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Parent UUID of the Model
      */
-    parentUuid?: pulumi.Input<string>;
+    parentUuid?: pulumi.Input<string | undefined>;
     /**
      * Provider of the Model
      */
-    provider?: pulumi.Input<string>;
+    provider?: pulumi.Input<string | undefined>;
     /**
      * Timestamp when the Knowledge Base was updated
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * Indicates if the Model upload is complete
      */
-    uploadComplete?: pulumi.Input<boolean>;
+    uploadComplete?: pulumi.Input<boolean | undefined>;
     /**
      * URL of the Model
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * List of Usecases for the Model
      */
-    usecases?: pulumi.Input<pulumi.Input<string>[]>;
+    usecases?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * URL of the Model
      */
-    versions?: pulumi.Input<pulumi.Input<inputs.GenaiAgentTemplateModelVersion>[]>;
+    versions?: pulumi.Input<pulumi.Input<inputs.GenaiAgentTemplateModelVersion>[] | undefined>;
 }
 
 export interface GenaiAgentTemplateModelAgreement {
     /**
      * Description of the agreement
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Name of the agreement
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * URL of the agreement
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * UUID of the agreement
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 export interface GenaiAgentTemplateModelVersion {
     /**
      * Major version of the model
      */
-    major?: pulumi.Input<number>;
+    major?: pulumi.Input<number | undefined>;
     /**
      * Minor version of the model
      */
-    minor?: pulumi.Input<number>;
+    minor?: pulumi.Input<number | undefined>;
     /**
      * Patch version of the model
      */
-    patch?: pulumi.Input<number>;
+    patch?: pulumi.Input<number | undefined>;
 }
 
 export interface GenaiKnowledgeBaseDataSourceSpacesDataSource {
     /**
      * The name of the Spaces bucket
      */
-    bucketName?: pulumi.Input<string>;
+    bucketName?: pulumi.Input<string | undefined>;
     /**
      * The path to the item in the bucket
      */
-    itemPath?: pulumi.Input<string>;
+    itemPath?: pulumi.Input<string | undefined>;
     /**
      * The region of the Spaces bucket
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }
 
 export interface GenaiKnowledgeBaseDataSourceWebCrawlerDataSource {
     /**
      * The base URL to crawl
      */
-    baseUrl?: pulumi.Input<string>;
+    baseUrl?: pulumi.Input<string | undefined>;
     /**
      * Options for specifying how URLs found on pages should be handled. 
      * - UNKNOWN: Default unknown value
@@ -3534,147 +3534,147 @@ export interface GenaiKnowledgeBaseDataSourceWebCrawlerDataSource {
      * - DOMAIN: Crawl the base URL and linked pages within the same domain.
      * - SUBDOMAINS: Crawl the base URL and linked pages for any subdomain.
      */
-    crawlingOption?: pulumi.Input<string>;
+    crawlingOption?: pulumi.Input<string | undefined>;
     /**
      * Whether to embed media content
      */
-    embedMedia?: pulumi.Input<boolean>;
+    embedMedia?: pulumi.Input<boolean | undefined>;
 }
 
 export interface GenaiKnowledgeBaseLastIndexingJob {
     /**
      * Number of completed datasources in the last indexing job
      */
-    completedDatasources?: pulumi.Input<number>;
+    completedDatasources?: pulumi.Input<number | undefined>;
     /**
      * Created At timestamp for the last indexing job
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Datasource UUIDs for the last indexing job
      */
-    dataSourceUuids?: pulumi.Input<pulumi.Input<string>[]>;
+    dataSourceUuids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Timestamp when the last indexing job finished
      */
-    finishedAt?: pulumi.Input<string>;
+    finishedAt?: pulumi.Input<string | undefined>;
     /**
      * UUID  of the Knowledge Base for the last indexing job
      */
-    knowledgeBaseUuid?: pulumi.Input<string>;
+    knowledgeBaseUuid?: pulumi.Input<string | undefined>;
     /**
      * Phase of the last indexing job
      */
-    phase?: pulumi.Input<string>;
+    phase?: pulumi.Input<string | undefined>;
     /**
      * Timestamp when the last indexing job started
      */
-    startedAt?: pulumi.Input<string>;
+    startedAt?: pulumi.Input<string | undefined>;
     /**
      * Number of tokens processed in the last indexing job
      */
-    tokens?: pulumi.Input<number>;
+    tokens?: pulumi.Input<number | undefined>;
     /**
      * Total number of datasources in the last indexing job
      */
-    totalDatasources?: pulumi.Input<number>;
+    totalDatasources?: pulumi.Input<number | undefined>;
     /**
      * Timestamp when the last indexing job updated
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * UUID  of the last indexing job
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 export interface GenaiOpenaiApiKeyModel {
     /**
      * Agreement information for the model
      */
-    agreements?: pulumi.Input<pulumi.Input<inputs.GenaiOpenaiApiKeyModelAgreement>[]>;
+    agreements?: pulumi.Input<pulumi.Input<inputs.GenaiOpenaiApiKeyModelAgreement>[] | undefined>;
     /**
      * Created At timestamp for the Knowledge Base
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Inference name of the model
      */
-    inferenceName?: pulumi.Input<string>;
+    inferenceName?: pulumi.Input<string | undefined>;
     /**
      * Infernce version of the model
      */
-    inferenceVersion?: pulumi.Input<string>;
+    inferenceVersion?: pulumi.Input<string | undefined>;
     /**
      * Indicates if the Model Base is foundational
      */
-    isFoundational?: pulumi.Input<boolean>;
+    isFoundational?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the Knowledge Base
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Parent UUID of the Model
      */
-    parentUuid?: pulumi.Input<string>;
+    parentUuid?: pulumi.Input<string | undefined>;
     /**
      * Provider of the Model
      */
-    provider?: pulumi.Input<string>;
+    provider?: pulumi.Input<string | undefined>;
     /**
      * Timestamp when the Knowledge Base was updated
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * Indicates if the Model upload is complete
      */
-    uploadComplete?: pulumi.Input<boolean>;
+    uploadComplete?: pulumi.Input<boolean | undefined>;
     /**
      * URL of the Model
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * List of Usecases for the Model
      */
-    usecases?: pulumi.Input<pulumi.Input<string>[]>;
+    usecases?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * URL of the Model
      */
-    versions?: pulumi.Input<pulumi.Input<inputs.GenaiOpenaiApiKeyModelVersion>[]>;
+    versions?: pulumi.Input<pulumi.Input<inputs.GenaiOpenaiApiKeyModelVersion>[] | undefined>;
 }
 
 export interface GenaiOpenaiApiKeyModelAgreement {
     /**
      * Description of the agreement
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Name of the agreement
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * URL of the agreement
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * UUID of the agreement
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 export interface GenaiOpenaiApiKeyModelVersion {
     /**
      * Major version of the model
      */
-    major?: pulumi.Input<number>;
+    major?: pulumi.Input<number | undefined>;
     /**
      * Minor version of the model
      */
-    minor?: pulumi.Input<number>;
+    minor?: pulumi.Input<number | undefined>;
     /**
      * Patch version of the model
      */
-    patch?: pulumi.Input<number>;
+    patch?: pulumi.Input<number | undefined>;
 }
 
 export interface GetAppDedicatedIp {
@@ -3696,15 +3696,15 @@ export interface GetAppDedicatedIpArgs {
     /**
      * The ID of the dedicated egress IP.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The IP address of the dedicated egress IP.
      */
-    ip?: pulumi.Input<string>;
+    ip?: pulumi.Input<string | undefined>;
     /**
      * The status of the dedicated egress IP.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 export interface GetDedicatedInferenceAcceleratorsFilter {
@@ -3730,7 +3730,7 @@ export interface GetDedicatedInferenceAcceleratorsFilterArgs {
     /**
      * Set to `true` to require that a field match all of the `values` instead of just one.
      */
-    all?: pulumi.Input<boolean>;
+    all?: pulumi.Input<boolean | undefined>;
     /**
      * Filter the accelerators by this key. This may be one of `id`, `name`, `slug`, `status`, `createdAt`.
      */
@@ -3738,7 +3738,7 @@ export interface GetDedicatedInferenceAcceleratorsFilterArgs {
     /**
      * One of `exact` (default), `re`, or `substring`.
      */
-    matchBy?: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string | undefined>;
     /**
      * A list of values to match against the `key` field.
      */
@@ -3760,7 +3760,7 @@ export interface GetDedicatedInferenceAcceleratorsSortArgs {
     /**
      * The sort direction. This may be either `asc` or `desc`.
      */
-    direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string | undefined>;
     /**
      * Sort the accelerators by this key. This may be one of the keys listed in `filter`.
      */
@@ -3790,7 +3790,7 @@ export interface GetDedicatedInferenceTokensFilterArgs {
     /**
      * Set to `true` to require that a field match all of the `values` instead of just one.
      */
-    all?: pulumi.Input<boolean>;
+    all?: pulumi.Input<boolean | undefined>;
     /**
      * Filter the tokens by this key. This may be one of `id`, `name`, `createdAt`.
      */
@@ -3798,7 +3798,7 @@ export interface GetDedicatedInferenceTokensFilterArgs {
     /**
      * One of `exact` (default), `re`, or `substring`.
      */
-    matchBy?: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string | undefined>;
     /**
      * A list of values to match against the `key` field.
      */
@@ -3820,7 +3820,7 @@ export interface GetDedicatedInferenceTokensSortArgs {
     /**
      * The sort direction. This may be either `asc` or `desc`.
      */
-    direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string | undefined>;
     /**
      * Sort the tokens by this key. This may be one of the keys listed in `filter`.
      */
@@ -3850,7 +3850,7 @@ export interface GetDedicatedInferencesFilterArgs {
     /**
      * Set to `true` to require that a field match all of the `values` instead of just one.
      */
-    all?: pulumi.Input<boolean>;
+    all?: pulumi.Input<boolean | undefined>;
     /**
      * Filter the dedicated inference endpoints by this key. This may be one of `id`, `name`, `region`, `status`, `vpcUuid`, `publicEndpointFqdn`, `privateEndpointFqdn`, `createdAt`, `updatedAt`.
      */
@@ -3858,7 +3858,7 @@ export interface GetDedicatedInferencesFilterArgs {
     /**
      * One of `exact` (default), `re`, or `substring`. For string-typed fields, the match mode controls how the filter is applied.
      */
-    matchBy?: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string | undefined>;
     /**
      * A list of values to match against the `key` field.
      */
@@ -3880,7 +3880,7 @@ export interface GetDedicatedInferencesSortArgs {
     /**
      * The sort direction. This may be either `asc` or `desc`.
      */
-    direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string | undefined>;
     /**
      * Sort the dedicated inference endpoints by this key. This may be one of the keys listed in `filter`.
      */
@@ -3917,7 +3917,7 @@ export interface GetDomainsFilterArgs {
      * them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
      * that all of the `values` are present in the list or set.
      */
-    all?: pulumi.Input<boolean>;
+    all?: pulumi.Input<boolean | undefined>;
     /**
      * Filter the domains by this key. This may be one of `name`, `urn`, and `ttl`.
      */
@@ -3927,7 +3927,7 @@ export interface GetDomainsFilterArgs {
      * match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
      * substrings to find within the string field.
      */
-    matchBy?: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string | undefined>;
     /**
      * A list of values to match against the `key` field. Only retrieves domains
      * where the `key` field takes on one or more of the values provided here.
@@ -3950,7 +3950,7 @@ export interface GetDomainsSortArgs {
     /**
      * The sort direction. This may be either `asc` or `desc`.
      */
-    direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string | undefined>;
     /**
      * Sort the domains by this key. This may be one of `name`, `urn`, and `ttl`.
      */
@@ -3990,7 +3990,7 @@ export interface GetDropletsFilterArgs {
      * them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
      * that all of the `values` are present in the list or set.
      */
-    all?: pulumi.Input<boolean>;
+    all?: pulumi.Input<boolean | undefined>;
     /**
      * Filter the Droplets by this key. This may be one of `backups`, `createdAt`, `disk`, `id`,
      * `image`, `ipv4Address`, `ipv4AddressPrivate`, `ipv6`, `ipv6Address`, `ipv6AddressPrivate`, `locked`,
@@ -4003,7 +4003,7 @@ export interface GetDropletsFilterArgs {
      * match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
      * substrings to find within the string field.
      */
-    matchBy?: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string | undefined>;
     /**
      * A list of values to match against the `key` field. Only retrieves Droplets
      * where the `key` field takes on one or more of the values provided here.
@@ -4029,7 +4029,7 @@ export interface GetDropletsSortArgs {
     /**
      * The sort direction. This may be either `asc` or `desc`.
      */
-    direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string | undefined>;
     /**
      * Sort the Droplets by this key. This may be one of `backups`, `createdAt`, `disk`, `id`,
      * `image`, `ipv4Address`, `ipv4AddressPrivate`, `ipv6`, `ipv6Address`, `ipv6AddressPrivate`, `locked`,
@@ -4083,7 +4083,7 @@ export interface GetFirewallInboundRuleArgs {
      * or "1-65535" to open all ports for a protocol. Required for when protocol is
      * `tcp` or `udp`.
      */
-    portRange?: pulumi.Input<string>;
+    portRange?: pulumi.Input<string | undefined>;
     /**
      * The type of traffic to be allowed.
      * This may be one of "tcp", "udp", or "icmp".
@@ -4094,23 +4094,23 @@ export interface GetFirewallInboundRuleArgs {
      * addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs from which the
      * inbound traffic will be accepted.
      */
-    sourceAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    sourceAddresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * An array containing the IDs of
      * the Droplets from which the inbound traffic will be accepted.
      */
-    sourceDropletIds?: pulumi.Input<pulumi.Input<number>[]>;
-    sourceKubernetesIds?: pulumi.Input<pulumi.Input<string>[]>;
+    sourceDropletIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
+    sourceKubernetesIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * An array containing the IDs
      * of the Load Balancers from which the inbound traffic will be accepted.
      */
-    sourceLoadBalancerUids?: pulumi.Input<pulumi.Input<string>[]>;
+    sourceLoadBalancerUids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A set of names of Tags corresponding to group of
      * Droplets from which the inbound traffic will be accepted.
      */
-    sourceTags?: pulumi.Input<pulumi.Input<string>[]>;
+    sourceTags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface GetFirewallOutboundRule {
@@ -4158,32 +4158,32 @@ export interface GetFirewallOutboundRuleArgs {
      * addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the
      * outbound traffic will be allowed.
      */
-    destinationAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    destinationAddresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * An array containing the IDs of
      * the Droplets to which the outbound traffic will be allowed.
      */
-    destinationDropletIds?: pulumi.Input<pulumi.Input<number>[]>;
-    destinationKubernetesIds?: pulumi.Input<pulumi.Input<string>[]>;
+    destinationDropletIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
+    destinationKubernetesIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * An array containing the IDs
      * of the Load Balancers to which the outbound traffic will be allowed.
      */
-    destinationLoadBalancerUids?: pulumi.Input<pulumi.Input<string>[]>;
+    destinationLoadBalancerUids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * An array containing the names of Tags
      * corresponding to groups of Droplets to which the outbound traffic will
      * be allowed.
      * traffic.
      */
-    destinationTags?: pulumi.Input<pulumi.Input<string>[]>;
+    destinationTags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ports on which traffic will be allowed
      * specified as a string containing a single port, a range (e.g. "8000-9000"),
      * or "1-65535" to open all ports for a protocol. Required for when protocol is
      * `tcp` or `udp`.
      */
-    portRange?: pulumi.Input<string>;
+    portRange?: pulumi.Input<string | undefined>;
     /**
      * The type of traffic to be allowed.
      * This may be one of "tcp", "udp", or "icmp".
@@ -4246,51 +4246,51 @@ export interface GetGenaiAgentAgentGuardrailArgs {
     /**
      * Agent UUID for the Guardrail
      */
-    agentUuid?: pulumi.Input<string>;
+    agentUuid?: pulumi.Input<string | undefined>;
     /**
      * Created At timestamp for the Guardrail
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Default response for the Guardrail
      */
-    defaultResponse?: pulumi.Input<string>;
+    defaultResponse?: pulumi.Input<string | undefined>;
     /**
      * Description of the Guardrail
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Guardrail UUID
      */
-    guardrailUuid?: pulumi.Input<string>;
+    guardrailUuid?: pulumi.Input<string | undefined>;
     /**
      * Indicates if the Guardrail is attached
      */
-    isAttached?: pulumi.Input<boolean>;
+    isAttached?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates if the Guardrail is default
      */
-    isDefault?: pulumi.Input<boolean>;
+    isDefault?: pulumi.Input<boolean | undefined>;
     /**
      * Name of Guardrail
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Priority of the Guardrail
      */
-    priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number | undefined>;
     /**
      * Type of the Guardrail
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * Updated At timestamp for the Guardrail
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * Guardrail UUID
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 export interface GetGenaiAgentAnthropicApiKey {
@@ -4324,27 +4324,27 @@ export interface GetGenaiAgentAnthropicApiKeyArgs {
     /**
      * Timestamp when the API Key was created
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Created By user ID for the API Key
      */
-    createdBy?: pulumi.Input<string>;
+    createdBy?: pulumi.Input<string | undefined>;
     /**
      * Deleted At timestamp for the API Key
      */
-    deletedAt?: pulumi.Input<string>;
+    deletedAt?: pulumi.Input<string | undefined>;
     /**
      * Name of the API Key
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Updated At timestamp for the API Key
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * API Key value
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 export interface GetGenaiAgentApiKey {
@@ -4358,7 +4358,7 @@ export interface GetGenaiAgentApiKeyArgs {
     /**
      * API Key value
      */
-    apiKey?: pulumi.Input<string>;
+    apiKey?: pulumi.Input<string | undefined>;
 }
 
 export interface GetGenaiAgentApiKeyInfo {
@@ -4392,27 +4392,27 @@ export interface GetGenaiAgentApiKeyInfoArgs {
     /**
      * API Key value
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Created By user ID for the API Key
      */
-    createdBy?: pulumi.Input<string>;
+    createdBy?: pulumi.Input<string | undefined>;
     /**
      * Deleted At timestamp for the API Key
      */
-    deletedAt?: pulumi.Input<string>;
+    deletedAt?: pulumi.Input<string | undefined>;
     /**
      * Name of the API Key
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Updated At timestamp for the API Key
      */
-    secretKey?: pulumi.Input<string>;
+    secretKey?: pulumi.Input<string | undefined>;
     /**
      * API Key value
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 export interface GetGenaiAgentChatbot {
@@ -4446,27 +4446,27 @@ export interface GetGenaiAgentChatbotArgs {
     /**
      * Background color for the chatbot button
      */
-    buttonBackgroundColor?: pulumi.Input<string>;
+    buttonBackgroundColor?: pulumi.Input<string | undefined>;
     /**
      * Logo for the chatbot
      */
-    logo?: pulumi.Input<string>;
+    logo?: pulumi.Input<string | undefined>;
     /**
      * Name of the chatbot
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Primary color for the chatbot
      */
-    primaryColor?: pulumi.Input<string>;
+    primaryColor?: pulumi.Input<string | undefined>;
     /**
      * Secondary color for the chatbot
      */
-    secondaryColor?: pulumi.Input<string>;
+    secondaryColor?: pulumi.Input<string | undefined>;
     /**
      * Starting message for the chatbot
      */
-    startingMessage?: pulumi.Input<string>;
+    startingMessage?: pulumi.Input<string | undefined>;
 }
 
 export interface GetGenaiAgentChatbotIdentifier {
@@ -4480,7 +4480,7 @@ export interface GetGenaiAgentChatbotIdentifierArgs {
     /**
      * Chatbot ID
      */
-    chatbotId?: pulumi.Input<string>;
+    chatbotId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetGenaiAgentDeployment {
@@ -4518,31 +4518,31 @@ export interface GetGenaiAgentDeploymentArgs {
     /**
      * API Key value
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Name of the API Key
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Status of the Deployment
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Updated At timestamp for the Agent
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * Url of the Deployment
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * API Key value
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
     /**
      * Visibility of the Deployment
      */
-    visibility?: pulumi.Input<string>;
+    visibility?: pulumi.Input<string | undefined>;
 }
 
 export interface GetGenaiAgentFunction {
@@ -4592,43 +4592,43 @@ export interface GetGenaiAgentFunctionArgs {
     /**
      * API Key value
      */
-    apiKey?: pulumi.Input<string>;
+    apiKey?: pulumi.Input<string | undefined>;
     /**
      * Created At timestamp for the Function
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Description of the Function
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Name of function
      */
-    faasname?: pulumi.Input<string>;
+    faasname?: pulumi.Input<string | undefined>;
     /**
      * Namespace of function
      */
-    faasnamespace?: pulumi.Input<string>;
+    faasnamespace?: pulumi.Input<string | undefined>;
     /**
      * Guardrail UUID for the Function
      */
-    guardrailUuid?: pulumi.Input<string>;
+    guardrailUuid?: pulumi.Input<string | undefined>;
     /**
      * Name of function
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Updated At timestamp for the Agent
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * Url of the Deployment
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * API Key value
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 export interface GetGenaiAgentKnowledgeBase {
@@ -4690,55 +4690,55 @@ export interface GetGenaiAgentKnowledgeBaseArgs {
     /**
      * Timestamp when the Knowledge Base was added to the Agent
      */
-    addedToAgentAt?: pulumi.Input<string>;
+    addedToAgentAt?: pulumi.Input<string | undefined>;
     /**
      * Created At timestamp for the Knowledge Base
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Database ID of the Knowledge Base
      */
-    databaseId?: pulumi.Input<string>;
+    databaseId?: pulumi.Input<string | undefined>;
     /**
      * Embedding model UUID for the Knowledge Base
      */
-    embeddingModelUuid?: pulumi.Input<string>;
+    embeddingModelUuid?: pulumi.Input<string | undefined>;
     /**
      * Indicates if the Knowledge Base is public
      */
-    isPublic?: pulumi.Input<boolean>;
+    isPublic?: pulumi.Input<boolean | undefined>;
     /**
      * Last indexing job for the Knowledge Base
      */
-    lastIndexingJob?: pulumi.Input<inputs.GetGenaiAgentKnowledgeBaseLastIndexingJobArgs>;
+    lastIndexingJob?: pulumi.Input<inputs.GetGenaiAgentKnowledgeBaseLastIndexingJobArgs | undefined>;
     /**
      * Name of the Knowledge Base
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Project ID of the Knowledge Base
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Region of the Knowledge Base
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * List of tags
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Timestamp when the Knowledge Base was updated
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * User ID of the Knowledge Base
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
     /**
      * UUID of the Knowledge Base
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 export interface GetGenaiAgentKnowledgeBaseLastIndexingJob {
@@ -4792,47 +4792,47 @@ export interface GetGenaiAgentKnowledgeBaseLastIndexingJobArgs {
     /**
      * Number of completed datasources in the last indexing job
      */
-    completedDatasources?: pulumi.Input<number>;
+    completedDatasources?: pulumi.Input<number | undefined>;
     /**
      * Created At timestamp for the last indexing job
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Datasource UUIDs for the last indexing job
      */
-    dataSourceUuids?: pulumi.Input<pulumi.Input<string>[]>;
+    dataSourceUuids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Timestamp when the last indexing job finished
      */
-    finishedAt?: pulumi.Input<string>;
+    finishedAt?: pulumi.Input<string | undefined>;
     /**
      * UUID  of the Knowledge Base for the last indexing job
      */
-    knowledgeBaseUuid?: pulumi.Input<string>;
+    knowledgeBaseUuid?: pulumi.Input<string | undefined>;
     /**
      * Phase of the last indexing job
      */
-    phase?: pulumi.Input<string>;
+    phase?: pulumi.Input<string | undefined>;
     /**
      * Timestamp when the last indexing job started
      */
-    startedAt?: pulumi.Input<string>;
+    startedAt?: pulumi.Input<string | undefined>;
     /**
      * Number of tokens processed in the last indexing job
      */
-    tokens?: pulumi.Input<number>;
+    tokens?: pulumi.Input<number | undefined>;
     /**
      * Total number of datasources in the last indexing job
      */
-    totalDatasources?: pulumi.Input<number>;
+    totalDatasources?: pulumi.Input<number | undefined>;
     /**
      * Timestamp when the last indexing job updated
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * UUID  of the last indexing job
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 export interface GetGenaiAgentModel {
@@ -4894,55 +4894,55 @@ export interface GetGenaiAgentModelArgs {
     /**
      * Agreement information for the model
      */
-    agreements?: pulumi.Input<pulumi.Input<inputs.GetGenaiAgentModelAgreementArgs>[]>;
+    agreements?: pulumi.Input<pulumi.Input<inputs.GetGenaiAgentModelAgreementArgs>[] | undefined>;
     /**
      * Created At timestamp for the Knowledge Base
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Inference name of the model
      */
-    inferenceName?: pulumi.Input<string>;
+    inferenceName?: pulumi.Input<string | undefined>;
     /**
      * Infernce version of the model
      */
-    inferenceVersion?: pulumi.Input<string>;
+    inferenceVersion?: pulumi.Input<string | undefined>;
     /**
      * Indicates if the Model Base is foundational
      */
-    isFoundational?: pulumi.Input<boolean>;
+    isFoundational?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the Knowledge Base
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Parent UUID of the Model
      */
-    parentUuid?: pulumi.Input<string>;
+    parentUuid?: pulumi.Input<string | undefined>;
     /**
      * Provider of the Model
      */
-    provider?: pulumi.Input<string>;
+    provider?: pulumi.Input<string | undefined>;
     /**
      * Timestamp when the Knowledge Base was updated
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * Indicates if the Model upload is complete
      */
-    uploadComplete?: pulumi.Input<boolean>;
+    uploadComplete?: pulumi.Input<boolean | undefined>;
     /**
      * URL of the Model
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * List of Usecases for the Model
      */
-    usecases?: pulumi.Input<pulumi.Input<string>[]>;
+    usecases?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * URL of the Model
      */
-    versions?: pulumi.Input<pulumi.Input<inputs.GetGenaiAgentModelVersionArgs>[]>;
+    versions?: pulumi.Input<pulumi.Input<inputs.GetGenaiAgentModelVersionArgs>[] | undefined>;
 }
 
 export interface GetGenaiAgentModelAgreement {
@@ -4968,19 +4968,19 @@ export interface GetGenaiAgentModelAgreementArgs {
     /**
      * Description of the agreement
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Name of the agreement
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * URL of the agreement
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * UUID of the agreement
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 export interface GetGenaiAgentModelVersion {
@@ -5002,15 +5002,15 @@ export interface GetGenaiAgentModelVersionArgs {
     /**
      * Major version of the model
      */
-    major?: pulumi.Input<number>;
+    major?: pulumi.Input<number | undefined>;
     /**
      * Minor version of the model
      */
-    minor?: pulumi.Input<number>;
+    minor?: pulumi.Input<number | undefined>;
     /**
      * Patch version of the model
      */
-    patch?: pulumi.Input<number>;
+    patch?: pulumi.Input<number | undefined>;
 }
 
 export interface GetGenaiAgentOpenAiApiKey {
@@ -5024,7 +5024,7 @@ export interface GetGenaiAgentOpenAiApiKeyArgs {
     /**
      * OpenAI API Key
      */
-    apiKey?: pulumi.Input<string>;
+    apiKey?: pulumi.Input<string | undefined>;
 }
 
 export interface GetGenaiAgentTemplate {
@@ -5082,51 +5082,51 @@ export interface GetGenaiAgentTemplateArgs {
     /**
      * Created At timestamp for the Knowledge Base
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Description of the Agent Template
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Instruction for the Agent
      */
-    instruction?: pulumi.Input<string>;
+    instruction?: pulumi.Input<string | undefined>;
     /**
      * K value for the Agent Template
      */
-    k?: pulumi.Input<number>;
+    k?: pulumi.Input<number | undefined>;
     /**
      * List of Knowledge Bases
      */
-    knowledgeBases?: pulumi.Input<pulumi.Input<inputs.GetGenaiAgentTemplateKnowledgeBaseArgs>[]>;
+    knowledgeBases?: pulumi.Input<pulumi.Input<inputs.GetGenaiAgentTemplateKnowledgeBaseArgs>[] | undefined>;
     /**
      * Maximum tokens allowed
      */
-    maxTokens?: pulumi.Input<number>;
+    maxTokens?: pulumi.Input<number | undefined>;
     /**
      * Model of the Agent Template
      */
-    models?: pulumi.Input<pulumi.Input<inputs.GetGenaiAgentTemplateModelArgs>[]>;
+    models?: pulumi.Input<pulumi.Input<inputs.GetGenaiAgentTemplateModelArgs>[] | undefined>;
     /**
      * Name of the Agent Template
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Agent temperature setting
      */
-    temperature?: pulumi.Input<number>;
+    temperature?: pulumi.Input<number | undefined>;
     /**
      * Top P sampling parameter
      */
-    topP?: pulumi.Input<number>;
+    topP?: pulumi.Input<number | undefined>;
     /**
      * Updated At timestamp for the Agent Template
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * uuid of the Agent Template
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 export interface GetGenaiAgentTemplateKnowledgeBase {
@@ -5188,55 +5188,55 @@ export interface GetGenaiAgentTemplateKnowledgeBaseArgs {
     /**
      * Timestamp when the Knowledge Base was added to the Agent
      */
-    addedToAgentAt?: pulumi.Input<string>;
+    addedToAgentAt?: pulumi.Input<string | undefined>;
     /**
      * Created At timestamp for the Knowledge Base
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Database ID of the Knowledge Base
      */
-    databaseId?: pulumi.Input<string>;
+    databaseId?: pulumi.Input<string | undefined>;
     /**
      * Embedding model UUID for the Knowledge Base
      */
-    embeddingModelUuid?: pulumi.Input<string>;
+    embeddingModelUuid?: pulumi.Input<string | undefined>;
     /**
      * Indicates if the Knowledge Base is public
      */
-    isPublic?: pulumi.Input<boolean>;
+    isPublic?: pulumi.Input<boolean | undefined>;
     /**
      * Last indexing job for the Knowledge Base
      */
-    lastIndexingJob?: pulumi.Input<inputs.GetGenaiAgentTemplateKnowledgeBaseLastIndexingJobArgs>;
+    lastIndexingJob?: pulumi.Input<inputs.GetGenaiAgentTemplateKnowledgeBaseLastIndexingJobArgs | undefined>;
     /**
      * Name of the Knowledge Base
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Project ID of the Knowledge Base
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Region of the Knowledge Base
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * List of tags
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Timestamp when the Knowledge Base was updated
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * User ID of the Knowledge Base
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
     /**
      * UUID of the Knowledge Base
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 export interface GetGenaiAgentTemplateKnowledgeBaseLastIndexingJob {
@@ -5290,47 +5290,47 @@ export interface GetGenaiAgentTemplateKnowledgeBaseLastIndexingJobArgs {
     /**
      * Number of completed datasources in the last indexing job
      */
-    completedDatasources?: pulumi.Input<number>;
+    completedDatasources?: pulumi.Input<number | undefined>;
     /**
      * Created At timestamp for the last indexing job
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Datasource UUIDs for the last indexing job
      */
-    dataSourceUuids?: pulumi.Input<pulumi.Input<string>[]>;
+    dataSourceUuids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Timestamp when the last indexing job finished
      */
-    finishedAt?: pulumi.Input<string>;
+    finishedAt?: pulumi.Input<string | undefined>;
     /**
      * UUID  of the Knowledge Base for the last indexing job
      */
-    knowledgeBaseUuid?: pulumi.Input<string>;
+    knowledgeBaseUuid?: pulumi.Input<string | undefined>;
     /**
      * Phase of the last indexing job
      */
-    phase?: pulumi.Input<string>;
+    phase?: pulumi.Input<string | undefined>;
     /**
      * Timestamp when the last indexing job started
      */
-    startedAt?: pulumi.Input<string>;
+    startedAt?: pulumi.Input<string | undefined>;
     /**
      * Number of tokens processed in the last indexing job
      */
-    tokens?: pulumi.Input<number>;
+    tokens?: pulumi.Input<number | undefined>;
     /**
      * Total number of datasources in the last indexing job
      */
-    totalDatasources?: pulumi.Input<number>;
+    totalDatasources?: pulumi.Input<number | undefined>;
     /**
      * Timestamp when the last indexing job updated
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * UUID  of the last indexing job
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 export interface GetGenaiAgentTemplateModel {
@@ -5392,55 +5392,55 @@ export interface GetGenaiAgentTemplateModelArgs {
     /**
      * Agreement information for the model
      */
-    agreements?: pulumi.Input<pulumi.Input<inputs.GetGenaiAgentTemplateModelAgreementArgs>[]>;
+    agreements?: pulumi.Input<pulumi.Input<inputs.GetGenaiAgentTemplateModelAgreementArgs>[] | undefined>;
     /**
      * Created At timestamp for the Knowledge Base
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Inference name of the model
      */
-    inferenceName?: pulumi.Input<string>;
+    inferenceName?: pulumi.Input<string | undefined>;
     /**
      * Infernce version of the model
      */
-    inferenceVersion?: pulumi.Input<string>;
+    inferenceVersion?: pulumi.Input<string | undefined>;
     /**
      * Indicates if the Model Base is foundational
      */
-    isFoundational?: pulumi.Input<boolean>;
+    isFoundational?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the Knowledge Base
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Parent UUID of the Model
      */
-    parentUuid?: pulumi.Input<string>;
+    parentUuid?: pulumi.Input<string | undefined>;
     /**
      * Provider of the Model
      */
-    provider?: pulumi.Input<string>;
+    provider?: pulumi.Input<string | undefined>;
     /**
      * Timestamp when the Knowledge Base was updated
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * Indicates if the Model upload is complete
      */
-    uploadComplete?: pulumi.Input<boolean>;
+    uploadComplete?: pulumi.Input<boolean | undefined>;
     /**
      * URL of the Model
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * List of Usecases for the Model
      */
-    usecases?: pulumi.Input<pulumi.Input<string>[]>;
+    usecases?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * URL of the Model
      */
-    versions?: pulumi.Input<pulumi.Input<inputs.GetGenaiAgentTemplateModelVersionArgs>[]>;
+    versions?: pulumi.Input<pulumi.Input<inputs.GetGenaiAgentTemplateModelVersionArgs>[] | undefined>;
 }
 
 export interface GetGenaiAgentTemplateModelAgreement {
@@ -5466,19 +5466,19 @@ export interface GetGenaiAgentTemplateModelAgreementArgs {
     /**
      * Description of the agreement
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Name of the agreement
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * URL of the agreement
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * UUID of the agreement
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 export interface GetGenaiAgentTemplateModelVersion {
@@ -5500,15 +5500,15 @@ export interface GetGenaiAgentTemplateModelVersionArgs {
     /**
      * Major version of the model
      */
-    major?: pulumi.Input<number>;
+    major?: pulumi.Input<number | undefined>;
     /**
      * Minor version of the model
      */
-    minor?: pulumi.Input<number>;
+    minor?: pulumi.Input<number | undefined>;
     /**
      * Patch version of the model
      */
-    patch?: pulumi.Input<number>;
+    patch?: pulumi.Input<number | undefined>;
 }
 
 export interface GetGenaiAgentVersionsFilter {
@@ -5519,9 +5519,9 @@ export interface GetGenaiAgentVersionsFilter {
 }
 
 export interface GetGenaiAgentVersionsFilterArgs {
-    all?: pulumi.Input<boolean>;
+    all?: pulumi.Input<boolean | undefined>;
     key: pulumi.Input<string>;
-    matchBy?: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string | undefined>;
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -5531,7 +5531,7 @@ export interface GetGenaiAgentVersionsSort {
 }
 
 export interface GetGenaiAgentVersionsSortArgs {
-    direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string | undefined>;
     key: pulumi.Input<string>;
 }
 
@@ -5543,9 +5543,9 @@ export interface GetGenaiAgentsFilter {
 }
 
 export interface GetGenaiAgentsFilterArgs {
-    all?: pulumi.Input<boolean>;
+    all?: pulumi.Input<boolean | undefined>;
     key: pulumi.Input<string>;
-    matchBy?: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string | undefined>;
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -5555,7 +5555,7 @@ export interface GetGenaiAgentsSort {
 }
 
 export interface GetGenaiAgentsSortArgs {
-    direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string | undefined>;
     key: pulumi.Input<string>;
 }
 
@@ -5610,47 +5610,47 @@ export interface GetGenaiKnowledgeBaseLastIndexingJobArgs {
     /**
      * Number of completed datasources in the last indexing job
      */
-    completedDatasources?: pulumi.Input<number>;
+    completedDatasources?: pulumi.Input<number | undefined>;
     /**
      * Created At timestamp for the last indexing job
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Datasource UUIDs for the last indexing job
      */
-    dataSourceUuids?: pulumi.Input<pulumi.Input<string>[]>;
+    dataSourceUuids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Timestamp when the last indexing job finished
      */
-    finishedAt?: pulumi.Input<string>;
+    finishedAt?: pulumi.Input<string | undefined>;
     /**
      * UUID  of the Knowledge Base for the last indexing job
      */
-    knowledgeBaseUuid?: pulumi.Input<string>;
+    knowledgeBaseUuid?: pulumi.Input<string | undefined>;
     /**
      * Phase of the last indexing job
      */
-    phase?: pulumi.Input<string>;
+    phase?: pulumi.Input<string | undefined>;
     /**
      * Timestamp when the last indexing job started
      */
-    startedAt?: pulumi.Input<string>;
+    startedAt?: pulumi.Input<string | undefined>;
     /**
      * Number of tokens processed in the last indexing job
      */
-    tokens?: pulumi.Input<number>;
+    tokens?: pulumi.Input<number | undefined>;
     /**
      * Total number of datasources in the last indexing job
      */
-    totalDatasources?: pulumi.Input<number>;
+    totalDatasources?: pulumi.Input<number | undefined>;
     /**
      * Timestamp when the last indexing job updated
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * UUID  of the last indexing job
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 export interface GetGenaiKnowledgeBasesFilter {
@@ -5661,9 +5661,9 @@ export interface GetGenaiKnowledgeBasesFilter {
 }
 
 export interface GetGenaiKnowledgeBasesFilterArgs {
-    all?: pulumi.Input<boolean>;
+    all?: pulumi.Input<boolean | undefined>;
     key: pulumi.Input<string>;
-    matchBy?: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string | undefined>;
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -5673,7 +5673,7 @@ export interface GetGenaiKnowledgeBasesSort {
 }
 
 export interface GetGenaiKnowledgeBasesSortArgs {
-    direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string | undefined>;
     key: pulumi.Input<string>;
 }
 
@@ -5685,9 +5685,9 @@ export interface GetGenaiModelsFilter {
 }
 
 export interface GetGenaiModelsFilterArgs {
-    all?: pulumi.Input<boolean>;
+    all?: pulumi.Input<boolean | undefined>;
     key: pulumi.Input<string>;
-    matchBy?: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string | undefined>;
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -5697,7 +5697,7 @@ export interface GetGenaiModelsSort {
 }
 
 export interface GetGenaiModelsSortArgs {
-    direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string | undefined>;
     key: pulumi.Input<string>;
 }
 
@@ -5709,9 +5709,9 @@ export interface GetGenaiOpenaiApiKeysFilter {
 }
 
 export interface GetGenaiOpenaiApiKeysFilterArgs {
-    all?: pulumi.Input<boolean>;
+    all?: pulumi.Input<boolean | undefined>;
     key: pulumi.Input<string>;
-    matchBy?: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string | undefined>;
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -5721,7 +5721,7 @@ export interface GetGenaiOpenaiApiKeysSort {
 }
 
 export interface GetGenaiOpenaiApiKeysSortArgs {
-    direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string | undefined>;
     key: pulumi.Input<string>;
 }
 
@@ -5733,9 +5733,9 @@ export interface GetGenaiRegionsFilter {
 }
 
 export interface GetGenaiRegionsFilterArgs {
-    all?: pulumi.Input<boolean>;
+    all?: pulumi.Input<boolean | undefined>;
     key: pulumi.Input<string>;
-    matchBy?: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string | undefined>;
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -5745,7 +5745,7 @@ export interface GetGenaiRegionsSort {
 }
 
 export interface GetGenaiRegionsSortArgs {
-    direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string | undefined>;
     key: pulumi.Input<string>;
 }
 
@@ -5804,51 +5804,51 @@ export interface GetGradientaiAgentAgentGuardrailArgs {
     /**
      * Agent UUID for the Guardrail
      */
-    agentUuid?: pulumi.Input<string>;
+    agentUuid?: pulumi.Input<string | undefined>;
     /**
      * Created At timestamp for the Guardrail
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Default response for the Guardrail
      */
-    defaultResponse?: pulumi.Input<string>;
+    defaultResponse?: pulumi.Input<string | undefined>;
     /**
      * Description of the Guardrail
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Guardrail UUID
      */
-    guardrailUuid?: pulumi.Input<string>;
+    guardrailUuid?: pulumi.Input<string | undefined>;
     /**
      * Indicates if the Guardrail is attached
      */
-    isAttached?: pulumi.Input<boolean>;
+    isAttached?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates if the Guardrail is default
      */
-    isDefault?: pulumi.Input<boolean>;
+    isDefault?: pulumi.Input<boolean | undefined>;
     /**
      * Name of Guardrail
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Priority of the Guardrail
      */
-    priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number | undefined>;
     /**
      * Type of the Guardrail
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * Updated At timestamp for the Guardrail
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * Guardrail UUID
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 export interface GetGradientaiAgentAnthropicApiKey {
@@ -5882,27 +5882,27 @@ export interface GetGradientaiAgentAnthropicApiKeyArgs {
     /**
      * Timestamp when the API Key was created
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Created By user ID for the API Key
      */
-    createdBy?: pulumi.Input<string>;
+    createdBy?: pulumi.Input<string | undefined>;
     /**
      * Deleted At timestamp for the API Key
      */
-    deletedAt?: pulumi.Input<string>;
+    deletedAt?: pulumi.Input<string | undefined>;
     /**
      * Name of the API Key
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Updated At timestamp for the API Key
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * API Key value
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 export interface GetGradientaiAgentApiKey {
@@ -5916,7 +5916,7 @@ export interface GetGradientaiAgentApiKeyArgs {
     /**
      * API Key value
      */
-    apiKey?: pulumi.Input<string>;
+    apiKey?: pulumi.Input<string | undefined>;
 }
 
 export interface GetGradientaiAgentApiKeyInfo {
@@ -5950,27 +5950,27 @@ export interface GetGradientaiAgentApiKeyInfoArgs {
     /**
      * API Key value
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Created By user ID for the API Key
      */
-    createdBy?: pulumi.Input<string>;
+    createdBy?: pulumi.Input<string | undefined>;
     /**
      * Deleted At timestamp for the API Key
      */
-    deletedAt?: pulumi.Input<string>;
+    deletedAt?: pulumi.Input<string | undefined>;
     /**
      * Name of the API Key
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Updated At timestamp for the API Key
      */
-    secretKey?: pulumi.Input<string>;
+    secretKey?: pulumi.Input<string | undefined>;
     /**
      * API Key value
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 export interface GetGradientaiAgentChatbot {
@@ -6004,27 +6004,27 @@ export interface GetGradientaiAgentChatbotArgs {
     /**
      * Background color for the chatbot button
      */
-    buttonBackgroundColor?: pulumi.Input<string>;
+    buttonBackgroundColor?: pulumi.Input<string | undefined>;
     /**
      * Logo for the chatbot
      */
-    logo?: pulumi.Input<string>;
+    logo?: pulumi.Input<string | undefined>;
     /**
      * Name of the chatbot
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Primary color for the chatbot
      */
-    primaryColor?: pulumi.Input<string>;
+    primaryColor?: pulumi.Input<string | undefined>;
     /**
      * Secondary color for the chatbot
      */
-    secondaryColor?: pulumi.Input<string>;
+    secondaryColor?: pulumi.Input<string | undefined>;
     /**
      * Starting message for the chatbot
      */
-    startingMessage?: pulumi.Input<string>;
+    startingMessage?: pulumi.Input<string | undefined>;
 }
 
 export interface GetGradientaiAgentChatbotIdentifier {
@@ -6038,7 +6038,7 @@ export interface GetGradientaiAgentChatbotIdentifierArgs {
     /**
      * Chatbot ID
      */
-    chatbotId?: pulumi.Input<string>;
+    chatbotId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetGradientaiAgentDeployment {
@@ -6076,31 +6076,31 @@ export interface GetGradientaiAgentDeploymentArgs {
     /**
      * API Key value
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Name of the API Key
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Status of the Deployment
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Updated At timestamp for the Agent
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * Url of the Deployment
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * API Key value
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
     /**
      * Visibility of the Deployment
      */
-    visibility?: pulumi.Input<string>;
+    visibility?: pulumi.Input<string | undefined>;
 }
 
 export interface GetGradientaiAgentFunction {
@@ -6150,43 +6150,43 @@ export interface GetGradientaiAgentFunctionArgs {
     /**
      * API Key value
      */
-    apiKey?: pulumi.Input<string>;
+    apiKey?: pulumi.Input<string | undefined>;
     /**
      * Created At timestamp for the Function
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Description of the Function
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Name of function
      */
-    faasname?: pulumi.Input<string>;
+    faasname?: pulumi.Input<string | undefined>;
     /**
      * Namespace of function
      */
-    faasnamespace?: pulumi.Input<string>;
+    faasnamespace?: pulumi.Input<string | undefined>;
     /**
      * Guardrail UUID for the Function
      */
-    guardrailUuid?: pulumi.Input<string>;
+    guardrailUuid?: pulumi.Input<string | undefined>;
     /**
      * Name of function
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Updated At timestamp for the Agent
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * Url of the Deployment
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * API Key value
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 export interface GetGradientaiAgentKnowledgeBase {
@@ -6248,55 +6248,55 @@ export interface GetGradientaiAgentKnowledgeBaseArgs {
     /**
      * Timestamp when the Knowledge Base was added to the Agent
      */
-    addedToAgentAt?: pulumi.Input<string>;
+    addedToAgentAt?: pulumi.Input<string | undefined>;
     /**
      * Created At timestamp for the Knowledge Base
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Database ID of the Knowledge Base
      */
-    databaseId?: pulumi.Input<string>;
+    databaseId?: pulumi.Input<string | undefined>;
     /**
      * Embedding model UUID for the Knowledge Base
      */
-    embeddingModelUuid?: pulumi.Input<string>;
+    embeddingModelUuid?: pulumi.Input<string | undefined>;
     /**
      * Indicates if the Knowledge Base is public
      */
-    isPublic?: pulumi.Input<boolean>;
+    isPublic?: pulumi.Input<boolean | undefined>;
     /**
      * Last indexing job for the Knowledge Base
      */
-    lastIndexingJob?: pulumi.Input<inputs.GetGradientaiAgentKnowledgeBaseLastIndexingJobArgs>;
+    lastIndexingJob?: pulumi.Input<inputs.GetGradientaiAgentKnowledgeBaseLastIndexingJobArgs | undefined>;
     /**
      * Name of the Knowledge Base
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Project ID of the Knowledge Base
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Region of the Knowledge Base
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * List of tags
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Timestamp when the Knowledge Base was updated
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * User ID of the Knowledge Base
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
     /**
      * UUID of the Knowledge Base
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 export interface GetGradientaiAgentKnowledgeBaseLastIndexingJob {
@@ -6350,47 +6350,47 @@ export interface GetGradientaiAgentKnowledgeBaseLastIndexingJobArgs {
     /**
      * Number of completed datasources in the last indexing job
      */
-    completedDatasources?: pulumi.Input<number>;
+    completedDatasources?: pulumi.Input<number | undefined>;
     /**
      * Created At timestamp for the last indexing job
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Datasource UUIDs for the last indexing job
      */
-    dataSourceUuids?: pulumi.Input<pulumi.Input<string>[]>;
+    dataSourceUuids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Timestamp when the last indexing job finished
      */
-    finishedAt?: pulumi.Input<string>;
+    finishedAt?: pulumi.Input<string | undefined>;
     /**
      * UUID  of the Knowledge Base for the last indexing job
      */
-    knowledgeBaseUuid?: pulumi.Input<string>;
+    knowledgeBaseUuid?: pulumi.Input<string | undefined>;
     /**
      * Phase of the last indexing job
      */
-    phase?: pulumi.Input<string>;
+    phase?: pulumi.Input<string | undefined>;
     /**
      * Timestamp when the last indexing job started
      */
-    startedAt?: pulumi.Input<string>;
+    startedAt?: pulumi.Input<string | undefined>;
     /**
      * Number of tokens processed in the last indexing job
      */
-    tokens?: pulumi.Input<number>;
+    tokens?: pulumi.Input<number | undefined>;
     /**
      * Total number of datasources in the last indexing job
      */
-    totalDatasources?: pulumi.Input<number>;
+    totalDatasources?: pulumi.Input<number | undefined>;
     /**
      * Timestamp when the last indexing job updated
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * UUID  of the last indexing job
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 export interface GetGradientaiAgentModel {
@@ -6452,55 +6452,55 @@ export interface GetGradientaiAgentModelArgs {
     /**
      * Agreement information for the model
      */
-    agreements?: pulumi.Input<pulumi.Input<inputs.GetGradientaiAgentModelAgreementArgs>[]>;
+    agreements?: pulumi.Input<pulumi.Input<inputs.GetGradientaiAgentModelAgreementArgs>[] | undefined>;
     /**
      * Created At timestamp for the Knowledge Base
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Inference name of the model
      */
-    inferenceName?: pulumi.Input<string>;
+    inferenceName?: pulumi.Input<string | undefined>;
     /**
      * Infernce version of the model
      */
-    inferenceVersion?: pulumi.Input<string>;
+    inferenceVersion?: pulumi.Input<string | undefined>;
     /**
      * Indicates if the Model Base is foundational
      */
-    isFoundational?: pulumi.Input<boolean>;
+    isFoundational?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the Knowledge Base
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Parent UUID of the Model
      */
-    parentUuid?: pulumi.Input<string>;
+    parentUuid?: pulumi.Input<string | undefined>;
     /**
      * Provider of the Model
      */
-    provider?: pulumi.Input<string>;
+    provider?: pulumi.Input<string | undefined>;
     /**
      * Timestamp when the Knowledge Base was updated
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * Indicates if the Model upload is complete
      */
-    uploadComplete?: pulumi.Input<boolean>;
+    uploadComplete?: pulumi.Input<boolean | undefined>;
     /**
      * URL of the Model
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * List of Usecases for the Model
      */
-    usecases?: pulumi.Input<pulumi.Input<string>[]>;
+    usecases?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * URL of the Model
      */
-    versions?: pulumi.Input<pulumi.Input<inputs.GetGradientaiAgentModelVersionArgs>[]>;
+    versions?: pulumi.Input<pulumi.Input<inputs.GetGradientaiAgentModelVersionArgs>[] | undefined>;
 }
 
 export interface GetGradientaiAgentModelAgreement {
@@ -6526,19 +6526,19 @@ export interface GetGradientaiAgentModelAgreementArgs {
     /**
      * Description of the agreement
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Name of the agreement
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * URL of the agreement
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * UUID of the agreement
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 export interface GetGradientaiAgentModelVersion {
@@ -6560,15 +6560,15 @@ export interface GetGradientaiAgentModelVersionArgs {
     /**
      * Major version of the model
      */
-    major?: pulumi.Input<number>;
+    major?: pulumi.Input<number | undefined>;
     /**
      * Minor version of the model
      */
-    minor?: pulumi.Input<number>;
+    minor?: pulumi.Input<number | undefined>;
     /**
      * Patch version of the model
      */
-    patch?: pulumi.Input<number>;
+    patch?: pulumi.Input<number | undefined>;
 }
 
 export interface GetGradientaiAgentOpenAiApiKey {
@@ -6582,7 +6582,7 @@ export interface GetGradientaiAgentOpenAiApiKeyArgs {
     /**
      * OpenAI API Key
      */
-    apiKey?: pulumi.Input<string>;
+    apiKey?: pulumi.Input<string | undefined>;
 }
 
 export interface GetGradientaiAgentTemplate {
@@ -6640,51 +6640,51 @@ export interface GetGradientaiAgentTemplateArgs {
     /**
      * Created At timestamp for the Knowledge Base
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Description of the Agent Template
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Instruction for the Agent
      */
-    instruction?: pulumi.Input<string>;
+    instruction?: pulumi.Input<string | undefined>;
     /**
      * K value for the Agent Template
      */
-    k?: pulumi.Input<number>;
+    k?: pulumi.Input<number | undefined>;
     /**
      * List of Knowledge Bases
      */
-    knowledgeBases?: pulumi.Input<pulumi.Input<inputs.GetGradientaiAgentTemplateKnowledgeBaseArgs>[]>;
+    knowledgeBases?: pulumi.Input<pulumi.Input<inputs.GetGradientaiAgentTemplateKnowledgeBaseArgs>[] | undefined>;
     /**
      * Maximum tokens allowed
      */
-    maxTokens?: pulumi.Input<number>;
+    maxTokens?: pulumi.Input<number | undefined>;
     /**
      * Model of the Agent Template
      */
-    models?: pulumi.Input<pulumi.Input<inputs.GetGradientaiAgentTemplateModelArgs>[]>;
+    models?: pulumi.Input<pulumi.Input<inputs.GetGradientaiAgentTemplateModelArgs>[] | undefined>;
     /**
      * Name of the Agent Template
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Agent temperature setting
      */
-    temperature?: pulumi.Input<number>;
+    temperature?: pulumi.Input<number | undefined>;
     /**
      * Top P sampling parameter
      */
-    topP?: pulumi.Input<number>;
+    topP?: pulumi.Input<number | undefined>;
     /**
      * Updated At timestamp for the Agent Template
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * uuid of the Agent Template
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 export interface GetGradientaiAgentTemplateKnowledgeBase {
@@ -6746,55 +6746,55 @@ export interface GetGradientaiAgentTemplateKnowledgeBaseArgs {
     /**
      * Timestamp when the Knowledge Base was added to the Agent
      */
-    addedToAgentAt?: pulumi.Input<string>;
+    addedToAgentAt?: pulumi.Input<string | undefined>;
     /**
      * Created At timestamp for the Knowledge Base
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Database ID of the Knowledge Base
      */
-    databaseId?: pulumi.Input<string>;
+    databaseId?: pulumi.Input<string | undefined>;
     /**
      * Embedding model UUID for the Knowledge Base
      */
-    embeddingModelUuid?: pulumi.Input<string>;
+    embeddingModelUuid?: pulumi.Input<string | undefined>;
     /**
      * Indicates if the Knowledge Base is public
      */
-    isPublic?: pulumi.Input<boolean>;
+    isPublic?: pulumi.Input<boolean | undefined>;
     /**
      * Last indexing job for the Knowledge Base
      */
-    lastIndexingJob?: pulumi.Input<inputs.GetGradientaiAgentTemplateKnowledgeBaseLastIndexingJobArgs>;
+    lastIndexingJob?: pulumi.Input<inputs.GetGradientaiAgentTemplateKnowledgeBaseLastIndexingJobArgs | undefined>;
     /**
      * Name of the Knowledge Base
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Project ID of the Knowledge Base
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Region of the Knowledge Base
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * List of tags
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Timestamp when the Knowledge Base was updated
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * User ID of the Knowledge Base
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
     /**
      * UUID of the Knowledge Base
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 export interface GetGradientaiAgentTemplateKnowledgeBaseLastIndexingJob {
@@ -6848,47 +6848,47 @@ export interface GetGradientaiAgentTemplateKnowledgeBaseLastIndexingJobArgs {
     /**
      * Number of completed datasources in the last indexing job
      */
-    completedDatasources?: pulumi.Input<number>;
+    completedDatasources?: pulumi.Input<number | undefined>;
     /**
      * Created At timestamp for the last indexing job
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Datasource UUIDs for the last indexing job
      */
-    dataSourceUuids?: pulumi.Input<pulumi.Input<string>[]>;
+    dataSourceUuids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Timestamp when the last indexing job finished
      */
-    finishedAt?: pulumi.Input<string>;
+    finishedAt?: pulumi.Input<string | undefined>;
     /**
      * UUID  of the Knowledge Base for the last indexing job
      */
-    knowledgeBaseUuid?: pulumi.Input<string>;
+    knowledgeBaseUuid?: pulumi.Input<string | undefined>;
     /**
      * Phase of the last indexing job
      */
-    phase?: pulumi.Input<string>;
+    phase?: pulumi.Input<string | undefined>;
     /**
      * Timestamp when the last indexing job started
      */
-    startedAt?: pulumi.Input<string>;
+    startedAt?: pulumi.Input<string | undefined>;
     /**
      * Number of tokens processed in the last indexing job
      */
-    tokens?: pulumi.Input<number>;
+    tokens?: pulumi.Input<number | undefined>;
     /**
      * Total number of datasources in the last indexing job
      */
-    totalDatasources?: pulumi.Input<number>;
+    totalDatasources?: pulumi.Input<number | undefined>;
     /**
      * Timestamp when the last indexing job updated
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * UUID  of the last indexing job
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 export interface GetGradientaiAgentTemplateModel {
@@ -6950,55 +6950,55 @@ export interface GetGradientaiAgentTemplateModelArgs {
     /**
      * Agreement information for the model
      */
-    agreements?: pulumi.Input<pulumi.Input<inputs.GetGradientaiAgentTemplateModelAgreementArgs>[]>;
+    agreements?: pulumi.Input<pulumi.Input<inputs.GetGradientaiAgentTemplateModelAgreementArgs>[] | undefined>;
     /**
      * Created At timestamp for the Knowledge Base
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Inference name of the model
      */
-    inferenceName?: pulumi.Input<string>;
+    inferenceName?: pulumi.Input<string | undefined>;
     /**
      * Infernce version of the model
      */
-    inferenceVersion?: pulumi.Input<string>;
+    inferenceVersion?: pulumi.Input<string | undefined>;
     /**
      * Indicates if the Model Base is foundational
      */
-    isFoundational?: pulumi.Input<boolean>;
+    isFoundational?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the Knowledge Base
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Parent UUID of the Model
      */
-    parentUuid?: pulumi.Input<string>;
+    parentUuid?: pulumi.Input<string | undefined>;
     /**
      * Provider of the Model
      */
-    provider?: pulumi.Input<string>;
+    provider?: pulumi.Input<string | undefined>;
     /**
      * Timestamp when the Knowledge Base was updated
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * Indicates if the Model upload is complete
      */
-    uploadComplete?: pulumi.Input<boolean>;
+    uploadComplete?: pulumi.Input<boolean | undefined>;
     /**
      * URL of the Model
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * List of Usecases for the Model
      */
-    usecases?: pulumi.Input<pulumi.Input<string>[]>;
+    usecases?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * URL of the Model
      */
-    versions?: pulumi.Input<pulumi.Input<inputs.GetGradientaiAgentTemplateModelVersionArgs>[]>;
+    versions?: pulumi.Input<pulumi.Input<inputs.GetGradientaiAgentTemplateModelVersionArgs>[] | undefined>;
 }
 
 export interface GetGradientaiAgentTemplateModelAgreement {
@@ -7024,19 +7024,19 @@ export interface GetGradientaiAgentTemplateModelAgreementArgs {
     /**
      * Description of the agreement
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Name of the agreement
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * URL of the agreement
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * UUID of the agreement
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 export interface GetGradientaiAgentTemplateModelVersion {
@@ -7058,15 +7058,15 @@ export interface GetGradientaiAgentTemplateModelVersionArgs {
     /**
      * Major version of the model
      */
-    major?: pulumi.Input<number>;
+    major?: pulumi.Input<number | undefined>;
     /**
      * Minor version of the model
      */
-    minor?: pulumi.Input<number>;
+    minor?: pulumi.Input<number | undefined>;
     /**
      * Patch version of the model
      */
-    patch?: pulumi.Input<number>;
+    patch?: pulumi.Input<number | undefined>;
 }
 
 export interface GetGradientaiAgentVersionsFilter {
@@ -7077,9 +7077,9 @@ export interface GetGradientaiAgentVersionsFilter {
 }
 
 export interface GetGradientaiAgentVersionsFilterArgs {
-    all?: pulumi.Input<boolean>;
+    all?: pulumi.Input<boolean | undefined>;
     key: pulumi.Input<string>;
-    matchBy?: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string | undefined>;
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -7089,7 +7089,7 @@ export interface GetGradientaiAgentVersionsSort {
 }
 
 export interface GetGradientaiAgentVersionsSortArgs {
-    direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string | undefined>;
     key: pulumi.Input<string>;
 }
 
@@ -7101,9 +7101,9 @@ export interface GetGradientaiAgentsFilter {
 }
 
 export interface GetGradientaiAgentsFilterArgs {
-    all?: pulumi.Input<boolean>;
+    all?: pulumi.Input<boolean | undefined>;
     key: pulumi.Input<string>;
-    matchBy?: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string | undefined>;
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -7113,7 +7113,7 @@ export interface GetGradientaiAgentsSort {
 }
 
 export interface GetGradientaiAgentsSortArgs {
-    direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string | undefined>;
     key: pulumi.Input<string>;
 }
 
@@ -7168,47 +7168,47 @@ export interface GetGradientaiKnowledgeBaseLastIndexingJobArgs {
     /**
      * Number of completed datasources in the last indexing job
      */
-    completedDatasources?: pulumi.Input<number>;
+    completedDatasources?: pulumi.Input<number | undefined>;
     /**
      * Created At timestamp for the last indexing job
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Datasource UUIDs for the last indexing job
      */
-    dataSourceUuids?: pulumi.Input<pulumi.Input<string>[]>;
+    dataSourceUuids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Timestamp when the last indexing job finished
      */
-    finishedAt?: pulumi.Input<string>;
+    finishedAt?: pulumi.Input<string | undefined>;
     /**
      * UUID  of the Knowledge Base for the last indexing job
      */
-    knowledgeBaseUuid?: pulumi.Input<string>;
+    knowledgeBaseUuid?: pulumi.Input<string | undefined>;
     /**
      * Phase of the last indexing job
      */
-    phase?: pulumi.Input<string>;
+    phase?: pulumi.Input<string | undefined>;
     /**
      * Timestamp when the last indexing job started
      */
-    startedAt?: pulumi.Input<string>;
+    startedAt?: pulumi.Input<string | undefined>;
     /**
      * Number of tokens processed in the last indexing job
      */
-    tokens?: pulumi.Input<number>;
+    tokens?: pulumi.Input<number | undefined>;
     /**
      * Total number of datasources in the last indexing job
      */
-    totalDatasources?: pulumi.Input<number>;
+    totalDatasources?: pulumi.Input<number | undefined>;
     /**
      * Timestamp when the last indexing job updated
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * UUID  of the last indexing job
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 export interface GetGradientaiKnowledgeBasesFilter {
@@ -7219,9 +7219,9 @@ export interface GetGradientaiKnowledgeBasesFilter {
 }
 
 export interface GetGradientaiKnowledgeBasesFilterArgs {
-    all?: pulumi.Input<boolean>;
+    all?: pulumi.Input<boolean | undefined>;
     key: pulumi.Input<string>;
-    matchBy?: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string | undefined>;
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -7231,7 +7231,7 @@ export interface GetGradientaiKnowledgeBasesSort {
 }
 
 export interface GetGradientaiKnowledgeBasesSortArgs {
-    direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string | undefined>;
     key: pulumi.Input<string>;
 }
 
@@ -7243,9 +7243,9 @@ export interface GetGradientaiModelsFilter {
 }
 
 export interface GetGradientaiModelsFilterArgs {
-    all?: pulumi.Input<boolean>;
+    all?: pulumi.Input<boolean | undefined>;
     key: pulumi.Input<string>;
-    matchBy?: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string | undefined>;
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -7255,7 +7255,7 @@ export interface GetGradientaiModelsSort {
 }
 
 export interface GetGradientaiModelsSortArgs {
-    direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string | undefined>;
     key: pulumi.Input<string>;
 }
 
@@ -7267,9 +7267,9 @@ export interface GetGradientaiOpenaiApiKeysFilter {
 }
 
 export interface GetGradientaiOpenaiApiKeysFilterArgs {
-    all?: pulumi.Input<boolean>;
+    all?: pulumi.Input<boolean | undefined>;
     key: pulumi.Input<string>;
-    matchBy?: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string | undefined>;
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -7279,7 +7279,7 @@ export interface GetGradientaiOpenaiApiKeysSort {
 }
 
 export interface GetGradientaiOpenaiApiKeysSortArgs {
-    direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string | undefined>;
     key: pulumi.Input<string>;
 }
 
@@ -7291,9 +7291,9 @@ export interface GetGradientaiRegionsFilter {
 }
 
 export interface GetGradientaiRegionsFilterArgs {
-    all?: pulumi.Input<boolean>;
+    all?: pulumi.Input<boolean | undefined>;
     key: pulumi.Input<string>;
-    matchBy?: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string | undefined>;
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -7303,7 +7303,7 @@ export interface GetGradientaiRegionsSort {
 }
 
 export interface GetGradientaiRegionsSortArgs {
-    direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string | undefined>;
     key: pulumi.Input<string>;
 }
 
@@ -7339,7 +7339,7 @@ export interface GetImagesFilterArgs {
      * them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
      * that all of the `values` are present in the list or set.
      */
-    all?: pulumi.Input<boolean>;
+    all?: pulumi.Input<boolean | undefined>;
     /**
      * Filter the images by this key. This may be one of `distribution`, `errorMessage`,
      * `id`, `image`, `minDiskSize`, `name`, `private`, `regions`, `sizeGigabytes`, `slug`, `status`,
@@ -7351,7 +7351,7 @@ export interface GetImagesFilterArgs {
      * match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
      * substrings to find within the string field.
      */
-    matchBy?: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string | undefined>;
     /**
      * A list of values to match against the `key` field. Only retrieves images
      * where the `key` field takes on one or more of the values provided here.
@@ -7375,7 +7375,7 @@ export interface GetImagesSortArgs {
     /**
      * The sort direction. This may be either `asc` or `desc`.
      */
-    direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string | undefined>;
     /**
      * Sort the images by this key. This may be one of `distribution`, `errorMessage`, `id`,
      * `image`, `minDiskSize`, `name`, `private`, `sizeGigabytes`, `slug`, `status`, or `type`.
@@ -7388,7 +7388,7 @@ export interface GetKubernetesClusterAmdGpuDeviceMetricsExporterPlugin {
 }
 
 export interface GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs {
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
 }
 
 export interface GetKubernetesClusterAmdGpuDevicePlugin {
@@ -7396,7 +7396,7 @@ export interface GetKubernetesClusterAmdGpuDevicePlugin {
 }
 
 export interface GetKubernetesClusterAmdGpuDevicePluginArgs {
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
 }
 
 export interface GetKubernetesClusterClusterAutoscalerConfiguration {
@@ -7406,9 +7406,9 @@ export interface GetKubernetesClusterClusterAutoscalerConfiguration {
 }
 
 export interface GetKubernetesClusterClusterAutoscalerConfigurationArgs {
-    expanders?: pulumi.Input<pulumi.Input<string>[]>;
-    scaleDownUnneededTime?: pulumi.Input<string>;
-    scaleDownUtilizationThreshold?: pulumi.Input<number>;
+    expanders?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    scaleDownUnneededTime?: pulumi.Input<string | undefined>;
+    scaleDownUtilizationThreshold?: pulumi.Input<number | undefined>;
 }
 
 export interface GetKubernetesClusterNvidiaGpuDevicePlugin {
@@ -7416,7 +7416,7 @@ export interface GetKubernetesClusterNvidiaGpuDevicePlugin {
 }
 
 export interface GetKubernetesClusterNvidiaGpuDevicePluginArgs {
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
 }
 
 export interface GetKubernetesClusterRdmaSharedDevicePlugin {
@@ -7424,7 +7424,7 @@ export interface GetKubernetesClusterRdmaSharedDevicePlugin {
 }
 
 export interface GetKubernetesClusterRdmaSharedDevicePluginArgs {
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
 }
 
 export interface GetKubernetesClusterRoutingAgent {
@@ -7432,7 +7432,7 @@ export interface GetKubernetesClusterRoutingAgent {
 }
 
 export interface GetKubernetesClusterRoutingAgentArgs {
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
 }
 
 export interface GetKubernetesClusterSso {
@@ -7441,8 +7441,8 @@ export interface GetKubernetesClusterSso {
 }
 
 export interface GetKubernetesClusterSsoArgs {
-    enabled?: pulumi.Input<boolean>;
-    required?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
+    required?: pulumi.Input<boolean | undefined>;
 }
 
 export interface GetPartnerAttachmentBgp {
@@ -7452,9 +7452,9 @@ export interface GetPartnerAttachmentBgp {
 }
 
 export interface GetPartnerAttachmentBgpArgs {
-    localRouterIp?: pulumi.Input<string>;
-    peerRouterAsn?: pulumi.Input<number>;
-    peerRouterIp?: pulumi.Input<string>;
+    localRouterIp?: pulumi.Input<string | undefined>;
+    peerRouterAsn?: pulumi.Input<number | undefined>;
+    peerRouterIp?: pulumi.Input<string | undefined>;
 }
 
 export interface GetProjectsFilter {
@@ -7488,7 +7488,7 @@ export interface GetProjectsFilterArgs {
      * them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
      * that all of the `values` are present in the list or set.
      */
-    all?: pulumi.Input<boolean>;
+    all?: pulumi.Input<boolean | undefined>;
     /**
      * Filter the projects by this key. This may be one of `name`,
      * `purpose`, `description`, `environment`, or `isDefault`.
@@ -7499,7 +7499,7 @@ export interface GetProjectsFilterArgs {
      * match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
      * substrings to find within the string field.
      */
-    matchBy?: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string | undefined>;
     /**
      * A list of values to match against the `key` field. Only retrieves projects
      * where the `key` field takes on one or more of the values provided here.
@@ -7523,7 +7523,7 @@ export interface GetProjectsSortArgs {
     /**
      * The sort direction. This may be either `asc` or `desc`.
      */
-    direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string | undefined>;
     /**
      * Sort the projects by this key. This may be one of `name`,
      * `purpose`, `description`, or `environment`.
@@ -7562,7 +7562,7 @@ export interface GetRecordsFilterArgs {
      * them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
      * that all of the `values` are present in the list or set.
      */
-    all?: pulumi.Input<boolean>;
+    all?: pulumi.Input<boolean | undefined>;
     /**
      * Filter the DNS records by this key. This may be one of `domain`, `flags`, `name`, `port`,
      * `priority`, `tag`, `ttl`, `type`, `value`, or `weight`.
@@ -7573,7 +7573,7 @@ export interface GetRecordsFilterArgs {
      * match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
      * substrings to find within the string field.
      */
-    matchBy?: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string | undefined>;
     /**
      * A list of values to match against the `key` field. Only retrieves DNS records
      * where the `key` field takes on one or more of the values provided here.
@@ -7597,7 +7597,7 @@ export interface GetRecordsSortArgs {
     /**
      * The sort direction. This may be either `asc` or `desc`.
      */
-    direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string | undefined>;
     /**
      * Sort the DNS records by this key. This may be one of `domain`, `flags`, `name`, `port`,
      * `priority`, `tag`, `ttl`, `type`, `value`, or `weight`.
@@ -7636,7 +7636,7 @@ export interface GetRegionsFilterArgs {
      * them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
      * that all of the `values` are present in the list or set.
      */
-    all?: pulumi.Input<boolean>;
+    all?: pulumi.Input<boolean | undefined>;
     /**
      * Filter the regions by this key. This may be one of `slug`,
      * `name`, `available`, `features`, or `sizes`.
@@ -7647,7 +7647,7 @@ export interface GetRegionsFilterArgs {
      * match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
      * substrings to find within the string field.
      */
-    matchBy?: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string | undefined>;
     /**
      * A list of values to match against the `key` field. Only retrieves regions
      * where the `key` field takes on one or more of the values provided here.
@@ -7671,7 +7671,7 @@ export interface GetRegionsSortArgs {
     /**
      * The sort direction. This may be either `asc` or `desc`.
      */
-    direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string | undefined>;
     /**
      * Sort the regions by this key. This may be one of `slug`,
      * `name`, or `available`.
@@ -7711,7 +7711,7 @@ export interface GetSizesFilterArgs {
      * them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
      * that all of the `values` are present in the list or set.
      */
-    all?: pulumi.Input<boolean>;
+    all?: pulumi.Input<boolean | undefined>;
     /**
      * Filter the sizes by this key. This may be one of `slug`,
      * `regions`, `memory`, `vcpus`, `disk`, `transfer`, `priceMonthly`,
@@ -7723,7 +7723,7 @@ export interface GetSizesFilterArgs {
      * match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
      * substrings to find within the string field.
      */
-    matchBy?: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string | undefined>;
     /**
      * Only retrieves sizes which keys has value that matches
      * one of the values provided here.
@@ -7747,7 +7747,7 @@ export interface GetSizesSortArgs {
     /**
      * The sort direction. This may be either `asc` or `desc`.
      */
-    direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string | undefined>;
     /**
      * Sort the sizes by this key. This may be one of `slug`,
      * `memory`, `vcpus`, `disk`, `transfer`, `priceMonthly`, or `priceHourly`.
@@ -7785,7 +7785,7 @@ export interface GetSpacesBucketsFilterArgs {
      * them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
      * that all of the `values` are present in the list or set.
      */
-    all?: pulumi.Input<boolean>;
+    all?: pulumi.Input<boolean | undefined>;
     /**
      * Filter the images by this key. This may be one of `bucketDomainName`, `name`, `region`, or `urn`.
      */
@@ -7795,7 +7795,7 @@ export interface GetSpacesBucketsFilterArgs {
      * match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
      * substrings to find within the string field.
      */
-    matchBy?: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string | undefined>;
     /**
      * A list of values to match against the `key` field. Only retrieves Spaces buckets
      * where the `key` field takes on one or more of the values provided here.
@@ -7818,7 +7818,7 @@ export interface GetSpacesBucketsSortArgs {
     /**
      * The sort direction. This may be either `asc` or `desc`.
      */
-    direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string | undefined>;
     /**
      * Sort the images by this key. This may be one of `bucketDomainName`, `name`, `region`, or `urn`.
      */
@@ -7839,12 +7839,12 @@ export interface GetSshKeysFilter {
 }
 
 export interface GetSshKeysFilterArgs {
-    all?: pulumi.Input<boolean>;
+    all?: pulumi.Input<boolean | undefined>;
     /**
      * Filter the SSH Keys by this key. This may be one of `name`, `publicKey`, or `fingerprint`.
      */
     key: pulumi.Input<string>;
-    matchBy?: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string | undefined>;
     /**
      * A list of values to match against the key field. Only retrieves SSH keys where the key field matches one or more of the values provided here.
      */
@@ -7866,7 +7866,7 @@ export interface GetSshKeysSortArgs {
     /**
      * The sort direction. This may be either `asc` or `desc`.
      */
-    direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string | undefined>;
     /**
      * Sort the SSH Keys by this key. This may be one of `name`, `publicKey`, or `fingerprint`.
      */
@@ -7903,7 +7903,7 @@ export interface GetTagsFilterArgs {
      * them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
      * that all of the `values` are present in the list or set.
      */
-    all?: pulumi.Input<boolean>;
+    all?: pulumi.Input<boolean | undefined>;
     /**
      * Filter the tags by this key. This may be one of `name`, `totalResourceCount`,  `dropletsCount`, `imagesCount`, `volumesCount`, `volumeSnapshotsCount`, or `databasesCount`.
      */
@@ -7913,7 +7913,7 @@ export interface GetTagsFilterArgs {
      * match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
      * substrings to find within the string field.
      */
-    matchBy?: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string | undefined>;
     /**
      * Only retrieves tags which keys has value that matches
      * one of the values provided here.
@@ -7936,7 +7936,7 @@ export interface GetTagsSortArgs {
     /**
      * The sort direction. This may be either `asc` or `desc`.
      */
-    direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string | undefined>;
     /**
      * Sort the tags by this key. This may be one of `name`, `totalResourceCount`,  `dropletsCount`, `imagesCount`, `volumesCount`, `volumeSnapshotsCount`, or `databasesCount`.
      */
@@ -7947,178 +7947,178 @@ export interface GradientaiAgentAgentGuardrail {
     /**
      * Agent UUID for the Guardrail
      */
-    agentUuid?: pulumi.Input<string>;
+    agentUuid?: pulumi.Input<string | undefined>;
     /**
      * Created At timestamp for the Guardrail
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Default response for the Guardrail
      */
-    defaultResponse?: pulumi.Input<string>;
+    defaultResponse?: pulumi.Input<string | undefined>;
     /**
      * Description of the Guardrail
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Guardrail UUID
      */
-    guardrailUuid?: pulumi.Input<string>;
+    guardrailUuid?: pulumi.Input<string | undefined>;
     /**
      * Indicates if the Guardrail is attached
      */
-    isAttached?: pulumi.Input<boolean>;
+    isAttached?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates if the Guardrail is default
      */
-    isDefault?: pulumi.Input<boolean>;
+    isDefault?: pulumi.Input<boolean | undefined>;
     /**
      * Name of Guardrail
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Priority of the Guardrail
      */
-    priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number | undefined>;
     /**
      * Type of the Guardrail
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * Updated At timestamp for the Guardrail
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * Guardrail UUID
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 export interface GradientaiAgentAnthropicApiKey {
     /**
      * Timestamp when the API Key was created
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Created By user ID for the API Key
      */
-    createdBy?: pulumi.Input<string>;
+    createdBy?: pulumi.Input<string | undefined>;
     /**
      * Deleted At timestamp for the API Key
      */
-    deletedAt?: pulumi.Input<string>;
+    deletedAt?: pulumi.Input<string | undefined>;
     /**
      * Name of the API Key
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Updated At timestamp for the API Key
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * API Key value
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 export interface GradientaiAgentApiKey {
     /**
      * API Key value
      */
-    apiKey?: pulumi.Input<string>;
+    apiKey?: pulumi.Input<string | undefined>;
 }
 
 export interface GradientaiAgentApiKeyInfo {
     /**
      * API Key value
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Created By user ID for the API Key
      */
-    createdBy?: pulumi.Input<string>;
+    createdBy?: pulumi.Input<string | undefined>;
     /**
      * Deleted At timestamp for the API Key
      */
-    deletedAt?: pulumi.Input<string>;
+    deletedAt?: pulumi.Input<string | undefined>;
     /**
      * Name of the API Key
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Updated At timestamp for the API Key
      */
-    secretKey?: pulumi.Input<string>;
+    secretKey?: pulumi.Input<string | undefined>;
     /**
      * API Key value
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 export interface GradientaiAgentChatbot {
     /**
      * Background color for the chatbot button
      */
-    buttonBackgroundColor?: pulumi.Input<string>;
+    buttonBackgroundColor?: pulumi.Input<string | undefined>;
     /**
      * Logo for the chatbot
      */
-    logo?: pulumi.Input<string>;
+    logo?: pulumi.Input<string | undefined>;
     /**
      * Name of the chatbot
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Primary color for the chatbot
      */
-    primaryColor?: pulumi.Input<string>;
+    primaryColor?: pulumi.Input<string | undefined>;
     /**
      * Secondary color for the chatbot
      */
-    secondaryColor?: pulumi.Input<string>;
+    secondaryColor?: pulumi.Input<string | undefined>;
     /**
      * Starting message for the chatbot
      */
-    startingMessage?: pulumi.Input<string>;
+    startingMessage?: pulumi.Input<string | undefined>;
 }
 
 export interface GradientaiAgentChatbotIdentifier {
-    chatbotId?: pulumi.Input<string>;
+    chatbotId?: pulumi.Input<string | undefined>;
 }
 
 export interface GradientaiAgentChildAgent {
     /**
      * ID of the child agent
      */
-    agentId?: pulumi.Input<string>;
+    agentId?: pulumi.Input<string | undefined>;
     /**
      * Anthropic API Key information
      */
-    anthropicApiKeys?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentChildAgentAnthropicApiKey>[]>;
+    anthropicApiKeys?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentChildAgentAnthropicApiKey>[] | undefined>;
     /**
      * List of API Key Infos
      */
-    apiKeyInfos?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentChildAgentApiKeyInfo>[]>;
+    apiKeyInfos?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentChildAgentApiKeyInfo>[] | undefined>;
     /**
      * List of API Keys
      */
-    apiKeys?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentChildAgentApiKey>[]>;
+    apiKeys?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentChildAgentApiKey>[] | undefined>;
     /**
      * List of Chatbot Identifiers
      */
-    chatbotIdentifiers?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentChildAgentChatbotIdentifier>[]>;
+    chatbotIdentifiers?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentChildAgentChatbotIdentifier>[] | undefined>;
     /**
      * ChatBot configuration
      */
-    chatbots?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentChildAgentChatbot>[]>;
+    chatbots?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentChildAgentChatbot>[] | undefined>;
     /**
      * List of API Key Infos
      */
-    deployments?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentChildAgentDeployment>[]>;
+    deployments?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentChildAgentDeployment>[] | undefined>;
     /**
      * Description for the Agent
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Instruction for the Agent
      */
@@ -8145,450 +8145,450 @@ export interface GradientaiAgentChildAgentAnthropicApiKey {
     /**
      * Timestamp when the API Key was created
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Created By user ID for the API Key
      */
-    createdBy?: pulumi.Input<string>;
+    createdBy?: pulumi.Input<string | undefined>;
     /**
      * Deleted At timestamp for the API Key
      */
-    deletedAt?: pulumi.Input<string>;
+    deletedAt?: pulumi.Input<string | undefined>;
     /**
      * Name of the API Key
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Updated At timestamp for the API Key
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * API Key value
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 export interface GradientaiAgentChildAgentApiKey {
     /**
      * API Key value
      */
-    apiKey?: pulumi.Input<string>;
+    apiKey?: pulumi.Input<string | undefined>;
 }
 
 export interface GradientaiAgentChildAgentApiKeyInfo {
     /**
      * API Key value
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Created By user ID for the API Key
      */
-    createdBy?: pulumi.Input<string>;
+    createdBy?: pulumi.Input<string | undefined>;
     /**
      * Deleted At timestamp for the API Key
      */
-    deletedAt?: pulumi.Input<string>;
+    deletedAt?: pulumi.Input<string | undefined>;
     /**
      * Name of the API Key
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Updated At timestamp for the API Key
      */
-    secretKey?: pulumi.Input<string>;
+    secretKey?: pulumi.Input<string | undefined>;
     /**
      * API Key value
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 export interface GradientaiAgentChildAgentChatbot {
     /**
      * Background color for the chatbot button
      */
-    buttonBackgroundColor?: pulumi.Input<string>;
+    buttonBackgroundColor?: pulumi.Input<string | undefined>;
     /**
      * Logo for the chatbot
      */
-    logo?: pulumi.Input<string>;
+    logo?: pulumi.Input<string | undefined>;
     /**
      * Name of the chatbot
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Primary color for the chatbot
      */
-    primaryColor?: pulumi.Input<string>;
+    primaryColor?: pulumi.Input<string | undefined>;
     /**
      * Secondary color for the chatbot
      */
-    secondaryColor?: pulumi.Input<string>;
+    secondaryColor?: pulumi.Input<string | undefined>;
     /**
      * Starting message for the chatbot
      */
-    startingMessage?: pulumi.Input<string>;
+    startingMessage?: pulumi.Input<string | undefined>;
 }
 
 export interface GradientaiAgentChildAgentChatbotIdentifier {
-    chatbotId?: pulumi.Input<string>;
+    chatbotId?: pulumi.Input<string | undefined>;
 }
 
 export interface GradientaiAgentChildAgentDeployment {
     /**
      * API Key value
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Name of the API Key
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Status of the Deployment
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Updated At timestamp for the Agent
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * Url of the Deployment
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * API Key value
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
     /**
      * Visibility of the Deployment
      */
-    visibility?: pulumi.Input<string>;
+    visibility?: pulumi.Input<string | undefined>;
 }
 
 export interface GradientaiAgentDeployment {
     /**
      * API Key value
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Name of the API Key
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Status of the Deployment
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Updated At timestamp for the Agent
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * Url of the Deployment
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * API Key value
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
     /**
      * Visibility of the Deployment
      */
-    visibility?: pulumi.Input<string>;
+    visibility?: pulumi.Input<string | undefined>;
 }
 
 export interface GradientaiAgentFunction {
     /**
      * API Key value
      */
-    apiKey?: pulumi.Input<string>;
+    apiKey?: pulumi.Input<string | undefined>;
     /**
      * Created At timestamp for the Function
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Description of the Function
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Name of function
      */
-    faasname?: pulumi.Input<string>;
+    faasname?: pulumi.Input<string | undefined>;
     /**
      * Namespace of function
      */
-    faasnamespace?: pulumi.Input<string>;
+    faasnamespace?: pulumi.Input<string | undefined>;
     /**
      * Guardrail UUID for the Function
      */
-    guardrailUuid?: pulumi.Input<string>;
+    guardrailUuid?: pulumi.Input<string | undefined>;
     /**
      * Name of function
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Updated At timestamp for the Agent
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * Url of the Deployment
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * API Key value
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 export interface GradientaiAgentKnowledgeBase {
     /**
      * Timestamp when the Knowledge Base was added to the Agent
      */
-    addedToAgentAt?: pulumi.Input<string>;
+    addedToAgentAt?: pulumi.Input<string | undefined>;
     /**
      * Created At timestamp for the Knowledge Base
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Database ID of the Knowledge Base
      */
-    databaseId?: pulumi.Input<string>;
+    databaseId?: pulumi.Input<string | undefined>;
     /**
      * Embedding model UUID for the Knowledge Base
      */
-    embeddingModelUuid?: pulumi.Input<string>;
+    embeddingModelUuid?: pulumi.Input<string | undefined>;
     /**
      * Indicates if the Knowledge Base is public
      */
-    isPublic?: pulumi.Input<boolean>;
+    isPublic?: pulumi.Input<boolean | undefined>;
     /**
      * Last indexing job for the Knowledge Base
      */
-    lastIndexingJob?: pulumi.Input<inputs.GradientaiAgentKnowledgeBaseLastIndexingJob>;
+    lastIndexingJob?: pulumi.Input<inputs.GradientaiAgentKnowledgeBaseLastIndexingJob | undefined>;
     /**
      * Name of the Knowledge Base
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Project ID of the Knowledge Base
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Region of the Knowledge Base
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * List of tags
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Timestamp when the Knowledge Base was updated
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * User ID of the Knowledge Base
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
     /**
      * UUID of the Knowledge Base
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 export interface GradientaiAgentKnowledgeBaseLastIndexingJob {
     /**
      * Number of completed datasources in the last indexing job
      */
-    completedDatasources?: pulumi.Input<number>;
+    completedDatasources?: pulumi.Input<number | undefined>;
     /**
      * Created At timestamp for the last indexing job
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Datasource UUIDs for the last indexing job
      */
-    dataSourceUuids?: pulumi.Input<pulumi.Input<string>[]>;
+    dataSourceUuids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Timestamp when the last indexing job finished
      */
-    finishedAt?: pulumi.Input<string>;
+    finishedAt?: pulumi.Input<string | undefined>;
     /**
      * UUID  of the Knowledge Base for the last indexing job
      */
-    knowledgeBaseUuid?: pulumi.Input<string>;
+    knowledgeBaseUuid?: pulumi.Input<string | undefined>;
     /**
      * Phase of the last indexing job
      */
-    phase?: pulumi.Input<string>;
+    phase?: pulumi.Input<string | undefined>;
     /**
      * Timestamp when the last indexing job started
      */
-    startedAt?: pulumi.Input<string>;
+    startedAt?: pulumi.Input<string | undefined>;
     /**
      * Number of tokens processed in the last indexing job
      */
-    tokens?: pulumi.Input<number>;
+    tokens?: pulumi.Input<number | undefined>;
     /**
      * Total number of datasources in the last indexing job
      */
-    totalDatasources?: pulumi.Input<number>;
+    totalDatasources?: pulumi.Input<number | undefined>;
     /**
      * Timestamp when the last indexing job updated
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * UUID  of the last indexing job
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 export interface GradientaiAgentModel {
     /**
      * Agreement information for the model
      */
-    agreements?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentModelAgreement>[]>;
+    agreements?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentModelAgreement>[] | undefined>;
     /**
      * Created At timestamp for the Knowledge Base
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Inference name of the model
      */
-    inferenceName?: pulumi.Input<string>;
+    inferenceName?: pulumi.Input<string | undefined>;
     /**
      * Infernce version of the model
      */
-    inferenceVersion?: pulumi.Input<string>;
+    inferenceVersion?: pulumi.Input<string | undefined>;
     /**
      * Indicates if the Model Base is foundational
      */
-    isFoundational?: pulumi.Input<boolean>;
+    isFoundational?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the Knowledge Base
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Parent UUID of the Model
      */
-    parentUuid?: pulumi.Input<string>;
+    parentUuid?: pulumi.Input<string | undefined>;
     /**
      * Provider of the Model
      */
-    provider?: pulumi.Input<string>;
+    provider?: pulumi.Input<string | undefined>;
     /**
      * Timestamp when the Knowledge Base was updated
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * Indicates if the Model upload is complete
      */
-    uploadComplete?: pulumi.Input<boolean>;
+    uploadComplete?: pulumi.Input<boolean | undefined>;
     /**
      * URL of the Model
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * List of Usecases for the Model
      */
-    usecases?: pulumi.Input<pulumi.Input<string>[]>;
+    usecases?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * URL of the Model
      */
-    versions?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentModelVersion>[]>;
+    versions?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentModelVersion>[] | undefined>;
 }
 
 export interface GradientaiAgentModelAgreement {
     /**
      * Description of the agreement
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Name of the agreement
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * URL of the agreement
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * UUID of the agreement
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 export interface GradientaiAgentModelVersion {
     /**
      * Major version of the model
      */
-    major?: pulumi.Input<number>;
+    major?: pulumi.Input<number | undefined>;
     /**
      * Minor version of the model
      */
-    minor?: pulumi.Input<number>;
+    minor?: pulumi.Input<number | undefined>;
     /**
      * Patch version of the model
      */
-    patch?: pulumi.Input<number>;
+    patch?: pulumi.Input<number | undefined>;
 }
 
 export interface GradientaiAgentOpenAiApiKey {
     /**
      * Timestamp when the API Key was created
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Created By user ID for the API Key
      */
-    createdBy?: pulumi.Input<string>;
+    createdBy?: pulumi.Input<string | undefined>;
     /**
      * Deleted At timestamp for the API Key
      */
-    deletedAt?: pulumi.Input<string>;
+    deletedAt?: pulumi.Input<string | undefined>;
     /**
      * Name of the API Key
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Updated At timestamp for the API Key
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * API Key value
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 export interface GradientaiAgentParentAgent {
     /**
      * ID of the child agent
      */
-    agentId?: pulumi.Input<string>;
+    agentId?: pulumi.Input<string | undefined>;
     /**
      * Anthropic API Key information
      */
-    anthropicApiKeys?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentParentAgentAnthropicApiKey>[]>;
+    anthropicApiKeys?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentParentAgentAnthropicApiKey>[] | undefined>;
     /**
      * List of API Key Infos
      */
-    apiKeyInfos?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentParentAgentApiKeyInfo>[]>;
+    apiKeyInfos?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentParentAgentApiKeyInfo>[] | undefined>;
     /**
      * List of API Keys
      */
-    apiKeys?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentParentAgentApiKey>[]>;
+    apiKeys?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentParentAgentApiKey>[] | undefined>;
     /**
      * List of Chatbot Identifiers
      */
-    chatbotIdentifiers?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentParentAgentChatbotIdentifier>[]>;
+    chatbotIdentifiers?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentParentAgentChatbotIdentifier>[] | undefined>;
     /**
      * ChatBot configuration
      */
-    chatbots?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentParentAgentChatbot>[]>;
+    chatbots?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentParentAgentChatbot>[] | undefined>;
     /**
      * List of API Key Infos
      */
-    deployments?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentParentAgentDeployment>[]>;
+    deployments?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentParentAgentDeployment>[] | undefined>;
     /**
      * Description for the Agent
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Instruction for the Agent
      */
@@ -8615,480 +8615,480 @@ export interface GradientaiAgentParentAgentAnthropicApiKey {
     /**
      * Timestamp when the API Key was created
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Created By user ID for the API Key
      */
-    createdBy?: pulumi.Input<string>;
+    createdBy?: pulumi.Input<string | undefined>;
     /**
      * Deleted At timestamp for the API Key
      */
-    deletedAt?: pulumi.Input<string>;
+    deletedAt?: pulumi.Input<string | undefined>;
     /**
      * Name of the API Key
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Updated At timestamp for the API Key
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * API Key value
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 export interface GradientaiAgentParentAgentApiKey {
     /**
      * API Key value
      */
-    apiKey?: pulumi.Input<string>;
+    apiKey?: pulumi.Input<string | undefined>;
 }
 
 export interface GradientaiAgentParentAgentApiKeyInfo {
     /**
      * API Key value
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Created By user ID for the API Key
      */
-    createdBy?: pulumi.Input<string>;
+    createdBy?: pulumi.Input<string | undefined>;
     /**
      * Deleted At timestamp for the API Key
      */
-    deletedAt?: pulumi.Input<string>;
+    deletedAt?: pulumi.Input<string | undefined>;
     /**
      * Name of the API Key
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Updated At timestamp for the API Key
      */
-    secretKey?: pulumi.Input<string>;
+    secretKey?: pulumi.Input<string | undefined>;
     /**
      * API Key value
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 export interface GradientaiAgentParentAgentChatbot {
     /**
      * Background color for the chatbot button
      */
-    buttonBackgroundColor?: pulumi.Input<string>;
+    buttonBackgroundColor?: pulumi.Input<string | undefined>;
     /**
      * Logo for the chatbot
      */
-    logo?: pulumi.Input<string>;
+    logo?: pulumi.Input<string | undefined>;
     /**
      * Name of the chatbot
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Primary color for the chatbot
      */
-    primaryColor?: pulumi.Input<string>;
+    primaryColor?: pulumi.Input<string | undefined>;
     /**
      * Secondary color for the chatbot
      */
-    secondaryColor?: pulumi.Input<string>;
+    secondaryColor?: pulumi.Input<string | undefined>;
     /**
      * Starting message for the chatbot
      */
-    startingMessage?: pulumi.Input<string>;
+    startingMessage?: pulumi.Input<string | undefined>;
 }
 
 export interface GradientaiAgentParentAgentChatbotIdentifier {
-    chatbotId?: pulumi.Input<string>;
+    chatbotId?: pulumi.Input<string | undefined>;
 }
 
 export interface GradientaiAgentParentAgentDeployment {
     /**
      * API Key value
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Name of the API Key
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Status of the Deployment
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Updated At timestamp for the Agent
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * Url of the Deployment
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * API Key value
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
     /**
      * Visibility of the Deployment
      */
-    visibility?: pulumi.Input<string>;
+    visibility?: pulumi.Input<string | undefined>;
 }
 
 export interface GradientaiAgentTemplate {
     /**
      * Created At timestamp for the Knowledge Base
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Description of the Agent Template
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Instruction for the Agent
      */
-    instruction?: pulumi.Input<string>;
+    instruction?: pulumi.Input<string | undefined>;
     /**
      * K value for the Agent Template
      */
-    k?: pulumi.Input<number>;
+    k?: pulumi.Input<number | undefined>;
     /**
      * List of Knowledge Bases
      */
-    knowledgeBases?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentTemplateKnowledgeBase>[]>;
+    knowledgeBases?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentTemplateKnowledgeBase>[] | undefined>;
     /**
      * Maximum tokens allowed
      */
-    maxTokens?: pulumi.Input<number>;
+    maxTokens?: pulumi.Input<number | undefined>;
     /**
      * Model of the Agent Template
      */
-    models?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentTemplateModel>[]>;
+    models?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentTemplateModel>[] | undefined>;
     /**
      * Name of the Agent Template
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Agent temperature setting
      */
-    temperature?: pulumi.Input<number>;
+    temperature?: pulumi.Input<number | undefined>;
     /**
      * Top P sampling parameter
      */
-    topP?: pulumi.Input<number>;
+    topP?: pulumi.Input<number | undefined>;
     /**
      * Updated At timestamp for the Agent Template
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * uuid of the Agent Template
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 export interface GradientaiAgentTemplateKnowledgeBase {
     /**
      * Timestamp when the Knowledge Base was added to the Agent
      */
-    addedToAgentAt?: pulumi.Input<string>;
+    addedToAgentAt?: pulumi.Input<string | undefined>;
     /**
      * Created At timestamp for the Knowledge Base
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Database ID of the Knowledge Base
      */
-    databaseId?: pulumi.Input<string>;
+    databaseId?: pulumi.Input<string | undefined>;
     /**
      * Embedding model UUID for the Knowledge Base
      */
-    embeddingModelUuid?: pulumi.Input<string>;
+    embeddingModelUuid?: pulumi.Input<string | undefined>;
     /**
      * Indicates if the Knowledge Base is public
      */
-    isPublic?: pulumi.Input<boolean>;
+    isPublic?: pulumi.Input<boolean | undefined>;
     /**
      * Last indexing job for the Knowledge Base
      */
-    lastIndexingJob?: pulumi.Input<inputs.GradientaiAgentTemplateKnowledgeBaseLastIndexingJob>;
+    lastIndexingJob?: pulumi.Input<inputs.GradientaiAgentTemplateKnowledgeBaseLastIndexingJob | undefined>;
     /**
      * Name of the Knowledge Base
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Project ID of the Knowledge Base
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Region of the Knowledge Base
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * List of tags
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Timestamp when the Knowledge Base was updated
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * User ID of the Knowledge Base
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
     /**
      * UUID of the Knowledge Base
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 export interface GradientaiAgentTemplateKnowledgeBaseLastIndexingJob {
     /**
      * Number of completed datasources in the last indexing job
      */
-    completedDatasources?: pulumi.Input<number>;
+    completedDatasources?: pulumi.Input<number | undefined>;
     /**
      * Created At timestamp for the last indexing job
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Datasource UUIDs for the last indexing job
      */
-    dataSourceUuids?: pulumi.Input<pulumi.Input<string>[]>;
+    dataSourceUuids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Timestamp when the last indexing job finished
      */
-    finishedAt?: pulumi.Input<string>;
+    finishedAt?: pulumi.Input<string | undefined>;
     /**
      * UUID  of the Knowledge Base for the last indexing job
      */
-    knowledgeBaseUuid?: pulumi.Input<string>;
+    knowledgeBaseUuid?: pulumi.Input<string | undefined>;
     /**
      * Phase of the last indexing job
      */
-    phase?: pulumi.Input<string>;
+    phase?: pulumi.Input<string | undefined>;
     /**
      * Timestamp when the last indexing job started
      */
-    startedAt?: pulumi.Input<string>;
+    startedAt?: pulumi.Input<string | undefined>;
     /**
      * Number of tokens processed in the last indexing job
      */
-    tokens?: pulumi.Input<number>;
+    tokens?: pulumi.Input<number | undefined>;
     /**
      * Total number of datasources in the last indexing job
      */
-    totalDatasources?: pulumi.Input<number>;
+    totalDatasources?: pulumi.Input<number | undefined>;
     /**
      * Timestamp when the last indexing job updated
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * UUID  of the last indexing job
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 export interface GradientaiAgentTemplateModel {
     /**
      * Agreement information for the model
      */
-    agreements?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentTemplateModelAgreement>[]>;
+    agreements?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentTemplateModelAgreement>[] | undefined>;
     /**
      * Created At timestamp for the Knowledge Base
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Inference name of the model
      */
-    inferenceName?: pulumi.Input<string>;
+    inferenceName?: pulumi.Input<string | undefined>;
     /**
      * Infernce version of the model
      */
-    inferenceVersion?: pulumi.Input<string>;
+    inferenceVersion?: pulumi.Input<string | undefined>;
     /**
      * Indicates if the Model Base is foundational
      */
-    isFoundational?: pulumi.Input<boolean>;
+    isFoundational?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the Knowledge Base
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Parent UUID of the Model
      */
-    parentUuid?: pulumi.Input<string>;
+    parentUuid?: pulumi.Input<string | undefined>;
     /**
      * Provider of the Model
      */
-    provider?: pulumi.Input<string>;
+    provider?: pulumi.Input<string | undefined>;
     /**
      * Timestamp when the Knowledge Base was updated
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * Indicates if the Model upload is complete
      */
-    uploadComplete?: pulumi.Input<boolean>;
+    uploadComplete?: pulumi.Input<boolean | undefined>;
     /**
      * URL of the Model
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * List of Usecases for the Model
      */
-    usecases?: pulumi.Input<pulumi.Input<string>[]>;
+    usecases?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * URL of the Model
      */
-    versions?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentTemplateModelVersion>[]>;
+    versions?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentTemplateModelVersion>[] | undefined>;
 }
 
 export interface GradientaiAgentTemplateModelAgreement {
     /**
      * Description of the agreement
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Name of the agreement
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * URL of the agreement
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * UUID of the agreement
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 export interface GradientaiAgentTemplateModelVersion {
     /**
      * Major version of the model
      */
-    major?: pulumi.Input<number>;
+    major?: pulumi.Input<number | undefined>;
     /**
      * Minor version of the model
      */
-    minor?: pulumi.Input<number>;
+    minor?: pulumi.Input<number | undefined>;
     /**
      * Patch version of the model
      */
-    patch?: pulumi.Input<number>;
+    patch?: pulumi.Input<number | undefined>;
 }
 
 export interface GradientaiKnowledgeBaseDataSource {
     /**
      * Created At timestamp for the Knowledge Base
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * File upload data source configuration
      */
-    fileUploadDataSources?: pulumi.Input<pulumi.Input<inputs.GradientaiKnowledgeBaseDataSourceFileUploadDataSource>[]>;
+    fileUploadDataSources?: pulumi.Input<pulumi.Input<inputs.GradientaiKnowledgeBaseDataSourceFileUploadDataSource>[] | undefined>;
     /**
      * Last indexing job for the data source
      */
-    lastIndexingJobs?: pulumi.Input<pulumi.Input<inputs.GradientaiKnowledgeBaseDataSourceLastIndexingJob>[]>;
+    lastIndexingJobs?: pulumi.Input<pulumi.Input<inputs.GradientaiKnowledgeBaseDataSourceLastIndexingJob>[] | undefined>;
     /**
      * Spaces data source configuration
      */
-    spacesDataSources?: pulumi.Input<pulumi.Input<inputs.GradientaiKnowledgeBaseDataSourceSpacesDataSource>[]>;
+    spacesDataSources?: pulumi.Input<pulumi.Input<inputs.GradientaiKnowledgeBaseDataSourceSpacesDataSource>[] | undefined>;
     /**
      * Timestamp when the Knowledge Base was updated
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * UUID of the Knowledge Base
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
     /**
      * Web crawler data source configuration
      */
-    webCrawlerDataSources?: pulumi.Input<pulumi.Input<inputs.GradientaiKnowledgeBaseDataSourceWebCrawlerDataSource>[]>;
+    webCrawlerDataSources?: pulumi.Input<pulumi.Input<inputs.GradientaiKnowledgeBaseDataSourceWebCrawlerDataSource>[] | undefined>;
 }
 
 export interface GradientaiKnowledgeBaseDataSourceFileUploadDataSource {
     /**
      * The original name of the uploaded file
      */
-    originalFileName?: pulumi.Input<string>;
+    originalFileName?: pulumi.Input<string | undefined>;
     /**
      * The size of the file in bytes
      */
-    sizeInBytes?: pulumi.Input<string>;
+    sizeInBytes?: pulumi.Input<string | undefined>;
     /**
      * The stored object key for the file
      */
-    storedObjectKey?: pulumi.Input<string>;
+    storedObjectKey?: pulumi.Input<string | undefined>;
 }
 
 export interface GradientaiKnowledgeBaseDataSourceLastIndexingJob {
     /**
      * Number of completed datasources in the last indexing job
      */
-    completedDatasources?: pulumi.Input<number>;
+    completedDatasources?: pulumi.Input<number | undefined>;
     /**
      * Created At timestamp for the last indexing job
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Datasource UUIDs for the last indexing job
      */
-    dataSourceUuids?: pulumi.Input<pulumi.Input<string>[]>;
+    dataSourceUuids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Timestamp when the last indexing job finished
      */
-    finishedAt?: pulumi.Input<string>;
+    finishedAt?: pulumi.Input<string | undefined>;
     /**
      * UUID  of the Knowledge Base for the last indexing job
      */
-    knowledgeBaseUuid?: pulumi.Input<string>;
+    knowledgeBaseUuid?: pulumi.Input<string | undefined>;
     /**
      * Phase of the last indexing job
      */
-    phase?: pulumi.Input<string>;
+    phase?: pulumi.Input<string | undefined>;
     /**
      * Timestamp when the last indexing job started
      */
-    startedAt?: pulumi.Input<string>;
+    startedAt?: pulumi.Input<string | undefined>;
     /**
      * Number of tokens processed in the last indexing job
      */
-    tokens?: pulumi.Input<number>;
+    tokens?: pulumi.Input<number | undefined>;
     /**
      * Total number of datasources in the last indexing job
      */
-    totalDatasources?: pulumi.Input<number>;
+    totalDatasources?: pulumi.Input<number | undefined>;
     /**
      * Timestamp when the last indexing job updated
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * UUID  of the last indexing job
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 export interface GradientaiKnowledgeBaseDataSourceSpacesDataSource {
     /**
      * The name of the Spaces bucket
      */
-    bucketName?: pulumi.Input<string>;
+    bucketName?: pulumi.Input<string | undefined>;
     /**
      * The path to the item in the bucket
      */
-    itemPath?: pulumi.Input<string>;
+    itemPath?: pulumi.Input<string | undefined>;
     /**
      * The region of the Spaces bucket
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }
 
 export interface GradientaiKnowledgeBaseDataSourceWebCrawlerDataSource {
     /**
      * The base URL to crawl
      */
-    baseUrl?: pulumi.Input<string>;
+    baseUrl?: pulumi.Input<string | undefined>;
     /**
      * Options for specifying how URLs found on pages should be handled. 
      * - UNKNOWN: Default unknown value
@@ -9097,147 +9097,147 @@ export interface GradientaiKnowledgeBaseDataSourceWebCrawlerDataSource {
      * - DOMAIN: Crawl the base URL and linked pages within the same domain.
      * - SUBDOMAINS: Crawl the base URL and linked pages for any subdomain.
      */
-    crawlingOption?: pulumi.Input<string>;
+    crawlingOption?: pulumi.Input<string | undefined>;
     /**
      * Whether to embed media content
      */
-    embedMedia?: pulumi.Input<boolean>;
+    embedMedia?: pulumi.Input<boolean | undefined>;
 }
 
 export interface GradientaiKnowledgeBaseLastIndexingJob {
     /**
      * Number of completed datasources in the last indexing job
      */
-    completedDatasources?: pulumi.Input<number>;
+    completedDatasources?: pulumi.Input<number | undefined>;
     /**
      * Created At timestamp for the last indexing job
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Datasource UUIDs for the last indexing job
      */
-    dataSourceUuids?: pulumi.Input<pulumi.Input<string>[]>;
+    dataSourceUuids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Timestamp when the last indexing job finished
      */
-    finishedAt?: pulumi.Input<string>;
+    finishedAt?: pulumi.Input<string | undefined>;
     /**
      * UUID  of the Knowledge Base for the last indexing job
      */
-    knowledgeBaseUuid?: pulumi.Input<string>;
+    knowledgeBaseUuid?: pulumi.Input<string | undefined>;
     /**
      * Phase of the last indexing job
      */
-    phase?: pulumi.Input<string>;
+    phase?: pulumi.Input<string | undefined>;
     /**
      * Timestamp when the last indexing job started
      */
-    startedAt?: pulumi.Input<string>;
+    startedAt?: pulumi.Input<string | undefined>;
     /**
      * Number of tokens processed in the last indexing job
      */
-    tokens?: pulumi.Input<number>;
+    tokens?: pulumi.Input<number | undefined>;
     /**
      * Total number of datasources in the last indexing job
      */
-    totalDatasources?: pulumi.Input<number>;
+    totalDatasources?: pulumi.Input<number | undefined>;
     /**
      * Timestamp when the last indexing job updated
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * UUID  of the last indexing job
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 export interface GradientaiOpenaiApiKeyModel {
     /**
      * Agreement information for the model
      */
-    agreements?: pulumi.Input<pulumi.Input<inputs.GradientaiOpenaiApiKeyModelAgreement>[]>;
+    agreements?: pulumi.Input<pulumi.Input<inputs.GradientaiOpenaiApiKeyModelAgreement>[] | undefined>;
     /**
      * Created At timestamp for the Knowledge Base
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Inference name of the model
      */
-    inferenceName?: pulumi.Input<string>;
+    inferenceName?: pulumi.Input<string | undefined>;
     /**
      * Infernce version of the model
      */
-    inferenceVersion?: pulumi.Input<string>;
+    inferenceVersion?: pulumi.Input<string | undefined>;
     /**
      * Indicates if the Model Base is foundational
      */
-    isFoundational?: pulumi.Input<boolean>;
+    isFoundational?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the Knowledge Base
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Parent UUID of the Model
      */
-    parentUuid?: pulumi.Input<string>;
+    parentUuid?: pulumi.Input<string | undefined>;
     /**
      * Provider of the Model
      */
-    provider?: pulumi.Input<string>;
+    provider?: pulumi.Input<string | undefined>;
     /**
      * Timestamp when the Knowledge Base was updated
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * Indicates if the Model upload is complete
      */
-    uploadComplete?: pulumi.Input<boolean>;
+    uploadComplete?: pulumi.Input<boolean | undefined>;
     /**
      * URL of the Model
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * List of Usecases for the Model
      */
-    usecases?: pulumi.Input<pulumi.Input<string>[]>;
+    usecases?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * URL of the Model
      */
-    versions?: pulumi.Input<pulumi.Input<inputs.GradientaiOpenaiApiKeyModelVersion>[]>;
+    versions?: pulumi.Input<pulumi.Input<inputs.GradientaiOpenaiApiKeyModelVersion>[] | undefined>;
 }
 
 export interface GradientaiOpenaiApiKeyModelAgreement {
     /**
      * Description of the agreement
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Name of the agreement
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * URL of the agreement
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * UUID of the agreement
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 export interface GradientaiOpenaiApiKeyModelVersion {
     /**
      * Major version of the model
      */
-    major?: pulumi.Input<number>;
+    major?: pulumi.Input<number | undefined>;
     /**
      * Minor version of the model
      */
-    minor?: pulumi.Input<number>;
+    minor?: pulumi.Input<number | undefined>;
     /**
      * Patch version of the model
      */
-    patch?: pulumi.Input<number>;
+    patch?: pulumi.Input<number | undefined>;
 }
 
 export interface KubernetesClusterAmdGpuDeviceMetricsExporterPlugin {
@@ -9256,17 +9256,17 @@ export interface KubernetesClusterAmdGpuDevicePlugin {
 }
 
 export interface KubernetesClusterClusterAutoscalerConfiguration {
-    expanders?: pulumi.Input<pulumi.Input<string>[]>;
+    expanders?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * String setting how long a node should be unneeded before it's eligible for scale down.
      *
      * This resource supports customized create timeouts. The default timeout is 30 minutes.
      */
-    scaleDownUnneededTime?: pulumi.Input<string>;
+    scaleDownUnneededTime?: pulumi.Input<string | undefined>;
     /**
      * Float setting the Node utilization level, defined as sum of requested resources divided by capacity, in which a node can be considered for scale down.
      */
-    scaleDownUtilizationThreshold?: pulumi.Input<number>;
+    scaleDownUtilizationThreshold?: pulumi.Input<number | undefined>;
 }
 
 export interface KubernetesClusterControlPlaneFirewall {
@@ -9284,73 +9284,73 @@ export interface KubernetesClusterKubeConfig {
     /**
      * The base64 encoded public certificate used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
      */
-    clientCertificate?: pulumi.Input<string>;
+    clientCertificate?: pulumi.Input<string | undefined>;
     /**
      * The base64 encoded private key used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
      */
-    clientKey?: pulumi.Input<string>;
+    clientKey?: pulumi.Input<string | undefined>;
     /**
      * The base64 encoded public certificate for the cluster's certificate authority.
      */
-    clusterCaCertificate?: pulumi.Input<string>;
+    clusterCaCertificate?: pulumi.Input<string | undefined>;
     /**
      * The date and time when the credentials will expire and need to be regenerated.
      */
-    expiresAt?: pulumi.Input<string>;
+    expiresAt?: pulumi.Input<string | undefined>;
     /**
      * The URL of the API server on the Kubernetes master node.
      */
-    host?: pulumi.Input<string>;
+    host?: pulumi.Input<string | undefined>;
     /**
      * The full contents of the Kubernetes cluster's kubeconfig file.
      */
-    rawConfig?: pulumi.Input<string>;
+    rawConfig?: pulumi.Input<string | undefined>;
     /**
      * The DigitalOcean API access token used by clients to access the cluster.
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
 }
 
 export interface KubernetesClusterMaintenancePolicy {
     /**
      * The day of the maintenance window policy. May be one of "monday" through "sunday", or "any" to indicate an arbitrary week day.
      */
-    day?: pulumi.Input<string>;
+    day?: pulumi.Input<string | undefined>;
     /**
      * A string denoting the duration of the service window, e.g., "04:00".
      */
-    duration?: pulumi.Input<string>;
+    duration?: pulumi.Input<string | undefined>;
     /**
      * The start time in UTC of the maintenance window policy in 24-hour clock format / HH:MM notation (e.g., 15:00).
      */
-    startTime?: pulumi.Input<string>;
+    startTime?: pulumi.Input<string | undefined>;
 }
 
 export interface KubernetesClusterNodePool {
     /**
      * A computed field representing the actual number of nodes in the node pool, which is especially useful when auto-scaling is enabled.
      */
-    actualNodeCount?: pulumi.Input<number>;
+    actualNodeCount?: pulumi.Input<number | undefined>;
     /**
      * Enable auto-scaling of the number of nodes in the node pool within the given min/max range.
      */
-    autoScale?: pulumi.Input<boolean>;
+    autoScale?: pulumi.Input<boolean | undefined>;
     /**
      * A unique ID that can be used to identify and reference the node.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
      */
-    maxNodes?: pulumi.Input<number>;
+    maxNodes?: pulumi.Input<number | undefined>;
     /**
      * If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
      */
-    minNodes?: pulumi.Input<number>;
+    minNodes?: pulumi.Input<number | undefined>;
     /**
      * A name for the node pool.
      */
@@ -9358,11 +9358,11 @@ export interface KubernetesClusterNodePool {
     /**
      * The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
      */
-    nodeCount?: pulumi.Input<number>;
+    nodeCount?: pulumi.Input<number | undefined>;
     /**
      * A list of nodes in the pool. Each node exports the following attributes:
      */
-    nodes?: pulumi.Input<pulumi.Input<inputs.KubernetesClusterNodePoolNode>[]>;
+    nodes?: pulumi.Input<pulumi.Input<inputs.KubernetesClusterNodePoolNode>[] | undefined>;
     /**
      * The slug identifier for the type of Droplet to be used as workers in the node pool.
      */
@@ -9370,38 +9370,38 @@ export interface KubernetesClusterNodePool {
     /**
      * A list of tag names applied to the node pool.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A block representing a taint applied to all nodes in the pool. Each taint exports the following attributes (taints must be unique by key and effect pair):
      */
-    taints?: pulumi.Input<pulumi.Input<inputs.KubernetesClusterNodePoolTaint>[]>;
+    taints?: pulumi.Input<pulumi.Input<inputs.KubernetesClusterNodePoolTaint>[] | undefined>;
 }
 
 export interface KubernetesClusterNodePoolNode {
     /**
      * The date and time when the node was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The id of the node's droplet
      */
-    dropletId?: pulumi.Input<string>;
+    dropletId?: pulumi.Input<string | undefined>;
     /**
      * A unique ID that can be used to identify and reference the node.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * A name for the Kubernetes cluster.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * A string indicating the current status of the individual node.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The date and time when the node was last updated.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
 }
 
 export interface KubernetesClusterNodePoolTaint {
@@ -9445,35 +9445,35 @@ export interface KubernetesClusterSso {
     /**
      * Boolean flag whether the component is enabled or not.
      */
-    enabled?: pulumi.Input<boolean>;
-    required?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
+    required?: pulumi.Input<boolean | undefined>;
 }
 
 export interface KubernetesNodePoolNode {
     /**
      * The date and time when the node was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The id of the node's droplet
      */
-    dropletId?: pulumi.Input<string>;
+    dropletId?: pulumi.Input<string | undefined>;
     /**
      * A unique ID that can be used to identify and reference the node.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * A name for the node pool.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * A string indicating the current status of the individual node.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The date and time when the node was last updated.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
 }
 
 export interface KubernetesNodePoolTaint {
@@ -9495,15 +9495,15 @@ export interface LoadBalancerDomain {
     /**
      * **Deprecated** The certificate ID to be used for TLS handshaking.
      */
-    certificateId?: pulumi.Input<string>;
+    certificateId?: pulumi.Input<string | undefined>;
     /**
      * The certificate name to be used for TLS handshaking.
      */
-    certificateName?: pulumi.Input<string>;
+    certificateName?: pulumi.Input<string | undefined>;
     /**
      * Control flag to specify whether the domain is managed by DigitalOcean.
      */
-    isManaged?: pulumi.Input<boolean>;
+    isManaged?: pulumi.Input<boolean | undefined>;
     /**
      * The domain name to be used for ingressing traffic to a Global Load Balancer.
      */
@@ -9511,11 +9511,11 @@ export interface LoadBalancerDomain {
     /**
      * list of domain SSL validation errors
      */
-    sslValidationErrorReasons?: pulumi.Input<pulumi.Input<string>[]>;
+    sslValidationErrorReasons?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * list of domain verification errors
      */
-    verificationErrorReasons?: pulumi.Input<pulumi.Input<string>[]>;
+    verificationErrorReasons?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface LoadBalancerFirewall {
@@ -9523,11 +9523,11 @@ export interface LoadBalancerFirewall {
      * A list of strings describing allow rules. Must be colon delimited strings of the form `{type}:{source}`
      * * Ex. `deny = ["cidr:1.2.0.0/16", "ip:2.3.4.5"]` or `allow = ["ip:1.2.3.4", "cidr:2.3.4.0/24"]`
      */
-    allows?: pulumi.Input<pulumi.Input<string>[]>;
+    allows?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of strings describing deny rules. Must be colon delimited strings of the form `{type}:{source}`
      */
-    denies?: pulumi.Input<pulumi.Input<string>[]>;
+    denies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface LoadBalancerForwardingRule {
@@ -9536,11 +9536,11 @@ export interface LoadBalancerForwardingRule {
      *
      * @deprecated Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.
      */
-    certificateId?: pulumi.Input<string>;
+    certificateId?: pulumi.Input<string | undefined>;
     /**
      * The unique name of the TLS certificate to be used for SSL termination.
      */
-    certificateName?: pulumi.Input<string>;
+    certificateName?: pulumi.Input<string | undefined>;
     /**
      * An integer representing the port on which the Load Balancer instance will listen.
      */
@@ -9560,22 +9560,22 @@ export interface LoadBalancerForwardingRule {
     /**
      * A boolean value indicating whether SSL encrypted traffic will be passed through to the backend Droplets. The default value is `false`.
      */
-    tlsPassthrough?: pulumi.Input<boolean>;
+    tlsPassthrough?: pulumi.Input<boolean | undefined>;
 }
 
 export interface LoadBalancerGlbSettings {
     /**
      * CDN configuration supporting the following:
      */
-    cdn?: pulumi.Input<inputs.LoadBalancerGlbSettingsCdn>;
+    cdn?: pulumi.Input<inputs.LoadBalancerGlbSettingsCdn | undefined>;
     /**
      * fail-over threshold
      */
-    failoverThreshold?: pulumi.Input<number>;
+    failoverThreshold?: pulumi.Input<number | undefined>;
     /**
      * region priority map
      */
-    regionPriorities?: pulumi.Input<{[key: string]: pulumi.Input<number>}>;
+    regionPriorities?: pulumi.Input<{[key: string]: pulumi.Input<number>} | undefined>;
     /**
      * An integer representing the port on the backend Droplets to which the Load Balancer will send traffic. The possible values are: `80` for `http` and `443` for `https`.
      */
@@ -9590,22 +9590,22 @@ export interface LoadBalancerGlbSettingsCdn {
     /**
      * Control flag to specify if caching is enabled.
      */
-    isEnabled?: pulumi.Input<boolean>;
+    isEnabled?: pulumi.Input<boolean | undefined>;
 }
 
 export interface LoadBalancerHealthcheck {
     /**
      * The number of seconds between two consecutive health checks. If not specified, the default value is `10`.
      */
-    checkIntervalSeconds?: pulumi.Input<number>;
+    checkIntervalSeconds?: pulumi.Input<number | undefined>;
     /**
      * The number of times a health check must pass for a backend Droplet to be marked "healthy" and be re-added to the pool. If not specified, the default value is `5`.
      */
-    healthyThreshold?: pulumi.Input<number>;
+    healthyThreshold?: pulumi.Input<number | undefined>;
     /**
      * The path on the backend Droplets to which the Load Balancer instance will send a request.
      */
-    path?: pulumi.Input<string>;
+    path?: pulumi.Input<string | undefined>;
     /**
      * An integer representing the port on the backend Droplets on which the health check will attempt a connection.
      */
@@ -9617,34 +9617,34 @@ export interface LoadBalancerHealthcheck {
     /**
      * The number of seconds the Load Balancer instance will wait for a response until marking a health check as failed. If not specified, the default value is `5`.
      */
-    responseTimeoutSeconds?: pulumi.Input<number>;
+    responseTimeoutSeconds?: pulumi.Input<number | undefined>;
     /**
      * The number of times a health check must fail for a backend Droplet to be marked "unhealthy" and be removed from the pool. If not specified, the default value is `3`.
      */
-    unhealthyThreshold?: pulumi.Input<number>;
+    unhealthyThreshold?: pulumi.Input<number | undefined>;
 }
 
 export interface LoadBalancerStickySessions {
     /**
      * The name to be used for the cookie sent to the client. This attribute is required when using `cookies` for the sticky sessions type.
      */
-    cookieName?: pulumi.Input<string>;
+    cookieName?: pulumi.Input<string | undefined>;
     /**
      * The number of seconds until the cookie set by the Load Balancer expires. This attribute is required when using `cookies` for the sticky sessions type.
      */
-    cookieTtlSeconds?: pulumi.Input<number>;
+    cookieTtlSeconds?: pulumi.Input<number | undefined>;
     /**
      * An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 export interface MonitorAlertAlerts {
     /**
      * List of email addresses to sent notifications to
      */
-    emails?: pulumi.Input<pulumi.Input<string>[]>;
-    slacks?: pulumi.Input<pulumi.Input<inputs.MonitorAlertAlertsSlack>[]>;
+    emails?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    slacks?: pulumi.Input<pulumi.Input<inputs.MonitorAlertAlertsSlack>[] | undefined>;
 }
 
 export interface MonitorAlertAlertsSlack {
@@ -9659,17 +9659,17 @@ export interface MonitorAlertAlertsSlack {
 }
 
 export interface PartnerAttachmentBgp {
-    authKey?: pulumi.Input<string>;
-    localRouterIp?: pulumi.Input<string>;
-    peerRouterAsn?: pulumi.Input<number>;
-    peerRouterIp?: pulumi.Input<string>;
+    authKey?: pulumi.Input<string | undefined>;
+    localRouterIp?: pulumi.Input<string | undefined>;
+    peerRouterAsn?: pulumi.Input<number | undefined>;
+    peerRouterIp?: pulumi.Input<string | undefined>;
 }
 
 export interface SpacesBucketCorsConfigurationCorsRule {
     /**
      * Set of Headers that are specified in the Access-Control-Request-Headers header.
      */
-    allowedHeaders?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedHeaders?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Set of HTTP methods that you allow the origin to execute. Valid values are GET, PUT, HEAD, POST, and DELETE.
      */
@@ -9681,22 +9681,22 @@ export interface SpacesBucketCorsConfigurationCorsRule {
     /**
      * Set of headers in the response that you want customers to be able to access from their applications (for example, from a JavaScript XMLHttpRequest object).
      */
-    exposeHeaders?: pulumi.Input<pulumi.Input<string>[]>;
+    exposeHeaders?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Unique identifier for the rule. The value cannot be longer than 255 characters.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Time in seconds that your browser is to cache the preflight response for the specified resource.
      */
-    maxAgeSeconds?: pulumi.Input<number>;
+    maxAgeSeconds?: pulumi.Input<number | undefined>;
 }
 
 export interface SpacesBucketCorsRule {
     /**
      * A list of headers that will be included in the CORS preflight request's `Access-Control-Request-Headers`. A header may contain one wildcard (e.g. `x-amz-*`).
      */
-    allowedHeaders?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedHeaders?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of HTTP methods (e.g. `GET`) which are allowed from the specified origin.
      */
@@ -9708,7 +9708,7 @@ export interface SpacesBucketCorsRule {
     /**
      * The time in seconds that browser can cache the response for a preflight request.
      */
-    maxAgeSeconds?: pulumi.Input<number>;
+    maxAgeSeconds?: pulumi.Input<number | undefined>;
 }
 
 export interface SpacesBucketLifecycleRule {
@@ -9716,7 +9716,7 @@ export interface SpacesBucketLifecycleRule {
      * Specifies the number of days after initiating a multipart
      * upload when the multipart upload must be completed or else Spaces will abort the upload.
      */
-    abortIncompleteMultipartUploadDays?: pulumi.Input<number>;
+    abortIncompleteMultipartUploadDays?: pulumi.Input<number | undefined>;
     /**
      * Specifies lifecycle rule status.
      */
@@ -9724,21 +9724,21 @@ export interface SpacesBucketLifecycleRule {
     /**
      * Specifies a time period after which applicable objects expire (documented below).
      */
-    expiration?: pulumi.Input<inputs.SpacesBucketLifecycleRuleExpiration>;
+    expiration?: pulumi.Input<inputs.SpacesBucketLifecycleRuleExpiration | undefined>;
     /**
      * Unique identifier for the rule.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Specifies when non-current object versions expire (documented below).
      *
      * At least one of `expiration` or `noncurrentVersionExpiration` must be specified.
      */
-    noncurrentVersionExpiration?: pulumi.Input<inputs.SpacesBucketLifecycleRuleNoncurrentVersionExpiration>;
+    noncurrentVersionExpiration?: pulumi.Input<inputs.SpacesBucketLifecycleRuleNoncurrentVersionExpiration | undefined>;
     /**
      * Object key prefix identifying one or more objects to which the rule applies.
      */
-    prefix?: pulumi.Input<string>;
+    prefix?: pulumi.Input<string | undefined>;
 }
 
 export interface SpacesBucketLifecycleRuleExpiration {
@@ -9746,23 +9746,23 @@ export interface SpacesBucketLifecycleRuleExpiration {
      * Specifies the date/time after which you want applicable objects to expire. The argument uses
      * RFC3339 format, e.g. "2020-03-22T15:03:55Z" or parts thereof e.g. "2019-02-28".
      */
-    date?: pulumi.Input<string>;
+    date?: pulumi.Input<string | undefined>;
     /**
      * Specifies the number of days after object creation when the applicable objects will expire.
      */
-    days?: pulumi.Input<number>;
+    days?: pulumi.Input<number | undefined>;
     /**
      * On a versioned bucket (versioning-enabled or versioning-suspended
      * bucket), setting this to true directs Spaces to delete expired object delete markers.
      */
-    expiredObjectDeleteMarker?: pulumi.Input<boolean>;
+    expiredObjectDeleteMarker?: pulumi.Input<boolean | undefined>;
 }
 
 export interface SpacesBucketLifecycleRuleNoncurrentVersionExpiration {
     /**
      * Specifies the number of days after which an object's non-current versions expire.
      */
-    days?: pulumi.Input<number>;
+    days?: pulumi.Input<number | undefined>;
 }
 
 export interface SpacesBucketVersioning {
@@ -9770,7 +9770,7 @@ export interface SpacesBucketVersioning {
      * Enable versioning. Once you version-enable a bucket, it can never return to an unversioned
      * state. You can, however, suspend versioning on that bucket.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
 }
 
 export interface SpacesKeyGrant {
@@ -9788,8 +9788,8 @@ export interface UptimeAlertNotification {
     /**
      * List of email addresses to sent notifications to.
      */
-    emails?: pulumi.Input<pulumi.Input<string>[]>;
-    slacks?: pulumi.Input<pulumi.Input<inputs.UptimeAlertNotificationSlack>[]>;
+    emails?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    slacks?: pulumi.Input<pulumi.Input<inputs.UptimeAlertNotificationSlack>[] | undefined>;
 }
 
 export interface UptimeAlertNotificationSlack {
@@ -9807,25 +9807,25 @@ export interface VpcNatGatewayEgress {
     /**
      * List of public gateway IPs
      */
-    publicGateways?: pulumi.Input<pulumi.Input<inputs.VpcNatGatewayEgressPublicGateway>[]>;
+    publicGateways?: pulumi.Input<pulumi.Input<inputs.VpcNatGatewayEgressPublicGateway>[] | undefined>;
 }
 
 export interface VpcNatGatewayEgressPublicGateway {
     /**
      * IPv4 address
      */
-    ipv4?: pulumi.Input<string>;
+    ipv4?: pulumi.Input<string | undefined>;
 }
 
 export interface VpcNatGatewayVpc {
     /**
      * Boolean flag indicating if this should be the default gateway in this VPC
      */
-    defaultGateway?: pulumi.Input<boolean>;
+    defaultGateway?: pulumi.Input<boolean | undefined>;
     /**
      * The private IP of the VPC NAT Gateway
      */
-    gatewayIp?: pulumi.Input<string>;
+    gatewayIp?: pulumi.Input<string | undefined>;
     /**
      * The ID of the ingress VPC
      */

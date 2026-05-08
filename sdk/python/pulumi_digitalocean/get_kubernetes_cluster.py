@@ -425,16 +425,16 @@ def get_kubernetes_cluster(amd_gpu_device_metrics_exporter_plugin: Optional[Unio
         urn=pulumi.get(__ret__, 'urn'),
         version=pulumi.get(__ret__, 'version'),
         vpc_uuid=pulumi.get(__ret__, 'vpc_uuid'))
-def get_kubernetes_cluster_output(amd_gpu_device_metrics_exporter_plugin: Optional[pulumi.Input[Optional[Union['GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs', 'GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginArgsDict']]]] = None,
-                                  amd_gpu_device_plugin: Optional[pulumi.Input[Optional[Union['GetKubernetesClusterAmdGpuDevicePluginArgs', 'GetKubernetesClusterAmdGpuDevicePluginArgsDict']]]] = None,
-                                  cluster_autoscaler_configurations: Optional[pulumi.Input[Optional[Sequence[Union['GetKubernetesClusterClusterAutoscalerConfigurationArgs', 'GetKubernetesClusterClusterAutoscalerConfigurationArgsDict']]]]] = None,
-                                  kubeconfig_expire_seconds: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                  name: Optional[pulumi.Input[_builtins.str]] = None,
-                                  nvidia_gpu_device_plugin: Optional[pulumi.Input[Optional[Union['GetKubernetesClusterNvidiaGpuDevicePluginArgs', 'GetKubernetesClusterNvidiaGpuDevicePluginArgsDict']]]] = None,
-                                  rdma_shared_device_plugin: Optional[pulumi.Input[Optional[Union['GetKubernetesClusterRdmaSharedDevicePluginArgs', 'GetKubernetesClusterRdmaSharedDevicePluginArgsDict']]]] = None,
-                                  routing_agent: Optional[pulumi.Input[Optional[Union['GetKubernetesClusterRoutingAgentArgs', 'GetKubernetesClusterRoutingAgentArgsDict']]]] = None,
-                                  ssos: Optional[pulumi.Input[Optional[Sequence[Union['GetKubernetesClusterSsoArgs', 'GetKubernetesClusterSsoArgsDict']]]]] = None,
-                                  tags: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
+def get_kubernetes_cluster_output(amd_gpu_device_metrics_exporter_plugin: pulumi.Input[Optional[Optional[Union['GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs', 'GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginArgsDict']]]] = None,
+                                  amd_gpu_device_plugin: pulumi.Input[Optional[Optional[Union['GetKubernetesClusterAmdGpuDevicePluginArgs', 'GetKubernetesClusterAmdGpuDevicePluginArgsDict']]]] = None,
+                                  cluster_autoscaler_configurations: pulumi.Input[Optional[Optional[Sequence[Union['GetKubernetesClusterClusterAutoscalerConfigurationArgs', 'GetKubernetesClusterClusterAutoscalerConfigurationArgsDict']]]]] = None,
+                                  kubeconfig_expire_seconds: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                                  nvidia_gpu_device_plugin: pulumi.Input[Optional[Optional[Union['GetKubernetesClusterNvidiaGpuDevicePluginArgs', 'GetKubernetesClusterNvidiaGpuDevicePluginArgsDict']]]] = None,
+                                  rdma_shared_device_plugin: pulumi.Input[Optional[Optional[Union['GetKubernetesClusterRdmaSharedDevicePluginArgs', 'GetKubernetesClusterRdmaSharedDevicePluginArgsDict']]]] = None,
+                                  routing_agent: pulumi.Input[Optional[Optional[Union['GetKubernetesClusterRoutingAgentArgs', 'GetKubernetesClusterRoutingAgentArgsDict']]]] = None,
+                                  ssos: pulumi.Input[Optional[Optional[Sequence[Union['GetKubernetesClusterSsoArgs', 'GetKubernetesClusterSsoArgsDict']]]]] = None,
+                                  tags: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKubernetesClusterResult]:
     """
     Retrieves information about a DigitalOcean Kubernetes cluster for use in other resources. This data source provides all of the cluster's properties as configured on your DigitalOcean account. This is useful if the cluster in question is not managed by Terraform.

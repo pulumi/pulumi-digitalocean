@@ -43,7 +43,7 @@ import * as utilities from "./utilities";
  *     region: digitalocean.Region.NYC3,
  * });
  * const foobar = new digitalocean.VolumeAttachment("foobar", {
- *     dropletId: exampleDroplet.id,
+ *     dropletId: exampleDroplet.id.apply(x =>Number(x)),
  *     volumeId: example.then(example => example.id),
  * });
  * ```
@@ -153,7 +153,7 @@ export interface GetVolumeResult {
  *     region: digitalocean.Region.NYC3,
  * });
  * const foobar = new digitalocean.VolumeAttachment("foobar", {
- *     dropletId: exampleDroplet.id,
+ *     dropletId: exampleDroplet.id.apply(x =>Number(x)),
  *     volumeId: example.then(example => example.id),
  * });
  * ```
@@ -174,7 +174,7 @@ export interface GetVolumeOutputArgs {
     /**
      * Text describing a block storage volume.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of block storage volume.
      */
@@ -182,5 +182,5 @@ export interface GetVolumeOutputArgs {
     /**
      * The region the block storage volume is provisioned in.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

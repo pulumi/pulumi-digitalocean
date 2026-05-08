@@ -148,10 +148,10 @@ export interface GetSshKeysOutputArgs {
      * Filter the results.
      * The `filter` block is documented below.
      */
-    filters?: pulumi.Input<pulumi.Input<inputs.GetSshKeysFilterArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetSshKeysFilterArgs>[] | undefined>;
     /**
      * Sort the results.
      * The `sort` block is documented below.
      */
-    sorts?: pulumi.Input<pulumi.Input<inputs.GetSshKeysSortArgs>[]>;
+    sorts?: pulumi.Input<pulumi.Input<inputs.GetSshKeysSortArgs>[] | undefined>;
 }

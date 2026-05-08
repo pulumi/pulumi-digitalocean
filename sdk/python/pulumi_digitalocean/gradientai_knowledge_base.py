@@ -25,13 +25,13 @@ class GradientaiKnowledgeBaseArgs:
                  embedding_model_uuid: pulumi.Input[_builtins.str],
                  project_id: pulumi.Input[_builtins.str],
                  region: pulumi.Input[_builtins.str],
-                 added_to_agent_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 database_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_public: Optional[pulumi.Input[_builtins.bool]] = None,
-                 last_indexing_jobs: Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiKnowledgeBaseLastIndexingJobArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vpc_uuid: Optional[pulumi.Input[_builtins.str]] = None):
+                 added_to_agent_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 database_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_public: pulumi.Input[Optional[_builtins.bool]] = None,
+                 last_indexing_jobs: pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiKnowledgeBaseLastIndexingJobArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 vpc_uuid: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a GradientaiKnowledgeBase resource.
 
@@ -111,101 +111,101 @@ class GradientaiKnowledgeBaseArgs:
 
     @_builtins.property
     @pulumi.getter(name="addedToAgentAt")
-    def added_to_agent_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def added_to_agent_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when the knowledge base was added to the agent.
         """
         return pulumi.get(self, "added_to_agent_at")
 
     @added_to_agent_at.setter
-    def added_to_agent_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def added_to_agent_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "added_to_agent_at", value)
 
     @_builtins.property
     @pulumi.getter(name="databaseId")
-    def database_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def database_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier of the DigitalOcean OpenSearch database this knowledge base will use
         """
         return pulumi.get(self, "database_id")
 
     @database_id.setter
-    def database_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def database_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "database_id", value)
 
     @_builtins.property
     @pulumi.getter(name="isPublic")
-    def is_public(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_public(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the knowledge base is public or private.
         """
         return pulumi.get(self, "is_public")
 
     @is_public.setter
-    def is_public(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_public(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_public", value)
 
     @_builtins.property
     @pulumi.getter(name="lastIndexingJobs")
-    def last_indexing_jobs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiKnowledgeBaseLastIndexingJobArgs']]]]:
+    def last_indexing_jobs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiKnowledgeBaseLastIndexingJobArgs']]]]:
         """
         The last indexing job for the knowledge base.
         """
         return pulumi.get(self, "last_indexing_jobs")
 
     @last_indexing_jobs.setter
-    def last_indexing_jobs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiKnowledgeBaseLastIndexingJobArgs']]]]):
+    def last_indexing_jobs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiKnowledgeBaseLastIndexingJobArgs']]]]):
         pulumi.set(self, "last_indexing_jobs", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the knowledge base.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcUuid")
-    def vpc_uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier of the VPC to which the knowledge base belongs.
         """
         return pulumi.get(self, "vpc_uuid")
 
     @vpc_uuid.setter
-    def vpc_uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_uuid", value)
 
 
 @pulumi.input_type
 class _GradientaiKnowledgeBaseState:
     def __init__(__self__, *,
-                 added_to_agent_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 database_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 datasources: Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiKnowledgeBaseDataSourceArgs']]]] = None,
-                 embedding_model_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_public: Optional[pulumi.Input[_builtins.bool]] = None,
-                 last_indexing_jobs: Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiKnowledgeBaseLastIndexingJobArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vpc_uuid: Optional[pulumi.Input[_builtins.str]] = None):
+                 added_to_agent_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 database_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 datasources: pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiKnowledgeBaseDataSourceArgs']]]] = None,
+                 embedding_model_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_public: pulumi.Input[Optional[_builtins.bool]] = None,
+                 last_indexing_jobs: pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiKnowledgeBaseLastIndexingJobArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 vpc_uuid: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GradientaiKnowledgeBase resources.
 
@@ -247,140 +247,140 @@ class _GradientaiKnowledgeBaseState:
 
     @_builtins.property
     @pulumi.getter(name="addedToAgentAt")
-    def added_to_agent_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def added_to_agent_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when the knowledge base was added to the agent.
         """
         return pulumi.get(self, "added_to_agent_at")
 
     @added_to_agent_at.setter
-    def added_to_agent_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def added_to_agent_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "added_to_agent_at", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when the knowledge base was created.
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="databaseId")
-    def database_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def database_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier of the DigitalOcean OpenSearch database this knowledge base will use
         """
         return pulumi.get(self, "database_id")
 
     @database_id.setter
-    def database_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def database_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "database_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def datasources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiKnowledgeBaseDataSourceArgs']]]]:
+    def datasources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiKnowledgeBaseDataSourceArgs']]]]:
         """
         Data sources for the knowledge base
         """
         return pulumi.get(self, "datasources")
 
     @datasources.setter
-    def datasources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiKnowledgeBaseDataSourceArgs']]]]):
+    def datasources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiKnowledgeBaseDataSourceArgs']]]]):
         pulumi.set(self, "datasources", value)
 
     @_builtins.property
     @pulumi.getter(name="embeddingModelUuid")
-    def embedding_model_uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def embedding_model_uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier of the embedding model
         """
         return pulumi.get(self, "embedding_model_uuid")
 
     @embedding_model_uuid.setter
-    def embedding_model_uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def embedding_model_uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "embedding_model_uuid", value)
 
     @_builtins.property
     @pulumi.getter(name="isPublic")
-    def is_public(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_public(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the knowledge base is public or private.
         """
         return pulumi.get(self, "is_public")
 
     @is_public.setter
-    def is_public(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_public(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_public", value)
 
     @_builtins.property
     @pulumi.getter(name="lastIndexingJobs")
-    def last_indexing_jobs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiKnowledgeBaseLastIndexingJobArgs']]]]:
+    def last_indexing_jobs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiKnowledgeBaseLastIndexingJobArgs']]]]:
         """
         The last indexing job for the knowledge base.
         """
         return pulumi.get(self, "last_indexing_jobs")
 
     @last_indexing_jobs.setter
-    def last_indexing_jobs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiKnowledgeBaseLastIndexingJobArgs']]]]):
+    def last_indexing_jobs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiKnowledgeBaseLastIndexingJobArgs']]]]):
         pulumi.set(self, "last_indexing_jobs", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the knowledge base.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier of the project to which the knowledge base belongs.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcUuid")
-    def vpc_uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier of the VPC to which the knowledge base belongs.
         """
         return pulumi.get(self, "vpc_uuid")
 
     @vpc_uuid.setter
-    def vpc_uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_uuid", value)
 
 
@@ -390,17 +390,17 @@ class GradientaiKnowledgeBase(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 added_to_agent_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 database_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 datasources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GradientaiKnowledgeBaseDataSourceArgs', 'GradientaiKnowledgeBaseDataSourceArgsDict']]]]] = None,
-                 embedding_model_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_public: Optional[pulumi.Input[_builtins.bool]] = None,
-                 last_indexing_jobs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GradientaiKnowledgeBaseLastIndexingJobArgs', 'GradientaiKnowledgeBaseLastIndexingJobArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vpc_uuid: Optional[pulumi.Input[_builtins.str]] = None,
+                 added_to_agent_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 database_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 datasources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiKnowledgeBaseDataSourceArgs', 'GradientaiKnowledgeBaseDataSourceArgsDict']]]]] = None,
+                 embedding_model_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_public: pulumi.Input[Optional[_builtins.bool]] = None,
+                 last_indexing_jobs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiKnowledgeBaseLastIndexingJobArgs', 'GradientaiKnowledgeBaseLastIndexingJobArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 vpc_uuid: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Create a GradientaiKnowledgeBase resource with the given unique name, props, and options.
@@ -441,17 +441,17 @@ class GradientaiKnowledgeBase(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 added_to_agent_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 database_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 datasources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GradientaiKnowledgeBaseDataSourceArgs', 'GradientaiKnowledgeBaseDataSourceArgsDict']]]]] = None,
-                 embedding_model_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_public: Optional[pulumi.Input[_builtins.bool]] = None,
-                 last_indexing_jobs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GradientaiKnowledgeBaseLastIndexingJobArgs', 'GradientaiKnowledgeBaseLastIndexingJobArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vpc_uuid: Optional[pulumi.Input[_builtins.str]] = None,
+                 added_to_agent_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 database_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 datasources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiKnowledgeBaseDataSourceArgs', 'GradientaiKnowledgeBaseDataSourceArgsDict']]]]] = None,
+                 embedding_model_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_public: pulumi.Input[Optional[_builtins.bool]] = None,
+                 last_indexing_jobs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiKnowledgeBaseLastIndexingJobArgs', 'GradientaiKnowledgeBaseLastIndexingJobArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 vpc_uuid: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -493,18 +493,18 @@ class GradientaiKnowledgeBase(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            added_to_agent_at: Optional[pulumi.Input[_builtins.str]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            database_id: Optional[pulumi.Input[_builtins.str]] = None,
-            datasources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GradientaiKnowledgeBaseDataSourceArgs', 'GradientaiKnowledgeBaseDataSourceArgsDict']]]]] = None,
-            embedding_model_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-            is_public: Optional[pulumi.Input[_builtins.bool]] = None,
-            last_indexing_jobs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GradientaiKnowledgeBaseLastIndexingJobArgs', 'GradientaiKnowledgeBaseLastIndexingJobArgsDict']]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            vpc_uuid: Optional[pulumi.Input[_builtins.str]] = None) -> 'GradientaiKnowledgeBase':
+            added_to_agent_at: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            database_id: pulumi.Input[Optional[_builtins.str]] = None,
+            datasources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiKnowledgeBaseDataSourceArgs', 'GradientaiKnowledgeBaseDataSourceArgsDict']]]]] = None,
+            embedding_model_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+            is_public: pulumi.Input[Optional[_builtins.bool]] = None,
+            last_indexing_jobs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiKnowledgeBaseLastIndexingJobArgs', 'GradientaiKnowledgeBaseLastIndexingJobArgsDict']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            vpc_uuid: pulumi.Input[Optional[_builtins.str]] = None) -> 'GradientaiKnowledgeBase':
         """
         Get an existing GradientaiKnowledgeBase resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -101,10 +101,10 @@ export interface GetTagsOutputArgs {
      * Filter the results.
      * The `filter` block is documented below.
      */
-    filters?: pulumi.Input<pulumi.Input<inputs.GetTagsFilterArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetTagsFilterArgs>[] | undefined>;
     /**
      * Sort the results.
      * The `sort` block is documented below.
      */
-    sorts?: pulumi.Input<pulumi.Input<inputs.GetTagsSortArgs>[]>;
+    sorts?: pulumi.Input<pulumi.Input<inputs.GetTagsSortArgs>[] | undefined>;
 }

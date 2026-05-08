@@ -26,7 +26,7 @@ import * as utilities from "./utilities";
  *     privateNetworking: true,
  * });
  * const foobarFloatingIp = new digitalocean.FloatingIp("foobar", {
- *     dropletId: foobar.id,
+ *     dropletId: foobar.id.apply(x =>Number(x)),
  *     region: foobar.region,
  * });
  * ```
@@ -123,19 +123,19 @@ export interface FloatingIpState {
     /**
      * The ID of Droplet that the Floating IP will be assigned to.
      */
-    dropletId?: pulumi.Input<number>;
+    dropletId?: pulumi.Input<number | undefined>;
     /**
      * The uniform resource name of the floating ip
      */
-    floatingIpUrn?: pulumi.Input<string>;
+    floatingIpUrn?: pulumi.Input<string | undefined>;
     /**
      * The IP Address of the resource
      */
-    ipAddress?: pulumi.Input<string>;
+    ipAddress?: pulumi.Input<string | undefined>;
     /**
      * The region that the Floating IP is reserved to.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -145,11 +145,11 @@ export interface FloatingIpArgs {
     /**
      * The ID of Droplet that the Floating IP will be assigned to.
      */
-    dropletId?: pulumi.Input<number>;
+    dropletId?: pulumi.Input<number | undefined>;
     /**
      * The IP Address of the resource
      */
-    ipAddress?: pulumi.Input<string>;
+    ipAddress?: pulumi.Input<string | undefined>;
     /**
      * The region that the Floating IP is reserved to.
      */

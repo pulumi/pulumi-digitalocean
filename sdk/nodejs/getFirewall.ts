@@ -135,16 +135,16 @@ export interface GetFirewallOutputArgs {
      * The list of the IDs of the Droplets assigned to
      * the Firewall.
      */
-    dropletIds?: pulumi.Input<pulumi.Input<number>[]>;
+    dropletIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * The ID of the firewall to retrieve information
      * about.
      */
     firewallId: pulumi.Input<string>;
-    inboundRules?: pulumi.Input<pulumi.Input<inputs.GetFirewallInboundRuleArgs>[]>;
-    outboundRules?: pulumi.Input<pulumi.Input<inputs.GetFirewallOutboundRuleArgs>[]>;
+    inboundRules?: pulumi.Input<pulumi.Input<inputs.GetFirewallInboundRuleArgs>[] | undefined>;
+    outboundRules?: pulumi.Input<pulumi.Input<inputs.GetFirewallOutboundRuleArgs>[] | undefined>;
     /**
      * The names of the Tags assigned to the Firewall.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

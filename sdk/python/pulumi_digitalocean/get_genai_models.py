@@ -98,8 +98,8 @@ def get_genai_models(filters: Optional[Sequence[Union['GetGenaiModelsFilterArgs'
         id=pulumi.get(__ret__, 'id'),
         models=pulumi.get(__ret__, 'models'),
         sorts=pulumi.get(__ret__, 'sorts'))
-def get_genai_models_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetGenaiModelsFilterArgs', 'GetGenaiModelsFilterArgsDict']]]]] = None,
-                            sorts: Optional[pulumi.Input[Optional[Sequence[Union['GetGenaiModelsSortArgs', 'GetGenaiModelsSortArgsDict']]]]] = None,
+def get_genai_models_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetGenaiModelsFilterArgs', 'GetGenaiModelsFilterArgsDict']]]]] = None,
+                            sorts: pulumi.Input[Optional[Optional[Sequence[Union['GetGenaiModelsSortArgs', 'GetGenaiModelsSortArgsDict']]]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGenaiModelsResult]:
     """
     Use this data source to access information about an existing resource.

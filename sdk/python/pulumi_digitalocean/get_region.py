@@ -140,7 +140,7 @@ def get_region(slug: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         sizes=pulumi.get(__ret__, 'sizes'),
         slug=pulumi.get(__ret__, 'slug'))
-def get_region_output(slug: Optional[pulumi.Input[_builtins.str]] = None,
+def get_region_output(slug: pulumi.Input[Optional[_builtins.str]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegionResult]:
     """
     Get information on a single DigitalOcean region. This is useful to find out

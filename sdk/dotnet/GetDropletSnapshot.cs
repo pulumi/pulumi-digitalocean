@@ -28,7 +28,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var web_snapshot = DigitalOcean.Index.GetDropletSnapshot.Invoke(new()
+        ///     var web_snapshot = DigitalOcean.GetDropletSnapshot.Invoke(new()
         ///     {
         ///         NameRegex = "^web",
         ///         Region = "nyc3",
@@ -48,14 +48,14 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var web_snapshot = DigitalOcean.Index.GetDropletSnapshot.Invoke(new()
+        ///     var web_snapshot = DigitalOcean.GetDropletSnapshot.Invoke(new()
         ///     {
         ///         NameRegex = "^web",
         ///         Region = "nyc3",
         ///         MostRecent = true,
         ///     });
         /// 
-        ///     var from_snapshot = new DigitalOcean.Index.Droplet("from-snapshot", new()
+        ///     var from_snapshot = new DigitalOcean.Droplet("from-snapshot", new()
         ///     {
         ///         Image = web_snapshot.Apply(web_snapshot =&gt; web_snapshot.Apply(getDropletSnapshotResult =&gt; getDropletSnapshotResult.Id)),
         ///         Name = "web-02",
@@ -86,7 +86,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var web_snapshot = DigitalOcean.Index.GetDropletSnapshot.Invoke(new()
+        ///     var web_snapshot = DigitalOcean.GetDropletSnapshot.Invoke(new()
         ///     {
         ///         NameRegex = "^web",
         ///         Region = "nyc3",
@@ -106,14 +106,14 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var web_snapshot = DigitalOcean.Index.GetDropletSnapshot.Invoke(new()
+        ///     var web_snapshot = DigitalOcean.GetDropletSnapshot.Invoke(new()
         ///     {
         ///         NameRegex = "^web",
         ///         Region = "nyc3",
         ///         MostRecent = true,
         ///     });
         /// 
-        ///     var from_snapshot = new DigitalOcean.Index.Droplet("from-snapshot", new()
+        ///     var from_snapshot = new DigitalOcean.Droplet("from-snapshot", new()
         ///     {
         ///         Image = web_snapshot.Apply(web_snapshot =&gt; web_snapshot.Apply(getDropletSnapshotResult =&gt; getDropletSnapshotResult.Id)),
         ///         Name = "web-02",
@@ -144,7 +144,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var web_snapshot = DigitalOcean.Index.GetDropletSnapshot.Invoke(new()
+        ///     var web_snapshot = DigitalOcean.GetDropletSnapshot.Invoke(new()
         ///     {
         ///         NameRegex = "^web",
         ///         Region = "nyc3",
@@ -164,14 +164,14 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var web_snapshot = DigitalOcean.Index.GetDropletSnapshot.Invoke(new()
+        ///     var web_snapshot = DigitalOcean.GetDropletSnapshot.Invoke(new()
         ///     {
         ///         NameRegex = "^web",
         ///         Region = "nyc3",
         ///         MostRecent = true,
         ///     });
         /// 
-        ///     var from_snapshot = new DigitalOcean.Index.Droplet("from-snapshot", new()
+        ///     var from_snapshot = new DigitalOcean.Droplet("from-snapshot", new()
         ///     {
         ///         Image = web_snapshot.Apply(web_snapshot =&gt; web_snapshot.Apply(getDropletSnapshotResult =&gt; getDropletSnapshotResult.Id)),
         ///         Name = "web-02",

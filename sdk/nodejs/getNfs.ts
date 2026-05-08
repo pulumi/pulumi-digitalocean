@@ -117,5 +117,5 @@ export interface GetNfsOutputArgs {
     /**
      * The region where the NFS share is located.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

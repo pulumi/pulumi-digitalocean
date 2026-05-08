@@ -24,21 +24,21 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var my_ssh_key = new DigitalOcean.Index.SshKey("my-ssh-key", new()
+    ///     var my_ssh_key = new DigitalOcean.SshKey("my-ssh-key", new()
     ///     {
     ///         Name = "terraform-example",
-    ///         PublicKey = Std.Index.File.Invoke(new()
+    ///         PublicKey = Std.File.Invoke(new()
     ///         {
     ///             Input = "/Users/terraform/.ssh/id_rsa.pub",
     ///         }).Apply(invoke =&gt; invoke.Result),
     ///     });
     /// 
-    ///     var my_tag = new DigitalOcean.Index.Tag("my-tag", new()
+    ///     var my_tag = new DigitalOcean.Tag("my-tag", new()
     ///     {
     ///         Name = "terraform-example",
     ///     });
     /// 
-    ///     var my_autoscale_pool = new DigitalOcean.Index.DropletAutoscale("my-autoscale-pool", new()
+    ///     var my_autoscale_pool = new DigitalOcean.DropletAutoscale("my-autoscale-pool", new()
     ///     {
     ///         Name = "terraform-example",
     ///         Config = new DigitalOcean.Inputs.DropletAutoscaleConfigArgs

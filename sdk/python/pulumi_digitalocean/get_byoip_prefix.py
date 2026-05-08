@@ -175,7 +175,7 @@ def get_byoip_prefix(uuid: Optional[_builtins.str] = None,
         region=pulumi.get(__ret__, 'region'),
         status=pulumi.get(__ret__, 'status'),
         uuid=pulumi.get(__ret__, 'uuid'))
-def get_byoip_prefix_output(uuid: Optional[pulumi.Input[_builtins.str]] = None,
+def get_byoip_prefix_output(uuid: pulumi.Input[Optional[_builtins.str]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetByoipPrefixResult]:
     """
     Get information on a BYOIP (Bring Your Own IP) prefix. This data source provides the

@@ -24,7 +24,7 @@ import * as utilities from "./utilities";
  *     privateNetworking: true,
  * });
  * const exampleReservedIp = new digitalocean.ReservedIp("example", {
- *     dropletId: example.id,
+ *     dropletId: example.id.apply(x =>Number(x)),
  *     region: example.region,
  * });
  * ```
@@ -121,19 +121,19 @@ export interface ReservedIpState {
     /**
      * The ID of Droplet that the reserved IP will be assigned to.
      */
-    dropletId?: pulumi.Input<number>;
+    dropletId?: pulumi.Input<number | undefined>;
     /**
      * The IP Address of the resource
      */
-    ipAddress?: pulumi.Input<string>;
+    ipAddress?: pulumi.Input<string | undefined>;
     /**
      * The region that the reserved IP is reserved to.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The uniform resource name of the reserved ip
      */
-    reservedIpUrn?: pulumi.Input<string>;
+    reservedIpUrn?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -143,11 +143,11 @@ export interface ReservedIpArgs {
     /**
      * The ID of Droplet that the reserved IP will be assigned to.
      */
-    dropletId?: pulumi.Input<number>;
+    dropletId?: pulumi.Input<number | undefined>;
     /**
      * The IP Address of the resource
      */
-    ipAddress?: pulumi.Input<string>;
+    ipAddress?: pulumi.Input<string | undefined>;
     /**
      * The region that the reserved IP is reserved to.
      */

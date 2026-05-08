@@ -82,7 +82,7 @@ def get_gradientai_agents_by_openai_api_key(uuid: Optional[_builtins.str] = None
         agents=pulumi.get(__ret__, 'agents'),
         id=pulumi.get(__ret__, 'id'),
         uuid=pulumi.get(__ret__, 'uuid'))
-def get_gradientai_agents_by_openai_api_key_output(uuid: Optional[pulumi.Input[_builtins.str]] = None,
+def get_gradientai_agents_by_openai_api_key_output(uuid: pulumi.Input[Optional[_builtins.str]] = None,
                                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGradientaiAgentsByOpenaiApiKeyResult]:
     """
     Use this data source to access information about an existing resource.

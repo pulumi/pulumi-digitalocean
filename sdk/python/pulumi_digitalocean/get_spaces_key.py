@@ -130,7 +130,7 @@ def get_spaces_key(access_key: Optional[_builtins.str] = None,
         grants=pulumi.get(__ret__, 'grants'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'))
-def get_spaces_key_output(access_key: Optional[pulumi.Input[_builtins.str]] = None,
+def get_spaces_key_output(access_key: pulumi.Input[Optional[_builtins.str]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSpacesKeyResult]:
     """
     Get information on a Spaces key for use in other resources. This is useful if the Spaces key in question

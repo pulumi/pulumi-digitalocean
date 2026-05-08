@@ -147,5 +147,5 @@ export interface GetDatabaseReplicaOutputArgs {
     /**
      * A list of tag names to be applied to the database replica.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

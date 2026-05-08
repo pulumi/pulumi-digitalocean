@@ -273,35 +273,35 @@ export interface AppState {
     /**
      * The ID the app's currently active deployment.
      */
-    activeDeploymentId?: pulumi.Input<string>;
+    activeDeploymentId?: pulumi.Input<string | undefined>;
     /**
      * The uniform resource identifier for the app.
      */
-    appUrn?: pulumi.Input<string>;
+    appUrn?: pulumi.Input<string | undefined>;
     /**
      * The date and time of when the app was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The dedicated egress IP addresses associated with the app.
      */
-    dedicatedIps?: pulumi.Input<pulumi.Input<inputs.AppDedicatedIp>[]>;
+    dedicatedIps?: pulumi.Input<pulumi.Input<inputs.AppDedicatedIp>[] | undefined>;
     /**
      * The default URL to access the app.
      */
-    defaultIngress?: pulumi.Input<string>;
+    defaultIngress?: pulumi.Input<string | undefined>;
     /**
      * (Optional) Controls how many deployments are requested per API page when listing deployments during create/update waits. Defaults to `20`. Reduce this value (for example `5`) if you experience API timeouts when listing deployments.
      */
-    deploymentPerPage?: pulumi.Input<number>;
+    deploymentPerPage?: pulumi.Input<number | undefined>;
     /**
      * The live domain of the app.
      */
-    liveDomain?: pulumi.Input<string>;
+    liveDomain?: pulumi.Input<string | undefined>;
     /**
      * The live URL of the app.
      */
-    liveUrl?: pulumi.Input<string>;
+    liveUrl?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project that the app is assigned to.
      *
@@ -309,15 +309,15 @@ export interface AppState {
      *
      * A `service` can contain:
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * A DigitalOcean App spec describing the app.
      */
-    spec?: pulumi.Input<inputs.AppSpec>;
+    spec?: pulumi.Input<inputs.AppSpec | undefined>;
     /**
      * The date and time of when the app was last updated.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -327,11 +327,11 @@ export interface AppArgs {
     /**
      * The dedicated egress IP addresses associated with the app.
      */
-    dedicatedIps?: pulumi.Input<pulumi.Input<inputs.AppDedicatedIp>[]>;
+    dedicatedIps?: pulumi.Input<pulumi.Input<inputs.AppDedicatedIp>[] | undefined>;
     /**
      * (Optional) Controls how many deployments are requested per API page when listing deployments during create/update waits. Defaults to `20`. Reduce this value (for example `5`) if you experience API timeouts when listing deployments.
      */
-    deploymentPerPage?: pulumi.Input<number>;
+    deploymentPerPage?: pulumi.Input<number | undefined>;
     /**
      * The ID of the project that the app is assigned to.
      *
@@ -339,9 +339,9 @@ export interface AppArgs {
      *
      * A `service` can contain:
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * A DigitalOcean App spec describing the app.
      */
-    spec?: pulumi.Input<inputs.AppSpec>;
+    spec?: pulumi.Input<inputs.AppSpec | undefined>;
 }

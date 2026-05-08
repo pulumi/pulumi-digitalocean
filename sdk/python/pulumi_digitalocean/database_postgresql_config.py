@@ -22,57 +22,57 @@ __all__ = ['DatabasePostgresqlConfigArgs', 'DatabasePostgresqlConfig']
 class DatabasePostgresqlConfigArgs:
     def __init__(__self__, *,
                  cluster_id: pulumi.Input[_builtins.str],
-                 autovacuum_analyze_scale_factor: Optional[pulumi.Input[_builtins.float]] = None,
-                 autovacuum_analyze_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 autovacuum_freeze_max_age: Optional[pulumi.Input[_builtins.int]] = None,
-                 autovacuum_max_workers: Optional[pulumi.Input[_builtins.int]] = None,
-                 autovacuum_naptime: Optional[pulumi.Input[_builtins.int]] = None,
-                 autovacuum_vacuum_cost_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 autovacuum_vacuum_cost_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 autovacuum_vacuum_scale_factor: Optional[pulumi.Input[_builtins.float]] = None,
-                 autovacuum_vacuum_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 backup_hour: Optional[pulumi.Input[_builtins.int]] = None,
-                 backup_minute: Optional[pulumi.Input[_builtins.int]] = None,
-                 bgwriter_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 bgwriter_flush_after: Optional[pulumi.Input[_builtins.int]] = None,
-                 bgwriter_lru_maxpages: Optional[pulumi.Input[_builtins.int]] = None,
-                 bgwriter_lru_multiplier: Optional[pulumi.Input[_builtins.float]] = None,
-                 deadlock_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 default_toast_compression: Optional[pulumi.Input[_builtins.str]] = None,
-                 idle_in_transaction_session_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 jit: Optional[pulumi.Input[_builtins.bool]] = None,
-                 log_autovacuum_min_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 log_error_verbosity: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_line_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_min_duration_statement: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_files_per_process: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_locks_per_transaction: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_logical_replication_workers: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_parallel_workers: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_parallel_workers_per_gather: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_pred_locks_per_transaction: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_prepared_transactions: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_replication_slots: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_stack_depth: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_standby_archive_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_standby_streaming_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_wal_senders: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_worker_processes: Optional[pulumi.Input[_builtins.int]] = None,
-                 pg_partman_bgw_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 pg_partman_bgw_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 pg_stat_statements_track: Optional[pulumi.Input[_builtins.str]] = None,
-                 pgbouncers: Optional[pulumi.Input[Sequence[pulumi.Input['DatabasePostgresqlConfigPgbouncerArgs']]]] = None,
-                 shared_buffers_percentage: Optional[pulumi.Input[_builtins.float]] = None,
-                 temp_file_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 timescaledbs: Optional[pulumi.Input[Sequence[pulumi.Input['DatabasePostgresqlConfigTimescaledbArgs']]]] = None,
-                 timezone: Optional[pulumi.Input[_builtins.str]] = None,
-                 track_activity_query_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 track_commit_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-                 track_functions: Optional[pulumi.Input[_builtins.str]] = None,
-                 track_io_timing: Optional[pulumi.Input[_builtins.str]] = None,
-                 wal_sender_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 wal_writer_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 work_mem: Optional[pulumi.Input[_builtins.int]] = None):
+                 autovacuum_analyze_scale_factor: pulumi.Input[Optional[_builtins.float]] = None,
+                 autovacuum_analyze_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 autovacuum_freeze_max_age: pulumi.Input[Optional[_builtins.int]] = None,
+                 autovacuum_max_workers: pulumi.Input[Optional[_builtins.int]] = None,
+                 autovacuum_naptime: pulumi.Input[Optional[_builtins.int]] = None,
+                 autovacuum_vacuum_cost_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 autovacuum_vacuum_cost_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 autovacuum_vacuum_scale_factor: pulumi.Input[Optional[_builtins.float]] = None,
+                 autovacuum_vacuum_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 backup_hour: pulumi.Input[Optional[_builtins.int]] = None,
+                 backup_minute: pulumi.Input[Optional[_builtins.int]] = None,
+                 bgwriter_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 bgwriter_flush_after: pulumi.Input[Optional[_builtins.int]] = None,
+                 bgwriter_lru_maxpages: pulumi.Input[Optional[_builtins.int]] = None,
+                 bgwriter_lru_multiplier: pulumi.Input[Optional[_builtins.float]] = None,
+                 deadlock_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 default_toast_compression: pulumi.Input[Optional[_builtins.str]] = None,
+                 idle_in_transaction_session_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 jit: pulumi.Input[Optional[_builtins.bool]] = None,
+                 log_autovacuum_min_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 log_error_verbosity: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_line_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_min_duration_statement: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_files_per_process: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_locks_per_transaction: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_logical_replication_workers: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_parallel_workers: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_parallel_workers_per_gather: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_pred_locks_per_transaction: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_prepared_transactions: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_replication_slots: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_stack_depth: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_standby_archive_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_standby_streaming_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_wal_senders: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_worker_processes: pulumi.Input[Optional[_builtins.int]] = None,
+                 pg_partman_bgw_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 pg_partman_bgw_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 pg_stat_statements_track: pulumi.Input[Optional[_builtins.str]] = None,
+                 pgbouncers: pulumi.Input[Optional[Sequence[pulumi.Input['DatabasePostgresqlConfigPgbouncerArgs']]]] = None,
+                 shared_buffers_percentage: pulumi.Input[Optional[_builtins.float]] = None,
+                 temp_file_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 timescaledbs: pulumi.Input[Optional[Sequence[pulumi.Input['DatabasePostgresqlConfigTimescaledbArgs']]]] = None,
+                 timezone: pulumi.Input[Optional[_builtins.str]] = None,
+                 track_activity_query_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 track_commit_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+                 track_functions: pulumi.Input[Optional[_builtins.str]] = None,
+                 track_io_timing: pulumi.Input[Optional[_builtins.str]] = None,
+                 wal_sender_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 wal_writer_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 work_mem: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a DatabasePostgresqlConfig resource.
 
@@ -247,672 +247,672 @@ class DatabasePostgresqlConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="autovacuumAnalyzeScaleFactor")
-    def autovacuum_analyze_scale_factor(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def autovacuum_analyze_scale_factor(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Specifies a fraction, in a decimal value, of the table size to add to autovacuum_analyze_threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size).
         """
         return pulumi.get(self, "autovacuum_analyze_scale_factor")
 
     @autovacuum_analyze_scale_factor.setter
-    def autovacuum_analyze_scale_factor(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def autovacuum_analyze_scale_factor(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "autovacuum_analyze_scale_factor", value)
 
     @_builtins.property
     @pulumi.getter(name="autovacuumAnalyzeThreshold")
-    def autovacuum_analyze_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def autovacuum_analyze_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies the minimum number of inserted, updated, or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
         """
         return pulumi.get(self, "autovacuum_analyze_threshold")
 
     @autovacuum_analyze_threshold.setter
-    def autovacuum_analyze_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def autovacuum_analyze_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "autovacuum_analyze_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="autovacuumFreezeMaxAge")
-    def autovacuum_freeze_max_age(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def autovacuum_freeze_max_age(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. Note that the system will launch autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. This parameter will cause the server to be restarted.
         """
         return pulumi.get(self, "autovacuum_freeze_max_age")
 
     @autovacuum_freeze_max_age.setter
-    def autovacuum_freeze_max_age(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def autovacuum_freeze_max_age(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "autovacuum_freeze_max_age", value)
 
     @_builtins.property
     @pulumi.getter(name="autovacuumMaxWorkers")
-    def autovacuum_max_workers(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def autovacuum_max_workers(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start.
         """
         return pulumi.get(self, "autovacuum_max_workers")
 
     @autovacuum_max_workers.setter
-    def autovacuum_max_workers(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def autovacuum_max_workers(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "autovacuum_max_workers", value)
 
     @_builtins.property
     @pulumi.getter(name="autovacuumNaptime")
-    def autovacuum_naptime(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def autovacuum_naptime(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies the minimum delay, in seconds, between autovacuum runs on any given database. The default is one minute.
         """
         return pulumi.get(self, "autovacuum_naptime")
 
     @autovacuum_naptime.setter
-    def autovacuum_naptime(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def autovacuum_naptime(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "autovacuum_naptime", value)
 
     @_builtins.property
     @pulumi.getter(name="autovacuumVacuumCostDelay")
-    def autovacuum_vacuum_cost_delay(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def autovacuum_vacuum_cost_delay(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies the cost delay value, in milliseconds, that will be used in automatic VACUUM operations. If -1, uses the regular vacuum_cost_delay value, which is 20 milliseconds.
         """
         return pulumi.get(self, "autovacuum_vacuum_cost_delay")
 
     @autovacuum_vacuum_cost_delay.setter
-    def autovacuum_vacuum_cost_delay(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def autovacuum_vacuum_cost_delay(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "autovacuum_vacuum_cost_delay", value)
 
     @_builtins.property
     @pulumi.getter(name="autovacuumVacuumCostLimit")
-    def autovacuum_vacuum_cost_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def autovacuum_vacuum_cost_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuum_cost_limit value will be used.
         """
         return pulumi.get(self, "autovacuum_vacuum_cost_limit")
 
     @autovacuum_vacuum_cost_limit.setter
-    def autovacuum_vacuum_cost_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def autovacuum_vacuum_cost_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "autovacuum_vacuum_cost_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="autovacuumVacuumScaleFactor")
-    def autovacuum_vacuum_scale_factor(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def autovacuum_vacuum_scale_factor(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Specifies a fraction, in a decimal value, of the table size to add to autovacuum_vacuum_threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
         """
         return pulumi.get(self, "autovacuum_vacuum_scale_factor")
 
     @autovacuum_vacuum_scale_factor.setter
-    def autovacuum_vacuum_scale_factor(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def autovacuum_vacuum_scale_factor(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "autovacuum_vacuum_scale_factor", value)
 
     @_builtins.property
     @pulumi.getter(name="autovacuumVacuumThreshold")
-    def autovacuum_vacuum_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def autovacuum_vacuum_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples.
         """
         return pulumi.get(self, "autovacuum_vacuum_threshold")
 
     @autovacuum_vacuum_threshold.setter
-    def autovacuum_vacuum_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def autovacuum_vacuum_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "autovacuum_vacuum_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="backupHour")
-    def backup_hour(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def backup_hour(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The hour of day (in UTC) when backup for the service starts. New backup only starts if previous backup has already completed.
         """
         return pulumi.get(self, "backup_hour")
 
     @backup_hour.setter
-    def backup_hour(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def backup_hour(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "backup_hour", value)
 
     @_builtins.property
     @pulumi.getter(name="backupMinute")
-    def backup_minute(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def backup_minute(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minute of the backup hour when backup for the service starts. New backup is only started if previous backup has already completed.
         """
         return pulumi.get(self, "backup_minute")
 
     @backup_minute.setter
-    def backup_minute(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def backup_minute(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "backup_minute", value)
 
     @_builtins.property
     @pulumi.getter(name="bgwriterDelay")
-    def bgwriter_delay(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def bgwriter_delay(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies the delay, in milliseconds, between activity rounds for the background writer. Default is 200 ms.
         """
         return pulumi.get(self, "bgwriter_delay")
 
     @bgwriter_delay.setter
-    def bgwriter_delay(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def bgwriter_delay(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "bgwriter_delay", value)
 
     @_builtins.property
     @pulumi.getter(name="bgwriterFlushAfter")
-    def bgwriter_flush_after(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def bgwriter_flush_after(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The amount of kilobytes that need to be written by the background writer before attempting to force the OS to issue these writes to underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
         """
         return pulumi.get(self, "bgwriter_flush_after")
 
     @bgwriter_flush_after.setter
-    def bgwriter_flush_after(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def bgwriter_flush_after(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "bgwriter_flush_after", value)
 
     @_builtins.property
     @pulumi.getter(name="bgwriterLruMaxpages")
-    def bgwriter_lru_maxpages(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def bgwriter_lru_maxpages(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of buffers that the background writer can write. Setting this to zero disables background writing. Default is 100.
         """
         return pulumi.get(self, "bgwriter_lru_maxpages")
 
     @bgwriter_lru_maxpages.setter
-    def bgwriter_lru_maxpages(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def bgwriter_lru_maxpages(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "bgwriter_lru_maxpages", value)
 
     @_builtins.property
     @pulumi.getter(name="bgwriterLruMultiplier")
-    def bgwriter_lru_multiplier(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def bgwriter_lru_multiplier(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
         """
         return pulumi.get(self, "bgwriter_lru_multiplier")
 
     @bgwriter_lru_multiplier.setter
-    def bgwriter_lru_multiplier(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def bgwriter_lru_multiplier(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "bgwriter_lru_multiplier", value)
 
     @_builtins.property
     @pulumi.getter(name="deadlockTimeout")
-    def deadlock_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def deadlock_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition.
         """
         return pulumi.get(self, "deadlock_timeout")
 
     @deadlock_timeout.setter
-    def deadlock_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def deadlock_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "deadlock_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultToastCompression")
-    def default_toast_compression(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_toast_compression(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the default TOAST compression method for values of compressible columns (the default is lz4). Supported values are: `lz4`, `pglz`.
         """
         return pulumi.get(self, "default_toast_compression")
 
     @default_toast_compression.setter
-    def default_toast_compression(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_toast_compression(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_toast_compression", value)
 
     @_builtins.property
     @pulumi.getter(name="idleInTransactionSessionTimeout")
-    def idle_in_transaction_session_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def idle_in_transaction_session_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Time out sessions with open transactions after this number of milliseconds
         """
         return pulumi.get(self, "idle_in_transaction_session_timeout")
 
     @idle_in_transaction_session_timeout.setter
-    def idle_in_transaction_session_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def idle_in_transaction_session_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "idle_in_transaction_session_timeout", value)
 
     @_builtins.property
     @pulumi.getter
-    def jit(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def jit(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Activates, in a boolean, the system-wide use of Just-in-Time Compilation (JIT).
         """
         return pulumi.get(self, "jit")
 
     @jit.setter
-    def jit(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def jit(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "jit", value)
 
     @_builtins.property
     @pulumi.getter(name="logAutovacuumMinDuration")
-    def log_autovacuum_min_duration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def log_autovacuum_min_duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Causes each action executed by autovacuum to be logged if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum actions. Minus-one (the default) disables logging autovacuum actions.
         """
         return pulumi.get(self, "log_autovacuum_min_duration")
 
     @log_autovacuum_min_duration.setter
-    def log_autovacuum_min_duration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def log_autovacuum_min_duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "log_autovacuum_min_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="logErrorVerbosity")
-    def log_error_verbosity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_error_verbosity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Controls the amount of detail written in the server log for each message that is logged. Supported values are: `TERSE`, `DEFAULT`, `VERBOSE`.
         """
         return pulumi.get(self, "log_error_verbosity")
 
     @log_error_verbosity.setter
-    def log_error_verbosity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_error_verbosity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_error_verbosity", value)
 
     @_builtins.property
     @pulumi.getter(name="logLinePrefix")
-    def log_line_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_line_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Selects one of the available log-formats. These can support popular log analyzers like pgbadger, pganalyze, etc. Supported values are: `pid=%p,user=%u,db=%d,app=%a,client=%h`, `%m [%p] %q[user=%u,db=%d,app=%a]`, `%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h`.
         """
         return pulumi.get(self, "log_line_prefix")
 
     @log_line_prefix.setter
-    def log_line_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_line_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_line_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="logMinDurationStatement")
-    def log_min_duration_statement(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def log_min_duration_statement(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Log statements that take more than this number of milliseconds to run. If -1, disables.
         """
         return pulumi.get(self, "log_min_duration_statement")
 
     @log_min_duration_statement.setter
-    def log_min_duration_statement(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def log_min_duration_statement(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "log_min_duration_statement", value)
 
     @_builtins.property
     @pulumi.getter(name="maxFilesPerProcess")
-    def max_files_per_process(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_files_per_process(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         PostgreSQL maximum number of files that can be open per process.
         """
         return pulumi.get(self, "max_files_per_process")
 
     @max_files_per_process.setter
-    def max_files_per_process(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_files_per_process(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_files_per_process", value)
 
     @_builtins.property
     @pulumi.getter(name="maxLocksPerTransaction")
-    def max_locks_per_transaction(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_locks_per_transaction(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         PostgreSQL maximum locks per transaction. Once increased, this parameter cannot be lowered from its set value.
         """
         return pulumi.get(self, "max_locks_per_transaction")
 
     @max_locks_per_transaction.setter
-    def max_locks_per_transaction(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_locks_per_transaction(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_locks_per_transaction", value)
 
     @_builtins.property
     @pulumi.getter(name="maxLogicalReplicationWorkers")
-    def max_logical_replication_workers(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_logical_replication_workers(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers).
         """
         return pulumi.get(self, "max_logical_replication_workers")
 
     @max_logical_replication_workers.setter
-    def max_logical_replication_workers(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_logical_replication_workers(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_logical_replication_workers", value)
 
     @_builtins.property
     @pulumi.getter(name="maxParallelWorkers")
-    def max_parallel_workers(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_parallel_workers(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Sets the maximum number of workers that the system can support for parallel queries.
         """
         return pulumi.get(self, "max_parallel_workers")
 
     @max_parallel_workers.setter
-    def max_parallel_workers(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_parallel_workers(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_parallel_workers", value)
 
     @_builtins.property
     @pulumi.getter(name="maxParallelWorkersPerGather")
-    def max_parallel_workers_per_gather(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_parallel_workers_per_gather(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Sets the maximum number of workers that can be started by a single Gather or Gather Merge node.
         """
         return pulumi.get(self, "max_parallel_workers_per_gather")
 
     @max_parallel_workers_per_gather.setter
-    def max_parallel_workers_per_gather(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_parallel_workers_per_gather(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_parallel_workers_per_gather", value)
 
     @_builtins.property
     @pulumi.getter(name="maxPredLocksPerTransaction")
-    def max_pred_locks_per_transaction(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_pred_locks_per_transaction(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         PostgreSQL maximum predicate locks per transaction.
         """
         return pulumi.get(self, "max_pred_locks_per_transaction")
 
     @max_pred_locks_per_transaction.setter
-    def max_pred_locks_per_transaction(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_pred_locks_per_transaction(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_pred_locks_per_transaction", value)
 
     @_builtins.property
     @pulumi.getter(name="maxPreparedTransactions")
-    def max_prepared_transactions(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_prepared_transactions(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         PostgreSQL maximum prepared transactions. Once increased, this parameter cannot be lowered from its set value.
         """
         return pulumi.get(self, "max_prepared_transactions")
 
     @max_prepared_transactions.setter
-    def max_prepared_transactions(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_prepared_transactions(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_prepared_transactions", value)
 
     @_builtins.property
     @pulumi.getter(name="maxReplicationSlots")
-    def max_replication_slots(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_replication_slots(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         PostgreSQL maximum replication slots.
         """
         return pulumi.get(self, "max_replication_slots")
 
     @max_replication_slots.setter
-    def max_replication_slots(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_replication_slots(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_replication_slots", value)
 
     @_builtins.property
     @pulumi.getter(name="maxStackDepth")
-    def max_stack_depth(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_stack_depth(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum depth of the stack in bytes.
         """
         return pulumi.get(self, "max_stack_depth")
 
     @max_stack_depth.setter
-    def max_stack_depth(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_stack_depth(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_stack_depth", value)
 
     @_builtins.property
     @pulumi.getter(name="maxStandbyArchiveDelay")
-    def max_standby_archive_delay(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_standby_archive_delay(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Max standby archive delay in milliseconds.
         """
         return pulumi.get(self, "max_standby_archive_delay")
 
     @max_standby_archive_delay.setter
-    def max_standby_archive_delay(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_standby_archive_delay(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_standby_archive_delay", value)
 
     @_builtins.property
     @pulumi.getter(name="maxStandbyStreamingDelay")
-    def max_standby_streaming_delay(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_standby_streaming_delay(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Max standby streaming delay in milliseconds.
         """
         return pulumi.get(self, "max_standby_streaming_delay")
 
     @max_standby_streaming_delay.setter
-    def max_standby_streaming_delay(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_standby_streaming_delay(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_standby_streaming_delay", value)
 
     @_builtins.property
     @pulumi.getter(name="maxWalSenders")
-    def max_wal_senders(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_wal_senders(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         PostgreSQL maximum WAL senders. Once increased, this parameter cannot be lowered from its set value.
         """
         return pulumi.get(self, "max_wal_senders")
 
     @max_wal_senders.setter
-    def max_wal_senders(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_wal_senders(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_wal_senders", value)
 
     @_builtins.property
     @pulumi.getter(name="maxWorkerProcesses")
-    def max_worker_processes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_worker_processes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Sets the maximum number of background processes that the system can support. Once increased, this parameter cannot be lowered from its set value.
         """
         return pulumi.get(self, "max_worker_processes")
 
     @max_worker_processes.setter
-    def max_worker_processes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_worker_processes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_worker_processes", value)
 
     @_builtins.property
     @pulumi.getter(name="pgPartmanBgwInterval")
-    def pg_partman_bgw_interval(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def pg_partman_bgw_interval(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Sets the time interval to run pg_partman's scheduled tasks.
         """
         return pulumi.get(self, "pg_partman_bgw_interval")
 
     @pg_partman_bgw_interval.setter
-    def pg_partman_bgw_interval(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def pg_partman_bgw_interval(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "pg_partman_bgw_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="pgPartmanBgwRole")
-    def pg_partman_bgw_role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pg_partman_bgw_role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Controls which role to use for pg_partman's scheduled background tasks. Must consist of alpha-numeric characters, dots, underscores, or dashes. May not start with dash or dot. Maximum of 64 characters.
         """
         return pulumi.get(self, "pg_partman_bgw_role")
 
     @pg_partman_bgw_role.setter
-    def pg_partman_bgw_role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pg_partman_bgw_role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pg_partman_bgw_role", value)
 
     @_builtins.property
     @pulumi.getter(name="pgStatStatementsTrack")
-    def pg_stat_statements_track(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pg_stat_statements_track(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Controls which statements are counted. Specify 'top' to track top-level statements (those issued directly by clients), 'all' to also track nested statements (such as statements invoked within functions), or 'none' to disable statement statistics collection. The default value is top. Supported values are: `all`, `top`, `none`.
         """
         return pulumi.get(self, "pg_stat_statements_track")
 
     @pg_stat_statements_track.setter
-    def pg_stat_statements_track(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pg_stat_statements_track(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pg_stat_statements_track", value)
 
     @_builtins.property
     @pulumi.getter
-    def pgbouncers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatabasePostgresqlConfigPgbouncerArgs']]]]:
+    def pgbouncers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DatabasePostgresqlConfigPgbouncerArgs']]]]:
         """
         PGBouncer connection pooling settings
         """
         return pulumi.get(self, "pgbouncers")
 
     @pgbouncers.setter
-    def pgbouncers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatabasePostgresqlConfigPgbouncerArgs']]]]):
+    def pgbouncers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DatabasePostgresqlConfigPgbouncerArgs']]]]):
         pulumi.set(self, "pgbouncers", value)
 
     @_builtins.property
     @pulumi.getter(name="sharedBuffersPercentage")
-    def shared_buffers_percentage(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def shared_buffers_percentage(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value.
         """
         return pulumi.get(self, "shared_buffers_percentage")
 
     @shared_buffers_percentage.setter
-    def shared_buffers_percentage(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def shared_buffers_percentage(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "shared_buffers_percentage", value)
 
     @_builtins.property
     @pulumi.getter(name="tempFileLimit")
-    def temp_file_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def temp_file_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         PostgreSQL temporary file limit in KiB. If -1, sets to unlimited.
         """
         return pulumi.get(self, "temp_file_limit")
 
     @temp_file_limit.setter
-    def temp_file_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def temp_file_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "temp_file_limit", value)
 
     @_builtins.property
     @pulumi.getter
-    def timescaledbs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatabasePostgresqlConfigTimescaledbArgs']]]]:
+    def timescaledbs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DatabasePostgresqlConfigTimescaledbArgs']]]]:
         """
         TimescaleDB extension configuration values
         """
         return pulumi.get(self, "timescaledbs")
 
     @timescaledbs.setter
-    def timescaledbs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatabasePostgresqlConfigTimescaledbArgs']]]]):
+    def timescaledbs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DatabasePostgresqlConfigTimescaledbArgs']]]]):
         pulumi.set(self, "timescaledbs", value)
 
     @_builtins.property
     @pulumi.getter
-    def timezone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def timezone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         PostgreSQL service timezone
         """
         return pulumi.get(self, "timezone")
 
     @timezone.setter
-    def timezone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def timezone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "timezone", value)
 
     @_builtins.property
     @pulumi.getter(name="trackActivityQuerySize")
-    def track_activity_query_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def track_activity_query_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies the number of bytes reserved to track the currently executing command for each active session.
         """
         return pulumi.get(self, "track_activity_query_size")
 
     @track_activity_query_size.setter
-    def track_activity_query_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def track_activity_query_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "track_activity_query_size", value)
 
     @_builtins.property
     @pulumi.getter(name="trackCommitTimestamp")
-    def track_commit_timestamp(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def track_commit_timestamp(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Record commit time of transactions. The default value is top. Supported values are: `off`, `on`.
         """
         return pulumi.get(self, "track_commit_timestamp")
 
     @track_commit_timestamp.setter
-    def track_commit_timestamp(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def track_commit_timestamp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "track_commit_timestamp", value)
 
     @_builtins.property
     @pulumi.getter(name="trackFunctions")
-    def track_functions(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def track_functions(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Enables tracking of function call counts and time used. The default value is top. Supported values are: `all`, `pl`, `none`.
         """
         return pulumi.get(self, "track_functions")
 
     @track_functions.setter
-    def track_functions(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def track_functions(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "track_functions", value)
 
     @_builtins.property
     @pulumi.getter(name="trackIoTiming")
-    def track_io_timing(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def track_io_timing(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms. The default value is top. Supported values are: `off`, `on`.
         """
         return pulumi.get(self, "track_io_timing")
 
     @track_io_timing.setter
-    def track_io_timing(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def track_io_timing(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "track_io_timing", value)
 
     @_builtins.property
     @pulumi.getter(name="walSenderTimeout")
-    def wal_sender_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def wal_sender_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout. Must be either 0 or between 5000 and 10800000.
         """
         return pulumi.get(self, "wal_sender_timeout")
 
     @wal_sender_timeout.setter
-    def wal_sender_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def wal_sender_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "wal_sender_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="walWriterDelay")
-    def wal_writer_delay(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def wal_writer_delay(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance
         """
         return pulumi.get(self, "wal_writer_delay")
 
     @wal_writer_delay.setter
-    def wal_writer_delay(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def wal_writer_delay(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "wal_writer_delay", value)
 
     @_builtins.property
     @pulumi.getter(name="workMem")
-    def work_mem(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def work_mem(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum amount of memory, in MB, used by a query operation (such as a sort or hash table) before writing to temporary disk files. Default is 1MB + 0.075% of total RAM (up to 32MB).
         """
         return pulumi.get(self, "work_mem")
 
     @work_mem.setter
-    def work_mem(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def work_mem(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "work_mem", value)
 
 
 @pulumi.input_type
 class _DatabasePostgresqlConfigState:
     def __init__(__self__, *,
-                 autovacuum_analyze_scale_factor: Optional[pulumi.Input[_builtins.float]] = None,
-                 autovacuum_analyze_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 autovacuum_freeze_max_age: Optional[pulumi.Input[_builtins.int]] = None,
-                 autovacuum_max_workers: Optional[pulumi.Input[_builtins.int]] = None,
-                 autovacuum_naptime: Optional[pulumi.Input[_builtins.int]] = None,
-                 autovacuum_vacuum_cost_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 autovacuum_vacuum_cost_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 autovacuum_vacuum_scale_factor: Optional[pulumi.Input[_builtins.float]] = None,
-                 autovacuum_vacuum_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 backup_hour: Optional[pulumi.Input[_builtins.int]] = None,
-                 backup_minute: Optional[pulumi.Input[_builtins.int]] = None,
-                 bgwriter_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 bgwriter_flush_after: Optional[pulumi.Input[_builtins.int]] = None,
-                 bgwriter_lru_maxpages: Optional[pulumi.Input[_builtins.int]] = None,
-                 bgwriter_lru_multiplier: Optional[pulumi.Input[_builtins.float]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 deadlock_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 default_toast_compression: Optional[pulumi.Input[_builtins.str]] = None,
-                 idle_in_transaction_session_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 jit: Optional[pulumi.Input[_builtins.bool]] = None,
-                 log_autovacuum_min_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 log_error_verbosity: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_line_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_min_duration_statement: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_files_per_process: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_locks_per_transaction: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_logical_replication_workers: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_parallel_workers: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_parallel_workers_per_gather: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_pred_locks_per_transaction: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_prepared_transactions: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_replication_slots: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_stack_depth: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_standby_archive_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_standby_streaming_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_wal_senders: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_worker_processes: Optional[pulumi.Input[_builtins.int]] = None,
-                 pg_partman_bgw_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 pg_partman_bgw_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 pg_stat_statements_track: Optional[pulumi.Input[_builtins.str]] = None,
-                 pgbouncers: Optional[pulumi.Input[Sequence[pulumi.Input['DatabasePostgresqlConfigPgbouncerArgs']]]] = None,
-                 shared_buffers_percentage: Optional[pulumi.Input[_builtins.float]] = None,
-                 temp_file_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 timescaledbs: Optional[pulumi.Input[Sequence[pulumi.Input['DatabasePostgresqlConfigTimescaledbArgs']]]] = None,
-                 timezone: Optional[pulumi.Input[_builtins.str]] = None,
-                 track_activity_query_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 track_commit_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-                 track_functions: Optional[pulumi.Input[_builtins.str]] = None,
-                 track_io_timing: Optional[pulumi.Input[_builtins.str]] = None,
-                 wal_sender_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 wal_writer_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 work_mem: Optional[pulumi.Input[_builtins.int]] = None):
+                 autovacuum_analyze_scale_factor: pulumi.Input[Optional[_builtins.float]] = None,
+                 autovacuum_analyze_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 autovacuum_freeze_max_age: pulumi.Input[Optional[_builtins.int]] = None,
+                 autovacuum_max_workers: pulumi.Input[Optional[_builtins.int]] = None,
+                 autovacuum_naptime: pulumi.Input[Optional[_builtins.int]] = None,
+                 autovacuum_vacuum_cost_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 autovacuum_vacuum_cost_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 autovacuum_vacuum_scale_factor: pulumi.Input[Optional[_builtins.float]] = None,
+                 autovacuum_vacuum_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 backup_hour: pulumi.Input[Optional[_builtins.int]] = None,
+                 backup_minute: pulumi.Input[Optional[_builtins.int]] = None,
+                 bgwriter_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 bgwriter_flush_after: pulumi.Input[Optional[_builtins.int]] = None,
+                 bgwriter_lru_maxpages: pulumi.Input[Optional[_builtins.int]] = None,
+                 bgwriter_lru_multiplier: pulumi.Input[Optional[_builtins.float]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deadlock_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 default_toast_compression: pulumi.Input[Optional[_builtins.str]] = None,
+                 idle_in_transaction_session_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 jit: pulumi.Input[Optional[_builtins.bool]] = None,
+                 log_autovacuum_min_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 log_error_verbosity: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_line_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_min_duration_statement: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_files_per_process: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_locks_per_transaction: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_logical_replication_workers: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_parallel_workers: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_parallel_workers_per_gather: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_pred_locks_per_transaction: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_prepared_transactions: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_replication_slots: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_stack_depth: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_standby_archive_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_standby_streaming_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_wal_senders: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_worker_processes: pulumi.Input[Optional[_builtins.int]] = None,
+                 pg_partman_bgw_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 pg_partman_bgw_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 pg_stat_statements_track: pulumi.Input[Optional[_builtins.str]] = None,
+                 pgbouncers: pulumi.Input[Optional[Sequence[pulumi.Input['DatabasePostgresqlConfigPgbouncerArgs']]]] = None,
+                 shared_buffers_percentage: pulumi.Input[Optional[_builtins.float]] = None,
+                 temp_file_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 timescaledbs: pulumi.Input[Optional[Sequence[pulumi.Input['DatabasePostgresqlConfigTimescaledbArgs']]]] = None,
+                 timezone: pulumi.Input[Optional[_builtins.str]] = None,
+                 track_activity_query_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 track_commit_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+                 track_functions: pulumi.Input[Optional[_builtins.str]] = None,
+                 track_io_timing: pulumi.Input[Optional[_builtins.str]] = None,
+                 wal_sender_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 wal_writer_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 work_mem: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering DatabasePostgresqlConfig resources.
 
@@ -1076,626 +1076,626 @@ class _DatabasePostgresqlConfigState:
 
     @_builtins.property
     @pulumi.getter(name="autovacuumAnalyzeScaleFactor")
-    def autovacuum_analyze_scale_factor(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def autovacuum_analyze_scale_factor(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Specifies a fraction, in a decimal value, of the table size to add to autovacuum_analyze_threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size).
         """
         return pulumi.get(self, "autovacuum_analyze_scale_factor")
 
     @autovacuum_analyze_scale_factor.setter
-    def autovacuum_analyze_scale_factor(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def autovacuum_analyze_scale_factor(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "autovacuum_analyze_scale_factor", value)
 
     @_builtins.property
     @pulumi.getter(name="autovacuumAnalyzeThreshold")
-    def autovacuum_analyze_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def autovacuum_analyze_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies the minimum number of inserted, updated, or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
         """
         return pulumi.get(self, "autovacuum_analyze_threshold")
 
     @autovacuum_analyze_threshold.setter
-    def autovacuum_analyze_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def autovacuum_analyze_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "autovacuum_analyze_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="autovacuumFreezeMaxAge")
-    def autovacuum_freeze_max_age(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def autovacuum_freeze_max_age(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. Note that the system will launch autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. This parameter will cause the server to be restarted.
         """
         return pulumi.get(self, "autovacuum_freeze_max_age")
 
     @autovacuum_freeze_max_age.setter
-    def autovacuum_freeze_max_age(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def autovacuum_freeze_max_age(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "autovacuum_freeze_max_age", value)
 
     @_builtins.property
     @pulumi.getter(name="autovacuumMaxWorkers")
-    def autovacuum_max_workers(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def autovacuum_max_workers(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start.
         """
         return pulumi.get(self, "autovacuum_max_workers")
 
     @autovacuum_max_workers.setter
-    def autovacuum_max_workers(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def autovacuum_max_workers(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "autovacuum_max_workers", value)
 
     @_builtins.property
     @pulumi.getter(name="autovacuumNaptime")
-    def autovacuum_naptime(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def autovacuum_naptime(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies the minimum delay, in seconds, between autovacuum runs on any given database. The default is one minute.
         """
         return pulumi.get(self, "autovacuum_naptime")
 
     @autovacuum_naptime.setter
-    def autovacuum_naptime(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def autovacuum_naptime(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "autovacuum_naptime", value)
 
     @_builtins.property
     @pulumi.getter(name="autovacuumVacuumCostDelay")
-    def autovacuum_vacuum_cost_delay(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def autovacuum_vacuum_cost_delay(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies the cost delay value, in milliseconds, that will be used in automatic VACUUM operations. If -1, uses the regular vacuum_cost_delay value, which is 20 milliseconds.
         """
         return pulumi.get(self, "autovacuum_vacuum_cost_delay")
 
     @autovacuum_vacuum_cost_delay.setter
-    def autovacuum_vacuum_cost_delay(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def autovacuum_vacuum_cost_delay(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "autovacuum_vacuum_cost_delay", value)
 
     @_builtins.property
     @pulumi.getter(name="autovacuumVacuumCostLimit")
-    def autovacuum_vacuum_cost_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def autovacuum_vacuum_cost_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuum_cost_limit value will be used.
         """
         return pulumi.get(self, "autovacuum_vacuum_cost_limit")
 
     @autovacuum_vacuum_cost_limit.setter
-    def autovacuum_vacuum_cost_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def autovacuum_vacuum_cost_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "autovacuum_vacuum_cost_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="autovacuumVacuumScaleFactor")
-    def autovacuum_vacuum_scale_factor(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def autovacuum_vacuum_scale_factor(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Specifies a fraction, in a decimal value, of the table size to add to autovacuum_vacuum_threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
         """
         return pulumi.get(self, "autovacuum_vacuum_scale_factor")
 
     @autovacuum_vacuum_scale_factor.setter
-    def autovacuum_vacuum_scale_factor(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def autovacuum_vacuum_scale_factor(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "autovacuum_vacuum_scale_factor", value)
 
     @_builtins.property
     @pulumi.getter(name="autovacuumVacuumThreshold")
-    def autovacuum_vacuum_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def autovacuum_vacuum_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples.
         """
         return pulumi.get(self, "autovacuum_vacuum_threshold")
 
     @autovacuum_vacuum_threshold.setter
-    def autovacuum_vacuum_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def autovacuum_vacuum_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "autovacuum_vacuum_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="backupHour")
-    def backup_hour(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def backup_hour(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The hour of day (in UTC) when backup for the service starts. New backup only starts if previous backup has already completed.
         """
         return pulumi.get(self, "backup_hour")
 
     @backup_hour.setter
-    def backup_hour(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def backup_hour(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "backup_hour", value)
 
     @_builtins.property
     @pulumi.getter(name="backupMinute")
-    def backup_minute(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def backup_minute(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minute of the backup hour when backup for the service starts. New backup is only started if previous backup has already completed.
         """
         return pulumi.get(self, "backup_minute")
 
     @backup_minute.setter
-    def backup_minute(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def backup_minute(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "backup_minute", value)
 
     @_builtins.property
     @pulumi.getter(name="bgwriterDelay")
-    def bgwriter_delay(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def bgwriter_delay(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies the delay, in milliseconds, between activity rounds for the background writer. Default is 200 ms.
         """
         return pulumi.get(self, "bgwriter_delay")
 
     @bgwriter_delay.setter
-    def bgwriter_delay(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def bgwriter_delay(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "bgwriter_delay", value)
 
     @_builtins.property
     @pulumi.getter(name="bgwriterFlushAfter")
-    def bgwriter_flush_after(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def bgwriter_flush_after(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The amount of kilobytes that need to be written by the background writer before attempting to force the OS to issue these writes to underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
         """
         return pulumi.get(self, "bgwriter_flush_after")
 
     @bgwriter_flush_after.setter
-    def bgwriter_flush_after(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def bgwriter_flush_after(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "bgwriter_flush_after", value)
 
     @_builtins.property
     @pulumi.getter(name="bgwriterLruMaxpages")
-    def bgwriter_lru_maxpages(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def bgwriter_lru_maxpages(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of buffers that the background writer can write. Setting this to zero disables background writing. Default is 100.
         """
         return pulumi.get(self, "bgwriter_lru_maxpages")
 
     @bgwriter_lru_maxpages.setter
-    def bgwriter_lru_maxpages(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def bgwriter_lru_maxpages(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "bgwriter_lru_maxpages", value)
 
     @_builtins.property
     @pulumi.getter(name="bgwriterLruMultiplier")
-    def bgwriter_lru_multiplier(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def bgwriter_lru_multiplier(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
         """
         return pulumi.get(self, "bgwriter_lru_multiplier")
 
     @bgwriter_lru_multiplier.setter
-    def bgwriter_lru_multiplier(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def bgwriter_lru_multiplier(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "bgwriter_lru_multiplier", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the target PostgreSQL cluster.
         """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
-    def cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="deadlockTimeout")
-    def deadlock_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def deadlock_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition.
         """
         return pulumi.get(self, "deadlock_timeout")
 
     @deadlock_timeout.setter
-    def deadlock_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def deadlock_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "deadlock_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultToastCompression")
-    def default_toast_compression(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_toast_compression(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the default TOAST compression method for values of compressible columns (the default is lz4). Supported values are: `lz4`, `pglz`.
         """
         return pulumi.get(self, "default_toast_compression")
 
     @default_toast_compression.setter
-    def default_toast_compression(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_toast_compression(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_toast_compression", value)
 
     @_builtins.property
     @pulumi.getter(name="idleInTransactionSessionTimeout")
-    def idle_in_transaction_session_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def idle_in_transaction_session_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Time out sessions with open transactions after this number of milliseconds
         """
         return pulumi.get(self, "idle_in_transaction_session_timeout")
 
     @idle_in_transaction_session_timeout.setter
-    def idle_in_transaction_session_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def idle_in_transaction_session_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "idle_in_transaction_session_timeout", value)
 
     @_builtins.property
     @pulumi.getter
-    def jit(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def jit(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Activates, in a boolean, the system-wide use of Just-in-Time Compilation (JIT).
         """
         return pulumi.get(self, "jit")
 
     @jit.setter
-    def jit(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def jit(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "jit", value)
 
     @_builtins.property
     @pulumi.getter(name="logAutovacuumMinDuration")
-    def log_autovacuum_min_duration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def log_autovacuum_min_duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Causes each action executed by autovacuum to be logged if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum actions. Minus-one (the default) disables logging autovacuum actions.
         """
         return pulumi.get(self, "log_autovacuum_min_duration")
 
     @log_autovacuum_min_duration.setter
-    def log_autovacuum_min_duration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def log_autovacuum_min_duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "log_autovacuum_min_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="logErrorVerbosity")
-    def log_error_verbosity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_error_verbosity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Controls the amount of detail written in the server log for each message that is logged. Supported values are: `TERSE`, `DEFAULT`, `VERBOSE`.
         """
         return pulumi.get(self, "log_error_verbosity")
 
     @log_error_verbosity.setter
-    def log_error_verbosity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_error_verbosity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_error_verbosity", value)
 
     @_builtins.property
     @pulumi.getter(name="logLinePrefix")
-    def log_line_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_line_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Selects one of the available log-formats. These can support popular log analyzers like pgbadger, pganalyze, etc. Supported values are: `pid=%p,user=%u,db=%d,app=%a,client=%h`, `%m [%p] %q[user=%u,db=%d,app=%a]`, `%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h`.
         """
         return pulumi.get(self, "log_line_prefix")
 
     @log_line_prefix.setter
-    def log_line_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_line_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_line_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="logMinDurationStatement")
-    def log_min_duration_statement(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def log_min_duration_statement(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Log statements that take more than this number of milliseconds to run. If -1, disables.
         """
         return pulumi.get(self, "log_min_duration_statement")
 
     @log_min_duration_statement.setter
-    def log_min_duration_statement(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def log_min_duration_statement(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "log_min_duration_statement", value)
 
     @_builtins.property
     @pulumi.getter(name="maxFilesPerProcess")
-    def max_files_per_process(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_files_per_process(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         PostgreSQL maximum number of files that can be open per process.
         """
         return pulumi.get(self, "max_files_per_process")
 
     @max_files_per_process.setter
-    def max_files_per_process(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_files_per_process(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_files_per_process", value)
 
     @_builtins.property
     @pulumi.getter(name="maxLocksPerTransaction")
-    def max_locks_per_transaction(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_locks_per_transaction(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         PostgreSQL maximum locks per transaction. Once increased, this parameter cannot be lowered from its set value.
         """
         return pulumi.get(self, "max_locks_per_transaction")
 
     @max_locks_per_transaction.setter
-    def max_locks_per_transaction(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_locks_per_transaction(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_locks_per_transaction", value)
 
     @_builtins.property
     @pulumi.getter(name="maxLogicalReplicationWorkers")
-    def max_logical_replication_workers(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_logical_replication_workers(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers).
         """
         return pulumi.get(self, "max_logical_replication_workers")
 
     @max_logical_replication_workers.setter
-    def max_logical_replication_workers(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_logical_replication_workers(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_logical_replication_workers", value)
 
     @_builtins.property
     @pulumi.getter(name="maxParallelWorkers")
-    def max_parallel_workers(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_parallel_workers(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Sets the maximum number of workers that the system can support for parallel queries.
         """
         return pulumi.get(self, "max_parallel_workers")
 
     @max_parallel_workers.setter
-    def max_parallel_workers(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_parallel_workers(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_parallel_workers", value)
 
     @_builtins.property
     @pulumi.getter(name="maxParallelWorkersPerGather")
-    def max_parallel_workers_per_gather(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_parallel_workers_per_gather(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Sets the maximum number of workers that can be started by a single Gather or Gather Merge node.
         """
         return pulumi.get(self, "max_parallel_workers_per_gather")
 
     @max_parallel_workers_per_gather.setter
-    def max_parallel_workers_per_gather(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_parallel_workers_per_gather(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_parallel_workers_per_gather", value)
 
     @_builtins.property
     @pulumi.getter(name="maxPredLocksPerTransaction")
-    def max_pred_locks_per_transaction(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_pred_locks_per_transaction(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         PostgreSQL maximum predicate locks per transaction.
         """
         return pulumi.get(self, "max_pred_locks_per_transaction")
 
     @max_pred_locks_per_transaction.setter
-    def max_pred_locks_per_transaction(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_pred_locks_per_transaction(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_pred_locks_per_transaction", value)
 
     @_builtins.property
     @pulumi.getter(name="maxPreparedTransactions")
-    def max_prepared_transactions(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_prepared_transactions(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         PostgreSQL maximum prepared transactions. Once increased, this parameter cannot be lowered from its set value.
         """
         return pulumi.get(self, "max_prepared_transactions")
 
     @max_prepared_transactions.setter
-    def max_prepared_transactions(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_prepared_transactions(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_prepared_transactions", value)
 
     @_builtins.property
     @pulumi.getter(name="maxReplicationSlots")
-    def max_replication_slots(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_replication_slots(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         PostgreSQL maximum replication slots.
         """
         return pulumi.get(self, "max_replication_slots")
 
     @max_replication_slots.setter
-    def max_replication_slots(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_replication_slots(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_replication_slots", value)
 
     @_builtins.property
     @pulumi.getter(name="maxStackDepth")
-    def max_stack_depth(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_stack_depth(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum depth of the stack in bytes.
         """
         return pulumi.get(self, "max_stack_depth")
 
     @max_stack_depth.setter
-    def max_stack_depth(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_stack_depth(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_stack_depth", value)
 
     @_builtins.property
     @pulumi.getter(name="maxStandbyArchiveDelay")
-    def max_standby_archive_delay(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_standby_archive_delay(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Max standby archive delay in milliseconds.
         """
         return pulumi.get(self, "max_standby_archive_delay")
 
     @max_standby_archive_delay.setter
-    def max_standby_archive_delay(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_standby_archive_delay(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_standby_archive_delay", value)
 
     @_builtins.property
     @pulumi.getter(name="maxStandbyStreamingDelay")
-    def max_standby_streaming_delay(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_standby_streaming_delay(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Max standby streaming delay in milliseconds.
         """
         return pulumi.get(self, "max_standby_streaming_delay")
 
     @max_standby_streaming_delay.setter
-    def max_standby_streaming_delay(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_standby_streaming_delay(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_standby_streaming_delay", value)
 
     @_builtins.property
     @pulumi.getter(name="maxWalSenders")
-    def max_wal_senders(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_wal_senders(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         PostgreSQL maximum WAL senders. Once increased, this parameter cannot be lowered from its set value.
         """
         return pulumi.get(self, "max_wal_senders")
 
     @max_wal_senders.setter
-    def max_wal_senders(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_wal_senders(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_wal_senders", value)
 
     @_builtins.property
     @pulumi.getter(name="maxWorkerProcesses")
-    def max_worker_processes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_worker_processes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Sets the maximum number of background processes that the system can support. Once increased, this parameter cannot be lowered from its set value.
         """
         return pulumi.get(self, "max_worker_processes")
 
     @max_worker_processes.setter
-    def max_worker_processes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_worker_processes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_worker_processes", value)
 
     @_builtins.property
     @pulumi.getter(name="pgPartmanBgwInterval")
-    def pg_partman_bgw_interval(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def pg_partman_bgw_interval(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Sets the time interval to run pg_partman's scheduled tasks.
         """
         return pulumi.get(self, "pg_partman_bgw_interval")
 
     @pg_partman_bgw_interval.setter
-    def pg_partman_bgw_interval(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def pg_partman_bgw_interval(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "pg_partman_bgw_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="pgPartmanBgwRole")
-    def pg_partman_bgw_role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pg_partman_bgw_role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Controls which role to use for pg_partman's scheduled background tasks. Must consist of alpha-numeric characters, dots, underscores, or dashes. May not start with dash or dot. Maximum of 64 characters.
         """
         return pulumi.get(self, "pg_partman_bgw_role")
 
     @pg_partman_bgw_role.setter
-    def pg_partman_bgw_role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pg_partman_bgw_role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pg_partman_bgw_role", value)
 
     @_builtins.property
     @pulumi.getter(name="pgStatStatementsTrack")
-    def pg_stat_statements_track(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pg_stat_statements_track(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Controls which statements are counted. Specify 'top' to track top-level statements (those issued directly by clients), 'all' to also track nested statements (such as statements invoked within functions), or 'none' to disable statement statistics collection. The default value is top. Supported values are: `all`, `top`, `none`.
         """
         return pulumi.get(self, "pg_stat_statements_track")
 
     @pg_stat_statements_track.setter
-    def pg_stat_statements_track(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pg_stat_statements_track(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pg_stat_statements_track", value)
 
     @_builtins.property
     @pulumi.getter
-    def pgbouncers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatabasePostgresqlConfigPgbouncerArgs']]]]:
+    def pgbouncers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DatabasePostgresqlConfigPgbouncerArgs']]]]:
         """
         PGBouncer connection pooling settings
         """
         return pulumi.get(self, "pgbouncers")
 
     @pgbouncers.setter
-    def pgbouncers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatabasePostgresqlConfigPgbouncerArgs']]]]):
+    def pgbouncers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DatabasePostgresqlConfigPgbouncerArgs']]]]):
         pulumi.set(self, "pgbouncers", value)
 
     @_builtins.property
     @pulumi.getter(name="sharedBuffersPercentage")
-    def shared_buffers_percentage(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def shared_buffers_percentage(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value.
         """
         return pulumi.get(self, "shared_buffers_percentage")
 
     @shared_buffers_percentage.setter
-    def shared_buffers_percentage(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def shared_buffers_percentage(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "shared_buffers_percentage", value)
 
     @_builtins.property
     @pulumi.getter(name="tempFileLimit")
-    def temp_file_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def temp_file_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         PostgreSQL temporary file limit in KiB. If -1, sets to unlimited.
         """
         return pulumi.get(self, "temp_file_limit")
 
     @temp_file_limit.setter
-    def temp_file_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def temp_file_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "temp_file_limit", value)
 
     @_builtins.property
     @pulumi.getter
-    def timescaledbs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatabasePostgresqlConfigTimescaledbArgs']]]]:
+    def timescaledbs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DatabasePostgresqlConfigTimescaledbArgs']]]]:
         """
         TimescaleDB extension configuration values
         """
         return pulumi.get(self, "timescaledbs")
 
     @timescaledbs.setter
-    def timescaledbs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatabasePostgresqlConfigTimescaledbArgs']]]]):
+    def timescaledbs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DatabasePostgresqlConfigTimescaledbArgs']]]]):
         pulumi.set(self, "timescaledbs", value)
 
     @_builtins.property
     @pulumi.getter
-    def timezone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def timezone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         PostgreSQL service timezone
         """
         return pulumi.get(self, "timezone")
 
     @timezone.setter
-    def timezone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def timezone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "timezone", value)
 
     @_builtins.property
     @pulumi.getter(name="trackActivityQuerySize")
-    def track_activity_query_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def track_activity_query_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies the number of bytes reserved to track the currently executing command for each active session.
         """
         return pulumi.get(self, "track_activity_query_size")
 
     @track_activity_query_size.setter
-    def track_activity_query_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def track_activity_query_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "track_activity_query_size", value)
 
     @_builtins.property
     @pulumi.getter(name="trackCommitTimestamp")
-    def track_commit_timestamp(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def track_commit_timestamp(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Record commit time of transactions. The default value is top. Supported values are: `off`, `on`.
         """
         return pulumi.get(self, "track_commit_timestamp")
 
     @track_commit_timestamp.setter
-    def track_commit_timestamp(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def track_commit_timestamp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "track_commit_timestamp", value)
 
     @_builtins.property
     @pulumi.getter(name="trackFunctions")
-    def track_functions(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def track_functions(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Enables tracking of function call counts and time used. The default value is top. Supported values are: `all`, `pl`, `none`.
         """
         return pulumi.get(self, "track_functions")
 
     @track_functions.setter
-    def track_functions(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def track_functions(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "track_functions", value)
 
     @_builtins.property
     @pulumi.getter(name="trackIoTiming")
-    def track_io_timing(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def track_io_timing(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms. The default value is top. Supported values are: `off`, `on`.
         """
         return pulumi.get(self, "track_io_timing")
 
     @track_io_timing.setter
-    def track_io_timing(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def track_io_timing(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "track_io_timing", value)
 
     @_builtins.property
     @pulumi.getter(name="walSenderTimeout")
-    def wal_sender_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def wal_sender_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout. Must be either 0 or between 5000 and 10800000.
         """
         return pulumi.get(self, "wal_sender_timeout")
 
     @wal_sender_timeout.setter
-    def wal_sender_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def wal_sender_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "wal_sender_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="walWriterDelay")
-    def wal_writer_delay(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def wal_writer_delay(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance
         """
         return pulumi.get(self, "wal_writer_delay")
 
     @wal_writer_delay.setter
-    def wal_writer_delay(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def wal_writer_delay(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "wal_writer_delay", value)
 
     @_builtins.property
     @pulumi.getter(name="workMem")
-    def work_mem(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def work_mem(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum amount of memory, in MB, used by a query operation (such as a sort or hash table) before writing to temporary disk files. Default is 1MB + 0.075% of total RAM (up to 32MB).
         """
         return pulumi.get(self, "work_mem")
 
     @work_mem.setter
-    def work_mem(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def work_mem(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "work_mem", value)
 
 
@@ -1705,58 +1705,58 @@ class DatabasePostgresqlConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 autovacuum_analyze_scale_factor: Optional[pulumi.Input[_builtins.float]] = None,
-                 autovacuum_analyze_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 autovacuum_freeze_max_age: Optional[pulumi.Input[_builtins.int]] = None,
-                 autovacuum_max_workers: Optional[pulumi.Input[_builtins.int]] = None,
-                 autovacuum_naptime: Optional[pulumi.Input[_builtins.int]] = None,
-                 autovacuum_vacuum_cost_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 autovacuum_vacuum_cost_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 autovacuum_vacuum_scale_factor: Optional[pulumi.Input[_builtins.float]] = None,
-                 autovacuum_vacuum_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 backup_hour: Optional[pulumi.Input[_builtins.int]] = None,
-                 backup_minute: Optional[pulumi.Input[_builtins.int]] = None,
-                 bgwriter_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 bgwriter_flush_after: Optional[pulumi.Input[_builtins.int]] = None,
-                 bgwriter_lru_maxpages: Optional[pulumi.Input[_builtins.int]] = None,
-                 bgwriter_lru_multiplier: Optional[pulumi.Input[_builtins.float]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 deadlock_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 default_toast_compression: Optional[pulumi.Input[_builtins.str]] = None,
-                 idle_in_transaction_session_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 jit: Optional[pulumi.Input[_builtins.bool]] = None,
-                 log_autovacuum_min_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 log_error_verbosity: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_line_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_min_duration_statement: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_files_per_process: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_locks_per_transaction: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_logical_replication_workers: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_parallel_workers: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_parallel_workers_per_gather: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_pred_locks_per_transaction: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_prepared_transactions: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_replication_slots: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_stack_depth: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_standby_archive_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_standby_streaming_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_wal_senders: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_worker_processes: Optional[pulumi.Input[_builtins.int]] = None,
-                 pg_partman_bgw_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 pg_partman_bgw_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 pg_stat_statements_track: Optional[pulumi.Input[_builtins.str]] = None,
-                 pgbouncers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DatabasePostgresqlConfigPgbouncerArgs', 'DatabasePostgresqlConfigPgbouncerArgsDict']]]]] = None,
-                 shared_buffers_percentage: Optional[pulumi.Input[_builtins.float]] = None,
-                 temp_file_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 timescaledbs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DatabasePostgresqlConfigTimescaledbArgs', 'DatabasePostgresqlConfigTimescaledbArgsDict']]]]] = None,
-                 timezone: Optional[pulumi.Input[_builtins.str]] = None,
-                 track_activity_query_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 track_commit_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-                 track_functions: Optional[pulumi.Input[_builtins.str]] = None,
-                 track_io_timing: Optional[pulumi.Input[_builtins.str]] = None,
-                 wal_sender_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 wal_writer_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 work_mem: Optional[pulumi.Input[_builtins.int]] = None,
+                 autovacuum_analyze_scale_factor: pulumi.Input[Optional[_builtins.float]] = None,
+                 autovacuum_analyze_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 autovacuum_freeze_max_age: pulumi.Input[Optional[_builtins.int]] = None,
+                 autovacuum_max_workers: pulumi.Input[Optional[_builtins.int]] = None,
+                 autovacuum_naptime: pulumi.Input[Optional[_builtins.int]] = None,
+                 autovacuum_vacuum_cost_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 autovacuum_vacuum_cost_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 autovacuum_vacuum_scale_factor: pulumi.Input[Optional[_builtins.float]] = None,
+                 autovacuum_vacuum_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 backup_hour: pulumi.Input[Optional[_builtins.int]] = None,
+                 backup_minute: pulumi.Input[Optional[_builtins.int]] = None,
+                 bgwriter_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 bgwriter_flush_after: pulumi.Input[Optional[_builtins.int]] = None,
+                 bgwriter_lru_maxpages: pulumi.Input[Optional[_builtins.int]] = None,
+                 bgwriter_lru_multiplier: pulumi.Input[Optional[_builtins.float]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deadlock_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 default_toast_compression: pulumi.Input[Optional[_builtins.str]] = None,
+                 idle_in_transaction_session_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 jit: pulumi.Input[Optional[_builtins.bool]] = None,
+                 log_autovacuum_min_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 log_error_verbosity: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_line_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_min_duration_statement: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_files_per_process: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_locks_per_transaction: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_logical_replication_workers: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_parallel_workers: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_parallel_workers_per_gather: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_pred_locks_per_transaction: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_prepared_transactions: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_replication_slots: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_stack_depth: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_standby_archive_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_standby_streaming_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_wal_senders: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_worker_processes: pulumi.Input[Optional[_builtins.int]] = None,
+                 pg_partman_bgw_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 pg_partman_bgw_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 pg_stat_statements_track: pulumi.Input[Optional[_builtins.str]] = None,
+                 pgbouncers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabasePostgresqlConfigPgbouncerArgs', 'DatabasePostgresqlConfigPgbouncerArgsDict']]]]] = None,
+                 shared_buffers_percentage: pulumi.Input[Optional[_builtins.float]] = None,
+                 temp_file_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 timescaledbs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabasePostgresqlConfigTimescaledbArgs', 'DatabasePostgresqlConfigTimescaledbArgsDict']]]]] = None,
+                 timezone: pulumi.Input[Optional[_builtins.str]] = None,
+                 track_activity_query_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 track_commit_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+                 track_functions: pulumi.Input[Optional[_builtins.str]] = None,
+                 track_io_timing: pulumi.Input[Optional[_builtins.str]] = None,
+                 wal_sender_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 wal_writer_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 work_mem: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a virtual resource that can be used to change advanced configuration
@@ -1902,58 +1902,58 @@ class DatabasePostgresqlConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 autovacuum_analyze_scale_factor: Optional[pulumi.Input[_builtins.float]] = None,
-                 autovacuum_analyze_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 autovacuum_freeze_max_age: Optional[pulumi.Input[_builtins.int]] = None,
-                 autovacuum_max_workers: Optional[pulumi.Input[_builtins.int]] = None,
-                 autovacuum_naptime: Optional[pulumi.Input[_builtins.int]] = None,
-                 autovacuum_vacuum_cost_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 autovacuum_vacuum_cost_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 autovacuum_vacuum_scale_factor: Optional[pulumi.Input[_builtins.float]] = None,
-                 autovacuum_vacuum_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 backup_hour: Optional[pulumi.Input[_builtins.int]] = None,
-                 backup_minute: Optional[pulumi.Input[_builtins.int]] = None,
-                 bgwriter_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 bgwriter_flush_after: Optional[pulumi.Input[_builtins.int]] = None,
-                 bgwriter_lru_maxpages: Optional[pulumi.Input[_builtins.int]] = None,
-                 bgwriter_lru_multiplier: Optional[pulumi.Input[_builtins.float]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 deadlock_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 default_toast_compression: Optional[pulumi.Input[_builtins.str]] = None,
-                 idle_in_transaction_session_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 jit: Optional[pulumi.Input[_builtins.bool]] = None,
-                 log_autovacuum_min_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 log_error_verbosity: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_line_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_min_duration_statement: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_files_per_process: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_locks_per_transaction: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_logical_replication_workers: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_parallel_workers: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_parallel_workers_per_gather: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_pred_locks_per_transaction: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_prepared_transactions: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_replication_slots: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_stack_depth: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_standby_archive_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_standby_streaming_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_wal_senders: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_worker_processes: Optional[pulumi.Input[_builtins.int]] = None,
-                 pg_partman_bgw_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 pg_partman_bgw_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 pg_stat_statements_track: Optional[pulumi.Input[_builtins.str]] = None,
-                 pgbouncers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DatabasePostgresqlConfigPgbouncerArgs', 'DatabasePostgresqlConfigPgbouncerArgsDict']]]]] = None,
-                 shared_buffers_percentage: Optional[pulumi.Input[_builtins.float]] = None,
-                 temp_file_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 timescaledbs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DatabasePostgresqlConfigTimescaledbArgs', 'DatabasePostgresqlConfigTimescaledbArgsDict']]]]] = None,
-                 timezone: Optional[pulumi.Input[_builtins.str]] = None,
-                 track_activity_query_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 track_commit_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-                 track_functions: Optional[pulumi.Input[_builtins.str]] = None,
-                 track_io_timing: Optional[pulumi.Input[_builtins.str]] = None,
-                 wal_sender_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 wal_writer_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 work_mem: Optional[pulumi.Input[_builtins.int]] = None,
+                 autovacuum_analyze_scale_factor: pulumi.Input[Optional[_builtins.float]] = None,
+                 autovacuum_analyze_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 autovacuum_freeze_max_age: pulumi.Input[Optional[_builtins.int]] = None,
+                 autovacuum_max_workers: pulumi.Input[Optional[_builtins.int]] = None,
+                 autovacuum_naptime: pulumi.Input[Optional[_builtins.int]] = None,
+                 autovacuum_vacuum_cost_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 autovacuum_vacuum_cost_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 autovacuum_vacuum_scale_factor: pulumi.Input[Optional[_builtins.float]] = None,
+                 autovacuum_vacuum_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 backup_hour: pulumi.Input[Optional[_builtins.int]] = None,
+                 backup_minute: pulumi.Input[Optional[_builtins.int]] = None,
+                 bgwriter_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 bgwriter_flush_after: pulumi.Input[Optional[_builtins.int]] = None,
+                 bgwriter_lru_maxpages: pulumi.Input[Optional[_builtins.int]] = None,
+                 bgwriter_lru_multiplier: pulumi.Input[Optional[_builtins.float]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deadlock_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 default_toast_compression: pulumi.Input[Optional[_builtins.str]] = None,
+                 idle_in_transaction_session_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 jit: pulumi.Input[Optional[_builtins.bool]] = None,
+                 log_autovacuum_min_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 log_error_verbosity: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_line_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_min_duration_statement: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_files_per_process: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_locks_per_transaction: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_logical_replication_workers: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_parallel_workers: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_parallel_workers_per_gather: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_pred_locks_per_transaction: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_prepared_transactions: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_replication_slots: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_stack_depth: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_standby_archive_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_standby_streaming_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_wal_senders: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_worker_processes: pulumi.Input[Optional[_builtins.int]] = None,
+                 pg_partman_bgw_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 pg_partman_bgw_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 pg_stat_statements_track: pulumi.Input[Optional[_builtins.str]] = None,
+                 pgbouncers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabasePostgresqlConfigPgbouncerArgs', 'DatabasePostgresqlConfigPgbouncerArgsDict']]]]] = None,
+                 shared_buffers_percentage: pulumi.Input[Optional[_builtins.float]] = None,
+                 temp_file_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 timescaledbs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabasePostgresqlConfigTimescaledbArgs', 'DatabasePostgresqlConfigTimescaledbArgsDict']]]]] = None,
+                 timezone: pulumi.Input[Optional[_builtins.str]] = None,
+                 track_activity_query_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 track_commit_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+                 track_functions: pulumi.Input[Optional[_builtins.str]] = None,
+                 track_io_timing: pulumi.Input[Optional[_builtins.str]] = None,
+                 wal_sender_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 wal_writer_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 work_mem: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -2027,58 +2027,58 @@ class DatabasePostgresqlConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            autovacuum_analyze_scale_factor: Optional[pulumi.Input[_builtins.float]] = None,
-            autovacuum_analyze_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-            autovacuum_freeze_max_age: Optional[pulumi.Input[_builtins.int]] = None,
-            autovacuum_max_workers: Optional[pulumi.Input[_builtins.int]] = None,
-            autovacuum_naptime: Optional[pulumi.Input[_builtins.int]] = None,
-            autovacuum_vacuum_cost_delay: Optional[pulumi.Input[_builtins.int]] = None,
-            autovacuum_vacuum_cost_limit: Optional[pulumi.Input[_builtins.int]] = None,
-            autovacuum_vacuum_scale_factor: Optional[pulumi.Input[_builtins.float]] = None,
-            autovacuum_vacuum_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-            backup_hour: Optional[pulumi.Input[_builtins.int]] = None,
-            backup_minute: Optional[pulumi.Input[_builtins.int]] = None,
-            bgwriter_delay: Optional[pulumi.Input[_builtins.int]] = None,
-            bgwriter_flush_after: Optional[pulumi.Input[_builtins.int]] = None,
-            bgwriter_lru_maxpages: Optional[pulumi.Input[_builtins.int]] = None,
-            bgwriter_lru_multiplier: Optional[pulumi.Input[_builtins.float]] = None,
-            cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            deadlock_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-            default_toast_compression: Optional[pulumi.Input[_builtins.str]] = None,
-            idle_in_transaction_session_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-            jit: Optional[pulumi.Input[_builtins.bool]] = None,
-            log_autovacuum_min_duration: Optional[pulumi.Input[_builtins.int]] = None,
-            log_error_verbosity: Optional[pulumi.Input[_builtins.str]] = None,
-            log_line_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-            log_min_duration_statement: Optional[pulumi.Input[_builtins.int]] = None,
-            max_files_per_process: Optional[pulumi.Input[_builtins.int]] = None,
-            max_locks_per_transaction: Optional[pulumi.Input[_builtins.int]] = None,
-            max_logical_replication_workers: Optional[pulumi.Input[_builtins.int]] = None,
-            max_parallel_workers: Optional[pulumi.Input[_builtins.int]] = None,
-            max_parallel_workers_per_gather: Optional[pulumi.Input[_builtins.int]] = None,
-            max_pred_locks_per_transaction: Optional[pulumi.Input[_builtins.int]] = None,
-            max_prepared_transactions: Optional[pulumi.Input[_builtins.int]] = None,
-            max_replication_slots: Optional[pulumi.Input[_builtins.int]] = None,
-            max_stack_depth: Optional[pulumi.Input[_builtins.int]] = None,
-            max_standby_archive_delay: Optional[pulumi.Input[_builtins.int]] = None,
-            max_standby_streaming_delay: Optional[pulumi.Input[_builtins.int]] = None,
-            max_wal_senders: Optional[pulumi.Input[_builtins.int]] = None,
-            max_worker_processes: Optional[pulumi.Input[_builtins.int]] = None,
-            pg_partman_bgw_interval: Optional[pulumi.Input[_builtins.int]] = None,
-            pg_partman_bgw_role: Optional[pulumi.Input[_builtins.str]] = None,
-            pg_stat_statements_track: Optional[pulumi.Input[_builtins.str]] = None,
-            pgbouncers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DatabasePostgresqlConfigPgbouncerArgs', 'DatabasePostgresqlConfigPgbouncerArgsDict']]]]] = None,
-            shared_buffers_percentage: Optional[pulumi.Input[_builtins.float]] = None,
-            temp_file_limit: Optional[pulumi.Input[_builtins.int]] = None,
-            timescaledbs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DatabasePostgresqlConfigTimescaledbArgs', 'DatabasePostgresqlConfigTimescaledbArgsDict']]]]] = None,
-            timezone: Optional[pulumi.Input[_builtins.str]] = None,
-            track_activity_query_size: Optional[pulumi.Input[_builtins.int]] = None,
-            track_commit_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-            track_functions: Optional[pulumi.Input[_builtins.str]] = None,
-            track_io_timing: Optional[pulumi.Input[_builtins.str]] = None,
-            wal_sender_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-            wal_writer_delay: Optional[pulumi.Input[_builtins.int]] = None,
-            work_mem: Optional[pulumi.Input[_builtins.int]] = None) -> 'DatabasePostgresqlConfig':
+            autovacuum_analyze_scale_factor: pulumi.Input[Optional[_builtins.float]] = None,
+            autovacuum_analyze_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+            autovacuum_freeze_max_age: pulumi.Input[Optional[_builtins.int]] = None,
+            autovacuum_max_workers: pulumi.Input[Optional[_builtins.int]] = None,
+            autovacuum_naptime: pulumi.Input[Optional[_builtins.int]] = None,
+            autovacuum_vacuum_cost_delay: pulumi.Input[Optional[_builtins.int]] = None,
+            autovacuum_vacuum_cost_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            autovacuum_vacuum_scale_factor: pulumi.Input[Optional[_builtins.float]] = None,
+            autovacuum_vacuum_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+            backup_hour: pulumi.Input[Optional[_builtins.int]] = None,
+            backup_minute: pulumi.Input[Optional[_builtins.int]] = None,
+            bgwriter_delay: pulumi.Input[Optional[_builtins.int]] = None,
+            bgwriter_flush_after: pulumi.Input[Optional[_builtins.int]] = None,
+            bgwriter_lru_maxpages: pulumi.Input[Optional[_builtins.int]] = None,
+            bgwriter_lru_multiplier: pulumi.Input[Optional[_builtins.float]] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            deadlock_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            default_toast_compression: pulumi.Input[Optional[_builtins.str]] = None,
+            idle_in_transaction_session_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            jit: pulumi.Input[Optional[_builtins.bool]] = None,
+            log_autovacuum_min_duration: pulumi.Input[Optional[_builtins.int]] = None,
+            log_error_verbosity: pulumi.Input[Optional[_builtins.str]] = None,
+            log_line_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            log_min_duration_statement: pulumi.Input[Optional[_builtins.int]] = None,
+            max_files_per_process: pulumi.Input[Optional[_builtins.int]] = None,
+            max_locks_per_transaction: pulumi.Input[Optional[_builtins.int]] = None,
+            max_logical_replication_workers: pulumi.Input[Optional[_builtins.int]] = None,
+            max_parallel_workers: pulumi.Input[Optional[_builtins.int]] = None,
+            max_parallel_workers_per_gather: pulumi.Input[Optional[_builtins.int]] = None,
+            max_pred_locks_per_transaction: pulumi.Input[Optional[_builtins.int]] = None,
+            max_prepared_transactions: pulumi.Input[Optional[_builtins.int]] = None,
+            max_replication_slots: pulumi.Input[Optional[_builtins.int]] = None,
+            max_stack_depth: pulumi.Input[Optional[_builtins.int]] = None,
+            max_standby_archive_delay: pulumi.Input[Optional[_builtins.int]] = None,
+            max_standby_streaming_delay: pulumi.Input[Optional[_builtins.int]] = None,
+            max_wal_senders: pulumi.Input[Optional[_builtins.int]] = None,
+            max_worker_processes: pulumi.Input[Optional[_builtins.int]] = None,
+            pg_partman_bgw_interval: pulumi.Input[Optional[_builtins.int]] = None,
+            pg_partman_bgw_role: pulumi.Input[Optional[_builtins.str]] = None,
+            pg_stat_statements_track: pulumi.Input[Optional[_builtins.str]] = None,
+            pgbouncers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabasePostgresqlConfigPgbouncerArgs', 'DatabasePostgresqlConfigPgbouncerArgsDict']]]]] = None,
+            shared_buffers_percentage: pulumi.Input[Optional[_builtins.float]] = None,
+            temp_file_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            timescaledbs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabasePostgresqlConfigTimescaledbArgs', 'DatabasePostgresqlConfigTimescaledbArgsDict']]]]] = None,
+            timezone: pulumi.Input[Optional[_builtins.str]] = None,
+            track_activity_query_size: pulumi.Input[Optional[_builtins.int]] = None,
+            track_commit_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            track_functions: pulumi.Input[Optional[_builtins.str]] = None,
+            track_io_timing: pulumi.Input[Optional[_builtins.str]] = None,
+            wal_sender_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            wal_writer_delay: pulumi.Input[Optional[_builtins.int]] = None,
+            work_mem: pulumi.Input[Optional[_builtins.int]] = None) -> 'DatabasePostgresqlConfig':
         """
         Get an existing DatabasePostgresqlConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -19,7 +19,7 @@ __all__ = ['TagArgs', 'Tag']
 @pulumi.input_type
 class TagArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Tag resource.
 
@@ -30,27 +30,27 @@ class TagArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the tag
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
 class _TagState:
     def __init__(__self__, *,
-                 databases_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 droplets_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 images_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 total_resource_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 volume_snapshots_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 volumes_count: Optional[pulumi.Input[_builtins.int]] = None):
+                 databases_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 droplets_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 images_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 total_resource_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 volume_snapshots_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 volumes_count: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Tag resources.
 
@@ -79,86 +79,86 @@ class _TagState:
 
     @_builtins.property
     @pulumi.getter(name="databasesCount")
-    def databases_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def databases_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         A count of the database clusters that the tag is applied to.
         """
         return pulumi.get(self, "databases_count")
 
     @databases_count.setter
-    def databases_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def databases_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "databases_count", value)
 
     @_builtins.property
     @pulumi.getter(name="dropletsCount")
-    def droplets_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def droplets_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         A count of the Droplets the tag is applied to.
         """
         return pulumi.get(self, "droplets_count")
 
     @droplets_count.setter
-    def droplets_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def droplets_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "droplets_count", value)
 
     @_builtins.property
     @pulumi.getter(name="imagesCount")
-    def images_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def images_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         A count of the images that the tag is applied to.
         """
         return pulumi.get(self, "images_count")
 
     @images_count.setter
-    def images_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def images_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "images_count", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the tag
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="totalResourceCount")
-    def total_resource_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def total_resource_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         A count of the total number of resources that the tag is applied to.
         """
         return pulumi.get(self, "total_resource_count")
 
     @total_resource_count.setter
-    def total_resource_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def total_resource_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "total_resource_count", value)
 
     @_builtins.property
     @pulumi.getter(name="volumeSnapshotsCount")
-    def volume_snapshots_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def volume_snapshots_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         A count of the volume snapshots that the tag is applied to.
         """
         return pulumi.get(self, "volume_snapshots_count")
 
     @volume_snapshots_count.setter
-    def volume_snapshots_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def volume_snapshots_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "volume_snapshots_count", value)
 
     @_builtins.property
     @pulumi.getter(name="volumesCount")
-    def volumes_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def volumes_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         A count of the volumes that the tag is applied to.
         """
         return pulumi.get(self, "volumes_count")
 
     @volumes_count.setter
-    def volumes_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def volumes_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "volumes_count", value)
 
 
@@ -168,7 +168,7 @@ class Tag(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a DigitalOcean Tag resource. A Tag is a label that can be applied to a
@@ -259,7 +259,7 @@ class Tag(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -286,13 +286,13 @@ class Tag(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            databases_count: Optional[pulumi.Input[_builtins.int]] = None,
-            droplets_count: Optional[pulumi.Input[_builtins.int]] = None,
-            images_count: Optional[pulumi.Input[_builtins.int]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            total_resource_count: Optional[pulumi.Input[_builtins.int]] = None,
-            volume_snapshots_count: Optional[pulumi.Input[_builtins.int]] = None,
-            volumes_count: Optional[pulumi.Input[_builtins.int]] = None) -> 'Tag':
+            databases_count: pulumi.Input[Optional[_builtins.int]] = None,
+            droplets_count: pulumi.Input[Optional[_builtins.int]] = None,
+            images_count: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            total_resource_count: pulumi.Input[Optional[_builtins.int]] = None,
+            volume_snapshots_count: pulumi.Input[Optional[_builtins.int]] = None,
+            volumes_count: pulumi.Input[Optional[_builtins.int]] = None) -> 'Tag':
         """
         Get an existing Tag resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

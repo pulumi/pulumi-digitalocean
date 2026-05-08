@@ -162,10 +162,10 @@ export interface GetRegionsOutputArgs {
      * Filter the results.
      * The `filter` block is documented below.
      */
-    filters?: pulumi.Input<pulumi.Input<inputs.GetRegionsFilterArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetRegionsFilterArgs>[] | undefined>;
     /**
      * Sort the results.
      * The `sort` block is documented below.
      */
-    sorts?: pulumi.Input<pulumi.Input<inputs.GetRegionsSortArgs>[]>;
+    sorts?: pulumi.Input<pulumi.Input<inputs.GetRegionsSortArgs>[] | undefined>;
 }

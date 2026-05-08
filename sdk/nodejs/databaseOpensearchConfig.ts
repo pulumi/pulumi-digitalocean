@@ -369,159 +369,159 @@ export interface DatabaseOpensearchConfigState {
     /**
      * Specifices whether to allow automatic creation of indices. Default: `true`
      */
-    actionAutoCreateIndexEnabled?: pulumi.Input<boolean>;
+    actionAutoCreateIndexEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether to require explicit index names when deleting indices.
      */
-    actionDestructiveRequiresName?: pulumi.Input<boolean>;
+    actionDestructiveRequiresName?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the target Opensearch cluster.
      */
-    clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * Maximum number of shards allowed per data node.
      */
-    clusterMaxShardsPerNode?: pulumi.Input<number>;
+    clusterMaxShardsPerNode?: pulumi.Input<number | undefined>;
     /**
      * Maximum concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen per node. Default: `2`
      */
-    clusterRoutingAllocationNodeConcurrentRecoveries?: pulumi.Input<number>;
+    clusterRoutingAllocationNodeConcurrentRecoveries?: pulumi.Input<number | undefined>;
     /**
      * Specifies whether to allow security audit logging. Default: `false`
      */
-    enableSecurityAudit?: pulumi.Input<boolean>;
+    enableSecurityAudit?: pulumi.Input<boolean | undefined>;
     /**
      * Maximum content length for HTTP requests to the OpenSearch HTTP API, in bytes. Default: `100000000`
      */
-    httpMaxContentLengthBytes?: pulumi.Input<number>;
+    httpMaxContentLengthBytes?: pulumi.Input<number | undefined>;
     /**
      * Maximum size of allowed headers, in bytes. Default: `8192`
      */
-    httpMaxHeaderSizeBytes?: pulumi.Input<number>;
+    httpMaxHeaderSizeBytes?: pulumi.Input<number | undefined>;
     /**
      * Maximum length of an HTTP URL, in bytes. Default: `4096`
      */
-    httpMaxInitialLineLengthBytes?: pulumi.Input<number>;
+    httpMaxInitialLineLengthBytes?: pulumi.Input<number | undefined>;
     /**
      * Maximum amount of heap memory used for field data cache, expressed as a percentage. Decreasing the value too much will increase overhead of loading field data. Increasing the value too much will decrease amount of heap available for other operations.
      */
-    indicesFielddataCacheSizePercentage?: pulumi.Input<number>;
+    indicesFielddataCacheSizePercentage?: pulumi.Input<number | undefined>;
     /**
      * Total amount of heap used for indexing buffer before writing segments to disk, expressed as a percentage. Too low value will slow down indexing; too high value will increase indexing performance but causes performance issues for query performance. Default: `10`
      */
-    indicesMemoryIndexBufferSizePercentage?: pulumi.Input<number>;
+    indicesMemoryIndexBufferSizePercentage?: pulumi.Input<number | undefined>;
     /**
      * Maximum amount of heap used for indexing buffer before writing segments to disk, in mb. Works in conjunction with indices_memory_index_buffer_size_percentage, each being enforced. The default is unbounded.
      */
-    indicesMemoryMaxIndexBufferSizeMb?: pulumi.Input<number>;
+    indicesMemoryMaxIndexBufferSizeMb?: pulumi.Input<number | undefined>;
     /**
      * Minimum amount of heap used for indexing buffer before writing segments to disk, in mb. Works in conjunction with indices_memory_index_buffer_size_percentage, each being enforced. Default: `48`
      */
-    indicesMemoryMinIndexBufferSizeMb?: pulumi.Input<number>;
+    indicesMemoryMinIndexBufferSizeMb?: pulumi.Input<number | undefined>;
     /**
      * Maximum amount of heap used for query cache. Too low value will decrease query performance and increase performance for other operations; too high value will cause issues with other functionality. Default: `10`
      */
-    indicesQueriesCacheSizePercentage?: pulumi.Input<number>;
+    indicesQueriesCacheSizePercentage?: pulumi.Input<number | undefined>;
     /**
      * Maximum number of clauses Lucene BooleanQuery can have. Only increase it if necessary, as it may cause performance issues. Default: `1024`
      */
-    indicesQueryBoolMaxClauseCount?: pulumi.Input<number>;
+    indicesQueryBoolMaxClauseCount?: pulumi.Input<number | undefined>;
     /**
      * Maximum number of file chunks sent in parallel for each recovery. Default: `2`
      */
-    indicesRecoveryMaxConcurrentFileChunks?: pulumi.Input<number>;
+    indicesRecoveryMaxConcurrentFileChunks?: pulumi.Input<number | undefined>;
     /**
      * Limits total inbound and outbound recovery traffic for each node, expressed in mb per second. Applies to both peer recoveries as well as snapshot recoveries (i.e., restores from a snapshot). Default: `40`
      */
-    indicesRecoveryMaxMbPerSec?: pulumi.Input<number>;
+    indicesRecoveryMaxMbPerSec?: pulumi.Input<number | undefined>;
     /**
      * Specifies whether ISM is enabled or not. Default: `true`
      */
-    ismEnabled?: pulumi.Input<boolean>;
+    ismEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document. Default: `true`
      */
-    ismHistoryEnabled?: pulumi.Input<boolean>;
+    ismHistoryEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Maximum age before rolling over the audit history index, in hours. Default: `24`
      */
-    ismHistoryMaxAgeHours?: pulumi.Input<number>;
+    ismHistoryMaxAgeHours?: pulumi.Input<number | undefined>;
     /**
      * Maximum number of documents before rolling over the audit history index. Default: `2500000`
      */
-    ismHistoryMaxDocs?: pulumi.Input<number>;
+    ismHistoryMaxDocs?: pulumi.Input<number | undefined>;
     /**
      * The time between rollover checks for the audit history index, in hours. Default: `8`
      */
-    ismHistoryRolloverCheckPeriodHours?: pulumi.Input<number>;
+    ismHistoryRolloverCheckPeriodHours?: pulumi.Input<number | undefined>;
     /**
      * Length of time long audit history indices are kept, in days. Default: `30`
      */
-    ismHistoryRolloverRetentionPeriodDays?: pulumi.Input<number>;
+    ismHistoryRolloverRetentionPeriodDays?: pulumi.Input<number | undefined>;
     /**
      * Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default: `false`
      */
-    overrideMainResponseVersion?: pulumi.Input<boolean>;
+    overrideMainResponseVersion?: pulumi.Input<boolean | undefined>;
     /**
      * Enable or disable filtering of alerting by backend roles. Default: `false`
      */
-    pluginsAlertingFilterByBackendRolesEnabled?: pulumi.Input<boolean>;
+    pluginsAlertingFilterByBackendRolesEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Allowlist of remote IP addresses for reindexing. Changing this value will cause all OpenSearch instances to restart.
      */
-    reindexRemoteWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
+    reindexRemoteWhitelists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Limits the number of inline script compilations within a period of time. Default is `use-context`
      */
-    scriptMaxCompilationsRate?: pulumi.Input<string>;
+    scriptMaxCompilationsRate?: pulumi.Input<string | undefined>;
     /**
      * Maximum number of aggregation buckets allowed in a single response. Default: `10000`
      */
-    searchMaxBuckets?: pulumi.Input<number>;
+    searchMaxBuckets?: pulumi.Input<number | undefined>;
     /**
      * Size of queue for operations in the analyze thread pool.
      */
-    threadPoolAnalyzeQueueSize?: pulumi.Input<number>;
+    threadPoolAnalyzeQueueSize?: pulumi.Input<number | undefined>;
     /**
      * Number of workers in the analyze operation thread pool. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
      */
-    threadPoolAnalyzeSize?: pulumi.Input<number>;
+    threadPoolAnalyzeSize?: pulumi.Input<number | undefined>;
     /**
      * Number of workers in the force merge operation thread pool. This pool is used for forcing a merge between shards of one or more indices. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
      */
-    threadPoolForceMergeSize?: pulumi.Input<number>;
+    threadPoolForceMergeSize?: pulumi.Input<number | undefined>;
     /**
      * Size of queue for operations in the get thread pool.
      */
-    threadPoolGetQueueSize?: pulumi.Input<number>;
+    threadPoolGetQueueSize?: pulumi.Input<number | undefined>;
     /**
      * Number of workers in the get operation thread pool. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
      */
-    threadPoolGetSize?: pulumi.Input<number>;
+    threadPoolGetSize?: pulumi.Input<number | undefined>;
     /**
      * Size of queue for operations in the search thread pool.
      */
-    threadPoolSearchQueueSize?: pulumi.Input<number>;
+    threadPoolSearchQueueSize?: pulumi.Input<number | undefined>;
     /**
      * Number of workers in the search operation thread pool. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
      */
-    threadPoolSearchSize?: pulumi.Input<number>;
+    threadPoolSearchSize?: pulumi.Input<number | undefined>;
     /**
      * Size of queue for operations in the search throttled thread pool.
      */
-    threadPoolSearchThrottledQueueSize?: pulumi.Input<number>;
+    threadPoolSearchThrottledQueueSize?: pulumi.Input<number | undefined>;
     /**
      * Number of workers in the search throttled operation thread pool. This pool is used for searching frozen indices. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
      */
-    threadPoolSearchThrottledSize?: pulumi.Input<number>;
+    threadPoolSearchThrottledSize?: pulumi.Input<number | undefined>;
     /**
      * Size of queue for operations in the write thread pool.
      */
-    threadPoolWriteQueueSize?: pulumi.Input<number>;
+    threadPoolWriteQueueSize?: pulumi.Input<number | undefined>;
     /**
      * Number of workers in the write operation thread pool. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
      */
-    threadPoolWriteSize?: pulumi.Input<number>;
+    threadPoolWriteSize?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -531,11 +531,11 @@ export interface DatabaseOpensearchConfigArgs {
     /**
      * Specifices whether to allow automatic creation of indices. Default: `true`
      */
-    actionAutoCreateIndexEnabled?: pulumi.Input<boolean>;
+    actionAutoCreateIndexEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether to require explicit index names when deleting indices.
      */
-    actionDestructiveRequiresName?: pulumi.Input<boolean>;
+    actionDestructiveRequiresName?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the target Opensearch cluster.
      */
@@ -543,145 +543,145 @@ export interface DatabaseOpensearchConfigArgs {
     /**
      * Maximum number of shards allowed per data node.
      */
-    clusterMaxShardsPerNode?: pulumi.Input<number>;
+    clusterMaxShardsPerNode?: pulumi.Input<number | undefined>;
     /**
      * Maximum concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen per node. Default: `2`
      */
-    clusterRoutingAllocationNodeConcurrentRecoveries?: pulumi.Input<number>;
+    clusterRoutingAllocationNodeConcurrentRecoveries?: pulumi.Input<number | undefined>;
     /**
      * Specifies whether to allow security audit logging. Default: `false`
      */
-    enableSecurityAudit?: pulumi.Input<boolean>;
+    enableSecurityAudit?: pulumi.Input<boolean | undefined>;
     /**
      * Maximum content length for HTTP requests to the OpenSearch HTTP API, in bytes. Default: `100000000`
      */
-    httpMaxContentLengthBytes?: pulumi.Input<number>;
+    httpMaxContentLengthBytes?: pulumi.Input<number | undefined>;
     /**
      * Maximum size of allowed headers, in bytes. Default: `8192`
      */
-    httpMaxHeaderSizeBytes?: pulumi.Input<number>;
+    httpMaxHeaderSizeBytes?: pulumi.Input<number | undefined>;
     /**
      * Maximum length of an HTTP URL, in bytes. Default: `4096`
      */
-    httpMaxInitialLineLengthBytes?: pulumi.Input<number>;
+    httpMaxInitialLineLengthBytes?: pulumi.Input<number | undefined>;
     /**
      * Maximum amount of heap memory used for field data cache, expressed as a percentage. Decreasing the value too much will increase overhead of loading field data. Increasing the value too much will decrease amount of heap available for other operations.
      */
-    indicesFielddataCacheSizePercentage?: pulumi.Input<number>;
+    indicesFielddataCacheSizePercentage?: pulumi.Input<number | undefined>;
     /**
      * Total amount of heap used for indexing buffer before writing segments to disk, expressed as a percentage. Too low value will slow down indexing; too high value will increase indexing performance but causes performance issues for query performance. Default: `10`
      */
-    indicesMemoryIndexBufferSizePercentage?: pulumi.Input<number>;
+    indicesMemoryIndexBufferSizePercentage?: pulumi.Input<number | undefined>;
     /**
      * Maximum amount of heap used for indexing buffer before writing segments to disk, in mb. Works in conjunction with indices_memory_index_buffer_size_percentage, each being enforced. The default is unbounded.
      */
-    indicesMemoryMaxIndexBufferSizeMb?: pulumi.Input<number>;
+    indicesMemoryMaxIndexBufferSizeMb?: pulumi.Input<number | undefined>;
     /**
      * Minimum amount of heap used for indexing buffer before writing segments to disk, in mb. Works in conjunction with indices_memory_index_buffer_size_percentage, each being enforced. Default: `48`
      */
-    indicesMemoryMinIndexBufferSizeMb?: pulumi.Input<number>;
+    indicesMemoryMinIndexBufferSizeMb?: pulumi.Input<number | undefined>;
     /**
      * Maximum amount of heap used for query cache. Too low value will decrease query performance and increase performance for other operations; too high value will cause issues with other functionality. Default: `10`
      */
-    indicesQueriesCacheSizePercentage?: pulumi.Input<number>;
+    indicesQueriesCacheSizePercentage?: pulumi.Input<number | undefined>;
     /**
      * Maximum number of clauses Lucene BooleanQuery can have. Only increase it if necessary, as it may cause performance issues. Default: `1024`
      */
-    indicesQueryBoolMaxClauseCount?: pulumi.Input<number>;
+    indicesQueryBoolMaxClauseCount?: pulumi.Input<number | undefined>;
     /**
      * Maximum number of file chunks sent in parallel for each recovery. Default: `2`
      */
-    indicesRecoveryMaxConcurrentFileChunks?: pulumi.Input<number>;
+    indicesRecoveryMaxConcurrentFileChunks?: pulumi.Input<number | undefined>;
     /**
      * Limits total inbound and outbound recovery traffic for each node, expressed in mb per second. Applies to both peer recoveries as well as snapshot recoveries (i.e., restores from a snapshot). Default: `40`
      */
-    indicesRecoveryMaxMbPerSec?: pulumi.Input<number>;
+    indicesRecoveryMaxMbPerSec?: pulumi.Input<number | undefined>;
     /**
      * Specifies whether ISM is enabled or not. Default: `true`
      */
-    ismEnabled?: pulumi.Input<boolean>;
+    ismEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document. Default: `true`
      */
-    ismHistoryEnabled?: pulumi.Input<boolean>;
+    ismHistoryEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Maximum age before rolling over the audit history index, in hours. Default: `24`
      */
-    ismHistoryMaxAgeHours?: pulumi.Input<number>;
+    ismHistoryMaxAgeHours?: pulumi.Input<number | undefined>;
     /**
      * Maximum number of documents before rolling over the audit history index. Default: `2500000`
      */
-    ismHistoryMaxDocs?: pulumi.Input<number>;
+    ismHistoryMaxDocs?: pulumi.Input<number | undefined>;
     /**
      * The time between rollover checks for the audit history index, in hours. Default: `8`
      */
-    ismHistoryRolloverCheckPeriodHours?: pulumi.Input<number>;
+    ismHistoryRolloverCheckPeriodHours?: pulumi.Input<number | undefined>;
     /**
      * Length of time long audit history indices are kept, in days. Default: `30`
      */
-    ismHistoryRolloverRetentionPeriodDays?: pulumi.Input<number>;
+    ismHistoryRolloverRetentionPeriodDays?: pulumi.Input<number | undefined>;
     /**
      * Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default: `false`
      */
-    overrideMainResponseVersion?: pulumi.Input<boolean>;
+    overrideMainResponseVersion?: pulumi.Input<boolean | undefined>;
     /**
      * Enable or disable filtering of alerting by backend roles. Default: `false`
      */
-    pluginsAlertingFilterByBackendRolesEnabled?: pulumi.Input<boolean>;
+    pluginsAlertingFilterByBackendRolesEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Allowlist of remote IP addresses for reindexing. Changing this value will cause all OpenSearch instances to restart.
      */
-    reindexRemoteWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
+    reindexRemoteWhitelists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Limits the number of inline script compilations within a period of time. Default is `use-context`
      */
-    scriptMaxCompilationsRate?: pulumi.Input<string>;
+    scriptMaxCompilationsRate?: pulumi.Input<string | undefined>;
     /**
      * Maximum number of aggregation buckets allowed in a single response. Default: `10000`
      */
-    searchMaxBuckets?: pulumi.Input<number>;
+    searchMaxBuckets?: pulumi.Input<number | undefined>;
     /**
      * Size of queue for operations in the analyze thread pool.
      */
-    threadPoolAnalyzeQueueSize?: pulumi.Input<number>;
+    threadPoolAnalyzeQueueSize?: pulumi.Input<number | undefined>;
     /**
      * Number of workers in the analyze operation thread pool. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
      */
-    threadPoolAnalyzeSize?: pulumi.Input<number>;
+    threadPoolAnalyzeSize?: pulumi.Input<number | undefined>;
     /**
      * Number of workers in the force merge operation thread pool. This pool is used for forcing a merge between shards of one or more indices. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
      */
-    threadPoolForceMergeSize?: pulumi.Input<number>;
+    threadPoolForceMergeSize?: pulumi.Input<number | undefined>;
     /**
      * Size of queue for operations in the get thread pool.
      */
-    threadPoolGetQueueSize?: pulumi.Input<number>;
+    threadPoolGetQueueSize?: pulumi.Input<number | undefined>;
     /**
      * Number of workers in the get operation thread pool. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
      */
-    threadPoolGetSize?: pulumi.Input<number>;
+    threadPoolGetSize?: pulumi.Input<number | undefined>;
     /**
      * Size of queue for operations in the search thread pool.
      */
-    threadPoolSearchQueueSize?: pulumi.Input<number>;
+    threadPoolSearchQueueSize?: pulumi.Input<number | undefined>;
     /**
      * Number of workers in the search operation thread pool. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
      */
-    threadPoolSearchSize?: pulumi.Input<number>;
+    threadPoolSearchSize?: pulumi.Input<number | undefined>;
     /**
      * Size of queue for operations in the search throttled thread pool.
      */
-    threadPoolSearchThrottledQueueSize?: pulumi.Input<number>;
+    threadPoolSearchThrottledQueueSize?: pulumi.Input<number | undefined>;
     /**
      * Number of workers in the search throttled operation thread pool. This pool is used for searching frozen indices. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
      */
-    threadPoolSearchThrottledSize?: pulumi.Input<number>;
+    threadPoolSearchThrottledSize?: pulumi.Input<number | undefined>;
     /**
      * Size of queue for operations in the write thread pool.
      */
-    threadPoolWriteQueueSize?: pulumi.Input<number>;
+    threadPoolWriteQueueSize?: pulumi.Input<number | undefined>;
     /**
      * Number of workers in the write operation thread pool. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
      */
-    threadPoolWriteSize?: pulumi.Input<number>;
+    threadPoolWriteSize?: pulumi.Input<number | undefined>;
 }

@@ -35,7 +35,7 @@ import * as utilities from "./utilities";
  *     name: "example-1.0.0",
  * });
  * const exampleDroplet = new digitalocean.Droplet("example", {
- *     image: example.then(example => example.id),
+ *     image: output(example.then(example => example.id)).apply(x =>String(x)),
  *     name: "example-1",
  *     region: digitalocean.Region.NYC2,
  *     size: digitalocean.DropletSlug.DropletS1VCPU1GB,
@@ -184,7 +184,7 @@ export interface GetImageResult {
  *     name: "example-1.0.0",
  * });
  * const exampleDroplet = new digitalocean.Droplet("example", {
- *     image: example.then(example => example.id),
+ *     image: output(example.then(example => example.id)).apply(x =>String(x)),
  *     name: "example-1",
  *     region: digitalocean.Region.NYC2,
  *     size: digitalocean.DropletSlug.DropletS1VCPU1GB,
@@ -220,19 +220,19 @@ export interface GetImageOutputArgs {
     /**
      * The id of the image
      */
-    id?: pulumi.Input<number>;
+    id?: pulumi.Input<number | undefined>;
     /**
      * The name of the image.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The slug of the official image.
      *
      * If `name` is specified, you may also specify:
      */
-    slug?: pulumi.Input<string>;
+    slug?: pulumi.Input<string | undefined>;
     /**
      * Restrict the search to one of the following categories of images:
      */
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
 }

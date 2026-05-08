@@ -238,35 +238,35 @@ export interface DatabaseLogsinkOpensearchState {
     /**
      * CA certificate for TLS verification in PEM format. Can be specified using `file()` function. This field is marked as sensitive.
      */
-    caCert?: pulumi.Input<string>;
+    caCert?: pulumi.Input<string | undefined>;
     /**
      * UUID of the source database cluster that will forward logs.
      */
-    clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * HTTPS URL to the OpenSearch or Elasticsearch cluster (e.g., `https://host:port`). **Note**: Only HTTPS URLs are supported.
      */
-    endpoint?: pulumi.Input<string>;
+    endpoint?: pulumi.Input<string | undefined>;
     /**
      * Maximum number of days to retain indices. Must be 1 or greater.
      */
-    indexDaysMax?: pulumi.Input<number>;
+    indexDaysMax?: pulumi.Input<number | undefined>;
     /**
      * Prefix for the indices where logs will be stored.
      */
-    indexPrefix?: pulumi.Input<string>;
+    indexPrefix?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier for the logsink as returned by the DigitalOcean API.
      */
-    logsinkId?: pulumi.Input<string>;
+    logsinkId?: pulumi.Input<string | undefined>;
     /**
      * Display name for the logsink. **Note**: This is immutable; changing it will force recreation of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Request timeout for log deliveries in seconds. Must be 1 or greater.
      */
-    timeoutSeconds?: pulumi.Input<number>;
+    timeoutSeconds?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -276,7 +276,7 @@ export interface DatabaseLogsinkOpensearchArgs {
     /**
      * CA certificate for TLS verification in PEM format. Can be specified using `file()` function. This field is marked as sensitive.
      */
-    caCert?: pulumi.Input<string>;
+    caCert?: pulumi.Input<string | undefined>;
     /**
      * UUID of the source database cluster that will forward logs.
      */
@@ -288,7 +288,7 @@ export interface DatabaseLogsinkOpensearchArgs {
     /**
      * Maximum number of days to retain indices. Must be 1 or greater.
      */
-    indexDaysMax?: pulumi.Input<number>;
+    indexDaysMax?: pulumi.Input<number | undefined>;
     /**
      * Prefix for the indices where logs will be stored.
      */
@@ -296,9 +296,9 @@ export interface DatabaseLogsinkOpensearchArgs {
     /**
      * Display name for the logsink. **Note**: This is immutable; changing it will force recreation of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Request timeout for log deliveries in seconds. Must be 1 or greater.
      */
-    timeoutSeconds?: pulumi.Input<number>;
+    timeoutSeconds?: pulumi.Input<number | undefined>;
 }

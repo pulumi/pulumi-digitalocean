@@ -28,7 +28,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.Index.GetDedicatedInferenceTokens.Invoke(new()
+        ///     var example = DigitalOcean.GetDedicatedInferenceTokens.Invoke(new()
         ///     {
         ///         DedicatedInferenceId = exampleDigitaloceanDedicatedInference.Id,
         ///     });
@@ -50,7 +50,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var filtered = DigitalOcean.Index.GetDedicatedInferenceTokens.Invoke(new()
+        ///     var filtered = DigitalOcean.GetDedicatedInferenceTokens.Invoke(new()
         ///     {
         ///         DedicatedInferenceId = example.Id,
         ///         Filters = new[]
@@ -89,7 +89,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.Index.GetDedicatedInferenceTokens.Invoke(new()
+        ///     var example = DigitalOcean.GetDedicatedInferenceTokens.Invoke(new()
         ///     {
         ///         DedicatedInferenceId = exampleDigitaloceanDedicatedInference.Id,
         ///     });
@@ -111,7 +111,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var filtered = DigitalOcean.Index.GetDedicatedInferenceTokens.Invoke(new()
+        ///     var filtered = DigitalOcean.GetDedicatedInferenceTokens.Invoke(new()
         ///     {
         ///         DedicatedInferenceId = example.Id,
         ///         Filters = new[]
@@ -150,7 +150,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.Index.GetDedicatedInferenceTokens.Invoke(new()
+        ///     var example = DigitalOcean.GetDedicatedInferenceTokens.Invoke(new()
         ///     {
         ///         DedicatedInferenceId = exampleDigitaloceanDedicatedInference.Id,
         ///     });
@@ -172,7 +172,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var filtered = DigitalOcean.Index.GetDedicatedInferenceTokens.Invoke(new()
+        ///     var filtered = DigitalOcean.GetDedicatedInferenceTokens.Invoke(new()
         ///     {
         ///         DedicatedInferenceId = example.Id,
         ///         Filters = new[]

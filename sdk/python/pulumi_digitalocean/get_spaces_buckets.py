@@ -139,8 +139,8 @@ def get_spaces_buckets(filters: Optional[Sequence[Union['GetSpacesBucketsFilterA
         filters=pulumi.get(__ret__, 'filters'),
         id=pulumi.get(__ret__, 'id'),
         sorts=pulumi.get(__ret__, 'sorts'))
-def get_spaces_buckets_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetSpacesBucketsFilterArgs', 'GetSpacesBucketsFilterArgsDict']]]]] = None,
-                              sorts: Optional[pulumi.Input[Optional[Sequence[Union['GetSpacesBucketsSortArgs', 'GetSpacesBucketsSortArgsDict']]]]] = None,
+def get_spaces_buckets_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetSpacesBucketsFilterArgs', 'GetSpacesBucketsFilterArgsDict']]]]] = None,
+                              sorts: pulumi.Input[Optional[Optional[Sequence[Union['GetSpacesBucketsSortArgs', 'GetSpacesBucketsSortArgsDict']]]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSpacesBucketsResult]:
     """
     Get information on Spaces buckets for use in other resources, with the ability to filter and sort the results.

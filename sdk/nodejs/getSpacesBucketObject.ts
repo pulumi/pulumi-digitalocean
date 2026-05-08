@@ -192,7 +192,7 @@ export interface GetSpacesBucketObjectOutputArgs {
      * The full path to the object inside the bucket
      */
     key: pulumi.Input<string>;
-    range?: pulumi.Input<string>;
+    range?: pulumi.Input<string | undefined>;
     /**
      * The slug of the region where the bucket is stored.
      */
@@ -200,5 +200,5 @@ export interface GetSpacesBucketObjectOutputArgs {
     /**
      * Specific version ID of the object returned (defaults to latest version)
      */
-    versionId?: pulumi.Input<string>;
+    versionId?: pulumi.Input<string | undefined>;
 }

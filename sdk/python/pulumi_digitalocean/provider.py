@@ -19,15 +19,15 @@ __all__ = ['ProviderArgs', 'Provider']
 @pulumi.input_type
 class ProviderArgs:
     def __init__(__self__, *,
-                 api_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 http_retry_max: Optional[pulumi.Input[_builtins.int]] = None,
-                 http_retry_wait_max: Optional[pulumi.Input[_builtins.float]] = None,
-                 http_retry_wait_min: Optional[pulumi.Input[_builtins.float]] = None,
-                 requests_per_second: Optional[pulumi.Input[_builtins.float]] = None,
-                 spaces_access_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 spaces_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 spaces_secret_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 token: Optional[pulumi.Input[_builtins.str]] = None):
+                 api_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 http_retry_max: pulumi.Input[Optional[_builtins.int]] = None,
+                 http_retry_wait_max: pulumi.Input[Optional[_builtins.float]] = None,
+                 http_retry_wait_min: pulumi.Input[Optional[_builtins.float]] = None,
+                 requests_per_second: pulumi.Input[Optional[_builtins.float]] = None,
+                 spaces_access_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 spaces_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 spaces_secret_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 token: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Provider resource.
 
@@ -66,110 +66,110 @@ class ProviderArgs:
 
     @_builtins.property
     @pulumi.getter(name="apiEndpoint")
-    def api_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL to use for the DigitalOcean API.
         """
         return pulumi.get(self, "api_endpoint")
 
     @api_endpoint.setter
-    def api_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="httpRetryMax")
-    def http_retry_max(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def http_retry_max(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of retries on a failed API request.
         """
         return pulumi.get(self, "http_retry_max")
 
     @http_retry_max.setter
-    def http_retry_max(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def http_retry_max(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "http_retry_max", value)
 
     @_builtins.property
     @pulumi.getter(name="httpRetryWaitMax")
-    def http_retry_wait_max(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def http_retry_wait_max(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The maximum wait time (in seconds) between failed API requests.
         """
         return pulumi.get(self, "http_retry_wait_max")
 
     @http_retry_wait_max.setter
-    def http_retry_wait_max(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def http_retry_wait_max(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "http_retry_wait_max", value)
 
     @_builtins.property
     @pulumi.getter(name="httpRetryWaitMin")
-    def http_retry_wait_min(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def http_retry_wait_min(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The minimum wait time (in seconds) between failed API requests.
         """
         return pulumi.get(self, "http_retry_wait_min")
 
     @http_retry_wait_min.setter
-    def http_retry_wait_min(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def http_retry_wait_min(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "http_retry_wait_min", value)
 
     @_builtins.property
     @pulumi.getter(name="requestsPerSecond")
-    def requests_per_second(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def requests_per_second(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The rate of requests per second to limit the HTTP client.
         """
         return pulumi.get(self, "requests_per_second")
 
     @requests_per_second.setter
-    def requests_per_second(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def requests_per_second(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "requests_per_second", value)
 
     @_builtins.property
     @pulumi.getter(name="spacesAccessId")
-    def spaces_access_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spaces_access_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The access key ID for Spaces API operations.
         """
         return pulumi.get(self, "spaces_access_id")
 
     @spaces_access_id.setter
-    def spaces_access_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spaces_access_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spaces_access_id", value)
 
     @_builtins.property
     @pulumi.getter(name="spacesEndpoint")
-    def spaces_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spaces_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL to use for the DigitalOcean Spaces API.
         """
         return pulumi.get(self, "spaces_endpoint")
 
     @spaces_endpoint.setter
-    def spaces_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spaces_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spaces_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="spacesSecretKey")
-    def spaces_secret_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spaces_secret_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The secret access key for Spaces API operations.
         """
         return pulumi.get(self, "spaces_secret_key")
 
     @spaces_secret_key.setter
-    def spaces_secret_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spaces_secret_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spaces_secret_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The token key for API operations.
         """
         return pulumi.get(self, "token")
 
     @token.setter
-    def token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token", value)
 
 
@@ -179,15 +179,15 @@ class Provider(pulumi.ProviderResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 http_retry_max: Optional[pulumi.Input[_builtins.int]] = None,
-                 http_retry_wait_max: Optional[pulumi.Input[_builtins.float]] = None,
-                 http_retry_wait_min: Optional[pulumi.Input[_builtins.float]] = None,
-                 requests_per_second: Optional[pulumi.Input[_builtins.float]] = None,
-                 spaces_access_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 spaces_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 spaces_secret_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 token: Optional[pulumi.Input[_builtins.str]] = None,
+                 api_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 http_retry_max: pulumi.Input[Optional[_builtins.int]] = None,
+                 http_retry_wait_max: pulumi.Input[Optional[_builtins.float]] = None,
+                 http_retry_wait_min: pulumi.Input[Optional[_builtins.float]] = None,
+                 requests_per_second: pulumi.Input[Optional[_builtins.float]] = None,
+                 spaces_access_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 spaces_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 spaces_secret_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 token: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The provider type for the digitalocean package. By default, resources use package-wide configuration
@@ -236,15 +236,15 @@ class Provider(pulumi.ProviderResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 http_retry_max: Optional[pulumi.Input[_builtins.int]] = None,
-                 http_retry_wait_max: Optional[pulumi.Input[_builtins.float]] = None,
-                 http_retry_wait_min: Optional[pulumi.Input[_builtins.float]] = None,
-                 requests_per_second: Optional[pulumi.Input[_builtins.float]] = None,
-                 spaces_access_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 spaces_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 spaces_secret_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 token: Optional[pulumi.Input[_builtins.str]] = None,
+                 api_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 http_retry_max: pulumi.Input[Optional[_builtins.int]] = None,
+                 http_retry_wait_max: pulumi.Input[Optional[_builtins.float]] = None,
+                 http_retry_wait_min: pulumi.Input[Optional[_builtins.float]] = None,
+                 requests_per_second: pulumi.Input[Optional[_builtins.float]] = None,
+                 spaces_access_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 spaces_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 spaces_secret_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 token: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

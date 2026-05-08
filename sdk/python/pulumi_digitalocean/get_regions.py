@@ -146,8 +146,8 @@ def get_regions(filters: Optional[Sequence[Union['GetRegionsFilterArgs', 'GetReg
         id=pulumi.get(__ret__, 'id'),
         regions=pulumi.get(__ret__, 'regions'),
         sorts=pulumi.get(__ret__, 'sorts'))
-def get_regions_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetRegionsFilterArgs', 'GetRegionsFilterArgsDict']]]]] = None,
-                       sorts: Optional[pulumi.Input[Optional[Sequence[Union['GetRegionsSortArgs', 'GetRegionsSortArgsDict']]]]] = None,
+def get_regions_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetRegionsFilterArgs', 'GetRegionsFilterArgsDict']]]]] = None,
+                       sorts: pulumi.Input[Optional[Optional[Sequence[Union['GetRegionsSortArgs', 'GetRegionsSortArgsDict']]]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegionsResult]:
     """
     Retrieve information about all supported DigitalOcean regions, with the ability to

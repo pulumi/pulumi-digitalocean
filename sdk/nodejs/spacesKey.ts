@@ -152,23 +152,23 @@ export interface SpacesKeyState {
     /**
      * The access key ID of the key
      */
-    accessKey?: pulumi.Input<string>;
+    accessKey?: pulumi.Input<string | undefined>;
     /**
      * The creation time of the key
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * A grant for the key (documented below).
      */
-    grants?: pulumi.Input<pulumi.Input<inputs.SpacesKeyGrant>[]>;
+    grants?: pulumi.Input<pulumi.Input<inputs.SpacesKeyGrant>[] | undefined>;
     /**
      * The name of the key
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The access key secret of the key
      */
-    secretKey?: pulumi.Input<string>;
+    secretKey?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -178,9 +178,9 @@ export interface SpacesKeyArgs {
     /**
      * A grant for the key (documented below).
      */
-    grants?: pulumi.Input<pulumi.Input<inputs.SpacesKeyGrant>[]>;
+    grants?: pulumi.Input<pulumi.Input<inputs.SpacesKeyGrant>[] | undefined>;
     /**
      * The name of the key
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

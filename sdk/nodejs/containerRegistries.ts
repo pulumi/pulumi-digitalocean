@@ -82,20 +82,20 @@ export class ContainerRegistries extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ContainerRegistries resources.
  */
 export interface ContainerRegistriesState {
-    createdAt?: pulumi.Input<string>;
-    endpoint?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    region?: pulumi.Input<string>;
-    serverUrl?: pulumi.Input<string>;
-    storageUsageBytes?: pulumi.Input<number>;
-    subscriptionTierSlug?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
+    endpoint?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    region?: pulumi.Input<string | undefined>;
+    serverUrl?: pulumi.Input<string | undefined>;
+    storageUsageBytes?: pulumi.Input<number | undefined>;
+    subscriptionTierSlug?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a ContainerRegistries resource.
  */
 export interface ContainerRegistriesArgs {
-    name?: pulumi.Input<string>;
-    region?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    region?: pulumi.Input<string | undefined>;
     subscriptionTierSlug: pulumi.Input<string>;
 }

@@ -135,27 +135,27 @@ export interface DropletSnapshotState {
     /**
      * The date and time the Droplet snapshot was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Droplet from which the snapshot will be taken.
      */
-    dropletId?: pulumi.Input<string>;
+    dropletId?: pulumi.Input<string | undefined>;
     /**
      * The minimum size in gigabytes required for a Droplet to be created based on this snapshot.
      */
-    minDiskSize?: pulumi.Input<number>;
+    minDiskSize?: pulumi.Input<number | undefined>;
     /**
      * A name for the Droplet snapshot.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * A list of DigitalOcean region "slugs" indicating where the droplet snapshot is available.
      */
-    regions?: pulumi.Input<pulumi.Input<string>[]>;
+    regions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The billable size of the Droplet snapshot in gigabytes.
      */
-    size?: pulumi.Input<number>;
+    size?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -169,5 +169,5 @@ export interface DropletSnapshotArgs {
     /**
      * A name for the Droplet snapshot.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

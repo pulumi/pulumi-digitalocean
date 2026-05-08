@@ -26,7 +26,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.Index.GetKubernetesVersions.Invoke();
+        ///     var example = DigitalOcean.GetKubernetesVersions.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -45,9 +45,9 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.Index.GetKubernetesVersions.Invoke();
+        ///     var example = DigitalOcean.GetKubernetesVersions.Invoke();
         /// 
-        ///     var example_cluster = new DigitalOcean.Index.KubernetesCluster("example-cluster", new()
+        ///     var example_cluster = new DigitalOcean.KubernetesCluster("example-cluster", new()
         ///     {
         ///         Name = "example-cluster",
         ///         Region = DigitalOcean.Region.LON1,
@@ -73,12 +73,12 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.Index.GetKubernetesVersions.Invoke(new()
+        ///     var example = DigitalOcean.GetKubernetesVersions.Invoke(new()
         ///     {
         ///         VersionPrefix = "1.22.",
         ///     });
         /// 
-        ///     var example_cluster = new DigitalOcean.Index.KubernetesCluster("example-cluster", new()
+        ///     var example_cluster = new DigitalOcean.KubernetesCluster("example-cluster", new()
         ///     {
         ///         Name = "example-cluster",
         ///         Region = DigitalOcean.Region.LON1,
@@ -112,7 +112,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.Index.GetKubernetesVersions.Invoke();
+        ///     var example = DigitalOcean.GetKubernetesVersions.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -131,9 +131,9 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.Index.GetKubernetesVersions.Invoke();
+        ///     var example = DigitalOcean.GetKubernetesVersions.Invoke();
         /// 
-        ///     var example_cluster = new DigitalOcean.Index.KubernetesCluster("example-cluster", new()
+        ///     var example_cluster = new DigitalOcean.KubernetesCluster("example-cluster", new()
         ///     {
         ///         Name = "example-cluster",
         ///         Region = DigitalOcean.Region.LON1,
@@ -159,12 +159,12 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.Index.GetKubernetesVersions.Invoke(new()
+        ///     var example = DigitalOcean.GetKubernetesVersions.Invoke(new()
         ///     {
         ///         VersionPrefix = "1.22.",
         ///     });
         /// 
-        ///     var example_cluster = new DigitalOcean.Index.KubernetesCluster("example-cluster", new()
+        ///     var example_cluster = new DigitalOcean.KubernetesCluster("example-cluster", new()
         ///     {
         ///         Name = "example-cluster",
         ///         Region = DigitalOcean.Region.LON1,
@@ -198,7 +198,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.Index.GetKubernetesVersions.Invoke();
+        ///     var example = DigitalOcean.GetKubernetesVersions.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -217,9 +217,9 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.Index.GetKubernetesVersions.Invoke();
+        ///     var example = DigitalOcean.GetKubernetesVersions.Invoke();
         /// 
-        ///     var example_cluster = new DigitalOcean.Index.KubernetesCluster("example-cluster", new()
+        ///     var example_cluster = new DigitalOcean.KubernetesCluster("example-cluster", new()
         ///     {
         ///         Name = "example-cluster",
         ///         Region = DigitalOcean.Region.LON1,
@@ -245,12 +245,12 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.Index.GetKubernetesVersions.Invoke(new()
+        ///     var example = DigitalOcean.GetKubernetesVersions.Invoke(new()
         ///     {
         ///         VersionPrefix = "1.22.",
         ///     });
         /// 
-        ///     var example_cluster = new DigitalOcean.Index.KubernetesCluster("example-cluster", new()
+        ///     var example_cluster = new DigitalOcean.KubernetesCluster("example-cluster", new()
         ///     {
         ///         Name = "example-cluster",
         ///         Region = DigitalOcean.Region.LON1,

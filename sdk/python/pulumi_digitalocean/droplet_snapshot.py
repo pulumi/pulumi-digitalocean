@@ -20,7 +20,7 @@ __all__ = ['DropletSnapshotArgs', 'DropletSnapshot']
 class DropletSnapshotArgs:
     def __init__(__self__, *,
                  droplet_id: pulumi.Input[_builtins.str],
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a DropletSnapshot resource.
 
@@ -45,26 +45,26 @@ class DropletSnapshotArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A name for the Droplet snapshot.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
 class _DropletSnapshotState:
     def __init__(__self__, *,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 droplet_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 min_disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 regions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 size: Optional[pulumi.Input[_builtins.float]] = None):
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 droplet_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 min_disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 size: pulumi.Input[Optional[_builtins.float]] = None):
         """
         Input properties used for looking up and filtering DropletSnapshot resources.
 
@@ -90,74 +90,74 @@ class _DropletSnapshotState:
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date and time the Droplet snapshot was created.
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="dropletId")
-    def droplet_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def droplet_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Droplet from which the snapshot will be taken.
         """
         return pulumi.get(self, "droplet_id")
 
     @droplet_id.setter
-    def droplet_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def droplet_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "droplet_id", value)
 
     @_builtins.property
     @pulumi.getter(name="minDiskSize")
-    def min_disk_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_disk_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum size in gigabytes required for a Droplet to be created based on this snapshot.
         """
         return pulumi.get(self, "min_disk_size")
 
     @min_disk_size.setter
-    def min_disk_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_disk_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_disk_size", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A name for the Droplet snapshot.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def regions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of DigitalOcean region "slugs" indicating where the droplet snapshot is available.
         """
         return pulumi.get(self, "regions")
 
     @regions.setter
-    def regions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def regions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "regions", value)
 
     @_builtins.property
     @pulumi.getter
-    def size(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def size(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The billable size of the Droplet snapshot in gigabytes.
         """
         return pulumi.get(self, "size")
 
     @size.setter
-    def size(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def size(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "size", value)
 
 
@@ -167,8 +167,8 @@ class DropletSnapshot(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 droplet_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 droplet_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a resource which can be used to create a snapshot from an existing DigitalOcean Droplet.
@@ -262,8 +262,8 @@ class DropletSnapshot(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 droplet_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 droplet_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -291,12 +291,12 @@ class DropletSnapshot(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            droplet_id: Optional[pulumi.Input[_builtins.str]] = None,
-            min_disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            regions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            size: Optional[pulumi.Input[_builtins.float]] = None) -> 'DropletSnapshot':
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            droplet_id: pulumi.Input[Optional[_builtins.str]] = None,
+            min_disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            size: pulumi.Input[Optional[_builtins.float]] = None) -> 'DropletSnapshot':
         """
         Get an existing DropletSnapshot resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

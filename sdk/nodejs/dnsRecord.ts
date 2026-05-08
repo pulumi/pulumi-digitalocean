@@ -178,47 +178,47 @@ export interface DnsRecordState {
     /**
      * The domain to add the record to.
      */
-    domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string | undefined>;
     /**
      * The flags of the record. Only valid when type is `CAA`. Must be between 0 and 255.
      */
-    flags?: pulumi.Input<number>;
+    flags?: pulumi.Input<number | undefined>;
     /**
      * The FQDN of the record
      */
-    fqdn?: pulumi.Input<string>;
+    fqdn?: pulumi.Input<string | undefined>;
     /**
      * The hostname of the record. Use `@` for records on domain's name itself.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The port of the record. Only valid when type is `SRV`.  Must be between 1 and 65535.
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * The priority of the record. Only valid when type is `MX` or `SRV`. Must be between 0 and 65535.
      */
-    priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number | undefined>;
     /**
      * The tag of the record. Only valid when type is `CAA`. Must be one of `issue`, `issuewild`, or `iodef`.
      */
-    tag?: pulumi.Input<string>;
+    tag?: pulumi.Input<string | undefined>;
     /**
      * The time to live for the record, in seconds. Must be at least 0. Defaults to 1800.
      */
-    ttl?: pulumi.Input<number>;
+    ttl?: pulumi.Input<number | undefined>;
     /**
      * The type of record. Must be one of `A`, `AAAA`, `CAA`, `CNAME`, `MX`, `NS`, `TXT`, or `SRV`.
      */
-    type?: pulumi.Input<string | enums.RecordType>;
+    type?: pulumi.Input<string | enums.RecordType | undefined>;
     /**
      * The value of the record.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
     /**
      * The weight of the record. Only valid when type is `SRV`.  Must be between 0 and 65535.
      */
-    weight?: pulumi.Input<number>;
+    weight?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -232,27 +232,27 @@ export interface DnsRecordArgs {
     /**
      * The flags of the record. Only valid when type is `CAA`. Must be between 0 and 255.
      */
-    flags?: pulumi.Input<number>;
+    flags?: pulumi.Input<number | undefined>;
     /**
      * The hostname of the record. Use `@` for records on domain's name itself.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The port of the record. Only valid when type is `SRV`.  Must be between 1 and 65535.
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * The priority of the record. Only valid when type is `MX` or `SRV`. Must be between 0 and 65535.
      */
-    priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number | undefined>;
     /**
      * The tag of the record. Only valid when type is `CAA`. Must be one of `issue`, `issuewild`, or `iodef`.
      */
-    tag?: pulumi.Input<string>;
+    tag?: pulumi.Input<string | undefined>;
     /**
      * The time to live for the record, in seconds. Must be at least 0. Defaults to 1800.
      */
-    ttl?: pulumi.Input<number>;
+    ttl?: pulumi.Input<number | undefined>;
     /**
      * The type of record. Must be one of `A`, `AAAA`, `CAA`, `CNAME`, `MX`, `NS`, `TXT`, or `SRV`.
      */
@@ -264,5 +264,5 @@ export interface DnsRecordArgs {
     /**
      * The weight of the record. Only valid when type is `SRV`.  Must be between 0 and 65535.
      */
-    weight?: pulumi.Input<number>;
+    weight?: pulumi.Input<number | undefined>;
 }

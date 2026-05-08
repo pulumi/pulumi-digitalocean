@@ -226,10 +226,10 @@ def get_volume_snapshot(most_recent: Optional[_builtins.bool] = None,
         size=pulumi.get(__ret__, 'size'),
         tags=pulumi.get(__ret__, 'tags'),
         volume_id=pulumi.get(__ret__, 'volume_id'))
-def get_volume_snapshot_output(most_recent: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                               name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_volume_snapshot_output(most_recent: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                               name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVolumeSnapshotResult]:
     """
     Volume snapshots are saved instances of a block storage volume. Use this data

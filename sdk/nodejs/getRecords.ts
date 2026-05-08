@@ -125,10 +125,10 @@ export interface GetRecordsOutputArgs {
      * Filter the results.
      * The `filter` block is documented below.
      */
-    filters?: pulumi.Input<pulumi.Input<inputs.GetRecordsFilterArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetRecordsFilterArgs>[] | undefined>;
     /**
      * Sort the results.
      * The `sort` block is documented below.
      */
-    sorts?: pulumi.Input<pulumi.Input<inputs.GetRecordsSortArgs>[]>;
+    sorts?: pulumi.Input<pulumi.Input<inputs.GetRecordsSortArgs>[] | undefined>;
 }

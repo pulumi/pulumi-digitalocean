@@ -254,51 +254,51 @@ export interface DatabaseLogsinkRsyslogState {
     /**
      * CA certificate for TLS verification in PEM format. Can be specified using `file()` function.
      */
-    caCert?: pulumi.Input<string>;
+    caCert?: pulumi.Input<string | undefined>;
     /**
      * Client certificate for mutual TLS authentication in PEM format. **Note**: Requires `tls` to be `true`.
      */
-    clientCert?: pulumi.Input<string>;
+    clientCert?: pulumi.Input<string | undefined>;
     /**
      * Client private key for mutual TLS authentication in PEM format. **Note**: Requires `tls` to be `true`. This field is marked as sensitive.
      */
-    clientKey?: pulumi.Input<string>;
+    clientKey?: pulumi.Input<string | undefined>;
     /**
      * UUID of the source database cluster that will forward logs.
      */
-    clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * Log format to use. Must be one of `rfc5424` (default), `rfc3164`, or `custom`.
      */
-    format?: pulumi.Input<string>;
+    format?: pulumi.Input<string | undefined>;
     /**
      * Custom logline template. **Required** when `format` is set to `custom`. Supports rsyslog-style templating with the following tokens: `%HOSTNAME%`, `%app-name%`, `%msg%`, `%msgid%`, `%pri%`, `%procid%`, `%structured-data%`, `%timestamp%`, and `%timestamp:::date-rfc3339%`.
      */
-    logline?: pulumi.Input<string>;
+    logline?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier for the logsink as returned by the DigitalOcean API.
      */
-    logsinkId?: pulumi.Input<string>;
+    logsinkId?: pulumi.Input<string | undefined>;
     /**
      * Display name for the logsink. **Note**: This is immutable; changing it will force recreation of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Port number for the rsyslog server. Must be between 1 and 65535.
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * Hostname or IP address of the rsyslog server.
      */
-    server?: pulumi.Input<string>;
+    server?: pulumi.Input<string | undefined>;
     /**
      * Content of the structured data block for RFC5424 messages.
      */
-    structuredData?: pulumi.Input<string>;
+    structuredData?: pulumi.Input<string | undefined>;
     /**
      * Enable TLS encryption for the rsyslog connection. Defaults to `false`. **Note**: It is highly recommended to enable TLS as log messages may contain sensitive information.
      */
-    tls?: pulumi.Input<boolean>;
+    tls?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -308,15 +308,15 @@ export interface DatabaseLogsinkRsyslogArgs {
     /**
      * CA certificate for TLS verification in PEM format. Can be specified using `file()` function.
      */
-    caCert?: pulumi.Input<string>;
+    caCert?: pulumi.Input<string | undefined>;
     /**
      * Client certificate for mutual TLS authentication in PEM format. **Note**: Requires `tls` to be `true`.
      */
-    clientCert?: pulumi.Input<string>;
+    clientCert?: pulumi.Input<string | undefined>;
     /**
      * Client private key for mutual TLS authentication in PEM format. **Note**: Requires `tls` to be `true`. This field is marked as sensitive.
      */
-    clientKey?: pulumi.Input<string>;
+    clientKey?: pulumi.Input<string | undefined>;
     /**
      * UUID of the source database cluster that will forward logs.
      */
@@ -324,15 +324,15 @@ export interface DatabaseLogsinkRsyslogArgs {
     /**
      * Log format to use. Must be one of `rfc5424` (default), `rfc3164`, or `custom`.
      */
-    format?: pulumi.Input<string>;
+    format?: pulumi.Input<string | undefined>;
     /**
      * Custom logline template. **Required** when `format` is set to `custom`. Supports rsyslog-style templating with the following tokens: `%HOSTNAME%`, `%app-name%`, `%msg%`, `%msgid%`, `%pri%`, `%procid%`, `%structured-data%`, `%timestamp%`, and `%timestamp:::date-rfc3339%`.
      */
-    logline?: pulumi.Input<string>;
+    logline?: pulumi.Input<string | undefined>;
     /**
      * Display name for the logsink. **Note**: This is immutable; changing it will force recreation of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Port number for the rsyslog server. Must be between 1 and 65535.
      */
@@ -344,9 +344,9 @@ export interface DatabaseLogsinkRsyslogArgs {
     /**
      * Content of the structured data block for RFC5424 messages.
      */
-    structuredData?: pulumi.Input<string>;
+    structuredData?: pulumi.Input<string | undefined>;
     /**
      * Enable TLS encryption for the rsyslog connection. Defaults to `false`. **Note**: It is highly recommended to enable TLS as log messages may contain sensitive information.
      */
-    tls?: pulumi.Input<boolean>;
+    tls?: pulumi.Input<boolean | undefined>;
 }

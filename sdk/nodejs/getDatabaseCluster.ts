@@ -180,5 +180,5 @@ export interface GetDatabaseClusterOutputArgs {
      * The name of the database cluster.
      */
     name: pulumi.Input<string>;
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

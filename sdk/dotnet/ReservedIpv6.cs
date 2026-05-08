@@ -25,7 +25,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foobar = new DigitalOcean.Index.ReservedIpv6("foobar", new()
+    ///     var foobar = new DigitalOcean.ReservedIpv6("foobar", new()
     ///     {
     ///         RegionSlug = "nyc3",
     ///     });

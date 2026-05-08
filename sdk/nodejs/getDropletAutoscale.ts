@@ -119,9 +119,9 @@ export interface GetDropletAutoscaleOutputArgs {
     /**
      * The ID of Droplet Autoscale pool.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The name of Droplet Autoscale pool.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

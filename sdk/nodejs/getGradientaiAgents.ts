@@ -53,7 +53,7 @@ export function getGradientaiAgentsOutput(args?: GetGradientaiAgentsOutputArgs, 
  * A collection of arguments for invoking getGradientaiAgents.
  */
 export interface GetGradientaiAgentsOutputArgs {
-    filters?: pulumi.Input<pulumi.Input<inputs.GetGradientaiAgentsFilterArgs>[]>;
-    onlyDeployed?: pulumi.Input<boolean>;
-    sorts?: pulumi.Input<pulumi.Input<inputs.GetGradientaiAgentsSortArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetGradientaiAgentsFilterArgs>[] | undefined>;
+    onlyDeployed?: pulumi.Input<boolean | undefined>;
+    sorts?: pulumi.Input<pulumi.Input<inputs.GetGradientaiAgentsSortArgs>[] | undefined>;
 }

@@ -22,10 +22,10 @@ class DatabaseLogsinkOpensearchArgs:
                  cluster_id: pulumi.Input[_builtins.str],
                  endpoint: pulumi.Input[_builtins.str],
                  index_prefix: pulumi.Input[_builtins.str],
-                 ca_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 index_days_max: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None):
+                 ca_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 index_days_max: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a DatabaseLogsinkOpensearch resource.
 
@@ -87,64 +87,64 @@ class DatabaseLogsinkOpensearchArgs:
 
     @_builtins.property
     @pulumi.getter(name="caCert")
-    def ca_cert(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ca_cert(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         CA certificate for TLS verification in PEM format. Can be specified using `file()` function. This field is marked as sensitive.
         """
         return pulumi.get(self, "ca_cert")
 
     @ca_cert.setter
-    def ca_cert(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ca_cert(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ca_cert", value)
 
     @_builtins.property
     @pulumi.getter(name="indexDaysMax")
-    def index_days_max(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def index_days_max(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of days to retain indices. Must be 1 or greater.
         """
         return pulumi.get(self, "index_days_max")
 
     @index_days_max.setter
-    def index_days_max(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def index_days_max(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "index_days_max", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Display name for the logsink. **Note**: This is immutable; changing it will force recreation of the resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="timeoutSeconds")
-    def timeout_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Request timeout for log deliveries in seconds. Must be 1 or greater.
         """
         return pulumi.get(self, "timeout_seconds")
 
     @timeout_seconds.setter
-    def timeout_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout_seconds", value)
 
 
 @pulumi.input_type
 class _DatabaseLogsinkOpensearchState:
     def __init__(__self__, *,
-                 ca_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 index_days_max: Optional[pulumi.Input[_builtins.int]] = None,
-                 index_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 logsink_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None):
+                 ca_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 index_days_max: pulumi.Input[Optional[_builtins.int]] = None,
+                 index_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 logsink_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering DatabaseLogsinkOpensearch resources.
 
@@ -176,98 +176,98 @@ class _DatabaseLogsinkOpensearchState:
 
     @_builtins.property
     @pulumi.getter(name="caCert")
-    def ca_cert(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ca_cert(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         CA certificate for TLS verification in PEM format. Can be specified using `file()` function. This field is marked as sensitive.
         """
         return pulumi.get(self, "ca_cert")
 
     @ca_cert.setter
-    def ca_cert(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ca_cert(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ca_cert", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         UUID of the source database cluster that will forward logs.
         """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
-    def cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         HTTPS URL to the OpenSearch or Elasticsearch cluster (e.g., `https://host:port`). **Note**: Only HTTPS URLs are supported.
         """
         return pulumi.get(self, "endpoint")
 
     @endpoint.setter
-    def endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="indexDaysMax")
-    def index_days_max(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def index_days_max(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of days to retain indices. Must be 1 or greater.
         """
         return pulumi.get(self, "index_days_max")
 
     @index_days_max.setter
-    def index_days_max(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def index_days_max(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "index_days_max", value)
 
     @_builtins.property
     @pulumi.getter(name="indexPrefix")
-    def index_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def index_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Prefix for the indices where logs will be stored.
         """
         return pulumi.get(self, "index_prefix")
 
     @index_prefix.setter
-    def index_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def index_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "index_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="logsinkId")
-    def logsink_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def logsink_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier for the logsink as returned by the DigitalOcean API.
         """
         return pulumi.get(self, "logsink_id")
 
     @logsink_id.setter
-    def logsink_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def logsink_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "logsink_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Display name for the logsink. **Note**: This is immutable; changing it will force recreation of the resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="timeoutSeconds")
-    def timeout_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Request timeout for log deliveries in seconds. Must be 1 or greater.
         """
         return pulumi.get(self, "timeout_seconds")
 
     @timeout_seconds.setter
-    def timeout_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout_seconds", value)
 
 
@@ -277,13 +277,13 @@ class DatabaseLogsinkOpensearch(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ca_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 index_days_max: Optional[pulumi.Input[_builtins.int]] = None,
-                 index_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None,
+                 ca_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 index_days_max: pulumi.Input[Optional[_builtins.int]] = None,
+                 index_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a DigitalOcean database logsink resource allowing you to forward logs from a managed database cluster to an external OpenSearch cluster or Elasticsearch endpoint.
@@ -538,13 +538,13 @@ class DatabaseLogsinkOpensearch(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ca_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 index_days_max: Optional[pulumi.Input[_builtins.int]] = None,
-                 index_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None,
+                 ca_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 index_days_max: pulumi.Input[Optional[_builtins.int]] = None,
+                 index_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -580,14 +580,14 @@ class DatabaseLogsinkOpensearch(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            ca_cert: Optional[pulumi.Input[_builtins.str]] = None,
-            cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-            index_days_max: Optional[pulumi.Input[_builtins.int]] = None,
-            index_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-            logsink_id: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None) -> 'DatabaseLogsinkOpensearch':
+            ca_cert: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            index_days_max: pulumi.Input[Optional[_builtins.int]] = None,
+            index_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            logsink_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None) -> 'DatabaseLogsinkOpensearch':
         """
         Get an existing DatabaseLogsinkOpensearch resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

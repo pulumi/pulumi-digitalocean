@@ -23,10 +23,10 @@ class DedicatedInferenceArgs:
     def __init__(__self__, *,
                  model_deployments: pulumi.Input[Sequence[pulumi.Input['DedicatedInferenceModelDeploymentArgs']]],
                  region: pulumi.Input[_builtins.str],
-                 enable_public_endpoint: Optional[pulumi.Input[_builtins.bool]] = None,
-                 hugging_face_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_uuid: Optional[pulumi.Input[_builtins.str]] = None):
+                 enable_public_endpoint: pulumi.Input[Optional[_builtins.bool]] = None,
+                 hugging_face_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_uuid: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a DedicatedInference resource.
 
@@ -74,67 +74,67 @@ class DedicatedInferenceArgs:
 
     @_builtins.property
     @pulumi.getter(name="enablePublicEndpoint")
-    def enable_public_endpoint(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_public_endpoint(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable a public HTTPS endpoint for the dedicated inference endpoint. Defaults to `false`. This field is immutable after creation and changing it forces a new resource.
         """
         return pulumi.get(self, "enable_public_endpoint")
 
     @enable_public_endpoint.setter
-    def enable_public_endpoint(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_public_endpoint(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_public_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="huggingFaceToken")
-    def hugging_face_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hugging_face_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A HuggingFace token for accessing gated models.
         """
         return pulumi.get(self, "hugging_face_token")
 
     @hugging_face_token.setter
-    def hugging_face_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hugging_face_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hugging_face_token", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A human-readable name for the dedicated inference endpoint.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcUuid")
-    def vpc_uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The UUID of the VPC to deploy the dedicated inference endpoint into. Changing this forces a new resource.
         """
         return pulumi.get(self, "vpc_uuid")
 
     @vpc_uuid.setter
-    def vpc_uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_uuid", value)
 
 
 @pulumi.input_type
 class _DedicatedInferenceState:
     def __init__(__self__, *,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_public_endpoint: Optional[pulumi.Input[_builtins.bool]] = None,
-                 hugging_face_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 model_deployments: Optional[pulumi.Input[Sequence[pulumi.Input['DedicatedInferenceModelDeploymentArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_endpoint_fqdn: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_endpoint_fqdn: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_uuid: Optional[pulumi.Input[_builtins.str]] = None):
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_public_endpoint: pulumi.Input[Optional[_builtins.bool]] = None,
+                 hugging_face_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 model_deployments: pulumi.Input[Optional[Sequence[pulumi.Input['DedicatedInferenceModelDeploymentArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_endpoint_fqdn: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_endpoint_fqdn: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_uuid: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DedicatedInference resources.
 
@@ -175,134 +175,134 @@ class _DedicatedInferenceState:
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date and time when the dedicated inference endpoint was created.
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="enablePublicEndpoint")
-    def enable_public_endpoint(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_public_endpoint(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable a public HTTPS endpoint for the dedicated inference endpoint. Defaults to `false`. This field is immutable after creation and changing it forces a new resource.
         """
         return pulumi.get(self, "enable_public_endpoint")
 
     @enable_public_endpoint.setter
-    def enable_public_endpoint(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_public_endpoint(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_public_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="huggingFaceToken")
-    def hugging_face_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hugging_face_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A HuggingFace token for accessing gated models.
         """
         return pulumi.get(self, "hugging_face_token")
 
     @hugging_face_token.setter
-    def hugging_face_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hugging_face_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hugging_face_token", value)
 
     @_builtins.property
     @pulumi.getter(name="modelDeployments")
-    def model_deployments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DedicatedInferenceModelDeploymentArgs']]]]:
+    def model_deployments(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DedicatedInferenceModelDeploymentArgs']]]]:
         """
         The list of model deployments to run on the dedicated inference endpoint. Each `model_deployments` block supports:
         """
         return pulumi.get(self, "model_deployments")
 
     @model_deployments.setter
-    def model_deployments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DedicatedInferenceModelDeploymentArgs']]]]):
+    def model_deployments(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DedicatedInferenceModelDeploymentArgs']]]]):
         pulumi.set(self, "model_deployments", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A human-readable name for the dedicated inference endpoint.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="privateEndpointFqdn")
-    def private_endpoint_fqdn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_endpoint_fqdn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The fully-qualified domain name of the private endpoint.
         """
         return pulumi.get(self, "private_endpoint_fqdn")
 
     @private_endpoint_fqdn.setter
-    def private_endpoint_fqdn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_endpoint_fqdn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_endpoint_fqdn", value)
 
     @_builtins.property
     @pulumi.getter(name="publicEndpointFqdn")
-    def public_endpoint_fqdn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def public_endpoint_fqdn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The fully-qualified domain name of the public endpoint, if enabled.
         """
         return pulumi.get(self, "public_endpoint_fqdn")
 
     @public_endpoint_fqdn.setter
-    def public_endpoint_fqdn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def public_endpoint_fqdn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "public_endpoint_fqdn", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region slug where the dedicated inference endpoint will be deployed. Changing this forces a new resource.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The current status of the dedicated inference endpoint.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date and time when the dedicated inference endpoint was last updated.
         """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated_at", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcUuid")
-    def vpc_uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The UUID of the VPC to deploy the dedicated inference endpoint into. Changing this forces a new resource.
         """
         return pulumi.get(self, "vpc_uuid")
 
     @vpc_uuid.setter
-    def vpc_uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_uuid", value)
 
 
@@ -312,12 +312,12 @@ class DedicatedInference(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 enable_public_endpoint: Optional[pulumi.Input[_builtins.bool]] = None,
-                 hugging_face_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 model_deployments: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DedicatedInferenceModelDeploymentArgs', 'DedicatedInferenceModelDeploymentArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_uuid: Optional[pulumi.Input[_builtins.str]] = None,
+                 enable_public_endpoint: pulumi.Input[Optional[_builtins.bool]] = None,
+                 hugging_face_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 model_deployments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DedicatedInferenceModelDeploymentArgs', 'DedicatedInferenceModelDeploymentArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_uuid: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a DigitalOcean Dedicated Inference resource. This can be used to create,
@@ -501,12 +501,12 @@ class DedicatedInference(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 enable_public_endpoint: Optional[pulumi.Input[_builtins.bool]] = None,
-                 hugging_face_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 model_deployments: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DedicatedInferenceModelDeploymentArgs', 'DedicatedInferenceModelDeploymentArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_uuid: Optional[pulumi.Input[_builtins.str]] = None,
+                 enable_public_endpoint: pulumi.Input[Optional[_builtins.bool]] = None,
+                 hugging_face_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 model_deployments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DedicatedInferenceModelDeploymentArgs', 'DedicatedInferenceModelDeploymentArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_uuid: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -543,17 +543,17 @@ class DedicatedInference(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            enable_public_endpoint: Optional[pulumi.Input[_builtins.bool]] = None,
-            hugging_face_token: Optional[pulumi.Input[_builtins.str]] = None,
-            model_deployments: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DedicatedInferenceModelDeploymentArgs', 'DedicatedInferenceModelDeploymentArgsDict']]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            private_endpoint_fqdn: Optional[pulumi.Input[_builtins.str]] = None,
-            public_endpoint_fqdn: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            updated_at: Optional[pulumi.Input[_builtins.str]] = None,
-            vpc_uuid: Optional[pulumi.Input[_builtins.str]] = None) -> 'DedicatedInference':
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_public_endpoint: pulumi.Input[Optional[_builtins.bool]] = None,
+            hugging_face_token: pulumi.Input[Optional[_builtins.str]] = None,
+            model_deployments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DedicatedInferenceModelDeploymentArgs', 'DedicatedInferenceModelDeploymentArgsDict']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            private_endpoint_fqdn: pulumi.Input[Optional[_builtins.str]] = None,
+            public_endpoint_fqdn: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_uuid: pulumi.Input[Optional[_builtins.str]] = None) -> 'DedicatedInference':
         """
         Get an existing DedicatedInference resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

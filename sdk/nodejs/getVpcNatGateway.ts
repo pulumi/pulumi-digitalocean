@@ -127,9 +127,9 @@ export interface GetVpcNatGatewayOutputArgs {
     /**
      * The ID of VPC NAT Gateway.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The name of VPC NAT Gateway.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

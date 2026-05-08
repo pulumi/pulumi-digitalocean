@@ -142,9 +142,9 @@ def get_dedicated_inference_tokens(dedicated_inference_id: Optional[_builtins.st
         id=pulumi.get(__ret__, 'id'),
         sorts=pulumi.get(__ret__, 'sorts'),
         tokens=pulumi.get(__ret__, 'tokens'))
-def get_dedicated_inference_tokens_output(dedicated_inference_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                          filters: Optional[pulumi.Input[Optional[Sequence[Union['GetDedicatedInferenceTokensFilterArgs', 'GetDedicatedInferenceTokensFilterArgsDict']]]]] = None,
-                                          sorts: Optional[pulumi.Input[Optional[Sequence[Union['GetDedicatedInferenceTokensSortArgs', 'GetDedicatedInferenceTokensSortArgsDict']]]]] = None,
+def get_dedicated_inference_tokens_output(dedicated_inference_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                          filters: pulumi.Input[Optional[Optional[Sequence[Union['GetDedicatedInferenceTokensFilterArgs', 'GetDedicatedInferenceTokensFilterArgsDict']]]]] = None,
+                                          sorts: pulumi.Input[Optional[Optional[Sequence[Union['GetDedicatedInferenceTokensSortArgs', 'GetDedicatedInferenceTokensSortArgsDict']]]]] = None,
                                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDedicatedInferenceTokensResult]:
     """
     Returns a list of API tokens for a dedicated inference endpoint, with the ability

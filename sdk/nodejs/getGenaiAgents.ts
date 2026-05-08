@@ -57,7 +57,7 @@ export function getGenaiAgentsOutput(args?: GetGenaiAgentsOutputArgs, opts?: pul
  * A collection of arguments for invoking getGenaiAgents.
  */
 export interface GetGenaiAgentsOutputArgs {
-    filters?: pulumi.Input<pulumi.Input<inputs.GetGenaiAgentsFilterArgs>[]>;
-    onlyDeployed?: pulumi.Input<boolean>;
-    sorts?: pulumi.Input<pulumi.Input<inputs.GetGenaiAgentsSortArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetGenaiAgentsFilterArgs>[] | undefined>;
+    onlyDeployed?: pulumi.Input<boolean | undefined>;
+    sorts?: pulumi.Input<pulumi.Input<inputs.GetGenaiAgentsSortArgs>[] | undefined>;
 }

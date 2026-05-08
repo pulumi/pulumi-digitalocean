@@ -318,163 +318,163 @@ export interface GradientaiAgentState {
     /**
      * AgentGuardrail represents a Guardrail attached to Gen AI Agent
      */
-    agentGuardrails?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentAgentGuardrail>[]>;
+    agentGuardrails?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentAgentGuardrail>[] | undefined>;
     /**
      * Anthropic API Key information
      */
-    anthropicApiKeys?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentAnthropicApiKey>[]>;
+    anthropicApiKeys?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentAnthropicApiKey>[] | undefined>;
     /**
      * Optional Anthropic API key ID to use with Anthropic models
      */
-    anthropicKeyUuid?: pulumi.Input<string>;
+    anthropicKeyUuid?: pulumi.Input<string | undefined>;
     /**
      * List of API Key Infos
      */
-    apiKeyInfos?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentApiKeyInfo>[]>;
+    apiKeyInfos?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentApiKeyInfo>[] | undefined>;
     /**
      * List of API Keys
      */
-    apiKeys?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentApiKey>[]>;
+    apiKeys?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentApiKey>[] | undefined>;
     /**
      * List of Chatbot Identifiers
      */
-    chatbotIdentifiers?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentChatbotIdentifier>[]>;
+    chatbotIdentifiers?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentChatbotIdentifier>[] | undefined>;
     /**
      * ChatBot configuration
      */
-    chatbots?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentChatbot>[]>;
+    chatbots?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentChatbot>[] | undefined>;
     /**
      * List of child agents
      */
-    childAgents?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentChildAgent>[]>;
+    childAgents?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentChildAgent>[] | undefined>;
     /**
      * Timestamp when the Agent was created
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * List of API Key Infos
      */
-    deployments?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentDeployment>[]>;
+    deployments?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentDeployment>[] | undefined>;
     /**
      * Description for the Agent
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * List of Functions
      */
-    functions?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentFunction>[]>;
+    functions?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentFunction>[] | undefined>;
     /**
      * If case condition
      */
-    ifCase?: pulumi.Input<string>;
+    ifCase?: pulumi.Input<string | undefined>;
     /**
      * Instruction for the Agent
      */
-    instruction?: pulumi.Input<string>;
+    instruction?: pulumi.Input<string | undefined>;
     /**
      * K value
      */
-    k?: pulumi.Input<number>;
+    k?: pulumi.Input<number | undefined>;
     /**
      * Ids of the knowledge base(s) to attach to the agent
      */
-    knowledgeBaseUuids?: pulumi.Input<pulumi.Input<string>[]>;
+    knowledgeBaseUuids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of Knowledge Bases
      */
-    knowledgeBases?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentKnowledgeBase>[]>;
+    knowledgeBases?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentKnowledgeBase>[] | undefined>;
     /**
      * Maximum tokens allowed
      */
-    maxTokens?: pulumi.Input<number>;
+    maxTokens?: pulumi.Input<number | undefined>;
     /**
      * Model UUID of the Agent
      */
-    modelUuid?: pulumi.Input<string>;
+    modelUuid?: pulumi.Input<string | undefined>;
     /**
      * Model of the Agent
      */
-    models?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentModel>[]>;
+    models?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentModel>[] | undefined>;
     /**
      * Name of the Agent
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * OpenAI API Key information
      */
-    openAiApiKeys?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentOpenAiApiKey>[]>;
+    openAiApiKeys?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentOpenAiApiKey>[] | undefined>;
     /**
      * Optional OpenAI API key ID to use with OpenAI models
      */
-    openAiKeyUuid?: pulumi.Input<string>;
+    openAiKeyUuid?: pulumi.Input<string | undefined>;
     /**
      * List of child agents
      */
-    parentAgents?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentParentAgent>[]>;
+    parentAgents?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentParentAgent>[] | undefined>;
     /**
      * Project ID of the Agent
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Indicates if the agent should provide citations in responses
      */
-    provideCitations?: pulumi.Input<boolean>;
+    provideCitations?: pulumi.Input<boolean | undefined>;
     /**
      * Region where the Agent is deployed
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Retrieval method used
      */
-    retrievalMethod?: pulumi.Input<string>;
+    retrievalMethod?: pulumi.Input<string | undefined>;
     /**
      * Timestamp when the route was created
      */
-    routeCreatedAt?: pulumi.Input<string>;
+    routeCreatedAt?: pulumi.Input<string | undefined>;
     /**
      * User who created the route
      */
-    routeCreatedBy?: pulumi.Input<string>;
+    routeCreatedBy?: pulumi.Input<string | undefined>;
     /**
      * Route name
      */
-    routeName?: pulumi.Input<string>;
+    routeName?: pulumi.Input<string | undefined>;
     /**
      * Route UUID
      */
-    routeUuid?: pulumi.Input<string>;
+    routeUuid?: pulumi.Input<string | undefined>;
     /**
      * List of Tags
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Agent temperature setting
      */
-    temperature?: pulumi.Input<number>;
+    temperature?: pulumi.Input<number | undefined>;
     /**
      * Agent Template
      */
-    templates?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentTemplate>[]>;
+    templates?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentTemplate>[] | undefined>;
     /**
      * Top P sampling parameter
      */
-    topP?: pulumi.Input<number>;
+    topP?: pulumi.Input<number | undefined>;
     /**
      * Timestamp when the Agent was updated
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * URL for the Agent
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * User ID linked with the Agent
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
     /**
      * Identifier for the workspace
      */
-    workspaceUuid?: pulumi.Input<string>;
+    workspaceUuid?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -484,55 +484,55 @@ export interface GradientaiAgentArgs {
     /**
      * AgentGuardrail represents a Guardrail attached to Gen AI Agent
      */
-    agentGuardrails?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentAgentGuardrail>[]>;
+    agentGuardrails?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentAgentGuardrail>[] | undefined>;
     /**
      * Anthropic API Key information
      */
-    anthropicApiKeys?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentAnthropicApiKey>[]>;
+    anthropicApiKeys?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentAnthropicApiKey>[] | undefined>;
     /**
      * Optional Anthropic API key ID to use with Anthropic models
      */
-    anthropicKeyUuid?: pulumi.Input<string>;
+    anthropicKeyUuid?: pulumi.Input<string | undefined>;
     /**
      * List of API Key Infos
      */
-    apiKeyInfos?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentApiKeyInfo>[]>;
+    apiKeyInfos?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentApiKeyInfo>[] | undefined>;
     /**
      * List of API Keys
      */
-    apiKeys?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentApiKey>[]>;
+    apiKeys?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentApiKey>[] | undefined>;
     /**
      * List of Chatbot Identifiers
      */
-    chatbotIdentifiers?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentChatbotIdentifier>[]>;
+    chatbotIdentifiers?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentChatbotIdentifier>[] | undefined>;
     /**
      * ChatBot configuration
      */
-    chatbots?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentChatbot>[]>;
+    chatbots?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentChatbot>[] | undefined>;
     /**
      * List of child agents
      */
-    childAgents?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentChildAgent>[]>;
+    childAgents?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentChildAgent>[] | undefined>;
     /**
      * Timestamp when the Agent was created
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * List of API Key Infos
      */
-    deployments?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentDeployment>[]>;
+    deployments?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentDeployment>[] | undefined>;
     /**
      * Description for the Agent
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * List of Functions
      */
-    functions?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentFunction>[]>;
+    functions?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentFunction>[] | undefined>;
     /**
      * If case condition
      */
-    ifCase?: pulumi.Input<string>;
+    ifCase?: pulumi.Input<string | undefined>;
     /**
      * Instruction for the Agent
      */
@@ -540,19 +540,19 @@ export interface GradientaiAgentArgs {
     /**
      * K value
      */
-    k?: pulumi.Input<number>;
+    k?: pulumi.Input<number | undefined>;
     /**
      * Ids of the knowledge base(s) to attach to the agent
      */
-    knowledgeBaseUuids?: pulumi.Input<pulumi.Input<string>[]>;
+    knowledgeBaseUuids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of Knowledge Bases
      */
-    knowledgeBases?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentKnowledgeBase>[]>;
+    knowledgeBases?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentKnowledgeBase>[] | undefined>;
     /**
      * Maximum tokens allowed
      */
-    maxTokens?: pulumi.Input<number>;
+    maxTokens?: pulumi.Input<number | undefined>;
     /**
      * Model UUID of the Agent
      */
@@ -560,23 +560,23 @@ export interface GradientaiAgentArgs {
     /**
      * Model of the Agent
      */
-    models?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentModel>[]>;
+    models?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentModel>[] | undefined>;
     /**
      * Name of the Agent
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * OpenAI API Key information
      */
-    openAiApiKeys?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentOpenAiApiKey>[]>;
+    openAiApiKeys?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentOpenAiApiKey>[] | undefined>;
     /**
      * Optional OpenAI API key ID to use with OpenAI models
      */
-    openAiKeyUuid?: pulumi.Input<string>;
+    openAiKeyUuid?: pulumi.Input<string | undefined>;
     /**
      * List of child agents
      */
-    parentAgents?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentParentAgent>[]>;
+    parentAgents?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentParentAgent>[] | undefined>;
     /**
      * Project ID of the Agent
      */
@@ -584,7 +584,7 @@ export interface GradientaiAgentArgs {
     /**
      * Indicates if the agent should provide citations in responses
      */
-    provideCitations?: pulumi.Input<boolean>;
+    provideCitations?: pulumi.Input<boolean | undefined>;
     /**
      * Region where the Agent is deployed
      */
@@ -592,45 +592,45 @@ export interface GradientaiAgentArgs {
     /**
      * Retrieval method used
      */
-    retrievalMethod?: pulumi.Input<string>;
+    retrievalMethod?: pulumi.Input<string | undefined>;
     /**
      * User who created the route
      */
-    routeCreatedBy?: pulumi.Input<string>;
+    routeCreatedBy?: pulumi.Input<string | undefined>;
     /**
      * Route name
      */
-    routeName?: pulumi.Input<string>;
+    routeName?: pulumi.Input<string | undefined>;
     /**
      * Route UUID
      */
-    routeUuid?: pulumi.Input<string>;
+    routeUuid?: pulumi.Input<string | undefined>;
     /**
      * List of Tags
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Agent temperature setting
      */
-    temperature?: pulumi.Input<number>;
+    temperature?: pulumi.Input<number | undefined>;
     /**
      * Agent Template
      */
-    templates?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentTemplate>[]>;
+    templates?: pulumi.Input<pulumi.Input<inputs.GradientaiAgentTemplate>[] | undefined>;
     /**
      * Top P sampling parameter
      */
-    topP?: pulumi.Input<number>;
+    topP?: pulumi.Input<number | undefined>;
     /**
      * URL for the Agent
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * User ID linked with the Agent
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
     /**
      * Identifier for the workspace
      */
-    workspaceUuid?: pulumi.Input<string>;
+    workspaceUuid?: pulumi.Input<string | undefined>;
 }

@@ -24,10 +24,10 @@ class UptimeAlertArgs:
                  check_id: pulumi.Input[_builtins.str],
                  notifications: pulumi.Input[Sequence[pulumi.Input['UptimeAlertNotificationArgs']]],
                  type: pulumi.Input[_builtins.str],
-                 comparison: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.str]] = None,
-                 threshold: Optional[pulumi.Input[_builtins.int]] = None):
+                 comparison: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.str]] = None,
+                 threshold: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a UptimeAlert resource.
 
@@ -89,63 +89,63 @@ class UptimeAlertArgs:
 
     @_builtins.property
     @pulumi.getter
-    def comparison(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comparison(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The comparison operator used against the alert's threshold. Must be one of `greater_than` or `less_than`.
         """
         return pulumi.get(self, "comparison")
 
     @comparison.setter
-    def comparison(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comparison(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comparison", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A human-friendly display name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Period of time the threshold must be exceeded to trigger the alert. Must be one of `2m`, `3m`, `5m`, `10m`, `15m`, `30m` or `1h`.
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter
-    def threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The threshold at which the alert will enter a trigger state. The specific threshold is dependent on the alert type.
         """
         return pulumi.get(self, "threshold")
 
     @threshold.setter
-    def threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "threshold", value)
 
 
 @pulumi.input_type
 class _UptimeAlertState:
     def __init__(__self__, *,
-                 check_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 comparison: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notifications: Optional[pulumi.Input[Sequence[pulumi.Input['UptimeAlertNotificationArgs']]]] = None,
-                 period: Optional[pulumi.Input[_builtins.str]] = None,
-                 threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 check_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 comparison: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notifications: pulumi.Input[Optional[Sequence[pulumi.Input['UptimeAlertNotificationArgs']]]] = None,
+                 period: pulumi.Input[Optional[_builtins.str]] = None,
+                 threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering UptimeAlert resources.
 
@@ -174,86 +174,86 @@ class _UptimeAlertState:
 
     @_builtins.property
     @pulumi.getter(name="checkId")
-    def check_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def check_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A unique identifier for a check
         """
         return pulumi.get(self, "check_id")
 
     @check_id.setter
-    def check_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def check_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "check_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def comparison(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comparison(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The comparison operator used against the alert's threshold. Must be one of `greater_than` or `less_than`.
         """
         return pulumi.get(self, "comparison")
 
     @comparison.setter
-    def comparison(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comparison(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comparison", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A human-friendly display name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def notifications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UptimeAlertNotificationArgs']]]]:
+    def notifications(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['UptimeAlertNotificationArgs']]]]:
         """
         The notification settings for a trigger alert.
         """
         return pulumi.get(self, "notifications")
 
     @notifications.setter
-    def notifications(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UptimeAlertNotificationArgs']]]]):
+    def notifications(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['UptimeAlertNotificationArgs']]]]):
         pulumi.set(self, "notifications", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Period of time the threshold must be exceeded to trigger the alert. Must be one of `2m`, `3m`, `5m`, `10m`, `15m`, `30m` or `1h`.
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter
-    def threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The threshold at which the alert will enter a trigger state. The specific threshold is dependent on the alert type.
         """
         return pulumi.get(self, "threshold")
 
     @threshold.setter
-    def threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "threshold", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of health check to perform. Must be one of `latency`, `down`, `down_global` or `ssl_expiry`.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -263,13 +263,13 @@ class UptimeAlert(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 check_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 comparison: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UptimeAlertNotificationArgs', 'UptimeAlertNotificationArgsDict']]]]] = None,
-                 period: Optional[pulumi.Input[_builtins.str]] = None,
-                 threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 check_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 comparison: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notifications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UptimeAlertNotificationArgs', 'UptimeAlertNotificationArgsDict']]]]] = None,
+                 period: pulumi.Input[Optional[_builtins.str]] = None,
+                 threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a [DigitalOcean Uptime Alerts](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Uptime/operation/uptime_create_alert)
@@ -330,13 +330,13 @@ class UptimeAlert(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 check_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 comparison: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UptimeAlertNotificationArgs', 'UptimeAlertNotificationArgsDict']]]]] = None,
-                 period: Optional[pulumi.Input[_builtins.str]] = None,
-                 threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 check_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 comparison: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notifications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UptimeAlertNotificationArgs', 'UptimeAlertNotificationArgsDict']]]]] = None,
+                 period: pulumi.Input[Optional[_builtins.str]] = None,
+                 threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -369,13 +369,13 @@ class UptimeAlert(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            check_id: Optional[pulumi.Input[_builtins.str]] = None,
-            comparison: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            notifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UptimeAlertNotificationArgs', 'UptimeAlertNotificationArgsDict']]]]] = None,
-            period: Optional[pulumi.Input[_builtins.str]] = None,
-            threshold: Optional[pulumi.Input[_builtins.int]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None) -> 'UptimeAlert':
+            check_id: pulumi.Input[Optional[_builtins.str]] = None,
+            comparison: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            notifications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UptimeAlertNotificationArgs', 'UptimeAlertNotificationArgsDict']]]]] = None,
+            period: pulumi.Input[Optional[_builtins.str]] = None,
+            threshold: pulumi.Input[Optional[_builtins.int]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> 'UptimeAlert':
         """
         Get an existing UptimeAlert resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

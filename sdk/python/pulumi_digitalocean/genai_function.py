@@ -24,8 +24,8 @@ class GenaiFunctionArgs:
                  faas_namespace: pulumi.Input[_builtins.str],
                  function_name: pulumi.Input[_builtins.str],
                  input_schema: pulumi.Input[_builtins.str],
-                 faas_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 output_schema: Optional[pulumi.Input[_builtins.str]] = None):
+                 faas_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 output_schema: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a GenaiFunction resource.
 
@@ -109,40 +109,40 @@ class GenaiFunctionArgs:
 
     @_builtins.property
     @pulumi.getter(name="faasName")
-    def faas_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def faas_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The model to use for the GradientAI resource.
         """
         return pulumi.get(self, "faas_name")
 
     @faas_name.setter
-    def faas_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def faas_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "faas_name", value)
 
     @_builtins.property
     @pulumi.getter(name="outputSchema")
-    def output_schema(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def output_schema(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The output schema of the GradientAI resource.
         """
         return pulumi.get(self, "output_schema")
 
     @output_schema.setter
-    def output_schema(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def output_schema(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "output_schema", value)
 
 
 @pulumi.input_type
 class _GenaiFunctionState:
     def __init__(__self__, *,
-                 agent_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 faas_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 faas_namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 function_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 function_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 input_schema: Optional[pulumi.Input[_builtins.str]] = None,
-                 output_schema: Optional[pulumi.Input[_builtins.str]] = None):
+                 agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 faas_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 faas_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 function_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 function_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 input_schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 output_schema: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GenaiFunction resources.
 
@@ -174,98 +174,98 @@ class _GenaiFunctionState:
 
     @_builtins.property
     @pulumi.getter(name="agentId")
-    def agent_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def agent_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the GradientAI resource.
         """
         return pulumi.get(self, "agent_id")
 
     @agent_id.setter
-    def agent_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def agent_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "agent_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region where the GradientAI resource will be created.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="faasName")
-    def faas_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def faas_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The model to use for the GradientAI resource.
         """
         return pulumi.get(self, "faas_name")
 
     @faas_name.setter
-    def faas_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def faas_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "faas_name", value)
 
     @_builtins.property
     @pulumi.getter(name="faasNamespace")
-    def faas_namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def faas_namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The current status of the GradientAI resource.
         """
         return pulumi.get(self, "faas_namespace")
 
     @faas_namespace.setter
-    def faas_namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def faas_namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "faas_namespace", value)
 
     @_builtins.property
     @pulumi.getter(name="functionName")
-    def function_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def function_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation timestamp of the GradientAI resource.
         """
         return pulumi.get(self, "function_name")
 
     @function_name.setter
-    def function_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def function_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "function_name", value)
 
     @_builtins.property
     @pulumi.getter(name="functionUuid")
-    def function_uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def function_uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier of the GradientAI function.
         """
         return pulumi.get(self, "function_uuid")
 
     @function_uuid.setter
-    def function_uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def function_uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "function_uuid", value)
 
     @_builtins.property
     @pulumi.getter(name="inputSchema")
-    def input_schema(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def input_schema(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The input schema of the GradientAI resource.
         """
         return pulumi.get(self, "input_schema")
 
     @input_schema.setter
-    def input_schema(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def input_schema(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "input_schema", value)
 
     @_builtins.property
     @pulumi.getter(name="outputSchema")
-    def output_schema(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def output_schema(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The output schema of the GradientAI resource.
         """
         return pulumi.get(self, "output_schema")
 
     @output_schema.setter
-    def output_schema(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def output_schema(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "output_schema", value)
 
 
@@ -280,13 +280,13 @@ class GenaiFunction(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 agent_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 faas_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 faas_namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 function_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 input_schema: Optional[pulumi.Input[_builtins.str]] = None,
-                 output_schema: Optional[pulumi.Input[_builtins.str]] = None,
+                 agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 faas_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 faas_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 function_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 input_schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 output_schema: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Create a GenaiFunction resource with the given unique name, props, and options.
@@ -325,13 +325,13 @@ class GenaiFunction(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 agent_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 faas_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 faas_namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 function_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 input_schema: Optional[pulumi.Input[_builtins.str]] = None,
-                 output_schema: Optional[pulumi.Input[_builtins.str]] = None,
+                 agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 faas_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 faas_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 function_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 input_schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 output_schema: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         pulumi.log.warn("""GenaiFunction is deprecated: digitalocean.GenaiFunction has been deprecated in favor of digitalocean.GradientaiFunction""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -370,14 +370,14 @@ class GenaiFunction(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            agent_id: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            faas_name: Optional[pulumi.Input[_builtins.str]] = None,
-            faas_namespace: Optional[pulumi.Input[_builtins.str]] = None,
-            function_name: Optional[pulumi.Input[_builtins.str]] = None,
-            function_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-            input_schema: Optional[pulumi.Input[_builtins.str]] = None,
-            output_schema: Optional[pulumi.Input[_builtins.str]] = None) -> 'GenaiFunction':
+            agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            faas_name: pulumi.Input[Optional[_builtins.str]] = None,
+            faas_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            function_name: pulumi.Input[Optional[_builtins.str]] = None,
+            function_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+            input_schema: pulumi.Input[Optional[_builtins.str]] = None,
+            output_schema: pulumi.Input[Optional[_builtins.str]] = None) -> 'GenaiFunction':
         """
         Get an existing GenaiFunction resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

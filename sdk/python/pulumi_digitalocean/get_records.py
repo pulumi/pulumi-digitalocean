@@ -136,9 +136,9 @@ def get_records(domain: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         records=pulumi.get(__ret__, 'records'),
         sorts=pulumi.get(__ret__, 'sorts'))
-def get_records_output(domain: Optional[pulumi.Input[_builtins.str]] = None,
-                       filters: Optional[pulumi.Input[Optional[Sequence[Union['GetRecordsFilterArgs', 'GetRecordsFilterArgsDict']]]]] = None,
-                       sorts: Optional[pulumi.Input[Optional[Sequence[Union['GetRecordsSortArgs', 'GetRecordsSortArgsDict']]]]] = None,
+def get_records_output(domain: pulumi.Input[Optional[_builtins.str]] = None,
+                       filters: pulumi.Input[Optional[Optional[Sequence[Union['GetRecordsFilterArgs', 'GetRecordsFilterArgsDict']]]]] = None,
+                       sorts: pulumi.Input[Optional[Optional[Sequence[Union['GetRecordsSortArgs', 'GetRecordsSortArgsDict']]]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRecordsResult]:
     """
     Retrieve information about all DNS records within a domain, with the ability to filter and sort the results.

@@ -26,7 +26,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.Index.GetApp.Invoke(new()
+        ///     var example = DigitalOcean.GetApp.Invoke(new()
         ///     {
         ///         AppId = "e665d18d-7b56-44a9-92ce-31979174d544",
         ///     });
@@ -56,7 +56,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.Index.GetApp.Invoke(new()
+        ///     var example = DigitalOcean.GetApp.Invoke(new()
         ///     {
         ///         AppId = "e665d18d-7b56-44a9-92ce-31979174d544",
         ///     });
@@ -86,7 +86,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.Index.GetApp.Invoke(new()
+        ///     var example = DigitalOcean.GetApp.Invoke(new()
         ///     {
         ///         AppId = "e665d18d-7b56-44a9-92ce-31979174d544",
         ///     });

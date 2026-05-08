@@ -25,10 +25,10 @@ class PartnerAttachmentArgs:
                  naas_provider: pulumi.Input[_builtins.str],
                  region: pulumi.Input[_builtins.str],
                  vpc_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 bgp: Optional[pulumi.Input['PartnerAttachmentBgpArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 redundancy_zone: Optional[pulumi.Input[_builtins.str]] = None):
+                 bgp: pulumi.Input[Optional['PartnerAttachmentBgpArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 redundancy_zone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a PartnerAttachment resource.
 
@@ -103,64 +103,64 @@ class PartnerAttachmentArgs:
 
     @_builtins.property
     @pulumi.getter
-    def bgp(self) -> Optional[pulumi.Input['PartnerAttachmentBgpArgs']]:
+    def bgp(self) -> pulumi.Input[Optional['PartnerAttachmentBgpArgs']]:
         return pulumi.get(self, "bgp")
 
     @bgp.setter
-    def bgp(self, value: Optional[pulumi.Input['PartnerAttachmentBgpArgs']]):
+    def bgp(self, value: pulumi.Input[Optional['PartnerAttachmentBgpArgs']]):
         pulumi.set(self, "bgp", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Partner Attachment
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="parentUuid")
-    def parent_uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent_uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The UUID of the Parent Partner Attachment
         """
         return pulumi.get(self, "parent_uuid")
 
     @parent_uuid.setter
-    def parent_uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent_uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent_uuid", value)
 
     @_builtins.property
     @pulumi.getter(name="redundancyZone")
-    def redundancy_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def redundancy_zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The redundancy zone for the NaaS
         """
         return pulumi.get(self, "redundancy_zone")
 
     @redundancy_zone.setter
-    def redundancy_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def redundancy_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "redundancy_zone", value)
 
 
 @pulumi.input_type
 class _PartnerAttachmentState:
     def __init__(__self__, *,
-                 bgp: Optional[pulumi.Input['PartnerAttachmentBgpArgs']] = None,
-                 childrens: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 connection_bandwidth_in_mbps: Optional[pulumi.Input[_builtins.int]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 naas_provider: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 redundancy_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 bgp: pulumi.Input[Optional['PartnerAttachmentBgpArgs']] = None,
+                 childrens: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 connection_bandwidth_in_mbps: pulumi.Input[Optional[_builtins.int]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 naas_provider: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 redundancy_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering PartnerAttachment resources.
 
@@ -200,131 +200,131 @@ class _PartnerAttachmentState:
 
     @_builtins.property
     @pulumi.getter
-    def bgp(self) -> Optional[pulumi.Input['PartnerAttachmentBgpArgs']]:
+    def bgp(self) -> pulumi.Input[Optional['PartnerAttachmentBgpArgs']]:
         return pulumi.get(self, "bgp")
 
     @bgp.setter
-    def bgp(self, value: Optional[pulumi.Input['PartnerAttachmentBgpArgs']]):
+    def bgp(self, value: pulumi.Input[Optional['PartnerAttachmentBgpArgs']]):
         pulumi.set(self, "bgp", value)
 
     @_builtins.property
     @pulumi.getter
-    def childrens(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def childrens(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The children uuids of Partner Attachment
         """
         return pulumi.get(self, "childrens")
 
     @childrens.setter
-    def childrens(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def childrens(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "childrens", value)
 
     @_builtins.property
     @pulumi.getter(name="connectionBandwidthInMbps")
-    def connection_bandwidth_in_mbps(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def connection_bandwidth_in_mbps(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The connection bandwidth in Mbps
         """
         return pulumi.get(self, "connection_bandwidth_in_mbps")
 
     @connection_bandwidth_in_mbps.setter
-    def connection_bandwidth_in_mbps(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def connection_bandwidth_in_mbps(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "connection_bandwidth_in_mbps", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date and time when the Partner Attachment was created
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="naasProvider")
-    def naas_provider(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def naas_provider(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The NaaS provider
         """
         return pulumi.get(self, "naas_provider")
 
     @naas_provider.setter
-    def naas_provider(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def naas_provider(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "naas_provider", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Partner Attachment
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="parentUuid")
-    def parent_uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent_uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The UUID of the Parent Partner Attachment
         """
         return pulumi.get(self, "parent_uuid")
 
     @parent_uuid.setter
-    def parent_uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent_uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent_uuid", value)
 
     @_builtins.property
     @pulumi.getter(name="redundancyZone")
-    def redundancy_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def redundancy_zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The redundancy zone for the NaaS
         """
         return pulumi.get(self, "redundancy_zone")
 
     @redundancy_zone.setter
-    def redundancy_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def redundancy_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "redundancy_zone", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region where the Partner Attachment will be created
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The state of the Partner Attachment
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcIds")
-    def vpc_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def vpc_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of VPC IDs to attach the Partner Attachment to
         """
         return pulumi.get(self, "vpc_ids")
 
     @vpc_ids.setter
-    def vpc_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def vpc_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "vpc_ids", value)
 
 
@@ -334,14 +334,14 @@ class PartnerAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bgp: Optional[pulumi.Input[Union['PartnerAttachmentBgpArgs', 'PartnerAttachmentBgpArgsDict']]] = None,
-                 connection_bandwidth_in_mbps: Optional[pulumi.Input[_builtins.int]] = None,
-                 naas_provider: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 redundancy_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 bgp: pulumi.Input[Optional[Union['PartnerAttachmentBgpArgs', 'PartnerAttachmentBgpArgsDict']]] = None,
+                 connection_bandwidth_in_mbps: pulumi.Input[Optional[_builtins.int]] = None,
+                 naas_provider: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 redundancy_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Create a PartnerAttachment resource with the given unique name, props, and options.
@@ -380,14 +380,14 @@ class PartnerAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bgp: Optional[pulumi.Input[Union['PartnerAttachmentBgpArgs', 'PartnerAttachmentBgpArgsDict']]] = None,
-                 connection_bandwidth_in_mbps: Optional[pulumi.Input[_builtins.int]] = None,
-                 naas_provider: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 redundancy_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 bgp: pulumi.Input[Optional[Union['PartnerAttachmentBgpArgs', 'PartnerAttachmentBgpArgsDict']]] = None,
+                 connection_bandwidth_in_mbps: pulumi.Input[Optional[_builtins.int]] = None,
+                 naas_provider: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 redundancy_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -426,17 +426,17 @@ class PartnerAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bgp: Optional[pulumi.Input[Union['PartnerAttachmentBgpArgs', 'PartnerAttachmentBgpArgsDict']]] = None,
-            childrens: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            connection_bandwidth_in_mbps: Optional[pulumi.Input[_builtins.int]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            naas_provider: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            parent_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-            redundancy_zone: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            vpc_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'PartnerAttachment':
+            bgp: pulumi.Input[Optional[Union['PartnerAttachmentBgpArgs', 'PartnerAttachmentBgpArgsDict']]] = None,
+            childrens: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            connection_bandwidth_in_mbps: pulumi.Input[Optional[_builtins.int]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            naas_provider: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+            redundancy_zone: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'PartnerAttachment':
         """
         Get an existing PartnerAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

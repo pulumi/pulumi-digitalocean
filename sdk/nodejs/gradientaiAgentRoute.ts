@@ -102,24 +102,24 @@ export interface GradientaiAgentRouteState {
     /**
      * The UUID of the child agent.
      */
-    childAgentUuid?: pulumi.Input<string>;
+    childAgentUuid?: pulumi.Input<string | undefined>;
     /**
      * if-case condition for the route.
      */
-    ifCase?: pulumi.Input<string>;
+    ifCase?: pulumi.Input<string | undefined>;
     /**
      * The UUID of the parent agent.
      */
-    parentAgentUuid?: pulumi.Input<string>;
-    rollback?: pulumi.Input<boolean>;
+    parentAgentUuid?: pulumi.Input<string | undefined>;
+    rollback?: pulumi.Input<boolean | undefined>;
     /**
      * A name for the route.
      */
-    routeName?: pulumi.Input<string>;
+    routeName?: pulumi.Input<string | undefined>;
     /**
      * The UUID of the linkage
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -133,14 +133,14 @@ export interface GradientaiAgentRouteArgs {
     /**
      * if-case condition for the route.
      */
-    ifCase?: pulumi.Input<string>;
+    ifCase?: pulumi.Input<string | undefined>;
     /**
      * The UUID of the parent agent.
      */
     parentAgentUuid: pulumi.Input<string>;
-    rollback?: pulumi.Input<boolean>;
+    rollback?: pulumi.Input<boolean | undefined>;
     /**
      * A name for the route.
      */
-    routeName?: pulumi.Input<string>;
+    routeName?: pulumi.Input<string | undefined>;
 }

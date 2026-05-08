@@ -24,12 +24,12 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new DigitalOcean.Index.ReservedIp("example", new()
+    ///     var example = new DigitalOcean.ReservedIp("example", new()
     ///     {
     ///         Region = "nyc3",
     ///     });
     /// 
-    ///     var exampleDroplet = new DigitalOcean.Index.Droplet("example", new()
+    ///     var exampleDroplet = new DigitalOcean.Droplet("example", new()
     ///     {
     ///         Name = "baz",
     ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
@@ -39,7 +39,7 @@ namespace Pulumi.DigitalOcean
     ///         PrivateNetworking = true,
     ///     });
     /// 
-    ///     var exampleReservedIpAssignment = new DigitalOcean.Index.ReservedIpAssignment("example", new()
+    ///     var exampleReservedIpAssignment = new DigitalOcean.ReservedIpAssignment("example", new()
     ///     {
     ///         IpAddress = example.IpAddress,
     ///         DropletId = exampleDroplet.Id,

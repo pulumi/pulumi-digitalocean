@@ -88,10 +88,10 @@ class SpacesBucketLoggingArgs:
 @pulumi.input_type
 class _SpacesBucketLoggingState:
     def __init__(__self__, *,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_prefix: Optional[pulumi.Input[_builtins.str]] = None):
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_prefix: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SpacesBucketLogging resources.
 
@@ -111,50 +111,50 @@ class _SpacesBucketLoggingState:
 
     @_builtins.property
     @pulumi.getter
-    def bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the bucket which will be logged.
         """
         return pulumi.get(self, "bucket")
 
     @bucket.setter
-    def bucket(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bucket", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region where the bucket resides.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="targetBucket")
-    def target_bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the bucket which will store the logs.
         """
         return pulumi.get(self, "target_bucket")
 
     @target_bucket.setter
-    def target_bucket(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_bucket", value)
 
     @_builtins.property
     @pulumi.getter(name="targetPrefix")
-    def target_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The prefix for the log files.
         """
         return pulumi.get(self, "target_prefix")
 
     @target_prefix.setter
-    def target_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_prefix", value)
 
 
@@ -164,10 +164,10 @@ class SpacesBucketLogging(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_prefix: Optional[pulumi.Input[_builtins.str]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_prefix: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a bucket logging resource for Spaces, DigitalOcean's object storage product.
@@ -303,10 +303,10 @@ class SpacesBucketLogging(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_prefix: Optional[pulumi.Input[_builtins.str]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_prefix: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -338,10 +338,10 @@ class SpacesBucketLogging(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bucket: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            target_bucket: Optional[pulumi.Input[_builtins.str]] = None,
-            target_prefix: Optional[pulumi.Input[_builtins.str]] = None) -> 'SpacesBucketLogging':
+            bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            target_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            target_prefix: pulumi.Input[Optional[_builtins.str]] = None) -> 'SpacesBucketLogging':
         """
         Get an existing SpacesBucketLogging resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

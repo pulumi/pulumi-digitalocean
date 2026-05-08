@@ -157,19 +157,19 @@ export interface VpcPeeringState {
     /**
      * The date and time of when the VPC Peering was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * A name for the VPC Peering. Must be unique and contain alphanumeric characters, dashes, and periods only.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The status of the VPC Peering.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * A set of two VPC IDs to be peered.
      */
-    vpcIds?: pulumi.Input<pulumi.Input<string>[]>;
+    vpcIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -179,7 +179,7 @@ export interface VpcPeeringArgs {
     /**
      * A name for the VPC Peering. Must be unique and contain alphanumeric characters, dashes, and periods only.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * A set of two VPC IDs to be peered.
      */

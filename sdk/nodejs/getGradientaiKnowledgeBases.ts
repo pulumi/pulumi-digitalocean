@@ -49,6 +49,6 @@ export function getGradientaiKnowledgeBasesOutput(args?: GetGradientaiKnowledgeB
  * A collection of arguments for invoking getGradientaiKnowledgeBases.
  */
 export interface GetGradientaiKnowledgeBasesOutputArgs {
-    filters?: pulumi.Input<pulumi.Input<inputs.GetGradientaiKnowledgeBasesFilterArgs>[]>;
-    sorts?: pulumi.Input<pulumi.Input<inputs.GetGradientaiKnowledgeBasesSortArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetGradientaiKnowledgeBasesFilterArgs>[] | undefined>;
+    sorts?: pulumi.Input<pulumi.Input<inputs.GetGradientaiKnowledgeBasesSortArgs>[] | undefined>;
 }

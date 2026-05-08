@@ -200,8 +200,8 @@ def get_project(id: Optional[_builtins.str] = None,
         purpose=pulumi.get(__ret__, 'purpose'),
         resources=pulumi.get(__ret__, 'resources'),
         updated_at=pulumi.get(__ret__, 'updated_at'))
-def get_project_output(id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_project_output(id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectResult]:
     """
     Get information on a single DigitalOcean project. If neither the `id` nor `name` attributes are provided,
