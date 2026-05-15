@@ -3854,6 +3854,18 @@
                 "maxItemsOneOverrides": {
                     "timescaledb": false
                 }
+            },
+            "digitalocean_kubernetes_cluster": {
+                "maxItemsOneOverrides": {
+                    "sso": false
+                }
+            }
+        },
+        "datasources": {
+            "digitalocean_kubernetes_cluster": {
+                "maxItemsOneOverrides": {
+                    "sso": false
+                }
             }
         }
     },
