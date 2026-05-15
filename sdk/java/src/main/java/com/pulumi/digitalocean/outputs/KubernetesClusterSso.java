@@ -4,27 +4,37 @@
 package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class KubernetesClusterSso {
+    private @Nullable String clientId;
     /**
      * @return Boolean flag whether the component is enabled or not.
      * 
      */
-    private @Nullable Boolean enabled;
+    private Boolean enabled;
+    private @Nullable String issuerUrl;
     private @Nullable Boolean required;
 
     private KubernetesClusterSso() {}
+    public Optional<String> clientId() {
+        return Optional.ofNullable(this.clientId);
+    }
     /**
      * @return Boolean flag whether the component is enabled or not.
      * 
      */
-    public Optional<Boolean> enabled() {
-        return Optional.ofNullable(this.enabled);
+    public Boolean enabled() {
+        return this.enabled;
+    }
+    public Optional<String> issuerUrl() {
+        return Optional.ofNullable(this.issuerUrl);
     }
     public Optional<Boolean> required() {
         return Optional.ofNullable(this.required);
@@ -39,19 +49,37 @@ public final class KubernetesClusterSso {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Boolean enabled;
+        private @Nullable String clientId;
+        private Boolean enabled;
+        private @Nullable String issuerUrl;
         private @Nullable Boolean required;
         public Builder() {}
         public Builder(KubernetesClusterSso defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.clientId = defaults.clientId;
     	      this.enabled = defaults.enabled;
+    	      this.issuerUrl = defaults.issuerUrl;
     	      this.required = defaults.required;
         }
 
         @CustomType.Setter
-        public Builder enabled(@Nullable Boolean enabled) {
+        public Builder clientId(@Nullable String clientId) {
 
+            this.clientId = clientId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enabled(Boolean enabled) {
+            if (enabled == null) {
+              throw new MissingRequiredPropertyException("KubernetesClusterSso", "enabled");
+            }
             this.enabled = enabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder issuerUrl(@Nullable String issuerUrl) {
+
+            this.issuerUrl = issuerUrl;
             return this;
         }
         @CustomType.Setter
@@ -62,7 +90,9 @@ public final class KubernetesClusterSso {
         }
         public KubernetesClusterSso build() {
             final var _resultValue = new KubernetesClusterSso();
+            _resultValue.clientId = clientId;
             _resultValue.enabled = enabled;
+            _resultValue.issuerUrl = issuerUrl;
             _resultValue.required = required;
             return _resultValue;
         }

@@ -604,10 +604,10 @@ public class KubernetesCluster extends com.pulumi.resources.CustomResource {
         return this.serviceSubnet;
     }
     @Export(name="ssos", refs={List.class,KubernetesClusterSso.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<KubernetesClusterSso>> ssos;
+    private Output<List<KubernetesClusterSso>> ssos;
 
-    public Output<Optional<List<KubernetesClusterSso>>> ssos() {
-        return Codegen.optional(this.ssos);
+    public Output<List<KubernetesClusterSso>> ssos() {
+        return this.ssos;
     }
     /**
      * A string indicating the current status of the individual node.

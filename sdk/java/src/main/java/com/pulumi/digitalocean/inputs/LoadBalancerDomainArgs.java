@@ -36,12 +36,16 @@ public final class LoadBalancerDomainArgs extends com.pulumi.resources.ResourceA
     /**
      * The certificate name to be used for TLS handshaking.
      * 
+     * After create and after update when `domains` changes, the provider polls the load balancer (for up to 15 minutes) until each non-managed domain’s `certificateName` reported by the API matches the configuration. That reduces race conditions when replacing `digitalocean.Certificate` resources that use `createBeforeDestroy`.
+     * 
      */
     @Import(name="certificateName")
     private @Nullable Output<String> certificateName;
 
     /**
      * @return The certificate name to be used for TLS handshaking.
+     * 
+     * After create and after update when `domains` changes, the provider polls the load balancer (for up to 15 minutes) until each non-managed domain’s `certificateName` reported by the API matches the configuration. That reduces race conditions when replacing `digitalocean.Certificate` resources that use `createBeforeDestroy`.
      * 
      */
     public Optional<Output<String>> certificateName() {
@@ -161,6 +165,8 @@ public final class LoadBalancerDomainArgs extends com.pulumi.resources.ResourceA
         /**
          * @param certificateName The certificate name to be used for TLS handshaking.
          * 
+         * After create and after update when `domains` changes, the provider polls the load balancer (for up to 15 minutes) until each non-managed domain’s `certificateName` reported by the API matches the configuration. That reduces race conditions when replacing `digitalocean.Certificate` resources that use `createBeforeDestroy`.
+         * 
          * @return builder
          * 
          */
@@ -171,6 +177,8 @@ public final class LoadBalancerDomainArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param certificateName The certificate name to be used for TLS handshaking.
+         * 
+         * After create and after update when `domains` changes, the provider polls the load balancer (for up to 15 minutes) until each non-managed domain’s `certificateName` reported by the API matches the configuration. That reduces race conditions when replacing `digitalocean.Certificate` resources that use `createBeforeDestroy`.
          * 
          * @return builder
          * 

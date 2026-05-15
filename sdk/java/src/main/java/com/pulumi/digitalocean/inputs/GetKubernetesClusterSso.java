@@ -6,6 +6,7 @@ package com.pulumi.digitalocean.inputs;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.Objects;
 
 
@@ -13,11 +14,25 @@ public final class GetKubernetesClusterSso extends com.pulumi.resources.InvokeAr
 
     public static final GetKubernetesClusterSso Empty = new GetKubernetesClusterSso();
 
+    @Import(name="clientId", required=true)
+    private String clientId;
+
+    public String clientId() {
+        return this.clientId;
+    }
+
     @Import(name="enabled", required=true)
     private Boolean enabled;
 
     public Boolean enabled() {
         return this.enabled;
+    }
+
+    @Import(name="issuerUrl", required=true)
+    private String issuerUrl;
+
+    public String issuerUrl() {
+        return this.issuerUrl;
     }
 
     @Import(name="required", required=true)
@@ -30,7 +45,9 @@ public final class GetKubernetesClusterSso extends com.pulumi.resources.InvokeAr
     private GetKubernetesClusterSso() {}
 
     private GetKubernetesClusterSso(GetKubernetesClusterSso $) {
+        this.clientId = $.clientId;
         this.enabled = $.enabled;
+        this.issuerUrl = $.issuerUrl;
         this.required = $.required;
     }
 
@@ -52,8 +69,18 @@ public final class GetKubernetesClusterSso extends com.pulumi.resources.InvokeAr
             $ = new GetKubernetesClusterSso(Objects.requireNonNull(defaults));
         }
 
+        public Builder clientId(String clientId) {
+            $.clientId = clientId;
+            return this;
+        }
+
         public Builder enabled(Boolean enabled) {
             $.enabled = enabled;
+            return this;
+        }
+
+        public Builder issuerUrl(String issuerUrl) {
+            $.issuerUrl = issuerUrl;
             return this;
         }
 
@@ -63,8 +90,14 @@ public final class GetKubernetesClusterSso extends com.pulumi.resources.InvokeAr
         }
 
         public GetKubernetesClusterSso build() {
+            if ($.clientId == null) {
+                throw new MissingRequiredPropertyException("GetKubernetesClusterSso", "clientId");
+            }
             if ($.enabled == null) {
                 throw new MissingRequiredPropertyException("GetKubernetesClusterSso", "enabled");
+            }
+            if ($.issuerUrl == null) {
+                throw new MissingRequiredPropertyException("GetKubernetesClusterSso", "issuerUrl");
             }
             if ($.required == null) {
                 throw new MissingRequiredPropertyException("GetKubernetesClusterSso", "required");

@@ -95,7 +95,7 @@ public final class GetKubernetesClusterResult {
      * 
      */
     private String serviceSubnet;
-    private @Nullable List<GetKubernetesClusterSso> ssos;
+    private List<GetKubernetesClusterSso> ssos;
     /**
      * @return A string indicating the current status of the individual node.
      * 
@@ -241,7 +241,7 @@ public final class GetKubernetesClusterResult {
         return this.serviceSubnet;
     }
     public List<GetKubernetesClusterSso> ssos() {
-        return this.ssos == null ? List.of() : this.ssos;
+        return this.ssos;
     }
     /**
      * @return A string indicating the current status of the individual node.
@@ -319,7 +319,7 @@ public final class GetKubernetesClusterResult {
         private String region;
         private GetKubernetesClusterRoutingAgent routingAgent;
         private String serviceSubnet;
-        private @Nullable List<GetKubernetesClusterSso> ssos;
+        private List<GetKubernetesClusterSso> ssos;
         private String status;
         private Boolean surgeUpgrade;
         private @Nullable List<String> tags;
@@ -541,8 +541,10 @@ public final class GetKubernetesClusterResult {
             return this;
         }
         @CustomType.Setter
-        public Builder ssos(@Nullable List<GetKubernetesClusterSso> ssos) {
-
+        public Builder ssos(List<GetKubernetesClusterSso> ssos) {
+            if (ssos == null) {
+              throw new MissingRequiredPropertyException("GetKubernetesClusterResult", "ssos");
+            }
             this.ssos = ssos;
             return this;
         }

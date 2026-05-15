@@ -6,16 +6,25 @@ package com.pulumi.digitalocean.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.Objects;
 
 @CustomType
 public final class GetKubernetesClusterSso {
+    private String clientId;
     private Boolean enabled;
+    private String issuerUrl;
     private Boolean required;
 
     private GetKubernetesClusterSso() {}
+    public String clientId() {
+        return this.clientId;
+    }
     public Boolean enabled() {
         return this.enabled;
+    }
+    public String issuerUrl() {
+        return this.issuerUrl;
     }
     public Boolean required() {
         return this.required;
@@ -30,21 +39,41 @@ public final class GetKubernetesClusterSso {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String clientId;
         private Boolean enabled;
+        private String issuerUrl;
         private Boolean required;
         public Builder() {}
         public Builder(GetKubernetesClusterSso defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.clientId = defaults.clientId;
     	      this.enabled = defaults.enabled;
+    	      this.issuerUrl = defaults.issuerUrl;
     	      this.required = defaults.required;
         }
 
+        @CustomType.Setter
+        public Builder clientId(String clientId) {
+            if (clientId == null) {
+              throw new MissingRequiredPropertyException("GetKubernetesClusterSso", "clientId");
+            }
+            this.clientId = clientId;
+            return this;
+        }
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             if (enabled == null) {
               throw new MissingRequiredPropertyException("GetKubernetesClusterSso", "enabled");
             }
             this.enabled = enabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder issuerUrl(String issuerUrl) {
+            if (issuerUrl == null) {
+              throw new MissingRequiredPropertyException("GetKubernetesClusterSso", "issuerUrl");
+            }
+            this.issuerUrl = issuerUrl;
             return this;
         }
         @CustomType.Setter
@@ -57,7 +86,9 @@ public final class GetKubernetesClusterSso {
         }
         public GetKubernetesClusterSso build() {
             final var _resultValue = new GetKubernetesClusterSso();
+            _resultValue.clientId = clientId;
             _resultValue.enabled = enabled;
+            _resultValue.issuerUrl = issuerUrl;
             _resultValue.required = required;
             return _resultValue;
         }

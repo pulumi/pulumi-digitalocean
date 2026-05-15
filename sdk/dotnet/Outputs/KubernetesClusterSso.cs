@@ -13,19 +13,27 @@ namespace Pulumi.DigitalOcean.Outputs
     [OutputType]
     public sealed class KubernetesClusterSso
     {
+        public readonly string? ClientId;
         /// <summary>
         /// Boolean flag whether the component is enabled or not.
         /// </summary>
-        public readonly bool? Enabled;
+        public readonly bool Enabled;
+        public readonly string? IssuerUrl;
         public readonly bool? Required;
 
         [OutputConstructor]
         private KubernetesClusterSso(
-            bool? enabled,
+            string? clientId,
+
+            bool enabled,
+
+            string? issuerUrl,
 
             bool? required)
         {
+            ClientId = clientId;
             Enabled = enabled;
+            IssuerUrl = issuerUrl;
             Required = required;
         }
     }

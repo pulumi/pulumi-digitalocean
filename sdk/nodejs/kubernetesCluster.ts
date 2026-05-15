@@ -266,7 +266,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
      * The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
      */
     declare public readonly serviceSubnet: pulumi.Output<string>;
-    declare public readonly ssos: pulumi.Output<outputs.KubernetesClusterSso[] | undefined>;
+    declare public readonly ssos: pulumi.Output<outputs.KubernetesClusterSso[]>;
     /**
      * A string indicating the current status of the individual node.
      */

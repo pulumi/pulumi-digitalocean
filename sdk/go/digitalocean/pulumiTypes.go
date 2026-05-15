@@ -36490,9 +36490,11 @@ func (o KubernetesClusterRoutingAgentPtrOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 type KubernetesClusterSso struct {
+	ClientId *string `pulumi:"clientId"`
 	// Boolean flag whether the component is enabled or not.
-	Enabled  *bool `pulumi:"enabled"`
-	Required *bool `pulumi:"required"`
+	Enabled   bool    `pulumi:"enabled"`
+	IssuerUrl *string `pulumi:"issuerUrl"`
+	Required  *bool   `pulumi:"required"`
 }
 
 // KubernetesClusterSsoInput is an input type that accepts KubernetesClusterSsoArgs and KubernetesClusterSsoOutput values.
@@ -36507,9 +36509,11 @@ type KubernetesClusterSsoInput interface {
 }
 
 type KubernetesClusterSsoArgs struct {
+	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
 	// Boolean flag whether the component is enabled or not.
-	Enabled  pulumi.BoolPtrInput `pulumi:"enabled"`
-	Required pulumi.BoolPtrInput `pulumi:"required"`
+	Enabled   pulumi.BoolInput      `pulumi:"enabled"`
+	IssuerUrl pulumi.StringPtrInput `pulumi:"issuerUrl"`
+	Required  pulumi.BoolPtrInput   `pulumi:"required"`
 }
 
 func (KubernetesClusterSsoArgs) ElementType() reflect.Type {
@@ -36563,9 +36567,17 @@ func (o KubernetesClusterSsoOutput) ToKubernetesClusterSsoOutputWithContext(ctx 
 	return o
 }
 
+func (o KubernetesClusterSsoOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KubernetesClusterSso) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
 // Boolean flag whether the component is enabled or not.
-func (o KubernetesClusterSsoOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v KubernetesClusterSso) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+func (o KubernetesClusterSsoOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v KubernetesClusterSso) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+func (o KubernetesClusterSsoOutput) IssuerUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KubernetesClusterSso) *string { return v.IssuerUrl }).(pulumi.StringPtrOutput)
 }
 
 func (o KubernetesClusterSsoOutput) Required() pulumi.BoolPtrOutput {
@@ -36853,6 +36865,8 @@ type LoadBalancerDomain struct {
 	// **Deprecated** The certificate ID to be used for TLS handshaking.
 	CertificateId *string `pulumi:"certificateId"`
 	// The certificate name to be used for TLS handshaking.
+	//
+	// After create and after update when `domains` changes, the provider polls the load balancer (for up to 15 minutes) until each non-managed domain’s `certificateName` reported by the API matches the configuration. That reduces race conditions when replacing `Certificate` resources that use `createBeforeDestroy`.
 	CertificateName *string `pulumi:"certificateName"`
 	// Control flag to specify whether the domain is managed by DigitalOcean.
 	IsManaged *bool `pulumi:"isManaged"`
@@ -36879,6 +36893,8 @@ type LoadBalancerDomainArgs struct {
 	// **Deprecated** The certificate ID to be used for TLS handshaking.
 	CertificateId pulumi.StringPtrInput `pulumi:"certificateId"`
 	// The certificate name to be used for TLS handshaking.
+	//
+	// After create and after update when `domains` changes, the provider polls the load balancer (for up to 15 minutes) until each non-managed domain’s `certificateName` reported by the API matches the configuration. That reduces race conditions when replacing `Certificate` resources that use `createBeforeDestroy`.
 	CertificateName pulumi.StringPtrInput `pulumi:"certificateName"`
 	// Control flag to specify whether the domain is managed by DigitalOcean.
 	IsManaged pulumi.BoolPtrInput `pulumi:"isManaged"`
@@ -36947,6 +36963,8 @@ func (o LoadBalancerDomainOutput) CertificateId() pulumi.StringPtrOutput {
 }
 
 // The certificate name to be used for TLS handshaking.
+//
+// After create and after update when `domains` changes, the provider polls the load balancer (for up to 15 minutes) until each non-managed domain’s `certificateName` reported by the API matches the configuration. That reduces race conditions when replacing `Certificate` resources that use `createBeforeDestroy`.
 func (o LoadBalancerDomainOutput) CertificateName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerDomain) *string { return v.CertificateName }).(pulumi.StringPtrOutput)
 }
