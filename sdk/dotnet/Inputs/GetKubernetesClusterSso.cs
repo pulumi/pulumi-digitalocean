@@ -12,8 +12,14 @@ namespace Pulumi.DigitalOcean.Inputs
 
     public sealed class GetKubernetesClusterSsoArgs : global::Pulumi.InvokeArgs
     {
+        [Input("clientId", required: true)]
+        public string ClientId { get; set; } = null!;
+
         [Input("enabled", required: true)]
         public bool Enabled { get; set; }
+
+        [Input("issuerUrl", required: true)]
+        public string IssuerUrl { get; set; } = null!;
 
         [Input("required", required: true)]
         public bool Required { get; set; }

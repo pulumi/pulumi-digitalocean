@@ -7204,23 +7204,24 @@
         },
         "digitalocean:index/KubernetesClusterSso:KubernetesClusterSso": {
             "properties": {
+                "clientId": {
+                    "type": "string"
+                },
                 "enabled": {
                     "type": "boolean",
                     "description": "Boolean flag whether the component is enabled or not.\n"
+                },
+                "issuerUrl": {
+                    "type": "string"
                 },
                 "required": {
                     "type": "boolean"
                 }
             },
             "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "enabled",
-                        "required"
-                    ]
-                }
-            }
+            "required": [
+                "enabled"
+            ]
         },
         "digitalocean:index/KubernetesNodePoolNode:KubernetesNodePoolNode": {
             "properties": {
@@ -7293,7 +7294,7 @@
                 },
                 "certificateName": {
                     "type": "string",
-                    "description": "The certificate name to be used for TLS handshaking.\n"
+                    "description": "The certificate name to be used for TLS handshaking.\n\nAfter create and after update when \u003cspan pulumi-lang-nodejs=\"`domains`\" pulumi-lang-dotnet=\"`Domains`\" pulumi-lang-go=\"`domains`\" pulumi-lang-python=\"`domains`\" pulumi-lang-yaml=\"`domains`\" pulumi-lang-java=\"`domains`\"\u003e`domains`\u003c/span\u003e changes, the provider polls the load balancer (for up to 15 minutes) until each non-managed domain’s \u003cspan pulumi-lang-nodejs=\"`certificateName`\" pulumi-lang-dotnet=\"`CertificateName`\" pulumi-lang-go=\"`certificateName`\" pulumi-lang-python=\"`certificate_name`\" pulumi-lang-yaml=\"`certificateName`\" pulumi-lang-java=\"`certificateName`\"\u003e`certificateName`\u003c/span\u003e reported by the API matches the configuration. That reduces race conditions when replacing \u003cspan pulumi-lang-nodejs=\"`digitalocean.Certificate`\" pulumi-lang-dotnet=\"`digitalocean.Certificate`\" pulumi-lang-go=\"`Certificate`\" pulumi-lang-python=\"`Certificate`\" pulumi-lang-yaml=\"`digitalocean.Certificate`\" pulumi-lang-java=\"`digitalocean.Certificate`\"\u003e`digitalocean.Certificate`\u003c/span\u003e resources that use \u003cspan pulumi-lang-nodejs=\"`createBeforeDestroy`\" pulumi-lang-dotnet=\"`CreateBeforeDestroy`\" pulumi-lang-go=\"`createBeforeDestroy`\" pulumi-lang-python=\"`create_before_destroy`\" pulumi-lang-yaml=\"`createBeforeDestroy`\" pulumi-lang-java=\"`createBeforeDestroy`\"\u003e`createBeforeDestroy`\u003c/span\u003e.\n"
                 },
                 "isManaged": {
                     "type": "boolean",
@@ -24539,8 +24540,14 @@
         },
         "digitalocean:index/getKubernetesClusterSso:getKubernetesClusterSso": {
             "properties": {
+                "clientId": {
+                    "type": "string"
+                },
                 "enabled": {
                     "type": "boolean"
+                },
+                "issuerUrl": {
+                    "type": "string"
                 },
                 "required": {
                     "type": "boolean"
@@ -24548,7 +24555,9 @@
             },
             "type": "object",
             "required": [
+                "clientId",
                 "enabled",
+                "issuerUrl",
                 "required"
             ],
             "language": {
@@ -35876,6 +35885,7 @@
                 "region",
                 "routingAgent",
                 "serviceSubnet",
+                "ssos",
                 "status",
                 "updatedAt",
                 "clusterUrn",
@@ -44066,6 +44076,7 @@
                     "region",
                     "routingAgent",
                     "serviceSubnet",
+                    "ssos",
                     "status",
                     "surgeUpgrade",
                     "updatedAt",

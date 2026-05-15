@@ -120,7 +120,7 @@ export interface GetKubernetesClusterResult {
      * The range of assignable IP addresses for services running in the Kubernetes cluster.
      */
     readonly serviceSubnet: string;
-    readonly ssos?: outputs.GetKubernetesClusterSso[];
+    readonly ssos: outputs.GetKubernetesClusterSso[];
     /**
      * A string indicating the current status of the individual node.
      */

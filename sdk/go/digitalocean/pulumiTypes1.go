@@ -30486,8 +30486,10 @@ func (o GetKubernetesClusterRoutingAgentPtrOutput) Enabled() pulumi.BoolPtrOutpu
 }
 
 type GetKubernetesClusterSso struct {
-	Enabled  bool `pulumi:"enabled"`
-	Required bool `pulumi:"required"`
+	ClientId  string `pulumi:"clientId"`
+	Enabled   bool   `pulumi:"enabled"`
+	IssuerUrl string `pulumi:"issuerUrl"`
+	Required  bool   `pulumi:"required"`
 }
 
 // GetKubernetesClusterSsoInput is an input type that accepts GetKubernetesClusterSsoArgs and GetKubernetesClusterSsoOutput values.
@@ -30502,8 +30504,10 @@ type GetKubernetesClusterSsoInput interface {
 }
 
 type GetKubernetesClusterSsoArgs struct {
-	Enabled  pulumi.BoolInput `pulumi:"enabled"`
-	Required pulumi.BoolInput `pulumi:"required"`
+	ClientId  pulumi.StringInput `pulumi:"clientId"`
+	Enabled   pulumi.BoolInput   `pulumi:"enabled"`
+	IssuerUrl pulumi.StringInput `pulumi:"issuerUrl"`
+	Required  pulumi.BoolInput   `pulumi:"required"`
 }
 
 func (GetKubernetesClusterSsoArgs) ElementType() reflect.Type {
@@ -30557,8 +30561,16 @@ func (o GetKubernetesClusterSsoOutput) ToGetKubernetesClusterSsoOutputWithContex
 	return o
 }
 
+func (o GetKubernetesClusterSsoOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesClusterSso) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
 func (o GetKubernetesClusterSsoOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetKubernetesClusterSso) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+func (o GetKubernetesClusterSsoOutput) IssuerUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubernetesClusterSso) string { return v.IssuerUrl }).(pulumi.StringOutput)
 }
 
 func (o GetKubernetesClusterSsoOutput) Required() pulumi.BoolOutput {

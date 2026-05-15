@@ -5,7 +5,9 @@ package com.pulumi.digitalocean.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -15,19 +17,33 @@ public final class KubernetesClusterSsoArgs extends com.pulumi.resources.Resourc
 
     public static final KubernetesClusterSsoArgs Empty = new KubernetesClusterSsoArgs();
 
+    @Import(name="clientId")
+    private @Nullable Output<String> clientId;
+
+    public Optional<Output<String>> clientId() {
+        return Optional.ofNullable(this.clientId);
+    }
+
     /**
      * Boolean flag whether the component is enabled or not.
      * 
      */
-    @Import(name="enabled")
-    private @Nullable Output<Boolean> enabled;
+    @Import(name="enabled", required=true)
+    private Output<Boolean> enabled;
 
     /**
      * @return Boolean flag whether the component is enabled or not.
      * 
      */
-    public Optional<Output<Boolean>> enabled() {
-        return Optional.ofNullable(this.enabled);
+    public Output<Boolean> enabled() {
+        return this.enabled;
+    }
+
+    @Import(name="issuerUrl")
+    private @Nullable Output<String> issuerUrl;
+
+    public Optional<Output<String>> issuerUrl() {
+        return Optional.ofNullable(this.issuerUrl);
     }
 
     @Import(name="required")
@@ -40,7 +56,9 @@ public final class KubernetesClusterSsoArgs extends com.pulumi.resources.Resourc
     private KubernetesClusterSsoArgs() {}
 
     private KubernetesClusterSsoArgs(KubernetesClusterSsoArgs $) {
+        this.clientId = $.clientId;
         this.enabled = $.enabled;
+        this.issuerUrl = $.issuerUrl;
         this.required = $.required;
     }
 
@@ -62,13 +80,22 @@ public final class KubernetesClusterSsoArgs extends com.pulumi.resources.Resourc
             $ = new KubernetesClusterSsoArgs(Objects.requireNonNull(defaults));
         }
 
+        public Builder clientId(@Nullable Output<String> clientId) {
+            $.clientId = clientId;
+            return this;
+        }
+
+        public Builder clientId(String clientId) {
+            return clientId(Output.of(clientId));
+        }
+
         /**
          * @param enabled Boolean flag whether the component is enabled or not.
          * 
          * @return builder
          * 
          */
-        public Builder enabled(@Nullable Output<Boolean> enabled) {
+        public Builder enabled(Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
@@ -83,6 +110,15 @@ public final class KubernetesClusterSsoArgs extends com.pulumi.resources.Resourc
             return enabled(Output.of(enabled));
         }
 
+        public Builder issuerUrl(@Nullable Output<String> issuerUrl) {
+            $.issuerUrl = issuerUrl;
+            return this;
+        }
+
+        public Builder issuerUrl(String issuerUrl) {
+            return issuerUrl(Output.of(issuerUrl));
+        }
+
         public Builder required(@Nullable Output<Boolean> required) {
             $.required = required;
             return this;
@@ -93,6 +129,9 @@ public final class KubernetesClusterSsoArgs extends com.pulumi.resources.Resourc
         }
 
         public KubernetesClusterSsoArgs build() {
+            if ($.enabled == null) {
+                throw new MissingRequiredPropertyException("KubernetesClusterSsoArgs", "enabled");
+            }
             return $;
         }
     }

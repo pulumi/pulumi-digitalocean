@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.Objects;
 
 
@@ -14,11 +15,25 @@ public final class GetKubernetesClusterSsoArgs extends com.pulumi.resources.Reso
 
     public static final GetKubernetesClusterSsoArgs Empty = new GetKubernetesClusterSsoArgs();
 
+    @Import(name="clientId", required=true)
+    private Output<String> clientId;
+
+    public Output<String> clientId() {
+        return this.clientId;
+    }
+
     @Import(name="enabled", required=true)
     private Output<Boolean> enabled;
 
     public Output<Boolean> enabled() {
         return this.enabled;
+    }
+
+    @Import(name="issuerUrl", required=true)
+    private Output<String> issuerUrl;
+
+    public Output<String> issuerUrl() {
+        return this.issuerUrl;
     }
 
     @Import(name="required", required=true)
@@ -31,7 +46,9 @@ public final class GetKubernetesClusterSsoArgs extends com.pulumi.resources.Reso
     private GetKubernetesClusterSsoArgs() {}
 
     private GetKubernetesClusterSsoArgs(GetKubernetesClusterSsoArgs $) {
+        this.clientId = $.clientId;
         this.enabled = $.enabled;
+        this.issuerUrl = $.issuerUrl;
         this.required = $.required;
     }
 
@@ -53,6 +70,15 @@ public final class GetKubernetesClusterSsoArgs extends com.pulumi.resources.Reso
             $ = new GetKubernetesClusterSsoArgs(Objects.requireNonNull(defaults));
         }
 
+        public Builder clientId(Output<String> clientId) {
+            $.clientId = clientId;
+            return this;
+        }
+
+        public Builder clientId(String clientId) {
+            return clientId(Output.of(clientId));
+        }
+
         public Builder enabled(Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
@@ -60,6 +86,15 @@ public final class GetKubernetesClusterSsoArgs extends com.pulumi.resources.Reso
 
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
+        }
+
+        public Builder issuerUrl(Output<String> issuerUrl) {
+            $.issuerUrl = issuerUrl;
+            return this;
+        }
+
+        public Builder issuerUrl(String issuerUrl) {
+            return issuerUrl(Output.of(issuerUrl));
         }
 
         public Builder required(Output<Boolean> required) {
@@ -72,8 +107,14 @@ public final class GetKubernetesClusterSsoArgs extends com.pulumi.resources.Reso
         }
 
         public GetKubernetesClusterSsoArgs build() {
+            if ($.clientId == null) {
+                throw new MissingRequiredPropertyException("GetKubernetesClusterSsoArgs", "clientId");
+            }
             if ($.enabled == null) {
                 throw new MissingRequiredPropertyException("GetKubernetesClusterSsoArgs", "enabled");
+            }
+            if ($.issuerUrl == null) {
+                throw new MissingRequiredPropertyException("GetKubernetesClusterSsoArgs", "issuerUrl");
             }
             if ($.required == null) {
                 throw new MissingRequiredPropertyException("GetKubernetesClusterSsoArgs", "required");

@@ -25120,36 +25120,61 @@ class KubernetesClusterRoutingAgentArgs:
 
 
 class KubernetesClusterSsoArgsDict(TypedDict):
-    enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    enabled: pulumi.Input[_builtins.bool]
     """
     Boolean flag whether the component is enabled or not.
     """
+    client_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    issuer_url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     required: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
 
 @pulumi.input_type
 class KubernetesClusterSsoArgs:
     def __init__(__self__, *,
-                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enabled: pulumi.Input[_builtins.bool],
+                 client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 issuer_url: pulumi.Input[Optional[_builtins.str]] = None,
                  required: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] enabled: Boolean flag whether the component is enabled or not.
         """
-        if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "enabled", enabled)
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if issuer_url is not None:
+            pulumi.set(__self__, "issuer_url", issuer_url)
         if required is not None:
             pulumi.set(__self__, "required", required)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[_builtins.bool]:
         """
         Boolean flag whether the component is enabled or not.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[_builtins.bool]):
         pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "client_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="issuerUrl")
+    def issuer_url(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "issuer_url")
+
+    @issuer_url.setter
+    def issuer_url(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "issuer_url", value)
 
     @_builtins.property
     @pulumi.getter
@@ -25368,6 +25393,8 @@ class LoadBalancerDomainArgsDict(TypedDict):
     certificate_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The certificate name to be used for TLS handshaking.
+
+    After create and after update when `domains` changes, the provider polls the load balancer (for up to 15 minutes) until each non-managed domain’s `certificate_name` reported by the API matches the configuration. That reduces race conditions when replacing `Certificate` resources that use `create_before_destroy`.
     """
     is_managed: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
@@ -25395,6 +25422,8 @@ class LoadBalancerDomainArgs:
         :param pulumi.Input[_builtins.str] name: The domain name to be used for ingressing traffic to a Global Load Balancer.
         :param pulumi.Input[_builtins.str] certificate_id: **Deprecated** The certificate ID to be used for TLS handshaking.
         :param pulumi.Input[_builtins.str] certificate_name: The certificate name to be used for TLS handshaking.
+               
+               After create and after update when `domains` changes, the provider polls the load balancer (for up to 15 minutes) until each non-managed domain’s `certificate_name` reported by the API matches the configuration. That reduces race conditions when replacing `Certificate` resources that use `create_before_destroy`.
         :param pulumi.Input[_builtins.bool] is_managed: Control flag to specify whether the domain is managed by DigitalOcean.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ssl_validation_error_reasons: list of domain SSL validation errors
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] verification_error_reasons: list of domain verification errors
@@ -25440,6 +25469,8 @@ class LoadBalancerDomainArgs:
     def certificate_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The certificate name to be used for TLS handshaking.
+
+        After create and after update when `domains` changes, the provider polls the load balancer (for up to 15 minutes) until each non-managed domain’s `certificate_name` reported by the API matches the configuration. That reduces race conditions when replacing `Certificate` resources that use `create_before_destroy`.
         """
         return pulumi.get(self, "certificate_name")
 
@@ -36170,16 +36201,31 @@ class GetKubernetesClusterRoutingAgentArgs:
 
 
 class GetKubernetesClusterSsoArgsDict(TypedDict):
+    client_id: _builtins.str
     enabled: _builtins.bool
+    issuer_url: _builtins.str
     required: _builtins.bool
 
 @pulumi.input_type
 class GetKubernetesClusterSsoArgs:
     def __init__(__self__, *,
+                 client_id: _builtins.str,
                  enabled: _builtins.bool,
+                 issuer_url: _builtins.str,
                  required: _builtins.bool):
+        pulumi.set(__self__, "client_id", client_id)
         pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "issuer_url", issuer_url)
         pulumi.set(__self__, "required", required)
+
+    @_builtins.property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> _builtins.str:
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: _builtins.str):
+        pulumi.set(self, "client_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -36189,6 +36235,15 @@ class GetKubernetesClusterSsoArgs:
     @enabled.setter
     def enabled(self, value: _builtins.bool):
         pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="issuerUrl")
+    def issuer_url(self) -> _builtins.str:
+        return pulumi.get(self, "issuer_url")
+
+    @issuer_url.setter
+    def issuer_url(self, value: _builtins.str):
+        pulumi.set(self, "issuer_url", value)
 
     @_builtins.property
     @pulumi.getter

@@ -7436,12 +7436,16 @@ export interface GetKubernetesClusterRoutingAgentArgs {
 }
 
 export interface GetKubernetesClusterSso {
+    clientId?: string;
     enabled?: boolean;
+    issuerUrl?: string;
     required?: boolean;
 }
 
 export interface GetKubernetesClusterSsoArgs {
+    clientId?: pulumi.Input<string | undefined>;
     enabled?: pulumi.Input<boolean | undefined>;
+    issuerUrl?: pulumi.Input<string | undefined>;
     required?: pulumi.Input<boolean | undefined>;
 }
 
@@ -9442,10 +9446,12 @@ export interface KubernetesClusterRoutingAgent {
 }
 
 export interface KubernetesClusterSso {
+    clientId?: pulumi.Input<string | undefined>;
     /**
      * Boolean flag whether the component is enabled or not.
      */
-    enabled?: pulumi.Input<boolean | undefined>;
+    enabled: pulumi.Input<boolean>;
+    issuerUrl?: pulumi.Input<string | undefined>;
     required?: pulumi.Input<boolean | undefined>;
 }
 
@@ -9498,6 +9504,8 @@ export interface LoadBalancerDomain {
     certificateId?: pulumi.Input<string | undefined>;
     /**
      * The certificate name to be used for TLS handshaking.
+     *
+     * After create and after update when `domains` changes, the provider polls the load balancer (for up to 15 minutes) until each non-managed domain’s `certificateName` reported by the API matches the configuration. That reduces race conditions when replacing `digitalocean.Certificate` resources that use `createBeforeDestroy`.
      */
     certificateName?: pulumi.Input<string | undefined>;
     /**

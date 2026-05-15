@@ -12,11 +12,17 @@ namespace Pulumi.DigitalOcean.Inputs
 
     public sealed class KubernetesClusterSsoGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("clientId")]
+        public Input<string>? ClientId { get; set; }
+
         /// <summary>
         /// Boolean flag whether the component is enabled or not.
         /// </summary>
-        [Input("enabled")]
-        public Input<bool>? Enabled { get; set; }
+        [Input("enabled", required: true)]
+        public Input<bool> Enabled { get; set; } = null!;
+
+        [Input("issuerUrl")]
+        public Input<string>? IssuerUrl { get; set; }
 
         [Input("required")]
         public Input<bool>? Required { get; set; }

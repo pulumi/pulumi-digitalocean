@@ -1578,7 +1578,7 @@ class KubernetesCluster(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def ssos(self) -> pulumi.Output[Optional[Sequence['outputs.KubernetesClusterSso']]]:
+    def ssos(self) -> pulumi.Output[Sequence['outputs.KubernetesClusterSso']]:
         return pulumi.get(self, "ssos")
 
     @_builtins.property

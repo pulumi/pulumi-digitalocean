@@ -19,6 +19,8 @@ namespace Pulumi.DigitalOcean.Outputs
         public readonly string? CertificateId;
         /// <summary>
         /// The certificate name to be used for TLS handshaking.
+        /// 
+        /// After create and after update when `Domains` changes, the provider polls the load balancer (for up to 15 minutes) until each non-managed domain’s `CertificateName` reported by the API matches the configuration. That reduces race conditions when replacing `digitalocean.Certificate` resources that use `CreateBeforeDestroy`.
         /// </summary>
         public readonly string? CertificateName;
         /// <summary>
