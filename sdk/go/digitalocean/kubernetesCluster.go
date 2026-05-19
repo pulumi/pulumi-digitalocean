@@ -253,8 +253,8 @@ type KubernetesCluster struct {
 	DestroyAllAssociatedResources pulumi.BoolPtrOutput `pulumi:"destroyAllAssociatedResources"`
 	// The base URL of the API server on the Kubernetes master node.
 	Endpoint pulumi.StringOutput `pulumi:"endpoint"`
-	// Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: false
-	Ha pulumi.BoolPtrOutput `pulumi:"ha"`
+	// Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: true (for 1.36.0 and later)
+	Ha pulumi.BoolOutput `pulumi:"ha"`
 	// The public IPv4 address of the Kubernetes master node. This will not be set if high availability is configured on the cluster (v1.21+)
 	Ipv4Address pulumi.StringOutput `pulumi:"ipv4Address"`
 	// A representation of the Kubernetes cluster's kubeconfig with the following attributes:
@@ -356,7 +356,7 @@ type kubernetesClusterState struct {
 	DestroyAllAssociatedResources *bool `pulumi:"destroyAllAssociatedResources"`
 	// The base URL of the API server on the Kubernetes master node.
 	Endpoint *string `pulumi:"endpoint"`
-	// Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: false
+	// Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: true (for 1.36.0 and later)
 	Ha *bool `pulumi:"ha"`
 	// The public IPv4 address of the Kubernetes master node. This will not be set if high availability is configured on the cluster (v1.21+)
 	Ipv4Address *string `pulumi:"ipv4Address"`
@@ -417,7 +417,7 @@ type KubernetesClusterState struct {
 	DestroyAllAssociatedResources pulumi.BoolPtrInput
 	// The base URL of the API server on the Kubernetes master node.
 	Endpoint pulumi.StringPtrInput
-	// Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: false
+	// Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: true (for 1.36.0 and later)
 	Ha pulumi.BoolPtrInput
 	// The public IPv4 address of the Kubernetes master node. This will not be set if high availability is configured on the cluster (v1.21+)
 	Ipv4Address pulumi.StringPtrInput
@@ -476,7 +476,7 @@ type kubernetesClusterArgs struct {
 	ControlPlaneFirewall *KubernetesClusterControlPlaneFirewall `pulumi:"controlPlaneFirewall"`
 	// **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
 	DestroyAllAssociatedResources *bool `pulumi:"destroyAllAssociatedResources"`
-	// Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: false
+	// Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: true (for 1.36.0 and later)
 	Ha *bool `pulumi:"ha"`
 	// The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
 	KubeconfigExpireSeconds *int `pulumi:"kubeconfigExpireSeconds"`
@@ -524,7 +524,7 @@ type KubernetesClusterArgs struct {
 	ControlPlaneFirewall KubernetesClusterControlPlaneFirewallPtrInput
 	// **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
 	DestroyAllAssociatedResources pulumi.BoolPtrInput
-	// Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: false
+	// Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: true (for 1.36.0 and later)
 	Ha pulumi.BoolPtrInput
 	// The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
 	KubeconfigExpireSeconds pulumi.IntPtrInput
@@ -697,9 +697,9 @@ func (o KubernetesClusterOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v *KubernetesCluster) pulumi.StringOutput { return v.Endpoint }).(pulumi.StringOutput)
 }
 
-// Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: false
-func (o KubernetesClusterOutput) Ha() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *KubernetesCluster) pulumi.BoolPtrOutput { return v.Ha }).(pulumi.BoolPtrOutput)
+// Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: true (for 1.36.0 and later)
+func (o KubernetesClusterOutput) Ha() pulumi.BoolOutput {
+	return o.ApplyT(func(v *KubernetesCluster) pulumi.BoolOutput { return v.Ha }).(pulumi.BoolOutput)
 }
 
 // The public IPv4 address of the Kubernetes master node. This will not be set if high availability is configured on the cluster (v1.21+)

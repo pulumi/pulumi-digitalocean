@@ -259,10 +259,10 @@ namespace Pulumi.DigitalOcean
         public Output<string> Endpoint { get; private set; } = null!;
 
         /// <summary>
-        /// Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: false
+        /// Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: true (for 1.36.0 and later)
         /// </summary>
         [Output("ha")]
-        public Output<bool?> Ha { get; private set; } = null!;
+        public Output<bool> Ha { get; private set; } = null!;
 
         /// <summary>
         /// The public IPv4 address of the Kubernetes master node. This will not be set if high availability is configured on the cluster (v1.21+)
@@ -471,7 +471,7 @@ namespace Pulumi.DigitalOcean
         public Input<bool>? DestroyAllAssociatedResources { get; set; }
 
         /// <summary>
-        /// Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: false
+        /// Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: true (for 1.36.0 and later)
         /// </summary>
         [Input("ha")]
         public Input<bool>? Ha { get; set; }
@@ -646,7 +646,7 @@ namespace Pulumi.DigitalOcean
         public Input<string>? Endpoint { get; set; }
 
         /// <summary>
-        /// Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: false
+        /// Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: true (for 1.36.0 and later)
         /// </summary>
         [Input("ha")]
         public Input<bool>? Ha { get; set; }

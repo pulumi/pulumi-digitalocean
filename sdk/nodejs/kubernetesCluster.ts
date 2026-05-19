@@ -218,9 +218,9 @@ export class KubernetesCluster extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly endpoint: pulumi.Output<string>;
     /**
-     * Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: false
+     * Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: true (for 1.36.0 and later)
      */
-    declare public readonly ha: pulumi.Output<boolean | undefined>;
+    declare public readonly ha: pulumi.Output<boolean>;
     /**
      * The public IPv4 address of the Kubernetes master node. This will not be set if high availability is configured on the cluster (v1.21+)
      */
@@ -429,7 +429,7 @@ export interface KubernetesClusterState {
      */
     endpoint?: pulumi.Input<string | undefined>;
     /**
-     * Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: false
+     * Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: true (for 1.36.0 and later)
      */
     ha?: pulumi.Input<boolean | undefined>;
     /**
@@ -537,7 +537,7 @@ export interface KubernetesClusterArgs {
      */
     destroyAllAssociatedResources?: pulumi.Input<boolean | undefined>;
     /**
-     * Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: false
+     * Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: true (for 1.36.0 and later)
      */
     ha?: pulumi.Input<boolean | undefined>;
     /**
