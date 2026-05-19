@@ -58,7 +58,7 @@ class KubernetesClusterArgs:
         :param pulumi.Input[_builtins.str] cluster_subnet: The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
         :param pulumi.Input['KubernetesClusterControlPlaneFirewallArgs'] control_plane_firewall: A block representing the cluster's control plane firewall
         :param pulumi.Input[_builtins.bool] destroy_all_associated_resources: **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
-        :param pulumi.Input[_builtins.bool] ha: Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: false
+        :param pulumi.Input[_builtins.bool] ha: Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: true (for 1.36.0 and later)
         :param pulumi.Input[_builtins.int] kubeconfig_expire_seconds: The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
         :param pulumi.Input['KubernetesClusterMaintenancePolicyArgs'] maintenance_policy: A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.
         :param pulumi.Input[_builtins.str] name: A name for the Kubernetes cluster.
@@ -238,7 +238,7 @@ class KubernetesClusterArgs:
     @pulumi.getter
     def ha(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: false
+        Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: true (for 1.36.0 and later)
         """
         return pulumi.get(self, "ha")
 
@@ -431,7 +431,7 @@ class _KubernetesClusterState:
         :param pulumi.Input[_builtins.str] created_at: The date and time when the node was created.
         :param pulumi.Input[_builtins.bool] destroy_all_associated_resources: **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
         :param pulumi.Input[_builtins.str] endpoint: The base URL of the API server on the Kubernetes master node.
-        :param pulumi.Input[_builtins.bool] ha: Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: false
+        :param pulumi.Input[_builtins.bool] ha: Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: true (for 1.36.0 and later)
         :param pulumi.Input[_builtins.str] ipv4_address: The public IPv4 address of the Kubernetes master node. This will not be set if high availability is configured on the cluster (v1.21+)
         :param pulumi.Input[Sequence[pulumi.Input['KubernetesClusterKubeConfigArgs']]] kube_configs: A representation of the Kubernetes cluster's kubeconfig with the following attributes:
         :param pulumi.Input[_builtins.int] kubeconfig_expire_seconds: The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
@@ -635,7 +635,7 @@ class _KubernetesClusterState:
     @pulumi.getter
     def ha(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: false
+        Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: true (for 1.36.0 and later)
         """
         return pulumi.get(self, "ha")
 
@@ -1041,7 +1041,7 @@ class KubernetesCluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] cluster_subnet: The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
         :param pulumi.Input[Union['KubernetesClusterControlPlaneFirewallArgs', 'KubernetesClusterControlPlaneFirewallArgsDict']] control_plane_firewall: A block representing the cluster's control plane firewall
         :param pulumi.Input[_builtins.bool] destroy_all_associated_resources: **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
-        :param pulumi.Input[_builtins.bool] ha: Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: false
+        :param pulumi.Input[_builtins.bool] ha: Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: true (for 1.36.0 and later)
         :param pulumi.Input[_builtins.int] kubeconfig_expire_seconds: The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
         :param pulumi.Input[Union['KubernetesClusterMaintenancePolicyArgs', 'KubernetesClusterMaintenancePolicyArgsDict']] maintenance_policy: A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.
         :param pulumi.Input[_builtins.str] name: A name for the Kubernetes cluster.
@@ -1340,7 +1340,7 @@ class KubernetesCluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] created_at: The date and time when the node was created.
         :param pulumi.Input[_builtins.bool] destroy_all_associated_resources: **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
         :param pulumi.Input[_builtins.str] endpoint: The base URL of the API server on the Kubernetes master node.
-        :param pulumi.Input[_builtins.bool] ha: Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: false
+        :param pulumi.Input[_builtins.bool] ha: Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: true (for 1.36.0 and later)
         :param pulumi.Input[_builtins.str] ipv4_address: The public IPv4 address of the Kubernetes master node. This will not be set if high availability is configured on the cluster (v1.21+)
         :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesClusterKubeConfigArgs', 'KubernetesClusterKubeConfigArgsDict']]]] kube_configs: A representation of the Kubernetes cluster's kubeconfig with the following attributes:
         :param pulumi.Input[_builtins.int] kubeconfig_expire_seconds: The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
@@ -1477,9 +1477,9 @@ class KubernetesCluster(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def ha(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def ha(self) -> pulumi.Output[_builtins.bool]:
         """
-        Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: false
+        Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: true (for 1.36.0 and later)
         """
         return pulumi.get(self, "ha")
 

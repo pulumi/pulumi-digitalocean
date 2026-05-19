@@ -35781,7 +35781,7 @@
                 },
                 "ha": {
                     "type": "boolean",
-                    "description": "Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: false\n"
+                    "description": "Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: true (for 1.36.0 and later)\n"
                 },
                 "ipv4Address": {
                     "type": "string",
@@ -35875,6 +35875,7 @@
                 "controlPlaneFirewall",
                 "createdAt",
                 "endpoint",
+                "ha",
                 "ipv4Address",
                 "kubeConfigs",
                 "maintenancePolicy",
@@ -35927,7 +35928,7 @@
                 },
                 "ha": {
                     "type": "boolean",
-                    "description": "Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: false\n"
+                    "description": "Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: true (for 1.36.0 and later)\n"
                 },
                 "kubeconfigExpireSeconds": {
                     "type": "integer",
@@ -36060,7 +36061,7 @@
                     },
                     "ha": {
                         "type": "boolean",
-                        "description": "Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: false\n"
+                        "description": "Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: true (for 1.36.0 and later)\n"
                     },
                     "ipv4Address": {
                         "type": "string",
