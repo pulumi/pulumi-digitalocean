@@ -24,7 +24,7 @@ with the proper credentials before it can be used.
 Use the navigation to the left to read about the available resources.
 ## Example Usage
 
-{{< chooser language "typescript,python,go,csharp,java,yaml" >}}
+{{< chooser language "typescript,python,go,csharp,java,yaml,hcl" >}}
 {{% choosable language typescript %}}
 ```yaml
 # Pulumi.yaml provider configuration file
@@ -195,6 +195,26 @@ public class App {
         var web = new Droplet("web");
 
     }
+}
+```
+
+{{% /choosable %}}
+{{% choosable language hcl %}}
+```hcl
+pulumi {
+  required_providers {
+    digitalocean = {
+      source = "pulumi/digitalocean"
+    }
+  }
+}
+
+# Create a web server
+resource "digitalocean_droplet" "web" {
+}
+# Set the variable value in *.tfvars file
+# or using -var="do_token=..." CLI option
+variable "doToken" {
 }
 ```
 

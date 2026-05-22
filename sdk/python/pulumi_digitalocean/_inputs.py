@@ -800,11 +800,11 @@ class AppSpecArgsDict(TypedDict):
     """
     The name of the component.
     """
-    alerts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecAlertArgs']]]]]
+    alerts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecAlertArgsDict']]]]]
     """
     Describes an alert policy for the component.
     """
-    databases: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecDatabaseArgs']]]]]
+    databases: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecDatabaseArgsDict']]]]]
     disable_edge_cache: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     A boolean indicating whether to disable the edge cache for this app. Default: `false`. Available only for non-static sites. Requires custom domains and applies to all the domains of the app.
@@ -813,12 +813,12 @@ class AppSpecArgsDict(TypedDict):
     """
     A boolean indicating whether to disable email obfuscation for this app. Default: `false`. Requires custom domains and applies to all the domains of the app.
     """
-    domain_names: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecDomainNameArgs']]]]]
+    domain_names: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecDomainNameArgsDict']]]]]
     """
     Describes a domain where the application will be made available.
     """
     domains: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
-    egresses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecEgressArgs']]]]]
+    egresses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecEgressArgsDict']]]]]
     """
     Specification for app egress configurations.
     """
@@ -826,7 +826,7 @@ class AppSpecArgsDict(TypedDict):
     """
     A boolean, when set to `true`, enables enhanced analyzing of incoming traffic to prevent layer 7 DDoS attacks. Default: `false`. Requires custom domains and applies to all the domains of the app.
     """
-    envs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecEnvArgs']]]]]
+    envs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecEnvArgsDict']]]]]
     """
     Describes an environment variable made available to an app competent.
     """
@@ -834,13 +834,13 @@ class AppSpecArgsDict(TypedDict):
     """
     A list of the features applied to the app. The default buildpack can be overridden here. List of available buildpacks can be found using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/reference/apps/list-buildpacks/)
     """
-    functions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecFunctionArgs']]]]]
-    ingress: NotRequired[pulumi.Input[Optional['AppSpecIngressArgs']]]
+    functions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecFunctionArgsDict']]]]]
+    ingress: NotRequired[pulumi.Input[Optional['AppSpecIngressArgsDict']]]
     """
     Specification for component routing, rewrites, and redirects.
     """
-    jobs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecJobArgs']]]]]
-    maintenance: NotRequired[pulumi.Input[Optional['AppSpecMaintenanceArgs']]]
+    jobs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecJobArgsDict']]]]]
+    maintenance: NotRequired[pulumi.Input[Optional['AppSpecMaintenanceArgsDict']]]
     """
     Specification to configure maintenance settings for the app, such as maintenance mode and archiving the app.
     """
@@ -848,13 +848,13 @@ class AppSpecArgsDict(TypedDict):
     """
     The slug for the DigitalOcean data center region hosting the app.
     """
-    services: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecServiceArgs']]]]]
-    static_sites: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecStaticSiteArgs']]]]]
-    vpcs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecVpcArgs']]]]]
+    services: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecServiceArgsDict']]]]]
+    static_sites: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecStaticSiteArgsDict']]]]]
+    vpcs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecVpcArgsDict']]]]]
     """
     Specification for VPC.
     """
-    workers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecWorkerArgs']]]]]
+    workers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecWorkerArgsDict']]]]]
 
 @pulumi.input_type
 class AppSpecArgs:
@@ -1163,7 +1163,7 @@ class AppSpecAlertArgsDict(TypedDict):
     """
     The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
     """
-    destinations: NotRequired[pulumi.Input[Optional['AppSpecAlertDestinationsArgs']]]
+    destinations: NotRequired[pulumi.Input[Optional['AppSpecAlertDestinationsArgsDict']]]
     """
     Specification for alert destination.
     """
@@ -1231,7 +1231,7 @@ class AppSpecAlertDestinationsArgsDict(TypedDict):
     """
     Determines which emails receive alerts. The emails must be team members. If not set, the team's email is used by default.
     """
-    slack_webhooks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecAlertDestinationsSlackWebhookArgs']]]]]
+    slack_webhooks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecAlertDestinationsSlackWebhookArgsDict']]]]]
     """
     Determines which slack channels or users receive alerts.
     """
@@ -1697,39 +1697,39 @@ class AppSpecFunctionArgsDict(TypedDict):
     """
     The name of the component.
     """
-    alerts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecFunctionAlertArgs']]]]]
+    alerts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecFunctionAlertArgsDict']]]]]
     """
     Describes an alert policy for the component.
     """
-    bitbucket: NotRequired[pulumi.Input[Optional['AppSpecFunctionBitbucketArgs']]]
+    bitbucket: NotRequired[pulumi.Input[Optional['AppSpecFunctionBitbucketArgsDict']]]
     """
     A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
     """
-    cors: NotRequired[pulumi.Input[Optional['AppSpecFunctionCorsArgs']]]
+    cors: NotRequired[pulumi.Input[Optional['AppSpecFunctionCorsArgsDict']]]
     """
     The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
     """
-    envs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecFunctionEnvArgs']]]]]
+    envs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecFunctionEnvArgsDict']]]]]
     """
     Describes an environment variable made available to an app competent.
     """
-    git: NotRequired[pulumi.Input[Optional['AppSpecFunctionGitArgs']]]
+    git: NotRequired[pulumi.Input[Optional['AppSpecFunctionGitArgsDict']]]
     """
     A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
     """
-    github: NotRequired[pulumi.Input[Optional['AppSpecFunctionGithubArgs']]]
+    github: NotRequired[pulumi.Input[Optional['AppSpecFunctionGithubArgsDict']]]
     """
     A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
     """
-    gitlab: NotRequired[pulumi.Input[Optional['AppSpecFunctionGitlabArgs']]]
+    gitlab: NotRequired[pulumi.Input[Optional['AppSpecFunctionGitlabArgsDict']]]
     """
     A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
     """
-    log_destinations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecFunctionLogDestinationArgs']]]]]
+    log_destinations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecFunctionLogDestinationArgsDict']]]]]
     """
     Describes a log forwarding destination.
     """
-    routes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecFunctionRouteArgs']]]]]
+    routes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecFunctionRouteArgsDict']]]]]
     """
     An HTTP paths that should be routed to this component.
     """
@@ -1945,7 +1945,7 @@ class AppSpecFunctionAlertArgsDict(TypedDict):
     """
     The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
     """
-    destinations: NotRequired[pulumi.Input[Optional['AppSpecFunctionAlertDestinationsArgs']]]
+    destinations: NotRequired[pulumi.Input[Optional['AppSpecFunctionAlertDestinationsArgsDict']]]
     """
     Specification for alert destination.
     """
@@ -2058,7 +2058,7 @@ class AppSpecFunctionAlertDestinationsArgsDict(TypedDict):
     """
     Determines which emails receive alerts. The emails must be team members. If not set, the team's email is used by default.
     """
-    slack_webhooks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecFunctionAlertDestinationsSlackWebhookArgs']]]]]
+    slack_webhooks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecFunctionAlertDestinationsSlackWebhookArgsDict']]]]]
     """
     Determines which slack channels or users receive alerts.
     """
@@ -2231,7 +2231,7 @@ class AppSpecFunctionCorsArgsDict(TypedDict):
     """
     The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
     """
-    allow_origins: NotRequired[pulumi.Input[Optional['AppSpecFunctionCorsAllowOriginsArgs']]]
+    allow_origins: NotRequired[pulumi.Input[Optional['AppSpecFunctionCorsAllowOriginsArgsDict']]]
     """
     The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
     """
@@ -2701,19 +2701,19 @@ class AppSpecFunctionLogDestinationArgsDict(TypedDict):
     """
     Name of the log destination. Minimum length: 2. Maximum length: 42.
     """
-    datadog: NotRequired[pulumi.Input[Optional['AppSpecFunctionLogDestinationDatadogArgs']]]
+    datadog: NotRequired[pulumi.Input[Optional['AppSpecFunctionLogDestinationDatadogArgsDict']]]
     """
     Datadog configuration.
     """
-    logtail: NotRequired[pulumi.Input[Optional['AppSpecFunctionLogDestinationLogtailArgs']]]
+    logtail: NotRequired[pulumi.Input[Optional['AppSpecFunctionLogDestinationLogtailArgsDict']]]
     """
     Logtail configuration.
     """
-    open_search: NotRequired[pulumi.Input[Optional['AppSpecFunctionLogDestinationOpenSearchArgs']]]
+    open_search: NotRequired[pulumi.Input[Optional['AppSpecFunctionLogDestinationOpenSearchArgsDict']]]
     """
     OpenSearch configuration.
     """
-    papertrail: NotRequired[pulumi.Input[Optional['AppSpecFunctionLogDestinationPapertrailArgs']]]
+    papertrail: NotRequired[pulumi.Input[Optional['AppSpecFunctionLogDestinationPapertrailArgsDict']]]
     """
     Papertrail configuration.
     """
@@ -3095,11 +3095,11 @@ class AppSpecFunctionRouteArgs:
 
 
 class AppSpecIngressArgsDict(TypedDict):
-    rules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecIngressRuleArgs']]]]]
+    rules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecIngressRuleArgsDict']]]]]
     """
     Rules for configuring HTTP ingress for component routes, CORS, rewrites, and redirects.
     """
-    secure_header: NotRequired[pulumi.Input[Optional['AppSpecIngressSecureHeaderArgs']]]
+    secure_header: NotRequired[pulumi.Input[Optional['AppSpecIngressSecureHeaderArgsDict']]]
 
 @pulumi.input_type
 class AppSpecIngressArgs:
@@ -3137,19 +3137,19 @@ class AppSpecIngressArgs:
 
 
 class AppSpecIngressRuleArgsDict(TypedDict):
-    component: NotRequired[pulumi.Input[Optional['AppSpecIngressRuleComponentArgs']]]
+    component: NotRequired[pulumi.Input[Optional['AppSpecIngressRuleComponentArgsDict']]]
     """
     The component to route to. Only one of `component` or `redirect` may be set.
     """
-    cors: NotRequired[pulumi.Input[Optional['AppSpecIngressRuleCorsArgs']]]
+    cors: NotRequired[pulumi.Input[Optional['AppSpecIngressRuleCorsArgsDict']]]
     """
     The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
     """
-    match: NotRequired[pulumi.Input[Optional['AppSpecIngressRuleMatchArgs']]]
+    match: NotRequired[pulumi.Input[Optional['AppSpecIngressRuleMatchArgsDict']]]
     """
     The match configuration for the rule
     """
-    redirect: NotRequired[pulumi.Input[Optional['AppSpecIngressRuleRedirectArgs']]]
+    redirect: NotRequired[pulumi.Input[Optional['AppSpecIngressRuleRedirectArgsDict']]]
     """
     The redirect configuration for the rule. Only one of `component` or `redirect` may be set.
     """
@@ -3307,7 +3307,7 @@ class AppSpecIngressRuleCorsArgsDict(TypedDict):
     """
     The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
     """
-    allow_origins: NotRequired[pulumi.Input[Optional['AppSpecIngressRuleCorsAllowOriginsArgs']]]
+    allow_origins: NotRequired[pulumi.Input[Optional['AppSpecIngressRuleCorsAllowOriginsArgsDict']]]
     """
     The `Access-Control-Allow-Origin` can be
     """
@@ -3497,11 +3497,11 @@ class AppSpecIngressRuleCorsAllowOriginsArgs:
 
 
 class AppSpecIngressRuleMatchArgsDict(TypedDict):
-    authority: NotRequired[pulumi.Input[Optional['AppSpecIngressRuleMatchAuthorityArgs']]]
+    authority: NotRequired[pulumi.Input[Optional['AppSpecIngressRuleMatchAuthorityArgsDict']]]
     """
     The authority (domain) to match on.
     """
-    path: NotRequired[pulumi.Input[Optional['AppSpecIngressRuleMatchPathArgs']]]
+    path: NotRequired[pulumi.Input[Optional['AppSpecIngressRuleMatchPathArgsDict']]]
     """
     The path to match on.
     """
@@ -3759,11 +3759,11 @@ class AppSpecJobArgsDict(TypedDict):
     """
     The name of the component.
     """
-    alerts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecJobAlertArgs']]]]]
+    alerts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecJobAlertArgsDict']]]]]
     """
     Describes an alert policy for the component.
     """
-    bitbucket: NotRequired[pulumi.Input[Optional['AppSpecJobBitbucketArgs']]]
+    bitbucket: NotRequired[pulumi.Input[Optional['AppSpecJobBitbucketArgsDict']]]
     """
     A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
     """
@@ -3779,23 +3779,23 @@ class AppSpecJobArgsDict(TypedDict):
     """
     An environment slug describing the type of this app.
     """
-    envs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecJobEnvArgs']]]]]
+    envs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecJobEnvArgsDict']]]]]
     """
     Describes an environment variable made available to an app competent.
     """
-    git: NotRequired[pulumi.Input[Optional['AppSpecJobGitArgs']]]
+    git: NotRequired[pulumi.Input[Optional['AppSpecJobGitArgsDict']]]
     """
     A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
     """
-    github: NotRequired[pulumi.Input[Optional['AppSpecJobGithubArgs']]]
+    github: NotRequired[pulumi.Input[Optional['AppSpecJobGithubArgsDict']]]
     """
     A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
     """
-    gitlab: NotRequired[pulumi.Input[Optional['AppSpecJobGitlabArgs']]]
+    gitlab: NotRequired[pulumi.Input[Optional['AppSpecJobGitlabArgsDict']]]
     """
     A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
     """
-    image: NotRequired[pulumi.Input[Optional['AppSpecJobImageArgs']]]
+    image: NotRequired[pulumi.Input[Optional['AppSpecJobImageArgsDict']]]
     """
     An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
     """
@@ -3815,7 +3815,7 @@ class AppSpecJobArgsDict(TypedDict):
     - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
     - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
     """
-    log_destinations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecJobLogDestinationArgs']]]]]
+    log_destinations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecJobLogDestinationArgsDict']]]]]
     """
     Describes a log forwarding destination.
     """
@@ -3827,7 +3827,7 @@ class AppSpecJobArgsDict(TypedDict):
     """
     An optional path to the working directory to use for the build.
     """
-    termination: NotRequired[pulumi.Input[Optional['AppSpecJobTerminationArgs']]]
+    termination: NotRequired[pulumi.Input[Optional['AppSpecJobTerminationArgsDict']]]
     """
     Contains a component's termination parameters.
     """
@@ -4151,7 +4151,7 @@ class AppSpecJobAlertArgsDict(TypedDict):
     """
     The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
     """
-    destinations: NotRequired[pulumi.Input[Optional['AppSpecJobAlertDestinationsArgs']]]
+    destinations: NotRequired[pulumi.Input[Optional['AppSpecJobAlertDestinationsArgsDict']]]
     """
     Specification for alert destination.
     """
@@ -4264,7 +4264,7 @@ class AppSpecJobAlertDestinationsArgsDict(TypedDict):
     """
     Determines which emails receive alerts. The emails must be team members. If not set, the team's email is used by default.
     """
-    slack_webhooks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecJobAlertDestinationsSlackWebhookArgs']]]]]
+    slack_webhooks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecJobAlertDestinationsSlackWebhookArgsDict']]]]]
     """
     Determines which slack channels or users receive alerts.
     """
@@ -4709,7 +4709,7 @@ class AppSpecJobImageArgsDict(TypedDict):
     """
     The repository name.
     """
-    deploy_on_pushes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecJobImageDeployOnPushArgs']]]]]
+    deploy_on_pushes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecJobImageDeployOnPushArgsDict']]]]]
     """
     Configures automatically deploying images pushed to DOCR.
     """
@@ -4881,19 +4881,19 @@ class AppSpecJobLogDestinationArgsDict(TypedDict):
     """
     Name of the log destination. Minimum length: 2. Maximum length: 42.
     """
-    datadog: NotRequired[pulumi.Input[Optional['AppSpecJobLogDestinationDatadogArgs']]]
+    datadog: NotRequired[pulumi.Input[Optional['AppSpecJobLogDestinationDatadogArgsDict']]]
     """
     Datadog configuration.
     """
-    logtail: NotRequired[pulumi.Input[Optional['AppSpecJobLogDestinationLogtailArgs']]]
+    logtail: NotRequired[pulumi.Input[Optional['AppSpecJobLogDestinationLogtailArgsDict']]]
     """
     Logtail configuration.
     """
-    open_search: NotRequired[pulumi.Input[Optional['AppSpecJobLogDestinationOpenSearchArgs']]]
+    open_search: NotRequired[pulumi.Input[Optional['AppSpecJobLogDestinationOpenSearchArgsDict']]]
     """
     OpenSearch configuration.
     """
-    papertrail: NotRequired[pulumi.Input[Optional['AppSpecJobLogDestinationPapertrailArgs']]]
+    papertrail: NotRequired[pulumi.Input[Optional['AppSpecJobLogDestinationPapertrailArgsDict']]]
     """
     Papertrail configuration.
     """
@@ -5334,15 +5334,15 @@ class AppSpecServiceArgsDict(TypedDict):
     """
     The name of the component.
     """
-    alerts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecServiceAlertArgs']]]]]
+    alerts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecServiceAlertArgsDict']]]]]
     """
     Describes an alert policy for the component.
     """
-    autoscaling: NotRequired[pulumi.Input[Optional['AppSpecServiceAutoscalingArgs']]]
+    autoscaling: NotRequired[pulumi.Input[Optional['AppSpecServiceAutoscalingArgsDict']]]
     """
     Configuration for automatically scaling this component based on metrics.
     """
-    bitbucket: NotRequired[pulumi.Input[Optional['AppSpecServiceBitbucketArgs']]]
+    bitbucket: NotRequired[pulumi.Input[Optional['AppSpecServiceBitbucketArgsDict']]]
     """
     A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
     """
@@ -5350,7 +5350,7 @@ class AppSpecServiceArgsDict(TypedDict):
     """
     An optional build command to run while building this component from source.
     """
-    cors: NotRequired[pulumi.Input[Optional['AppSpecServiceCorsArgs']]]
+    cors: NotRequired[pulumi.Input[Optional['AppSpecServiceCorsArgsDict']]]
     """
     The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
     """
@@ -5362,23 +5362,23 @@ class AppSpecServiceArgsDict(TypedDict):
     """
     An environment slug describing the type of this app.
     """
-    envs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecServiceEnvArgs']]]]]
+    envs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecServiceEnvArgsDict']]]]]
     """
     Describes an environment variable made available to an app competent.
     """
-    git: NotRequired[pulumi.Input[Optional['AppSpecServiceGitArgs']]]
+    git: NotRequired[pulumi.Input[Optional['AppSpecServiceGitArgsDict']]]
     """
     A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
     """
-    github: NotRequired[pulumi.Input[Optional['AppSpecServiceGithubArgs']]]
+    github: NotRequired[pulumi.Input[Optional['AppSpecServiceGithubArgsDict']]]
     """
     A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
     """
-    gitlab: NotRequired[pulumi.Input[Optional['AppSpecServiceGitlabArgs']]]
+    gitlab: NotRequired[pulumi.Input[Optional['AppSpecServiceGitlabArgsDict']]]
     """
     A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
     """
-    health_check: NotRequired[pulumi.Input[Optional['AppSpecServiceHealthCheckArgs']]]
+    health_check: NotRequired[pulumi.Input[Optional['AppSpecServiceHealthCheckArgsDict']]]
     """
     A health check to determine the availability of this component.
     """
@@ -5386,7 +5386,7 @@ class AppSpecServiceArgsDict(TypedDict):
     """
     The internal port on which this service's run command will listen.
     """
-    image: NotRequired[pulumi.Input[Optional['AppSpecServiceImageArgs']]]
+    image: NotRequired[pulumi.Input[Optional['AppSpecServiceImageArgsDict']]]
     """
     An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
     """
@@ -5402,11 +5402,11 @@ class AppSpecServiceArgsDict(TypedDict):
     """
     A list of ports on which this service will listen for internal traffic.
     """
-    log_destinations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecServiceLogDestinationArgs']]]]]
+    log_destinations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecServiceLogDestinationArgsDict']]]]]
     """
     Describes a log forwarding destination.
     """
-    routes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecServiceRouteArgs']]]]]
+    routes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecServiceRouteArgsDict']]]]]
     """
     An HTTP paths that should be routed to this component.
     """
@@ -5418,7 +5418,7 @@ class AppSpecServiceArgsDict(TypedDict):
     """
     An optional path to the working directory to use for the build.
     """
-    termination: NotRequired[pulumi.Input[Optional['AppSpecServiceTerminationArgs']]]
+    termination: NotRequired[pulumi.Input[Optional['AppSpecServiceTerminationArgsDict']]]
     """
     Contains a component's termination parameters.
     """
@@ -5822,7 +5822,7 @@ class AppSpecServiceAlertArgsDict(TypedDict):
     """
     The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
     """
-    destinations: NotRequired[pulumi.Input[Optional['AppSpecServiceAlertDestinationsArgs']]]
+    destinations: NotRequired[pulumi.Input[Optional['AppSpecServiceAlertDestinationsArgsDict']]]
     """
     Specification for alert destination.
     """
@@ -5935,7 +5935,7 @@ class AppSpecServiceAlertDestinationsArgsDict(TypedDict):
     """
     Determines which emails receive alerts. The emails must be team members. If not set, the team's email is used by default.
     """
-    slack_webhooks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecServiceAlertDestinationsSlackWebhookArgs']]]]]
+    slack_webhooks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecServiceAlertDestinationsSlackWebhookArgsDict']]]]]
     """
     Determines which slack channels or users receive alerts.
     """
@@ -6093,7 +6093,7 @@ class AppSpecServiceAutoscalingArgs:
 
 
 class AppSpecServiceAutoscalingMetricsArgsDict(TypedDict):
-    cpu: NotRequired[pulumi.Input[Optional['AppSpecServiceAutoscalingMetricsCpuArgs']]]
+    cpu: NotRequired[pulumi.Input[Optional['AppSpecServiceAutoscalingMetricsCpuArgsDict']]]
     """
     Settings for scaling the component based on CPU utilization.
     """
@@ -6231,7 +6231,7 @@ class AppSpecServiceCorsArgsDict(TypedDict):
     """
     The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
     """
-    allow_origins: NotRequired[pulumi.Input[Optional['AppSpecServiceCorsAllowOriginsArgs']]]
+    allow_origins: NotRequired[pulumi.Input[Optional['AppSpecServiceCorsAllowOriginsArgsDict']]]
     """
     The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
     """
@@ -6854,7 +6854,7 @@ class AppSpecServiceImageArgsDict(TypedDict):
     """
     The repository name.
     """
-    deploy_on_pushes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecServiceImageDeployOnPushArgs']]]]]
+    deploy_on_pushes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecServiceImageDeployOnPushArgsDict']]]]]
     """
     Configures automatically deploying images pushed to DOCR.
     """
@@ -7026,19 +7026,19 @@ class AppSpecServiceLogDestinationArgsDict(TypedDict):
     """
     Name of the log destination. Minimum length: 2. Maximum length: 42.
     """
-    datadog: NotRequired[pulumi.Input[Optional['AppSpecServiceLogDestinationDatadogArgs']]]
+    datadog: NotRequired[pulumi.Input[Optional['AppSpecServiceLogDestinationDatadogArgsDict']]]
     """
     Datadog configuration.
     """
-    logtail: NotRequired[pulumi.Input[Optional['AppSpecServiceLogDestinationLogtailArgs']]]
+    logtail: NotRequired[pulumi.Input[Optional['AppSpecServiceLogDestinationLogtailArgsDict']]]
     """
     Logtail configuration.
     """
-    open_search: NotRequired[pulumi.Input[Optional['AppSpecServiceLogDestinationOpenSearchArgs']]]
+    open_search: NotRequired[pulumi.Input[Optional['AppSpecServiceLogDestinationOpenSearchArgsDict']]]
     """
     OpenSearch configuration.
     """
-    papertrail: NotRequired[pulumi.Input[Optional['AppSpecServiceLogDestinationPapertrailArgs']]]
+    papertrail: NotRequired[pulumi.Input[Optional['AppSpecServiceLogDestinationPapertrailArgsDict']]]
     """
     Papertrail configuration.
     """
@@ -7485,7 +7485,7 @@ class AppSpecStaticSiteArgsDict(TypedDict):
     """
     The name of the component.
     """
-    bitbucket: NotRequired[pulumi.Input[Optional['AppSpecStaticSiteBitbucketArgs']]]
+    bitbucket: NotRequired[pulumi.Input[Optional['AppSpecStaticSiteBitbucketArgsDict']]]
     """
     A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
     """
@@ -7497,7 +7497,7 @@ class AppSpecStaticSiteArgsDict(TypedDict):
     """
     The name of the document to use as the fallback for any requests to documents that are not found when serving this static site.
     """
-    cors: NotRequired[pulumi.Input[Optional['AppSpecStaticSiteCorsArgs']]]
+    cors: NotRequired[pulumi.Input[Optional['AppSpecStaticSiteCorsArgsDict']]]
     """
     The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
     """
@@ -7509,7 +7509,7 @@ class AppSpecStaticSiteArgsDict(TypedDict):
     """
     An environment slug describing the type of this app.
     """
-    envs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecStaticSiteEnvArgs']]]]]
+    envs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecStaticSiteEnvArgsDict']]]]]
     """
     Describes an environment variable made available to an app competent.
     """
@@ -7517,15 +7517,15 @@ class AppSpecStaticSiteArgsDict(TypedDict):
     """
     The name of the error document to use when serving this static site.
     """
-    git: NotRequired[pulumi.Input[Optional['AppSpecStaticSiteGitArgs']]]
+    git: NotRequired[pulumi.Input[Optional['AppSpecStaticSiteGitArgsDict']]]
     """
     A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
     """
-    github: NotRequired[pulumi.Input[Optional['AppSpecStaticSiteGithubArgs']]]
+    github: NotRequired[pulumi.Input[Optional['AppSpecStaticSiteGithubArgsDict']]]
     """
     A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
     """
-    gitlab: NotRequired[pulumi.Input[Optional['AppSpecStaticSiteGitlabArgs']]]
+    gitlab: NotRequired[pulumi.Input[Optional['AppSpecStaticSiteGitlabArgsDict']]]
     """
     A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
     """
@@ -7537,7 +7537,7 @@ class AppSpecStaticSiteArgsDict(TypedDict):
     """
     An optional path to where the built assets will be located, relative to the build context. If not set, App Platform will automatically scan for these directory names: `_static`, `dist`, `public`.
     """
-    routes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecStaticSiteRouteArgs']]]]]
+    routes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecStaticSiteRouteArgsDict']]]]]
     """
     An HTTP paths that should be routed to this component.
     """
@@ -7898,7 +7898,7 @@ class AppSpecStaticSiteCorsArgsDict(TypedDict):
     """
     The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
     """
-    allow_origins: NotRequired[pulumi.Input[Optional['AppSpecStaticSiteCorsAllowOriginsArgs']]]
+    allow_origins: NotRequired[pulumi.Input[Optional['AppSpecStaticSiteCorsAllowOriginsArgsDict']]]
     """
     The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
     """
@@ -8445,15 +8445,15 @@ class AppSpecWorkerArgsDict(TypedDict):
     """
     The name of the component.
     """
-    alerts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecWorkerAlertArgs']]]]]
+    alerts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecWorkerAlertArgsDict']]]]]
     """
     Describes an alert policy for the component.
     """
-    autoscaling: NotRequired[pulumi.Input[Optional['AppSpecWorkerAutoscalingArgs']]]
+    autoscaling: NotRequired[pulumi.Input[Optional['AppSpecWorkerAutoscalingArgsDict']]]
     """
     Configuration for automatically scaling this component based on metrics.
     """
-    bitbucket: NotRequired[pulumi.Input[Optional['AppSpecWorkerBitbucketArgs']]]
+    bitbucket: NotRequired[pulumi.Input[Optional['AppSpecWorkerBitbucketArgsDict']]]
     """
     A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
     """
@@ -8469,23 +8469,23 @@ class AppSpecWorkerArgsDict(TypedDict):
     """
     An environment slug describing the type of this app.
     """
-    envs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecWorkerEnvArgs']]]]]
+    envs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecWorkerEnvArgsDict']]]]]
     """
     Describes an environment variable made available to an app competent.
     """
-    git: NotRequired[pulumi.Input[Optional['AppSpecWorkerGitArgs']]]
+    git: NotRequired[pulumi.Input[Optional['AppSpecWorkerGitArgsDict']]]
     """
     A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
     """
-    github: NotRequired[pulumi.Input[Optional['AppSpecWorkerGithubArgs']]]
+    github: NotRequired[pulumi.Input[Optional['AppSpecWorkerGithubArgsDict']]]
     """
     A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
     """
-    gitlab: NotRequired[pulumi.Input[Optional['AppSpecWorkerGitlabArgs']]]
+    gitlab: NotRequired[pulumi.Input[Optional['AppSpecWorkerGitlabArgsDict']]]
     """
     A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
     """
-    image: NotRequired[pulumi.Input[Optional['AppSpecWorkerImageArgs']]]
+    image: NotRequired[pulumi.Input[Optional['AppSpecWorkerImageArgsDict']]]
     """
     An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
     """
@@ -8497,7 +8497,7 @@ class AppSpecWorkerArgsDict(TypedDict):
     """
     The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Apps/operation/apps_list_instanceSizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
     """
-    log_destinations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecWorkerLogDestinationArgs']]]]]
+    log_destinations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecWorkerLogDestinationArgsDict']]]]]
     """
     Describes a log forwarding destination.
     """
@@ -8509,7 +8509,7 @@ class AppSpecWorkerArgsDict(TypedDict):
     """
     An optional path to the working directory to use for the build.
     """
-    termination: NotRequired[pulumi.Input[Optional['AppSpecWorkerTerminationArgs']]]
+    termination: NotRequired[pulumi.Input[Optional['AppSpecWorkerTerminationArgsDict']]]
     """
     Contains a component's termination parameters.
     """
@@ -8825,7 +8825,7 @@ class AppSpecWorkerAlertArgsDict(TypedDict):
     """
     The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
     """
-    destinations: NotRequired[pulumi.Input[Optional['AppSpecWorkerAlertDestinationsArgs']]]
+    destinations: NotRequired[pulumi.Input[Optional['AppSpecWorkerAlertDestinationsArgsDict']]]
     """
     Specification for alert destination.
     """
@@ -8938,7 +8938,7 @@ class AppSpecWorkerAlertDestinationsArgsDict(TypedDict):
     """
     Determines which emails receive alerts. The emails must be team members. If not set, the team's email is used by default.
     """
-    slack_webhooks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecWorkerAlertDestinationsSlackWebhookArgs']]]]]
+    slack_webhooks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecWorkerAlertDestinationsSlackWebhookArgsDict']]]]]
     """
     Determines which slack channels or users receive alerts.
     """
@@ -9096,7 +9096,7 @@ class AppSpecWorkerAutoscalingArgs:
 
 
 class AppSpecWorkerAutoscalingMetricsArgsDict(TypedDict):
-    cpu: NotRequired[pulumi.Input[Optional['AppSpecWorkerAutoscalingMetricsCpuArgs']]]
+    cpu: NotRequired[pulumi.Input[Optional['AppSpecWorkerAutoscalingMetricsCpuArgsDict']]]
     """
     Settings for scaling the component based on CPU utilization.
     """
@@ -9506,7 +9506,7 @@ class AppSpecWorkerImageArgsDict(TypedDict):
     """
     The repository name.
     """
-    deploy_on_pushes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecWorkerImageDeployOnPushArgs']]]]]
+    deploy_on_pushes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecWorkerImageDeployOnPushArgsDict']]]]]
     """
     Configures automatically deploying images pushed to DOCR.
     """
@@ -9678,19 +9678,19 @@ class AppSpecWorkerLogDestinationArgsDict(TypedDict):
     """
     Name of the log destination. Minimum length: 2. Maximum length: 42.
     """
-    datadog: NotRequired[pulumi.Input[Optional['AppSpecWorkerLogDestinationDatadogArgs']]]
+    datadog: NotRequired[pulumi.Input[Optional['AppSpecWorkerLogDestinationDatadogArgsDict']]]
     """
     Datadog configuration.
     """
-    logtail: NotRequired[pulumi.Input[Optional['AppSpecWorkerLogDestinationLogtailArgs']]]
+    logtail: NotRequired[pulumi.Input[Optional['AppSpecWorkerLogDestinationLogtailArgsDict']]]
     """
     Logtail configuration.
     """
-    open_search: NotRequired[pulumi.Input[Optional['AppSpecWorkerLogDestinationOpenSearchArgs']]]
+    open_search: NotRequired[pulumi.Input[Optional['AppSpecWorkerLogDestinationOpenSearchArgsDict']]]
     """
     OpenSearch configuration.
     """
-    papertrail: NotRequired[pulumi.Input[Optional['AppSpecWorkerLogDestinationPapertrailArgs']]]
+    papertrail: NotRequired[pulumi.Input[Optional['AppSpecWorkerLogDestinationPapertrailArgsDict']]]
     """
     Papertrail configuration.
     """
@@ -10962,13 +10962,13 @@ class DatabasePostgresqlConfigTimescaledbArgs:
 
 
 class DatabaseUserSettingArgsDict(TypedDict):
-    acls: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseUserSettingAclArgs']]]]]
+    acls: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseUserSettingAclArgsDict']]]]]
     """
     A set of ACLs (Access Control Lists) specifying permission on topics with a Kafka cluster. The properties of an individual ACL are described below:
 
     An individual ACL includes the following:
     """
-    opensearch_acls: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseUserSettingOpensearchAclArgs']]]]]
+    opensearch_acls: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseUserSettingOpensearchAclArgsDict']]]]]
 
 @pulumi.input_type
 class DatabaseUserSettingArgs:
@@ -12905,27 +12905,27 @@ class GenaiAgentChildAgentArgsDict(TypedDict):
     """
     ID of the child agent
     """
-    anthropic_api_keys: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentChildAgentAnthropicApiKeyArgs']]]]]
+    anthropic_api_keys: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentChildAgentAnthropicApiKeyArgsDict']]]]]
     """
     Anthropic API Key information
     """
-    api_key_infos: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentChildAgentApiKeyInfoArgs']]]]]
+    api_key_infos: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentChildAgentApiKeyInfoArgsDict']]]]]
     """
     List of API Key Infos
     """
-    api_keys: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentChildAgentApiKeyArgs']]]]]
+    api_keys: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentChildAgentApiKeyArgsDict']]]]]
     """
     List of API Keys
     """
-    chatbot_identifiers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentChildAgentChatbotIdentifierArgs']]]]]
+    chatbot_identifiers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentChildAgentChatbotIdentifierArgsDict']]]]]
     """
     List of Chatbot Identifiers
     """
-    chatbots: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentChildAgentChatbotArgs']]]]]
+    chatbots: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentChildAgentChatbotArgsDict']]]]]
     """
     ChatBot configuration
     """
-    deployments: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentChildAgentDeploymentArgs']]]]]
+    deployments: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentChildAgentDeploymentArgsDict']]]]]
     """
     List of API Key Infos
     """
@@ -14108,7 +14108,7 @@ class GenaiAgentKnowledgeBaseArgsDict(TypedDict):
     """
     Indicates if the Knowledge Base is public
     """
-    last_indexing_job: NotRequired[pulumi.Input[Optional['GenaiAgentKnowledgeBaseLastIndexingJobArgs']]]
+    last_indexing_job: NotRequired[pulumi.Input[Optional['GenaiAgentKnowledgeBaseLastIndexingJobArgsDict']]]
     """
     Last indexing job for the Knowledge Base
     """
@@ -14586,7 +14586,7 @@ class GenaiAgentKnowledgeBaseLastIndexingJobArgs:
 
 
 class GenaiAgentModelArgsDict(TypedDict):
-    agreements: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentModelAgreementArgs']]]]]
+    agreements: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentModelAgreementArgsDict']]]]]
     """
     Agreement information for the model
     """
@@ -14634,7 +14634,7 @@ class GenaiAgentModelArgsDict(TypedDict):
     """
     List of Usecases for the Model
     """
-    versions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentModelVersionArgs']]]]]
+    versions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentModelVersionArgsDict']]]]]
     """
     URL of the Model
     """
@@ -15166,27 +15166,27 @@ class GenaiAgentParentAgentArgsDict(TypedDict):
     """
     ID of the child agent
     """
-    anthropic_api_keys: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentParentAgentAnthropicApiKeyArgs']]]]]
+    anthropic_api_keys: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentParentAgentAnthropicApiKeyArgsDict']]]]]
     """
     Anthropic API Key information
     """
-    api_key_infos: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentParentAgentApiKeyInfoArgs']]]]]
+    api_key_infos: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentParentAgentApiKeyInfoArgsDict']]]]]
     """
     List of API Key Infos
     """
-    api_keys: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentParentAgentApiKeyArgs']]]]]
+    api_keys: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentParentAgentApiKeyArgsDict']]]]]
     """
     List of API Keys
     """
-    chatbot_identifiers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentParentAgentChatbotIdentifierArgs']]]]]
+    chatbot_identifiers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentParentAgentChatbotIdentifierArgsDict']]]]]
     """
     List of Chatbot Identifiers
     """
-    chatbots: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentParentAgentChatbotArgs']]]]]
+    chatbots: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentParentAgentChatbotArgsDict']]]]]
     """
     ChatBot configuration
     """
-    deployments: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentParentAgentDeploymentArgs']]]]]
+    deployments: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentParentAgentDeploymentArgsDict']]]]]
     """
     List of API Key Infos
     """
@@ -16007,7 +16007,7 @@ class GenaiAgentTemplateArgsDict(TypedDict):
     """
     K value for the Agent Template
     """
-    knowledge_bases: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentTemplateKnowledgeBaseArgs']]]]]
+    knowledge_bases: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentTemplateKnowledgeBaseArgsDict']]]]]
     """
     List of Knowledge Bases
     """
@@ -16015,7 +16015,7 @@ class GenaiAgentTemplateArgsDict(TypedDict):
     """
     Maximum tokens allowed
     """
-    models: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentTemplateModelArgs']]]]]
+    models: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentTemplateModelArgsDict']]]]]
     """
     Model of the Agent Template
     """
@@ -16260,7 +16260,7 @@ class GenaiAgentTemplateKnowledgeBaseArgsDict(TypedDict):
     """
     Indicates if the Knowledge Base is public
     """
-    last_indexing_job: NotRequired[pulumi.Input[Optional['GenaiAgentTemplateKnowledgeBaseLastIndexingJobArgs']]]
+    last_indexing_job: NotRequired[pulumi.Input[Optional['GenaiAgentTemplateKnowledgeBaseLastIndexingJobArgsDict']]]
     """
     Last indexing job for the Knowledge Base
     """
@@ -16738,7 +16738,7 @@ class GenaiAgentTemplateKnowledgeBaseLastIndexingJobArgs:
 
 
 class GenaiAgentTemplateModelArgsDict(TypedDict):
-    agreements: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentTemplateModelAgreementArgs']]]]]
+    agreements: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentTemplateModelAgreementArgsDict']]]]]
     """
     Agreement information for the model
     """
@@ -16786,7 +16786,7 @@ class GenaiAgentTemplateModelArgsDict(TypedDict):
     """
     List of Usecases for the Model
     """
-    versions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentTemplateModelVersionArgs']]]]]
+    versions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentTemplateModelVersionArgsDict']]]]]
     """
     URL of the Model
     """
@@ -17547,7 +17547,7 @@ class GenaiKnowledgeBaseLastIndexingJobArgs:
 
 
 class GenaiOpenaiApiKeyModelArgsDict(TypedDict):
-    agreements: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GenaiOpenaiApiKeyModelAgreementArgs']]]]]
+    agreements: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GenaiOpenaiApiKeyModelAgreementArgsDict']]]]]
     """
     Agreement information for the model
     """
@@ -17595,7 +17595,7 @@ class GenaiOpenaiApiKeyModelArgsDict(TypedDict):
     """
     List of Usecases for the Model
     """
-    versions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GenaiOpenaiApiKeyModelVersionArgs']]]]]
+    versions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GenaiOpenaiApiKeyModelVersionArgsDict']]]]]
     """
     URL of the Model
     """
@@ -18683,27 +18683,27 @@ class GradientaiAgentChildAgentArgsDict(TypedDict):
     """
     ID of the child agent
     """
-    anthropic_api_keys: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiAgentChildAgentAnthropicApiKeyArgs']]]]]
+    anthropic_api_keys: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiAgentChildAgentAnthropicApiKeyArgsDict']]]]]
     """
     Anthropic API Key information
     """
-    api_key_infos: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiAgentChildAgentApiKeyInfoArgs']]]]]
+    api_key_infos: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiAgentChildAgentApiKeyInfoArgsDict']]]]]
     """
     List of API Key Infos
     """
-    api_keys: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiAgentChildAgentApiKeyArgs']]]]]
+    api_keys: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiAgentChildAgentApiKeyArgsDict']]]]]
     """
     List of API Keys
     """
-    chatbot_identifiers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiAgentChildAgentChatbotIdentifierArgs']]]]]
+    chatbot_identifiers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiAgentChildAgentChatbotIdentifierArgsDict']]]]]
     """
     List of Chatbot Identifiers
     """
-    chatbots: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiAgentChildAgentChatbotArgs']]]]]
+    chatbots: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiAgentChildAgentChatbotArgsDict']]]]]
     """
     ChatBot configuration
     """
-    deployments: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiAgentChildAgentDeploymentArgs']]]]]
+    deployments: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiAgentChildAgentDeploymentArgsDict']]]]]
     """
     List of API Key Infos
     """
@@ -19886,7 +19886,7 @@ class GradientaiAgentKnowledgeBaseArgsDict(TypedDict):
     """
     Indicates if the Knowledge Base is public
     """
-    last_indexing_job: NotRequired[pulumi.Input[Optional['GradientaiAgentKnowledgeBaseLastIndexingJobArgs']]]
+    last_indexing_job: NotRequired[pulumi.Input[Optional['GradientaiAgentKnowledgeBaseLastIndexingJobArgsDict']]]
     """
     Last indexing job for the Knowledge Base
     """
@@ -20364,7 +20364,7 @@ class GradientaiAgentKnowledgeBaseLastIndexingJobArgs:
 
 
 class GradientaiAgentModelArgsDict(TypedDict):
-    agreements: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiAgentModelAgreementArgs']]]]]
+    agreements: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiAgentModelAgreementArgsDict']]]]]
     """
     Agreement information for the model
     """
@@ -20412,7 +20412,7 @@ class GradientaiAgentModelArgsDict(TypedDict):
     """
     List of Usecases for the Model
     """
-    versions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiAgentModelVersionArgs']]]]]
+    versions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiAgentModelVersionArgsDict']]]]]
     """
     URL of the Model
     """
@@ -20944,27 +20944,27 @@ class GradientaiAgentParentAgentArgsDict(TypedDict):
     """
     ID of the child agent
     """
-    anthropic_api_keys: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiAgentParentAgentAnthropicApiKeyArgs']]]]]
+    anthropic_api_keys: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiAgentParentAgentAnthropicApiKeyArgsDict']]]]]
     """
     Anthropic API Key information
     """
-    api_key_infos: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiAgentParentAgentApiKeyInfoArgs']]]]]
+    api_key_infos: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiAgentParentAgentApiKeyInfoArgsDict']]]]]
     """
     List of API Key Infos
     """
-    api_keys: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiAgentParentAgentApiKeyArgs']]]]]
+    api_keys: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiAgentParentAgentApiKeyArgsDict']]]]]
     """
     List of API Keys
     """
-    chatbot_identifiers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiAgentParentAgentChatbotIdentifierArgs']]]]]
+    chatbot_identifiers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiAgentParentAgentChatbotIdentifierArgsDict']]]]]
     """
     List of Chatbot Identifiers
     """
-    chatbots: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiAgentParentAgentChatbotArgs']]]]]
+    chatbots: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiAgentParentAgentChatbotArgsDict']]]]]
     """
     ChatBot configuration
     """
-    deployments: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiAgentParentAgentDeploymentArgs']]]]]
+    deployments: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiAgentParentAgentDeploymentArgsDict']]]]]
     """
     List of API Key Infos
     """
@@ -21785,7 +21785,7 @@ class GradientaiAgentTemplateArgsDict(TypedDict):
     """
     K value for the Agent Template
     """
-    knowledge_bases: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiAgentTemplateKnowledgeBaseArgs']]]]]
+    knowledge_bases: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiAgentTemplateKnowledgeBaseArgsDict']]]]]
     """
     List of Knowledge Bases
     """
@@ -21793,7 +21793,7 @@ class GradientaiAgentTemplateArgsDict(TypedDict):
     """
     Maximum tokens allowed
     """
-    models: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiAgentTemplateModelArgs']]]]]
+    models: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiAgentTemplateModelArgsDict']]]]]
     """
     Model of the Agent Template
     """
@@ -22038,7 +22038,7 @@ class GradientaiAgentTemplateKnowledgeBaseArgsDict(TypedDict):
     """
     Indicates if the Knowledge Base is public
     """
-    last_indexing_job: NotRequired[pulumi.Input[Optional['GradientaiAgentTemplateKnowledgeBaseLastIndexingJobArgs']]]
+    last_indexing_job: NotRequired[pulumi.Input[Optional['GradientaiAgentTemplateKnowledgeBaseLastIndexingJobArgsDict']]]
     """
     Last indexing job for the Knowledge Base
     """
@@ -22516,7 +22516,7 @@ class GradientaiAgentTemplateKnowledgeBaseLastIndexingJobArgs:
 
 
 class GradientaiAgentTemplateModelArgsDict(TypedDict):
-    agreements: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiAgentTemplateModelAgreementArgs']]]]]
+    agreements: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiAgentTemplateModelAgreementArgsDict']]]]]
     """
     Agreement information for the model
     """
@@ -22564,7 +22564,7 @@ class GradientaiAgentTemplateModelArgsDict(TypedDict):
     """
     List of Usecases for the Model
     """
-    versions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiAgentTemplateModelVersionArgs']]]]]
+    versions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiAgentTemplateModelVersionArgsDict']]]]]
     """
     URL of the Model
     """
@@ -22947,15 +22947,15 @@ class GradientaiKnowledgeBaseDataSourceArgsDict(TypedDict):
     """
     Created At timestamp for the Knowledge Base
     """
-    file_upload_data_sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiKnowledgeBaseDataSourceFileUploadDataSourceArgs']]]]]
+    file_upload_data_sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiKnowledgeBaseDataSourceFileUploadDataSourceArgsDict']]]]]
     """
     File upload data source configuration
     """
-    last_indexing_jobs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiKnowledgeBaseDataSourceLastIndexingJobArgs']]]]]
+    last_indexing_jobs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiKnowledgeBaseDataSourceLastIndexingJobArgsDict']]]]]
     """
     Last indexing job for the data source
     """
-    spaces_data_sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiKnowledgeBaseDataSourceSpacesDataSourceArgs']]]]]
+    spaces_data_sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiKnowledgeBaseDataSourceSpacesDataSourceArgsDict']]]]]
     """
     Spaces data source configuration
     """
@@ -22967,7 +22967,7 @@ class GradientaiKnowledgeBaseDataSourceArgsDict(TypedDict):
     """
     UUID of the Knowledge Base
     """
-    web_crawler_data_sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs']]]]]
+    web_crawler_data_sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgsDict']]]]]
     """
     Web crawler data source configuration
     """
@@ -23772,7 +23772,7 @@ class GradientaiKnowledgeBaseLastIndexingJobArgs:
 
 
 class GradientaiOpenaiApiKeyModelArgsDict(TypedDict):
-    agreements: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiOpenaiApiKeyModelAgreementArgs']]]]]
+    agreements: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiOpenaiApiKeyModelAgreementArgsDict']]]]]
     """
     Agreement information for the model
     """
@@ -23820,7 +23820,7 @@ class GradientaiOpenaiApiKeyModelArgsDict(TypedDict):
     """
     List of Usecases for the Model
     """
-    versions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiOpenaiApiKeyModelVersionArgs']]]]]
+    versions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiOpenaiApiKeyModelVersionArgsDict']]]]]
     """
     URL of the Model
     """
@@ -24627,7 +24627,7 @@ class KubernetesClusterNodePoolArgsDict(TypedDict):
     """
     The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
     """
-    nodes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['KubernetesClusterNodePoolNodeArgs']]]]]
+    nodes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['KubernetesClusterNodePoolNodeArgsDict']]]]]
     """
     A list of nodes in the pool. Each node exports the following attributes:
     """
@@ -24635,7 +24635,7 @@ class KubernetesClusterNodePoolArgsDict(TypedDict):
     """
     A list of tag names applied to the node pool.
     """
-    taints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['KubernetesClusterNodePoolTaintArgs']]]]]
+    taints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['KubernetesClusterNodePoolTaintArgsDict']]]]]
     """
     A block representing a taint applied to all nodes in the pool. Each taint exports the following attributes (taints must be unique by key and effect pair):
     """
@@ -25725,7 +25725,7 @@ class LoadBalancerGlbSettingsArgsDict(TypedDict):
     """
     The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http` and `https`.
     """
-    cdn: NotRequired[pulumi.Input[Optional['LoadBalancerGlbSettingsCdnArgs']]]
+    cdn: NotRequired[pulumi.Input[Optional['LoadBalancerGlbSettingsCdnArgsDict']]]
     """
     CDN configuration supporting the following:
     """
@@ -26073,7 +26073,7 @@ class MonitorAlertAlertsArgsDict(TypedDict):
     """
     List of email addresses to sent notifications to
     """
-    slacks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['MonitorAlertAlertsSlackArgs']]]]]
+    slacks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['MonitorAlertAlertsSlackArgsDict']]]]]
 
 @pulumi.input_type
 class MonitorAlertAlertsArgs:
@@ -26440,7 +26440,7 @@ class SpacesBucketLifecycleRuleArgsDict(TypedDict):
     Specifies the number of days after initiating a multipart
     upload when the multipart upload must be completed or else Spaces will abort the upload.
     """
-    expiration: NotRequired[pulumi.Input[Optional['SpacesBucketLifecycleRuleExpirationArgs']]]
+    expiration: NotRequired[pulumi.Input[Optional['SpacesBucketLifecycleRuleExpirationArgsDict']]]
     """
     Specifies a time period after which applicable objects expire (documented below).
     """
@@ -26448,7 +26448,7 @@ class SpacesBucketLifecycleRuleArgsDict(TypedDict):
     """
     Unique identifier for the rule.
     """
-    noncurrent_version_expiration: NotRequired[pulumi.Input[Optional['SpacesBucketLifecycleRuleNoncurrentVersionExpirationArgs']]]
+    noncurrent_version_expiration: NotRequired[pulumi.Input[Optional['SpacesBucketLifecycleRuleNoncurrentVersionExpirationArgsDict']]]
     """
     Specifies when non-current object versions expire (documented below).
 
@@ -26755,7 +26755,7 @@ class UptimeAlertNotificationArgsDict(TypedDict):
     """
     List of email addresses to sent notifications to.
     """
-    slacks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['UptimeAlertNotificationSlackArgs']]]]]
+    slacks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['UptimeAlertNotificationSlackArgsDict']]]]]
 
 @pulumi.input_type
 class UptimeAlertNotificationArgs:
@@ -26840,7 +26840,7 @@ class UptimeAlertNotificationSlackArgs:
 
 
 class VpcNatGatewayEgressArgsDict(TypedDict):
-    public_gateways: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VpcNatGatewayEgressPublicGatewayArgs']]]]]
+    public_gateways: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VpcNatGatewayEgressPublicGatewayArgsDict']]]]]
     """
     List of public gateway IPs
     """
