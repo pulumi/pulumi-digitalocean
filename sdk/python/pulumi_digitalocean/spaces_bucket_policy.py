@@ -198,7 +198,7 @@ class SpacesBucketPolicy(pulumi.CustomResource):
             }))
         ```
 
-        !> **Warning:** Before using this policy, replace the 54.240.143.0/24 IP address range in this example with an appropriate value for your use case. Otherwise, you will lose the ability to access your bucket.
+        > **Warning:** Before using this policy, replace the 54.240.143.0/24 IP address range in this example with an appropriate value for your use case. Otherwise, you will lose the ability to access your bucket.
 
         ## Import
 
@@ -282,7 +282,7 @@ class SpacesBucketPolicy(pulumi.CustomResource):
             }))
         ```
 
-        !> **Warning:** Before using this policy, replace the 54.240.143.0/24 IP address range in this example with an appropriate value for your use case. Otherwise, you will lose the ability to access your bucket.
+        > **Warning:** Before using this policy, replace the 54.240.143.0/24 IP address range in this example with an appropriate value for your use case. Otherwise, you will lose the ability to access your bucket.
 
         ## Import
 
