@@ -33,6 +33,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.digitalocean.DedicatedInference;
  * import com.pulumi.digitalocean.DedicatedInferenceArgs;
  * import com.pulumi.digitalocean.inputs.DedicatedInferenceModelDeploymentArgs;
+ * import com.pulumi.digitalocean.inputs.DedicatedInferenceModelDeploymentAcceleratorArgs;
  * import com.pulumi.digitalocean.DedicatedInferenceToken;
  * import com.pulumi.digitalocean.DedicatedInferenceTokenArgs;
  * import java.util.ArrayList;
