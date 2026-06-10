@@ -2051,6 +2051,21 @@ export interface DatabaseClusterMaintenanceWindow {
     hour: pulumi.Input<string>;
 }
 
+export interface DatabaseClusterStorageAutoscale {
+    /**
+     * Whether storage autoscaling is enabled for the cluster.
+     */
+    enabled: pulumi.Input<boolean>;
+    /**
+     * The amount of storage, in GiB, to add when autoscaling is triggered.
+     */
+    incrementGib?: pulumi.Input<number | undefined>;
+    /**
+     * The storage utilization percentage at which autoscaling is triggered.
+     */
+    thresholdPercent?: pulumi.Input<number | undefined>;
+}
+
 export interface DatabaseFirewallRule {
     /**
      * The date and time when the firewall rule was created.
@@ -7117,6 +7132,30 @@ export interface GetGradientaiAgentsSortArgs {
     key: pulumi.Input<string>;
 }
 
+export interface GetGradientaiCustomModelsFilter {
+    all?: boolean;
+    key: string;
+    matchBy?: string;
+    values: string[];
+}
+
+export interface GetGradientaiCustomModelsFilterArgs {
+    all?: pulumi.Input<boolean | undefined>;
+    key: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string | undefined>;
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetGradientaiCustomModelsSort {
+    direction?: string;
+    key: string;
+}
+
+export interface GetGradientaiCustomModelsSortArgs {
+    direction?: pulumi.Input<string | undefined>;
+    key: pulumi.Input<string>;
+}
+
 export interface GetGradientaiKnowledgeBaseLastIndexingJob {
     /**
      * Number of completed datasources in the last indexing job
@@ -7409,6 +7448,14 @@ export interface GetKubernetesClusterClusterAutoscalerConfigurationArgs {
     expanders?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     scaleDownUnneededTime?: pulumi.Input<string | undefined>;
     scaleDownUtilizationThreshold?: pulumi.Input<number | undefined>;
+}
+
+export interface GetKubernetesClusterCorednsAutoscaler {
+    enabled?: boolean;
+}
+
+export interface GetKubernetesClusterCorednsAutoscalerArgs {
+    enabled?: pulumi.Input<boolean | undefined>;
 }
 
 export interface GetKubernetesClusterNvidiaGpuDevicePlugin {
@@ -8980,6 +9027,79 @@ export interface GradientaiAgentTemplateModelVersion {
     patch?: pulumi.Input<number | undefined>;
 }
 
+export interface GradientaiCustomModelActiveDeployment {
+    /**
+     * Timestamp when the deployment was created.
+     */
+    createdAt?: pulumi.Input<string | undefined>;
+    /**
+     * Endpoint URLs exposed by the deployment.
+     */
+    endpoints?: pulumi.Input<pulumi.Input<inputs.GradientaiCustomModelActiveDeploymentEndpoint>[] | undefined>;
+    /**
+     * ID of the dedicated inference deployment.
+     */
+    id?: pulumi.Input<string | undefined>;
+    /**
+     * Name of the dedicated inference deployment.
+     */
+    name?: pulumi.Input<string | undefined>;
+    /**
+     * Region slug of the dedicated inference deployment.
+     */
+    regionSlug?: pulumi.Input<string | undefined>;
+    /**
+     * Current state of the deployment.
+     */
+    state?: pulumi.Input<string | undefined>;
+    /**
+     * Timestamp when the deployment was last updated.
+     */
+    updatedAt?: pulumi.Input<string | undefined>;
+}
+
+export interface GradientaiCustomModelActiveDeploymentEndpoint {
+    /**
+     * Private endpoint FQDN.
+     */
+    privateEndpointFqdn?: pulumi.Input<string | undefined>;
+    /**
+     * Public endpoint FQDN, if enabled.
+     */
+    publicEndpointFqdn?: pulumi.Input<string | undefined>;
+}
+
+export interface GradientaiCustomModelSourceRef {
+    /**
+     * Access type for the source repository. One of ACCESS_TYPE_PUBLIC, ACCESS_TYPE_PRIVATE, ACCESS_TYPE_GATED.
+     */
+    accessType?: pulumi.Input<string | undefined>;
+    /**
+     * Spaces bucket name for SOURCE_TYPE_SPACES_BUCKET sources.
+     */
+    bucket?: pulumi.Input<string | undefined>;
+    /**
+     * Commit SHA to pin for the import. If omitted, the API resolves and returns the SHA actually imported.
+     */
+    commitSha?: pulumi.Input<string | undefined>;
+    /**
+     * HuggingFace token used to access ACCESS_TYPE_PRIVATE or ACCESS_TYPE_GATED repositories. Write-only.
+     */
+    hfToken?: pulumi.Input<string | undefined>;
+    /**
+     * Key prefix inside the source bucket.
+     */
+    prefix?: pulumi.Input<string | undefined>;
+    /**
+     * Region of the source bucket.
+     */
+    region?: pulumi.Input<string | undefined>;
+    /**
+     * Repository identifier (e.g. the HuggingFace repo). Required for SOURCE_TYPE_HUGGINGFACE sources.
+     */
+    repoId?: pulumi.Input<string | undefined>;
+}
+
 export interface GradientaiKnowledgeBaseDataSource {
     /**
      * Created At timestamp for the Knowledge Base
@@ -9246,7 +9366,7 @@ export interface GradientaiOpenaiApiKeyModelVersion {
 
 export interface KubernetesClusterAmdGpuDeviceMetricsExporterPlugin {
     /**
-     * Boolean flag whether the component is enabled or not.
+     * Boolean flag whether the CoreDNS Autoscaler is enabled or not.
      */
     enabled: pulumi.Input<boolean>;
 }
@@ -9260,11 +9380,12 @@ export interface KubernetesClusterAmdGpuDevicePlugin {
 }
 
 export interface KubernetesClusterClusterAutoscalerConfiguration {
+    /**
+     * A list of cluster autoscaler expander strategies to apply in order when selecting which node pool to scale up. Valid values are `random`, `priority`, and `least-waste`. The autoscaler uses each expander from the list to narrow the selection until a single node pool remains. If multiple node pools remain after all expanders are applied, one is chosen at random. When using the `priority` expander, configure priorities in the `cluster-autoscaler-priority-expander` ConfigMap in the `kube-system` namespace (see [Configuring Priority Expander](https://docs.digitalocean.com/products/kubernetes/how-to/autoscale/#configuring-priority-expander)).
+     */
     expanders?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * String setting how long a node should be unneeded before it's eligible for scale down.
-     *
-     * This resource supports customized create timeouts. The default timeout is 30 minutes.
      */
     scaleDownUnneededTime?: pulumi.Input<string | undefined>;
     /**
@@ -9280,6 +9401,13 @@ export interface KubernetesClusterControlPlaneFirewall {
     allowedAddresses: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Boolean flag whether the firewall should be enabled or not.
+     */
+    enabled: pulumi.Input<boolean>;
+}
+
+export interface KubernetesClusterCorednsAutoscaler {
+    /**
+     * Boolean flag whether the CoreDNS Autoscaler should be enabled or not.
      */
     enabled: pulumi.Input<boolean>;
 }
@@ -9433,7 +9561,7 @@ export interface KubernetesClusterNvidiaGpuDevicePlugin {
 
 export interface KubernetesClusterRdmaSharedDevicePlugin {
     /**
-     * Boolean flag whether the component is enabled or not.
+     * Boolean flag whether the CoreDNS Autoscaler is enabled or not.
      */
     enabled: pulumi.Input<boolean>;
 }
@@ -9446,12 +9574,23 @@ export interface KubernetesClusterRoutingAgent {
 }
 
 export interface KubernetesClusterSso {
+    /**
+     * The OIDC client ID for the cluster SSO configuration.
+     *
+     * This resource supports customized create timeouts. The default timeout is 30 minutes.
+     */
     clientId?: pulumi.Input<string | undefined>;
     /**
-     * Boolean flag whether the component is enabled or not.
+     * Boolean flag indicating whether SSO is enabled as an authentication method for the cluster.
      */
     enabled: pulumi.Input<boolean>;
+    /**
+     * The OIDC issuer URL for the cluster SSO configuration.
+     */
     issuerUrl?: pulumi.Input<string | undefined>;
+    /**
+     * Boolean flag indicating whether SSO is required as the only authentication method for the cluster. Default: `false`
+     */
     required?: pulumi.Input<boolean | undefined>;
 }
 

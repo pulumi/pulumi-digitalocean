@@ -88,7 +88,10 @@ type LookupDatabaseClusterResult struct {
 	// DigitalOcean region where the cluster will reside.
 	Region string `pulumi:"region"`
 	// Database droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
-	Size           string   `pulumi:"size"`
+	Size string `pulumi:"size"`
+	// Storage autoscaling configuration for the database cluster.
+	StorageAutoscales []GetDatabaseClusterStorageAutoscale `pulumi:"storageAutoscales"`
+	// The disk size, in MiB, allocated to the cluster.
 	StorageSizeMib string   `pulumi:"storageSizeMib"`
 	Tags           []string `pulumi:"tags"`
 	// Name of the OpenSearch dashboard db.
@@ -227,6 +230,12 @@ func (o LookupDatabaseClusterResultOutput) Size() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseClusterResult) string { return v.Size }).(pulumi.StringOutput)
 }
 
+// Storage autoscaling configuration for the database cluster.
+func (o LookupDatabaseClusterResultOutput) StorageAutoscales() GetDatabaseClusterStorageAutoscaleArrayOutput {
+	return o.ApplyT(func(v LookupDatabaseClusterResult) []GetDatabaseClusterStorageAutoscale { return v.StorageAutoscales }).(GetDatabaseClusterStorageAutoscaleArrayOutput)
+}
+
+// The disk size, in MiB, allocated to the cluster.
 func (o LookupDatabaseClusterResultOutput) StorageSizeMib() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseClusterResult) string { return v.StorageSizeMib }).(pulumi.StringOutput)
 }

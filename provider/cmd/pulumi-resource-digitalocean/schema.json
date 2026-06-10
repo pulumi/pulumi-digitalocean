@@ -2891,6 +2891,26 @@
                 "hour"
             ]
         },
+        "digitalocean:index/DatabaseClusterStorageAutoscale:DatabaseClusterStorageAutoscale": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether storage autoscaling is enabled for the cluster.\n"
+                },
+                "incrementGib": {
+                    "type": "integer",
+                    "description": "The amount of storage, in GiB, to add when autoscaling is triggered.\n"
+                },
+                "thresholdPercent": {
+                    "type": "integer",
+                    "description": "The storage utilization percentage at which autoscaling is triggered.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled"
+            ]
+        },
         "digitalocean:index/DatabaseFirewallRule:DatabaseFirewallRule": {
             "properties": {
                 "createdAt": {
@@ -6545,6 +6565,117 @@
             },
             "type": "object"
         },
+        "digitalocean:index/GradientaiCustomModelActiveDeployment:GradientaiCustomModelActiveDeployment": {
+            "properties": {
+                "createdAt": {
+                    "type": "string",
+                    "description": "Timestamp when the deployment was created.\n"
+                },
+                "endpoints": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/GradientaiCustomModelActiveDeploymentEndpoint:GradientaiCustomModelActiveDeploymentEndpoint"
+                    },
+                    "description": "Endpoint URLs exposed by the deployment.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "ID of the dedicated inference deployment.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the dedicated inference deployment.\n"
+                },
+                "regionSlug": {
+                    "type": "string",
+                    "description": "Region slug of the dedicated inference deployment.\n"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "Current state of the deployment.\n"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "description": "Timestamp when the deployment was last updated.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "createdAt",
+                        "endpoints",
+                        "id",
+                        "name",
+                        "regionSlug",
+                        "state",
+                        "updatedAt"
+                    ]
+                }
+            }
+        },
+        "digitalocean:index/GradientaiCustomModelActiveDeploymentEndpoint:GradientaiCustomModelActiveDeploymentEndpoint": {
+            "properties": {
+                "privateEndpointFqdn": {
+                    "type": "string",
+                    "description": "Private endpoint FQDN.\n"
+                },
+                "publicEndpointFqdn": {
+                    "type": "string",
+                    "description": "Public endpoint FQDN, if enabled.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "privateEndpointFqdn",
+                        "publicEndpointFqdn"
+                    ]
+                }
+            }
+        },
+        "digitalocean:index/GradientaiCustomModelSourceRef:GradientaiCustomModelSourceRef": {
+            "properties": {
+                "accessType": {
+                    "type": "string",
+                    "description": "Access type for the source repository. One of ACCESS_TYPE_PUBLIC, ACCESS_TYPE_PRIVATE, ACCESS_TYPE_GATED.\n"
+                },
+                "bucket": {
+                    "type": "string",
+                    "description": "Spaces bucket name for SOURCE_TYPE_SPACES_BUCKET sources.\n"
+                },
+                "commitSha": {
+                    "type": "string",
+                    "description": "Commit SHA to pin for the import. If omitted, the API resolves and returns the SHA actually imported.\n"
+                },
+                "hfToken": {
+                    "type": "string",
+                    "description": "HuggingFace token used to access ACCESS_TYPE_PRIVATE or ACCESS_TYPE_GATED repositories. Write-only.\n",
+                    "secret": true
+                },
+                "prefix": {
+                    "type": "string",
+                    "description": "Key prefix inside the source bucket.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "Region of the source bucket.\n"
+                },
+                "repoId": {
+                    "type": "string",
+                    "description": "Repository identifier (e.g. the HuggingFace repo). Required for SOURCE_TYPE_HUGGINGFACE sources.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "commitSha"
+                    ]
+                }
+            }
+        },
         "digitalocean:index/GradientaiKnowledgeBaseDataSource:GradientaiKnowledgeBaseDataSource": {
             "properties": {
                 "createdAt": {
@@ -6891,7 +7022,7 @@
             "properties": {
                 "enabled": {
                     "type": "boolean",
-                    "description": "Boolean flag whether the component is enabled or not.\n"
+                    "description": "Boolean flag whether the CoreDNS Autoscaler is enabled or not.\n"
                 }
             },
             "type": "object",
@@ -6917,11 +7048,12 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "A list of cluster autoscaler expander strategies to apply in order when selecting which node pool to scale up. Valid values are \u003cspan pulumi-lang-nodejs=\"`random`\" pulumi-lang-dotnet=\"`Random`\" pulumi-lang-go=\"`random`\" pulumi-lang-python=\"`random`\" pulumi-lang-yaml=\"`random`\" pulumi-lang-java=\"`random`\" pulumi-lang-hcl=\"`random`\"\u003e`random`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`priority`\" pulumi-lang-dotnet=\"`Priority`\" pulumi-lang-go=\"`priority`\" pulumi-lang-python=\"`priority`\" pulumi-lang-yaml=\"`priority`\" pulumi-lang-java=\"`priority`\" pulumi-lang-hcl=\"`priority`\"\u003e`priority`\u003c/span\u003e, and `least-waste`. The autoscaler uses each expander from the list to narrow the selection until a single node pool remains. If multiple node pools remain after all expanders are applied, one is chosen at random. When using the \u003cspan pulumi-lang-nodejs=\"`priority`\" pulumi-lang-dotnet=\"`Priority`\" pulumi-lang-go=\"`priority`\" pulumi-lang-python=\"`priority`\" pulumi-lang-yaml=\"`priority`\" pulumi-lang-java=\"`priority`\" pulumi-lang-hcl=\"`priority`\"\u003e`priority`\u003c/span\u003e expander, configure priorities in the `cluster-autoscaler-priority-expander` ConfigMap in the `kube-system` namespace (see [Configuring Priority Expander](https://docs.digitalocean.com/products/kubernetes/how-to/autoscale/#configuring-priority-expander)).\n"
                 },
                 "scaleDownUnneededTime": {
                     "type": "string",
-                    "description": "String setting how long a node should be unneeded before it's eligible for scale down.\n\nThis resource supports customized create timeouts. The default timeout is 30 minutes.\n"
+                    "description": "String setting how long a node should be unneeded before it's eligible for scale down.\n"
                 },
                 "scaleDownUtilizationThreshold": {
                     "type": "number",
@@ -6947,6 +7079,18 @@
             "type": "object",
             "required": [
                 "allowedAddresses",
+                "enabled"
+            ]
+        },
+        "digitalocean:index/KubernetesClusterCorednsAutoscaler:KubernetesClusterCorednsAutoscaler": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Boolean flag whether the CoreDNS Autoscaler should be enabled or not.\n"
+                }
+            },
+            "type": "object",
+            "required": [
                 "enabled"
             ]
         },
@@ -7182,7 +7326,7 @@
             "properties": {
                 "enabled": {
                     "type": "boolean",
-                    "description": "Boolean flag whether the component is enabled or not.\n"
+                    "description": "Boolean flag whether the CoreDNS Autoscaler is enabled or not.\n"
                 }
             },
             "type": "object",
@@ -7205,17 +7349,20 @@
         "digitalocean:index/KubernetesClusterSso:KubernetesClusterSso": {
             "properties": {
                 "clientId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The OIDC client ID for the cluster SSO configuration.\n\nThis resource supports customized create timeouts. The default timeout is 30 minutes.\n"
                 },
                 "enabled": {
                     "type": "boolean",
-                    "description": "Boolean flag whether the component is enabled or not.\n"
+                    "description": "Boolean flag indicating whether SSO is enabled as an authentication method for the cluster.\n"
                 },
                 "issuerUrl": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The OIDC issuer URL for the cluster SSO configuration.\n"
                 },
                 "required": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Boolean flag indicating whether SSO is required as the only authentication method for the cluster. Default: \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\" pulumi-lang-hcl=\"`false`\"\u003e`false`\u003c/span\u003e\n"
                 }
             },
             "type": "object",
@@ -10774,6 +10921,33 @@
             "required": [
                 "day",
                 "hour"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getDatabaseClusterStorageAutoscale:getDatabaseClusterStorageAutoscale": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether storage autoscaling is enabled for the cluster.\n"
+                },
+                "incrementGib": {
+                    "type": "integer",
+                    "description": "The amount of storage, in GiB, to add when autoscaling is triggered.\n"
+                },
+                "thresholdPercent": {
+                    "type": "integer",
+                    "description": "The storage utilization percentage at which autoscaling is triggered.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled",
+                "incrementGib",
+                "thresholdPercent"
             ],
             "language": {
                 "nodejs": {
@@ -22890,6 +23064,404 @@
                 "key"
             ]
         },
+        "digitalocean:index/getGradientaiCustomModelActiveDeployment:getGradientaiCustomModelActiveDeployment": {
+            "properties": {
+                "createdAt": {
+                    "type": "string",
+                    "description": "Timestamp when the deployment was created.\n"
+                },
+                "endpoints": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/getGradientaiCustomModelActiveDeploymentEndpoint:getGradientaiCustomModelActiveDeploymentEndpoint"
+                    },
+                    "description": "Endpoint URLs exposed by the deployment.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "ID of the dedicated inference deployment.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the dedicated inference deployment.\n"
+                },
+                "regionSlug": {
+                    "type": "string",
+                    "description": "Region slug of the dedicated inference deployment.\n"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "Current state of the deployment.\n"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "description": "Timestamp when the deployment was last updated.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "createdAt",
+                "endpoints",
+                "id",
+                "name",
+                "regionSlug",
+                "state",
+                "updatedAt"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getGradientaiCustomModelActiveDeploymentEndpoint:getGradientaiCustomModelActiveDeploymentEndpoint": {
+            "properties": {
+                "privateEndpointFqdn": {
+                    "type": "string",
+                    "description": "Private endpoint FQDN.\n"
+                },
+                "publicEndpointFqdn": {
+                    "type": "string",
+                    "description": "Public endpoint FQDN, if enabled.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "privateEndpointFqdn",
+                "publicEndpointFqdn"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getGradientaiCustomModelSourceRef:getGradientaiCustomModelSourceRef": {
+            "properties": {
+                "accessType": {
+                    "type": "string",
+                    "description": "Access type for the source repository (e.g. ACCESS_TYPE_PUBLIC).\n"
+                },
+                "bucket": {
+                    "type": "string",
+                    "description": "Spaces bucket name for SPACES_BUCKET sources.\n"
+                },
+                "commitSha": {
+                    "type": "string",
+                    "description": "Commit SHA pinned for the import.\n"
+                },
+                "prefix": {
+                    "type": "string",
+                    "description": "Key prefix inside the source bucket.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "Region of the source bucket.\n"
+                },
+                "repoId": {
+                    "type": "string",
+                    "description": "Repository identifier (e.g. HuggingFace repo).\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "accessType",
+                "bucket",
+                "commitSha",
+                "prefix",
+                "region",
+                "repoId"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getGradientaiCustomModelsCustomModel:getGradientaiCustomModelsCustomModel": {
+            "properties": {
+                "activeDeployments": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/getGradientaiCustomModelsCustomModelActiveDeployment:getGradientaiCustomModelsCustomModelActiveDeployment"
+                    },
+                    "description": "Active dedicated inference deployments referencing this custom model.\n"
+                },
+                "architecture": {
+                    "type": "string",
+                    "description": "Model architecture as reported by the importer.\n"
+                },
+                "contextLength": {
+                    "type": "integer",
+                    "description": "Maximum context length supported by the model.\n"
+                },
+                "costEstimatePerMonth": {
+                    "type": "integer",
+                    "description": "Estimated monthly cost of running the custom model.\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "Timestamp when the custom model was created.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the custom model.\n"
+                },
+                "fileCount": {
+                    "type": "integer",
+                    "description": "Number of files that make up the imported model.\n"
+                },
+                "inputModalities": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Input modalities supported by the model (e.g. text, image).\n"
+                },
+                "license": {
+                    "type": "string",
+                    "description": "License of the custom model, as reported by the source.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Human-readable name of the custom model.\n"
+                },
+                "outputModalities": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Output modalities produced by the model.\n"
+                },
+                "parameters": {
+                    "type": "string",
+                    "description": "Parameter-count summary reported by the importer.\n"
+                },
+                "sourceReves": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/getGradientaiCustomModelsCustomModelSourceRef:getGradientaiCustomModelsCustomModelSourceRef"
+                    },
+                    "description": "Reference to the source from which the custom model was imported.\n"
+                },
+                "sourceType": {
+                    "type": "string",
+                    "description": "Source type of the custom model (e.g. SOURCE_TYPE_HUGGINGFACE, SOURCE_TYPE_SPACES_BUCKET).\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Current status of the custom model (e.g. STATUS_IMPORTING, STATUS_READY, STATUS_FAILED).\n"
+                },
+                "storageRegion": {
+                    "type": "string",
+                    "description": "Region where the custom model artifacts are stored.\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "User-defined tags associated with the custom model.\n"
+                },
+                "teamId": {
+                    "type": "string",
+                    "description": "ID of the team that owns the custom model.\n"
+                },
+                "totalSizeBytes": {
+                    "type": "string",
+                    "description": "Total size of the imported model artifacts in bytes (string-encoded int64).\n"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "description": "Timestamp when the custom model was last updated.\n"
+                },
+                "uuid": {
+                    "type": "string",
+                    "description": "UUID of the custom model.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "activeDeployments",
+                "architecture",
+                "contextLength",
+                "costEstimatePerMonth",
+                "createdAt",
+                "description",
+                "fileCount",
+                "inputModalities",
+                "license",
+                "name",
+                "outputModalities",
+                "parameters",
+                "sourceReves",
+                "sourceType",
+                "status",
+                "storageRegion",
+                "tags",
+                "teamId",
+                "totalSizeBytes",
+                "updatedAt",
+                "uuid"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getGradientaiCustomModelsCustomModelActiveDeployment:getGradientaiCustomModelsCustomModelActiveDeployment": {
+            "properties": {
+                "createdAt": {
+                    "type": "string",
+                    "description": "Timestamp when the deployment was created.\n"
+                },
+                "endpoints": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/getGradientaiCustomModelsCustomModelActiveDeploymentEndpoint:getGradientaiCustomModelsCustomModelActiveDeploymentEndpoint"
+                    },
+                    "description": "Endpoint URLs exposed by the deployment.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "ID of the dedicated inference deployment.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the dedicated inference deployment.\n"
+                },
+                "regionSlug": {
+                    "type": "string",
+                    "description": "Region slug of the dedicated inference deployment.\n"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "Current state of the deployment.\n"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "description": "Timestamp when the deployment was last updated.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "createdAt",
+                "endpoints",
+                "id",
+                "name",
+                "regionSlug",
+                "state",
+                "updatedAt"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getGradientaiCustomModelsCustomModelActiveDeploymentEndpoint:getGradientaiCustomModelsCustomModelActiveDeploymentEndpoint": {
+            "properties": {
+                "privateEndpointFqdn": {
+                    "type": "string",
+                    "description": "Private endpoint FQDN.\n"
+                },
+                "publicEndpointFqdn": {
+                    "type": "string",
+                    "description": "Public endpoint FQDN, if enabled.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "privateEndpointFqdn",
+                "publicEndpointFqdn"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getGradientaiCustomModelsCustomModelSourceRef:getGradientaiCustomModelsCustomModelSourceRef": {
+            "properties": {
+                "accessType": {
+                    "type": "string",
+                    "description": "Access type for the source repository (e.g. ACCESS_TYPE_PUBLIC).\n"
+                },
+                "bucket": {
+                    "type": "string",
+                    "description": "Spaces bucket name for SPACES_BUCKET sources.\n"
+                },
+                "commitSha": {
+                    "type": "string",
+                    "description": "Commit SHA pinned for the import.\n"
+                },
+                "prefix": {
+                    "type": "string",
+                    "description": "Key prefix inside the source bucket.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "Region of the source bucket.\n"
+                },
+                "repoId": {
+                    "type": "string",
+                    "description": "Repository identifier (e.g. HuggingFace repo).\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "accessType",
+                "bucket",
+                "commitSha",
+                "prefix",
+                "region",
+                "repoId"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getGradientaiCustomModelsFilter:getGradientaiCustomModelsFilter": {
+            "properties": {
+                "all": {
+                    "type": "boolean"
+                },
+                "key": {
+                    "type": "string"
+                },
+                "matchBy": {
+                    "type": "string"
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "key",
+                "values"
+            ]
+        },
+        "digitalocean:index/getGradientaiCustomModelsSort:getGradientaiCustomModelsSort": {
+            "properties": {
+                "direction": {
+                    "type": "string"
+                },
+                "key": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "key"
+            ]
+        },
         "digitalocean:index/getGradientaiIndexingJobDataSourcesIndexedDataSource:getGradientaiIndexingJobDataSourcesIndexedDataSource": {
             "properties": {
                 "completedAt": {
@@ -24256,6 +24828,22 @@
             "type": "object",
             "required": [
                 "allowedAddresses",
+                "enabled"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getKubernetesClusterCorednsAutoscaler:getKubernetesClusterCorednsAutoscaler": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "required": [
                 "enabled"
             ],
             "language": {
@@ -27576,6 +28164,10 @@
                     "type": "string",
                     "description": "A comma separated string specifying the  SQL modes for a MySQL cluster.\n"
                 },
+                "storageAutoscale": {
+                    "$ref": "#/types/digitalocean:index/DatabaseClusterStorageAutoscale:DatabaseClusterStorageAutoscale",
+                    "description": "Storage autoscaling configuration for the database cluster.\n"
+                },
                 "storageSizeMib": {
                     "type": "string",
                     "description": "Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostgreSQL clusters based on predefined ranges for each slug/droplet size.\n"
@@ -27722,6 +28314,10 @@
                     "type": "string",
                     "description": "A comma separated string specifying the  SQL modes for a MySQL cluster.\n"
                 },
+                "storageAutoscale": {
+                    "$ref": "#/types/digitalocean:index/DatabaseClusterStorageAutoscale:DatabaseClusterStorageAutoscale",
+                    "description": "Storage autoscaling configuration for the database cluster.\n"
+                },
                 "storageSizeMib": {
                     "type": "string",
                     "description": "Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostgreSQL clusters based on predefined ranges for each slug/droplet size.\n"
@@ -27851,6 +28447,10 @@
                     "sqlMode": {
                         "type": "string",
                         "description": "A comma separated string specifying the  SQL modes for a MySQL cluster.\n"
+                    },
+                    "storageAutoscale": {
+                        "$ref": "#/types/digitalocean:index/DatabaseClusterStorageAutoscale:DatabaseClusterStorageAutoscale",
+                        "description": "Storage autoscaling configuration for the database cluster.\n"
                     },
                     "storageSizeMib": {
                         "type": "string",
@@ -35068,6 +35668,282 @@
                 }
             ]
         },
+        "digitalocean:index/gradientaiCustomModel:GradientaiCustomModel": {
+            "properties": {
+                "acceptTermsAndConditions": {
+                    "type": "boolean",
+                    "description": "Whether the caller accepts the model provider's terms and conditions. Write-only."
+                },
+                "activeDeployments": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/GradientaiCustomModelActiveDeployment:GradientaiCustomModelActiveDeployment"
+                    },
+                    "description": "Active dedicated inference deployments referencing this custom model."
+                },
+                "architecture": {
+                    "type": "string",
+                    "description": "Model architecture as reported by the importer."
+                },
+                "contextLength": {
+                    "type": "integer",
+                    "description": "Maximum context length supported by the model."
+                },
+                "costEstimatePerMonth": {
+                    "type": "integer",
+                    "description": "Estimated monthly cost of running the custom model."
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "Timestamp when the custom model was created."
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the custom model."
+                },
+                "fileCount": {
+                    "type": "integer",
+                    "description": "Number of files that make up the imported model."
+                },
+                "inputModalities": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Input modalities supported by the model."
+                },
+                "license": {
+                    "type": "string",
+                    "description": "License of the model as reported by the source."
+                },
+                "name": {
+                    "type": "string",
+                    "description": "A human-readable name for the custom model."
+                },
+                "outputModalities": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Output modalities produced by the model."
+                },
+                "parameters": {
+                    "type": "string",
+                    "description": "Parameter-count summary reported by the importer."
+                },
+                "preferredGpuRegion": {
+                    "type": "string",
+                    "description": "Preferred GPU region where the model artifacts should be staged."
+                },
+                "sourceRef": {
+                    "$ref": "#/types/digitalocean:index/GradientaiCustomModelSourceRef:GradientaiCustomModelSourceRef",
+                    "description": "Reference to the source from which to import the custom model."
+                },
+                "sourceType": {
+                    "type": "string",
+                    "description": "Source of the model to import. One of SOURCE_TYPE_HUGGINGFACE, SOURCE_TYPE_SPACES_BUCKET, SOURCE_TYPE_SDK_UPLOAD, SOURCE_TYPE_FINE_TUNING."
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Current status of the custom model."
+                },
+                "storageRegion": {
+                    "type": "string",
+                    "description": "Region where the custom model artifacts are stored."
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "User-defined tags associated with the custom model."
+                },
+                "teamId": {
+                    "type": "string",
+                    "description": "ID of the team that owns the custom model."
+                },
+                "totalSizeBytes": {
+                    "type": "string",
+                    "description": "Total size of the imported model artifacts in bytes."
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "description": "Timestamp when the custom model was last updated."
+                },
+                "uuid": {
+                    "type": "string",
+                    "description": "UUID of the custom model."
+                }
+            },
+            "required": [
+                "activeDeployments",
+                "architecture",
+                "contextLength",
+                "costEstimatePerMonth",
+                "createdAt",
+                "fileCount",
+                "inputModalities",
+                "license",
+                "name",
+                "outputModalities",
+                "parameters",
+                "sourceRef",
+                "sourceType",
+                "status",
+                "storageRegion",
+                "teamId",
+                "totalSizeBytes",
+                "updatedAt",
+                "uuid"
+            ],
+            "inputProperties": {
+                "acceptTermsAndConditions": {
+                    "type": "boolean",
+                    "description": "Whether the caller accepts the model provider's terms and conditions. Write-only."
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the custom model."
+                },
+                "name": {
+                    "type": "string",
+                    "description": "A human-readable name for the custom model."
+                },
+                "preferredGpuRegion": {
+                    "type": "string",
+                    "description": "Preferred GPU region where the model artifacts should be staged."
+                },
+                "sourceRef": {
+                    "$ref": "#/types/digitalocean:index/GradientaiCustomModelSourceRef:GradientaiCustomModelSourceRef",
+                    "description": "Reference to the source from which to import the custom model."
+                },
+                "sourceType": {
+                    "type": "string",
+                    "description": "Source of the model to import. One of SOURCE_TYPE_HUGGINGFACE, SOURCE_TYPE_SPACES_BUCKET, SOURCE_TYPE_SDK_UPLOAD, SOURCE_TYPE_FINE_TUNING."
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "User-defined tags associated with the custom model."
+                }
+            },
+            "requiredInputs": [
+                "sourceRef",
+                "sourceType"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering GradientaiCustomModel resources.\n",
+                "properties": {
+                    "acceptTermsAndConditions": {
+                        "type": "boolean",
+                        "description": "Whether the caller accepts the model provider's terms and conditions. Write-only."
+                    },
+                    "activeDeployments": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/GradientaiCustomModelActiveDeployment:GradientaiCustomModelActiveDeployment"
+                        },
+                        "description": "Active dedicated inference deployments referencing this custom model."
+                    },
+                    "architecture": {
+                        "type": "string",
+                        "description": "Model architecture as reported by the importer."
+                    },
+                    "contextLength": {
+                        "type": "integer",
+                        "description": "Maximum context length supported by the model."
+                    },
+                    "costEstimatePerMonth": {
+                        "type": "integer",
+                        "description": "Estimated monthly cost of running the custom model."
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "description": "Timestamp when the custom model was created."
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Description of the custom model."
+                    },
+                    "fileCount": {
+                        "type": "integer",
+                        "description": "Number of files that make up the imported model."
+                    },
+                    "inputModalities": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Input modalities supported by the model."
+                    },
+                    "license": {
+                        "type": "string",
+                        "description": "License of the model as reported by the source."
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "A human-readable name for the custom model."
+                    },
+                    "outputModalities": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Output modalities produced by the model."
+                    },
+                    "parameters": {
+                        "type": "string",
+                        "description": "Parameter-count summary reported by the importer."
+                    },
+                    "preferredGpuRegion": {
+                        "type": "string",
+                        "description": "Preferred GPU region where the model artifacts should be staged."
+                    },
+                    "sourceRef": {
+                        "$ref": "#/types/digitalocean:index/GradientaiCustomModelSourceRef:GradientaiCustomModelSourceRef",
+                        "description": "Reference to the source from which to import the custom model."
+                    },
+                    "sourceType": {
+                        "type": "string",
+                        "description": "Source of the model to import. One of SOURCE_TYPE_HUGGINGFACE, SOURCE_TYPE_SPACES_BUCKET, SOURCE_TYPE_SDK_UPLOAD, SOURCE_TYPE_FINE_TUNING."
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "Current status of the custom model."
+                    },
+                    "storageRegion": {
+                        "type": "string",
+                        "description": "Region where the custom model artifacts are stored."
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "User-defined tags associated with the custom model."
+                    },
+                    "teamId": {
+                        "type": "string",
+                        "description": "ID of the team that owns the custom model."
+                    },
+                    "totalSizeBytes": {
+                        "type": "string",
+                        "description": "Total size of the imported model artifacts in bytes."
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "description": "Timestamp when the custom model was last updated."
+                    },
+                    "uuid": {
+                        "type": "string",
+                        "description": "UUID of the custom model."
+                    }
+                },
+                "type": "object"
+            }
+        },
         "digitalocean:index/gradientaiFunction:GradientaiFunction": {
             "properties": {
                 "agentId": {
@@ -35753,7 +36629,7 @@
                     "items": {
                         "$ref": "#/types/digitalocean:index/KubernetesClusterClusterAutoscalerConfiguration:KubernetesClusterClusterAutoscalerConfiguration"
                     },
-                    "description": "Block containing options for cluster auto-scaling.\n"
+                    "description": "Block containing options for cluster auto-scaling. For more information.\n"
                 },
                 "clusterSubnet": {
                     "type": "string",
@@ -35766,6 +36642,10 @@
                 "controlPlaneFirewall": {
                     "$ref": "#/types/digitalocean:index/KubernetesClusterControlPlaneFirewall:KubernetesClusterControlPlaneFirewall",
                     "description": "A block representing the cluster's control plane firewall\n"
+                },
+                "corednsAutoscaler": {
+                    "$ref": "#/types/digitalocean:index/KubernetesClusterCorednsAutoscaler:KubernetesClusterCorednsAutoscaler",
+                    "description": "Block containing options for the CoreDNS Autoscaler component, which scales CoreDNS replicas in proportion to the cluster's size. Default: true (for 1.36.0 and later)\n"
                 },
                 "createdAt": {
                     "type": "string",
@@ -35838,7 +36718,8 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/digitalocean:index/KubernetesClusterSso:KubernetesClusterSso"
-                    }
+                    },
+                    "description": "Block containing Single Sign-On (SSO) configuration for the cluster using OpenID Connect (OIDC).\n"
                 },
                 "status": {
                     "type": "string",
@@ -35866,6 +36747,10 @@
                 "vpcUuid": {
                     "type": "string",
                     "description": "The ID of the VPC where the Kubernetes cluster will be located.\n"
+                },
+                "workerSubnetUuid": {
+                    "type": "string",
+                    "description": "The ID of the VPC subnet for placing worker nodes. Must be a valid subnet in the cluster VPC. Requires that \u003cspan pulumi-lang-nodejs=\"`vpcUuid`\" pulumi-lang-dotnet=\"`VpcUuid`\" pulumi-lang-go=\"`vpcUuid`\" pulumi-lang-python=\"`vpc_uuid`\" pulumi-lang-yaml=\"`vpcUuid`\" pulumi-lang-java=\"`vpcUuid`\" pulumi-lang-hcl=\"`vpc_uuid`\"\u003e`vpcUuid`\u003c/span\u003e is also set.\n"
                 }
             },
             "required": [
@@ -35873,6 +36758,7 @@
                 "amdGpuDevicePlugin",
                 "clusterSubnet",
                 "controlPlaneFirewall",
+                "corednsAutoscaler",
                 "createdAt",
                 "endpoint",
                 "ha",
@@ -35891,7 +36777,8 @@
                 "updatedAt",
                 "clusterUrn",
                 "version",
-                "vpcUuid"
+                "vpcUuid",
+                "workerSubnetUuid"
             ],
             "inputProperties": {
                 "amdGpuDeviceMetricsExporterPlugin": {
@@ -35911,7 +36798,7 @@
                     "items": {
                         "$ref": "#/types/digitalocean:index/KubernetesClusterClusterAutoscalerConfiguration:KubernetesClusterClusterAutoscalerConfiguration"
                     },
-                    "description": "Block containing options for cluster auto-scaling.\n"
+                    "description": "Block containing options for cluster auto-scaling. For more information.\n"
                 },
                 "clusterSubnet": {
                     "type": "string",
@@ -35921,6 +36808,10 @@
                 "controlPlaneFirewall": {
                     "$ref": "#/types/digitalocean:index/KubernetesClusterControlPlaneFirewall:KubernetesClusterControlPlaneFirewall",
                     "description": "A block representing the cluster's control plane firewall\n"
+                },
+                "corednsAutoscaler": {
+                    "$ref": "#/types/digitalocean:index/KubernetesClusterCorednsAutoscaler:KubernetesClusterCorednsAutoscaler",
+                    "description": "Block containing options for the CoreDNS Autoscaler component, which scales CoreDNS replicas in proportion to the cluster's size. Default: true (for 1.36.0 and later)\n"
                 },
                 "destroyAllAssociatedResources": {
                     "type": "boolean",
@@ -35984,7 +36875,8 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/digitalocean:index/KubernetesClusterSso:KubernetesClusterSso"
-                    }
+                    },
+                    "description": "Block containing Single Sign-On (SSO) configuration for the cluster using OpenID Connect (OIDC).\n"
                 },
                 "surgeUpgrade": {
                     "type": "boolean",
@@ -36004,6 +36896,11 @@
                 "vpcUuid": {
                     "type": "string",
                     "description": "The ID of the VPC where the Kubernetes cluster will be located.\n",
+                    "willReplaceOnChanges": true
+                },
+                "workerSubnetUuid": {
+                    "type": "string",
+                    "description": "The ID of the VPC subnet for placing worker nodes. Must be a valid subnet in the cluster VPC. Requires that \u003cspan pulumi-lang-nodejs=\"`vpcUuid`\" pulumi-lang-dotnet=\"`VpcUuid`\" pulumi-lang-go=\"`vpcUuid`\" pulumi-lang-python=\"`vpc_uuid`\" pulumi-lang-yaml=\"`vpcUuid`\" pulumi-lang-java=\"`vpcUuid`\" pulumi-lang-hcl=\"`vpc_uuid`\"\u003e`vpcUuid`\u003c/span\u003e is also set.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -36032,7 +36929,7 @@
                         "items": {
                             "$ref": "#/types/digitalocean:index/KubernetesClusterClusterAutoscalerConfiguration:KubernetesClusterClusterAutoscalerConfiguration"
                         },
-                        "description": "Block containing options for cluster auto-scaling.\n"
+                        "description": "Block containing options for cluster auto-scaling. For more information.\n"
                     },
                     "clusterSubnet": {
                         "type": "string",
@@ -36046,6 +36943,10 @@
                     "controlPlaneFirewall": {
                         "$ref": "#/types/digitalocean:index/KubernetesClusterControlPlaneFirewall:KubernetesClusterControlPlaneFirewall",
                         "description": "A block representing the cluster's control plane firewall\n"
+                    },
+                    "corednsAutoscaler": {
+                        "$ref": "#/types/digitalocean:index/KubernetesClusterCorednsAutoscaler:KubernetesClusterCorednsAutoscaler",
+                        "description": "Block containing options for the CoreDNS Autoscaler component, which scales CoreDNS replicas in proportion to the cluster's size. Default: true (for 1.36.0 and later)\n"
                     },
                     "createdAt": {
                         "type": "string",
@@ -36129,7 +37030,8 @@
                         "type": "array",
                         "items": {
                             "$ref": "#/types/digitalocean:index/KubernetesClusterSso:KubernetesClusterSso"
-                        }
+                        },
+                        "description": "Block containing Single Sign-On (SSO) configuration for the cluster using OpenID Connect (OIDC).\n"
                     },
                     "status": {
                         "type": "string",
@@ -36157,6 +37059,11 @@
                     "vpcUuid": {
                         "type": "string",
                         "description": "The ID of the VPC where the Kubernetes cluster will be located.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "workerSubnetUuid": {
+                        "type": "string",
+                        "description": "The ID of the VPC subnet for placing worker nodes. Must be a valid subnet in the cluster VPC. Requires that \u003cspan pulumi-lang-nodejs=\"`vpcUuid`\" pulumi-lang-dotnet=\"`VpcUuid`\" pulumi-lang-go=\"`vpcUuid`\" pulumi-lang-python=\"`vpc_uuid`\" pulumi-lang-yaml=\"`vpcUuid`\" pulumi-lang-java=\"`vpcUuid`\" pulumi-lang-hcl=\"`vpc_uuid`\"\u003e`vpcUuid`\u003c/span\u003e is also set.\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -40227,7 +41134,15 @@
                         "description": "Database droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).\n",
                         "type": "string"
                     },
+                    "storageAutoscales": {
+                        "description": "Storage autoscaling configuration for the database cluster.\n",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getDatabaseClusterStorageAutoscale:getDatabaseClusterStorageAutoscale"
+                        },
+                        "type": "array"
+                    },
                     "storageSizeMib": {
+                        "description": "The disk size, in MiB, allocated to the cluster.\n",
                         "type": "string"
                     },
                     "tags": {
@@ -40296,6 +41211,7 @@
                     "projectId",
                     "region",
                     "size",
+                    "storageAutoscales",
                     "storageSizeMib",
                     "uiDatabase",
                     "uiHost",
@@ -43119,6 +44035,190 @@
                 "type": "object"
             }
         },
+        "digitalocean:index/getGradientaiCustomModel:getGradientaiCustomModel": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getGradientaiCustomModel.\n",
+                "properties": {
+                    "uuid": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "uuid"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getGradientaiCustomModel.\n",
+                "properties": {
+                    "activeDeployments": {
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getGradientaiCustomModelActiveDeployment:getGradientaiCustomModelActiveDeployment"
+                        },
+                        "type": "array"
+                    },
+                    "architecture": {
+                        "type": "string"
+                    },
+                    "contextLength": {
+                        "type": "integer"
+                    },
+                    "costEstimatePerMonth": {
+                        "type": "integer"
+                    },
+                    "createdAt": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "fileCount": {
+                        "type": "integer"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.",
+                        "type": "string"
+                    },
+                    "inputModalities": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "license": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "outputModalities": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "parameters": {
+                        "type": "string"
+                    },
+                    "sourceReves": {
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getGradientaiCustomModelSourceRef:getGradientaiCustomModelSourceRef"
+                        },
+                        "type": "array"
+                    },
+                    "sourceType": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "string"
+                    },
+                    "storageRegion": {
+                        "type": "string"
+                    },
+                    "tags": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "teamId": {
+                        "type": "string"
+                    },
+                    "totalSizeBytes": {
+                        "type": "string"
+                    },
+                    "updatedAt": {
+                        "type": "string"
+                    },
+                    "uuid": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "activeDeployments",
+                    "architecture",
+                    "contextLength",
+                    "costEstimatePerMonth",
+                    "createdAt",
+                    "description",
+                    "fileCount",
+                    "inputModalities",
+                    "license",
+                    "name",
+                    "outputModalities",
+                    "parameters",
+                    "sourceReves",
+                    "sourceType",
+                    "status",
+                    "storageRegion",
+                    "tags",
+                    "teamId",
+                    "totalSizeBytes",
+                    "updatedAt",
+                    "uuid",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "digitalocean:index/getGradientaiCustomModels:getGradientaiCustomModels": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getGradientaiCustomModels.\n",
+                "properties": {
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getGradientaiCustomModelsFilter:getGradientaiCustomModelsFilter"
+                        }
+                    },
+                    "sorts": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getGradientaiCustomModelsSort:getGradientaiCustomModelsSort"
+                        }
+                    },
+                    "status": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getGradientaiCustomModels.\n",
+                "properties": {
+                    "customModels": {
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getGradientaiCustomModelsCustomModel:getGradientaiCustomModelsCustomModel"
+                        },
+                        "type": "array"
+                    },
+                    "filters": {
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getGradientaiCustomModelsFilter:getGradientaiCustomModelsFilter"
+                        },
+                        "type": "array"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.",
+                        "type": "string"
+                    },
+                    "sorts": {
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getGradientaiCustomModelsSort:getGradientaiCustomModelsSort"
+                        },
+                        "type": "array"
+                    },
+                    "status": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "customModels",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
         "digitalocean:index/getGradientaiIndexingJob:getGradientaiIndexingJob": {
             "inputs": {
                 "description": "A collection of arguments for invoking getGradientaiIndexingJob.\n",
@@ -43892,6 +44992,9 @@
                             "$ref": "#/types/digitalocean:index/getKubernetesClusterClusterAutoscalerConfiguration:getKubernetesClusterClusterAutoscalerConfiguration"
                         }
                     },
+                    "corednsAutoscaler": {
+                        "$ref": "#/types/digitalocean:index/getKubernetesClusterCorednsAutoscaler:getKubernetesClusterCorednsAutoscaler"
+                    },
                     "kubeconfigExpireSeconds": {
                         "type": "integer"
                     },
@@ -43955,6 +45058,9 @@
                             "$ref": "#/types/digitalocean:index/getKubernetesClusterControlPlaneFirewall:getKubernetesClusterControlPlaneFirewall"
                         },
                         "type": "array"
+                    },
+                    "corednsAutoscaler": {
+                        "$ref": "#/types/digitalocean:index/getKubernetesClusterCorednsAutoscaler:getKubernetesClusterCorednsAutoscaler"
                     },
                     "createdAt": {
                         "description": "The date and time when the node was created.\n",
@@ -44056,6 +45162,9 @@
                     "vpcUuid": {
                         "description": "The ID of the VPC where the Kubernetes cluster is located.\n",
                         "type": "string"
+                    },
+                    "workerSubnetUuid": {
+                        "type": "string"
                     }
                 },
                 "required": [
@@ -44064,6 +45173,7 @@
                     "autoUpgrade",
                     "clusterSubnet",
                     "controlPlaneFirewalls",
+                    "corednsAutoscaler",
                     "createdAt",
                     "endpoint",
                     "ha",
@@ -44084,6 +45194,7 @@
                     "urn",
                     "version",
                     "vpcUuid",
+                    "workerSubnetUuid",
                     "id"
                 ],
                 "type": "object"

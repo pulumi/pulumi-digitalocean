@@ -450,6 +450,16 @@ export const getGradientaiAgentsByOpenaiApiKey: typeof import("./getGradientaiAg
 export const getGradientaiAgentsByOpenaiApiKeyOutput: typeof import("./getGradientaiAgentsByOpenaiApiKey").getGradientaiAgentsByOpenaiApiKeyOutput = null as any;
 utilities.lazyLoad(exports, ["getGradientaiAgentsByOpenaiApiKey","getGradientaiAgentsByOpenaiApiKeyOutput"], () => require("./getGradientaiAgentsByOpenaiApiKey"));
 
+export { GetGradientaiCustomModelArgs, GetGradientaiCustomModelResult, GetGradientaiCustomModelOutputArgs } from "./getGradientaiCustomModel";
+export const getGradientaiCustomModel: typeof import("./getGradientaiCustomModel").getGradientaiCustomModel = null as any;
+export const getGradientaiCustomModelOutput: typeof import("./getGradientaiCustomModel").getGradientaiCustomModelOutput = null as any;
+utilities.lazyLoad(exports, ["getGradientaiCustomModel","getGradientaiCustomModelOutput"], () => require("./getGradientaiCustomModel"));
+
+export { GetGradientaiCustomModelsArgs, GetGradientaiCustomModelsResult, GetGradientaiCustomModelsOutputArgs } from "./getGradientaiCustomModels";
+export const getGradientaiCustomModels: typeof import("./getGradientaiCustomModels").getGradientaiCustomModels = null as any;
+export const getGradientaiCustomModelsOutput: typeof import("./getGradientaiCustomModels").getGradientaiCustomModelsOutput = null as any;
+utilities.lazyLoad(exports, ["getGradientaiCustomModels","getGradientaiCustomModelsOutput"], () => require("./getGradientaiCustomModels"));
+
 export { GetGradientaiIndexingJobArgs, GetGradientaiIndexingJobResult, GetGradientaiIndexingJobOutputArgs } from "./getGradientaiIndexingJob";
 export const getGradientaiIndexingJob: typeof import("./getGradientaiIndexingJob").getGradientaiIndexingJob = null as any;
 export const getGradientaiIndexingJobOutput: typeof import("./getGradientaiIndexingJob").getGradientaiIndexingJobOutput = null as any;
@@ -674,6 +684,11 @@ export { GradientaiAgentRouteArgs, GradientaiAgentRouteState } from "./gradienta
 export type GradientaiAgentRoute = import("./gradientaiAgentRoute").GradientaiAgentRoute;
 export const GradientaiAgentRoute: typeof import("./gradientaiAgentRoute").GradientaiAgentRoute = null as any;
 utilities.lazyLoad(exports, ["GradientaiAgentRoute"], () => require("./gradientaiAgentRoute"));
+
+export { GradientaiCustomModelArgs, GradientaiCustomModelState } from "./gradientaiCustomModel";
+export type GradientaiCustomModel = import("./gradientaiCustomModel").GradientaiCustomModel;
+export const GradientaiCustomModel: typeof import("./gradientaiCustomModel").GradientaiCustomModel = null as any;
+utilities.lazyLoad(exports, ["GradientaiCustomModel"], () => require("./gradientaiCustomModel"));
 
 export { GradientaiFunctionArgs, GradientaiFunctionState } from "./gradientaiFunction";
 export type GradientaiFunction = import("./gradientaiFunction").GradientaiFunction;
@@ -964,6 +979,8 @@ const _module = {
                 return new GradientaiAgentKnowledgeBaseAttachment(name, <any>undefined, { urn })
             case "digitalocean:index/gradientaiAgentRoute:GradientaiAgentRoute":
                 return new GradientaiAgentRoute(name, <any>undefined, { urn })
+            case "digitalocean:index/gradientaiCustomModel:GradientaiCustomModel":
+                return new GradientaiCustomModel(name, <any>undefined, { urn })
             case "digitalocean:index/gradientaiFunction:GradientaiFunction":
                 return new GradientaiFunction(name, <any>undefined, { urn })
             case "digitalocean:index/gradientaiIndexingJobCancel:GradientaiIndexingJobCancel":
@@ -1086,6 +1103,7 @@ pulumi.runtime.registerResourceModule("digitalocean", "index/genaiOpenaiApiKey",
 pulumi.runtime.registerResourceModule("digitalocean", "index/gradientaiAgent", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/gradientaiAgentKnowledgeBaseAttachment", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/gradientaiAgentRoute", _module)
+pulumi.runtime.registerResourceModule("digitalocean", "index/gradientaiCustomModel", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/gradientaiFunction", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/gradientaiIndexingJobCancel", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/gradientaiKnowledgeBase", _module)

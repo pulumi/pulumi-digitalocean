@@ -14,7 +14,7 @@ namespace Pulumi.DigitalOcean.Outputs
     public sealed class KubernetesClusterRdmaSharedDevicePlugin
     {
         /// <summary>
-        /// Boolean flag whether the component is enabled or not.
+        /// Boolean flag whether the CoreDNS Autoscaler is enabled or not.
         /// </summary>
         public readonly bool Enabled;
 

@@ -27,7 +27,7 @@ class GetDatabaseClusterResult:
     """
     A collection of values returned by getDatabaseCluster.
     """
-    def __init__(__self__, database=None, engine=None, host=None, id=None, maintenance_windows=None, metrics_endpoints=None, name=None, node_count=None, password=None, port=None, private_host=None, private_network_uuid=None, private_uri=None, project_id=None, region=None, size=None, storage_size_mib=None, tags=None, ui_database=None, ui_host=None, ui_password=None, ui_port=None, ui_uri=None, ui_user=None, uri=None, urn=None, user=None, version=None):
+    def __init__(__self__, database=None, engine=None, host=None, id=None, maintenance_windows=None, metrics_endpoints=None, name=None, node_count=None, password=None, port=None, private_host=None, private_network_uuid=None, private_uri=None, project_id=None, region=None, size=None, storage_autoscales=None, storage_size_mib=None, tags=None, ui_database=None, ui_host=None, ui_password=None, ui_port=None, ui_uri=None, ui_user=None, uri=None, urn=None, user=None, version=None):
         if database and not isinstance(database, str):
             raise TypeError("Expected argument 'database' to be a str")
         pulumi.set(__self__, "database", database)
@@ -76,6 +76,9 @@ class GetDatabaseClusterResult:
         if size and not isinstance(size, str):
             raise TypeError("Expected argument 'size' to be a str")
         pulumi.set(__self__, "size", size)
+        if storage_autoscales and not isinstance(storage_autoscales, list):
+            raise TypeError("Expected argument 'storage_autoscales' to be a list")
+        pulumi.set(__self__, "storage_autoscales", storage_autoscales)
         if storage_size_mib and not isinstance(storage_size_mib, str):
             raise TypeError("Expected argument 'storage_size_mib' to be a str")
         pulumi.set(__self__, "storage_size_mib", storage_size_mib)
@@ -239,8 +242,19 @@ class GetDatabaseClusterResult:
         return pulumi.get(self, "size")
 
     @_builtins.property
+    @pulumi.getter(name="storageAutoscales")
+    def storage_autoscales(self) -> Sequence['outputs.GetDatabaseClusterStorageAutoscaleResult']:
+        """
+        Storage autoscaling configuration for the database cluster.
+        """
+        return pulumi.get(self, "storage_autoscales")
+
+    @_builtins.property
     @pulumi.getter(name="storageSizeMib")
     def storage_size_mib(self) -> _builtins.str:
+        """
+        The disk size, in MiB, allocated to the cluster.
+        """
         return pulumi.get(self, "storage_size_mib")
 
     @_builtins.property
@@ -351,6 +365,7 @@ class AwaitableGetDatabaseClusterResult(GetDatabaseClusterResult):
             project_id=self.project_id,
             region=self.region,
             size=self.size,
+            storage_autoscales=self.storage_autoscales,
             storage_size_mib=self.storage_size_mib,
             tags=self.tags,
             ui_database=self.ui_database,
@@ -407,6 +422,7 @@ def get_database_cluster(name: Optional[_builtins.str] = None,
         project_id=pulumi.get(__ret__, 'project_id'),
         region=pulumi.get(__ret__, 'region'),
         size=pulumi.get(__ret__, 'size'),
+        storage_autoscales=pulumi.get(__ret__, 'storage_autoscales'),
         storage_size_mib=pulumi.get(__ret__, 'storage_size_mib'),
         tags=pulumi.get(__ret__, 'tags'),
         ui_database=pulumi.get(__ret__, 'ui_database'),
@@ -460,6 +476,7 @@ def get_database_cluster_output(name: pulumi.Input[Optional[_builtins.str]] = No
         project_id=pulumi.get(__response__, 'project_id'),
         region=pulumi.get(__response__, 'region'),
         size=pulumi.get(__response__, 'size'),
+        storage_autoscales=pulumi.get(__response__, 'storage_autoscales'),
         storage_size_mib=pulumi.get(__response__, 'storage_size_mib'),
         tags=pulumi.get(__response__, 'tags'),
         ui_database=pulumi.get(__response__, 'ui_database'),

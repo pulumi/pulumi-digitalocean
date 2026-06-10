@@ -2051,6 +2051,21 @@ export interface DatabaseClusterMaintenanceWindow {
     hour: string;
 }
 
+export interface DatabaseClusterStorageAutoscale {
+    /**
+     * Whether storage autoscaling is enabled for the cluster.
+     */
+    enabled: boolean;
+    /**
+     * The amount of storage, in GiB, to add when autoscaling is triggered.
+     */
+    incrementGib?: number;
+    /**
+     * The storage utilization percentage at which autoscaling is triggered.
+     */
+    thresholdPercent?: number;
+}
+
 export interface DatabaseFirewallRule {
     /**
      * The date and time when the firewall rule was created.
@@ -5623,6 +5638,21 @@ export interface GetDatabaseClusterMaintenanceWindow {
      * The hour in UTC at which maintenance updates will be applied in 24 hour format.
      */
     hour: string;
+}
+
+export interface GetDatabaseClusterStorageAutoscale {
+    /**
+     * Whether storage autoscaling is enabled for the cluster.
+     */
+    enabled: boolean;
+    /**
+     * The amount of storage, in GiB, to add when autoscaling is triggered.
+     */
+    incrementGib: number;
+    /**
+     * The storage utilization percentage at which autoscaling is triggered.
+     */
+    thresholdPercent: number;
 }
 
 export interface GetDatabaseUserSetting {
@@ -14177,6 +14207,243 @@ export interface GetGradientaiAgentsSort {
     key: string;
 }
 
+export interface GetGradientaiCustomModelActiveDeployment {
+    /**
+     * Timestamp when the deployment was created.
+     */
+    createdAt: string;
+    /**
+     * Endpoint URLs exposed by the deployment.
+     */
+    endpoints: outputs.GetGradientaiCustomModelActiveDeploymentEndpoint[];
+    /**
+     * ID of the dedicated inference deployment.
+     */
+    id: string;
+    /**
+     * Name of the dedicated inference deployment.
+     */
+    name: string;
+    /**
+     * Region slug of the dedicated inference deployment.
+     */
+    regionSlug: string;
+    /**
+     * Current state of the deployment.
+     */
+    state: string;
+    /**
+     * Timestamp when the deployment was last updated.
+     */
+    updatedAt: string;
+}
+
+export interface GetGradientaiCustomModelActiveDeploymentEndpoint {
+    /**
+     * Private endpoint FQDN.
+     */
+    privateEndpointFqdn: string;
+    /**
+     * Public endpoint FQDN, if enabled.
+     */
+    publicEndpointFqdn: string;
+}
+
+export interface GetGradientaiCustomModelSourceRef {
+    /**
+     * Access type for the source repository (e.g. ACCESS_TYPE_PUBLIC).
+     */
+    accessType: string;
+    /**
+     * Spaces bucket name for SPACES_BUCKET sources.
+     */
+    bucket: string;
+    /**
+     * Commit SHA pinned for the import.
+     */
+    commitSha: string;
+    /**
+     * Key prefix inside the source bucket.
+     */
+    prefix: string;
+    /**
+     * Region of the source bucket.
+     */
+    region: string;
+    /**
+     * Repository identifier (e.g. HuggingFace repo).
+     */
+    repoId: string;
+}
+
+export interface GetGradientaiCustomModelsCustomModel {
+    /**
+     * Active dedicated inference deployments referencing this custom model.
+     */
+    activeDeployments: outputs.GetGradientaiCustomModelsCustomModelActiveDeployment[];
+    /**
+     * Model architecture as reported by the importer.
+     */
+    architecture: string;
+    /**
+     * Maximum context length supported by the model.
+     */
+    contextLength: number;
+    /**
+     * Estimated monthly cost of running the custom model.
+     */
+    costEstimatePerMonth: number;
+    /**
+     * Timestamp when the custom model was created.
+     */
+    createdAt: string;
+    /**
+     * Description of the custom model.
+     */
+    description: string;
+    /**
+     * Number of files that make up the imported model.
+     */
+    fileCount: number;
+    /**
+     * Input modalities supported by the model (e.g. text, image).
+     */
+    inputModalities: string[];
+    /**
+     * License of the custom model, as reported by the source.
+     */
+    license: string;
+    /**
+     * Human-readable name of the custom model.
+     */
+    name: string;
+    /**
+     * Output modalities produced by the model.
+     */
+    outputModalities: string[];
+    /**
+     * Parameter-count summary reported by the importer.
+     */
+    parameters: string;
+    /**
+     * Reference to the source from which the custom model was imported.
+     */
+    sourceReves: outputs.GetGradientaiCustomModelsCustomModelSourceRef[];
+    /**
+     * Source type of the custom model (e.g. SOURCE_TYPE_HUGGINGFACE, SOURCE_TYPE_SPACES_BUCKET).
+     */
+    sourceType: string;
+    /**
+     * Current status of the custom model (e.g. STATUS_IMPORTING, STATUS_READY, STATUS_FAILED).
+     */
+    status: string;
+    /**
+     * Region where the custom model artifacts are stored.
+     */
+    storageRegion: string;
+    /**
+     * User-defined tags associated with the custom model.
+     */
+    tags: string[];
+    /**
+     * ID of the team that owns the custom model.
+     */
+    teamId: string;
+    /**
+     * Total size of the imported model artifacts in bytes (string-encoded int64).
+     */
+    totalSizeBytes: string;
+    /**
+     * Timestamp when the custom model was last updated.
+     */
+    updatedAt: string;
+    /**
+     * UUID of the custom model.
+     */
+    uuid: string;
+}
+
+export interface GetGradientaiCustomModelsCustomModelActiveDeployment {
+    /**
+     * Timestamp when the deployment was created.
+     */
+    createdAt: string;
+    /**
+     * Endpoint URLs exposed by the deployment.
+     */
+    endpoints: outputs.GetGradientaiCustomModelsCustomModelActiveDeploymentEndpoint[];
+    /**
+     * ID of the dedicated inference deployment.
+     */
+    id: string;
+    /**
+     * Name of the dedicated inference deployment.
+     */
+    name: string;
+    /**
+     * Region slug of the dedicated inference deployment.
+     */
+    regionSlug: string;
+    /**
+     * Current state of the deployment.
+     */
+    state: string;
+    /**
+     * Timestamp when the deployment was last updated.
+     */
+    updatedAt: string;
+}
+
+export interface GetGradientaiCustomModelsCustomModelActiveDeploymentEndpoint {
+    /**
+     * Private endpoint FQDN.
+     */
+    privateEndpointFqdn: string;
+    /**
+     * Public endpoint FQDN, if enabled.
+     */
+    publicEndpointFqdn: string;
+}
+
+export interface GetGradientaiCustomModelsCustomModelSourceRef {
+    /**
+     * Access type for the source repository (e.g. ACCESS_TYPE_PUBLIC).
+     */
+    accessType: string;
+    /**
+     * Spaces bucket name for SPACES_BUCKET sources.
+     */
+    bucket: string;
+    /**
+     * Commit SHA pinned for the import.
+     */
+    commitSha: string;
+    /**
+     * Key prefix inside the source bucket.
+     */
+    prefix: string;
+    /**
+     * Region of the source bucket.
+     */
+    region: string;
+    /**
+     * Repository identifier (e.g. HuggingFace repo).
+     */
+    repoId: string;
+}
+
+export interface GetGradientaiCustomModelsFilter {
+    all?: boolean;
+    key: string;
+    matchBy?: string;
+    values: string[];
+}
+
+export interface GetGradientaiCustomModelsSort {
+    direction?: string;
+    key: string;
+}
+
 export interface GetGradientaiIndexingJobDataSourcesIndexedDataSource {
     /**
      * Timestamp when data source completed indexing
@@ -15071,6 +15338,10 @@ export interface GetKubernetesClusterClusterAutoscalerConfiguration {
 
 export interface GetKubernetesClusterControlPlaneFirewall {
     allowedAddresses: string[];
+    enabled: boolean;
+}
+
+export interface GetKubernetesClusterCorednsAutoscaler {
     enabled: boolean;
 }
 
@@ -16922,6 +17193,79 @@ export interface GradientaiAgentTemplateModelVersion {
     patch?: number;
 }
 
+export interface GradientaiCustomModelActiveDeployment {
+    /**
+     * Timestamp when the deployment was created.
+     */
+    createdAt: string;
+    /**
+     * Endpoint URLs exposed by the deployment.
+     */
+    endpoints: outputs.GradientaiCustomModelActiveDeploymentEndpoint[];
+    /**
+     * ID of the dedicated inference deployment.
+     */
+    id: string;
+    /**
+     * Name of the dedicated inference deployment.
+     */
+    name: string;
+    /**
+     * Region slug of the dedicated inference deployment.
+     */
+    regionSlug: string;
+    /**
+     * Current state of the deployment.
+     */
+    state: string;
+    /**
+     * Timestamp when the deployment was last updated.
+     */
+    updatedAt: string;
+}
+
+export interface GradientaiCustomModelActiveDeploymentEndpoint {
+    /**
+     * Private endpoint FQDN.
+     */
+    privateEndpointFqdn: string;
+    /**
+     * Public endpoint FQDN, if enabled.
+     */
+    publicEndpointFqdn: string;
+}
+
+export interface GradientaiCustomModelSourceRef {
+    /**
+     * Access type for the source repository. One of ACCESS_TYPE_PUBLIC, ACCESS_TYPE_PRIVATE, ACCESS_TYPE_GATED.
+     */
+    accessType?: string;
+    /**
+     * Spaces bucket name for SOURCE_TYPE_SPACES_BUCKET sources.
+     */
+    bucket?: string;
+    /**
+     * Commit SHA to pin for the import. If omitted, the API resolves and returns the SHA actually imported.
+     */
+    commitSha: string;
+    /**
+     * HuggingFace token used to access ACCESS_TYPE_PRIVATE or ACCESS_TYPE_GATED repositories. Write-only.
+     */
+    hfToken?: string;
+    /**
+     * Key prefix inside the source bucket.
+     */
+    prefix?: string;
+    /**
+     * Region of the source bucket.
+     */
+    region?: string;
+    /**
+     * Repository identifier (e.g. the HuggingFace repo). Required for SOURCE_TYPE_HUGGINGFACE sources.
+     */
+    repoId?: string;
+}
+
 export interface GradientaiKnowledgeBaseDataSource {
     /**
      * Created At timestamp for the Knowledge Base
@@ -17188,7 +17532,7 @@ export interface GradientaiOpenaiApiKeyModelVersion {
 
 export interface KubernetesClusterAmdGpuDeviceMetricsExporterPlugin {
     /**
-     * Boolean flag whether the component is enabled or not.
+     * Boolean flag whether the CoreDNS Autoscaler is enabled or not.
      */
     enabled: boolean;
 }
@@ -17202,11 +17546,12 @@ export interface KubernetesClusterAmdGpuDevicePlugin {
 }
 
 export interface KubernetesClusterClusterAutoscalerConfiguration {
+    /**
+     * A list of cluster autoscaler expander strategies to apply in order when selecting which node pool to scale up. Valid values are `random`, `priority`, and `least-waste`. The autoscaler uses each expander from the list to narrow the selection until a single node pool remains. If multiple node pools remain after all expanders are applied, one is chosen at random. When using the `priority` expander, configure priorities in the `cluster-autoscaler-priority-expander` ConfigMap in the `kube-system` namespace (see [Configuring Priority Expander](https://docs.digitalocean.com/products/kubernetes/how-to/autoscale/#configuring-priority-expander)).
+     */
     expanders?: string[];
     /**
      * String setting how long a node should be unneeded before it's eligible for scale down.
-     *
-     * This resource supports customized create timeouts. The default timeout is 30 minutes.
      */
     scaleDownUnneededTime?: string;
     /**
@@ -17222,6 +17567,13 @@ export interface KubernetesClusterControlPlaneFirewall {
     allowedAddresses: string[];
     /**
      * Boolean flag whether the firewall should be enabled or not.
+     */
+    enabled: boolean;
+}
+
+export interface KubernetesClusterCorednsAutoscaler {
+    /**
+     * Boolean flag whether the CoreDNS Autoscaler should be enabled or not.
      */
     enabled: boolean;
 }
@@ -17375,7 +17727,7 @@ export interface KubernetesClusterNvidiaGpuDevicePlugin {
 
 export interface KubernetesClusterRdmaSharedDevicePlugin {
     /**
-     * Boolean flag whether the component is enabled or not.
+     * Boolean flag whether the CoreDNS Autoscaler is enabled or not.
      */
     enabled: boolean;
 }
@@ -17388,12 +17740,23 @@ export interface KubernetesClusterRoutingAgent {
 }
 
 export interface KubernetesClusterSso {
+    /**
+     * The OIDC client ID for the cluster SSO configuration.
+     *
+     * This resource supports customized create timeouts. The default timeout is 30 minutes.
+     */
     clientId?: string;
     /**
-     * Boolean flag whether the component is enabled or not.
+     * Boolean flag indicating whether SSO is enabled as an authentication method for the cluster.
      */
     enabled: boolean;
+    /**
+     * The OIDC issuer URL for the cluster SSO configuration.
+     */
     issuerUrl?: string;
+    /**
+     * Boolean flag indicating whether SSO is required as the only authentication method for the cluster. Default: `false`
+     */
     required?: boolean;
 }
 

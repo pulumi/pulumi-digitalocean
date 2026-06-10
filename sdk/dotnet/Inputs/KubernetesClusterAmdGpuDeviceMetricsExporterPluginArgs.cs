@@ -13,7 +13,7 @@ namespace Pulumi.DigitalOcean.Inputs
     public sealed class KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Boolean flag whether the component is enabled or not.
+        /// Boolean flag whether the CoreDNS Autoscaler is enabled or not.
         /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;

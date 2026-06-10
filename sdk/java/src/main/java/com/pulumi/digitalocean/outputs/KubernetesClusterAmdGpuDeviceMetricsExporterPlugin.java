@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class KubernetesClusterAmdGpuDeviceMetricsExporterPlugin {
     /**
-     * @return Boolean flag whether the component is enabled or not.
+     * @return Boolean flag whether the CoreDNS Autoscaler is enabled or not.
      * 
      */
     private Boolean enabled;
 
     private KubernetesClusterAmdGpuDeviceMetricsExporterPlugin() {}
     /**
-     * @return Boolean flag whether the component is enabled or not.
+     * @return Boolean flag whether the CoreDNS Autoscaler is enabled or not.
      * 
      */
     public Boolean enabled() {

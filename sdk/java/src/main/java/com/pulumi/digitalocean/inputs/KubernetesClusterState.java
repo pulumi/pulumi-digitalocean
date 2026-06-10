@@ -11,6 +11,7 @@ import com.pulumi.digitalocean.inputs.KubernetesClusterAmdGpuDeviceMetricsExport
 import com.pulumi.digitalocean.inputs.KubernetesClusterAmdGpuDevicePluginArgs;
 import com.pulumi.digitalocean.inputs.KubernetesClusterClusterAutoscalerConfigurationArgs;
 import com.pulumi.digitalocean.inputs.KubernetesClusterControlPlaneFirewallArgs;
+import com.pulumi.digitalocean.inputs.KubernetesClusterCorednsAutoscalerArgs;
 import com.pulumi.digitalocean.inputs.KubernetesClusterKubeConfigArgs;
 import com.pulumi.digitalocean.inputs.KubernetesClusterMaintenancePolicyArgs;
 import com.pulumi.digitalocean.inputs.KubernetesClusterNodePoolArgs;
@@ -77,14 +78,14 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Block containing options for cluster auto-scaling.
+     * Block containing options for cluster auto-scaling. For more information.
      * 
      */
     @Import(name="clusterAutoscalerConfigurations")
     private @Nullable Output<List<KubernetesClusterClusterAutoscalerConfigurationArgs>> clusterAutoscalerConfigurations;
 
     /**
-     * @return Block containing options for cluster auto-scaling.
+     * @return Block containing options for cluster auto-scaling. For more information.
      * 
      */
     public Optional<Output<List<KubernetesClusterClusterAutoscalerConfigurationArgs>>> clusterAutoscalerConfigurations() {
@@ -134,6 +135,21 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
      */
     public Optional<Output<KubernetesClusterControlPlaneFirewallArgs>> controlPlaneFirewall() {
         return Optional.ofNullable(this.controlPlaneFirewall);
+    }
+
+    /**
+     * Block containing options for the CoreDNS Autoscaler component, which scales CoreDNS replicas in proportion to the cluster&#39;s size. Default: true (for 1.36.0 and later)
+     * 
+     */
+    @Import(name="corednsAutoscaler")
+    private @Nullable Output<KubernetesClusterCorednsAutoscalerArgs> corednsAutoscaler;
+
+    /**
+     * @return Block containing options for the CoreDNS Autoscaler component, which scales CoreDNS replicas in proportion to the cluster&#39;s size. Default: true (for 1.36.0 and later)
+     * 
+     */
+    public Optional<Output<KubernetesClusterCorednsAutoscalerArgs>> corednsAutoscaler() {
+        return Optional.ofNullable(this.corednsAutoscaler);
     }
 
     /**
@@ -368,9 +384,17 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.serviceSubnet);
     }
 
+    /**
+     * Block containing Single Sign-On (SSO) configuration for the cluster using OpenID Connect (OIDC).
+     * 
+     */
     @Import(name="ssos")
     private @Nullable Output<List<KubernetesClusterSsoArgs>> ssos;
 
+    /**
+     * @return Block containing Single Sign-On (SSO) configuration for the cluster using OpenID Connect (OIDC).
+     * 
+     */
     public Optional<Output<List<KubernetesClusterSsoArgs>>> ssos() {
         return Optional.ofNullable(this.ssos);
     }
@@ -465,6 +489,21 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.vpcUuid);
     }
 
+    /**
+     * The ID of the VPC subnet for placing worker nodes. Must be a valid subnet in the cluster VPC. Requires that `vpcUuid` is also set.
+     * 
+     */
+    @Import(name="workerSubnetUuid")
+    private @Nullable Output<String> workerSubnetUuid;
+
+    /**
+     * @return The ID of the VPC subnet for placing worker nodes. Must be a valid subnet in the cluster VPC. Requires that `vpcUuid` is also set.
+     * 
+     */
+    public Optional<Output<String>> workerSubnetUuid() {
+        return Optional.ofNullable(this.workerSubnetUuid);
+    }
+
     private KubernetesClusterState() {}
 
     private KubernetesClusterState(KubernetesClusterState $) {
@@ -475,6 +514,7 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
         this.clusterSubnet = $.clusterSubnet;
         this.clusterUrn = $.clusterUrn;
         this.controlPlaneFirewall = $.controlPlaneFirewall;
+        this.corednsAutoscaler = $.corednsAutoscaler;
         this.createdAt = $.createdAt;
         this.destroyAllAssociatedResources = $.destroyAllAssociatedResources;
         this.endpoint = $.endpoint;
@@ -498,6 +538,7 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
         this.updatedAt = $.updatedAt;
         this.version = $.version;
         this.vpcUuid = $.vpcUuid;
+        this.workerSubnetUuid = $.workerSubnetUuid;
     }
 
     public static Builder builder() {
@@ -582,7 +623,7 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param clusterAutoscalerConfigurations Block containing options for cluster auto-scaling.
+         * @param clusterAutoscalerConfigurations Block containing options for cluster auto-scaling. For more information.
          * 
          * @return builder
          * 
@@ -593,7 +634,7 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param clusterAutoscalerConfigurations Block containing options for cluster auto-scaling.
+         * @param clusterAutoscalerConfigurations Block containing options for cluster auto-scaling. For more information.
          * 
          * @return builder
          * 
@@ -603,7 +644,7 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param clusterAutoscalerConfigurations Block containing options for cluster auto-scaling.
+         * @param clusterAutoscalerConfigurations Block containing options for cluster auto-scaling. For more information.
          * 
          * @return builder
          * 
@@ -673,6 +714,27 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
          */
         public Builder controlPlaneFirewall(KubernetesClusterControlPlaneFirewallArgs controlPlaneFirewall) {
             return controlPlaneFirewall(Output.of(controlPlaneFirewall));
+        }
+
+        /**
+         * @param corednsAutoscaler Block containing options for the CoreDNS Autoscaler component, which scales CoreDNS replicas in proportion to the cluster&#39;s size. Default: true (for 1.36.0 and later)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder corednsAutoscaler(@Nullable Output<KubernetesClusterCorednsAutoscalerArgs> corednsAutoscaler) {
+            $.corednsAutoscaler = corednsAutoscaler;
+            return this;
+        }
+
+        /**
+         * @param corednsAutoscaler Block containing options for the CoreDNS Autoscaler component, which scales CoreDNS replicas in proportion to the cluster&#39;s size. Default: true (for 1.36.0 and later)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder corednsAutoscaler(KubernetesClusterCorednsAutoscalerArgs corednsAutoscaler) {
+            return corednsAutoscaler(Output.of(corednsAutoscaler));
         }
 
         /**
@@ -1029,15 +1091,33 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
             return serviceSubnet(Output.of(serviceSubnet));
         }
 
+        /**
+         * @param ssos Block containing Single Sign-On (SSO) configuration for the cluster using OpenID Connect (OIDC).
+         * 
+         * @return builder
+         * 
+         */
         public Builder ssos(@Nullable Output<List<KubernetesClusterSsoArgs>> ssos) {
             $.ssos = ssos;
             return this;
         }
 
+        /**
+         * @param ssos Block containing Single Sign-On (SSO) configuration for the cluster using OpenID Connect (OIDC).
+         * 
+         * @return builder
+         * 
+         */
         public Builder ssos(List<KubernetesClusterSsoArgs> ssos) {
             return ssos(Output.of(ssos));
         }
 
+        /**
+         * @param ssos Block containing Single Sign-On (SSO) configuration for the cluster using OpenID Connect (OIDC).
+         * 
+         * @return builder
+         * 
+         */
         public Builder ssos(KubernetesClusterSsoArgs... ssos) {
             return ssos(List.of(ssos));
         }
@@ -1176,6 +1256,27 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
          */
         public Builder vpcUuid(String vpcUuid) {
             return vpcUuid(Output.of(vpcUuid));
+        }
+
+        /**
+         * @param workerSubnetUuid The ID of the VPC subnet for placing worker nodes. Must be a valid subnet in the cluster VPC. Requires that `vpcUuid` is also set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workerSubnetUuid(@Nullable Output<String> workerSubnetUuid) {
+            $.workerSubnetUuid = workerSubnetUuid;
+            return this;
+        }
+
+        /**
+         * @param workerSubnetUuid The ID of the VPC subnet for placing worker nodes. Must be a valid subnet in the cluster VPC. Requires that `vpcUuid` is also set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workerSubnetUuid(String workerSubnetUuid) {
+            return workerSubnetUuid(Output.of(workerSubnetUuid));
         }
 
         public KubernetesClusterState build() {

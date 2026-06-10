@@ -131,6 +131,7 @@ __all__ = [
     'AppSpecWorkerTermination',
     'DatabaseClusterBackupRestore',
     'DatabaseClusterMaintenanceWindow',
+    'DatabaseClusterStorageAutoscale',
     'DatabaseFirewallRule',
     'DatabaseKafkaTopicConfig',
     'DatabaseOnlineMigrationSource',
@@ -222,6 +223,9 @@ __all__ = [
     'GradientaiAgentTemplateModel',
     'GradientaiAgentTemplateModelAgreement',
     'GradientaiAgentTemplateModelVersion',
+    'GradientaiCustomModelActiveDeployment',
+    'GradientaiCustomModelActiveDeploymentEndpoint',
+    'GradientaiCustomModelSourceRef',
     'GradientaiKnowledgeBaseDataSource',
     'GradientaiKnowledgeBaseDataSourceFileUploadDataSource',
     'GradientaiKnowledgeBaseDataSourceLastIndexingJob',
@@ -235,6 +239,7 @@ __all__ = [
     'KubernetesClusterAmdGpuDevicePlugin',
     'KubernetesClusterClusterAutoscalerConfiguration',
     'KubernetesClusterControlPlaneFirewall',
+    'KubernetesClusterCorednsAutoscaler',
     'KubernetesClusterKubeConfig',
     'KubernetesClusterMaintenancePolicy',
     'KubernetesClusterNodePool',
@@ -382,6 +387,7 @@ __all__ = [
     'GetAppSpecWorkerTerminationResult',
     'GetByoipPrefixResourcesAddressResult',
     'GetDatabaseClusterMaintenanceWindowResult',
+    'GetDatabaseClusterStorageAutoscaleResult',
     'GetDatabaseUserSettingResult',
     'GetDatabaseUserSettingAclResult',
     'GetDatabaseUserSettingOpensearchAclResult',
@@ -669,6 +675,15 @@ __all__ = [
     'GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModelVersionResult',
     'GetGradientaiAgentsFilterResult',
     'GetGradientaiAgentsSortResult',
+    'GetGradientaiCustomModelActiveDeploymentResult',
+    'GetGradientaiCustomModelActiveDeploymentEndpointResult',
+    'GetGradientaiCustomModelSourceRefResult',
+    'GetGradientaiCustomModelsCustomModelResult',
+    'GetGradientaiCustomModelsCustomModelActiveDeploymentResult',
+    'GetGradientaiCustomModelsCustomModelActiveDeploymentEndpointResult',
+    'GetGradientaiCustomModelsCustomModelSourceRefResult',
+    'GetGradientaiCustomModelsFilterResult',
+    'GetGradientaiCustomModelsSortResult',
     'GetGradientaiIndexingJobDataSourcesIndexedDataSourceResult',
     'GetGradientaiKnowledgeBaseDataSourcesDatasourceResult',
     'GetGradientaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceResult',
@@ -706,6 +721,7 @@ __all__ = [
     'GetKubernetesClusterAmdGpuDevicePluginResult',
     'GetKubernetesClusterClusterAutoscalerConfigurationResult',
     'GetKubernetesClusterControlPlaneFirewallResult',
+    'GetKubernetesClusterCorednsAutoscalerResult',
     'GetKubernetesClusterKubeConfigResult',
     'GetKubernetesClusterMaintenancePolicyResult',
     'GetKubernetesClusterNodePoolResult',
@@ -7818,6 +7834,67 @@ class DatabaseClusterMaintenanceWindow(dict):
         The hour in UTC at which maintenance updates will be applied as a string in 24 hour format, e.g. `13:00`.
         """
         return pulumi.get(self, "hour")
+
+
+@pulumi.output_type
+class DatabaseClusterStorageAutoscale(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "incrementGib":
+            suggest = "increment_gib"
+        elif key == "thresholdPercent":
+            suggest = "threshold_percent"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatabaseClusterStorageAutoscale. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatabaseClusterStorageAutoscale.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatabaseClusterStorageAutoscale.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: _builtins.bool,
+                 increment_gib: Optional[_builtins.int] = None,
+                 threshold_percent: Optional[_builtins.int] = None):
+        """
+        :param _builtins.bool enabled: Whether storage autoscaling is enabled for the cluster.
+        :param _builtins.int increment_gib: The amount of storage, in GiB, to add when autoscaling is triggered.
+        :param _builtins.int threshold_percent: The storage utilization percentage at which autoscaling is triggered.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        if increment_gib is not None:
+            pulumi.set(__self__, "increment_gib", increment_gib)
+        if threshold_percent is not None:
+            pulumi.set(__self__, "threshold_percent", threshold_percent)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether storage autoscaling is enabled for the cluster.
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="incrementGib")
+    def increment_gib(self) -> Optional[_builtins.int]:
+        """
+        The amount of storage, in GiB, to add when autoscaling is triggered.
+        """
+        return pulumi.get(self, "increment_gib")
+
+    @_builtins.property
+    @pulumi.getter(name="thresholdPercent")
+    def threshold_percent(self) -> Optional[_builtins.int]:
+        """
+        The storage utilization percentage at which autoscaling is triggered.
+        """
+        return pulumi.get(self, "threshold_percent")
 
 
 @pulumi.output_type
@@ -17470,6 +17547,282 @@ class GradientaiAgentTemplateModelVersion(dict):
 
 
 @pulumi.output_type
+class GradientaiCustomModelActiveDeployment(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createdAt":
+            suggest = "created_at"
+        elif key == "regionSlug":
+            suggest = "region_slug"
+        elif key == "updatedAt":
+            suggest = "updated_at"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GradientaiCustomModelActiveDeployment. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GradientaiCustomModelActiveDeployment.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GradientaiCustomModelActiveDeployment.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 created_at: Optional[_builtins.str] = None,
+                 endpoints: Optional[Sequence['outputs.GradientaiCustomModelActiveDeploymentEndpoint']] = None,
+                 id: Optional[_builtins.str] = None,
+                 name: Optional[_builtins.str] = None,
+                 region_slug: Optional[_builtins.str] = None,
+                 state: Optional[_builtins.str] = None,
+                 updated_at: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str created_at: Timestamp when the deployment was created.
+        :param Sequence['GradientaiCustomModelActiveDeploymentEndpointArgs'] endpoints: Endpoint URLs exposed by the deployment.
+        :param _builtins.str id: ID of the dedicated inference deployment.
+        :param _builtins.str name: Name of the dedicated inference deployment.
+        :param _builtins.str region_slug: Region slug of the dedicated inference deployment.
+        :param _builtins.str state: Current state of the deployment.
+        :param _builtins.str updated_at: Timestamp when the deployment was last updated.
+        """
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if endpoints is not None:
+            pulumi.set(__self__, "endpoints", endpoints)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if region_slug is not None:
+            pulumi.set(__self__, "region_slug", region_slug)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[_builtins.str]:
+        """
+        Timestamp when the deployment was created.
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def endpoints(self) -> Optional[Sequence['outputs.GradientaiCustomModelActiveDeploymentEndpoint']]:
+        """
+        Endpoint URLs exposed by the deployment.
+        """
+        return pulumi.get(self, "endpoints")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.str]:
+        """
+        ID of the dedicated inference deployment.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Name of the dedicated inference deployment.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="regionSlug")
+    def region_slug(self) -> Optional[_builtins.str]:
+        """
+        Region slug of the dedicated inference deployment.
+        """
+        return pulumi.get(self, "region_slug")
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> Optional[_builtins.str]:
+        """
+        Current state of the deployment.
+        """
+        return pulumi.get(self, "state")
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[_builtins.str]:
+        """
+        Timestamp when the deployment was last updated.
+        """
+        return pulumi.get(self, "updated_at")
+
+
+@pulumi.output_type
+class GradientaiCustomModelActiveDeploymentEndpoint(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "privateEndpointFqdn":
+            suggest = "private_endpoint_fqdn"
+        elif key == "publicEndpointFqdn":
+            suggest = "public_endpoint_fqdn"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GradientaiCustomModelActiveDeploymentEndpoint. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GradientaiCustomModelActiveDeploymentEndpoint.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GradientaiCustomModelActiveDeploymentEndpoint.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 private_endpoint_fqdn: Optional[_builtins.str] = None,
+                 public_endpoint_fqdn: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str private_endpoint_fqdn: Private endpoint FQDN.
+        :param _builtins.str public_endpoint_fqdn: Public endpoint FQDN, if enabled.
+        """
+        if private_endpoint_fqdn is not None:
+            pulumi.set(__self__, "private_endpoint_fqdn", private_endpoint_fqdn)
+        if public_endpoint_fqdn is not None:
+            pulumi.set(__self__, "public_endpoint_fqdn", public_endpoint_fqdn)
+
+    @_builtins.property
+    @pulumi.getter(name="privateEndpointFqdn")
+    def private_endpoint_fqdn(self) -> Optional[_builtins.str]:
+        """
+        Private endpoint FQDN.
+        """
+        return pulumi.get(self, "private_endpoint_fqdn")
+
+    @_builtins.property
+    @pulumi.getter(name="publicEndpointFqdn")
+    def public_endpoint_fqdn(self) -> Optional[_builtins.str]:
+        """
+        Public endpoint FQDN, if enabled.
+        """
+        return pulumi.get(self, "public_endpoint_fqdn")
+
+
+@pulumi.output_type
+class GradientaiCustomModelSourceRef(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessType":
+            suggest = "access_type"
+        elif key == "commitSha":
+            suggest = "commit_sha"
+        elif key == "hfToken":
+            suggest = "hf_token"
+        elif key == "repoId":
+            suggest = "repo_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GradientaiCustomModelSourceRef. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GradientaiCustomModelSourceRef.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GradientaiCustomModelSourceRef.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 access_type: Optional[_builtins.str] = None,
+                 bucket: Optional[_builtins.str] = None,
+                 commit_sha: Optional[_builtins.str] = None,
+                 hf_token: Optional[_builtins.str] = None,
+                 prefix: Optional[_builtins.str] = None,
+                 region: Optional[_builtins.str] = None,
+                 repo_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str access_type: Access type for the source repository. One of ACCESS_TYPE_PUBLIC, ACCESS_TYPE_PRIVATE, ACCESS_TYPE_GATED.
+        :param _builtins.str bucket: Spaces bucket name for SOURCE_TYPE_SPACES_BUCKET sources.
+        :param _builtins.str commit_sha: Commit SHA to pin for the import. If omitted, the API resolves and returns the SHA actually imported.
+        :param _builtins.str hf_token: HuggingFace token used to access ACCESS_TYPE_PRIVATE or ACCESS_TYPE_GATED repositories. Write-only.
+        :param _builtins.str prefix: Key prefix inside the source bucket.
+        :param _builtins.str region: Region of the source bucket.
+        :param _builtins.str repo_id: Repository identifier (e.g. the HuggingFace repo). Required for SOURCE_TYPE_HUGGINGFACE sources.
+        """
+        if access_type is not None:
+            pulumi.set(__self__, "access_type", access_type)
+        if bucket is not None:
+            pulumi.set(__self__, "bucket", bucket)
+        if commit_sha is not None:
+            pulumi.set(__self__, "commit_sha", commit_sha)
+        if hf_token is not None:
+            pulumi.set(__self__, "hf_token", hf_token)
+        if prefix is not None:
+            pulumi.set(__self__, "prefix", prefix)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if repo_id is not None:
+            pulumi.set(__self__, "repo_id", repo_id)
+
+    @_builtins.property
+    @pulumi.getter(name="accessType")
+    def access_type(self) -> Optional[_builtins.str]:
+        """
+        Access type for the source repository. One of ACCESS_TYPE_PUBLIC, ACCESS_TYPE_PRIVATE, ACCESS_TYPE_GATED.
+        """
+        return pulumi.get(self, "access_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def bucket(self) -> Optional[_builtins.str]:
+        """
+        Spaces bucket name for SOURCE_TYPE_SPACES_BUCKET sources.
+        """
+        return pulumi.get(self, "bucket")
+
+    @_builtins.property
+    @pulumi.getter(name="commitSha")
+    def commit_sha(self) -> Optional[_builtins.str]:
+        """
+        Commit SHA to pin for the import. If omitted, the API resolves and returns the SHA actually imported.
+        """
+        return pulumi.get(self, "commit_sha")
+
+    @_builtins.property
+    @pulumi.getter(name="hfToken")
+    def hf_token(self) -> Optional[_builtins.str]:
+        """
+        HuggingFace token used to access ACCESS_TYPE_PRIVATE or ACCESS_TYPE_GATED repositories. Write-only.
+        """
+        return pulumi.get(self, "hf_token")
+
+    @_builtins.property
+    @pulumi.getter
+    def prefix(self) -> Optional[_builtins.str]:
+        """
+        Key prefix inside the source bucket.
+        """
+        return pulumi.get(self, "prefix")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[_builtins.str]:
+        """
+        Region of the source bucket.
+        """
+        return pulumi.get(self, "region")
+
+    @_builtins.property
+    @pulumi.getter(name="repoId")
+    def repo_id(self) -> Optional[_builtins.str]:
+        """
+        Repository identifier (e.g. the HuggingFace repo). Required for SOURCE_TYPE_HUGGINGFACE sources.
+        """
+        return pulumi.get(self, "repo_id")
+
+
+@pulumi.output_type
 class GradientaiKnowledgeBaseDataSource(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -18422,7 +18775,7 @@ class KubernetesClusterAmdGpuDeviceMetricsExporterPlugin(dict):
     def __init__(__self__, *,
                  enabled: _builtins.bool):
         """
-        :param _builtins.bool enabled: Boolean flag whether the component is enabled or not.
+        :param _builtins.bool enabled: Boolean flag whether the CoreDNS Autoscaler is enabled or not.
         """
         pulumi.set(__self__, "enabled", enabled)
 
@@ -18430,7 +18783,7 @@ class KubernetesClusterAmdGpuDeviceMetricsExporterPlugin(dict):
     @pulumi.getter
     def enabled(self) -> _builtins.bool:
         """
-        Boolean flag whether the component is enabled or not.
+        Boolean flag whether the CoreDNS Autoscaler is enabled or not.
         """
         return pulumi.get(self, "enabled")
 
@@ -18481,9 +18834,8 @@ class KubernetesClusterClusterAutoscalerConfiguration(dict):
                  scale_down_unneeded_time: Optional[_builtins.str] = None,
                  scale_down_utilization_threshold: Optional[_builtins.float] = None):
         """
+        :param Sequence[_builtins.str] expanders: A list of cluster autoscaler expander strategies to apply in order when selecting which node pool to scale up. Valid values are `random`, `priority`, and `least-waste`. The autoscaler uses each expander from the list to narrow the selection until a single node pool remains. If multiple node pools remain after all expanders are applied, one is chosen at random. When using the `priority` expander, configure priorities in the `cluster-autoscaler-priority-expander` ConfigMap in the `kube-system` namespace (see [Configuring Priority Expander](https://docs.digitalocean.com/products/kubernetes/how-to/autoscale/#configuring-priority-expander)).
         :param _builtins.str scale_down_unneeded_time: String setting how long a node should be unneeded before it's eligible for scale down.
-               
-               This resource supports customized create timeouts. The default timeout is 30 minutes.
         :param _builtins.float scale_down_utilization_threshold: Float setting the Node utilization level, defined as sum of requested resources divided by capacity, in which a node can be considered for scale down.
         """
         if expanders is not None:
@@ -18496,6 +18848,9 @@ class KubernetesClusterClusterAutoscalerConfiguration(dict):
     @_builtins.property
     @pulumi.getter
     def expanders(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        A list of cluster autoscaler expander strategies to apply in order when selecting which node pool to scale up. Valid values are `random`, `priority`, and `least-waste`. The autoscaler uses each expander from the list to narrow the selection until a single node pool remains. If multiple node pools remain after all expanders are applied, one is chosen at random. When using the `priority` expander, configure priorities in the `cluster-autoscaler-priority-expander` ConfigMap in the `kube-system` namespace (see [Configuring Priority Expander](https://docs.digitalocean.com/products/kubernetes/how-to/autoscale/#configuring-priority-expander)).
+        """
         return pulumi.get(self, "expanders")
 
     @_builtins.property
@@ -18503,8 +18858,6 @@ class KubernetesClusterClusterAutoscalerConfiguration(dict):
     def scale_down_unneeded_time(self) -> Optional[_builtins.str]:
         """
         String setting how long a node should be unneeded before it's eligible for scale down.
-
-        This resource supports customized create timeouts. The default timeout is 30 minutes.
         """
         return pulumi.get(self, "scale_down_unneeded_time")
 
@@ -18559,6 +18912,24 @@ class KubernetesClusterControlPlaneFirewall(dict):
     def enabled(self) -> _builtins.bool:
         """
         Boolean flag whether the firewall should be enabled or not.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class KubernetesClusterCorednsAutoscaler(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        """
+        :param _builtins.bool enabled: Boolean flag whether the CoreDNS Autoscaler should be enabled or not.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Boolean flag whether the CoreDNS Autoscaler should be enabled or not.
         """
         return pulumi.get(self, "enabled")
 
@@ -19078,7 +19449,7 @@ class KubernetesClusterRdmaSharedDevicePlugin(dict):
     def __init__(__self__, *,
                  enabled: _builtins.bool):
         """
-        :param _builtins.bool enabled: Boolean flag whether the component is enabled or not.
+        :param _builtins.bool enabled: Boolean flag whether the CoreDNS Autoscaler is enabled or not.
         """
         pulumi.set(__self__, "enabled", enabled)
 
@@ -19086,7 +19457,7 @@ class KubernetesClusterRdmaSharedDevicePlugin(dict):
     @pulumi.getter
     def enabled(self) -> _builtins.bool:
         """
-        Boolean flag whether the component is enabled or not.
+        Boolean flag whether the CoreDNS Autoscaler is enabled or not.
         """
         return pulumi.get(self, "enabled")
 
@@ -19136,7 +19507,12 @@ class KubernetesClusterSso(dict):
                  issuer_url: Optional[_builtins.str] = None,
                  required: Optional[_builtins.bool] = None):
         """
-        :param _builtins.bool enabled: Boolean flag whether the component is enabled or not.
+        :param _builtins.bool enabled: Boolean flag indicating whether SSO is enabled as an authentication method for the cluster.
+        :param _builtins.str client_id: The OIDC client ID for the cluster SSO configuration.
+               
+               This resource supports customized create timeouts. The default timeout is 30 minutes.
+        :param _builtins.str issuer_url: The OIDC issuer URL for the cluster SSO configuration.
+        :param _builtins.bool required: Boolean flag indicating whether SSO is required as the only authentication method for the cluster. Default: `false`
         """
         pulumi.set(__self__, "enabled", enabled)
         if client_id is not None:
@@ -19150,23 +19526,34 @@ class KubernetesClusterSso(dict):
     @pulumi.getter
     def enabled(self) -> _builtins.bool:
         """
-        Boolean flag whether the component is enabled or not.
+        Boolean flag indicating whether SSO is enabled as an authentication method for the cluster.
         """
         return pulumi.get(self, "enabled")
 
     @_builtins.property
     @pulumi.getter(name="clientId")
     def client_id(self) -> Optional[_builtins.str]:
+        """
+        The OIDC client ID for the cluster SSO configuration.
+
+        This resource supports customized create timeouts. The default timeout is 30 minutes.
+        """
         return pulumi.get(self, "client_id")
 
     @_builtins.property
     @pulumi.getter(name="issuerUrl")
     def issuer_url(self) -> Optional[_builtins.str]:
+        """
+        The OIDC issuer URL for the cluster SSO configuration.
+        """
         return pulumi.get(self, "issuer_url")
 
     @_builtins.property
     @pulumi.getter
     def required(self) -> Optional[_builtins.bool]:
+        """
+        Boolean flag indicating whether SSO is required as the only authentication method for the cluster. Default: `false`
+        """
         return pulumi.get(self, "required")
 
 
@@ -26188,6 +26575,46 @@ class GetDatabaseClusterMaintenanceWindowResult(dict):
         The hour in UTC at which maintenance updates will be applied in 24 hour format.
         """
         return pulumi.get(self, "hour")
+
+
+@pulumi.output_type
+class GetDatabaseClusterStorageAutoscaleResult(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool,
+                 increment_gib: _builtins.int,
+                 threshold_percent: _builtins.int):
+        """
+        :param _builtins.bool enabled: Whether storage autoscaling is enabled for the cluster.
+        :param _builtins.int increment_gib: The amount of storage, in GiB, to add when autoscaling is triggered.
+        :param _builtins.int threshold_percent: The storage utilization percentage at which autoscaling is triggered.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "increment_gib", increment_gib)
+        pulumi.set(__self__, "threshold_percent", threshold_percent)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether storage autoscaling is enabled for the cluster.
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="incrementGib")
+    def increment_gib(self) -> _builtins.int:
+        """
+        The amount of storage, in GiB, to add when autoscaling is triggered.
+        """
+        return pulumi.get(self, "increment_gib")
+
+    @_builtins.property
+    @pulumi.getter(name="thresholdPercent")
+    def threshold_percent(self) -> _builtins.int:
+        """
+        The storage utilization percentage at which autoscaling is triggered.
+        """
+        return pulumi.get(self, "threshold_percent")
 
 
 @pulumi.output_type
@@ -50723,6 +51150,671 @@ class GetGradientaiAgentsSortResult(dict):
 
 
 @pulumi.output_type
+class GetGradientaiCustomModelActiveDeploymentResult(dict):
+    def __init__(__self__, *,
+                 created_at: _builtins.str,
+                 endpoints: Sequence['outputs.GetGradientaiCustomModelActiveDeploymentEndpointResult'],
+                 id: _builtins.str,
+                 name: _builtins.str,
+                 region_slug: _builtins.str,
+                 state: _builtins.str,
+                 updated_at: _builtins.str):
+        """
+        :param _builtins.str created_at: Timestamp when the deployment was created.
+        :param Sequence['GetGradientaiCustomModelActiveDeploymentEndpointArgs'] endpoints: Endpoint URLs exposed by the deployment.
+        :param _builtins.str id: ID of the dedicated inference deployment.
+        :param _builtins.str name: Name of the dedicated inference deployment.
+        :param _builtins.str region_slug: Region slug of the dedicated inference deployment.
+        :param _builtins.str state: Current state of the deployment.
+        :param _builtins.str updated_at: Timestamp when the deployment was last updated.
+        """
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "endpoints", endpoints)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "region_slug", region_slug)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "updated_at", updated_at)
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        Timestamp when the deployment was created.
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def endpoints(self) -> Sequence['outputs.GetGradientaiCustomModelActiveDeploymentEndpointResult']:
+        """
+        Endpoint URLs exposed by the deployment.
+        """
+        return pulumi.get(self, "endpoints")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        ID of the dedicated inference deployment.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Name of the dedicated inference deployment.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="regionSlug")
+    def region_slug(self) -> _builtins.str:
+        """
+        Region slug of the dedicated inference deployment.
+        """
+        return pulumi.get(self, "region_slug")
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> _builtins.str:
+        """
+        Current state of the deployment.
+        """
+        return pulumi.get(self, "state")
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> _builtins.str:
+        """
+        Timestamp when the deployment was last updated.
+        """
+        return pulumi.get(self, "updated_at")
+
+
+@pulumi.output_type
+class GetGradientaiCustomModelActiveDeploymentEndpointResult(dict):
+    def __init__(__self__, *,
+                 private_endpoint_fqdn: _builtins.str,
+                 public_endpoint_fqdn: _builtins.str):
+        """
+        :param _builtins.str private_endpoint_fqdn: Private endpoint FQDN.
+        :param _builtins.str public_endpoint_fqdn: Public endpoint FQDN, if enabled.
+        """
+        pulumi.set(__self__, "private_endpoint_fqdn", private_endpoint_fqdn)
+        pulumi.set(__self__, "public_endpoint_fqdn", public_endpoint_fqdn)
+
+    @_builtins.property
+    @pulumi.getter(name="privateEndpointFqdn")
+    def private_endpoint_fqdn(self) -> _builtins.str:
+        """
+        Private endpoint FQDN.
+        """
+        return pulumi.get(self, "private_endpoint_fqdn")
+
+    @_builtins.property
+    @pulumi.getter(name="publicEndpointFqdn")
+    def public_endpoint_fqdn(self) -> _builtins.str:
+        """
+        Public endpoint FQDN, if enabled.
+        """
+        return pulumi.get(self, "public_endpoint_fqdn")
+
+
+@pulumi.output_type
+class GetGradientaiCustomModelSourceRefResult(dict):
+    def __init__(__self__, *,
+                 access_type: _builtins.str,
+                 bucket: _builtins.str,
+                 commit_sha: _builtins.str,
+                 prefix: _builtins.str,
+                 region: _builtins.str,
+                 repo_id: _builtins.str):
+        """
+        :param _builtins.str access_type: Access type for the source repository (e.g. ACCESS_TYPE_PUBLIC).
+        :param _builtins.str bucket: Spaces bucket name for SPACES_BUCKET sources.
+        :param _builtins.str commit_sha: Commit SHA pinned for the import.
+        :param _builtins.str prefix: Key prefix inside the source bucket.
+        :param _builtins.str region: Region of the source bucket.
+        :param _builtins.str repo_id: Repository identifier (e.g. HuggingFace repo).
+        """
+        pulumi.set(__self__, "access_type", access_type)
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "commit_sha", commit_sha)
+        pulumi.set(__self__, "prefix", prefix)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "repo_id", repo_id)
+
+    @_builtins.property
+    @pulumi.getter(name="accessType")
+    def access_type(self) -> _builtins.str:
+        """
+        Access type for the source repository (e.g. ACCESS_TYPE_PUBLIC).
+        """
+        return pulumi.get(self, "access_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def bucket(self) -> _builtins.str:
+        """
+        Spaces bucket name for SPACES_BUCKET sources.
+        """
+        return pulumi.get(self, "bucket")
+
+    @_builtins.property
+    @pulumi.getter(name="commitSha")
+    def commit_sha(self) -> _builtins.str:
+        """
+        Commit SHA pinned for the import.
+        """
+        return pulumi.get(self, "commit_sha")
+
+    @_builtins.property
+    @pulumi.getter
+    def prefix(self) -> _builtins.str:
+        """
+        Key prefix inside the source bucket.
+        """
+        return pulumi.get(self, "prefix")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Region of the source bucket.
+        """
+        return pulumi.get(self, "region")
+
+    @_builtins.property
+    @pulumi.getter(name="repoId")
+    def repo_id(self) -> _builtins.str:
+        """
+        Repository identifier (e.g. HuggingFace repo).
+        """
+        return pulumi.get(self, "repo_id")
+
+
+@pulumi.output_type
+class GetGradientaiCustomModelsCustomModelResult(dict):
+    def __init__(__self__, *,
+                 active_deployments: Sequence['outputs.GetGradientaiCustomModelsCustomModelActiveDeploymentResult'],
+                 architecture: _builtins.str,
+                 context_length: _builtins.int,
+                 cost_estimate_per_month: _builtins.int,
+                 created_at: _builtins.str,
+                 description: _builtins.str,
+                 file_count: _builtins.int,
+                 input_modalities: Sequence[_builtins.str],
+                 license: _builtins.str,
+                 name: _builtins.str,
+                 output_modalities: Sequence[_builtins.str],
+                 parameters: _builtins.str,
+                 source_reves: Sequence['outputs.GetGradientaiCustomModelsCustomModelSourceRefResult'],
+                 source_type: _builtins.str,
+                 status: _builtins.str,
+                 storage_region: _builtins.str,
+                 tags: Sequence[_builtins.str],
+                 team_id: _builtins.str,
+                 total_size_bytes: _builtins.str,
+                 updated_at: _builtins.str,
+                 uuid: _builtins.str):
+        """
+        :param Sequence['GetGradientaiCustomModelsCustomModelActiveDeploymentArgs'] active_deployments: Active dedicated inference deployments referencing this custom model.
+        :param _builtins.str architecture: Model architecture as reported by the importer.
+        :param _builtins.int context_length: Maximum context length supported by the model.
+        :param _builtins.int cost_estimate_per_month: Estimated monthly cost of running the custom model.
+        :param _builtins.str created_at: Timestamp when the custom model was created.
+        :param _builtins.str description: Description of the custom model.
+        :param _builtins.int file_count: Number of files that make up the imported model.
+        :param Sequence[_builtins.str] input_modalities: Input modalities supported by the model (e.g. text, image).
+        :param _builtins.str license: License of the custom model, as reported by the source.
+        :param _builtins.str name: Human-readable name of the custom model.
+        :param Sequence[_builtins.str] output_modalities: Output modalities produced by the model.
+        :param _builtins.str parameters: Parameter-count summary reported by the importer.
+        :param Sequence['GetGradientaiCustomModelsCustomModelSourceRefArgs'] source_reves: Reference to the source from which the custom model was imported.
+        :param _builtins.str source_type: Source type of the custom model (e.g. SOURCE_TYPE_HUGGINGFACE, SOURCE_TYPE_SPACES_BUCKET).
+        :param _builtins.str status: Current status of the custom model (e.g. STATUS_IMPORTING, STATUS_READY, STATUS_FAILED).
+        :param _builtins.str storage_region: Region where the custom model artifacts are stored.
+        :param Sequence[_builtins.str] tags: User-defined tags associated with the custom model.
+        :param _builtins.str team_id: ID of the team that owns the custom model.
+        :param _builtins.str total_size_bytes: Total size of the imported model artifacts in bytes (string-encoded int64).
+        :param _builtins.str updated_at: Timestamp when the custom model was last updated.
+        :param _builtins.str uuid: UUID of the custom model.
+        """
+        pulumi.set(__self__, "active_deployments", active_deployments)
+        pulumi.set(__self__, "architecture", architecture)
+        pulumi.set(__self__, "context_length", context_length)
+        pulumi.set(__self__, "cost_estimate_per_month", cost_estimate_per_month)
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "file_count", file_count)
+        pulumi.set(__self__, "input_modalities", input_modalities)
+        pulumi.set(__self__, "license", license)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "output_modalities", output_modalities)
+        pulumi.set(__self__, "parameters", parameters)
+        pulumi.set(__self__, "source_reves", source_reves)
+        pulumi.set(__self__, "source_type", source_type)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "storage_region", storage_region)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "team_id", team_id)
+        pulumi.set(__self__, "total_size_bytes", total_size_bytes)
+        pulumi.set(__self__, "updated_at", updated_at)
+        pulumi.set(__self__, "uuid", uuid)
+
+    @_builtins.property
+    @pulumi.getter(name="activeDeployments")
+    def active_deployments(self) -> Sequence['outputs.GetGradientaiCustomModelsCustomModelActiveDeploymentResult']:
+        """
+        Active dedicated inference deployments referencing this custom model.
+        """
+        return pulumi.get(self, "active_deployments")
+
+    @_builtins.property
+    @pulumi.getter
+    def architecture(self) -> _builtins.str:
+        """
+        Model architecture as reported by the importer.
+        """
+        return pulumi.get(self, "architecture")
+
+    @_builtins.property
+    @pulumi.getter(name="contextLength")
+    def context_length(self) -> _builtins.int:
+        """
+        Maximum context length supported by the model.
+        """
+        return pulumi.get(self, "context_length")
+
+    @_builtins.property
+    @pulumi.getter(name="costEstimatePerMonth")
+    def cost_estimate_per_month(self) -> _builtins.int:
+        """
+        Estimated monthly cost of running the custom model.
+        """
+        return pulumi.get(self, "cost_estimate_per_month")
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        Timestamp when the custom model was created.
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Description of the custom model.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="fileCount")
+    def file_count(self) -> _builtins.int:
+        """
+        Number of files that make up the imported model.
+        """
+        return pulumi.get(self, "file_count")
+
+    @_builtins.property
+    @pulumi.getter(name="inputModalities")
+    def input_modalities(self) -> Sequence[_builtins.str]:
+        """
+        Input modalities supported by the model (e.g. text, image).
+        """
+        return pulumi.get(self, "input_modalities")
+
+    @_builtins.property
+    @pulumi.getter
+    def license(self) -> _builtins.str:
+        """
+        License of the custom model, as reported by the source.
+        """
+        return pulumi.get(self, "license")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Human-readable name of the custom model.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="outputModalities")
+    def output_modalities(self) -> Sequence[_builtins.str]:
+        """
+        Output modalities produced by the model.
+        """
+        return pulumi.get(self, "output_modalities")
+
+    @_builtins.property
+    @pulumi.getter
+    def parameters(self) -> _builtins.str:
+        """
+        Parameter-count summary reported by the importer.
+        """
+        return pulumi.get(self, "parameters")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceReves")
+    def source_reves(self) -> Sequence['outputs.GetGradientaiCustomModelsCustomModelSourceRefResult']:
+        """
+        Reference to the source from which the custom model was imported.
+        """
+        return pulumi.get(self, "source_reves")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceType")
+    def source_type(self) -> _builtins.str:
+        """
+        Source type of the custom model (e.g. SOURCE_TYPE_HUGGINGFACE, SOURCE_TYPE_SPACES_BUCKET).
+        """
+        return pulumi.get(self, "source_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        Current status of the custom model (e.g. STATUS_IMPORTING, STATUS_READY, STATUS_FAILED).
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter(name="storageRegion")
+    def storage_region(self) -> _builtins.str:
+        """
+        Region where the custom model artifacts are stored.
+        """
+        return pulumi.get(self, "storage_region")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Sequence[_builtins.str]:
+        """
+        User-defined tags associated with the custom model.
+        """
+        return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter(name="teamId")
+    def team_id(self) -> _builtins.str:
+        """
+        ID of the team that owns the custom model.
+        """
+        return pulumi.get(self, "team_id")
+
+    @_builtins.property
+    @pulumi.getter(name="totalSizeBytes")
+    def total_size_bytes(self) -> _builtins.str:
+        """
+        Total size of the imported model artifacts in bytes (string-encoded int64).
+        """
+        return pulumi.get(self, "total_size_bytes")
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> _builtins.str:
+        """
+        Timestamp when the custom model was last updated.
+        """
+        return pulumi.get(self, "updated_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> _builtins.str:
+        """
+        UUID of the custom model.
+        """
+        return pulumi.get(self, "uuid")
+
+
+@pulumi.output_type
+class GetGradientaiCustomModelsCustomModelActiveDeploymentResult(dict):
+    def __init__(__self__, *,
+                 created_at: _builtins.str,
+                 endpoints: Sequence['outputs.GetGradientaiCustomModelsCustomModelActiveDeploymentEndpointResult'],
+                 id: _builtins.str,
+                 name: _builtins.str,
+                 region_slug: _builtins.str,
+                 state: _builtins.str,
+                 updated_at: _builtins.str):
+        """
+        :param _builtins.str created_at: Timestamp when the deployment was created.
+        :param Sequence['GetGradientaiCustomModelsCustomModelActiveDeploymentEndpointArgs'] endpoints: Endpoint URLs exposed by the deployment.
+        :param _builtins.str id: ID of the dedicated inference deployment.
+        :param _builtins.str name: Name of the dedicated inference deployment.
+        :param _builtins.str region_slug: Region slug of the dedicated inference deployment.
+        :param _builtins.str state: Current state of the deployment.
+        :param _builtins.str updated_at: Timestamp when the deployment was last updated.
+        """
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "endpoints", endpoints)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "region_slug", region_slug)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "updated_at", updated_at)
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        Timestamp when the deployment was created.
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def endpoints(self) -> Sequence['outputs.GetGradientaiCustomModelsCustomModelActiveDeploymentEndpointResult']:
+        """
+        Endpoint URLs exposed by the deployment.
+        """
+        return pulumi.get(self, "endpoints")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        ID of the dedicated inference deployment.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Name of the dedicated inference deployment.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="regionSlug")
+    def region_slug(self) -> _builtins.str:
+        """
+        Region slug of the dedicated inference deployment.
+        """
+        return pulumi.get(self, "region_slug")
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> _builtins.str:
+        """
+        Current state of the deployment.
+        """
+        return pulumi.get(self, "state")
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> _builtins.str:
+        """
+        Timestamp when the deployment was last updated.
+        """
+        return pulumi.get(self, "updated_at")
+
+
+@pulumi.output_type
+class GetGradientaiCustomModelsCustomModelActiveDeploymentEndpointResult(dict):
+    def __init__(__self__, *,
+                 private_endpoint_fqdn: _builtins.str,
+                 public_endpoint_fqdn: _builtins.str):
+        """
+        :param _builtins.str private_endpoint_fqdn: Private endpoint FQDN.
+        :param _builtins.str public_endpoint_fqdn: Public endpoint FQDN, if enabled.
+        """
+        pulumi.set(__self__, "private_endpoint_fqdn", private_endpoint_fqdn)
+        pulumi.set(__self__, "public_endpoint_fqdn", public_endpoint_fqdn)
+
+    @_builtins.property
+    @pulumi.getter(name="privateEndpointFqdn")
+    def private_endpoint_fqdn(self) -> _builtins.str:
+        """
+        Private endpoint FQDN.
+        """
+        return pulumi.get(self, "private_endpoint_fqdn")
+
+    @_builtins.property
+    @pulumi.getter(name="publicEndpointFqdn")
+    def public_endpoint_fqdn(self) -> _builtins.str:
+        """
+        Public endpoint FQDN, if enabled.
+        """
+        return pulumi.get(self, "public_endpoint_fqdn")
+
+
+@pulumi.output_type
+class GetGradientaiCustomModelsCustomModelSourceRefResult(dict):
+    def __init__(__self__, *,
+                 access_type: _builtins.str,
+                 bucket: _builtins.str,
+                 commit_sha: _builtins.str,
+                 prefix: _builtins.str,
+                 region: _builtins.str,
+                 repo_id: _builtins.str):
+        """
+        :param _builtins.str access_type: Access type for the source repository (e.g. ACCESS_TYPE_PUBLIC).
+        :param _builtins.str bucket: Spaces bucket name for SPACES_BUCKET sources.
+        :param _builtins.str commit_sha: Commit SHA pinned for the import.
+        :param _builtins.str prefix: Key prefix inside the source bucket.
+        :param _builtins.str region: Region of the source bucket.
+        :param _builtins.str repo_id: Repository identifier (e.g. HuggingFace repo).
+        """
+        pulumi.set(__self__, "access_type", access_type)
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "commit_sha", commit_sha)
+        pulumi.set(__self__, "prefix", prefix)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "repo_id", repo_id)
+
+    @_builtins.property
+    @pulumi.getter(name="accessType")
+    def access_type(self) -> _builtins.str:
+        """
+        Access type for the source repository (e.g. ACCESS_TYPE_PUBLIC).
+        """
+        return pulumi.get(self, "access_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def bucket(self) -> _builtins.str:
+        """
+        Spaces bucket name for SPACES_BUCKET sources.
+        """
+        return pulumi.get(self, "bucket")
+
+    @_builtins.property
+    @pulumi.getter(name="commitSha")
+    def commit_sha(self) -> _builtins.str:
+        """
+        Commit SHA pinned for the import.
+        """
+        return pulumi.get(self, "commit_sha")
+
+    @_builtins.property
+    @pulumi.getter
+    def prefix(self) -> _builtins.str:
+        """
+        Key prefix inside the source bucket.
+        """
+        return pulumi.get(self, "prefix")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Region of the source bucket.
+        """
+        return pulumi.get(self, "region")
+
+    @_builtins.property
+    @pulumi.getter(name="repoId")
+    def repo_id(self) -> _builtins.str:
+        """
+        Repository identifier (e.g. HuggingFace repo).
+        """
+        return pulumi.get(self, "repo_id")
+
+
+@pulumi.output_type
+class GetGradientaiCustomModelsFilterResult(dict):
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 values: Sequence[_builtins.str],
+                 all: Optional[_builtins.bool] = None,
+                 match_by: Optional[_builtins.str] = None):
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "values", values)
+        if all is not None:
+            pulumi.set(__self__, "all", all)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        return pulumi.get(self, "values")
+
+    @_builtins.property
+    @pulumi.getter
+    def all(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "all")
+
+    @_builtins.property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "match_by")
+
+
+@pulumi.output_type
+class GetGradientaiCustomModelsSortResult(dict):
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 direction: Optional[_builtins.str] = None):
+        pulumi.set(__self__, "key", key)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def direction(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "direction")
+
+
+@pulumi.output_type
 class GetGradientaiIndexingJobDataSourcesIndexedDataSourceResult(dict):
     def __init__(__self__, *,
                  completed_at: _builtins.str,
@@ -53322,6 +54414,18 @@ class GetKubernetesClusterControlPlaneFirewallResult(dict):
     @pulumi.getter(name="allowedAddresses")
     def allowed_addresses(self) -> Sequence[_builtins.str]:
         return pulumi.get(self, "allowed_addresses")
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GetKubernetesClusterCorednsAutoscalerResult(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        pulumi.set(__self__, "enabled", enabled)
 
     @_builtins.property
     @pulumi.getter

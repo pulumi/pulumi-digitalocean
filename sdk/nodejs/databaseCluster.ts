@@ -243,6 +243,10 @@ export class DatabaseCluster extends pulumi.CustomResource {
      */
     declare public readonly sqlMode: pulumi.Output<string | undefined>;
     /**
+     * Storage autoscaling configuration for the database cluster.
+     */
+    declare public readonly storageAutoscale: pulumi.Output<outputs.DatabaseClusterStorageAutoscale | undefined>;
+    /**
      * Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostgreSQL clusters based on predefined ranges for each slug/droplet size.
      */
     declare public readonly storageSizeMib: pulumi.Output<string>;
@@ -320,6 +324,7 @@ export class DatabaseCluster extends pulumi.CustomResource {
             resourceInputs["region"] = state?.region;
             resourceInputs["size"] = state?.size;
             resourceInputs["sqlMode"] = state?.sqlMode;
+            resourceInputs["storageAutoscale"] = state?.storageAutoscale;
             resourceInputs["storageSizeMib"] = state?.storageSizeMib;
             resourceInputs["tags"] = state?.tags;
             resourceInputs["uiDatabase"] = state?.uiDatabase;
@@ -356,6 +361,7 @@ export class DatabaseCluster extends pulumi.CustomResource {
             resourceInputs["region"] = args?.region;
             resourceInputs["size"] = args?.size;
             resourceInputs["sqlMode"] = args?.sqlMode;
+            resourceInputs["storageAutoscale"] = args?.storageAutoscale;
             resourceInputs["storageSizeMib"] = args?.storageSizeMib;
             resourceInputs["tags"] = args?.tags;
             resourceInputs["version"] = args?.version;
@@ -461,6 +467,10 @@ export interface DatabaseClusterState {
      */
     sqlMode?: pulumi.Input<string | undefined>;
     /**
+     * Storage autoscaling configuration for the database cluster.
+     */
+    storageAutoscale?: pulumi.Input<inputs.DatabaseClusterStorageAutoscale | undefined>;
+    /**
      * Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostgreSQL clusters based on predefined ranges for each slug/droplet size.
      */
     storageSizeMib?: pulumi.Input<string | undefined>;
@@ -552,6 +562,10 @@ export interface DatabaseClusterArgs {
      * A comma separated string specifying the  SQL modes for a MySQL cluster.
      */
     sqlMode?: pulumi.Input<string | undefined>;
+    /**
+     * Storage autoscaling configuration for the database cluster.
+     */
+    storageAutoscale?: pulumi.Input<inputs.DatabaseClusterStorageAutoscale | undefined>;
     /**
      * Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostgreSQL clusters based on predefined ranges for each slug/droplet size.
      */

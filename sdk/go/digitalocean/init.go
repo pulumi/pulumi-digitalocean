@@ -115,6 +115,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &GradientaiAgentKnowledgeBaseAttachment{}
 	case "digitalocean:index/gradientaiAgentRoute:GradientaiAgentRoute":
 		r = &GradientaiAgentRoute{}
+	case "digitalocean:index/gradientaiCustomModel:GradientaiCustomModel":
+		r = &GradientaiCustomModel{}
 	case "digitalocean:index/gradientaiFunction:GradientaiFunction":
 		r = &GradientaiFunction{}
 	case "digitalocean:index/gradientaiIndexingJobCancel:GradientaiIndexingJobCancel":
@@ -449,6 +451,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"digitalocean",
 		"index/gradientaiAgentRoute",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
+		"index/gradientaiCustomModel",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

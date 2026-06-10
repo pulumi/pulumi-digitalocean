@@ -91,6 +91,10 @@ import com.pulumi.digitalocean.inputs.GetGradientaiAgentsArgs;
 import com.pulumi.digitalocean.inputs.GetGradientaiAgentsByOpenaiApiKeyArgs;
 import com.pulumi.digitalocean.inputs.GetGradientaiAgentsByOpenaiApiKeyPlainArgs;
 import com.pulumi.digitalocean.inputs.GetGradientaiAgentsPlainArgs;
+import com.pulumi.digitalocean.inputs.GetGradientaiCustomModelArgs;
+import com.pulumi.digitalocean.inputs.GetGradientaiCustomModelPlainArgs;
+import com.pulumi.digitalocean.inputs.GetGradientaiCustomModelsArgs;
+import com.pulumi.digitalocean.inputs.GetGradientaiCustomModelsPlainArgs;
 import com.pulumi.digitalocean.inputs.GetGradientaiIndexingJobArgs;
 import com.pulumi.digitalocean.inputs.GetGradientaiIndexingJobDataSourcesArgs;
 import com.pulumi.digitalocean.inputs.GetGradientaiIndexingJobDataSourcesPlainArgs;
@@ -220,6 +224,8 @@ import com.pulumi.digitalocean.outputs.GetGradientaiAgentResult;
 import com.pulumi.digitalocean.outputs.GetGradientaiAgentVersionsResult;
 import com.pulumi.digitalocean.outputs.GetGradientaiAgentsByOpenaiApiKeyResult;
 import com.pulumi.digitalocean.outputs.GetGradientaiAgentsResult;
+import com.pulumi.digitalocean.outputs.GetGradientaiCustomModelResult;
+import com.pulumi.digitalocean.outputs.GetGradientaiCustomModelsResult;
 import com.pulumi.digitalocean.outputs.GetGradientaiIndexingJobDataSourcesResult;
 import com.pulumi.digitalocean.outputs.GetGradientaiIndexingJobResult;
 import com.pulumi.digitalocean.outputs.GetGradientaiKnowledgeBaseDataSourcesResult;
@@ -10261,6 +10267,42 @@ public final class DigitaloceanFunctions {
     }
     public static CompletableFuture<GetGradientaiAgentsByOpenaiApiKeyResult> getGradientaiAgentsByOpenaiApiKeyPlain(GetGradientaiAgentsByOpenaiApiKeyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getGradientaiAgentsByOpenaiApiKey:getGradientaiAgentsByOpenaiApiKey", TypeShape.of(GetGradientaiAgentsByOpenaiApiKeyResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetGradientaiCustomModelResult> getGradientaiCustomModel(GetGradientaiCustomModelArgs args) {
+        return getGradientaiCustomModel(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetGradientaiCustomModelResult> getGradientaiCustomModelPlain(GetGradientaiCustomModelPlainArgs args) {
+        return getGradientaiCustomModelPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetGradientaiCustomModelResult> getGradientaiCustomModel(GetGradientaiCustomModelArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGradientaiCustomModel:getGradientaiCustomModel", TypeShape.of(GetGradientaiCustomModelResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetGradientaiCustomModelResult> getGradientaiCustomModel(GetGradientaiCustomModelArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGradientaiCustomModel:getGradientaiCustomModel", TypeShape.of(GetGradientaiCustomModelResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetGradientaiCustomModelResult> getGradientaiCustomModelPlain(GetGradientaiCustomModelPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getGradientaiCustomModel:getGradientaiCustomModel", TypeShape.of(GetGradientaiCustomModelResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetGradientaiCustomModelsResult> getGradientaiCustomModels() {
+        return getGradientaiCustomModels(GetGradientaiCustomModelsArgs.Empty, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetGradientaiCustomModelsResult> getGradientaiCustomModelsPlain() {
+        return getGradientaiCustomModelsPlain(GetGradientaiCustomModelsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    public static Output<GetGradientaiCustomModelsResult> getGradientaiCustomModels(GetGradientaiCustomModelsArgs args) {
+        return getGradientaiCustomModels(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetGradientaiCustomModelsResult> getGradientaiCustomModelsPlain(GetGradientaiCustomModelsPlainArgs args) {
+        return getGradientaiCustomModelsPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetGradientaiCustomModelsResult> getGradientaiCustomModels(GetGradientaiCustomModelsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGradientaiCustomModels:getGradientaiCustomModels", TypeShape.of(GetGradientaiCustomModelsResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetGradientaiCustomModelsResult> getGradientaiCustomModels(GetGradientaiCustomModelsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGradientaiCustomModels:getGradientaiCustomModels", TypeShape.of(GetGradientaiCustomModelsResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetGradientaiCustomModelsResult> getGradientaiCustomModelsPlain(GetGradientaiCustomModelsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getGradientaiCustomModels:getGradientaiCustomModels", TypeShape.of(GetGradientaiCustomModelsResult.class), args, Utilities.withVersion(options));
     }
     public static Output<GetGradientaiIndexingJobResult> getGradientaiIndexingJob(GetGradientaiIndexingJobArgs args) {
         return getGradientaiIndexingJob(args, InvokeOptions.Empty);

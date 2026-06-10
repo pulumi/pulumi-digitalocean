@@ -13,11 +13,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class KubernetesClusterClusterAutoscalerConfiguration {
+    /**
+     * @return A list of cluster autoscaler expander strategies to apply in order when selecting which node pool to scale up. Valid values are `random`, `priority`, and `least-waste`. The autoscaler uses each expander from the list to narrow the selection until a single node pool remains. If multiple node pools remain after all expanders are applied, one is chosen at random. When using the `priority` expander, configure priorities in the `cluster-autoscaler-priority-expander` ConfigMap in the `kube-system` namespace (see [Configuring Priority Expander](https://docs.digitalocean.com/products/kubernetes/how-to/autoscale/#configuring-priority-expander)).
+     * 
+     */
     private @Nullable List<String> expanders;
     /**
      * @return String setting how long a node should be unneeded before it&#39;s eligible for scale down.
-     * 
-     * This resource supports customized create timeouts. The default timeout is 30 minutes.
      * 
      */
     private @Nullable String scaleDownUnneededTime;
@@ -28,13 +30,15 @@ public final class KubernetesClusterClusterAutoscalerConfiguration {
     private @Nullable Double scaleDownUtilizationThreshold;
 
     private KubernetesClusterClusterAutoscalerConfiguration() {}
+    /**
+     * @return A list of cluster autoscaler expander strategies to apply in order when selecting which node pool to scale up. Valid values are `random`, `priority`, and `least-waste`. The autoscaler uses each expander from the list to narrow the selection until a single node pool remains. If multiple node pools remain after all expanders are applied, one is chosen at random. When using the `priority` expander, configure priorities in the `cluster-autoscaler-priority-expander` ConfigMap in the `kube-system` namespace (see [Configuring Priority Expander](https://docs.digitalocean.com/products/kubernetes/how-to/autoscale/#configuring-priority-expander)).
+     * 
+     */
     public List<String> expanders() {
         return this.expanders == null ? List.of() : this.expanders;
     }
     /**
      * @return String setting how long a node should be unneeded before it&#39;s eligible for scale down.
-     * 
-     * This resource supports customized create timeouts. The default timeout is 30 minutes.
      * 
      */
     public Optional<String> scaleDownUnneededTime() {

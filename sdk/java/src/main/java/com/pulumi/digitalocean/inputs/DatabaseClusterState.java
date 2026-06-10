@@ -10,6 +10,7 @@ import com.pulumi.digitalocean.enums.DatabaseSlug;
 import com.pulumi.digitalocean.enums.Region;
 import com.pulumi.digitalocean.inputs.DatabaseClusterBackupRestoreArgs;
 import com.pulumi.digitalocean.inputs.DatabaseClusterMaintenanceWindowArgs;
+import com.pulumi.digitalocean.inputs.DatabaseClusterStorageAutoscaleArgs;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -300,6 +301,21 @@ public final class DatabaseClusterState extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Storage autoscaling configuration for the database cluster.
+     * 
+     */
+    @Import(name="storageAutoscale")
+    private @Nullable Output<DatabaseClusterStorageAutoscaleArgs> storageAutoscale;
+
+    /**
+     * @return Storage autoscaling configuration for the database cluster.
+     * 
+     */
+    public Optional<Output<DatabaseClusterStorageAutoscaleArgs>> storageAutoscale() {
+        return Optional.ofNullable(this.storageAutoscale);
+    }
+
+    /**
      * Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostgreSQL clusters based on predefined ranges for each slug/droplet size.
      * 
      */
@@ -488,6 +504,7 @@ public final class DatabaseClusterState extends com.pulumi.resources.ResourceArg
         this.region = $.region;
         this.size = $.size;
         this.sqlMode = $.sqlMode;
+        this.storageAutoscale = $.storageAutoscale;
         this.storageSizeMib = $.storageSizeMib;
         this.tags = $.tags;
         this.uiDatabase = $.uiDatabase;
@@ -964,6 +981,27 @@ public final class DatabaseClusterState extends com.pulumi.resources.ResourceArg
          */
         public Builder sqlMode(String sqlMode) {
             return sqlMode(Output.of(sqlMode));
+        }
+
+        /**
+         * @param storageAutoscale Storage autoscaling configuration for the database cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storageAutoscale(@Nullable Output<DatabaseClusterStorageAutoscaleArgs> storageAutoscale) {
+            $.storageAutoscale = storageAutoscale;
+            return this;
+        }
+
+        /**
+         * @param storageAutoscale Storage autoscaling configuration for the database cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storageAutoscale(DatabaseClusterStorageAutoscaleArgs storageAutoscale) {
+            return storageAutoscale(Output.of(storageAutoscale));
         }
 
         /**

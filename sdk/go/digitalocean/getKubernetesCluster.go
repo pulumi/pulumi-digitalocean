@@ -53,6 +53,7 @@ type LookupKubernetesClusterArgs struct {
 	AmdGpuDeviceMetricsExporterPlugin *GetKubernetesClusterAmdGpuDeviceMetricsExporterPlugin `pulumi:"amdGpuDeviceMetricsExporterPlugin"`
 	AmdGpuDevicePlugin                *GetKubernetesClusterAmdGpuDevicePlugin                `pulumi:"amdGpuDevicePlugin"`
 	ClusterAutoscalerConfigurations   []GetKubernetesClusterClusterAutoscalerConfiguration   `pulumi:"clusterAutoscalerConfigurations"`
+	CorednsAutoscaler                 *GetKubernetesClusterCorednsAutoscaler                 `pulumi:"corednsAutoscaler"`
 	KubeconfigExpireSeconds           *int                                                   `pulumi:"kubeconfigExpireSeconds"`
 	// The name of Kubernetes cluster.
 	Name                   string                                      `pulumi:"name"`
@@ -74,6 +75,7 @@ type LookupKubernetesClusterResult struct {
 	// The range of IP addresses in the overlay network of the Kubernetes cluster.
 	ClusterSubnet         string                                     `pulumi:"clusterSubnet"`
 	ControlPlaneFirewalls []GetKubernetesClusterControlPlaneFirewall `pulumi:"controlPlaneFirewalls"`
+	CorednsAutoscaler     GetKubernetesClusterCorednsAutoscaler      `pulumi:"corednsAutoscaler"`
 	// The date and time when the node was created.
 	CreatedAt string `pulumi:"createdAt"`
 	// The base URL of the API server on the Kubernetes master node.
@@ -112,7 +114,8 @@ type LookupKubernetesClusterResult struct {
 	// The slug identifier for the version of Kubernetes used for the cluster.
 	Version string `pulumi:"version"`
 	// The ID of the VPC where the Kubernetes cluster is located.
-	VpcUuid string `pulumi:"vpcUuid"`
+	VpcUuid          string `pulumi:"vpcUuid"`
+	WorkerSubnetUuid string `pulumi:"workerSubnetUuid"`
 }
 
 func LookupKubernetesClusterOutput(ctx *pulumi.Context, args LookupKubernetesClusterOutputArgs, opts ...pulumi.InvokeOption) LookupKubernetesClusterResultOutput {
@@ -129,6 +132,7 @@ type LookupKubernetesClusterOutputArgs struct {
 	AmdGpuDeviceMetricsExporterPlugin GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrInput `pulumi:"amdGpuDeviceMetricsExporterPlugin"`
 	AmdGpuDevicePlugin                GetKubernetesClusterAmdGpuDevicePluginPtrInput                `pulumi:"amdGpuDevicePlugin"`
 	ClusterAutoscalerConfigurations   GetKubernetesClusterClusterAutoscalerConfigurationArrayInput  `pulumi:"clusterAutoscalerConfigurations"`
+	CorednsAutoscaler                 GetKubernetesClusterCorednsAutoscalerPtrInput                 `pulumi:"corednsAutoscaler"`
 	KubeconfigExpireSeconds           pulumi.IntPtrInput                                            `pulumi:"kubeconfigExpireSeconds"`
 	// The name of Kubernetes cluster.
 	Name                   pulumi.StringInput                                 `pulumi:"name"`
@@ -191,6 +195,12 @@ func (o LookupKubernetesClusterResultOutput) ControlPlaneFirewalls() GetKubernet
 	return o.ApplyT(func(v LookupKubernetesClusterResult) []GetKubernetesClusterControlPlaneFirewall {
 		return v.ControlPlaneFirewalls
 	}).(GetKubernetesClusterControlPlaneFirewallArrayOutput)
+}
+
+func (o LookupKubernetesClusterResultOutput) CorednsAutoscaler() GetKubernetesClusterCorednsAutoscalerOutput {
+	return o.ApplyT(func(v LookupKubernetesClusterResult) GetKubernetesClusterCorednsAutoscaler {
+		return v.CorednsAutoscaler
+	}).(GetKubernetesClusterCorednsAutoscalerOutput)
 }
 
 // The date and time when the node was created.
@@ -305,6 +315,10 @@ func (o LookupKubernetesClusterResultOutput) Version() pulumi.StringOutput {
 // The ID of the VPC where the Kubernetes cluster is located.
 func (o LookupKubernetesClusterResultOutput) VpcUuid() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKubernetesClusterResult) string { return v.VpcUuid }).(pulumi.StringOutput)
+}
+
+func (o LookupKubernetesClusterResultOutput) WorkerSubnetUuid() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKubernetesClusterResult) string { return v.WorkerSubnetUuid }).(pulumi.StringOutput)
 }
 
 func init() {

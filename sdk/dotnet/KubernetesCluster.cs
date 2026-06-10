@@ -217,7 +217,7 @@ namespace Pulumi.DigitalOcean
         public Output<bool?> AutoUpgrade { get; private set; } = null!;
 
         /// <summary>
-        /// Block containing options for cluster auto-scaling.
+        /// Block containing options for cluster auto-scaling. For more information.
         /// </summary>
         [Output("clusterAutoscalerConfigurations")]
         public Output<ImmutableArray<Outputs.KubernetesClusterClusterAutoscalerConfiguration>> ClusterAutoscalerConfigurations { get; private set; } = null!;
@@ -239,6 +239,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Output("controlPlaneFirewall")]
         public Output<Outputs.KubernetesClusterControlPlaneFirewall> ControlPlaneFirewall { get; private set; } = null!;
+
+        /// <summary>
+        /// Block containing options for the CoreDNS Autoscaler component, which scales CoreDNS replicas in proportion to the cluster's size. Default: true (for 1.36.0 and later)
+        /// </summary>
+        [Output("corednsAutoscaler")]
+        public Output<Outputs.KubernetesClusterCorednsAutoscaler> CorednsAutoscaler { get; private set; } = null!;
 
         /// <summary>
         /// The date and time when the node was created.
@@ -333,6 +339,9 @@ namespace Pulumi.DigitalOcean
         [Output("serviceSubnet")]
         public Output<string> ServiceSubnet { get; private set; } = null!;
 
+        /// <summary>
+        /// Block containing Single Sign-On (SSO) configuration for the cluster using OpenID Connect (OIDC).
+        /// </summary>
         [Output("ssos")]
         public Output<ImmutableArray<Outputs.KubernetesClusterSso>> Ssos { get; private set; } = null!;
 
@@ -371,6 +380,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Output("vpcUuid")]
         public Output<string> VpcUuid { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the VPC subnet for placing worker nodes. Must be a valid subnet in the cluster VPC. Requires that `VpcUuid` is also set.
+        /// </summary>
+        [Output("workerSubnetUuid")]
+        public Output<string> WorkerSubnetUuid { get; private set; } = null!;
 
 
         /// <summary>
@@ -444,7 +459,7 @@ namespace Pulumi.DigitalOcean
         private InputList<Inputs.KubernetesClusterClusterAutoscalerConfigurationArgs>? _clusterAutoscalerConfigurations;
 
         /// <summary>
-        /// Block containing options for cluster auto-scaling.
+        /// Block containing options for cluster auto-scaling. For more information.
         /// </summary>
         public InputList<Inputs.KubernetesClusterClusterAutoscalerConfigurationArgs> ClusterAutoscalerConfigurations
         {
@@ -463,6 +478,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("controlPlaneFirewall")]
         public Input<Inputs.KubernetesClusterControlPlaneFirewallArgs>? ControlPlaneFirewall { get; set; }
+
+        /// <summary>
+        /// Block containing options for the CoreDNS Autoscaler component, which scales CoreDNS replicas in proportion to the cluster's size. Default: true (for 1.36.0 and later)
+        /// </summary>
+        [Input("corednsAutoscaler")]
+        public Input<Inputs.KubernetesClusterCorednsAutoscalerArgs>? CorednsAutoscaler { get; set; }
 
         /// <summary>
         /// **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
@@ -535,6 +556,10 @@ namespace Pulumi.DigitalOcean
 
         [Input("ssos")]
         private InputList<Inputs.KubernetesClusterSsoArgs>? _ssos;
+
+        /// <summary>
+        /// Block containing Single Sign-On (SSO) configuration for the cluster using OpenID Connect (OIDC).
+        /// </summary>
         public InputList<Inputs.KubernetesClusterSsoArgs> Ssos
         {
             get => _ssos ?? (_ssos = new InputList<Inputs.KubernetesClusterSsoArgs>());
@@ -571,6 +596,12 @@ namespace Pulumi.DigitalOcean
         [Input("vpcUuid")]
         public Input<string>? VpcUuid { get; set; }
 
+        /// <summary>
+        /// The ID of the VPC subnet for placing worker nodes. Must be a valid subnet in the cluster VPC. Requires that `VpcUuid` is also set.
+        /// </summary>
+        [Input("workerSubnetUuid")]
+        public Input<string>? WorkerSubnetUuid { get; set; }
+
         public KubernetesClusterArgs()
         {
         }
@@ -601,7 +632,7 @@ namespace Pulumi.DigitalOcean
         private InputList<Inputs.KubernetesClusterClusterAutoscalerConfigurationGetArgs>? _clusterAutoscalerConfigurations;
 
         /// <summary>
-        /// Block containing options for cluster auto-scaling.
+        /// Block containing options for cluster auto-scaling. For more information.
         /// </summary>
         public InputList<Inputs.KubernetesClusterClusterAutoscalerConfigurationGetArgs> ClusterAutoscalerConfigurations
         {
@@ -626,6 +657,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("controlPlaneFirewall")]
         public Input<Inputs.KubernetesClusterControlPlaneFirewallGetArgs>? ControlPlaneFirewall { get; set; }
+
+        /// <summary>
+        /// Block containing options for the CoreDNS Autoscaler component, which scales CoreDNS replicas in proportion to the cluster's size. Default: true (for 1.36.0 and later)
+        /// </summary>
+        [Input("corednsAutoscaler")]
+        public Input<Inputs.KubernetesClusterCorednsAutoscalerGetArgs>? CorednsAutoscaler { get; set; }
 
         /// <summary>
         /// The date and time when the node was created.
@@ -732,6 +769,10 @@ namespace Pulumi.DigitalOcean
 
         [Input("ssos")]
         private InputList<Inputs.KubernetesClusterSsoGetArgs>? _ssos;
+
+        /// <summary>
+        /// Block containing Single Sign-On (SSO) configuration for the cluster using OpenID Connect (OIDC).
+        /// </summary>
         public InputList<Inputs.KubernetesClusterSsoGetArgs> Ssos
         {
             get => _ssos ?? (_ssos = new InputList<Inputs.KubernetesClusterSsoGetArgs>());
@@ -779,6 +820,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("vpcUuid")]
         public Input<string>? VpcUuid { get; set; }
+
+        /// <summary>
+        /// The ID of the VPC subnet for placing worker nodes. Must be a valid subnet in the cluster VPC. Requires that `VpcUuid` is also set.
+        /// </summary>
+        [Input("workerSubnetUuid")]
+        public Input<string>? WorkerSubnetUuid { get; set; }
 
         public KubernetesClusterState()
         {

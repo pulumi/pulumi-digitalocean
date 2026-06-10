@@ -14,6 +14,7 @@ import com.pulumi.digitalocean.outputs.KubernetesClusterAmdGpuDeviceMetricsExpor
 import com.pulumi.digitalocean.outputs.KubernetesClusterAmdGpuDevicePlugin;
 import com.pulumi.digitalocean.outputs.KubernetesClusterClusterAutoscalerConfiguration;
 import com.pulumi.digitalocean.outputs.KubernetesClusterControlPlaneFirewall;
+import com.pulumi.digitalocean.outputs.KubernetesClusterCorednsAutoscaler;
 import com.pulumi.digitalocean.outputs.KubernetesClusterKubeConfig;
 import com.pulumi.digitalocean.outputs.KubernetesClusterMaintenancePolicy;
 import com.pulumi.digitalocean.outputs.KubernetesClusterNodePool;
@@ -332,14 +333,14 @@ public class KubernetesCluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.autoUpgrade);
     }
     /**
-     * Block containing options for cluster auto-scaling.
+     * Block containing options for cluster auto-scaling. For more information.
      * 
      */
     @Export(name="clusterAutoscalerConfigurations", refs={List.class,KubernetesClusterClusterAutoscalerConfiguration.class}, tree="[0,1]")
     private Output</* @Nullable */ List<KubernetesClusterClusterAutoscalerConfiguration>> clusterAutoscalerConfigurations;
 
     /**
-     * @return Block containing options for cluster auto-scaling.
+     * @return Block containing options for cluster auto-scaling. For more information.
      * 
      */
     public Output<Optional<List<KubernetesClusterClusterAutoscalerConfiguration>>> clusterAutoscalerConfigurations() {
@@ -386,6 +387,20 @@ public class KubernetesCluster extends com.pulumi.resources.CustomResource {
      */
     public Output<KubernetesClusterControlPlaneFirewall> controlPlaneFirewall() {
         return this.controlPlaneFirewall;
+    }
+    /**
+     * Block containing options for the CoreDNS Autoscaler component, which scales CoreDNS replicas in proportion to the cluster&#39;s size. Default: true (for 1.36.0 and later)
+     * 
+     */
+    @Export(name="corednsAutoscaler", refs={KubernetesClusterCorednsAutoscaler.class}, tree="[0]")
+    private Output<KubernetesClusterCorednsAutoscaler> corednsAutoscaler;
+
+    /**
+     * @return Block containing options for the CoreDNS Autoscaler component, which scales CoreDNS replicas in proportion to the cluster&#39;s size. Default: true (for 1.36.0 and later)
+     * 
+     */
+    public Output<KubernetesClusterCorednsAutoscaler> corednsAutoscaler() {
+        return this.corednsAutoscaler;
     }
     /**
      * The date and time when the node was created.
@@ -603,9 +618,17 @@ public class KubernetesCluster extends com.pulumi.resources.CustomResource {
     public Output<String> serviceSubnet() {
         return this.serviceSubnet;
     }
+    /**
+     * Block containing Single Sign-On (SSO) configuration for the cluster using OpenID Connect (OIDC).
+     * 
+     */
     @Export(name="ssos", refs={List.class,KubernetesClusterSso.class}, tree="[0,1]")
     private Output<List<KubernetesClusterSso>> ssos;
 
+    /**
+     * @return Block containing Single Sign-On (SSO) configuration for the cluster using OpenID Connect (OIDC).
+     * 
+     */
     public Output<List<KubernetesClusterSso>> ssos() {
         return this.ssos;
     }
@@ -692,6 +715,20 @@ public class KubernetesCluster extends com.pulumi.resources.CustomResource {
      */
     public Output<String> vpcUuid() {
         return this.vpcUuid;
+    }
+    /**
+     * The ID of the VPC subnet for placing worker nodes. Must be a valid subnet in the cluster VPC. Requires that `vpcUuid` is also set.
+     * 
+     */
+    @Export(name="workerSubnetUuid", refs={String.class}, tree="[0]")
+    private Output<String> workerSubnetUuid;
+
+    /**
+     * @return The ID of the VPC subnet for placing worker nodes. Must be a valid subnet in the cluster VPC. Requires that `vpcUuid` is also set.
+     * 
+     */
+    public Output<String> workerSubnetUuid() {
+        return this.workerSubnetUuid;
     }
 
     /**

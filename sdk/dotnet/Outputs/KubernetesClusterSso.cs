@@ -13,12 +13,23 @@ namespace Pulumi.DigitalOcean.Outputs
     [OutputType]
     public sealed class KubernetesClusterSso
     {
+        /// <summary>
+        /// The OIDC client ID for the cluster SSO configuration.
+        /// 
+        /// This resource supports customized create timeouts. The default timeout is 30 minutes.
+        /// </summary>
         public readonly string? ClientId;
         /// <summary>
-        /// Boolean flag whether the component is enabled or not.
+        /// Boolean flag indicating whether SSO is enabled as an authentication method for the cluster.
         /// </summary>
         public readonly bool Enabled;
+        /// <summary>
+        /// The OIDC issuer URL for the cluster SSO configuration.
+        /// </summary>
         public readonly string? IssuerUrl;
+        /// <summary>
+        /// Boolean flag indicating whether SSO is required as the only authentication method for the cluster. Default: `False`
+        /// </summary>
         public readonly bool? Required;
 
         [OutputConstructor]

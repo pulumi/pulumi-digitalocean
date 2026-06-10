@@ -28,7 +28,7 @@ class GetKubernetesClusterResult:
     """
     A collection of values returned by getKubernetesCluster.
     """
-    def __init__(__self__, amd_gpu_device_metrics_exporter_plugin=None, amd_gpu_device_plugin=None, auto_upgrade=None, cluster_autoscaler_configurations=None, cluster_subnet=None, control_plane_firewalls=None, created_at=None, endpoint=None, ha=None, id=None, ipv4_address=None, kube_configs=None, kubeconfig_expire_seconds=None, maintenance_policies=None, name=None, node_pools=None, nvidia_gpu_device_plugin=None, rdma_shared_device_plugin=None, region=None, routing_agent=None, service_subnet=None, ssos=None, status=None, surge_upgrade=None, tags=None, updated_at=None, urn=None, version=None, vpc_uuid=None):
+    def __init__(__self__, amd_gpu_device_metrics_exporter_plugin=None, amd_gpu_device_plugin=None, auto_upgrade=None, cluster_autoscaler_configurations=None, cluster_subnet=None, control_plane_firewalls=None, coredns_autoscaler=None, created_at=None, endpoint=None, ha=None, id=None, ipv4_address=None, kube_configs=None, kubeconfig_expire_seconds=None, maintenance_policies=None, name=None, node_pools=None, nvidia_gpu_device_plugin=None, rdma_shared_device_plugin=None, region=None, routing_agent=None, service_subnet=None, ssos=None, status=None, surge_upgrade=None, tags=None, updated_at=None, urn=None, version=None, vpc_uuid=None, worker_subnet_uuid=None):
         if amd_gpu_device_metrics_exporter_plugin and not isinstance(amd_gpu_device_metrics_exporter_plugin, dict):
             raise TypeError("Expected argument 'amd_gpu_device_metrics_exporter_plugin' to be a dict")
         pulumi.set(__self__, "amd_gpu_device_metrics_exporter_plugin", amd_gpu_device_metrics_exporter_plugin)
@@ -47,6 +47,9 @@ class GetKubernetesClusterResult:
         if control_plane_firewalls and not isinstance(control_plane_firewalls, list):
             raise TypeError("Expected argument 'control_plane_firewalls' to be a list")
         pulumi.set(__self__, "control_plane_firewalls", control_plane_firewalls)
+        if coredns_autoscaler and not isinstance(coredns_autoscaler, dict):
+            raise TypeError("Expected argument 'coredns_autoscaler' to be a dict")
+        pulumi.set(__self__, "coredns_autoscaler", coredns_autoscaler)
         if created_at and not isinstance(created_at, str):
             raise TypeError("Expected argument 'created_at' to be a str")
         pulumi.set(__self__, "created_at", created_at)
@@ -116,6 +119,9 @@ class GetKubernetesClusterResult:
         if vpc_uuid and not isinstance(vpc_uuid, str):
             raise TypeError("Expected argument 'vpc_uuid' to be a str")
         pulumi.set(__self__, "vpc_uuid", vpc_uuid)
+        if worker_subnet_uuid and not isinstance(worker_subnet_uuid, str):
+            raise TypeError("Expected argument 'worker_subnet_uuid' to be a str")
+        pulumi.set(__self__, "worker_subnet_uuid", worker_subnet_uuid)
 
     @_builtins.property
     @pulumi.getter(name="amdGpuDeviceMetricsExporterPlugin")
@@ -152,6 +158,11 @@ class GetKubernetesClusterResult:
     @pulumi.getter(name="controlPlaneFirewalls")
     def control_plane_firewalls(self) -> Sequence['outputs.GetKubernetesClusterControlPlaneFirewallResult']:
         return pulumi.get(self, "control_plane_firewalls")
+
+    @_builtins.property
+    @pulumi.getter(name="corednsAutoscaler")
+    def coredns_autoscaler(self) -> 'outputs.GetKubernetesClusterCorednsAutoscalerResult':
+        return pulumi.get(self, "coredns_autoscaler")
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
@@ -316,6 +327,11 @@ class GetKubernetesClusterResult:
         """
         return pulumi.get(self, "vpc_uuid")
 
+    @_builtins.property
+    @pulumi.getter(name="workerSubnetUuid")
+    def worker_subnet_uuid(self) -> _builtins.str:
+        return pulumi.get(self, "worker_subnet_uuid")
+
 
 class AwaitableGetKubernetesClusterResult(GetKubernetesClusterResult):
     # pylint: disable=using-constant-test
@@ -329,6 +345,7 @@ class AwaitableGetKubernetesClusterResult(GetKubernetesClusterResult):
             cluster_autoscaler_configurations=self.cluster_autoscaler_configurations,
             cluster_subnet=self.cluster_subnet,
             control_plane_firewalls=self.control_plane_firewalls,
+            coredns_autoscaler=self.coredns_autoscaler,
             created_at=self.created_at,
             endpoint=self.endpoint,
             ha=self.ha,
@@ -351,12 +368,14 @@ class AwaitableGetKubernetesClusterResult(GetKubernetesClusterResult):
             updated_at=self.updated_at,
             urn=self.urn,
             version=self.version,
-            vpc_uuid=self.vpc_uuid)
+            vpc_uuid=self.vpc_uuid,
+            worker_subnet_uuid=self.worker_subnet_uuid)
 
 
 def get_kubernetes_cluster(amd_gpu_device_metrics_exporter_plugin: Optional[Union['GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs', 'GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginArgsDict']] = None,
                            amd_gpu_device_plugin: Optional[Union['GetKubernetesClusterAmdGpuDevicePluginArgs', 'GetKubernetesClusterAmdGpuDevicePluginArgsDict']] = None,
                            cluster_autoscaler_configurations: Optional[Sequence[Union['GetKubernetesClusterClusterAutoscalerConfigurationArgs', 'GetKubernetesClusterClusterAutoscalerConfigurationArgsDict']]] = None,
+                           coredns_autoscaler: Optional[Union['GetKubernetesClusterCorednsAutoscalerArgs', 'GetKubernetesClusterCorednsAutoscalerArgsDict']] = None,
                            kubeconfig_expire_seconds: Optional[_builtins.int] = None,
                            name: Optional[_builtins.str] = None,
                            nvidia_gpu_device_plugin: Optional[Union['GetKubernetesClusterNvidiaGpuDevicePluginArgs', 'GetKubernetesClusterNvidiaGpuDevicePluginArgsDict']] = None,
@@ -385,6 +404,7 @@ def get_kubernetes_cluster(amd_gpu_device_metrics_exporter_plugin: Optional[Unio
     __args__['amdGpuDeviceMetricsExporterPlugin'] = amd_gpu_device_metrics_exporter_plugin
     __args__['amdGpuDevicePlugin'] = amd_gpu_device_plugin
     __args__['clusterAutoscalerConfigurations'] = cluster_autoscaler_configurations
+    __args__['corednsAutoscaler'] = coredns_autoscaler
     __args__['kubeconfigExpireSeconds'] = kubeconfig_expire_seconds
     __args__['name'] = name
     __args__['nvidiaGpuDevicePlugin'] = nvidia_gpu_device_plugin
@@ -402,6 +422,7 @@ def get_kubernetes_cluster(amd_gpu_device_metrics_exporter_plugin: Optional[Unio
         cluster_autoscaler_configurations=pulumi.get(__ret__, 'cluster_autoscaler_configurations'),
         cluster_subnet=pulumi.get(__ret__, 'cluster_subnet'),
         control_plane_firewalls=pulumi.get(__ret__, 'control_plane_firewalls'),
+        coredns_autoscaler=pulumi.get(__ret__, 'coredns_autoscaler'),
         created_at=pulumi.get(__ret__, 'created_at'),
         endpoint=pulumi.get(__ret__, 'endpoint'),
         ha=pulumi.get(__ret__, 'ha'),
@@ -424,10 +445,12 @@ def get_kubernetes_cluster(amd_gpu_device_metrics_exporter_plugin: Optional[Unio
         updated_at=pulumi.get(__ret__, 'updated_at'),
         urn=pulumi.get(__ret__, 'urn'),
         version=pulumi.get(__ret__, 'version'),
-        vpc_uuid=pulumi.get(__ret__, 'vpc_uuid'))
+        vpc_uuid=pulumi.get(__ret__, 'vpc_uuid'),
+        worker_subnet_uuid=pulumi.get(__ret__, 'worker_subnet_uuid'))
 def get_kubernetes_cluster_output(amd_gpu_device_metrics_exporter_plugin: pulumi.Input[Optional[Optional[Union['GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs', 'GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginArgsDict']]]] = None,
                                   amd_gpu_device_plugin: pulumi.Input[Optional[Optional[Union['GetKubernetesClusterAmdGpuDevicePluginArgs', 'GetKubernetesClusterAmdGpuDevicePluginArgsDict']]]] = None,
                                   cluster_autoscaler_configurations: pulumi.Input[Optional[Optional[Sequence[Union['GetKubernetesClusterClusterAutoscalerConfigurationArgs', 'GetKubernetesClusterClusterAutoscalerConfigurationArgsDict']]]]] = None,
+                                  coredns_autoscaler: pulumi.Input[Optional[Optional[Union['GetKubernetesClusterCorednsAutoscalerArgs', 'GetKubernetesClusterCorednsAutoscalerArgsDict']]]] = None,
                                   kubeconfig_expire_seconds: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                                   name: pulumi.Input[Optional[_builtins.str]] = None,
                                   nvidia_gpu_device_plugin: pulumi.Input[Optional[Optional[Union['GetKubernetesClusterNvidiaGpuDevicePluginArgs', 'GetKubernetesClusterNvidiaGpuDevicePluginArgsDict']]]] = None,
@@ -456,6 +479,7 @@ def get_kubernetes_cluster_output(amd_gpu_device_metrics_exporter_plugin: pulumi
     __args__['amdGpuDeviceMetricsExporterPlugin'] = amd_gpu_device_metrics_exporter_plugin
     __args__['amdGpuDevicePlugin'] = amd_gpu_device_plugin
     __args__['clusterAutoscalerConfigurations'] = cluster_autoscaler_configurations
+    __args__['corednsAutoscaler'] = coredns_autoscaler
     __args__['kubeconfigExpireSeconds'] = kubeconfig_expire_seconds
     __args__['name'] = name
     __args__['nvidiaGpuDevicePlugin'] = nvidia_gpu_device_plugin
@@ -472,6 +496,7 @@ def get_kubernetes_cluster_output(amd_gpu_device_metrics_exporter_plugin: pulumi
         cluster_autoscaler_configurations=pulumi.get(__response__, 'cluster_autoscaler_configurations'),
         cluster_subnet=pulumi.get(__response__, 'cluster_subnet'),
         control_plane_firewalls=pulumi.get(__response__, 'control_plane_firewalls'),
+        coredns_autoscaler=pulumi.get(__response__, 'coredns_autoscaler'),
         created_at=pulumi.get(__response__, 'created_at'),
         endpoint=pulumi.get(__response__, 'endpoint'),
         ha=pulumi.get(__response__, 'ha'),
@@ -494,4 +519,5 @@ def get_kubernetes_cluster_output(amd_gpu_device_metrics_exporter_plugin: pulumi
         updated_at=pulumi.get(__response__, 'updated_at'),
         urn=pulumi.get(__response__, 'urn'),
         version=pulumi.get(__response__, 'version'),
-        vpc_uuid=pulumi.get(__response__, 'vpc_uuid')))
+        vpc_uuid=pulumi.get(__response__, 'vpc_uuid'),
+        worker_subnet_uuid=pulumi.get(__response__, 'worker_subnet_uuid')))

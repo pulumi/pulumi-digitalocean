@@ -13,29 +13,57 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class KubernetesClusterSso {
+    /**
+     * @return The OIDC client ID for the cluster SSO configuration.
+     * 
+     * This resource supports customized create timeouts. The default timeout is 30 minutes.
+     * 
+     */
     private @Nullable String clientId;
     /**
-     * @return Boolean flag whether the component is enabled or not.
+     * @return Boolean flag indicating whether SSO is enabled as an authentication method for the cluster.
      * 
      */
     private Boolean enabled;
+    /**
+     * @return The OIDC issuer URL for the cluster SSO configuration.
+     * 
+     */
     private @Nullable String issuerUrl;
+    /**
+     * @return Boolean flag indicating whether SSO is required as the only authentication method for the cluster. Default: `false`
+     * 
+     */
     private @Nullable Boolean required;
 
     private KubernetesClusterSso() {}
+    /**
+     * @return The OIDC client ID for the cluster SSO configuration.
+     * 
+     * This resource supports customized create timeouts. The default timeout is 30 minutes.
+     * 
+     */
     public Optional<String> clientId() {
         return Optional.ofNullable(this.clientId);
     }
     /**
-     * @return Boolean flag whether the component is enabled or not.
+     * @return Boolean flag indicating whether SSO is enabled as an authentication method for the cluster.
      * 
      */
     public Boolean enabled() {
         return this.enabled;
     }
+    /**
+     * @return The OIDC issuer URL for the cluster SSO configuration.
+     * 
+     */
     public Optional<String> issuerUrl() {
         return Optional.ofNullable(this.issuerUrl);
     }
+    /**
+     * @return Boolean flag indicating whether SSO is required as the only authentication method for the cluster. Default: `false`
+     * 
+     */
     public Optional<Boolean> required() {
         return Optional.ofNullable(this.required);
     }

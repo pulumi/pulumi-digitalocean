@@ -320,6 +320,12 @@ namespace Pulumi.DigitalOcean
         public Output<string?> SqlMode { get; private set; } = null!;
 
         /// <summary>
+        /// Storage autoscaling configuration for the database cluster.
+        /// </summary>
+        [Output("storageAutoscale")]
+        public Output<Outputs.DatabaseClusterStorageAutoscale?> StorageAutoscale { get; private set; } = null!;
+
+        /// <summary>
         /// Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostgreSQL clusters based on predefined ranges for each slug/droplet size.
         /// </summary>
         [Output("storageSizeMib")]
@@ -510,6 +516,12 @@ namespace Pulumi.DigitalOcean
         public Input<string>? SqlMode { get; set; }
 
         /// <summary>
+        /// Storage autoscaling configuration for the database cluster.
+        /// </summary>
+        [Input("storageAutoscale")]
+        public Input<Inputs.DatabaseClusterStorageAutoscaleArgs>? StorageAutoscale { get; set; }
+
+        /// <summary>
         /// Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostgreSQL clusters based on predefined ranges for each slug/droplet size.
         /// </summary>
         [Input("storageSizeMib")]
@@ -684,6 +696,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("sqlMode")]
         public Input<string>? SqlMode { get; set; }
+
+        /// <summary>
+        /// Storage autoscaling configuration for the database cluster.
+        /// </summary>
+        [Input("storageAutoscale")]
+        public Input<Inputs.DatabaseClusterStorageAutoscaleGetArgs>? StorageAutoscale { get; set; }
 
         /// <summary>
         /// Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostgreSQL clusters based on predefined ranges for each slug/droplet size.

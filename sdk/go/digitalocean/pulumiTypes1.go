@@ -13,6 +13,840 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgent struct {
+	// ID of the child agent
+	AgentId string `pulumi:"agentId"`
+	// Anthropic API Key information
+	AnthropicApiKeys []GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKey `pulumi:"anthropicApiKeys"`
+	// List of API Key Infos
+	ApiKeyInfos []GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfo `pulumi:"apiKeyInfos"`
+	// List of API Keys
+	ApiKeys []GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKey `pulumi:"apiKeys"`
+	// List of Chatbot Identifiers
+	ChatbotIdentifiers []GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifier `pulumi:"chatbotIdentifiers"`
+	// ChatBot configuration
+	Chatbots []GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbot `pulumi:"chatbots"`
+	// List of API Key Infos
+	Deployments []GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeployment `pulumi:"deployments"`
+	// Description for the Agent
+	Description *string `pulumi:"description"`
+	// Instruction for the Agent
+	Instruction string `pulumi:"instruction"`
+	// Model UUID of the Agent
+	ModelUuid string `pulumi:"modelUuid"`
+	// Name of the Agent
+	Name string `pulumi:"name"`
+	// Project ID of the Agent
+	ProjectId string `pulumi:"projectId"`
+	// Region where the Agent is deployed
+	Region string `pulumi:"region"`
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentParentAgentInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArgs and GetGenaiAgentsByOpenaiApiKeyAgentParentAgentOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentParentAgentInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArgs{...}
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArgs struct {
+	// ID of the child agent
+	AgentId pulumi.StringInput `pulumi:"agentId"`
+	// Anthropic API Key information
+	AnthropicApiKeys GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArrayInput `pulumi:"anthropicApiKeys"`
+	// List of API Key Infos
+	ApiKeyInfos GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArrayInput `pulumi:"apiKeyInfos"`
+	// List of API Keys
+	ApiKeys GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArrayInput `pulumi:"apiKeys"`
+	// List of Chatbot Identifiers
+	ChatbotIdentifiers GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArrayInput `pulumi:"chatbotIdentifiers"`
+	// ChatBot configuration
+	Chatbots GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArrayInput `pulumi:"chatbots"`
+	// List of API Key Infos
+	Deployments GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentArrayInput `pulumi:"deployments"`
+	// Description for the Agent
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Instruction for the Agent
+	Instruction pulumi.StringInput `pulumi:"instruction"`
+	// Model UUID of the Agent
+	ModelUuid pulumi.StringInput `pulumi:"modelUuid"`
+	// Name of the Agent
+	Name pulumi.StringInput `pulumi:"name"`
+	// Project ID of the Agent
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// Region where the Agent is deployed
+	Region pulumi.StringInput `pulumi:"region"`
+}
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentParentAgent)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentOutput)
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArrayInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArray and GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArrayOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArrayInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArray{ GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArgs{...} }
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArrayOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentArrayOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArrayOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArray []GetGenaiAgentsByOpenaiApiKeyAgentParentAgentInput
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentParentAgent)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArray) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArrayOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArray) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArrayOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentParentAgentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentParentAgent)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentOutput {
+	return o
+}
+
+// ID of the child agent
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentOutput) AgentId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgent) string { return v.AgentId }).(pulumi.StringOutput)
+}
+
+// Anthropic API Key information
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentOutput) AnthropicApiKeys() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArrayOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgent) []GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKey {
+		return v.AnthropicApiKeys
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArrayOutput)
+}
+
+// List of API Key Infos
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentOutput) ApiKeyInfos() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArrayOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgent) []GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfo {
+		return v.ApiKeyInfos
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArrayOutput)
+}
+
+// List of API Keys
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentOutput) ApiKeys() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArrayOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgent) []GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKey {
+		return v.ApiKeys
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArrayOutput)
+}
+
+// List of Chatbot Identifiers
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentOutput) ChatbotIdentifiers() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArrayOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgent) []GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifier {
+		return v.ChatbotIdentifiers
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArrayOutput)
+}
+
+// ChatBot configuration
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentOutput) Chatbots() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArrayOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgent) []GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbot {
+		return v.Chatbots
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArrayOutput)
+}
+
+// List of API Key Infos
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentOutput) Deployments() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentArrayOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgent) []GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeployment {
+		return v.Deployments
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentArrayOutput)
+}
+
+// Description for the Agent
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgent) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Instruction for the Agent
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentOutput) Instruction() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgent) string { return v.Instruction }).(pulumi.StringOutput)
+}
+
+// Model UUID of the Agent
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentOutput) ModelUuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgent) string { return v.ModelUuid }).(pulumi.StringOutput)
+}
+
+// Name of the Agent
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgent) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Project ID of the Agent
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgent) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// Region where the Agent is deployed
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgent) string { return v.Region }).(pulumi.StringOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentParentAgent)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArrayOutput) Index(i pulumi.IntInput) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiAgentsByOpenaiApiKeyAgentParentAgent {
+		return vs[0].([]GetGenaiAgentsByOpenaiApiKeyAgentParentAgent)[vs[1].(int)]
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKey struct {
+	// Timestamp when the API Key was created
+	CreatedAt string `pulumi:"createdAt"`
+	// Created By user ID for the API Key
+	CreatedBy *string `pulumi:"createdBy"`
+	// Deleted At timestamp for the API Key
+	DeletedAt string `pulumi:"deletedAt"`
+	// Name of the API Key
+	Name *string `pulumi:"name"`
+	// Updated At timestamp for the API Key
+	UpdatedAt string `pulumi:"updatedAt"`
+	// API Key value
+	Uuid *string `pulumi:"uuid"`
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArgs and GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArgs{...}
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArgs struct {
+	// Timestamp when the API Key was created
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// Created By user ID for the API Key
+	CreatedBy pulumi.StringPtrInput `pulumi:"createdBy"`
+	// Deleted At timestamp for the API Key
+	DeletedAt pulumi.StringInput `pulumi:"deletedAt"`
+	// Name of the API Key
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Updated At timestamp for the API Key
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+	// API Key value
+	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+}
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKey)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyOutput)
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArrayInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArray and GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArrayOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArrayInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArray{ GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArgs{...} }
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArrayOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArrayOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArrayOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArray []GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyInput
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKey)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArray) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArrayOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArray) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArrayOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKey)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyOutput {
+	return o
+}
+
+// Timestamp when the API Key was created
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKey) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Created By user ID for the API Key
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKey) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
+}
+
+// Deleted At timestamp for the API Key
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyOutput) DeletedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKey) string { return v.DeletedAt }).(pulumi.StringOutput)
+}
+
+// Name of the API Key
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKey) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Updated At timestamp for the API Key
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKey) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// API Key value
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKey) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKey)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArrayOutput) Index(i pulumi.IntInput) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKey {
+		return vs[0].([]GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKey)[vs[1].(int)]
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKey struct {
+	// API Key value
+	ApiKey *string `pulumi:"apiKey"`
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArgs and GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArgs{...}
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArgs struct {
+	// API Key value
+	ApiKey pulumi.StringPtrInput `pulumi:"apiKey"`
+}
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKey)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyOutput)
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArrayInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArray and GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArrayOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArrayInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArray{ GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArgs{...} }
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArrayOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArrayOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArrayOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArray []GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInput
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKey)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArray) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArrayOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArray) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArrayOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKey)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyOutput {
+	return o
+}
+
+// API Key value
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyOutput) ApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKey) *string { return v.ApiKey }).(pulumi.StringPtrOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKey)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArrayOutput) Index(i pulumi.IntInput) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKey {
+		return vs[0].([]GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKey)[vs[1].(int)]
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfo struct {
+	// API Key value
+	CreatedAt string `pulumi:"createdAt"`
+	// Created By user ID for the API Key
+	CreatedBy *string `pulumi:"createdBy"`
+	// Deleted At timestamp for the API Key
+	DeletedAt string `pulumi:"deletedAt"`
+	// Name of the API Key
+	Name *string `pulumi:"name"`
+	// Updated At timestamp for the API Key
+	SecretKey *string `pulumi:"secretKey"`
+	// API Key value
+	Uuid *string `pulumi:"uuid"`
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArgs and GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArgs{...}
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArgs struct {
+	// API Key value
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// Created By user ID for the API Key
+	CreatedBy pulumi.StringPtrInput `pulumi:"createdBy"`
+	// Deleted At timestamp for the API Key
+	DeletedAt pulumi.StringInput `pulumi:"deletedAt"`
+	// Name of the API Key
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Updated At timestamp for the API Key
+	SecretKey pulumi.StringPtrInput `pulumi:"secretKey"`
+	// API Key value
+	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+}
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfo)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoOutput)
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArrayInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArray and GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArrayOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArrayInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArray{ GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArgs{...} }
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArrayOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArrayOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArrayOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArray []GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoInput
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfo)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArray) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArrayOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArray) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArrayOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfo)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoOutput {
+	return o
+}
+
+// API Key value
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfo) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Created By user ID for the API Key
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfo) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
+}
+
+// Deleted At timestamp for the API Key
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoOutput) DeletedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfo) string { return v.DeletedAt }).(pulumi.StringOutput)
+}
+
+// Name of the API Key
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfo) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Updated At timestamp for the API Key
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoOutput) SecretKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfo) *string { return v.SecretKey }).(pulumi.StringPtrOutput)
+}
+
+// API Key value
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfo) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfo)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArrayOutput) Index(i pulumi.IntInput) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfo {
+		return vs[0].([]GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfo)[vs[1].(int)]
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbot struct {
+	// Background color for the chatbot button
+	ButtonBackgroundColor *string `pulumi:"buttonBackgroundColor"`
+	// Logo for the chatbot
+	Logo *string `pulumi:"logo"`
+	// Name of the chatbot
+	Name *string `pulumi:"name"`
+	// Primary color for the chatbot
+	PrimaryColor *string `pulumi:"primaryColor"`
+	// Secondary color for the chatbot
+	SecondaryColor *string `pulumi:"secondaryColor"`
+	// Starting message for the chatbot
+	StartingMessage *string `pulumi:"startingMessage"`
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArgs and GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArgs{...}
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArgs struct {
+	// Background color for the chatbot button
+	ButtonBackgroundColor pulumi.StringPtrInput `pulumi:"buttonBackgroundColor"`
+	// Logo for the chatbot
+	Logo pulumi.StringPtrInput `pulumi:"logo"`
+	// Name of the chatbot
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Primary color for the chatbot
+	PrimaryColor pulumi.StringPtrInput `pulumi:"primaryColor"`
+	// Secondary color for the chatbot
+	SecondaryColor pulumi.StringPtrInput `pulumi:"secondaryColor"`
+	// Starting message for the chatbot
+	StartingMessage pulumi.StringPtrInput `pulumi:"startingMessage"`
+}
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbot)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotOutput)
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArrayInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArray and GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArrayOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArrayInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArray{ GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArgs{...} }
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArrayOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArrayOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArrayOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArray []GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotInput
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbot)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArray) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArrayOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArray) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArrayOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbot)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotOutput {
+	return o
+}
+
+// Background color for the chatbot button
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotOutput) ButtonBackgroundColor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbot) *string { return v.ButtonBackgroundColor }).(pulumi.StringPtrOutput)
+}
+
+// Logo for the chatbot
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotOutput) Logo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbot) *string { return v.Logo }).(pulumi.StringPtrOutput)
+}
+
+// Name of the chatbot
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbot) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Primary color for the chatbot
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotOutput) PrimaryColor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbot) *string { return v.PrimaryColor }).(pulumi.StringPtrOutput)
+}
+
+// Secondary color for the chatbot
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotOutput) SecondaryColor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbot) *string { return v.SecondaryColor }).(pulumi.StringPtrOutput)
+}
+
+// Starting message for the chatbot
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotOutput) StartingMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbot) *string { return v.StartingMessage }).(pulumi.StringPtrOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbot)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArrayOutput) Index(i pulumi.IntInput) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbot {
+		return vs[0].([]GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbot)[vs[1].(int)]
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifier struct {
+	ChatbotId string `pulumi:"chatbotId"`
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArgs and GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArgs{...}
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArgs struct {
+	ChatbotId pulumi.StringInput `pulumi:"chatbotId"`
+}
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifier)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierOutput)
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArrayInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArray and GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArrayOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArrayInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArray{ GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArgs{...} }
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArrayOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArrayOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArrayOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArray []GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierInput
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifier)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArray) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArrayOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArray) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArrayOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifier)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierOutput) ChatbotId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifier) string { return v.ChatbotId }).(pulumi.StringOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifier)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArrayOutput) Index(i pulumi.IntInput) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifier {
+		return vs[0].([]GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifier)[vs[1].(int)]
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierOutput)
+}
+
 type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeployment struct {
 	// API Key value
 	CreatedAt string `pulumi:"createdAt"`
@@ -24108,6 +24942,1305 @@ func (o GetGradientaiAgentsSortArrayOutput) Index(i pulumi.IntInput) GetGradient
 	}).(GetGradientaiAgentsSortOutput)
 }
 
+type GetGradientaiCustomModelActiveDeployment struct {
+	// Timestamp when the deployment was created.
+	CreatedAt string `pulumi:"createdAt"`
+	// Endpoint URLs exposed by the deployment.
+	Endpoints []GetGradientaiCustomModelActiveDeploymentEndpoint `pulumi:"endpoints"`
+	// ID of the dedicated inference deployment.
+	Id string `pulumi:"id"`
+	// Name of the dedicated inference deployment.
+	Name string `pulumi:"name"`
+	// Region slug of the dedicated inference deployment.
+	RegionSlug string `pulumi:"regionSlug"`
+	// Current state of the deployment.
+	State string `pulumi:"state"`
+	// Timestamp when the deployment was last updated.
+	UpdatedAt string `pulumi:"updatedAt"`
+}
+
+// GetGradientaiCustomModelActiveDeploymentInput is an input type that accepts GetGradientaiCustomModelActiveDeploymentArgs and GetGradientaiCustomModelActiveDeploymentOutput values.
+// You can construct a concrete instance of `GetGradientaiCustomModelActiveDeploymentInput` via:
+//
+//	GetGradientaiCustomModelActiveDeploymentArgs{...}
+type GetGradientaiCustomModelActiveDeploymentInput interface {
+	pulumi.Input
+
+	ToGetGradientaiCustomModelActiveDeploymentOutput() GetGradientaiCustomModelActiveDeploymentOutput
+	ToGetGradientaiCustomModelActiveDeploymentOutputWithContext(context.Context) GetGradientaiCustomModelActiveDeploymentOutput
+}
+
+type GetGradientaiCustomModelActiveDeploymentArgs struct {
+	// Timestamp when the deployment was created.
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// Endpoint URLs exposed by the deployment.
+	Endpoints GetGradientaiCustomModelActiveDeploymentEndpointArrayInput `pulumi:"endpoints"`
+	// ID of the dedicated inference deployment.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Name of the dedicated inference deployment.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Region slug of the dedicated inference deployment.
+	RegionSlug pulumi.StringInput `pulumi:"regionSlug"`
+	// Current state of the deployment.
+	State pulumi.StringInput `pulumi:"state"`
+	// Timestamp when the deployment was last updated.
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+}
+
+func (GetGradientaiCustomModelActiveDeploymentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGradientaiCustomModelActiveDeployment)(nil)).Elem()
+}
+
+func (i GetGradientaiCustomModelActiveDeploymentArgs) ToGetGradientaiCustomModelActiveDeploymentOutput() GetGradientaiCustomModelActiveDeploymentOutput {
+	return i.ToGetGradientaiCustomModelActiveDeploymentOutputWithContext(context.Background())
+}
+
+func (i GetGradientaiCustomModelActiveDeploymentArgs) ToGetGradientaiCustomModelActiveDeploymentOutputWithContext(ctx context.Context) GetGradientaiCustomModelActiveDeploymentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGradientaiCustomModelActiveDeploymentOutput)
+}
+
+// GetGradientaiCustomModelActiveDeploymentArrayInput is an input type that accepts GetGradientaiCustomModelActiveDeploymentArray and GetGradientaiCustomModelActiveDeploymentArrayOutput values.
+// You can construct a concrete instance of `GetGradientaiCustomModelActiveDeploymentArrayInput` via:
+//
+//	GetGradientaiCustomModelActiveDeploymentArray{ GetGradientaiCustomModelActiveDeploymentArgs{...} }
+type GetGradientaiCustomModelActiveDeploymentArrayInput interface {
+	pulumi.Input
+
+	ToGetGradientaiCustomModelActiveDeploymentArrayOutput() GetGradientaiCustomModelActiveDeploymentArrayOutput
+	ToGetGradientaiCustomModelActiveDeploymentArrayOutputWithContext(context.Context) GetGradientaiCustomModelActiveDeploymentArrayOutput
+}
+
+type GetGradientaiCustomModelActiveDeploymentArray []GetGradientaiCustomModelActiveDeploymentInput
+
+func (GetGradientaiCustomModelActiveDeploymentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGradientaiCustomModelActiveDeployment)(nil)).Elem()
+}
+
+func (i GetGradientaiCustomModelActiveDeploymentArray) ToGetGradientaiCustomModelActiveDeploymentArrayOutput() GetGradientaiCustomModelActiveDeploymentArrayOutput {
+	return i.ToGetGradientaiCustomModelActiveDeploymentArrayOutputWithContext(context.Background())
+}
+
+func (i GetGradientaiCustomModelActiveDeploymentArray) ToGetGradientaiCustomModelActiveDeploymentArrayOutputWithContext(ctx context.Context) GetGradientaiCustomModelActiveDeploymentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGradientaiCustomModelActiveDeploymentArrayOutput)
+}
+
+type GetGradientaiCustomModelActiveDeploymentOutput struct{ *pulumi.OutputState }
+
+func (GetGradientaiCustomModelActiveDeploymentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGradientaiCustomModelActiveDeployment)(nil)).Elem()
+}
+
+func (o GetGradientaiCustomModelActiveDeploymentOutput) ToGetGradientaiCustomModelActiveDeploymentOutput() GetGradientaiCustomModelActiveDeploymentOutput {
+	return o
+}
+
+func (o GetGradientaiCustomModelActiveDeploymentOutput) ToGetGradientaiCustomModelActiveDeploymentOutputWithContext(ctx context.Context) GetGradientaiCustomModelActiveDeploymentOutput {
+	return o
+}
+
+// Timestamp when the deployment was created.
+func (o GetGradientaiCustomModelActiveDeploymentOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGradientaiCustomModelActiveDeployment) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Endpoint URLs exposed by the deployment.
+func (o GetGradientaiCustomModelActiveDeploymentOutput) Endpoints() GetGradientaiCustomModelActiveDeploymentEndpointArrayOutput {
+	return o.ApplyT(func(v GetGradientaiCustomModelActiveDeployment) []GetGradientaiCustomModelActiveDeploymentEndpoint {
+		return v.Endpoints
+	}).(GetGradientaiCustomModelActiveDeploymentEndpointArrayOutput)
+}
+
+// ID of the dedicated inference deployment.
+func (o GetGradientaiCustomModelActiveDeploymentOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGradientaiCustomModelActiveDeployment) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Name of the dedicated inference deployment.
+func (o GetGradientaiCustomModelActiveDeploymentOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGradientaiCustomModelActiveDeployment) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Region slug of the dedicated inference deployment.
+func (o GetGradientaiCustomModelActiveDeploymentOutput) RegionSlug() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGradientaiCustomModelActiveDeployment) string { return v.RegionSlug }).(pulumi.StringOutput)
+}
+
+// Current state of the deployment.
+func (o GetGradientaiCustomModelActiveDeploymentOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGradientaiCustomModelActiveDeployment) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Timestamp when the deployment was last updated.
+func (o GetGradientaiCustomModelActiveDeploymentOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGradientaiCustomModelActiveDeployment) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+type GetGradientaiCustomModelActiveDeploymentArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGradientaiCustomModelActiveDeploymentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGradientaiCustomModelActiveDeployment)(nil)).Elem()
+}
+
+func (o GetGradientaiCustomModelActiveDeploymentArrayOutput) ToGetGradientaiCustomModelActiveDeploymentArrayOutput() GetGradientaiCustomModelActiveDeploymentArrayOutput {
+	return o
+}
+
+func (o GetGradientaiCustomModelActiveDeploymentArrayOutput) ToGetGradientaiCustomModelActiveDeploymentArrayOutputWithContext(ctx context.Context) GetGradientaiCustomModelActiveDeploymentArrayOutput {
+	return o
+}
+
+func (o GetGradientaiCustomModelActiveDeploymentArrayOutput) Index(i pulumi.IntInput) GetGradientaiCustomModelActiveDeploymentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGradientaiCustomModelActiveDeployment {
+		return vs[0].([]GetGradientaiCustomModelActiveDeployment)[vs[1].(int)]
+	}).(GetGradientaiCustomModelActiveDeploymentOutput)
+}
+
+type GetGradientaiCustomModelActiveDeploymentEndpoint struct {
+	// Private endpoint FQDN.
+	PrivateEndpointFqdn string `pulumi:"privateEndpointFqdn"`
+	// Public endpoint FQDN, if enabled.
+	PublicEndpointFqdn string `pulumi:"publicEndpointFqdn"`
+}
+
+// GetGradientaiCustomModelActiveDeploymentEndpointInput is an input type that accepts GetGradientaiCustomModelActiveDeploymentEndpointArgs and GetGradientaiCustomModelActiveDeploymentEndpointOutput values.
+// You can construct a concrete instance of `GetGradientaiCustomModelActiveDeploymentEndpointInput` via:
+//
+//	GetGradientaiCustomModelActiveDeploymentEndpointArgs{...}
+type GetGradientaiCustomModelActiveDeploymentEndpointInput interface {
+	pulumi.Input
+
+	ToGetGradientaiCustomModelActiveDeploymentEndpointOutput() GetGradientaiCustomModelActiveDeploymentEndpointOutput
+	ToGetGradientaiCustomModelActiveDeploymentEndpointOutputWithContext(context.Context) GetGradientaiCustomModelActiveDeploymentEndpointOutput
+}
+
+type GetGradientaiCustomModelActiveDeploymentEndpointArgs struct {
+	// Private endpoint FQDN.
+	PrivateEndpointFqdn pulumi.StringInput `pulumi:"privateEndpointFqdn"`
+	// Public endpoint FQDN, if enabled.
+	PublicEndpointFqdn pulumi.StringInput `pulumi:"publicEndpointFqdn"`
+}
+
+func (GetGradientaiCustomModelActiveDeploymentEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGradientaiCustomModelActiveDeploymentEndpoint)(nil)).Elem()
+}
+
+func (i GetGradientaiCustomModelActiveDeploymentEndpointArgs) ToGetGradientaiCustomModelActiveDeploymentEndpointOutput() GetGradientaiCustomModelActiveDeploymentEndpointOutput {
+	return i.ToGetGradientaiCustomModelActiveDeploymentEndpointOutputWithContext(context.Background())
+}
+
+func (i GetGradientaiCustomModelActiveDeploymentEndpointArgs) ToGetGradientaiCustomModelActiveDeploymentEndpointOutputWithContext(ctx context.Context) GetGradientaiCustomModelActiveDeploymentEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGradientaiCustomModelActiveDeploymentEndpointOutput)
+}
+
+// GetGradientaiCustomModelActiveDeploymentEndpointArrayInput is an input type that accepts GetGradientaiCustomModelActiveDeploymentEndpointArray and GetGradientaiCustomModelActiveDeploymentEndpointArrayOutput values.
+// You can construct a concrete instance of `GetGradientaiCustomModelActiveDeploymentEndpointArrayInput` via:
+//
+//	GetGradientaiCustomModelActiveDeploymentEndpointArray{ GetGradientaiCustomModelActiveDeploymentEndpointArgs{...} }
+type GetGradientaiCustomModelActiveDeploymentEndpointArrayInput interface {
+	pulumi.Input
+
+	ToGetGradientaiCustomModelActiveDeploymentEndpointArrayOutput() GetGradientaiCustomModelActiveDeploymentEndpointArrayOutput
+	ToGetGradientaiCustomModelActiveDeploymentEndpointArrayOutputWithContext(context.Context) GetGradientaiCustomModelActiveDeploymentEndpointArrayOutput
+}
+
+type GetGradientaiCustomModelActiveDeploymentEndpointArray []GetGradientaiCustomModelActiveDeploymentEndpointInput
+
+func (GetGradientaiCustomModelActiveDeploymentEndpointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGradientaiCustomModelActiveDeploymentEndpoint)(nil)).Elem()
+}
+
+func (i GetGradientaiCustomModelActiveDeploymentEndpointArray) ToGetGradientaiCustomModelActiveDeploymentEndpointArrayOutput() GetGradientaiCustomModelActiveDeploymentEndpointArrayOutput {
+	return i.ToGetGradientaiCustomModelActiveDeploymentEndpointArrayOutputWithContext(context.Background())
+}
+
+func (i GetGradientaiCustomModelActiveDeploymentEndpointArray) ToGetGradientaiCustomModelActiveDeploymentEndpointArrayOutputWithContext(ctx context.Context) GetGradientaiCustomModelActiveDeploymentEndpointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGradientaiCustomModelActiveDeploymentEndpointArrayOutput)
+}
+
+type GetGradientaiCustomModelActiveDeploymentEndpointOutput struct{ *pulumi.OutputState }
+
+func (GetGradientaiCustomModelActiveDeploymentEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGradientaiCustomModelActiveDeploymentEndpoint)(nil)).Elem()
+}
+
+func (o GetGradientaiCustomModelActiveDeploymentEndpointOutput) ToGetGradientaiCustomModelActiveDeploymentEndpointOutput() GetGradientaiCustomModelActiveDeploymentEndpointOutput {
+	return o
+}
+
+func (o GetGradientaiCustomModelActiveDeploymentEndpointOutput) ToGetGradientaiCustomModelActiveDeploymentEndpointOutputWithContext(ctx context.Context) GetGradientaiCustomModelActiveDeploymentEndpointOutput {
+	return o
+}
+
+// Private endpoint FQDN.
+func (o GetGradientaiCustomModelActiveDeploymentEndpointOutput) PrivateEndpointFqdn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGradientaiCustomModelActiveDeploymentEndpoint) string { return v.PrivateEndpointFqdn }).(pulumi.StringOutput)
+}
+
+// Public endpoint FQDN, if enabled.
+func (o GetGradientaiCustomModelActiveDeploymentEndpointOutput) PublicEndpointFqdn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGradientaiCustomModelActiveDeploymentEndpoint) string { return v.PublicEndpointFqdn }).(pulumi.StringOutput)
+}
+
+type GetGradientaiCustomModelActiveDeploymentEndpointArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGradientaiCustomModelActiveDeploymentEndpointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGradientaiCustomModelActiveDeploymentEndpoint)(nil)).Elem()
+}
+
+func (o GetGradientaiCustomModelActiveDeploymentEndpointArrayOutput) ToGetGradientaiCustomModelActiveDeploymentEndpointArrayOutput() GetGradientaiCustomModelActiveDeploymentEndpointArrayOutput {
+	return o
+}
+
+func (o GetGradientaiCustomModelActiveDeploymentEndpointArrayOutput) ToGetGradientaiCustomModelActiveDeploymentEndpointArrayOutputWithContext(ctx context.Context) GetGradientaiCustomModelActiveDeploymentEndpointArrayOutput {
+	return o
+}
+
+func (o GetGradientaiCustomModelActiveDeploymentEndpointArrayOutput) Index(i pulumi.IntInput) GetGradientaiCustomModelActiveDeploymentEndpointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGradientaiCustomModelActiveDeploymentEndpoint {
+		return vs[0].([]GetGradientaiCustomModelActiveDeploymentEndpoint)[vs[1].(int)]
+	}).(GetGradientaiCustomModelActiveDeploymentEndpointOutput)
+}
+
+type GetGradientaiCustomModelSourceRef struct {
+	// Access type for the source repository (e.g. ACCESS_TYPE_PUBLIC).
+	AccessType string `pulumi:"accessType"`
+	// Spaces bucket name for SPACES_BUCKET sources.
+	Bucket string `pulumi:"bucket"`
+	// Commit SHA pinned for the import.
+	CommitSha string `pulumi:"commitSha"`
+	// Key prefix inside the source bucket.
+	Prefix string `pulumi:"prefix"`
+	// Region of the source bucket.
+	Region string `pulumi:"region"`
+	// Repository identifier (e.g. HuggingFace repo).
+	RepoId string `pulumi:"repoId"`
+}
+
+// GetGradientaiCustomModelSourceRefInput is an input type that accepts GetGradientaiCustomModelSourceRefArgs and GetGradientaiCustomModelSourceRefOutput values.
+// You can construct a concrete instance of `GetGradientaiCustomModelSourceRefInput` via:
+//
+//	GetGradientaiCustomModelSourceRefArgs{...}
+type GetGradientaiCustomModelSourceRefInput interface {
+	pulumi.Input
+
+	ToGetGradientaiCustomModelSourceRefOutput() GetGradientaiCustomModelSourceRefOutput
+	ToGetGradientaiCustomModelSourceRefOutputWithContext(context.Context) GetGradientaiCustomModelSourceRefOutput
+}
+
+type GetGradientaiCustomModelSourceRefArgs struct {
+	// Access type for the source repository (e.g. ACCESS_TYPE_PUBLIC).
+	AccessType pulumi.StringInput `pulumi:"accessType"`
+	// Spaces bucket name for SPACES_BUCKET sources.
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// Commit SHA pinned for the import.
+	CommitSha pulumi.StringInput `pulumi:"commitSha"`
+	// Key prefix inside the source bucket.
+	Prefix pulumi.StringInput `pulumi:"prefix"`
+	// Region of the source bucket.
+	Region pulumi.StringInput `pulumi:"region"`
+	// Repository identifier (e.g. HuggingFace repo).
+	RepoId pulumi.StringInput `pulumi:"repoId"`
+}
+
+func (GetGradientaiCustomModelSourceRefArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGradientaiCustomModelSourceRef)(nil)).Elem()
+}
+
+func (i GetGradientaiCustomModelSourceRefArgs) ToGetGradientaiCustomModelSourceRefOutput() GetGradientaiCustomModelSourceRefOutput {
+	return i.ToGetGradientaiCustomModelSourceRefOutputWithContext(context.Background())
+}
+
+func (i GetGradientaiCustomModelSourceRefArgs) ToGetGradientaiCustomModelSourceRefOutputWithContext(ctx context.Context) GetGradientaiCustomModelSourceRefOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGradientaiCustomModelSourceRefOutput)
+}
+
+// GetGradientaiCustomModelSourceRefArrayInput is an input type that accepts GetGradientaiCustomModelSourceRefArray and GetGradientaiCustomModelSourceRefArrayOutput values.
+// You can construct a concrete instance of `GetGradientaiCustomModelSourceRefArrayInput` via:
+//
+//	GetGradientaiCustomModelSourceRefArray{ GetGradientaiCustomModelSourceRefArgs{...} }
+type GetGradientaiCustomModelSourceRefArrayInput interface {
+	pulumi.Input
+
+	ToGetGradientaiCustomModelSourceRefArrayOutput() GetGradientaiCustomModelSourceRefArrayOutput
+	ToGetGradientaiCustomModelSourceRefArrayOutputWithContext(context.Context) GetGradientaiCustomModelSourceRefArrayOutput
+}
+
+type GetGradientaiCustomModelSourceRefArray []GetGradientaiCustomModelSourceRefInput
+
+func (GetGradientaiCustomModelSourceRefArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGradientaiCustomModelSourceRef)(nil)).Elem()
+}
+
+func (i GetGradientaiCustomModelSourceRefArray) ToGetGradientaiCustomModelSourceRefArrayOutput() GetGradientaiCustomModelSourceRefArrayOutput {
+	return i.ToGetGradientaiCustomModelSourceRefArrayOutputWithContext(context.Background())
+}
+
+func (i GetGradientaiCustomModelSourceRefArray) ToGetGradientaiCustomModelSourceRefArrayOutputWithContext(ctx context.Context) GetGradientaiCustomModelSourceRefArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGradientaiCustomModelSourceRefArrayOutput)
+}
+
+type GetGradientaiCustomModelSourceRefOutput struct{ *pulumi.OutputState }
+
+func (GetGradientaiCustomModelSourceRefOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGradientaiCustomModelSourceRef)(nil)).Elem()
+}
+
+func (o GetGradientaiCustomModelSourceRefOutput) ToGetGradientaiCustomModelSourceRefOutput() GetGradientaiCustomModelSourceRefOutput {
+	return o
+}
+
+func (o GetGradientaiCustomModelSourceRefOutput) ToGetGradientaiCustomModelSourceRefOutputWithContext(ctx context.Context) GetGradientaiCustomModelSourceRefOutput {
+	return o
+}
+
+// Access type for the source repository (e.g. ACCESS_TYPE_PUBLIC).
+func (o GetGradientaiCustomModelSourceRefOutput) AccessType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGradientaiCustomModelSourceRef) string { return v.AccessType }).(pulumi.StringOutput)
+}
+
+// Spaces bucket name for SPACES_BUCKET sources.
+func (o GetGradientaiCustomModelSourceRefOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGradientaiCustomModelSourceRef) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// Commit SHA pinned for the import.
+func (o GetGradientaiCustomModelSourceRefOutput) CommitSha() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGradientaiCustomModelSourceRef) string { return v.CommitSha }).(pulumi.StringOutput)
+}
+
+// Key prefix inside the source bucket.
+func (o GetGradientaiCustomModelSourceRefOutput) Prefix() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGradientaiCustomModelSourceRef) string { return v.Prefix }).(pulumi.StringOutput)
+}
+
+// Region of the source bucket.
+func (o GetGradientaiCustomModelSourceRefOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGradientaiCustomModelSourceRef) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// Repository identifier (e.g. HuggingFace repo).
+func (o GetGradientaiCustomModelSourceRefOutput) RepoId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGradientaiCustomModelSourceRef) string { return v.RepoId }).(pulumi.StringOutput)
+}
+
+type GetGradientaiCustomModelSourceRefArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGradientaiCustomModelSourceRefArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGradientaiCustomModelSourceRef)(nil)).Elem()
+}
+
+func (o GetGradientaiCustomModelSourceRefArrayOutput) ToGetGradientaiCustomModelSourceRefArrayOutput() GetGradientaiCustomModelSourceRefArrayOutput {
+	return o
+}
+
+func (o GetGradientaiCustomModelSourceRefArrayOutput) ToGetGradientaiCustomModelSourceRefArrayOutputWithContext(ctx context.Context) GetGradientaiCustomModelSourceRefArrayOutput {
+	return o
+}
+
+func (o GetGradientaiCustomModelSourceRefArrayOutput) Index(i pulumi.IntInput) GetGradientaiCustomModelSourceRefOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGradientaiCustomModelSourceRef {
+		return vs[0].([]GetGradientaiCustomModelSourceRef)[vs[1].(int)]
+	}).(GetGradientaiCustomModelSourceRefOutput)
+}
+
+type GetGradientaiCustomModelsCustomModel struct {
+	// Active dedicated inference deployments referencing this custom model.
+	ActiveDeployments []GetGradientaiCustomModelsCustomModelActiveDeployment `pulumi:"activeDeployments"`
+	// Model architecture as reported by the importer.
+	Architecture string `pulumi:"architecture"`
+	// Maximum context length supported by the model.
+	ContextLength int `pulumi:"contextLength"`
+	// Estimated monthly cost of running the custom model.
+	CostEstimatePerMonth int `pulumi:"costEstimatePerMonth"`
+	// Timestamp when the custom model was created.
+	CreatedAt string `pulumi:"createdAt"`
+	// Description of the custom model.
+	Description string `pulumi:"description"`
+	// Number of files that make up the imported model.
+	FileCount int `pulumi:"fileCount"`
+	// Input modalities supported by the model (e.g. text, image).
+	InputModalities []string `pulumi:"inputModalities"`
+	// License of the custom model, as reported by the source.
+	License string `pulumi:"license"`
+	// Human-readable name of the custom model.
+	Name string `pulumi:"name"`
+	// Output modalities produced by the model.
+	OutputModalities []string `pulumi:"outputModalities"`
+	// Parameter-count summary reported by the importer.
+	Parameters string `pulumi:"parameters"`
+	// Reference to the source from which the custom model was imported.
+	SourceReves []GetGradientaiCustomModelsCustomModelSourceRef `pulumi:"sourceReves"`
+	// Source type of the custom model (e.g. SOURCE_TYPE_HUGGINGFACE, SOURCE_TYPE_SPACES_BUCKET).
+	SourceType string `pulumi:"sourceType"`
+	// Current status of the custom model (e.g. STATUS_IMPORTING, STATUS_READY, STATUS_FAILED).
+	Status string `pulumi:"status"`
+	// Region where the custom model artifacts are stored.
+	StorageRegion string `pulumi:"storageRegion"`
+	// User-defined tags associated with the custom model.
+	Tags []string `pulumi:"tags"`
+	// ID of the team that owns the custom model.
+	TeamId string `pulumi:"teamId"`
+	// Total size of the imported model artifacts in bytes (string-encoded int64).
+	TotalSizeBytes string `pulumi:"totalSizeBytes"`
+	// Timestamp when the custom model was last updated.
+	UpdatedAt string `pulumi:"updatedAt"`
+	// UUID of the custom model.
+	Uuid string `pulumi:"uuid"`
+}
+
+// GetGradientaiCustomModelsCustomModelInput is an input type that accepts GetGradientaiCustomModelsCustomModelArgs and GetGradientaiCustomModelsCustomModelOutput values.
+// You can construct a concrete instance of `GetGradientaiCustomModelsCustomModelInput` via:
+//
+//	GetGradientaiCustomModelsCustomModelArgs{...}
+type GetGradientaiCustomModelsCustomModelInput interface {
+	pulumi.Input
+
+	ToGetGradientaiCustomModelsCustomModelOutput() GetGradientaiCustomModelsCustomModelOutput
+	ToGetGradientaiCustomModelsCustomModelOutputWithContext(context.Context) GetGradientaiCustomModelsCustomModelOutput
+}
+
+type GetGradientaiCustomModelsCustomModelArgs struct {
+	// Active dedicated inference deployments referencing this custom model.
+	ActiveDeployments GetGradientaiCustomModelsCustomModelActiveDeploymentArrayInput `pulumi:"activeDeployments"`
+	// Model architecture as reported by the importer.
+	Architecture pulumi.StringInput `pulumi:"architecture"`
+	// Maximum context length supported by the model.
+	ContextLength pulumi.IntInput `pulumi:"contextLength"`
+	// Estimated monthly cost of running the custom model.
+	CostEstimatePerMonth pulumi.IntInput `pulumi:"costEstimatePerMonth"`
+	// Timestamp when the custom model was created.
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// Description of the custom model.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Number of files that make up the imported model.
+	FileCount pulumi.IntInput `pulumi:"fileCount"`
+	// Input modalities supported by the model (e.g. text, image).
+	InputModalities pulumi.StringArrayInput `pulumi:"inputModalities"`
+	// License of the custom model, as reported by the source.
+	License pulumi.StringInput `pulumi:"license"`
+	// Human-readable name of the custom model.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Output modalities produced by the model.
+	OutputModalities pulumi.StringArrayInput `pulumi:"outputModalities"`
+	// Parameter-count summary reported by the importer.
+	Parameters pulumi.StringInput `pulumi:"parameters"`
+	// Reference to the source from which the custom model was imported.
+	SourceReves GetGradientaiCustomModelsCustomModelSourceRefArrayInput `pulumi:"sourceReves"`
+	// Source type of the custom model (e.g. SOURCE_TYPE_HUGGINGFACE, SOURCE_TYPE_SPACES_BUCKET).
+	SourceType pulumi.StringInput `pulumi:"sourceType"`
+	// Current status of the custom model (e.g. STATUS_IMPORTING, STATUS_READY, STATUS_FAILED).
+	Status pulumi.StringInput `pulumi:"status"`
+	// Region where the custom model artifacts are stored.
+	StorageRegion pulumi.StringInput `pulumi:"storageRegion"`
+	// User-defined tags associated with the custom model.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// ID of the team that owns the custom model.
+	TeamId pulumi.StringInput `pulumi:"teamId"`
+	// Total size of the imported model artifacts in bytes (string-encoded int64).
+	TotalSizeBytes pulumi.StringInput `pulumi:"totalSizeBytes"`
+	// Timestamp when the custom model was last updated.
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+	// UUID of the custom model.
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+}
+
+func (GetGradientaiCustomModelsCustomModelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGradientaiCustomModelsCustomModel)(nil)).Elem()
+}
+
+func (i GetGradientaiCustomModelsCustomModelArgs) ToGetGradientaiCustomModelsCustomModelOutput() GetGradientaiCustomModelsCustomModelOutput {
+	return i.ToGetGradientaiCustomModelsCustomModelOutputWithContext(context.Background())
+}
+
+func (i GetGradientaiCustomModelsCustomModelArgs) ToGetGradientaiCustomModelsCustomModelOutputWithContext(ctx context.Context) GetGradientaiCustomModelsCustomModelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGradientaiCustomModelsCustomModelOutput)
+}
+
+// GetGradientaiCustomModelsCustomModelArrayInput is an input type that accepts GetGradientaiCustomModelsCustomModelArray and GetGradientaiCustomModelsCustomModelArrayOutput values.
+// You can construct a concrete instance of `GetGradientaiCustomModelsCustomModelArrayInput` via:
+//
+//	GetGradientaiCustomModelsCustomModelArray{ GetGradientaiCustomModelsCustomModelArgs{...} }
+type GetGradientaiCustomModelsCustomModelArrayInput interface {
+	pulumi.Input
+
+	ToGetGradientaiCustomModelsCustomModelArrayOutput() GetGradientaiCustomModelsCustomModelArrayOutput
+	ToGetGradientaiCustomModelsCustomModelArrayOutputWithContext(context.Context) GetGradientaiCustomModelsCustomModelArrayOutput
+}
+
+type GetGradientaiCustomModelsCustomModelArray []GetGradientaiCustomModelsCustomModelInput
+
+func (GetGradientaiCustomModelsCustomModelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGradientaiCustomModelsCustomModel)(nil)).Elem()
+}
+
+func (i GetGradientaiCustomModelsCustomModelArray) ToGetGradientaiCustomModelsCustomModelArrayOutput() GetGradientaiCustomModelsCustomModelArrayOutput {
+	return i.ToGetGradientaiCustomModelsCustomModelArrayOutputWithContext(context.Background())
+}
+
+func (i GetGradientaiCustomModelsCustomModelArray) ToGetGradientaiCustomModelsCustomModelArrayOutputWithContext(ctx context.Context) GetGradientaiCustomModelsCustomModelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGradientaiCustomModelsCustomModelArrayOutput)
+}
+
+type GetGradientaiCustomModelsCustomModelOutput struct{ *pulumi.OutputState }
+
+func (GetGradientaiCustomModelsCustomModelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGradientaiCustomModelsCustomModel)(nil)).Elem()
+}
+
+func (o GetGradientaiCustomModelsCustomModelOutput) ToGetGradientaiCustomModelsCustomModelOutput() GetGradientaiCustomModelsCustomModelOutput {
+	return o
+}
+
+func (o GetGradientaiCustomModelsCustomModelOutput) ToGetGradientaiCustomModelsCustomModelOutputWithContext(ctx context.Context) GetGradientaiCustomModelsCustomModelOutput {
+	return o
+}
+
+// Active dedicated inference deployments referencing this custom model.
+func (o GetGradientaiCustomModelsCustomModelOutput) ActiveDeployments() GetGradientaiCustomModelsCustomModelActiveDeploymentArrayOutput {
+	return o.ApplyT(func(v GetGradientaiCustomModelsCustomModel) []GetGradientaiCustomModelsCustomModelActiveDeployment {
+		return v.ActiveDeployments
+	}).(GetGradientaiCustomModelsCustomModelActiveDeploymentArrayOutput)
+}
+
+// Model architecture as reported by the importer.
+func (o GetGradientaiCustomModelsCustomModelOutput) Architecture() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGradientaiCustomModelsCustomModel) string { return v.Architecture }).(pulumi.StringOutput)
+}
+
+// Maximum context length supported by the model.
+func (o GetGradientaiCustomModelsCustomModelOutput) ContextLength() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGradientaiCustomModelsCustomModel) int { return v.ContextLength }).(pulumi.IntOutput)
+}
+
+// Estimated monthly cost of running the custom model.
+func (o GetGradientaiCustomModelsCustomModelOutput) CostEstimatePerMonth() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGradientaiCustomModelsCustomModel) int { return v.CostEstimatePerMonth }).(pulumi.IntOutput)
+}
+
+// Timestamp when the custom model was created.
+func (o GetGradientaiCustomModelsCustomModelOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGradientaiCustomModelsCustomModel) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Description of the custom model.
+func (o GetGradientaiCustomModelsCustomModelOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGradientaiCustomModelsCustomModel) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Number of files that make up the imported model.
+func (o GetGradientaiCustomModelsCustomModelOutput) FileCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGradientaiCustomModelsCustomModel) int { return v.FileCount }).(pulumi.IntOutput)
+}
+
+// Input modalities supported by the model (e.g. text, image).
+func (o GetGradientaiCustomModelsCustomModelOutput) InputModalities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGradientaiCustomModelsCustomModel) []string { return v.InputModalities }).(pulumi.StringArrayOutput)
+}
+
+// License of the custom model, as reported by the source.
+func (o GetGradientaiCustomModelsCustomModelOutput) License() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGradientaiCustomModelsCustomModel) string { return v.License }).(pulumi.StringOutput)
+}
+
+// Human-readable name of the custom model.
+func (o GetGradientaiCustomModelsCustomModelOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGradientaiCustomModelsCustomModel) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Output modalities produced by the model.
+func (o GetGradientaiCustomModelsCustomModelOutput) OutputModalities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGradientaiCustomModelsCustomModel) []string { return v.OutputModalities }).(pulumi.StringArrayOutput)
+}
+
+// Parameter-count summary reported by the importer.
+func (o GetGradientaiCustomModelsCustomModelOutput) Parameters() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGradientaiCustomModelsCustomModel) string { return v.Parameters }).(pulumi.StringOutput)
+}
+
+// Reference to the source from which the custom model was imported.
+func (o GetGradientaiCustomModelsCustomModelOutput) SourceReves() GetGradientaiCustomModelsCustomModelSourceRefArrayOutput {
+	return o.ApplyT(func(v GetGradientaiCustomModelsCustomModel) []GetGradientaiCustomModelsCustomModelSourceRef {
+		return v.SourceReves
+	}).(GetGradientaiCustomModelsCustomModelSourceRefArrayOutput)
+}
+
+// Source type of the custom model (e.g. SOURCE_TYPE_HUGGINGFACE, SOURCE_TYPE_SPACES_BUCKET).
+func (o GetGradientaiCustomModelsCustomModelOutput) SourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGradientaiCustomModelsCustomModel) string { return v.SourceType }).(pulumi.StringOutput)
+}
+
+// Current status of the custom model (e.g. STATUS_IMPORTING, STATUS_READY, STATUS_FAILED).
+func (o GetGradientaiCustomModelsCustomModelOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGradientaiCustomModelsCustomModel) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Region where the custom model artifacts are stored.
+func (o GetGradientaiCustomModelsCustomModelOutput) StorageRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGradientaiCustomModelsCustomModel) string { return v.StorageRegion }).(pulumi.StringOutput)
+}
+
+// User-defined tags associated with the custom model.
+func (o GetGradientaiCustomModelsCustomModelOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGradientaiCustomModelsCustomModel) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// ID of the team that owns the custom model.
+func (o GetGradientaiCustomModelsCustomModelOutput) TeamId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGradientaiCustomModelsCustomModel) string { return v.TeamId }).(pulumi.StringOutput)
+}
+
+// Total size of the imported model artifacts in bytes (string-encoded int64).
+func (o GetGradientaiCustomModelsCustomModelOutput) TotalSizeBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGradientaiCustomModelsCustomModel) string { return v.TotalSizeBytes }).(pulumi.StringOutput)
+}
+
+// Timestamp when the custom model was last updated.
+func (o GetGradientaiCustomModelsCustomModelOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGradientaiCustomModelsCustomModel) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// UUID of the custom model.
+func (o GetGradientaiCustomModelsCustomModelOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGradientaiCustomModelsCustomModel) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+type GetGradientaiCustomModelsCustomModelArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGradientaiCustomModelsCustomModelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGradientaiCustomModelsCustomModel)(nil)).Elem()
+}
+
+func (o GetGradientaiCustomModelsCustomModelArrayOutput) ToGetGradientaiCustomModelsCustomModelArrayOutput() GetGradientaiCustomModelsCustomModelArrayOutput {
+	return o
+}
+
+func (o GetGradientaiCustomModelsCustomModelArrayOutput) ToGetGradientaiCustomModelsCustomModelArrayOutputWithContext(ctx context.Context) GetGradientaiCustomModelsCustomModelArrayOutput {
+	return o
+}
+
+func (o GetGradientaiCustomModelsCustomModelArrayOutput) Index(i pulumi.IntInput) GetGradientaiCustomModelsCustomModelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGradientaiCustomModelsCustomModel {
+		return vs[0].([]GetGradientaiCustomModelsCustomModel)[vs[1].(int)]
+	}).(GetGradientaiCustomModelsCustomModelOutput)
+}
+
+type GetGradientaiCustomModelsCustomModelActiveDeployment struct {
+	// Timestamp when the deployment was created.
+	CreatedAt string `pulumi:"createdAt"`
+	// Endpoint URLs exposed by the deployment.
+	Endpoints []GetGradientaiCustomModelsCustomModelActiveDeploymentEndpoint `pulumi:"endpoints"`
+	// ID of the dedicated inference deployment.
+	Id string `pulumi:"id"`
+	// Name of the dedicated inference deployment.
+	Name string `pulumi:"name"`
+	// Region slug of the dedicated inference deployment.
+	RegionSlug string `pulumi:"regionSlug"`
+	// Current state of the deployment.
+	State string `pulumi:"state"`
+	// Timestamp when the deployment was last updated.
+	UpdatedAt string `pulumi:"updatedAt"`
+}
+
+// GetGradientaiCustomModelsCustomModelActiveDeploymentInput is an input type that accepts GetGradientaiCustomModelsCustomModelActiveDeploymentArgs and GetGradientaiCustomModelsCustomModelActiveDeploymentOutput values.
+// You can construct a concrete instance of `GetGradientaiCustomModelsCustomModelActiveDeploymentInput` via:
+//
+//	GetGradientaiCustomModelsCustomModelActiveDeploymentArgs{...}
+type GetGradientaiCustomModelsCustomModelActiveDeploymentInput interface {
+	pulumi.Input
+
+	ToGetGradientaiCustomModelsCustomModelActiveDeploymentOutput() GetGradientaiCustomModelsCustomModelActiveDeploymentOutput
+	ToGetGradientaiCustomModelsCustomModelActiveDeploymentOutputWithContext(context.Context) GetGradientaiCustomModelsCustomModelActiveDeploymentOutput
+}
+
+type GetGradientaiCustomModelsCustomModelActiveDeploymentArgs struct {
+	// Timestamp when the deployment was created.
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// Endpoint URLs exposed by the deployment.
+	Endpoints GetGradientaiCustomModelsCustomModelActiveDeploymentEndpointArrayInput `pulumi:"endpoints"`
+	// ID of the dedicated inference deployment.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Name of the dedicated inference deployment.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Region slug of the dedicated inference deployment.
+	RegionSlug pulumi.StringInput `pulumi:"regionSlug"`
+	// Current state of the deployment.
+	State pulumi.StringInput `pulumi:"state"`
+	// Timestamp when the deployment was last updated.
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+}
+
+func (GetGradientaiCustomModelsCustomModelActiveDeploymentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGradientaiCustomModelsCustomModelActiveDeployment)(nil)).Elem()
+}
+
+func (i GetGradientaiCustomModelsCustomModelActiveDeploymentArgs) ToGetGradientaiCustomModelsCustomModelActiveDeploymentOutput() GetGradientaiCustomModelsCustomModelActiveDeploymentOutput {
+	return i.ToGetGradientaiCustomModelsCustomModelActiveDeploymentOutputWithContext(context.Background())
+}
+
+func (i GetGradientaiCustomModelsCustomModelActiveDeploymentArgs) ToGetGradientaiCustomModelsCustomModelActiveDeploymentOutputWithContext(ctx context.Context) GetGradientaiCustomModelsCustomModelActiveDeploymentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGradientaiCustomModelsCustomModelActiveDeploymentOutput)
+}
+
+// GetGradientaiCustomModelsCustomModelActiveDeploymentArrayInput is an input type that accepts GetGradientaiCustomModelsCustomModelActiveDeploymentArray and GetGradientaiCustomModelsCustomModelActiveDeploymentArrayOutput values.
+// You can construct a concrete instance of `GetGradientaiCustomModelsCustomModelActiveDeploymentArrayInput` via:
+//
+//	GetGradientaiCustomModelsCustomModelActiveDeploymentArray{ GetGradientaiCustomModelsCustomModelActiveDeploymentArgs{...} }
+type GetGradientaiCustomModelsCustomModelActiveDeploymentArrayInput interface {
+	pulumi.Input
+
+	ToGetGradientaiCustomModelsCustomModelActiveDeploymentArrayOutput() GetGradientaiCustomModelsCustomModelActiveDeploymentArrayOutput
+	ToGetGradientaiCustomModelsCustomModelActiveDeploymentArrayOutputWithContext(context.Context) GetGradientaiCustomModelsCustomModelActiveDeploymentArrayOutput
+}
+
+type GetGradientaiCustomModelsCustomModelActiveDeploymentArray []GetGradientaiCustomModelsCustomModelActiveDeploymentInput
+
+func (GetGradientaiCustomModelsCustomModelActiveDeploymentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGradientaiCustomModelsCustomModelActiveDeployment)(nil)).Elem()
+}
+
+func (i GetGradientaiCustomModelsCustomModelActiveDeploymentArray) ToGetGradientaiCustomModelsCustomModelActiveDeploymentArrayOutput() GetGradientaiCustomModelsCustomModelActiveDeploymentArrayOutput {
+	return i.ToGetGradientaiCustomModelsCustomModelActiveDeploymentArrayOutputWithContext(context.Background())
+}
+
+func (i GetGradientaiCustomModelsCustomModelActiveDeploymentArray) ToGetGradientaiCustomModelsCustomModelActiveDeploymentArrayOutputWithContext(ctx context.Context) GetGradientaiCustomModelsCustomModelActiveDeploymentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGradientaiCustomModelsCustomModelActiveDeploymentArrayOutput)
+}
+
+type GetGradientaiCustomModelsCustomModelActiveDeploymentOutput struct{ *pulumi.OutputState }
+
+func (GetGradientaiCustomModelsCustomModelActiveDeploymentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGradientaiCustomModelsCustomModelActiveDeployment)(nil)).Elem()
+}
+
+func (o GetGradientaiCustomModelsCustomModelActiveDeploymentOutput) ToGetGradientaiCustomModelsCustomModelActiveDeploymentOutput() GetGradientaiCustomModelsCustomModelActiveDeploymentOutput {
+	return o
+}
+
+func (o GetGradientaiCustomModelsCustomModelActiveDeploymentOutput) ToGetGradientaiCustomModelsCustomModelActiveDeploymentOutputWithContext(ctx context.Context) GetGradientaiCustomModelsCustomModelActiveDeploymentOutput {
+	return o
+}
+
+// Timestamp when the deployment was created.
+func (o GetGradientaiCustomModelsCustomModelActiveDeploymentOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGradientaiCustomModelsCustomModelActiveDeployment) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Endpoint URLs exposed by the deployment.
+func (o GetGradientaiCustomModelsCustomModelActiveDeploymentOutput) Endpoints() GetGradientaiCustomModelsCustomModelActiveDeploymentEndpointArrayOutput {
+	return o.ApplyT(func(v GetGradientaiCustomModelsCustomModelActiveDeployment) []GetGradientaiCustomModelsCustomModelActiveDeploymentEndpoint {
+		return v.Endpoints
+	}).(GetGradientaiCustomModelsCustomModelActiveDeploymentEndpointArrayOutput)
+}
+
+// ID of the dedicated inference deployment.
+func (o GetGradientaiCustomModelsCustomModelActiveDeploymentOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGradientaiCustomModelsCustomModelActiveDeployment) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Name of the dedicated inference deployment.
+func (o GetGradientaiCustomModelsCustomModelActiveDeploymentOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGradientaiCustomModelsCustomModelActiveDeployment) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Region slug of the dedicated inference deployment.
+func (o GetGradientaiCustomModelsCustomModelActiveDeploymentOutput) RegionSlug() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGradientaiCustomModelsCustomModelActiveDeployment) string { return v.RegionSlug }).(pulumi.StringOutput)
+}
+
+// Current state of the deployment.
+func (o GetGradientaiCustomModelsCustomModelActiveDeploymentOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGradientaiCustomModelsCustomModelActiveDeployment) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Timestamp when the deployment was last updated.
+func (o GetGradientaiCustomModelsCustomModelActiveDeploymentOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGradientaiCustomModelsCustomModelActiveDeployment) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+type GetGradientaiCustomModelsCustomModelActiveDeploymentArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGradientaiCustomModelsCustomModelActiveDeploymentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGradientaiCustomModelsCustomModelActiveDeployment)(nil)).Elem()
+}
+
+func (o GetGradientaiCustomModelsCustomModelActiveDeploymentArrayOutput) ToGetGradientaiCustomModelsCustomModelActiveDeploymentArrayOutput() GetGradientaiCustomModelsCustomModelActiveDeploymentArrayOutput {
+	return o
+}
+
+func (o GetGradientaiCustomModelsCustomModelActiveDeploymentArrayOutput) ToGetGradientaiCustomModelsCustomModelActiveDeploymentArrayOutputWithContext(ctx context.Context) GetGradientaiCustomModelsCustomModelActiveDeploymentArrayOutput {
+	return o
+}
+
+func (o GetGradientaiCustomModelsCustomModelActiveDeploymentArrayOutput) Index(i pulumi.IntInput) GetGradientaiCustomModelsCustomModelActiveDeploymentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGradientaiCustomModelsCustomModelActiveDeployment {
+		return vs[0].([]GetGradientaiCustomModelsCustomModelActiveDeployment)[vs[1].(int)]
+	}).(GetGradientaiCustomModelsCustomModelActiveDeploymentOutput)
+}
+
+type GetGradientaiCustomModelsCustomModelActiveDeploymentEndpoint struct {
+	// Private endpoint FQDN.
+	PrivateEndpointFqdn string `pulumi:"privateEndpointFqdn"`
+	// Public endpoint FQDN, if enabled.
+	PublicEndpointFqdn string `pulumi:"publicEndpointFqdn"`
+}
+
+// GetGradientaiCustomModelsCustomModelActiveDeploymentEndpointInput is an input type that accepts GetGradientaiCustomModelsCustomModelActiveDeploymentEndpointArgs and GetGradientaiCustomModelsCustomModelActiveDeploymentEndpointOutput values.
+// You can construct a concrete instance of `GetGradientaiCustomModelsCustomModelActiveDeploymentEndpointInput` via:
+//
+//	GetGradientaiCustomModelsCustomModelActiveDeploymentEndpointArgs{...}
+type GetGradientaiCustomModelsCustomModelActiveDeploymentEndpointInput interface {
+	pulumi.Input
+
+	ToGetGradientaiCustomModelsCustomModelActiveDeploymentEndpointOutput() GetGradientaiCustomModelsCustomModelActiveDeploymentEndpointOutput
+	ToGetGradientaiCustomModelsCustomModelActiveDeploymentEndpointOutputWithContext(context.Context) GetGradientaiCustomModelsCustomModelActiveDeploymentEndpointOutput
+}
+
+type GetGradientaiCustomModelsCustomModelActiveDeploymentEndpointArgs struct {
+	// Private endpoint FQDN.
+	PrivateEndpointFqdn pulumi.StringInput `pulumi:"privateEndpointFqdn"`
+	// Public endpoint FQDN, if enabled.
+	PublicEndpointFqdn pulumi.StringInput `pulumi:"publicEndpointFqdn"`
+}
+
+func (GetGradientaiCustomModelsCustomModelActiveDeploymentEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGradientaiCustomModelsCustomModelActiveDeploymentEndpoint)(nil)).Elem()
+}
+
+func (i GetGradientaiCustomModelsCustomModelActiveDeploymentEndpointArgs) ToGetGradientaiCustomModelsCustomModelActiveDeploymentEndpointOutput() GetGradientaiCustomModelsCustomModelActiveDeploymentEndpointOutput {
+	return i.ToGetGradientaiCustomModelsCustomModelActiveDeploymentEndpointOutputWithContext(context.Background())
+}
+
+func (i GetGradientaiCustomModelsCustomModelActiveDeploymentEndpointArgs) ToGetGradientaiCustomModelsCustomModelActiveDeploymentEndpointOutputWithContext(ctx context.Context) GetGradientaiCustomModelsCustomModelActiveDeploymentEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGradientaiCustomModelsCustomModelActiveDeploymentEndpointOutput)
+}
+
+// GetGradientaiCustomModelsCustomModelActiveDeploymentEndpointArrayInput is an input type that accepts GetGradientaiCustomModelsCustomModelActiveDeploymentEndpointArray and GetGradientaiCustomModelsCustomModelActiveDeploymentEndpointArrayOutput values.
+// You can construct a concrete instance of `GetGradientaiCustomModelsCustomModelActiveDeploymentEndpointArrayInput` via:
+//
+//	GetGradientaiCustomModelsCustomModelActiveDeploymentEndpointArray{ GetGradientaiCustomModelsCustomModelActiveDeploymentEndpointArgs{...} }
+type GetGradientaiCustomModelsCustomModelActiveDeploymentEndpointArrayInput interface {
+	pulumi.Input
+
+	ToGetGradientaiCustomModelsCustomModelActiveDeploymentEndpointArrayOutput() GetGradientaiCustomModelsCustomModelActiveDeploymentEndpointArrayOutput
+	ToGetGradientaiCustomModelsCustomModelActiveDeploymentEndpointArrayOutputWithContext(context.Context) GetGradientaiCustomModelsCustomModelActiveDeploymentEndpointArrayOutput
+}
+
+type GetGradientaiCustomModelsCustomModelActiveDeploymentEndpointArray []GetGradientaiCustomModelsCustomModelActiveDeploymentEndpointInput
+
+func (GetGradientaiCustomModelsCustomModelActiveDeploymentEndpointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGradientaiCustomModelsCustomModelActiveDeploymentEndpoint)(nil)).Elem()
+}
+
+func (i GetGradientaiCustomModelsCustomModelActiveDeploymentEndpointArray) ToGetGradientaiCustomModelsCustomModelActiveDeploymentEndpointArrayOutput() GetGradientaiCustomModelsCustomModelActiveDeploymentEndpointArrayOutput {
+	return i.ToGetGradientaiCustomModelsCustomModelActiveDeploymentEndpointArrayOutputWithContext(context.Background())
+}
+
+func (i GetGradientaiCustomModelsCustomModelActiveDeploymentEndpointArray) ToGetGradientaiCustomModelsCustomModelActiveDeploymentEndpointArrayOutputWithContext(ctx context.Context) GetGradientaiCustomModelsCustomModelActiveDeploymentEndpointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGradientaiCustomModelsCustomModelActiveDeploymentEndpointArrayOutput)
+}
+
+type GetGradientaiCustomModelsCustomModelActiveDeploymentEndpointOutput struct{ *pulumi.OutputState }
+
+func (GetGradientaiCustomModelsCustomModelActiveDeploymentEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGradientaiCustomModelsCustomModelActiveDeploymentEndpoint)(nil)).Elem()
+}
+
+func (o GetGradientaiCustomModelsCustomModelActiveDeploymentEndpointOutput) ToGetGradientaiCustomModelsCustomModelActiveDeploymentEndpointOutput() GetGradientaiCustomModelsCustomModelActiveDeploymentEndpointOutput {
+	return o
+}
+
+func (o GetGradientaiCustomModelsCustomModelActiveDeploymentEndpointOutput) ToGetGradientaiCustomModelsCustomModelActiveDeploymentEndpointOutputWithContext(ctx context.Context) GetGradientaiCustomModelsCustomModelActiveDeploymentEndpointOutput {
+	return o
+}
+
+// Private endpoint FQDN.
+func (o GetGradientaiCustomModelsCustomModelActiveDeploymentEndpointOutput) PrivateEndpointFqdn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGradientaiCustomModelsCustomModelActiveDeploymentEndpoint) string {
+		return v.PrivateEndpointFqdn
+	}).(pulumi.StringOutput)
+}
+
+// Public endpoint FQDN, if enabled.
+func (o GetGradientaiCustomModelsCustomModelActiveDeploymentEndpointOutput) PublicEndpointFqdn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGradientaiCustomModelsCustomModelActiveDeploymentEndpoint) string {
+		return v.PublicEndpointFqdn
+	}).(pulumi.StringOutput)
+}
+
+type GetGradientaiCustomModelsCustomModelActiveDeploymentEndpointArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGradientaiCustomModelsCustomModelActiveDeploymentEndpointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGradientaiCustomModelsCustomModelActiveDeploymentEndpoint)(nil)).Elem()
+}
+
+func (o GetGradientaiCustomModelsCustomModelActiveDeploymentEndpointArrayOutput) ToGetGradientaiCustomModelsCustomModelActiveDeploymentEndpointArrayOutput() GetGradientaiCustomModelsCustomModelActiveDeploymentEndpointArrayOutput {
+	return o
+}
+
+func (o GetGradientaiCustomModelsCustomModelActiveDeploymentEndpointArrayOutput) ToGetGradientaiCustomModelsCustomModelActiveDeploymentEndpointArrayOutputWithContext(ctx context.Context) GetGradientaiCustomModelsCustomModelActiveDeploymentEndpointArrayOutput {
+	return o
+}
+
+func (o GetGradientaiCustomModelsCustomModelActiveDeploymentEndpointArrayOutput) Index(i pulumi.IntInput) GetGradientaiCustomModelsCustomModelActiveDeploymentEndpointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGradientaiCustomModelsCustomModelActiveDeploymentEndpoint {
+		return vs[0].([]GetGradientaiCustomModelsCustomModelActiveDeploymentEndpoint)[vs[1].(int)]
+	}).(GetGradientaiCustomModelsCustomModelActiveDeploymentEndpointOutput)
+}
+
+type GetGradientaiCustomModelsCustomModelSourceRef struct {
+	// Access type for the source repository (e.g. ACCESS_TYPE_PUBLIC).
+	AccessType string `pulumi:"accessType"`
+	// Spaces bucket name for SPACES_BUCKET sources.
+	Bucket string `pulumi:"bucket"`
+	// Commit SHA pinned for the import.
+	CommitSha string `pulumi:"commitSha"`
+	// Key prefix inside the source bucket.
+	Prefix string `pulumi:"prefix"`
+	// Region of the source bucket.
+	Region string `pulumi:"region"`
+	// Repository identifier (e.g. HuggingFace repo).
+	RepoId string `pulumi:"repoId"`
+}
+
+// GetGradientaiCustomModelsCustomModelSourceRefInput is an input type that accepts GetGradientaiCustomModelsCustomModelSourceRefArgs and GetGradientaiCustomModelsCustomModelSourceRefOutput values.
+// You can construct a concrete instance of `GetGradientaiCustomModelsCustomModelSourceRefInput` via:
+//
+//	GetGradientaiCustomModelsCustomModelSourceRefArgs{...}
+type GetGradientaiCustomModelsCustomModelSourceRefInput interface {
+	pulumi.Input
+
+	ToGetGradientaiCustomModelsCustomModelSourceRefOutput() GetGradientaiCustomModelsCustomModelSourceRefOutput
+	ToGetGradientaiCustomModelsCustomModelSourceRefOutputWithContext(context.Context) GetGradientaiCustomModelsCustomModelSourceRefOutput
+}
+
+type GetGradientaiCustomModelsCustomModelSourceRefArgs struct {
+	// Access type for the source repository (e.g. ACCESS_TYPE_PUBLIC).
+	AccessType pulumi.StringInput `pulumi:"accessType"`
+	// Spaces bucket name for SPACES_BUCKET sources.
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// Commit SHA pinned for the import.
+	CommitSha pulumi.StringInput `pulumi:"commitSha"`
+	// Key prefix inside the source bucket.
+	Prefix pulumi.StringInput `pulumi:"prefix"`
+	// Region of the source bucket.
+	Region pulumi.StringInput `pulumi:"region"`
+	// Repository identifier (e.g. HuggingFace repo).
+	RepoId pulumi.StringInput `pulumi:"repoId"`
+}
+
+func (GetGradientaiCustomModelsCustomModelSourceRefArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGradientaiCustomModelsCustomModelSourceRef)(nil)).Elem()
+}
+
+func (i GetGradientaiCustomModelsCustomModelSourceRefArgs) ToGetGradientaiCustomModelsCustomModelSourceRefOutput() GetGradientaiCustomModelsCustomModelSourceRefOutput {
+	return i.ToGetGradientaiCustomModelsCustomModelSourceRefOutputWithContext(context.Background())
+}
+
+func (i GetGradientaiCustomModelsCustomModelSourceRefArgs) ToGetGradientaiCustomModelsCustomModelSourceRefOutputWithContext(ctx context.Context) GetGradientaiCustomModelsCustomModelSourceRefOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGradientaiCustomModelsCustomModelSourceRefOutput)
+}
+
+// GetGradientaiCustomModelsCustomModelSourceRefArrayInput is an input type that accepts GetGradientaiCustomModelsCustomModelSourceRefArray and GetGradientaiCustomModelsCustomModelSourceRefArrayOutput values.
+// You can construct a concrete instance of `GetGradientaiCustomModelsCustomModelSourceRefArrayInput` via:
+//
+//	GetGradientaiCustomModelsCustomModelSourceRefArray{ GetGradientaiCustomModelsCustomModelSourceRefArgs{...} }
+type GetGradientaiCustomModelsCustomModelSourceRefArrayInput interface {
+	pulumi.Input
+
+	ToGetGradientaiCustomModelsCustomModelSourceRefArrayOutput() GetGradientaiCustomModelsCustomModelSourceRefArrayOutput
+	ToGetGradientaiCustomModelsCustomModelSourceRefArrayOutputWithContext(context.Context) GetGradientaiCustomModelsCustomModelSourceRefArrayOutput
+}
+
+type GetGradientaiCustomModelsCustomModelSourceRefArray []GetGradientaiCustomModelsCustomModelSourceRefInput
+
+func (GetGradientaiCustomModelsCustomModelSourceRefArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGradientaiCustomModelsCustomModelSourceRef)(nil)).Elem()
+}
+
+func (i GetGradientaiCustomModelsCustomModelSourceRefArray) ToGetGradientaiCustomModelsCustomModelSourceRefArrayOutput() GetGradientaiCustomModelsCustomModelSourceRefArrayOutput {
+	return i.ToGetGradientaiCustomModelsCustomModelSourceRefArrayOutputWithContext(context.Background())
+}
+
+func (i GetGradientaiCustomModelsCustomModelSourceRefArray) ToGetGradientaiCustomModelsCustomModelSourceRefArrayOutputWithContext(ctx context.Context) GetGradientaiCustomModelsCustomModelSourceRefArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGradientaiCustomModelsCustomModelSourceRefArrayOutput)
+}
+
+type GetGradientaiCustomModelsCustomModelSourceRefOutput struct{ *pulumi.OutputState }
+
+func (GetGradientaiCustomModelsCustomModelSourceRefOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGradientaiCustomModelsCustomModelSourceRef)(nil)).Elem()
+}
+
+func (o GetGradientaiCustomModelsCustomModelSourceRefOutput) ToGetGradientaiCustomModelsCustomModelSourceRefOutput() GetGradientaiCustomModelsCustomModelSourceRefOutput {
+	return o
+}
+
+func (o GetGradientaiCustomModelsCustomModelSourceRefOutput) ToGetGradientaiCustomModelsCustomModelSourceRefOutputWithContext(ctx context.Context) GetGradientaiCustomModelsCustomModelSourceRefOutput {
+	return o
+}
+
+// Access type for the source repository (e.g. ACCESS_TYPE_PUBLIC).
+func (o GetGradientaiCustomModelsCustomModelSourceRefOutput) AccessType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGradientaiCustomModelsCustomModelSourceRef) string { return v.AccessType }).(pulumi.StringOutput)
+}
+
+// Spaces bucket name for SPACES_BUCKET sources.
+func (o GetGradientaiCustomModelsCustomModelSourceRefOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGradientaiCustomModelsCustomModelSourceRef) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// Commit SHA pinned for the import.
+func (o GetGradientaiCustomModelsCustomModelSourceRefOutput) CommitSha() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGradientaiCustomModelsCustomModelSourceRef) string { return v.CommitSha }).(pulumi.StringOutput)
+}
+
+// Key prefix inside the source bucket.
+func (o GetGradientaiCustomModelsCustomModelSourceRefOutput) Prefix() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGradientaiCustomModelsCustomModelSourceRef) string { return v.Prefix }).(pulumi.StringOutput)
+}
+
+// Region of the source bucket.
+func (o GetGradientaiCustomModelsCustomModelSourceRefOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGradientaiCustomModelsCustomModelSourceRef) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// Repository identifier (e.g. HuggingFace repo).
+func (o GetGradientaiCustomModelsCustomModelSourceRefOutput) RepoId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGradientaiCustomModelsCustomModelSourceRef) string { return v.RepoId }).(pulumi.StringOutput)
+}
+
+type GetGradientaiCustomModelsCustomModelSourceRefArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGradientaiCustomModelsCustomModelSourceRefArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGradientaiCustomModelsCustomModelSourceRef)(nil)).Elem()
+}
+
+func (o GetGradientaiCustomModelsCustomModelSourceRefArrayOutput) ToGetGradientaiCustomModelsCustomModelSourceRefArrayOutput() GetGradientaiCustomModelsCustomModelSourceRefArrayOutput {
+	return o
+}
+
+func (o GetGradientaiCustomModelsCustomModelSourceRefArrayOutput) ToGetGradientaiCustomModelsCustomModelSourceRefArrayOutputWithContext(ctx context.Context) GetGradientaiCustomModelsCustomModelSourceRefArrayOutput {
+	return o
+}
+
+func (o GetGradientaiCustomModelsCustomModelSourceRefArrayOutput) Index(i pulumi.IntInput) GetGradientaiCustomModelsCustomModelSourceRefOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGradientaiCustomModelsCustomModelSourceRef {
+		return vs[0].([]GetGradientaiCustomModelsCustomModelSourceRef)[vs[1].(int)]
+	}).(GetGradientaiCustomModelsCustomModelSourceRefOutput)
+}
+
+type GetGradientaiCustomModelsFilter struct {
+	All     *bool    `pulumi:"all"`
+	Key     string   `pulumi:"key"`
+	MatchBy *string  `pulumi:"matchBy"`
+	Values  []string `pulumi:"values"`
+}
+
+// GetGradientaiCustomModelsFilterInput is an input type that accepts GetGradientaiCustomModelsFilterArgs and GetGradientaiCustomModelsFilterOutput values.
+// You can construct a concrete instance of `GetGradientaiCustomModelsFilterInput` via:
+//
+//	GetGradientaiCustomModelsFilterArgs{...}
+type GetGradientaiCustomModelsFilterInput interface {
+	pulumi.Input
+
+	ToGetGradientaiCustomModelsFilterOutput() GetGradientaiCustomModelsFilterOutput
+	ToGetGradientaiCustomModelsFilterOutputWithContext(context.Context) GetGradientaiCustomModelsFilterOutput
+}
+
+type GetGradientaiCustomModelsFilterArgs struct {
+	All     pulumi.BoolPtrInput     `pulumi:"all"`
+	Key     pulumi.StringInput      `pulumi:"key"`
+	MatchBy pulumi.StringPtrInput   `pulumi:"matchBy"`
+	Values  pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetGradientaiCustomModelsFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGradientaiCustomModelsFilter)(nil)).Elem()
+}
+
+func (i GetGradientaiCustomModelsFilterArgs) ToGetGradientaiCustomModelsFilterOutput() GetGradientaiCustomModelsFilterOutput {
+	return i.ToGetGradientaiCustomModelsFilterOutputWithContext(context.Background())
+}
+
+func (i GetGradientaiCustomModelsFilterArgs) ToGetGradientaiCustomModelsFilterOutputWithContext(ctx context.Context) GetGradientaiCustomModelsFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGradientaiCustomModelsFilterOutput)
+}
+
+// GetGradientaiCustomModelsFilterArrayInput is an input type that accepts GetGradientaiCustomModelsFilterArray and GetGradientaiCustomModelsFilterArrayOutput values.
+// You can construct a concrete instance of `GetGradientaiCustomModelsFilterArrayInput` via:
+//
+//	GetGradientaiCustomModelsFilterArray{ GetGradientaiCustomModelsFilterArgs{...} }
+type GetGradientaiCustomModelsFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetGradientaiCustomModelsFilterArrayOutput() GetGradientaiCustomModelsFilterArrayOutput
+	ToGetGradientaiCustomModelsFilterArrayOutputWithContext(context.Context) GetGradientaiCustomModelsFilterArrayOutput
+}
+
+type GetGradientaiCustomModelsFilterArray []GetGradientaiCustomModelsFilterInput
+
+func (GetGradientaiCustomModelsFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGradientaiCustomModelsFilter)(nil)).Elem()
+}
+
+func (i GetGradientaiCustomModelsFilterArray) ToGetGradientaiCustomModelsFilterArrayOutput() GetGradientaiCustomModelsFilterArrayOutput {
+	return i.ToGetGradientaiCustomModelsFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetGradientaiCustomModelsFilterArray) ToGetGradientaiCustomModelsFilterArrayOutputWithContext(ctx context.Context) GetGradientaiCustomModelsFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGradientaiCustomModelsFilterArrayOutput)
+}
+
+type GetGradientaiCustomModelsFilterOutput struct{ *pulumi.OutputState }
+
+func (GetGradientaiCustomModelsFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGradientaiCustomModelsFilter)(nil)).Elem()
+}
+
+func (o GetGradientaiCustomModelsFilterOutput) ToGetGradientaiCustomModelsFilterOutput() GetGradientaiCustomModelsFilterOutput {
+	return o
+}
+
+func (o GetGradientaiCustomModelsFilterOutput) ToGetGradientaiCustomModelsFilterOutputWithContext(ctx context.Context) GetGradientaiCustomModelsFilterOutput {
+	return o
+}
+
+func (o GetGradientaiCustomModelsFilterOutput) All() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetGradientaiCustomModelsFilter) *bool { return v.All }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetGradientaiCustomModelsFilterOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGradientaiCustomModelsFilter) string { return v.Key }).(pulumi.StringOutput)
+}
+
+func (o GetGradientaiCustomModelsFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGradientaiCustomModelsFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
+}
+
+func (o GetGradientaiCustomModelsFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGradientaiCustomModelsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetGradientaiCustomModelsFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGradientaiCustomModelsFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGradientaiCustomModelsFilter)(nil)).Elem()
+}
+
+func (o GetGradientaiCustomModelsFilterArrayOutput) ToGetGradientaiCustomModelsFilterArrayOutput() GetGradientaiCustomModelsFilterArrayOutput {
+	return o
+}
+
+func (o GetGradientaiCustomModelsFilterArrayOutput) ToGetGradientaiCustomModelsFilterArrayOutputWithContext(ctx context.Context) GetGradientaiCustomModelsFilterArrayOutput {
+	return o
+}
+
+func (o GetGradientaiCustomModelsFilterArrayOutput) Index(i pulumi.IntInput) GetGradientaiCustomModelsFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGradientaiCustomModelsFilter {
+		return vs[0].([]GetGradientaiCustomModelsFilter)[vs[1].(int)]
+	}).(GetGradientaiCustomModelsFilterOutput)
+}
+
+type GetGradientaiCustomModelsSort struct {
+	Direction *string `pulumi:"direction"`
+	Key       string  `pulumi:"key"`
+}
+
+// GetGradientaiCustomModelsSortInput is an input type that accepts GetGradientaiCustomModelsSortArgs and GetGradientaiCustomModelsSortOutput values.
+// You can construct a concrete instance of `GetGradientaiCustomModelsSortInput` via:
+//
+//	GetGradientaiCustomModelsSortArgs{...}
+type GetGradientaiCustomModelsSortInput interface {
+	pulumi.Input
+
+	ToGetGradientaiCustomModelsSortOutput() GetGradientaiCustomModelsSortOutput
+	ToGetGradientaiCustomModelsSortOutputWithContext(context.Context) GetGradientaiCustomModelsSortOutput
+}
+
+type GetGradientaiCustomModelsSortArgs struct {
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
+	Key       pulumi.StringInput    `pulumi:"key"`
+}
+
+func (GetGradientaiCustomModelsSortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGradientaiCustomModelsSort)(nil)).Elem()
+}
+
+func (i GetGradientaiCustomModelsSortArgs) ToGetGradientaiCustomModelsSortOutput() GetGradientaiCustomModelsSortOutput {
+	return i.ToGetGradientaiCustomModelsSortOutputWithContext(context.Background())
+}
+
+func (i GetGradientaiCustomModelsSortArgs) ToGetGradientaiCustomModelsSortOutputWithContext(ctx context.Context) GetGradientaiCustomModelsSortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGradientaiCustomModelsSortOutput)
+}
+
+// GetGradientaiCustomModelsSortArrayInput is an input type that accepts GetGradientaiCustomModelsSortArray and GetGradientaiCustomModelsSortArrayOutput values.
+// You can construct a concrete instance of `GetGradientaiCustomModelsSortArrayInput` via:
+//
+//	GetGradientaiCustomModelsSortArray{ GetGradientaiCustomModelsSortArgs{...} }
+type GetGradientaiCustomModelsSortArrayInput interface {
+	pulumi.Input
+
+	ToGetGradientaiCustomModelsSortArrayOutput() GetGradientaiCustomModelsSortArrayOutput
+	ToGetGradientaiCustomModelsSortArrayOutputWithContext(context.Context) GetGradientaiCustomModelsSortArrayOutput
+}
+
+type GetGradientaiCustomModelsSortArray []GetGradientaiCustomModelsSortInput
+
+func (GetGradientaiCustomModelsSortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGradientaiCustomModelsSort)(nil)).Elem()
+}
+
+func (i GetGradientaiCustomModelsSortArray) ToGetGradientaiCustomModelsSortArrayOutput() GetGradientaiCustomModelsSortArrayOutput {
+	return i.ToGetGradientaiCustomModelsSortArrayOutputWithContext(context.Background())
+}
+
+func (i GetGradientaiCustomModelsSortArray) ToGetGradientaiCustomModelsSortArrayOutputWithContext(ctx context.Context) GetGradientaiCustomModelsSortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGradientaiCustomModelsSortArrayOutput)
+}
+
+type GetGradientaiCustomModelsSortOutput struct{ *pulumi.OutputState }
+
+func (GetGradientaiCustomModelsSortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGradientaiCustomModelsSort)(nil)).Elem()
+}
+
+func (o GetGradientaiCustomModelsSortOutput) ToGetGradientaiCustomModelsSortOutput() GetGradientaiCustomModelsSortOutput {
+	return o
+}
+
+func (o GetGradientaiCustomModelsSortOutput) ToGetGradientaiCustomModelsSortOutputWithContext(ctx context.Context) GetGradientaiCustomModelsSortOutput {
+	return o
+}
+
+func (o GetGradientaiCustomModelsSortOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGradientaiCustomModelsSort) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
+func (o GetGradientaiCustomModelsSortOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGradientaiCustomModelsSort) string { return v.Key }).(pulumi.StringOutput)
+}
+
+type GetGradientaiCustomModelsSortArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGradientaiCustomModelsSortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGradientaiCustomModelsSort)(nil)).Elem()
+}
+
+func (o GetGradientaiCustomModelsSortArrayOutput) ToGetGradientaiCustomModelsSortArrayOutput() GetGradientaiCustomModelsSortArrayOutput {
+	return o
+}
+
+func (o GetGradientaiCustomModelsSortArrayOutput) ToGetGradientaiCustomModelsSortArrayOutputWithContext(ctx context.Context) GetGradientaiCustomModelsSortArrayOutput {
+	return o
+}
+
+func (o GetGradientaiCustomModelsSortArrayOutput) Index(i pulumi.IntInput) GetGradientaiCustomModelsSortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGradientaiCustomModelsSort {
+		return vs[0].([]GetGradientaiCustomModelsSort)[vs[1].(int)]
+	}).(GetGradientaiCustomModelsSortOutput)
+}
+
 type GetGradientaiIndexingJobDataSourcesIndexedDataSource struct {
 	// Timestamp when data source completed indexing
 	CompletedAt string `pulumi:"completedAt"`
@@ -29368,6 +31501,139 @@ func (o GetKubernetesClusterControlPlaneFirewallArrayOutput) Index(i pulumi.IntI
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKubernetesClusterControlPlaneFirewall {
 		return vs[0].([]GetKubernetesClusterControlPlaneFirewall)[vs[1].(int)]
 	}).(GetKubernetesClusterControlPlaneFirewallOutput)
+}
+
+type GetKubernetesClusterCorednsAutoscaler struct {
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetKubernetesClusterCorednsAutoscalerInput is an input type that accepts GetKubernetesClusterCorednsAutoscalerArgs and GetKubernetesClusterCorednsAutoscalerOutput values.
+// You can construct a concrete instance of `GetKubernetesClusterCorednsAutoscalerInput` via:
+//
+//	GetKubernetesClusterCorednsAutoscalerArgs{...}
+type GetKubernetesClusterCorednsAutoscalerInput interface {
+	pulumi.Input
+
+	ToGetKubernetesClusterCorednsAutoscalerOutput() GetKubernetesClusterCorednsAutoscalerOutput
+	ToGetKubernetesClusterCorednsAutoscalerOutputWithContext(context.Context) GetKubernetesClusterCorednsAutoscalerOutput
+}
+
+type GetKubernetesClusterCorednsAutoscalerArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetKubernetesClusterCorednsAutoscalerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesClusterCorednsAutoscaler)(nil)).Elem()
+}
+
+func (i GetKubernetesClusterCorednsAutoscalerArgs) ToGetKubernetesClusterCorednsAutoscalerOutput() GetKubernetesClusterCorednsAutoscalerOutput {
+	return i.ToGetKubernetesClusterCorednsAutoscalerOutputWithContext(context.Background())
+}
+
+func (i GetKubernetesClusterCorednsAutoscalerArgs) ToGetKubernetesClusterCorednsAutoscalerOutputWithContext(ctx context.Context) GetKubernetesClusterCorednsAutoscalerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesClusterCorednsAutoscalerOutput)
+}
+
+func (i GetKubernetesClusterCorednsAutoscalerArgs) ToGetKubernetesClusterCorednsAutoscalerPtrOutput() GetKubernetesClusterCorednsAutoscalerPtrOutput {
+	return i.ToGetKubernetesClusterCorednsAutoscalerPtrOutputWithContext(context.Background())
+}
+
+func (i GetKubernetesClusterCorednsAutoscalerArgs) ToGetKubernetesClusterCorednsAutoscalerPtrOutputWithContext(ctx context.Context) GetKubernetesClusterCorednsAutoscalerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesClusterCorednsAutoscalerOutput).ToGetKubernetesClusterCorednsAutoscalerPtrOutputWithContext(ctx)
+}
+
+// GetKubernetesClusterCorednsAutoscalerPtrInput is an input type that accepts GetKubernetesClusterCorednsAutoscalerArgs, GetKubernetesClusterCorednsAutoscalerPtr and GetKubernetesClusterCorednsAutoscalerPtrOutput values.
+// You can construct a concrete instance of `GetKubernetesClusterCorednsAutoscalerPtrInput` via:
+//
+//	        GetKubernetesClusterCorednsAutoscalerArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetKubernetesClusterCorednsAutoscalerPtrInput interface {
+	pulumi.Input
+
+	ToGetKubernetesClusterCorednsAutoscalerPtrOutput() GetKubernetesClusterCorednsAutoscalerPtrOutput
+	ToGetKubernetesClusterCorednsAutoscalerPtrOutputWithContext(context.Context) GetKubernetesClusterCorednsAutoscalerPtrOutput
+}
+
+type getKubernetesClusterCorednsAutoscalerPtrType GetKubernetesClusterCorednsAutoscalerArgs
+
+func GetKubernetesClusterCorednsAutoscalerPtr(v *GetKubernetesClusterCorednsAutoscalerArgs) GetKubernetesClusterCorednsAutoscalerPtrInput {
+	return (*getKubernetesClusterCorednsAutoscalerPtrType)(v)
+}
+
+func (*getKubernetesClusterCorednsAutoscalerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetKubernetesClusterCorednsAutoscaler)(nil)).Elem()
+}
+
+func (i *getKubernetesClusterCorednsAutoscalerPtrType) ToGetKubernetesClusterCorednsAutoscalerPtrOutput() GetKubernetesClusterCorednsAutoscalerPtrOutput {
+	return i.ToGetKubernetesClusterCorednsAutoscalerPtrOutputWithContext(context.Background())
+}
+
+func (i *getKubernetesClusterCorednsAutoscalerPtrType) ToGetKubernetesClusterCorednsAutoscalerPtrOutputWithContext(ctx context.Context) GetKubernetesClusterCorednsAutoscalerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesClusterCorednsAutoscalerPtrOutput)
+}
+
+type GetKubernetesClusterCorednsAutoscalerOutput struct{ *pulumi.OutputState }
+
+func (GetKubernetesClusterCorednsAutoscalerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesClusterCorednsAutoscaler)(nil)).Elem()
+}
+
+func (o GetKubernetesClusterCorednsAutoscalerOutput) ToGetKubernetesClusterCorednsAutoscalerOutput() GetKubernetesClusterCorednsAutoscalerOutput {
+	return o
+}
+
+func (o GetKubernetesClusterCorednsAutoscalerOutput) ToGetKubernetesClusterCorednsAutoscalerOutputWithContext(ctx context.Context) GetKubernetesClusterCorednsAutoscalerOutput {
+	return o
+}
+
+func (o GetKubernetesClusterCorednsAutoscalerOutput) ToGetKubernetesClusterCorednsAutoscalerPtrOutput() GetKubernetesClusterCorednsAutoscalerPtrOutput {
+	return o.ToGetKubernetesClusterCorednsAutoscalerPtrOutputWithContext(context.Background())
+}
+
+func (o GetKubernetesClusterCorednsAutoscalerOutput) ToGetKubernetesClusterCorednsAutoscalerPtrOutputWithContext(ctx context.Context) GetKubernetesClusterCorednsAutoscalerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetKubernetesClusterCorednsAutoscaler) *GetKubernetesClusterCorednsAutoscaler {
+		return &v
+	}).(GetKubernetesClusterCorednsAutoscalerPtrOutput)
+}
+
+func (o GetKubernetesClusterCorednsAutoscalerOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetKubernetesClusterCorednsAutoscaler) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetKubernetesClusterCorednsAutoscalerPtrOutput struct{ *pulumi.OutputState }
+
+func (GetKubernetesClusterCorednsAutoscalerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetKubernetesClusterCorednsAutoscaler)(nil)).Elem()
+}
+
+func (o GetKubernetesClusterCorednsAutoscalerPtrOutput) ToGetKubernetesClusterCorednsAutoscalerPtrOutput() GetKubernetesClusterCorednsAutoscalerPtrOutput {
+	return o
+}
+
+func (o GetKubernetesClusterCorednsAutoscalerPtrOutput) ToGetKubernetesClusterCorednsAutoscalerPtrOutputWithContext(ctx context.Context) GetKubernetesClusterCorednsAutoscalerPtrOutput {
+	return o
+}
+
+func (o GetKubernetesClusterCorednsAutoscalerPtrOutput) Elem() GetKubernetesClusterCorednsAutoscalerOutput {
+	return o.ApplyT(func(v *GetKubernetesClusterCorednsAutoscaler) GetKubernetesClusterCorednsAutoscaler {
+		if v != nil {
+			return *v
+		}
+		var ret GetKubernetesClusterCorednsAutoscaler
+		return ret
+	}).(GetKubernetesClusterCorednsAutoscalerOutput)
+}
+
+func (o GetKubernetesClusterCorednsAutoscalerPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetKubernetesClusterCorednsAutoscaler) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 type GetKubernetesClusterKubeConfig struct {
@@ -34873,6 +37139,18 @@ func (o GetVpcNatGatewayVpcArrayOutput) Index(i pulumi.IntInput) GetVpcNatGatewa
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentParentAgentInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArrayInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArrayInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArrayInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArrayInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArrayInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArrayInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentArrayInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentTemplateInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentTemplateArgs{})
@@ -35177,6 +37455,24 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGradientaiAgentsFilterArrayInput)(nil)).Elem(), GetGradientaiAgentsFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGradientaiAgentsSortInput)(nil)).Elem(), GetGradientaiAgentsSortArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGradientaiAgentsSortArrayInput)(nil)).Elem(), GetGradientaiAgentsSortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGradientaiCustomModelActiveDeploymentInput)(nil)).Elem(), GetGradientaiCustomModelActiveDeploymentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGradientaiCustomModelActiveDeploymentArrayInput)(nil)).Elem(), GetGradientaiCustomModelActiveDeploymentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGradientaiCustomModelActiveDeploymentEndpointInput)(nil)).Elem(), GetGradientaiCustomModelActiveDeploymentEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGradientaiCustomModelActiveDeploymentEndpointArrayInput)(nil)).Elem(), GetGradientaiCustomModelActiveDeploymentEndpointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGradientaiCustomModelSourceRefInput)(nil)).Elem(), GetGradientaiCustomModelSourceRefArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGradientaiCustomModelSourceRefArrayInput)(nil)).Elem(), GetGradientaiCustomModelSourceRefArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGradientaiCustomModelsCustomModelInput)(nil)).Elem(), GetGradientaiCustomModelsCustomModelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGradientaiCustomModelsCustomModelArrayInput)(nil)).Elem(), GetGradientaiCustomModelsCustomModelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGradientaiCustomModelsCustomModelActiveDeploymentInput)(nil)).Elem(), GetGradientaiCustomModelsCustomModelActiveDeploymentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGradientaiCustomModelsCustomModelActiveDeploymentArrayInput)(nil)).Elem(), GetGradientaiCustomModelsCustomModelActiveDeploymentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGradientaiCustomModelsCustomModelActiveDeploymentEndpointInput)(nil)).Elem(), GetGradientaiCustomModelsCustomModelActiveDeploymentEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGradientaiCustomModelsCustomModelActiveDeploymentEndpointArrayInput)(nil)).Elem(), GetGradientaiCustomModelsCustomModelActiveDeploymentEndpointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGradientaiCustomModelsCustomModelSourceRefInput)(nil)).Elem(), GetGradientaiCustomModelsCustomModelSourceRefArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGradientaiCustomModelsCustomModelSourceRefArrayInput)(nil)).Elem(), GetGradientaiCustomModelsCustomModelSourceRefArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGradientaiCustomModelsFilterInput)(nil)).Elem(), GetGradientaiCustomModelsFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGradientaiCustomModelsFilterArrayInput)(nil)).Elem(), GetGradientaiCustomModelsFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGradientaiCustomModelsSortInput)(nil)).Elem(), GetGradientaiCustomModelsSortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGradientaiCustomModelsSortArrayInput)(nil)).Elem(), GetGradientaiCustomModelsSortArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGradientaiIndexingJobDataSourcesIndexedDataSourceInput)(nil)).Elem(), GetGradientaiIndexingJobDataSourcesIndexedDataSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGradientaiIndexingJobDataSourcesIndexedDataSourceArrayInput)(nil)).Elem(), GetGradientaiIndexingJobDataSourcesIndexedDataSourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGradientaiKnowledgeBaseDataSourcesDatasourceInput)(nil)).Elem(), GetGradientaiKnowledgeBaseDataSourcesDatasourceArgs{})
@@ -35251,6 +37547,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterClusterAutoscalerConfigurationArrayInput)(nil)).Elem(), GetKubernetesClusterClusterAutoscalerConfigurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterControlPlaneFirewallInput)(nil)).Elem(), GetKubernetesClusterControlPlaneFirewallArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterControlPlaneFirewallArrayInput)(nil)).Elem(), GetKubernetesClusterControlPlaneFirewallArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterCorednsAutoscalerInput)(nil)).Elem(), GetKubernetesClusterCorednsAutoscalerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterCorednsAutoscalerPtrInput)(nil)).Elem(), GetKubernetesClusterCorednsAutoscalerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterKubeConfigInput)(nil)).Elem(), GetKubernetesClusterKubeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterKubeConfigArrayInput)(nil)).Elem(), GetKubernetesClusterKubeConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterMaintenancePolicyInput)(nil)).Elem(), GetKubernetesClusterMaintenancePolicyArgs{})
@@ -35335,6 +37633,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcNatGatewayEgressPublicGatewayArrayInput)(nil)).Elem(), GetVpcNatGatewayEgressPublicGatewayArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcNatGatewayVpcInput)(nil)).Elem(), GetVpcNatGatewayVpcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcNatGatewayVpcArrayInput)(nil)).Elem(), GetVpcNatGatewayVpcArray{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArrayOutput{})
 	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentOutput{})
 	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentArrayOutput{})
 	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentTemplateOutput{})
@@ -35639,6 +37949,24 @@ func init() {
 	pulumi.RegisterOutputType(GetGradientaiAgentsFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetGradientaiAgentsSortOutput{})
 	pulumi.RegisterOutputType(GetGradientaiAgentsSortArrayOutput{})
+	pulumi.RegisterOutputType(GetGradientaiCustomModelActiveDeploymentOutput{})
+	pulumi.RegisterOutputType(GetGradientaiCustomModelActiveDeploymentArrayOutput{})
+	pulumi.RegisterOutputType(GetGradientaiCustomModelActiveDeploymentEndpointOutput{})
+	pulumi.RegisterOutputType(GetGradientaiCustomModelActiveDeploymentEndpointArrayOutput{})
+	pulumi.RegisterOutputType(GetGradientaiCustomModelSourceRefOutput{})
+	pulumi.RegisterOutputType(GetGradientaiCustomModelSourceRefArrayOutput{})
+	pulumi.RegisterOutputType(GetGradientaiCustomModelsCustomModelOutput{})
+	pulumi.RegisterOutputType(GetGradientaiCustomModelsCustomModelArrayOutput{})
+	pulumi.RegisterOutputType(GetGradientaiCustomModelsCustomModelActiveDeploymentOutput{})
+	pulumi.RegisterOutputType(GetGradientaiCustomModelsCustomModelActiveDeploymentArrayOutput{})
+	pulumi.RegisterOutputType(GetGradientaiCustomModelsCustomModelActiveDeploymentEndpointOutput{})
+	pulumi.RegisterOutputType(GetGradientaiCustomModelsCustomModelActiveDeploymentEndpointArrayOutput{})
+	pulumi.RegisterOutputType(GetGradientaiCustomModelsCustomModelSourceRefOutput{})
+	pulumi.RegisterOutputType(GetGradientaiCustomModelsCustomModelSourceRefArrayOutput{})
+	pulumi.RegisterOutputType(GetGradientaiCustomModelsFilterOutput{})
+	pulumi.RegisterOutputType(GetGradientaiCustomModelsFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetGradientaiCustomModelsSortOutput{})
+	pulumi.RegisterOutputType(GetGradientaiCustomModelsSortArrayOutput{})
 	pulumi.RegisterOutputType(GetGradientaiIndexingJobDataSourcesIndexedDataSourceOutput{})
 	pulumi.RegisterOutputType(GetGradientaiIndexingJobDataSourcesIndexedDataSourceArrayOutput{})
 	pulumi.RegisterOutputType(GetGradientaiKnowledgeBaseDataSourcesDatasourceOutput{})
@@ -35713,6 +38041,8 @@ func init() {
 	pulumi.RegisterOutputType(GetKubernetesClusterClusterAutoscalerConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(GetKubernetesClusterControlPlaneFirewallOutput{})
 	pulumi.RegisterOutputType(GetKubernetesClusterControlPlaneFirewallArrayOutput{})
+	pulumi.RegisterOutputType(GetKubernetesClusterCorednsAutoscalerOutput{})
+	pulumi.RegisterOutputType(GetKubernetesClusterCorednsAutoscalerPtrOutput{})
 	pulumi.RegisterOutputType(GetKubernetesClusterKubeConfigOutput{})
 	pulumi.RegisterOutputType(GetKubernetesClusterKubeConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetKubernetesClusterMaintenancePolicyOutput{})

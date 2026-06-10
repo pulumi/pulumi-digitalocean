@@ -206,6 +206,13 @@ namespace Pulumi.DigitalOcean
         /// Database droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
         /// </summary>
         public readonly string Size;
+        /// <summary>
+        /// Storage autoscaling configuration for the database cluster.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetDatabaseClusterStorageAutoscaleResult> StorageAutoscales;
+        /// <summary>
+        /// The disk size, in MiB, allocated to the cluster.
+        /// </summary>
         public readonly string StorageSizeMib;
         public readonly ImmutableArray<string> Tags;
         /// <summary>
@@ -283,6 +290,8 @@ namespace Pulumi.DigitalOcean
 
             string size,
 
+            ImmutableArray<Outputs.GetDatabaseClusterStorageAutoscaleResult> storageAutoscales,
+
             string storageSizeMib,
 
             ImmutableArray<string> tags,
@@ -323,6 +332,7 @@ namespace Pulumi.DigitalOcean
             ProjectId = projectId;
             Region = region;
             Size = size;
+            StorageAutoscales = storageAutoscales;
             StorageSizeMib = storageSizeMib;
             Tags = tags;
             UiDatabase = uiDatabase;
