@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.digitalocean.inputs.GetKubernetesClusterAmdGpuDeviceMetricsExporterPlugin;
 import com.pulumi.digitalocean.inputs.GetKubernetesClusterAmdGpuDevicePlugin;
 import com.pulumi.digitalocean.inputs.GetKubernetesClusterClusterAutoscalerConfiguration;
+import com.pulumi.digitalocean.inputs.GetKubernetesClusterCorednsAutoscaler;
 import com.pulumi.digitalocean.inputs.GetKubernetesClusterNvidiaGpuDevicePlugin;
 import com.pulumi.digitalocean.inputs.GetKubernetesClusterRdmaSharedDevicePlugin;
 import com.pulumi.digitalocean.inputs.GetKubernetesClusterRoutingAgent;
@@ -43,6 +44,13 @@ public final class GetKubernetesClusterPlainArgs extends com.pulumi.resources.In
 
     public Optional<List<GetKubernetesClusterClusterAutoscalerConfiguration>> clusterAutoscalerConfigurations() {
         return Optional.ofNullable(this.clusterAutoscalerConfigurations);
+    }
+
+    @Import(name="corednsAutoscaler")
+    private @Nullable GetKubernetesClusterCorednsAutoscaler corednsAutoscaler;
+
+    public Optional<GetKubernetesClusterCorednsAutoscaler> corednsAutoscaler() {
+        return Optional.ofNullable(this.corednsAutoscaler);
     }
 
     @Import(name="kubeconfigExpireSeconds")
@@ -116,6 +124,7 @@ public final class GetKubernetesClusterPlainArgs extends com.pulumi.resources.In
         this.amdGpuDeviceMetricsExporterPlugin = $.amdGpuDeviceMetricsExporterPlugin;
         this.amdGpuDevicePlugin = $.amdGpuDevicePlugin;
         this.clusterAutoscalerConfigurations = $.clusterAutoscalerConfigurations;
+        this.corednsAutoscaler = $.corednsAutoscaler;
         this.kubeconfigExpireSeconds = $.kubeconfigExpireSeconds;
         this.name = $.name;
         this.nvidiaGpuDevicePlugin = $.nvidiaGpuDevicePlugin;
@@ -160,6 +169,11 @@ public final class GetKubernetesClusterPlainArgs extends com.pulumi.resources.In
 
         public Builder clusterAutoscalerConfigurations(GetKubernetesClusterClusterAutoscalerConfiguration... clusterAutoscalerConfigurations) {
             return clusterAutoscalerConfigurations(List.of(clusterAutoscalerConfigurations));
+        }
+
+        public Builder corednsAutoscaler(@Nullable GetKubernetesClusterCorednsAutoscaler corednsAutoscaler) {
+            $.corednsAutoscaler = corednsAutoscaler;
+            return this;
         }
 
         public Builder kubeconfigExpireSeconds(@Nullable Integer kubeconfigExpireSeconds) {

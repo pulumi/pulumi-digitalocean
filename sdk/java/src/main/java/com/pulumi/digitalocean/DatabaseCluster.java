@@ -12,6 +12,7 @@ import com.pulumi.digitalocean.Utilities;
 import com.pulumi.digitalocean.inputs.DatabaseClusterState;
 import com.pulumi.digitalocean.outputs.DatabaseClusterBackupRestore;
 import com.pulumi.digitalocean.outputs.DatabaseClusterMaintenanceWindow;
+import com.pulumi.digitalocean.outputs.DatabaseClusterStorageAutoscale;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -569,6 +570,20 @@ public class DatabaseCluster extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> sqlMode() {
         return Codegen.optional(this.sqlMode);
+    }
+    /**
+     * Storage autoscaling configuration for the database cluster.
+     * 
+     */
+    @Export(name="storageAutoscale", refs={DatabaseClusterStorageAutoscale.class}, tree="[0]")
+    private Output</* @Nullable */ DatabaseClusterStorageAutoscale> storageAutoscale;
+
+    /**
+     * @return Storage autoscaling configuration for the database cluster.
+     * 
+     */
+    public Output<Optional<DatabaseClusterStorageAutoscale>> storageAutoscale() {
+        return Codegen.optional(this.storageAutoscale);
     }
     /**
      * Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostgreSQL clusters based on predefined ranges for each slug/droplet size.

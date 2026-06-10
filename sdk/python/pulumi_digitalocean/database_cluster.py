@@ -33,6 +33,7 @@ class DatabaseClusterArgs:
                  private_network_uuid: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  sql_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_autoscale: pulumi.Input[Optional['DatabaseClusterStorageAutoscaleArgs']] = None,
                  storage_size_mib: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  version: pulumi.Input[Optional[_builtins.str]] = None):
@@ -49,6 +50,7 @@ class DatabaseClusterArgs:
         :param pulumi.Input[_builtins.str] private_network_uuid: The ID of the VPC where the database cluster will be located.
         :param pulumi.Input[_builtins.str] project_id: The ID of the project that the database cluster is assigned to. If excluded when creating a new database cluster, it will be assigned to your default project.
         :param pulumi.Input[_builtins.str] sql_mode: A comma separated string specifying the  SQL modes for a MySQL cluster.
+        :param pulumi.Input['DatabaseClusterStorageAutoscaleArgs'] storage_autoscale: Storage autoscaling configuration for the database cluster.
         :param pulumi.Input[_builtins.str] storage_size_mib: Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostgreSQL clusters based on predefined ranges for each slug/droplet size.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A list of tag names to be applied to the database cluster.
         :param pulumi.Input[_builtins.str] version: Engine version used by the cluster (ex. `14` for PostgreSQL 14).
@@ -72,6 +74,8 @@ class DatabaseClusterArgs:
             pulumi.set(__self__, "project_id", project_id)
         if sql_mode is not None:
             pulumi.set(__self__, "sql_mode", sql_mode)
+        if storage_autoscale is not None:
+            pulumi.set(__self__, "storage_autoscale", storage_autoscale)
         if storage_size_mib is not None:
             pulumi.set(__self__, "storage_size_mib", storage_size_mib)
         if tags is not None:
@@ -209,6 +213,18 @@ class DatabaseClusterArgs:
         pulumi.set(self, "sql_mode", value)
 
     @_builtins.property
+    @pulumi.getter(name="storageAutoscale")
+    def storage_autoscale(self) -> pulumi.Input[Optional['DatabaseClusterStorageAutoscaleArgs']]:
+        """
+        Storage autoscaling configuration for the database cluster.
+        """
+        return pulumi.get(self, "storage_autoscale")
+
+    @storage_autoscale.setter
+    def storage_autoscale(self, value: pulumi.Input[Optional['DatabaseClusterStorageAutoscaleArgs']]):
+        pulumi.set(self, "storage_autoscale", value)
+
+    @_builtins.property
     @pulumi.getter(name="storageSizeMib")
     def storage_size_mib(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -268,6 +284,7 @@ class _DatabaseClusterState:
                  region: pulumi.Input[Optional[Union[_builtins.str, 'Region']]] = None,
                  size: pulumi.Input[Optional[Union[_builtins.str, 'DatabaseSlug']]] = None,
                  sql_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_autoscale: pulumi.Input[Optional['DatabaseClusterStorageAutoscaleArgs']] = None,
                  storage_size_mib: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  ui_database: pulumi.Input[Optional[_builtins.str]] = None,
@@ -300,6 +317,7 @@ class _DatabaseClusterState:
         :param pulumi.Input[Union[_builtins.str, 'Region']] region: DigitalOcean region where the cluster will reside.
         :param pulumi.Input[Union[_builtins.str, 'DatabaseSlug']] size: Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See the DigitalOcean API for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Databases/operation/databases_list_options).
         :param pulumi.Input[_builtins.str] sql_mode: A comma separated string specifying the  SQL modes for a MySQL cluster.
+        :param pulumi.Input['DatabaseClusterStorageAutoscaleArgs'] storage_autoscale: Storage autoscaling configuration for the database cluster.
         :param pulumi.Input[_builtins.str] storage_size_mib: Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostgreSQL clusters based on predefined ranges for each slug/droplet size.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A list of tag names to be applied to the database cluster.
         :param pulumi.Input[_builtins.str] ui_database: Name of the OpenSearch dashboard db.
@@ -351,6 +369,8 @@ class _DatabaseClusterState:
             pulumi.set(__self__, "size", size)
         if sql_mode is not None:
             pulumi.set(__self__, "sql_mode", sql_mode)
+        if storage_autoscale is not None:
+            pulumi.set(__self__, "storage_autoscale", storage_autoscale)
         if storage_size_mib is not None:
             pulumi.set(__self__, "storage_size_mib", storage_size_mib)
         if tags is not None:
@@ -600,6 +620,18 @@ class _DatabaseClusterState:
         pulumi.set(self, "sql_mode", value)
 
     @_builtins.property
+    @pulumi.getter(name="storageAutoscale")
+    def storage_autoscale(self) -> pulumi.Input[Optional['DatabaseClusterStorageAutoscaleArgs']]:
+        """
+        Storage autoscaling configuration for the database cluster.
+        """
+        return pulumi.get(self, "storage_autoscale")
+
+    @storage_autoscale.setter
+    def storage_autoscale(self, value: pulumi.Input[Optional['DatabaseClusterStorageAutoscaleArgs']]):
+        pulumi.set(self, "storage_autoscale", value)
+
+    @_builtins.property
     @pulumi.getter(name="storageSizeMib")
     def storage_size_mib(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -750,6 +782,7 @@ class DatabaseCluster(pulumi.CustomResource):
                  region: pulumi.Input[Optional[Union[_builtins.str, 'Region']]] = None,
                  size: pulumi.Input[Optional[Union[_builtins.str, 'DatabaseSlug']]] = None,
                  sql_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_autoscale: pulumi.Input[Optional[Union['DatabaseClusterStorageAutoscaleArgs', 'DatabaseClusterStorageAutoscaleArgsDict']]] = None,
                  storage_size_mib: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  version: pulumi.Input[Optional[_builtins.str]] = None,
@@ -892,6 +925,7 @@ class DatabaseCluster(pulumi.CustomResource):
         :param pulumi.Input[Union[_builtins.str, 'Region']] region: DigitalOcean region where the cluster will reside.
         :param pulumi.Input[Union[_builtins.str, 'DatabaseSlug']] size: Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See the DigitalOcean API for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Databases/operation/databases_list_options).
         :param pulumi.Input[_builtins.str] sql_mode: A comma separated string specifying the  SQL modes for a MySQL cluster.
+        :param pulumi.Input[Union['DatabaseClusterStorageAutoscaleArgs', 'DatabaseClusterStorageAutoscaleArgsDict']] storage_autoscale: Storage autoscaling configuration for the database cluster.
         :param pulumi.Input[_builtins.str] storage_size_mib: Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostgreSQL clusters based on predefined ranges for each slug/droplet size.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A list of tag names to be applied to the database cluster.
         :param pulumi.Input[_builtins.str] version: Engine version used by the cluster (ex. `14` for PostgreSQL 14).
@@ -1055,6 +1089,7 @@ class DatabaseCluster(pulumi.CustomResource):
                  region: pulumi.Input[Optional[Union[_builtins.str, 'Region']]] = None,
                  size: pulumi.Input[Optional[Union[_builtins.str, 'DatabaseSlug']]] = None,
                  sql_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_autoscale: pulumi.Input[Optional[Union['DatabaseClusterStorageAutoscaleArgs', 'DatabaseClusterStorageAutoscaleArgsDict']]] = None,
                  storage_size_mib: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  version: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1086,6 +1121,7 @@ class DatabaseCluster(pulumi.CustomResource):
                 raise TypeError("Missing required property 'size'")
             __props__.__dict__["size"] = size
             __props__.__dict__["sql_mode"] = sql_mode
+            __props__.__dict__["storage_autoscale"] = storage_autoscale
             __props__.__dict__["storage_size_mib"] = storage_size_mib
             __props__.__dict__["tags"] = tags
             __props__.__dict__["version"] = version
@@ -1136,6 +1172,7 @@ class DatabaseCluster(pulumi.CustomResource):
             region: pulumi.Input[Optional[Union[_builtins.str, 'Region']]] = None,
             size: pulumi.Input[Optional[Union[_builtins.str, 'DatabaseSlug']]] = None,
             sql_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_autoscale: pulumi.Input[Optional[Union['DatabaseClusterStorageAutoscaleArgs', 'DatabaseClusterStorageAutoscaleArgsDict']]] = None,
             storage_size_mib: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             ui_database: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1172,6 +1209,7 @@ class DatabaseCluster(pulumi.CustomResource):
         :param pulumi.Input[Union[_builtins.str, 'Region']] region: DigitalOcean region where the cluster will reside.
         :param pulumi.Input[Union[_builtins.str, 'DatabaseSlug']] size: Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See the DigitalOcean API for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Databases/operation/databases_list_options).
         :param pulumi.Input[_builtins.str] sql_mode: A comma separated string specifying the  SQL modes for a MySQL cluster.
+        :param pulumi.Input[Union['DatabaseClusterStorageAutoscaleArgs', 'DatabaseClusterStorageAutoscaleArgsDict']] storage_autoscale: Storage autoscaling configuration for the database cluster.
         :param pulumi.Input[_builtins.str] storage_size_mib: Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostgreSQL clusters based on predefined ranges for each slug/droplet size.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A list of tag names to be applied to the database cluster.
         :param pulumi.Input[_builtins.str] ui_database: Name of the OpenSearch dashboard db.
@@ -1208,6 +1246,7 @@ class DatabaseCluster(pulumi.CustomResource):
         __props__.__dict__["region"] = region
         __props__.__dict__["size"] = size
         __props__.__dict__["sql_mode"] = sql_mode
+        __props__.__dict__["storage_autoscale"] = storage_autoscale
         __props__.__dict__["storage_size_mib"] = storage_size_mib
         __props__.__dict__["tags"] = tags
         __props__.__dict__["ui_database"] = ui_database
@@ -1369,6 +1408,14 @@ class DatabaseCluster(pulumi.CustomResource):
         A comma separated string specifying the  SQL modes for a MySQL cluster.
         """
         return pulumi.get(self, "sql_mode")
+
+    @_builtins.property
+    @pulumi.getter(name="storageAutoscale")
+    def storage_autoscale(self) -> pulumi.Output[Optional['outputs.DatabaseClusterStorageAutoscale']]:
+        """
+        Storage autoscaling configuration for the database cluster.
+        """
+        return pulumi.get(self, "storage_autoscale")
 
     @_builtins.property
     @pulumi.getter(name="storageSizeMib")

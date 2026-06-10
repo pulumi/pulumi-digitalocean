@@ -31,6 +31,7 @@ class KubernetesClusterArgs:
                  cluster_autoscaler_configurations: pulumi.Input[Optional[Sequence[pulumi.Input['KubernetesClusterClusterAutoscalerConfigurationArgs']]]] = None,
                  cluster_subnet: pulumi.Input[Optional[_builtins.str]] = None,
                  control_plane_firewall: pulumi.Input[Optional['KubernetesClusterControlPlaneFirewallArgs']] = None,
+                 coredns_autoscaler: pulumi.Input[Optional['KubernetesClusterCorednsAutoscalerArgs']] = None,
                  destroy_all_associated_resources: pulumi.Input[Optional[_builtins.bool]] = None,
                  ha: pulumi.Input[Optional[_builtins.bool]] = None,
                  kubeconfig_expire_seconds: pulumi.Input[Optional[_builtins.int]] = None,
@@ -44,7 +45,8 @@ class KubernetesClusterArgs:
                  ssos: pulumi.Input[Optional[Sequence[pulumi.Input['KubernetesClusterSsoArgs']]]] = None,
                  surge_upgrade: pulumi.Input[Optional[_builtins.bool]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vpc_uuid: pulumi.Input[Optional[_builtins.str]] = None):
+                 vpc_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 worker_subnet_uuid: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a KubernetesCluster resource.
 
@@ -54,9 +56,10 @@ class KubernetesClusterArgs:
         :param pulumi.Input['KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs'] amd_gpu_device_metrics_exporter_plugin: Block containing options for the AMD GPU device metrics exporter component.
         :param pulumi.Input['KubernetesClusterAmdGpuDevicePluginArgs'] amd_gpu_device_plugin: Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes.
         :param pulumi.Input[_builtins.bool] auto_upgrade: A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
-        :param pulumi.Input[Sequence[pulumi.Input['KubernetesClusterClusterAutoscalerConfigurationArgs']]] cluster_autoscaler_configurations: Block containing options for cluster auto-scaling.
+        :param pulumi.Input[Sequence[pulumi.Input['KubernetesClusterClusterAutoscalerConfigurationArgs']]] cluster_autoscaler_configurations: Block containing options for cluster auto-scaling. For more information.
         :param pulumi.Input[_builtins.str] cluster_subnet: The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
         :param pulumi.Input['KubernetesClusterControlPlaneFirewallArgs'] control_plane_firewall: A block representing the cluster's control plane firewall
+        :param pulumi.Input['KubernetesClusterCorednsAutoscalerArgs'] coredns_autoscaler: Block containing options for the CoreDNS Autoscaler component, which scales CoreDNS replicas in proportion to the cluster's size. Default: true (for 1.36.0 and later)
         :param pulumi.Input[_builtins.bool] destroy_all_associated_resources: **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
         :param pulumi.Input[_builtins.bool] ha: Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: true (for 1.36.0 and later)
         :param pulumi.Input[_builtins.int] kubeconfig_expire_seconds: The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
@@ -66,9 +69,11 @@ class KubernetesClusterArgs:
         :param pulumi.Input[_builtins.bool] registry_integration: Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
         :param pulumi.Input['KubernetesClusterRoutingAgentArgs'] routing_agent: Block containing options for the routing-agent component. If not specified, the routing-agent component will not be installed in the cluster.
         :param pulumi.Input[_builtins.str] service_subnet: The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
+        :param pulumi.Input[Sequence[pulumi.Input['KubernetesClusterSsoArgs']]] ssos: Block containing Single Sign-On (SSO) configuration for the cluster using OpenID Connect (OIDC).
         :param pulumi.Input[_builtins.bool] surge_upgrade: Enable/disable surge upgrades for a cluster. Default: true
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A list of tag names to be applied to the Kubernetes cluster.
         :param pulumi.Input[_builtins.str] vpc_uuid: The ID of the VPC where the Kubernetes cluster will be located.
+        :param pulumi.Input[_builtins.str] worker_subnet_uuid: The ID of the VPC subnet for placing worker nodes. Must be a valid subnet in the cluster VPC. Requires that `vpc_uuid` is also set.
         """
         pulumi.set(__self__, "node_pool", node_pool)
         pulumi.set(__self__, "region", region)
@@ -85,6 +90,8 @@ class KubernetesClusterArgs:
             pulumi.set(__self__, "cluster_subnet", cluster_subnet)
         if control_plane_firewall is not None:
             pulumi.set(__self__, "control_plane_firewall", control_plane_firewall)
+        if coredns_autoscaler is not None:
+            pulumi.set(__self__, "coredns_autoscaler", coredns_autoscaler)
         if destroy_all_associated_resources is not None:
             pulumi.set(__self__, "destroy_all_associated_resources", destroy_all_associated_resources)
         if ha is not None:
@@ -113,6 +120,8 @@ class KubernetesClusterArgs:
             pulumi.set(__self__, "tags", tags)
         if vpc_uuid is not None:
             pulumi.set(__self__, "vpc_uuid", vpc_uuid)
+        if worker_subnet_uuid is not None:
+            pulumi.set(__self__, "worker_subnet_uuid", worker_subnet_uuid)
 
     @_builtins.property
     @pulumi.getter(name="nodePool")
@@ -190,7 +199,7 @@ class KubernetesClusterArgs:
     @pulumi.getter(name="clusterAutoscalerConfigurations")
     def cluster_autoscaler_configurations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['KubernetesClusterClusterAutoscalerConfigurationArgs']]]]:
         """
-        Block containing options for cluster auto-scaling.
+        Block containing options for cluster auto-scaling. For more information.
         """
         return pulumi.get(self, "cluster_autoscaler_configurations")
 
@@ -221,6 +230,18 @@ class KubernetesClusterArgs:
     @control_plane_firewall.setter
     def control_plane_firewall(self, value: pulumi.Input[Optional['KubernetesClusterControlPlaneFirewallArgs']]):
         pulumi.set(self, "control_plane_firewall", value)
+
+    @_builtins.property
+    @pulumi.getter(name="corednsAutoscaler")
+    def coredns_autoscaler(self) -> pulumi.Input[Optional['KubernetesClusterCorednsAutoscalerArgs']]:
+        """
+        Block containing options for the CoreDNS Autoscaler component, which scales CoreDNS replicas in proportion to the cluster's size. Default: true (for 1.36.0 and later)
+        """
+        return pulumi.get(self, "coredns_autoscaler")
+
+    @coredns_autoscaler.setter
+    def coredns_autoscaler(self, value: pulumi.Input[Optional['KubernetesClusterCorednsAutoscalerArgs']]):
+        pulumi.set(self, "coredns_autoscaler", value)
 
     @_builtins.property
     @pulumi.getter(name="destroyAllAssociatedResources")
@@ -342,6 +363,9 @@ class KubernetesClusterArgs:
     @_builtins.property
     @pulumi.getter
     def ssos(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['KubernetesClusterSsoArgs']]]]:
+        """
+        Block containing Single Sign-On (SSO) configuration for the cluster using OpenID Connect (OIDC).
+        """
         return pulumi.get(self, "ssos")
 
     @ssos.setter
@@ -384,6 +408,18 @@ class KubernetesClusterArgs:
     def vpc_uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_uuid", value)
 
+    @_builtins.property
+    @pulumi.getter(name="workerSubnetUuid")
+    def worker_subnet_uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the VPC subnet for placing worker nodes. Must be a valid subnet in the cluster VPC. Requires that `vpc_uuid` is also set.
+        """
+        return pulumi.get(self, "worker_subnet_uuid")
+
+    @worker_subnet_uuid.setter
+    def worker_subnet_uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "worker_subnet_uuid", value)
+
 
 @pulumi.input_type
 class _KubernetesClusterState:
@@ -395,6 +431,7 @@ class _KubernetesClusterState:
                  cluster_subnet: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_urn: pulumi.Input[Optional[_builtins.str]] = None,
                  control_plane_firewall: pulumi.Input[Optional['KubernetesClusterControlPlaneFirewallArgs']] = None,
+                 coredns_autoscaler: pulumi.Input[Optional['KubernetesClusterCorednsAutoscalerArgs']] = None,
                  created_at: pulumi.Input[Optional[_builtins.str]] = None,
                  destroy_all_associated_resources: pulumi.Input[Optional[_builtins.bool]] = None,
                  endpoint: pulumi.Input[Optional[_builtins.str]] = None,
@@ -417,17 +454,19 @@ class _KubernetesClusterState:
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  updated_at: pulumi.Input[Optional[_builtins.str]] = None,
                  version: pulumi.Input[Optional[_builtins.str]] = None,
-                 vpc_uuid: pulumi.Input[Optional[_builtins.str]] = None):
+                 vpc_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 worker_subnet_uuid: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering KubernetesCluster resources.
 
         :param pulumi.Input['KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs'] amd_gpu_device_metrics_exporter_plugin: Block containing options for the AMD GPU device metrics exporter component.
         :param pulumi.Input['KubernetesClusterAmdGpuDevicePluginArgs'] amd_gpu_device_plugin: Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes.
         :param pulumi.Input[_builtins.bool] auto_upgrade: A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
-        :param pulumi.Input[Sequence[pulumi.Input['KubernetesClusterClusterAutoscalerConfigurationArgs']]] cluster_autoscaler_configurations: Block containing options for cluster auto-scaling.
+        :param pulumi.Input[Sequence[pulumi.Input['KubernetesClusterClusterAutoscalerConfigurationArgs']]] cluster_autoscaler_configurations: Block containing options for cluster auto-scaling. For more information.
         :param pulumi.Input[_builtins.str] cluster_subnet: The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
         :param pulumi.Input[_builtins.str] cluster_urn: The uniform resource name (URN) for the Kubernetes cluster.
         :param pulumi.Input['KubernetesClusterControlPlaneFirewallArgs'] control_plane_firewall: A block representing the cluster's control plane firewall
+        :param pulumi.Input['KubernetesClusterCorednsAutoscalerArgs'] coredns_autoscaler: Block containing options for the CoreDNS Autoscaler component, which scales CoreDNS replicas in proportion to the cluster's size. Default: true (for 1.36.0 and later)
         :param pulumi.Input[_builtins.str] created_at: The date and time when the node was created.
         :param pulumi.Input[_builtins.bool] destroy_all_associated_resources: **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
         :param pulumi.Input[_builtins.str] endpoint: The base URL of the API server on the Kubernetes master node.
@@ -443,12 +482,14 @@ class _KubernetesClusterState:
         :param pulumi.Input[_builtins.bool] registry_integration: Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
         :param pulumi.Input['KubernetesClusterRoutingAgentArgs'] routing_agent: Block containing options for the routing-agent component. If not specified, the routing-agent component will not be installed in the cluster.
         :param pulumi.Input[_builtins.str] service_subnet: The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
+        :param pulumi.Input[Sequence[pulumi.Input['KubernetesClusterSsoArgs']]] ssos: Block containing Single Sign-On (SSO) configuration for the cluster using OpenID Connect (OIDC).
         :param pulumi.Input[_builtins.str] status: A string indicating the current status of the individual node.
         :param pulumi.Input[_builtins.bool] surge_upgrade: Enable/disable surge upgrades for a cluster. Default: true
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A list of tag names to be applied to the Kubernetes cluster.
         :param pulumi.Input[_builtins.str] updated_at: The date and time when the node was last updated.
         :param pulumi.Input[_builtins.str] version: The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
         :param pulumi.Input[_builtins.str] vpc_uuid: The ID of the VPC where the Kubernetes cluster will be located.
+        :param pulumi.Input[_builtins.str] worker_subnet_uuid: The ID of the VPC subnet for placing worker nodes. Must be a valid subnet in the cluster VPC. Requires that `vpc_uuid` is also set.
         """
         if amd_gpu_device_metrics_exporter_plugin is not None:
             pulumi.set(__self__, "amd_gpu_device_metrics_exporter_plugin", amd_gpu_device_metrics_exporter_plugin)
@@ -464,6 +505,8 @@ class _KubernetesClusterState:
             pulumi.set(__self__, "cluster_urn", cluster_urn)
         if control_plane_firewall is not None:
             pulumi.set(__self__, "control_plane_firewall", control_plane_firewall)
+        if coredns_autoscaler is not None:
+            pulumi.set(__self__, "coredns_autoscaler", coredns_autoscaler)
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
         if destroy_all_associated_resources is not None:
@@ -510,6 +553,8 @@ class _KubernetesClusterState:
             pulumi.set(__self__, "version", version)
         if vpc_uuid is not None:
             pulumi.set(__self__, "vpc_uuid", vpc_uuid)
+        if worker_subnet_uuid is not None:
+            pulumi.set(__self__, "worker_subnet_uuid", worker_subnet_uuid)
 
     @_builtins.property
     @pulumi.getter(name="amdGpuDeviceMetricsExporterPlugin")
@@ -551,7 +596,7 @@ class _KubernetesClusterState:
     @pulumi.getter(name="clusterAutoscalerConfigurations")
     def cluster_autoscaler_configurations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['KubernetesClusterClusterAutoscalerConfigurationArgs']]]]:
         """
-        Block containing options for cluster auto-scaling.
+        Block containing options for cluster auto-scaling. For more information.
         """
         return pulumi.get(self, "cluster_autoscaler_configurations")
 
@@ -594,6 +639,18 @@ class _KubernetesClusterState:
     @control_plane_firewall.setter
     def control_plane_firewall(self, value: pulumi.Input[Optional['KubernetesClusterControlPlaneFirewallArgs']]):
         pulumi.set(self, "control_plane_firewall", value)
+
+    @_builtins.property
+    @pulumi.getter(name="corednsAutoscaler")
+    def coredns_autoscaler(self) -> pulumi.Input[Optional['KubernetesClusterCorednsAutoscalerArgs']]:
+        """
+        Block containing options for the CoreDNS Autoscaler component, which scales CoreDNS replicas in proportion to the cluster's size. Default: true (for 1.36.0 and later)
+        """
+        return pulumi.get(self, "coredns_autoscaler")
+
+    @coredns_autoscaler.setter
+    def coredns_autoscaler(self, value: pulumi.Input[Optional['KubernetesClusterCorednsAutoscalerArgs']]):
+        pulumi.set(self, "coredns_autoscaler", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
@@ -787,6 +844,9 @@ class _KubernetesClusterState:
     @_builtins.property
     @pulumi.getter
     def ssos(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['KubernetesClusterSsoArgs']]]]:
+        """
+        Block containing Single Sign-On (SSO) configuration for the cluster using OpenID Connect (OIDC).
+        """
         return pulumi.get(self, "ssos")
 
     @ssos.setter
@@ -865,6 +925,18 @@ class _KubernetesClusterState:
     def vpc_uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_uuid", value)
 
+    @_builtins.property
+    @pulumi.getter(name="workerSubnetUuid")
+    def worker_subnet_uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the VPC subnet for placing worker nodes. Must be a valid subnet in the cluster VPC. Requires that `vpc_uuid` is also set.
+        """
+        return pulumi.get(self, "worker_subnet_uuid")
+
+    @worker_subnet_uuid.setter
+    def worker_subnet_uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "worker_subnet_uuid", value)
+
 
 @pulumi.type_token("digitalocean:index/kubernetesCluster:KubernetesCluster")
 class KubernetesCluster(pulumi.CustomResource):
@@ -878,6 +950,7 @@ class KubernetesCluster(pulumi.CustomResource):
                  cluster_autoscaler_configurations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KubernetesClusterClusterAutoscalerConfigurationArgs', 'KubernetesClusterClusterAutoscalerConfigurationArgsDict']]]]] = None,
                  cluster_subnet: pulumi.Input[Optional[_builtins.str]] = None,
                  control_plane_firewall: pulumi.Input[Optional[Union['KubernetesClusterControlPlaneFirewallArgs', 'KubernetesClusterControlPlaneFirewallArgsDict']]] = None,
+                 coredns_autoscaler: pulumi.Input[Optional[Union['KubernetesClusterCorednsAutoscalerArgs', 'KubernetesClusterCorednsAutoscalerArgsDict']]] = None,
                  destroy_all_associated_resources: pulumi.Input[Optional[_builtins.bool]] = None,
                  ha: pulumi.Input[Optional[_builtins.bool]] = None,
                  kubeconfig_expire_seconds: pulumi.Input[Optional[_builtins.int]] = None,
@@ -895,6 +968,7 @@ class KubernetesCluster(pulumi.CustomResource):
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  version: pulumi.Input[Optional[_builtins.str]] = None,
                  vpc_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 worker_subnet_uuid: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a DigitalOcean Kubernetes cluster resource. This can be used to create, delete, and modify clusters. For more information see the [official documentation](https://www.digitalocean.com/docs/kubernetes/).
@@ -1037,9 +1111,10 @@ class KubernetesCluster(pulumi.CustomResource):
         :param pulumi.Input[Union['KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs', 'KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgsDict']] amd_gpu_device_metrics_exporter_plugin: Block containing options for the AMD GPU device metrics exporter component.
         :param pulumi.Input[Union['KubernetesClusterAmdGpuDevicePluginArgs', 'KubernetesClusterAmdGpuDevicePluginArgsDict']] amd_gpu_device_plugin: Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes.
         :param pulumi.Input[_builtins.bool] auto_upgrade: A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesClusterClusterAutoscalerConfigurationArgs', 'KubernetesClusterClusterAutoscalerConfigurationArgsDict']]]] cluster_autoscaler_configurations: Block containing options for cluster auto-scaling.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesClusterClusterAutoscalerConfigurationArgs', 'KubernetesClusterClusterAutoscalerConfigurationArgsDict']]]] cluster_autoscaler_configurations: Block containing options for cluster auto-scaling. For more information.
         :param pulumi.Input[_builtins.str] cluster_subnet: The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
         :param pulumi.Input[Union['KubernetesClusterControlPlaneFirewallArgs', 'KubernetesClusterControlPlaneFirewallArgsDict']] control_plane_firewall: A block representing the cluster's control plane firewall
+        :param pulumi.Input[Union['KubernetesClusterCorednsAutoscalerArgs', 'KubernetesClusterCorednsAutoscalerArgsDict']] coredns_autoscaler: Block containing options for the CoreDNS Autoscaler component, which scales CoreDNS replicas in proportion to the cluster's size. Default: true (for 1.36.0 and later)
         :param pulumi.Input[_builtins.bool] destroy_all_associated_resources: **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
         :param pulumi.Input[_builtins.bool] ha: Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: true (for 1.36.0 and later)
         :param pulumi.Input[_builtins.int] kubeconfig_expire_seconds: The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
@@ -1051,10 +1126,12 @@ class KubernetesCluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] registry_integration: Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
         :param pulumi.Input[Union['KubernetesClusterRoutingAgentArgs', 'KubernetesClusterRoutingAgentArgsDict']] routing_agent: Block containing options for the routing-agent component. If not specified, the routing-agent component will not be installed in the cluster.
         :param pulumi.Input[_builtins.str] service_subnet: The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesClusterSsoArgs', 'KubernetesClusterSsoArgsDict']]]] ssos: Block containing Single Sign-On (SSO) configuration for the cluster using OpenID Connect (OIDC).
         :param pulumi.Input[_builtins.bool] surge_upgrade: Enable/disable surge upgrades for a cluster. Default: true
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A list of tag names to be applied to the Kubernetes cluster.
         :param pulumi.Input[_builtins.str] version: The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
         :param pulumi.Input[_builtins.str] vpc_uuid: The ID of the VPC where the Kubernetes cluster will be located.
+        :param pulumi.Input[_builtins.str] worker_subnet_uuid: The ID of the VPC subnet for placing worker nodes. Must be a valid subnet in the cluster VPC. Requires that `vpc_uuid` is also set.
         """
         ...
     @overload
@@ -1219,6 +1296,7 @@ class KubernetesCluster(pulumi.CustomResource):
                  cluster_autoscaler_configurations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KubernetesClusterClusterAutoscalerConfigurationArgs', 'KubernetesClusterClusterAutoscalerConfigurationArgsDict']]]]] = None,
                  cluster_subnet: pulumi.Input[Optional[_builtins.str]] = None,
                  control_plane_firewall: pulumi.Input[Optional[Union['KubernetesClusterControlPlaneFirewallArgs', 'KubernetesClusterControlPlaneFirewallArgsDict']]] = None,
+                 coredns_autoscaler: pulumi.Input[Optional[Union['KubernetesClusterCorednsAutoscalerArgs', 'KubernetesClusterCorednsAutoscalerArgsDict']]] = None,
                  destroy_all_associated_resources: pulumi.Input[Optional[_builtins.bool]] = None,
                  ha: pulumi.Input[Optional[_builtins.bool]] = None,
                  kubeconfig_expire_seconds: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1236,6 +1314,7 @@ class KubernetesCluster(pulumi.CustomResource):
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  version: pulumi.Input[Optional[_builtins.str]] = None,
                  vpc_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 worker_subnet_uuid: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1251,6 +1330,7 @@ class KubernetesCluster(pulumi.CustomResource):
             __props__.__dict__["cluster_autoscaler_configurations"] = cluster_autoscaler_configurations
             __props__.__dict__["cluster_subnet"] = cluster_subnet
             __props__.__dict__["control_plane_firewall"] = control_plane_firewall
+            __props__.__dict__["coredns_autoscaler"] = coredns_autoscaler
             __props__.__dict__["destroy_all_associated_resources"] = destroy_all_associated_resources
             __props__.__dict__["ha"] = ha
             __props__.__dict__["kubeconfig_expire_seconds"] = kubeconfig_expire_seconds
@@ -1274,6 +1354,7 @@ class KubernetesCluster(pulumi.CustomResource):
                 raise TypeError("Missing required property 'version'")
             __props__.__dict__["version"] = version
             __props__.__dict__["vpc_uuid"] = vpc_uuid
+            __props__.__dict__["worker_subnet_uuid"] = worker_subnet_uuid
             __props__.__dict__["cluster_urn"] = None
             __props__.__dict__["created_at"] = None
             __props__.__dict__["endpoint"] = None
@@ -1300,6 +1381,7 @@ class KubernetesCluster(pulumi.CustomResource):
             cluster_subnet: pulumi.Input[Optional[_builtins.str]] = None,
             cluster_urn: pulumi.Input[Optional[_builtins.str]] = None,
             control_plane_firewall: pulumi.Input[Optional[Union['KubernetesClusterControlPlaneFirewallArgs', 'KubernetesClusterControlPlaneFirewallArgsDict']]] = None,
+            coredns_autoscaler: pulumi.Input[Optional[Union['KubernetesClusterCorednsAutoscalerArgs', 'KubernetesClusterCorednsAutoscalerArgsDict']]] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
             destroy_all_associated_resources: pulumi.Input[Optional[_builtins.bool]] = None,
             endpoint: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1322,7 +1404,8 @@ class KubernetesCluster(pulumi.CustomResource):
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             updated_at: pulumi.Input[Optional[_builtins.str]] = None,
             version: pulumi.Input[Optional[_builtins.str]] = None,
-            vpc_uuid: pulumi.Input[Optional[_builtins.str]] = None) -> 'KubernetesCluster':
+            vpc_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+            worker_subnet_uuid: pulumi.Input[Optional[_builtins.str]] = None) -> 'KubernetesCluster':
         """
         Get an existing KubernetesCluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1333,10 +1416,11 @@ class KubernetesCluster(pulumi.CustomResource):
         :param pulumi.Input[Union['KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs', 'KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgsDict']] amd_gpu_device_metrics_exporter_plugin: Block containing options for the AMD GPU device metrics exporter component.
         :param pulumi.Input[Union['KubernetesClusterAmdGpuDevicePluginArgs', 'KubernetesClusterAmdGpuDevicePluginArgsDict']] amd_gpu_device_plugin: Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes.
         :param pulumi.Input[_builtins.bool] auto_upgrade: A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesClusterClusterAutoscalerConfigurationArgs', 'KubernetesClusterClusterAutoscalerConfigurationArgsDict']]]] cluster_autoscaler_configurations: Block containing options for cluster auto-scaling.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesClusterClusterAutoscalerConfigurationArgs', 'KubernetesClusterClusterAutoscalerConfigurationArgsDict']]]] cluster_autoscaler_configurations: Block containing options for cluster auto-scaling. For more information.
         :param pulumi.Input[_builtins.str] cluster_subnet: The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
         :param pulumi.Input[_builtins.str] cluster_urn: The uniform resource name (URN) for the Kubernetes cluster.
         :param pulumi.Input[Union['KubernetesClusterControlPlaneFirewallArgs', 'KubernetesClusterControlPlaneFirewallArgsDict']] control_plane_firewall: A block representing the cluster's control plane firewall
+        :param pulumi.Input[Union['KubernetesClusterCorednsAutoscalerArgs', 'KubernetesClusterCorednsAutoscalerArgsDict']] coredns_autoscaler: Block containing options for the CoreDNS Autoscaler component, which scales CoreDNS replicas in proportion to the cluster's size. Default: true (for 1.36.0 and later)
         :param pulumi.Input[_builtins.str] created_at: The date and time when the node was created.
         :param pulumi.Input[_builtins.bool] destroy_all_associated_resources: **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
         :param pulumi.Input[_builtins.str] endpoint: The base URL of the API server on the Kubernetes master node.
@@ -1352,12 +1436,14 @@ class KubernetesCluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] registry_integration: Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
         :param pulumi.Input[Union['KubernetesClusterRoutingAgentArgs', 'KubernetesClusterRoutingAgentArgsDict']] routing_agent: Block containing options for the routing-agent component. If not specified, the routing-agent component will not be installed in the cluster.
         :param pulumi.Input[_builtins.str] service_subnet: The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesClusterSsoArgs', 'KubernetesClusterSsoArgsDict']]]] ssos: Block containing Single Sign-On (SSO) configuration for the cluster using OpenID Connect (OIDC).
         :param pulumi.Input[_builtins.str] status: A string indicating the current status of the individual node.
         :param pulumi.Input[_builtins.bool] surge_upgrade: Enable/disable surge upgrades for a cluster. Default: true
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A list of tag names to be applied to the Kubernetes cluster.
         :param pulumi.Input[_builtins.str] updated_at: The date and time when the node was last updated.
         :param pulumi.Input[_builtins.str] version: The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
         :param pulumi.Input[_builtins.str] vpc_uuid: The ID of the VPC where the Kubernetes cluster will be located.
+        :param pulumi.Input[_builtins.str] worker_subnet_uuid: The ID of the VPC subnet for placing worker nodes. Must be a valid subnet in the cluster VPC. Requires that `vpc_uuid` is also set.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1370,6 +1456,7 @@ class KubernetesCluster(pulumi.CustomResource):
         __props__.__dict__["cluster_subnet"] = cluster_subnet
         __props__.__dict__["cluster_urn"] = cluster_urn
         __props__.__dict__["control_plane_firewall"] = control_plane_firewall
+        __props__.__dict__["coredns_autoscaler"] = coredns_autoscaler
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["destroy_all_associated_resources"] = destroy_all_associated_resources
         __props__.__dict__["endpoint"] = endpoint
@@ -1393,6 +1480,7 @@ class KubernetesCluster(pulumi.CustomResource):
         __props__.__dict__["updated_at"] = updated_at
         __props__.__dict__["version"] = version
         __props__.__dict__["vpc_uuid"] = vpc_uuid
+        __props__.__dict__["worker_subnet_uuid"] = worker_subnet_uuid
         return KubernetesCluster(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -1423,7 +1511,7 @@ class KubernetesCluster(pulumi.CustomResource):
     @pulumi.getter(name="clusterAutoscalerConfigurations")
     def cluster_autoscaler_configurations(self) -> pulumi.Output[Optional[Sequence['outputs.KubernetesClusterClusterAutoscalerConfiguration']]]:
         """
-        Block containing options for cluster auto-scaling.
+        Block containing options for cluster auto-scaling. For more information.
         """
         return pulumi.get(self, "cluster_autoscaler_configurations")
 
@@ -1450,6 +1538,14 @@ class KubernetesCluster(pulumi.CustomResource):
         A block representing the cluster's control plane firewall
         """
         return pulumi.get(self, "control_plane_firewall")
+
+    @_builtins.property
+    @pulumi.getter(name="corednsAutoscaler")
+    def coredns_autoscaler(self) -> pulumi.Output['outputs.KubernetesClusterCorednsAutoscaler']:
+        """
+        Block containing options for the CoreDNS Autoscaler component, which scales CoreDNS replicas in proportion to the cluster's size. Default: true (for 1.36.0 and later)
+        """
+        return pulumi.get(self, "coredns_autoscaler")
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
@@ -1579,6 +1675,9 @@ class KubernetesCluster(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def ssos(self) -> pulumi.Output[Sequence['outputs.KubernetesClusterSso']]:
+        """
+        Block containing Single Sign-On (SSO) configuration for the cluster using OpenID Connect (OIDC).
+        """
         return pulumi.get(self, "ssos")
 
     @_builtins.property
@@ -1628,4 +1727,12 @@ class KubernetesCluster(pulumi.CustomResource):
         The ID of the VPC where the Kubernetes cluster will be located.
         """
         return pulumi.get(self, "vpc_uuid")
+
+    @_builtins.property
+    @pulumi.getter(name="workerSubnetUuid")
+    def worker_subnet_uuid(self) -> pulumi.Output[_builtins.str]:
+        """
+        The ID of the VPC subnet for placing worker nodes. Must be a valid subnet in the cluster VPC. Requires that `vpc_uuid` is also set.
+        """
+        return pulumi.get(self, "worker_subnet_uuid")
 

@@ -106,6 +106,13 @@ export interface GetDatabaseClusterResult {
      * Database droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`).
      */
     readonly size: string;
+    /**
+     * Storage autoscaling configuration for the database cluster.
+     */
+    readonly storageAutoscales: outputs.GetDatabaseClusterStorageAutoscale[];
+    /**
+     * The disk size, in MiB, allocated to the cluster.
+     */
     readonly storageSizeMib: string;
     readonly tags?: string[];
     /**

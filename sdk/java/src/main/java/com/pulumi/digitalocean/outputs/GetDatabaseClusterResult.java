@@ -5,6 +5,7 @@ package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.digitalocean.outputs.GetDatabaseClusterMaintenanceWindow;
+import com.pulumi.digitalocean.outputs.GetDatabaseClusterStorageAutoscale;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
@@ -90,6 +91,15 @@ public final class GetDatabaseClusterResult {
      * 
      */
     private String size;
+    /**
+     * @return Storage autoscaling configuration for the database cluster.
+     * 
+     */
+    private List<GetDatabaseClusterStorageAutoscale> storageAutoscales;
+    /**
+     * @return The disk size, in MiB, allocated to the cluster.
+     * 
+     */
     private String storageSizeMib;
     private @Nullable List<String> tags;
     /**
@@ -252,6 +262,17 @@ public final class GetDatabaseClusterResult {
     public String size() {
         return this.size;
     }
+    /**
+     * @return Storage autoscaling configuration for the database cluster.
+     * 
+     */
+    public List<GetDatabaseClusterStorageAutoscale> storageAutoscales() {
+        return this.storageAutoscales;
+    }
+    /**
+     * @return The disk size, in MiB, allocated to the cluster.
+     * 
+     */
     public String storageSizeMib() {
         return this.storageSizeMib;
     }
@@ -354,6 +375,7 @@ public final class GetDatabaseClusterResult {
         private String projectId;
         private String region;
         private String size;
+        private List<GetDatabaseClusterStorageAutoscale> storageAutoscales;
         private String storageSizeMib;
         private @Nullable List<String> tags;
         private String uiDatabase;
@@ -385,6 +407,7 @@ public final class GetDatabaseClusterResult {
     	      this.projectId = defaults.projectId;
     	      this.region = defaults.region;
     	      this.size = defaults.size;
+    	      this.storageAutoscales = defaults.storageAutoscales;
     	      this.storageSizeMib = defaults.storageSizeMib;
     	      this.tags = defaults.tags;
     	      this.uiDatabase = defaults.uiDatabase;
@@ -534,6 +557,17 @@ public final class GetDatabaseClusterResult {
             return this;
         }
         @CustomType.Setter
+        public Builder storageAutoscales(List<GetDatabaseClusterStorageAutoscale> storageAutoscales) {
+            if (storageAutoscales == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseClusterResult", "storageAutoscales");
+            }
+            this.storageAutoscales = storageAutoscales;
+            return this;
+        }
+        public Builder storageAutoscales(GetDatabaseClusterStorageAutoscale... storageAutoscales) {
+            return storageAutoscales(List.of(storageAutoscales));
+        }
+        @CustomType.Setter
         public Builder storageSizeMib(String storageSizeMib) {
             if (storageSizeMib == null) {
               throw new MissingRequiredPropertyException("GetDatabaseClusterResult", "storageSizeMib");
@@ -648,6 +682,7 @@ public final class GetDatabaseClusterResult {
             _resultValue.projectId = projectId;
             _resultValue.region = region;
             _resultValue.size = size;
+            _resultValue.storageAutoscales = storageAutoscales;
             _resultValue.storageSizeMib = storageSizeMib;
             _resultValue.tags = tags;
             _resultValue.uiDatabase = uiDatabase;

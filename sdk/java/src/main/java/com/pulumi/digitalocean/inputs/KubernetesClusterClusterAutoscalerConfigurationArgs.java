@@ -17,9 +17,17 @@ public final class KubernetesClusterClusterAutoscalerConfigurationArgs extends c
 
     public static final KubernetesClusterClusterAutoscalerConfigurationArgs Empty = new KubernetesClusterClusterAutoscalerConfigurationArgs();
 
+    /**
+     * A list of cluster autoscaler expander strategies to apply in order when selecting which node pool to scale up. Valid values are `random`, `priority`, and `least-waste`. The autoscaler uses each expander from the list to narrow the selection until a single node pool remains. If multiple node pools remain after all expanders are applied, one is chosen at random. When using the `priority` expander, configure priorities in the `cluster-autoscaler-priority-expander` ConfigMap in the `kube-system` namespace (see [Configuring Priority Expander](https://docs.digitalocean.com/products/kubernetes/how-to/autoscale/#configuring-priority-expander)).
+     * 
+     */
     @Import(name="expanders")
     private @Nullable Output<List<String>> expanders;
 
+    /**
+     * @return A list of cluster autoscaler expander strategies to apply in order when selecting which node pool to scale up. Valid values are `random`, `priority`, and `least-waste`. The autoscaler uses each expander from the list to narrow the selection until a single node pool remains. If multiple node pools remain after all expanders are applied, one is chosen at random. When using the `priority` expander, configure priorities in the `cluster-autoscaler-priority-expander` ConfigMap in the `kube-system` namespace (see [Configuring Priority Expander](https://docs.digitalocean.com/products/kubernetes/how-to/autoscale/#configuring-priority-expander)).
+     * 
+     */
     public Optional<Output<List<String>>> expanders() {
         return Optional.ofNullable(this.expanders);
     }
@@ -27,16 +35,12 @@ public final class KubernetesClusterClusterAutoscalerConfigurationArgs extends c
     /**
      * String setting how long a node should be unneeded before it&#39;s eligible for scale down.
      * 
-     * This resource supports customized create timeouts. The default timeout is 30 minutes.
-     * 
      */
     @Import(name="scaleDownUnneededTime")
     private @Nullable Output<String> scaleDownUnneededTime;
 
     /**
      * @return String setting how long a node should be unneeded before it&#39;s eligible for scale down.
-     * 
-     * This resource supports customized create timeouts. The default timeout is 30 minutes.
      * 
      */
     public Optional<Output<String>> scaleDownUnneededTime() {
@@ -84,23 +88,39 @@ public final class KubernetesClusterClusterAutoscalerConfigurationArgs extends c
             $ = new KubernetesClusterClusterAutoscalerConfigurationArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param expanders A list of cluster autoscaler expander strategies to apply in order when selecting which node pool to scale up. Valid values are `random`, `priority`, and `least-waste`. The autoscaler uses each expander from the list to narrow the selection until a single node pool remains. If multiple node pools remain after all expanders are applied, one is chosen at random. When using the `priority` expander, configure priorities in the `cluster-autoscaler-priority-expander` ConfigMap in the `kube-system` namespace (see [Configuring Priority Expander](https://docs.digitalocean.com/products/kubernetes/how-to/autoscale/#configuring-priority-expander)).
+         * 
+         * @return builder
+         * 
+         */
         public Builder expanders(@Nullable Output<List<String>> expanders) {
             $.expanders = expanders;
             return this;
         }
 
+        /**
+         * @param expanders A list of cluster autoscaler expander strategies to apply in order when selecting which node pool to scale up. Valid values are `random`, `priority`, and `least-waste`. The autoscaler uses each expander from the list to narrow the selection until a single node pool remains. If multiple node pools remain after all expanders are applied, one is chosen at random. When using the `priority` expander, configure priorities in the `cluster-autoscaler-priority-expander` ConfigMap in the `kube-system` namespace (see [Configuring Priority Expander](https://docs.digitalocean.com/products/kubernetes/how-to/autoscale/#configuring-priority-expander)).
+         * 
+         * @return builder
+         * 
+         */
         public Builder expanders(List<String> expanders) {
             return expanders(Output.of(expanders));
         }
 
+        /**
+         * @param expanders A list of cluster autoscaler expander strategies to apply in order when selecting which node pool to scale up. Valid values are `random`, `priority`, and `least-waste`. The autoscaler uses each expander from the list to narrow the selection until a single node pool remains. If multiple node pools remain after all expanders are applied, one is chosen at random. When using the `priority` expander, configure priorities in the `cluster-autoscaler-priority-expander` ConfigMap in the `kube-system` namespace (see [Configuring Priority Expander](https://docs.digitalocean.com/products/kubernetes/how-to/autoscale/#configuring-priority-expander)).
+         * 
+         * @return builder
+         * 
+         */
         public Builder expanders(String... expanders) {
             return expanders(List.of(expanders));
         }
 
         /**
          * @param scaleDownUnneededTime String setting how long a node should be unneeded before it&#39;s eligible for scale down.
-         * 
-         * This resource supports customized create timeouts. The default timeout is 30 minutes.
          * 
          * @return builder
          * 
@@ -112,8 +132,6 @@ public final class KubernetesClusterClusterAutoscalerConfigurationArgs extends c
 
         /**
          * @param scaleDownUnneededTime String setting how long a node should be unneeded before it&#39;s eligible for scale down.
-         * 
-         * This resource supports customized create timeouts. The default timeout is 30 minutes.
          * 
          * @return builder
          * 

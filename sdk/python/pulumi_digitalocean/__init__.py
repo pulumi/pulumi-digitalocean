@@ -96,6 +96,8 @@ from .get_gradientai_agent import *
 from .get_gradientai_agent_versions import *
 from .get_gradientai_agents import *
 from .get_gradientai_agents_by_openai_api_key import *
+from .get_gradientai_custom_model import *
+from .get_gradientai_custom_models import *
 from .get_gradientai_indexing_job import *
 from .get_gradientai_indexing_job_data_sources import *
 from .get_gradientai_knowledge_base import *
@@ -141,6 +143,7 @@ from .get_vpc_peering import *
 from .gradientai_agent import *
 from .gradientai_agent_knowledge_base_attachment import *
 from .gradientai_agent_route import *
+from .gradientai_custom_model import *
 from .gradientai_function import *
 from .gradientai_indexing_job_cancel import *
 from .gradientai_knowledge_base import *
@@ -564,6 +567,14 @@ _utilities.register(
   "fqn": "pulumi_digitalocean",
   "classes": {
    "digitalocean:index/gradientaiAgentRoute:GradientaiAgentRoute": "GradientaiAgentRoute"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/gradientaiCustomModel",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/gradientaiCustomModel:GradientaiCustomModel": "GradientaiCustomModel"
   }
  },
  {

@@ -190,7 +190,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
      */
     declare public readonly autoUpgrade: pulumi.Output<boolean | undefined>;
     /**
-     * Block containing options for cluster auto-scaling.
+     * Block containing options for cluster auto-scaling. For more information.
      */
     declare public readonly clusterAutoscalerConfigurations: pulumi.Output<outputs.KubernetesClusterClusterAutoscalerConfiguration[] | undefined>;
     /**
@@ -205,6 +205,10 @@ export class KubernetesCluster extends pulumi.CustomResource {
      * A block representing the cluster's control plane firewall
      */
     declare public readonly controlPlaneFirewall: pulumi.Output<outputs.KubernetesClusterControlPlaneFirewall>;
+    /**
+     * Block containing options for the CoreDNS Autoscaler component, which scales CoreDNS replicas in proportion to the cluster's size. Default: true (for 1.36.0 and later)
+     */
+    declare public readonly corednsAutoscaler: pulumi.Output<outputs.KubernetesClusterCorednsAutoscaler>;
     /**
      * The date and time when the node was created.
      */
@@ -266,6 +270,9 @@ export class KubernetesCluster extends pulumi.CustomResource {
      * The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
      */
     declare public readonly serviceSubnet: pulumi.Output<string>;
+    /**
+     * Block containing Single Sign-On (SSO) configuration for the cluster using OpenID Connect (OIDC).
+     */
     declare public readonly ssos: pulumi.Output<outputs.KubernetesClusterSso[]>;
     /**
      * A string indicating the current status of the individual node.
@@ -291,6 +298,10 @@ export class KubernetesCluster extends pulumi.CustomResource {
      * The ID of the VPC where the Kubernetes cluster will be located.
      */
     declare public readonly vpcUuid: pulumi.Output<string>;
+    /**
+     * The ID of the VPC subnet for placing worker nodes. Must be a valid subnet in the cluster VPC. Requires that `vpcUuid` is also set.
+     */
+    declare public readonly workerSubnetUuid: pulumi.Output<string>;
 
     /**
      * Create a KubernetesCluster resource with the given unique name, arguments, and options.
@@ -312,6 +323,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
             resourceInputs["clusterSubnet"] = state?.clusterSubnet;
             resourceInputs["clusterUrn"] = state?.clusterUrn;
             resourceInputs["controlPlaneFirewall"] = state?.controlPlaneFirewall;
+            resourceInputs["corednsAutoscaler"] = state?.corednsAutoscaler;
             resourceInputs["createdAt"] = state?.createdAt;
             resourceInputs["destroyAllAssociatedResources"] = state?.destroyAllAssociatedResources;
             resourceInputs["endpoint"] = state?.endpoint;
@@ -335,6 +347,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
             resourceInputs["updatedAt"] = state?.updatedAt;
             resourceInputs["version"] = state?.version;
             resourceInputs["vpcUuid"] = state?.vpcUuid;
+            resourceInputs["workerSubnetUuid"] = state?.workerSubnetUuid;
         } else {
             const args = argsOrState as KubernetesClusterArgs | undefined;
             if (args?.nodePool === undefined && !opts.urn) {
@@ -352,6 +365,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
             resourceInputs["clusterAutoscalerConfigurations"] = args?.clusterAutoscalerConfigurations;
             resourceInputs["clusterSubnet"] = args?.clusterSubnet;
             resourceInputs["controlPlaneFirewall"] = args?.controlPlaneFirewall;
+            resourceInputs["corednsAutoscaler"] = args?.corednsAutoscaler;
             resourceInputs["destroyAllAssociatedResources"] = args?.destroyAllAssociatedResources;
             resourceInputs["ha"] = args?.ha;
             resourceInputs["kubeconfigExpireSeconds"] = args?.kubeconfigExpireSeconds;
@@ -369,6 +383,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
             resourceInputs["tags"] = args?.tags;
             resourceInputs["version"] = args?.version;
             resourceInputs["vpcUuid"] = args?.vpcUuid;
+            resourceInputs["workerSubnetUuid"] = args?.workerSubnetUuid;
             resourceInputs["clusterUrn"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["endpoint"] = undefined /*out*/;
@@ -401,7 +416,7 @@ export interface KubernetesClusterState {
      */
     autoUpgrade?: pulumi.Input<boolean | undefined>;
     /**
-     * Block containing options for cluster auto-scaling.
+     * Block containing options for cluster auto-scaling. For more information.
      */
     clusterAutoscalerConfigurations?: pulumi.Input<pulumi.Input<inputs.KubernetesClusterClusterAutoscalerConfiguration>[] | undefined>;
     /**
@@ -416,6 +431,10 @@ export interface KubernetesClusterState {
      * A block representing the cluster's control plane firewall
      */
     controlPlaneFirewall?: pulumi.Input<inputs.KubernetesClusterControlPlaneFirewall | undefined>;
+    /**
+     * Block containing options for the CoreDNS Autoscaler component, which scales CoreDNS replicas in proportion to the cluster's size. Default: true (for 1.36.0 and later)
+     */
+    corednsAutoscaler?: pulumi.Input<inputs.KubernetesClusterCorednsAutoscaler | undefined>;
     /**
      * The date and time when the node was created.
      */
@@ -477,6 +496,9 @@ export interface KubernetesClusterState {
      * The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
      */
     serviceSubnet?: pulumi.Input<string | undefined>;
+    /**
+     * Block containing Single Sign-On (SSO) configuration for the cluster using OpenID Connect (OIDC).
+     */
     ssos?: pulumi.Input<pulumi.Input<inputs.KubernetesClusterSso>[] | undefined>;
     /**
      * A string indicating the current status of the individual node.
@@ -502,6 +524,10 @@ export interface KubernetesClusterState {
      * The ID of the VPC where the Kubernetes cluster will be located.
      */
     vpcUuid?: pulumi.Input<string | undefined>;
+    /**
+     * The ID of the VPC subnet for placing worker nodes. Must be a valid subnet in the cluster VPC. Requires that `vpcUuid` is also set.
+     */
+    workerSubnetUuid?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -521,7 +547,7 @@ export interface KubernetesClusterArgs {
      */
     autoUpgrade?: pulumi.Input<boolean | undefined>;
     /**
-     * Block containing options for cluster auto-scaling.
+     * Block containing options for cluster auto-scaling. For more information.
      */
     clusterAutoscalerConfigurations?: pulumi.Input<pulumi.Input<inputs.KubernetesClusterClusterAutoscalerConfiguration>[] | undefined>;
     /**
@@ -532,6 +558,10 @@ export interface KubernetesClusterArgs {
      * A block representing the cluster's control plane firewall
      */
     controlPlaneFirewall?: pulumi.Input<inputs.KubernetesClusterControlPlaneFirewall | undefined>;
+    /**
+     * Block containing options for the CoreDNS Autoscaler component, which scales CoreDNS replicas in proportion to the cluster's size. Default: true (for 1.36.0 and later)
+     */
+    corednsAutoscaler?: pulumi.Input<inputs.KubernetesClusterCorednsAutoscaler | undefined>;
     /**
      * **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
      */
@@ -577,6 +607,9 @@ export interface KubernetesClusterArgs {
      * The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
      */
     serviceSubnet?: pulumi.Input<string | undefined>;
+    /**
+     * Block containing Single Sign-On (SSO) configuration for the cluster using OpenID Connect (OIDC).
+     */
     ssos?: pulumi.Input<pulumi.Input<inputs.KubernetesClusterSso>[] | undefined>;
     /**
      * Enable/disable surge upgrades for a cluster. Default: true
@@ -594,4 +627,8 @@ export interface KubernetesClusterArgs {
      * The ID of the VPC where the Kubernetes cluster will be located.
      */
     vpcUuid?: pulumi.Input<string | undefined>;
+    /**
+     * The ID of the VPC subnet for placing worker nodes. Must be a valid subnet in the cluster VPC. Requires that `vpcUuid` is also set.
+     */
+    workerSubnetUuid?: pulumi.Input<string | undefined>;
 }

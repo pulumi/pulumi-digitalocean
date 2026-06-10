@@ -17,38 +17,66 @@ public final class KubernetesClusterSsoArgs extends com.pulumi.resources.Resourc
 
     public static final KubernetesClusterSsoArgs Empty = new KubernetesClusterSsoArgs();
 
+    /**
+     * The OIDC client ID for the cluster SSO configuration.
+     * 
+     * This resource supports customized create timeouts. The default timeout is 30 minutes.
+     * 
+     */
     @Import(name="clientId")
     private @Nullable Output<String> clientId;
 
+    /**
+     * @return The OIDC client ID for the cluster SSO configuration.
+     * 
+     * This resource supports customized create timeouts. The default timeout is 30 minutes.
+     * 
+     */
     public Optional<Output<String>> clientId() {
         return Optional.ofNullable(this.clientId);
     }
 
     /**
-     * Boolean flag whether the component is enabled or not.
+     * Boolean flag indicating whether SSO is enabled as an authentication method for the cluster.
      * 
      */
     @Import(name="enabled", required=true)
     private Output<Boolean> enabled;
 
     /**
-     * @return Boolean flag whether the component is enabled or not.
+     * @return Boolean flag indicating whether SSO is enabled as an authentication method for the cluster.
      * 
      */
     public Output<Boolean> enabled() {
         return this.enabled;
     }
 
+    /**
+     * The OIDC issuer URL for the cluster SSO configuration.
+     * 
+     */
     @Import(name="issuerUrl")
     private @Nullable Output<String> issuerUrl;
 
+    /**
+     * @return The OIDC issuer URL for the cluster SSO configuration.
+     * 
+     */
     public Optional<Output<String>> issuerUrl() {
         return Optional.ofNullable(this.issuerUrl);
     }
 
+    /**
+     * Boolean flag indicating whether SSO is required as the only authentication method for the cluster. Default: `false`
+     * 
+     */
     @Import(name="required")
     private @Nullable Output<Boolean> required;
 
+    /**
+     * @return Boolean flag indicating whether SSO is required as the only authentication method for the cluster. Default: `false`
+     * 
+     */
     public Optional<Output<Boolean>> required() {
         return Optional.ofNullable(this.required);
     }
@@ -80,17 +108,33 @@ public final class KubernetesClusterSsoArgs extends com.pulumi.resources.Resourc
             $ = new KubernetesClusterSsoArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param clientId The OIDC client ID for the cluster SSO configuration.
+         * 
+         * This resource supports customized create timeouts. The default timeout is 30 minutes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder clientId(@Nullable Output<String> clientId) {
             $.clientId = clientId;
             return this;
         }
 
+        /**
+         * @param clientId The OIDC client ID for the cluster SSO configuration.
+         * 
+         * This resource supports customized create timeouts. The default timeout is 30 minutes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder clientId(String clientId) {
             return clientId(Output.of(clientId));
         }
 
         /**
-         * @param enabled Boolean flag whether the component is enabled or not.
+         * @param enabled Boolean flag indicating whether SSO is enabled as an authentication method for the cluster.
          * 
          * @return builder
          * 
@@ -101,7 +145,7 @@ public final class KubernetesClusterSsoArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param enabled Boolean flag whether the component is enabled or not.
+         * @param enabled Boolean flag indicating whether SSO is enabled as an authentication method for the cluster.
          * 
          * @return builder
          * 
@@ -110,20 +154,44 @@ public final class KubernetesClusterSsoArgs extends com.pulumi.resources.Resourc
             return enabled(Output.of(enabled));
         }
 
+        /**
+         * @param issuerUrl The OIDC issuer URL for the cluster SSO configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder issuerUrl(@Nullable Output<String> issuerUrl) {
             $.issuerUrl = issuerUrl;
             return this;
         }
 
+        /**
+         * @param issuerUrl The OIDC issuer URL for the cluster SSO configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder issuerUrl(String issuerUrl) {
             return issuerUrl(Output.of(issuerUrl));
         }
 
+        /**
+         * @param required Boolean flag indicating whether SSO is required as the only authentication method for the cluster. Default: `false`
+         * 
+         * @return builder
+         * 
+         */
         public Builder required(@Nullable Output<Boolean> required) {
             $.required = required;
             return this;
         }
 
+        /**
+         * @param required Boolean flag indicating whether SSO is required as the only authentication method for the cluster. Default: `false`
+         * 
+         * @return builder
+         * 
+         */
         public Builder required(Boolean required) {
             return required(Output.of(required));
         }

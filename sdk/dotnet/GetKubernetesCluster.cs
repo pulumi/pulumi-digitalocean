@@ -101,6 +101,9 @@ namespace Pulumi.DigitalOcean
             set => _clusterAutoscalerConfigurations = value;
         }
 
+        [Input("corednsAutoscaler")]
+        public Inputs.GetKubernetesClusterCorednsAutoscalerArgs? CorednsAutoscaler { get; set; }
+
         [Input("kubeconfigExpireSeconds")]
         public int? KubeconfigExpireSeconds { get; set; }
 
@@ -160,6 +163,9 @@ namespace Pulumi.DigitalOcean
             get => _clusterAutoscalerConfigurations ?? (_clusterAutoscalerConfigurations = new InputList<Inputs.GetKubernetesClusterClusterAutoscalerConfigurationInputArgs>());
             set => _clusterAutoscalerConfigurations = value;
         }
+
+        [Input("corednsAutoscaler")]
+        public Input<Inputs.GetKubernetesClusterCorednsAutoscalerInputArgs>? CorednsAutoscaler { get; set; }
 
         [Input("kubeconfigExpireSeconds")]
         public Input<int>? KubeconfigExpireSeconds { get; set; }
@@ -221,6 +227,7 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public readonly string ClusterSubnet;
         public readonly ImmutableArray<Outputs.GetKubernetesClusterControlPlaneFirewallResult> ControlPlaneFirewalls;
+        public readonly Outputs.GetKubernetesClusterCorednsAutoscalerResult CorednsAutoscaler;
         /// <summary>
         /// The date and time when the node was created.
         /// </summary>
@@ -292,6 +299,7 @@ namespace Pulumi.DigitalOcean
         /// The ID of the VPC where the Kubernetes cluster is located.
         /// </summary>
         public readonly string VpcUuid;
+        public readonly string WorkerSubnetUuid;
 
         [OutputConstructor]
         private GetKubernetesClusterResult(
@@ -306,6 +314,8 @@ namespace Pulumi.DigitalOcean
             string clusterSubnet,
 
             ImmutableArray<Outputs.GetKubernetesClusterControlPlaneFirewallResult> controlPlaneFirewalls,
+
+            Outputs.GetKubernetesClusterCorednsAutoscalerResult corednsAutoscaler,
 
             string createdAt,
 
@@ -351,7 +361,9 @@ namespace Pulumi.DigitalOcean
 
             string version,
 
-            string vpcUuid)
+            string vpcUuid,
+
+            string workerSubnetUuid)
         {
             AmdGpuDeviceMetricsExporterPlugin = amdGpuDeviceMetricsExporterPlugin;
             AmdGpuDevicePlugin = amdGpuDevicePlugin;
@@ -359,6 +371,7 @@ namespace Pulumi.DigitalOcean
             ClusterAutoscalerConfigurations = clusterAutoscalerConfigurations;
             ClusterSubnet = clusterSubnet;
             ControlPlaneFirewalls = controlPlaneFirewalls;
+            CorednsAutoscaler = corednsAutoscaler;
             CreatedAt = createdAt;
             Endpoint = endpoint;
             Ha = ha;
@@ -382,6 +395,7 @@ namespace Pulumi.DigitalOcean
             Urn = urn;
             Version = version;
             VpcUuid = vpcUuid;
+            WorkerSubnetUuid = workerSubnetUuid;
         }
     }
 }

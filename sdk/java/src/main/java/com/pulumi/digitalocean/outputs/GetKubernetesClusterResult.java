@@ -8,6 +8,7 @@ import com.pulumi.digitalocean.outputs.GetKubernetesClusterAmdGpuDeviceMetricsEx
 import com.pulumi.digitalocean.outputs.GetKubernetesClusterAmdGpuDevicePlugin;
 import com.pulumi.digitalocean.outputs.GetKubernetesClusterClusterAutoscalerConfiguration;
 import com.pulumi.digitalocean.outputs.GetKubernetesClusterControlPlaneFirewall;
+import com.pulumi.digitalocean.outputs.GetKubernetesClusterCorednsAutoscaler;
 import com.pulumi.digitalocean.outputs.GetKubernetesClusterKubeConfig;
 import com.pulumi.digitalocean.outputs.GetKubernetesClusterMaintenancePolicy;
 import com.pulumi.digitalocean.outputs.GetKubernetesClusterNodePool;
@@ -40,6 +41,7 @@ public final class GetKubernetesClusterResult {
      */
     private String clusterSubnet;
     private List<GetKubernetesClusterControlPlaneFirewall> controlPlaneFirewalls;
+    private GetKubernetesClusterCorednsAutoscaler corednsAutoscaler;
     /**
      * @return The date and time when the node was created.
      * 
@@ -127,6 +129,7 @@ public final class GetKubernetesClusterResult {
      * 
      */
     private String vpcUuid;
+    private String workerSubnetUuid;
 
     private GetKubernetesClusterResult() {}
     public GetKubernetesClusterAmdGpuDeviceMetricsExporterPlugin amdGpuDeviceMetricsExporterPlugin() {
@@ -154,6 +157,9 @@ public final class GetKubernetesClusterResult {
     }
     public List<GetKubernetesClusterControlPlaneFirewall> controlPlaneFirewalls() {
         return this.controlPlaneFirewalls;
+    }
+    public GetKubernetesClusterCorednsAutoscaler corednsAutoscaler() {
+        return this.corednsAutoscaler;
     }
     /**
      * @return The date and time when the node was created.
@@ -288,6 +294,9 @@ public final class GetKubernetesClusterResult {
     public String vpcUuid() {
         return this.vpcUuid;
     }
+    public String workerSubnetUuid() {
+        return this.workerSubnetUuid;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -304,6 +313,7 @@ public final class GetKubernetesClusterResult {
         private @Nullable List<GetKubernetesClusterClusterAutoscalerConfiguration> clusterAutoscalerConfigurations;
         private String clusterSubnet;
         private List<GetKubernetesClusterControlPlaneFirewall> controlPlaneFirewalls;
+        private GetKubernetesClusterCorednsAutoscaler corednsAutoscaler;
         private String createdAt;
         private String endpoint;
         private Boolean ha;
@@ -327,6 +337,7 @@ public final class GetKubernetesClusterResult {
         private String urn;
         private String version;
         private String vpcUuid;
+        private String workerSubnetUuid;
         public Builder() {}
         public Builder(GetKubernetesClusterResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -336,6 +347,7 @@ public final class GetKubernetesClusterResult {
     	      this.clusterAutoscalerConfigurations = defaults.clusterAutoscalerConfigurations;
     	      this.clusterSubnet = defaults.clusterSubnet;
     	      this.controlPlaneFirewalls = defaults.controlPlaneFirewalls;
+    	      this.corednsAutoscaler = defaults.corednsAutoscaler;
     	      this.createdAt = defaults.createdAt;
     	      this.endpoint = defaults.endpoint;
     	      this.ha = defaults.ha;
@@ -359,6 +371,7 @@ public final class GetKubernetesClusterResult {
     	      this.urn = defaults.urn;
     	      this.version = defaults.version;
     	      this.vpcUuid = defaults.vpcUuid;
+    	      this.workerSubnetUuid = defaults.workerSubnetUuid;
         }
 
         @CustomType.Setter
@@ -412,6 +425,14 @@ public final class GetKubernetesClusterResult {
         }
         public Builder controlPlaneFirewalls(GetKubernetesClusterControlPlaneFirewall... controlPlaneFirewalls) {
             return controlPlaneFirewalls(List.of(controlPlaneFirewalls));
+        }
+        @CustomType.Setter
+        public Builder corednsAutoscaler(GetKubernetesClusterCorednsAutoscaler corednsAutoscaler) {
+            if (corednsAutoscaler == null) {
+              throw new MissingRequiredPropertyException("GetKubernetesClusterResult", "corednsAutoscaler");
+            }
+            this.corednsAutoscaler = corednsAutoscaler;
+            return this;
         }
         @CustomType.Setter
         public Builder createdAt(String createdAt) {
@@ -608,6 +629,14 @@ public final class GetKubernetesClusterResult {
             this.vpcUuid = vpcUuid;
             return this;
         }
+        @CustomType.Setter
+        public Builder workerSubnetUuid(String workerSubnetUuid) {
+            if (workerSubnetUuid == null) {
+              throw new MissingRequiredPropertyException("GetKubernetesClusterResult", "workerSubnetUuid");
+            }
+            this.workerSubnetUuid = workerSubnetUuid;
+            return this;
+        }
         public GetKubernetesClusterResult build() {
             final var _resultValue = new GetKubernetesClusterResult();
             _resultValue.amdGpuDeviceMetricsExporterPlugin = amdGpuDeviceMetricsExporterPlugin;
@@ -616,6 +645,7 @@ public final class GetKubernetesClusterResult {
             _resultValue.clusterAutoscalerConfigurations = clusterAutoscalerConfigurations;
             _resultValue.clusterSubnet = clusterSubnet;
             _resultValue.controlPlaneFirewalls = controlPlaneFirewalls;
+            _resultValue.corednsAutoscaler = corednsAutoscaler;
             _resultValue.createdAt = createdAt;
             _resultValue.endpoint = endpoint;
             _resultValue.ha = ha;
@@ -639,6 +669,7 @@ public final class GetKubernetesClusterResult {
             _resultValue.urn = urn;
             _resultValue.version = version;
             _resultValue.vpcUuid = vpcUuid;
+            _resultValue.workerSubnetUuid = workerSubnetUuid;
             return _resultValue;
         }
     }

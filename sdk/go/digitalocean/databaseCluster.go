@@ -296,6 +296,8 @@ type DatabaseCluster struct {
 	Size pulumi.StringOutput `pulumi:"size"`
 	// A comma separated string specifying the  SQL modes for a MySQL cluster.
 	SqlMode pulumi.StringPtrOutput `pulumi:"sqlMode"`
+	// Storage autoscaling configuration for the database cluster.
+	StorageAutoscale DatabaseClusterStorageAutoscalePtrOutput `pulumi:"storageAutoscale"`
 	// Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostgreSQL clusters based on predefined ranges for each slug/droplet size.
 	StorageSizeMib pulumi.StringOutput `pulumi:"storageSizeMib"`
 	// A list of tag names to be applied to the database cluster.
@@ -408,6 +410,8 @@ type databaseClusterState struct {
 	Size *string `pulumi:"size"`
 	// A comma separated string specifying the  SQL modes for a MySQL cluster.
 	SqlMode *string `pulumi:"sqlMode"`
+	// Storage autoscaling configuration for the database cluster.
+	StorageAutoscale *DatabaseClusterStorageAutoscale `pulumi:"storageAutoscale"`
 	// Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostgreSQL clusters based on predefined ranges for each slug/droplet size.
 	StorageSizeMib *string `pulumi:"storageSizeMib"`
 	// A list of tag names to be applied to the database cluster.
@@ -471,6 +475,8 @@ type DatabaseClusterState struct {
 	Size pulumi.StringPtrInput
 	// A comma separated string specifying the  SQL modes for a MySQL cluster.
 	SqlMode pulumi.StringPtrInput
+	// Storage autoscaling configuration for the database cluster.
+	StorageAutoscale DatabaseClusterStorageAutoscalePtrInput
 	// Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostgreSQL clusters based on predefined ranges for each slug/droplet size.
 	StorageSizeMib pulumi.StringPtrInput
 	// A list of tag names to be applied to the database cluster.
@@ -522,6 +528,8 @@ type databaseClusterArgs struct {
 	Size string `pulumi:"size"`
 	// A comma separated string specifying the  SQL modes for a MySQL cluster.
 	SqlMode *string `pulumi:"sqlMode"`
+	// Storage autoscaling configuration for the database cluster.
+	StorageAutoscale *DatabaseClusterStorageAutoscale `pulumi:"storageAutoscale"`
 	// Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostgreSQL clusters based on predefined ranges for each slug/droplet size.
 	StorageSizeMib *string `pulumi:"storageSizeMib"`
 	// A list of tag names to be applied to the database cluster.
@@ -554,6 +562,8 @@ type DatabaseClusterArgs struct {
 	Size pulumi.StringInput
 	// A comma separated string specifying the  SQL modes for a MySQL cluster.
 	SqlMode pulumi.StringPtrInput
+	// Storage autoscaling configuration for the database cluster.
+	StorageAutoscale DatabaseClusterStorageAutoscalePtrInput
 	// Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostgreSQL clusters based on predefined ranges for each slug/droplet size.
 	StorageSizeMib pulumi.StringPtrInput
 	// A list of tag names to be applied to the database cluster.
@@ -742,6 +752,11 @@ func (o DatabaseClusterOutput) Size() pulumi.StringOutput {
 // A comma separated string specifying the  SQL modes for a MySQL cluster.
 func (o DatabaseClusterOutput) SqlMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseCluster) pulumi.StringPtrOutput { return v.SqlMode }).(pulumi.StringPtrOutput)
+}
+
+// Storage autoscaling configuration for the database cluster.
+func (o DatabaseClusterOutput) StorageAutoscale() DatabaseClusterStorageAutoscalePtrOutput {
+	return o.ApplyT(func(v *DatabaseCluster) DatabaseClusterStorageAutoscalePtrOutput { return v.StorageAutoscale }).(DatabaseClusterStorageAutoscalePtrOutput)
 }
 
 // Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostgreSQL clusters based on predefined ranges for each slug/droplet size.

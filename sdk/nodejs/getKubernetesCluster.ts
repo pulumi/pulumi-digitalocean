@@ -27,6 +27,7 @@ export function getKubernetesCluster(args: GetKubernetesClusterArgs, opts?: pulu
         "amdGpuDeviceMetricsExporterPlugin": args.amdGpuDeviceMetricsExporterPlugin,
         "amdGpuDevicePlugin": args.amdGpuDevicePlugin,
         "clusterAutoscalerConfigurations": args.clusterAutoscalerConfigurations,
+        "corednsAutoscaler": args.corednsAutoscaler,
         "kubeconfigExpireSeconds": args.kubeconfigExpireSeconds,
         "name": args.name,
         "nvidiaGpuDevicePlugin": args.nvidiaGpuDevicePlugin,
@@ -44,6 +45,7 @@ export interface GetKubernetesClusterArgs {
     amdGpuDeviceMetricsExporterPlugin?: inputs.GetKubernetesClusterAmdGpuDeviceMetricsExporterPlugin;
     amdGpuDevicePlugin?: inputs.GetKubernetesClusterAmdGpuDevicePlugin;
     clusterAutoscalerConfigurations?: inputs.GetKubernetesClusterClusterAutoscalerConfiguration[];
+    corednsAutoscaler?: inputs.GetKubernetesClusterCorednsAutoscaler;
     kubeconfigExpireSeconds?: number;
     /**
      * The name of Kubernetes cluster.
@@ -75,6 +77,7 @@ export interface GetKubernetesClusterResult {
      */
     readonly clusterSubnet: string;
     readonly controlPlaneFirewalls: outputs.GetKubernetesClusterControlPlaneFirewall[];
+    readonly corednsAutoscaler: outputs.GetKubernetesClusterCorednsAutoscaler;
     /**
      * The date and time when the node was created.
      */
@@ -146,6 +149,7 @@ export interface GetKubernetesClusterResult {
      * The ID of the VPC where the Kubernetes cluster is located.
      */
     readonly vpcUuid: string;
+    readonly workerSubnetUuid: string;
 }
 /**
  * Retrieves information about a DigitalOcean Kubernetes cluster for use in other resources. This data source provides all of the cluster's properties as configured on your DigitalOcean account. This is useful if the cluster in question is not managed by Terraform.
@@ -167,6 +171,7 @@ export function getKubernetesClusterOutput(args: GetKubernetesClusterOutputArgs,
         "amdGpuDeviceMetricsExporterPlugin": args.amdGpuDeviceMetricsExporterPlugin,
         "amdGpuDevicePlugin": args.amdGpuDevicePlugin,
         "clusterAutoscalerConfigurations": args.clusterAutoscalerConfigurations,
+        "corednsAutoscaler": args.corednsAutoscaler,
         "kubeconfigExpireSeconds": args.kubeconfigExpireSeconds,
         "name": args.name,
         "nvidiaGpuDevicePlugin": args.nvidiaGpuDevicePlugin,
@@ -184,6 +189,7 @@ export interface GetKubernetesClusterOutputArgs {
     amdGpuDeviceMetricsExporterPlugin?: pulumi.Input<inputs.GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs | undefined>;
     amdGpuDevicePlugin?: pulumi.Input<inputs.GetKubernetesClusterAmdGpuDevicePluginArgs | undefined>;
     clusterAutoscalerConfigurations?: pulumi.Input<pulumi.Input<inputs.GetKubernetesClusterClusterAutoscalerConfigurationArgs>[] | undefined>;
+    corednsAutoscaler?: pulumi.Input<inputs.GetKubernetesClusterCorednsAutoscalerArgs | undefined>;
     kubeconfigExpireSeconds?: pulumi.Input<number | undefined>;
     /**
      * The name of Kubernetes cluster.

@@ -15,14 +15,14 @@ public final class KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs extend
     public static final KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs Empty = new KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs();
 
     /**
-     * Boolean flag whether the component is enabled or not.
+     * Boolean flag whether the CoreDNS Autoscaler is enabled or not.
      * 
      */
     @Import(name="enabled", required=true)
     private Output<Boolean> enabled;
 
     /**
-     * @return Boolean flag whether the component is enabled or not.
+     * @return Boolean flag whether the CoreDNS Autoscaler is enabled or not.
      * 
      */
     public Output<Boolean> enabled() {
@@ -54,7 +54,7 @@ public final class KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs extend
         }
 
         /**
-         * @param enabled Boolean flag whether the component is enabled or not.
+         * @param enabled Boolean flag whether the CoreDNS Autoscaler is enabled or not.
          * 
          * @return builder
          * 
@@ -65,7 +65,7 @@ public final class KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs extend
         }
 
         /**
-         * @param enabled Boolean flag whether the component is enabled or not.
+         * @param enabled Boolean flag whether the CoreDNS Autoscaler is enabled or not.
          * 
          * @return builder
          * 

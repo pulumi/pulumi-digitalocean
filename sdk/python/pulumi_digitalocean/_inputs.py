@@ -244,6 +244,8 @@ __all__ = [
     'DatabaseClusterBackupRestoreArgsDict',
     'DatabaseClusterMaintenanceWindowArgs',
     'DatabaseClusterMaintenanceWindowArgsDict',
+    'DatabaseClusterStorageAutoscaleArgs',
+    'DatabaseClusterStorageAutoscaleArgsDict',
     'DatabaseFirewallRuleArgs',
     'DatabaseFirewallRuleArgsDict',
     'DatabaseKafkaTopicConfigArgs',
@@ -426,6 +428,12 @@ __all__ = [
     'GradientaiAgentTemplateModelAgreementArgsDict',
     'GradientaiAgentTemplateModelVersionArgs',
     'GradientaiAgentTemplateModelVersionArgsDict',
+    'GradientaiCustomModelActiveDeploymentArgs',
+    'GradientaiCustomModelActiveDeploymentArgsDict',
+    'GradientaiCustomModelActiveDeploymentEndpointArgs',
+    'GradientaiCustomModelActiveDeploymentEndpointArgsDict',
+    'GradientaiCustomModelSourceRefArgs',
+    'GradientaiCustomModelSourceRefArgsDict',
     'GradientaiKnowledgeBaseDataSourceArgs',
     'GradientaiKnowledgeBaseDataSourceArgsDict',
     'GradientaiKnowledgeBaseDataSourceFileUploadDataSourceArgs',
@@ -452,6 +460,8 @@ __all__ = [
     'KubernetesClusterClusterAutoscalerConfigurationArgsDict',
     'KubernetesClusterControlPlaneFirewallArgs',
     'KubernetesClusterControlPlaneFirewallArgsDict',
+    'KubernetesClusterCorednsAutoscalerArgs',
+    'KubernetesClusterCorednsAutoscalerArgsDict',
     'KubernetesClusterKubeConfigArgs',
     'KubernetesClusterKubeConfigArgsDict',
     'KubernetesClusterMaintenancePolicyArgs',
@@ -658,6 +668,10 @@ __all__ = [
     'GetGradientaiAgentsFilterArgsDict',
     'GetGradientaiAgentsSortArgs',
     'GetGradientaiAgentsSortArgsDict',
+    'GetGradientaiCustomModelsFilterArgs',
+    'GetGradientaiCustomModelsFilterArgsDict',
+    'GetGradientaiCustomModelsSortArgs',
+    'GetGradientaiCustomModelsSortArgsDict',
     'GetGradientaiKnowledgeBaseLastIndexingJobArgs',
     'GetGradientaiKnowledgeBaseLastIndexingJobArgsDict',
     'GetGradientaiKnowledgeBasesFilterArgs',
@@ -686,6 +700,8 @@ __all__ = [
     'GetKubernetesClusterAmdGpuDevicePluginArgsDict',
     'GetKubernetesClusterClusterAutoscalerConfigurationArgs',
     'GetKubernetesClusterClusterAutoscalerConfigurationArgsDict',
+    'GetKubernetesClusterCorednsAutoscalerArgs',
+    'GetKubernetesClusterCorednsAutoscalerArgsDict',
     'GetKubernetesClusterNvidiaGpuDevicePluginArgs',
     'GetKubernetesClusterNvidiaGpuDevicePluginArgsDict',
     'GetKubernetesClusterRdmaSharedDevicePluginArgs',
@@ -10156,6 +10172,74 @@ class DatabaseClusterMaintenanceWindowArgs:
     @hour.setter
     def hour(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "hour", value)
+
+
+class DatabaseClusterStorageAutoscaleArgsDict(TypedDict):
+    enabled: pulumi.Input[_builtins.bool]
+    """
+    Whether storage autoscaling is enabled for the cluster.
+    """
+    increment_gib: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The amount of storage, in GiB, to add when autoscaling is triggered.
+    """
+    threshold_percent: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The storage utilization percentage at which autoscaling is triggered.
+    """
+
+@pulumi.input_type
+class DatabaseClusterStorageAutoscaleArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[_builtins.bool],
+                 increment_gib: pulumi.Input[Optional[_builtins.int]] = None,
+                 threshold_percent: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enabled: Whether storage autoscaling is enabled for the cluster.
+        :param pulumi.Input[_builtins.int] increment_gib: The amount of storage, in GiB, to add when autoscaling is triggered.
+        :param pulumi.Input[_builtins.int] threshold_percent: The storage utilization percentage at which autoscaling is triggered.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        if increment_gib is not None:
+            pulumi.set(__self__, "increment_gib", increment_gib)
+        if threshold_percent is not None:
+            pulumi.set(__self__, "threshold_percent", threshold_percent)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[_builtins.bool]:
+        """
+        Whether storage autoscaling is enabled for the cluster.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="incrementGib")
+    def increment_gib(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The amount of storage, in GiB, to add when autoscaling is triggered.
+        """
+        return pulumi.get(self, "increment_gib")
+
+    @increment_gib.setter
+    def increment_gib(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "increment_gib", value)
+
+    @_builtins.property
+    @pulumi.getter(name="thresholdPercent")
+    def threshold_percent(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The storage utilization percentage at which autoscaling is triggered.
+        """
+        return pulumi.get(self, "threshold_percent")
+
+    @threshold_percent.setter
+    def threshold_percent(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "threshold_percent", value)
 
 
 class DatabaseFirewallRuleArgsDict(TypedDict):
@@ -22942,6 +23026,353 @@ class GradientaiAgentTemplateModelVersionArgs:
         pulumi.set(self, "patch", value)
 
 
+class GradientaiCustomModelActiveDeploymentArgsDict(TypedDict):
+    created_at: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Timestamp when the deployment was created.
+    """
+    endpoints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiCustomModelActiveDeploymentEndpointArgsDict']]]]]
+    """
+    Endpoint URLs exposed by the deployment.
+    """
+    id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    ID of the dedicated inference deployment.
+    """
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Name of the dedicated inference deployment.
+    """
+    region_slug: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Region slug of the dedicated inference deployment.
+    """
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Current state of the deployment.
+    """
+    updated_at: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Timestamp when the deployment was last updated.
+    """
+
+@pulumi.input_type
+class GradientaiCustomModelActiveDeploymentArgs:
+    def __init__(__self__, *,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoints: pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiCustomModelActiveDeploymentEndpointArgs']]]] = None,
+                 id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_slug: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 updated_at: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] created_at: Timestamp when the deployment was created.
+        :param pulumi.Input[Sequence[pulumi.Input['GradientaiCustomModelActiveDeploymentEndpointArgs']]] endpoints: Endpoint URLs exposed by the deployment.
+        :param pulumi.Input[_builtins.str] id: ID of the dedicated inference deployment.
+        :param pulumi.Input[_builtins.str] name: Name of the dedicated inference deployment.
+        :param pulumi.Input[_builtins.str] region_slug: Region slug of the dedicated inference deployment.
+        :param pulumi.Input[_builtins.str] state: Current state of the deployment.
+        :param pulumi.Input[_builtins.str] updated_at: Timestamp when the deployment was last updated.
+        """
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if endpoints is not None:
+            pulumi.set(__self__, "endpoints", endpoints)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if region_slug is not None:
+            pulumi.set(__self__, "region_slug", region_slug)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Timestamp when the deployment was created.
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "created_at", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def endpoints(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiCustomModelActiveDeploymentEndpointArgs']]]]:
+        """
+        Endpoint URLs exposed by the deployment.
+        """
+        return pulumi.get(self, "endpoints")
+
+    @endpoints.setter
+    def endpoints(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiCustomModelActiveDeploymentEndpointArgs']]]]):
+        pulumi.set(self, "endpoints", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        ID of the dedicated inference deployment.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Name of the dedicated inference deployment.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="regionSlug")
+    def region_slug(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Region slug of the dedicated inference deployment.
+        """
+        return pulumi.get(self, "region_slug")
+
+    @region_slug.setter
+    def region_slug(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "region_slug", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Current state of the deployment.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "state", value)
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Timestamp when the deployment was last updated.
+        """
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "updated_at", value)
+
+
+class GradientaiCustomModelActiveDeploymentEndpointArgsDict(TypedDict):
+    private_endpoint_fqdn: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Private endpoint FQDN.
+    """
+    public_endpoint_fqdn: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Public endpoint FQDN, if enabled.
+    """
+
+@pulumi.input_type
+class GradientaiCustomModelActiveDeploymentEndpointArgs:
+    def __init__(__self__, *,
+                 private_endpoint_fqdn: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_endpoint_fqdn: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] private_endpoint_fqdn: Private endpoint FQDN.
+        :param pulumi.Input[_builtins.str] public_endpoint_fqdn: Public endpoint FQDN, if enabled.
+        """
+        if private_endpoint_fqdn is not None:
+            pulumi.set(__self__, "private_endpoint_fqdn", private_endpoint_fqdn)
+        if public_endpoint_fqdn is not None:
+            pulumi.set(__self__, "public_endpoint_fqdn", public_endpoint_fqdn)
+
+    @_builtins.property
+    @pulumi.getter(name="privateEndpointFqdn")
+    def private_endpoint_fqdn(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Private endpoint FQDN.
+        """
+        return pulumi.get(self, "private_endpoint_fqdn")
+
+    @private_endpoint_fqdn.setter
+    def private_endpoint_fqdn(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "private_endpoint_fqdn", value)
+
+    @_builtins.property
+    @pulumi.getter(name="publicEndpointFqdn")
+    def public_endpoint_fqdn(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Public endpoint FQDN, if enabled.
+        """
+        return pulumi.get(self, "public_endpoint_fqdn")
+
+    @public_endpoint_fqdn.setter
+    def public_endpoint_fqdn(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "public_endpoint_fqdn", value)
+
+
+class GradientaiCustomModelSourceRefArgsDict(TypedDict):
+    access_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Access type for the source repository. One of ACCESS_TYPE_PUBLIC, ACCESS_TYPE_PRIVATE, ACCESS_TYPE_GATED.
+    """
+    bucket: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Spaces bucket name for SOURCE_TYPE_SPACES_BUCKET sources.
+    """
+    commit_sha: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Commit SHA to pin for the import. If omitted, the API resolves and returns the SHA actually imported.
+    """
+    hf_token: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    HuggingFace token used to access ACCESS_TYPE_PRIVATE or ACCESS_TYPE_GATED repositories. Write-only.
+    """
+    prefix: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Key prefix inside the source bucket.
+    """
+    region: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Region of the source bucket.
+    """
+    repo_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Repository identifier (e.g. the HuggingFace repo). Required for SOURCE_TYPE_HUGGINGFACE sources.
+    """
+
+@pulumi.input_type
+class GradientaiCustomModelSourceRefArgs:
+    def __init__(__self__, *,
+                 access_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 commit_sha: pulumi.Input[Optional[_builtins.str]] = None,
+                 hf_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 repo_id: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] access_type: Access type for the source repository. One of ACCESS_TYPE_PUBLIC, ACCESS_TYPE_PRIVATE, ACCESS_TYPE_GATED.
+        :param pulumi.Input[_builtins.str] bucket: Spaces bucket name for SOURCE_TYPE_SPACES_BUCKET sources.
+        :param pulumi.Input[_builtins.str] commit_sha: Commit SHA to pin for the import. If omitted, the API resolves and returns the SHA actually imported.
+        :param pulumi.Input[_builtins.str] hf_token: HuggingFace token used to access ACCESS_TYPE_PRIVATE or ACCESS_TYPE_GATED repositories. Write-only.
+        :param pulumi.Input[_builtins.str] prefix: Key prefix inside the source bucket.
+        :param pulumi.Input[_builtins.str] region: Region of the source bucket.
+        :param pulumi.Input[_builtins.str] repo_id: Repository identifier (e.g. the HuggingFace repo). Required for SOURCE_TYPE_HUGGINGFACE sources.
+        """
+        if access_type is not None:
+            pulumi.set(__self__, "access_type", access_type)
+        if bucket is not None:
+            pulumi.set(__self__, "bucket", bucket)
+        if commit_sha is not None:
+            pulumi.set(__self__, "commit_sha", commit_sha)
+        if hf_token is not None:
+            pulumi.set(__self__, "hf_token", hf_token)
+        if prefix is not None:
+            pulumi.set(__self__, "prefix", prefix)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if repo_id is not None:
+            pulumi.set(__self__, "repo_id", repo_id)
+
+    @_builtins.property
+    @pulumi.getter(name="accessType")
+    def access_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Access type for the source repository. One of ACCESS_TYPE_PUBLIC, ACCESS_TYPE_PRIVATE, ACCESS_TYPE_GATED.
+        """
+        return pulumi.get(self, "access_type")
+
+    @access_type.setter
+    def access_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "access_type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Spaces bucket name for SOURCE_TYPE_SPACES_BUCKET sources.
+        """
+        return pulumi.get(self, "bucket")
+
+    @bucket.setter
+    def bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "bucket", value)
+
+    @_builtins.property
+    @pulumi.getter(name="commitSha")
+    def commit_sha(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Commit SHA to pin for the import. If omitted, the API resolves and returns the SHA actually imported.
+        """
+        return pulumi.get(self, "commit_sha")
+
+    @commit_sha.setter
+    def commit_sha(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "commit_sha", value)
+
+    @_builtins.property
+    @pulumi.getter(name="hfToken")
+    def hf_token(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        HuggingFace token used to access ACCESS_TYPE_PRIVATE or ACCESS_TYPE_GATED repositories. Write-only.
+        """
+        return pulumi.get(self, "hf_token")
+
+    @hf_token.setter
+    def hf_token(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "hf_token", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Key prefix inside the source bucket.
+        """
+        return pulumi.get(self, "prefix")
+
+    @prefix.setter
+    def prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "prefix", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Region of the source bucket.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "region", value)
+
+    @_builtins.property
+    @pulumi.getter(name="repoId")
+    def repo_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Repository identifier (e.g. the HuggingFace repo). Required for SOURCE_TYPE_HUGGINGFACE sources.
+        """
+        return pulumi.get(self, "repo_id")
+
+    @repo_id.setter
+    def repo_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "repo_id", value)
+
+
 class GradientaiKnowledgeBaseDataSourceArgsDict(TypedDict):
     created_at: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -24201,7 +24632,7 @@ class GradientaiOpenaiApiKeyModelVersionArgs:
 class KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgsDict(TypedDict):
     enabled: pulumi.Input[_builtins.bool]
     """
-    Boolean flag whether the component is enabled or not.
+    Boolean flag whether the CoreDNS Autoscaler is enabled or not.
     """
 
 @pulumi.input_type
@@ -24209,7 +24640,7 @@ class KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[_builtins.bool]):
         """
-        :param pulumi.Input[_builtins.bool] enabled: Boolean flag whether the component is enabled or not.
+        :param pulumi.Input[_builtins.bool] enabled: Boolean flag whether the CoreDNS Autoscaler is enabled or not.
         """
         pulumi.set(__self__, "enabled", enabled)
 
@@ -24217,7 +24648,7 @@ class KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs:
     @pulumi.getter
     def enabled(self) -> pulumi.Input[_builtins.bool]:
         """
-        Boolean flag whether the component is enabled or not.
+        Boolean flag whether the CoreDNS Autoscaler is enabled or not.
         """
         return pulumi.get(self, "enabled")
 
@@ -24259,11 +24690,12 @@ class KubernetesClusterAmdGpuDevicePluginArgs:
 
 class KubernetesClusterClusterAutoscalerConfigurationArgsDict(TypedDict):
     expanders: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    A list of cluster autoscaler expander strategies to apply in order when selecting which node pool to scale up. Valid values are `random`, `priority`, and `least-waste`. The autoscaler uses each expander from the list to narrow the selection until a single node pool remains. If multiple node pools remain after all expanders are applied, one is chosen at random. When using the `priority` expander, configure priorities in the `cluster-autoscaler-priority-expander` ConfigMap in the `kube-system` namespace (see [Configuring Priority Expander](https://docs.digitalocean.com/products/kubernetes/how-to/autoscale/#configuring-priority-expander)).
+    """
     scale_down_unneeded_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     String setting how long a node should be unneeded before it's eligible for scale down.
-
-    This resource supports customized create timeouts. The default timeout is 30 minutes.
     """
     scale_down_utilization_threshold: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
@@ -24277,9 +24709,8 @@ class KubernetesClusterClusterAutoscalerConfigurationArgs:
                  scale_down_unneeded_time: pulumi.Input[Optional[_builtins.str]] = None,
                  scale_down_utilization_threshold: pulumi.Input[Optional[_builtins.float]] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] expanders: A list of cluster autoscaler expander strategies to apply in order when selecting which node pool to scale up. Valid values are `random`, `priority`, and `least-waste`. The autoscaler uses each expander from the list to narrow the selection until a single node pool remains. If multiple node pools remain after all expanders are applied, one is chosen at random. When using the `priority` expander, configure priorities in the `cluster-autoscaler-priority-expander` ConfigMap in the `kube-system` namespace (see [Configuring Priority Expander](https://docs.digitalocean.com/products/kubernetes/how-to/autoscale/#configuring-priority-expander)).
         :param pulumi.Input[_builtins.str] scale_down_unneeded_time: String setting how long a node should be unneeded before it's eligible for scale down.
-               
-               This resource supports customized create timeouts. The default timeout is 30 minutes.
         :param pulumi.Input[_builtins.float] scale_down_utilization_threshold: Float setting the Node utilization level, defined as sum of requested resources divided by capacity, in which a node can be considered for scale down.
         """
         if expanders is not None:
@@ -24292,6 +24723,9 @@ class KubernetesClusterClusterAutoscalerConfigurationArgs:
     @_builtins.property
     @pulumi.getter
     def expanders(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A list of cluster autoscaler expander strategies to apply in order when selecting which node pool to scale up. Valid values are `random`, `priority`, and `least-waste`. The autoscaler uses each expander from the list to narrow the selection until a single node pool remains. If multiple node pools remain after all expanders are applied, one is chosen at random. When using the `priority` expander, configure priorities in the `cluster-autoscaler-priority-expander` ConfigMap in the `kube-system` namespace (see [Configuring Priority Expander](https://docs.digitalocean.com/products/kubernetes/how-to/autoscale/#configuring-priority-expander)).
+        """
         return pulumi.get(self, "expanders")
 
     @expanders.setter
@@ -24303,8 +24737,6 @@ class KubernetesClusterClusterAutoscalerConfigurationArgs:
     def scale_down_unneeded_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         String setting how long a node should be unneeded before it's eligible for scale down.
-
-        This resource supports customized create timeouts. The default timeout is 30 minutes.
         """
         return pulumi.get(self, "scale_down_unneeded_time")
 
@@ -24364,6 +24796,34 @@ class KubernetesClusterControlPlaneFirewallArgs:
     def enabled(self) -> pulumi.Input[_builtins.bool]:
         """
         Boolean flag whether the firewall should be enabled or not.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "enabled", value)
+
+
+class KubernetesClusterCorednsAutoscalerArgsDict(TypedDict):
+    enabled: pulumi.Input[_builtins.bool]
+    """
+    Boolean flag whether the CoreDNS Autoscaler should be enabled or not.
+    """
+
+@pulumi.input_type
+class KubernetesClusterCorednsAutoscalerArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[_builtins.bool]):
+        """
+        :param pulumi.Input[_builtins.bool] enabled: Boolean flag whether the CoreDNS Autoscaler should be enabled or not.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[_builtins.bool]:
+        """
+        Boolean flag whether the CoreDNS Autoscaler should be enabled or not.
         """
         return pulumi.get(self, "enabled")
 
@@ -25066,7 +25526,7 @@ class KubernetesClusterNvidiaGpuDevicePluginArgs:
 class KubernetesClusterRdmaSharedDevicePluginArgsDict(TypedDict):
     enabled: pulumi.Input[_builtins.bool]
     """
-    Boolean flag whether the component is enabled or not.
+    Boolean flag whether the CoreDNS Autoscaler is enabled or not.
     """
 
 @pulumi.input_type
@@ -25074,7 +25534,7 @@ class KubernetesClusterRdmaSharedDevicePluginArgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[_builtins.bool]):
         """
-        :param pulumi.Input[_builtins.bool] enabled: Boolean flag whether the component is enabled or not.
+        :param pulumi.Input[_builtins.bool] enabled: Boolean flag whether the CoreDNS Autoscaler is enabled or not.
         """
         pulumi.set(__self__, "enabled", enabled)
 
@@ -25082,7 +25542,7 @@ class KubernetesClusterRdmaSharedDevicePluginArgs:
     @pulumi.getter
     def enabled(self) -> pulumi.Input[_builtins.bool]:
         """
-        Boolean flag whether the component is enabled or not.
+        Boolean flag whether the CoreDNS Autoscaler is enabled or not.
         """
         return pulumi.get(self, "enabled")
 
@@ -25122,11 +25582,22 @@ class KubernetesClusterRoutingAgentArgs:
 class KubernetesClusterSsoArgsDict(TypedDict):
     enabled: pulumi.Input[_builtins.bool]
     """
-    Boolean flag whether the component is enabled or not.
+    Boolean flag indicating whether SSO is enabled as an authentication method for the cluster.
     """
     client_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The OIDC client ID for the cluster SSO configuration.
+
+    This resource supports customized create timeouts. The default timeout is 30 minutes.
+    """
     issuer_url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The OIDC issuer URL for the cluster SSO configuration.
+    """
     required: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Boolean flag indicating whether SSO is required as the only authentication method for the cluster. Default: `false`
+    """
 
 @pulumi.input_type
 class KubernetesClusterSsoArgs:
@@ -25136,7 +25607,12 @@ class KubernetesClusterSsoArgs:
                  issuer_url: pulumi.Input[Optional[_builtins.str]] = None,
                  required: pulumi.Input[Optional[_builtins.bool]] = None):
         """
-        :param pulumi.Input[_builtins.bool] enabled: Boolean flag whether the component is enabled or not.
+        :param pulumi.Input[_builtins.bool] enabled: Boolean flag indicating whether SSO is enabled as an authentication method for the cluster.
+        :param pulumi.Input[_builtins.str] client_id: The OIDC client ID for the cluster SSO configuration.
+               
+               This resource supports customized create timeouts. The default timeout is 30 minutes.
+        :param pulumi.Input[_builtins.str] issuer_url: The OIDC issuer URL for the cluster SSO configuration.
+        :param pulumi.Input[_builtins.bool] required: Boolean flag indicating whether SSO is required as the only authentication method for the cluster. Default: `false`
         """
         pulumi.set(__self__, "enabled", enabled)
         if client_id is not None:
@@ -25150,7 +25626,7 @@ class KubernetesClusterSsoArgs:
     @pulumi.getter
     def enabled(self) -> pulumi.Input[_builtins.bool]:
         """
-        Boolean flag whether the component is enabled or not.
+        Boolean flag indicating whether SSO is enabled as an authentication method for the cluster.
         """
         return pulumi.get(self, "enabled")
 
@@ -25161,6 +25637,11 @@ class KubernetesClusterSsoArgs:
     @_builtins.property
     @pulumi.getter(name="clientId")
     def client_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The OIDC client ID for the cluster SSO configuration.
+
+        This resource supports customized create timeouts. The default timeout is 30 minutes.
+        """
         return pulumi.get(self, "client_id")
 
     @client_id.setter
@@ -25170,6 +25651,9 @@ class KubernetesClusterSsoArgs:
     @_builtins.property
     @pulumi.getter(name="issuerUrl")
     def issuer_url(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The OIDC issuer URL for the cluster SSO configuration.
+        """
         return pulumi.get(self, "issuer_url")
 
     @issuer_url.setter
@@ -25179,6 +25663,9 @@ class KubernetesClusterSsoArgs:
     @_builtins.property
     @pulumi.getter
     def required(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Boolean flag indicating whether SSO is required as the only authentication method for the cluster. Default: `false`
+        """
         return pulumi.get(self, "required")
 
     @required.setter
@@ -35320,6 +35807,95 @@ class GetGradientaiAgentsSortArgs:
         pulumi.set(self, "direction", value)
 
 
+class GetGradientaiCustomModelsFilterArgsDict(TypedDict):
+    key: _builtins.str
+    values: Sequence[_builtins.str]
+    all: NotRequired[_builtins.bool]
+    match_by: NotRequired[_builtins.str]
+
+@pulumi.input_type
+class GetGradientaiCustomModelsFilterArgs:
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 values: Sequence[_builtins.str],
+                 all: Optional[_builtins.bool] = None,
+                 match_by: Optional[_builtins.str] = None):
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "values", values)
+        if all is not None:
+            pulumi.set(__self__, "all", all)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: _builtins.str):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Sequence[_builtins.str]):
+        pulumi.set(self, "values", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def all(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "all")
+
+    @all.setter
+    def all(self, value: Optional[_builtins.bool]):
+        pulumi.set(self, "all", value)
+
+    @_builtins.property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "match_by")
+
+    @match_by.setter
+    def match_by(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "match_by", value)
+
+
+class GetGradientaiCustomModelsSortArgsDict(TypedDict):
+    key: _builtins.str
+    direction: NotRequired[_builtins.str]
+
+@pulumi.input_type
+class GetGradientaiCustomModelsSortArgs:
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 direction: Optional[_builtins.str] = None):
+        pulumi.set(__self__, "key", key)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: _builtins.str):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def direction(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "direction")
+
+    @direction.setter
+    def direction(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "direction", value)
+
+
 class GetGradientaiKnowledgeBaseLastIndexingJobArgsDict(TypedDict):
     created_at: _builtins.str
     """
@@ -36141,6 +36717,25 @@ class GetKubernetesClusterClusterAutoscalerConfigurationArgs:
     @scale_down_utilization_threshold.setter
     def scale_down_utilization_threshold(self, value: Optional[_builtins.float]):
         pulumi.set(self, "scale_down_utilization_threshold", value)
+
+
+class GetKubernetesClusterCorednsAutoscalerArgsDict(TypedDict):
+    enabled: _builtins.bool
+
+@pulumi.input_type
+class GetKubernetesClusterCorednsAutoscalerArgs:
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: _builtins.bool):
+        pulumi.set(self, "enabled", value)
 
 
 class GetKubernetesClusterNvidiaGpuDevicePluginArgsDict(TypedDict):
