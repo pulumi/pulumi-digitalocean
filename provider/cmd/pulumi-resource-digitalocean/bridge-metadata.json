@@ -609,6 +609,9 @@
                     "metrics_endpoints": {
                         "maxItemsOne": false
                     },
+                    "storage_autoscale": {
+                        "maxItemsOne": true
+                    },
                     "tags": {
                         "maxItemsOne": false
                     }
@@ -1059,6 +1062,34 @@
                 "current": "digitalocean:index/gradientaiAgentRoute:GradientaiAgentRoute",
                 "majorVersion": 4
             },
+            "digitalocean_gradientai_custom_model": {
+                "current": "digitalocean:index/gradientaiCustomModel:GradientaiCustomModel",
+                "majorVersion": 4,
+                "fields": {
+                    "active_deployments": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "endpoints": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "input_modalities": {
+                        "maxItemsOne": false
+                    },
+                    "output_modalities": {
+                        "maxItemsOne": false
+                    },
+                    "source_ref": {
+                        "maxItemsOne": true
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "digitalocean_gradientai_function": {
                 "current": "digitalocean:index/gradientaiFunction:GradientaiFunction",
                 "majorVersion": 4
@@ -1180,6 +1211,9 @@
                                 }
                             }
                         }
+                    },
+                    "coredns_autoscaler": {
+                        "maxItemsOne": true
                     },
                     "kube_config": {
                         "maxItemsOne": false
@@ -2174,6 +2208,9 @@
                     "metrics_endpoints": {
                         "maxItemsOne": false
                     },
+                    "storage_autoscale": {
+                        "maxItemsOne": false
+                    },
                     "tags": {
                         "maxItemsOne": false
                     }
@@ -3078,6 +3115,82 @@
                     }
                 }
             },
+            "digitalocean_gradientai_custom_model": {
+                "current": "digitalocean:index/getGradientaiCustomModel:getGradientaiCustomModel",
+                "majorVersion": 4,
+                "fields": {
+                    "active_deployments": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "endpoints": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "input_modalities": {
+                        "maxItemsOne": false
+                    },
+                    "output_modalities": {
+                        "maxItemsOne": false
+                    },
+                    "source_ref": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "digitalocean_gradientai_custom_models": {
+                "current": "digitalocean:index/getGradientaiCustomModels:getGradientaiCustomModels",
+                "majorVersion": 4,
+                "fields": {
+                    "custom_models": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "active_deployments": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "endpoints": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "input_modalities": {
+                                    "maxItemsOne": false
+                                },
+                                "output_modalities": {
+                                    "maxItemsOne": false
+                                },
+                                "source_ref": {
+                                    "maxItemsOne": false
+                                },
+                                "tags": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "filter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "sort": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "digitalocean_gradientai_indexing_job": {
                 "current": "digitalocean:index/getGradientaiIndexingJob:getGradientaiIndexingJob",
                 "majorVersion": 4,
@@ -3396,6 +3509,9 @@
                                 }
                             }
                         }
+                    },
+                    "coredns_autoscaler": {
+                        "maxItemsOne": true
                     },
                     "kube_config": {
                         "maxItemsOne": false
