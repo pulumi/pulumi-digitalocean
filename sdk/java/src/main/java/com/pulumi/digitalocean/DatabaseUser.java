@@ -135,6 +135,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.digitalocean.DatabaseUser;
  * import com.pulumi.digitalocean.DatabaseUserArgs;
  * import com.pulumi.digitalocean.inputs.DatabaseUserSettingArgs;
+ * import com.pulumi.digitalocean.inputs.DatabaseUserSettingAclArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
