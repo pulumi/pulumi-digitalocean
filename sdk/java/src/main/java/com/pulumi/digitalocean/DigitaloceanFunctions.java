@@ -841,7 +841,7 @@ public final class DigitaloceanFunctions {
      *             Map.entry("prefix", example.prefix()),
      *             Map.entry("region", example.region()),
      *             Map.entry("status", example.status()),
-     *             Map.entry("assignedCount", exampleGetByoipPrefixResources.addresses().length())
+     *             Map.entry("assignedCount", exampleGetByoipPrefixResources.addresses().size())
      *         ));
      *     }
      * }
@@ -933,7 +933,7 @@ public final class DigitaloceanFunctions {
      *             Map.entry("prefix", example.prefix()),
      *             Map.entry("region", example.region()),
      *             Map.entry("status", example.status()),
-     *             Map.entry("assignedCount", exampleGetByoipPrefixResources.addresses().length())
+     *             Map.entry("assignedCount", exampleGetByoipPrefixResources.addresses().size())
      *         ));
      *     }
      * }
@@ -1025,7 +1025,7 @@ public final class DigitaloceanFunctions {
      *             Map.entry("prefix", example.prefix()),
      *             Map.entry("region", example.region()),
      *             Map.entry("status", example.status()),
-     *             Map.entry("assignedCount", exampleGetByoipPrefixResources.addresses().length())
+     *             Map.entry("assignedCount", exampleGetByoipPrefixResources.addresses().size())
      *         ));
      *     }
      * }
@@ -1117,7 +1117,7 @@ public final class DigitaloceanFunctions {
      *             Map.entry("prefix", example.prefix()),
      *             Map.entry("region", example.region()),
      *             Map.entry("status", example.status()),
-     *             Map.entry("assignedCount", exampleGetByoipPrefixResources.addresses().length())
+     *             Map.entry("assignedCount", exampleGetByoipPrefixResources.addresses().size())
      *         ));
      *     }
      * }
@@ -1209,7 +1209,7 @@ public final class DigitaloceanFunctions {
      *             Map.entry("prefix", example.prefix()),
      *             Map.entry("region", example.region()),
      *             Map.entry("status", example.status()),
-     *             Map.entry("assignedCount", exampleGetByoipPrefixResources.addresses().length())
+     *             Map.entry("assignedCount", exampleGetByoipPrefixResources.addresses().size())
      *         ));
      *     }
      * }
@@ -3447,6 +3447,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDedicatedInferenceAcceleratorsArgs;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferenceAcceleratorsFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -3526,6 +3527,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDedicatedInferenceAcceleratorsArgs;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferenceAcceleratorsFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -3605,6 +3607,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDedicatedInferenceAcceleratorsArgs;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferenceAcceleratorsFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -3684,6 +3687,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDedicatedInferenceAcceleratorsArgs;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferenceAcceleratorsFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -3763,6 +3767,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDedicatedInferenceAcceleratorsArgs;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferenceAcceleratorsFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -4405,6 +4410,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDedicatedInferenceTokensArgs;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferenceTokensFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -4487,6 +4493,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDedicatedInferenceTokensArgs;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferenceTokensFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -4569,6 +4576,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDedicatedInferenceTokensArgs;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferenceTokensFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -4651,6 +4659,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDedicatedInferenceTokensArgs;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferenceTokensFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -4733,6 +4742,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDedicatedInferenceTokensArgs;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferenceTokensFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -4812,6 +4822,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesArgs;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -4848,6 +4859,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesArgs;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesFilterArgs;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesSortArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -4930,6 +4943,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesArgs;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -4966,6 +4980,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesArgs;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesFilterArgs;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesSortArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -5048,6 +5064,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesArgs;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -5084,6 +5101,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesArgs;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesFilterArgs;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesSortArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -5166,6 +5185,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesArgs;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -5202,6 +5222,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesArgs;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesFilterArgs;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesSortArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -5284,6 +5306,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesArgs;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -5320,6 +5343,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesArgs;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesFilterArgs;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesSortArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -5402,6 +5427,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesArgs;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -5438,6 +5464,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesArgs;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesFilterArgs;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesSortArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -5520,6 +5548,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesArgs;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -5556,6 +5585,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesArgs;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesFilterArgs;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesSortArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -5858,6 +5889,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDomainsArgs;
+     * import com.pulumi.digitalocean.inputs.GetDomainsFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -5912,6 +5944,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDomainsArgs;
+     * import com.pulumi.digitalocean.inputs.GetDomainsFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -5966,6 +5999,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDomainsArgs;
+     * import com.pulumi.digitalocean.inputs.GetDomainsFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -6020,6 +6054,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDomainsArgs;
+     * import com.pulumi.digitalocean.inputs.GetDomainsFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -6074,6 +6109,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDomainsArgs;
+     * import com.pulumi.digitalocean.inputs.GetDomainsFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -6128,6 +6164,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDomainsArgs;
+     * import com.pulumi.digitalocean.inputs.GetDomainsFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -6182,6 +6219,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDomainsArgs;
+     * import com.pulumi.digitalocean.inputs.GetDomainsFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -8221,6 +8259,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDropletsArgs;
+     * import com.pulumi.digitalocean.inputs.GetDropletsFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -8257,6 +8296,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDropletsArgs;
+     * import com.pulumi.digitalocean.inputs.GetDropletsFilterArgs;
+     * import com.pulumi.digitalocean.inputs.GetDropletsSortArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -8323,6 +8364,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDropletsArgs;
+     * import com.pulumi.digitalocean.inputs.GetDropletsFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -8359,6 +8401,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDropletsArgs;
+     * import com.pulumi.digitalocean.inputs.GetDropletsFilterArgs;
+     * import com.pulumi.digitalocean.inputs.GetDropletsSortArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -8425,6 +8469,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDropletsArgs;
+     * import com.pulumi.digitalocean.inputs.GetDropletsFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -8461,6 +8506,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDropletsArgs;
+     * import com.pulumi.digitalocean.inputs.GetDropletsFilterArgs;
+     * import com.pulumi.digitalocean.inputs.GetDropletsSortArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -8527,6 +8574,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDropletsArgs;
+     * import com.pulumi.digitalocean.inputs.GetDropletsFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -8563,6 +8611,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDropletsArgs;
+     * import com.pulumi.digitalocean.inputs.GetDropletsFilterArgs;
+     * import com.pulumi.digitalocean.inputs.GetDropletsSortArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -8629,6 +8679,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDropletsArgs;
+     * import com.pulumi.digitalocean.inputs.GetDropletsFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -8665,6 +8716,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDropletsArgs;
+     * import com.pulumi.digitalocean.inputs.GetDropletsFilterArgs;
+     * import com.pulumi.digitalocean.inputs.GetDropletsSortArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -8731,6 +8784,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDropletsArgs;
+     * import com.pulumi.digitalocean.inputs.GetDropletsFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -8767,6 +8821,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDropletsArgs;
+     * import com.pulumi.digitalocean.inputs.GetDropletsFilterArgs;
+     * import com.pulumi.digitalocean.inputs.GetDropletsSortArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -8833,6 +8889,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDropletsArgs;
+     * import com.pulumi.digitalocean.inputs.GetDropletsFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -8869,6 +8926,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDropletsArgs;
+     * import com.pulumi.digitalocean.inputs.GetDropletsFilterArgs;
+     * import com.pulumi.digitalocean.inputs.GetDropletsSortArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -11364,6 +11423,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetImagesArgs;
+     * import com.pulumi.digitalocean.inputs.GetImagesFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -11400,6 +11460,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetImagesArgs;
+     * import com.pulumi.digitalocean.inputs.GetImagesFilterArgs;
+     * import com.pulumi.digitalocean.inputs.GetImagesSortArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -11464,6 +11526,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetImagesArgs;
+     * import com.pulumi.digitalocean.inputs.GetImagesFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -11500,6 +11563,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetImagesArgs;
+     * import com.pulumi.digitalocean.inputs.GetImagesFilterArgs;
+     * import com.pulumi.digitalocean.inputs.GetImagesSortArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -11564,6 +11629,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetImagesArgs;
+     * import com.pulumi.digitalocean.inputs.GetImagesFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -11600,6 +11666,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetImagesArgs;
+     * import com.pulumi.digitalocean.inputs.GetImagesFilterArgs;
+     * import com.pulumi.digitalocean.inputs.GetImagesSortArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -11664,6 +11732,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetImagesArgs;
+     * import com.pulumi.digitalocean.inputs.GetImagesFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -11700,6 +11769,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetImagesArgs;
+     * import com.pulumi.digitalocean.inputs.GetImagesFilterArgs;
+     * import com.pulumi.digitalocean.inputs.GetImagesSortArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -11764,6 +11835,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetImagesArgs;
+     * import com.pulumi.digitalocean.inputs.GetImagesFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -11800,6 +11872,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetImagesArgs;
+     * import com.pulumi.digitalocean.inputs.GetImagesFilterArgs;
+     * import com.pulumi.digitalocean.inputs.GetImagesSortArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -11864,6 +11938,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetImagesArgs;
+     * import com.pulumi.digitalocean.inputs.GetImagesFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -11900,6 +11975,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetImagesArgs;
+     * import com.pulumi.digitalocean.inputs.GetImagesFilterArgs;
+     * import com.pulumi.digitalocean.inputs.GetImagesSortArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -11964,6 +12041,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetImagesArgs;
+     * import com.pulumi.digitalocean.inputs.GetImagesFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -12000,6 +12078,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetImagesArgs;
+     * import com.pulumi.digitalocean.inputs.GetImagesFilterArgs;
+     * import com.pulumi.digitalocean.inputs.GetImagesSortArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -14388,6 +14468,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetProjectsArgs;
+     * import com.pulumi.digitalocean.inputs.GetProjectsFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -14424,6 +14505,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetProjectsArgs;
+     * import com.pulumi.digitalocean.inputs.GetProjectsFilterArgs;
+     * import com.pulumi.digitalocean.inputs.GetProjectsSortArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -14486,6 +14569,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetProjectsArgs;
+     * import com.pulumi.digitalocean.inputs.GetProjectsFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -14522,6 +14606,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetProjectsArgs;
+     * import com.pulumi.digitalocean.inputs.GetProjectsFilterArgs;
+     * import com.pulumi.digitalocean.inputs.GetProjectsSortArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -14584,6 +14670,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetProjectsArgs;
+     * import com.pulumi.digitalocean.inputs.GetProjectsFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -14620,6 +14707,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetProjectsArgs;
+     * import com.pulumi.digitalocean.inputs.GetProjectsFilterArgs;
+     * import com.pulumi.digitalocean.inputs.GetProjectsSortArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -14682,6 +14771,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetProjectsArgs;
+     * import com.pulumi.digitalocean.inputs.GetProjectsFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -14718,6 +14808,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetProjectsArgs;
+     * import com.pulumi.digitalocean.inputs.GetProjectsFilterArgs;
+     * import com.pulumi.digitalocean.inputs.GetProjectsSortArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -14780,6 +14872,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetProjectsArgs;
+     * import com.pulumi.digitalocean.inputs.GetProjectsFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -14816,6 +14909,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetProjectsArgs;
+     * import com.pulumi.digitalocean.inputs.GetProjectsFilterArgs;
+     * import com.pulumi.digitalocean.inputs.GetProjectsSortArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -14878,6 +14973,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetProjectsArgs;
+     * import com.pulumi.digitalocean.inputs.GetProjectsFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -14914,6 +15010,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetProjectsArgs;
+     * import com.pulumi.digitalocean.inputs.GetProjectsFilterArgs;
+     * import com.pulumi.digitalocean.inputs.GetProjectsSortArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -14976,6 +15074,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetProjectsArgs;
+     * import com.pulumi.digitalocean.inputs.GetProjectsFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -15012,6 +15111,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetProjectsArgs;
+     * import com.pulumi.digitalocean.inputs.GetProjectsFilterArgs;
+     * import com.pulumi.digitalocean.inputs.GetProjectsSortArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -15317,6 +15418,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetRecordsArgs;
+     * import com.pulumi.digitalocean.inputs.GetRecordsFilterArgs;
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.JoinArgs;
      * import java.util.ArrayList;
@@ -15370,6 +15472,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetRecordsArgs;
+     * import com.pulumi.digitalocean.inputs.GetRecordsFilterArgs;
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.JoinArgs;
      * import java.util.ArrayList;
@@ -15423,6 +15526,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetRecordsArgs;
+     * import com.pulumi.digitalocean.inputs.GetRecordsFilterArgs;
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.JoinArgs;
      * import java.util.ArrayList;
@@ -15476,6 +15580,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetRecordsArgs;
+     * import com.pulumi.digitalocean.inputs.GetRecordsFilterArgs;
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.JoinArgs;
      * import java.util.ArrayList;
@@ -15529,6 +15634,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetRecordsArgs;
+     * import com.pulumi.digitalocean.inputs.GetRecordsFilterArgs;
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.JoinArgs;
      * import java.util.ArrayList;
@@ -15797,6 +15903,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetRegionsArgs;
+     * import com.pulumi.digitalocean.inputs.GetRegionsFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -15833,6 +15940,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetRegionsArgs;
+     * import com.pulumi.digitalocean.inputs.GetRegionsFilterArgs;
+     * import com.pulumi.digitalocean.inputs.GetRegionsSortArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -15893,6 +16002,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetRegionsArgs;
+     * import com.pulumi.digitalocean.inputs.GetRegionsFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -15929,6 +16039,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetRegionsArgs;
+     * import com.pulumi.digitalocean.inputs.GetRegionsFilterArgs;
+     * import com.pulumi.digitalocean.inputs.GetRegionsSortArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -15989,6 +16101,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetRegionsArgs;
+     * import com.pulumi.digitalocean.inputs.GetRegionsFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -16025,6 +16138,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetRegionsArgs;
+     * import com.pulumi.digitalocean.inputs.GetRegionsFilterArgs;
+     * import com.pulumi.digitalocean.inputs.GetRegionsSortArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -16085,6 +16200,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetRegionsArgs;
+     * import com.pulumi.digitalocean.inputs.GetRegionsFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -16121,6 +16237,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetRegionsArgs;
+     * import com.pulumi.digitalocean.inputs.GetRegionsFilterArgs;
+     * import com.pulumi.digitalocean.inputs.GetRegionsSortArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -16181,6 +16299,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetRegionsArgs;
+     * import com.pulumi.digitalocean.inputs.GetRegionsFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -16217,6 +16336,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetRegionsArgs;
+     * import com.pulumi.digitalocean.inputs.GetRegionsFilterArgs;
+     * import com.pulumi.digitalocean.inputs.GetRegionsSortArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -16277,6 +16398,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetRegionsArgs;
+     * import com.pulumi.digitalocean.inputs.GetRegionsFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -16313,6 +16435,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetRegionsArgs;
+     * import com.pulumi.digitalocean.inputs.GetRegionsFilterArgs;
+     * import com.pulumi.digitalocean.inputs.GetRegionsSortArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -16373,6 +16497,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetRegionsArgs;
+     * import com.pulumi.digitalocean.inputs.GetRegionsFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -16409,6 +16534,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetRegionsArgs;
+     * import com.pulumi.digitalocean.inputs.GetRegionsFilterArgs;
+     * import com.pulumi.digitalocean.inputs.GetRegionsSortArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -16970,6 +17097,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSizesArgs;
+     * import com.pulumi.digitalocean.inputs.GetSizesFilterArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
      * import java.util.ArrayList;
@@ -17015,6 +17143,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSizesArgs;
+     * import com.pulumi.digitalocean.inputs.GetSizesFilterArgs;
+     * import com.pulumi.digitalocean.inputs.GetSizesSortArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
      * import java.util.ArrayList;
@@ -17071,6 +17201,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSizesArgs;
+     * import com.pulumi.digitalocean.inputs.GetSizesSortArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -17123,6 +17254,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSizesArgs;
+     * import com.pulumi.digitalocean.inputs.GetSizesFilterArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
      * import java.util.ArrayList;
@@ -17168,6 +17300,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSizesArgs;
+     * import com.pulumi.digitalocean.inputs.GetSizesFilterArgs;
+     * import com.pulumi.digitalocean.inputs.GetSizesSortArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
      * import java.util.ArrayList;
@@ -17224,6 +17358,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSizesArgs;
+     * import com.pulumi.digitalocean.inputs.GetSizesSortArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -17276,6 +17411,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSizesArgs;
+     * import com.pulumi.digitalocean.inputs.GetSizesFilterArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
      * import java.util.ArrayList;
@@ -17321,6 +17457,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSizesArgs;
+     * import com.pulumi.digitalocean.inputs.GetSizesFilterArgs;
+     * import com.pulumi.digitalocean.inputs.GetSizesSortArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
      * import java.util.ArrayList;
@@ -17377,6 +17515,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSizesArgs;
+     * import com.pulumi.digitalocean.inputs.GetSizesSortArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -17429,6 +17568,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSizesArgs;
+     * import com.pulumi.digitalocean.inputs.GetSizesFilterArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
      * import java.util.ArrayList;
@@ -17474,6 +17614,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSizesArgs;
+     * import com.pulumi.digitalocean.inputs.GetSizesFilterArgs;
+     * import com.pulumi.digitalocean.inputs.GetSizesSortArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
      * import java.util.ArrayList;
@@ -17530,6 +17672,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSizesArgs;
+     * import com.pulumi.digitalocean.inputs.GetSizesSortArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -17582,6 +17725,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSizesArgs;
+     * import com.pulumi.digitalocean.inputs.GetSizesFilterArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
      * import java.util.ArrayList;
@@ -17627,6 +17771,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSizesArgs;
+     * import com.pulumi.digitalocean.inputs.GetSizesFilterArgs;
+     * import com.pulumi.digitalocean.inputs.GetSizesSortArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
      * import java.util.ArrayList;
@@ -17683,6 +17829,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSizesArgs;
+     * import com.pulumi.digitalocean.inputs.GetSizesSortArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -17735,6 +17882,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSizesArgs;
+     * import com.pulumi.digitalocean.inputs.GetSizesFilterArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
      * import java.util.ArrayList;
@@ -17780,6 +17928,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSizesArgs;
+     * import com.pulumi.digitalocean.inputs.GetSizesFilterArgs;
+     * import com.pulumi.digitalocean.inputs.GetSizesSortArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
      * import java.util.ArrayList;
@@ -17836,6 +17986,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSizesArgs;
+     * import com.pulumi.digitalocean.inputs.GetSizesSortArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -17888,6 +18039,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSizesArgs;
+     * import com.pulumi.digitalocean.inputs.GetSizesFilterArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
      * import java.util.ArrayList;
@@ -17933,6 +18085,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSizesArgs;
+     * import com.pulumi.digitalocean.inputs.GetSizesFilterArgs;
+     * import com.pulumi.digitalocean.inputs.GetSizesSortArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
      * import java.util.ArrayList;
@@ -17989,6 +18143,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSizesArgs;
+     * import com.pulumi.digitalocean.inputs.GetSizesSortArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -18615,6 +18770,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSpacesBucketsArgs;
+     * import com.pulumi.digitalocean.inputs.GetSpacesBucketsFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -18650,6 +18806,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSpacesBucketsArgs;
+     * import com.pulumi.digitalocean.inputs.GetSpacesBucketsFilterArgs;
+     * import com.pulumi.digitalocean.inputs.GetSpacesBucketsSortArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -18705,6 +18863,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSpacesBucketsArgs;
+     * import com.pulumi.digitalocean.inputs.GetSpacesBucketsFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -18740,6 +18899,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSpacesBucketsArgs;
+     * import com.pulumi.digitalocean.inputs.GetSpacesBucketsFilterArgs;
+     * import com.pulumi.digitalocean.inputs.GetSpacesBucketsSortArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -18795,6 +18956,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSpacesBucketsArgs;
+     * import com.pulumi.digitalocean.inputs.GetSpacesBucketsFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -18830,6 +18992,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSpacesBucketsArgs;
+     * import com.pulumi.digitalocean.inputs.GetSpacesBucketsFilterArgs;
+     * import com.pulumi.digitalocean.inputs.GetSpacesBucketsSortArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -18885,6 +19049,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSpacesBucketsArgs;
+     * import com.pulumi.digitalocean.inputs.GetSpacesBucketsFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -18920,6 +19085,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSpacesBucketsArgs;
+     * import com.pulumi.digitalocean.inputs.GetSpacesBucketsFilterArgs;
+     * import com.pulumi.digitalocean.inputs.GetSpacesBucketsSortArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -18975,6 +19142,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSpacesBucketsArgs;
+     * import com.pulumi.digitalocean.inputs.GetSpacesBucketsFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -19010,6 +19178,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSpacesBucketsArgs;
+     * import com.pulumi.digitalocean.inputs.GetSpacesBucketsFilterArgs;
+     * import com.pulumi.digitalocean.inputs.GetSpacesBucketsSortArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -19065,6 +19235,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSpacesBucketsArgs;
+     * import com.pulumi.digitalocean.inputs.GetSpacesBucketsFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -19100,6 +19271,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSpacesBucketsArgs;
+     * import com.pulumi.digitalocean.inputs.GetSpacesBucketsFilterArgs;
+     * import com.pulumi.digitalocean.inputs.GetSpacesBucketsSortArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -19155,6 +19328,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSpacesBucketsArgs;
+     * import com.pulumi.digitalocean.inputs.GetSpacesBucketsFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -19190,6 +19364,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSpacesBucketsArgs;
+     * import com.pulumi.digitalocean.inputs.GetSpacesBucketsFilterArgs;
+     * import com.pulumi.digitalocean.inputs.GetSpacesBucketsSortArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -19750,6 +19926,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSshKeysArgs;
+     * import com.pulumi.digitalocean.inputs.GetSshKeysSortArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -19786,6 +19963,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSshKeysArgs;
+     * import com.pulumi.digitalocean.inputs.GetSshKeysFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -19839,6 +20017,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSshKeysArgs;
+     * import com.pulumi.digitalocean.inputs.GetSshKeysSortArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -19875,6 +20054,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSshKeysArgs;
+     * import com.pulumi.digitalocean.inputs.GetSshKeysFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -19928,6 +20108,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSshKeysArgs;
+     * import com.pulumi.digitalocean.inputs.GetSshKeysSortArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -19964,6 +20145,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSshKeysArgs;
+     * import com.pulumi.digitalocean.inputs.GetSshKeysFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -20017,6 +20199,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSshKeysArgs;
+     * import com.pulumi.digitalocean.inputs.GetSshKeysSortArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -20053,6 +20236,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSshKeysArgs;
+     * import com.pulumi.digitalocean.inputs.GetSshKeysFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -20106,6 +20290,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSshKeysArgs;
+     * import com.pulumi.digitalocean.inputs.GetSshKeysSortArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -20142,6 +20327,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSshKeysArgs;
+     * import com.pulumi.digitalocean.inputs.GetSshKeysFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -20195,6 +20381,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSshKeysArgs;
+     * import com.pulumi.digitalocean.inputs.GetSshKeysSortArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -20231,6 +20418,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSshKeysArgs;
+     * import com.pulumi.digitalocean.inputs.GetSshKeysFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -20284,6 +20472,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSshKeysArgs;
+     * import com.pulumi.digitalocean.inputs.GetSshKeysSortArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -20320,6 +20509,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSshKeysArgs;
+     * import com.pulumi.digitalocean.inputs.GetSshKeysFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -20647,6 +20837,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetTagsArgs;
+     * import com.pulumi.digitalocean.inputs.GetTagsSortArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -20693,6 +20884,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetTagsArgs;
+     * import com.pulumi.digitalocean.inputs.GetTagsSortArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -20739,6 +20931,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetTagsArgs;
+     * import com.pulumi.digitalocean.inputs.GetTagsSortArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -20785,6 +20978,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetTagsArgs;
+     * import com.pulumi.digitalocean.inputs.GetTagsSortArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -20831,6 +21025,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetTagsArgs;
+     * import com.pulumi.digitalocean.inputs.GetTagsSortArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -20877,6 +21072,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetTagsArgs;
+     * import com.pulumi.digitalocean.inputs.GetTagsSortArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -20923,6 +21119,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetTagsArgs;
+     * import com.pulumi.digitalocean.inputs.GetTagsSortArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
