@@ -61,13 +61,13 @@ namespace Pulumi.DigitalOcean
         public Output<int> FileCount { get; private set; } = null!;
 
         /// <summary>
-        /// Input modalities supported by the model.
+        /// Input modalities supported by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
         /// </summary>
         [Output("inputModalities")]
         public Output<ImmutableArray<string>> InputModalities { get; private set; } = null!;
 
         /// <summary>
-        /// License of the model as reported by the source.
+        /// License of the model. Defaults to the value reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
         /// </summary>
         [Output("license")]
         public Output<string> License { get; private set; } = null!;
@@ -79,13 +79,13 @@ namespace Pulumi.DigitalOcean
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Output modalities produced by the model.
+        /// Output modalities produced by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
         /// </summary>
         [Output("outputModalities")]
         public Output<ImmutableArray<string>> OutputModalities { get; private set; } = null!;
 
         /// <summary>
-        /// Parameter-count summary reported by the importer.
+        /// Parameter-count summary for the model. Defaults to the value reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
         /// </summary>
         [Output("parameters")]
         public Output<string> Parameters { get; private set; } = null!;
@@ -208,11 +208,47 @@ namespace Pulumi.DigitalOcean
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("inputModalities")]
+        private InputList<string>? _inputModalities;
+
+        /// <summary>
+        /// Input modalities supported by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
+        /// </summary>
+        public InputList<string> InputModalities
+        {
+            get => _inputModalities ?? (_inputModalities = new InputList<string>());
+            set => _inputModalities = value;
+        }
+
+        /// <summary>
+        /// License of the model. Defaults to the value reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
+        /// </summary>
+        [Input("license")]
+        public Input<string>? License { get; set; }
+
         /// <summary>
         /// A human-readable name for the custom model.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("outputModalities")]
+        private InputList<string>? _outputModalities;
+
+        /// <summary>
+        /// Output modalities produced by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
+        /// </summary>
+        public InputList<string> OutputModalities
+        {
+            get => _outputModalities ?? (_outputModalities = new InputList<string>());
+            set => _outputModalities = value;
+        }
+
+        /// <summary>
+        /// Parameter-count summary for the model. Defaults to the value reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
+        /// </summary>
+        [Input("parameters")]
+        public Input<string>? Parameters { get; set; }
 
         /// <summary>
         /// Preferred GPU region where the model artifacts should be staged.
@@ -310,7 +346,7 @@ namespace Pulumi.DigitalOcean
         private InputList<string>? _inputModalities;
 
         /// <summary>
-        /// Input modalities supported by the model.
+        /// Input modalities supported by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
         /// </summary>
         public InputList<string> InputModalities
         {
@@ -319,7 +355,7 @@ namespace Pulumi.DigitalOcean
         }
 
         /// <summary>
-        /// License of the model as reported by the source.
+        /// License of the model. Defaults to the value reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
         /// </summary>
         [Input("license")]
         public Input<string>? License { get; set; }
@@ -334,7 +370,7 @@ namespace Pulumi.DigitalOcean
         private InputList<string>? _outputModalities;
 
         /// <summary>
-        /// Output modalities produced by the model.
+        /// Output modalities produced by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
         /// </summary>
         public InputList<string> OutputModalities
         {
@@ -343,7 +379,7 @@ namespace Pulumi.DigitalOcean
         }
 
         /// <summary>
-        /// Parameter-count summary reported by the importer.
+        /// Parameter-count summary for the model. Defaults to the value reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
         /// </summary>
         [Input("parameters")]
         public Input<string>? Parameters { get; set; }

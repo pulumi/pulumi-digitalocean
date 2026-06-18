@@ -37,6 +37,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ContainerRegistryDockerCredentials{}
 	case "digitalocean:index/customImage:CustomImage":
 		r = &CustomImage{}
+	case "digitalocean:index/databaseAdvancedPostgresqlConfig:DatabaseAdvancedPostgresqlConfig":
+		r = &DatabaseAdvancedPostgresqlConfig{}
 	case "digitalocean:index/databaseCluster:DatabaseCluster":
 		r = &DatabaseCluster{}
 	case "digitalocean:index/databaseConnectionPool:DatabaseConnectionPool":
@@ -256,6 +258,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"digitalocean",
 		"index/customImage",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
+		"index/databaseAdvancedPostgresqlConfig",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

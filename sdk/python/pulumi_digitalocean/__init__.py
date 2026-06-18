@@ -15,6 +15,7 @@ from .container_registries import *
 from .container_registry import *
 from .container_registry_docker_credentials import *
 from .custom_image import *
+from .database_advanced_postgresql_config import *
 from .database_cluster import *
 from .database_connection_pool import *
 from .database_db import *
@@ -255,6 +256,14 @@ _utilities.register(
   "fqn": "pulumi_digitalocean",
   "classes": {
    "digitalocean:index/customImage:CustomImage": "CustomImage"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/databaseAdvancedPostgresqlConfig",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/databaseAdvancedPostgresqlConfig:DatabaseAdvancedPostgresqlConfig": "DatabaseAdvancedPostgresqlConfig"
   }
  },
  {

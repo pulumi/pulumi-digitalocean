@@ -134,28 +134,28 @@ public class GradientaiCustomModel extends com.pulumi.resources.CustomResource {
         return this.fileCount;
     }
     /**
-     * Input modalities supported by the model.
+     * Input modalities supported by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
      * 
      */
     @Export(name="inputModalities", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> inputModalities;
 
     /**
-     * @return Input modalities supported by the model.
+     * @return Input modalities supported by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
      * 
      */
     public Output<List<String>> inputModalities() {
         return this.inputModalities;
     }
     /**
-     * License of the model as reported by the source.
+     * License of the model. Defaults to the value reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
      * 
      */
     @Export(name="license", refs={String.class}, tree="[0]")
     private Output<String> license;
 
     /**
-     * @return License of the model as reported by the source.
+     * @return License of the model. Defaults to the value reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
      * 
      */
     public Output<String> license() {
@@ -176,28 +176,28 @@ public class GradientaiCustomModel extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Output modalities produced by the model.
+     * Output modalities produced by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
      * 
      */
     @Export(name="outputModalities", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> outputModalities;
 
     /**
-     * @return Output modalities produced by the model.
+     * @return Output modalities produced by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
      * 
      */
     public Output<List<String>> outputModalities() {
         return this.outputModalities;
     }
     /**
-     * Parameter-count summary reported by the importer.
+     * Parameter-count summary for the model. Defaults to the value reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
      * 
      */
     @Export(name="parameters", refs={String.class}, tree="[0]")
     private Output<String> parameters;
 
     /**
-     * @return Parameter-count summary reported by the importer.
+     * @return Parameter-count summary for the model. Defaults to the value reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
      * 
      */
     public Output<String> parameters() {

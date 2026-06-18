@@ -29,6 +29,7 @@
         "containerRegistry.ts",
         "containerRegistryDockerCredentials.ts",
         "customImage.ts",
+        "databaseAdvancedPostgresqlConfig.ts",
         "databaseCluster.ts",
         "databaseConnectionPool.ts",
         "databaseDb.ts",
