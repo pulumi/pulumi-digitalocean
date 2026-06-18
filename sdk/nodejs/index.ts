@@ -45,6 +45,11 @@ export type CustomImage = import("./customImage").CustomImage;
 export const CustomImage: typeof import("./customImage").CustomImage = null as any;
 utilities.lazyLoad(exports, ["CustomImage"], () => require("./customImage"));
 
+export { DatabaseAdvancedPostgresqlConfigArgs, DatabaseAdvancedPostgresqlConfigState } from "./databaseAdvancedPostgresqlConfig";
+export type DatabaseAdvancedPostgresqlConfig = import("./databaseAdvancedPostgresqlConfig").DatabaseAdvancedPostgresqlConfig;
+export const DatabaseAdvancedPostgresqlConfig: typeof import("./databaseAdvancedPostgresqlConfig").DatabaseAdvancedPostgresqlConfig = null as any;
+utilities.lazyLoad(exports, ["DatabaseAdvancedPostgresqlConfig"], () => require("./databaseAdvancedPostgresqlConfig"));
+
 export { DatabaseClusterArgs, DatabaseClusterState } from "./databaseCluster";
 export type DatabaseCluster = import("./databaseCluster").DatabaseCluster;
 export const DatabaseCluster: typeof import("./databaseCluster").DatabaseCluster = null as any;
@@ -901,6 +906,8 @@ const _module = {
                 return new ContainerRegistryDockerCredentials(name, <any>undefined, { urn })
             case "digitalocean:index/customImage:CustomImage":
                 return new CustomImage(name, <any>undefined, { urn })
+            case "digitalocean:index/databaseAdvancedPostgresqlConfig:DatabaseAdvancedPostgresqlConfig":
+                return new DatabaseAdvancedPostgresqlConfig(name, <any>undefined, { urn })
             case "digitalocean:index/databaseCluster:DatabaseCluster":
                 return new DatabaseCluster(name, <any>undefined, { urn })
             case "digitalocean:index/databaseConnectionPool:DatabaseConnectionPool":
@@ -1064,6 +1071,7 @@ pulumi.runtime.registerResourceModule("digitalocean", "index/containerRegistries
 pulumi.runtime.registerResourceModule("digitalocean", "index/containerRegistry", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/containerRegistryDockerCredentials", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/customImage", _module)
+pulumi.runtime.registerResourceModule("digitalocean", "index/databaseAdvancedPostgresqlConfig", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/databaseCluster", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/databaseConnectionPool", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/databaseDb", _module)

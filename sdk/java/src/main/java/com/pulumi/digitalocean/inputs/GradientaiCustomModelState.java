@@ -141,14 +141,14 @@ public final class GradientaiCustomModelState extends com.pulumi.resources.Resou
     }
 
     /**
-     * Input modalities supported by the model.
+     * Input modalities supported by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
      * 
      */
     @Import(name="inputModalities")
     private @Nullable Output<List<String>> inputModalities;
 
     /**
-     * @return Input modalities supported by the model.
+     * @return Input modalities supported by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
      * 
      */
     public Optional<Output<List<String>>> inputModalities() {
@@ -156,14 +156,14 @@ public final class GradientaiCustomModelState extends com.pulumi.resources.Resou
     }
 
     /**
-     * License of the model as reported by the source.
+     * License of the model. Defaults to the value reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
      * 
      */
     @Import(name="license")
     private @Nullable Output<String> license;
 
     /**
-     * @return License of the model as reported by the source.
+     * @return License of the model. Defaults to the value reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
      * 
      */
     public Optional<Output<String>> license() {
@@ -186,14 +186,14 @@ public final class GradientaiCustomModelState extends com.pulumi.resources.Resou
     }
 
     /**
-     * Output modalities produced by the model.
+     * Output modalities produced by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
      * 
      */
     @Import(name="outputModalities")
     private @Nullable Output<List<String>> outputModalities;
 
     /**
-     * @return Output modalities produced by the model.
+     * @return Output modalities produced by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
      * 
      */
     public Optional<Output<List<String>>> outputModalities() {
@@ -201,14 +201,14 @@ public final class GradientaiCustomModelState extends com.pulumi.resources.Resou
     }
 
     /**
-     * Parameter-count summary reported by the importer.
+     * Parameter-count summary for the model. Defaults to the value reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
      * 
      */
     @Import(name="parameters")
     private @Nullable Output<String> parameters;
 
     /**
-     * @return Parameter-count summary reported by the importer.
+     * @return Parameter-count summary for the model. Defaults to the value reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
      * 
      */
     public Optional<Output<String>> parameters() {
@@ -590,7 +590,7 @@ public final class GradientaiCustomModelState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param inputModalities Input modalities supported by the model.
+         * @param inputModalities Input modalities supported by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
          * 
          * @return builder
          * 
@@ -601,7 +601,7 @@ public final class GradientaiCustomModelState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param inputModalities Input modalities supported by the model.
+         * @param inputModalities Input modalities supported by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
          * 
          * @return builder
          * 
@@ -611,7 +611,7 @@ public final class GradientaiCustomModelState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param inputModalities Input modalities supported by the model.
+         * @param inputModalities Input modalities supported by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
          * 
          * @return builder
          * 
@@ -621,7 +621,7 @@ public final class GradientaiCustomModelState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param license License of the model as reported by the source.
+         * @param license License of the model. Defaults to the value reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
          * 
          * @return builder
          * 
@@ -632,7 +632,7 @@ public final class GradientaiCustomModelState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param license License of the model as reported by the source.
+         * @param license License of the model. Defaults to the value reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
          * 
          * @return builder
          * 
@@ -663,7 +663,7 @@ public final class GradientaiCustomModelState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param outputModalities Output modalities produced by the model.
+         * @param outputModalities Output modalities produced by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
          * 
          * @return builder
          * 
@@ -674,7 +674,7 @@ public final class GradientaiCustomModelState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param outputModalities Output modalities produced by the model.
+         * @param outputModalities Output modalities produced by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
          * 
          * @return builder
          * 
@@ -684,7 +684,7 @@ public final class GradientaiCustomModelState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param outputModalities Output modalities produced by the model.
+         * @param outputModalities Output modalities produced by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
          * 
          * @return builder
          * 
@@ -694,7 +694,7 @@ public final class GradientaiCustomModelState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param parameters Parameter-count summary reported by the importer.
+         * @param parameters Parameter-count summary for the model. Defaults to the value reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
          * 
          * @return builder
          * 
@@ -705,7 +705,7 @@ public final class GradientaiCustomModelState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param parameters Parameter-count summary reported by the importer.
+         * @param parameters Parameter-count summary for the model. Defaults to the value reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
          * 
          * @return builder
          * 

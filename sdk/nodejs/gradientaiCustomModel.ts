@@ -68,25 +68,25 @@ export class GradientaiCustomModel extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly fileCount: pulumi.Output<number>;
     /**
-     * Input modalities supported by the model.
+     * Input modalities supported by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
      */
-    declare public /*out*/ readonly inputModalities: pulumi.Output<string[]>;
+    declare public readonly inputModalities: pulumi.Output<string[]>;
     /**
-     * License of the model as reported by the source.
+     * License of the model. Defaults to the value reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
      */
-    declare public /*out*/ readonly license: pulumi.Output<string>;
+    declare public readonly license: pulumi.Output<string>;
     /**
      * A human-readable name for the custom model.
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * Output modalities produced by the model.
+     * Output modalities produced by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
      */
-    declare public /*out*/ readonly outputModalities: pulumi.Output<string[]>;
+    declare public readonly outputModalities: pulumi.Output<string[]>;
     /**
-     * Parameter-count summary reported by the importer.
+     * Parameter-count summary for the model. Defaults to the value reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
      */
-    declare public /*out*/ readonly parameters: pulumi.Output<string>;
+    declare public readonly parameters: pulumi.Output<string>;
     /**
      * Preferred GPU region where the model artifacts should be staged.
      */
@@ -174,7 +174,11 @@ export class GradientaiCustomModel extends pulumi.CustomResource {
             }
             resourceInputs["acceptTermsAndConditions"] = args?.acceptTermsAndConditions;
             resourceInputs["description"] = args?.description;
+            resourceInputs["inputModalities"] = args?.inputModalities;
+            resourceInputs["license"] = args?.license;
             resourceInputs["name"] = args?.name;
+            resourceInputs["outputModalities"] = args?.outputModalities;
+            resourceInputs["parameters"] = args?.parameters;
             resourceInputs["preferredGpuRegion"] = args?.preferredGpuRegion;
             resourceInputs["sourceRef"] = args?.sourceRef;
             resourceInputs["sourceType"] = args?.sourceType;
@@ -185,10 +189,6 @@ export class GradientaiCustomModel extends pulumi.CustomResource {
             resourceInputs["costEstimatePerMonth"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["fileCount"] = undefined /*out*/;
-            resourceInputs["inputModalities"] = undefined /*out*/;
-            resourceInputs["license"] = undefined /*out*/;
-            resourceInputs["outputModalities"] = undefined /*out*/;
-            resourceInputs["parameters"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["storageRegion"] = undefined /*out*/;
             resourceInputs["teamId"] = undefined /*out*/;
@@ -238,11 +238,11 @@ export interface GradientaiCustomModelState {
      */
     fileCount?: pulumi.Input<number | undefined>;
     /**
-     * Input modalities supported by the model.
+     * Input modalities supported by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
      */
     inputModalities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * License of the model as reported by the source.
+     * License of the model. Defaults to the value reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
      */
     license?: pulumi.Input<string | undefined>;
     /**
@@ -250,11 +250,11 @@ export interface GradientaiCustomModelState {
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * Output modalities produced by the model.
+     * Output modalities produced by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
      */
     outputModalities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Parameter-count summary reported by the importer.
+     * Parameter-count summary for the model. Defaults to the value reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
      */
     parameters?: pulumi.Input<string | undefined>;
     /**
@@ -312,9 +312,25 @@ export interface GradientaiCustomModelArgs {
      */
     description?: pulumi.Input<string | undefined>;
     /**
+     * Input modalities supported by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
+     */
+    inputModalities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * License of the model. Defaults to the value reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
+     */
+    license?: pulumi.Input<string | undefined>;
+    /**
      * A human-readable name for the custom model.
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Output modalities produced by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
+     */
+    outputModalities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Parameter-count summary for the model. Defaults to the value reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
+     */
+    parameters?: pulumi.Input<string | undefined>;
     /**
      * Preferred GPU region where the model artifacts should be staged.
      */

@@ -50,6 +50,36 @@ public final class GradientaiCustomModelArgs extends com.pulumi.resources.Resour
     }
 
     /**
+     * Input modalities supported by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
+     * 
+     */
+    @Import(name="inputModalities")
+    private @Nullable Output<List<String>> inputModalities;
+
+    /**
+     * @return Input modalities supported by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
+     * 
+     */
+    public Optional<Output<List<String>>> inputModalities() {
+        return Optional.ofNullable(this.inputModalities);
+    }
+
+    /**
+     * License of the model. Defaults to the value reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
+     * 
+     */
+    @Import(name="license")
+    private @Nullable Output<String> license;
+
+    /**
+     * @return License of the model. Defaults to the value reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
+     * 
+     */
+    public Optional<Output<String>> license() {
+        return Optional.ofNullable(this.license);
+    }
+
+    /**
      * A human-readable name for the custom model.
      * 
      */
@@ -62,6 +92,36 @@ public final class GradientaiCustomModelArgs extends com.pulumi.resources.Resour
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
+    }
+
+    /**
+     * Output modalities produced by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
+     * 
+     */
+    @Import(name="outputModalities")
+    private @Nullable Output<List<String>> outputModalities;
+
+    /**
+     * @return Output modalities produced by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
+     * 
+     */
+    public Optional<Output<List<String>>> outputModalities() {
+        return Optional.ofNullable(this.outputModalities);
+    }
+
+    /**
+     * Parameter-count summary for the model. Defaults to the value reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
+     * 
+     */
+    @Import(name="parameters")
+    private @Nullable Output<String> parameters;
+
+    /**
+     * @return Parameter-count summary for the model. Defaults to the value reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
+     * 
+     */
+    public Optional<Output<String>> parameters() {
+        return Optional.ofNullable(this.parameters);
     }
 
     /**
@@ -129,7 +189,11 @@ public final class GradientaiCustomModelArgs extends com.pulumi.resources.Resour
     private GradientaiCustomModelArgs(GradientaiCustomModelArgs $) {
         this.acceptTermsAndConditions = $.acceptTermsAndConditions;
         this.description = $.description;
+        this.inputModalities = $.inputModalities;
+        this.license = $.license;
         this.name = $.name;
+        this.outputModalities = $.outputModalities;
+        this.parameters = $.parameters;
         this.preferredGpuRegion = $.preferredGpuRegion;
         this.sourceRef = $.sourceRef;
         this.sourceType = $.sourceType;
@@ -197,6 +261,58 @@ public final class GradientaiCustomModelArgs extends com.pulumi.resources.Resour
         }
 
         /**
+         * @param inputModalities Input modalities supported by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder inputModalities(@Nullable Output<List<String>> inputModalities) {
+            $.inputModalities = inputModalities;
+            return this;
+        }
+
+        /**
+         * @param inputModalities Input modalities supported by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder inputModalities(List<String> inputModalities) {
+            return inputModalities(Output.of(inputModalities));
+        }
+
+        /**
+         * @param inputModalities Input modalities supported by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder inputModalities(String... inputModalities) {
+            return inputModalities(List.of(inputModalities));
+        }
+
+        /**
+         * @param license License of the model. Defaults to the value reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder license(@Nullable Output<String> license) {
+            $.license = license;
+            return this;
+        }
+
+        /**
+         * @param license License of the model. Defaults to the value reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder license(String license) {
+            return license(Output.of(license));
+        }
+
+        /**
          * @param name A human-readable name for the custom model.
          * 
          * @return builder
@@ -215,6 +331,58 @@ public final class GradientaiCustomModelArgs extends com.pulumi.resources.Resour
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param outputModalities Output modalities produced by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder outputModalities(@Nullable Output<List<String>> outputModalities) {
+            $.outputModalities = outputModalities;
+            return this;
+        }
+
+        /**
+         * @param outputModalities Output modalities produced by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder outputModalities(List<String> outputModalities) {
+            return outputModalities(Output.of(outputModalities));
+        }
+
+        /**
+         * @param outputModalities Output modalities produced by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder outputModalities(String... outputModalities) {
+            return outputModalities(List.of(outputModalities));
+        }
+
+        /**
+         * @param parameters Parameter-count summary for the model. Defaults to the value reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parameters(@Nullable Output<String> parameters) {
+            $.parameters = parameters;
+            return this;
+        }
+
+        /**
+         * @param parameters Parameter-count summary for the model. Defaults to the value reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parameters(String parameters) {
+            return parameters(Output.of(parameters));
         }
 
         /**

@@ -31,15 +31,15 @@ type GradientaiCustomModel struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Number of files that make up the imported model.
 	FileCount pulumi.IntOutput `pulumi:"fileCount"`
-	// Input modalities supported by the model.
+	// Input modalities supported by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
 	InputModalities pulumi.StringArrayOutput `pulumi:"inputModalities"`
-	// License of the model as reported by the source.
+	// License of the model. Defaults to the value reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
 	License pulumi.StringOutput `pulumi:"license"`
 	// A human-readable name for the custom model.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Output modalities produced by the model.
+	// Output modalities produced by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
 	OutputModalities pulumi.StringArrayOutput `pulumi:"outputModalities"`
-	// Parameter-count summary reported by the importer.
+	// Parameter-count summary for the model. Defaults to the value reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
 	Parameters pulumi.StringOutput `pulumi:"parameters"`
 	// Preferred GPU region where the model artifacts should be staged.
 	PreferredGpuRegion pulumi.StringPtrOutput `pulumi:"preferredGpuRegion"`
@@ -115,15 +115,15 @@ type gradientaiCustomModelState struct {
 	Description *string `pulumi:"description"`
 	// Number of files that make up the imported model.
 	FileCount *int `pulumi:"fileCount"`
-	// Input modalities supported by the model.
+	// Input modalities supported by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
 	InputModalities []string `pulumi:"inputModalities"`
-	// License of the model as reported by the source.
+	// License of the model. Defaults to the value reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
 	License *string `pulumi:"license"`
 	// A human-readable name for the custom model.
 	Name *string `pulumi:"name"`
-	// Output modalities produced by the model.
+	// Output modalities produced by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
 	OutputModalities []string `pulumi:"outputModalities"`
-	// Parameter-count summary reported by the importer.
+	// Parameter-count summary for the model. Defaults to the value reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
 	Parameters *string `pulumi:"parameters"`
 	// Preferred GPU region where the model artifacts should be staged.
 	PreferredGpuRegion *string `pulumi:"preferredGpuRegion"`
@@ -164,15 +164,15 @@ type GradientaiCustomModelState struct {
 	Description pulumi.StringPtrInput
 	// Number of files that make up the imported model.
 	FileCount pulumi.IntPtrInput
-	// Input modalities supported by the model.
+	// Input modalities supported by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
 	InputModalities pulumi.StringArrayInput
-	// License of the model as reported by the source.
+	// License of the model. Defaults to the value reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
 	License pulumi.StringPtrInput
 	// A human-readable name for the custom model.
 	Name pulumi.StringPtrInput
-	// Output modalities produced by the model.
+	// Output modalities produced by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
 	OutputModalities pulumi.StringArrayInput
-	// Parameter-count summary reported by the importer.
+	// Parameter-count summary for the model. Defaults to the value reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
 	Parameters pulumi.StringPtrInput
 	// Preferred GPU region where the model artifacts should be staged.
 	PreferredGpuRegion pulumi.StringPtrInput
@@ -205,8 +205,16 @@ type gradientaiCustomModelArgs struct {
 	AcceptTermsAndConditions *bool `pulumi:"acceptTermsAndConditions"`
 	// Description of the custom model.
 	Description *string `pulumi:"description"`
+	// Input modalities supported by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
+	InputModalities []string `pulumi:"inputModalities"`
+	// License of the model. Defaults to the value reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
+	License *string `pulumi:"license"`
 	// A human-readable name for the custom model.
 	Name *string `pulumi:"name"`
+	// Output modalities produced by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
+	OutputModalities []string `pulumi:"outputModalities"`
+	// Parameter-count summary for the model. Defaults to the value reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
+	Parameters *string `pulumi:"parameters"`
 	// Preferred GPU region where the model artifacts should be staged.
 	PreferredGpuRegion *string `pulumi:"preferredGpuRegion"`
 	// Reference to the source from which to import the custom model.
@@ -223,8 +231,16 @@ type GradientaiCustomModelArgs struct {
 	AcceptTermsAndConditions pulumi.BoolPtrInput
 	// Description of the custom model.
 	Description pulumi.StringPtrInput
+	// Input modalities supported by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
+	InputModalities pulumi.StringArrayInput
+	// License of the model. Defaults to the value reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
+	License pulumi.StringPtrInput
 	// A human-readable name for the custom model.
 	Name pulumi.StringPtrInput
+	// Output modalities produced by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
+	OutputModalities pulumi.StringArrayInput
+	// Parameter-count summary for the model. Defaults to the value reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
+	Parameters pulumi.StringPtrInput
 	// Preferred GPU region where the model artifacts should be staged.
 	PreferredGpuRegion pulumi.StringPtrInput
 	// Reference to the source from which to import the custom model.
@@ -364,12 +380,12 @@ func (o GradientaiCustomModelOutput) FileCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *GradientaiCustomModel) pulumi.IntOutput { return v.FileCount }).(pulumi.IntOutput)
 }
 
-// Input modalities supported by the model.
+// Input modalities supported by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
 func (o GradientaiCustomModelOutput) InputModalities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GradientaiCustomModel) pulumi.StringArrayOutput { return v.InputModalities }).(pulumi.StringArrayOutput)
 }
 
-// License of the model as reported by the source.
+// License of the model. Defaults to the value reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
 func (o GradientaiCustomModelOutput) License() pulumi.StringOutput {
 	return o.ApplyT(func(v *GradientaiCustomModel) pulumi.StringOutput { return v.License }).(pulumi.StringOutput)
 }
@@ -379,12 +395,12 @@ func (o GradientaiCustomModelOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *GradientaiCustomModel) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Output modalities produced by the model.
+// Output modalities produced by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
 func (o GradientaiCustomModelOutput) OutputModalities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GradientaiCustomModel) pulumi.StringArrayOutput { return v.OutputModalities }).(pulumi.StringArrayOutput)
 }
 
-// Parameter-count summary reported by the importer.
+// Parameter-count summary for the model. Defaults to the value reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
 func (o GradientaiCustomModelOutput) Parameters() pulumi.StringOutput {
 	return o.ApplyT(func(v *GradientaiCustomModel) pulumi.StringOutput { return v.Parameters }).(pulumi.StringOutput)
 }

@@ -25,7 +25,11 @@ class GradientaiCustomModelArgs:
                  source_type: pulumi.Input[_builtins.str],
                  accept_terms_and_conditions: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 input_modalities: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 license: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 output_modalities: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 parameters: pulumi.Input[Optional[_builtins.str]] = None,
                  preferred_gpu_region: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
@@ -35,7 +39,11 @@ class GradientaiCustomModelArgs:
         :param pulumi.Input[_builtins.str] source_type: Source of the model to import. One of SOURCE_TYPE_HUGGINGFACE, SOURCE_TYPE_SPACES_BUCKET, SOURCE_TYPE_SDK_UPLOAD, SOURCE_TYPE_FINE_TUNING.
         :param pulumi.Input[_builtins.bool] accept_terms_and_conditions: Whether the caller accepts the model provider's terms and conditions. Write-only.
         :param pulumi.Input[_builtins.str] description: Description of the custom model.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] input_modalities: Input modalities supported by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
+        :param pulumi.Input[_builtins.str] license: License of the model. Defaults to the value reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
         :param pulumi.Input[_builtins.str] name: A human-readable name for the custom model.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] output_modalities: Output modalities produced by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
+        :param pulumi.Input[_builtins.str] parameters: Parameter-count summary for the model. Defaults to the value reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
         :param pulumi.Input[_builtins.str] preferred_gpu_region: Preferred GPU region where the model artifacts should be staged.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: User-defined tags associated with the custom model.
         """
@@ -45,8 +53,16 @@ class GradientaiCustomModelArgs:
             pulumi.set(__self__, "accept_terms_and_conditions", accept_terms_and_conditions)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if input_modalities is not None:
+            pulumi.set(__self__, "input_modalities", input_modalities)
+        if license is not None:
+            pulumi.set(__self__, "license", license)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if output_modalities is not None:
+            pulumi.set(__self__, "output_modalities", output_modalities)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
         if preferred_gpu_region is not None:
             pulumi.set(__self__, "preferred_gpu_region", preferred_gpu_region)
         if tags is not None:
@@ -101,6 +117,30 @@ class GradientaiCustomModelArgs:
         pulumi.set(self, "description", value)
 
     @_builtins.property
+    @pulumi.getter(name="inputModalities")
+    def input_modalities(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Input modalities supported by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
+        """
+        return pulumi.get(self, "input_modalities")
+
+    @input_modalities.setter
+    def input_modalities(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "input_modalities", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def license(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        License of the model. Defaults to the value reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
+        """
+        return pulumi.get(self, "license")
+
+    @license.setter
+    def license(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "license", value)
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -111,6 +151,30 @@ class GradientaiCustomModelArgs:
     @name.setter
     def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="outputModalities")
+    def output_modalities(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Output modalities produced by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
+        """
+        return pulumi.get(self, "output_modalities")
+
+    @output_modalities.setter
+    def output_modalities(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "output_modalities", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def parameters(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Parameter-count summary for the model. Defaults to the value reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
+        """
+        return pulumi.get(self, "parameters")
+
+    @parameters.setter
+    def parameters(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "parameters", value)
 
     @_builtins.property
     @pulumi.getter(name="preferredGpuRegion")
@@ -174,11 +238,11 @@ class _GradientaiCustomModelState:
         :param pulumi.Input[_builtins.str] created_at: Timestamp when the custom model was created.
         :param pulumi.Input[_builtins.str] description: Description of the custom model.
         :param pulumi.Input[_builtins.int] file_count: Number of files that make up the imported model.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] input_modalities: Input modalities supported by the model.
-        :param pulumi.Input[_builtins.str] license: License of the model as reported by the source.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] input_modalities: Input modalities supported by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
+        :param pulumi.Input[_builtins.str] license: License of the model. Defaults to the value reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
         :param pulumi.Input[_builtins.str] name: A human-readable name for the custom model.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] output_modalities: Output modalities produced by the model.
-        :param pulumi.Input[_builtins.str] parameters: Parameter-count summary reported by the importer.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] output_modalities: Output modalities produced by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
+        :param pulumi.Input[_builtins.str] parameters: Parameter-count summary for the model. Defaults to the value reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
         :param pulumi.Input[_builtins.str] preferred_gpu_region: Preferred GPU region where the model artifacts should be staged.
         :param pulumi.Input['GradientaiCustomModelSourceRefArgs'] source_ref: Reference to the source from which to import the custom model.
         :param pulumi.Input[_builtins.str] source_type: Source of the model to import. One of SOURCE_TYPE_HUGGINGFACE, SOURCE_TYPE_SPACES_BUCKET, SOURCE_TYPE_SDK_UPLOAD, SOURCE_TYPE_FINE_TUNING.
@@ -337,7 +401,7 @@ class _GradientaiCustomModelState:
     @pulumi.getter(name="inputModalities")
     def input_modalities(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Input modalities supported by the model.
+        Input modalities supported by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
         """
         return pulumi.get(self, "input_modalities")
 
@@ -349,7 +413,7 @@ class _GradientaiCustomModelState:
     @pulumi.getter
     def license(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        License of the model as reported by the source.
+        License of the model. Defaults to the value reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
         """
         return pulumi.get(self, "license")
 
@@ -373,7 +437,7 @@ class _GradientaiCustomModelState:
     @pulumi.getter(name="outputModalities")
     def output_modalities(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Output modalities produced by the model.
+        Output modalities produced by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
         """
         return pulumi.get(self, "output_modalities")
 
@@ -385,7 +449,7 @@ class _GradientaiCustomModelState:
     @pulumi.getter
     def parameters(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Parameter-count summary reported by the importer.
+        Parameter-count summary for the model. Defaults to the value reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
         """
         return pulumi.get(self, "parameters")
 
@@ -522,7 +586,11 @@ class GradientaiCustomModel(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  accept_terms_and_conditions: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 input_modalities: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 license: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 output_modalities: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 parameters: pulumi.Input[Optional[_builtins.str]] = None,
                  preferred_gpu_region: pulumi.Input[Optional[_builtins.str]] = None,
                  source_ref: pulumi.Input[Optional[Union['GradientaiCustomModelSourceRefArgs', 'GradientaiCustomModelSourceRefArgsDict']]] = None,
                  source_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -535,7 +603,11 @@ class GradientaiCustomModel(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] accept_terms_and_conditions: Whether the caller accepts the model provider's terms and conditions. Write-only.
         :param pulumi.Input[_builtins.str] description: Description of the custom model.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] input_modalities: Input modalities supported by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
+        :param pulumi.Input[_builtins.str] license: License of the model. Defaults to the value reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
         :param pulumi.Input[_builtins.str] name: A human-readable name for the custom model.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] output_modalities: Output modalities produced by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
+        :param pulumi.Input[_builtins.str] parameters: Parameter-count summary for the model. Defaults to the value reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
         :param pulumi.Input[_builtins.str] preferred_gpu_region: Preferred GPU region where the model artifacts should be staged.
         :param pulumi.Input[Union['GradientaiCustomModelSourceRefArgs', 'GradientaiCustomModelSourceRefArgsDict']] source_ref: Reference to the source from which to import the custom model.
         :param pulumi.Input[_builtins.str] source_type: Source of the model to import. One of SOURCE_TYPE_HUGGINGFACE, SOURCE_TYPE_SPACES_BUCKET, SOURCE_TYPE_SDK_UPLOAD, SOURCE_TYPE_FINE_TUNING.
@@ -567,7 +639,11 @@ class GradientaiCustomModel(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  accept_terms_and_conditions: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 input_modalities: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 license: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 output_modalities: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 parameters: pulumi.Input[Optional[_builtins.str]] = None,
                  preferred_gpu_region: pulumi.Input[Optional[_builtins.str]] = None,
                  source_ref: pulumi.Input[Optional[Union['GradientaiCustomModelSourceRefArgs', 'GradientaiCustomModelSourceRefArgsDict']]] = None,
                  source_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -583,7 +659,11 @@ class GradientaiCustomModel(pulumi.CustomResource):
 
             __props__.__dict__["accept_terms_and_conditions"] = accept_terms_and_conditions
             __props__.__dict__["description"] = description
+            __props__.__dict__["input_modalities"] = input_modalities
+            __props__.__dict__["license"] = license
             __props__.__dict__["name"] = name
+            __props__.__dict__["output_modalities"] = output_modalities
+            __props__.__dict__["parameters"] = parameters
             __props__.__dict__["preferred_gpu_region"] = preferred_gpu_region
             if source_ref is None and not opts.urn:
                 raise TypeError("Missing required property 'source_ref'")
@@ -598,10 +678,6 @@ class GradientaiCustomModel(pulumi.CustomResource):
             __props__.__dict__["cost_estimate_per_month"] = None
             __props__.__dict__["created_at"] = None
             __props__.__dict__["file_count"] = None
-            __props__.__dict__["input_modalities"] = None
-            __props__.__dict__["license"] = None
-            __props__.__dict__["output_modalities"] = None
-            __props__.__dict__["parameters"] = None
             __props__.__dict__["status"] = None
             __props__.__dict__["storage_region"] = None
             __props__.__dict__["team_id"] = None
@@ -656,11 +732,11 @@ class GradientaiCustomModel(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] created_at: Timestamp when the custom model was created.
         :param pulumi.Input[_builtins.str] description: Description of the custom model.
         :param pulumi.Input[_builtins.int] file_count: Number of files that make up the imported model.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] input_modalities: Input modalities supported by the model.
-        :param pulumi.Input[_builtins.str] license: License of the model as reported by the source.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] input_modalities: Input modalities supported by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
+        :param pulumi.Input[_builtins.str] license: License of the model. Defaults to the value reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
         :param pulumi.Input[_builtins.str] name: A human-readable name for the custom model.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] output_modalities: Output modalities produced by the model.
-        :param pulumi.Input[_builtins.str] parameters: Parameter-count summary reported by the importer.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] output_modalities: Output modalities produced by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
+        :param pulumi.Input[_builtins.str] parameters: Parameter-count summary for the model. Defaults to the value reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
         :param pulumi.Input[_builtins.str] preferred_gpu_region: Preferred GPU region where the model artifacts should be staged.
         :param pulumi.Input[Union['GradientaiCustomModelSourceRefArgs', 'GradientaiCustomModelSourceRefArgsDict']] source_ref: Reference to the source from which to import the custom model.
         :param pulumi.Input[_builtins.str] source_type: Source of the model to import. One of SOURCE_TYPE_HUGGINGFACE, SOURCE_TYPE_SPACES_BUCKET, SOURCE_TYPE_SDK_UPLOAD, SOURCE_TYPE_FINE_TUNING.
@@ -769,7 +845,7 @@ class GradientaiCustomModel(pulumi.CustomResource):
     @pulumi.getter(name="inputModalities")
     def input_modalities(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        Input modalities supported by the model.
+        Input modalities supported by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
         """
         return pulumi.get(self, "input_modalities")
 
@@ -777,7 +853,7 @@ class GradientaiCustomModel(pulumi.CustomResource):
     @pulumi.getter
     def license(self) -> pulumi.Output[_builtins.str]:
         """
-        License of the model as reported by the source.
+        License of the model. Defaults to the value reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
         """
         return pulumi.get(self, "license")
 
@@ -793,7 +869,7 @@ class GradientaiCustomModel(pulumi.CustomResource):
     @pulumi.getter(name="outputModalities")
     def output_modalities(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        Output modalities produced by the model.
+        Output modalities produced by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
         """
         return pulumi.get(self, "output_modalities")
 
@@ -801,7 +877,7 @@ class GradientaiCustomModel(pulumi.CustomResource):
     @pulumi.getter
     def parameters(self) -> pulumi.Output[_builtins.str]:
         """
-        Parameter-count summary reported by the importer.
+        Parameter-count summary for the model. Defaults to the value reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
         """
         return pulumi.get(self, "parameters")
 
