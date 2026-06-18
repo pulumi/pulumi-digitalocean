@@ -596,6 +596,10 @@
                     }
                 }
             },
+            "digitalocean_database_advanced_postgresql_config": {
+                "current": "digitalocean:index/databaseAdvancedPostgresqlConfig:DatabaseAdvancedPostgresqlConfig",
+                "majorVersion": 4
+            },
             "digitalocean_database_cluster": {
                 "current": "digitalocean:index/databaseCluster:DatabaseCluster",
                 "majorVersion": 4,
