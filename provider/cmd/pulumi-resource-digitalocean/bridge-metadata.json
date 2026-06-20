@@ -370,6 +370,9 @@
                                             "internal_ports": {
                                                 "maxItemsOne": false
                                             },
+                                            "liveness_health_check": {
+                                                "maxItemsOne": true
+                                            },
                                             "log_destination": {
                                                 "maxItemsOne": false,
                                                 "elem": {
@@ -517,6 +520,9 @@
                                                         }
                                                     }
                                                 }
+                                            },
+                                            "liveness_health_check": {
+                                                "maxItemsOne": true
                                             },
                                             "log_destination": {
                                                 "maxItemsOne": false,
@@ -1983,6 +1989,9 @@
                                             "internal_ports": {
                                                 "maxItemsOne": false
                                             },
+                                            "liveness_health_check": {
+                                                "maxItemsOne": true
+                                            },
                                             "log_destination": {
                                                 "maxItemsOne": false,
                                                 "elem": {
@@ -2130,6 +2139,9 @@
                                                         }
                                                     }
                                                 }
+                                            },
+                                            "liveness_health_check": {
+                                                "maxItemsOne": true
                                             },
                                             "log_destination": {
                                                 "maxItemsOne": false,
