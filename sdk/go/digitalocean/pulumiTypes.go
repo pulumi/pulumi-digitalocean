@@ -9088,6 +9088,8 @@ type AppSpecService struct {
 	InstanceSizeSlug *string `pulumi:"instanceSizeSlug"`
 	// A list of ports on which this service will listen for internal traffic.
 	InternalPorts []int `pulumi:"internalPorts"`
+	// A liveness health check to determine if the worker should be restarted. Workers do not accept inbound traffic, so only HTTP liveness probes are supported (TCP is not).
+	LivenessHealthCheck *AppSpecServiceLivenessHealthCheck `pulumi:"livenessHealthCheck"`
 	// Describes a log forwarding destination.
 	LogDestinations []AppSpecServiceLogDestination `pulumi:"logDestinations"`
 	// The name of the component.
@@ -9152,6 +9154,8 @@ type AppSpecServiceArgs struct {
 	InstanceSizeSlug pulumi.StringPtrInput `pulumi:"instanceSizeSlug"`
 	// A list of ports on which this service will listen for internal traffic.
 	InternalPorts pulumi.IntArrayInput `pulumi:"internalPorts"`
+	// A liveness health check to determine if the worker should be restarted. Workers do not accept inbound traffic, so only HTTP liveness probes are supported (TCP is not).
+	LivenessHealthCheck AppSpecServiceLivenessHealthCheckPtrInput `pulumi:"livenessHealthCheck"`
 	// Describes a log forwarding destination.
 	LogDestinations AppSpecServiceLogDestinationArrayInput `pulumi:"logDestinations"`
 	// The name of the component.
@@ -9304,6 +9308,11 @@ func (o AppSpecServiceOutput) InstanceSizeSlug() pulumi.StringPtrOutput {
 // A list of ports on which this service will listen for internal traffic.
 func (o AppSpecServiceOutput) InternalPorts() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v AppSpecService) []int { return v.InternalPorts }).(pulumi.IntArrayOutput)
+}
+
+// A liveness health check to determine if the worker should be restarted. Workers do not accept inbound traffic, so only HTTP liveness probes are supported (TCP is not).
+func (o AppSpecServiceOutput) LivenessHealthCheck() AppSpecServiceLivenessHealthCheckPtrOutput {
+	return o.ApplyT(func(v AppSpecService) *AppSpecServiceLivenessHealthCheck { return v.LivenessHealthCheck }).(AppSpecServiceLivenessHealthCheckPtrOutput)
 }
 
 // Describes a log forwarding destination.
@@ -12030,6 +12039,257 @@ func (o AppSpecServiceImageDeployOnPushArrayOutput) Index(i pulumi.IntInput) App
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppSpecServiceImageDeployOnPush {
 		return vs[0].([]AppSpecServiceImageDeployOnPush)[vs[1].(int)]
 	}).(AppSpecServiceImageDeployOnPushOutput)
+}
+
+type AppSpecServiceLivenessHealthCheck struct {
+	// The number of failed health checks before considered unhealthy.
+	FailureThreshold *int `pulumi:"failureThreshold"`
+	// The route path used for the HTTP health check ping.
+	HttpPath *string `pulumi:"httpPath"`
+	// The number of seconds to wait before beginning health checks.
+	InitialDelaySeconds *int `pulumi:"initialDelaySeconds"`
+	// The number of seconds to wait between health checks.
+	PeriodSeconds *int `pulumi:"periodSeconds"`
+	// The port on which the health check will be performed.
+	Port *int `pulumi:"port"`
+	// The number of successful health checks before considered healthy.
+	SuccessThreshold *int `pulumi:"successThreshold"`
+	// The number of seconds after which the check times out.
+	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
+}
+
+// AppSpecServiceLivenessHealthCheckInput is an input type that accepts AppSpecServiceLivenessHealthCheckArgs and AppSpecServiceLivenessHealthCheckOutput values.
+// You can construct a concrete instance of `AppSpecServiceLivenessHealthCheckInput` via:
+//
+//	AppSpecServiceLivenessHealthCheckArgs{...}
+type AppSpecServiceLivenessHealthCheckInput interface {
+	pulumi.Input
+
+	ToAppSpecServiceLivenessHealthCheckOutput() AppSpecServiceLivenessHealthCheckOutput
+	ToAppSpecServiceLivenessHealthCheckOutputWithContext(context.Context) AppSpecServiceLivenessHealthCheckOutput
+}
+
+type AppSpecServiceLivenessHealthCheckArgs struct {
+	// The number of failed health checks before considered unhealthy.
+	FailureThreshold pulumi.IntPtrInput `pulumi:"failureThreshold"`
+	// The route path used for the HTTP health check ping.
+	HttpPath pulumi.StringPtrInput `pulumi:"httpPath"`
+	// The number of seconds to wait before beginning health checks.
+	InitialDelaySeconds pulumi.IntPtrInput `pulumi:"initialDelaySeconds"`
+	// The number of seconds to wait between health checks.
+	PeriodSeconds pulumi.IntPtrInput `pulumi:"periodSeconds"`
+	// The port on which the health check will be performed.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// The number of successful health checks before considered healthy.
+	SuccessThreshold pulumi.IntPtrInput `pulumi:"successThreshold"`
+	// The number of seconds after which the check times out.
+	TimeoutSeconds pulumi.IntPtrInput `pulumi:"timeoutSeconds"`
+}
+
+func (AppSpecServiceLivenessHealthCheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecServiceLivenessHealthCheck)(nil)).Elem()
+}
+
+func (i AppSpecServiceLivenessHealthCheckArgs) ToAppSpecServiceLivenessHealthCheckOutput() AppSpecServiceLivenessHealthCheckOutput {
+	return i.ToAppSpecServiceLivenessHealthCheckOutputWithContext(context.Background())
+}
+
+func (i AppSpecServiceLivenessHealthCheckArgs) ToAppSpecServiceLivenessHealthCheckOutputWithContext(ctx context.Context) AppSpecServiceLivenessHealthCheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecServiceLivenessHealthCheckOutput)
+}
+
+func (i AppSpecServiceLivenessHealthCheckArgs) ToAppSpecServiceLivenessHealthCheckPtrOutput() AppSpecServiceLivenessHealthCheckPtrOutput {
+	return i.ToAppSpecServiceLivenessHealthCheckPtrOutputWithContext(context.Background())
+}
+
+func (i AppSpecServiceLivenessHealthCheckArgs) ToAppSpecServiceLivenessHealthCheckPtrOutputWithContext(ctx context.Context) AppSpecServiceLivenessHealthCheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecServiceLivenessHealthCheckOutput).ToAppSpecServiceLivenessHealthCheckPtrOutputWithContext(ctx)
+}
+
+// AppSpecServiceLivenessHealthCheckPtrInput is an input type that accepts AppSpecServiceLivenessHealthCheckArgs, AppSpecServiceLivenessHealthCheckPtr and AppSpecServiceLivenessHealthCheckPtrOutput values.
+// You can construct a concrete instance of `AppSpecServiceLivenessHealthCheckPtrInput` via:
+//
+//	        AppSpecServiceLivenessHealthCheckArgs{...}
+//
+//	or:
+//
+//	        nil
+type AppSpecServiceLivenessHealthCheckPtrInput interface {
+	pulumi.Input
+
+	ToAppSpecServiceLivenessHealthCheckPtrOutput() AppSpecServiceLivenessHealthCheckPtrOutput
+	ToAppSpecServiceLivenessHealthCheckPtrOutputWithContext(context.Context) AppSpecServiceLivenessHealthCheckPtrOutput
+}
+
+type appSpecServiceLivenessHealthCheckPtrType AppSpecServiceLivenessHealthCheckArgs
+
+func AppSpecServiceLivenessHealthCheckPtr(v *AppSpecServiceLivenessHealthCheckArgs) AppSpecServiceLivenessHealthCheckPtrInput {
+	return (*appSpecServiceLivenessHealthCheckPtrType)(v)
+}
+
+func (*appSpecServiceLivenessHealthCheckPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecServiceLivenessHealthCheck)(nil)).Elem()
+}
+
+func (i *appSpecServiceLivenessHealthCheckPtrType) ToAppSpecServiceLivenessHealthCheckPtrOutput() AppSpecServiceLivenessHealthCheckPtrOutput {
+	return i.ToAppSpecServiceLivenessHealthCheckPtrOutputWithContext(context.Background())
+}
+
+func (i *appSpecServiceLivenessHealthCheckPtrType) ToAppSpecServiceLivenessHealthCheckPtrOutputWithContext(ctx context.Context) AppSpecServiceLivenessHealthCheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecServiceLivenessHealthCheckPtrOutput)
+}
+
+type AppSpecServiceLivenessHealthCheckOutput struct{ *pulumi.OutputState }
+
+func (AppSpecServiceLivenessHealthCheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecServiceLivenessHealthCheck)(nil)).Elem()
+}
+
+func (o AppSpecServiceLivenessHealthCheckOutput) ToAppSpecServiceLivenessHealthCheckOutput() AppSpecServiceLivenessHealthCheckOutput {
+	return o
+}
+
+func (o AppSpecServiceLivenessHealthCheckOutput) ToAppSpecServiceLivenessHealthCheckOutputWithContext(ctx context.Context) AppSpecServiceLivenessHealthCheckOutput {
+	return o
+}
+
+func (o AppSpecServiceLivenessHealthCheckOutput) ToAppSpecServiceLivenessHealthCheckPtrOutput() AppSpecServiceLivenessHealthCheckPtrOutput {
+	return o.ToAppSpecServiceLivenessHealthCheckPtrOutputWithContext(context.Background())
+}
+
+func (o AppSpecServiceLivenessHealthCheckOutput) ToAppSpecServiceLivenessHealthCheckPtrOutputWithContext(ctx context.Context) AppSpecServiceLivenessHealthCheckPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSpecServiceLivenessHealthCheck) *AppSpecServiceLivenessHealthCheck {
+		return &v
+	}).(AppSpecServiceLivenessHealthCheckPtrOutput)
+}
+
+// The number of failed health checks before considered unhealthy.
+func (o AppSpecServiceLivenessHealthCheckOutput) FailureThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AppSpecServiceLivenessHealthCheck) *int { return v.FailureThreshold }).(pulumi.IntPtrOutput)
+}
+
+// The route path used for the HTTP health check ping.
+func (o AppSpecServiceLivenessHealthCheckOutput) HttpPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecServiceLivenessHealthCheck) *string { return v.HttpPath }).(pulumi.StringPtrOutput)
+}
+
+// The number of seconds to wait before beginning health checks.
+func (o AppSpecServiceLivenessHealthCheckOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AppSpecServiceLivenessHealthCheck) *int { return v.InitialDelaySeconds }).(pulumi.IntPtrOutput)
+}
+
+// The number of seconds to wait between health checks.
+func (o AppSpecServiceLivenessHealthCheckOutput) PeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AppSpecServiceLivenessHealthCheck) *int { return v.PeriodSeconds }).(pulumi.IntPtrOutput)
+}
+
+// The port on which the health check will be performed.
+func (o AppSpecServiceLivenessHealthCheckOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AppSpecServiceLivenessHealthCheck) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// The number of successful health checks before considered healthy.
+func (o AppSpecServiceLivenessHealthCheckOutput) SuccessThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AppSpecServiceLivenessHealthCheck) *int { return v.SuccessThreshold }).(pulumi.IntPtrOutput)
+}
+
+// The number of seconds after which the check times out.
+func (o AppSpecServiceLivenessHealthCheckOutput) TimeoutSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AppSpecServiceLivenessHealthCheck) *int { return v.TimeoutSeconds }).(pulumi.IntPtrOutput)
+}
+
+type AppSpecServiceLivenessHealthCheckPtrOutput struct{ *pulumi.OutputState }
+
+func (AppSpecServiceLivenessHealthCheckPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecServiceLivenessHealthCheck)(nil)).Elem()
+}
+
+func (o AppSpecServiceLivenessHealthCheckPtrOutput) ToAppSpecServiceLivenessHealthCheckPtrOutput() AppSpecServiceLivenessHealthCheckPtrOutput {
+	return o
+}
+
+func (o AppSpecServiceLivenessHealthCheckPtrOutput) ToAppSpecServiceLivenessHealthCheckPtrOutputWithContext(ctx context.Context) AppSpecServiceLivenessHealthCheckPtrOutput {
+	return o
+}
+
+func (o AppSpecServiceLivenessHealthCheckPtrOutput) Elem() AppSpecServiceLivenessHealthCheckOutput {
+	return o.ApplyT(func(v *AppSpecServiceLivenessHealthCheck) AppSpecServiceLivenessHealthCheck {
+		if v != nil {
+			return *v
+		}
+		var ret AppSpecServiceLivenessHealthCheck
+		return ret
+	}).(AppSpecServiceLivenessHealthCheckOutput)
+}
+
+// The number of failed health checks before considered unhealthy.
+func (o AppSpecServiceLivenessHealthCheckPtrOutput) FailureThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AppSpecServiceLivenessHealthCheck) *int {
+		if v == nil {
+			return nil
+		}
+		return v.FailureThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// The route path used for the HTTP health check ping.
+func (o AppSpecServiceLivenessHealthCheckPtrOutput) HttpPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecServiceLivenessHealthCheck) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HttpPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// The number of seconds to wait before beginning health checks.
+func (o AppSpecServiceLivenessHealthCheckPtrOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AppSpecServiceLivenessHealthCheck) *int {
+		if v == nil {
+			return nil
+		}
+		return v.InitialDelaySeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of seconds to wait between health checks.
+func (o AppSpecServiceLivenessHealthCheckPtrOutput) PeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AppSpecServiceLivenessHealthCheck) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PeriodSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// The port on which the health check will be performed.
+func (o AppSpecServiceLivenessHealthCheckPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AppSpecServiceLivenessHealthCheck) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of successful health checks before considered healthy.
+func (o AppSpecServiceLivenessHealthCheckPtrOutput) SuccessThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AppSpecServiceLivenessHealthCheck) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SuccessThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of seconds after which the check times out.
+func (o AppSpecServiceLivenessHealthCheckPtrOutput) TimeoutSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AppSpecServiceLivenessHealthCheck) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TimeoutSeconds
+	}).(pulumi.IntPtrOutput)
 }
 
 type AppSpecServiceLogDestination struct {
@@ -14919,6 +15179,8 @@ type AppSpecWorker struct {
 	InstanceCount *int `pulumi:"instanceCount"`
 	// The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Apps/operation/apps_list_instanceSizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
 	InstanceSizeSlug *string `pulumi:"instanceSizeSlug"`
+	// A liveness health check to determine if the worker should be restarted. Workers do not accept inbound traffic, so only HTTP liveness probes are supported (TCP is not).
+	LivenessHealthCheck *AppSpecWorkerLivenessHealthCheck `pulumi:"livenessHealthCheck"`
 	// Describes a log forwarding destination.
 	LogDestinations []AppSpecWorkerLogDestination `pulumi:"logDestinations"`
 	// The name of the component.
@@ -14969,6 +15231,8 @@ type AppSpecWorkerArgs struct {
 	InstanceCount pulumi.IntPtrInput `pulumi:"instanceCount"`
 	// The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Apps/operation/apps_list_instanceSizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
 	InstanceSizeSlug pulumi.StringPtrInput `pulumi:"instanceSizeSlug"`
+	// A liveness health check to determine if the worker should be restarted. Workers do not accept inbound traffic, so only HTTP liveness probes are supported (TCP is not).
+	LivenessHealthCheck AppSpecWorkerLivenessHealthCheckPtrInput `pulumi:"livenessHealthCheck"`
 	// Describes a log forwarding destination.
 	LogDestinations AppSpecWorkerLogDestinationArrayInput `pulumi:"logDestinations"`
 	// The name of the component.
@@ -15095,6 +15359,11 @@ func (o AppSpecWorkerOutput) InstanceCount() pulumi.IntPtrOutput {
 // The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Apps/operation/apps_list_instanceSizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
 func (o AppSpecWorkerOutput) InstanceSizeSlug() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppSpecWorker) *string { return v.InstanceSizeSlug }).(pulumi.StringPtrOutput)
+}
+
+// A liveness health check to determine if the worker should be restarted. Workers do not accept inbound traffic, so only HTTP liveness probes are supported (TCP is not).
+func (o AppSpecWorkerOutput) LivenessHealthCheck() AppSpecWorkerLivenessHealthCheckPtrOutput {
+	return o.ApplyT(func(v AppSpecWorker) *AppSpecWorkerLivenessHealthCheck { return v.LivenessHealthCheck }).(AppSpecWorkerLivenessHealthCheckPtrOutput)
 }
 
 // Describes a log forwarding destination.
@@ -17148,6 +17417,257 @@ func (o AppSpecWorkerImageDeployOnPushArrayOutput) Index(i pulumi.IntInput) AppS
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppSpecWorkerImageDeployOnPush {
 		return vs[0].([]AppSpecWorkerImageDeployOnPush)[vs[1].(int)]
 	}).(AppSpecWorkerImageDeployOnPushOutput)
+}
+
+type AppSpecWorkerLivenessHealthCheck struct {
+	// The number of failed health checks before considered unhealthy.
+	FailureThreshold *int `pulumi:"failureThreshold"`
+	// The route path used for the HTTP health check ping.
+	HttpPath *string `pulumi:"httpPath"`
+	// The number of seconds to wait before beginning health checks.
+	InitialDelaySeconds *int `pulumi:"initialDelaySeconds"`
+	// The number of seconds to wait between health checks.
+	PeriodSeconds *int `pulumi:"periodSeconds"`
+	// The port on which the health check will be performed.
+	Port *int `pulumi:"port"`
+	// The number of successful health checks before considered healthy.
+	SuccessThreshold *int `pulumi:"successThreshold"`
+	// The number of seconds after which the check times out.
+	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
+}
+
+// AppSpecWorkerLivenessHealthCheckInput is an input type that accepts AppSpecWorkerLivenessHealthCheckArgs and AppSpecWorkerLivenessHealthCheckOutput values.
+// You can construct a concrete instance of `AppSpecWorkerLivenessHealthCheckInput` via:
+//
+//	AppSpecWorkerLivenessHealthCheckArgs{...}
+type AppSpecWorkerLivenessHealthCheckInput interface {
+	pulumi.Input
+
+	ToAppSpecWorkerLivenessHealthCheckOutput() AppSpecWorkerLivenessHealthCheckOutput
+	ToAppSpecWorkerLivenessHealthCheckOutputWithContext(context.Context) AppSpecWorkerLivenessHealthCheckOutput
+}
+
+type AppSpecWorkerLivenessHealthCheckArgs struct {
+	// The number of failed health checks before considered unhealthy.
+	FailureThreshold pulumi.IntPtrInput `pulumi:"failureThreshold"`
+	// The route path used for the HTTP health check ping.
+	HttpPath pulumi.StringPtrInput `pulumi:"httpPath"`
+	// The number of seconds to wait before beginning health checks.
+	InitialDelaySeconds pulumi.IntPtrInput `pulumi:"initialDelaySeconds"`
+	// The number of seconds to wait between health checks.
+	PeriodSeconds pulumi.IntPtrInput `pulumi:"periodSeconds"`
+	// The port on which the health check will be performed.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// The number of successful health checks before considered healthy.
+	SuccessThreshold pulumi.IntPtrInput `pulumi:"successThreshold"`
+	// The number of seconds after which the check times out.
+	TimeoutSeconds pulumi.IntPtrInput `pulumi:"timeoutSeconds"`
+}
+
+func (AppSpecWorkerLivenessHealthCheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecWorkerLivenessHealthCheck)(nil)).Elem()
+}
+
+func (i AppSpecWorkerLivenessHealthCheckArgs) ToAppSpecWorkerLivenessHealthCheckOutput() AppSpecWorkerLivenessHealthCheckOutput {
+	return i.ToAppSpecWorkerLivenessHealthCheckOutputWithContext(context.Background())
+}
+
+func (i AppSpecWorkerLivenessHealthCheckArgs) ToAppSpecWorkerLivenessHealthCheckOutputWithContext(ctx context.Context) AppSpecWorkerLivenessHealthCheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecWorkerLivenessHealthCheckOutput)
+}
+
+func (i AppSpecWorkerLivenessHealthCheckArgs) ToAppSpecWorkerLivenessHealthCheckPtrOutput() AppSpecWorkerLivenessHealthCheckPtrOutput {
+	return i.ToAppSpecWorkerLivenessHealthCheckPtrOutputWithContext(context.Background())
+}
+
+func (i AppSpecWorkerLivenessHealthCheckArgs) ToAppSpecWorkerLivenessHealthCheckPtrOutputWithContext(ctx context.Context) AppSpecWorkerLivenessHealthCheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecWorkerLivenessHealthCheckOutput).ToAppSpecWorkerLivenessHealthCheckPtrOutputWithContext(ctx)
+}
+
+// AppSpecWorkerLivenessHealthCheckPtrInput is an input type that accepts AppSpecWorkerLivenessHealthCheckArgs, AppSpecWorkerLivenessHealthCheckPtr and AppSpecWorkerLivenessHealthCheckPtrOutput values.
+// You can construct a concrete instance of `AppSpecWorkerLivenessHealthCheckPtrInput` via:
+//
+//	        AppSpecWorkerLivenessHealthCheckArgs{...}
+//
+//	or:
+//
+//	        nil
+type AppSpecWorkerLivenessHealthCheckPtrInput interface {
+	pulumi.Input
+
+	ToAppSpecWorkerLivenessHealthCheckPtrOutput() AppSpecWorkerLivenessHealthCheckPtrOutput
+	ToAppSpecWorkerLivenessHealthCheckPtrOutputWithContext(context.Context) AppSpecWorkerLivenessHealthCheckPtrOutput
+}
+
+type appSpecWorkerLivenessHealthCheckPtrType AppSpecWorkerLivenessHealthCheckArgs
+
+func AppSpecWorkerLivenessHealthCheckPtr(v *AppSpecWorkerLivenessHealthCheckArgs) AppSpecWorkerLivenessHealthCheckPtrInput {
+	return (*appSpecWorkerLivenessHealthCheckPtrType)(v)
+}
+
+func (*appSpecWorkerLivenessHealthCheckPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecWorkerLivenessHealthCheck)(nil)).Elem()
+}
+
+func (i *appSpecWorkerLivenessHealthCheckPtrType) ToAppSpecWorkerLivenessHealthCheckPtrOutput() AppSpecWorkerLivenessHealthCheckPtrOutput {
+	return i.ToAppSpecWorkerLivenessHealthCheckPtrOutputWithContext(context.Background())
+}
+
+func (i *appSpecWorkerLivenessHealthCheckPtrType) ToAppSpecWorkerLivenessHealthCheckPtrOutputWithContext(ctx context.Context) AppSpecWorkerLivenessHealthCheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecWorkerLivenessHealthCheckPtrOutput)
+}
+
+type AppSpecWorkerLivenessHealthCheckOutput struct{ *pulumi.OutputState }
+
+func (AppSpecWorkerLivenessHealthCheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecWorkerLivenessHealthCheck)(nil)).Elem()
+}
+
+func (o AppSpecWorkerLivenessHealthCheckOutput) ToAppSpecWorkerLivenessHealthCheckOutput() AppSpecWorkerLivenessHealthCheckOutput {
+	return o
+}
+
+func (o AppSpecWorkerLivenessHealthCheckOutput) ToAppSpecWorkerLivenessHealthCheckOutputWithContext(ctx context.Context) AppSpecWorkerLivenessHealthCheckOutput {
+	return o
+}
+
+func (o AppSpecWorkerLivenessHealthCheckOutput) ToAppSpecWorkerLivenessHealthCheckPtrOutput() AppSpecWorkerLivenessHealthCheckPtrOutput {
+	return o.ToAppSpecWorkerLivenessHealthCheckPtrOutputWithContext(context.Background())
+}
+
+func (o AppSpecWorkerLivenessHealthCheckOutput) ToAppSpecWorkerLivenessHealthCheckPtrOutputWithContext(ctx context.Context) AppSpecWorkerLivenessHealthCheckPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSpecWorkerLivenessHealthCheck) *AppSpecWorkerLivenessHealthCheck {
+		return &v
+	}).(AppSpecWorkerLivenessHealthCheckPtrOutput)
+}
+
+// The number of failed health checks before considered unhealthy.
+func (o AppSpecWorkerLivenessHealthCheckOutput) FailureThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AppSpecWorkerLivenessHealthCheck) *int { return v.FailureThreshold }).(pulumi.IntPtrOutput)
+}
+
+// The route path used for the HTTP health check ping.
+func (o AppSpecWorkerLivenessHealthCheckOutput) HttpPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecWorkerLivenessHealthCheck) *string { return v.HttpPath }).(pulumi.StringPtrOutput)
+}
+
+// The number of seconds to wait before beginning health checks.
+func (o AppSpecWorkerLivenessHealthCheckOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AppSpecWorkerLivenessHealthCheck) *int { return v.InitialDelaySeconds }).(pulumi.IntPtrOutput)
+}
+
+// The number of seconds to wait between health checks.
+func (o AppSpecWorkerLivenessHealthCheckOutput) PeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AppSpecWorkerLivenessHealthCheck) *int { return v.PeriodSeconds }).(pulumi.IntPtrOutput)
+}
+
+// The port on which the health check will be performed.
+func (o AppSpecWorkerLivenessHealthCheckOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AppSpecWorkerLivenessHealthCheck) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// The number of successful health checks before considered healthy.
+func (o AppSpecWorkerLivenessHealthCheckOutput) SuccessThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AppSpecWorkerLivenessHealthCheck) *int { return v.SuccessThreshold }).(pulumi.IntPtrOutput)
+}
+
+// The number of seconds after which the check times out.
+func (o AppSpecWorkerLivenessHealthCheckOutput) TimeoutSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AppSpecWorkerLivenessHealthCheck) *int { return v.TimeoutSeconds }).(pulumi.IntPtrOutput)
+}
+
+type AppSpecWorkerLivenessHealthCheckPtrOutput struct{ *pulumi.OutputState }
+
+func (AppSpecWorkerLivenessHealthCheckPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecWorkerLivenessHealthCheck)(nil)).Elem()
+}
+
+func (o AppSpecWorkerLivenessHealthCheckPtrOutput) ToAppSpecWorkerLivenessHealthCheckPtrOutput() AppSpecWorkerLivenessHealthCheckPtrOutput {
+	return o
+}
+
+func (o AppSpecWorkerLivenessHealthCheckPtrOutput) ToAppSpecWorkerLivenessHealthCheckPtrOutputWithContext(ctx context.Context) AppSpecWorkerLivenessHealthCheckPtrOutput {
+	return o
+}
+
+func (o AppSpecWorkerLivenessHealthCheckPtrOutput) Elem() AppSpecWorkerLivenessHealthCheckOutput {
+	return o.ApplyT(func(v *AppSpecWorkerLivenessHealthCheck) AppSpecWorkerLivenessHealthCheck {
+		if v != nil {
+			return *v
+		}
+		var ret AppSpecWorkerLivenessHealthCheck
+		return ret
+	}).(AppSpecWorkerLivenessHealthCheckOutput)
+}
+
+// The number of failed health checks before considered unhealthy.
+func (o AppSpecWorkerLivenessHealthCheckPtrOutput) FailureThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AppSpecWorkerLivenessHealthCheck) *int {
+		if v == nil {
+			return nil
+		}
+		return v.FailureThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// The route path used for the HTTP health check ping.
+func (o AppSpecWorkerLivenessHealthCheckPtrOutput) HttpPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecWorkerLivenessHealthCheck) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HttpPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// The number of seconds to wait before beginning health checks.
+func (o AppSpecWorkerLivenessHealthCheckPtrOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AppSpecWorkerLivenessHealthCheck) *int {
+		if v == nil {
+			return nil
+		}
+		return v.InitialDelaySeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of seconds to wait between health checks.
+func (o AppSpecWorkerLivenessHealthCheckPtrOutput) PeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AppSpecWorkerLivenessHealthCheck) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PeriodSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// The port on which the health check will be performed.
+func (o AppSpecWorkerLivenessHealthCheckPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AppSpecWorkerLivenessHealthCheck) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of successful health checks before considered healthy.
+func (o AppSpecWorkerLivenessHealthCheckPtrOutput) SuccessThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AppSpecWorkerLivenessHealthCheck) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SuccessThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of seconds after which the check times out.
+func (o AppSpecWorkerLivenessHealthCheckPtrOutput) TimeoutSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AppSpecWorkerLivenessHealthCheck) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TimeoutSeconds
+	}).(pulumi.IntPtrOutput)
 }
 
 type AppSpecWorkerLogDestination struct {
@@ -44926,8 +45446,8 @@ func (o GetAppSpecFunctionRouteArrayOutput) Index(i pulumi.IntInput) GetAppSpecF
 
 type GetAppSpecIngress struct {
 	// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
-	Rules        []GetAppSpecIngressRule       `pulumi:"rules"`
-	SecureHeader GetAppSpecIngressSecureHeader `pulumi:"secureHeader"`
+	Rules        []GetAppSpecIngressRule        `pulumi:"rules"`
+	SecureHeader *GetAppSpecIngressSecureHeader `pulumi:"secureHeader"`
 }
 
 // GetAppSpecIngressInput is an input type that accepts GetAppSpecIngressArgs and GetAppSpecIngressOutput values.
@@ -44943,8 +45463,8 @@ type GetAppSpecIngressInput interface {
 
 type GetAppSpecIngressArgs struct {
 	// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
-	Rules        GetAppSpecIngressRuleArrayInput    `pulumi:"rules"`
-	SecureHeader GetAppSpecIngressSecureHeaderInput `pulumi:"secureHeader"`
+	Rules        GetAppSpecIngressRuleArrayInput       `pulumi:"rules"`
+	SecureHeader GetAppSpecIngressSecureHeaderPtrInput `pulumi:"secureHeader"`
 }
 
 func (GetAppSpecIngressArgs) ElementType() reflect.Type {
@@ -44978,15 +45498,15 @@ func (o GetAppSpecIngressOutput) Rules() GetAppSpecIngressRuleArrayOutput {
 	return o.ApplyT(func(v GetAppSpecIngress) []GetAppSpecIngressRule { return v.Rules }).(GetAppSpecIngressRuleArrayOutput)
 }
 
-func (o GetAppSpecIngressOutput) SecureHeader() GetAppSpecIngressSecureHeaderOutput {
-	return o.ApplyT(func(v GetAppSpecIngress) GetAppSpecIngressSecureHeader { return v.SecureHeader }).(GetAppSpecIngressSecureHeaderOutput)
+func (o GetAppSpecIngressOutput) SecureHeader() GetAppSpecIngressSecureHeaderPtrOutput {
+	return o.ApplyT(func(v GetAppSpecIngress) *GetAppSpecIngressSecureHeader { return v.SecureHeader }).(GetAppSpecIngressSecureHeaderPtrOutput)
 }
 
 type GetAppSpecIngressRule struct {
-	Component GetAppSpecIngressRuleComponent `pulumi:"component"`
+	Component *GetAppSpecIngressRuleComponent `pulumi:"component"`
 	// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
-	Cors     GetAppSpecIngressRuleCors      `pulumi:"cors"`
-	Match    GetAppSpecIngressRuleMatch     `pulumi:"match"`
+	Cors     *GetAppSpecIngressRuleCors     `pulumi:"cors"`
+	Match    *GetAppSpecIngressRuleMatch    `pulumi:"match"`
 	Redirect *GetAppSpecIngressRuleRedirect `pulumi:"redirect"`
 }
 
@@ -45002,10 +45522,10 @@ type GetAppSpecIngressRuleInput interface {
 }
 
 type GetAppSpecIngressRuleArgs struct {
-	Component GetAppSpecIngressRuleComponentInput `pulumi:"component"`
+	Component GetAppSpecIngressRuleComponentPtrInput `pulumi:"component"`
 	// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
-	Cors     GetAppSpecIngressRuleCorsInput        `pulumi:"cors"`
-	Match    GetAppSpecIngressRuleMatchInput       `pulumi:"match"`
+	Cors     GetAppSpecIngressRuleCorsPtrInput     `pulumi:"cors"`
+	Match    GetAppSpecIngressRuleMatchPtrInput    `pulumi:"match"`
 	Redirect GetAppSpecIngressRuleRedirectPtrInput `pulumi:"redirect"`
 }
 
@@ -45060,17 +45580,17 @@ func (o GetAppSpecIngressRuleOutput) ToGetAppSpecIngressRuleOutputWithContext(ct
 	return o
 }
 
-func (o GetAppSpecIngressRuleOutput) Component() GetAppSpecIngressRuleComponentOutput {
-	return o.ApplyT(func(v GetAppSpecIngressRule) GetAppSpecIngressRuleComponent { return v.Component }).(GetAppSpecIngressRuleComponentOutput)
+func (o GetAppSpecIngressRuleOutput) Component() GetAppSpecIngressRuleComponentPtrOutput {
+	return o.ApplyT(func(v GetAppSpecIngressRule) *GetAppSpecIngressRuleComponent { return v.Component }).(GetAppSpecIngressRuleComponentPtrOutput)
 }
 
 // The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
-func (o GetAppSpecIngressRuleOutput) Cors() GetAppSpecIngressRuleCorsOutput {
-	return o.ApplyT(func(v GetAppSpecIngressRule) GetAppSpecIngressRuleCors { return v.Cors }).(GetAppSpecIngressRuleCorsOutput)
+func (o GetAppSpecIngressRuleOutput) Cors() GetAppSpecIngressRuleCorsPtrOutput {
+	return o.ApplyT(func(v GetAppSpecIngressRule) *GetAppSpecIngressRuleCors { return v.Cors }).(GetAppSpecIngressRuleCorsPtrOutput)
 }
 
-func (o GetAppSpecIngressRuleOutput) Match() GetAppSpecIngressRuleMatchOutput {
-	return o.ApplyT(func(v GetAppSpecIngressRule) GetAppSpecIngressRuleMatch { return v.Match }).(GetAppSpecIngressRuleMatchOutput)
+func (o GetAppSpecIngressRuleOutput) Match() GetAppSpecIngressRuleMatchPtrOutput {
+	return o.ApplyT(func(v GetAppSpecIngressRule) *GetAppSpecIngressRuleMatch { return v.Match }).(GetAppSpecIngressRuleMatchPtrOutput)
 }
 
 func (o GetAppSpecIngressRuleOutput) Redirect() GetAppSpecIngressRuleRedirectPtrOutput {
@@ -45099,10 +45619,10 @@ func (o GetAppSpecIngressRuleArrayOutput) Index(i pulumi.IntInput) GetAppSpecIng
 
 type GetAppSpecIngressRuleComponent struct {
 	// The name of the component.
-	Name string `pulumi:"name"`
+	Name *string `pulumi:"name"`
 	// An optional flag to preserve the path that is forwarded to the backend service.
-	PreservePathPrefix bool   `pulumi:"preservePathPrefix"`
-	Rewrite            string `pulumi:"rewrite"`
+	PreservePathPrefix *bool   `pulumi:"preservePathPrefix"`
+	Rewrite            *string `pulumi:"rewrite"`
 }
 
 // GetAppSpecIngressRuleComponentInput is an input type that accepts GetAppSpecIngressRuleComponentArgs and GetAppSpecIngressRuleComponentOutput values.
@@ -45118,10 +45638,10 @@ type GetAppSpecIngressRuleComponentInput interface {
 
 type GetAppSpecIngressRuleComponentArgs struct {
 	// The name of the component.
-	Name pulumi.StringInput `pulumi:"name"`
+	Name pulumi.StringPtrInput `pulumi:"name"`
 	// An optional flag to preserve the path that is forwarded to the backend service.
-	PreservePathPrefix pulumi.BoolInput   `pulumi:"preservePathPrefix"`
-	Rewrite            pulumi.StringInput `pulumi:"rewrite"`
+	PreservePathPrefix pulumi.BoolPtrInput   `pulumi:"preservePathPrefix"`
+	Rewrite            pulumi.StringPtrInput `pulumi:"rewrite"`
 }
 
 func (GetAppSpecIngressRuleComponentArgs) ElementType() reflect.Type {
@@ -45134,6 +45654,47 @@ func (i GetAppSpecIngressRuleComponentArgs) ToGetAppSpecIngressRuleComponentOutp
 
 func (i GetAppSpecIngressRuleComponentArgs) ToGetAppSpecIngressRuleComponentOutputWithContext(ctx context.Context) GetAppSpecIngressRuleComponentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecIngressRuleComponentOutput)
+}
+
+func (i GetAppSpecIngressRuleComponentArgs) ToGetAppSpecIngressRuleComponentPtrOutput() GetAppSpecIngressRuleComponentPtrOutput {
+	return i.ToGetAppSpecIngressRuleComponentPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecIngressRuleComponentArgs) ToGetAppSpecIngressRuleComponentPtrOutputWithContext(ctx context.Context) GetAppSpecIngressRuleComponentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecIngressRuleComponentOutput).ToGetAppSpecIngressRuleComponentPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecIngressRuleComponentPtrInput is an input type that accepts GetAppSpecIngressRuleComponentArgs, GetAppSpecIngressRuleComponentPtr and GetAppSpecIngressRuleComponentPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecIngressRuleComponentPtrInput` via:
+//
+//	        GetAppSpecIngressRuleComponentArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetAppSpecIngressRuleComponentPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecIngressRuleComponentPtrOutput() GetAppSpecIngressRuleComponentPtrOutput
+	ToGetAppSpecIngressRuleComponentPtrOutputWithContext(context.Context) GetAppSpecIngressRuleComponentPtrOutput
+}
+
+type getAppSpecIngressRuleComponentPtrType GetAppSpecIngressRuleComponentArgs
+
+func GetAppSpecIngressRuleComponentPtr(v *GetAppSpecIngressRuleComponentArgs) GetAppSpecIngressRuleComponentPtrInput {
+	return (*getAppSpecIngressRuleComponentPtrType)(v)
+}
+
+func (*getAppSpecIngressRuleComponentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecIngressRuleComponent)(nil)).Elem()
+}
+
+func (i *getAppSpecIngressRuleComponentPtrType) ToGetAppSpecIngressRuleComponentPtrOutput() GetAppSpecIngressRuleComponentPtrOutput {
+	return i.ToGetAppSpecIngressRuleComponentPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecIngressRuleComponentPtrType) ToGetAppSpecIngressRuleComponentPtrOutputWithContext(ctx context.Context) GetAppSpecIngressRuleComponentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecIngressRuleComponentPtrOutput)
 }
 
 type GetAppSpecIngressRuleComponentOutput struct{ *pulumi.OutputState }
@@ -45150,18 +45711,81 @@ func (o GetAppSpecIngressRuleComponentOutput) ToGetAppSpecIngressRuleComponentOu
 	return o
 }
 
+func (o GetAppSpecIngressRuleComponentOutput) ToGetAppSpecIngressRuleComponentPtrOutput() GetAppSpecIngressRuleComponentPtrOutput {
+	return o.ToGetAppSpecIngressRuleComponentPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecIngressRuleComponentOutput) ToGetAppSpecIngressRuleComponentPtrOutputWithContext(ctx context.Context) GetAppSpecIngressRuleComponentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecIngressRuleComponent) *GetAppSpecIngressRuleComponent {
+		return &v
+	}).(GetAppSpecIngressRuleComponentPtrOutput)
+}
+
 // The name of the component.
-func (o GetAppSpecIngressRuleComponentOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAppSpecIngressRuleComponent) string { return v.Name }).(pulumi.StringOutput)
+func (o GetAppSpecIngressRuleComponentOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecIngressRuleComponent) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // An optional flag to preserve the path that is forwarded to the backend service.
-func (o GetAppSpecIngressRuleComponentOutput) PreservePathPrefix() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetAppSpecIngressRuleComponent) bool { return v.PreservePathPrefix }).(pulumi.BoolOutput)
+func (o GetAppSpecIngressRuleComponentOutput) PreservePathPrefix() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetAppSpecIngressRuleComponent) *bool { return v.PreservePathPrefix }).(pulumi.BoolPtrOutput)
 }
 
-func (o GetAppSpecIngressRuleComponentOutput) Rewrite() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAppSpecIngressRuleComponent) string { return v.Rewrite }).(pulumi.StringOutput)
+func (o GetAppSpecIngressRuleComponentOutput) Rewrite() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecIngressRuleComponent) *string { return v.Rewrite }).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecIngressRuleComponentPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecIngressRuleComponentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecIngressRuleComponent)(nil)).Elem()
+}
+
+func (o GetAppSpecIngressRuleComponentPtrOutput) ToGetAppSpecIngressRuleComponentPtrOutput() GetAppSpecIngressRuleComponentPtrOutput {
+	return o
+}
+
+func (o GetAppSpecIngressRuleComponentPtrOutput) ToGetAppSpecIngressRuleComponentPtrOutputWithContext(ctx context.Context) GetAppSpecIngressRuleComponentPtrOutput {
+	return o
+}
+
+func (o GetAppSpecIngressRuleComponentPtrOutput) Elem() GetAppSpecIngressRuleComponentOutput {
+	return o.ApplyT(func(v *GetAppSpecIngressRuleComponent) GetAppSpecIngressRuleComponent {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecIngressRuleComponent
+		return ret
+	}).(GetAppSpecIngressRuleComponentOutput)
+}
+
+// The name of the component.
+func (o GetAppSpecIngressRuleComponentPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecIngressRuleComponent) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// An optional flag to preserve the path that is forwarded to the backend service.
+func (o GetAppSpecIngressRuleComponentPtrOutput) PreservePathPrefix() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecIngressRuleComponent) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PreservePathPrefix
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o GetAppSpecIngressRuleComponentPtrOutput) Rewrite() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecIngressRuleComponent) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Rewrite
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetAppSpecIngressRuleCors struct {
@@ -45217,6 +45841,47 @@ func (i GetAppSpecIngressRuleCorsArgs) ToGetAppSpecIngressRuleCorsOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecIngressRuleCorsOutput)
 }
 
+func (i GetAppSpecIngressRuleCorsArgs) ToGetAppSpecIngressRuleCorsPtrOutput() GetAppSpecIngressRuleCorsPtrOutput {
+	return i.ToGetAppSpecIngressRuleCorsPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecIngressRuleCorsArgs) ToGetAppSpecIngressRuleCorsPtrOutputWithContext(ctx context.Context) GetAppSpecIngressRuleCorsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecIngressRuleCorsOutput).ToGetAppSpecIngressRuleCorsPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecIngressRuleCorsPtrInput is an input type that accepts GetAppSpecIngressRuleCorsArgs, GetAppSpecIngressRuleCorsPtr and GetAppSpecIngressRuleCorsPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecIngressRuleCorsPtrInput` via:
+//
+//	        GetAppSpecIngressRuleCorsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetAppSpecIngressRuleCorsPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecIngressRuleCorsPtrOutput() GetAppSpecIngressRuleCorsPtrOutput
+	ToGetAppSpecIngressRuleCorsPtrOutputWithContext(context.Context) GetAppSpecIngressRuleCorsPtrOutput
+}
+
+type getAppSpecIngressRuleCorsPtrType GetAppSpecIngressRuleCorsArgs
+
+func GetAppSpecIngressRuleCorsPtr(v *GetAppSpecIngressRuleCorsArgs) GetAppSpecIngressRuleCorsPtrInput {
+	return (*getAppSpecIngressRuleCorsPtrType)(v)
+}
+
+func (*getAppSpecIngressRuleCorsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecIngressRuleCors)(nil)).Elem()
+}
+
+func (i *getAppSpecIngressRuleCorsPtrType) ToGetAppSpecIngressRuleCorsPtrOutput() GetAppSpecIngressRuleCorsPtrOutput {
+	return i.ToGetAppSpecIngressRuleCorsPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecIngressRuleCorsPtrType) ToGetAppSpecIngressRuleCorsPtrOutputWithContext(ctx context.Context) GetAppSpecIngressRuleCorsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecIngressRuleCorsPtrOutput)
+}
+
 type GetAppSpecIngressRuleCorsOutput struct{ *pulumi.OutputState }
 
 func (GetAppSpecIngressRuleCorsOutput) ElementType() reflect.Type {
@@ -45229,6 +45894,16 @@ func (o GetAppSpecIngressRuleCorsOutput) ToGetAppSpecIngressRuleCorsOutput() Get
 
 func (o GetAppSpecIngressRuleCorsOutput) ToGetAppSpecIngressRuleCorsOutputWithContext(ctx context.Context) GetAppSpecIngressRuleCorsOutput {
 	return o
+}
+
+func (o GetAppSpecIngressRuleCorsOutput) ToGetAppSpecIngressRuleCorsPtrOutput() GetAppSpecIngressRuleCorsPtrOutput {
+	return o.ToGetAppSpecIngressRuleCorsPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecIngressRuleCorsOutput) ToGetAppSpecIngressRuleCorsPtrOutputWithContext(ctx context.Context) GetAppSpecIngressRuleCorsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecIngressRuleCors) *GetAppSpecIngressRuleCors {
+		return &v
+	}).(GetAppSpecIngressRuleCorsPtrOutput)
 }
 
 // Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
@@ -45259,6 +45934,90 @@ func (o GetAppSpecIngressRuleCorsOutput) ExposeHeaders() pulumi.StringArrayOutpu
 // An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
 func (o GetAppSpecIngressRuleCorsOutput) MaxAge() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecIngressRuleCors) *string { return v.MaxAge }).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecIngressRuleCorsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecIngressRuleCorsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecIngressRuleCors)(nil)).Elem()
+}
+
+func (o GetAppSpecIngressRuleCorsPtrOutput) ToGetAppSpecIngressRuleCorsPtrOutput() GetAppSpecIngressRuleCorsPtrOutput {
+	return o
+}
+
+func (o GetAppSpecIngressRuleCorsPtrOutput) ToGetAppSpecIngressRuleCorsPtrOutputWithContext(ctx context.Context) GetAppSpecIngressRuleCorsPtrOutput {
+	return o
+}
+
+func (o GetAppSpecIngressRuleCorsPtrOutput) Elem() GetAppSpecIngressRuleCorsOutput {
+	return o.ApplyT(func(v *GetAppSpecIngressRuleCors) GetAppSpecIngressRuleCors {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecIngressRuleCors
+		return ret
+	}).(GetAppSpecIngressRuleCorsOutput)
+}
+
+// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+func (o GetAppSpecIngressRuleCorsPtrOutput) AllowCredentials() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecIngressRuleCors) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowCredentials
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+func (o GetAppSpecIngressRuleCorsPtrOutput) AllowHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetAppSpecIngressRuleCors) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowHeaders
+	}).(pulumi.StringArrayOutput)
+}
+
+// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+func (o GetAppSpecIngressRuleCorsPtrOutput) AllowMethods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetAppSpecIngressRuleCors) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowMethods
+	}).(pulumi.StringArrayOutput)
+}
+
+// The `Access-Control-Allow-Origin` can be
+func (o GetAppSpecIngressRuleCorsPtrOutput) AllowOrigins() GetAppSpecIngressRuleCorsAllowOriginsPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecIngressRuleCors) *GetAppSpecIngressRuleCorsAllowOrigins {
+		if v == nil {
+			return nil
+		}
+		return v.AllowOrigins
+	}).(GetAppSpecIngressRuleCorsAllowOriginsPtrOutput)
+}
+
+// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+func (o GetAppSpecIngressRuleCorsPtrOutput) ExposeHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetAppSpecIngressRuleCors) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExposeHeaders
+	}).(pulumi.StringArrayOutput)
+}
+
+// An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+func (o GetAppSpecIngressRuleCorsPtrOutput) MaxAge() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecIngressRuleCors) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxAge
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetAppSpecIngressRuleCorsAllowOrigins struct {
@@ -45445,9 +46204,9 @@ func (o GetAppSpecIngressRuleCorsAllowOriginsPtrOutput) Regex() pulumi.StringPtr
 }
 
 type GetAppSpecIngressRuleMatch struct {
-	Authority GetAppSpecIngressRuleMatchAuthority `pulumi:"authority"`
+	Authority *GetAppSpecIngressRuleMatchAuthority `pulumi:"authority"`
 	// Paths must start with `/` and must be unique within the app.
-	Path GetAppSpecIngressRuleMatchPath `pulumi:"path"`
+	Path *GetAppSpecIngressRuleMatchPath `pulumi:"path"`
 }
 
 // GetAppSpecIngressRuleMatchInput is an input type that accepts GetAppSpecIngressRuleMatchArgs and GetAppSpecIngressRuleMatchOutput values.
@@ -45462,9 +46221,9 @@ type GetAppSpecIngressRuleMatchInput interface {
 }
 
 type GetAppSpecIngressRuleMatchArgs struct {
-	Authority GetAppSpecIngressRuleMatchAuthorityInput `pulumi:"authority"`
+	Authority GetAppSpecIngressRuleMatchAuthorityPtrInput `pulumi:"authority"`
 	// Paths must start with `/` and must be unique within the app.
-	Path GetAppSpecIngressRuleMatchPathInput `pulumi:"path"`
+	Path GetAppSpecIngressRuleMatchPathPtrInput `pulumi:"path"`
 }
 
 func (GetAppSpecIngressRuleMatchArgs) ElementType() reflect.Type {
@@ -45477,6 +46236,47 @@ func (i GetAppSpecIngressRuleMatchArgs) ToGetAppSpecIngressRuleMatchOutput() Get
 
 func (i GetAppSpecIngressRuleMatchArgs) ToGetAppSpecIngressRuleMatchOutputWithContext(ctx context.Context) GetAppSpecIngressRuleMatchOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecIngressRuleMatchOutput)
+}
+
+func (i GetAppSpecIngressRuleMatchArgs) ToGetAppSpecIngressRuleMatchPtrOutput() GetAppSpecIngressRuleMatchPtrOutput {
+	return i.ToGetAppSpecIngressRuleMatchPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecIngressRuleMatchArgs) ToGetAppSpecIngressRuleMatchPtrOutputWithContext(ctx context.Context) GetAppSpecIngressRuleMatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecIngressRuleMatchOutput).ToGetAppSpecIngressRuleMatchPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecIngressRuleMatchPtrInput is an input type that accepts GetAppSpecIngressRuleMatchArgs, GetAppSpecIngressRuleMatchPtr and GetAppSpecIngressRuleMatchPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecIngressRuleMatchPtrInput` via:
+//
+//	        GetAppSpecIngressRuleMatchArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetAppSpecIngressRuleMatchPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecIngressRuleMatchPtrOutput() GetAppSpecIngressRuleMatchPtrOutput
+	ToGetAppSpecIngressRuleMatchPtrOutputWithContext(context.Context) GetAppSpecIngressRuleMatchPtrOutput
+}
+
+type getAppSpecIngressRuleMatchPtrType GetAppSpecIngressRuleMatchArgs
+
+func GetAppSpecIngressRuleMatchPtr(v *GetAppSpecIngressRuleMatchArgs) GetAppSpecIngressRuleMatchPtrInput {
+	return (*getAppSpecIngressRuleMatchPtrType)(v)
+}
+
+func (*getAppSpecIngressRuleMatchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecIngressRuleMatch)(nil)).Elem()
+}
+
+func (i *getAppSpecIngressRuleMatchPtrType) ToGetAppSpecIngressRuleMatchPtrOutput() GetAppSpecIngressRuleMatchPtrOutput {
+	return i.ToGetAppSpecIngressRuleMatchPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecIngressRuleMatchPtrType) ToGetAppSpecIngressRuleMatchPtrOutputWithContext(ctx context.Context) GetAppSpecIngressRuleMatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecIngressRuleMatchPtrOutput)
 }
 
 type GetAppSpecIngressRuleMatchOutput struct{ *pulumi.OutputState }
@@ -45493,18 +46293,71 @@ func (o GetAppSpecIngressRuleMatchOutput) ToGetAppSpecIngressRuleMatchOutputWith
 	return o
 }
 
-func (o GetAppSpecIngressRuleMatchOutput) Authority() GetAppSpecIngressRuleMatchAuthorityOutput {
-	return o.ApplyT(func(v GetAppSpecIngressRuleMatch) GetAppSpecIngressRuleMatchAuthority { return v.Authority }).(GetAppSpecIngressRuleMatchAuthorityOutput)
+func (o GetAppSpecIngressRuleMatchOutput) ToGetAppSpecIngressRuleMatchPtrOutput() GetAppSpecIngressRuleMatchPtrOutput {
+	return o.ToGetAppSpecIngressRuleMatchPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecIngressRuleMatchOutput) ToGetAppSpecIngressRuleMatchPtrOutputWithContext(ctx context.Context) GetAppSpecIngressRuleMatchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecIngressRuleMatch) *GetAppSpecIngressRuleMatch {
+		return &v
+	}).(GetAppSpecIngressRuleMatchPtrOutput)
+}
+
+func (o GetAppSpecIngressRuleMatchOutput) Authority() GetAppSpecIngressRuleMatchAuthorityPtrOutput {
+	return o.ApplyT(func(v GetAppSpecIngressRuleMatch) *GetAppSpecIngressRuleMatchAuthority { return v.Authority }).(GetAppSpecIngressRuleMatchAuthorityPtrOutput)
 }
 
 // Paths must start with `/` and must be unique within the app.
-func (o GetAppSpecIngressRuleMatchOutput) Path() GetAppSpecIngressRuleMatchPathOutput {
-	return o.ApplyT(func(v GetAppSpecIngressRuleMatch) GetAppSpecIngressRuleMatchPath { return v.Path }).(GetAppSpecIngressRuleMatchPathOutput)
+func (o GetAppSpecIngressRuleMatchOutput) Path() GetAppSpecIngressRuleMatchPathPtrOutput {
+	return o.ApplyT(func(v GetAppSpecIngressRuleMatch) *GetAppSpecIngressRuleMatchPath { return v.Path }).(GetAppSpecIngressRuleMatchPathPtrOutput)
+}
+
+type GetAppSpecIngressRuleMatchPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecIngressRuleMatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecIngressRuleMatch)(nil)).Elem()
+}
+
+func (o GetAppSpecIngressRuleMatchPtrOutput) ToGetAppSpecIngressRuleMatchPtrOutput() GetAppSpecIngressRuleMatchPtrOutput {
+	return o
+}
+
+func (o GetAppSpecIngressRuleMatchPtrOutput) ToGetAppSpecIngressRuleMatchPtrOutputWithContext(ctx context.Context) GetAppSpecIngressRuleMatchPtrOutput {
+	return o
+}
+
+func (o GetAppSpecIngressRuleMatchPtrOutput) Elem() GetAppSpecIngressRuleMatchOutput {
+	return o.ApplyT(func(v *GetAppSpecIngressRuleMatch) GetAppSpecIngressRuleMatch {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecIngressRuleMatch
+		return ret
+	}).(GetAppSpecIngressRuleMatchOutput)
+}
+
+func (o GetAppSpecIngressRuleMatchPtrOutput) Authority() GetAppSpecIngressRuleMatchAuthorityPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecIngressRuleMatch) *GetAppSpecIngressRuleMatchAuthority {
+		if v == nil {
+			return nil
+		}
+		return v.Authority
+	}).(GetAppSpecIngressRuleMatchAuthorityPtrOutput)
+}
+
+// Paths must start with `/` and must be unique within the app.
+func (o GetAppSpecIngressRuleMatchPtrOutput) Path() GetAppSpecIngressRuleMatchPathPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecIngressRuleMatch) *GetAppSpecIngressRuleMatchPath {
+		if v == nil {
+			return nil
+		}
+		return v.Path
+	}).(GetAppSpecIngressRuleMatchPathPtrOutput)
 }
 
 type GetAppSpecIngressRuleMatchAuthority struct {
 	// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
-	Exact string `pulumi:"exact"`
+	Exact *string `pulumi:"exact"`
 }
 
 // GetAppSpecIngressRuleMatchAuthorityInput is an input type that accepts GetAppSpecIngressRuleMatchAuthorityArgs and GetAppSpecIngressRuleMatchAuthorityOutput values.
@@ -45520,7 +46373,7 @@ type GetAppSpecIngressRuleMatchAuthorityInput interface {
 
 type GetAppSpecIngressRuleMatchAuthorityArgs struct {
 	// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
-	Exact pulumi.StringInput `pulumi:"exact"`
+	Exact pulumi.StringPtrInput `pulumi:"exact"`
 }
 
 func (GetAppSpecIngressRuleMatchAuthorityArgs) ElementType() reflect.Type {
@@ -45533,6 +46386,47 @@ func (i GetAppSpecIngressRuleMatchAuthorityArgs) ToGetAppSpecIngressRuleMatchAut
 
 func (i GetAppSpecIngressRuleMatchAuthorityArgs) ToGetAppSpecIngressRuleMatchAuthorityOutputWithContext(ctx context.Context) GetAppSpecIngressRuleMatchAuthorityOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecIngressRuleMatchAuthorityOutput)
+}
+
+func (i GetAppSpecIngressRuleMatchAuthorityArgs) ToGetAppSpecIngressRuleMatchAuthorityPtrOutput() GetAppSpecIngressRuleMatchAuthorityPtrOutput {
+	return i.ToGetAppSpecIngressRuleMatchAuthorityPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecIngressRuleMatchAuthorityArgs) ToGetAppSpecIngressRuleMatchAuthorityPtrOutputWithContext(ctx context.Context) GetAppSpecIngressRuleMatchAuthorityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecIngressRuleMatchAuthorityOutput).ToGetAppSpecIngressRuleMatchAuthorityPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecIngressRuleMatchAuthorityPtrInput is an input type that accepts GetAppSpecIngressRuleMatchAuthorityArgs, GetAppSpecIngressRuleMatchAuthorityPtr and GetAppSpecIngressRuleMatchAuthorityPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecIngressRuleMatchAuthorityPtrInput` via:
+//
+//	        GetAppSpecIngressRuleMatchAuthorityArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetAppSpecIngressRuleMatchAuthorityPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecIngressRuleMatchAuthorityPtrOutput() GetAppSpecIngressRuleMatchAuthorityPtrOutput
+	ToGetAppSpecIngressRuleMatchAuthorityPtrOutputWithContext(context.Context) GetAppSpecIngressRuleMatchAuthorityPtrOutput
+}
+
+type getAppSpecIngressRuleMatchAuthorityPtrType GetAppSpecIngressRuleMatchAuthorityArgs
+
+func GetAppSpecIngressRuleMatchAuthorityPtr(v *GetAppSpecIngressRuleMatchAuthorityArgs) GetAppSpecIngressRuleMatchAuthorityPtrInput {
+	return (*getAppSpecIngressRuleMatchAuthorityPtrType)(v)
+}
+
+func (*getAppSpecIngressRuleMatchAuthorityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecIngressRuleMatchAuthority)(nil)).Elem()
+}
+
+func (i *getAppSpecIngressRuleMatchAuthorityPtrType) ToGetAppSpecIngressRuleMatchAuthorityPtrOutput() GetAppSpecIngressRuleMatchAuthorityPtrOutput {
+	return i.ToGetAppSpecIngressRuleMatchAuthorityPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecIngressRuleMatchAuthorityPtrType) ToGetAppSpecIngressRuleMatchAuthorityPtrOutputWithContext(ctx context.Context) GetAppSpecIngressRuleMatchAuthorityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecIngressRuleMatchAuthorityPtrOutput)
 }
 
 type GetAppSpecIngressRuleMatchAuthorityOutput struct{ *pulumi.OutputState }
@@ -45549,14 +46443,58 @@ func (o GetAppSpecIngressRuleMatchAuthorityOutput) ToGetAppSpecIngressRuleMatchA
 	return o
 }
 
+func (o GetAppSpecIngressRuleMatchAuthorityOutput) ToGetAppSpecIngressRuleMatchAuthorityPtrOutput() GetAppSpecIngressRuleMatchAuthorityPtrOutput {
+	return o.ToGetAppSpecIngressRuleMatchAuthorityPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecIngressRuleMatchAuthorityOutput) ToGetAppSpecIngressRuleMatchAuthorityPtrOutputWithContext(ctx context.Context) GetAppSpecIngressRuleMatchAuthorityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecIngressRuleMatchAuthority) *GetAppSpecIngressRuleMatchAuthority {
+		return &v
+	}).(GetAppSpecIngressRuleMatchAuthorityPtrOutput)
+}
+
 // The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
-func (o GetAppSpecIngressRuleMatchAuthorityOutput) Exact() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAppSpecIngressRuleMatchAuthority) string { return v.Exact }).(pulumi.StringOutput)
+func (o GetAppSpecIngressRuleMatchAuthorityOutput) Exact() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecIngressRuleMatchAuthority) *string { return v.Exact }).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecIngressRuleMatchAuthorityPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecIngressRuleMatchAuthorityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecIngressRuleMatchAuthority)(nil)).Elem()
+}
+
+func (o GetAppSpecIngressRuleMatchAuthorityPtrOutput) ToGetAppSpecIngressRuleMatchAuthorityPtrOutput() GetAppSpecIngressRuleMatchAuthorityPtrOutput {
+	return o
+}
+
+func (o GetAppSpecIngressRuleMatchAuthorityPtrOutput) ToGetAppSpecIngressRuleMatchAuthorityPtrOutputWithContext(ctx context.Context) GetAppSpecIngressRuleMatchAuthorityPtrOutput {
+	return o
+}
+
+func (o GetAppSpecIngressRuleMatchAuthorityPtrOutput) Elem() GetAppSpecIngressRuleMatchAuthorityOutput {
+	return o.ApplyT(func(v *GetAppSpecIngressRuleMatchAuthority) GetAppSpecIngressRuleMatchAuthority {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecIngressRuleMatchAuthority
+		return ret
+	}).(GetAppSpecIngressRuleMatchAuthorityOutput)
+}
+
+// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+func (o GetAppSpecIngressRuleMatchAuthorityPtrOutput) Exact() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecIngressRuleMatchAuthority) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Exact
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetAppSpecIngressRuleMatchPath struct {
 	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
-	Prefix string `pulumi:"prefix"`
+	Prefix *string `pulumi:"prefix"`
 }
 
 // GetAppSpecIngressRuleMatchPathInput is an input type that accepts GetAppSpecIngressRuleMatchPathArgs and GetAppSpecIngressRuleMatchPathOutput values.
@@ -45572,7 +46510,7 @@ type GetAppSpecIngressRuleMatchPathInput interface {
 
 type GetAppSpecIngressRuleMatchPathArgs struct {
 	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
-	Prefix pulumi.StringInput `pulumi:"prefix"`
+	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
 }
 
 func (GetAppSpecIngressRuleMatchPathArgs) ElementType() reflect.Type {
@@ -45585,6 +46523,47 @@ func (i GetAppSpecIngressRuleMatchPathArgs) ToGetAppSpecIngressRuleMatchPathOutp
 
 func (i GetAppSpecIngressRuleMatchPathArgs) ToGetAppSpecIngressRuleMatchPathOutputWithContext(ctx context.Context) GetAppSpecIngressRuleMatchPathOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecIngressRuleMatchPathOutput)
+}
+
+func (i GetAppSpecIngressRuleMatchPathArgs) ToGetAppSpecIngressRuleMatchPathPtrOutput() GetAppSpecIngressRuleMatchPathPtrOutput {
+	return i.ToGetAppSpecIngressRuleMatchPathPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecIngressRuleMatchPathArgs) ToGetAppSpecIngressRuleMatchPathPtrOutputWithContext(ctx context.Context) GetAppSpecIngressRuleMatchPathPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecIngressRuleMatchPathOutput).ToGetAppSpecIngressRuleMatchPathPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecIngressRuleMatchPathPtrInput is an input type that accepts GetAppSpecIngressRuleMatchPathArgs, GetAppSpecIngressRuleMatchPathPtr and GetAppSpecIngressRuleMatchPathPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecIngressRuleMatchPathPtrInput` via:
+//
+//	        GetAppSpecIngressRuleMatchPathArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetAppSpecIngressRuleMatchPathPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecIngressRuleMatchPathPtrOutput() GetAppSpecIngressRuleMatchPathPtrOutput
+	ToGetAppSpecIngressRuleMatchPathPtrOutputWithContext(context.Context) GetAppSpecIngressRuleMatchPathPtrOutput
+}
+
+type getAppSpecIngressRuleMatchPathPtrType GetAppSpecIngressRuleMatchPathArgs
+
+func GetAppSpecIngressRuleMatchPathPtr(v *GetAppSpecIngressRuleMatchPathArgs) GetAppSpecIngressRuleMatchPathPtrInput {
+	return (*getAppSpecIngressRuleMatchPathPtrType)(v)
+}
+
+func (*getAppSpecIngressRuleMatchPathPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecIngressRuleMatchPath)(nil)).Elem()
+}
+
+func (i *getAppSpecIngressRuleMatchPathPtrType) ToGetAppSpecIngressRuleMatchPathPtrOutput() GetAppSpecIngressRuleMatchPathPtrOutput {
+	return i.ToGetAppSpecIngressRuleMatchPathPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecIngressRuleMatchPathPtrType) ToGetAppSpecIngressRuleMatchPathPtrOutputWithContext(ctx context.Context) GetAppSpecIngressRuleMatchPathPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecIngressRuleMatchPathPtrOutput)
 }
 
 type GetAppSpecIngressRuleMatchPathOutput struct{ *pulumi.OutputState }
@@ -45601,9 +46580,53 @@ func (o GetAppSpecIngressRuleMatchPathOutput) ToGetAppSpecIngressRuleMatchPathOu
 	return o
 }
 
+func (o GetAppSpecIngressRuleMatchPathOutput) ToGetAppSpecIngressRuleMatchPathPtrOutput() GetAppSpecIngressRuleMatchPathPtrOutput {
+	return o.ToGetAppSpecIngressRuleMatchPathPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecIngressRuleMatchPathOutput) ToGetAppSpecIngressRuleMatchPathPtrOutputWithContext(ctx context.Context) GetAppSpecIngressRuleMatchPathPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecIngressRuleMatchPath) *GetAppSpecIngressRuleMatchPath {
+		return &v
+	}).(GetAppSpecIngressRuleMatchPathPtrOutput)
+}
+
 // The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
-func (o GetAppSpecIngressRuleMatchPathOutput) Prefix() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAppSpecIngressRuleMatchPath) string { return v.Prefix }).(pulumi.StringOutput)
+func (o GetAppSpecIngressRuleMatchPathOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecIngressRuleMatchPath) *string { return v.Prefix }).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecIngressRuleMatchPathPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecIngressRuleMatchPathPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecIngressRuleMatchPath)(nil)).Elem()
+}
+
+func (o GetAppSpecIngressRuleMatchPathPtrOutput) ToGetAppSpecIngressRuleMatchPathPtrOutput() GetAppSpecIngressRuleMatchPathPtrOutput {
+	return o
+}
+
+func (o GetAppSpecIngressRuleMatchPathPtrOutput) ToGetAppSpecIngressRuleMatchPathPtrOutputWithContext(ctx context.Context) GetAppSpecIngressRuleMatchPathPtrOutput {
+	return o
+}
+
+func (o GetAppSpecIngressRuleMatchPathPtrOutput) Elem() GetAppSpecIngressRuleMatchPathOutput {
+	return o.ApplyT(func(v *GetAppSpecIngressRuleMatchPath) GetAppSpecIngressRuleMatchPath {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecIngressRuleMatchPath
+		return ret
+	}).(GetAppSpecIngressRuleMatchPathOutput)
+}
+
+// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+func (o GetAppSpecIngressRuleMatchPathPtrOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecIngressRuleMatchPath) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Prefix
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetAppSpecIngressRuleRedirect struct {
@@ -45801,9 +46824,9 @@ func (o GetAppSpecIngressRuleRedirectPtrOutput) Uri() pulumi.StringPtrOutput {
 
 type GetAppSpecIngressSecureHeader struct {
 	// The name of the environment variable.
-	Key string `pulumi:"key"`
+	Key *string `pulumi:"key"`
 	// The threshold for the type of the warning.
-	Value string `pulumi:"value"`
+	Value *string `pulumi:"value"`
 }
 
 // GetAppSpecIngressSecureHeaderInput is an input type that accepts GetAppSpecIngressSecureHeaderArgs and GetAppSpecIngressSecureHeaderOutput values.
@@ -45819,9 +46842,9 @@ type GetAppSpecIngressSecureHeaderInput interface {
 
 type GetAppSpecIngressSecureHeaderArgs struct {
 	// The name of the environment variable.
-	Key pulumi.StringInput `pulumi:"key"`
+	Key pulumi.StringPtrInput `pulumi:"key"`
 	// The threshold for the type of the warning.
-	Value pulumi.StringInput `pulumi:"value"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (GetAppSpecIngressSecureHeaderArgs) ElementType() reflect.Type {
@@ -45834,6 +46857,47 @@ func (i GetAppSpecIngressSecureHeaderArgs) ToGetAppSpecIngressSecureHeaderOutput
 
 func (i GetAppSpecIngressSecureHeaderArgs) ToGetAppSpecIngressSecureHeaderOutputWithContext(ctx context.Context) GetAppSpecIngressSecureHeaderOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecIngressSecureHeaderOutput)
+}
+
+func (i GetAppSpecIngressSecureHeaderArgs) ToGetAppSpecIngressSecureHeaderPtrOutput() GetAppSpecIngressSecureHeaderPtrOutput {
+	return i.ToGetAppSpecIngressSecureHeaderPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecIngressSecureHeaderArgs) ToGetAppSpecIngressSecureHeaderPtrOutputWithContext(ctx context.Context) GetAppSpecIngressSecureHeaderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecIngressSecureHeaderOutput).ToGetAppSpecIngressSecureHeaderPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecIngressSecureHeaderPtrInput is an input type that accepts GetAppSpecIngressSecureHeaderArgs, GetAppSpecIngressSecureHeaderPtr and GetAppSpecIngressSecureHeaderPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecIngressSecureHeaderPtrInput` via:
+//
+//	        GetAppSpecIngressSecureHeaderArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetAppSpecIngressSecureHeaderPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecIngressSecureHeaderPtrOutput() GetAppSpecIngressSecureHeaderPtrOutput
+	ToGetAppSpecIngressSecureHeaderPtrOutputWithContext(context.Context) GetAppSpecIngressSecureHeaderPtrOutput
+}
+
+type getAppSpecIngressSecureHeaderPtrType GetAppSpecIngressSecureHeaderArgs
+
+func GetAppSpecIngressSecureHeaderPtr(v *GetAppSpecIngressSecureHeaderArgs) GetAppSpecIngressSecureHeaderPtrInput {
+	return (*getAppSpecIngressSecureHeaderPtrType)(v)
+}
+
+func (*getAppSpecIngressSecureHeaderPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecIngressSecureHeader)(nil)).Elem()
+}
+
+func (i *getAppSpecIngressSecureHeaderPtrType) ToGetAppSpecIngressSecureHeaderPtrOutput() GetAppSpecIngressSecureHeaderPtrOutput {
+	return i.ToGetAppSpecIngressSecureHeaderPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecIngressSecureHeaderPtrType) ToGetAppSpecIngressSecureHeaderPtrOutputWithContext(ctx context.Context) GetAppSpecIngressSecureHeaderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecIngressSecureHeaderPtrOutput)
 }
 
 type GetAppSpecIngressSecureHeaderOutput struct{ *pulumi.OutputState }
@@ -45850,14 +46914,68 @@ func (o GetAppSpecIngressSecureHeaderOutput) ToGetAppSpecIngressSecureHeaderOutp
 	return o
 }
 
+func (o GetAppSpecIngressSecureHeaderOutput) ToGetAppSpecIngressSecureHeaderPtrOutput() GetAppSpecIngressSecureHeaderPtrOutput {
+	return o.ToGetAppSpecIngressSecureHeaderPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecIngressSecureHeaderOutput) ToGetAppSpecIngressSecureHeaderPtrOutputWithContext(ctx context.Context) GetAppSpecIngressSecureHeaderPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecIngressSecureHeader) *GetAppSpecIngressSecureHeader {
+		return &v
+	}).(GetAppSpecIngressSecureHeaderPtrOutput)
+}
+
 // The name of the environment variable.
-func (o GetAppSpecIngressSecureHeaderOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAppSpecIngressSecureHeader) string { return v.Key }).(pulumi.StringOutput)
+func (o GetAppSpecIngressSecureHeaderOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecIngressSecureHeader) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
 // The threshold for the type of the warning.
-func (o GetAppSpecIngressSecureHeaderOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAppSpecIngressSecureHeader) string { return v.Value }).(pulumi.StringOutput)
+func (o GetAppSpecIngressSecureHeaderOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecIngressSecureHeader) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecIngressSecureHeaderPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecIngressSecureHeaderPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecIngressSecureHeader)(nil)).Elem()
+}
+
+func (o GetAppSpecIngressSecureHeaderPtrOutput) ToGetAppSpecIngressSecureHeaderPtrOutput() GetAppSpecIngressSecureHeaderPtrOutput {
+	return o
+}
+
+func (o GetAppSpecIngressSecureHeaderPtrOutput) ToGetAppSpecIngressSecureHeaderPtrOutputWithContext(ctx context.Context) GetAppSpecIngressSecureHeaderPtrOutput {
+	return o
+}
+
+func (o GetAppSpecIngressSecureHeaderPtrOutput) Elem() GetAppSpecIngressSecureHeaderOutput {
+	return o.ApplyT(func(v *GetAppSpecIngressSecureHeader) GetAppSpecIngressSecureHeader {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecIngressSecureHeader
+		return ret
+	}).(GetAppSpecIngressSecureHeaderOutput)
+}
+
+// The name of the environment variable.
+func (o GetAppSpecIngressSecureHeaderPtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecIngressSecureHeader) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+// The threshold for the type of the warning.
+func (o GetAppSpecIngressSecureHeaderPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecIngressSecureHeader) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Value
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetAppSpecJob struct {
@@ -48933,7 +50051,8 @@ type GetAppSpecService struct {
 	// The instance size to use for this component.
 	InstanceSizeSlug *string `pulumi:"instanceSizeSlug"`
 	// A list of ports on which this service will listen for internal traffic.
-	InternalPorts []int `pulumi:"internalPorts"`
+	InternalPorts       []int                                 `pulumi:"internalPorts"`
+	LivenessHealthCheck *GetAppSpecServiceLivenessHealthCheck `pulumi:"livenessHealthCheck"`
 	// Describes a log forwarding destination.
 	LogDestinations []GetAppSpecServiceLogDestination `pulumi:"logDestinations"`
 	// The name of the component.
@@ -48941,7 +50060,7 @@ type GetAppSpecService struct {
 	// Deprecated: Service level routes are deprecated in favor of ingresses
 	Routes []GetAppSpecServiceRoute `pulumi:"routes"`
 	// An optional run command to override the component's default.
-	RunCommand string `pulumi:"runCommand"`
+	RunCommand *string `pulumi:"runCommand"`
 	// An optional path to the working directory to use for the build.
 	SourceDir *string `pulumi:"sourceDir"`
 	// Contains a component's termination parameters.
@@ -48995,7 +50114,8 @@ type GetAppSpecServiceArgs struct {
 	// The instance size to use for this component.
 	InstanceSizeSlug pulumi.StringPtrInput `pulumi:"instanceSizeSlug"`
 	// A list of ports on which this service will listen for internal traffic.
-	InternalPorts pulumi.IntArrayInput `pulumi:"internalPorts"`
+	InternalPorts       pulumi.IntArrayInput                         `pulumi:"internalPorts"`
+	LivenessHealthCheck GetAppSpecServiceLivenessHealthCheckPtrInput `pulumi:"livenessHealthCheck"`
 	// Describes a log forwarding destination.
 	LogDestinations GetAppSpecServiceLogDestinationArrayInput `pulumi:"logDestinations"`
 	// The name of the component.
@@ -49003,7 +50123,7 @@ type GetAppSpecServiceArgs struct {
 	// Deprecated: Service level routes are deprecated in favor of ingresses
 	Routes GetAppSpecServiceRouteArrayInput `pulumi:"routes"`
 	// An optional run command to override the component's default.
-	RunCommand pulumi.StringInput `pulumi:"runCommand"`
+	RunCommand pulumi.StringPtrInput `pulumi:"runCommand"`
 	// An optional path to the working directory to use for the build.
 	SourceDir pulumi.StringPtrInput `pulumi:"sourceDir"`
 	// Contains a component's termination parameters.
@@ -49148,6 +50268,10 @@ func (o GetAppSpecServiceOutput) InternalPorts() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v GetAppSpecService) []int { return v.InternalPorts }).(pulumi.IntArrayOutput)
 }
 
+func (o GetAppSpecServiceOutput) LivenessHealthCheck() GetAppSpecServiceLivenessHealthCheckPtrOutput {
+	return o.ApplyT(func(v GetAppSpecService) *GetAppSpecServiceLivenessHealthCheck { return v.LivenessHealthCheck }).(GetAppSpecServiceLivenessHealthCheckPtrOutput)
+}
+
 // Describes a log forwarding destination.
 func (o GetAppSpecServiceOutput) LogDestinations() GetAppSpecServiceLogDestinationArrayOutput {
 	return o.ApplyT(func(v GetAppSpecService) []GetAppSpecServiceLogDestination { return v.LogDestinations }).(GetAppSpecServiceLogDestinationArrayOutput)
@@ -49164,8 +50288,8 @@ func (o GetAppSpecServiceOutput) Routes() GetAppSpecServiceRouteArrayOutput {
 }
 
 // An optional run command to override the component's default.
-func (o GetAppSpecServiceOutput) RunCommand() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAppSpecService) string { return v.RunCommand }).(pulumi.StringOutput)
+func (o GetAppSpecServiceOutput) RunCommand() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecService) *string { return v.RunCommand }).(pulumi.StringPtrOutput)
 }
 
 // An optional path to the working directory to use for the build.
@@ -51859,6 +52983,257 @@ func (o GetAppSpecServiceImageDeployOnPushArrayOutput) Index(i pulumi.IntInput) 
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppSpecServiceImageDeployOnPush {
 		return vs[0].([]GetAppSpecServiceImageDeployOnPush)[vs[1].(int)]
 	}).(GetAppSpecServiceImageDeployOnPushOutput)
+}
+
+type GetAppSpecServiceLivenessHealthCheck struct {
+	// The number of failed health checks before considered unhealthy.
+	FailureThreshold *int `pulumi:"failureThreshold"`
+	// The route path used for the HTTP health check ping.
+	HttpPath *string `pulumi:"httpPath"`
+	// The number of seconds to wait before beginning health checks.
+	InitialDelaySeconds *int `pulumi:"initialDelaySeconds"`
+	// The number of seconds to wait between health checks.
+	PeriodSeconds *int `pulumi:"periodSeconds"`
+	// The port on which the health check will be performed. If not set, the health check will be performed on the component's http_port.
+	Port *int `pulumi:"port"`
+	// The number of successful health checks before considered healthy.
+	SuccessThreshold *int `pulumi:"successThreshold"`
+	// The number of seconds after which the check times out.
+	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
+}
+
+// GetAppSpecServiceLivenessHealthCheckInput is an input type that accepts GetAppSpecServiceLivenessHealthCheckArgs and GetAppSpecServiceLivenessHealthCheckOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceLivenessHealthCheckInput` via:
+//
+//	GetAppSpecServiceLivenessHealthCheckArgs{...}
+type GetAppSpecServiceLivenessHealthCheckInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceLivenessHealthCheckOutput() GetAppSpecServiceLivenessHealthCheckOutput
+	ToGetAppSpecServiceLivenessHealthCheckOutputWithContext(context.Context) GetAppSpecServiceLivenessHealthCheckOutput
+}
+
+type GetAppSpecServiceLivenessHealthCheckArgs struct {
+	// The number of failed health checks before considered unhealthy.
+	FailureThreshold pulumi.IntPtrInput `pulumi:"failureThreshold"`
+	// The route path used for the HTTP health check ping.
+	HttpPath pulumi.StringPtrInput `pulumi:"httpPath"`
+	// The number of seconds to wait before beginning health checks.
+	InitialDelaySeconds pulumi.IntPtrInput `pulumi:"initialDelaySeconds"`
+	// The number of seconds to wait between health checks.
+	PeriodSeconds pulumi.IntPtrInput `pulumi:"periodSeconds"`
+	// The port on which the health check will be performed. If not set, the health check will be performed on the component's http_port.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// The number of successful health checks before considered healthy.
+	SuccessThreshold pulumi.IntPtrInput `pulumi:"successThreshold"`
+	// The number of seconds after which the check times out.
+	TimeoutSeconds pulumi.IntPtrInput `pulumi:"timeoutSeconds"`
+}
+
+func (GetAppSpecServiceLivenessHealthCheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceLivenessHealthCheck)(nil)).Elem()
+}
+
+func (i GetAppSpecServiceLivenessHealthCheckArgs) ToGetAppSpecServiceLivenessHealthCheckOutput() GetAppSpecServiceLivenessHealthCheckOutput {
+	return i.ToGetAppSpecServiceLivenessHealthCheckOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceLivenessHealthCheckArgs) ToGetAppSpecServiceLivenessHealthCheckOutputWithContext(ctx context.Context) GetAppSpecServiceLivenessHealthCheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceLivenessHealthCheckOutput)
+}
+
+func (i GetAppSpecServiceLivenessHealthCheckArgs) ToGetAppSpecServiceLivenessHealthCheckPtrOutput() GetAppSpecServiceLivenessHealthCheckPtrOutput {
+	return i.ToGetAppSpecServiceLivenessHealthCheckPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceLivenessHealthCheckArgs) ToGetAppSpecServiceLivenessHealthCheckPtrOutputWithContext(ctx context.Context) GetAppSpecServiceLivenessHealthCheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceLivenessHealthCheckOutput).ToGetAppSpecServiceLivenessHealthCheckPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecServiceLivenessHealthCheckPtrInput is an input type that accepts GetAppSpecServiceLivenessHealthCheckArgs, GetAppSpecServiceLivenessHealthCheckPtr and GetAppSpecServiceLivenessHealthCheckPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceLivenessHealthCheckPtrInput` via:
+//
+//	        GetAppSpecServiceLivenessHealthCheckArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetAppSpecServiceLivenessHealthCheckPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceLivenessHealthCheckPtrOutput() GetAppSpecServiceLivenessHealthCheckPtrOutput
+	ToGetAppSpecServiceLivenessHealthCheckPtrOutputWithContext(context.Context) GetAppSpecServiceLivenessHealthCheckPtrOutput
+}
+
+type getAppSpecServiceLivenessHealthCheckPtrType GetAppSpecServiceLivenessHealthCheckArgs
+
+func GetAppSpecServiceLivenessHealthCheckPtr(v *GetAppSpecServiceLivenessHealthCheckArgs) GetAppSpecServiceLivenessHealthCheckPtrInput {
+	return (*getAppSpecServiceLivenessHealthCheckPtrType)(v)
+}
+
+func (*getAppSpecServiceLivenessHealthCheckPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceLivenessHealthCheck)(nil)).Elem()
+}
+
+func (i *getAppSpecServiceLivenessHealthCheckPtrType) ToGetAppSpecServiceLivenessHealthCheckPtrOutput() GetAppSpecServiceLivenessHealthCheckPtrOutput {
+	return i.ToGetAppSpecServiceLivenessHealthCheckPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecServiceLivenessHealthCheckPtrType) ToGetAppSpecServiceLivenessHealthCheckPtrOutputWithContext(ctx context.Context) GetAppSpecServiceLivenessHealthCheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceLivenessHealthCheckPtrOutput)
+}
+
+type GetAppSpecServiceLivenessHealthCheckOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceLivenessHealthCheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceLivenessHealthCheck)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceLivenessHealthCheckOutput) ToGetAppSpecServiceLivenessHealthCheckOutput() GetAppSpecServiceLivenessHealthCheckOutput {
+	return o
+}
+
+func (o GetAppSpecServiceLivenessHealthCheckOutput) ToGetAppSpecServiceLivenessHealthCheckOutputWithContext(ctx context.Context) GetAppSpecServiceLivenessHealthCheckOutput {
+	return o
+}
+
+func (o GetAppSpecServiceLivenessHealthCheckOutput) ToGetAppSpecServiceLivenessHealthCheckPtrOutput() GetAppSpecServiceLivenessHealthCheckPtrOutput {
+	return o.ToGetAppSpecServiceLivenessHealthCheckPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecServiceLivenessHealthCheckOutput) ToGetAppSpecServiceLivenessHealthCheckPtrOutputWithContext(ctx context.Context) GetAppSpecServiceLivenessHealthCheckPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecServiceLivenessHealthCheck) *GetAppSpecServiceLivenessHealthCheck {
+		return &v
+	}).(GetAppSpecServiceLivenessHealthCheckPtrOutput)
+}
+
+// The number of failed health checks before considered unhealthy.
+func (o GetAppSpecServiceLivenessHealthCheckOutput) FailureThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceLivenessHealthCheck) *int { return v.FailureThreshold }).(pulumi.IntPtrOutput)
+}
+
+// The route path used for the HTTP health check ping.
+func (o GetAppSpecServiceLivenessHealthCheckOutput) HttpPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceLivenessHealthCheck) *string { return v.HttpPath }).(pulumi.StringPtrOutput)
+}
+
+// The number of seconds to wait before beginning health checks.
+func (o GetAppSpecServiceLivenessHealthCheckOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceLivenessHealthCheck) *int { return v.InitialDelaySeconds }).(pulumi.IntPtrOutput)
+}
+
+// The number of seconds to wait between health checks.
+func (o GetAppSpecServiceLivenessHealthCheckOutput) PeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceLivenessHealthCheck) *int { return v.PeriodSeconds }).(pulumi.IntPtrOutput)
+}
+
+// The port on which the health check will be performed. If not set, the health check will be performed on the component's http_port.
+func (o GetAppSpecServiceLivenessHealthCheckOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceLivenessHealthCheck) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// The number of successful health checks before considered healthy.
+func (o GetAppSpecServiceLivenessHealthCheckOutput) SuccessThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceLivenessHealthCheck) *int { return v.SuccessThreshold }).(pulumi.IntPtrOutput)
+}
+
+// The number of seconds after which the check times out.
+func (o GetAppSpecServiceLivenessHealthCheckOutput) TimeoutSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceLivenessHealthCheck) *int { return v.TimeoutSeconds }).(pulumi.IntPtrOutput)
+}
+
+type GetAppSpecServiceLivenessHealthCheckPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceLivenessHealthCheckPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceLivenessHealthCheck)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceLivenessHealthCheckPtrOutput) ToGetAppSpecServiceLivenessHealthCheckPtrOutput() GetAppSpecServiceLivenessHealthCheckPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceLivenessHealthCheckPtrOutput) ToGetAppSpecServiceLivenessHealthCheckPtrOutputWithContext(ctx context.Context) GetAppSpecServiceLivenessHealthCheckPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceLivenessHealthCheckPtrOutput) Elem() GetAppSpecServiceLivenessHealthCheckOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceLivenessHealthCheck) GetAppSpecServiceLivenessHealthCheck {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecServiceLivenessHealthCheck
+		return ret
+	}).(GetAppSpecServiceLivenessHealthCheckOutput)
+}
+
+// The number of failed health checks before considered unhealthy.
+func (o GetAppSpecServiceLivenessHealthCheckPtrOutput) FailureThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceLivenessHealthCheck) *int {
+		if v == nil {
+			return nil
+		}
+		return v.FailureThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// The route path used for the HTTP health check ping.
+func (o GetAppSpecServiceLivenessHealthCheckPtrOutput) HttpPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceLivenessHealthCheck) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HttpPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// The number of seconds to wait before beginning health checks.
+func (o GetAppSpecServiceLivenessHealthCheckPtrOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceLivenessHealthCheck) *int {
+		if v == nil {
+			return nil
+		}
+		return v.InitialDelaySeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of seconds to wait between health checks.
+func (o GetAppSpecServiceLivenessHealthCheckPtrOutput) PeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceLivenessHealthCheck) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PeriodSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// The port on which the health check will be performed. If not set, the health check will be performed on the component's http_port.
+func (o GetAppSpecServiceLivenessHealthCheckPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceLivenessHealthCheck) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of successful health checks before considered healthy.
+func (o GetAppSpecServiceLivenessHealthCheckPtrOutput) SuccessThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceLivenessHealthCheck) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SuccessThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of seconds after which the check times out.
+func (o GetAppSpecServiceLivenessHealthCheckPtrOutput) TimeoutSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceLivenessHealthCheck) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TimeoutSeconds
+	}).(pulumi.IntPtrOutput)
 }
 
 type GetAppSpecServiceLogDestination struct {
@@ -54729,7 +56104,8 @@ type GetAppSpecWorker struct {
 	// The amount of instances that this component should be scaled to.
 	InstanceCount *int `pulumi:"instanceCount"`
 	// The instance size to use for this component.
-	InstanceSizeSlug *string `pulumi:"instanceSizeSlug"`
+	InstanceSizeSlug    *string                              `pulumi:"instanceSizeSlug"`
+	LivenessHealthCheck *GetAppSpecWorkerLivenessHealthCheck `pulumi:"livenessHealthCheck"`
 	// Describes a log forwarding destination.
 	LogDestinations []GetAppSpecWorkerLogDestination `pulumi:"logDestinations"`
 	// The name of the component.
@@ -54779,7 +56155,8 @@ type GetAppSpecWorkerArgs struct {
 	// The amount of instances that this component should be scaled to.
 	InstanceCount pulumi.IntPtrInput `pulumi:"instanceCount"`
 	// The instance size to use for this component.
-	InstanceSizeSlug pulumi.StringPtrInput `pulumi:"instanceSizeSlug"`
+	InstanceSizeSlug    pulumi.StringPtrInput                       `pulumi:"instanceSizeSlug"`
+	LivenessHealthCheck GetAppSpecWorkerLivenessHealthCheckPtrInput `pulumi:"livenessHealthCheck"`
 	// Describes a log forwarding destination.
 	LogDestinations GetAppSpecWorkerLogDestinationArrayInput `pulumi:"logDestinations"`
 	// The name of the component.
@@ -54906,6 +56283,10 @@ func (o GetAppSpecWorkerOutput) InstanceCount() pulumi.IntPtrOutput {
 // The instance size to use for this component.
 func (o GetAppSpecWorkerOutput) InstanceSizeSlug() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecWorker) *string { return v.InstanceSizeSlug }).(pulumi.StringPtrOutput)
+}
+
+func (o GetAppSpecWorkerOutput) LivenessHealthCheck() GetAppSpecWorkerLivenessHealthCheckPtrOutput {
+	return o.ApplyT(func(v GetAppSpecWorker) *GetAppSpecWorkerLivenessHealthCheck { return v.LivenessHealthCheck }).(GetAppSpecWorkerLivenessHealthCheckPtrOutput)
 }
 
 // Describes a log forwarding destination.
@@ -56948,6 +58329,257 @@ func (o GetAppSpecWorkerImageDeployOnPushArrayOutput) Index(i pulumi.IntInput) G
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppSpecWorkerImageDeployOnPush {
 		return vs[0].([]GetAppSpecWorkerImageDeployOnPush)[vs[1].(int)]
 	}).(GetAppSpecWorkerImageDeployOnPushOutput)
+}
+
+type GetAppSpecWorkerLivenessHealthCheck struct {
+	// The number of failed health checks before considered unhealthy.
+	FailureThreshold *int `pulumi:"failureThreshold"`
+	// The route path used for the HTTP health check ping.
+	HttpPath *string `pulumi:"httpPath"`
+	// The number of seconds to wait before beginning health checks.
+	InitialDelaySeconds *int `pulumi:"initialDelaySeconds"`
+	// The number of seconds to wait between health checks.
+	PeriodSeconds *int `pulumi:"periodSeconds"`
+	// The port on which the health check will be performed. If not set, the health check will be performed on the component's http_port.
+	Port *int `pulumi:"port"`
+	// The number of successful health checks before considered healthy.
+	SuccessThreshold *int `pulumi:"successThreshold"`
+	// The number of seconds after which the check times out.
+	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
+}
+
+// GetAppSpecWorkerLivenessHealthCheckInput is an input type that accepts GetAppSpecWorkerLivenessHealthCheckArgs and GetAppSpecWorkerLivenessHealthCheckOutput values.
+// You can construct a concrete instance of `GetAppSpecWorkerLivenessHealthCheckInput` via:
+//
+//	GetAppSpecWorkerLivenessHealthCheckArgs{...}
+type GetAppSpecWorkerLivenessHealthCheckInput interface {
+	pulumi.Input
+
+	ToGetAppSpecWorkerLivenessHealthCheckOutput() GetAppSpecWorkerLivenessHealthCheckOutput
+	ToGetAppSpecWorkerLivenessHealthCheckOutputWithContext(context.Context) GetAppSpecWorkerLivenessHealthCheckOutput
+}
+
+type GetAppSpecWorkerLivenessHealthCheckArgs struct {
+	// The number of failed health checks before considered unhealthy.
+	FailureThreshold pulumi.IntPtrInput `pulumi:"failureThreshold"`
+	// The route path used for the HTTP health check ping.
+	HttpPath pulumi.StringPtrInput `pulumi:"httpPath"`
+	// The number of seconds to wait before beginning health checks.
+	InitialDelaySeconds pulumi.IntPtrInput `pulumi:"initialDelaySeconds"`
+	// The number of seconds to wait between health checks.
+	PeriodSeconds pulumi.IntPtrInput `pulumi:"periodSeconds"`
+	// The port on which the health check will be performed. If not set, the health check will be performed on the component's http_port.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// The number of successful health checks before considered healthy.
+	SuccessThreshold pulumi.IntPtrInput `pulumi:"successThreshold"`
+	// The number of seconds after which the check times out.
+	TimeoutSeconds pulumi.IntPtrInput `pulumi:"timeoutSeconds"`
+}
+
+func (GetAppSpecWorkerLivenessHealthCheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecWorkerLivenessHealthCheck)(nil)).Elem()
+}
+
+func (i GetAppSpecWorkerLivenessHealthCheckArgs) ToGetAppSpecWorkerLivenessHealthCheckOutput() GetAppSpecWorkerLivenessHealthCheckOutput {
+	return i.ToGetAppSpecWorkerLivenessHealthCheckOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecWorkerLivenessHealthCheckArgs) ToGetAppSpecWorkerLivenessHealthCheckOutputWithContext(ctx context.Context) GetAppSpecWorkerLivenessHealthCheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecWorkerLivenessHealthCheckOutput)
+}
+
+func (i GetAppSpecWorkerLivenessHealthCheckArgs) ToGetAppSpecWorkerLivenessHealthCheckPtrOutput() GetAppSpecWorkerLivenessHealthCheckPtrOutput {
+	return i.ToGetAppSpecWorkerLivenessHealthCheckPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecWorkerLivenessHealthCheckArgs) ToGetAppSpecWorkerLivenessHealthCheckPtrOutputWithContext(ctx context.Context) GetAppSpecWorkerLivenessHealthCheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecWorkerLivenessHealthCheckOutput).ToGetAppSpecWorkerLivenessHealthCheckPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecWorkerLivenessHealthCheckPtrInput is an input type that accepts GetAppSpecWorkerLivenessHealthCheckArgs, GetAppSpecWorkerLivenessHealthCheckPtr and GetAppSpecWorkerLivenessHealthCheckPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecWorkerLivenessHealthCheckPtrInput` via:
+//
+//	        GetAppSpecWorkerLivenessHealthCheckArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetAppSpecWorkerLivenessHealthCheckPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecWorkerLivenessHealthCheckPtrOutput() GetAppSpecWorkerLivenessHealthCheckPtrOutput
+	ToGetAppSpecWorkerLivenessHealthCheckPtrOutputWithContext(context.Context) GetAppSpecWorkerLivenessHealthCheckPtrOutput
+}
+
+type getAppSpecWorkerLivenessHealthCheckPtrType GetAppSpecWorkerLivenessHealthCheckArgs
+
+func GetAppSpecWorkerLivenessHealthCheckPtr(v *GetAppSpecWorkerLivenessHealthCheckArgs) GetAppSpecWorkerLivenessHealthCheckPtrInput {
+	return (*getAppSpecWorkerLivenessHealthCheckPtrType)(v)
+}
+
+func (*getAppSpecWorkerLivenessHealthCheckPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecWorkerLivenessHealthCheck)(nil)).Elem()
+}
+
+func (i *getAppSpecWorkerLivenessHealthCheckPtrType) ToGetAppSpecWorkerLivenessHealthCheckPtrOutput() GetAppSpecWorkerLivenessHealthCheckPtrOutput {
+	return i.ToGetAppSpecWorkerLivenessHealthCheckPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecWorkerLivenessHealthCheckPtrType) ToGetAppSpecWorkerLivenessHealthCheckPtrOutputWithContext(ctx context.Context) GetAppSpecWorkerLivenessHealthCheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecWorkerLivenessHealthCheckPtrOutput)
+}
+
+type GetAppSpecWorkerLivenessHealthCheckOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecWorkerLivenessHealthCheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecWorkerLivenessHealthCheck)(nil)).Elem()
+}
+
+func (o GetAppSpecWorkerLivenessHealthCheckOutput) ToGetAppSpecWorkerLivenessHealthCheckOutput() GetAppSpecWorkerLivenessHealthCheckOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerLivenessHealthCheckOutput) ToGetAppSpecWorkerLivenessHealthCheckOutputWithContext(ctx context.Context) GetAppSpecWorkerLivenessHealthCheckOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerLivenessHealthCheckOutput) ToGetAppSpecWorkerLivenessHealthCheckPtrOutput() GetAppSpecWorkerLivenessHealthCheckPtrOutput {
+	return o.ToGetAppSpecWorkerLivenessHealthCheckPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecWorkerLivenessHealthCheckOutput) ToGetAppSpecWorkerLivenessHealthCheckPtrOutputWithContext(ctx context.Context) GetAppSpecWorkerLivenessHealthCheckPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecWorkerLivenessHealthCheck) *GetAppSpecWorkerLivenessHealthCheck {
+		return &v
+	}).(GetAppSpecWorkerLivenessHealthCheckPtrOutput)
+}
+
+// The number of failed health checks before considered unhealthy.
+func (o GetAppSpecWorkerLivenessHealthCheckOutput) FailureThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetAppSpecWorkerLivenessHealthCheck) *int { return v.FailureThreshold }).(pulumi.IntPtrOutput)
+}
+
+// The route path used for the HTTP health check ping.
+func (o GetAppSpecWorkerLivenessHealthCheckOutput) HttpPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecWorkerLivenessHealthCheck) *string { return v.HttpPath }).(pulumi.StringPtrOutput)
+}
+
+// The number of seconds to wait before beginning health checks.
+func (o GetAppSpecWorkerLivenessHealthCheckOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetAppSpecWorkerLivenessHealthCheck) *int { return v.InitialDelaySeconds }).(pulumi.IntPtrOutput)
+}
+
+// The number of seconds to wait between health checks.
+func (o GetAppSpecWorkerLivenessHealthCheckOutput) PeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetAppSpecWorkerLivenessHealthCheck) *int { return v.PeriodSeconds }).(pulumi.IntPtrOutput)
+}
+
+// The port on which the health check will be performed. If not set, the health check will be performed on the component's http_port.
+func (o GetAppSpecWorkerLivenessHealthCheckOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetAppSpecWorkerLivenessHealthCheck) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// The number of successful health checks before considered healthy.
+func (o GetAppSpecWorkerLivenessHealthCheckOutput) SuccessThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetAppSpecWorkerLivenessHealthCheck) *int { return v.SuccessThreshold }).(pulumi.IntPtrOutput)
+}
+
+// The number of seconds after which the check times out.
+func (o GetAppSpecWorkerLivenessHealthCheckOutput) TimeoutSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetAppSpecWorkerLivenessHealthCheck) *int { return v.TimeoutSeconds }).(pulumi.IntPtrOutput)
+}
+
+type GetAppSpecWorkerLivenessHealthCheckPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecWorkerLivenessHealthCheckPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecWorkerLivenessHealthCheck)(nil)).Elem()
+}
+
+func (o GetAppSpecWorkerLivenessHealthCheckPtrOutput) ToGetAppSpecWorkerLivenessHealthCheckPtrOutput() GetAppSpecWorkerLivenessHealthCheckPtrOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerLivenessHealthCheckPtrOutput) ToGetAppSpecWorkerLivenessHealthCheckPtrOutputWithContext(ctx context.Context) GetAppSpecWorkerLivenessHealthCheckPtrOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerLivenessHealthCheckPtrOutput) Elem() GetAppSpecWorkerLivenessHealthCheckOutput {
+	return o.ApplyT(func(v *GetAppSpecWorkerLivenessHealthCheck) GetAppSpecWorkerLivenessHealthCheck {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecWorkerLivenessHealthCheck
+		return ret
+	}).(GetAppSpecWorkerLivenessHealthCheckOutput)
+}
+
+// The number of failed health checks before considered unhealthy.
+func (o GetAppSpecWorkerLivenessHealthCheckPtrOutput) FailureThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecWorkerLivenessHealthCheck) *int {
+		if v == nil {
+			return nil
+		}
+		return v.FailureThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// The route path used for the HTTP health check ping.
+func (o GetAppSpecWorkerLivenessHealthCheckPtrOutput) HttpPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecWorkerLivenessHealthCheck) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HttpPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// The number of seconds to wait before beginning health checks.
+func (o GetAppSpecWorkerLivenessHealthCheckPtrOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecWorkerLivenessHealthCheck) *int {
+		if v == nil {
+			return nil
+		}
+		return v.InitialDelaySeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of seconds to wait between health checks.
+func (o GetAppSpecWorkerLivenessHealthCheckPtrOutput) PeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecWorkerLivenessHealthCheck) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PeriodSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// The port on which the health check will be performed. If not set, the health check will be performed on the component's http_port.
+func (o GetAppSpecWorkerLivenessHealthCheckPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecWorkerLivenessHealthCheck) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of successful health checks before considered healthy.
+func (o GetAppSpecWorkerLivenessHealthCheckPtrOutput) SuccessThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecWorkerLivenessHealthCheck) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SuccessThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of seconds after which the check times out.
+func (o GetAppSpecWorkerLivenessHealthCheckPtrOutput) TimeoutSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecWorkerLivenessHealthCheck) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TimeoutSeconds
+	}).(pulumi.IntPtrOutput)
 }
 
 type GetAppSpecWorkerLogDestination struct {
@@ -77733,551 +79365,6 @@ func (o GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobPtrOutput) 
 	}).(pulumi.StringPtrOutput)
 }
 
-type GetGenaiAgentsByOpenaiApiKeyAgentModel struct {
-	// Agreement information for the model
-	Agreements []GetGenaiAgentsByOpenaiApiKeyAgentModelAgreement `pulumi:"agreements"`
-	// Created At timestamp for the Knowledge Base
-	CreatedAt string `pulumi:"createdAt"`
-	// Inference name of the model
-	InferenceName *string `pulumi:"inferenceName"`
-	// Infernce version of the model
-	InferenceVersion *string `pulumi:"inferenceVersion"`
-	// Indicates if the Model Base is foundational
-	IsFoundational *bool `pulumi:"isFoundational"`
-	// Name of the Knowledge Base
-	Name *string `pulumi:"name"`
-	// Parent UUID of the Model
-	ParentUuid *string `pulumi:"parentUuid"`
-	// Provider of the Model
-	Provider *string `pulumi:"provider"`
-	// Timestamp when the Knowledge Base was updated
-	UpdatedAt string `pulumi:"updatedAt"`
-	// Indicates if the Model upload is complete
-	UploadComplete *bool `pulumi:"uploadComplete"`
-	// URL of the Model
-	Url *string `pulumi:"url"`
-	// List of Usecases for the Model
-	Usecases []string `pulumi:"usecases"`
-	// URL of the Model
-	Versions []GetGenaiAgentsByOpenaiApiKeyAgentModelVersion `pulumi:"versions"`
-}
-
-// GetGenaiAgentsByOpenaiApiKeyAgentModelInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentModelArgs and GetGenaiAgentsByOpenaiApiKeyAgentModelOutput values.
-// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentModelInput` via:
-//
-//	GetGenaiAgentsByOpenaiApiKeyAgentModelArgs{...}
-type GetGenaiAgentsByOpenaiApiKeyAgentModelInput interface {
-	pulumi.Input
-
-	ToGetGenaiAgentsByOpenaiApiKeyAgentModelOutput() GetGenaiAgentsByOpenaiApiKeyAgentModelOutput
-	ToGetGenaiAgentsByOpenaiApiKeyAgentModelOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentModelOutput
-}
-
-type GetGenaiAgentsByOpenaiApiKeyAgentModelArgs struct {
-	// Agreement information for the model
-	Agreements GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArrayInput `pulumi:"agreements"`
-	// Created At timestamp for the Knowledge Base
-	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
-	// Inference name of the model
-	InferenceName pulumi.StringPtrInput `pulumi:"inferenceName"`
-	// Infernce version of the model
-	InferenceVersion pulumi.StringPtrInput `pulumi:"inferenceVersion"`
-	// Indicates if the Model Base is foundational
-	IsFoundational pulumi.BoolPtrInput `pulumi:"isFoundational"`
-	// Name of the Knowledge Base
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Parent UUID of the Model
-	ParentUuid pulumi.StringPtrInput `pulumi:"parentUuid"`
-	// Provider of the Model
-	Provider pulumi.StringPtrInput `pulumi:"provider"`
-	// Timestamp when the Knowledge Base was updated
-	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
-	// Indicates if the Model upload is complete
-	UploadComplete pulumi.BoolPtrInput `pulumi:"uploadComplete"`
-	// URL of the Model
-	Url pulumi.StringPtrInput `pulumi:"url"`
-	// List of Usecases for the Model
-	Usecases pulumi.StringArrayInput `pulumi:"usecases"`
-	// URL of the Model
-	Versions GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArrayInput `pulumi:"versions"`
-}
-
-func (GetGenaiAgentsByOpenaiApiKeyAgentModelArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentModel)(nil)).Elem()
-}
-
-func (i GetGenaiAgentsByOpenaiApiKeyAgentModelArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentModelOutput() GetGenaiAgentsByOpenaiApiKeyAgentModelOutput {
-	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentModelOutputWithContext(context.Background())
-}
-
-func (i GetGenaiAgentsByOpenaiApiKeyAgentModelArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentModelOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentModelOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentModelOutput)
-}
-
-// GetGenaiAgentsByOpenaiApiKeyAgentModelArrayInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentModelArray and GetGenaiAgentsByOpenaiApiKeyAgentModelArrayOutput values.
-// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentModelArrayInput` via:
-//
-//	GetGenaiAgentsByOpenaiApiKeyAgentModelArray{ GetGenaiAgentsByOpenaiApiKeyAgentModelArgs{...} }
-type GetGenaiAgentsByOpenaiApiKeyAgentModelArrayInput interface {
-	pulumi.Input
-
-	ToGetGenaiAgentsByOpenaiApiKeyAgentModelArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentModelArrayOutput
-	ToGetGenaiAgentsByOpenaiApiKeyAgentModelArrayOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentModelArrayOutput
-}
-
-type GetGenaiAgentsByOpenaiApiKeyAgentModelArray []GetGenaiAgentsByOpenaiApiKeyAgentModelInput
-
-func (GetGenaiAgentsByOpenaiApiKeyAgentModelArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentModel)(nil)).Elem()
-}
-
-func (i GetGenaiAgentsByOpenaiApiKeyAgentModelArray) ToGetGenaiAgentsByOpenaiApiKeyAgentModelArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentModelArrayOutput {
-	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentModelArrayOutputWithContext(context.Background())
-}
-
-func (i GetGenaiAgentsByOpenaiApiKeyAgentModelArray) ToGetGenaiAgentsByOpenaiApiKeyAgentModelArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentModelArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentModelArrayOutput)
-}
-
-type GetGenaiAgentsByOpenaiApiKeyAgentModelOutput struct{ *pulumi.OutputState }
-
-func (GetGenaiAgentsByOpenaiApiKeyAgentModelOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentModel)(nil)).Elem()
-}
-
-func (o GetGenaiAgentsByOpenaiApiKeyAgentModelOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentModelOutput() GetGenaiAgentsByOpenaiApiKeyAgentModelOutput {
-	return o
-}
-
-func (o GetGenaiAgentsByOpenaiApiKeyAgentModelOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentModelOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentModelOutput {
-	return o
-}
-
-// Agreement information for the model
-func (o GetGenaiAgentsByOpenaiApiKeyAgentModelOutput) Agreements() GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArrayOutput {
-	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentModel) []GetGenaiAgentsByOpenaiApiKeyAgentModelAgreement {
-		return v.Agreements
-	}).(GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArrayOutput)
-}
-
-// Created At timestamp for the Knowledge Base
-func (o GetGenaiAgentsByOpenaiApiKeyAgentModelOutput) CreatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentModel) string { return v.CreatedAt }).(pulumi.StringOutput)
-}
-
-// Inference name of the model
-func (o GetGenaiAgentsByOpenaiApiKeyAgentModelOutput) InferenceName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentModel) *string { return v.InferenceName }).(pulumi.StringPtrOutput)
-}
-
-// Infernce version of the model
-func (o GetGenaiAgentsByOpenaiApiKeyAgentModelOutput) InferenceVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentModel) *string { return v.InferenceVersion }).(pulumi.StringPtrOutput)
-}
-
-// Indicates if the Model Base is foundational
-func (o GetGenaiAgentsByOpenaiApiKeyAgentModelOutput) IsFoundational() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentModel) *bool { return v.IsFoundational }).(pulumi.BoolPtrOutput)
-}
-
-// Name of the Knowledge Base
-func (o GetGenaiAgentsByOpenaiApiKeyAgentModelOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentModel) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// Parent UUID of the Model
-func (o GetGenaiAgentsByOpenaiApiKeyAgentModelOutput) ParentUuid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentModel) *string { return v.ParentUuid }).(pulumi.StringPtrOutput)
-}
-
-// Provider of the Model
-func (o GetGenaiAgentsByOpenaiApiKeyAgentModelOutput) Provider() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentModel) *string { return v.Provider }).(pulumi.StringPtrOutput)
-}
-
-// Timestamp when the Knowledge Base was updated
-func (o GetGenaiAgentsByOpenaiApiKeyAgentModelOutput) UpdatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentModel) string { return v.UpdatedAt }).(pulumi.StringOutput)
-}
-
-// Indicates if the Model upload is complete
-func (o GetGenaiAgentsByOpenaiApiKeyAgentModelOutput) UploadComplete() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentModel) *bool { return v.UploadComplete }).(pulumi.BoolPtrOutput)
-}
-
-// URL of the Model
-func (o GetGenaiAgentsByOpenaiApiKeyAgentModelOutput) Url() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentModel) *string { return v.Url }).(pulumi.StringPtrOutput)
-}
-
-// List of Usecases for the Model
-func (o GetGenaiAgentsByOpenaiApiKeyAgentModelOutput) Usecases() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentModel) []string { return v.Usecases }).(pulumi.StringArrayOutput)
-}
-
-// URL of the Model
-func (o GetGenaiAgentsByOpenaiApiKeyAgentModelOutput) Versions() GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArrayOutput {
-	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentModel) []GetGenaiAgentsByOpenaiApiKeyAgentModelVersion {
-		return v.Versions
-	}).(GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArrayOutput)
-}
-
-type GetGenaiAgentsByOpenaiApiKeyAgentModelArrayOutput struct{ *pulumi.OutputState }
-
-func (GetGenaiAgentsByOpenaiApiKeyAgentModelArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentModel)(nil)).Elem()
-}
-
-func (o GetGenaiAgentsByOpenaiApiKeyAgentModelArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentModelArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentModelArrayOutput {
-	return o
-}
-
-func (o GetGenaiAgentsByOpenaiApiKeyAgentModelArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentModelArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentModelArrayOutput {
-	return o
-}
-
-func (o GetGenaiAgentsByOpenaiApiKeyAgentModelArrayOutput) Index(i pulumi.IntInput) GetGenaiAgentsByOpenaiApiKeyAgentModelOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiAgentsByOpenaiApiKeyAgentModel {
-		return vs[0].([]GetGenaiAgentsByOpenaiApiKeyAgentModel)[vs[1].(int)]
-	}).(GetGenaiAgentsByOpenaiApiKeyAgentModelOutput)
-}
-
-type GetGenaiAgentsByOpenaiApiKeyAgentModelAgreement struct {
-	// Description of the agreement
-	Description *string `pulumi:"description"`
-	// Name of the agreement
-	Name *string `pulumi:"name"`
-	// URL of the agreement
-	Url *string `pulumi:"url"`
-	// UUID of the agreement
-	Uuid *string `pulumi:"uuid"`
-}
-
-// GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArgs and GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementOutput values.
-// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementInput` via:
-//
-//	GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArgs{...}
-type GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementInput interface {
-	pulumi.Input
-
-	ToGetGenaiAgentsByOpenaiApiKeyAgentModelAgreementOutput() GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementOutput
-	ToGetGenaiAgentsByOpenaiApiKeyAgentModelAgreementOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementOutput
-}
-
-type GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArgs struct {
-	// Description of the agreement
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Name of the agreement
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// URL of the agreement
-	Url pulumi.StringPtrInput `pulumi:"url"`
-	// UUID of the agreement
-	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
-}
-
-func (GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentModelAgreement)(nil)).Elem()
-}
-
-func (i GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentModelAgreementOutput() GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementOutput {
-	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentModelAgreementOutputWithContext(context.Background())
-}
-
-func (i GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentModelAgreementOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementOutput)
-}
-
-// GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArrayInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArray and GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArrayOutput values.
-// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArrayInput` via:
-//
-//	GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArray{ GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArgs{...} }
-type GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArrayInput interface {
-	pulumi.Input
-
-	ToGetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArrayOutput
-	ToGetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArrayOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArrayOutput
-}
-
-type GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArray []GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementInput
-
-func (GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentModelAgreement)(nil)).Elem()
-}
-
-func (i GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArray) ToGetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArrayOutput {
-	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArrayOutputWithContext(context.Background())
-}
-
-func (i GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArray) ToGetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArrayOutput)
-}
-
-type GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementOutput struct{ *pulumi.OutputState }
-
-func (GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentModelAgreement)(nil)).Elem()
-}
-
-func (o GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentModelAgreementOutput() GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementOutput {
-	return o
-}
-
-func (o GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentModelAgreementOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementOutput {
-	return o
-}
-
-// Description of the agreement
-func (o GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentModelAgreement) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Name of the agreement
-func (o GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentModelAgreement) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// URL of the agreement
-func (o GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementOutput) Url() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentModelAgreement) *string { return v.Url }).(pulumi.StringPtrOutput)
-}
-
-// UUID of the agreement
-func (o GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementOutput) Uuid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentModelAgreement) *string { return v.Uuid }).(pulumi.StringPtrOutput)
-}
-
-type GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArrayOutput struct{ *pulumi.OutputState }
-
-func (GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentModelAgreement)(nil)).Elem()
-}
-
-func (o GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArrayOutput {
-	return o
-}
-
-func (o GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArrayOutput {
-	return o
-}
-
-func (o GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArrayOutput) Index(i pulumi.IntInput) GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiAgentsByOpenaiApiKeyAgentModelAgreement {
-		return vs[0].([]GetGenaiAgentsByOpenaiApiKeyAgentModelAgreement)[vs[1].(int)]
-	}).(GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementOutput)
-}
-
-type GetGenaiAgentsByOpenaiApiKeyAgentModelVersion struct {
-	// Major version of the model
-	Major *int `pulumi:"major"`
-	// Minor version of the model
-	Minor *int `pulumi:"minor"`
-	// Patch version of the model
-	Patch *int `pulumi:"patch"`
-}
-
-// GetGenaiAgentsByOpenaiApiKeyAgentModelVersionInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArgs and GetGenaiAgentsByOpenaiApiKeyAgentModelVersionOutput values.
-// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentModelVersionInput` via:
-//
-//	GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArgs{...}
-type GetGenaiAgentsByOpenaiApiKeyAgentModelVersionInput interface {
-	pulumi.Input
-
-	ToGetGenaiAgentsByOpenaiApiKeyAgentModelVersionOutput() GetGenaiAgentsByOpenaiApiKeyAgentModelVersionOutput
-	ToGetGenaiAgentsByOpenaiApiKeyAgentModelVersionOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentModelVersionOutput
-}
-
-type GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArgs struct {
-	// Major version of the model
-	Major pulumi.IntPtrInput `pulumi:"major"`
-	// Minor version of the model
-	Minor pulumi.IntPtrInput `pulumi:"minor"`
-	// Patch version of the model
-	Patch pulumi.IntPtrInput `pulumi:"patch"`
-}
-
-func (GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentModelVersion)(nil)).Elem()
-}
-
-func (i GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentModelVersionOutput() GetGenaiAgentsByOpenaiApiKeyAgentModelVersionOutput {
-	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentModelVersionOutputWithContext(context.Background())
-}
-
-func (i GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentModelVersionOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentModelVersionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentModelVersionOutput)
-}
-
-// GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArrayInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArray and GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArrayOutput values.
-// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArrayInput` via:
-//
-//	GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArray{ GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArgs{...} }
-type GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArrayInput interface {
-	pulumi.Input
-
-	ToGetGenaiAgentsByOpenaiApiKeyAgentModelVersionArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArrayOutput
-	ToGetGenaiAgentsByOpenaiApiKeyAgentModelVersionArrayOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArrayOutput
-}
-
-type GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArray []GetGenaiAgentsByOpenaiApiKeyAgentModelVersionInput
-
-func (GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentModelVersion)(nil)).Elem()
-}
-
-func (i GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArray) ToGetGenaiAgentsByOpenaiApiKeyAgentModelVersionArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArrayOutput {
-	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentModelVersionArrayOutputWithContext(context.Background())
-}
-
-func (i GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArray) ToGetGenaiAgentsByOpenaiApiKeyAgentModelVersionArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArrayOutput)
-}
-
-type GetGenaiAgentsByOpenaiApiKeyAgentModelVersionOutput struct{ *pulumi.OutputState }
-
-func (GetGenaiAgentsByOpenaiApiKeyAgentModelVersionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentModelVersion)(nil)).Elem()
-}
-
-func (o GetGenaiAgentsByOpenaiApiKeyAgentModelVersionOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentModelVersionOutput() GetGenaiAgentsByOpenaiApiKeyAgentModelVersionOutput {
-	return o
-}
-
-func (o GetGenaiAgentsByOpenaiApiKeyAgentModelVersionOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentModelVersionOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentModelVersionOutput {
-	return o
-}
-
-// Major version of the model
-func (o GetGenaiAgentsByOpenaiApiKeyAgentModelVersionOutput) Major() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentModelVersion) *int { return v.Major }).(pulumi.IntPtrOutput)
-}
-
-// Minor version of the model
-func (o GetGenaiAgentsByOpenaiApiKeyAgentModelVersionOutput) Minor() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentModelVersion) *int { return v.Minor }).(pulumi.IntPtrOutput)
-}
-
-// Patch version of the model
-func (o GetGenaiAgentsByOpenaiApiKeyAgentModelVersionOutput) Patch() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentModelVersion) *int { return v.Patch }).(pulumi.IntPtrOutput)
-}
-
-type GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArrayOutput struct{ *pulumi.OutputState }
-
-func (GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentModelVersion)(nil)).Elem()
-}
-
-func (o GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentModelVersionArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArrayOutput {
-	return o
-}
-
-func (o GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentModelVersionArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArrayOutput {
-	return o
-}
-
-func (o GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArrayOutput) Index(i pulumi.IntInput) GetGenaiAgentsByOpenaiApiKeyAgentModelVersionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiAgentsByOpenaiApiKeyAgentModelVersion {
-		return vs[0].([]GetGenaiAgentsByOpenaiApiKeyAgentModelVersion)[vs[1].(int)]
-	}).(GetGenaiAgentsByOpenaiApiKeyAgentModelVersionOutput)
-}
-
-type GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKey struct {
-	// OpenAI API Key
-	ApiKey *string `pulumi:"apiKey"`
-}
-
-// GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArgs and GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyOutput values.
-// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyInput` via:
-//
-//	GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArgs{...}
-type GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyInput interface {
-	pulumi.Input
-
-	ToGetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyOutput() GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyOutput
-	ToGetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyOutput
-}
-
-type GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArgs struct {
-	// OpenAI API Key
-	ApiKey pulumi.StringPtrInput `pulumi:"apiKey"`
-}
-
-func (GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKey)(nil)).Elem()
-}
-
-func (i GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyOutput() GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyOutput {
-	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyOutputWithContext(context.Background())
-}
-
-func (i GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyOutput)
-}
-
-// GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArrayInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArray and GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArrayOutput values.
-// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArrayInput` via:
-//
-//	GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArray{ GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArgs{...} }
-type GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArrayInput interface {
-	pulumi.Input
-
-	ToGetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArrayOutput
-	ToGetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArrayOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArrayOutput
-}
-
-type GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArray []GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyInput
-
-func (GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKey)(nil)).Elem()
-}
-
-func (i GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArray) ToGetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArrayOutput {
-	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArrayOutputWithContext(context.Background())
-}
-
-func (i GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArray) ToGetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArrayOutput)
-}
-
-type GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyOutput struct{ *pulumi.OutputState }
-
-func (GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKey)(nil)).Elem()
-}
-
-func (o GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyOutput() GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyOutput {
-	return o
-}
-
-func (o GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyOutput {
-	return o
-}
-
-// OpenAI API Key
-func (o GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyOutput) ApiKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKey) *string { return v.ApiKey }).(pulumi.StringPtrOutput)
-}
-
-type GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArrayOutput struct{ *pulumi.OutputState }
-
-func (GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKey)(nil)).Elem()
-}
-
-func (o GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArrayOutput {
-	return o
-}
-
-func (o GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArrayOutput {
-	return o
-}
-
-func (o GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArrayOutput) Index(i pulumi.IntInput) GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKey {
-		return vs[0].([]GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKey)[vs[1].(int)]
-	}).(GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppDedicatedIpInput)(nil)).Elem(), AppDedicatedIpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppDedicatedIpArrayInput)(nil)).Elem(), AppDedicatedIpArray{})
@@ -78425,6 +79512,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceImagePtrInput)(nil)).Elem(), AppSpecServiceImageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceImageDeployOnPushInput)(nil)).Elem(), AppSpecServiceImageDeployOnPushArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceImageDeployOnPushArrayInput)(nil)).Elem(), AppSpecServiceImageDeployOnPushArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceLivenessHealthCheckInput)(nil)).Elem(), AppSpecServiceLivenessHealthCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceLivenessHealthCheckPtrInput)(nil)).Elem(), AppSpecServiceLivenessHealthCheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceLogDestinationInput)(nil)).Elem(), AppSpecServiceLogDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceLogDestinationArrayInput)(nil)).Elem(), AppSpecServiceLogDestinationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceLogDestinationDatadogInput)(nil)).Elem(), AppSpecServiceLogDestinationDatadogArgs{})
@@ -78489,6 +79578,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerImagePtrInput)(nil)).Elem(), AppSpecWorkerImageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerImageDeployOnPushInput)(nil)).Elem(), AppSpecWorkerImageDeployOnPushArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerImageDeployOnPushArrayInput)(nil)).Elem(), AppSpecWorkerImageDeployOnPushArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerLivenessHealthCheckInput)(nil)).Elem(), AppSpecWorkerLivenessHealthCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerLivenessHealthCheckPtrInput)(nil)).Elem(), AppSpecWorkerLivenessHealthCheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerLogDestinationInput)(nil)).Elem(), AppSpecWorkerLogDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerLogDestinationArrayInput)(nil)).Elem(), AppSpecWorkerLogDestinationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerLogDestinationDatadogInput)(nil)).Elem(), AppSpecWorkerLogDestinationDatadogArgs{})
@@ -78851,15 +79942,21 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecIngressRuleInput)(nil)).Elem(), GetAppSpecIngressRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecIngressRuleArrayInput)(nil)).Elem(), GetAppSpecIngressRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecIngressRuleComponentInput)(nil)).Elem(), GetAppSpecIngressRuleComponentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecIngressRuleComponentPtrInput)(nil)).Elem(), GetAppSpecIngressRuleComponentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecIngressRuleCorsInput)(nil)).Elem(), GetAppSpecIngressRuleCorsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecIngressRuleCorsPtrInput)(nil)).Elem(), GetAppSpecIngressRuleCorsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecIngressRuleCorsAllowOriginsInput)(nil)).Elem(), GetAppSpecIngressRuleCorsAllowOriginsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecIngressRuleCorsAllowOriginsPtrInput)(nil)).Elem(), GetAppSpecIngressRuleCorsAllowOriginsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecIngressRuleMatchInput)(nil)).Elem(), GetAppSpecIngressRuleMatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecIngressRuleMatchPtrInput)(nil)).Elem(), GetAppSpecIngressRuleMatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecIngressRuleMatchAuthorityInput)(nil)).Elem(), GetAppSpecIngressRuleMatchAuthorityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecIngressRuleMatchAuthorityPtrInput)(nil)).Elem(), GetAppSpecIngressRuleMatchAuthorityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecIngressRuleMatchPathInput)(nil)).Elem(), GetAppSpecIngressRuleMatchPathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecIngressRuleMatchPathPtrInput)(nil)).Elem(), GetAppSpecIngressRuleMatchPathArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecIngressRuleRedirectInput)(nil)).Elem(), GetAppSpecIngressRuleRedirectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecIngressRuleRedirectPtrInput)(nil)).Elem(), GetAppSpecIngressRuleRedirectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecIngressSecureHeaderInput)(nil)).Elem(), GetAppSpecIngressSecureHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecIngressSecureHeaderPtrInput)(nil)).Elem(), GetAppSpecIngressSecureHeaderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobInput)(nil)).Elem(), GetAppSpecJobArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobArrayInput)(nil)).Elem(), GetAppSpecJobArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobAlertInput)(nil)).Elem(), GetAppSpecJobAlertArgs{})
@@ -78932,6 +80029,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceImagePtrInput)(nil)).Elem(), GetAppSpecServiceImageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceImageDeployOnPushInput)(nil)).Elem(), GetAppSpecServiceImageDeployOnPushArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceImageDeployOnPushArrayInput)(nil)).Elem(), GetAppSpecServiceImageDeployOnPushArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceLivenessHealthCheckInput)(nil)).Elem(), GetAppSpecServiceLivenessHealthCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceLivenessHealthCheckPtrInput)(nil)).Elem(), GetAppSpecServiceLivenessHealthCheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceLogDestinationInput)(nil)).Elem(), GetAppSpecServiceLogDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceLogDestinationArrayInput)(nil)).Elem(), GetAppSpecServiceLogDestinationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceLogDestinationDatadogInput)(nil)).Elem(), GetAppSpecServiceLogDestinationDatadogArgs{})
@@ -78996,6 +80095,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerImagePtrInput)(nil)).Elem(), GetAppSpecWorkerImageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerImageDeployOnPushInput)(nil)).Elem(), GetAppSpecWorkerImageDeployOnPushArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerImageDeployOnPushArrayInput)(nil)).Elem(), GetAppSpecWorkerImageDeployOnPushArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerLivenessHealthCheckInput)(nil)).Elem(), GetAppSpecWorkerLivenessHealthCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerLivenessHealthCheckPtrInput)(nil)).Elem(), GetAppSpecWorkerLivenessHealthCheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerLogDestinationInput)(nil)).Elem(), GetAppSpecWorkerLogDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerLogDestinationArrayInput)(nil)).Elem(), GetAppSpecWorkerLogDestinationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerLogDestinationDatadogInput)(nil)).Elem(), GetAppSpecWorkerLogDestinationDatadogArgs{})
@@ -79266,14 +80367,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseArrayInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobPtrInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentModelInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentModelArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentModelArrayInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentModelArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArrayInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentModelVersionInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArrayInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArrayInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArray{})
 	pulumi.RegisterOutputType(AppDedicatedIpOutput{})
 	pulumi.RegisterOutputType(AppDedicatedIpArrayOutput{})
 	pulumi.RegisterOutputType(AppSpecOutput{})
@@ -79420,6 +80513,8 @@ func init() {
 	pulumi.RegisterOutputType(AppSpecServiceImagePtrOutput{})
 	pulumi.RegisterOutputType(AppSpecServiceImageDeployOnPushOutput{})
 	pulumi.RegisterOutputType(AppSpecServiceImageDeployOnPushArrayOutput{})
+	pulumi.RegisterOutputType(AppSpecServiceLivenessHealthCheckOutput{})
+	pulumi.RegisterOutputType(AppSpecServiceLivenessHealthCheckPtrOutput{})
 	pulumi.RegisterOutputType(AppSpecServiceLogDestinationOutput{})
 	pulumi.RegisterOutputType(AppSpecServiceLogDestinationArrayOutput{})
 	pulumi.RegisterOutputType(AppSpecServiceLogDestinationDatadogOutput{})
@@ -79484,6 +80579,8 @@ func init() {
 	pulumi.RegisterOutputType(AppSpecWorkerImagePtrOutput{})
 	pulumi.RegisterOutputType(AppSpecWorkerImageDeployOnPushOutput{})
 	pulumi.RegisterOutputType(AppSpecWorkerImageDeployOnPushArrayOutput{})
+	pulumi.RegisterOutputType(AppSpecWorkerLivenessHealthCheckOutput{})
+	pulumi.RegisterOutputType(AppSpecWorkerLivenessHealthCheckPtrOutput{})
 	pulumi.RegisterOutputType(AppSpecWorkerLogDestinationOutput{})
 	pulumi.RegisterOutputType(AppSpecWorkerLogDestinationArrayOutput{})
 	pulumi.RegisterOutputType(AppSpecWorkerLogDestinationDatadogOutput{})
@@ -79846,15 +80943,21 @@ func init() {
 	pulumi.RegisterOutputType(GetAppSpecIngressRuleOutput{})
 	pulumi.RegisterOutputType(GetAppSpecIngressRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetAppSpecIngressRuleComponentOutput{})
+	pulumi.RegisterOutputType(GetAppSpecIngressRuleComponentPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecIngressRuleCorsOutput{})
+	pulumi.RegisterOutputType(GetAppSpecIngressRuleCorsPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecIngressRuleCorsAllowOriginsOutput{})
 	pulumi.RegisterOutputType(GetAppSpecIngressRuleCorsAllowOriginsPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecIngressRuleMatchOutput{})
+	pulumi.RegisterOutputType(GetAppSpecIngressRuleMatchPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecIngressRuleMatchAuthorityOutput{})
+	pulumi.RegisterOutputType(GetAppSpecIngressRuleMatchAuthorityPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecIngressRuleMatchPathOutput{})
+	pulumi.RegisterOutputType(GetAppSpecIngressRuleMatchPathPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecIngressRuleRedirectOutput{})
 	pulumi.RegisterOutputType(GetAppSpecIngressRuleRedirectPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecIngressSecureHeaderOutput{})
+	pulumi.RegisterOutputType(GetAppSpecIngressSecureHeaderPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecJobOutput{})
 	pulumi.RegisterOutputType(GetAppSpecJobArrayOutput{})
 	pulumi.RegisterOutputType(GetAppSpecJobAlertOutput{})
@@ -79927,6 +81030,8 @@ func init() {
 	pulumi.RegisterOutputType(GetAppSpecServiceImagePtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecServiceImageDeployOnPushOutput{})
 	pulumi.RegisterOutputType(GetAppSpecServiceImageDeployOnPushArrayOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceLivenessHealthCheckOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceLivenessHealthCheckPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecServiceLogDestinationOutput{})
 	pulumi.RegisterOutputType(GetAppSpecServiceLogDestinationArrayOutput{})
 	pulumi.RegisterOutputType(GetAppSpecServiceLogDestinationDatadogOutput{})
@@ -79991,6 +81096,8 @@ func init() {
 	pulumi.RegisterOutputType(GetAppSpecWorkerImagePtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecWorkerImageDeployOnPushOutput{})
 	pulumi.RegisterOutputType(GetAppSpecWorkerImageDeployOnPushArrayOutput{})
+	pulumi.RegisterOutputType(GetAppSpecWorkerLivenessHealthCheckOutput{})
+	pulumi.RegisterOutputType(GetAppSpecWorkerLivenessHealthCheckPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecWorkerLogDestinationOutput{})
 	pulumi.RegisterOutputType(GetAppSpecWorkerLogDestinationArrayOutput{})
 	pulumi.RegisterOutputType(GetAppSpecWorkerLogDestinationDatadogOutput{})
@@ -80261,12 +81368,4 @@ func init() {
 	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseArrayOutput{})
 	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobOutput{})
 	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobPtrOutput{})
-	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentModelOutput{})
-	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentModelArrayOutput{})
-	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementOutput{})
-	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArrayOutput{})
-	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentModelVersionOutput{})
-	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArrayOutput{})
-	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyOutput{})
-	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArrayOutput{})
 }

@@ -66,6 +66,10 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly string? InstanceSizeSlug;
         /// <summary>
+        /// A liveness health check to determine if the worker should be restarted. Workers do not accept inbound traffic, so only HTTP liveness probes are supported (TCP is not).
+        /// </summary>
+        public readonly Outputs.AppSpecWorkerLivenessHealthCheck? LivenessHealthCheck;
+        /// <summary>
         /// Describes a log forwarding destination.
         /// </summary>
         public readonly ImmutableArray<Outputs.AppSpecWorkerLogDestination> LogDestinations;
@@ -114,6 +118,8 @@ namespace Pulumi.DigitalOcean.Outputs
 
             string? instanceSizeSlug,
 
+            Outputs.AppSpecWorkerLivenessHealthCheck? livenessHealthCheck,
+
             ImmutableArray<Outputs.AppSpecWorkerLogDestination> logDestinations,
 
             string name,
@@ -137,6 +143,7 @@ namespace Pulumi.DigitalOcean.Outputs
             Image = image;
             InstanceCount = instanceCount;
             InstanceSizeSlug = instanceSizeSlug;
+            LivenessHealthCheck = livenessHealthCheck;
             LogDestinations = logDestinations;
             Name = name;
             RunCommand = runCommand;

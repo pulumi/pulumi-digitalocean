@@ -81,6 +81,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// A list of ports on which this service will listen for internal traffic.
         /// </summary>
         public readonly ImmutableArray<int> InternalPorts;
+        public readonly Outputs.GetAppSpecServiceLivenessHealthCheckResult? LivenessHealthCheck;
         /// <summary>
         /// Describes a log forwarding destination.
         /// </summary>
@@ -93,7 +94,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// <summary>
         /// An optional run command to override the component's default.
         /// </summary>
-        public readonly string RunCommand;
+        public readonly string? RunCommand;
         /// <summary>
         /// An optional path to the working directory to use for the build.
         /// </summary>
@@ -139,13 +140,15 @@ namespace Pulumi.DigitalOcean.Outputs
 
             ImmutableArray<int> internalPorts,
 
+            Outputs.GetAppSpecServiceLivenessHealthCheckResult? livenessHealthCheck,
+
             ImmutableArray<Outputs.GetAppSpecServiceLogDestinationResult> logDestinations,
 
             string name,
 
             ImmutableArray<Outputs.GetAppSpecServiceRouteResult> routes,
 
-            string runCommand,
+            string? runCommand,
 
             string? sourceDir,
 
@@ -168,6 +171,7 @@ namespace Pulumi.DigitalOcean.Outputs
             InstanceCount = instanceCount;
             InstanceSizeSlug = instanceSizeSlug;
             InternalPorts = internalPorts;
+            LivenessHealthCheck = livenessHealthCheck;
             LogDestinations = logDestinations;
             Name = name;
             Routes = routes;

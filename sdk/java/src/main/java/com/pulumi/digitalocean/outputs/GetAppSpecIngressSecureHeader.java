@@ -4,9 +4,10 @@
 package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAppSpecIngressSecureHeader {
@@ -14,27 +15,27 @@ public final class GetAppSpecIngressSecureHeader {
      * @return The name of the environment variable.
      * 
      */
-    private String key;
+    private @Nullable String key;
     /**
      * @return The threshold for the type of the warning.
      * 
      */
-    private String value;
+    private @Nullable String value;
 
     private GetAppSpecIngressSecureHeader() {}
     /**
      * @return The name of the environment variable.
      * 
      */
-    public String key() {
-        return this.key;
+    public Optional<String> key() {
+        return Optional.ofNullable(this.key);
     }
     /**
      * @return The threshold for the type of the warning.
      * 
      */
-    public String value() {
-        return this.value;
+    public Optional<String> value() {
+        return Optional.ofNullable(this.value);
     }
 
     public static Builder builder() {
@@ -46,8 +47,8 @@ public final class GetAppSpecIngressSecureHeader {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String key;
-        private String value;
+        private @Nullable String key;
+        private @Nullable String value;
         public Builder() {}
         public Builder(GetAppSpecIngressSecureHeader defaults) {
     	      Objects.requireNonNull(defaults);
@@ -56,18 +57,14 @@ public final class GetAppSpecIngressSecureHeader {
         }
 
         @CustomType.Setter
-        public Builder key(String key) {
-            if (key == null) {
-              throw new MissingRequiredPropertyException("GetAppSpecIngressSecureHeader", "key");
-            }
+        public Builder key(@Nullable String key) {
+
             this.key = key;
             return this;
         }
         @CustomType.Setter
-        public Builder value(String value) {
-            if (value == null) {
-              throw new MissingRequiredPropertyException("GetAppSpecIngressSecureHeader", "value");
-            }
+        public Builder value(@Nullable String value) {
+
             this.value = value;
             return this;
         }

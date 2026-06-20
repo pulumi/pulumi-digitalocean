@@ -132,6 +132,12 @@ namespace Pulumi.DigitalOcean.Inputs
             set => _internalPorts = value;
         }
 
+        /// <summary>
+        /// A liveness health check to determine if the worker should be restarted. Workers do not accept inbound traffic, so only HTTP liveness probes are supported (TCP is not).
+        /// </summary>
+        [Input("livenessHealthCheck")]
+        public Input<Inputs.AppSpecServiceLivenessHealthCheckGetArgs>? LivenessHealthCheck { get; set; }
+
         [Input("logDestinations")]
         private InputList<Inputs.AppSpecServiceLogDestinationGetArgs>? _logDestinations;
 

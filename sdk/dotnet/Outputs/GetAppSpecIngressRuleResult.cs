@@ -13,21 +13,21 @@ namespace Pulumi.DigitalOcean.Outputs
     [OutputType]
     public sealed class GetAppSpecIngressRuleResult
     {
-        public readonly Outputs.GetAppSpecIngressRuleComponentResult Component;
+        public readonly Outputs.GetAppSpecIngressRuleComponentResult? Component;
         /// <summary>
         /// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
         /// </summary>
-        public readonly Outputs.GetAppSpecIngressRuleCorsResult Cors;
-        public readonly Outputs.GetAppSpecIngressRuleMatchResult Match;
+        public readonly Outputs.GetAppSpecIngressRuleCorsResult? Cors;
+        public readonly Outputs.GetAppSpecIngressRuleMatchResult? Match;
         public readonly Outputs.GetAppSpecIngressRuleRedirectResult? Redirect;
 
         [OutputConstructor]
         private GetAppSpecIngressRuleResult(
-            Outputs.GetAppSpecIngressRuleComponentResult component,
+            Outputs.GetAppSpecIngressRuleComponentResult? component,
 
-            Outputs.GetAppSpecIngressRuleCorsResult cors,
+            Outputs.GetAppSpecIngressRuleCorsResult? cors,
 
-            Outputs.GetAppSpecIngressRuleMatchResult match,
+            Outputs.GetAppSpecIngressRuleMatchResult? match,
 
             Outputs.GetAppSpecIngressRuleRedirectResult? redirect)
         {

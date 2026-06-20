@@ -517,22 +517,22 @@ export interface AppSpecIngress {
      * Rules for configuring HTTP ingress for component routes, CORS, rewrites, and redirects.
      */
     rules?: outputs.AppSpecIngressRule[];
-    secureHeader: outputs.AppSpecIngressSecureHeader;
+    secureHeader?: outputs.AppSpecIngressSecureHeader;
 }
 
 export interface AppSpecIngressRule {
     /**
      * The component to route to. Only one of `component` or `redirect` may be set.
      */
-    component: outputs.AppSpecIngressRuleComponent;
+    component?: outputs.AppSpecIngressRuleComponent;
     /**
      * The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
      */
-    cors: outputs.AppSpecIngressRuleCors;
+    cors?: outputs.AppSpecIngressRuleCors;
     /**
      * The match configuration for the rule
      */
-    match: outputs.AppSpecIngressRuleMatch;
+    match?: outputs.AppSpecIngressRuleMatch;
     /**
      * The redirect configuration for the rule. Only one of `component` or `redirect` may be set.
      */
@@ -543,15 +543,15 @@ export interface AppSpecIngressRuleComponent {
     /**
      * The name of the component to route to.
      */
-    name: string;
+    name?: string;
     /**
      * An optional boolean flag to preserve the path that is forwarded to the backend service. By default, the HTTP request path will be trimmed from the left when forwarded to the component.
      */
-    preservePathPrefix: boolean;
+    preservePathPrefix?: boolean;
     /**
      * An optional field that will rewrite the path of the component to be what is specified here. This is mutually exclusive with `preservePathPrefix`.
      */
-    rewrite: string;
+    rewrite?: string;
 }
 
 export interface AppSpecIngressRuleCors {
@@ -602,25 +602,25 @@ export interface AppSpecIngressRuleMatch {
     /**
      * The authority (domain) to match on.
      */
-    authority: outputs.AppSpecIngressRuleMatchAuthority;
+    authority?: outputs.AppSpecIngressRuleMatchAuthority;
     /**
      * The path to match on.
      */
-    path: outputs.AppSpecIngressRuleMatchPath;
+    path?: outputs.AppSpecIngressRuleMatchPath;
 }
 
 export interface AppSpecIngressRuleMatchAuthority {
     /**
      * Exact match.
      */
-    exact: string;
+    exact?: string;
 }
 
 export interface AppSpecIngressRuleMatchPath {
     /**
      * Prefix-based match.
      */
-    prefix: string;
+    prefix?: string;
 }
 
 export interface AppSpecIngressRuleRedirect {
@@ -650,8 +650,8 @@ export interface AppSpecIngressSecureHeader {
     /**
      * The name of the environment variable.
      */
-    key: string;
-    value: string;
+    key?: string;
+    value?: string;
 }
 
 export interface AppSpecJob {
@@ -1069,6 +1069,10 @@ export interface AppSpecService {
      */
     internalPorts: number[];
     /**
+     * A liveness health check to determine if the worker should be restarted. Workers do not accept inbound traffic, so only HTTP liveness probes are supported (TCP is not).
+     */
+    livenessHealthCheck?: outputs.AppSpecServiceLivenessHealthCheck;
+    /**
      * Describes a log forwarding destination.
      */
     logDestinations?: outputs.AppSpecServiceLogDestination[];
@@ -1085,7 +1089,7 @@ export interface AppSpecService {
     /**
      * An optional run command to override the component's default.
      */
-    runCommand: string;
+    runCommand?: string;
     /**
      * An optional path to the working directory to use for the build.
      */
@@ -1360,6 +1364,37 @@ export interface AppSpecServiceImageDeployOnPush {
      * Whether to automatically deploy images pushed to DOCR.
      */
     enabled?: boolean;
+}
+
+export interface AppSpecServiceLivenessHealthCheck {
+    /**
+     * The number of failed health checks before considered unhealthy.
+     */
+    failureThreshold?: number;
+    /**
+     * The route path used for the HTTP health check ping.
+     */
+    httpPath?: string;
+    /**
+     * The number of seconds to wait before beginning health checks.
+     */
+    initialDelaySeconds?: number;
+    /**
+     * The number of seconds to wait between health checks.
+     */
+    periodSeconds?: number;
+    /**
+     * The port on which the health check will be performed.
+     */
+    port?: number;
+    /**
+     * The number of successful health checks before considered healthy.
+     */
+    successThreshold?: number;
+    /**
+     * The number of seconds after which the check times out.
+     */
+    timeoutSeconds?: number;
 }
 
 export interface AppSpecServiceLogDestination {
@@ -1728,6 +1763,10 @@ export interface AppSpecWorker {
      */
     instanceSizeSlug?: string;
     /**
+     * A liveness health check to determine if the worker should be restarted. Workers do not accept inbound traffic, so only HTTP liveness probes are supported (TCP is not).
+     */
+    livenessHealthCheck?: outputs.AppSpecWorkerLivenessHealthCheck;
+    /**
      * Describes a log forwarding destination.
      */
     logDestinations?: outputs.AppSpecWorkerLogDestination[];
@@ -1938,6 +1977,37 @@ export interface AppSpecWorkerImageDeployOnPush {
      * Whether to automatically deploy images pushed to DOCR.
      */
     enabled?: boolean;
+}
+
+export interface AppSpecWorkerLivenessHealthCheck {
+    /**
+     * The number of failed health checks before considered unhealthy.
+     */
+    failureThreshold?: number;
+    /**
+     * The route path used for the HTTP health check ping.
+     */
+    httpPath?: string;
+    /**
+     * The number of seconds to wait before beginning health checks.
+     */
+    initialDelaySeconds?: number;
+    /**
+     * The number of seconds to wait between health checks.
+     */
+    periodSeconds?: number;
+    /**
+     * The port on which the health check will be performed.
+     */
+    port?: number;
+    /**
+     * The number of successful health checks before considered healthy.
+     */
+    successThreshold?: number;
+    /**
+     * The number of seconds after which the check times out.
+     */
+    timeoutSeconds?: number;
 }
 
 export interface AppSpecWorkerLogDestination {
@@ -4166,16 +4236,16 @@ export interface GetAppSpecIngress {
      * The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
      */
     rules?: outputs.GetAppSpecIngressRule[];
-    secureHeader: outputs.GetAppSpecIngressSecureHeader;
+    secureHeader?: outputs.GetAppSpecIngressSecureHeader;
 }
 
 export interface GetAppSpecIngressRule {
-    component: outputs.GetAppSpecIngressRuleComponent;
+    component?: outputs.GetAppSpecIngressRuleComponent;
     /**
      * The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
      */
-    cors: outputs.GetAppSpecIngressRuleCors;
-    match: outputs.GetAppSpecIngressRuleMatch;
+    cors?: outputs.GetAppSpecIngressRuleCors;
+    match?: outputs.GetAppSpecIngressRuleMatch;
     redirect?: outputs.GetAppSpecIngressRuleRedirect;
 }
 
@@ -4183,12 +4253,12 @@ export interface GetAppSpecIngressRuleComponent {
     /**
      * The name of the component.
      */
-    name: string;
+    name?: string;
     /**
      * An optional flag to preserve the path that is forwarded to the backend service.
      */
-    preservePathPrefix: boolean;
-    rewrite: string;
+    preservePathPrefix?: boolean;
+    rewrite?: string;
 }
 
 export interface GetAppSpecIngressRuleCors {
@@ -4236,25 +4306,25 @@ export interface GetAppSpecIngressRuleCorsAllowOrigins {
 }
 
 export interface GetAppSpecIngressRuleMatch {
-    authority: outputs.GetAppSpecIngressRuleMatchAuthority;
+    authority?: outputs.GetAppSpecIngressRuleMatchAuthority;
     /**
      * Paths must start with `/` and must be unique within the app.
      */
-    path: outputs.GetAppSpecIngressRuleMatchPath;
+    path?: outputs.GetAppSpecIngressRuleMatchPath;
 }
 
 export interface GetAppSpecIngressRuleMatchAuthority {
     /**
      * The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
      */
-    exact: string;
+    exact?: string;
 }
 
 export interface GetAppSpecIngressRuleMatchPath {
     /**
      * The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
      */
-    prefix: string;
+    prefix?: string;
 }
 
 export interface GetAppSpecIngressRuleRedirect {
@@ -4269,11 +4339,11 @@ export interface GetAppSpecIngressSecureHeader {
     /**
      * The name of the environment variable.
      */
-    key: string;
+    key?: string;
     /**
      * The threshold for the type of the warning.
      */
-    value: string;
+    value?: string;
 }
 
 export interface GetAppSpecJob {
@@ -4679,6 +4749,7 @@ export interface GetAppSpecService {
      * A list of ports on which this service will listen for internal traffic.
      */
     internalPorts: number[];
+    livenessHealthCheck?: outputs.GetAppSpecServiceLivenessHealthCheck;
     /**
      * Describes a log forwarding destination.
      */
@@ -4694,7 +4765,7 @@ export interface GetAppSpecService {
     /**
      * An optional run command to override the component's default.
      */
-    runCommand: string;
+    runCommand?: string;
     /**
      * An optional path to the working directory to use for the build.
      */
@@ -4960,6 +5031,37 @@ export interface GetAppSpecServiceImageDeployOnPush {
      * Whether to automatically deploy images pushed to DOCR.
      */
     enabled?: boolean;
+}
+
+export interface GetAppSpecServiceLivenessHealthCheck {
+    /**
+     * The number of failed health checks before considered unhealthy.
+     */
+    failureThreshold?: number;
+    /**
+     * The route path used for the HTTP health check ping.
+     */
+    httpPath?: string;
+    /**
+     * The number of seconds to wait before beginning health checks.
+     */
+    initialDelaySeconds?: number;
+    /**
+     * The number of seconds to wait between health checks.
+     */
+    periodSeconds?: number;
+    /**
+     * The port on which the health check will be performed. If not set, the health check will be performed on the component's http_port.
+     */
+    port?: number;
+    /**
+     * The number of successful health checks before considered healthy.
+     */
+    successThreshold?: number;
+    /**
+     * The number of seconds after which the check times out.
+     */
+    timeoutSeconds?: number;
 }
 
 export interface GetAppSpecServiceLogDestination {
@@ -5321,6 +5423,7 @@ export interface GetAppSpecWorker {
      * The instance size to use for this component.
      */
     instanceSizeSlug?: string;
+    livenessHealthCheck?: outputs.GetAppSpecWorkerLivenessHealthCheck;
     /**
      * Describes a log forwarding destination.
      */
@@ -5523,6 +5626,37 @@ export interface GetAppSpecWorkerImageDeployOnPush {
      * Whether to automatically deploy images pushed to DOCR.
      */
     enabled?: boolean;
+}
+
+export interface GetAppSpecWorkerLivenessHealthCheck {
+    /**
+     * The number of failed health checks before considered unhealthy.
+     */
+    failureThreshold?: number;
+    /**
+     * The route path used for the HTTP health check ping.
+     */
+    httpPath?: string;
+    /**
+     * The number of seconds to wait before beginning health checks.
+     */
+    initialDelaySeconds?: number;
+    /**
+     * The number of seconds to wait between health checks.
+     */
+    periodSeconds?: number;
+    /**
+     * The port on which the health check will be performed. If not set, the health check will be performed on the component's http_port.
+     */
+    port?: number;
+    /**
+     * The number of successful health checks before considered healthy.
+     */
+    successThreshold?: number;
+    /**
+     * The number of seconds after which the check times out.
+     */
+    timeoutSeconds?: number;
 }
 
 export interface GetAppSpecWorkerLogDestination {

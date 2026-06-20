@@ -15,6 +15,7 @@ import com.pulumi.digitalocean.inputs.AppSpecServiceGithubArgs;
 import com.pulumi.digitalocean.inputs.AppSpecServiceGitlabArgs;
 import com.pulumi.digitalocean.inputs.AppSpecServiceHealthCheckArgs;
 import com.pulumi.digitalocean.inputs.AppSpecServiceImageArgs;
+import com.pulumi.digitalocean.inputs.AppSpecServiceLivenessHealthCheckArgs;
 import com.pulumi.digitalocean.inputs.AppSpecServiceLogDestinationArgs;
 import com.pulumi.digitalocean.inputs.AppSpecServiceRouteArgs;
 import com.pulumi.digitalocean.inputs.AppSpecServiceTerminationArgs;
@@ -295,6 +296,21 @@ public final class AppSpecServiceArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * A liveness health check to determine if the worker should be restarted. Workers do not accept inbound traffic, so only HTTP liveness probes are supported (TCP is not).
+     * 
+     */
+    @Import(name="livenessHealthCheck")
+    private @Nullable Output<AppSpecServiceLivenessHealthCheckArgs> livenessHealthCheck;
+
+    /**
+     * @return A liveness health check to determine if the worker should be restarted. Workers do not accept inbound traffic, so only HTTP liveness probes are supported (TCP is not).
+     * 
+     */
+    public Optional<Output<AppSpecServiceLivenessHealthCheckArgs>> livenessHealthCheck() {
+        return Optional.ofNullable(this.livenessHealthCheck);
+    }
+
+    /**
      * Describes a log forwarding destination.
      * 
      */
@@ -412,6 +428,7 @@ public final class AppSpecServiceArgs extends com.pulumi.resources.ResourceArgs 
         this.instanceCount = $.instanceCount;
         this.instanceSizeSlug = $.instanceSizeSlug;
         this.internalPorts = $.internalPorts;
+        this.livenessHealthCheck = $.livenessHealthCheck;
         this.logDestinations = $.logDestinations;
         this.name = $.name;
         this.routes = $.routes;
@@ -831,6 +848,27 @@ public final class AppSpecServiceArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder internalPorts(Integer... internalPorts) {
             return internalPorts(List.of(internalPorts));
+        }
+
+        /**
+         * @param livenessHealthCheck A liveness health check to determine if the worker should be restarted. Workers do not accept inbound traffic, so only HTTP liveness probes are supported (TCP is not).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder livenessHealthCheck(@Nullable Output<AppSpecServiceLivenessHealthCheckArgs> livenessHealthCheck) {
+            $.livenessHealthCheck = livenessHealthCheck;
+            return this;
+        }
+
+        /**
+         * @param livenessHealthCheck A liveness health check to determine if the worker should be restarted. Workers do not accept inbound traffic, so only HTTP liveness probes are supported (TCP is not).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder livenessHealthCheck(AppSpecServiceLivenessHealthCheckArgs livenessHealthCheck) {
+            return livenessHealthCheck(Output.of(livenessHealthCheck));
         }
 
         /**

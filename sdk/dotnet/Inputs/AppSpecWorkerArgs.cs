@@ -102,6 +102,12 @@ namespace Pulumi.DigitalOcean.Inputs
         [Input("instanceSizeSlug")]
         public Input<string>? InstanceSizeSlug { get; set; }
 
+        /// <summary>
+        /// A liveness health check to determine if the worker should be restarted. Workers do not accept inbound traffic, so only HTTP liveness probes are supported (TCP is not).
+        /// </summary>
+        [Input("livenessHealthCheck")]
+        public Input<Inputs.AppSpecWorkerLivenessHealthCheckArgs>? LivenessHealthCheck { get; set; }
+
         [Input("logDestinations")]
         private InputList<Inputs.AppSpecWorkerLogDestinationArgs>? _logDestinations;
 

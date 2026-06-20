@@ -8,35 +8,34 @@ import com.pulumi.digitalocean.outputs.GetAppSpecIngressRuleComponent;
 import com.pulumi.digitalocean.outputs.GetAppSpecIngressRuleCors;
 import com.pulumi.digitalocean.outputs.GetAppSpecIngressRuleMatch;
 import com.pulumi.digitalocean.outputs.GetAppSpecIngressRuleRedirect;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAppSpecIngressRule {
-    private GetAppSpecIngressRuleComponent component;
+    private @Nullable GetAppSpecIngressRuleComponent component;
     /**
      * @return The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
      * 
      */
-    private GetAppSpecIngressRuleCors cors;
-    private GetAppSpecIngressRuleMatch match;
+    private @Nullable GetAppSpecIngressRuleCors cors;
+    private @Nullable GetAppSpecIngressRuleMatch match;
     private @Nullable GetAppSpecIngressRuleRedirect redirect;
 
     private GetAppSpecIngressRule() {}
-    public GetAppSpecIngressRuleComponent component() {
-        return this.component;
+    public Optional<GetAppSpecIngressRuleComponent> component() {
+        return Optional.ofNullable(this.component);
     }
     /**
      * @return The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
      * 
      */
-    public GetAppSpecIngressRuleCors cors() {
-        return this.cors;
+    public Optional<GetAppSpecIngressRuleCors> cors() {
+        return Optional.ofNullable(this.cors);
     }
-    public GetAppSpecIngressRuleMatch match() {
-        return this.match;
+    public Optional<GetAppSpecIngressRuleMatch> match() {
+        return Optional.ofNullable(this.match);
     }
     public Optional<GetAppSpecIngressRuleRedirect> redirect() {
         return Optional.ofNullable(this.redirect);
@@ -51,9 +50,9 @@ public final class GetAppSpecIngressRule {
     }
     @CustomType.Builder
     public static final class Builder {
-        private GetAppSpecIngressRuleComponent component;
-        private GetAppSpecIngressRuleCors cors;
-        private GetAppSpecIngressRuleMatch match;
+        private @Nullable GetAppSpecIngressRuleComponent component;
+        private @Nullable GetAppSpecIngressRuleCors cors;
+        private @Nullable GetAppSpecIngressRuleMatch match;
         private @Nullable GetAppSpecIngressRuleRedirect redirect;
         public Builder() {}
         public Builder(GetAppSpecIngressRule defaults) {
@@ -65,26 +64,20 @@ public final class GetAppSpecIngressRule {
         }
 
         @CustomType.Setter
-        public Builder component(GetAppSpecIngressRuleComponent component) {
-            if (component == null) {
-              throw new MissingRequiredPropertyException("GetAppSpecIngressRule", "component");
-            }
+        public Builder component(@Nullable GetAppSpecIngressRuleComponent component) {
+
             this.component = component;
             return this;
         }
         @CustomType.Setter
-        public Builder cors(GetAppSpecIngressRuleCors cors) {
-            if (cors == null) {
-              throw new MissingRequiredPropertyException("GetAppSpecIngressRule", "cors");
-            }
+        public Builder cors(@Nullable GetAppSpecIngressRuleCors cors) {
+
             this.cors = cors;
             return this;
         }
         @CustomType.Setter
-        public Builder match(GetAppSpecIngressRuleMatch match) {
-            if (match == null) {
-              throw new MissingRequiredPropertyException("GetAppSpecIngressRule", "match");
-            }
+        public Builder match(@Nullable GetAppSpecIngressRuleMatch match) {
+
             this.match = match;
             return this;
         }

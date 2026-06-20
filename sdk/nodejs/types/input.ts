@@ -1069,6 +1069,10 @@ export interface AppSpecService {
      */
     internalPorts?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
+     * A liveness health check to determine if the worker should be restarted. Workers do not accept inbound traffic, so only HTTP liveness probes are supported (TCP is not).
+     */
+    livenessHealthCheck?: pulumi.Input<inputs.AppSpecServiceLivenessHealthCheck | undefined>;
+    /**
      * Describes a log forwarding destination.
      */
     logDestinations?: pulumi.Input<pulumi.Input<inputs.AppSpecServiceLogDestination>[] | undefined>;
@@ -1360,6 +1364,37 @@ export interface AppSpecServiceImageDeployOnPush {
      * Whether to automatically deploy images pushed to DOCR.
      */
     enabled?: pulumi.Input<boolean | undefined>;
+}
+
+export interface AppSpecServiceLivenessHealthCheck {
+    /**
+     * The number of failed health checks before considered unhealthy.
+     */
+    failureThreshold?: pulumi.Input<number | undefined>;
+    /**
+     * The route path used for the HTTP health check ping.
+     */
+    httpPath?: pulumi.Input<string | undefined>;
+    /**
+     * The number of seconds to wait before beginning health checks.
+     */
+    initialDelaySeconds?: pulumi.Input<number | undefined>;
+    /**
+     * The number of seconds to wait between health checks.
+     */
+    periodSeconds?: pulumi.Input<number | undefined>;
+    /**
+     * The port on which the health check will be performed.
+     */
+    port?: pulumi.Input<number | undefined>;
+    /**
+     * The number of successful health checks before considered healthy.
+     */
+    successThreshold?: pulumi.Input<number | undefined>;
+    /**
+     * The number of seconds after which the check times out.
+     */
+    timeoutSeconds?: pulumi.Input<number | undefined>;
 }
 
 export interface AppSpecServiceLogDestination {
@@ -1728,6 +1763,10 @@ export interface AppSpecWorker {
      */
     instanceSizeSlug?: pulumi.Input<string | undefined>;
     /**
+     * A liveness health check to determine if the worker should be restarted. Workers do not accept inbound traffic, so only HTTP liveness probes are supported (TCP is not).
+     */
+    livenessHealthCheck?: pulumi.Input<inputs.AppSpecWorkerLivenessHealthCheck | undefined>;
+    /**
      * Describes a log forwarding destination.
      */
     logDestinations?: pulumi.Input<pulumi.Input<inputs.AppSpecWorkerLogDestination>[] | undefined>;
@@ -1938,6 +1977,37 @@ export interface AppSpecWorkerImageDeployOnPush {
      * Whether to automatically deploy images pushed to DOCR.
      */
     enabled?: pulumi.Input<boolean | undefined>;
+}
+
+export interface AppSpecWorkerLivenessHealthCheck {
+    /**
+     * The number of failed health checks before considered unhealthy.
+     */
+    failureThreshold?: pulumi.Input<number | undefined>;
+    /**
+     * The route path used for the HTTP health check ping.
+     */
+    httpPath?: pulumi.Input<string | undefined>;
+    /**
+     * The number of seconds to wait before beginning health checks.
+     */
+    initialDelaySeconds?: pulumi.Input<number | undefined>;
+    /**
+     * The number of seconds to wait between health checks.
+     */
+    periodSeconds?: pulumi.Input<number | undefined>;
+    /**
+     * The port on which the health check will be performed.
+     */
+    port?: pulumi.Input<number | undefined>;
+    /**
+     * The number of successful health checks before considered healthy.
+     */
+    successThreshold?: pulumi.Input<number | undefined>;
+    /**
+     * The number of seconds after which the check times out.
+     */
+    timeoutSeconds?: pulumi.Input<number | undefined>;
 }
 
 export interface AppSpecWorkerLogDestination {

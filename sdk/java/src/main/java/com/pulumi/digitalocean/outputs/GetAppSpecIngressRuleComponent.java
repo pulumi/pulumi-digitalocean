@@ -4,10 +4,11 @@
 package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAppSpecIngressRuleComponent {
@@ -15,31 +16,31 @@ public final class GetAppSpecIngressRuleComponent {
      * @return The name of the component.
      * 
      */
-    private String name;
+    private @Nullable String name;
     /**
      * @return An optional flag to preserve the path that is forwarded to the backend service.
      * 
      */
-    private Boolean preservePathPrefix;
-    private String rewrite;
+    private @Nullable Boolean preservePathPrefix;
+    private @Nullable String rewrite;
 
     private GetAppSpecIngressRuleComponent() {}
     /**
      * @return The name of the component.
      * 
      */
-    public String name() {
-        return this.name;
+    public Optional<String> name() {
+        return Optional.ofNullable(this.name);
     }
     /**
      * @return An optional flag to preserve the path that is forwarded to the backend service.
      * 
      */
-    public Boolean preservePathPrefix() {
-        return this.preservePathPrefix;
+    public Optional<Boolean> preservePathPrefix() {
+        return Optional.ofNullable(this.preservePathPrefix);
     }
-    public String rewrite() {
-        return this.rewrite;
+    public Optional<String> rewrite() {
+        return Optional.ofNullable(this.rewrite);
     }
 
     public static Builder builder() {
@@ -51,9 +52,9 @@ public final class GetAppSpecIngressRuleComponent {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String name;
-        private Boolean preservePathPrefix;
-        private String rewrite;
+        private @Nullable String name;
+        private @Nullable Boolean preservePathPrefix;
+        private @Nullable String rewrite;
         public Builder() {}
         public Builder(GetAppSpecIngressRuleComponent defaults) {
     	      Objects.requireNonNull(defaults);
@@ -63,26 +64,20 @@ public final class GetAppSpecIngressRuleComponent {
         }
 
         @CustomType.Setter
-        public Builder name(String name) {
-            if (name == null) {
-              throw new MissingRequiredPropertyException("GetAppSpecIngressRuleComponent", "name");
-            }
+        public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
-        public Builder preservePathPrefix(Boolean preservePathPrefix) {
-            if (preservePathPrefix == null) {
-              throw new MissingRequiredPropertyException("GetAppSpecIngressRuleComponent", "preservePathPrefix");
-            }
+        public Builder preservePathPrefix(@Nullable Boolean preservePathPrefix) {
+
             this.preservePathPrefix = preservePathPrefix;
             return this;
         }
         @CustomType.Setter
-        public Builder rewrite(String rewrite) {
-            if (rewrite == null) {
-              throw new MissingRequiredPropertyException("GetAppSpecIngressRuleComponent", "rewrite");
-            }
+        public Builder rewrite(@Nullable String rewrite) {
+
             this.rewrite = rewrite;
             return this;
         }

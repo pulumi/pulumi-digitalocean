@@ -14,6 +14,7 @@ import com.pulumi.digitalocean.outputs.AppSpecServiceGithub;
 import com.pulumi.digitalocean.outputs.AppSpecServiceGitlab;
 import com.pulumi.digitalocean.outputs.AppSpecServiceHealthCheck;
 import com.pulumi.digitalocean.outputs.AppSpecServiceImage;
+import com.pulumi.digitalocean.outputs.AppSpecServiceLivenessHealthCheck;
 import com.pulumi.digitalocean.outputs.AppSpecServiceLogDestination;
 import com.pulumi.digitalocean.outputs.AppSpecServiceRoute;
 import com.pulumi.digitalocean.outputs.AppSpecServiceTermination;
@@ -116,6 +117,11 @@ public final class AppSpecService {
      * 
      */
     private @Nullable List<Integer> internalPorts;
+    /**
+     * @return A liveness health check to determine if the worker should be restarted. Workers do not accept inbound traffic, so only HTTP liveness probes are supported (TCP is not).
+     * 
+     */
+    private @Nullable AppSpecServiceLivenessHealthCheck livenessHealthCheck;
     /**
      * @return Describes a log forwarding destination.
      * 
@@ -276,6 +282,13 @@ public final class AppSpecService {
         return this.internalPorts == null ? List.of() : this.internalPorts;
     }
     /**
+     * @return A liveness health check to determine if the worker should be restarted. Workers do not accept inbound traffic, so only HTTP liveness probes are supported (TCP is not).
+     * 
+     */
+    public Optional<AppSpecServiceLivenessHealthCheck> livenessHealthCheck() {
+        return Optional.ofNullable(this.livenessHealthCheck);
+    }
+    /**
      * @return Describes a log forwarding destination.
      * 
      */
@@ -348,6 +361,7 @@ public final class AppSpecService {
         private @Nullable Integer instanceCount;
         private @Nullable String instanceSizeSlug;
         private @Nullable List<Integer> internalPorts;
+        private @Nullable AppSpecServiceLivenessHealthCheck livenessHealthCheck;
         private @Nullable List<AppSpecServiceLogDestination> logDestinations;
         private String name;
         private @Nullable List<AppSpecServiceRoute> routes;
@@ -374,6 +388,7 @@ public final class AppSpecService {
     	      this.instanceCount = defaults.instanceCount;
     	      this.instanceSizeSlug = defaults.instanceSizeSlug;
     	      this.internalPorts = defaults.internalPorts;
+    	      this.livenessHealthCheck = defaults.livenessHealthCheck;
     	      this.logDestinations = defaults.logDestinations;
     	      this.name = defaults.name;
     	      this.routes = defaults.routes;
@@ -494,6 +509,12 @@ public final class AppSpecService {
             return internalPorts(List.of(internalPorts));
         }
         @CustomType.Setter
+        public Builder livenessHealthCheck(@Nullable AppSpecServiceLivenessHealthCheck livenessHealthCheck) {
+
+            this.livenessHealthCheck = livenessHealthCheck;
+            return this;
+        }
+        @CustomType.Setter
         public Builder logDestinations(@Nullable List<AppSpecServiceLogDestination> logDestinations) {
 
             this.logDestinations = logDestinations;
@@ -556,6 +577,7 @@ public final class AppSpecService {
             _resultValue.instanceCount = instanceCount;
             _resultValue.instanceSizeSlug = instanceSizeSlug;
             _resultValue.internalPorts = internalPorts;
+            _resultValue.livenessHealthCheck = livenessHealthCheck;
             _resultValue.logDestinations = logDestinations;
             _resultValue.name = name;
             _resultValue.routes = routes;

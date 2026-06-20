@@ -162,6 +162,8 @@ __all__ = [
     'AppSpecServiceImageArgsDict',
     'AppSpecServiceImageDeployOnPushArgs',
     'AppSpecServiceImageDeployOnPushArgsDict',
+    'AppSpecServiceLivenessHealthCheckArgs',
+    'AppSpecServiceLivenessHealthCheckArgsDict',
     'AppSpecServiceLogDestinationArgs',
     'AppSpecServiceLogDestinationArgsDict',
     'AppSpecServiceLogDestinationDatadogArgs',
@@ -226,6 +228,8 @@ __all__ = [
     'AppSpecWorkerImageArgsDict',
     'AppSpecWorkerImageDeployOnPushArgs',
     'AppSpecWorkerImageDeployOnPushArgsDict',
+    'AppSpecWorkerLivenessHealthCheckArgs',
+    'AppSpecWorkerLivenessHealthCheckArgsDict',
     'AppSpecWorkerLogDestinationArgs',
     'AppSpecWorkerLogDestinationArgsDict',
     'AppSpecWorkerLogDestinationDatadogArgs',
@@ -5418,6 +5422,10 @@ class AppSpecServiceArgsDict(TypedDict):
     """
     A list of ports on which this service will listen for internal traffic.
     """
+    liveness_health_check: NotRequired[pulumi.Input[Optional['AppSpecServiceLivenessHealthCheckArgsDict']]]
+    """
+    A liveness health check to determine if the worker should be restarted. Workers do not accept inbound traffic, so only HTTP liveness probes are supported (TCP is not).
+    """
     log_destinations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecServiceLogDestinationArgsDict']]]]]
     """
     Describes a log forwarding destination.
@@ -5460,6 +5468,7 @@ class AppSpecServiceArgs:
                  instance_count: pulumi.Input[Optional[_builtins.int]] = None,
                  instance_size_slug: pulumi.Input[Optional[_builtins.str]] = None,
                  internal_ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 liveness_health_check: pulumi.Input[Optional['AppSpecServiceLivenessHealthCheckArgs']] = None,
                  log_destinations: pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecServiceLogDestinationArgs']]]] = None,
                  routes: pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecServiceRouteArgs']]]] = None,
                  run_command: pulumi.Input[Optional[_builtins.str]] = None,
@@ -5484,6 +5493,7 @@ class AppSpecServiceArgs:
         :param pulumi.Input[_builtins.int] instance_count: The amount of instances that this component should be scaled to.
         :param pulumi.Input[_builtins.str] instance_size_slug: The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Apps/operation/apps_list_instanceSizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] internal_ports: A list of ports on which this service will listen for internal traffic.
+        :param pulumi.Input['AppSpecServiceLivenessHealthCheckArgs'] liveness_health_check: A liveness health check to determine if the worker should be restarted. Workers do not accept inbound traffic, so only HTTP liveness probes are supported (TCP is not).
         :param pulumi.Input[Sequence[pulumi.Input['AppSpecServiceLogDestinationArgs']]] log_destinations: Describes a log forwarding destination.
         :param pulumi.Input[Sequence[pulumi.Input['AppSpecServiceRouteArgs']]] routes: An HTTP paths that should be routed to this component.
         :param pulumi.Input[_builtins.str] run_command: An optional run command to override the component's default.
@@ -5528,6 +5538,8 @@ class AppSpecServiceArgs:
             pulumi.set(__self__, "instance_size_slug", instance_size_slug)
         if internal_ports is not None:
             pulumi.set(__self__, "internal_ports", internal_ports)
+        if liveness_health_check is not None:
+            pulumi.set(__self__, "liveness_health_check", liveness_health_check)
         if log_destinations is not None:
             pulumi.set(__self__, "log_destinations", log_destinations)
         if routes is not None:
@@ -5758,6 +5770,18 @@ class AppSpecServiceArgs:
     @internal_ports.setter
     def internal_ports(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "internal_ports", value)
+
+    @_builtins.property
+    @pulumi.getter(name="livenessHealthCheck")
+    def liveness_health_check(self) -> pulumi.Input[Optional['AppSpecServiceLivenessHealthCheckArgs']]:
+        """
+        A liveness health check to determine if the worker should be restarted. Workers do not accept inbound traffic, so only HTTP liveness probes are supported (TCP is not).
+        """
+        return pulumi.get(self, "liveness_health_check")
+
+    @liveness_health_check.setter
+    def liveness_health_check(self, value: pulumi.Input[Optional['AppSpecServiceLivenessHealthCheckArgs']]):
+        pulumi.set(self, "liveness_health_check", value)
 
     @_builtins.property
     @pulumi.getter(name="logDestinations")
@@ -7035,6 +7059,155 @@ class AppSpecServiceImageDeployOnPushArgs:
     @enabled.setter
     def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
+
+
+class AppSpecServiceLivenessHealthCheckArgsDict(TypedDict):
+    failure_threshold: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The number of failed health checks before considered unhealthy.
+    """
+    http_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The route path used for the HTTP health check ping.
+    """
+    initial_delay_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The number of seconds to wait before beginning health checks.
+    """
+    period_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The number of seconds to wait between health checks.
+    """
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The port on which the health check will be performed.
+    """
+    success_threshold: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The number of successful health checks before considered healthy.
+    """
+    timeout_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The number of seconds after which the check times out.
+    """
+
+@pulumi.input_type
+class AppSpecServiceLivenessHealthCheckArgs:
+    def __init__(__self__, *,
+                 failure_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 http_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 initial_delay_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 success_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] failure_threshold: The number of failed health checks before considered unhealthy.
+        :param pulumi.Input[_builtins.str] http_path: The route path used for the HTTP health check ping.
+        :param pulumi.Input[_builtins.int] initial_delay_seconds: The number of seconds to wait before beginning health checks.
+        :param pulumi.Input[_builtins.int] period_seconds: The number of seconds to wait between health checks.
+        :param pulumi.Input[_builtins.int] port: The port on which the health check will be performed.
+        :param pulumi.Input[_builtins.int] success_threshold: The number of successful health checks before considered healthy.
+        :param pulumi.Input[_builtins.int] timeout_seconds: The number of seconds after which the check times out.
+        """
+        if failure_threshold is not None:
+            pulumi.set(__self__, "failure_threshold", failure_threshold)
+        if http_path is not None:
+            pulumi.set(__self__, "http_path", http_path)
+        if initial_delay_seconds is not None:
+            pulumi.set(__self__, "initial_delay_seconds", initial_delay_seconds)
+        if period_seconds is not None:
+            pulumi.set(__self__, "period_seconds", period_seconds)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if success_threshold is not None:
+            pulumi.set(__self__, "success_threshold", success_threshold)
+        if timeout_seconds is not None:
+            pulumi.set(__self__, "timeout_seconds", timeout_seconds)
+
+    @_builtins.property
+    @pulumi.getter(name="failureThreshold")
+    def failure_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The number of failed health checks before considered unhealthy.
+        """
+        return pulumi.get(self, "failure_threshold")
+
+    @failure_threshold.setter
+    def failure_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "failure_threshold", value)
+
+    @_builtins.property
+    @pulumi.getter(name="httpPath")
+    def http_path(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The route path used for the HTTP health check ping.
+        """
+        return pulumi.get(self, "http_path")
+
+    @http_path.setter
+    def http_path(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "http_path", value)
+
+    @_builtins.property
+    @pulumi.getter(name="initialDelaySeconds")
+    def initial_delay_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The number of seconds to wait before beginning health checks.
+        """
+        return pulumi.get(self, "initial_delay_seconds")
+
+    @initial_delay_seconds.setter
+    def initial_delay_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "initial_delay_seconds", value)
+
+    @_builtins.property
+    @pulumi.getter(name="periodSeconds")
+    def period_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The number of seconds to wait between health checks.
+        """
+        return pulumi.get(self, "period_seconds")
+
+    @period_seconds.setter
+    def period_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "period_seconds", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The port on which the health check will be performed.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "port", value)
+
+    @_builtins.property
+    @pulumi.getter(name="successThreshold")
+    def success_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The number of successful health checks before considered healthy.
+        """
+        return pulumi.get(self, "success_threshold")
+
+    @success_threshold.setter
+    def success_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "success_threshold", value)
+
+    @_builtins.property
+    @pulumi.getter(name="timeoutSeconds")
+    def timeout_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The number of seconds after which the check times out.
+        """
+        return pulumi.get(self, "timeout_seconds")
+
+    @timeout_seconds.setter
+    def timeout_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "timeout_seconds", value)
 
 
 class AppSpecServiceLogDestinationArgsDict(TypedDict):
@@ -8513,6 +8686,10 @@ class AppSpecWorkerArgsDict(TypedDict):
     """
     The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Apps/operation/apps_list_instanceSizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
     """
+    liveness_health_check: NotRequired[pulumi.Input[Optional['AppSpecWorkerLivenessHealthCheckArgsDict']]]
+    """
+    A liveness health check to determine if the worker should be restarted. Workers do not accept inbound traffic, so only HTTP liveness probes are supported (TCP is not).
+    """
     log_destinations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecWorkerLogDestinationArgsDict']]]]]
     """
     Describes a log forwarding destination.
@@ -8547,6 +8724,7 @@ class AppSpecWorkerArgs:
                  image: pulumi.Input[Optional['AppSpecWorkerImageArgs']] = None,
                  instance_count: pulumi.Input[Optional[_builtins.int]] = None,
                  instance_size_slug: pulumi.Input[Optional[_builtins.str]] = None,
+                 liveness_health_check: pulumi.Input[Optional['AppSpecWorkerLivenessHealthCheckArgs']] = None,
                  log_destinations: pulumi.Input[Optional[Sequence[pulumi.Input['AppSpecWorkerLogDestinationArgs']]]] = None,
                  run_command: pulumi.Input[Optional[_builtins.str]] = None,
                  source_dir: pulumi.Input[Optional[_builtins.str]] = None,
@@ -8566,6 +8744,7 @@ class AppSpecWorkerArgs:
         :param pulumi.Input['AppSpecWorkerImageArgs'] image: An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
         :param pulumi.Input[_builtins.int] instance_count: The amount of instances that this component should be scaled to.
         :param pulumi.Input[_builtins.str] instance_size_slug: The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Apps/operation/apps_list_instanceSizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
+        :param pulumi.Input['AppSpecWorkerLivenessHealthCheckArgs'] liveness_health_check: A liveness health check to determine if the worker should be restarted. Workers do not accept inbound traffic, so only HTTP liveness probes are supported (TCP is not).
         :param pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerLogDestinationArgs']]] log_destinations: Describes a log forwarding destination.
         :param pulumi.Input[_builtins.str] run_command: An optional run command to override the component's default.
         :param pulumi.Input[_builtins.str] source_dir: An optional path to the working directory to use for the build.
@@ -8598,6 +8777,8 @@ class AppSpecWorkerArgs:
             pulumi.set(__self__, "instance_count", instance_count)
         if instance_size_slug is not None:
             pulumi.set(__self__, "instance_size_slug", instance_size_slug)
+        if liveness_health_check is not None:
+            pulumi.set(__self__, "liveness_health_check", liveness_health_check)
         if log_destinations is not None:
             pulumi.set(__self__, "log_destinations", log_destinations)
         if run_command is not None:
@@ -8774,6 +8955,18 @@ class AppSpecWorkerArgs:
     @instance_size_slug.setter
     def instance_size_slug(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_size_slug", value)
+
+    @_builtins.property
+    @pulumi.getter(name="livenessHealthCheck")
+    def liveness_health_check(self) -> pulumi.Input[Optional['AppSpecWorkerLivenessHealthCheckArgs']]:
+        """
+        A liveness health check to determine if the worker should be restarted. Workers do not accept inbound traffic, so only HTTP liveness probes are supported (TCP is not).
+        """
+        return pulumi.get(self, "liveness_health_check")
+
+    @liveness_health_check.setter
+    def liveness_health_check(self, value: pulumi.Input[Optional['AppSpecWorkerLivenessHealthCheckArgs']]):
+        pulumi.set(self, "liveness_health_check", value)
 
     @_builtins.property
     @pulumi.getter(name="logDestinations")
@@ -9687,6 +9880,155 @@ class AppSpecWorkerImageDeployOnPushArgs:
     @enabled.setter
     def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
+
+
+class AppSpecWorkerLivenessHealthCheckArgsDict(TypedDict):
+    failure_threshold: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The number of failed health checks before considered unhealthy.
+    """
+    http_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The route path used for the HTTP health check ping.
+    """
+    initial_delay_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The number of seconds to wait before beginning health checks.
+    """
+    period_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The number of seconds to wait between health checks.
+    """
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The port on which the health check will be performed.
+    """
+    success_threshold: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The number of successful health checks before considered healthy.
+    """
+    timeout_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The number of seconds after which the check times out.
+    """
+
+@pulumi.input_type
+class AppSpecWorkerLivenessHealthCheckArgs:
+    def __init__(__self__, *,
+                 failure_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 http_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 initial_delay_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 success_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] failure_threshold: The number of failed health checks before considered unhealthy.
+        :param pulumi.Input[_builtins.str] http_path: The route path used for the HTTP health check ping.
+        :param pulumi.Input[_builtins.int] initial_delay_seconds: The number of seconds to wait before beginning health checks.
+        :param pulumi.Input[_builtins.int] period_seconds: The number of seconds to wait between health checks.
+        :param pulumi.Input[_builtins.int] port: The port on which the health check will be performed.
+        :param pulumi.Input[_builtins.int] success_threshold: The number of successful health checks before considered healthy.
+        :param pulumi.Input[_builtins.int] timeout_seconds: The number of seconds after which the check times out.
+        """
+        if failure_threshold is not None:
+            pulumi.set(__self__, "failure_threshold", failure_threshold)
+        if http_path is not None:
+            pulumi.set(__self__, "http_path", http_path)
+        if initial_delay_seconds is not None:
+            pulumi.set(__self__, "initial_delay_seconds", initial_delay_seconds)
+        if period_seconds is not None:
+            pulumi.set(__self__, "period_seconds", period_seconds)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if success_threshold is not None:
+            pulumi.set(__self__, "success_threshold", success_threshold)
+        if timeout_seconds is not None:
+            pulumi.set(__self__, "timeout_seconds", timeout_seconds)
+
+    @_builtins.property
+    @pulumi.getter(name="failureThreshold")
+    def failure_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The number of failed health checks before considered unhealthy.
+        """
+        return pulumi.get(self, "failure_threshold")
+
+    @failure_threshold.setter
+    def failure_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "failure_threshold", value)
+
+    @_builtins.property
+    @pulumi.getter(name="httpPath")
+    def http_path(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The route path used for the HTTP health check ping.
+        """
+        return pulumi.get(self, "http_path")
+
+    @http_path.setter
+    def http_path(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "http_path", value)
+
+    @_builtins.property
+    @pulumi.getter(name="initialDelaySeconds")
+    def initial_delay_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The number of seconds to wait before beginning health checks.
+        """
+        return pulumi.get(self, "initial_delay_seconds")
+
+    @initial_delay_seconds.setter
+    def initial_delay_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "initial_delay_seconds", value)
+
+    @_builtins.property
+    @pulumi.getter(name="periodSeconds")
+    def period_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The number of seconds to wait between health checks.
+        """
+        return pulumi.get(self, "period_seconds")
+
+    @period_seconds.setter
+    def period_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "period_seconds", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The port on which the health check will be performed.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "port", value)
+
+    @_builtins.property
+    @pulumi.getter(name="successThreshold")
+    def success_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The number of successful health checks before considered healthy.
+        """
+        return pulumi.get(self, "success_threshold")
+
+    @success_threshold.setter
+    def success_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "success_threshold", value)
+
+    @_builtins.property
+    @pulumi.getter(name="timeoutSeconds")
+    def timeout_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The number of seconds after which the check times out.
+        """
+        return pulumi.get(self, "timeout_seconds")
+
+    @timeout_seconds.setter
+    def timeout_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "timeout_seconds", value)
 
 
 class AppSpecWorkerLogDestinationArgsDict(TypedDict):

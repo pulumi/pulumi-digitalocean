@@ -6,28 +6,29 @@ package com.pulumi.digitalocean.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.digitalocean.outputs.GetAppSpecIngressRuleMatchAuthority;
 import com.pulumi.digitalocean.outputs.GetAppSpecIngressRuleMatchPath;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAppSpecIngressRuleMatch {
-    private GetAppSpecIngressRuleMatchAuthority authority;
+    private @Nullable GetAppSpecIngressRuleMatchAuthority authority;
     /**
      * @return Paths must start with `/` and must be unique within the app.
      * 
      */
-    private GetAppSpecIngressRuleMatchPath path;
+    private @Nullable GetAppSpecIngressRuleMatchPath path;
 
     private GetAppSpecIngressRuleMatch() {}
-    public GetAppSpecIngressRuleMatchAuthority authority() {
-        return this.authority;
+    public Optional<GetAppSpecIngressRuleMatchAuthority> authority() {
+        return Optional.ofNullable(this.authority);
     }
     /**
      * @return Paths must start with `/` and must be unique within the app.
      * 
      */
-    public GetAppSpecIngressRuleMatchPath path() {
-        return this.path;
+    public Optional<GetAppSpecIngressRuleMatchPath> path() {
+        return Optional.ofNullable(this.path);
     }
 
     public static Builder builder() {
@@ -39,8 +40,8 @@ public final class GetAppSpecIngressRuleMatch {
     }
     @CustomType.Builder
     public static final class Builder {
-        private GetAppSpecIngressRuleMatchAuthority authority;
-        private GetAppSpecIngressRuleMatchPath path;
+        private @Nullable GetAppSpecIngressRuleMatchAuthority authority;
+        private @Nullable GetAppSpecIngressRuleMatchPath path;
         public Builder() {}
         public Builder(GetAppSpecIngressRuleMatch defaults) {
     	      Objects.requireNonNull(defaults);
@@ -49,18 +50,14 @@ public final class GetAppSpecIngressRuleMatch {
         }
 
         @CustomType.Setter
-        public Builder authority(GetAppSpecIngressRuleMatchAuthority authority) {
-            if (authority == null) {
-              throw new MissingRequiredPropertyException("GetAppSpecIngressRuleMatch", "authority");
-            }
+        public Builder authority(@Nullable GetAppSpecIngressRuleMatchAuthority authority) {
+
             this.authority = authority;
             return this;
         }
         @CustomType.Setter
-        public Builder path(GetAppSpecIngressRuleMatchPath path) {
-            if (path == null) {
-              throw new MissingRequiredPropertyException("GetAppSpecIngressRuleMatch", "path");
-            }
+        public Builder path(@Nullable GetAppSpecIngressRuleMatchPath path) {
+
             this.path = path;
             return this;
         }
