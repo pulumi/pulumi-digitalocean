@@ -14,6 +14,7 @@ import com.pulumi.digitalocean.outputs.GetAppSpecServiceGithub;
 import com.pulumi.digitalocean.outputs.GetAppSpecServiceGitlab;
 import com.pulumi.digitalocean.outputs.GetAppSpecServiceHealthCheck;
 import com.pulumi.digitalocean.outputs.GetAppSpecServiceImage;
+import com.pulumi.digitalocean.outputs.GetAppSpecServiceLivenessHealthCheck;
 import com.pulumi.digitalocean.outputs.GetAppSpecServiceLogDestination;
 import com.pulumi.digitalocean.outputs.GetAppSpecServiceRoute;
 import com.pulumi.digitalocean.outputs.GetAppSpecServiceTermination;
@@ -116,6 +117,7 @@ public final class GetAppSpecService {
      * 
      */
     private List<Integer> internalPorts;
+    private @Nullable GetAppSpecServiceLivenessHealthCheck livenessHealthCheck;
     /**
      * @return Describes a log forwarding destination.
      * 
@@ -137,7 +139,7 @@ public final class GetAppSpecService {
      * @return An optional run command to override the component&#39;s default.
      * 
      */
-    private String runCommand;
+    private @Nullable String runCommand;
     /**
      * @return An optional path to the working directory to use for the build.
      * 
@@ -273,6 +275,9 @@ public final class GetAppSpecService {
     public List<Integer> internalPorts() {
         return this.internalPorts;
     }
+    public Optional<GetAppSpecServiceLivenessHealthCheck> livenessHealthCheck() {
+        return Optional.ofNullable(this.livenessHealthCheck);
+    }
     /**
      * @return Describes a log forwarding destination.
      * 
@@ -300,8 +305,8 @@ public final class GetAppSpecService {
      * @return An optional run command to override the component&#39;s default.
      * 
      */
-    public String runCommand() {
-        return this.runCommand;
+    public Optional<String> runCommand() {
+        return Optional.ofNullable(this.runCommand);
     }
     /**
      * @return An optional path to the working directory to use for the build.
@@ -344,10 +349,11 @@ public final class GetAppSpecService {
         private @Nullable Integer instanceCount;
         private @Nullable String instanceSizeSlug;
         private List<Integer> internalPorts;
+        private @Nullable GetAppSpecServiceLivenessHealthCheck livenessHealthCheck;
         private @Nullable List<GetAppSpecServiceLogDestination> logDestinations;
         private String name;
         private List<GetAppSpecServiceRoute> routes;
-        private String runCommand;
+        private @Nullable String runCommand;
         private @Nullable String sourceDir;
         private @Nullable GetAppSpecServiceTermination termination;
         public Builder() {}
@@ -370,6 +376,7 @@ public final class GetAppSpecService {
     	      this.instanceCount = defaults.instanceCount;
     	      this.instanceSizeSlug = defaults.instanceSizeSlug;
     	      this.internalPorts = defaults.internalPorts;
+    	      this.livenessHealthCheck = defaults.livenessHealthCheck;
     	      this.logDestinations = defaults.logDestinations;
     	      this.name = defaults.name;
     	      this.routes = defaults.routes;
@@ -494,6 +501,12 @@ public final class GetAppSpecService {
             return internalPorts(List.of(internalPorts));
         }
         @CustomType.Setter
+        public Builder livenessHealthCheck(@Nullable GetAppSpecServiceLivenessHealthCheck livenessHealthCheck) {
+
+            this.livenessHealthCheck = livenessHealthCheck;
+            return this;
+        }
+        @CustomType.Setter
         public Builder logDestinations(@Nullable List<GetAppSpecServiceLogDestination> logDestinations) {
 
             this.logDestinations = logDestinations;
@@ -522,10 +535,8 @@ public final class GetAppSpecService {
             return routes(List.of(routes));
         }
         @CustomType.Setter
-        public Builder runCommand(String runCommand) {
-            if (runCommand == null) {
-              throw new MissingRequiredPropertyException("GetAppSpecService", "runCommand");
-            }
+        public Builder runCommand(@Nullable String runCommand) {
+
             this.runCommand = runCommand;
             return this;
         }
@@ -560,6 +571,7 @@ public final class GetAppSpecService {
             _resultValue.instanceCount = instanceCount;
             _resultValue.instanceSizeSlug = instanceSizeSlug;
             _resultValue.internalPorts = internalPorts;
+            _resultValue.livenessHealthCheck = livenessHealthCheck;
             _resultValue.logDestinations = logDestinations;
             _resultValue.name = name;
             _resultValue.routes = routes;

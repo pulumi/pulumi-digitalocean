@@ -65,6 +65,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// The instance size to use for this component.
         /// </summary>
         public readonly string? InstanceSizeSlug;
+        public readonly Outputs.GetAppSpecWorkerLivenessHealthCheckResult? LivenessHealthCheck;
         /// <summary>
         /// Describes a log forwarding destination.
         /// </summary>
@@ -114,6 +115,8 @@ namespace Pulumi.DigitalOcean.Outputs
 
             string? instanceSizeSlug,
 
+            Outputs.GetAppSpecWorkerLivenessHealthCheckResult? livenessHealthCheck,
+
             ImmutableArray<Outputs.GetAppSpecWorkerLogDestinationResult> logDestinations,
 
             string name,
@@ -137,6 +140,7 @@ namespace Pulumi.DigitalOcean.Outputs
             Image = image;
             InstanceCount = instanceCount;
             InstanceSizeSlug = instanceSizeSlug;
+            LivenessHealthCheck = livenessHealthCheck;
             LogDestinations = logDestinations;
             Name = name;
             RunCommand = runCommand;

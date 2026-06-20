@@ -16,10 +16,10 @@ namespace Pulumi.DigitalOcean.Outputs
         /// <summary>
         /// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
         /// </summary>
-        public readonly string Exact;
+        public readonly string? Exact;
 
         [OutputConstructor]
-        private GetAppSpecIngressRuleMatchAuthorityResult(string exact)
+        private GetAppSpecIngressRuleMatchAuthorityResult(string? exact)
         {
             Exact = exact;
         }

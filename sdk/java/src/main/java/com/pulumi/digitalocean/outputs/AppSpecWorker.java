@@ -12,6 +12,7 @@ import com.pulumi.digitalocean.outputs.AppSpecWorkerGit;
 import com.pulumi.digitalocean.outputs.AppSpecWorkerGithub;
 import com.pulumi.digitalocean.outputs.AppSpecWorkerGitlab;
 import com.pulumi.digitalocean.outputs.AppSpecWorkerImage;
+import com.pulumi.digitalocean.outputs.AppSpecWorkerLivenessHealthCheck;
 import com.pulumi.digitalocean.outputs.AppSpecWorkerLogDestination;
 import com.pulumi.digitalocean.outputs.AppSpecWorkerTermination;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -89,6 +90,11 @@ public final class AppSpecWorker {
      * 
      */
     private @Nullable String instanceSizeSlug;
+    /**
+     * @return A liveness health check to determine if the worker should be restarted. Workers do not accept inbound traffic, so only HTTP liveness probes are supported (TCP is not).
+     * 
+     */
+    private @Nullable AppSpecWorkerLivenessHealthCheck livenessHealthCheck;
     /**
      * @return Describes a log forwarding destination.
      * 
@@ -208,6 +214,13 @@ public final class AppSpecWorker {
         return Optional.ofNullable(this.instanceSizeSlug);
     }
     /**
+     * @return A liveness health check to determine if the worker should be restarted. Workers do not accept inbound traffic, so only HTTP liveness probes are supported (TCP is not).
+     * 
+     */
+    public Optional<AppSpecWorkerLivenessHealthCheck> livenessHealthCheck() {
+        return Optional.ofNullable(this.livenessHealthCheck);
+    }
+    /**
      * @return Describes a log forwarding destination.
      * 
      */
@@ -265,6 +278,7 @@ public final class AppSpecWorker {
         private @Nullable AppSpecWorkerImage image;
         private @Nullable Integer instanceCount;
         private @Nullable String instanceSizeSlug;
+        private @Nullable AppSpecWorkerLivenessHealthCheck livenessHealthCheck;
         private @Nullable List<AppSpecWorkerLogDestination> logDestinations;
         private String name;
         private @Nullable String runCommand;
@@ -286,6 +300,7 @@ public final class AppSpecWorker {
     	      this.image = defaults.image;
     	      this.instanceCount = defaults.instanceCount;
     	      this.instanceSizeSlug = defaults.instanceSizeSlug;
+    	      this.livenessHealthCheck = defaults.livenessHealthCheck;
     	      this.logDestinations = defaults.logDestinations;
     	      this.name = defaults.name;
     	      this.runCommand = defaults.runCommand;
@@ -378,6 +393,12 @@ public final class AppSpecWorker {
             return this;
         }
         @CustomType.Setter
+        public Builder livenessHealthCheck(@Nullable AppSpecWorkerLivenessHealthCheck livenessHealthCheck) {
+
+            this.livenessHealthCheck = livenessHealthCheck;
+            return this;
+        }
+        @CustomType.Setter
         public Builder logDestinations(@Nullable List<AppSpecWorkerLogDestination> logDestinations) {
 
             this.logDestinations = logDestinations;
@@ -427,6 +448,7 @@ public final class AppSpecWorker {
             _resultValue.image = image;
             _resultValue.instanceCount = instanceCount;
             _resultValue.instanceSizeSlug = instanceSizeSlug;
+            _resultValue.livenessHealthCheck = livenessHealthCheck;
             _resultValue.logDestinations = logDestinations;
             _resultValue.name = name;
             _resultValue.runCommand = runCommand;

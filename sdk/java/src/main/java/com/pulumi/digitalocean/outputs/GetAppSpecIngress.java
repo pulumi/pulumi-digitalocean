@@ -6,9 +6,9 @@ package com.pulumi.digitalocean.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.digitalocean.outputs.GetAppSpecIngressRule;
 import com.pulumi.digitalocean.outputs.GetAppSpecIngressSecureHeader;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
@@ -18,7 +18,7 @@ public final class GetAppSpecIngress {
      * 
      */
     private @Nullable List<GetAppSpecIngressRule> rules;
-    private GetAppSpecIngressSecureHeader secureHeader;
+    private @Nullable GetAppSpecIngressSecureHeader secureHeader;
 
     private GetAppSpecIngress() {}
     /**
@@ -28,8 +28,8 @@ public final class GetAppSpecIngress {
     public List<GetAppSpecIngressRule> rules() {
         return this.rules == null ? List.of() : this.rules;
     }
-    public GetAppSpecIngressSecureHeader secureHeader() {
-        return this.secureHeader;
+    public Optional<GetAppSpecIngressSecureHeader> secureHeader() {
+        return Optional.ofNullable(this.secureHeader);
     }
 
     public static Builder builder() {
@@ -42,7 +42,7 @@ public final class GetAppSpecIngress {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<GetAppSpecIngressRule> rules;
-        private GetAppSpecIngressSecureHeader secureHeader;
+        private @Nullable GetAppSpecIngressSecureHeader secureHeader;
         public Builder() {}
         public Builder(GetAppSpecIngress defaults) {
     	      Objects.requireNonNull(defaults);
@@ -60,10 +60,8 @@ public final class GetAppSpecIngress {
             return rules(List.of(rules));
         }
         @CustomType.Setter
-        public Builder secureHeader(GetAppSpecIngressSecureHeader secureHeader) {
-            if (secureHeader == null) {
-              throw new MissingRequiredPropertyException("GetAppSpecIngress", "secureHeader");
-            }
+        public Builder secureHeader(@Nullable GetAppSpecIngressSecureHeader secureHeader) {
+
             this.secureHeader = secureHeader;
             return this;
         }

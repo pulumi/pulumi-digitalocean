@@ -4,9 +4,10 @@
 package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAppSpecIngressRuleMatchPath {
@@ -14,15 +15,15 @@ public final class GetAppSpecIngressRuleMatchPath {
      * @return The `Access-Control-Allow-Origin` header will be set to the client&#39;s origin if the beginning of the client&#39;s origin matches the value you provide.
      * 
      */
-    private String prefix;
+    private @Nullable String prefix;
 
     private GetAppSpecIngressRuleMatchPath() {}
     /**
      * @return The `Access-Control-Allow-Origin` header will be set to the client&#39;s origin if the beginning of the client&#39;s origin matches the value you provide.
      * 
      */
-    public String prefix() {
-        return this.prefix;
+    public Optional<String> prefix() {
+        return Optional.ofNullable(this.prefix);
     }
 
     public static Builder builder() {
@@ -34,7 +35,7 @@ public final class GetAppSpecIngressRuleMatchPath {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String prefix;
+        private @Nullable String prefix;
         public Builder() {}
         public Builder(GetAppSpecIngressRuleMatchPath defaults) {
     	      Objects.requireNonNull(defaults);
@@ -42,10 +43,8 @@ public final class GetAppSpecIngressRuleMatchPath {
         }
 
         @CustomType.Setter
-        public Builder prefix(String prefix) {
-            if (prefix == null) {
-              throw new MissingRequiredPropertyException("GetAppSpecIngressRuleMatchPath", "prefix");
-            }
+        public Builder prefix(@Nullable String prefix) {
+
             this.prefix = prefix;
             return this;
         }

@@ -848,14 +848,7 @@
                     "$ref": "#/types/digitalocean:index/AppSpecIngressSecureHeader:AppSpecIngressSecureHeader"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "secureHeader"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "digitalocean:index/AppSpecIngressRule:AppSpecIngressRule": {
             "properties": {
@@ -876,16 +869,7 @@
                     "description": "The redirect configuration for the rule. Only one of \u003cspan pulumi-lang-nodejs=\"`component`\" pulumi-lang-dotnet=\"`Component`\" pulumi-lang-go=\"`component`\" pulumi-lang-python=\"`component`\" pulumi-lang-yaml=\"`component`\" pulumi-lang-java=\"`component`\" pulumi-lang-hcl=\"`component`\"\u003e`component`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`redirect`\" pulumi-lang-dotnet=\"`Redirect`\" pulumi-lang-go=\"`redirect`\" pulumi-lang-python=\"`redirect`\" pulumi-lang-yaml=\"`redirect`\" pulumi-lang-java=\"`redirect`\" pulumi-lang-hcl=\"`redirect`\"\u003e`redirect`\u003c/span\u003e may be set.\n"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "component",
-                        "cors",
-                        "match"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "digitalocean:index/AppSpecIngressRuleComponent:AppSpecIngressRuleComponent": {
             "properties": {
@@ -902,16 +886,7 @@
                     "description": "An optional field that will rewrite the path of the component to be what is specified here. This is mutually exclusive with \u003cspan pulumi-lang-nodejs=\"`preservePathPrefix`\" pulumi-lang-dotnet=\"`PreservePathPrefix`\" pulumi-lang-go=\"`preservePathPrefix`\" pulumi-lang-python=\"`preserve_path_prefix`\" pulumi-lang-yaml=\"`preservePathPrefix`\" pulumi-lang-java=\"`preservePathPrefix`\" pulumi-lang-hcl=\"`preserve_path_prefix`\"\u003e`preservePathPrefix`\u003c/span\u003e.\n"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "name",
-                        "preservePathPrefix",
-                        "rewrite"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "digitalocean:index/AppSpecIngressRuleCors:AppSpecIngressRuleCors": {
             "properties": {
@@ -980,15 +955,7 @@
                     "description": "The path to match on.\n"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "authority",
-                        "path"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "digitalocean:index/AppSpecIngressRuleMatchAuthority:AppSpecIngressRuleMatchAuthority": {
             "properties": {
@@ -997,14 +964,7 @@
                     "description": "Exact match.\n"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "exact"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "digitalocean:index/AppSpecIngressRuleMatchPath:AppSpecIngressRuleMatchPath": {
             "properties": {
@@ -1013,14 +973,7 @@
                     "description": "Prefix-based match.\n"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "prefix"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "digitalocean:index/AppSpecIngressRuleRedirect:AppSpecIngressRuleRedirect": {
             "properties": {
@@ -1057,15 +1010,7 @@
                     "type": "string"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "key",
-                        "value"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "digitalocean:index/AppSpecJob:AppSpecJob": {
             "properties": {
@@ -1591,6 +1536,10 @@
                     },
                     "description": "A list of ports on which this service will listen for internal traffic.\n"
                 },
+                "livenessHealthCheck": {
+                    "$ref": "#/types/digitalocean:index/AppSpecServiceLivenessHealthCheck:AppSpecServiceLivenessHealthCheck",
+                    "description": "A liveness health check to determine if the worker should be restarted. Workers do not accept inbound traffic, so only HTTP liveness probes are supported (TCP is not).\n"
+                },
                 "logDestinations": {
                     "type": "array",
                     "items": {
@@ -1633,8 +1582,7 @@
                         "httpPort",
                         "internalPorts",
                         "name",
-                        "routes",
-                        "runCommand"
+                        "routes"
                     ]
                 }
             }
@@ -1990,6 +1938,39 @@
                 "enabled": {
                     "type": "boolean",
                     "description": "Whether to automatically deploy images pushed to DOCR.\n"
+                }
+            },
+            "type": "object"
+        },
+        "digitalocean:index/AppSpecServiceLivenessHealthCheck:AppSpecServiceLivenessHealthCheck": {
+            "properties": {
+                "failureThreshold": {
+                    "type": "integer",
+                    "description": "The number of failed health checks before considered unhealthy.\n"
+                },
+                "httpPath": {
+                    "type": "string",
+                    "description": "The route path used for the HTTP health check ping.\n"
+                },
+                "initialDelaySeconds": {
+                    "type": "integer",
+                    "description": "The number of seconds to wait before beginning health checks.\n"
+                },
+                "periodSeconds": {
+                    "type": "integer",
+                    "description": "The number of seconds to wait between health checks.\n"
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "The port on which the health check will be performed.\n"
+                },
+                "successThreshold": {
+                    "type": "integer",
+                    "description": "The number of successful health checks before considered healthy.\n"
+                },
+                "timeoutSeconds": {
+                    "type": "integer",
+                    "description": "The number of seconds after which the check times out.\n"
                 }
             },
             "type": "object"
@@ -2448,6 +2429,10 @@
                     "type": "string",
                     "description": "The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Apps/operation/apps_list_instanceSizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`\n"
                 },
+                "livenessHealthCheck": {
+                    "$ref": "#/types/digitalocean:index/AppSpecWorkerLivenessHealthCheck:AppSpecWorkerLivenessHealthCheck",
+                    "description": "A liveness health check to determine if the worker should be restarted. Workers do not accept inbound traffic, so only HTTP liveness probes are supported (TCP is not).\n"
+                },
                 "logDestinations": {
                     "type": "array",
                     "items": {
@@ -2739,6 +2724,39 @@
                 "enabled": {
                     "type": "boolean",
                     "description": "Whether to automatically deploy images pushed to DOCR.\n"
+                }
+            },
+            "type": "object"
+        },
+        "digitalocean:index/AppSpecWorkerLivenessHealthCheck:AppSpecWorkerLivenessHealthCheck": {
+            "properties": {
+                "failureThreshold": {
+                    "type": "integer",
+                    "description": "The number of failed health checks before considered unhealthy.\n"
+                },
+                "httpPath": {
+                    "type": "string",
+                    "description": "The route path used for the HTTP health check ping.\n"
+                },
+                "initialDelaySeconds": {
+                    "type": "integer",
+                    "description": "The number of seconds to wait before beginning health checks.\n"
+                },
+                "periodSeconds": {
+                    "type": "integer",
+                    "description": "The number of seconds to wait between health checks.\n"
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "The port on which the health check will be performed.\n"
+                },
+                "successThreshold": {
+                    "type": "integer",
+                    "description": "The number of successful health checks before considered healthy.\n"
+                },
+                "timeoutSeconds": {
+                    "type": "integer",
+                    "description": "The number of seconds after which the check times out.\n"
                 }
             },
             "type": "object"
@@ -8746,15 +8764,7 @@
                     "$ref": "#/types/digitalocean:index/getAppSpecIngressSecureHeader:getAppSpecIngressSecureHeader"
                 }
             },
-            "type": "object",
-            "required": [
-                "secureHeader"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "digitalocean:index/getAppSpecIngressRule:getAppSpecIngressRule": {
             "properties": {
@@ -8772,17 +8782,7 @@
                     "$ref": "#/types/digitalocean:index/getAppSpecIngressRuleRedirect:getAppSpecIngressRuleRedirect"
                 }
             },
-            "type": "object",
-            "required": [
-                "component",
-                "cors",
-                "match"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "digitalocean:index/getAppSpecIngressRuleComponent:getAppSpecIngressRuleComponent": {
             "properties": {
@@ -8798,17 +8798,7 @@
                     "type": "string"
                 }
             },
-            "type": "object",
-            "required": [
-                "name",
-                "preservePathPrefix",
-                "rewrite"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "digitalocean:index/getAppSpecIngressRuleCors:getAppSpecIngressRuleCors": {
             "properties": {
@@ -8876,16 +8866,7 @@
                     "description": "Paths must start with `/` and must be unique within the app.\n"
                 }
             },
-            "type": "object",
-            "required": [
-                "authority",
-                "path"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "digitalocean:index/getAppSpecIngressRuleMatchAuthority:getAppSpecIngressRuleMatchAuthority": {
             "properties": {
@@ -8894,15 +8875,7 @@
                     "description": "The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.\n"
                 }
             },
-            "type": "object",
-            "required": [
-                "exact"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "digitalocean:index/getAppSpecIngressRuleMatchPath:getAppSpecIngressRuleMatchPath": {
             "properties": {
@@ -8911,15 +8884,7 @@
                     "description": "The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.\n"
                 }
             },
-            "type": "object",
-            "required": [
-                "prefix"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "digitalocean:index/getAppSpecIngressRuleRedirect:getAppSpecIngressRuleRedirect": {
             "properties": {
@@ -8952,16 +8917,7 @@
                     "description": "The threshold for the type of the warning.\n"
                 }
             },
-            "type": "object",
-            "required": [
-                "key",
-                "value"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "digitalocean:index/getAppSpecJob:getAppSpecJob": {
             "properties": {
@@ -9522,6 +9478,9 @@
                     },
                     "description": "A list of ports on which this service will listen for internal traffic.\n"
                 },
+                "livenessHealthCheck": {
+                    "$ref": "#/types/digitalocean:index/getAppSpecServiceLivenessHealthCheck:getAppSpecServiceLivenessHealthCheck"
+                },
                 "logDestinations": {
                     "type": "array",
                     "items": {
@@ -9558,8 +9517,7 @@
                 "httpPort",
                 "internalPorts",
                 "name",
-                "routes",
-                "runCommand"
+                "routes"
             ],
             "language": {
                 "nodejs": {
@@ -9933,6 +9891,39 @@
                 "enabled": {
                     "type": "boolean",
                     "description": "Whether to automatically deploy images pushed to DOCR.\n"
+                }
+            },
+            "type": "object"
+        },
+        "digitalocean:index/getAppSpecServiceLivenessHealthCheck:getAppSpecServiceLivenessHealthCheck": {
+            "properties": {
+                "failureThreshold": {
+                    "type": "integer",
+                    "description": "The number of failed health checks before considered unhealthy.\n"
+                },
+                "httpPath": {
+                    "type": "string",
+                    "description": "The route path used for the HTTP health check ping.\n"
+                },
+                "initialDelaySeconds": {
+                    "type": "integer",
+                    "description": "The number of seconds to wait before beginning health checks.\n"
+                },
+                "periodSeconds": {
+                    "type": "integer",
+                    "description": "The number of seconds to wait between health checks.\n"
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "The port on which the health check will be performed. If not set, the health check will be performed on the component's http_port.\n"
+                },
+                "successThreshold": {
+                    "type": "integer",
+                    "description": "The number of successful health checks before considered healthy.\n"
+                },
+                "timeoutSeconds": {
+                    "type": "integer",
+                    "description": "The number of seconds after which the check times out.\n"
                 }
             },
             "type": "object"
@@ -10419,6 +10410,9 @@
                     "type": "string",
                     "description": "The instance size to use for this component.\n"
                 },
+                "livenessHealthCheck": {
+                    "$ref": "#/types/digitalocean:index/getAppSpecWorkerLivenessHealthCheck:getAppSpecWorkerLivenessHealthCheck"
+                },
                 "logDestinations": {
                     "type": "array",
                     "items": {
@@ -10730,6 +10724,39 @@
                 "enabled": {
                     "type": "boolean",
                     "description": "Whether to automatically deploy images pushed to DOCR.\n"
+                }
+            },
+            "type": "object"
+        },
+        "digitalocean:index/getAppSpecWorkerLivenessHealthCheck:getAppSpecWorkerLivenessHealthCheck": {
+            "properties": {
+                "failureThreshold": {
+                    "type": "integer",
+                    "description": "The number of failed health checks before considered unhealthy.\n"
+                },
+                "httpPath": {
+                    "type": "string",
+                    "description": "The route path used for the HTTP health check ping.\n"
+                },
+                "initialDelaySeconds": {
+                    "type": "integer",
+                    "description": "The number of seconds to wait before beginning health checks.\n"
+                },
+                "periodSeconds": {
+                    "type": "integer",
+                    "description": "The number of seconds to wait between health checks.\n"
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "The port on which the health check will be performed. If not set, the health check will be performed on the component's http_port.\n"
+                },
+                "successThreshold": {
+                    "type": "integer",
+                    "description": "The number of successful health checks before considered healthy.\n"
+                },
+                "timeoutSeconds": {
+                    "type": "integer",
+                    "description": "The number of seconds after which the check times out.\n"
                 }
             },
             "type": "object"

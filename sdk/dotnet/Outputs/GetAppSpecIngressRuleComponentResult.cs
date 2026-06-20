@@ -16,20 +16,20 @@ namespace Pulumi.DigitalOcean.Outputs
         /// <summary>
         /// The name of the component.
         /// </summary>
-        public readonly string Name;
+        public readonly string? Name;
         /// <summary>
         /// An optional flag to preserve the path that is forwarded to the backend service.
         /// </summary>
-        public readonly bool PreservePathPrefix;
-        public readonly string Rewrite;
+        public readonly bool? PreservePathPrefix;
+        public readonly string? Rewrite;
 
         [OutputConstructor]
         private GetAppSpecIngressRuleComponentResult(
-            string name,
+            string? name,
 
-            bool preservePathPrefix,
+            bool? preservePathPrefix,
 
-            string rewrite)
+            string? rewrite)
         {
             Name = name;
             PreservePathPrefix = preservePathPrefix;

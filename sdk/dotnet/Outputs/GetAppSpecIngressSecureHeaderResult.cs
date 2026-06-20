@@ -16,17 +16,17 @@ namespace Pulumi.DigitalOcean.Outputs
         /// <summary>
         /// The name of the environment variable.
         /// </summary>
-        public readonly string Key;
+        public readonly string? Key;
         /// <summary>
         /// The threshold for the type of the warning.
         /// </summary>
-        public readonly string Value;
+        public readonly string? Value;
 
         [OutputConstructor]
         private GetAppSpecIngressSecureHeaderResult(
-            string key,
+            string? key,
 
-            string value)
+            string? value)
         {
             Key = key;
             Value = value;

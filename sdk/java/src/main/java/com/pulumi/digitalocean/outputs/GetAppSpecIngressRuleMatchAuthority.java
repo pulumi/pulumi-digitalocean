@@ -4,9 +4,10 @@
 package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAppSpecIngressRuleMatchAuthority {
@@ -14,15 +15,15 @@ public final class GetAppSpecIngressRuleMatchAuthority {
      * @return The `Access-Control-Allow-Origin` header will be set to the client&#39;s origin only if the client&#39;s origin exactly matches the value you provide.
      * 
      */
-    private String exact;
+    private @Nullable String exact;
 
     private GetAppSpecIngressRuleMatchAuthority() {}
     /**
      * @return The `Access-Control-Allow-Origin` header will be set to the client&#39;s origin only if the client&#39;s origin exactly matches the value you provide.
      * 
      */
-    public String exact() {
-        return this.exact;
+    public Optional<String> exact() {
+        return Optional.ofNullable(this.exact);
     }
 
     public static Builder builder() {
@@ -34,7 +35,7 @@ public final class GetAppSpecIngressRuleMatchAuthority {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String exact;
+        private @Nullable String exact;
         public Builder() {}
         public Builder(GetAppSpecIngressRuleMatchAuthority defaults) {
     	      Objects.requireNonNull(defaults);
@@ -42,10 +43,8 @@ public final class GetAppSpecIngressRuleMatchAuthority {
         }
 
         @CustomType.Setter
-        public Builder exact(String exact) {
-            if (exact == null) {
-              throw new MissingRequiredPropertyException("GetAppSpecIngressRuleMatchAuthority", "exact");
-            }
+        public Builder exact(@Nullable String exact) {
+
             this.exact = exact;
             return this;
         }

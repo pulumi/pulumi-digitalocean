@@ -13,6 +13,7 @@ import com.pulumi.digitalocean.inputs.AppSpecWorkerGitArgs;
 import com.pulumi.digitalocean.inputs.AppSpecWorkerGithubArgs;
 import com.pulumi.digitalocean.inputs.AppSpecWorkerGitlabArgs;
 import com.pulumi.digitalocean.inputs.AppSpecWorkerImageArgs;
+import com.pulumi.digitalocean.inputs.AppSpecWorkerLivenessHealthCheckArgs;
 import com.pulumi.digitalocean.inputs.AppSpecWorkerLogDestinationArgs;
 import com.pulumi.digitalocean.inputs.AppSpecWorkerTerminationArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -224,6 +225,21 @@ public final class AppSpecWorkerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * A liveness health check to determine if the worker should be restarted. Workers do not accept inbound traffic, so only HTTP liveness probes are supported (TCP is not).
+     * 
+     */
+    @Import(name="livenessHealthCheck")
+    private @Nullable Output<AppSpecWorkerLivenessHealthCheckArgs> livenessHealthCheck;
+
+    /**
+     * @return A liveness health check to determine if the worker should be restarted. Workers do not accept inbound traffic, so only HTTP liveness probes are supported (TCP is not).
+     * 
+     */
+    public Optional<Output<AppSpecWorkerLivenessHealthCheckArgs>> livenessHealthCheck() {
+        return Optional.ofNullable(this.livenessHealthCheck);
+    }
+
+    /**
      * Describes a log forwarding destination.
      * 
      */
@@ -314,6 +330,7 @@ public final class AppSpecWorkerArgs extends com.pulumi.resources.ResourceArgs {
         this.image = $.image;
         this.instanceCount = $.instanceCount;
         this.instanceSizeSlug = $.instanceSizeSlug;
+        this.livenessHealthCheck = $.livenessHealthCheck;
         this.logDestinations = $.logDestinations;
         this.name = $.name;
         this.runCommand = $.runCommand;
@@ -630,6 +647,27 @@ public final class AppSpecWorkerArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder instanceSizeSlug(String instanceSizeSlug) {
             return instanceSizeSlug(Output.of(instanceSizeSlug));
+        }
+
+        /**
+         * @param livenessHealthCheck A liveness health check to determine if the worker should be restarted. Workers do not accept inbound traffic, so only HTTP liveness probes are supported (TCP is not).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder livenessHealthCheck(@Nullable Output<AppSpecWorkerLivenessHealthCheckArgs> livenessHealthCheck) {
+            $.livenessHealthCheck = livenessHealthCheck;
+            return this;
+        }
+
+        /**
+         * @param livenessHealthCheck A liveness health check to determine if the worker should be restarted. Workers do not accept inbound traffic, so only HTTP liveness probes are supported (TCP is not).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder livenessHealthCheck(AppSpecWorkerLivenessHealthCheckArgs livenessHealthCheck) {
+            return livenessHealthCheck(Output.of(livenessHealthCheck));
         }
 
         /**
