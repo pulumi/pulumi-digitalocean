@@ -1373,6 +1373,22 @@
                     }
                 }
             },
+            "digitalocean_nfs_access_point": {
+                "current": "digitalocean:index/nfsAccessPoint:NfsAccessPoint",
+                "majorVersion": 4,
+                "fields": {
+                    "access_policy": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "protocols": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "digitalocean_nfs_attachment": {
                 "current": "digitalocean:index/nfsAttachment:NfsAttachment",
                 "majorVersion": 4
@@ -1550,6 +1566,21 @@
                 "majorVersion": 4,
                 "fields": {
                     "regions": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "digitalocean_vector_database": {
+                "current": "digitalocean:index/vectorDatabase:VectorDatabase",
+                "majorVersion": 4,
+                "fields": {
+                    "config": {
+                        "maxItemsOne": true
+                    },
+                    "endpoints": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
                         "maxItemsOne": false
                     }
                 }
@@ -3643,6 +3674,22 @@
                     }
                 }
             },
+            "digitalocean_nfs_access_point": {
+                "current": "digitalocean:index/getNfsAccessPoint:getNfsAccessPoint",
+                "majorVersion": 4,
+                "fields": {
+                    "access_policy": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "protocols": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "digitalocean_nfs_snapshot": {
                 "current": "digitalocean:index/getNfsSnapshot:getNfsSnapshot",
                 "majorVersion": 4,
@@ -3915,6 +3962,21 @@
                         }
                     },
                     "sort": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "digitalocean_vector_database": {
+                "current": "digitalocean:index/getVectorDatabase:getVectorDatabase",
+                "majorVersion": 4,
+                "fields": {
+                    "config": {
+                        "maxItemsOne": false
+                    },
+                    "endpoints": {
                         "maxItemsOne": false
                     },
                     "tags": {

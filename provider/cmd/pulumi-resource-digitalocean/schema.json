@@ -7701,6 +7701,34 @@
                 "url"
             ]
         },
+        "digitalocean:index/NfsAccessPointAccessPolicy:NfsAccessPointAccessPolicy": {
+            "properties": {
+                "anongid": {
+                    "type": "integer",
+                    "description": "Anonymous GID mapped for NFS clients. Defaults to \u003cspan pulumi-lang-nodejs=\"`65534`\" pulumi-lang-dotnet=\"`65534`\" pulumi-lang-go=\"`65534`\" pulumi-lang-python=\"`65534`\" pulumi-lang-yaml=\"`65534`\" pulumi-lang-java=\"`65534`\" pulumi-lang-hcl=\"`65534`\"\u003e`65534`\u003c/span\u003e.\n"
+                },
+                "anonuid": {
+                    "type": "integer",
+                    "description": "Anonymous UID mapped for NFS clients. Defaults to \u003cspan pulumi-lang-nodejs=\"`65534`\" pulumi-lang-dotnet=\"`65534`\" pulumi-lang-go=\"`65534`\" pulumi-lang-python=\"`65534`\" pulumi-lang-yaml=\"`65534`\" pulumi-lang-java=\"`65534`\" pulumi-lang-hcl=\"`65534`\"\u003e`65534`\u003c/span\u003e.\n"
+                },
+                "identityEnforcementEnabled": {
+                    "type": "boolean",
+                    "description": "Whether identity enforcement is enabled. Defaults to \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\" pulumi-lang-hcl=\"`false`\"\u003e`false`\u003c/span\u003e.\n"
+                },
+                "protocols": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of NFS protocols. Defaults to `[\"NFS4\"]`.\n"
+                },
+                "squashConfig": {
+                    "type": "string",
+                    "description": "Squash configuration. Valid values are `NO_SQUASH`, `ROOT_SQUASH`, and `ALL_SQUASH`. Defaults to `ROOT_SQUASH`.\n"
+                }
+            },
+            "type": "object"
+        },
         "digitalocean:index/PartnerAttachmentBgp:PartnerAttachmentBgp": {
             "properties": {
                 "authKey": {
@@ -7924,6 +7952,53 @@
                 "channel",
                 "url"
             ]
+        },
+        "digitalocean:index/VectorDatabaseConfig:VectorDatabaseConfig": {
+            "properties": {
+                "defaultQuantization": {
+                    "type": "string",
+                    "description": "The default vector quantization method applied to new collections.\n"
+                },
+                "enableAutoSchema": {
+                    "type": "boolean",
+                    "description": "Whether Weaviate's auto-schema feature is enabled.\n"
+                },
+                "weaviateVersion": {
+                    "type": "string",
+                    "description": "The Weaviate engine version used by the vector database.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "defaultQuantization",
+                        "enableAutoSchema",
+                        "weaviateVersion"
+                    ]
+                }
+            }
+        },
+        "digitalocean:index/VectorDatabaseEndpoint:VectorDatabaseEndpoint": {
+            "properties": {
+                "grpc": {
+                    "type": "string",
+                    "description": "The gRPC endpoint used to connect to the vector database.\n"
+                },
+                "http": {
+                    "type": "string",
+                    "description": "The HTTP endpoint used to connect to the vector database.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "grpc",
+                        "http"
+                    ]
+                }
+            }
         },
         "digitalocean:index/VpcNatGatewayEgress:VpcNatGatewayEgress": {
             "properties": {
@@ -25438,6 +25513,41 @@
                 }
             }
         },
+        "digitalocean:index/getNfsAccessPointAccessPolicy:getNfsAccessPointAccessPolicy": {
+            "properties": {
+                "anongid": {
+                    "type": "integer"
+                },
+                "anonuid": {
+                    "type": "integer"
+                },
+                "identityEnforcementEnabled": {
+                    "type": "boolean"
+                },
+                "protocols": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "squashConfig": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "anongid",
+                "anonuid",
+                "identityEnforcementEnabled",
+                "protocols",
+                "squashConfig"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "digitalocean:index/getPartnerAttachmentBgp:getPartnerAttachmentBgp": {
             "properties": {
                 "localRouterIp": {
@@ -26128,6 +26238,55 @@
                 "totalResourceCount",
                 "volumeSnapshotsCount",
                 "volumesCount"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getVectorDatabaseConfig:getVectorDatabaseConfig": {
+            "properties": {
+                "defaultQuantization": {
+                    "type": "string",
+                    "description": "The default vector quantization method applied to new collections.\n"
+                },
+                "enableAutoSchema": {
+                    "type": "boolean",
+                    "description": "Whether Weaviate's auto-schema feature is enabled.\n"
+                },
+                "weaviateVersion": {
+                    "type": "string",
+                    "description": "The Weaviate engine version used by the vector database.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "defaultQuantization",
+                "enableAutoSchema",
+                "weaviateVersion"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getVectorDatabaseEndpoint:getVectorDatabaseEndpoint": {
+            "properties": {
+                "grpc": {
+                    "type": "string",
+                    "description": "The gRPC endpoint used to connect to the vector database.\n"
+                },
+                "http": {
+                    "type": "string",
+                    "description": "The HTTP endpoint used to connect to the vector database.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "grpc",
+                "http"
             ],
             "language": {
                 "nodejs": {
@@ -37998,7 +38157,7 @@
             }
         },
         "digitalocean:index/nfs:Nfs": {
-            "description": "Provides a DigitalOcean NFS share which can be mounted to Droplets to provide shared storage.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst example = new digitalocean.Vpc(\"example\", {\n    name: \"example-vpc\",\n    region: \"nyc1\",\n});\nconst exampleNfs = new digitalocean.Nfs(\"example\", {\n    region: \"nyc1\",\n    name: \"example-nfs\",\n    size: 50,\n    vpcId: example.id,\n    performanceTier: \"high\",\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nexample = digitalocean.Vpc(\"example\",\n    name=\"example-vpc\",\n    region=\"nyc1\")\nexample_nfs = digitalocean.Nfs(\"example\",\n    region=\"nyc1\",\n    name=\"example-nfs\",\n    size=50,\n    vpc_id=example.id,\n    performance_tier=\"high\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new DigitalOcean.Vpc(\"example\", new()\n    {\n        Name = \"example-vpc\",\n        Region = \"nyc1\",\n    });\n\n    var exampleNfs = new DigitalOcean.Nfs(\"example\", new()\n    {\n        Region = \"nyc1\",\n        Name = \"example-nfs\",\n        Size = 50,\n        VpcId = example.Id,\n        PerformanceTier = \"high\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := digitalocean.NewVpc(ctx, \"example\", \u0026digitalocean.VpcArgs{\n\t\t\tName:   pulumi.String(\"example-vpc\"),\n\t\t\tRegion: pulumi.String(\"nyc1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewNfs(ctx, \"example\", \u0026digitalocean.NfsArgs{\n\t\t\tRegion:          pulumi.String(\"nyc1\"),\n\t\t\tName:            pulumi.String(\"example-nfs\"),\n\t\t\tSize:            pulumi.Int(50),\n\t\t\tVpcId:           example.ID(),\n\t\t\tPerformanceTier: pulumi.String(\"high\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\npulumi {\n  required_providers {\n    digitalocean = {\n      source = \"pulumi/digitalocean\"\n    }\n  }\n}\n\nresource \"digitalocean_vpc\" \"example\" {\n  name   = \"example-vpc\"\n  region = \"nyc1\"\n}\nresource \"digitalocean_nfs\" \"example\" {\n  region           = \"nyc1\"\n  name             = \"example-nfs\"\n  size             = 50\n  vpc_id           = digitalocean_vpc.example.id\n  performance_tier = \"high\"\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.Vpc;\nimport com.pulumi.digitalocean.VpcArgs;\nimport com.pulumi.digitalocean.Nfs;\nimport com.pulumi.digitalocean.NfsArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new Vpc(\"example\", VpcArgs.builder()\n            .name(\"example-vpc\")\n            .region(\"nyc1\")\n            .build());\n\n        var exampleNfs = new Nfs(\"exampleNfs\", NfsArgs.builder()\n            .region(\"nyc1\")\n            .name(\"example-nfs\")\n            .size(50)\n            .vpcId(example.id())\n            .performanceTier(\"high\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: digitalocean:Vpc\n    properties:\n      name: example-vpc\n      region: nyc1\n  exampleNfs:\n    type: digitalocean:Nfs\n    name: example\n    properties:\n      region: nyc1\n      name: example-nfs\n      size: 50\n      vpcId: ${example.id}\n      performanceTier: high\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Moving Share Between VPCs\n\nTo move an NFS share from one VPC to another using the Reassign API:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst source = new digitalocean.Vpc(\"source\", {\n    name: \"source-vpc\",\n    region: \"nyc1\",\n});\nconst destination = new digitalocean.Vpc(\"destination\", {\n    name: \"destination-vpc\",\n    region: \"nyc1\",\n});\nconst example = new digitalocean.Nfs(\"example\", {\n    region: \"nyc1\",\n    name: \"example-nfs\",\n    size: 50,\n    vpcId: source.id,\n    performanceTier: \"high\",\n});\n// Attach to source VPC\nconst sourceNfsAttachment = new digitalocean.NfsAttachment(\"source\", {\n    shareId: example.id,\n    vpcId: source.id,\n    region: \"nyc1\",\n});\n// Reassign to destination VPC - uses the efficient Reassign API\nconst destinationNfsAttachment = new digitalocean.NfsAttachment(\"destination\", {\n    shareId: example.id,\n    vpcId: destination.id,\n    region: \"nyc1\",\n}, {\n    dependsOn: [sourceNfsAttachment],\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nsource = digitalocean.Vpc(\"source\",\n    name=\"source-vpc\",\n    region=\"nyc1\")\ndestination = digitalocean.Vpc(\"destination\",\n    name=\"destination-vpc\",\n    region=\"nyc1\")\nexample = digitalocean.Nfs(\"example\",\n    region=\"nyc1\",\n    name=\"example-nfs\",\n    size=50,\n    vpc_id=source.id,\n    performance_tier=\"high\")\n# Attach to source VPC\nsource_nfs_attachment = digitalocean.NfsAttachment(\"source\",\n    share_id=example.id,\n    vpc_id=source.id,\n    region=\"nyc1\")\n# Reassign to destination VPC - uses the efficient Reassign API\ndestination_nfs_attachment = digitalocean.NfsAttachment(\"destination\",\n    share_id=example.id,\n    vpc_id=destination.id,\n    region=\"nyc1\",\n    opts = pulumi.ResourceOptions(depends_on=[source_nfs_attachment]))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var source = new DigitalOcean.Vpc(\"source\", new()\n    {\n        Name = \"source-vpc\",\n        Region = \"nyc1\",\n    });\n\n    var destination = new DigitalOcean.Vpc(\"destination\", new()\n    {\n        Name = \"destination-vpc\",\n        Region = \"nyc1\",\n    });\n\n    var example = new DigitalOcean.Nfs(\"example\", new()\n    {\n        Region = \"nyc1\",\n        Name = \"example-nfs\",\n        Size = 50,\n        VpcId = source.Id,\n        PerformanceTier = \"high\",\n    });\n\n    // Attach to source VPC\n    var sourceNfsAttachment = new DigitalOcean.NfsAttachment(\"source\", new()\n    {\n        ShareId = example.Id,\n        VpcId = source.Id,\n        Region = \"nyc1\",\n    });\n\n    // Reassign to destination VPC - uses the efficient Reassign API\n    var destinationNfsAttachment = new DigitalOcean.NfsAttachment(\"destination\", new()\n    {\n        ShareId = example.Id,\n        VpcId = destination.Id,\n        Region = \"nyc1\",\n    }, new CustomResourceOptions\n    {\n        DependsOn =\n        {\n            sourceNfsAttachment,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tsource, err := digitalocean.NewVpc(ctx, \"source\", \u0026digitalocean.VpcArgs{\n\t\t\tName:   pulumi.String(\"source-vpc\"),\n\t\t\tRegion: pulumi.String(\"nyc1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tdestination, err := digitalocean.NewVpc(ctx, \"destination\", \u0026digitalocean.VpcArgs{\n\t\t\tName:   pulumi.String(\"destination-vpc\"),\n\t\t\tRegion: pulumi.String(\"nyc1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\texample, err := digitalocean.NewNfs(ctx, \"example\", \u0026digitalocean.NfsArgs{\n\t\t\tRegion:          pulumi.String(\"nyc1\"),\n\t\t\tName:            pulumi.String(\"example-nfs\"),\n\t\t\tSize:            pulumi.Int(50),\n\t\t\tVpcId:           source.ID(),\n\t\t\tPerformanceTier: pulumi.String(\"high\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Attach to source VPC\n\t\tsourceNfsAttachment, err := digitalocean.NewNfsAttachment(ctx, \"source\", \u0026digitalocean.NfsAttachmentArgs{\n\t\t\tShareId: example.ID(),\n\t\t\tVpcId:   source.ID(),\n\t\t\tRegion:  pulumi.String(\"nyc1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Reassign to destination VPC - uses the efficient Reassign API\n\t\t_, err = digitalocean.NewNfsAttachment(ctx, \"destination\", \u0026digitalocean.NfsAttachmentArgs{\n\t\t\tShareId: example.ID(),\n\t\t\tVpcId:   destination.ID(),\n\t\t\tRegion:  pulumi.String(\"nyc1\"),\n\t\t}, pulumi.DependsOn([]pulumi.Resource{\n\t\t\tsourceNfsAttachment,\n\t\t}))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\npulumi {\n  required_providers {\n    digitalocean = {\n      source = \"pulumi/digitalocean\"\n    }\n  }\n}\n\nresource \"digitalocean_vpc\" \"source\" {\n  name   = \"source-vpc\"\n  region = \"nyc1\"\n}\nresource \"digitalocean_vpc\" \"destination\" {\n  name   = \"destination-vpc\"\n  region = \"nyc1\"\n}\nresource \"digitalocean_nfs\" \"example\" {\n  region           = \"nyc1\"\n  name             = \"example-nfs\"\n  size             = 50\n  vpc_id           = digitalocean_vpc.source.id\n  performance_tier = \"high\"\n}\n# Attach to source VPC\nresource \"digitalocean_nfsattachment\" \"source\" {\n  share_id = digitalocean_nfs.example.id\n  vpc_id   = digitalocean_vpc.source.id\n  region   = \"nyc1\"\n}\n# Reassign to destination VPC - uses the efficient Reassign API\nresource \"digitalocean_nfsattachment\" \"destination\" {\n  depends_on = [digitalocean_nfsattachment.source]\n  share_id   = digitalocean_nfs.example.id\n  vpc_id     = digitalocean_vpc.destination.id\n  region     = \"nyc1\"\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.Vpc;\nimport com.pulumi.digitalocean.VpcArgs;\nimport com.pulumi.digitalocean.Nfs;\nimport com.pulumi.digitalocean.NfsArgs;\nimport com.pulumi.digitalocean.NfsAttachment;\nimport com.pulumi.digitalocean.NfsAttachmentArgs;\nimport com.pulumi.resources.CustomResourceOptions;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var source = new Vpc(\"source\", VpcArgs.builder()\n            .name(\"source-vpc\")\n            .region(\"nyc1\")\n            .build());\n\n        var destination = new Vpc(\"destination\", VpcArgs.builder()\n            .name(\"destination-vpc\")\n            .region(\"nyc1\")\n            .build());\n\n        var example = new Nfs(\"example\", NfsArgs.builder()\n            .region(\"nyc1\")\n            .name(\"example-nfs\")\n            .size(50)\n            .vpcId(source.id())\n            .performanceTier(\"high\")\n            .build());\n\n        // Attach to source VPC\n        var sourceNfsAttachment = new NfsAttachment(\"sourceNfsAttachment\", NfsAttachmentArgs.builder()\n            .shareId(example.id())\n            .vpcId(source.id())\n            .region(\"nyc1\")\n            .build());\n\n        // Reassign to destination VPC - uses the efficient Reassign API\n        var destinationNfsAttachment = new NfsAttachment(\"destinationNfsAttachment\", NfsAttachmentArgs.builder()\n            .shareId(example.id())\n            .vpcId(destination.id())\n            .region(\"nyc1\")\n            .build(), CustomResourceOptions.builder()\n                .dependsOn(sourceNfsAttachment)\n                .build());\n\n    }\n}\n```\n```yaml\nresources:\n  source:\n    type: digitalocean:Vpc\n    properties:\n      name: source-vpc\n      region: nyc1\n  destination:\n    type: digitalocean:Vpc\n    properties:\n      name: destination-vpc\n      region: nyc1\n  example:\n    type: digitalocean:Nfs\n    properties:\n      region: nyc1\n      name: example-nfs\n      size: 50\n      vpcId: ${source.id}\n      performanceTier: high\n  # Attach to source VPC\n  sourceNfsAttachment:\n    type: digitalocean:NfsAttachment\n    name: source\n    properties:\n      shareId: ${example.id}\n      vpcId: ${source.id}\n      region: nyc1\n  # Reassign to destination VPC - uses the efficient Reassign API\n  destinationNfsAttachment:\n    type: digitalocean:NfsAttachment\n    name: destination\n    properties:\n      shareId: ${example.id}\n      vpcId: ${destination.id}\n      region: nyc1\n    options:\n      dependsOn:\n        - ${sourceNfsAttachment}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Notes\n\nMultiple NFS shares can now be attached to the same VPC, providing greater flexibility for storage management.\n\n## Import\n\nNFS shares can be imported using the `share id` and the \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\" pulumi-lang-hcl=\"`region`\"\u003e`region`\u003c/span\u003e, e.g.\n\n```sh\n$ pulumi import digitalocean:index/nfs:Nfs foobar 506f78a4-e098-11e5-ad9f-000f53306ae1,atl1\n```\n\n",
+            "description": "Provides a DigitalOcean NFS share which can be mounted to Droplets to provide shared storage.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst example = new digitalocean.Vpc(\"example\", {\n    name: \"example-vpc\",\n    region: \"nyc1\",\n});\nconst exampleNfs = new digitalocean.Nfs(\"example\", {\n    region: \"nyc1\",\n    name: \"example-nfs\",\n    size: 50,\n    vpcId: example.id,\n    performanceTier: \"high\",\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nexample = digitalocean.Vpc(\"example\",\n    name=\"example-vpc\",\n    region=\"nyc1\")\nexample_nfs = digitalocean.Nfs(\"example\",\n    region=\"nyc1\",\n    name=\"example-nfs\",\n    size=50,\n    vpc_id=example.id,\n    performance_tier=\"high\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new DigitalOcean.Vpc(\"example\", new()\n    {\n        Name = \"example-vpc\",\n        Region = \"nyc1\",\n    });\n\n    var exampleNfs = new DigitalOcean.Nfs(\"example\", new()\n    {\n        Region = \"nyc1\",\n        Name = \"example-nfs\",\n        Size = 50,\n        VpcId = example.Id,\n        PerformanceTier = \"high\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := digitalocean.NewVpc(ctx, \"example\", \u0026digitalocean.VpcArgs{\n\t\t\tName:   pulumi.String(\"example-vpc\"),\n\t\t\tRegion: pulumi.String(\"nyc1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewNfs(ctx, \"example\", \u0026digitalocean.NfsArgs{\n\t\t\tRegion:          pulumi.String(\"nyc1\"),\n\t\t\tName:            pulumi.String(\"example-nfs\"),\n\t\t\tSize:            pulumi.Int(50),\n\t\t\tVpcId:           example.ID(),\n\t\t\tPerformanceTier: pulumi.String(\"high\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\npulumi {\n  required_providers {\n    digitalocean = {\n      source = \"pulumi/digitalocean\"\n    }\n  }\n}\n\nresource \"digitalocean_vpc\" \"example\" {\n  name   = \"example-vpc\"\n  region = \"nyc1\"\n}\nresource \"digitalocean_nfs\" \"example\" {\n  region           = \"nyc1\"\n  name             = \"example-nfs\"\n  size             = 50\n  vpc_id           = digitalocean_vpc.example.id\n  performance_tier = \"high\"\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.Vpc;\nimport com.pulumi.digitalocean.VpcArgs;\nimport com.pulumi.digitalocean.Nfs;\nimport com.pulumi.digitalocean.NfsArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new Vpc(\"example\", VpcArgs.builder()\n            .name(\"example-vpc\")\n            .region(\"nyc1\")\n            .build());\n\n        var exampleNfs = new Nfs(\"exampleNfs\", NfsArgs.builder()\n            .region(\"nyc1\")\n            .name(\"example-nfs\")\n            .size(50)\n            .vpcId(example.id())\n            .performanceTier(\"high\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: digitalocean:Vpc\n    properties:\n      name: example-vpc\n      region: nyc1\n  exampleNfs:\n    type: digitalocean:Nfs\n    name: example\n    properties:\n      region: nyc1\n      name: example-nfs\n      size: 50\n      vpcId: ${example.id}\n      performanceTier: high\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Multiple VPC Attachments\n\nAttach an NFS share to additional VPCs one at a time using separate attachment resources:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst primary = new digitalocean.Vpc(\"primary\", {\n    name: \"primary-vpc\",\n    region: \"nyc1\",\n});\nconst secondary = new digitalocean.Vpc(\"secondary\", {\n    name: \"secondary-vpc\",\n    region: \"nyc1\",\n});\nconst example = new digitalocean.Nfs(\"example\", {\n    region: \"nyc1\",\n    name: \"example-nfs\",\n    size: 50,\n    vpcId: primary.id,\n    performanceTier: \"high\",\n});\nconst primaryNfsAttachment = new digitalocean.NfsAttachment(\"primary\", {\n    shareId: example.id,\n    vpcId: primary.id,\n    region: \"nyc1\",\n});\nconst secondaryNfsAttachment = new digitalocean.NfsAttachment(\"secondary\", {\n    shareId: example.id,\n    vpcId: secondary.id,\n    region: \"nyc1\",\n}, {\n    dependsOn: [primaryNfsAttachment],\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nprimary = digitalocean.Vpc(\"primary\",\n    name=\"primary-vpc\",\n    region=\"nyc1\")\nsecondary = digitalocean.Vpc(\"secondary\",\n    name=\"secondary-vpc\",\n    region=\"nyc1\")\nexample = digitalocean.Nfs(\"example\",\n    region=\"nyc1\",\n    name=\"example-nfs\",\n    size=50,\n    vpc_id=primary.id,\n    performance_tier=\"high\")\nprimary_nfs_attachment = digitalocean.NfsAttachment(\"primary\",\n    share_id=example.id,\n    vpc_id=primary.id,\n    region=\"nyc1\")\nsecondary_nfs_attachment = digitalocean.NfsAttachment(\"secondary\",\n    share_id=example.id,\n    vpc_id=secondary.id,\n    region=\"nyc1\",\n    opts = pulumi.ResourceOptions(depends_on=[primary_nfs_attachment]))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var primary = new DigitalOcean.Vpc(\"primary\", new()\n    {\n        Name = \"primary-vpc\",\n        Region = \"nyc1\",\n    });\n\n    var secondary = new DigitalOcean.Vpc(\"secondary\", new()\n    {\n        Name = \"secondary-vpc\",\n        Region = \"nyc1\",\n    });\n\n    var example = new DigitalOcean.Nfs(\"example\", new()\n    {\n        Region = \"nyc1\",\n        Name = \"example-nfs\",\n        Size = 50,\n        VpcId = primary.Id,\n        PerformanceTier = \"high\",\n    });\n\n    var primaryNfsAttachment = new DigitalOcean.NfsAttachment(\"primary\", new()\n    {\n        ShareId = example.Id,\n        VpcId = primary.Id,\n        Region = \"nyc1\",\n    });\n\n    var secondaryNfsAttachment = new DigitalOcean.NfsAttachment(\"secondary\", new()\n    {\n        ShareId = example.Id,\n        VpcId = secondary.Id,\n        Region = \"nyc1\",\n    }, new CustomResourceOptions\n    {\n        DependsOn =\n        {\n            primaryNfsAttachment,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tprimary, err := digitalocean.NewVpc(ctx, \"primary\", \u0026digitalocean.VpcArgs{\n\t\t\tName:   pulumi.String(\"primary-vpc\"),\n\t\t\tRegion: pulumi.String(\"nyc1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tsecondary, err := digitalocean.NewVpc(ctx, \"secondary\", \u0026digitalocean.VpcArgs{\n\t\t\tName:   pulumi.String(\"secondary-vpc\"),\n\t\t\tRegion: pulumi.String(\"nyc1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\texample, err := digitalocean.NewNfs(ctx, \"example\", \u0026digitalocean.NfsArgs{\n\t\t\tRegion:          pulumi.String(\"nyc1\"),\n\t\t\tName:            pulumi.String(\"example-nfs\"),\n\t\t\tSize:            pulumi.Int(50),\n\t\t\tVpcId:           primary.ID(),\n\t\t\tPerformanceTier: pulumi.String(\"high\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tprimaryNfsAttachment, err := digitalocean.NewNfsAttachment(ctx, \"primary\", \u0026digitalocean.NfsAttachmentArgs{\n\t\t\tShareId: example.ID(),\n\t\t\tVpcId:   primary.ID(),\n\t\t\tRegion:  pulumi.String(\"nyc1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewNfsAttachment(ctx, \"secondary\", \u0026digitalocean.NfsAttachmentArgs{\n\t\t\tShareId: example.ID(),\n\t\t\tVpcId:   secondary.ID(),\n\t\t\tRegion:  pulumi.String(\"nyc1\"),\n\t\t}, pulumi.DependsOn([]pulumi.Resource{\n\t\t\tprimaryNfsAttachment,\n\t\t}))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\npulumi {\n  required_providers {\n    digitalocean = {\n      source = \"pulumi/digitalocean\"\n    }\n  }\n}\n\nresource \"digitalocean_vpc\" \"primary\" {\n  name   = \"primary-vpc\"\n  region = \"nyc1\"\n}\nresource \"digitalocean_vpc\" \"secondary\" {\n  name   = \"secondary-vpc\"\n  region = \"nyc1\"\n}\nresource \"digitalocean_nfs\" \"example\" {\n  region           = \"nyc1\"\n  name             = \"example-nfs\"\n  size             = 50\n  vpc_id           = digitalocean_vpc.primary.id\n  performance_tier = \"high\"\n}\nresource \"digitalocean_nfsattachment\" \"primary\" {\n  share_id = digitalocean_nfs.example.id\n  vpc_id   = digitalocean_vpc.primary.id\n  region   = \"nyc1\"\n}\nresource \"digitalocean_nfsattachment\" \"secondary\" {\n  depends_on = [digitalocean_nfsattachment.primary]\n  share_id   = digitalocean_nfs.example.id\n  vpc_id     = digitalocean_vpc.secondary.id\n  region     = \"nyc1\"\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.Vpc;\nimport com.pulumi.digitalocean.VpcArgs;\nimport com.pulumi.digitalocean.Nfs;\nimport com.pulumi.digitalocean.NfsArgs;\nimport com.pulumi.digitalocean.NfsAttachment;\nimport com.pulumi.digitalocean.NfsAttachmentArgs;\nimport com.pulumi.resources.CustomResourceOptions;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var primary = new Vpc(\"primary\", VpcArgs.builder()\n            .name(\"primary-vpc\")\n            .region(\"nyc1\")\n            .build());\n\n        var secondary = new Vpc(\"secondary\", VpcArgs.builder()\n            .name(\"secondary-vpc\")\n            .region(\"nyc1\")\n            .build());\n\n        var example = new Nfs(\"example\", NfsArgs.builder()\n            .region(\"nyc1\")\n            .name(\"example-nfs\")\n            .size(50)\n            .vpcId(primary.id())\n            .performanceTier(\"high\")\n            .build());\n\n        var primaryNfsAttachment = new NfsAttachment(\"primaryNfsAttachment\", NfsAttachmentArgs.builder()\n            .shareId(example.id())\n            .vpcId(primary.id())\n            .region(\"nyc1\")\n            .build());\n\n        var secondaryNfsAttachment = new NfsAttachment(\"secondaryNfsAttachment\", NfsAttachmentArgs.builder()\n            .shareId(example.id())\n            .vpcId(secondary.id())\n            .region(\"nyc1\")\n            .build(), CustomResourceOptions.builder()\n                .dependsOn(primaryNfsAttachment)\n                .build());\n\n    }\n}\n```\n```yaml\nresources:\n  primary:\n    type: digitalocean:Vpc\n    properties:\n      name: primary-vpc\n      region: nyc1\n  secondary:\n    type: digitalocean:Vpc\n    properties:\n      name: secondary-vpc\n      region: nyc1\n  example:\n    type: digitalocean:Nfs\n    properties:\n      region: nyc1\n      name: example-nfs\n      size: 50\n      vpcId: ${primary.id}\n      performanceTier: high\n  primaryNfsAttachment:\n    type: digitalocean:NfsAttachment\n    name: primary\n    properties:\n      shareId: ${example.id}\n      vpcId: ${primary.id}\n      region: nyc1\n  secondaryNfsAttachment:\n    type: digitalocean:NfsAttachment\n    name: secondary\n    properties:\n      shareId: ${example.id}\n      vpcId: ${secondary.id}\n      region: nyc1\n    options:\n      dependsOn:\n        - ${primaryNfsAttachment}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Notes\n\nAn NFS share can be attached to multiple VPCs. Use one \u003cspan pulumi-lang-nodejs=\"`digitalocean.NfsAttachment`\" pulumi-lang-dotnet=\"`digitalocean.NfsAttachment`\" pulumi-lang-go=\"`NfsAttachment`\" pulumi-lang-python=\"`NfsAttachment`\" pulumi-lang-yaml=\"`digitalocean.NfsAttachment`\" pulumi-lang-java=\"`digitalocean.NfsAttachment`\" pulumi-lang-hcl=\"`digitalocean_nfs_attachment`\"\u003e`digitalocean.NfsAttachment`\u003c/span\u003e resource per VPC. Multiple NFS shares can also be attached to the same VPC.\n\n## Import\n\nNFS shares can be imported using the `share id` and the \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\" pulumi-lang-hcl=\"`region`\"\u003e`region`\u003c/span\u003e, e.g.\n\n```sh\n$ pulumi import digitalocean:index/nfs:Nfs foobar 506f78a4-e098-11e5-ad9f-000f53306ae1,atl1\n```\n\n",
             "properties": {
                 "host": {
                     "type": "string",
@@ -38042,7 +38201,8 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The set of VPC IDs the NFS share is attached to.\n"
                 }
             },
             "required": [
@@ -38139,17 +38299,151 @@
                         "type": "array",
                         "items": {
                             "type": "string"
-                        }
+                        },
+                        "description": "The set of VPC IDs the NFS share is attached to.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "digitalocean:index/nfsAccessPoint:NfsAccessPoint": {
+            "description": "Provides a DigitalOcean NFS access point for a Network File Storage share. Access points define export paths and access policies for mounting an NFS share from a VPC.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst foobar = new digitalocean.Vpc(\"foobar\", {\n    name: \"example-vpc\",\n    region: \"atl1\",\n});\nconst foobarNfs = new digitalocean.Nfs(\"foobar\", {\n    region: \"atl1\",\n    name: \"example-nfs\",\n    size: 50,\n    vpcId: foobar.id,\n    performanceTier: \"standard\",\n});\nconst foobarNfsAccessPoint = new digitalocean.NfsAccessPoint(\"foobar\", {\n    name: \"example-access-point\",\n    shareId: foobarNfs.id,\n    path: \"/data\",\n    vpcId: foobar.id,\n    accessPolicy: {\n        anonuid: 65534,\n        anongid: 65534,\n        protocols: [\"NFS4\"],\n        squashConfig: \"ROOT_SQUASH\",\n        identityEnforcementEnabled: false,\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nfoobar = digitalocean.Vpc(\"foobar\",\n    name=\"example-vpc\",\n    region=\"atl1\")\nfoobar_nfs = digitalocean.Nfs(\"foobar\",\n    region=\"atl1\",\n    name=\"example-nfs\",\n    size=50,\n    vpc_id=foobar.id,\n    performance_tier=\"standard\")\nfoobar_nfs_access_point = digitalocean.NfsAccessPoint(\"foobar\",\n    name=\"example-access-point\",\n    share_id=foobar_nfs.id,\n    path=\"/data\",\n    vpc_id=foobar.id,\n    access_policy={\n        \"anonuid\": 65534,\n        \"anongid\": 65534,\n        \"protocols\": [\"NFS4\"],\n        \"squash_config\": \"ROOT_SQUASH\",\n        \"identity_enforcement_enabled\": False,\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foobar = new DigitalOcean.Vpc(\"foobar\", new()\n    {\n        Name = \"example-vpc\",\n        Region = \"atl1\",\n    });\n\n    var foobarNfs = new DigitalOcean.Nfs(\"foobar\", new()\n    {\n        Region = \"atl1\",\n        Name = \"example-nfs\",\n        Size = 50,\n        VpcId = foobar.Id,\n        PerformanceTier = \"standard\",\n    });\n\n    var foobarNfsAccessPoint = new DigitalOcean.NfsAccessPoint(\"foobar\", new()\n    {\n        Name = \"example-access-point\",\n        ShareId = foobarNfs.Id,\n        Path = \"/data\",\n        VpcId = foobar.Id,\n        AccessPolicy = new DigitalOcean.Inputs.NfsAccessPointAccessPolicyArgs\n        {\n            Anonuid = 65534,\n            Anongid = 65534,\n            Protocols = new[]\n            {\n                \"NFS4\",\n            },\n            SquashConfig = \"ROOT_SQUASH\",\n            IdentityEnforcementEnabled = false,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfoobar, err := digitalocean.NewVpc(ctx, \"foobar\", \u0026digitalocean.VpcArgs{\n\t\t\tName:   pulumi.String(\"example-vpc\"),\n\t\t\tRegion: pulumi.String(\"atl1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tfoobarNfs, err := digitalocean.NewNfs(ctx, \"foobar\", \u0026digitalocean.NfsArgs{\n\t\t\tRegion:          pulumi.String(\"atl1\"),\n\t\t\tName:            pulumi.String(\"example-nfs\"),\n\t\t\tSize:            pulumi.Int(50),\n\t\t\tVpcId:           foobar.ID(),\n\t\t\tPerformanceTier: pulumi.String(\"standard\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewNfsAccessPoint(ctx, \"foobar\", \u0026digitalocean.NfsAccessPointArgs{\n\t\t\tName:    pulumi.String(\"example-access-point\"),\n\t\t\tShareId: foobarNfs.ID(),\n\t\t\tPath:    pulumi.String(\"/data\"),\n\t\t\tVpcId:   foobar.ID(),\n\t\t\tAccessPolicy: \u0026digitalocean.NfsAccessPointAccessPolicyArgs{\n\t\t\t\tAnonuid: pulumi.Int(65534),\n\t\t\t\tAnongid: pulumi.Int(65534),\n\t\t\t\tProtocols: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"NFS4\"),\n\t\t\t\t},\n\t\t\t\tSquashConfig:               pulumi.String(\"ROOT_SQUASH\"),\n\t\t\t\tIdentityEnforcementEnabled: pulumi.Bool(false),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\npulumi {\n  required_providers {\n    digitalocean = {\n      source = \"pulumi/digitalocean\"\n    }\n  }\n}\n\nresource \"digitalocean_vpc\" \"foobar\" {\n  name   = \"example-vpc\"\n  region = \"atl1\"\n}\nresource \"digitalocean_nfs\" \"foobar\" {\n  region           = \"atl1\"\n  name             = \"example-nfs\"\n  size             = 50\n  vpc_id           = digitalocean_vpc.foobar.id\n  performance_tier = \"standard\"\n}\nresource \"digitalocean_nfsaccesspoint\" \"foobar\" {\n  name     = \"example-access-point\"\n  share_id = digitalocean_nfs.foobar.id\n  path     = \"/data\"\n  vpc_id   = digitalocean_vpc.foobar.id\n  access_policy = {\n    anonuid                      = 65534\n    anongid                      = 65534\n    protocols                    = [\"NFS4\"]\n    squash_config                = \"ROOT_SQUASH\"\n    identity_enforcement_enabled = false\n  }\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.Vpc;\nimport com.pulumi.digitalocean.VpcArgs;\nimport com.pulumi.digitalocean.Nfs;\nimport com.pulumi.digitalocean.NfsArgs;\nimport com.pulumi.digitalocean.NfsAccessPoint;\nimport com.pulumi.digitalocean.NfsAccessPointArgs;\nimport com.pulumi.digitalocean.inputs.NfsAccessPointAccessPolicyArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var foobar = new Vpc(\"foobar\", VpcArgs.builder()\n            .name(\"example-vpc\")\n            .region(\"atl1\")\n            .build());\n\n        var foobarNfs = new Nfs(\"foobarNfs\", NfsArgs.builder()\n            .region(\"atl1\")\n            .name(\"example-nfs\")\n            .size(50)\n            .vpcId(foobar.id())\n            .performanceTier(\"standard\")\n            .build());\n\n        var foobarNfsAccessPoint = new NfsAccessPoint(\"foobarNfsAccessPoint\", NfsAccessPointArgs.builder()\n            .name(\"example-access-point\")\n            .shareId(foobarNfs.id())\n            .path(\"/data\")\n            .vpcId(foobar.id())\n            .accessPolicy(NfsAccessPointAccessPolicyArgs.builder()\n                .anonuid(65534)\n                .anongid(65534)\n                .protocols(\"NFS4\")\n                .squashConfig(\"ROOT_SQUASH\")\n                .identityEnforcementEnabled(false)\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  foobar:\n    type: digitalocean:Vpc\n    properties:\n      name: example-vpc\n      region: atl1\n  foobarNfs:\n    type: digitalocean:Nfs\n    name: foobar\n    properties:\n      region: atl1\n      name: example-nfs\n      size: 50\n      vpcId: ${foobar.id}\n      performanceTier: standard\n  foobarNfsAccessPoint:\n    type: digitalocean:NfsAccessPoint\n    name: foobar\n    properties:\n      name: example-access-point\n      shareId: ${foobarNfs.id}\n      path: /data\n      vpcId: ${foobar.id}\n      accessPolicy:\n        anonuid: 65534\n        anongid: 65534\n        protocols:\n          - NFS4\n        squashConfig: ROOT_SQUASH\n        identityEnforcementEnabled: false\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nNFS access points can be imported using the access point ID, e.g.\n\n```sh\n$ pulumi import digitalocean:index/nfsAccessPoint:NfsAccessPoint foobar 506f78a4-e098-11e5-ad9f-000f53306ae1\n```\n\n",
+            "properties": {
+                "accessPolicy": {
+                    "$ref": "#/types/digitalocean:index/NfsAccessPointAccessPolicy:NfsAccessPointAccessPolicy",
+                    "description": "Access policy configuration for the access point. See Access Policy below.\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "The date and time when the access point was created.\n"
+                },
+                "isDefault": {
+                    "type": "boolean",
+                    "description": "Whether this is the default access point for the share.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "A name for the NFS access point.\n"
+                },
+                "path": {
+                    "type": "string",
+                    "description": "The export path for the access point.\n"
+                },
+                "shareId": {
+                    "type": "string",
+                    "description": "The ID of the NFS share.\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "The status of the access point.\n"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "description": "The date and time when the access point was last updated.\n"
+                },
+                "vpcId": {
+                    "type": "string",
+                    "description": "The ID of the VPC that can access this access point. The VPC must be attached to the NFS share.\n"
+                }
+            },
+            "required": [
+                "accessPolicy",
+                "createdAt",
+                "isDefault",
+                "name",
+                "path",
+                "shareId",
+                "status",
+                "updatedAt",
+                "vpcId"
+            ],
+            "inputProperties": {
+                "accessPolicy": {
+                    "$ref": "#/types/digitalocean:index/NfsAccessPointAccessPolicy:NfsAccessPointAccessPolicy",
+                    "description": "Access policy configuration for the access point. See Access Policy below.\n",
+                    "willReplaceOnChanges": true
+                },
+                "name": {
+                    "type": "string",
+                    "description": "A name for the NFS access point.\n",
+                    "willReplaceOnChanges": true
+                },
+                "path": {
+                    "type": "string",
+                    "description": "The export path for the access point.\n",
+                    "willReplaceOnChanges": true
+                },
+                "shareId": {
+                    "type": "string",
+                    "description": "The ID of the NFS share.\n",
+                    "willReplaceOnChanges": true
+                },
+                "vpcId": {
+                    "type": "string",
+                    "description": "The ID of the VPC that can access this access point. The VPC must be attached to the NFS share.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "accessPolicy",
+                "path",
+                "shareId",
+                "vpcId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering NfsAccessPoint resources.\n",
+                "properties": {
+                    "accessPolicy": {
+                        "$ref": "#/types/digitalocean:index/NfsAccessPointAccessPolicy:NfsAccessPointAccessPolicy",
+                        "description": "Access policy configuration for the access point. See Access Policy below.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "description": "The date and time when the access point was created.\n"
+                    },
+                    "isDefault": {
+                        "type": "boolean",
+                        "description": "Whether this is the default access point for the share.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "A name for the NFS access point.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "path": {
+                        "type": "string",
+                        "description": "The export path for the access point.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "shareId": {
+                        "type": "string",
+                        "description": "The ID of the NFS share.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "The status of the access point.\n"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "description": "The date and time when the access point was last updated.\n"
+                    },
+                    "vpcId": {
+                        "type": "string",
+                        "description": "The ID of the VPC that can access this access point. The VPC must be attached to the NFS share.\n",
+                        "willReplaceOnChanges": true
                     }
                 },
                 "type": "object"
             }
         },
         "digitalocean:index/nfsAttachment:NfsAttachment": {
-            "description": "Manages attaching a NFS share to a vpc.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst foobar = new digitalocean.Vpc(\"foobar\", {\n    name: \"example-vpc\",\n    region: \"atl1\",\n});\nconst foobarNfs = new digitalocean.Nfs(\"foobar\", {\n    region: \"atl1\",\n    name: \"example-nfs\",\n    size: 50,\n    vpcId: foobar.id,\n    performanceTier: \"high\",\n});\nconst foobarNfsAttachment = new digitalocean.NfsAttachment(\"foobar\", {\n    shareId: foobarNfs.id,\n    vpcId: foobar.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nfoobar = digitalocean.Vpc(\"foobar\",\n    name=\"example-vpc\",\n    region=\"atl1\")\nfoobar_nfs = digitalocean.Nfs(\"foobar\",\n    region=\"atl1\",\n    name=\"example-nfs\",\n    size=50,\n    vpc_id=foobar.id,\n    performance_tier=\"high\")\nfoobar_nfs_attachment = digitalocean.NfsAttachment(\"foobar\",\n    share_id=foobar_nfs.id,\n    vpc_id=foobar.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foobar = new DigitalOcean.Vpc(\"foobar\", new()\n    {\n        Name = \"example-vpc\",\n        Region = \"atl1\",\n    });\n\n    var foobarNfs = new DigitalOcean.Nfs(\"foobar\", new()\n    {\n        Region = \"atl1\",\n        Name = \"example-nfs\",\n        Size = 50,\n        VpcId = foobar.Id,\n        PerformanceTier = \"high\",\n    });\n\n    var foobarNfsAttachment = new DigitalOcean.NfsAttachment(\"foobar\", new()\n    {\n        ShareId = foobarNfs.Id,\n        VpcId = foobar.Id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfoobar, err := digitalocean.NewVpc(ctx, \"foobar\", \u0026digitalocean.VpcArgs{\n\t\t\tName:   pulumi.String(\"example-vpc\"),\n\t\t\tRegion: pulumi.String(\"atl1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tfoobarNfs, err := digitalocean.NewNfs(ctx, \"foobar\", \u0026digitalocean.NfsArgs{\n\t\t\tRegion:          pulumi.String(\"atl1\"),\n\t\t\tName:            pulumi.String(\"example-nfs\"),\n\t\t\tSize:            pulumi.Int(50),\n\t\t\tVpcId:           foobar.ID(),\n\t\t\tPerformanceTier: pulumi.String(\"high\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewNfsAttachment(ctx, \"foobar\", \u0026digitalocean.NfsAttachmentArgs{\n\t\t\tShareId: foobarNfs.ID(),\n\t\t\tVpcId:   foobar.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\npulumi {\n  required_providers {\n    digitalocean = {\n      source = \"pulumi/digitalocean\"\n    }\n  }\n}\n\nresource \"digitalocean_vpc\" \"foobar\" {\n  name   = \"example-vpc\"\n  region = \"atl1\"\n}\nresource \"digitalocean_nfs\" \"foobar\" {\n  region           = \"atl1\"\n  name             = \"example-nfs\"\n  size             = 50\n  vpc_id           = digitalocean_vpc.foobar.id\n  performance_tier = \"high\"\n}\nresource \"digitalocean_nfsattachment\" \"foobar\" {\n  share_id = digitalocean_nfs.foobar.id\n  vpc_id   = digitalocean_vpc.foobar.id\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.Vpc;\nimport com.pulumi.digitalocean.VpcArgs;\nimport com.pulumi.digitalocean.Nfs;\nimport com.pulumi.digitalocean.NfsArgs;\nimport com.pulumi.digitalocean.NfsAttachment;\nimport com.pulumi.digitalocean.NfsAttachmentArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var foobar = new Vpc(\"foobar\", VpcArgs.builder()\n            .name(\"example-vpc\")\n            .region(\"atl1\")\n            .build());\n\n        var foobarNfs = new Nfs(\"foobarNfs\", NfsArgs.builder()\n            .region(\"atl1\")\n            .name(\"example-nfs\")\n            .size(50)\n            .vpcId(foobar.id())\n            .performanceTier(\"high\")\n            .build());\n\n        var foobarNfsAttachment = new NfsAttachment(\"foobarNfsAttachment\", NfsAttachmentArgs.builder()\n            .shareId(foobarNfs.id())\n            .vpcId(foobar.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  foobar:\n    type: digitalocean:Vpc\n    properties:\n      name: example-vpc\n      region: atl1\n  foobarNfs:\n    type: digitalocean:Nfs\n    name: foobar\n    properties:\n      region: atl1\n      name: example-nfs\n      size: 50\n      vpcId: ${foobar.id}\n      performanceTier: high\n  foobarNfsAttachment:\n    type: digitalocean:NfsAttachment\n    name: foobar\n    properties:\n      shareId: ${foobarNfs.id}\n      vpcId: ${foobar.id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nNFS attachments can be imported using the \u003cspan pulumi-lang-nodejs=\"`shareId`\" pulumi-lang-dotnet=\"`ShareId`\" pulumi-lang-go=\"`shareId`\" pulumi-lang-python=\"`share_id`\" pulumi-lang-yaml=\"`shareId`\" pulumi-lang-java=\"`shareId`\" pulumi-lang-hcl=\"`share_id`\"\u003e`shareId`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`vpcId`\" pulumi-lang-dotnet=\"`VpcId`\" pulumi-lang-go=\"`vpcId`\" pulumi-lang-python=\"`vpc_id`\" pulumi-lang-yaml=\"`vpcId`\" pulumi-lang-java=\"`vpcId`\" pulumi-lang-hcl=\"`vpc_id`\"\u003e`vpcId`\u003c/span\u003e separated by a comma, e.g.  \n\n```sh\n$ pulumi import digitalocean:index/nfsAttachment:NfsAttachment foobar 506f78a4-e098-11e5-ad9f-000f53306ae1,d1ebc5a4-e098-11e5-ad9f-000f53306ae1\n```\n\n",
+            "description": "Manages attaching an NFS share to a VPC. A share can be attached to multiple VPCs by creating one \u003cspan pulumi-lang-nodejs=\"`digitalocean.NfsAttachment`\" pulumi-lang-dotnet=\"`digitalocean.NfsAttachment`\" pulumi-lang-go=\"`NfsAttachment`\" pulumi-lang-python=\"`NfsAttachment`\" pulumi-lang-yaml=\"`digitalocean.NfsAttachment`\" pulumi-lang-java=\"`digitalocean.NfsAttachment`\" pulumi-lang-hcl=\"`digitalocean_nfs_attachment`\"\u003e`digitalocean.NfsAttachment`\u003c/span\u003e resource per VPC.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst foobar = new digitalocean.Vpc(\"foobar\", {\n    name: \"example-vpc\",\n    region: \"atl1\",\n});\nconst foobarNfs = new digitalocean.Nfs(\"foobar\", {\n    region: \"atl1\",\n    name: \"example-nfs\",\n    size: 50,\n    vpcId: foobar.id,\n    performanceTier: \"high\",\n});\nconst foobarNfsAttachment = new digitalocean.NfsAttachment(\"foobar\", {\n    shareId: foobarNfs.id,\n    vpcId: foobar.id,\n    region: \"atl1\",\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nfoobar = digitalocean.Vpc(\"foobar\",\n    name=\"example-vpc\",\n    region=\"atl1\")\nfoobar_nfs = digitalocean.Nfs(\"foobar\",\n    region=\"atl1\",\n    name=\"example-nfs\",\n    size=50,\n    vpc_id=foobar.id,\n    performance_tier=\"high\")\nfoobar_nfs_attachment = digitalocean.NfsAttachment(\"foobar\",\n    share_id=foobar_nfs.id,\n    vpc_id=foobar.id,\n    region=\"atl1\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foobar = new DigitalOcean.Vpc(\"foobar\", new()\n    {\n        Name = \"example-vpc\",\n        Region = \"atl1\",\n    });\n\n    var foobarNfs = new DigitalOcean.Nfs(\"foobar\", new()\n    {\n        Region = \"atl1\",\n        Name = \"example-nfs\",\n        Size = 50,\n        VpcId = foobar.Id,\n        PerformanceTier = \"high\",\n    });\n\n    var foobarNfsAttachment = new DigitalOcean.NfsAttachment(\"foobar\", new()\n    {\n        ShareId = foobarNfs.Id,\n        VpcId = foobar.Id,\n        Region = \"atl1\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfoobar, err := digitalocean.NewVpc(ctx, \"foobar\", \u0026digitalocean.VpcArgs{\n\t\t\tName:   pulumi.String(\"example-vpc\"),\n\t\t\tRegion: pulumi.String(\"atl1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tfoobarNfs, err := digitalocean.NewNfs(ctx, \"foobar\", \u0026digitalocean.NfsArgs{\n\t\t\tRegion:          pulumi.String(\"atl1\"),\n\t\t\tName:            pulumi.String(\"example-nfs\"),\n\t\t\tSize:            pulumi.Int(50),\n\t\t\tVpcId:           foobar.ID(),\n\t\t\tPerformanceTier: pulumi.String(\"high\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewNfsAttachment(ctx, \"foobar\", \u0026digitalocean.NfsAttachmentArgs{\n\t\t\tShareId: foobarNfs.ID(),\n\t\t\tVpcId:   foobar.ID(),\n\t\t\tRegion:  pulumi.String(\"atl1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\npulumi {\n  required_providers {\n    digitalocean = {\n      source = \"pulumi/digitalocean\"\n    }\n  }\n}\n\nresource \"digitalocean_vpc\" \"foobar\" {\n  name   = \"example-vpc\"\n  region = \"atl1\"\n}\nresource \"digitalocean_nfs\" \"foobar\" {\n  region           = \"atl1\"\n  name             = \"example-nfs\"\n  size             = 50\n  vpc_id           = digitalocean_vpc.foobar.id\n  performance_tier = \"high\"\n}\nresource \"digitalocean_nfsattachment\" \"foobar\" {\n  share_id = digitalocean_nfs.foobar.id\n  vpc_id   = digitalocean_vpc.foobar.id\n  region   = \"atl1\"\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.Vpc;\nimport com.pulumi.digitalocean.VpcArgs;\nimport com.pulumi.digitalocean.Nfs;\nimport com.pulumi.digitalocean.NfsArgs;\nimport com.pulumi.digitalocean.NfsAttachment;\nimport com.pulumi.digitalocean.NfsAttachmentArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var foobar = new Vpc(\"foobar\", VpcArgs.builder()\n            .name(\"example-vpc\")\n            .region(\"atl1\")\n            .build());\n\n        var foobarNfs = new Nfs(\"foobarNfs\", NfsArgs.builder()\n            .region(\"atl1\")\n            .name(\"example-nfs\")\n            .size(50)\n            .vpcId(foobar.id())\n            .performanceTier(\"high\")\n            .build());\n\n        var foobarNfsAttachment = new NfsAttachment(\"foobarNfsAttachment\", NfsAttachmentArgs.builder()\n            .shareId(foobarNfs.id())\n            .vpcId(foobar.id())\n            .region(\"atl1\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  foobar:\n    type: digitalocean:Vpc\n    properties:\n      name: example-vpc\n      region: atl1\n  foobarNfs:\n    type: digitalocean:Nfs\n    name: foobar\n    properties:\n      region: atl1\n      name: example-nfs\n      size: 50\n      vpcId: ${foobar.id}\n      performanceTier: high\n  foobarNfsAttachment:\n    type: digitalocean:NfsAttachment\n    name: foobar\n    properties:\n      shareId: ${foobarNfs.id}\n      vpcId: ${foobar.id}\n      region: atl1\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Multiple VPCs\n\nAttach the same NFS share to additional VPCs one at a time:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst primary = new digitalocean.Vpc(\"primary\", {\n    name: \"primary-vpc\",\n    region: \"atl1\",\n});\nconst secondary = new digitalocean.Vpc(\"secondary\", {\n    name: \"secondary-vpc\",\n    region: \"atl1\",\n});\nconst example = new digitalocean.Nfs(\"example\", {\n    region: \"atl1\",\n    name: \"example-nfs\",\n    size: 50,\n    vpcId: primary.id,\n    performanceTier: \"high\",\n});\nconst primaryNfsAttachment = new digitalocean.NfsAttachment(\"primary\", {\n    shareId: example.id,\n    vpcId: primary.id,\n    region: \"atl1\",\n});\nconst secondaryNfsAttachment = new digitalocean.NfsAttachment(\"secondary\", {\n    shareId: example.id,\n    vpcId: secondary.id,\n    region: \"atl1\",\n}, {\n    dependsOn: [primaryNfsAttachment],\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nprimary = digitalocean.Vpc(\"primary\",\n    name=\"primary-vpc\",\n    region=\"atl1\")\nsecondary = digitalocean.Vpc(\"secondary\",\n    name=\"secondary-vpc\",\n    region=\"atl1\")\nexample = digitalocean.Nfs(\"example\",\n    region=\"atl1\",\n    name=\"example-nfs\",\n    size=50,\n    vpc_id=primary.id,\n    performance_tier=\"high\")\nprimary_nfs_attachment = digitalocean.NfsAttachment(\"primary\",\n    share_id=example.id,\n    vpc_id=primary.id,\n    region=\"atl1\")\nsecondary_nfs_attachment = digitalocean.NfsAttachment(\"secondary\",\n    share_id=example.id,\n    vpc_id=secondary.id,\n    region=\"atl1\",\n    opts = pulumi.ResourceOptions(depends_on=[primary_nfs_attachment]))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var primary = new DigitalOcean.Vpc(\"primary\", new()\n    {\n        Name = \"primary-vpc\",\n        Region = \"atl1\",\n    });\n\n    var secondary = new DigitalOcean.Vpc(\"secondary\", new()\n    {\n        Name = \"secondary-vpc\",\n        Region = \"atl1\",\n    });\n\n    var example = new DigitalOcean.Nfs(\"example\", new()\n    {\n        Region = \"atl1\",\n        Name = \"example-nfs\",\n        Size = 50,\n        VpcId = primary.Id,\n        PerformanceTier = \"high\",\n    });\n\n    var primaryNfsAttachment = new DigitalOcean.NfsAttachment(\"primary\", new()\n    {\n        ShareId = example.Id,\n        VpcId = primary.Id,\n        Region = \"atl1\",\n    });\n\n    var secondaryNfsAttachment = new DigitalOcean.NfsAttachment(\"secondary\", new()\n    {\n        ShareId = example.Id,\n        VpcId = secondary.Id,\n        Region = \"atl1\",\n    }, new CustomResourceOptions\n    {\n        DependsOn =\n        {\n            primaryNfsAttachment,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tprimary, err := digitalocean.NewVpc(ctx, \"primary\", \u0026digitalocean.VpcArgs{\n\t\t\tName:   pulumi.String(\"primary-vpc\"),\n\t\t\tRegion: pulumi.String(\"atl1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tsecondary, err := digitalocean.NewVpc(ctx, \"secondary\", \u0026digitalocean.VpcArgs{\n\t\t\tName:   pulumi.String(\"secondary-vpc\"),\n\t\t\tRegion: pulumi.String(\"atl1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\texample, err := digitalocean.NewNfs(ctx, \"example\", \u0026digitalocean.NfsArgs{\n\t\t\tRegion:          pulumi.String(\"atl1\"),\n\t\t\tName:            pulumi.String(\"example-nfs\"),\n\t\t\tSize:            pulumi.Int(50),\n\t\t\tVpcId:           primary.ID(),\n\t\t\tPerformanceTier: pulumi.String(\"high\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tprimaryNfsAttachment, err := digitalocean.NewNfsAttachment(ctx, \"primary\", \u0026digitalocean.NfsAttachmentArgs{\n\t\t\tShareId: example.ID(),\n\t\t\tVpcId:   primary.ID(),\n\t\t\tRegion:  pulumi.String(\"atl1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewNfsAttachment(ctx, \"secondary\", \u0026digitalocean.NfsAttachmentArgs{\n\t\t\tShareId: example.ID(),\n\t\t\tVpcId:   secondary.ID(),\n\t\t\tRegion:  pulumi.String(\"atl1\"),\n\t\t}, pulumi.DependsOn([]pulumi.Resource{\n\t\t\tprimaryNfsAttachment,\n\t\t}))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\npulumi {\n  required_providers {\n    digitalocean = {\n      source = \"pulumi/digitalocean\"\n    }\n  }\n}\n\nresource \"digitalocean_vpc\" \"primary\" {\n  name   = \"primary-vpc\"\n  region = \"atl1\"\n}\nresource \"digitalocean_vpc\" \"secondary\" {\n  name   = \"secondary-vpc\"\n  region = \"atl1\"\n}\nresource \"digitalocean_nfs\" \"example\" {\n  region           = \"atl1\"\n  name             = \"example-nfs\"\n  size             = 50\n  vpc_id           = digitalocean_vpc.primary.id\n  performance_tier = \"high\"\n}\nresource \"digitalocean_nfsattachment\" \"primary\" {\n  share_id = digitalocean_nfs.example.id\n  vpc_id   = digitalocean_vpc.primary.id\n  region   = \"atl1\"\n}\nresource \"digitalocean_nfsattachment\" \"secondary\" {\n  depends_on = [digitalocean_nfsattachment.primary]\n  share_id   = digitalocean_nfs.example.id\n  vpc_id     = digitalocean_vpc.secondary.id\n  region     = \"atl1\"\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.Vpc;\nimport com.pulumi.digitalocean.VpcArgs;\nimport com.pulumi.digitalocean.Nfs;\nimport com.pulumi.digitalocean.NfsArgs;\nimport com.pulumi.digitalocean.NfsAttachment;\nimport com.pulumi.digitalocean.NfsAttachmentArgs;\nimport com.pulumi.resources.CustomResourceOptions;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var primary = new Vpc(\"primary\", VpcArgs.builder()\n            .name(\"primary-vpc\")\n            .region(\"atl1\")\n            .build());\n\n        var secondary = new Vpc(\"secondary\", VpcArgs.builder()\n            .name(\"secondary-vpc\")\n            .region(\"atl1\")\n            .build());\n\n        var example = new Nfs(\"example\", NfsArgs.builder()\n            .region(\"atl1\")\n            .name(\"example-nfs\")\n            .size(50)\n            .vpcId(primary.id())\n            .performanceTier(\"high\")\n            .build());\n\n        var primaryNfsAttachment = new NfsAttachment(\"primaryNfsAttachment\", NfsAttachmentArgs.builder()\n            .shareId(example.id())\n            .vpcId(primary.id())\n            .region(\"atl1\")\n            .build());\n\n        var secondaryNfsAttachment = new NfsAttachment(\"secondaryNfsAttachment\", NfsAttachmentArgs.builder()\n            .shareId(example.id())\n            .vpcId(secondary.id())\n            .region(\"atl1\")\n            .build(), CustomResourceOptions.builder()\n                .dependsOn(primaryNfsAttachment)\n                .build());\n\n    }\n}\n```\n```yaml\nresources:\n  primary:\n    type: digitalocean:Vpc\n    properties:\n      name: primary-vpc\n      region: atl1\n  secondary:\n    type: digitalocean:Vpc\n    properties:\n      name: secondary-vpc\n      region: atl1\n  example:\n    type: digitalocean:Nfs\n    properties:\n      region: atl1\n      name: example-nfs\n      size: 50\n      vpcId: ${primary.id}\n      performanceTier: high\n  primaryNfsAttachment:\n    type: digitalocean:NfsAttachment\n    name: primary\n    properties:\n      shareId: ${example.id}\n      vpcId: ${primary.id}\n      region: atl1\n  secondaryNfsAttachment:\n    type: digitalocean:NfsAttachment\n    name: secondary\n    properties:\n      shareId: ${example.id}\n      vpcId: ${secondary.id}\n      region: atl1\n    options:\n      dependsOn:\n        - ${primaryNfsAttachment}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nDeleting an attachment resource detaches the share from that VPC only. Other VPC attachments remain in place.\n\n## Import\n\nNFS attachments can be imported using the \u003cspan pulumi-lang-nodejs=\"`shareId`\" pulumi-lang-dotnet=\"`ShareId`\" pulumi-lang-go=\"`shareId`\" pulumi-lang-python=\"`share_id`\" pulumi-lang-yaml=\"`shareId`\" pulumi-lang-java=\"`shareId`\" pulumi-lang-hcl=\"`share_id`\"\u003e`shareId`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`vpcId`\" pulumi-lang-dotnet=\"`VpcId`\" pulumi-lang-go=\"`vpcId`\" pulumi-lang-python=\"`vpc_id`\" pulumi-lang-yaml=\"`vpcId`\" pulumi-lang-java=\"`vpcId`\" pulumi-lang-hcl=\"`vpc_id`\"\u003e`vpcId`\u003c/span\u003e separated by a comma, e.g.  \n\n```sh\n$ pulumi import digitalocean:index/nfsAttachment:NfsAttachment foobar 506f78a4-e098-11e5-ad9f-000f53306ae1,d1ebc5a4-e098-11e5-ad9f-000f53306ae1\n```\n\n",
             "properties": {
                 "region": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The region of the NFS share.\n"
                 },
                 "shareId": {
                     "type": "string",
@@ -38157,7 +38451,7 @@
                 },
                 "vpcId": {
                     "type": "string",
-                    "description": "The ID of the vpc to attach the NFS share to.\n"
+                    "description": "The ID of the VPC to attach the NFS share to.\n"
                 }
             },
             "required": [
@@ -38168,6 +38462,7 @@
             "inputProperties": {
                 "region": {
                     "type": "string",
+                    "description": "The region of the NFS share.\n",
                     "willReplaceOnChanges": true
                 },
                 "shareId": {
@@ -38177,7 +38472,7 @@
                 },
                 "vpcId": {
                     "type": "string",
-                    "description": "The ID of the vpc to attach the NFS share to.\n",
+                    "description": "The ID of the VPC to attach the NFS share to.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -38191,6 +38486,7 @@
                 "properties": {
                     "region": {
                         "type": "string",
+                        "description": "The region of the NFS share.\n",
                         "willReplaceOnChanges": true
                     },
                     "shareId": {
@@ -38200,7 +38496,7 @@
                     },
                     "vpcId": {
                         "type": "string",
-                        "description": "The ID of the vpc to attach the NFS share to.\n",
+                        "description": "The ID of the VPC to attach the NFS share to.\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -39918,6 +40214,168 @@
                     "type": {
                         "type": "string",
                         "description": "The type of health check to perform: 'ping' 'http' 'https'.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "digitalocean:index/vectorDatabase:VectorDatabase": {
+            "description": "Provides a DigitalOcean vector database resource. Vector databases are powered by\n[Weaviate](https://weaviate.io/) and are managed independently from standard\nmanaged database clusters.\n\n## Example Usage\n\n### Create a new vector database\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst example = new digitalocean.VectorDatabase(\"example\", {\n    name: \"example-vector-db\",\n    region: \"nyc1\",\n    size: \"db-s-1vcpu-1gb\",\n    tags: [\"production\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nexample = digitalocean.VectorDatabase(\"example\",\n    name=\"example-vector-db\",\n    region=\"nyc1\",\n    size=\"db-s-1vcpu-1gb\",\n    tags=[\"production\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new DigitalOcean.VectorDatabase(\"example\", new()\n    {\n        Name = \"example-vector-db\",\n        Region = \"nyc1\",\n        Size = \"db-s-1vcpu-1gb\",\n        Tags = new[]\n        {\n            \"production\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewVectorDatabase(ctx, \"example\", \u0026digitalocean.VectorDatabaseArgs{\n\t\t\tName:   pulumi.String(\"example-vector-db\"),\n\t\t\tRegion: pulumi.String(\"nyc1\"),\n\t\t\tSize:   pulumi.String(\"db-s-1vcpu-1gb\"),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"production\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\npulumi {\n  required_providers {\n    digitalocean = {\n      source = \"pulumi/digitalocean\"\n    }\n  }\n}\n\nresource \"digitalocean_vectordatabase\" \"example\" {\n  name   = \"example-vector-db\"\n  region = \"nyc1\"\n  size   = \"db-s-1vcpu-1gb\"\n  tags   = [\"production\"]\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.VectorDatabase;\nimport com.pulumi.digitalocean.VectorDatabaseArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new VectorDatabase(\"example\", VectorDatabaseArgs.builder()\n            .name(\"example-vector-db\")\n            .region(\"nyc1\")\n            .size(\"db-s-1vcpu-1gb\")\n            .tags(\"production\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: digitalocean:VectorDatabase\n    properties:\n      name: example-vector-db\n      region: nyc1\n      size: db-s-1vcpu-1gb\n      tags:\n        - production\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Create a vector database with advanced configuration\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst example = new digitalocean.VectorDatabase(\"example\", {\n    name: \"example-vector-db\",\n    region: \"nyc1\",\n    size: \"db-s-2vcpu-2gb\",\n    config: {\n        defaultQuantization: \"none\",\n        enableAutoSchema: true,\n        weaviateVersion: \"1.25.0\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nexample = digitalocean.VectorDatabase(\"example\",\n    name=\"example-vector-db\",\n    region=\"nyc1\",\n    size=\"db-s-2vcpu-2gb\",\n    config={\n        \"default_quantization\": \"none\",\n        \"enable_auto_schema\": True,\n        \"weaviate_version\": \"1.25.0\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new DigitalOcean.VectorDatabase(\"example\", new()\n    {\n        Name = \"example-vector-db\",\n        Region = \"nyc1\",\n        Size = \"db-s-2vcpu-2gb\",\n        Config = new DigitalOcean.Inputs.VectorDatabaseConfigArgs\n        {\n            DefaultQuantization = \"none\",\n            EnableAutoSchema = true,\n            WeaviateVersion = \"1.25.0\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewVectorDatabase(ctx, \"example\", \u0026digitalocean.VectorDatabaseArgs{\n\t\t\tName:   pulumi.String(\"example-vector-db\"),\n\t\t\tRegion: pulumi.String(\"nyc1\"),\n\t\t\tSize:   pulumi.String(\"db-s-2vcpu-2gb\"),\n\t\t\tConfig: \u0026digitalocean.VectorDatabaseConfigArgs{\n\t\t\t\tDefaultQuantization: pulumi.String(\"none\"),\n\t\t\t\tEnableAutoSchema:    pulumi.Bool(true),\n\t\t\t\tWeaviateVersion:     pulumi.String(\"1.25.0\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\npulumi {\n  required_providers {\n    digitalocean = {\n      source = \"pulumi/digitalocean\"\n    }\n  }\n}\n\nresource \"digitalocean_vectordatabase\" \"example\" {\n  name   = \"example-vector-db\"\n  region = \"nyc1\"\n  size   = \"db-s-2vcpu-2gb\"\n  config = {\n    default_quantization = \"none\"\n    enable_auto_schema   = true\n    weaviate_version     = \"1.25.0\"\n  }\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.VectorDatabase;\nimport com.pulumi.digitalocean.VectorDatabaseArgs;\nimport com.pulumi.digitalocean.inputs.VectorDatabaseConfigArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new VectorDatabase(\"example\", VectorDatabaseArgs.builder()\n            .name(\"example-vector-db\")\n            .region(\"nyc1\")\n            .size(\"db-s-2vcpu-2gb\")\n            .config(VectorDatabaseConfigArgs.builder()\n                .defaultQuantization(\"none\")\n                .enableAutoSchema(true)\n                .weaviateVersion(\"1.25.0\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: digitalocean:VectorDatabase\n    properties:\n      name: example-vector-db\n      region: nyc1\n      size: db-s-2vcpu-2gb\n      config:\n        defaultQuantization: none\n        enableAutoSchema: true\n        weaviateVersion: 1.25.0\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nVector databases can be imported using their \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\" pulumi-lang-hcl=\"`id`\"\u003e`id`\u003c/span\u003e, e.g.\n\n```sh\n$ pulumi import digitalocean:index/vectorDatabase:VectorDatabase example 245bcfd0-7f31-4ce6-a2bc-475a116cca97\n```\n\n",
+            "properties": {
+                "config": {
+                    "$ref": "#/types/digitalocean:index/VectorDatabaseConfig:VectorDatabaseConfig",
+                    "description": "Advanced configuration for the vector database. The structure is documented below.\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "The date and time when the vector database was created.\n"
+                },
+                "endpoints": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/VectorDatabaseEndpoint:VectorDatabaseEndpoint"
+                    },
+                    "description": "The connection endpoints for the vector database. The structure is documented below.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the vector database. Changing this forces a new resource to be created.\n"
+                },
+                "ownerUuid": {
+                    "type": "string",
+                    "description": "The UUID of the account that owns the vector database.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "The ID of the project that the vector database is assigned to. If excluded, the database will be assigned to your default project. Changing this forces a new resource to be created.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The slug identifier for the region where the vector database will be created (ex. \u003cspan pulumi-lang-nodejs=\"`nyc1`\" pulumi-lang-dotnet=\"`Nyc1`\" pulumi-lang-go=\"`nyc1`\" pulumi-lang-python=\"`nyc1`\" pulumi-lang-yaml=\"`nyc1`\" pulumi-lang-java=\"`nyc1`\" pulumi-lang-hcl=\"`nyc1`\"\u003e`nyc1`\u003c/span\u003e). Changing this forces a new resource to be created.\n"
+                },
+                "size": {
+                    "type": "string",
+                    "description": "The slug identifier representing the size of the vector database (ex. `db-s-1vcpu-1gb`).\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "The current status of the vector database (ex. \u003cspan pulumi-lang-nodejs=\"`active`\" pulumi-lang-dotnet=\"`Active`\" pulumi-lang-go=\"`active`\" pulumi-lang-python=\"`active`\" pulumi-lang-yaml=\"`active`\" pulumi-lang-java=\"`active`\" pulumi-lang-hcl=\"`active`\"\u003e`active`\u003c/span\u003e).\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of tag names to be applied to the vector database.\n"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "description": "The date and time when the vector database was last updated.\n"
+                }
+            },
+            "required": [
+                "config",
+                "createdAt",
+                "endpoints",
+                "name",
+                "ownerUuid",
+                "projectId",
+                "region",
+                "size",
+                "status",
+                "updatedAt"
+            ],
+            "inputProperties": {
+                "config": {
+                    "$ref": "#/types/digitalocean:index/VectorDatabaseConfig:VectorDatabaseConfig",
+                    "description": "Advanced configuration for the vector database. The structure is documented below.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the vector database. Changing this forces a new resource to be created.\n",
+                    "willReplaceOnChanges": true
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "The ID of the project that the vector database is assigned to. If excluded, the database will be assigned to your default project. Changing this forces a new resource to be created.\n",
+                    "willReplaceOnChanges": true
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The slug identifier for the region where the vector database will be created (ex. \u003cspan pulumi-lang-nodejs=\"`nyc1`\" pulumi-lang-dotnet=\"`Nyc1`\" pulumi-lang-go=\"`nyc1`\" pulumi-lang-python=\"`nyc1`\" pulumi-lang-yaml=\"`nyc1`\" pulumi-lang-java=\"`nyc1`\" pulumi-lang-hcl=\"`nyc1`\"\u003e`nyc1`\u003c/span\u003e). Changing this forces a new resource to be created.\n",
+                    "willReplaceOnChanges": true
+                },
+                "size": {
+                    "type": "string",
+                    "description": "The slug identifier representing the size of the vector database (ex. `db-s-1vcpu-1gb`).\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of tag names to be applied to the vector database.\n"
+                }
+            },
+            "requiredInputs": [
+                "region",
+                "size"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering VectorDatabase resources.\n",
+                "properties": {
+                    "config": {
+                        "$ref": "#/types/digitalocean:index/VectorDatabaseConfig:VectorDatabaseConfig",
+                        "description": "Advanced configuration for the vector database. The structure is documented below.\n"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "description": "The date and time when the vector database was created.\n"
+                    },
+                    "endpoints": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/VectorDatabaseEndpoint:VectorDatabaseEndpoint"
+                        },
+                        "description": "The connection endpoints for the vector database. The structure is documented below.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the vector database. Changing this forces a new resource to be created.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "ownerUuid": {
+                        "type": "string",
+                        "description": "The UUID of the account that owns the vector database.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "The ID of the project that the vector database is assigned to. If excluded, the database will be assigned to your default project. Changing this forces a new resource to be created.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The slug identifier for the region where the vector database will be created (ex. \u003cspan pulumi-lang-nodejs=\"`nyc1`\" pulumi-lang-dotnet=\"`Nyc1`\" pulumi-lang-go=\"`nyc1`\" pulumi-lang-python=\"`nyc1`\" pulumi-lang-yaml=\"`nyc1`\" pulumi-lang-java=\"`nyc1`\" pulumi-lang-hcl=\"`nyc1`\"\u003e`nyc1`\u003c/span\u003e). Changing this forces a new resource to be created.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "size": {
+                        "type": "string",
+                        "description": "The slug identifier representing the size of the vector database (ex. `db-s-1vcpu-1gb`).\n"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "The current status of the vector database (ex. \u003cspan pulumi-lang-nodejs=\"`active`\" pulumi-lang-dotnet=\"`Active`\" pulumi-lang-go=\"`active`\" pulumi-lang-python=\"`active`\" pulumi-lang-yaml=\"`active`\" pulumi-lang-java=\"`active`\" pulumi-lang-hcl=\"`active`\"\u003e`active`\u003c/span\u003e).\n"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of tag names to be applied to the vector database.\n"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "description": "The date and time when the vector database was last updated.\n"
                     }
                 },
                 "type": "object"
@@ -45579,6 +46037,79 @@
                 "type": "object"
             }
         },
+        "digitalocean:index/getNfsAccessPoint:getNfsAccessPoint": {
+            "description": "Get information about a DigitalOcean NFS access point.\n\n## Example Usage\n\nGet the NFS access point by ID:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst example = digitalocean.getNfsAccessPoint({\n    id: \"506f78a4-e098-11e5-ad9f-000f53306ae1\",\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nexample = digitalocean.get_nfs_access_point(id=\"506f78a4-e098-11e5-ad9f-000f53306ae1\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = DigitalOcean.GetNfsAccessPoint.Invoke(new()\n    {\n        Id = \"506f78a4-e098-11e5-ad9f-000f53306ae1\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.GetNfsAccessPoint(ctx, \u0026digitalocean.LookupNfsAccessPointArgs{\n\t\t\tId: pulumi.StringRef(\"506f78a4-e098-11e5-ad9f-000f53306ae1\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\npulumi {\n  required_providers {\n    digitalocean = {\n      source = \"pulumi/digitalocean\"\n    }\n  }\n}\n\ndata \"digitalocean_getnfsaccesspoint\" \"example\" {\n  id = \"506f78a4-e098-11e5-ad9f-000f53306ae1\"\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DigitaloceanFunctions;\nimport com.pulumi.digitalocean.inputs.GetNfsAccessPointArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = DigitaloceanFunctions.getNfsAccessPoint(GetNfsAccessPointArgs.builder()\n            .id(\"506f78a4-e098-11e5-ad9f-000f53306ae1\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      function: digitalocean:getNfsAccessPoint\n      arguments:\n        id: 506f78a4-e098-11e5-ad9f-000f53306ae1\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nGet the NFS access point by name and share ID:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst example = digitalocean.getNfsAccessPoint({\n    name: \"example-access-point\",\n    shareId: foobar.id,\n    vpcId: foobarDigitaloceanVpc.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nexample = digitalocean.get_nfs_access_point(name=\"example-access-point\",\n    share_id=foobar[\"id\"],\n    vpc_id=foobar_digitalocean_vpc[\"id\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = DigitalOcean.GetNfsAccessPoint.Invoke(new()\n    {\n        Name = \"example-access-point\",\n        ShareId = foobar.Id,\n        VpcId = foobarDigitaloceanVpc.Id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.GetNfsAccessPoint(ctx, \u0026digitalocean.LookupNfsAccessPointArgs{\n\t\t\tName:    pulumi.StringRef(\"example-access-point\"),\n\t\t\tShareId: pulumi.StringRef(foobar.Id),\n\t\t\tVpcId:   pulumi.StringRef(foobarDigitaloceanVpc.Id),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\npulumi {\n  required_providers {\n    digitalocean = {\n      source = \"pulumi/digitalocean\"\n    }\n  }\n}\n\ndata \"digitalocean_getnfsaccesspoint\" \"example\" {\n  name     = \"example-access-point\"\n  share_id = foobar.id\n  vpc_id   = foobarDigitaloceanVpc.id\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DigitaloceanFunctions;\nimport com.pulumi.digitalocean.inputs.GetNfsAccessPointArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = DigitaloceanFunctions.getNfsAccessPoint(GetNfsAccessPointArgs.builder()\n            .name(\"example-access-point\")\n            .shareId(foobar.id())\n            .vpcId(foobarDigitaloceanVpc.id())\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      function: digitalocean:getNfsAccessPoint\n      arguments:\n        name: example-access-point\n        shareId: ${foobar.id}\n        vpcId: ${foobarDigitaloceanVpc.id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getNfsAccessPoint.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The ID of the NFS access point. Conflicts with \u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\" pulumi-lang-hcl=\"`name`\"\u003e`name`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`shareId`\" pulumi-lang-dotnet=\"`ShareId`\" pulumi-lang-go=\"`shareId`\" pulumi-lang-python=\"`share_id`\" pulumi-lang-yaml=\"`shareId`\" pulumi-lang-java=\"`shareId`\" pulumi-lang-hcl=\"`share_id`\"\u003e`shareId`\u003c/span\u003e, and \u003cspan pulumi-lang-nodejs=\"`vpcId`\" pulumi-lang-dotnet=\"`VpcId`\" pulumi-lang-go=\"`vpcId`\" pulumi-lang-python=\"`vpc_id`\" pulumi-lang-yaml=\"`vpcId`\" pulumi-lang-java=\"`vpcId`\" pulumi-lang-hcl=\"`vpc_id`\"\u003e`vpcId`\u003c/span\u003e.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the NFS access point. Must be used with \u003cspan pulumi-lang-nodejs=\"`shareId`\" pulumi-lang-dotnet=\"`ShareId`\" pulumi-lang-go=\"`shareId`\" pulumi-lang-python=\"`share_id`\" pulumi-lang-yaml=\"`shareId`\" pulumi-lang-java=\"`shareId`\" pulumi-lang-hcl=\"`share_id`\"\u003e`shareId`\u003c/span\u003e. Conflicts with \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\" pulumi-lang-hcl=\"`id`\"\u003e`id`\u003c/span\u003e.\n"
+                    },
+                    "shareId": {
+                        "type": "string",
+                        "description": "The ID of the NFS share. Must be used with \u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\" pulumi-lang-hcl=\"`name`\"\u003e`name`\u003c/span\u003e. Conflicts with \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\" pulumi-lang-hcl=\"`id`\"\u003e`id`\u003c/span\u003e.\n"
+                    },
+                    "vpcId": {
+                        "type": "string",
+                        "description": "When looking up by \u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\" pulumi-lang-hcl=\"`name`\"\u003e`name`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`shareId`\" pulumi-lang-dotnet=\"`ShareId`\" pulumi-lang-go=\"`shareId`\" pulumi-lang-python=\"`share_id`\" pulumi-lang-yaml=\"`shareId`\" pulumi-lang-java=\"`shareId`\" pulumi-lang-hcl=\"`share_id`\"\u003e`shareId`\u003c/span\u003e, optionally filter to the access point attached to this VPC. Conflicts with \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\" pulumi-lang-hcl=\"`id`\"\u003e`id`\u003c/span\u003e.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getNfsAccessPoint.\n",
+                "properties": {
+                    "accessPolicies": {
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getNfsAccessPointAccessPolicy:getNfsAccessPointAccessPolicy"
+                        },
+                        "type": "array"
+                    },
+                    "createdAt": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "isDefault": {
+                        "type": "boolean"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "path": {
+                        "type": "string"
+                    },
+                    "shareId": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "string"
+                    },
+                    "updatedAt": {
+                        "type": "string"
+                    },
+                    "vpcId": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "accessPolicies",
+                    "createdAt",
+                    "isDefault",
+                    "path",
+                    "status",
+                    "updatedAt",
+                    "vpcId"
+                ],
+                "type": "object"
+            }
+        },
         "digitalocean:index/getNfsSnapshot:getNfsSnapshot": {
             "description": "Get information about a DigitalOcean NFS snapshot.\n\n## Example Usage\n\nGet the NFS snapshot by ID:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```hcl\npulumi {\n  required_providers {\n    digitalocean = {\n      source = \"pulumi/digitalocean\"\n    }\n  }\n}\n\ndata \"digitalocean_getnfssnapshot\" \"example\" {\n  id = \"506f78a4-e098-11e5-ad9f-000f53306ae1\"\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      function: digitalocean:getNfsSnapshot\n      arguments:\n        id: 506f78a4-e098-11e5-ad9f-000f53306ae1\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
@@ -46932,6 +47463,95 @@
                 "required": [
                     "tags",
                     "id"
+                ],
+                "type": "object"
+            }
+        },
+        "digitalocean:index/getVectorDatabase:getVectorDatabase": {
+            "description": "Provides information on a DigitalOcean vector database resource.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst example = digitalocean.getVectorDatabase({\n    name: \"example-vector-db\",\n});\nexport const vectorDbHttpEndpoint = example.then(example =\u003e example.endpoints?.[0]?.http);\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nexample = digitalocean.get_vector_database(name=\"example-vector-db\")\npulumi.export(\"vectorDbHttpEndpoint\", example.endpoints[0].http)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = DigitalOcean.GetVectorDatabase.Invoke(new()\n    {\n        Name = \"example-vector-db\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"vectorDbHttpEndpoint\"] = example.Apply(getVectorDatabaseResult =\u003e getVectorDatabaseResult.Endpoints[0]?.Http),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := digitalocean.GetVectorDatabase(ctx, \u0026digitalocean.LookupVectorDatabaseArgs{\n\t\t\tName: pulumi.StringRef(\"example-vector-db\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"vectorDbHttpEndpoint\", example.Endpoints[0].Http)\n\t\treturn nil\n\t})\n}\n```\n```hcl\npulumi {\n  required_providers {\n    digitalocean = {\n      source = \"pulumi/digitalocean\"\n    }\n  }\n}\n\ndata \"digitalocean_getvectordatabase\" \"example\" {\n  name = \"example-vector-db\"\n}\n\noutput \"vectorDbHttpEndpoint\" {\n  value = data.digitalocean_getvectordatabase.example.endpoints[0].http\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DigitaloceanFunctions;\nimport com.pulumi.digitalocean.inputs.GetVectorDatabaseArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = DigitaloceanFunctions.getVectorDatabase(GetVectorDatabaseArgs.builder()\n            .name(\"example-vector-db\")\n            .build());\n\n        ctx.export(\"vectorDbHttpEndpoint\", example.endpoints()[0].http());\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      function: digitalocean:getVectorDatabase\n      arguments:\n        name: example-vector-db\noutputs:\n  vectorDbHttpEndpoint: ${example.endpoints[0].http}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nA vector database may also be looked up by its \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\" pulumi-lang-hcl=\"`id`\"\u003e`id`\u003c/span\u003e:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst example = digitalocean.getVectorDatabase({\n    id: \"245bcfd0-7f31-4ce6-a2bc-475a116cca97\",\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nexample = digitalocean.get_vector_database(id=\"245bcfd0-7f31-4ce6-a2bc-475a116cca97\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = DigitalOcean.GetVectorDatabase.Invoke(new()\n    {\n        Id = \"245bcfd0-7f31-4ce6-a2bc-475a116cca97\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.GetVectorDatabase(ctx, \u0026digitalocean.LookupVectorDatabaseArgs{\n\t\t\tId: pulumi.StringRef(\"245bcfd0-7f31-4ce6-a2bc-475a116cca97\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\npulumi {\n  required_providers {\n    digitalocean = {\n      source = \"pulumi/digitalocean\"\n    }\n  }\n}\n\ndata \"digitalocean_getvectordatabase\" \"example\" {\n  id = \"245bcfd0-7f31-4ce6-a2bc-475a116cca97\"\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DigitaloceanFunctions;\nimport com.pulumi.digitalocean.inputs.GetVectorDatabaseArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = DigitaloceanFunctions.getVectorDatabase(GetVectorDatabaseArgs.builder()\n            .id(\"245bcfd0-7f31-4ce6-a2bc-475a116cca97\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      function: digitalocean:getVectorDatabase\n      arguments:\n        id: 245bcfd0-7f31-4ce6-a2bc-475a116cca97\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getVectorDatabase.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The ID of the vector database.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the vector database.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getVectorDatabase.\n",
+                "properties": {
+                    "configs": {
+                        "description": "Advanced configuration for the vector database. The structure is documented below.\n",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getVectorDatabaseConfig:getVectorDatabaseConfig"
+                        },
+                        "type": "array"
+                    },
+                    "createdAt": {
+                        "description": "The date and time when the vector database was created.\n",
+                        "type": "string"
+                    },
+                    "endpoints": {
+                        "description": "The connection endpoints for the vector database. The structure is documented below.\n",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getVectorDatabaseEndpoint:getVectorDatabaseEndpoint"
+                        },
+                        "type": "array"
+                    },
+                    "id": {
+                        "description": "The ID of the vector database.\n",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "The name of the vector database.\n",
+                        "type": "string"
+                    },
+                    "ownerUuid": {
+                        "description": "The UUID of the account that owns the vector database.\n",
+                        "type": "string"
+                    },
+                    "region": {
+                        "description": "The slug identifier for the region where the vector database is located.\n",
+                        "type": "string"
+                    },
+                    "size": {
+                        "description": "The slug identifier representing the size of the vector database.\n",
+                        "type": "string"
+                    },
+                    "status": {
+                        "description": "The current status of the vector database (ex. \u003cspan pulumi-lang-nodejs=\"`active`\" pulumi-lang-dotnet=\"`Active`\" pulumi-lang-go=\"`active`\" pulumi-lang-python=\"`active`\" pulumi-lang-yaml=\"`active`\" pulumi-lang-java=\"`active`\" pulumi-lang-hcl=\"`active`\"\u003e`active`\u003c/span\u003e).\n",
+                        "type": "string"
+                    },
+                    "tags": {
+                        "description": "A list of tag names applied to the vector database.\n",
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "updatedAt": {
+                        "description": "The date and time when the vector database was last updated.\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "configs",
+                    "createdAt",
+                    "endpoints",
+                    "id",
+                    "name",
+                    "ownerUuid",
+                    "region",
+                    "size",
+                    "status",
+                    "tags",
+                    "updatedAt"
                 ],
                 "type": "object"
             }
