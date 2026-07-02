@@ -40,9 +40,9 @@ namespace Pulumi.DigitalOcean
     /// });
     /// ```
     /// 
-    /// ### Moving Share Between VPCs
+    /// ### Multiple VPC Attachments
     /// 
-    /// To move an NFS share from one VPC to another using the Reassign API:
+    /// Attach an NFS share to additional VPCs one at a time using separate attachment resources:
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -52,15 +52,15 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var source = new DigitalOcean.Vpc("source", new()
+    ///     var primary = new DigitalOcean.Vpc("primary", new()
     ///     {
-    ///         Name = "source-vpc",
+    ///         Name = "primary-vpc",
     ///         Region = "nyc1",
     ///     });
     /// 
-    ///     var destination = new DigitalOcean.Vpc("destination", new()
+    ///     var secondary = new DigitalOcean.Vpc("secondary", new()
     ///     {
-    ///         Name = "destination-vpc",
+    ///         Name = "secondary-vpc",
     ///         Region = "nyc1",
     ///     });
     /// 
@@ -69,29 +69,27 @@ namespace Pulumi.DigitalOcean
     ///         Region = "nyc1",
     ///         Name = "example-nfs",
     ///         Size = 50,
-    ///         VpcId = source.Id,
+    ///         VpcId = primary.Id,
     ///         PerformanceTier = "high",
     ///     });
     /// 
-    ///     // Attach to source VPC
-    ///     var sourceNfsAttachment = new DigitalOcean.NfsAttachment("source", new()
+    ///     var primaryNfsAttachment = new DigitalOcean.NfsAttachment("primary", new()
     ///     {
     ///         ShareId = example.Id,
-    ///         VpcId = source.Id,
+    ///         VpcId = primary.Id,
     ///         Region = "nyc1",
     ///     });
     /// 
-    ///     // Reassign to destination VPC - uses the efficient Reassign API
-    ///     var destinationNfsAttachment = new DigitalOcean.NfsAttachment("destination", new()
+    ///     var secondaryNfsAttachment = new DigitalOcean.NfsAttachment("secondary", new()
     ///     {
     ///         ShareId = example.Id,
-    ///         VpcId = destination.Id,
+    ///         VpcId = secondary.Id,
     ///         Region = "nyc1",
     ///     }, new CustomResourceOptions
     ///     {
     ///         DependsOn =
     ///         {
-    ///             sourceNfsAttachment,
+    ///             primaryNfsAttachment,
     ///         },
     ///     });
     /// 
@@ -100,7 +98,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// ## Notes
     /// 
-    /// Multiple NFS shares can now be attached to the same VPC, providing greater flexibility for storage management.
+    /// An NFS share can be attached to multiple VPCs. Use one `digitalocean.NfsAttachment` resource per VPC. Multiple NFS shares can also be attached to the same VPC.
     /// 
     /// ## Import
     /// 
@@ -165,6 +163,9 @@ namespace Pulumi.DigitalOcean
         [Output("vpcId")]
         public Output<string> VpcId { get; private set; } = null!;
 
+        /// <summary>
+        /// The set of VPC IDs the NFS share is attached to.
+        /// </summary>
         [Output("vpcIds")]
         public Output<ImmutableArray<string>> VpcIds { get; private set; } = null!;
 
@@ -320,6 +321,10 @@ namespace Pulumi.DigitalOcean
 
         [Input("vpcIds")]
         private InputList<string>? _vpcIds;
+
+        /// <summary>
+        /// The set of VPC IDs the NFS share is attached to.
+        /// </summary>
         public InputList<string> VpcIds
         {
             get => _vpcIds ?? (_vpcIds = new InputList<string>());

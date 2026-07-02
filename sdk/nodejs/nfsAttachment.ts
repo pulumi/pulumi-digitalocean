@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Manages attaching a NFS share to a vpc.
+ * Manages attaching an NFS share to a VPC. A share can be attached to multiple VPCs by creating one `digitalocean.NfsAttachment` resource per VPC.
  *
  * ## Example Usage
  *
@@ -27,8 +27,48 @@ import * as utilities from "./utilities";
  * const foobarNfsAttachment = new digitalocean.NfsAttachment("foobar", {
  *     shareId: foobarNfs.id,
  *     vpcId: foobar.id,
+ *     region: "atl1",
  * });
  * ```
+ *
+ * ### Multiple VPCs
+ *
+ * Attach the same NFS share to additional VPCs one at a time:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const primary = new digitalocean.Vpc("primary", {
+ *     name: "primary-vpc",
+ *     region: "atl1",
+ * });
+ * const secondary = new digitalocean.Vpc("secondary", {
+ *     name: "secondary-vpc",
+ *     region: "atl1",
+ * });
+ * const example = new digitalocean.Nfs("example", {
+ *     region: "atl1",
+ *     name: "example-nfs",
+ *     size: 50,
+ *     vpcId: primary.id,
+ *     performanceTier: "high",
+ * });
+ * const primaryNfsAttachment = new digitalocean.NfsAttachment("primary", {
+ *     shareId: example.id,
+ *     vpcId: primary.id,
+ *     region: "atl1",
+ * });
+ * const secondaryNfsAttachment = new digitalocean.NfsAttachment("secondary", {
+ *     shareId: example.id,
+ *     vpcId: secondary.id,
+ *     region: "atl1",
+ * }, {
+ *     dependsOn: [primaryNfsAttachment],
+ * });
+ * ```
+ *
+ * Deleting an attachment resource detaches the share from that VPC only. Other VPC attachments remain in place.
  *
  * ## Import
  *
@@ -66,13 +106,16 @@ export class NfsAttachment extends pulumi.CustomResource {
         return obj['__pulumiType'] === NfsAttachment.__pulumiType;
     }
 
+    /**
+     * The region of the NFS share.
+     */
     declare public readonly region: pulumi.Output<string>;
     /**
      * The ID of the NFS share to attach.
      */
     declare public readonly shareId: pulumi.Output<string>;
     /**
-     * The ID of the vpc to attach the NFS share to.
+     * The ID of the VPC to attach the NFS share to.
      */
     declare public readonly vpcId: pulumi.Output<string>;
 
@@ -116,13 +159,16 @@ export class NfsAttachment extends pulumi.CustomResource {
  * Input properties used for looking up and filtering NfsAttachment resources.
  */
 export interface NfsAttachmentState {
+    /**
+     * The region of the NFS share.
+     */
     region?: pulumi.Input<string | undefined>;
     /**
      * The ID of the NFS share to attach.
      */
     shareId?: pulumi.Input<string | undefined>;
     /**
-     * The ID of the vpc to attach the NFS share to.
+     * The ID of the VPC to attach the NFS share to.
      */
     vpcId?: pulumi.Input<string | undefined>;
 }
@@ -131,13 +177,16 @@ export interface NfsAttachmentState {
  * The set of arguments for constructing a NfsAttachment resource.
  */
 export interface NfsAttachmentArgs {
+    /**
+     * The region of the NFS share.
+     */
     region: pulumi.Input<string>;
     /**
      * The ID of the NFS share to attach.
      */
     shareId: pulumi.Input<string>;
     /**
-     * The ID of the vpc to attach the NFS share to.
+     * The ID of the VPC to attach the NFS share to.
      */
     vpcId: pulumi.Input<string>;
 }

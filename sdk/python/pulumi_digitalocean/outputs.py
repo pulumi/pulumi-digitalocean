@@ -262,6 +262,7 @@ __all__ = [
     'LoadBalancerStickySessions',
     'MonitorAlertAlerts',
     'MonitorAlertAlertsSlack',
+    'NfsAccessPointAccessPolicy',
     'PartnerAttachmentBgp',
     'SpacesBucketCorsConfigurationCorsRule',
     'SpacesBucketCorsRule',
@@ -272,6 +273,8 @@ __all__ = [
     'SpacesKeyGrant',
     'UptimeAlertNotification',
     'UptimeAlertNotificationSlack',
+    'VectorDatabaseConfig',
+    'VectorDatabaseEndpoint',
     'VpcNatGatewayEgress',
     'VpcNatGatewayEgressPublicGateway',
     'VpcNatGatewayVpc',
@@ -742,6 +745,7 @@ __all__ = [
     'GetLoadBalancerGlbSettingCdnResult',
     'GetLoadBalancerHealthcheckResult',
     'GetLoadBalancerStickySessionResult',
+    'GetNfsAccessPointAccessPolicyResult',
     'GetPartnerAttachmentBgpResult',
     'GetProjectsFilterResult',
     'GetProjectsProjectResult',
@@ -765,6 +769,8 @@ __all__ = [
     'GetTagsFilterResult',
     'GetTagsSortResult',
     'GetTagsTagResult',
+    'GetVectorDatabaseConfigResult',
+    'GetVectorDatabaseEndpointResult',
     'GetVpcNatGatewayEgressResult',
     'GetVpcNatGatewayEgressPublicGatewayResult',
     'GetVpcNatGatewayVpcResult',
@@ -20577,6 +20583,92 @@ class MonitorAlertAlertsSlack(dict):
 
 
 @pulumi.output_type
+class NfsAccessPointAccessPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identityEnforcementEnabled":
+            suggest = "identity_enforcement_enabled"
+        elif key == "squashConfig":
+            suggest = "squash_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NfsAccessPointAccessPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NfsAccessPointAccessPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NfsAccessPointAccessPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 anongid: Optional[_builtins.int] = None,
+                 anonuid: Optional[_builtins.int] = None,
+                 identity_enforcement_enabled: Optional[_builtins.bool] = None,
+                 protocols: Optional[Sequence[_builtins.str]] = None,
+                 squash_config: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int anongid: Anonymous GID mapped for NFS clients. Defaults to `65534`.
+        :param _builtins.int anonuid: Anonymous UID mapped for NFS clients. Defaults to `65534`.
+        :param _builtins.bool identity_enforcement_enabled: Whether identity enforcement is enabled. Defaults to `false`.
+        :param Sequence[_builtins.str] protocols: List of NFS protocols. Defaults to `["NFS4"]`.
+        :param _builtins.str squash_config: Squash configuration. Valid values are `NO_SQUASH`, `ROOT_SQUASH`, and `ALL_SQUASH`. Defaults to `ROOT_SQUASH`.
+        """
+        if anongid is not None:
+            pulumi.set(__self__, "anongid", anongid)
+        if anonuid is not None:
+            pulumi.set(__self__, "anonuid", anonuid)
+        if identity_enforcement_enabled is not None:
+            pulumi.set(__self__, "identity_enforcement_enabled", identity_enforcement_enabled)
+        if protocols is not None:
+            pulumi.set(__self__, "protocols", protocols)
+        if squash_config is not None:
+            pulumi.set(__self__, "squash_config", squash_config)
+
+    @_builtins.property
+    @pulumi.getter
+    def anongid(self) -> Optional[_builtins.int]:
+        """
+        Anonymous GID mapped for NFS clients. Defaults to `65534`.
+        """
+        return pulumi.get(self, "anongid")
+
+    @_builtins.property
+    @pulumi.getter
+    def anonuid(self) -> Optional[_builtins.int]:
+        """
+        Anonymous UID mapped for NFS clients. Defaults to `65534`.
+        """
+        return pulumi.get(self, "anonuid")
+
+    @_builtins.property
+    @pulumi.getter(name="identityEnforcementEnabled")
+    def identity_enforcement_enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether identity enforcement is enabled. Defaults to `false`.
+        """
+        return pulumi.get(self, "identity_enforcement_enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def protocols(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of NFS protocols. Defaults to `["NFS4"]`.
+        """
+        return pulumi.get(self, "protocols")
+
+    @_builtins.property
+    @pulumi.getter(name="squashConfig")
+    def squash_config(self) -> Optional[_builtins.str]:
+        """
+        Squash configuration. Valid values are `NO_SQUASH`, `ROOT_SQUASH`, and `ALL_SQUASH`. Defaults to `ROOT_SQUASH`.
+        """
+        return pulumi.get(self, "squash_config")
+
+
+@pulumi.output_type
 class PartnerAttachmentBgp(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -21104,6 +21196,101 @@ class UptimeAlertNotificationSlack(dict):
         The webhook URL for Slack.
         """
         return pulumi.get(self, "url")
+
+
+@pulumi.output_type
+class VectorDatabaseConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultQuantization":
+            suggest = "default_quantization"
+        elif key == "enableAutoSchema":
+            suggest = "enable_auto_schema"
+        elif key == "weaviateVersion":
+            suggest = "weaviate_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VectorDatabaseConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VectorDatabaseConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VectorDatabaseConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 default_quantization: Optional[_builtins.str] = None,
+                 enable_auto_schema: Optional[_builtins.bool] = None,
+                 weaviate_version: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str default_quantization: The default vector quantization method applied to new collections.
+        :param _builtins.bool enable_auto_schema: Whether Weaviate's auto-schema feature is enabled.
+        :param _builtins.str weaviate_version: The Weaviate engine version used by the vector database.
+        """
+        if default_quantization is not None:
+            pulumi.set(__self__, "default_quantization", default_quantization)
+        if enable_auto_schema is not None:
+            pulumi.set(__self__, "enable_auto_schema", enable_auto_schema)
+        if weaviate_version is not None:
+            pulumi.set(__self__, "weaviate_version", weaviate_version)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultQuantization")
+    def default_quantization(self) -> Optional[_builtins.str]:
+        """
+        The default vector quantization method applied to new collections.
+        """
+        return pulumi.get(self, "default_quantization")
+
+    @_builtins.property
+    @pulumi.getter(name="enableAutoSchema")
+    def enable_auto_schema(self) -> Optional[_builtins.bool]:
+        """
+        Whether Weaviate's auto-schema feature is enabled.
+        """
+        return pulumi.get(self, "enable_auto_schema")
+
+    @_builtins.property
+    @pulumi.getter(name="weaviateVersion")
+    def weaviate_version(self) -> Optional[_builtins.str]:
+        """
+        The Weaviate engine version used by the vector database.
+        """
+        return pulumi.get(self, "weaviate_version")
+
+
+@pulumi.output_type
+class VectorDatabaseEndpoint(dict):
+    def __init__(__self__, *,
+                 grpc: Optional[_builtins.str] = None,
+                 http: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str grpc: The gRPC endpoint used to connect to the vector database.
+        :param _builtins.str http: The HTTP endpoint used to connect to the vector database.
+        """
+        if grpc is not None:
+            pulumi.set(__self__, "grpc", grpc)
+        if http is not None:
+            pulumi.set(__self__, "http", http)
+
+    @_builtins.property
+    @pulumi.getter
+    def grpc(self) -> Optional[_builtins.str]:
+        """
+        The gRPC endpoint used to connect to the vector database.
+        """
+        return pulumi.get(self, "grpc")
+
+    @_builtins.property
+    @pulumi.getter
+    def http(self) -> Optional[_builtins.str]:
+        """
+        The HTTP endpoint used to connect to the vector database.
+        """
+        return pulumi.get(self, "http")
 
 
 @pulumi.output_type
@@ -55745,6 +55932,46 @@ class GetLoadBalancerStickySessionResult(dict):
 
 
 @pulumi.output_type
+class GetNfsAccessPointAccessPolicyResult(dict):
+    def __init__(__self__, *,
+                 anongid: _builtins.int,
+                 anonuid: _builtins.int,
+                 identity_enforcement_enabled: _builtins.bool,
+                 protocols: Sequence[_builtins.str],
+                 squash_config: _builtins.str):
+        pulumi.set(__self__, "anongid", anongid)
+        pulumi.set(__self__, "anonuid", anonuid)
+        pulumi.set(__self__, "identity_enforcement_enabled", identity_enforcement_enabled)
+        pulumi.set(__self__, "protocols", protocols)
+        pulumi.set(__self__, "squash_config", squash_config)
+
+    @_builtins.property
+    @pulumi.getter
+    def anongid(self) -> _builtins.int:
+        return pulumi.get(self, "anongid")
+
+    @_builtins.property
+    @pulumi.getter
+    def anonuid(self) -> _builtins.int:
+        return pulumi.get(self, "anonuid")
+
+    @_builtins.property
+    @pulumi.getter(name="identityEnforcementEnabled")
+    def identity_enforcement_enabled(self) -> _builtins.bool:
+        return pulumi.get(self, "identity_enforcement_enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def protocols(self) -> Sequence[_builtins.str]:
+        return pulumi.get(self, "protocols")
+
+    @_builtins.property
+    @pulumi.getter(name="squashConfig")
+    def squash_config(self) -> _builtins.str:
+        return pulumi.get(self, "squash_config")
+
+
+@pulumi.output_type
 class GetPartnerAttachmentBgpResult(dict):
     def __init__(__self__, *,
                  local_router_ip: Optional[_builtins.str] = None,
@@ -57068,6 +57295,75 @@ class GetTagsTagResult(dict):
         A count of the volumes that the tag is applied to.
         """
         return pulumi.get(self, "volumes_count")
+
+
+@pulumi.output_type
+class GetVectorDatabaseConfigResult(dict):
+    def __init__(__self__, *,
+                 default_quantization: _builtins.str,
+                 enable_auto_schema: _builtins.bool,
+                 weaviate_version: _builtins.str):
+        """
+        :param _builtins.str default_quantization: The default vector quantization method applied to new collections.
+        :param _builtins.bool enable_auto_schema: Whether Weaviate's auto-schema feature is enabled.
+        :param _builtins.str weaviate_version: The Weaviate engine version used by the vector database.
+        """
+        pulumi.set(__self__, "default_quantization", default_quantization)
+        pulumi.set(__self__, "enable_auto_schema", enable_auto_schema)
+        pulumi.set(__self__, "weaviate_version", weaviate_version)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultQuantization")
+    def default_quantization(self) -> _builtins.str:
+        """
+        The default vector quantization method applied to new collections.
+        """
+        return pulumi.get(self, "default_quantization")
+
+    @_builtins.property
+    @pulumi.getter(name="enableAutoSchema")
+    def enable_auto_schema(self) -> _builtins.bool:
+        """
+        Whether Weaviate's auto-schema feature is enabled.
+        """
+        return pulumi.get(self, "enable_auto_schema")
+
+    @_builtins.property
+    @pulumi.getter(name="weaviateVersion")
+    def weaviate_version(self) -> _builtins.str:
+        """
+        The Weaviate engine version used by the vector database.
+        """
+        return pulumi.get(self, "weaviate_version")
+
+
+@pulumi.output_type
+class GetVectorDatabaseEndpointResult(dict):
+    def __init__(__self__, *,
+                 grpc: _builtins.str,
+                 http: _builtins.str):
+        """
+        :param _builtins.str grpc: The gRPC endpoint used to connect to the vector database.
+        :param _builtins.str http: The HTTP endpoint used to connect to the vector database.
+        """
+        pulumi.set(__self__, "grpc", grpc)
+        pulumi.set(__self__, "http", http)
+
+    @_builtins.property
+    @pulumi.getter
+    def grpc(self) -> _builtins.str:
+        """
+        The gRPC endpoint used to connect to the vector database.
+        """
+        return pulumi.get(self, "grpc")
+
+    @_builtins.property
+    @pulumi.getter
+    def http(self) -> _builtins.str:
+        """
+        The HTTP endpoint used to connect to the vector database.
+        """
+        return pulumi.get(self, "http")
 
 
 @pulumi.output_type

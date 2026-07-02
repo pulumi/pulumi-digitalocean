@@ -14,9 +14,17 @@ public final class NfsAttachmentArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final NfsAttachmentArgs Empty = new NfsAttachmentArgs();
 
+    /**
+     * The region of the NFS share.
+     * 
+     */
     @Import(name="region", required=true)
     private Output<String> region;
 
+    /**
+     * @return The region of the NFS share.
+     * 
+     */
     public Output<String> region() {
         return this.region;
     }
@@ -37,14 +45,14 @@ public final class NfsAttachmentArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the vpc to attach the NFS share to.
+     * The ID of the VPC to attach the NFS share to.
      * 
      */
     @Import(name="vpcId", required=true)
     private Output<String> vpcId;
 
     /**
-     * @return The ID of the vpc to attach the NFS share to.
+     * @return The ID of the VPC to attach the NFS share to.
      * 
      */
     public Output<String> vpcId() {
@@ -77,11 +85,23 @@ public final class NfsAttachmentArgs extends com.pulumi.resources.ResourceArgs {
             $ = new NfsAttachmentArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param region The region of the NFS share.
+         * 
+         * @return builder
+         * 
+         */
         public Builder region(Output<String> region) {
             $.region = region;
             return this;
         }
 
+        /**
+         * @param region The region of the NFS share.
+         * 
+         * @return builder
+         * 
+         */
         public Builder region(String region) {
             return region(Output.of(region));
         }
@@ -108,7 +128,7 @@ public final class NfsAttachmentArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcId The ID of the vpc to attach the NFS share to.
+         * @param vpcId The ID of the VPC to attach the NFS share to.
          * 
          * @return builder
          * 
@@ -119,7 +139,7 @@ public final class NfsAttachmentArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcId The ID of the vpc to attach the NFS share to.
+         * @param vpcId The ID of the VPC to attach the NFS share to.
          * 
          * @return builder
          * 

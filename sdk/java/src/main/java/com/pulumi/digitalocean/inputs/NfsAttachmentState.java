@@ -15,9 +15,17 @@ public final class NfsAttachmentState extends com.pulumi.resources.ResourceArgs 
 
     public static final NfsAttachmentState Empty = new NfsAttachmentState();
 
+    /**
+     * The region of the NFS share.
+     * 
+     */
     @Import(name="region")
     private @Nullable Output<String> region;
 
+    /**
+     * @return The region of the NFS share.
+     * 
+     */
     public Optional<Output<String>> region() {
         return Optional.ofNullable(this.region);
     }
@@ -38,14 +46,14 @@ public final class NfsAttachmentState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The ID of the vpc to attach the NFS share to.
+     * The ID of the VPC to attach the NFS share to.
      * 
      */
     @Import(name="vpcId")
     private @Nullable Output<String> vpcId;
 
     /**
-     * @return The ID of the vpc to attach the NFS share to.
+     * @return The ID of the VPC to attach the NFS share to.
      * 
      */
     public Optional<Output<String>> vpcId() {
@@ -78,11 +86,23 @@ public final class NfsAttachmentState extends com.pulumi.resources.ResourceArgs 
             $ = new NfsAttachmentState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param region The region of the NFS share.
+         * 
+         * @return builder
+         * 
+         */
         public Builder region(@Nullable Output<String> region) {
             $.region = region;
             return this;
         }
 
+        /**
+         * @param region The region of the NFS share.
+         * 
+         * @return builder
+         * 
+         */
         public Builder region(String region) {
             return region(Output.of(region));
         }
@@ -109,7 +129,7 @@ public final class NfsAttachmentState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param vpcId The ID of the vpc to attach the NFS share to.
+         * @param vpcId The ID of the VPC to attach the NFS share to.
          * 
          * @return builder
          * 
@@ -120,7 +140,7 @@ public final class NfsAttachmentState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param vpcId The ID of the vpc to attach the NFS share to.
+         * @param vpcId The ID of the VPC to attach the NFS share to.
          * 
          * @return builder
          * 

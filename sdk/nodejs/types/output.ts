@@ -15779,6 +15779,14 @@ export interface GetLoadBalancerStickySession {
     type: string;
 }
 
+export interface GetNfsAccessPointAccessPolicy {
+    anongid: number;
+    anonuid: number;
+    identityEnforcementEnabled: boolean;
+    protocols: string[];
+    squashConfig: string;
+}
+
 export interface GetPartnerAttachmentBgp {
     localRouterIp?: string;
     peerRouterAsn?: number;
@@ -16263,6 +16271,32 @@ export interface GetTagsTag {
      * A count of the volumes that the tag is applied to.
      */
     volumesCount: number;
+}
+
+export interface GetVectorDatabaseConfig {
+    /**
+     * The default vector quantization method applied to new collections.
+     */
+    defaultQuantization: string;
+    /**
+     * Whether Weaviate's auto-schema feature is enabled.
+     */
+    enableAutoSchema: boolean;
+    /**
+     * The Weaviate engine version used by the vector database.
+     */
+    weaviateVersion: string;
+}
+
+export interface GetVectorDatabaseEndpoint {
+    /**
+     * The gRPC endpoint used to connect to the vector database.
+     */
+    grpc: string;
+    /**
+     * The HTTP endpoint used to connect to the vector database.
+     */
+    http: string;
 }
 
 export interface GetVpcNatGatewayEgress {
@@ -18105,6 +18139,29 @@ export interface MonitorAlertAlertsSlack {
     url: string;
 }
 
+export interface NfsAccessPointAccessPolicy {
+    /**
+     * Anonymous GID mapped for NFS clients. Defaults to `65534`.
+     */
+    anongid?: number;
+    /**
+     * Anonymous UID mapped for NFS clients. Defaults to `65534`.
+     */
+    anonuid?: number;
+    /**
+     * Whether identity enforcement is enabled. Defaults to `false`.
+     */
+    identityEnforcementEnabled?: boolean;
+    /**
+     * List of NFS protocols. Defaults to `["NFS4"]`.
+     */
+    protocols?: string[];
+    /**
+     * Squash configuration. Valid values are `NO_SQUASH`, `ROOT_SQUASH`, and `ALL_SQUASH`. Defaults to `ROOT_SQUASH`.
+     */
+    squashConfig?: string;
+}
+
 export interface PartnerAttachmentBgp {
     authKey?: string;
     localRouterIp?: string;
@@ -18248,6 +18305,32 @@ export interface UptimeAlertNotificationSlack {
      * The webhook URL for Slack.
      */
     url: string;
+}
+
+export interface VectorDatabaseConfig {
+    /**
+     * The default vector quantization method applied to new collections.
+     */
+    defaultQuantization: string;
+    /**
+     * Whether Weaviate's auto-schema feature is enabled.
+     */
+    enableAutoSchema: boolean;
+    /**
+     * The Weaviate engine version used by the vector database.
+     */
+    weaviateVersion: string;
+}
+
+export interface VectorDatabaseEndpoint {
+    /**
+     * The gRPC endpoint used to connect to the vector database.
+     */
+    grpc: string;
+    /**
+     * The HTTP endpoint used to connect to the vector database.
+     */
+    http: string;
 }
 
 export interface VpcNatGatewayEgress {

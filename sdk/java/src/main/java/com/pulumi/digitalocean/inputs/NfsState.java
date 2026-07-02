@@ -146,9 +146,17 @@ public final class NfsState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.vpcId);
     }
 
+    /**
+     * The set of VPC IDs the NFS share is attached to.
+     * 
+     */
     @Import(name="vpcIds")
     private @Nullable Output<List<String>> vpcIds;
 
+    /**
+     * @return The set of VPC IDs the NFS share is attached to.
+     * 
+     */
     public Optional<Output<List<String>>> vpcIds() {
         return Optional.ofNullable(this.vpcIds);
     }
@@ -369,15 +377,33 @@ public final class NfsState extends com.pulumi.resources.ResourceArgs {
             return vpcId(Output.of(vpcId));
         }
 
+        /**
+         * @param vpcIds The set of VPC IDs the NFS share is attached to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder vpcIds(@Nullable Output<List<String>> vpcIds) {
             $.vpcIds = vpcIds;
             return this;
         }
 
+        /**
+         * @param vpcIds The set of VPC IDs the NFS share is attached to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder vpcIds(List<String> vpcIds) {
             return vpcIds(Output.of(vpcIds));
         }
 
+        /**
+         * @param vpcIds The set of VPC IDs the NFS share is attached to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder vpcIds(String... vpcIds) {
             return vpcIds(List.of(vpcIds));
         }
