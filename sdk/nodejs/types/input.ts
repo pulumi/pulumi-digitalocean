@@ -9875,6 +9875,29 @@ export interface MonitorAlertAlertsSlack {
     url: pulumi.Input<string>;
 }
 
+export interface NfsAccessPointAccessPolicy {
+    /**
+     * Anonymous GID mapped for NFS clients. Defaults to `65534`.
+     */
+    anongid?: pulumi.Input<number | undefined>;
+    /**
+     * Anonymous UID mapped for NFS clients. Defaults to `65534`.
+     */
+    anonuid?: pulumi.Input<number | undefined>;
+    /**
+     * Whether identity enforcement is enabled. Defaults to `false`.
+     */
+    identityEnforcementEnabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * List of NFS protocols. Defaults to `["NFS4"]`.
+     */
+    protocols?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Squash configuration. Valid values are `NO_SQUASH`, `ROOT_SQUASH`, and `ALL_SQUASH`. Defaults to `ROOT_SQUASH`.
+     */
+    squashConfig?: pulumi.Input<string | undefined>;
+}
+
 export interface PartnerAttachmentBgp {
     authKey?: pulumi.Input<string | undefined>;
     localRouterIp?: pulumi.Input<string | undefined>;
@@ -10018,6 +10041,32 @@ export interface UptimeAlertNotificationSlack {
      * The webhook URL for Slack.
      */
     url: pulumi.Input<string>;
+}
+
+export interface VectorDatabaseConfig {
+    /**
+     * The default vector quantization method applied to new collections.
+     */
+    defaultQuantization?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Weaviate's auto-schema feature is enabled.
+     */
+    enableAutoSchema?: pulumi.Input<boolean | undefined>;
+    /**
+     * The Weaviate engine version used by the vector database.
+     */
+    weaviateVersion?: pulumi.Input<string | undefined>;
+}
+
+export interface VectorDatabaseEndpoint {
+    /**
+     * The gRPC endpoint used to connect to the vector database.
+     */
+    grpc?: pulumi.Input<string | undefined>;
+    /**
+     * The HTTP endpoint used to connect to the vector database.
+     */
+    http?: pulumi.Input<string | undefined>;
 }
 
 export interface VpcNatGatewayEgress {

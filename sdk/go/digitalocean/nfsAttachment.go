@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Manages attaching a NFS share to a vpc.
+// Manages attaching an NFS share to a VPC. A share can be attached to multiple VPCs by creating one `NfsAttachment` resource per VPC.
 //
 // ## Example Usage
 //
@@ -48,6 +48,7 @@ import (
 //			_, err = digitalocean.NewNfsAttachment(ctx, "foobar", &digitalocean.NfsAttachmentArgs{
 //				ShareId: foobarNfs.ID(),
 //				VpcId:   foobar.ID(),
+//				Region:  pulumi.String("atl1"),
 //			})
 //			if err != nil {
 //				return err
@@ -57,6 +58,72 @@ import (
 //	}
 //
 // ```
+//
+// ### Multiple VPCs
+//
+// Attach the same NFS share to additional VPCs one at a time:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			primary, err := digitalocean.NewVpc(ctx, "primary", &digitalocean.VpcArgs{
+//				Name:   pulumi.String("primary-vpc"),
+//				Region: pulumi.String("atl1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			secondary, err := digitalocean.NewVpc(ctx, "secondary", &digitalocean.VpcArgs{
+//				Name:   pulumi.String("secondary-vpc"),
+//				Region: pulumi.String("atl1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			example, err := digitalocean.NewNfs(ctx, "example", &digitalocean.NfsArgs{
+//				Region:          pulumi.String("atl1"),
+//				Name:            pulumi.String("example-nfs"),
+//				Size:            pulumi.Int(50),
+//				VpcId:           primary.ID(),
+//				PerformanceTier: pulumi.String("high"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			primaryNfsAttachment, err := digitalocean.NewNfsAttachment(ctx, "primary", &digitalocean.NfsAttachmentArgs{
+//				ShareId: example.ID(),
+//				VpcId:   primary.ID(),
+//				Region:  pulumi.String("atl1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = digitalocean.NewNfsAttachment(ctx, "secondary", &digitalocean.NfsAttachmentArgs{
+//				ShareId: example.ID(),
+//				VpcId:   secondary.ID(),
+//				Region:  pulumi.String("atl1"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				primaryNfsAttachment,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Deleting an attachment resource detaches the share from that VPC only. Other VPC attachments remain in place.
 //
 // ## Import
 //
@@ -68,10 +135,11 @@ import (
 type NfsAttachment struct {
 	pulumi.CustomResourceState
 
+	// The region of the NFS share.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The ID of the NFS share to attach.
 	ShareId pulumi.StringOutput `pulumi:"shareId"`
-	// The ID of the vpc to attach the NFS share to.
+	// The ID of the VPC to attach the NFS share to.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 }
 
@@ -114,18 +182,20 @@ func GetNfsAttachment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering NfsAttachment resources.
 type nfsAttachmentState struct {
+	// The region of the NFS share.
 	Region *string `pulumi:"region"`
 	// The ID of the NFS share to attach.
 	ShareId *string `pulumi:"shareId"`
-	// The ID of the vpc to attach the NFS share to.
+	// The ID of the VPC to attach the NFS share to.
 	VpcId *string `pulumi:"vpcId"`
 }
 
 type NfsAttachmentState struct {
+	// The region of the NFS share.
 	Region pulumi.StringPtrInput
 	// The ID of the NFS share to attach.
 	ShareId pulumi.StringPtrInput
-	// The ID of the vpc to attach the NFS share to.
+	// The ID of the VPC to attach the NFS share to.
 	VpcId pulumi.StringPtrInput
 }
 
@@ -134,19 +204,21 @@ func (NfsAttachmentState) ElementType() reflect.Type {
 }
 
 type nfsAttachmentArgs struct {
+	// The region of the NFS share.
 	Region string `pulumi:"region"`
 	// The ID of the NFS share to attach.
 	ShareId string `pulumi:"shareId"`
-	// The ID of the vpc to attach the NFS share to.
+	// The ID of the VPC to attach the NFS share to.
 	VpcId string `pulumi:"vpcId"`
 }
 
 // The set of arguments for constructing a NfsAttachment resource.
 type NfsAttachmentArgs struct {
+	// The region of the NFS share.
 	Region pulumi.StringInput
 	// The ID of the NFS share to attach.
 	ShareId pulumi.StringInput
-	// The ID of the vpc to attach the NFS share to.
+	// The ID of the VPC to attach the NFS share to.
 	VpcId pulumi.StringInput
 }
 
@@ -237,6 +309,7 @@ func (o NfsAttachmentOutput) ToNfsAttachmentOutputWithContext(ctx context.Contex
 	return o
 }
 
+// The region of the NFS share.
 func (o NfsAttachmentOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *NfsAttachment) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
@@ -246,7 +319,7 @@ func (o NfsAttachmentOutput) ShareId() pulumi.StringOutput {
 	return o.ApplyT(func(v *NfsAttachment) pulumi.StringOutput { return v.ShareId }).(pulumi.StringOutput)
 }
 
-// The ID of the vpc to attach the NFS share to.
+// The ID of the VPC to attach the NFS share to.
 func (o NfsAttachmentOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v *NfsAttachment) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
 }

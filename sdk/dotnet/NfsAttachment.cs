@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean
 {
     /// <summary>
-    /// Manages attaching a NFS share to a vpc.
+    /// Manages attaching an NFS share to a VPC. A share can be attached to multiple VPCs by creating one `digitalocean.NfsAttachment` resource per VPC.
     /// 
     /// ## Example Usage
     /// 
@@ -41,10 +41,69 @@ namespace Pulumi.DigitalOcean
     ///     {
     ///         ShareId = foobarNfs.Id,
     ///         VpcId = foobar.Id,
+    ///         Region = "atl1",
     ///     });
     /// 
     /// });
     /// ```
+    /// 
+    /// ### Multiple VPCs
+    /// 
+    /// Attach the same NFS share to additional VPCs one at a time:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var primary = new DigitalOcean.Vpc("primary", new()
+    ///     {
+    ///         Name = "primary-vpc",
+    ///         Region = "atl1",
+    ///     });
+    /// 
+    ///     var secondary = new DigitalOcean.Vpc("secondary", new()
+    ///     {
+    ///         Name = "secondary-vpc",
+    ///         Region = "atl1",
+    ///     });
+    /// 
+    ///     var example = new DigitalOcean.Nfs("example", new()
+    ///     {
+    ///         Region = "atl1",
+    ///         Name = "example-nfs",
+    ///         Size = 50,
+    ///         VpcId = primary.Id,
+    ///         PerformanceTier = "high",
+    ///     });
+    /// 
+    ///     var primaryNfsAttachment = new DigitalOcean.NfsAttachment("primary", new()
+    ///     {
+    ///         ShareId = example.Id,
+    ///         VpcId = primary.Id,
+    ///         Region = "atl1",
+    ///     });
+    /// 
+    ///     var secondaryNfsAttachment = new DigitalOcean.NfsAttachment("secondary", new()
+    ///     {
+    ///         ShareId = example.Id,
+    ///         VpcId = secondary.Id,
+    ///         Region = "atl1",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             primaryNfsAttachment,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Deleting an attachment resource detaches the share from that VPC only. Other VPC attachments remain in place.
     /// 
     /// ## Import
     /// 
@@ -57,6 +116,9 @@ namespace Pulumi.DigitalOcean
     [DigitalOceanResourceType("digitalocean:index/nfsAttachment:NfsAttachment")]
     public partial class NfsAttachment : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The region of the NFS share.
+        /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
 
@@ -67,7 +129,7 @@ namespace Pulumi.DigitalOcean
         public Output<string> ShareId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the vpc to attach the NFS share to.
+        /// The ID of the VPC to attach the NFS share to.
         /// </summary>
         [Output("vpcId")]
         public Output<string> VpcId { get; private set; } = null!;
@@ -118,6 +180,9 @@ namespace Pulumi.DigitalOcean
 
     public sealed class NfsAttachmentArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The region of the NFS share.
+        /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
 
@@ -128,7 +193,7 @@ namespace Pulumi.DigitalOcean
         public Input<string> ShareId { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the vpc to attach the NFS share to.
+        /// The ID of the VPC to attach the NFS share to.
         /// </summary>
         [Input("vpcId", required: true)]
         public Input<string> VpcId { get; set; } = null!;
@@ -141,6 +206,9 @@ namespace Pulumi.DigitalOcean
 
     public sealed class NfsAttachmentState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The region of the NFS share.
+        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
@@ -151,7 +219,7 @@ namespace Pulumi.DigitalOcean
         public Input<string>? ShareId { get; set; }
 
         /// <summary>
-        /// The ID of the vpc to attach the NFS share to.
+        /// The ID of the VPC to attach the NFS share to.
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }

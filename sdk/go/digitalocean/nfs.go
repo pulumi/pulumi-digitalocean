@@ -51,9 +51,9 @@ import (
 //
 // ```
 //
-// ### Moving Share Between VPCs
+// ### Multiple VPC Attachments
 //
-// To move an NFS share from one VPC to another using the Reassign API:
+// Attach an NFS share to additional VPCs one at a time using separate attachment resources:
 //
 // ```go
 // package main
@@ -67,15 +67,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			source, err := digitalocean.NewVpc(ctx, "source", &digitalocean.VpcArgs{
-//				Name:   pulumi.String("source-vpc"),
+//			primary, err := digitalocean.NewVpc(ctx, "primary", &digitalocean.VpcArgs{
+//				Name:   pulumi.String("primary-vpc"),
 //				Region: pulumi.String("nyc1"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			destination, err := digitalocean.NewVpc(ctx, "destination", &digitalocean.VpcArgs{
-//				Name:   pulumi.String("destination-vpc"),
+//			secondary, err := digitalocean.NewVpc(ctx, "secondary", &digitalocean.VpcArgs{
+//				Name:   pulumi.String("secondary-vpc"),
 //				Region: pulumi.String("nyc1"),
 //			})
 //			if err != nil {
@@ -85,28 +85,26 @@ import (
 //				Region:          pulumi.String("nyc1"),
 //				Name:            pulumi.String("example-nfs"),
 //				Size:            pulumi.Int(50),
-//				VpcId:           source.ID(),
+//				VpcId:           primary.ID(),
 //				PerformanceTier: pulumi.String("high"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			// Attach to source VPC
-//			sourceNfsAttachment, err := digitalocean.NewNfsAttachment(ctx, "source", &digitalocean.NfsAttachmentArgs{
+//			primaryNfsAttachment, err := digitalocean.NewNfsAttachment(ctx, "primary", &digitalocean.NfsAttachmentArgs{
 //				ShareId: example.ID(),
-//				VpcId:   source.ID(),
+//				VpcId:   primary.ID(),
 //				Region:  pulumi.String("nyc1"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			// Reassign to destination VPC - uses the efficient Reassign API
-//			_, err = digitalocean.NewNfsAttachment(ctx, "destination", &digitalocean.NfsAttachmentArgs{
+//			_, err = digitalocean.NewNfsAttachment(ctx, "secondary", &digitalocean.NfsAttachmentArgs{
 //				ShareId: example.ID(),
-//				VpcId:   destination.ID(),
+//				VpcId:   secondary.ID(),
 //				Region:  pulumi.String("nyc1"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
-//				sourceNfsAttachment,
+//				primaryNfsAttachment,
 //			}))
 //			if err != nil {
 //				return err
@@ -119,7 +117,7 @@ import (
 //
 // ## Notes
 //
-// Multiple NFS shares can now be attached to the same VPC, providing greater flexibility for storage management.
+// An NFS share can be attached to multiple VPCs. Use one `NfsAttachment` resource per VPC. Multiple NFS shares can also be attached to the same VPC.
 //
 // ## Import
 //
@@ -148,7 +146,8 @@ type Nfs struct {
 	Status pulumi.StringOutput      `pulumi:"status"`
 	Tags   pulumi.StringArrayOutput `pulumi:"tags"`
 	// The ID of the VPC where the NFS share will be created.
-	VpcId  pulumi.StringOutput      `pulumi:"vpcId"`
+	VpcId pulumi.StringOutput `pulumi:"vpcId"`
+	// The set of VPC IDs the NFS share is attached to.
 	VpcIds pulumi.StringArrayOutput `pulumi:"vpcIds"`
 }
 
@@ -208,7 +207,8 @@ type nfsState struct {
 	Status *string  `pulumi:"status"`
 	Tags   []string `pulumi:"tags"`
 	// The ID of the VPC where the NFS share will be created.
-	VpcId  *string  `pulumi:"vpcId"`
+	VpcId *string `pulumi:"vpcId"`
+	// The set of VPC IDs the NFS share is attached to.
 	VpcIds []string `pulumi:"vpcIds"`
 }
 
@@ -230,7 +230,8 @@ type NfsState struct {
 	Status pulumi.StringPtrInput
 	Tags   pulumi.StringArrayInput
 	// The ID of the VPC where the NFS share will be created.
-	VpcId  pulumi.StringPtrInput
+	VpcId pulumi.StringPtrInput
+	// The set of VPC IDs the NFS share is attached to.
 	VpcIds pulumi.StringArrayInput
 }
 
@@ -401,6 +402,7 @@ func (o NfsOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Nfs) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
 }
 
+// The set of VPC IDs the NFS share is attached to.
 func (o NfsOutput) VpcIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Nfs) pulumi.StringArrayOutput { return v.VpcIds }).(pulumi.StringArrayOutput)
 }

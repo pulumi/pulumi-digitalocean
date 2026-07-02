@@ -125,6 +125,8 @@ import com.pulumi.digitalocean.inputs.GetKubernetesVersionsArgs;
 import com.pulumi.digitalocean.inputs.GetKubernetesVersionsPlainArgs;
 import com.pulumi.digitalocean.inputs.GetLoadBalancerArgs;
 import com.pulumi.digitalocean.inputs.GetLoadBalancerPlainArgs;
+import com.pulumi.digitalocean.inputs.GetNfsAccessPointArgs;
+import com.pulumi.digitalocean.inputs.GetNfsAccessPointPlainArgs;
 import com.pulumi.digitalocean.inputs.GetNfsArgs;
 import com.pulumi.digitalocean.inputs.GetNfsPlainArgs;
 import com.pulumi.digitalocean.inputs.GetNfsSnapshotArgs;
@@ -169,6 +171,8 @@ import com.pulumi.digitalocean.inputs.GetTagArgs;
 import com.pulumi.digitalocean.inputs.GetTagPlainArgs;
 import com.pulumi.digitalocean.inputs.GetTagsArgs;
 import com.pulumi.digitalocean.inputs.GetTagsPlainArgs;
+import com.pulumi.digitalocean.inputs.GetVectorDatabaseArgs;
+import com.pulumi.digitalocean.inputs.GetVectorDatabasePlainArgs;
 import com.pulumi.digitalocean.inputs.GetVolumeArgs;
 import com.pulumi.digitalocean.inputs.GetVolumePlainArgs;
 import com.pulumi.digitalocean.inputs.GetVolumeSnapshotArgs;
@@ -241,6 +245,7 @@ import com.pulumi.digitalocean.outputs.GetImagesResult;
 import com.pulumi.digitalocean.outputs.GetKubernetesClusterResult;
 import com.pulumi.digitalocean.outputs.GetKubernetesVersionsResult;
 import com.pulumi.digitalocean.outputs.GetLoadBalancerResult;
+import com.pulumi.digitalocean.outputs.GetNfsAccessPointResult;
 import com.pulumi.digitalocean.outputs.GetNfsResult;
 import com.pulumi.digitalocean.outputs.GetNfsSnapshotResult;
 import com.pulumi.digitalocean.outputs.GetPartnerAttachmentResult;
@@ -263,6 +268,7 @@ import com.pulumi.digitalocean.outputs.GetSshKeyResult;
 import com.pulumi.digitalocean.outputs.GetSshKeysResult;
 import com.pulumi.digitalocean.outputs.GetTagResult;
 import com.pulumi.digitalocean.outputs.GetTagsResult;
+import com.pulumi.digitalocean.outputs.GetVectorDatabaseResult;
 import com.pulumi.digitalocean.outputs.GetVolumeResult;
 import com.pulumi.digitalocean.outputs.GetVolumeSnapshotResult;
 import com.pulumi.digitalocean.outputs.GetVpcNatGatewayResult;
@@ -14046,6 +14052,545 @@ public final class DigitaloceanFunctions {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getNfs:getNfs", TypeShape.of(GetNfsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Get information about a DigitalOcean NFS access point.
+     * 
+     * ## Example Usage
+     * 
+     * Get the NFS access point by ID:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetNfsAccessPointArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getNfsAccessPoint(GetNfsAccessPointArgs.builder()
+     *             .id("506f78a4-e098-11e5-ad9f-000f53306ae1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * Get the NFS access point by name and share ID:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetNfsAccessPointArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getNfsAccessPoint(GetNfsAccessPointArgs.builder()
+     *             .name("example-access-point")
+     *             .shareId(foobar.id())
+     *             .vpcId(foobarDigitaloceanVpc.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetNfsAccessPointResult> getNfsAccessPoint() {
+        return getNfsAccessPoint(GetNfsAccessPointArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about a DigitalOcean NFS access point.
+     * 
+     * ## Example Usage
+     * 
+     * Get the NFS access point by ID:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetNfsAccessPointArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getNfsAccessPoint(GetNfsAccessPointArgs.builder()
+     *             .id("506f78a4-e098-11e5-ad9f-000f53306ae1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * Get the NFS access point by name and share ID:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetNfsAccessPointArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getNfsAccessPoint(GetNfsAccessPointArgs.builder()
+     *             .name("example-access-point")
+     *             .shareId(foobar.id())
+     *             .vpcId(foobarDigitaloceanVpc.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetNfsAccessPointResult> getNfsAccessPointPlain() {
+        return getNfsAccessPointPlain(GetNfsAccessPointPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about a DigitalOcean NFS access point.
+     * 
+     * ## Example Usage
+     * 
+     * Get the NFS access point by ID:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetNfsAccessPointArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getNfsAccessPoint(GetNfsAccessPointArgs.builder()
+     *             .id("506f78a4-e098-11e5-ad9f-000f53306ae1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * Get the NFS access point by name and share ID:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetNfsAccessPointArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getNfsAccessPoint(GetNfsAccessPointArgs.builder()
+     *             .name("example-access-point")
+     *             .shareId(foobar.id())
+     *             .vpcId(foobarDigitaloceanVpc.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetNfsAccessPointResult> getNfsAccessPoint(GetNfsAccessPointArgs args) {
+        return getNfsAccessPoint(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about a DigitalOcean NFS access point.
+     * 
+     * ## Example Usage
+     * 
+     * Get the NFS access point by ID:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetNfsAccessPointArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getNfsAccessPoint(GetNfsAccessPointArgs.builder()
+     *             .id("506f78a4-e098-11e5-ad9f-000f53306ae1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * Get the NFS access point by name and share ID:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetNfsAccessPointArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getNfsAccessPoint(GetNfsAccessPointArgs.builder()
+     *             .name("example-access-point")
+     *             .shareId(foobar.id())
+     *             .vpcId(foobarDigitaloceanVpc.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetNfsAccessPointResult> getNfsAccessPointPlain(GetNfsAccessPointPlainArgs args) {
+        return getNfsAccessPointPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about a DigitalOcean NFS access point.
+     * 
+     * ## Example Usage
+     * 
+     * Get the NFS access point by ID:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetNfsAccessPointArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getNfsAccessPoint(GetNfsAccessPointArgs.builder()
+     *             .id("506f78a4-e098-11e5-ad9f-000f53306ae1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * Get the NFS access point by name and share ID:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetNfsAccessPointArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getNfsAccessPoint(GetNfsAccessPointArgs.builder()
+     *             .name("example-access-point")
+     *             .shareId(foobar.id())
+     *             .vpcId(foobarDigitaloceanVpc.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetNfsAccessPointResult> getNfsAccessPoint(GetNfsAccessPointArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getNfsAccessPoint:getNfsAccessPoint", TypeShape.of(GetNfsAccessPointResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a DigitalOcean NFS access point.
+     * 
+     * ## Example Usage
+     * 
+     * Get the NFS access point by ID:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetNfsAccessPointArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getNfsAccessPoint(GetNfsAccessPointArgs.builder()
+     *             .id("506f78a4-e098-11e5-ad9f-000f53306ae1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * Get the NFS access point by name and share ID:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetNfsAccessPointArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getNfsAccessPoint(GetNfsAccessPointArgs.builder()
+     *             .name("example-access-point")
+     *             .shareId(foobar.id())
+     *             .vpcId(foobarDigitaloceanVpc.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetNfsAccessPointResult> getNfsAccessPoint(GetNfsAccessPointArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getNfsAccessPoint:getNfsAccessPoint", TypeShape.of(GetNfsAccessPointResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a DigitalOcean NFS access point.
+     * 
+     * ## Example Usage
+     * 
+     * Get the NFS access point by ID:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetNfsAccessPointArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getNfsAccessPoint(GetNfsAccessPointArgs.builder()
+     *             .id("506f78a4-e098-11e5-ad9f-000f53306ae1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * Get the NFS access point by name and share ID:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetNfsAccessPointArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getNfsAccessPoint(GetNfsAccessPointArgs.builder()
+     *             .name("example-access-point")
+     *             .shareId(foobar.id())
+     *             .vpcId(foobarDigitaloceanVpc.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetNfsAccessPointResult> getNfsAccessPointPlain(GetNfsAccessPointPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getNfsAccessPoint:getNfsAccessPoint", TypeShape.of(GetNfsAccessPointResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * Get information about a DigitalOcean NFS snapshot.
      * 
      * ## Example Usage
@@ -21149,6 +21694,524 @@ public final class DigitaloceanFunctions {
      */
     public static CompletableFuture<GetTagsResult> getTagsPlain(GetTagsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getTags:getTags", TypeShape.of(GetTagsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information on a DigitalOcean vector database resource.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetVectorDatabaseArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getVectorDatabase(GetVectorDatabaseArgs.builder()
+     *             .name("example-vector-db")
+     *             .build());
+     * 
+     *         ctx.export("vectorDbHttpEndpoint", example.endpoints()[0].http());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * A vector database may also be looked up by its `id`:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetVectorDatabaseArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getVectorDatabase(GetVectorDatabaseArgs.builder()
+     *             .id("245bcfd0-7f31-4ce6-a2bc-475a116cca97")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetVectorDatabaseResult> getVectorDatabase() {
+        return getVectorDatabase(GetVectorDatabaseArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information on a DigitalOcean vector database resource.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetVectorDatabaseArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getVectorDatabase(GetVectorDatabaseArgs.builder()
+     *             .name("example-vector-db")
+     *             .build());
+     * 
+     *         ctx.export("vectorDbHttpEndpoint", example.endpoints()[0].http());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * A vector database may also be looked up by its `id`:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetVectorDatabaseArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getVectorDatabase(GetVectorDatabaseArgs.builder()
+     *             .id("245bcfd0-7f31-4ce6-a2bc-475a116cca97")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetVectorDatabaseResult> getVectorDatabasePlain() {
+        return getVectorDatabasePlain(GetVectorDatabasePlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information on a DigitalOcean vector database resource.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetVectorDatabaseArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getVectorDatabase(GetVectorDatabaseArgs.builder()
+     *             .name("example-vector-db")
+     *             .build());
+     * 
+     *         ctx.export("vectorDbHttpEndpoint", example.endpoints()[0].http());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * A vector database may also be looked up by its `id`:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetVectorDatabaseArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getVectorDatabase(GetVectorDatabaseArgs.builder()
+     *             .id("245bcfd0-7f31-4ce6-a2bc-475a116cca97")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetVectorDatabaseResult> getVectorDatabase(GetVectorDatabaseArgs args) {
+        return getVectorDatabase(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information on a DigitalOcean vector database resource.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetVectorDatabaseArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getVectorDatabase(GetVectorDatabaseArgs.builder()
+     *             .name("example-vector-db")
+     *             .build());
+     * 
+     *         ctx.export("vectorDbHttpEndpoint", example.endpoints()[0].http());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * A vector database may also be looked up by its `id`:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetVectorDatabaseArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getVectorDatabase(GetVectorDatabaseArgs.builder()
+     *             .id("245bcfd0-7f31-4ce6-a2bc-475a116cca97")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetVectorDatabaseResult> getVectorDatabasePlain(GetVectorDatabasePlainArgs args) {
+        return getVectorDatabasePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information on a DigitalOcean vector database resource.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetVectorDatabaseArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getVectorDatabase(GetVectorDatabaseArgs.builder()
+     *             .name("example-vector-db")
+     *             .build());
+     * 
+     *         ctx.export("vectorDbHttpEndpoint", example.endpoints()[0].http());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * A vector database may also be looked up by its `id`:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetVectorDatabaseArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getVectorDatabase(GetVectorDatabaseArgs.builder()
+     *             .id("245bcfd0-7f31-4ce6-a2bc-475a116cca97")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetVectorDatabaseResult> getVectorDatabase(GetVectorDatabaseArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getVectorDatabase:getVectorDatabase", TypeShape.of(GetVectorDatabaseResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information on a DigitalOcean vector database resource.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetVectorDatabaseArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getVectorDatabase(GetVectorDatabaseArgs.builder()
+     *             .name("example-vector-db")
+     *             .build());
+     * 
+     *         ctx.export("vectorDbHttpEndpoint", example.endpoints()[0].http());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * A vector database may also be looked up by its `id`:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetVectorDatabaseArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getVectorDatabase(GetVectorDatabaseArgs.builder()
+     *             .id("245bcfd0-7f31-4ce6-a2bc-475a116cca97")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetVectorDatabaseResult> getVectorDatabase(GetVectorDatabaseArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getVectorDatabase:getVectorDatabase", TypeShape.of(GetVectorDatabaseResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information on a DigitalOcean vector database resource.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetVectorDatabaseArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getVectorDatabase(GetVectorDatabaseArgs.builder()
+     *             .name("example-vector-db")
+     *             .build());
+     * 
+     *         ctx.export("vectorDbHttpEndpoint", example.endpoints()[0].http());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * A vector database may also be looked up by its `id`:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetVectorDatabaseArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getVectorDatabase(GetVectorDatabaseArgs.builder()
+     *             .id("245bcfd0-7f31-4ce6-a2bc-475a116cca97")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetVectorDatabaseResult> getVectorDatabasePlain(GetVectorDatabasePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getVectorDatabase:getVectorDatabase", TypeShape.of(GetVectorDatabaseResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Get information on a volume for use in other resources. This data source provides

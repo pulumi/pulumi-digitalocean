@@ -115,6 +115,7 @@ from .get_kubernetes_cluster import *
 from .get_kubernetes_versions import *
 from .get_load_balancer import *
 from .get_nfs import *
+from .get_nfs_access_point import *
 from .get_nfs_snapshot import *
 from .get_partner_attachment import *
 from .get_partner_attachment_service_key import *
@@ -136,6 +137,7 @@ from .get_ssh_key import *
 from .get_ssh_keys import *
 from .get_tag import *
 from .get_tags import *
+from .get_vector_database import *
 from .get_volume import *
 from .get_volume_snapshot import *
 from .get_vpc import *
@@ -155,6 +157,7 @@ from .kubernetes_node_pool import *
 from .load_balancer import *
 from .monitor_alert import *
 from .nfs import *
+from .nfs_access_point import *
 from .nfs_attachment import *
 from .nfs_snapshot import *
 from .partner_attachment import *
@@ -175,6 +178,7 @@ from .ssh_key import *
 from .tag import *
 from .uptime_alert import *
 from .uptime_check import *
+from .vector_database import *
 from .volume import *
 from .volume_attachment import *
 from .volume_snapshot import *
@@ -668,6 +672,14 @@ _utilities.register(
  },
  {
   "pkg": "digitalocean",
+  "mod": "index/nfsAccessPoint",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/nfsAccessPoint:NfsAccessPoint": "NfsAccessPoint"
+  }
+ },
+ {
+  "pkg": "digitalocean",
   "mod": "index/nfsAttachment",
   "fqn": "pulumi_digitalocean",
   "classes": {
@@ -816,6 +828,14 @@ _utilities.register(
   "fqn": "pulumi_digitalocean",
   "classes": {
    "digitalocean:index/uptimeCheck:UptimeCheck": "UptimeCheck"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/vectorDatabase",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/vectorDatabase:VectorDatabase": "VectorDatabase"
   }
  },
  {
