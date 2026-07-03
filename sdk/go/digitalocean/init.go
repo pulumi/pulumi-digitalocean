@@ -139,6 +139,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &MonitorAlert{}
 	case "digitalocean:index/nfs:Nfs":
 		r = &Nfs{}
+	case "digitalocean:index/nfsAccessPoint:NfsAccessPoint":
+		r = &NfsAccessPoint{}
 	case "digitalocean:index/nfsAttachment:NfsAttachment":
 		r = &NfsAttachment{}
 	case "digitalocean:index/nfsSnapshot:NfsSnapshot":
@@ -177,6 +179,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &UptimeAlert{}
 	case "digitalocean:index/uptimeCheck:UptimeCheck":
 		r = &UptimeCheck{}
+	case "digitalocean:index/vectorDatabase:VectorDatabase":
+		r = &VectorDatabase{}
 	case "digitalocean:index/volume:Volume":
 		r = &Volume{}
 	case "digitalocean:index/volumeAttachment:VolumeAttachment":
@@ -517,6 +521,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"digitalocean",
+		"index/nfsAccessPoint",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
 		"index/nfsAttachment",
 		&module{version},
 	)
@@ -608,6 +617,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"digitalocean",
 		"index/uptimeCheck",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
+		"index/vectorDatabase",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

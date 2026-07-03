@@ -63,9 +63,9 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * ### Moving Share Between VPCs
+ * ### Multiple VPC Attachments
  * 
- * To move an NFS share from one VPC to another using the Reassign API:
+ * Attach an NFS share to additional VPCs one at a time using separate attachment resources:
  * 
  * <pre>
  * {@code
@@ -94,13 +94,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var source = new Vpc("source", VpcArgs.builder()
- *             .name("source-vpc")
+ *         var primary = new Vpc("primary", VpcArgs.builder()
+ *             .name("primary-vpc")
  *             .region("nyc1")
  *             .build());
  * 
- *         var destination = new Vpc("destination", VpcArgs.builder()
- *             .name("destination-vpc")
+ *         var secondary = new Vpc("secondary", VpcArgs.builder()
+ *             .name("secondary-vpc")
  *             .region("nyc1")
  *             .build());
  * 
@@ -108,24 +108,22 @@ import javax.annotation.Nullable;
  *             .region("nyc1")
  *             .name("example-nfs")
  *             .size(50)
- *             .vpcId(source.id())
+ *             .vpcId(primary.id())
  *             .performanceTier("high")
  *             .build());
  * 
- *         // Attach to source VPC
- *         var sourceNfsAttachment = new NfsAttachment("sourceNfsAttachment", NfsAttachmentArgs.builder()
+ *         var primaryNfsAttachment = new NfsAttachment("primaryNfsAttachment", NfsAttachmentArgs.builder()
  *             .shareId(example.id())
- *             .vpcId(source.id())
+ *             .vpcId(primary.id())
  *             .region("nyc1")
  *             .build());
  * 
- *         // Reassign to destination VPC - uses the efficient Reassign API
- *         var destinationNfsAttachment = new NfsAttachment("destinationNfsAttachment", NfsAttachmentArgs.builder()
+ *         var secondaryNfsAttachment = new NfsAttachment("secondaryNfsAttachment", NfsAttachmentArgs.builder()
  *             .shareId(example.id())
- *             .vpcId(destination.id())
+ *             .vpcId(secondary.id())
  *             .region("nyc1")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(sourceNfsAttachment)
+ *                 .dependsOn(primaryNfsAttachment)
  *                 .build());
  * 
  *     }
@@ -135,7 +133,7 @@ import javax.annotation.Nullable;
  * 
  * ## Notes
  * 
- * Multiple NFS shares can now be attached to the same VPC, providing greater flexibility for storage management.
+ * An NFS share can be attached to multiple VPCs. Use one `digitalocean.NfsAttachment` resource per VPC. Multiple NFS shares can also be attached to the same VPC.
  * 
  * ## Import
  * 
@@ -268,9 +266,17 @@ public class Nfs extends com.pulumi.resources.CustomResource {
     public Output<String> vpcId() {
         return this.vpcId;
     }
+    /**
+     * The set of VPC IDs the NFS share is attached to.
+     * 
+     */
     @Export(name="vpcIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> vpcIds;
 
+    /**
+     * @return The set of VPC IDs the NFS share is attached to.
+     * 
+     */
     public Output<List<String>> vpcIds() {
         return this.vpcIds;
     }

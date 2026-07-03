@@ -545,6 +545,11 @@ export const getNfs: typeof import("./getNfs").getNfs = null as any;
 export const getNfsOutput: typeof import("./getNfs").getNfsOutput = null as any;
 utilities.lazyLoad(exports, ["getNfs","getNfsOutput"], () => require("./getNfs"));
 
+export { GetNfsAccessPointArgs, GetNfsAccessPointResult, GetNfsAccessPointOutputArgs } from "./getNfsAccessPoint";
+export const getNfsAccessPoint: typeof import("./getNfsAccessPoint").getNfsAccessPoint = null as any;
+export const getNfsAccessPointOutput: typeof import("./getNfsAccessPoint").getNfsAccessPointOutput = null as any;
+utilities.lazyLoad(exports, ["getNfsAccessPoint","getNfsAccessPointOutput"], () => require("./getNfsAccessPoint"));
+
 export { GetNfsSnapshotArgs, GetNfsSnapshotResult, GetNfsSnapshotOutputArgs } from "./getNfsSnapshot";
 export const getNfsSnapshot: typeof import("./getNfsSnapshot").getNfsSnapshot = null as any;
 export const getNfsSnapshotOutput: typeof import("./getNfsSnapshot").getNfsSnapshotOutput = null as any;
@@ -650,6 +655,11 @@ export const getTags: typeof import("./getTags").getTags = null as any;
 export const getTagsOutput: typeof import("./getTags").getTagsOutput = null as any;
 utilities.lazyLoad(exports, ["getTags","getTagsOutput"], () => require("./getTags"));
 
+export { GetVectorDatabaseArgs, GetVectorDatabaseResult, GetVectorDatabaseOutputArgs } from "./getVectorDatabase";
+export const getVectorDatabase: typeof import("./getVectorDatabase").getVectorDatabase = null as any;
+export const getVectorDatabaseOutput: typeof import("./getVectorDatabase").getVectorDatabaseOutput = null as any;
+utilities.lazyLoad(exports, ["getVectorDatabase","getVectorDatabaseOutput"], () => require("./getVectorDatabase"));
+
 export { GetVolumeArgs, GetVolumeResult, GetVolumeOutputArgs } from "./getVolume";
 export const getVolume: typeof import("./getVolume").getVolume = null as any;
 export const getVolumeOutput: typeof import("./getVolume").getVolumeOutput = null as any;
@@ -744,6 +754,11 @@ export { NfsArgs, NfsState } from "./nfs";
 export type Nfs = import("./nfs").Nfs;
 export const Nfs: typeof import("./nfs").Nfs = null as any;
 utilities.lazyLoad(exports, ["Nfs"], () => require("./nfs"));
+
+export { NfsAccessPointArgs, NfsAccessPointState } from "./nfsAccessPoint";
+export type NfsAccessPoint = import("./nfsAccessPoint").NfsAccessPoint;
+export const NfsAccessPoint: typeof import("./nfsAccessPoint").NfsAccessPoint = null as any;
+utilities.lazyLoad(exports, ["NfsAccessPoint"], () => require("./nfsAccessPoint"));
 
 export { NfsAttachmentArgs, NfsAttachmentState } from "./nfsAttachment";
 export type NfsAttachment = import("./nfsAttachment").NfsAttachment;
@@ -842,6 +857,11 @@ export { UptimeCheckArgs, UptimeCheckState } from "./uptimeCheck";
 export type UptimeCheck = import("./uptimeCheck").UptimeCheck;
 export const UptimeCheck: typeof import("./uptimeCheck").UptimeCheck = null as any;
 utilities.lazyLoad(exports, ["UptimeCheck"], () => require("./uptimeCheck"));
+
+export { VectorDatabaseArgs, VectorDatabaseState } from "./vectorDatabase";
+export type VectorDatabase = import("./vectorDatabase").VectorDatabase;
+export const VectorDatabase: typeof import("./vectorDatabase").VectorDatabase = null as any;
+utilities.lazyLoad(exports, ["VectorDatabase"], () => require("./vectorDatabase"));
 
 export { VolumeArgs, VolumeState } from "./volume";
 export type Volume = import("./volume").Volume;
@@ -1008,6 +1028,8 @@ const _module = {
                 return new MonitorAlert(name, <any>undefined, { urn })
             case "digitalocean:index/nfs:Nfs":
                 return new Nfs(name, <any>undefined, { urn })
+            case "digitalocean:index/nfsAccessPoint:NfsAccessPoint":
+                return new NfsAccessPoint(name, <any>undefined, { urn })
             case "digitalocean:index/nfsAttachment:NfsAttachment":
                 return new NfsAttachment(name, <any>undefined, { urn })
             case "digitalocean:index/nfsSnapshot:NfsSnapshot":
@@ -1046,6 +1068,8 @@ const _module = {
                 return new UptimeAlert(name, <any>undefined, { urn })
             case "digitalocean:index/uptimeCheck:UptimeCheck":
                 return new UptimeCheck(name, <any>undefined, { urn })
+            case "digitalocean:index/vectorDatabase:VectorDatabase":
+                return new VectorDatabase(name, <any>undefined, { urn })
             case "digitalocean:index/volume:Volume":
                 return new Volume(name, <any>undefined, { urn })
             case "digitalocean:index/volumeAttachment:VolumeAttachment":
@@ -1122,6 +1146,7 @@ pulumi.runtime.registerResourceModule("digitalocean", "index/kubernetesNodePool"
 pulumi.runtime.registerResourceModule("digitalocean", "index/loadBalancer", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/monitorAlert", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/nfs", _module)
+pulumi.runtime.registerResourceModule("digitalocean", "index/nfsAccessPoint", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/nfsAttachment", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/nfsSnapshot", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/partnerAttachment", _module)
@@ -1141,6 +1166,7 @@ pulumi.runtime.registerResourceModule("digitalocean", "index/sshKey", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/tag", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/uptimeAlert", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/uptimeCheck", _module)
+pulumi.runtime.registerResourceModule("digitalocean", "index/vectorDatabase", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/volume", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/volumeAttachment", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/volumeSnapshot", _module)

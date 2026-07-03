@@ -26,48 +26,46 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
- * ### Moving Share Between VPCs
+ * ### Multiple VPC Attachments
  *
- * To move an NFS share from one VPC to another using the Reassign API:
+ * Attach an NFS share to additional VPCs one at a time using separate attachment resources:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const source = new digitalocean.Vpc("source", {
- *     name: "source-vpc",
+ * const primary = new digitalocean.Vpc("primary", {
+ *     name: "primary-vpc",
  *     region: "nyc1",
  * });
- * const destination = new digitalocean.Vpc("destination", {
- *     name: "destination-vpc",
+ * const secondary = new digitalocean.Vpc("secondary", {
+ *     name: "secondary-vpc",
  *     region: "nyc1",
  * });
  * const example = new digitalocean.Nfs("example", {
  *     region: "nyc1",
  *     name: "example-nfs",
  *     size: 50,
- *     vpcId: source.id,
+ *     vpcId: primary.id,
  *     performanceTier: "high",
  * });
- * // Attach to source VPC
- * const sourceNfsAttachment = new digitalocean.NfsAttachment("source", {
+ * const primaryNfsAttachment = new digitalocean.NfsAttachment("primary", {
  *     shareId: example.id,
- *     vpcId: source.id,
+ *     vpcId: primary.id,
  *     region: "nyc1",
  * });
- * // Reassign to destination VPC - uses the efficient Reassign API
- * const destinationNfsAttachment = new digitalocean.NfsAttachment("destination", {
+ * const secondaryNfsAttachment = new digitalocean.NfsAttachment("secondary", {
  *     shareId: example.id,
- *     vpcId: destination.id,
+ *     vpcId: secondary.id,
  *     region: "nyc1",
  * }, {
- *     dependsOn: [sourceNfsAttachment],
+ *     dependsOn: [primaryNfsAttachment],
  * });
  * ```
  *
  * ## Notes
  *
- * Multiple NFS shares can now be attached to the same VPC, providing greater flexibility for storage management.
+ * An NFS share can be attached to multiple VPCs. Use one `digitalocean.NfsAttachment` resource per VPC. Multiple NFS shares can also be attached to the same VPC.
  *
  * ## Import
  *
@@ -139,6 +137,9 @@ export class Nfs extends pulumi.CustomResource {
      * The ID of the VPC where the NFS share will be created.
      */
     declare public readonly vpcId: pulumi.Output<string>;
+    /**
+     * The set of VPC IDs the NFS share is attached to.
+     */
     declare public /*out*/ readonly vpcIds: pulumi.Output<string[]>;
 
     /**
@@ -229,6 +230,9 @@ export interface NfsState {
      * The ID of the VPC where the NFS share will be created.
      */
     vpcId?: pulumi.Input<string | undefined>;
+    /**
+     * The set of VPC IDs the NFS share is attached to.
+     */
     vpcIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 

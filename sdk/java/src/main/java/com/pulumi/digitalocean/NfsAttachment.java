@@ -14,7 +14,7 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * Manages attaching a NFS share to a vpc.
+ * Manages attaching an NFS share to a VPC. A share can be attached to multiple VPCs by creating one `digitalocean.NfsAttachment` resource per VPC.
  * 
  * ## Example Usage
  * 
@@ -60,12 +60,83 @@ import javax.annotation.Nullable;
  *         var foobarNfsAttachment = new NfsAttachment("foobarNfsAttachment", NfsAttachmentArgs.builder()
  *             .shareId(foobarNfs.id())
  *             .vpcId(foobar.id())
+ *             .region("atl1")
  *             .build());
  * 
  *     }
  * }
  * }
  * </pre>
+ * 
+ * ### Multiple VPCs
+ * 
+ * Attach the same NFS share to additional VPCs one at a time:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.digitalocean.Vpc;
+ * import com.pulumi.digitalocean.VpcArgs;
+ * import com.pulumi.digitalocean.Nfs;
+ * import com.pulumi.digitalocean.NfsArgs;
+ * import com.pulumi.digitalocean.NfsAttachment;
+ * import com.pulumi.digitalocean.NfsAttachmentArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var primary = new Vpc("primary", VpcArgs.builder()
+ *             .name("primary-vpc")
+ *             .region("atl1")
+ *             .build());
+ * 
+ *         var secondary = new Vpc("secondary", VpcArgs.builder()
+ *             .name("secondary-vpc")
+ *             .region("atl1")
+ *             .build());
+ * 
+ *         var example = new Nfs("example", NfsArgs.builder()
+ *             .region("atl1")
+ *             .name("example-nfs")
+ *             .size(50)
+ *             .vpcId(primary.id())
+ *             .performanceTier("high")
+ *             .build());
+ * 
+ *         var primaryNfsAttachment = new NfsAttachment("primaryNfsAttachment", NfsAttachmentArgs.builder()
+ *             .shareId(example.id())
+ *             .vpcId(primary.id())
+ *             .region("atl1")
+ *             .build());
+ * 
+ *         var secondaryNfsAttachment = new NfsAttachment("secondaryNfsAttachment", NfsAttachmentArgs.builder()
+ *             .shareId(example.id())
+ *             .vpcId(secondary.id())
+ *             .region("atl1")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(primaryNfsAttachment)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * Deleting an attachment resource detaches the share from that VPC only. Other VPC attachments remain in place.
  * 
  * ## Import
  * 
@@ -78,9 +149,17 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="digitalocean:index/nfsAttachment:NfsAttachment")
 public class NfsAttachment extends com.pulumi.resources.CustomResource {
+    /**
+     * The region of the NFS share.
+     * 
+     */
     @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
+    /**
+     * @return The region of the NFS share.
+     * 
+     */
     public Output<String> region() {
         return this.region;
     }
@@ -99,14 +178,14 @@ public class NfsAttachment extends com.pulumi.resources.CustomResource {
         return this.shareId;
     }
     /**
-     * The ID of the vpc to attach the NFS share to.
+     * The ID of the VPC to attach the NFS share to.
      * 
      */
     @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**
-     * @return The ID of the vpc to attach the NFS share to.
+     * @return The ID of the VPC to attach the NFS share to.
      * 
      */
     public Output<String> vpcId() {

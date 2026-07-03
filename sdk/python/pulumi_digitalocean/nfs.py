@@ -141,6 +141,7 @@ class _NfsState:
         :param pulumi.Input[_builtins.int] size: The size of the NFS share in GiB. Minimum size is 50 GiB.
         :param pulumi.Input[_builtins.str] status: The current status of the NFS share.
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC where the NFS share will be created.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vpc_ids: The set of VPC IDs the NFS share is attached to.
         """
         if host is not None:
             pulumi.set(__self__, "host", host)
@@ -272,6 +273,9 @@ class _NfsState:
     @_builtins.property
     @pulumi.getter(name="vpcIds")
     def vpc_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The set of VPC IDs the NFS share is attached to.
+        """
         return pulumi.get(self, "vpc_ids")
 
     @vpc_ids.setter
@@ -312,42 +316,40 @@ class Nfs(pulumi.CustomResource):
             performance_tier="high")
         ```
 
-        ### Moving Share Between VPCs
+        ### Multiple VPC Attachments
 
-        To move an NFS share from one VPC to another using the Reassign API:
+        Attach an NFS share to additional VPCs one at a time using separate attachment resources:
 
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
-        source = digitalocean.Vpc("source",
-            name="source-vpc",
+        primary = digitalocean.Vpc("primary",
+            name="primary-vpc",
             region="nyc1")
-        destination = digitalocean.Vpc("destination",
-            name="destination-vpc",
+        secondary = digitalocean.Vpc("secondary",
+            name="secondary-vpc",
             region="nyc1")
         example = digitalocean.Nfs("example",
             region="nyc1",
             name="example-nfs",
             size=50,
-            vpc_id=source.id,
+            vpc_id=primary.id,
             performance_tier="high")
-        # Attach to source VPC
-        source_nfs_attachment = digitalocean.NfsAttachment("source",
+        primary_nfs_attachment = digitalocean.NfsAttachment("primary",
             share_id=example.id,
-            vpc_id=source.id,
+            vpc_id=primary.id,
             region="nyc1")
-        # Reassign to destination VPC - uses the efficient Reassign API
-        destination_nfs_attachment = digitalocean.NfsAttachment("destination",
+        secondary_nfs_attachment = digitalocean.NfsAttachment("secondary",
             share_id=example.id,
-            vpc_id=destination.id,
+            vpc_id=secondary.id,
             region="nyc1",
-            opts = pulumi.ResourceOptions(depends_on=[source_nfs_attachment]))
+            opts = pulumi.ResourceOptions(depends_on=[primary_nfs_attachment]))
         ```
 
         ## Notes
 
-        Multiple NFS shares can now be attached to the same VPC, providing greater flexibility for storage management.
+        An NFS share can be attached to multiple VPCs. Use one `NfsAttachment` resource per VPC. Multiple NFS shares can also be attached to the same VPC.
 
         ## Import
 
@@ -393,42 +395,40 @@ class Nfs(pulumi.CustomResource):
             performance_tier="high")
         ```
 
-        ### Moving Share Between VPCs
+        ### Multiple VPC Attachments
 
-        To move an NFS share from one VPC to another using the Reassign API:
+        Attach an NFS share to additional VPCs one at a time using separate attachment resources:
 
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
-        source = digitalocean.Vpc("source",
-            name="source-vpc",
+        primary = digitalocean.Vpc("primary",
+            name="primary-vpc",
             region="nyc1")
-        destination = digitalocean.Vpc("destination",
-            name="destination-vpc",
+        secondary = digitalocean.Vpc("secondary",
+            name="secondary-vpc",
             region="nyc1")
         example = digitalocean.Nfs("example",
             region="nyc1",
             name="example-nfs",
             size=50,
-            vpc_id=source.id,
+            vpc_id=primary.id,
             performance_tier="high")
-        # Attach to source VPC
-        source_nfs_attachment = digitalocean.NfsAttachment("source",
+        primary_nfs_attachment = digitalocean.NfsAttachment("primary",
             share_id=example.id,
-            vpc_id=source.id,
+            vpc_id=primary.id,
             region="nyc1")
-        # Reassign to destination VPC - uses the efficient Reassign API
-        destination_nfs_attachment = digitalocean.NfsAttachment("destination",
+        secondary_nfs_attachment = digitalocean.NfsAttachment("secondary",
             share_id=example.id,
-            vpc_id=destination.id,
+            vpc_id=secondary.id,
             region="nyc1",
-            opts = pulumi.ResourceOptions(depends_on=[source_nfs_attachment]))
+            opts = pulumi.ResourceOptions(depends_on=[primary_nfs_attachment]))
         ```
 
         ## Notes
 
-        Multiple NFS shares can now be attached to the same VPC, providing greater flexibility for storage management.
+        An NFS share can be attached to multiple VPCs. Use one `NfsAttachment` resource per VPC. Multiple NFS shares can also be attached to the same VPC.
 
         ## Import
 
@@ -521,6 +521,7 @@ class Nfs(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] size: The size of the NFS share in GiB. Minimum size is 50 GiB.
         :param pulumi.Input[_builtins.str] status: The current status of the NFS share.
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC where the NFS share will be created.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vpc_ids: The set of VPC IDs the NFS share is attached to.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -611,5 +612,8 @@ class Nfs(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="vpcIds")
     def vpc_ids(self) -> pulumi.Output[Sequence[_builtins.str]]:
+        """
+        The set of VPC IDs the NFS share is attached to.
+        """
         return pulumi.get(self, "vpc_ids")
 
