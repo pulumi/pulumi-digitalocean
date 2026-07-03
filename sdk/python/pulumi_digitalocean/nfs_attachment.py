@@ -25,8 +25,9 @@ class NfsAttachmentArgs:
         """
         The set of arguments for constructing a NfsAttachment resource.
 
+        :param pulumi.Input[_builtins.str] region: The region of the NFS share.
         :param pulumi.Input[_builtins.str] share_id: The ID of the NFS share to attach.
-        :param pulumi.Input[_builtins.str] vpc_id: The ID of the vpc to attach the NFS share to.
+        :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC to attach the NFS share to.
         """
         pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "share_id", share_id)
@@ -35,6 +36,9 @@ class NfsAttachmentArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Input[_builtins.str]:
+        """
+        The region of the NFS share.
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -57,7 +61,7 @@ class NfsAttachmentArgs:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The ID of the vpc to attach the NFS share to.
+        The ID of the VPC to attach the NFS share to.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -75,8 +79,9 @@ class _NfsAttachmentState:
         """
         Input properties used for looking up and filtering NfsAttachment resources.
 
+        :param pulumi.Input[_builtins.str] region: The region of the NFS share.
         :param pulumi.Input[_builtins.str] share_id: The ID of the NFS share to attach.
-        :param pulumi.Input[_builtins.str] vpc_id: The ID of the vpc to attach the NFS share to.
+        :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC to attach the NFS share to.
         """
         if region is not None:
             pulumi.set(__self__, "region", region)
@@ -88,6 +93,9 @@ class _NfsAttachmentState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The region of the NFS share.
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -110,7 +118,7 @@ class _NfsAttachmentState:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The ID of the vpc to attach the NFS share to.
+        The ID of the VPC to attach the NFS share to.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -130,7 +138,7 @@ class NfsAttachment(pulumi.CustomResource):
                  vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages attaching a NFS share to a vpc.
+        Manages attaching an NFS share to a VPC. A share can be attached to multiple VPCs by creating one `NfsAttachment` resource per VPC.
 
         ## Example Usage
 
@@ -149,8 +157,42 @@ class NfsAttachment(pulumi.CustomResource):
             performance_tier="high")
         foobar_nfs_attachment = digitalocean.NfsAttachment("foobar",
             share_id=foobar_nfs.id,
-            vpc_id=foobar.id)
+            vpc_id=foobar.id,
+            region="atl1")
         ```
+
+        ### Multiple VPCs
+
+        Attach the same NFS share to additional VPCs one at a time:
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        primary = digitalocean.Vpc("primary",
+            name="primary-vpc",
+            region="atl1")
+        secondary = digitalocean.Vpc("secondary",
+            name="secondary-vpc",
+            region="atl1")
+        example = digitalocean.Nfs("example",
+            region="atl1",
+            name="example-nfs",
+            size=50,
+            vpc_id=primary.id,
+            performance_tier="high")
+        primary_nfs_attachment = digitalocean.NfsAttachment("primary",
+            share_id=example.id,
+            vpc_id=primary.id,
+            region="atl1")
+        secondary_nfs_attachment = digitalocean.NfsAttachment("secondary",
+            share_id=example.id,
+            vpc_id=secondary.id,
+            region="atl1",
+            opts = pulumi.ResourceOptions(depends_on=[primary_nfs_attachment]))
+        ```
+
+        Deleting an attachment resource detaches the share from that VPC only. Other VPC attachments remain in place.
 
         ## Import
 
@@ -163,8 +205,9 @@ class NfsAttachment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] region: The region of the NFS share.
         :param pulumi.Input[_builtins.str] share_id: The ID of the NFS share to attach.
-        :param pulumi.Input[_builtins.str] vpc_id: The ID of the vpc to attach the NFS share to.
+        :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC to attach the NFS share to.
         """
         ...
     @overload
@@ -173,7 +216,7 @@ class NfsAttachment(pulumi.CustomResource):
                  args: NfsAttachmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages attaching a NFS share to a vpc.
+        Manages attaching an NFS share to a VPC. A share can be attached to multiple VPCs by creating one `NfsAttachment` resource per VPC.
 
         ## Example Usage
 
@@ -192,8 +235,42 @@ class NfsAttachment(pulumi.CustomResource):
             performance_tier="high")
         foobar_nfs_attachment = digitalocean.NfsAttachment("foobar",
             share_id=foobar_nfs.id,
-            vpc_id=foobar.id)
+            vpc_id=foobar.id,
+            region="atl1")
         ```
+
+        ### Multiple VPCs
+
+        Attach the same NFS share to additional VPCs one at a time:
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        primary = digitalocean.Vpc("primary",
+            name="primary-vpc",
+            region="atl1")
+        secondary = digitalocean.Vpc("secondary",
+            name="secondary-vpc",
+            region="atl1")
+        example = digitalocean.Nfs("example",
+            region="atl1",
+            name="example-nfs",
+            size=50,
+            vpc_id=primary.id,
+            performance_tier="high")
+        primary_nfs_attachment = digitalocean.NfsAttachment("primary",
+            share_id=example.id,
+            vpc_id=primary.id,
+            region="atl1")
+        secondary_nfs_attachment = digitalocean.NfsAttachment("secondary",
+            share_id=example.id,
+            vpc_id=secondary.id,
+            region="atl1",
+            opts = pulumi.ResourceOptions(depends_on=[primary_nfs_attachment]))
+        ```
+
+        Deleting an attachment resource detaches the share from that VPC only. Other VPC attachments remain in place.
 
         ## Import
 
@@ -260,8 +337,9 @@ class NfsAttachment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] region: The region of the NFS share.
         :param pulumi.Input[_builtins.str] share_id: The ID of the NFS share to attach.
-        :param pulumi.Input[_builtins.str] vpc_id: The ID of the vpc to attach the NFS share to.
+        :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC to attach the NFS share to.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -275,6 +353,9 @@ class NfsAttachment(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
+        """
+        The region of the NFS share.
+        """
         return pulumi.get(self, "region")
 
     @_builtins.property
@@ -289,7 +370,7 @@ class NfsAttachment(pulumi.CustomResource):
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The ID of the vpc to attach the NFS share to.
+        The ID of the VPC to attach the NFS share to.
         """
         return pulumi.get(self, "vpc_id")
 
