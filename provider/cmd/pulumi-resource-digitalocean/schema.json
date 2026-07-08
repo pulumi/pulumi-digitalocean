@@ -23309,6 +23309,10 @@
                     "type": "string",
                     "description": "Description of the custom model.\n"
                 },
+                "errorMessage": {
+                    "type": "string",
+                    "description": "Error message if the custom model import failed.\n"
+                },
                 "fileCount": {
                     "type": "integer",
                     "description": "Number of files that make up the imported model.\n"
@@ -23390,6 +23394,7 @@
                 "costEstimatePerMonth",
                 "createdAt",
                 "description",
+                "errorMessage",
                 "fileCount",
                 "inputModalities",
                 "license",
@@ -35941,6 +35946,10 @@
                     "type": "string",
                     "description": "Description of the custom model."
                 },
+                "errorMessage": {
+                    "type": "string",
+                    "description": "Error message if the custom model import failed."
+                },
                 "fileCount": {
                     "type": "integer",
                     "description": "Number of files that make up the imported model."
@@ -36021,6 +36030,7 @@
                 "contextLength",
                 "costEstimatePerMonth",
                 "createdAt",
+                "errorMessage",
                 "fileCount",
                 "inputModalities",
                 "license",
@@ -36128,6 +36138,10 @@
                     "description": {
                         "type": "string",
                         "description": "Description of the custom model."
+                    },
+                    "errorMessage": {
+                        "type": "string",
+                        "description": "Error message if the custom model import failed."
                     },
                     "fileCount": {
                         "type": "integer",
@@ -44633,6 +44647,9 @@
                     "description": {
                         "type": "string"
                     },
+                    "errorMessage": {
+                        "type": "string"
+                    },
                     "fileCount": {
                         "type": "integer"
                     },
@@ -44702,6 +44719,7 @@
                     "costEstimatePerMonth",
                     "createdAt",
                     "description",
+                    "errorMessage",
                     "fileCount",
                     "inputModalities",
                     "license",
