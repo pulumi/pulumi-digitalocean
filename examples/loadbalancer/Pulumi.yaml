@@ -1,3 +1,0 @@
-name: loadbalancer-digitalocean
-description: A simple LoadBalancer on DigitalOcean.
-runtime: nodejs
