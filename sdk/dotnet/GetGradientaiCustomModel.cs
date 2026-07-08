@@ -54,6 +54,7 @@ namespace Pulumi.DigitalOcean
         public readonly int CostEstimatePerMonth;
         public readonly string CreatedAt;
         public readonly string Description;
+        public readonly string ErrorMessage;
         public readonly int FileCount;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -87,6 +88,8 @@ namespace Pulumi.DigitalOcean
             string createdAt,
 
             string description,
+
+            string errorMessage,
 
             int fileCount,
 
@@ -126,6 +129,7 @@ namespace Pulumi.DigitalOcean
             CostEstimatePerMonth = costEstimatePerMonth;
             CreatedAt = createdAt;
             Description = description;
+            ErrorMessage = errorMessage;
             FileCount = fileCount;
             Id = id;
             InputModalities = inputModalities;

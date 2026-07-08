@@ -29,6 +29,8 @@ type GradientaiCustomModel struct {
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// Description of the custom model.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Error message if the custom model import failed.
+	ErrorMessage pulumi.StringOutput `pulumi:"errorMessage"`
 	// Number of files that make up the imported model.
 	FileCount pulumi.IntOutput `pulumi:"fileCount"`
 	// Input modalities supported by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
@@ -113,6 +115,8 @@ type gradientaiCustomModelState struct {
 	CreatedAt *string `pulumi:"createdAt"`
 	// Description of the custom model.
 	Description *string `pulumi:"description"`
+	// Error message if the custom model import failed.
+	ErrorMessage *string `pulumi:"errorMessage"`
 	// Number of files that make up the imported model.
 	FileCount *int `pulumi:"fileCount"`
 	// Input modalities supported by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
@@ -162,6 +166,8 @@ type GradientaiCustomModelState struct {
 	CreatedAt pulumi.StringPtrInput
 	// Description of the custom model.
 	Description pulumi.StringPtrInput
+	// Error message if the custom model import failed.
+	ErrorMessage pulumi.StringPtrInput
 	// Number of files that make up the imported model.
 	FileCount pulumi.IntPtrInput
 	// Input modalities supported by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
@@ -373,6 +379,11 @@ func (o GradientaiCustomModelOutput) CreatedAt() pulumi.StringOutput {
 // Description of the custom model.
 func (o GradientaiCustomModelOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GradientaiCustomModel) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Error message if the custom model import failed.
+func (o GradientaiCustomModelOutput) ErrorMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v *GradientaiCustomModel) pulumi.StringOutput { return v.ErrorMessage }).(pulumi.StringOutput)
 }
 
 // Number of files that make up the imported model.

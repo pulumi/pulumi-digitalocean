@@ -34,6 +34,7 @@ type LookupGradientaiCustomModelResult struct {
 	CostEstimatePerMonth int                                        `pulumi:"costEstimatePerMonth"`
 	CreatedAt            string                                     `pulumi:"createdAt"`
 	Description          string                                     `pulumi:"description"`
+	ErrorMessage         string                                     `pulumi:"errorMessage"`
 	FileCount            int                                        `pulumi:"fileCount"`
 	// The provider-assigned unique ID for this managed resource.
 	Id               string                              `pulumi:"id"`
@@ -110,6 +111,10 @@ func (o LookupGradientaiCustomModelResultOutput) CreatedAt() pulumi.StringOutput
 
 func (o LookupGradientaiCustomModelResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGradientaiCustomModelResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o LookupGradientaiCustomModelResultOutput) ErrorMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGradientaiCustomModelResult) string { return v.ErrorMessage }).(pulumi.StringOutput)
 }
 
 func (o LookupGradientaiCustomModelResultOutput) FileCount() pulumi.IntOutput {

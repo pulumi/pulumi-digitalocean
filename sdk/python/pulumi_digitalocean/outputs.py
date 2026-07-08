@@ -52011,6 +52011,7 @@ class GetGradientaiCustomModelsCustomModelResult(dict):
                  cost_estimate_per_month: _builtins.int,
                  created_at: _builtins.str,
                  description: _builtins.str,
+                 error_message: _builtins.str,
                  file_count: _builtins.int,
                  input_modalities: Sequence[_builtins.str],
                  license: _builtins.str,
@@ -52033,6 +52034,7 @@ class GetGradientaiCustomModelsCustomModelResult(dict):
         :param _builtins.int cost_estimate_per_month: Estimated monthly cost of running the custom model.
         :param _builtins.str created_at: Timestamp when the custom model was created.
         :param _builtins.str description: Description of the custom model.
+        :param _builtins.str error_message: Error message if the custom model import failed.
         :param _builtins.int file_count: Number of files that make up the imported model.
         :param Sequence[_builtins.str] input_modalities: Input modalities supported by the model (e.g. text, image).
         :param _builtins.str license: License of the custom model, as reported by the source.
@@ -52055,6 +52057,7 @@ class GetGradientaiCustomModelsCustomModelResult(dict):
         pulumi.set(__self__, "cost_estimate_per_month", cost_estimate_per_month)
         pulumi.set(__self__, "created_at", created_at)
         pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "error_message", error_message)
         pulumi.set(__self__, "file_count", file_count)
         pulumi.set(__self__, "input_modalities", input_modalities)
         pulumi.set(__self__, "license", license)
@@ -52118,6 +52121,14 @@ class GetGradientaiCustomModelsCustomModelResult(dict):
         Description of the custom model.
         """
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="errorMessage")
+    def error_message(self) -> _builtins.str:
+        """
+        Error message if the custom model import failed.
+        """
+        return pulumi.get(self, "error_message")
 
     @_builtins.property
     @pulumi.getter(name="fileCount")

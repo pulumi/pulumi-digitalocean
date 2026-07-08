@@ -14436,6 +14436,10 @@ export interface GetGradientaiCustomModelsCustomModel {
      */
     description: string;
     /**
+     * Error message if the custom model import failed.
+     */
+    errorMessage: string;
+    /**
      * Number of files that make up the imported model.
      */
     fileCount: number;

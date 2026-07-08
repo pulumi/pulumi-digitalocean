@@ -120,6 +120,20 @@ public class GradientaiCustomModel extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
+     * Error message if the custom model import failed.
+     * 
+     */
+    @Export(name="errorMessage", refs={String.class}, tree="[0]")
+    private Output<String> errorMessage;
+
+    /**
+     * @return Error message if the custom model import failed.
+     * 
+     */
+    public Output<String> errorMessage() {
+        return this.errorMessage;
+    }
+    /**
      * Number of files that make up the imported model.
      * 
      */

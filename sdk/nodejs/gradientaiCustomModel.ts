@@ -64,6 +64,10 @@ export class GradientaiCustomModel extends pulumi.CustomResource {
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
+     * Error message if the custom model import failed.
+     */
+    declare public /*out*/ readonly errorMessage: pulumi.Output<string>;
+    /**
      * Number of files that make up the imported model.
      */
     declare public /*out*/ readonly fileCount: pulumi.Output<number>;
@@ -148,6 +152,7 @@ export class GradientaiCustomModel extends pulumi.CustomResource {
             resourceInputs["costEstimatePerMonth"] = state?.costEstimatePerMonth;
             resourceInputs["createdAt"] = state?.createdAt;
             resourceInputs["description"] = state?.description;
+            resourceInputs["errorMessage"] = state?.errorMessage;
             resourceInputs["fileCount"] = state?.fileCount;
             resourceInputs["inputModalities"] = state?.inputModalities;
             resourceInputs["license"] = state?.license;
@@ -188,6 +193,7 @@ export class GradientaiCustomModel extends pulumi.CustomResource {
             resourceInputs["contextLength"] = undefined /*out*/;
             resourceInputs["costEstimatePerMonth"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["errorMessage"] = undefined /*out*/;
             resourceInputs["fileCount"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["storageRegion"] = undefined /*out*/;
@@ -233,6 +239,10 @@ export interface GradientaiCustomModelState {
      * Description of the custom model.
      */
     description?: pulumi.Input<string | undefined>;
+    /**
+     * Error message if the custom model import failed.
+     */
+    errorMessage?: pulumi.Input<string | undefined>;
     /**
      * Number of files that make up the imported model.
      */

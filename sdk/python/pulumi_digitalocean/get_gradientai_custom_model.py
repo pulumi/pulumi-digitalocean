@@ -27,7 +27,7 @@ class GetGradientaiCustomModelResult:
     """
     A collection of values returned by getGradientaiCustomModel.
     """
-    def __init__(__self__, active_deployments=None, architecture=None, context_length=None, cost_estimate_per_month=None, created_at=None, description=None, file_count=None, id=None, input_modalities=None, license=None, name=None, output_modalities=None, parameters=None, source_reves=None, source_type=None, status=None, storage_region=None, tags=None, team_id=None, total_size_bytes=None, updated_at=None, uuid=None):
+    def __init__(__self__, active_deployments=None, architecture=None, context_length=None, cost_estimate_per_month=None, created_at=None, description=None, error_message=None, file_count=None, id=None, input_modalities=None, license=None, name=None, output_modalities=None, parameters=None, source_reves=None, source_type=None, status=None, storage_region=None, tags=None, team_id=None, total_size_bytes=None, updated_at=None, uuid=None):
         if active_deployments and not isinstance(active_deployments, list):
             raise TypeError("Expected argument 'active_deployments' to be a list")
         pulumi.set(__self__, "active_deployments", active_deployments)
@@ -46,6 +46,9 @@ class GetGradientaiCustomModelResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if error_message and not isinstance(error_message, str):
+            raise TypeError("Expected argument 'error_message' to be a str")
+        pulumi.set(__self__, "error_message", error_message)
         if file_count and not isinstance(file_count, int):
             raise TypeError("Expected argument 'file_count' to be a int")
         pulumi.set(__self__, "file_count", file_count)
@@ -124,6 +127,11 @@ class GetGradientaiCustomModelResult:
     @pulumi.getter
     def description(self) -> _builtins.str:
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="errorMessage")
+    def error_message(self) -> _builtins.str:
+        return pulumi.get(self, "error_message")
 
     @_builtins.property
     @pulumi.getter(name="fileCount")
@@ -221,6 +229,7 @@ class AwaitableGetGradientaiCustomModelResult(GetGradientaiCustomModelResult):
             cost_estimate_per_month=self.cost_estimate_per_month,
             created_at=self.created_at,
             description=self.description,
+            error_message=self.error_message,
             file_count=self.file_count,
             id=self.id,
             input_modalities=self.input_modalities,
@@ -256,6 +265,7 @@ def get_gradientai_custom_model(uuid: Optional[_builtins.str] = None,
         cost_estimate_per_month=pulumi.get(__ret__, 'cost_estimate_per_month'),
         created_at=pulumi.get(__ret__, 'created_at'),
         description=pulumi.get(__ret__, 'description'),
+        error_message=pulumi.get(__ret__, 'error_message'),
         file_count=pulumi.get(__ret__, 'file_count'),
         id=pulumi.get(__ret__, 'id'),
         input_modalities=pulumi.get(__ret__, 'input_modalities'),
@@ -288,6 +298,7 @@ def get_gradientai_custom_model_output(uuid: pulumi.Input[Optional[_builtins.str
         cost_estimate_per_month=pulumi.get(__response__, 'cost_estimate_per_month'),
         created_at=pulumi.get(__response__, 'created_at'),
         description=pulumi.get(__response__, 'description'),
+        error_message=pulumi.get(__response__, 'error_message'),
         file_count=pulumi.get(__response__, 'file_count'),
         id=pulumi.get(__response__, 'id'),
         input_modalities=pulumi.get(__response__, 'input_modalities'),
