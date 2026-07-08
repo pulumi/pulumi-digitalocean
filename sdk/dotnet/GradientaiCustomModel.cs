@@ -55,6 +55,12 @@ namespace Pulumi.DigitalOcean
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// Error message if the custom model import failed.
+        /// </summary>
+        [Output("errorMessage")]
+        public Output<string> ErrorMessage { get; private set; } = null!;
+
+        /// <summary>
         /// Number of files that make up the imported model.
         /// </summary>
         [Output("fileCount")]
@@ -335,6 +341,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Error message if the custom model import failed.
+        /// </summary>
+        [Input("errorMessage")]
+        public Input<string>? ErrorMessage { get; set; }
 
         /// <summary>
         /// Number of files that make up the imported model.

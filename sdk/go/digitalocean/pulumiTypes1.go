@@ -26619,6 +26619,8 @@ type GetGradientaiCustomModelsCustomModel struct {
 	CreatedAt string `pulumi:"createdAt"`
 	// Description of the custom model.
 	Description string `pulumi:"description"`
+	// Error message if the custom model import failed.
+	ErrorMessage string `pulumi:"errorMessage"`
 	// Number of files that make up the imported model.
 	FileCount int `pulumi:"fileCount"`
 	// Input modalities supported by the model (e.g. text, image).
@@ -26675,6 +26677,8 @@ type GetGradientaiCustomModelsCustomModelArgs struct {
 	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
 	// Description of the custom model.
 	Description pulumi.StringInput `pulumi:"description"`
+	// Error message if the custom model import failed.
+	ErrorMessage pulumi.StringInput `pulumi:"errorMessage"`
 	// Number of files that make up the imported model.
 	FileCount pulumi.IntInput `pulumi:"fileCount"`
 	// Input modalities supported by the model (e.g. text, image).
@@ -26788,6 +26792,11 @@ func (o GetGradientaiCustomModelsCustomModelOutput) CreatedAt() pulumi.StringOut
 // Description of the custom model.
 func (o GetGradientaiCustomModelsCustomModelOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGradientaiCustomModelsCustomModel) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Error message if the custom model import failed.
+func (o GetGradientaiCustomModelsCustomModelOutput) ErrorMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGradientaiCustomModelsCustomModel) string { return v.ErrorMessage }).(pulumi.StringOutput)
 }
 
 // Number of files that make up the imported model.

@@ -45,6 +45,11 @@ public final class GetGradientaiCustomModelsCustomModel {
      */
     private String description;
     /**
+     * @return Error message if the custom model import failed.
+     * 
+     */
+    private String errorMessage;
+    /**
      * @return Number of files that make up the imported model.
      * 
      */
@@ -162,6 +167,13 @@ public final class GetGradientaiCustomModelsCustomModel {
      */
     public String description() {
         return this.description;
+    }
+    /**
+     * @return Error message if the custom model import failed.
+     * 
+     */
+    public String errorMessage() {
+        return this.errorMessage;
     }
     /**
      * @return Number of files that make up the imported model.
@@ -284,6 +296,7 @@ public final class GetGradientaiCustomModelsCustomModel {
         private Integer costEstimatePerMonth;
         private String createdAt;
         private String description;
+        private String errorMessage;
         private Integer fileCount;
         private List<String> inputModalities;
         private String license;
@@ -308,6 +321,7 @@ public final class GetGradientaiCustomModelsCustomModel {
     	      this.costEstimatePerMonth = defaults.costEstimatePerMonth;
     	      this.createdAt = defaults.createdAt;
     	      this.description = defaults.description;
+    	      this.errorMessage = defaults.errorMessage;
     	      this.fileCount = defaults.fileCount;
     	      this.inputModalities = defaults.inputModalities;
     	      this.license = defaults.license;
@@ -374,6 +388,14 @@ public final class GetGradientaiCustomModelsCustomModel {
               throw new MissingRequiredPropertyException("GetGradientaiCustomModelsCustomModel", "description");
             }
             this.description = description;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder errorMessage(String errorMessage) {
+            if (errorMessage == null) {
+              throw new MissingRequiredPropertyException("GetGradientaiCustomModelsCustomModel", "errorMessage");
+            }
+            this.errorMessage = errorMessage;
             return this;
         }
         @CustomType.Setter
@@ -516,6 +538,7 @@ public final class GetGradientaiCustomModelsCustomModel {
             _resultValue.costEstimatePerMonth = costEstimatePerMonth;
             _resultValue.createdAt = createdAt;
             _resultValue.description = description;
+            _resultValue.errorMessage = errorMessage;
             _resultValue.fileCount = fileCount;
             _resultValue.inputModalities = inputModalities;
             _resultValue.license = license;

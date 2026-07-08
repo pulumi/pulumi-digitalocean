@@ -211,6 +211,7 @@ class _GradientaiCustomModelState:
                  cost_estimate_per_month: pulumi.Input[Optional[_builtins.int]] = None,
                  created_at: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 error_message: pulumi.Input[Optional[_builtins.str]] = None,
                  file_count: pulumi.Input[Optional[_builtins.int]] = None,
                  input_modalities: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  license: pulumi.Input[Optional[_builtins.str]] = None,
@@ -237,6 +238,7 @@ class _GradientaiCustomModelState:
         :param pulumi.Input[_builtins.int] cost_estimate_per_month: Estimated monthly cost of running the custom model.
         :param pulumi.Input[_builtins.str] created_at: Timestamp when the custom model was created.
         :param pulumi.Input[_builtins.str] description: Description of the custom model.
+        :param pulumi.Input[_builtins.str] error_message: Error message if the custom model import failed.
         :param pulumi.Input[_builtins.int] file_count: Number of files that make up the imported model.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] input_modalities: Input modalities supported by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
         :param pulumi.Input[_builtins.str] license: License of the model. Defaults to the value reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
@@ -268,6 +270,8 @@ class _GradientaiCustomModelState:
             pulumi.set(__self__, "created_at", created_at)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if error_message is not None:
+            pulumi.set(__self__, "error_message", error_message)
         if file_count is not None:
             pulumi.set(__self__, "file_count", file_count)
         if input_modalities is not None:
@@ -384,6 +388,18 @@ class _GradientaiCustomModelState:
     @description.setter
     def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="errorMessage")
+    def error_message(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Error message if the custom model import failed.
+        """
+        return pulumi.get(self, "error_message")
+
+    @error_message.setter
+    def error_message(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "error_message", value)
 
     @_builtins.property
     @pulumi.getter(name="fileCount")
@@ -677,6 +693,7 @@ class GradientaiCustomModel(pulumi.CustomResource):
             __props__.__dict__["context_length"] = None
             __props__.__dict__["cost_estimate_per_month"] = None
             __props__.__dict__["created_at"] = None
+            __props__.__dict__["error_message"] = None
             __props__.__dict__["file_count"] = None
             __props__.__dict__["status"] = None
             __props__.__dict__["storage_region"] = None
@@ -701,6 +718,7 @@ class GradientaiCustomModel(pulumi.CustomResource):
             cost_estimate_per_month: pulumi.Input[Optional[_builtins.int]] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
+            error_message: pulumi.Input[Optional[_builtins.str]] = None,
             file_count: pulumi.Input[Optional[_builtins.int]] = None,
             input_modalities: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             license: pulumi.Input[Optional[_builtins.str]] = None,
@@ -731,6 +749,7 @@ class GradientaiCustomModel(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] cost_estimate_per_month: Estimated monthly cost of running the custom model.
         :param pulumi.Input[_builtins.str] created_at: Timestamp when the custom model was created.
         :param pulumi.Input[_builtins.str] description: Description of the custom model.
+        :param pulumi.Input[_builtins.str] error_message: Error message if the custom model import failed.
         :param pulumi.Input[_builtins.int] file_count: Number of files that make up the imported model.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] input_modalities: Input modalities supported by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
         :param pulumi.Input[_builtins.str] license: License of the model. Defaults to the value reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
@@ -759,6 +778,7 @@ class GradientaiCustomModel(pulumi.CustomResource):
         __props__.__dict__["cost_estimate_per_month"] = cost_estimate_per_month
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["description"] = description
+        __props__.__dict__["error_message"] = error_message
         __props__.__dict__["file_count"] = file_count
         __props__.__dict__["input_modalities"] = input_modalities
         __props__.__dict__["license"] = license
@@ -832,6 +852,14 @@ class GradientaiCustomModel(pulumi.CustomResource):
         Description of the custom model.
         """
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="errorMessage")
+    def error_message(self) -> pulumi.Output[_builtins.str]:
+        """
+        Error message if the custom model import failed.
+        """
+        return pulumi.get(self, "error_message")
 
     @_builtins.property
     @pulumi.getter(name="fileCount")

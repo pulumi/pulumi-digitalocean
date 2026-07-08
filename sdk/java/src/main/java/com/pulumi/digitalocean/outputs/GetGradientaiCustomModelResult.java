@@ -20,6 +20,7 @@ public final class GetGradientaiCustomModelResult {
     private Integer costEstimatePerMonth;
     private String createdAt;
     private String description;
+    private String errorMessage;
     private Integer fileCount;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -59,6 +60,9 @@ public final class GetGradientaiCustomModelResult {
     }
     public String description() {
         return this.description;
+    }
+    public String errorMessage() {
+        return this.errorMessage;
     }
     public Integer fileCount() {
         return this.fileCount;
@@ -128,6 +132,7 @@ public final class GetGradientaiCustomModelResult {
         private Integer costEstimatePerMonth;
         private String createdAt;
         private String description;
+        private String errorMessage;
         private Integer fileCount;
         private String id;
         private List<String> inputModalities;
@@ -153,6 +158,7 @@ public final class GetGradientaiCustomModelResult {
     	      this.costEstimatePerMonth = defaults.costEstimatePerMonth;
     	      this.createdAt = defaults.createdAt;
     	      this.description = defaults.description;
+    	      this.errorMessage = defaults.errorMessage;
     	      this.fileCount = defaults.fileCount;
     	      this.id = defaults.id;
     	      this.inputModalities = defaults.inputModalities;
@@ -220,6 +226,14 @@ public final class GetGradientaiCustomModelResult {
               throw new MissingRequiredPropertyException("GetGradientaiCustomModelResult", "description");
             }
             this.description = description;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder errorMessage(String errorMessage) {
+            if (errorMessage == null) {
+              throw new MissingRequiredPropertyException("GetGradientaiCustomModelResult", "errorMessage");
+            }
+            this.errorMessage = errorMessage;
             return this;
         }
         @CustomType.Setter
@@ -370,6 +384,7 @@ public final class GetGradientaiCustomModelResult {
             _resultValue.costEstimatePerMonth = costEstimatePerMonth;
             _resultValue.createdAt = createdAt;
             _resultValue.description = description;
+            _resultValue.errorMessage = errorMessage;
             _resultValue.fileCount = fileCount;
             _resultValue.id = id;
             _resultValue.inputModalities = inputModalities;

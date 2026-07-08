@@ -38,6 +38,10 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly string Description;
         /// <summary>
+        /// Error message if the custom model import failed.
+        /// </summary>
+        public readonly string ErrorMessage;
+        /// <summary>
         /// Number of files that make up the imported model.
         /// </summary>
         public readonly int FileCount;
@@ -112,6 +116,8 @@ namespace Pulumi.DigitalOcean.Outputs
 
             string description,
 
+            string errorMessage,
+
             int fileCount,
 
             ImmutableArray<string> inputModalities,
@@ -148,6 +154,7 @@ namespace Pulumi.DigitalOcean.Outputs
             CostEstimatePerMonth = costEstimatePerMonth;
             CreatedAt = createdAt;
             Description = description;
+            ErrorMessage = errorMessage;
             FileCount = fileCount;
             InputModalities = inputModalities;
             License = license;

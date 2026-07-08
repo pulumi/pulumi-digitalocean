@@ -31,6 +31,7 @@ export interface GetGradientaiCustomModelResult {
     readonly costEstimatePerMonth: number;
     readonly createdAt: string;
     readonly description: string;
+    readonly errorMessage: string;
     readonly fileCount: number;
     /**
      * The provider-assigned unique ID for this managed resource.

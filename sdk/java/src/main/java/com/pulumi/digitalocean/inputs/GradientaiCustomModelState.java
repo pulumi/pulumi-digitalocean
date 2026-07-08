@@ -126,6 +126,21 @@ public final class GradientaiCustomModelState extends com.pulumi.resources.Resou
     }
 
     /**
+     * Error message if the custom model import failed.
+     * 
+     */
+    @Import(name="errorMessage")
+    private @Nullable Output<String> errorMessage;
+
+    /**
+     * @return Error message if the custom model import failed.
+     * 
+     */
+    public Optional<Output<String>> errorMessage() {
+        return Optional.ofNullable(this.errorMessage);
+    }
+
+    /**
      * Number of files that make up the imported model.
      * 
      */
@@ -375,6 +390,7 @@ public final class GradientaiCustomModelState extends com.pulumi.resources.Resou
         this.costEstimatePerMonth = $.costEstimatePerMonth;
         this.createdAt = $.createdAt;
         this.description = $.description;
+        this.errorMessage = $.errorMessage;
         this.fileCount = $.fileCount;
         this.inputModalities = $.inputModalities;
         this.license = $.license;
@@ -566,6 +582,27 @@ public final class GradientaiCustomModelState extends com.pulumi.resources.Resou
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param errorMessage Error message if the custom model import failed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder errorMessage(@Nullable Output<String> errorMessage) {
+            $.errorMessage = errorMessage;
+            return this;
+        }
+
+        /**
+         * @param errorMessage Error message if the custom model import failed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder errorMessage(String errorMessage) {
+            return errorMessage(Output.of(errorMessage));
         }
 
         /**
