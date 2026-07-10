@@ -27,9 +27,9 @@ class DropletAutoscaleArgs:
         """
         The set of arguments for constructing a DropletAutoscale resource.
 
-        :param pulumi.Input['DropletAutoscaleConfigArgs'] config: The configuration parameters for Droplet Autoscale pool, the supported arguments are 
+        :param pulumi.Input['DropletAutoscaleConfigArgs'] config: The configuration parameters for Droplet Autoscale pool, the supported arguments are
                documented below.
-        :param pulumi.Input['DropletAutoscaleDropletTemplateArgs'] droplet_template: The droplet template parameters for Droplet Autoscale pool, the supported arguments 
+        :param pulumi.Input['DropletAutoscaleDropletTemplateArgs'] droplet_template: The droplet template parameters for Droplet Autoscale pool, the supported arguments
                are documented below.
         :param pulumi.Input[_builtins.str] name: The name of the Droplet Autoscale pool.
         """
@@ -42,7 +42,7 @@ class DropletAutoscaleArgs:
     @pulumi.getter
     def config(self) -> pulumi.Input['DropletAutoscaleConfigArgs']:
         """
-        The configuration parameters for Droplet Autoscale pool, the supported arguments are 
+        The configuration parameters for Droplet Autoscale pool, the supported arguments are
         documented below.
         """
         return pulumi.get(self, "config")
@@ -55,7 +55,7 @@ class DropletAutoscaleArgs:
     @pulumi.getter(name="dropletTemplate")
     def droplet_template(self) -> pulumi.Input['DropletAutoscaleDropletTemplateArgs']:
         """
-        The droplet template parameters for Droplet Autoscale pool, the supported arguments 
+        The droplet template parameters for Droplet Autoscale pool, the supported arguments
         are documented below.
         """
         return pulumi.get(self, "droplet_template")
@@ -90,12 +90,12 @@ class _DropletAutoscaleState:
         """
         Input properties used for looking up and filtering DropletAutoscale resources.
 
-        :param pulumi.Input['DropletAutoscaleConfigArgs'] config: The configuration parameters for Droplet Autoscale pool, the supported arguments are 
+        :param pulumi.Input['DropletAutoscaleConfigArgs'] config: The configuration parameters for Droplet Autoscale pool, the supported arguments are
                documented below.
         :param pulumi.Input[_builtins.str] created_at: Created at timestamp for the Droplet Autoscale pool.
         :param pulumi.Input[Sequence[pulumi.Input['DropletAutoscaleCurrentUtilizationArgs']]] current_utilizations: The current average resource utilization of the Droplet Autoscale pool, this attribute further
                embeds `memory` and `cpu` attributes to respectively report utilization data.
-        :param pulumi.Input['DropletAutoscaleDropletTemplateArgs'] droplet_template: The droplet template parameters for Droplet Autoscale pool, the supported arguments 
+        :param pulumi.Input['DropletAutoscaleDropletTemplateArgs'] droplet_template: The droplet template parameters for Droplet Autoscale pool, the supported arguments
                are documented below.
         :param pulumi.Input[_builtins.str] name: The name of the Droplet Autoscale pool.
         :param pulumi.Input[_builtins.str] status: Droplet Autoscale pool health status; this reflects if the pool is currently healthy and ready to accept
@@ -121,7 +121,7 @@ class _DropletAutoscaleState:
     @pulumi.getter
     def config(self) -> pulumi.Input[Optional['DropletAutoscaleConfigArgs']]:
         """
-        The configuration parameters for Droplet Autoscale pool, the supported arguments are 
+        The configuration parameters for Droplet Autoscale pool, the supported arguments are
         documented below.
         """
         return pulumi.get(self, "config")
@@ -159,7 +159,7 @@ class _DropletAutoscaleState:
     @pulumi.getter(name="dropletTemplate")
     def droplet_template(self) -> pulumi.Input[Optional['DropletAutoscaleDropletTemplateArgs']]:
         """
-        The droplet template parameters for Droplet Autoscale pool, the supported arguments 
+        The droplet template parameters for Droplet Autoscale pool, the supported arguments
         are documented below.
         """
         return pulumi.get(self, "droplet_template")
@@ -269,9 +269,9 @@ class DropletAutoscale(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['DropletAutoscaleConfigArgs', 'DropletAutoscaleConfigArgsDict']] config: The configuration parameters for Droplet Autoscale pool, the supported arguments are 
+        :param pulumi.Input[Union['DropletAutoscaleConfigArgs', 'DropletAutoscaleConfigArgsDict']] config: The configuration parameters for Droplet Autoscale pool, the supported arguments are
                documented below.
-        :param pulumi.Input[Union['DropletAutoscaleDropletTemplateArgs', 'DropletAutoscaleDropletTemplateArgsDict']] droplet_template: The droplet template parameters for Droplet Autoscale pool, the supported arguments 
+        :param pulumi.Input[Union['DropletAutoscaleDropletTemplateArgs', 'DropletAutoscaleDropletTemplateArgsDict']] droplet_template: The droplet template parameters for Droplet Autoscale pool, the supported arguments
                are documented below.
         :param pulumi.Input[_builtins.str] name: The name of the Droplet Autoscale pool.
         """
@@ -394,12 +394,12 @@ class DropletAutoscale(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['DropletAutoscaleConfigArgs', 'DropletAutoscaleConfigArgsDict']] config: The configuration parameters for Droplet Autoscale pool, the supported arguments are 
+        :param pulumi.Input[Union['DropletAutoscaleConfigArgs', 'DropletAutoscaleConfigArgsDict']] config: The configuration parameters for Droplet Autoscale pool, the supported arguments are
                documented below.
         :param pulumi.Input[_builtins.str] created_at: Created at timestamp for the Droplet Autoscale pool.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DropletAutoscaleCurrentUtilizationArgs', 'DropletAutoscaleCurrentUtilizationArgsDict']]]] current_utilizations: The current average resource utilization of the Droplet Autoscale pool, this attribute further
                embeds `memory` and `cpu` attributes to respectively report utilization data.
-        :param pulumi.Input[Union['DropletAutoscaleDropletTemplateArgs', 'DropletAutoscaleDropletTemplateArgsDict']] droplet_template: The droplet template parameters for Droplet Autoscale pool, the supported arguments 
+        :param pulumi.Input[Union['DropletAutoscaleDropletTemplateArgs', 'DropletAutoscaleDropletTemplateArgsDict']] droplet_template: The droplet template parameters for Droplet Autoscale pool, the supported arguments
                are documented below.
         :param pulumi.Input[_builtins.str] name: The name of the Droplet Autoscale pool.
         :param pulumi.Input[_builtins.str] status: Droplet Autoscale pool health status; this reflects if the pool is currently healthy and ready to accept
@@ -423,7 +423,7 @@ class DropletAutoscale(pulumi.CustomResource):
     @pulumi.getter
     def config(self) -> pulumi.Output['outputs.DropletAutoscaleConfig']:
         """
-        The configuration parameters for Droplet Autoscale pool, the supported arguments are 
+        The configuration parameters for Droplet Autoscale pool, the supported arguments are
         documented below.
         """
         return pulumi.get(self, "config")
@@ -449,7 +449,7 @@ class DropletAutoscale(pulumi.CustomResource):
     @pulumi.getter(name="dropletTemplate")
     def droplet_template(self) -> pulumi.Output['outputs.DropletAutoscaleDropletTemplate']:
         """
-        The droplet template parameters for Droplet Autoscale pool, the supported arguments 
+        The droplet template parameters for Droplet Autoscale pool, the supported arguments
         are documented below.
         """
         return pulumi.get(self, "droplet_template")

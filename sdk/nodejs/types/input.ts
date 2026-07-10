@@ -2377,7 +2377,7 @@ export interface DropletAutoscaleConfig {
      */
     targetCpuUtilization?: pulumi.Input<number | undefined>;
     /**
-     * The target average Memory load (in range `[0, 1]`) to maintain in the Droplet Autoscale 
+     * The target average Memory load (in range `[0, 1]`) to maintain in the Droplet Autoscale
      * pool.
      */
     targetMemoryUtilization?: pulumi.Input<number | undefined>;
@@ -2433,7 +2433,7 @@ export interface DropletAutoscaleDropletTemplate {
      */
     tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Custom user data that can be added to the Droplet Autoscale pool underlying resource(s). This can be a 
+     * Custom user data that can be added to the Droplet Autoscale pool underlying resource(s). This can be a
      * cloud init script that user may configure to setup their application workload.
      */
     userData?: pulumi.Input<string | undefined>;
@@ -3612,7 +3612,7 @@ export interface GenaiKnowledgeBaseDataSourceWebCrawlerDataSource {
      */
     baseUrl?: pulumi.Input<string | undefined>;
     /**
-     * Options for specifying how URLs found on pages should be handled. 
+     * Options for specifying how URLs found on pages should be handled.
      * - UNKNOWN: Default unknown value
      * - SCOPED: Only include the base URL.
      * - PATH: Crawl the base URL and linked pages within the URL path.
@@ -9284,7 +9284,7 @@ export interface GradientaiKnowledgeBaseDataSourceWebCrawlerDataSource {
      */
     baseUrl?: pulumi.Input<string | undefined>;
     /**
-     * Options for specifying how URLs found on pages should be handled. 
+     * Options for specifying how URLs found on pages should be handled.
      * - UNKNOWN: Default unknown value
      * - SCOPED: Only include the base URL.
      * - PATH: Crawl the base URL and linked pages within the URL path.

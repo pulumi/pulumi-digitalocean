@@ -95,7 +95,7 @@ publishing {
                 inceptionYear = "2022"
                 name = "pulumi-digitalocean"
                 packaging = "jar"
-                description = "A Pulumi package for creating and managing DigitalOcean cloud resources."
+                description = $/A Pulumi package for creating and managing DigitalOcean cloud resources./$
 
                 url = "https://github.com/pulumi/pulumi-digitalocean"
 
