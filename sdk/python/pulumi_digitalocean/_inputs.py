@@ -11739,7 +11739,7 @@ class DropletAutoscaleConfigArgsDict(TypedDict):
     """
     target_memory_utilization: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
-    The target average Memory load (in range `[0, 1]`) to maintain in the Droplet Autoscale 
+    The target average Memory load (in range `[0, 1]`) to maintain in the Droplet Autoscale
     pool.
     """
     target_number_instances: NotRequired[pulumi.Input[Optional[_builtins.int]]]
@@ -11762,7 +11762,7 @@ class DropletAutoscaleConfigArgs:
         :param pulumi.Input[_builtins.int] max_instances: The maximum number of instances to maintain in the Droplet Autoscale pool.
         :param pulumi.Input[_builtins.int] min_instances: The minimum number of instances to maintain in the Droplet Autoscale pool.
         :param pulumi.Input[_builtins.float] target_cpu_utilization: The target average CPU load (in range `[0, 1]`) to maintain in the Droplet Autoscale pool.
-        :param pulumi.Input[_builtins.float] target_memory_utilization: The target average Memory load (in range `[0, 1]`) to maintain in the Droplet Autoscale 
+        :param pulumi.Input[_builtins.float] target_memory_utilization: The target average Memory load (in range `[0, 1]`) to maintain in the Droplet Autoscale
                pool.
         :param pulumi.Input[_builtins.int] target_number_instances: The static number of instances to maintain in the pool Droplet Autoscale pool. This
                argument cannot be used with any other config options.
@@ -11832,7 +11832,7 @@ class DropletAutoscaleConfigArgs:
     @pulumi.getter(name="targetMemoryUtilization")
     def target_memory_utilization(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
-        The target average Memory load (in range `[0, 1]`) to maintain in the Droplet Autoscale 
+        The target average Memory load (in range `[0, 1]`) to maintain in the Droplet Autoscale
         pool.
         """
         return pulumi.get(self, "target_memory_utilization")
@@ -11939,7 +11939,7 @@ class DropletAutoscaleDropletTemplateArgsDict(TypedDict):
     """
     user_data: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Custom user data that can be added to the Droplet Autoscale pool underlying resource(s). This can be a 
+    Custom user data that can be added to the Droplet Autoscale pool underlying resource(s). This can be a
     cloud init script that user may configure to setup their application workload.
     """
     vpc_uuid: NotRequired[pulumi.Input[Optional[_builtins.str]]]
@@ -11976,7 +11976,7 @@ class DropletAutoscaleDropletTemplateArgs:
         :param pulumi.Input[_builtins.str] project_id: Project UUID to create the Droplet Autoscale pool underlying resource(s).
         :param pulumi.Input[_builtins.bool] public_networking: A boolean indicating whether to enables public networking for the Droplet or not. By default, this is always enabled on new droplets. But, by explicitly setting it to false, you can create a droplet with public networking entirely disabled.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: List of tags to add to the Droplet Autoscale pool underlying resource(s).
-        :param pulumi.Input[_builtins.str] user_data: Custom user data that can be added to the Droplet Autoscale pool underlying resource(s). This can be a 
+        :param pulumi.Input[_builtins.str] user_data: Custom user data that can be added to the Droplet Autoscale pool underlying resource(s). This can be a
                cloud init script that user may configure to setup their application workload.
         :param pulumi.Input[_builtins.str] vpc_uuid: VPC UUID to create the Droplet Autoscale pool underlying resource(s). If not provided, this is inferred
                from the specified `region` (default VPC).
@@ -12102,7 +12102,7 @@ class DropletAutoscaleDropletTemplateArgs:
     @pulumi.getter(name="userData")
     def user_data(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Custom user data that can be added to the Droplet Autoscale pool underlying resource(s). This can be a 
+        Custom user data that can be added to the Droplet Autoscale pool underlying resource(s). This can be a
         cloud init script that user may configure to setup their application workload.
         """
         return pulumi.get(self, "user_data")
@@ -17672,7 +17672,7 @@ class GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgsDict(TypedDict):
     """
     crawling_option: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Options for specifying how URLs found on pages should be handled. 
+    Options for specifying how URLs found on pages should be handled.
     - UNKNOWN: Default unknown value
     - SCOPED: Only include the base URL.
     - PATH: Crawl the base URL and linked pages within the URL path.
@@ -17692,7 +17692,7 @@ class GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs:
                  embed_media: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] base_url: The base URL to crawl
-        :param pulumi.Input[_builtins.str] crawling_option: Options for specifying how URLs found on pages should be handled. 
+        :param pulumi.Input[_builtins.str] crawling_option: Options for specifying how URLs found on pages should be handled.
                - UNKNOWN: Default unknown value
                - SCOPED: Only include the base URL.
                - PATH: Crawl the base URL and linked pages within the URL path.
@@ -17723,7 +17723,7 @@ class GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs:
     @pulumi.getter(name="crawlingOption")
     def crawling_option(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Options for specifying how URLs found on pages should be handled. 
+        Options for specifying how URLs found on pages should be handled.
         - UNKNOWN: Default unknown value
         - SCOPED: Only include the base URL.
         - PATH: Crawl the base URL and linked pages within the URL path.
@@ -24244,7 +24244,7 @@ class GradientaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgsDict(TypedDict):
     """
     crawling_option: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Options for specifying how URLs found on pages should be handled. 
+    Options for specifying how URLs found on pages should be handled.
     - UNKNOWN: Default unknown value
     - SCOPED: Only include the base URL.
     - PATH: Crawl the base URL and linked pages within the URL path.
@@ -24264,7 +24264,7 @@ class GradientaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs:
                  embed_media: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] base_url: The base URL to crawl
-        :param pulumi.Input[_builtins.str] crawling_option: Options for specifying how URLs found on pages should be handled. 
+        :param pulumi.Input[_builtins.str] crawling_option: Options for specifying how URLs found on pages should be handled.
                - UNKNOWN: Default unknown value
                - SCOPED: Only include the base URL.
                - PATH: Crawl the base URL and linked pages within the URL path.
@@ -24295,7 +24295,7 @@ class GradientaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs:
     @pulumi.getter(name="crawlingOption")
     def crawling_option(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Options for specifying how URLs found on pages should be handled. 
+        Options for specifying how URLs found on pages should be handled.
         - UNKNOWN: Default unknown value
         - SCOPED: Only include the base URL.
         - PATH: Crawl the base URL and linked pages within the URL path.

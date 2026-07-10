@@ -9101,7 +9101,7 @@ class DropletAutoscaleConfig(dict):
         :param _builtins.int max_instances: The maximum number of instances to maintain in the Droplet Autoscale pool.
         :param _builtins.int min_instances: The minimum number of instances to maintain in the Droplet Autoscale pool.
         :param _builtins.float target_cpu_utilization: The target average CPU load (in range `[0, 1]`) to maintain in the Droplet Autoscale pool.
-        :param _builtins.float target_memory_utilization: The target average Memory load (in range `[0, 1]`) to maintain in the Droplet Autoscale 
+        :param _builtins.float target_memory_utilization: The target average Memory load (in range `[0, 1]`) to maintain in the Droplet Autoscale
                pool.
         :param _builtins.int target_number_instances: The static number of instances to maintain in the pool Droplet Autoscale pool. This
                argument cannot be used with any other config options.
@@ -9155,7 +9155,7 @@ class DropletAutoscaleConfig(dict):
     @pulumi.getter(name="targetMemoryUtilization")
     def target_memory_utilization(self) -> Optional[_builtins.float]:
         """
-        The target average Memory load (in range `[0, 1]`) to maintain in the Droplet Autoscale 
+        The target average Memory load (in range `[0, 1]`) to maintain in the Droplet Autoscale
         pool.
         """
         return pulumi.get(self, "target_memory_utilization")
@@ -9251,7 +9251,7 @@ class DropletAutoscaleDropletTemplate(dict):
         :param _builtins.str project_id: Project UUID to create the Droplet Autoscale pool underlying resource(s).
         :param _builtins.bool public_networking: A boolean indicating whether to enables public networking for the Droplet or not. By default, this is always enabled on new droplets. But, by explicitly setting it to false, you can create a droplet with public networking entirely disabled.
         :param Sequence[_builtins.str] tags: List of tags to add to the Droplet Autoscale pool underlying resource(s).
-        :param _builtins.str user_data: Custom user data that can be added to the Droplet Autoscale pool underlying resource(s). This can be a 
+        :param _builtins.str user_data: Custom user data that can be added to the Droplet Autoscale pool underlying resource(s). This can be a
                cloud init script that user may configure to setup their application workload.
         :param _builtins.str vpc_uuid: VPC UUID to create the Droplet Autoscale pool underlying resource(s). If not provided, this is inferred
                from the specified `region` (default VPC).
@@ -9345,7 +9345,7 @@ class DropletAutoscaleDropletTemplate(dict):
     @pulumi.getter(name="userData")
     def user_data(self) -> Optional[_builtins.str]:
         """
-        Custom user data that can be added to the Droplet Autoscale pool underlying resource(s). This can be a 
+        Custom user data that can be added to the Droplet Autoscale pool underlying resource(s). This can be a
         cloud init script that user may configure to setup their application workload.
         """
         return pulumi.get(self, "user_data")
@@ -13575,7 +13575,7 @@ class GenaiKnowledgeBaseDataSourceWebCrawlerDataSource(dict):
                  embed_media: Optional[_builtins.bool] = None):
         """
         :param _builtins.str base_url: The base URL to crawl
-        :param _builtins.str crawling_option: Options for specifying how URLs found on pages should be handled. 
+        :param _builtins.str crawling_option: Options for specifying how URLs found on pages should be handled.
                - UNKNOWN: Default unknown value
                - SCOPED: Only include the base URL.
                - PATH: Crawl the base URL and linked pages within the URL path.
@@ -13602,7 +13602,7 @@ class GenaiKnowledgeBaseDataSourceWebCrawlerDataSource(dict):
     @pulumi.getter(name="crawlingOption")
     def crawling_option(self) -> Optional[_builtins.str]:
         """
-        Options for specifying how URLs found on pages should be handled. 
+        Options for specifying how URLs found on pages should be handled.
         - UNKNOWN: Default unknown value
         - SCOPED: Only include the base URL.
         - PATH: Crawl the base URL and linked pages within the URL path.
@@ -18539,7 +18539,7 @@ class GradientaiKnowledgeBaseDataSourceWebCrawlerDataSource(dict):
                  embed_media: Optional[_builtins.bool] = None):
         """
         :param _builtins.str base_url: The base URL to crawl
-        :param _builtins.str crawling_option: Options for specifying how URLs found on pages should be handled. 
+        :param _builtins.str crawling_option: Options for specifying how URLs found on pages should be handled.
                - UNKNOWN: Default unknown value
                - SCOPED: Only include the base URL.
                - PATH: Crawl the base URL and linked pages within the URL path.
@@ -18566,7 +18566,7 @@ class GradientaiKnowledgeBaseDataSourceWebCrawlerDataSource(dict):
     @pulumi.getter(name="crawlingOption")
     def crawling_option(self) -> Optional[_builtins.str]:
         """
-        Options for specifying how URLs found on pages should be handled. 
+        Options for specifying how URLs found on pages should be handled.
         - UNKNOWN: Default unknown value
         - SCOPED: Only include the base URL.
         - PATH: Crawl the base URL and linked pages within the URL path.
@@ -32140,7 +32140,7 @@ class GetGenaiAgentVersionsAgentVersionResult(dict):
         :param _builtins.str model_name: Name of model associated to the agent version
         :param _builtins.str name: Name of the Agent
         :param _builtins.bool provide_citations: Indicates if the should provide in-response citations
-        :param _builtins.str retrieval_method: Retrieval method used. 
+        :param _builtins.str retrieval_method: Retrieval method used.
                - RETRIEVAL_METHOD_UNKNOWN: The retrieval method is unknown
                - RETRIEVAL_METHOD_REWRITE: The retrieval method is rewrite
                - RETRIEVAL_METHOD_STEP_BACK: The retrieval method is step back
@@ -32316,7 +32316,7 @@ class GetGenaiAgentVersionsAgentVersionResult(dict):
     @pulumi.getter(name="retrievalMethod")
     def retrieval_method(self) -> _builtins.str:
         """
-        Retrieval method used. 
+        Retrieval method used.
         - RETRIEVAL_METHOD_UNKNOWN: The retrieval method is unknown
         - RETRIEVAL_METHOD_REWRITE: The retrieval method is rewrite
         - RETRIEVAL_METHOD_STEP_BACK: The retrieval method is step back
@@ -39843,7 +39843,7 @@ class GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceResult(dict)
                  embed_media: Optional[_builtins.bool] = None):
         """
         :param _builtins.str base_url: The base URL to crawl
-        :param _builtins.str crawling_option: Options for specifying how URLs found on pages should be handled. 
+        :param _builtins.str crawling_option: Options for specifying how URLs found on pages should be handled.
                - UNKNOWN: Default unknown value
                - SCOPED: Only include the base URL.
                - PATH: Crawl the base URL and linked pages within the URL path.
@@ -39870,7 +39870,7 @@ class GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceResult(dict)
     @pulumi.getter(name="crawlingOption")
     def crawling_option(self) -> Optional[_builtins.str]:
         """
-        Options for specifying how URLs found on pages should be handled. 
+        Options for specifying how URLs found on pages should be handled.
         - UNKNOWN: Default unknown value
         - SCOPED: Only include the base URL.
         - PATH: Crawl the base URL and linked pages within the URL path.
@@ -44591,7 +44591,7 @@ class GetGradientaiAgentVersionsAgentVersionResult(dict):
         :param _builtins.str model_name: Name of model associated to the agent version
         :param _builtins.str name: Name of the Agent
         :param _builtins.bool provide_citations: Indicates if the should provide in-response citations
-        :param _builtins.str retrieval_method: Retrieval method used. 
+        :param _builtins.str retrieval_method: Retrieval method used.
                - RETRIEVAL_METHOD_UNKNOWN: The retrieval method is unknown
                - RETRIEVAL_METHOD_REWRITE: The retrieval method is rewrite
                - RETRIEVAL_METHOD_STEP_BACK: The retrieval method is step back
@@ -44767,7 +44767,7 @@ class GetGradientaiAgentVersionsAgentVersionResult(dict):
     @pulumi.getter(name="retrievalMethod")
     def retrieval_method(self) -> _builtins.str:
         """
-        Retrieval method used. 
+        Retrieval method used.
         - RETRIEVAL_METHOD_UNKNOWN: The retrieval method is unknown
         - RETRIEVAL_METHOD_REWRITE: The retrieval method is rewrite
         - RETRIEVAL_METHOD_STEP_BACK: The retrieval method is step back
@@ -52970,7 +52970,7 @@ class GetGradientaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceResult(
                  embed_media: Optional[_builtins.bool] = None):
         """
         :param _builtins.str base_url: The base URL to crawl
-        :param _builtins.str crawling_option: Options for specifying how URLs found on pages should be handled. 
+        :param _builtins.str crawling_option: Options for specifying how URLs found on pages should be handled.
                - UNKNOWN: Default unknown value
                - SCOPED: Only include the base URL.
                - PATH: Crawl the base URL and linked pages within the URL path.
@@ -52997,7 +52997,7 @@ class GetGradientaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceResult(
     @pulumi.getter(name="crawlingOption")
     def crawling_option(self) -> Optional[_builtins.str]:
         """
-        Options for specifying how URLs found on pages should be handled. 
+        Options for specifying how URLs found on pages should be handled.
         - UNKNOWN: Default unknown value
         - SCOPED: Only include the base URL.
         - PATH: Crawl the base URL and linked pages within the URL path.

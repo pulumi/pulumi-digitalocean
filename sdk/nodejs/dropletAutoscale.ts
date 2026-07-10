@@ -90,7 +90,7 @@ export class DropletAutoscale extends pulumi.CustomResource {
     }
 
     /**
-     * The configuration parameters for Droplet Autoscale pool, the supported arguments are 
+     * The configuration parameters for Droplet Autoscale pool, the supported arguments are
      * documented below.
      */
     declare public readonly config: pulumi.Output<outputs.DropletAutoscaleConfig>;
@@ -104,7 +104,7 @@ export class DropletAutoscale extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly currentUtilizations: pulumi.Output<outputs.DropletAutoscaleCurrentUtilization[]>;
     /**
-     * The droplet template parameters for Droplet Autoscale pool, the supported arguments 
+     * The droplet template parameters for Droplet Autoscale pool, the supported arguments
      * are documented below.
      */
     declare public readonly dropletTemplate: pulumi.Output<outputs.DropletAutoscaleDropletTemplate>;
@@ -168,7 +168,7 @@ export class DropletAutoscale extends pulumi.CustomResource {
  */
 export interface DropletAutoscaleState {
     /**
-     * The configuration parameters for Droplet Autoscale pool, the supported arguments are 
+     * The configuration parameters for Droplet Autoscale pool, the supported arguments are
      * documented below.
      */
     config?: pulumi.Input<inputs.DropletAutoscaleConfig | undefined>;
@@ -182,7 +182,7 @@ export interface DropletAutoscaleState {
      */
     currentUtilizations?: pulumi.Input<pulumi.Input<inputs.DropletAutoscaleCurrentUtilization>[] | undefined>;
     /**
-     * The droplet template parameters for Droplet Autoscale pool, the supported arguments 
+     * The droplet template parameters for Droplet Autoscale pool, the supported arguments
      * are documented below.
      */
     dropletTemplate?: pulumi.Input<inputs.DropletAutoscaleDropletTemplate | undefined>;
@@ -206,12 +206,12 @@ export interface DropletAutoscaleState {
  */
 export interface DropletAutoscaleArgs {
     /**
-     * The configuration parameters for Droplet Autoscale pool, the supported arguments are 
+     * The configuration parameters for Droplet Autoscale pool, the supported arguments are
      * documented below.
      */
     config: pulumi.Input<inputs.DropletAutoscaleConfig>;
     /**
-     * The droplet template parameters for Droplet Autoscale pool, the supported arguments 
+     * The droplet template parameters for Droplet Autoscale pool, the supported arguments
      * are documented below.
      */
     dropletTemplate: pulumi.Input<inputs.DropletAutoscaleDropletTemplate>;

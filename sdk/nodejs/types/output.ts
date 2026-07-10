@@ -2377,7 +2377,7 @@ export interface DropletAutoscaleConfig {
      */
     targetCpuUtilization?: number;
     /**
-     * The target average Memory load (in range `[0, 1]`) to maintain in the Droplet Autoscale 
+     * The target average Memory load (in range `[0, 1]`) to maintain in the Droplet Autoscale
      * pool.
      */
     targetMemoryUtilization?: number;
@@ -2433,7 +2433,7 @@ export interface DropletAutoscaleDropletTemplate {
      */
     tags?: string[];
     /**
-     * Custom user data that can be added to the Droplet Autoscale pool underlying resource(s). This can be a 
+     * Custom user data that can be added to the Droplet Autoscale pool underlying resource(s). This can be a
      * cloud init script that user may configure to setup their application workload.
      */
     userData?: string;
@@ -3612,7 +3612,7 @@ export interface GenaiKnowledgeBaseDataSourceWebCrawlerDataSource {
      */
     baseUrl?: string;
     /**
-     * Options for specifying how URLs found on pages should be handled. 
+     * Options for specifying how URLs found on pages should be handled.
      * - UNKNOWN: Default unknown value
      * - SCOPED: Only include the base URL.
      * - PATH: Crawl the base URL and linked pages within the URL path.
@@ -7560,7 +7560,7 @@ export interface GetGenaiAgentVersionsAgentVersion {
      */
     provideCitations: boolean;
     /**
-     * Retrieval method used. 
+     * Retrieval method used.
      * - RETRIEVAL_METHOD_UNKNOWN: The retrieval method is unknown
      * - RETRIEVAL_METHOD_REWRITE: The retrieval method is rewrite
      * - RETRIEVAL_METHOD_STEP_BACK: The retrieval method is step back
@@ -10193,7 +10193,7 @@ export interface GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSource 
      */
     baseUrl?: string;
     /**
-     * Options for specifying how URLs found on pages should be handled. 
+     * Options for specifying how URLs found on pages should be handled.
      * - UNKNOWN: Default unknown value
      * - SCOPED: Only include the base URL.
      * - PATH: Crawl the base URL and linked pages within the URL path.
@@ -11881,7 +11881,7 @@ export interface GetGradientaiAgentVersionsAgentVersion {
      */
     provideCitations: boolean;
     /**
-     * Retrieval method used. 
+     * Retrieval method used.
      * - RETRIEVAL_METHOD_UNKNOWN: The retrieval method is unknown
      * - RETRIEVAL_METHOD_REWRITE: The retrieval method is rewrite
      * - RETRIEVAL_METHOD_STEP_BACK: The retrieval method is step back
@@ -14755,7 +14755,7 @@ export interface GetGradientaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSo
      */
     baseUrl?: string;
     /**
-     * Options for specifying how URLs found on pages should be handled. 
+     * Options for specifying how URLs found on pages should be handled.
      * - UNKNOWN: Default unknown value
      * - SCOPED: Only include the base URL.
      * - PATH: Crawl the base URL and linked pages within the URL path.
@@ -17552,7 +17552,7 @@ export interface GradientaiKnowledgeBaseDataSourceWebCrawlerDataSource {
      */
     baseUrl?: string;
     /**
-     * Options for specifying how URLs found on pages should be handled. 
+     * Options for specifying how URLs found on pages should be handled.
      * - UNKNOWN: Default unknown value
      * - SCOPED: Only include the base URL.
      * - PATH: Crawl the base URL and linked pages within the URL path.
