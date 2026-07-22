@@ -81,10 +81,8 @@ import (
 //			_, err = digitalocean.NewSpacesBucketPolicy(ctx, "foobar", &digitalocean.SpacesBucketPolicyArgs{
 //				Region: foobar.Region,
 //				Bucket: foobar.Name,
-//				Policy: pulumi.All(foobar.Name, foobar.Name).ApplyT(func(_args []interface{}) (string, error) {
-//					foobarName := _args[0].(string)
-//					foobarName1 := _args[1].(string)
-//					var _zero string
+//				Policy: foobar.Name.ApplyT(func(name string) (pulumi.String, error) {
+//					var _zero pulumi.String
 //					tmpJSON0, err := json.Marshal(map[string]interface{}{
 //						"Version": "2012-10-17",
 //						"Statement": []map[string]interface{}{
@@ -94,8 +92,8 @@ import (
 //								"Principal": "*",
 //								"Action":    "s3:*",
 //								"Resource": []string{
-//									fmt.Sprintf("arn:aws:s3:::%v", foobarName),
-//									fmt.Sprintf("arn:aws:s3:::%v/*", foobarName1),
+//									fmt.Sprintf("arn:aws:s3:::%v", name),
+//									fmt.Sprintf("arn:aws:s3:::%v/*", name),
 //								},
 //								"Condition": map[string]interface{}{
 //									"NotIpAddress": map[string]interface{}{
@@ -109,7 +107,7 @@ import (
 //						return _zero, err
 //					}
 //					json0 := string(tmpJSON0)
-//					return json0, nil
+//					return pulumi.String(json0), nil
 //				}).(pulumi.StringOutput),
 //			})
 //			if err != nil {
