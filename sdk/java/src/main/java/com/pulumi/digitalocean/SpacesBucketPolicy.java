@@ -97,29 +97,25 @@ import javax.annotation.Nullable;
  *         var foobarSpacesBucketPolicy = new SpacesBucketPolicy("foobarSpacesBucketPolicy", SpacesBucketPolicyArgs.builder()
  *             .region(foobar.region())
  *             .bucket(foobar.name())
- *             .policy(Output.tuple(foobar.name(), foobar.name()).applyValue(values -> {
- *                 var foobarName = values.t1;
- *                 var foobarName1 = values.t2;
- *                 return serializeJson(
- *                     jsonObject(
- *                         jsonProperty("Version", "2012-10-17"),
- *                         jsonProperty("Statement", jsonArray(jsonObject(
- *                             jsonProperty("Sid", "IPAllow"),
- *                             jsonProperty("Effect", "Deny"),
- *                             jsonProperty("Principal", "*"),
- *                             jsonProperty("Action", "s3:*"),
- *                             jsonProperty("Resource", jsonArray(
- *                                 String.format("arn:aws:s3:::%s", foobarName), 
- *                                 String.format("arn:aws:s3:::%s/*", foobarName1)
- *                             )),
- *                             jsonProperty("Condition", jsonObject(
- *                                 jsonProperty("NotIpAddress", jsonObject(
- *                                     jsonProperty("aws:SourceIp", "54.240.143.0/24")
- *                                 ))
+ *             .policy(foobar.name().applyValue(_name -> serializeJson(
+ *                 jsonObject(
+ *                     jsonProperty("Version", "2012-10-17"),
+ *                     jsonProperty("Statement", jsonArray(jsonObject(
+ *                         jsonProperty("Sid", "IPAllow"),
+ *                         jsonProperty("Effect", "Deny"),
+ *                         jsonProperty("Principal", "*"),
+ *                         jsonProperty("Action", "s3:*"),
+ *                         jsonProperty("Resource", jsonArray(
+ *                             String.format("arn:aws:s3:::%s", _name), 
+ *                             String.format("arn:aws:s3:::%s/*", _name)
+ *                         )),
+ *                         jsonProperty("Condition", jsonObject(
+ *                             jsonProperty("NotIpAddress", jsonObject(
+ *                                 jsonProperty("aws:SourceIp", "54.240.143.0/24")
  *                             ))
- *                         )))
- *                     ));
- *             }))
+ *                         ))
+ *                     )))
+ *                 ))))
  *             .build());
  * 
  *     }
