@@ -248,6 +248,7 @@ __all__ = [
     'KubernetesClusterNodePoolNode',
     'KubernetesClusterNodePoolTaint',
     'KubernetesClusterNvidiaGpuDevicePlugin',
+    'KubernetesClusterP2pOciRegistryPlugin',
     'KubernetesClusterRdmaSharedDevicePlugin',
     'KubernetesClusterRoutingAgent',
     'KubernetesClusterSso',
@@ -735,6 +736,7 @@ __all__ = [
     'GetKubernetesClusterNodePoolNodeResult',
     'GetKubernetesClusterNodePoolTaintResult',
     'GetKubernetesClusterNvidiaGpuDevicePluginResult',
+    'GetKubernetesClusterP2pOciRegistryPluginResult',
     'GetKubernetesClusterRdmaSharedDevicePluginResult',
     'GetKubernetesClusterRoutingAgentResult',
     'GetKubernetesClusterSsoResult',
@@ -19719,6 +19721,24 @@ class KubernetesClusterNvidiaGpuDevicePlugin(dict):
 
 
 @pulumi.output_type
+class KubernetesClusterP2pOciRegistryPlugin(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        """
+        :param _builtins.bool enabled: Boolean flag whether the p2p-oci-registry-plugin should be enabled or not.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Boolean flag whether the p2p-oci-registry-plugin should be enabled or not.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
 class KubernetesClusterRdmaSharedDevicePlugin(dict):
     def __init__(__self__, *,
                  enabled: _builtins.bool):
@@ -21359,6 +21379,8 @@ class VpcNatGatewayVpc(dict):
             suggest = "default_gateway"
         elif key == "gatewayIp":
             suggest = "gateway_ip"
+        elif key == "subnetUuid":
+            suggest = "subnet_uuid"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in VpcNatGatewayVpc. Access the value via the '{suggest}' property getter instead.")
@@ -21374,17 +21396,21 @@ class VpcNatGatewayVpc(dict):
     def __init__(__self__, *,
                  vpc_uuid: _builtins.str,
                  default_gateway: Optional[_builtins.bool] = None,
-                 gateway_ip: Optional[_builtins.str] = None):
+                 gateway_ip: Optional[_builtins.str] = None,
+                 subnet_uuid: Optional[_builtins.str] = None):
         """
         :param _builtins.str vpc_uuid: The ID of the ingress VPC
         :param _builtins.bool default_gateway: Boolean flag indicating if this should be the default gateway in this VPC
         :param _builtins.str gateway_ip: The private IP of the VPC NAT Gateway
+        :param _builtins.str subnet_uuid: The ID of the ingress subnet in the VPC
         """
         pulumi.set(__self__, "vpc_uuid", vpc_uuid)
         if default_gateway is not None:
             pulumi.set(__self__, "default_gateway", default_gateway)
         if gateway_ip is not None:
             pulumi.set(__self__, "gateway_ip", gateway_ip)
+        if subnet_uuid is not None:
+            pulumi.set(__self__, "subnet_uuid", subnet_uuid)
 
     @_builtins.property
     @pulumi.getter(name="vpcUuid")
@@ -21409,6 +21435,14 @@ class VpcNatGatewayVpc(dict):
         The private IP of the VPC NAT Gateway
         """
         return pulumi.get(self, "gateway_ip")
+
+    @_builtins.property
+    @pulumi.getter(name="subnetUuid")
+    def subnet_uuid(self) -> Optional[_builtins.str]:
+        """
+        The ID of the ingress subnet in the VPC
+        """
+        return pulumi.get(self, "subnet_uuid")
 
 
 @pulumi.output_type
@@ -55496,6 +55530,18 @@ class GetKubernetesClusterNvidiaGpuDevicePluginResult(dict):
 
 
 @pulumi.output_type
+class GetKubernetesClusterP2pOciRegistryPluginResult(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
 class GetKubernetesClusterRdmaSharedDevicePluginResult(dict):
     def __init__(__self__, *,
                  enabled: _builtins.bool):
@@ -57418,14 +57464,17 @@ class GetVpcNatGatewayVpcResult(dict):
     def __init__(__self__, *,
                  default_gateway: _builtins.bool,
                  gateway_ip: _builtins.str,
+                 subnet_uuid: _builtins.str,
                  vpc_uuid: _builtins.str):
         """
         :param _builtins.bool default_gateway: Indicates if this is the default VPC NAT Gateway in the VPC
         :param _builtins.str gateway_ip: Gateway IP of the VPC NAT Gateway
+        :param _builtins.str subnet_uuid: ID of the ingress subnet in the VPC
         :param _builtins.str vpc_uuid: ID of the ingress VPC
         """
         pulumi.set(__self__, "default_gateway", default_gateway)
         pulumi.set(__self__, "gateway_ip", gateway_ip)
+        pulumi.set(__self__, "subnet_uuid", subnet_uuid)
         pulumi.set(__self__, "vpc_uuid", vpc_uuid)
 
     @_builtins.property
@@ -57443,6 +57492,14 @@ class GetVpcNatGatewayVpcResult(dict):
         Gateway IP of the VPC NAT Gateway
         """
         return pulumi.get(self, "gateway_ip")
+
+    @_builtins.property
+    @pulumi.getter(name="subnetUuid")
+    def subnet_uuid(self) -> _builtins.str:
+        """
+        ID of the ingress subnet in the VPC
+        """
+        return pulumi.get(self, "subnet_uuid")
 
     @_builtins.property
     @pulumi.getter(name="vpcUuid")

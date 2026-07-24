@@ -22,6 +22,10 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly string GatewayIp;
         /// <summary>
+        /// ID of the ingress subnet in the VPC
+        /// </summary>
+        public readonly string SubnetUuid;
+        /// <summary>
         /// ID of the ingress VPC
         /// </summary>
         public readonly string VpcUuid;
@@ -32,10 +36,13 @@ namespace Pulumi.DigitalOcean.Outputs
 
             string gatewayIp,
 
+            string subnetUuid,
+
             string vpcUuid)
         {
             DefaultGateway = defaultGateway;
             GatewayIp = gatewayIp;
+            SubnetUuid = subnetUuid;
             VpcUuid = vpcUuid;
         }
     }

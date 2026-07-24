@@ -25,6 +25,12 @@ namespace Pulumi.DigitalOcean.Inputs
         public Input<string>? GatewayIp { get; set; }
 
         /// <summary>
+        /// The ID of the ingress subnet in the VPC
+        /// </summary>
+        [Input("subnetUuid")]
+        public Input<string>? SubnetUuid { get; set; }
+
+        /// <summary>
         /// The ID of the ingress VPC
         /// </summary>
         [Input("vpcUuid", required: true)]

@@ -13,6 +13,7 @@ import com.pulumi.digitalocean.outputs.GetKubernetesClusterKubeConfig;
 import com.pulumi.digitalocean.outputs.GetKubernetesClusterMaintenancePolicy;
 import com.pulumi.digitalocean.outputs.GetKubernetesClusterNodePool;
 import com.pulumi.digitalocean.outputs.GetKubernetesClusterNvidiaGpuDevicePlugin;
+import com.pulumi.digitalocean.outputs.GetKubernetesClusterP2pOciRegistryPlugin;
 import com.pulumi.digitalocean.outputs.GetKubernetesClusterRdmaSharedDevicePlugin;
 import com.pulumi.digitalocean.outputs.GetKubernetesClusterRoutingAgent;
 import com.pulumi.digitalocean.outputs.GetKubernetesClusterSso;
@@ -85,6 +86,7 @@ public final class GetKubernetesClusterResult {
      */
     private List<GetKubernetesClusterNodePool> nodePools;
     private GetKubernetesClusterNvidiaGpuDevicePlugin nvidiaGpuDevicePlugin;
+    private GetKubernetesClusterP2pOciRegistryPlugin p2pOciRegistryPlugin;
     private GetKubernetesClusterRdmaSharedDevicePlugin rdmaSharedDevicePlugin;
     /**
      * @return The slug identifier for the region where the Kubernetes cluster is located.
@@ -226,6 +228,9 @@ public final class GetKubernetesClusterResult {
     public GetKubernetesClusterNvidiaGpuDevicePlugin nvidiaGpuDevicePlugin() {
         return this.nvidiaGpuDevicePlugin;
     }
+    public GetKubernetesClusterP2pOciRegistryPlugin p2pOciRegistryPlugin() {
+        return this.p2pOciRegistryPlugin;
+    }
     public GetKubernetesClusterRdmaSharedDevicePlugin rdmaSharedDevicePlugin() {
         return this.rdmaSharedDevicePlugin;
     }
@@ -325,6 +330,7 @@ public final class GetKubernetesClusterResult {
         private String name;
         private List<GetKubernetesClusterNodePool> nodePools;
         private GetKubernetesClusterNvidiaGpuDevicePlugin nvidiaGpuDevicePlugin;
+        private GetKubernetesClusterP2pOciRegistryPlugin p2pOciRegistryPlugin;
         private GetKubernetesClusterRdmaSharedDevicePlugin rdmaSharedDevicePlugin;
         private String region;
         private GetKubernetesClusterRoutingAgent routingAgent;
@@ -359,6 +365,7 @@ public final class GetKubernetesClusterResult {
     	      this.name = defaults.name;
     	      this.nodePools = defaults.nodePools;
     	      this.nvidiaGpuDevicePlugin = defaults.nvidiaGpuDevicePlugin;
+    	      this.p2pOciRegistryPlugin = defaults.p2pOciRegistryPlugin;
     	      this.rdmaSharedDevicePlugin = defaults.rdmaSharedDevicePlugin;
     	      this.region = defaults.region;
     	      this.routingAgent = defaults.routingAgent;
@@ -530,6 +537,14 @@ public final class GetKubernetesClusterResult {
             return this;
         }
         @CustomType.Setter
+        public Builder p2pOciRegistryPlugin(GetKubernetesClusterP2pOciRegistryPlugin p2pOciRegistryPlugin) {
+            if (p2pOciRegistryPlugin == null) {
+              throw new MissingRequiredPropertyException("GetKubernetesClusterResult", "p2pOciRegistryPlugin");
+            }
+            this.p2pOciRegistryPlugin = p2pOciRegistryPlugin;
+            return this;
+        }
+        @CustomType.Setter
         public Builder rdmaSharedDevicePlugin(GetKubernetesClusterRdmaSharedDevicePlugin rdmaSharedDevicePlugin) {
             if (rdmaSharedDevicePlugin == null) {
               throw new MissingRequiredPropertyException("GetKubernetesClusterResult", "rdmaSharedDevicePlugin");
@@ -657,6 +672,7 @@ public final class GetKubernetesClusterResult {
             _resultValue.name = name;
             _resultValue.nodePools = nodePools;
             _resultValue.nvidiaGpuDevicePlugin = nvidiaGpuDevicePlugin;
+            _resultValue.p2pOciRegistryPlugin = p2pOciRegistryPlugin;
             _resultValue.rdmaSharedDevicePlugin = rdmaSharedDevicePlugin;
             _resultValue.region = region;
             _resultValue.routingAgent = routingAgent;

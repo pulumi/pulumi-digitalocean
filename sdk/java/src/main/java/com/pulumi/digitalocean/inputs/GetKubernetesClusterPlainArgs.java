@@ -9,6 +9,7 @@ import com.pulumi.digitalocean.inputs.GetKubernetesClusterAmdGpuDevicePlugin;
 import com.pulumi.digitalocean.inputs.GetKubernetesClusterClusterAutoscalerConfiguration;
 import com.pulumi.digitalocean.inputs.GetKubernetesClusterCorednsAutoscaler;
 import com.pulumi.digitalocean.inputs.GetKubernetesClusterNvidiaGpuDevicePlugin;
+import com.pulumi.digitalocean.inputs.GetKubernetesClusterP2pOciRegistryPlugin;
 import com.pulumi.digitalocean.inputs.GetKubernetesClusterRdmaSharedDevicePlugin;
 import com.pulumi.digitalocean.inputs.GetKubernetesClusterRoutingAgent;
 import com.pulumi.digitalocean.inputs.GetKubernetesClusterSso;
@@ -82,6 +83,13 @@ public final class GetKubernetesClusterPlainArgs extends com.pulumi.resources.In
         return Optional.ofNullable(this.nvidiaGpuDevicePlugin);
     }
 
+    @Import(name="p2pOciRegistryPlugin")
+    private @Nullable GetKubernetesClusterP2pOciRegistryPlugin p2pOciRegistryPlugin;
+
+    public Optional<GetKubernetesClusterP2pOciRegistryPlugin> p2pOciRegistryPlugin() {
+        return Optional.ofNullable(this.p2pOciRegistryPlugin);
+    }
+
     @Import(name="rdmaSharedDevicePlugin")
     private @Nullable GetKubernetesClusterRdmaSharedDevicePlugin rdmaSharedDevicePlugin;
 
@@ -128,6 +136,7 @@ public final class GetKubernetesClusterPlainArgs extends com.pulumi.resources.In
         this.kubeconfigExpireSeconds = $.kubeconfigExpireSeconds;
         this.name = $.name;
         this.nvidiaGpuDevicePlugin = $.nvidiaGpuDevicePlugin;
+        this.p2pOciRegistryPlugin = $.p2pOciRegistryPlugin;
         this.rdmaSharedDevicePlugin = $.rdmaSharedDevicePlugin;
         this.routingAgent = $.routingAgent;
         this.ssos = $.ssos;
@@ -194,6 +203,11 @@ public final class GetKubernetesClusterPlainArgs extends com.pulumi.resources.In
 
         public Builder nvidiaGpuDevicePlugin(@Nullable GetKubernetesClusterNvidiaGpuDevicePlugin nvidiaGpuDevicePlugin) {
             $.nvidiaGpuDevicePlugin = nvidiaGpuDevicePlugin;
+            return this;
+        }
+
+        public Builder p2pOciRegistryPlugin(@Nullable GetKubernetesClusterP2pOciRegistryPlugin p2pOciRegistryPlugin) {
+            $.p2pOciRegistryPlugin = p2pOciRegistryPlugin;
             return this;
         }
 

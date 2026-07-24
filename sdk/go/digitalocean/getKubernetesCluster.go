@@ -58,6 +58,7 @@ type LookupKubernetesClusterArgs struct {
 	// The name of Kubernetes cluster.
 	Name                   string                                      `pulumi:"name"`
 	NvidiaGpuDevicePlugin  *GetKubernetesClusterNvidiaGpuDevicePlugin  `pulumi:"nvidiaGpuDevicePlugin"`
+	P2pOciRegistryPlugin   *GetKubernetesClusterP2pOciRegistryPlugin   `pulumi:"p2pOciRegistryPlugin"`
 	RdmaSharedDevicePlugin *GetKubernetesClusterRdmaSharedDevicePlugin `pulumi:"rdmaSharedDevicePlugin"`
 	RoutingAgent           *GetKubernetesClusterRoutingAgent           `pulumi:"routingAgent"`
 	Ssos                   []GetKubernetesClusterSso                   `pulumi:"ssos"`
@@ -95,6 +96,7 @@ type LookupKubernetesClusterResult struct {
 	// A list of node pools associated with the cluster. Each node pool exports the following attributes:
 	NodePools              []GetKubernetesClusterNodePool             `pulumi:"nodePools"`
 	NvidiaGpuDevicePlugin  GetKubernetesClusterNvidiaGpuDevicePlugin  `pulumi:"nvidiaGpuDevicePlugin"`
+	P2pOciRegistryPlugin   GetKubernetesClusterP2pOciRegistryPlugin   `pulumi:"p2pOciRegistryPlugin"`
 	RdmaSharedDevicePlugin GetKubernetesClusterRdmaSharedDevicePlugin `pulumi:"rdmaSharedDevicePlugin"`
 	// The slug identifier for the region where the Kubernetes cluster is located.
 	Region       string                           `pulumi:"region"`
@@ -137,6 +139,7 @@ type LookupKubernetesClusterOutputArgs struct {
 	// The name of Kubernetes cluster.
 	Name                   pulumi.StringInput                                 `pulumi:"name"`
 	NvidiaGpuDevicePlugin  GetKubernetesClusterNvidiaGpuDevicePluginPtrInput  `pulumi:"nvidiaGpuDevicePlugin"`
+	P2pOciRegistryPlugin   GetKubernetesClusterP2pOciRegistryPluginPtrInput   `pulumi:"p2pOciRegistryPlugin"`
 	RdmaSharedDevicePlugin GetKubernetesClusterRdmaSharedDevicePluginPtrInput `pulumi:"rdmaSharedDevicePlugin"`
 	RoutingAgent           GetKubernetesClusterRoutingAgentPtrInput           `pulumi:"routingAgent"`
 	Ssos                   GetKubernetesClusterSsoArrayInput                  `pulumi:"ssos"`
@@ -257,6 +260,12 @@ func (o LookupKubernetesClusterResultOutput) NvidiaGpuDevicePlugin() GetKubernet
 	return o.ApplyT(func(v LookupKubernetesClusterResult) GetKubernetesClusterNvidiaGpuDevicePlugin {
 		return v.NvidiaGpuDevicePlugin
 	}).(GetKubernetesClusterNvidiaGpuDevicePluginOutput)
+}
+
+func (o LookupKubernetesClusterResultOutput) P2pOciRegistryPlugin() GetKubernetesClusterP2pOciRegistryPluginOutput {
+	return o.ApplyT(func(v LookupKubernetesClusterResult) GetKubernetesClusterP2pOciRegistryPlugin {
+		return v.P2pOciRegistryPlugin
+	}).(GetKubernetesClusterP2pOciRegistryPluginOutput)
 }
 
 func (o LookupKubernetesClusterResultOutput) RdmaSharedDevicePlugin() GetKubernetesClusterRdmaSharedDevicePluginOutput {

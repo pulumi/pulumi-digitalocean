@@ -31,6 +31,7 @@ export function getKubernetesCluster(args: GetKubernetesClusterArgs, opts?: pulu
         "kubeconfigExpireSeconds": args.kubeconfigExpireSeconds,
         "name": args.name,
         "nvidiaGpuDevicePlugin": args.nvidiaGpuDevicePlugin,
+        "p2pOciRegistryPlugin": args.p2pOciRegistryPlugin,
         "rdmaSharedDevicePlugin": args.rdmaSharedDevicePlugin,
         "routingAgent": args.routingAgent,
         "ssos": args.ssos,
@@ -52,6 +53,7 @@ export interface GetKubernetesClusterArgs {
      */
     name: string;
     nvidiaGpuDevicePlugin?: inputs.GetKubernetesClusterNvidiaGpuDevicePlugin;
+    p2pOciRegistryPlugin?: inputs.GetKubernetesClusterP2pOciRegistryPlugin;
     rdmaSharedDevicePlugin?: inputs.GetKubernetesClusterRdmaSharedDevicePlugin;
     routingAgent?: inputs.GetKubernetesClusterRoutingAgent;
     ssos?: inputs.GetKubernetesClusterSso[];
@@ -113,6 +115,7 @@ export interface GetKubernetesClusterResult {
      */
     readonly nodePools: outputs.GetKubernetesClusterNodePool[];
     readonly nvidiaGpuDevicePlugin: outputs.GetKubernetesClusterNvidiaGpuDevicePlugin;
+    readonly p2pOciRegistryPlugin: outputs.GetKubernetesClusterP2pOciRegistryPlugin;
     readonly rdmaSharedDevicePlugin: outputs.GetKubernetesClusterRdmaSharedDevicePlugin;
     /**
      * The slug identifier for the region where the Kubernetes cluster is located.
@@ -175,6 +178,7 @@ export function getKubernetesClusterOutput(args: GetKubernetesClusterOutputArgs,
         "kubeconfigExpireSeconds": args.kubeconfigExpireSeconds,
         "name": args.name,
         "nvidiaGpuDevicePlugin": args.nvidiaGpuDevicePlugin,
+        "p2pOciRegistryPlugin": args.p2pOciRegistryPlugin,
         "rdmaSharedDevicePlugin": args.rdmaSharedDevicePlugin,
         "routingAgent": args.routingAgent,
         "ssos": args.ssos,
@@ -196,6 +200,7 @@ export interface GetKubernetesClusterOutputArgs {
      */
     name: pulumi.Input<string>;
     nvidiaGpuDevicePlugin?: pulumi.Input<inputs.GetKubernetesClusterNvidiaGpuDevicePluginArgs | undefined>;
+    p2pOciRegistryPlugin?: pulumi.Input<inputs.GetKubernetesClusterP2pOciRegistryPluginArgs | undefined>;
     rdmaSharedDevicePlugin?: pulumi.Input<inputs.GetKubernetesClusterRdmaSharedDevicePluginArgs | undefined>;
     routingAgent?: pulumi.Input<inputs.GetKubernetesClusterRoutingAgentArgs | undefined>;
     ssos?: pulumi.Input<pulumi.Input<inputs.GetKubernetesClusterSsoArgs>[] | undefined>;

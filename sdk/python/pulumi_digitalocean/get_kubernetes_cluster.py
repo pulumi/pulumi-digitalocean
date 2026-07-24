@@ -28,7 +28,7 @@ class GetKubernetesClusterResult:
     """
     A collection of values returned by getKubernetesCluster.
     """
-    def __init__(__self__, amd_gpu_device_metrics_exporter_plugin=None, amd_gpu_device_plugin=None, auto_upgrade=None, cluster_autoscaler_configurations=None, cluster_subnet=None, control_plane_firewalls=None, coredns_autoscaler=None, created_at=None, endpoint=None, ha=None, id=None, ipv4_address=None, kube_configs=None, kubeconfig_expire_seconds=None, maintenance_policies=None, name=None, node_pools=None, nvidia_gpu_device_plugin=None, rdma_shared_device_plugin=None, region=None, routing_agent=None, service_subnet=None, ssos=None, status=None, surge_upgrade=None, tags=None, updated_at=None, urn=None, version=None, vpc_uuid=None, worker_subnet_uuid=None):
+    def __init__(__self__, amd_gpu_device_metrics_exporter_plugin=None, amd_gpu_device_plugin=None, auto_upgrade=None, cluster_autoscaler_configurations=None, cluster_subnet=None, control_plane_firewalls=None, coredns_autoscaler=None, created_at=None, endpoint=None, ha=None, id=None, ipv4_address=None, kube_configs=None, kubeconfig_expire_seconds=None, maintenance_policies=None, name=None, node_pools=None, nvidia_gpu_device_plugin=None, p2p_oci_registry_plugin=None, rdma_shared_device_plugin=None, region=None, routing_agent=None, service_subnet=None, ssos=None, status=None, surge_upgrade=None, tags=None, updated_at=None, urn=None, version=None, vpc_uuid=None, worker_subnet_uuid=None):
         if amd_gpu_device_metrics_exporter_plugin and not isinstance(amd_gpu_device_metrics_exporter_plugin, dict):
             raise TypeError("Expected argument 'amd_gpu_device_metrics_exporter_plugin' to be a dict")
         pulumi.set(__self__, "amd_gpu_device_metrics_exporter_plugin", amd_gpu_device_metrics_exporter_plugin)
@@ -83,6 +83,9 @@ class GetKubernetesClusterResult:
         if nvidia_gpu_device_plugin and not isinstance(nvidia_gpu_device_plugin, dict):
             raise TypeError("Expected argument 'nvidia_gpu_device_plugin' to be a dict")
         pulumi.set(__self__, "nvidia_gpu_device_plugin", nvidia_gpu_device_plugin)
+        if p2p_oci_registry_plugin and not isinstance(p2p_oci_registry_plugin, dict):
+            raise TypeError("Expected argument 'p2p_oci_registry_plugin' to be a dict")
+        pulumi.set(__self__, "p2p_oci_registry_plugin", p2p_oci_registry_plugin)
         if rdma_shared_device_plugin and not isinstance(rdma_shared_device_plugin, dict):
             raise TypeError("Expected argument 'rdma_shared_device_plugin' to be a dict")
         pulumi.set(__self__, "rdma_shared_device_plugin", rdma_shared_device_plugin)
@@ -244,6 +247,11 @@ class GetKubernetesClusterResult:
         return pulumi.get(self, "nvidia_gpu_device_plugin")
 
     @_builtins.property
+    @pulumi.getter(name="p2pOciRegistryPlugin")
+    def p2p_oci_registry_plugin(self) -> 'outputs.GetKubernetesClusterP2pOciRegistryPluginResult':
+        return pulumi.get(self, "p2p_oci_registry_plugin")
+
+    @_builtins.property
     @pulumi.getter(name="rdmaSharedDevicePlugin")
     def rdma_shared_device_plugin(self) -> 'outputs.GetKubernetesClusterRdmaSharedDevicePluginResult':
         return pulumi.get(self, "rdma_shared_device_plugin")
@@ -357,6 +365,7 @@ class AwaitableGetKubernetesClusterResult(GetKubernetesClusterResult):
             name=self.name,
             node_pools=self.node_pools,
             nvidia_gpu_device_plugin=self.nvidia_gpu_device_plugin,
+            p2p_oci_registry_plugin=self.p2p_oci_registry_plugin,
             rdma_shared_device_plugin=self.rdma_shared_device_plugin,
             region=self.region,
             routing_agent=self.routing_agent,
@@ -379,6 +388,7 @@ def get_kubernetes_cluster(amd_gpu_device_metrics_exporter_plugin: Optional[Unio
                            kubeconfig_expire_seconds: Optional[_builtins.int] = None,
                            name: Optional[_builtins.str] = None,
                            nvidia_gpu_device_plugin: Optional[Union['GetKubernetesClusterNvidiaGpuDevicePluginArgs', 'GetKubernetesClusterNvidiaGpuDevicePluginArgsDict']] = None,
+                           p2p_oci_registry_plugin: Optional[Union['GetKubernetesClusterP2pOciRegistryPluginArgs', 'GetKubernetesClusterP2pOciRegistryPluginArgsDict']] = None,
                            rdma_shared_device_plugin: Optional[Union['GetKubernetesClusterRdmaSharedDevicePluginArgs', 'GetKubernetesClusterRdmaSharedDevicePluginArgsDict']] = None,
                            routing_agent: Optional[Union['GetKubernetesClusterRoutingAgentArgs', 'GetKubernetesClusterRoutingAgentArgsDict']] = None,
                            ssos: Optional[Sequence[Union['GetKubernetesClusterSsoArgs', 'GetKubernetesClusterSsoArgsDict']]] = None,
@@ -408,6 +418,7 @@ def get_kubernetes_cluster(amd_gpu_device_metrics_exporter_plugin: Optional[Unio
     __args__['kubeconfigExpireSeconds'] = kubeconfig_expire_seconds
     __args__['name'] = name
     __args__['nvidiaGpuDevicePlugin'] = nvidia_gpu_device_plugin
+    __args__['p2pOciRegistryPlugin'] = p2p_oci_registry_plugin
     __args__['rdmaSharedDevicePlugin'] = rdma_shared_device_plugin
     __args__['routingAgent'] = routing_agent
     __args__['ssos'] = ssos
@@ -434,6 +445,7 @@ def get_kubernetes_cluster(amd_gpu_device_metrics_exporter_plugin: Optional[Unio
         name=pulumi.get(__ret__, 'name'),
         node_pools=pulumi.get(__ret__, 'node_pools'),
         nvidia_gpu_device_plugin=pulumi.get(__ret__, 'nvidia_gpu_device_plugin'),
+        p2p_oci_registry_plugin=pulumi.get(__ret__, 'p2p_oci_registry_plugin'),
         rdma_shared_device_plugin=pulumi.get(__ret__, 'rdma_shared_device_plugin'),
         region=pulumi.get(__ret__, 'region'),
         routing_agent=pulumi.get(__ret__, 'routing_agent'),
@@ -454,6 +466,7 @@ def get_kubernetes_cluster_output(amd_gpu_device_metrics_exporter_plugin: pulumi
                                   kubeconfig_expire_seconds: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                                   name: pulumi.Input[Optional[_builtins.str]] = None,
                                   nvidia_gpu_device_plugin: pulumi.Input[Optional[Optional[Union['GetKubernetesClusterNvidiaGpuDevicePluginArgs', 'GetKubernetesClusterNvidiaGpuDevicePluginArgsDict']]]] = None,
+                                  p2p_oci_registry_plugin: pulumi.Input[Optional[Optional[Union['GetKubernetesClusterP2pOciRegistryPluginArgs', 'GetKubernetesClusterP2pOciRegistryPluginArgsDict']]]] = None,
                                   rdma_shared_device_plugin: pulumi.Input[Optional[Optional[Union['GetKubernetesClusterRdmaSharedDevicePluginArgs', 'GetKubernetesClusterRdmaSharedDevicePluginArgsDict']]]] = None,
                                   routing_agent: pulumi.Input[Optional[Optional[Union['GetKubernetesClusterRoutingAgentArgs', 'GetKubernetesClusterRoutingAgentArgsDict']]]] = None,
                                   ssos: pulumi.Input[Optional[Optional[Sequence[Union['GetKubernetesClusterSsoArgs', 'GetKubernetesClusterSsoArgsDict']]]]] = None,
@@ -483,6 +496,7 @@ def get_kubernetes_cluster_output(amd_gpu_device_metrics_exporter_plugin: pulumi
     __args__['kubeconfigExpireSeconds'] = kubeconfig_expire_seconds
     __args__['name'] = name
     __args__['nvidiaGpuDevicePlugin'] = nvidia_gpu_device_plugin
+    __args__['p2pOciRegistryPlugin'] = p2p_oci_registry_plugin
     __args__['rdmaSharedDevicePlugin'] = rdma_shared_device_plugin
     __args__['routingAgent'] = routing_agent
     __args__['ssos'] = ssos
@@ -508,6 +522,7 @@ def get_kubernetes_cluster_output(amd_gpu_device_metrics_exporter_plugin: pulumi
         name=pulumi.get(__response__, 'name'),
         node_pools=pulumi.get(__response__, 'node_pools'),
         nvidia_gpu_device_plugin=pulumi.get(__response__, 'nvidia_gpu_device_plugin'),
+        p2p_oci_registry_plugin=pulumi.get(__response__, 'p2p_oci_registry_plugin'),
         rdma_shared_device_plugin=pulumi.get(__response__, 'rdma_shared_device_plugin'),
         region=pulumi.get(__response__, 'region'),
         routing_agent=pulumi.get(__response__, 'routing_agent'),

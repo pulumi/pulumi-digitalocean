@@ -10,6 +10,7 @@ import com.pulumi.digitalocean.inputs.GetKubernetesClusterAmdGpuDevicePluginArgs
 import com.pulumi.digitalocean.inputs.GetKubernetesClusterClusterAutoscalerConfigurationArgs;
 import com.pulumi.digitalocean.inputs.GetKubernetesClusterCorednsAutoscalerArgs;
 import com.pulumi.digitalocean.inputs.GetKubernetesClusterNvidiaGpuDevicePluginArgs;
+import com.pulumi.digitalocean.inputs.GetKubernetesClusterP2pOciRegistryPluginArgs;
 import com.pulumi.digitalocean.inputs.GetKubernetesClusterRdmaSharedDevicePluginArgs;
 import com.pulumi.digitalocean.inputs.GetKubernetesClusterRoutingAgentArgs;
 import com.pulumi.digitalocean.inputs.GetKubernetesClusterSsoArgs;
@@ -83,6 +84,13 @@ public final class GetKubernetesClusterArgs extends com.pulumi.resources.InvokeA
         return Optional.ofNullable(this.nvidiaGpuDevicePlugin);
     }
 
+    @Import(name="p2pOciRegistryPlugin")
+    private @Nullable Output<GetKubernetesClusterP2pOciRegistryPluginArgs> p2pOciRegistryPlugin;
+
+    public Optional<Output<GetKubernetesClusterP2pOciRegistryPluginArgs>> p2pOciRegistryPlugin() {
+        return Optional.ofNullable(this.p2pOciRegistryPlugin);
+    }
+
     @Import(name="rdmaSharedDevicePlugin")
     private @Nullable Output<GetKubernetesClusterRdmaSharedDevicePluginArgs> rdmaSharedDevicePlugin;
 
@@ -129,6 +137,7 @@ public final class GetKubernetesClusterArgs extends com.pulumi.resources.InvokeA
         this.kubeconfigExpireSeconds = $.kubeconfigExpireSeconds;
         this.name = $.name;
         this.nvidiaGpuDevicePlugin = $.nvidiaGpuDevicePlugin;
+        this.p2pOciRegistryPlugin = $.p2pOciRegistryPlugin;
         this.rdmaSharedDevicePlugin = $.rdmaSharedDevicePlugin;
         this.routingAgent = $.routingAgent;
         this.ssos = $.ssos;
@@ -230,6 +239,15 @@ public final class GetKubernetesClusterArgs extends com.pulumi.resources.InvokeA
 
         public Builder nvidiaGpuDevicePlugin(GetKubernetesClusterNvidiaGpuDevicePluginArgs nvidiaGpuDevicePlugin) {
             return nvidiaGpuDevicePlugin(Output.of(nvidiaGpuDevicePlugin));
+        }
+
+        public Builder p2pOciRegistryPlugin(@Nullable Output<GetKubernetesClusterP2pOciRegistryPluginArgs> p2pOciRegistryPlugin) {
+            $.p2pOciRegistryPlugin = p2pOciRegistryPlugin;
+            return this;
+        }
+
+        public Builder p2pOciRegistryPlugin(GetKubernetesClusterP2pOciRegistryPluginArgs p2pOciRegistryPlugin) {
+            return p2pOciRegistryPlugin(Output.of(p2pOciRegistryPlugin));
         }
 
         public Builder rdmaSharedDevicePlugin(@Nullable Output<GetKubernetesClusterRdmaSharedDevicePluginArgs> rdmaSharedDevicePlugin) {

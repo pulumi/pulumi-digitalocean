@@ -24,6 +24,11 @@ public final class VpcNatGatewayVpc {
      */
     private @Nullable String gatewayIp;
     /**
+     * @return The ID of the ingress subnet in the VPC
+     * 
+     */
+    private @Nullable String subnetUuid;
+    /**
      * @return The ID of the ingress VPC
      * 
      */
@@ -45,6 +50,13 @@ public final class VpcNatGatewayVpc {
         return Optional.ofNullable(this.gatewayIp);
     }
     /**
+     * @return The ID of the ingress subnet in the VPC
+     * 
+     */
+    public Optional<String> subnetUuid() {
+        return Optional.ofNullable(this.subnetUuid);
+    }
+    /**
      * @return The ID of the ingress VPC
      * 
      */
@@ -63,12 +75,14 @@ public final class VpcNatGatewayVpc {
     public static final class Builder {
         private @Nullable Boolean defaultGateway;
         private @Nullable String gatewayIp;
+        private @Nullable String subnetUuid;
         private String vpcUuid;
         public Builder() {}
         public Builder(VpcNatGatewayVpc defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.defaultGateway = defaults.defaultGateway;
     	      this.gatewayIp = defaults.gatewayIp;
+    	      this.subnetUuid = defaults.subnetUuid;
     	      this.vpcUuid = defaults.vpcUuid;
         }
 
@@ -85,6 +99,12 @@ public final class VpcNatGatewayVpc {
             return this;
         }
         @CustomType.Setter
+        public Builder subnetUuid(@Nullable String subnetUuid) {
+
+            this.subnetUuid = subnetUuid;
+            return this;
+        }
+        @CustomType.Setter
         public Builder vpcUuid(String vpcUuid) {
             if (vpcUuid == null) {
               throw new MissingRequiredPropertyException("VpcNatGatewayVpc", "vpcUuid");
@@ -96,6 +116,7 @@ public final class VpcNatGatewayVpc {
             final var _resultValue = new VpcNatGatewayVpc();
             _resultValue.defaultGateway = defaultGateway;
             _resultValue.gatewayIp = gatewayIp;
+            _resultValue.subnetUuid = subnetUuid;
             _resultValue.vpcUuid = vpcUuid;
             return _resultValue;
         }
