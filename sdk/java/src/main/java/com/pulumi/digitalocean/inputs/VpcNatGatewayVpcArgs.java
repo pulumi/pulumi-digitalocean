@@ -48,6 +48,21 @@ public final class VpcNatGatewayVpcArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * The ID of the ingress subnet in the VPC
+     * 
+     */
+    @Import(name="subnetUuid")
+    private @Nullable Output<String> subnetUuid;
+
+    /**
+     * @return The ID of the ingress subnet in the VPC
+     * 
+     */
+    public Optional<Output<String>> subnetUuid() {
+        return Optional.ofNullable(this.subnetUuid);
+    }
+
+    /**
      * The ID of the ingress VPC
      * 
      */
@@ -67,6 +82,7 @@ public final class VpcNatGatewayVpcArgs extends com.pulumi.resources.ResourceArg
     private VpcNatGatewayVpcArgs(VpcNatGatewayVpcArgs $) {
         this.defaultGateway = $.defaultGateway;
         this.gatewayIp = $.gatewayIp;
+        this.subnetUuid = $.subnetUuid;
         this.vpcUuid = $.vpcUuid;
     }
 
@@ -128,6 +144,27 @@ public final class VpcNatGatewayVpcArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder gatewayIp(String gatewayIp) {
             return gatewayIp(Output.of(gatewayIp));
+        }
+
+        /**
+         * @param subnetUuid The ID of the ingress subnet in the VPC
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subnetUuid(@Nullable Output<String> subnetUuid) {
+            $.subnetUuid = subnetUuid;
+            return this;
+        }
+
+        /**
+         * @param subnetUuid The ID of the ingress subnet in the VPC
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subnetUuid(String subnetUuid) {
+            return subnetUuid(Output.of(subnetUuid));
         }
 
         /**

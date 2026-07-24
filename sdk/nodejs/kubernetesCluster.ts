@@ -253,6 +253,10 @@ export class KubernetesCluster extends pulumi.CustomResource {
      * Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes.
      */
     declare public readonly nvidiaGpuDevicePlugin: pulumi.Output<outputs.KubernetesClusterNvidiaGpuDevicePlugin>;
+    /**
+     * Block containing options for the Peer-to-peer OCI registry plugin component. If not specified, the p2p-oci-registry-plugin component will not be installed in the cluster.
+     */
+    declare public readonly p2pOciRegistryPlugin: pulumi.Output<outputs.KubernetesClusterP2pOciRegistryPlugin>;
     declare public readonly rdmaSharedDevicePlugin: pulumi.Output<outputs.KubernetesClusterRdmaSharedDevicePlugin>;
     /**
      * The slug identifier for the region where the Kubernetes cluster will be created.
@@ -335,6 +339,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["nodePool"] = state?.nodePool;
             resourceInputs["nvidiaGpuDevicePlugin"] = state?.nvidiaGpuDevicePlugin;
+            resourceInputs["p2pOciRegistryPlugin"] = state?.p2pOciRegistryPlugin;
             resourceInputs["rdmaSharedDevicePlugin"] = state?.rdmaSharedDevicePlugin;
             resourceInputs["region"] = state?.region;
             resourceInputs["registryIntegration"] = state?.registryIntegration;
@@ -373,6 +378,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["nodePool"] = args?.nodePool;
             resourceInputs["nvidiaGpuDevicePlugin"] = args?.nvidiaGpuDevicePlugin;
+            resourceInputs["p2pOciRegistryPlugin"] = args?.p2pOciRegistryPlugin;
             resourceInputs["rdmaSharedDevicePlugin"] = args?.rdmaSharedDevicePlugin;
             resourceInputs["region"] = args?.region;
             resourceInputs["registryIntegration"] = args?.registryIntegration;
@@ -479,6 +485,10 @@ export interface KubernetesClusterState {
      * Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes.
      */
     nvidiaGpuDevicePlugin?: pulumi.Input<inputs.KubernetesClusterNvidiaGpuDevicePlugin | undefined>;
+    /**
+     * Block containing options for the Peer-to-peer OCI registry plugin component. If not specified, the p2p-oci-registry-plugin component will not be installed in the cluster.
+     */
+    p2pOciRegistryPlugin?: pulumi.Input<inputs.KubernetesClusterP2pOciRegistryPlugin | undefined>;
     rdmaSharedDevicePlugin?: pulumi.Input<inputs.KubernetesClusterRdmaSharedDevicePlugin | undefined>;
     /**
      * The slug identifier for the region where the Kubernetes cluster will be created.
@@ -590,6 +600,10 @@ export interface KubernetesClusterArgs {
      * Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes.
      */
     nvidiaGpuDevicePlugin?: pulumi.Input<inputs.KubernetesClusterNvidiaGpuDevicePlugin | undefined>;
+    /**
+     * Block containing options for the Peer-to-peer OCI registry plugin component. If not specified, the p2p-oci-registry-plugin component will not be installed in the cluster.
+     */
+    p2pOciRegistryPlugin?: pulumi.Input<inputs.KubernetesClusterP2pOciRegistryPlugin | undefined>;
     rdmaSharedDevicePlugin?: pulumi.Input<inputs.KubernetesClusterRdmaSharedDevicePlugin | undefined>;
     /**
      * The slug identifier for the region where the Kubernetes cluster will be created.

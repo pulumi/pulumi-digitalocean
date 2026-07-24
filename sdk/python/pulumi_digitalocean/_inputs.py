@@ -478,6 +478,8 @@ __all__ = [
     'KubernetesClusterNodePoolTaintArgsDict',
     'KubernetesClusterNvidiaGpuDevicePluginArgs',
     'KubernetesClusterNvidiaGpuDevicePluginArgsDict',
+    'KubernetesClusterP2pOciRegistryPluginArgs',
+    'KubernetesClusterP2pOciRegistryPluginArgsDict',
     'KubernetesClusterRdmaSharedDevicePluginArgs',
     'KubernetesClusterRdmaSharedDevicePluginArgsDict',
     'KubernetesClusterRoutingAgentArgs',
@@ -714,6 +716,8 @@ __all__ = [
     'GetKubernetesClusterCorednsAutoscalerArgsDict',
     'GetKubernetesClusterNvidiaGpuDevicePluginArgs',
     'GetKubernetesClusterNvidiaGpuDevicePluginArgsDict',
+    'GetKubernetesClusterP2pOciRegistryPluginArgs',
+    'GetKubernetesClusterP2pOciRegistryPluginArgsDict',
     'GetKubernetesClusterRdmaSharedDevicePluginArgs',
     'GetKubernetesClusterRdmaSharedDevicePluginArgsDict',
     'GetKubernetesClusterRoutingAgentArgs',
@@ -25871,6 +25875,34 @@ class KubernetesClusterNvidiaGpuDevicePluginArgs:
         pulumi.set(self, "enabled", value)
 
 
+class KubernetesClusterP2pOciRegistryPluginArgsDict(TypedDict):
+    enabled: pulumi.Input[_builtins.bool]
+    """
+    Boolean flag whether the p2p-oci-registry-plugin should be enabled or not.
+    """
+
+@pulumi.input_type
+class KubernetesClusterP2pOciRegistryPluginArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[_builtins.bool]):
+        """
+        :param pulumi.Input[_builtins.bool] enabled: Boolean flag whether the p2p-oci-registry-plugin should be enabled or not.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[_builtins.bool]:
+        """
+        Boolean flag whether the p2p-oci-registry-plugin should be enabled or not.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "enabled", value)
+
+
 class KubernetesClusterRdmaSharedDevicePluginArgsDict(TypedDict):
     enabled: pulumi.Input[_builtins.bool]
     """
@@ -27972,23 +28004,31 @@ class VpcNatGatewayVpcArgsDict(TypedDict):
     """
     The private IP of the VPC NAT Gateway
     """
+    subnet_uuid: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The ID of the ingress subnet in the VPC
+    """
 
 @pulumi.input_type
 class VpcNatGatewayVpcArgs:
     def __init__(__self__, *,
                  vpc_uuid: pulumi.Input[_builtins.str],
                  default_gateway: pulumi.Input[Optional[_builtins.bool]] = None,
-                 gateway_ip: pulumi.Input[Optional[_builtins.str]] = None):
+                 gateway_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnet_uuid: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] vpc_uuid: The ID of the ingress VPC
         :param pulumi.Input[_builtins.bool] default_gateway: Boolean flag indicating if this should be the default gateway in this VPC
         :param pulumi.Input[_builtins.str] gateway_ip: The private IP of the VPC NAT Gateway
+        :param pulumi.Input[_builtins.str] subnet_uuid: The ID of the ingress subnet in the VPC
         """
         pulumi.set(__self__, "vpc_uuid", vpc_uuid)
         if default_gateway is not None:
             pulumi.set(__self__, "default_gateway", default_gateway)
         if gateway_ip is not None:
             pulumi.set(__self__, "gateway_ip", gateway_ip)
+        if subnet_uuid is not None:
+            pulumi.set(__self__, "subnet_uuid", subnet_uuid)
 
     @_builtins.property
     @pulumi.getter(name="vpcUuid")
@@ -28025,6 +28065,18 @@ class VpcNatGatewayVpcArgs:
     @gateway_ip.setter
     def gateway_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gateway_ip", value)
+
+    @_builtins.property
+    @pulumi.getter(name="subnetUuid")
+    def subnet_uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the ingress subnet in the VPC
+        """
+        return pulumi.get(self, "subnet_uuid")
+
+    @subnet_uuid.setter
+    def subnet_uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "subnet_uuid", value)
 
 
 class GetAppDedicatedIpArgsDict(TypedDict):
@@ -37318,6 +37370,25 @@ class GetKubernetesClusterNvidiaGpuDevicePluginArgsDict(TypedDict):
 
 @pulumi.input_type
 class GetKubernetesClusterNvidiaGpuDevicePluginArgs:
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: _builtins.bool):
+        pulumi.set(self, "enabled", value)
+
+
+class GetKubernetesClusterP2pOciRegistryPluginArgsDict(TypedDict):
+    enabled: _builtins.bool
+
+@pulumi.input_type
+class GetKubernetesClusterP2pOciRegistryPluginArgs:
     def __init__(__self__, *,
                  enabled: _builtins.bool):
         pulumi.set(__self__, "enabled", enabled)

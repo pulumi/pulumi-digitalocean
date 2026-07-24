@@ -312,6 +312,12 @@ namespace Pulumi.DigitalOcean
         [Output("nvidiaGpuDevicePlugin")]
         public Output<Outputs.KubernetesClusterNvidiaGpuDevicePlugin> NvidiaGpuDevicePlugin { get; private set; } = null!;
 
+        /// <summary>
+        /// Block containing options for the Peer-to-peer OCI registry plugin component. If not specified, the p2p-oci-registry-plugin component will not be installed in the cluster.
+        /// </summary>
+        [Output("p2pOciRegistryPlugin")]
+        public Output<Outputs.KubernetesClusterP2pOciRegistryPlugin> P2pOciRegistryPlugin { get; private set; } = null!;
+
         [Output("rdmaSharedDevicePlugin")]
         public Output<Outputs.KubernetesClusterRdmaSharedDevicePlugin> RdmaSharedDevicePlugin { get; private set; } = null!;
 
@@ -527,6 +533,12 @@ namespace Pulumi.DigitalOcean
         [Input("nvidiaGpuDevicePlugin")]
         public Input<Inputs.KubernetesClusterNvidiaGpuDevicePluginArgs>? NvidiaGpuDevicePlugin { get; set; }
 
+        /// <summary>
+        /// Block containing options for the Peer-to-peer OCI registry plugin component. If not specified, the p2p-oci-registry-plugin component will not be installed in the cluster.
+        /// </summary>
+        [Input("p2pOciRegistryPlugin")]
+        public Input<Inputs.KubernetesClusterP2pOciRegistryPluginArgs>? P2pOciRegistryPlugin { get; set; }
+
         [Input("rdmaSharedDevicePlugin")]
         public Input<Inputs.KubernetesClusterRdmaSharedDevicePluginArgs>? RdmaSharedDevicePlugin { get; set; }
 
@@ -739,6 +751,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("nvidiaGpuDevicePlugin")]
         public Input<Inputs.KubernetesClusterNvidiaGpuDevicePluginGetArgs>? NvidiaGpuDevicePlugin { get; set; }
+
+        /// <summary>
+        /// Block containing options for the Peer-to-peer OCI registry plugin component. If not specified, the p2p-oci-registry-plugin component will not be installed in the cluster.
+        /// </summary>
+        [Input("p2pOciRegistryPlugin")]
+        public Input<Inputs.KubernetesClusterP2pOciRegistryPluginGetArgs>? P2pOciRegistryPlugin { get; set; }
 
         [Input("rdmaSharedDevicePlugin")]
         public Input<Inputs.KubernetesClusterRdmaSharedDevicePluginGetArgs>? RdmaSharedDevicePlugin { get; set; }

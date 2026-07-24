@@ -116,6 +116,9 @@ namespace Pulumi.DigitalOcean
         [Input("nvidiaGpuDevicePlugin")]
         public Inputs.GetKubernetesClusterNvidiaGpuDevicePluginArgs? NvidiaGpuDevicePlugin { get; set; }
 
+        [Input("p2pOciRegistryPlugin")]
+        public Inputs.GetKubernetesClusterP2pOciRegistryPluginArgs? P2pOciRegistryPlugin { get; set; }
+
         [Input("rdmaSharedDevicePlugin")]
         public Inputs.GetKubernetesClusterRdmaSharedDevicePluginArgs? RdmaSharedDevicePlugin { get; set; }
 
@@ -178,6 +181,9 @@ namespace Pulumi.DigitalOcean
 
         [Input("nvidiaGpuDevicePlugin")]
         public Input<Inputs.GetKubernetesClusterNvidiaGpuDevicePluginInputArgs>? NvidiaGpuDevicePlugin { get; set; }
+
+        [Input("p2pOciRegistryPlugin")]
+        public Input<Inputs.GetKubernetesClusterP2pOciRegistryPluginInputArgs>? P2pOciRegistryPlugin { get; set; }
 
         [Input("rdmaSharedDevicePlugin")]
         public Input<Inputs.GetKubernetesClusterRdmaSharedDevicePluginInputArgs>? RdmaSharedDevicePlugin { get; set; }
@@ -263,6 +269,7 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public readonly ImmutableArray<Outputs.GetKubernetesClusterNodePoolResult> NodePools;
         public readonly Outputs.GetKubernetesClusterNvidiaGpuDevicePluginResult NvidiaGpuDevicePlugin;
+        public readonly Outputs.GetKubernetesClusterP2pOciRegistryPluginResult P2pOciRegistryPlugin;
         public readonly Outputs.GetKubernetesClusterRdmaSharedDevicePluginResult RdmaSharedDevicePlugin;
         /// <summary>
         /// The slug identifier for the region where the Kubernetes cluster is located.
@@ -339,6 +346,8 @@ namespace Pulumi.DigitalOcean
 
             Outputs.GetKubernetesClusterNvidiaGpuDevicePluginResult nvidiaGpuDevicePlugin,
 
+            Outputs.GetKubernetesClusterP2pOciRegistryPluginResult p2pOciRegistryPlugin,
+
             Outputs.GetKubernetesClusterRdmaSharedDevicePluginResult rdmaSharedDevicePlugin,
 
             string region,
@@ -383,6 +392,7 @@ namespace Pulumi.DigitalOcean
             Name = name;
             NodePools = nodePools;
             NvidiaGpuDevicePlugin = nvidiaGpuDevicePlugin;
+            P2pOciRegistryPlugin = p2pOciRegistryPlugin;
             RdmaSharedDevicePlugin = rdmaSharedDevicePlugin;
             Region = region;
             RoutingAgent = routingAgent;

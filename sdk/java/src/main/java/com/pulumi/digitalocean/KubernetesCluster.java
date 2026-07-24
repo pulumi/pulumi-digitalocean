@@ -19,6 +19,7 @@ import com.pulumi.digitalocean.outputs.KubernetesClusterKubeConfig;
 import com.pulumi.digitalocean.outputs.KubernetesClusterMaintenancePolicy;
 import com.pulumi.digitalocean.outputs.KubernetesClusterNodePool;
 import com.pulumi.digitalocean.outputs.KubernetesClusterNvidiaGpuDevicePlugin;
+import com.pulumi.digitalocean.outputs.KubernetesClusterP2pOciRegistryPlugin;
 import com.pulumi.digitalocean.outputs.KubernetesClusterRdmaSharedDevicePlugin;
 import com.pulumi.digitalocean.outputs.KubernetesClusterRoutingAgent;
 import com.pulumi.digitalocean.outputs.KubernetesClusterSso;
@@ -556,6 +557,20 @@ public class KubernetesCluster extends com.pulumi.resources.CustomResource {
      */
     public Output<KubernetesClusterNvidiaGpuDevicePlugin> nvidiaGpuDevicePlugin() {
         return this.nvidiaGpuDevicePlugin;
+    }
+    /**
+     * Block containing options for the Peer-to-peer OCI registry plugin component. If not specified, the p2p-oci-registry-plugin component will not be installed in the cluster.
+     * 
+     */
+    @Export(name="p2pOciRegistryPlugin", refs={KubernetesClusterP2pOciRegistryPlugin.class}, tree="[0]")
+    private Output<KubernetesClusterP2pOciRegistryPlugin> p2pOciRegistryPlugin;
+
+    /**
+     * @return Block containing options for the Peer-to-peer OCI registry plugin component. If not specified, the p2p-oci-registry-plugin component will not be installed in the cluster.
+     * 
+     */
+    public Output<KubernetesClusterP2pOciRegistryPlugin> p2pOciRegistryPlugin() {
+        return this.p2pOciRegistryPlugin;
     }
     @Export(name="rdmaSharedDevicePlugin", refs={KubernetesClusterRdmaSharedDevicePlugin.class}, tree="[0]")
     private Output<KubernetesClusterRdmaSharedDevicePlugin> rdmaSharedDevicePlugin;

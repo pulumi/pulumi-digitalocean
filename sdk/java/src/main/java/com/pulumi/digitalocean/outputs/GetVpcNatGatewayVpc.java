@@ -22,6 +22,11 @@ public final class GetVpcNatGatewayVpc {
      */
     private String gatewayIp;
     /**
+     * @return ID of the ingress subnet in the VPC
+     * 
+     */
+    private String subnetUuid;
+    /**
      * @return ID of the ingress VPC
      * 
      */
@@ -43,6 +48,13 @@ public final class GetVpcNatGatewayVpc {
         return this.gatewayIp;
     }
     /**
+     * @return ID of the ingress subnet in the VPC
+     * 
+     */
+    public String subnetUuid() {
+        return this.subnetUuid;
+    }
+    /**
      * @return ID of the ingress VPC
      * 
      */
@@ -61,12 +73,14 @@ public final class GetVpcNatGatewayVpc {
     public static final class Builder {
         private Boolean defaultGateway;
         private String gatewayIp;
+        private String subnetUuid;
         private String vpcUuid;
         public Builder() {}
         public Builder(GetVpcNatGatewayVpc defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.defaultGateway = defaults.defaultGateway;
     	      this.gatewayIp = defaults.gatewayIp;
+    	      this.subnetUuid = defaults.subnetUuid;
     	      this.vpcUuid = defaults.vpcUuid;
         }
 
@@ -87,6 +101,14 @@ public final class GetVpcNatGatewayVpc {
             return this;
         }
         @CustomType.Setter
+        public Builder subnetUuid(String subnetUuid) {
+            if (subnetUuid == null) {
+              throw new MissingRequiredPropertyException("GetVpcNatGatewayVpc", "subnetUuid");
+            }
+            this.subnetUuid = subnetUuid;
+            return this;
+        }
+        @CustomType.Setter
         public Builder vpcUuid(String vpcUuid) {
             if (vpcUuid == null) {
               throw new MissingRequiredPropertyException("GetVpcNatGatewayVpc", "vpcUuid");
@@ -98,6 +120,7 @@ public final class GetVpcNatGatewayVpc {
             final var _resultValue = new GetVpcNatGatewayVpc();
             _resultValue.defaultGateway = defaultGateway;
             _resultValue.gatewayIp = gatewayIp;
+            _resultValue.subnetUuid = subnetUuid;
             _resultValue.vpcUuid = vpcUuid;
             return _resultValue;
         }

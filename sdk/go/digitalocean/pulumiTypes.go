@@ -37554,6 +37554,143 @@ func (o KubernetesClusterNvidiaGpuDevicePluginPtrOutput) Enabled() pulumi.BoolPt
 	}).(pulumi.BoolPtrOutput)
 }
 
+type KubernetesClusterP2pOciRegistryPlugin struct {
+	// Boolean flag whether the p2p-oci-registry-plugin should be enabled or not.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// KubernetesClusterP2pOciRegistryPluginInput is an input type that accepts KubernetesClusterP2pOciRegistryPluginArgs and KubernetesClusterP2pOciRegistryPluginOutput values.
+// You can construct a concrete instance of `KubernetesClusterP2pOciRegistryPluginInput` via:
+//
+//	KubernetesClusterP2pOciRegistryPluginArgs{...}
+type KubernetesClusterP2pOciRegistryPluginInput interface {
+	pulumi.Input
+
+	ToKubernetesClusterP2pOciRegistryPluginOutput() KubernetesClusterP2pOciRegistryPluginOutput
+	ToKubernetesClusterP2pOciRegistryPluginOutputWithContext(context.Context) KubernetesClusterP2pOciRegistryPluginOutput
+}
+
+type KubernetesClusterP2pOciRegistryPluginArgs struct {
+	// Boolean flag whether the p2p-oci-registry-plugin should be enabled or not.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (KubernetesClusterP2pOciRegistryPluginArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesClusterP2pOciRegistryPlugin)(nil)).Elem()
+}
+
+func (i KubernetesClusterP2pOciRegistryPluginArgs) ToKubernetesClusterP2pOciRegistryPluginOutput() KubernetesClusterP2pOciRegistryPluginOutput {
+	return i.ToKubernetesClusterP2pOciRegistryPluginOutputWithContext(context.Background())
+}
+
+func (i KubernetesClusterP2pOciRegistryPluginArgs) ToKubernetesClusterP2pOciRegistryPluginOutputWithContext(ctx context.Context) KubernetesClusterP2pOciRegistryPluginOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterP2pOciRegistryPluginOutput)
+}
+
+func (i KubernetesClusterP2pOciRegistryPluginArgs) ToKubernetesClusterP2pOciRegistryPluginPtrOutput() KubernetesClusterP2pOciRegistryPluginPtrOutput {
+	return i.ToKubernetesClusterP2pOciRegistryPluginPtrOutputWithContext(context.Background())
+}
+
+func (i KubernetesClusterP2pOciRegistryPluginArgs) ToKubernetesClusterP2pOciRegistryPluginPtrOutputWithContext(ctx context.Context) KubernetesClusterP2pOciRegistryPluginPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterP2pOciRegistryPluginOutput).ToKubernetesClusterP2pOciRegistryPluginPtrOutputWithContext(ctx)
+}
+
+// KubernetesClusterP2pOciRegistryPluginPtrInput is an input type that accepts KubernetesClusterP2pOciRegistryPluginArgs, KubernetesClusterP2pOciRegistryPluginPtr and KubernetesClusterP2pOciRegistryPluginPtrOutput values.
+// You can construct a concrete instance of `KubernetesClusterP2pOciRegistryPluginPtrInput` via:
+//
+//	        KubernetesClusterP2pOciRegistryPluginArgs{...}
+//
+//	or:
+//
+//	        nil
+type KubernetesClusterP2pOciRegistryPluginPtrInput interface {
+	pulumi.Input
+
+	ToKubernetesClusterP2pOciRegistryPluginPtrOutput() KubernetesClusterP2pOciRegistryPluginPtrOutput
+	ToKubernetesClusterP2pOciRegistryPluginPtrOutputWithContext(context.Context) KubernetesClusterP2pOciRegistryPluginPtrOutput
+}
+
+type kubernetesClusterP2pOciRegistryPluginPtrType KubernetesClusterP2pOciRegistryPluginArgs
+
+func KubernetesClusterP2pOciRegistryPluginPtr(v *KubernetesClusterP2pOciRegistryPluginArgs) KubernetesClusterP2pOciRegistryPluginPtrInput {
+	return (*kubernetesClusterP2pOciRegistryPluginPtrType)(v)
+}
+
+func (*kubernetesClusterP2pOciRegistryPluginPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubernetesClusterP2pOciRegistryPlugin)(nil)).Elem()
+}
+
+func (i *kubernetesClusterP2pOciRegistryPluginPtrType) ToKubernetesClusterP2pOciRegistryPluginPtrOutput() KubernetesClusterP2pOciRegistryPluginPtrOutput {
+	return i.ToKubernetesClusterP2pOciRegistryPluginPtrOutputWithContext(context.Background())
+}
+
+func (i *kubernetesClusterP2pOciRegistryPluginPtrType) ToKubernetesClusterP2pOciRegistryPluginPtrOutputWithContext(ctx context.Context) KubernetesClusterP2pOciRegistryPluginPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterP2pOciRegistryPluginPtrOutput)
+}
+
+type KubernetesClusterP2pOciRegistryPluginOutput struct{ *pulumi.OutputState }
+
+func (KubernetesClusterP2pOciRegistryPluginOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesClusterP2pOciRegistryPlugin)(nil)).Elem()
+}
+
+func (o KubernetesClusterP2pOciRegistryPluginOutput) ToKubernetesClusterP2pOciRegistryPluginOutput() KubernetesClusterP2pOciRegistryPluginOutput {
+	return o
+}
+
+func (o KubernetesClusterP2pOciRegistryPluginOutput) ToKubernetesClusterP2pOciRegistryPluginOutputWithContext(ctx context.Context) KubernetesClusterP2pOciRegistryPluginOutput {
+	return o
+}
+
+func (o KubernetesClusterP2pOciRegistryPluginOutput) ToKubernetesClusterP2pOciRegistryPluginPtrOutput() KubernetesClusterP2pOciRegistryPluginPtrOutput {
+	return o.ToKubernetesClusterP2pOciRegistryPluginPtrOutputWithContext(context.Background())
+}
+
+func (o KubernetesClusterP2pOciRegistryPluginOutput) ToKubernetesClusterP2pOciRegistryPluginPtrOutputWithContext(ctx context.Context) KubernetesClusterP2pOciRegistryPluginPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubernetesClusterP2pOciRegistryPlugin) *KubernetesClusterP2pOciRegistryPlugin {
+		return &v
+	}).(KubernetesClusterP2pOciRegistryPluginPtrOutput)
+}
+
+// Boolean flag whether the p2p-oci-registry-plugin should be enabled or not.
+func (o KubernetesClusterP2pOciRegistryPluginOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v KubernetesClusterP2pOciRegistryPlugin) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type KubernetesClusterP2pOciRegistryPluginPtrOutput struct{ *pulumi.OutputState }
+
+func (KubernetesClusterP2pOciRegistryPluginPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubernetesClusterP2pOciRegistryPlugin)(nil)).Elem()
+}
+
+func (o KubernetesClusterP2pOciRegistryPluginPtrOutput) ToKubernetesClusterP2pOciRegistryPluginPtrOutput() KubernetesClusterP2pOciRegistryPluginPtrOutput {
+	return o
+}
+
+func (o KubernetesClusterP2pOciRegistryPluginPtrOutput) ToKubernetesClusterP2pOciRegistryPluginPtrOutputWithContext(ctx context.Context) KubernetesClusterP2pOciRegistryPluginPtrOutput {
+	return o
+}
+
+func (o KubernetesClusterP2pOciRegistryPluginPtrOutput) Elem() KubernetesClusterP2pOciRegistryPluginOutput {
+	return o.ApplyT(func(v *KubernetesClusterP2pOciRegistryPlugin) KubernetesClusterP2pOciRegistryPlugin {
+		if v != nil {
+			return *v
+		}
+		var ret KubernetesClusterP2pOciRegistryPlugin
+		return ret
+	}).(KubernetesClusterP2pOciRegistryPluginOutput)
+}
+
+// Boolean flag whether the p2p-oci-registry-plugin should be enabled or not.
+func (o KubernetesClusterP2pOciRegistryPluginPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *KubernetesClusterP2pOciRegistryPlugin) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 type KubernetesClusterRdmaSharedDevicePlugin struct {
 	// Boolean flag whether the CoreDNS Autoscaler is enabled or not.
 	Enabled bool `pulumi:"enabled"`
@@ -41780,6 +41917,8 @@ type VpcNatGatewayVpc struct {
 	DefaultGateway *bool `pulumi:"defaultGateway"`
 	// The private IP of the VPC NAT Gateway
 	GatewayIp *string `pulumi:"gatewayIp"`
+	// The ID of the ingress subnet in the VPC
+	SubnetUuid *string `pulumi:"subnetUuid"`
 	// The ID of the ingress VPC
 	VpcUuid string `pulumi:"vpcUuid"`
 }
@@ -41800,6 +41939,8 @@ type VpcNatGatewayVpcArgs struct {
 	DefaultGateway pulumi.BoolPtrInput `pulumi:"defaultGateway"`
 	// The private IP of the VPC NAT Gateway
 	GatewayIp pulumi.StringPtrInput `pulumi:"gatewayIp"`
+	// The ID of the ingress subnet in the VPC
+	SubnetUuid pulumi.StringPtrInput `pulumi:"subnetUuid"`
 	// The ID of the ingress VPC
 	VpcUuid pulumi.StringInput `pulumi:"vpcUuid"`
 }
@@ -41863,6 +42004,11 @@ func (o VpcNatGatewayVpcOutput) DefaultGateway() pulumi.BoolPtrOutput {
 // The private IP of the VPC NAT Gateway
 func (o VpcNatGatewayVpcOutput) GatewayIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VpcNatGatewayVpc) *string { return v.GatewayIp }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the ingress subnet in the VPC
+func (o VpcNatGatewayVpcOutput) SubnetUuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VpcNatGatewayVpc) *string { return v.SubnetUuid }).(pulumi.StringPtrOutput)
 }
 
 // The ID of the ingress VPC
@@ -78990,157 +79136,6 @@ func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayOutput) Index(
 	}).(GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput)
 }
 
-type GetGenaiAgentsByOpenaiApiKeyAgentDeployment struct {
-	// API Key value
-	CreatedAt string `pulumi:"createdAt"`
-	// Name of the API Key
-	Name *string `pulumi:"name"`
-	// Status of the Deployment
-	Status *string `pulumi:"status"`
-	// Updated At timestamp for the Agent
-	UpdatedAt string `pulumi:"updatedAt"`
-	// Url of the Deployment
-	Url *string `pulumi:"url"`
-	// API Key value
-	Uuid *string `pulumi:"uuid"`
-	// Visibility of the Deployment
-	Visibility *string `pulumi:"visibility"`
-}
-
-// GetGenaiAgentsByOpenaiApiKeyAgentDeploymentInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArgs and GetGenaiAgentsByOpenaiApiKeyAgentDeploymentOutput values.
-// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentDeploymentInput` via:
-//
-//	GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArgs{...}
-type GetGenaiAgentsByOpenaiApiKeyAgentDeploymentInput interface {
-	pulumi.Input
-
-	ToGetGenaiAgentsByOpenaiApiKeyAgentDeploymentOutput() GetGenaiAgentsByOpenaiApiKeyAgentDeploymentOutput
-	ToGetGenaiAgentsByOpenaiApiKeyAgentDeploymentOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentDeploymentOutput
-}
-
-type GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArgs struct {
-	// API Key value
-	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
-	// Name of the API Key
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Status of the Deployment
-	Status pulumi.StringPtrInput `pulumi:"status"`
-	// Updated At timestamp for the Agent
-	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
-	// Url of the Deployment
-	Url pulumi.StringPtrInput `pulumi:"url"`
-	// API Key value
-	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
-	// Visibility of the Deployment
-	Visibility pulumi.StringPtrInput `pulumi:"visibility"`
-}
-
-func (GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentDeployment)(nil)).Elem()
-}
-
-func (i GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentDeploymentOutput() GetGenaiAgentsByOpenaiApiKeyAgentDeploymentOutput {
-	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentDeploymentOutputWithContext(context.Background())
-}
-
-func (i GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentDeploymentOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentDeploymentOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentDeploymentOutput)
-}
-
-// GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArrayInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArray and GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArrayOutput values.
-// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArrayInput` via:
-//
-//	GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArray{ GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArgs{...} }
-type GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArrayInput interface {
-	pulumi.Input
-
-	ToGetGenaiAgentsByOpenaiApiKeyAgentDeploymentArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArrayOutput
-	ToGetGenaiAgentsByOpenaiApiKeyAgentDeploymentArrayOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArrayOutput
-}
-
-type GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArray []GetGenaiAgentsByOpenaiApiKeyAgentDeploymentInput
-
-func (GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentDeployment)(nil)).Elem()
-}
-
-func (i GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArray) ToGetGenaiAgentsByOpenaiApiKeyAgentDeploymentArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArrayOutput {
-	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentDeploymentArrayOutputWithContext(context.Background())
-}
-
-func (i GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArray) ToGetGenaiAgentsByOpenaiApiKeyAgentDeploymentArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArrayOutput)
-}
-
-type GetGenaiAgentsByOpenaiApiKeyAgentDeploymentOutput struct{ *pulumi.OutputState }
-
-func (GetGenaiAgentsByOpenaiApiKeyAgentDeploymentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentDeployment)(nil)).Elem()
-}
-
-func (o GetGenaiAgentsByOpenaiApiKeyAgentDeploymentOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentDeploymentOutput() GetGenaiAgentsByOpenaiApiKeyAgentDeploymentOutput {
-	return o
-}
-
-func (o GetGenaiAgentsByOpenaiApiKeyAgentDeploymentOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentDeploymentOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentDeploymentOutput {
-	return o
-}
-
-// API Key value
-func (o GetGenaiAgentsByOpenaiApiKeyAgentDeploymentOutput) CreatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentDeployment) string { return v.CreatedAt }).(pulumi.StringOutput)
-}
-
-// Name of the API Key
-func (o GetGenaiAgentsByOpenaiApiKeyAgentDeploymentOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentDeployment) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// Status of the Deployment
-func (o GetGenaiAgentsByOpenaiApiKeyAgentDeploymentOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentDeployment) *string { return v.Status }).(pulumi.StringPtrOutput)
-}
-
-// Updated At timestamp for the Agent
-func (o GetGenaiAgentsByOpenaiApiKeyAgentDeploymentOutput) UpdatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentDeployment) string { return v.UpdatedAt }).(pulumi.StringOutput)
-}
-
-// Url of the Deployment
-func (o GetGenaiAgentsByOpenaiApiKeyAgentDeploymentOutput) Url() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentDeployment) *string { return v.Url }).(pulumi.StringPtrOutput)
-}
-
-// API Key value
-func (o GetGenaiAgentsByOpenaiApiKeyAgentDeploymentOutput) Uuid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentDeployment) *string { return v.Uuid }).(pulumi.StringPtrOutput)
-}
-
-// Visibility of the Deployment
-func (o GetGenaiAgentsByOpenaiApiKeyAgentDeploymentOutput) Visibility() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentDeployment) *string { return v.Visibility }).(pulumi.StringPtrOutput)
-}
-
-type GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArrayOutput struct{ *pulumi.OutputState }
-
-func (GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentDeployment)(nil)).Elem()
-}
-
-func (o GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentDeploymentArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArrayOutput {
-	return o
-}
-
-func (o GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentDeploymentArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArrayOutput {
-	return o
-}
-
-func (o GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArrayOutput) Index(i pulumi.IntInput) GetGenaiAgentsByOpenaiApiKeyAgentDeploymentOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiAgentsByOpenaiApiKeyAgentDeployment {
-		return vs[0].([]GetGenaiAgentsByOpenaiApiKeyAgentDeployment)[vs[1].(int)]
-	}).(GetGenaiAgentsByOpenaiApiKeyAgentDeploymentOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppDedicatedIpInput)(nil)).Elem(), AppDedicatedIpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppDedicatedIpArrayInput)(nil)).Elem(), AppDedicatedIpArray{})
@@ -79606,6 +79601,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterNodePoolTaintArrayInput)(nil)).Elem(), KubernetesClusterNodePoolTaintArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterNvidiaGpuDevicePluginInput)(nil)).Elem(), KubernetesClusterNvidiaGpuDevicePluginArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterNvidiaGpuDevicePluginPtrInput)(nil)).Elem(), KubernetesClusterNvidiaGpuDevicePluginArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterP2pOciRegistryPluginInput)(nil)).Elem(), KubernetesClusterP2pOciRegistryPluginArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterP2pOciRegistryPluginPtrInput)(nil)).Elem(), KubernetesClusterP2pOciRegistryPluginArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterRdmaSharedDevicePluginInput)(nil)).Elem(), KubernetesClusterRdmaSharedDevicePluginArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterRdmaSharedDevicePluginPtrInput)(nil)).Elem(), KubernetesClusterRdmaSharedDevicePluginArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterRoutingAgentInput)(nil)).Elem(), KubernetesClusterRoutingAgentArgs{})
@@ -80141,8 +80138,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArrayInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentDeploymentInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArrayInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArray{})
 	pulumi.RegisterOutputType(AppDedicatedIpOutput{})
 	pulumi.RegisterOutputType(AppDedicatedIpArrayOutput{})
 	pulumi.RegisterOutputType(AppSpecOutput{})
@@ -80607,6 +80602,8 @@ func init() {
 	pulumi.RegisterOutputType(KubernetesClusterNodePoolTaintArrayOutput{})
 	pulumi.RegisterOutputType(KubernetesClusterNvidiaGpuDevicePluginOutput{})
 	pulumi.RegisterOutputType(KubernetesClusterNvidiaGpuDevicePluginPtrOutput{})
+	pulumi.RegisterOutputType(KubernetesClusterP2pOciRegistryPluginOutput{})
+	pulumi.RegisterOutputType(KubernetesClusterP2pOciRegistryPluginPtrOutput{})
 	pulumi.RegisterOutputType(KubernetesClusterRdmaSharedDevicePluginOutput{})
 	pulumi.RegisterOutputType(KubernetesClusterRdmaSharedDevicePluginPtrOutput{})
 	pulumi.RegisterOutputType(KubernetesClusterRoutingAgentOutput{})
@@ -81142,6 +81139,4 @@ func init() {
 	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArrayOutput{})
 	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput{})
 	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayOutput{})
-	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentDeploymentOutput{})
-	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArrayOutput{})
 }

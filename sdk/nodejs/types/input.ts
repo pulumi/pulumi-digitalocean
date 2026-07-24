@@ -7536,6 +7536,14 @@ export interface GetKubernetesClusterNvidiaGpuDevicePluginArgs {
     enabled?: pulumi.Input<boolean | undefined>;
 }
 
+export interface GetKubernetesClusterP2pOciRegistryPlugin {
+    enabled?: boolean;
+}
+
+export interface GetKubernetesClusterP2pOciRegistryPluginArgs {
+    enabled?: pulumi.Input<boolean | undefined>;
+}
+
 export interface GetKubernetesClusterRdmaSharedDevicePlugin {
     enabled?: boolean;
 }
@@ -9629,6 +9637,13 @@ export interface KubernetesClusterNvidiaGpuDevicePlugin {
     enabled: pulumi.Input<boolean>;
 }
 
+export interface KubernetesClusterP2pOciRegistryPlugin {
+    /**
+     * Boolean flag whether the p2p-oci-registry-plugin should be enabled or not.
+     */
+    enabled: pulumi.Input<boolean>;
+}
+
 export interface KubernetesClusterRdmaSharedDevicePlugin {
     /**
      * Boolean flag whether the CoreDNS Autoscaler is enabled or not.
@@ -10092,6 +10107,10 @@ export interface VpcNatGatewayVpc {
      * The private IP of the VPC NAT Gateway
      */
     gatewayIp?: pulumi.Input<string | undefined>;
+    /**
+     * The ID of the ingress subnet in the VPC
+     */
+    subnetUuid?: pulumi.Input<string | undefined>;
     /**
      * The ID of the ingress VPC
      */

@@ -270,7 +270,9 @@ type KubernetesCluster struct {
 	// A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
 	NodePool KubernetesClusterNodePoolOutput `pulumi:"nodePool"`
 	// Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes.
-	NvidiaGpuDevicePlugin  KubernetesClusterNvidiaGpuDevicePluginOutput  `pulumi:"nvidiaGpuDevicePlugin"`
+	NvidiaGpuDevicePlugin KubernetesClusterNvidiaGpuDevicePluginOutput `pulumi:"nvidiaGpuDevicePlugin"`
+	// Block containing options for the Peer-to-peer OCI registry plugin component. If not specified, the p2p-oci-registry-plugin component will not be installed in the cluster.
+	P2pOciRegistryPlugin   KubernetesClusterP2pOciRegistryPluginOutput   `pulumi:"p2pOciRegistryPlugin"`
 	RdmaSharedDevicePlugin KubernetesClusterRdmaSharedDevicePluginOutput `pulumi:"rdmaSharedDevicePlugin"`
 	// The slug identifier for the region where the Kubernetes cluster will be created.
 	Region pulumi.StringOutput `pulumi:"region"`
@@ -378,7 +380,9 @@ type kubernetesClusterState struct {
 	// A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
 	NodePool *KubernetesClusterNodePool `pulumi:"nodePool"`
 	// Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes.
-	NvidiaGpuDevicePlugin  *KubernetesClusterNvidiaGpuDevicePlugin  `pulumi:"nvidiaGpuDevicePlugin"`
+	NvidiaGpuDevicePlugin *KubernetesClusterNvidiaGpuDevicePlugin `pulumi:"nvidiaGpuDevicePlugin"`
+	// Block containing options for the Peer-to-peer OCI registry plugin component. If not specified, the p2p-oci-registry-plugin component will not be installed in the cluster.
+	P2pOciRegistryPlugin   *KubernetesClusterP2pOciRegistryPlugin   `pulumi:"p2pOciRegistryPlugin"`
 	RdmaSharedDevicePlugin *KubernetesClusterRdmaSharedDevicePlugin `pulumi:"rdmaSharedDevicePlugin"`
 	// The slug identifier for the region where the Kubernetes cluster will be created.
 	Region *string `pulumi:"region"`
@@ -444,7 +448,9 @@ type KubernetesClusterState struct {
 	// A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
 	NodePool KubernetesClusterNodePoolPtrInput
 	// Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes.
-	NvidiaGpuDevicePlugin  KubernetesClusterNvidiaGpuDevicePluginPtrInput
+	NvidiaGpuDevicePlugin KubernetesClusterNvidiaGpuDevicePluginPtrInput
+	// Block containing options for the Peer-to-peer OCI registry plugin component. If not specified, the p2p-oci-registry-plugin component will not be installed in the cluster.
+	P2pOciRegistryPlugin   KubernetesClusterP2pOciRegistryPluginPtrInput
 	RdmaSharedDevicePlugin KubernetesClusterRdmaSharedDevicePluginPtrInput
 	// The slug identifier for the region where the Kubernetes cluster will be created.
 	Region pulumi.StringPtrInput
@@ -504,7 +510,9 @@ type kubernetesClusterArgs struct {
 	// A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
 	NodePool KubernetesClusterNodePool `pulumi:"nodePool"`
 	// Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes.
-	NvidiaGpuDevicePlugin  *KubernetesClusterNvidiaGpuDevicePlugin  `pulumi:"nvidiaGpuDevicePlugin"`
+	NvidiaGpuDevicePlugin *KubernetesClusterNvidiaGpuDevicePlugin `pulumi:"nvidiaGpuDevicePlugin"`
+	// Block containing options for the Peer-to-peer OCI registry plugin component. If not specified, the p2p-oci-registry-plugin component will not be installed in the cluster.
+	P2pOciRegistryPlugin   *KubernetesClusterP2pOciRegistryPlugin   `pulumi:"p2pOciRegistryPlugin"`
 	RdmaSharedDevicePlugin *KubernetesClusterRdmaSharedDevicePlugin `pulumi:"rdmaSharedDevicePlugin"`
 	// The slug identifier for the region where the Kubernetes cluster will be created.
 	Region string `pulumi:"region"`
@@ -557,7 +565,9 @@ type KubernetesClusterArgs struct {
 	// A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
 	NodePool KubernetesClusterNodePoolInput
 	// Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes.
-	NvidiaGpuDevicePlugin  KubernetesClusterNvidiaGpuDevicePluginPtrInput
+	NvidiaGpuDevicePlugin KubernetesClusterNvidiaGpuDevicePluginPtrInput
+	// Block containing options for the Peer-to-peer OCI registry plugin component. If not specified, the p2p-oci-registry-plugin component will not be installed in the cluster.
+	P2pOciRegistryPlugin   KubernetesClusterP2pOciRegistryPluginPtrInput
 	RdmaSharedDevicePlugin KubernetesClusterRdmaSharedDevicePluginPtrInput
 	// The slug identifier for the region where the Kubernetes cluster will be created.
 	Region pulumi.StringInput
@@ -767,6 +777,11 @@ func (o KubernetesClusterOutput) NvidiaGpuDevicePlugin() KubernetesClusterNvidia
 	return o.ApplyT(func(v *KubernetesCluster) KubernetesClusterNvidiaGpuDevicePluginOutput {
 		return v.NvidiaGpuDevicePlugin
 	}).(KubernetesClusterNvidiaGpuDevicePluginOutput)
+}
+
+// Block containing options for the Peer-to-peer OCI registry plugin component. If not specified, the p2p-oci-registry-plugin component will not be installed in the cluster.
+func (o KubernetesClusterOutput) P2pOciRegistryPlugin() KubernetesClusterP2pOciRegistryPluginOutput {
+	return o.ApplyT(func(v *KubernetesCluster) KubernetesClusterP2pOciRegistryPluginOutput { return v.P2pOciRegistryPlugin }).(KubernetesClusterP2pOciRegistryPluginOutput)
 }
 
 func (o KubernetesClusterOutput) RdmaSharedDevicePlugin() KubernetesClusterRdmaSharedDevicePluginOutput {

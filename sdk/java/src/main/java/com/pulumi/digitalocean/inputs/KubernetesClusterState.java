@@ -16,6 +16,7 @@ import com.pulumi.digitalocean.inputs.KubernetesClusterKubeConfigArgs;
 import com.pulumi.digitalocean.inputs.KubernetesClusterMaintenancePolicyArgs;
 import com.pulumi.digitalocean.inputs.KubernetesClusterNodePoolArgs;
 import com.pulumi.digitalocean.inputs.KubernetesClusterNvidiaGpuDevicePluginArgs;
+import com.pulumi.digitalocean.inputs.KubernetesClusterP2pOciRegistryPluginArgs;
 import com.pulumi.digitalocean.inputs.KubernetesClusterRdmaSharedDevicePluginArgs;
 import com.pulumi.digitalocean.inputs.KubernetesClusterRoutingAgentArgs;
 import com.pulumi.digitalocean.inputs.KubernetesClusterSsoArgs;
@@ -317,6 +318,21 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.nvidiaGpuDevicePlugin);
     }
 
+    /**
+     * Block containing options for the Peer-to-peer OCI registry plugin component. If not specified, the p2p-oci-registry-plugin component will not be installed in the cluster.
+     * 
+     */
+    @Import(name="p2pOciRegistryPlugin")
+    private @Nullable Output<KubernetesClusterP2pOciRegistryPluginArgs> p2pOciRegistryPlugin;
+
+    /**
+     * @return Block containing options for the Peer-to-peer OCI registry plugin component. If not specified, the p2p-oci-registry-plugin component will not be installed in the cluster.
+     * 
+     */
+    public Optional<Output<KubernetesClusterP2pOciRegistryPluginArgs>> p2pOciRegistryPlugin() {
+        return Optional.ofNullable(this.p2pOciRegistryPlugin);
+    }
+
     @Import(name="rdmaSharedDevicePlugin")
     private @Nullable Output<KubernetesClusterRdmaSharedDevicePluginArgs> rdmaSharedDevicePlugin;
 
@@ -526,6 +542,7 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
         this.name = $.name;
         this.nodePool = $.nodePool;
         this.nvidiaGpuDevicePlugin = $.nvidiaGpuDevicePlugin;
+        this.p2pOciRegistryPlugin = $.p2pOciRegistryPlugin;
         this.rdmaSharedDevicePlugin = $.rdmaSharedDevicePlugin;
         this.region = $.region;
         this.registryIntegration = $.registryIntegration;
@@ -976,6 +993,27 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
          */
         public Builder nvidiaGpuDevicePlugin(KubernetesClusterNvidiaGpuDevicePluginArgs nvidiaGpuDevicePlugin) {
             return nvidiaGpuDevicePlugin(Output.of(nvidiaGpuDevicePlugin));
+        }
+
+        /**
+         * @param p2pOciRegistryPlugin Block containing options for the Peer-to-peer OCI registry plugin component. If not specified, the p2p-oci-registry-plugin component will not be installed in the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder p2pOciRegistryPlugin(@Nullable Output<KubernetesClusterP2pOciRegistryPluginArgs> p2pOciRegistryPlugin) {
+            $.p2pOciRegistryPlugin = p2pOciRegistryPlugin;
+            return this;
+        }
+
+        /**
+         * @param p2pOciRegistryPlugin Block containing options for the Peer-to-peer OCI registry plugin component. If not specified, the p2p-oci-registry-plugin component will not be installed in the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder p2pOciRegistryPlugin(KubernetesClusterP2pOciRegistryPluginArgs p2pOciRegistryPlugin) {
+            return p2pOciRegistryPlugin(Output.of(p2pOciRegistryPlugin));
         }
 
         public Builder rdmaSharedDevicePlugin(@Nullable Output<KubernetesClusterRdmaSharedDevicePluginArgs> rdmaSharedDevicePlugin) {

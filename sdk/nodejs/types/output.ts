@@ -15623,6 +15623,10 @@ export interface GetKubernetesClusterNvidiaGpuDevicePlugin {
     enabled: boolean;
 }
 
+export interface GetKubernetesClusterP2pOciRegistryPlugin {
+    enabled: boolean;
+}
+
 export interface GetKubernetesClusterRdmaSharedDevicePlugin {
     enabled: boolean;
 }
@@ -16326,6 +16330,10 @@ export interface GetVpcNatGatewayVpc {
      * Gateway IP of the VPC NAT Gateway
      */
     gatewayIp: string;
+    /**
+     * ID of the ingress subnet in the VPC
+     */
+    subnetUuid: string;
     /**
      * ID of the ingress VPC
      */
@@ -17897,6 +17905,13 @@ export interface KubernetesClusterNvidiaGpuDevicePlugin {
     enabled: boolean;
 }
 
+export interface KubernetesClusterP2pOciRegistryPlugin {
+    /**
+     * Boolean flag whether the p2p-oci-registry-plugin should be enabled or not.
+     */
+    enabled: boolean;
+}
+
 export interface KubernetesClusterRdmaSharedDevicePlugin {
     /**
      * Boolean flag whether the CoreDNS Autoscaler is enabled or not.
@@ -18360,6 +18375,10 @@ export interface VpcNatGatewayVpc {
      * The private IP of the VPC NAT Gateway
      */
     gatewayIp: string;
+    /**
+     * The ID of the ingress subnet in the VPC
+     */
+    subnetUuid: string;
     /**
      * The ID of the ingress VPC
      */
