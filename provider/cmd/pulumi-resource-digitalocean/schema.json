@@ -7340,6 +7340,18 @@
                 "enabled"
             ]
         },
+        "digitalocean:index/KubernetesClusterP2pOciRegistryPlugin:KubernetesClusterP2pOciRegistryPlugin": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Boolean flag whether the p2p-oci-registry-plugin should be enabled or not.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled"
+            ]
+        },
         "digitalocean:index/KubernetesClusterRdmaSharedDevicePlugin:KubernetesClusterRdmaSharedDevicePlugin": {
             "properties": {
                 "enabled": {
@@ -8045,6 +8057,11 @@
                     "type": "string",
                     "description": "The private IP of the VPC NAT Gateway\n"
                 },
+                "subnetUuid": {
+                    "type": "string",
+                    "description": "The ID of the ingress subnet in the VPC\n",
+                    "willReplaceOnChanges": true
+                },
                 "vpcUuid": {
                     "type": "string",
                     "description": "The ID of the ingress VPC\n",
@@ -8059,6 +8076,7 @@
                 "nodejs": {
                     "requiredOutputs": [
                         "gatewayIp",
+                        "subnetUuid",
                         "vpcUuid"
                     ]
                 }
@@ -25201,6 +25219,22 @@
                 }
             }
         },
+        "digitalocean:index/getKubernetesClusterP2pOciRegistryPlugin:getKubernetesClusterP2pOciRegistryPlugin": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "digitalocean:index/getKubernetesClusterRdmaSharedDevicePlugin:getKubernetesClusterRdmaSharedDevicePlugin": {
             "properties": {
                 "enabled": {
@@ -26346,6 +26380,10 @@
                     "type": "string",
                     "description": "Gateway IP of the VPC NAT Gateway\n"
                 },
+                "subnetUuid": {
+                    "type": "string",
+                    "description": "ID of the ingress subnet in the VPC\n"
+                },
                 "vpcUuid": {
                     "type": "string",
                     "description": "ID of the ingress VPC\n"
@@ -26355,6 +26393,7 @@
             "required": [
                 "defaultGateway",
                 "gatewayIp",
+                "subnetUuid",
                 "vpcUuid"
             ],
             "language": {
@@ -36971,6 +37010,10 @@
                     "$ref": "#/types/digitalocean:index/KubernetesClusterNvidiaGpuDevicePlugin:KubernetesClusterNvidiaGpuDevicePlugin",
                     "description": "Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes.\n"
                 },
+                "p2pOciRegistryPlugin": {
+                    "$ref": "#/types/digitalocean:index/KubernetesClusterP2pOciRegistryPlugin:KubernetesClusterP2pOciRegistryPlugin",
+                    "description": "Block containing options for the Peer-to-peer OCI registry plugin component. If not specified, the p2p-oci-registry-plugin component will not be installed in the cluster.\n"
+                },
                 "rdmaSharedDevicePlugin": {
                     "$ref": "#/types/digitalocean:index/KubernetesClusterRdmaSharedDevicePlugin:KubernetesClusterRdmaSharedDevicePlugin"
                 },
@@ -37044,6 +37087,7 @@
                 "name",
                 "nodePool",
                 "nvidiaGpuDevicePlugin",
+                "p2pOciRegistryPlugin",
                 "rdmaSharedDevicePlugin",
                 "region",
                 "routingAgent",
@@ -37116,6 +37160,10 @@
                 "nvidiaGpuDevicePlugin": {
                     "$ref": "#/types/digitalocean:index/KubernetesClusterNvidiaGpuDevicePlugin:KubernetesClusterNvidiaGpuDevicePlugin",
                     "description": "Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes.\n"
+                },
+                "p2pOciRegistryPlugin": {
+                    "$ref": "#/types/digitalocean:index/KubernetesClusterP2pOciRegistryPlugin:KubernetesClusterP2pOciRegistryPlugin",
+                    "description": "Block containing options for the Peer-to-peer OCI registry plugin component. If not specified, the p2p-oci-registry-plugin component will not be installed in the cluster.\n"
                 },
                 "rdmaSharedDevicePlugin": {
                     "$ref": "#/types/digitalocean:index/KubernetesClusterRdmaSharedDevicePlugin:KubernetesClusterRdmaSharedDevicePlugin"
@@ -37271,6 +37319,10 @@
                     "nvidiaGpuDevicePlugin": {
                         "$ref": "#/types/digitalocean:index/KubernetesClusterNvidiaGpuDevicePlugin:KubernetesClusterNvidiaGpuDevicePlugin",
                         "description": "Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes.\n"
+                    },
+                    "p2pOciRegistryPlugin": {
+                        "$ref": "#/types/digitalocean:index/KubernetesClusterP2pOciRegistryPlugin:KubernetesClusterP2pOciRegistryPlugin",
+                        "description": "Block containing options for the Peer-to-peer OCI registry plugin component. If not specified, the p2p-oci-registry-plugin component will not be installed in the cluster.\n"
                     },
                     "rdmaSharedDevicePlugin": {
                         "$ref": "#/types/digitalocean:index/KubernetesClusterRdmaSharedDevicePlugin:KubernetesClusterRdmaSharedDevicePlugin"
@@ -45584,6 +45636,9 @@
                     "nvidiaGpuDevicePlugin": {
                         "$ref": "#/types/digitalocean:index/getKubernetesClusterNvidiaGpuDevicePlugin:getKubernetesClusterNvidiaGpuDevicePlugin"
                     },
+                    "p2pOciRegistryPlugin": {
+                        "$ref": "#/types/digitalocean:index/getKubernetesClusterP2pOciRegistryPlugin:getKubernetesClusterP2pOciRegistryPlugin"
+                    },
                     "rdmaSharedDevicePlugin": {
                         "$ref": "#/types/digitalocean:index/getKubernetesClusterRdmaSharedDevicePlugin:getKubernetesClusterRdmaSharedDevicePlugin"
                     },
@@ -45692,6 +45747,9 @@
                     "nvidiaGpuDevicePlugin": {
                         "$ref": "#/types/digitalocean:index/getKubernetesClusterNvidiaGpuDevicePlugin:getKubernetesClusterNvidiaGpuDevicePlugin"
                     },
+                    "p2pOciRegistryPlugin": {
+                        "$ref": "#/types/digitalocean:index/getKubernetesClusterP2pOciRegistryPlugin:getKubernetesClusterP2pOciRegistryPlugin"
+                    },
                     "rdmaSharedDevicePlugin": {
                         "$ref": "#/types/digitalocean:index/getKubernetesClusterRdmaSharedDevicePlugin:getKubernetesClusterRdmaSharedDevicePlugin"
                     },
@@ -45762,6 +45820,7 @@
                     "name",
                     "nodePools",
                     "nvidiaGpuDevicePlugin",
+                    "p2pOciRegistryPlugin",
                     "rdmaSharedDevicePlugin",
                     "region",
                     "routingAgent",
