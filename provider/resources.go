@@ -85,6 +85,9 @@ func Provider() tfbridge.ProviderInfo {
 		GitHubOrg:        "digitalocean",
 		UpstreamRepoPath: "./upstream",
 		Config: map[string]*tfbridge.SchemaInfo{
+			"token": {
+				Secret: tfbridge.True(),
+			},
 			"api_endpoint": {
 				Default: &tfbridge.DefaultInfo{
 					EnvVars: []string{"DIGITALOCEAN_API_URL"},
@@ -652,13 +655,13 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			RespectSchemaVersion: true,
 		},
-		Python: (func() *tfbridge.PythonInfo {
+		Python: func() *tfbridge.PythonInfo {
 			i := &tfbridge.PythonInfo{
 				RespectSchemaVersion: true,
 			}
 			i.PyProject.Enabled = true
 			return i
-		})(),
+		}(),
 
 		Golang: &tfbridge.GolangInfo{
 			ImportBasePath: filepath.Join(
