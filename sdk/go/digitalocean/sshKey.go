@@ -32,8 +32,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			invokeFile, err := std.File(ctx, &std.FileArgs{
-//				Input: "/Users/terraform/.ssh/id_rsa.pub",
+//			invokeFile, err := std.File(ctx, map[string]interface{}{
+//				"input": "/Users/terraform/.ssh/id_rsa.pub",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -41,7 +41,7 @@ import (
 //			// Create a new SSH key
 //			_default, err := digitalocean.NewSshKey(ctx, "default", &digitalocean.SshKeyArgs{
 //				Name:      pulumi.String("Terraform Example"),
-//				PublicKey: pulumi.String(invokeFile.Result),
+//				PublicKey: invokeFile.Result,
 //			})
 //			if err != nil {
 //				return err

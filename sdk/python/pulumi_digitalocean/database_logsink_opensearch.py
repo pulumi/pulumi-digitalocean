@@ -335,7 +335,7 @@ class DatabaseLogsinkOpensearch(pulumi.CustomResource):
             endpoint="https://user:password@opensearch.example.com:9200",
             index_prefix="secure-logs",
             index_days_max=14,
-            ca_cert=std.file(input="/path/to/ca.pem").result,
+            ca_cert=std.file(input="/path/to/ca.pem")["result"],
             timeout_seconds=30)
         ```
 
@@ -462,7 +462,7 @@ class DatabaseLogsinkOpensearch(pulumi.CustomResource):
             endpoint="https://user:password@opensearch.example.com:9200",
             index_prefix="secure-logs",
             index_days_max=14,
-            ca_cert=std.file(input="/path/to/ca.pem").result,
+            ca_cert=std.file(input="/path/to/ca.pem")["result"],
             timeout_seconds=30)
         ```
 

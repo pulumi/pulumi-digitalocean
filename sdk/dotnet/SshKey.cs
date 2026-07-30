@@ -33,7 +33,7 @@ namespace Pulumi.DigitalOcean
     ///         PublicKey = Std.File.Invoke(new()
     ///         {
     ///             Input = "/Users/terraform/.ssh/id_rsa.pub",
-    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         }).Result,
     ///     });
     /// 
     ///     // Create a new Droplet using the SSH key

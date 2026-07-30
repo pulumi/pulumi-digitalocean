@@ -348,9 +348,9 @@ class Certificate(pulumi.CustomResource):
         cert = digitalocean.Certificate("cert",
             name="custom-terraform-example",
             type=digitalocean.CertificateType.CUSTOM,
-            private_key=std.file(input="/Users/terraform/certs/privkey.pem").result,
-            leaf_certificate=std.file(input="/Users/terraform/certs/cert.pem").result,
-            certificate_chain=std.file(input="/Users/terraform/certs/fullchain.pem").result)
+            private_key=std.file(input="/Users/terraform/certs/privkey.pem")["result"],
+            leaf_certificate=std.file(input="/Users/terraform/certs/cert.pem")["result"],
+            certificate_chain=std.file(input="/Users/terraform/certs/fullchain.pem")["result"])
         ```
 
         ### Let's Encrypt Certificate
@@ -443,9 +443,9 @@ class Certificate(pulumi.CustomResource):
         cert = digitalocean.Certificate("cert",
             name="custom-terraform-example",
             type=digitalocean.CertificateType.CUSTOM,
-            private_key=std.file(input="/Users/terraform/certs/privkey.pem").result,
-            leaf_certificate=std.file(input="/Users/terraform/certs/cert.pem").result,
-            certificate_chain=std.file(input="/Users/terraform/certs/fullchain.pem").result)
+            private_key=std.file(input="/Users/terraform/certs/privkey.pem")["result"],
+            leaf_certificate=std.file(input="/Users/terraform/certs/cert.pem")["result"],
+            certificate_chain=std.file(input="/Users/terraform/certs/fullchain.pem")["result"])
         ```
 
         ### Let's Encrypt Certificate

@@ -77,7 +77,7 @@ namespace Pulumi.DigitalOcean
     ///         CaCert = Std.File.Invoke(new()
     ///         {
     ///             Input = "/path/to/ca.pem",
-    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         }).Result,
     ///     });
     /// 
     /// });
@@ -105,15 +105,15 @@ namespace Pulumi.DigitalOcean
     ///         CaCert = Std.File.Invoke(new()
     ///         {
     ///             Input = "/path/to/ca.pem",
-    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         }).Result,
     ///         ClientCert = Std.File.Invoke(new()
     ///         {
     ///             Input = "/path/to/client.crt",
-    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         }).Result,
     ///         ClientKey = Std.File.Invoke(new()
     ///         {
     ///             Input = "/path/to/client.key",
-    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         }).Result,
     ///     });
     /// 
     /// });

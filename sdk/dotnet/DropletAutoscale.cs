@@ -30,7 +30,7 @@ namespace Pulumi.DigitalOcean
     ///         PublicKey = Std.File.Invoke(new()
     ///         {
     ///             Input = "/Users/terraform/.ssh/id_rsa.pub",
-    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         }).Result,
     ///     });
     /// 
     ///     var my_tag = new DigitalOcean.Tag("my-tag", new()

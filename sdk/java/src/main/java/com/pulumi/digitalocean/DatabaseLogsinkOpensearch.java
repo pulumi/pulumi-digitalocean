@@ -92,7 +92,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.digitalocean.DatabaseLogsinkOpensearch;
  * import com.pulumi.digitalocean.DatabaseLogsinkOpensearchArgs;
  * import com.pulumi.std.StdFunctions;
- * import com.pulumi.std.inputs.FileArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -112,9 +111,7 @@ import javax.annotation.Nullable;
  *             .endpoint("https://user:password}{@literal @}{@code opensearch.example.com:9200")
  *             .indexPrefix("secure-logs")
  *             .indexDaysMax(14)
- *             .caCert(StdFunctions.file(FileArgs.builder()
- *                 .input("/path/to/ca.pem")
- *                 .build()).result())
+ *             .caCert(StdFunctions.file(Map.of("input", "/path/to/ca.pem")).result())
  *             .timeoutSeconds(30)
  *             .build());
  * 

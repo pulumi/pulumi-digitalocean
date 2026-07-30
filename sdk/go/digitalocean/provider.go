@@ -47,6 +47,13 @@ func NewProvider(ctx *pulumi.Context,
 			args.SpacesEndpoint = pulumi.StringPtr(d.(string))
 		}
 	}
+	if args.Token != nil {
+		args.Token = pulumi.ToSecret(args.Token).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"token",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Provider
 	err := ctx.RegisterResource("pulumi:providers:digitalocean", name, args, &resource, opts...)

@@ -27,10 +27,10 @@ import * as utilities from "./utilities";
  *         values: ["MX"],
  *     }],
  * });
- * export const mailServers = example.then(example => std.join({
+ * export const mailServers = std.join({
  *     separator: ",",
- *     input: example.records.map(__item => __item.value),
- * })).then(invoke => invoke.result);
+ *     input: example.then(example => example.records.map(__item => __item.value)),
+ * }).result;
  * ```
  */
 export function getRecords(args: GetRecordsArgs, opts?: pulumi.InvokeOptions): Promise<GetRecordsResult> {
@@ -98,10 +98,10 @@ export interface GetRecordsResult {
  *         values: ["MX"],
  *     }],
  * });
- * export const mailServers = example.then(example => std.join({
+ * export const mailServers = std.join({
  *     separator: ",",
- *     input: example.records.map(__item => __item.value),
- * })).then(invoke => invoke.result);
+ *     input: example.then(example => example.records.map(__item => __item.value)),
+ * }).result;
  * ```
  */
 export function getRecordsOutput(args: GetRecordsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRecordsResult> {

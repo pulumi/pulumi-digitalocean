@@ -83,8 +83,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			invokeFile, err := std.File(ctx, &std.FileArgs{
-//				Input: "/path/to/ca.pem",
+//			invokeFile, err := std.File(ctx, map[string]interface{}{
+//				"input": "/path/to/ca.pem",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -95,7 +95,7 @@ import (
 //				Endpoint:       pulumi.String("https://user:password@opensearch.example.com:9200"),
 //				IndexPrefix:    pulumi.String("secure-logs"),
 //				IndexDaysMax:   pulumi.Int(14),
-//				CaCert:         pulumi.String(invokeFile.Result),
+//				CaCert:         invokeFile.Result,
 //				TimeoutSeconds: pulumi.Int(30),
 //			})
 //			if err != nil {

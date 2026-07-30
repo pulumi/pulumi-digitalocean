@@ -266,7 +266,9 @@ class Provider(pulumi.ProviderResource):
                 spaces_endpoint = _utilities.get_env('SPACES_ENDPOINT_URL')
             __props__.__dict__["spaces_endpoint"] = spaces_endpoint
             __props__.__dict__["spaces_secret_key"] = spaces_secret_key
-            __props__.__dict__["token"] = token
+            __props__.__dict__["token"] = None if token is None else pulumi.Output.secret(token)
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["token"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Provider, __self__).__init__(
             'digitalocean',
             resource_name,

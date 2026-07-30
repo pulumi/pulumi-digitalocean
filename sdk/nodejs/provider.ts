@@ -65,9 +65,11 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["spacesAccessId"] = args?.spacesAccessId;
             resourceInputs["spacesEndpoint"] = (args?.spacesEndpoint) ?? utilities.getEnv("SPACES_ENDPOINT_URL");
             resourceInputs["spacesSecretKey"] = args?.spacesSecretKey;
-            resourceInputs["token"] = args?.token;
+            resourceInputs["token"] = args?.token ? pulumi.secret(args.token) : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["token"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Provider.__pulumiType, name, resourceInputs, opts);
     }
 

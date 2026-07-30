@@ -37,15 +37,15 @@ namespace Pulumi.DigitalOcean
     ///         PrivateKey = Std.File.Invoke(new()
     ///         {
     ///             Input = "/Users/terraform/certs/privkey.pem",
-    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         }).Result,
     ///         LeafCertificate = Std.File.Invoke(new()
     ///         {
     ///             Input = "/Users/terraform/certs/cert.pem",
-    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         }).Result,
     ///         CertificateChain = Std.File.Invoke(new()
     ///         {
     ///             Input = "/Users/terraform/certs/fullchain.pem",
-    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         }).Result,
     ///     });
     /// 
     /// });

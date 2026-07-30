@@ -31,7 +31,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.digitalocean.SshKey;
  * import com.pulumi.digitalocean.SshKeyArgs;
  * import com.pulumi.std.StdFunctions;
- * import com.pulumi.std.inputs.FileArgs;
  * import com.pulumi.digitalocean.Droplet;
  * import com.pulumi.digitalocean.DropletArgs;
  * import java.util.ArrayList;
@@ -50,9 +49,7 @@ import javax.annotation.Nullable;
  *         // Create a new SSH key
  *         var default_ = new SshKey("default", SshKeyArgs.builder()
  *             .name("Terraform Example")
- *             .publicKey(StdFunctions.file(FileArgs.builder()
- *                 .input("/Users/terraform/.ssh/id_rsa.pub")
- *                 .build()).result())
+ *             .publicKey(StdFunctions.file(Map.of("input", "/Users/terraform/.ssh/id_rsa.pub")).result())
  *             .build());
  * 
  *         // Create a new Droplet using the SSH key
