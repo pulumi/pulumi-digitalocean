@@ -50,7 +50,7 @@ namespace Pulumi.DigitalOcean
         ///         {
         ///             Separator = ",",
         ///             Input = example.Apply(getRecordsResult =&gt; getRecordsResult.Records).Select(__item =&gt; __item.Value).ToList(),
-        ///         }).Apply(invoke =&gt; invoke.Result),
+        ///         }).Result,
         ///     };
         /// });
         /// ```
@@ -97,7 +97,7 @@ namespace Pulumi.DigitalOcean
         ///         {
         ///             Separator = ",",
         ///             Input = example.Apply(getRecordsResult =&gt; getRecordsResult.Records).Select(__item =&gt; __item.Value).ToList(),
-        ///         }).Apply(invoke =&gt; invoke.Result),
+        ///         }).Result,
         ///     };
         /// });
         /// ```
@@ -144,7 +144,7 @@ namespace Pulumi.DigitalOcean
         ///         {
         ///             Separator = ",",
         ///             Input = example.Apply(getRecordsResult =&gt; getRecordsResult.Records).Select(__item =&gt; __item.Value).ToList(),
-        ///         }).Apply(invoke =&gt; invoke.Result),
+        ///         }).Result,
         ///     };
         /// });
         /// ```

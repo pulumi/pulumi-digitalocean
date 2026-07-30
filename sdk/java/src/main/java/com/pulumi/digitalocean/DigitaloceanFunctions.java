@@ -15965,7 +15965,6 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetRecordsArgs;
      * import com.pulumi.digitalocean.inputs.GetRecordsFilterArgs;
      * import com.pulumi.std.StdFunctions;
-     * import com.pulumi.std.inputs.JoinArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -15987,10 +15986,10 @@ public final class DigitaloceanFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("mailServers", StdFunctions.join(JoinArgs.builder()
-     *             .separator(",")
-     *             .input(example.records().stream().map(element -> element.value()).collect(toList()))
-     *             .build()).result());
+     *         ctx.export("mailServers", StdFunctions.join(Map.ofEntries(
+     *             Map.entry("separator", ","),
+     *             Map.entry("input", example.records().stream().map(element -> element.value()).collect(toList()))
+     *         )).result());
      *     }
      * }
      * }
@@ -16019,7 +16018,6 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetRecordsArgs;
      * import com.pulumi.digitalocean.inputs.GetRecordsFilterArgs;
      * import com.pulumi.std.StdFunctions;
-     * import com.pulumi.std.inputs.JoinArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -16041,10 +16039,10 @@ public final class DigitaloceanFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("mailServers", StdFunctions.join(JoinArgs.builder()
-     *             .separator(",")
-     *             .input(example.records().stream().map(element -> element.value()).collect(toList()))
-     *             .build()).result());
+     *         ctx.export("mailServers", StdFunctions.join(Map.ofEntries(
+     *             Map.entry("separator", ","),
+     *             Map.entry("input", example.records().stream().map(element -> element.value()).collect(toList()))
+     *         )).result());
      *     }
      * }
      * }
@@ -16073,7 +16071,6 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetRecordsArgs;
      * import com.pulumi.digitalocean.inputs.GetRecordsFilterArgs;
      * import com.pulumi.std.StdFunctions;
-     * import com.pulumi.std.inputs.JoinArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -16095,10 +16092,10 @@ public final class DigitaloceanFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("mailServers", StdFunctions.join(JoinArgs.builder()
-     *             .separator(",")
-     *             .input(example.records().stream().map(element -> element.value()).collect(toList()))
-     *             .build()).result());
+     *         ctx.export("mailServers", StdFunctions.join(Map.ofEntries(
+     *             Map.entry("separator", ","),
+     *             Map.entry("input", example.records().stream().map(element -> element.value()).collect(toList()))
+     *         )).result());
      *     }
      * }
      * }
@@ -16127,7 +16124,6 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetRecordsArgs;
      * import com.pulumi.digitalocean.inputs.GetRecordsFilterArgs;
      * import com.pulumi.std.StdFunctions;
-     * import com.pulumi.std.inputs.JoinArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -16149,10 +16145,10 @@ public final class DigitaloceanFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("mailServers", StdFunctions.join(JoinArgs.builder()
-     *             .separator(",")
-     *             .input(example.records().stream().map(element -> element.value()).collect(toList()))
-     *             .build()).result());
+     *         ctx.export("mailServers", StdFunctions.join(Map.ofEntries(
+     *             Map.entry("separator", ","),
+     *             Map.entry("input", example.records().stream().map(element -> element.value()).collect(toList()))
+     *         )).result());
      *     }
      * }
      * }
@@ -16181,7 +16177,6 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetRecordsArgs;
      * import com.pulumi.digitalocean.inputs.GetRecordsFilterArgs;
      * import com.pulumi.std.StdFunctions;
-     * import com.pulumi.std.inputs.JoinArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -16203,10 +16198,10 @@ public final class DigitaloceanFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("mailServers", StdFunctions.join(JoinArgs.builder()
-     *             .separator(",")
-     *             .input(example.records().stream().map(element -> element.value()).collect(toList()))
-     *             .build()).result());
+     *         ctx.export("mailServers", StdFunctions.join(Map.ofEntries(
+     *             Map.entry("separator", ","),
+     *             Map.entry("input", example.records().stream().map(element -> element.value()).collect(toList()))
+     *         )).result());
      *     }
      * }
      * }

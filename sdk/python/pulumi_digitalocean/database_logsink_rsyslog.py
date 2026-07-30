@@ -466,7 +466,7 @@ class DatabaseLogsinkRsyslog(pulumi.CustomResource):
             port=6514,
             tls=True,
             format="rfc5424",
-            ca_cert=std.file(input="/path/to/ca.pem").result)
+            ca_cert=std.file(input="/path/to/ca.pem")["result"])
         ```
 
         ### mTLS (mutual TLS) configuration
@@ -483,9 +483,9 @@ class DatabaseLogsinkRsyslog(pulumi.CustomResource):
             port=6514,
             tls=True,
             format="rfc5424",
-            ca_cert=std.file(input="/path/to/ca.pem").result,
-            client_cert=std.file(input="/path/to/client.crt").result,
-            client_key=std.file(input="/path/to/client.key").result)
+            ca_cert=std.file(input="/path/to/ca.pem")["result"],
+            client_cert=std.file(input="/path/to/client.crt")["result"],
+            client_key=std.file(input="/path/to/client.key")["result"])
         ```
 
         ### Custom format configuration
@@ -584,7 +584,7 @@ class DatabaseLogsinkRsyslog(pulumi.CustomResource):
             port=6514,
             tls=True,
             format="rfc5424",
-            ca_cert=std.file(input="/path/to/ca.pem").result)
+            ca_cert=std.file(input="/path/to/ca.pem")["result"])
         ```
 
         ### mTLS (mutual TLS) configuration
@@ -601,9 +601,9 @@ class DatabaseLogsinkRsyslog(pulumi.CustomResource):
             port=6514,
             tls=True,
             format="rfc5424",
-            ca_cert=std.file(input="/path/to/ca.pem").result,
-            client_cert=std.file(input="/path/to/client.crt").result,
-            client_key=std.file(input="/path/to/client.key").result)
+            ca_cert=std.file(input="/path/to/ca.pem")["result"],
+            client_cert=std.file(input="/path/to/client.crt")["result"],
+            client_key=std.file(input="/path/to/client.key")["result"])
         ```
 
         ### Custom format configuration

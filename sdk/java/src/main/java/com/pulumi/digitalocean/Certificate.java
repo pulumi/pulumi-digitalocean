@@ -37,7 +37,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.digitalocean.Certificate;
  * import com.pulumi.digitalocean.CertificateArgs;
  * import com.pulumi.std.StdFunctions;
- * import com.pulumi.std.inputs.FileArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -54,15 +53,9 @@ import javax.annotation.Nullable;
  *         var cert = new Certificate("cert", CertificateArgs.builder()
  *             .name("custom-terraform-example")
  *             .type("custom")
- *             .privateKey(StdFunctions.file(FileArgs.builder()
- *                 .input("/Users/terraform/certs/privkey.pem")
- *                 .build()).result())
- *             .leafCertificate(StdFunctions.file(FileArgs.builder()
- *                 .input("/Users/terraform/certs/cert.pem")
- *                 .build()).result())
- *             .certificateChain(StdFunctions.file(FileArgs.builder()
- *                 .input("/Users/terraform/certs/fullchain.pem")
- *                 .build()).result())
+ *             .privateKey(StdFunctions.file(Map.of("input", "/Users/terraform/certs/privkey.pem")).result())
+ *             .leafCertificate(StdFunctions.file(Map.of("input", "/Users/terraform/certs/cert.pem")).result())
+ *             .certificateChain(StdFunctions.file(Map.of("input", "/Users/terraform/certs/fullchain.pem")).result())
  *             .build());
  * 
  *     }
