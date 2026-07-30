@@ -1,3 +1,0 @@
-name: digitalocean
-description: A Pulumi resource provider for digitalocean.
-language: java
