@@ -312,6 +312,10 @@ namespace Pulumi.DigitalOcean
         public readonly int Disk;
         public readonly bool? Gpu;
         /// <summary>
+        /// The GPU partition mode the Droplet was created with. Note that read-back of this value from the DigitalOcean API is not yet available, so it is currently empty.
+        /// </summary>
+        public readonly string GpuPartitionMode;
+        /// <summary>
         /// The ID of the Droplet.
         /// </summary>
         public readonly int Id;
@@ -408,6 +412,8 @@ namespace Pulumi.DigitalOcean
 
             bool? gpu,
 
+            string gpuPartitionMode,
+
             int id,
 
             string image,
@@ -458,6 +464,7 @@ namespace Pulumi.DigitalOcean
             CreatedAt = createdAt;
             Disk = disk;
             Gpu = gpu;
+            GpuPartitionMode = gpuPartitionMode;
             Id = id;
             Image = image;
             Ipv4Address = ipv4Address;

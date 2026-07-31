@@ -22,7 +22,7 @@ import * as utilities from "./utilities";
  *     name: "terraform-example",
  *     publicKey: std.file({
  *         input: "/Users/terraform/.ssh/id_rsa.pub",
- *     }).result,
+ *     }).then(invoke => invoke.result),
  * });
  * const my_tag = new digitalocean.Tag("my-tag", {name: "terraform-example"});
  * const my_autoscale_pool = new digitalocean.DropletAutoscale("my-autoscale-pool", {

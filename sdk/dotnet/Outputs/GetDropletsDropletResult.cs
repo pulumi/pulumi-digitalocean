@@ -26,6 +26,10 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly int Disk;
         /// <summary>
+        /// the GPU partition mode the Droplet was created with
+        /// </summary>
+        public readonly string GpuPartitionMode;
+        /// <summary>
         /// The ID of the Droplet.
         /// </summary>
         public readonly int Id;
@@ -122,6 +126,8 @@ namespace Pulumi.DigitalOcean.Outputs
 
             int disk,
 
+            string gpuPartitionMode,
+
             int id,
 
             string image,
@@ -169,6 +175,7 @@ namespace Pulumi.DigitalOcean.Outputs
             Backups = backups;
             CreatedAt = createdAt;
             Disk = disk;
+            GpuPartitionMode = gpuPartitionMode;
             Id = id;
             Image = image;
             Ipv4Address = ipv4Address;

@@ -30,6 +30,11 @@ public final class GetDropletsDroplet {
      */
     private Integer disk;
     /**
+     * @return the GPU partition mode the Droplet was created with
+     * 
+     */
+    private String gpuPartitionMode;
+    /**
      * @return The ID of the Droplet.
      * 
      */
@@ -161,6 +166,13 @@ public final class GetDropletsDroplet {
      */
     public Integer disk() {
         return this.disk;
+    }
+    /**
+     * @return the GPU partition mode the Droplet was created with
+     * 
+     */
+    public String gpuPartitionMode() {
+        return this.gpuPartitionMode;
     }
     /**
      * @return The ID of the Droplet.
@@ -329,6 +341,7 @@ public final class GetDropletsDroplet {
         private Boolean backups;
         private String createdAt;
         private Integer disk;
+        private String gpuPartitionMode;
         private Integer id;
         private String image;
         private String ipv4Address;
@@ -357,6 +370,7 @@ public final class GetDropletsDroplet {
     	      this.backups = defaults.backups;
     	      this.createdAt = defaults.createdAt;
     	      this.disk = defaults.disk;
+    	      this.gpuPartitionMode = defaults.gpuPartitionMode;
     	      this.id = defaults.id;
     	      this.image = defaults.image;
     	      this.ipv4Address = defaults.ipv4Address;
@@ -403,6 +417,14 @@ public final class GetDropletsDroplet {
               throw new MissingRequiredPropertyException("GetDropletsDroplet", "disk");
             }
             this.disk = disk;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder gpuPartitionMode(String gpuPartitionMode) {
+            if (gpuPartitionMode == null) {
+              throw new MissingRequiredPropertyException("GetDropletsDroplet", "gpuPartitionMode");
+            }
+            this.gpuPartitionMode = gpuPartitionMode;
             return this;
         }
         @CustomType.Setter
@@ -592,6 +614,7 @@ public final class GetDropletsDroplet {
             _resultValue.backups = backups;
             _resultValue.createdAt = createdAt;
             _resultValue.disk = disk;
+            _resultValue.gpuPartitionMode = gpuPartitionMode;
             _resultValue.id = id;
             _resultValue.image = image;
             _resultValue.ipv4Address = ipv4Address;

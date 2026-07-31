@@ -504,6 +504,8 @@ __all__ = [
     'LoadBalancerHealthcheckArgsDict',
     'LoadBalancerStickySessionsArgs',
     'LoadBalancerStickySessionsArgsDict',
+    'MicrodropletAutoPauseArgs',
+    'MicrodropletAutoPauseArgsDict',
     'MonitorAlertAlertsArgs',
     'MonitorAlertAlertsArgsDict',
     'MonitorAlertAlertsSlackArgs',
@@ -724,6 +726,18 @@ __all__ = [
     'GetKubernetesClusterRoutingAgentArgsDict',
     'GetKubernetesClusterSsoArgs',
     'GetKubernetesClusterSsoArgsDict',
+    'GetMicrodropletCheckpointsFilterArgs',
+    'GetMicrodropletCheckpointsFilterArgsDict',
+    'GetMicrodropletCheckpointsSortArgs',
+    'GetMicrodropletCheckpointsSortArgsDict',
+    'GetMicrodropletImagesFilterArgs',
+    'GetMicrodropletImagesFilterArgsDict',
+    'GetMicrodropletImagesSortArgs',
+    'GetMicrodropletImagesSortArgsDict',
+    'GetMicrodropletsFilterArgs',
+    'GetMicrodropletsFilterArgsDict',
+    'GetMicrodropletsSortArgs',
+    'GetMicrodropletsSortArgsDict',
     'GetPartnerAttachmentBgpArgs',
     'GetPartnerAttachmentBgpArgsDict',
     'GetProjectsFilterArgs',
@@ -26935,6 +26949,54 @@ class LoadBalancerStickySessionsArgs:
         pulumi.set(self, "type", value)
 
 
+class MicrodropletAutoPauseArgsDict(TypedDict):
+    enabled: pulumi.Input[_builtins.bool]
+    """
+    Whether auto-pause is enabled.
+    """
+    idle_timeout: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Idle timeout as a Go duration string (e.g. `5m`, `30s`).
+    """
+
+@pulumi.input_type
+class MicrodropletAutoPauseArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[_builtins.bool],
+                 idle_timeout: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enabled: Whether auto-pause is enabled.
+        :param pulumi.Input[_builtins.str] idle_timeout: Idle timeout as a Go duration string (e.g. `5m`, `30s`).
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        if idle_timeout is not None:
+            pulumi.set(__self__, "idle_timeout", idle_timeout)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[_builtins.bool]:
+        """
+        Whether auto-pause is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="idleTimeout")
+    def idle_timeout(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Idle timeout as a Go duration string (e.g. `5m`, `30s`).
+        """
+        return pulumi.get(self, "idle_timeout")
+
+    @idle_timeout.setter
+    def idle_timeout(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "idle_timeout", value)
+
+
 class MonitorAlertAlertsArgsDict(TypedDict):
     emails: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
@@ -37494,6 +37556,411 @@ class GetKubernetesClusterSsoArgs:
     @required.setter
     def required(self, value: _builtins.bool):
         pulumi.set(self, "required", value)
+
+
+class GetMicrodropletCheckpointsFilterArgsDict(TypedDict):
+    key: _builtins.str
+    """
+    Field to match. Valid keys include `id`, `name`, `status`.
+    """
+    values: Sequence[_builtins.str]
+    """
+    List of values to match on `key`.
+    """
+    all: NotRequired[_builtins.bool]
+    """
+    Require every value to match. Defaults to `false`.
+    """
+    match_by: NotRequired[_builtins.str]
+    """
+    `exact`, `re`, or `substring`. Defaults to `exact`.
+    """
+
+@pulumi.input_type
+class GetMicrodropletCheckpointsFilterArgs:
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 values: Sequence[_builtins.str],
+                 all: Optional[_builtins.bool] = None,
+                 match_by: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str key: Field to match. Valid keys include `id`, `name`, `status`.
+        :param Sequence[_builtins.str] values: List of values to match on `key`.
+        :param _builtins.bool all: Require every value to match. Defaults to `false`.
+        :param _builtins.str match_by: `exact`, `re`, or `substring`. Defaults to `exact`.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "values", values)
+        if all is not None:
+            pulumi.set(__self__, "all", all)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        Field to match. Valid keys include `id`, `name`, `status`.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: _builtins.str):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        """
+        List of values to match on `key`.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Sequence[_builtins.str]):
+        pulumi.set(self, "values", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def all(self) -> Optional[_builtins.bool]:
+        """
+        Require every value to match. Defaults to `false`.
+        """
+        return pulumi.get(self, "all")
+
+    @all.setter
+    def all(self, value: Optional[_builtins.bool]):
+        pulumi.set(self, "all", value)
+
+    @_builtins.property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[_builtins.str]:
+        """
+        `exact`, `re`, or `substring`. Defaults to `exact`.
+        """
+        return pulumi.get(self, "match_by")
+
+    @match_by.setter
+    def match_by(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "match_by", value)
+
+
+class GetMicrodropletCheckpointsSortArgsDict(TypedDict):
+    key: _builtins.str
+    """
+    Field to sort by (e.g. `created_at`).
+    """
+    direction: NotRequired[_builtins.str]
+    """
+    `asc` (default) or `desc`.
+    """
+
+@pulumi.input_type
+class GetMicrodropletCheckpointsSortArgs:
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 direction: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str key: Field to sort by (e.g. `created_at`).
+        :param _builtins.str direction: `asc` (default) or `desc`.
+        """
+        pulumi.set(__self__, "key", key)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        Field to sort by (e.g. `created_at`).
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: _builtins.str):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def direction(self) -> Optional[_builtins.str]:
+        """
+        `asc` (default) or `desc`.
+        """
+        return pulumi.get(self, "direction")
+
+    @direction.setter
+    def direction(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "direction", value)
+
+
+class GetMicrodropletImagesFilterArgsDict(TypedDict):
+    key: _builtins.str
+    """
+    Field to match.
+    """
+    values: Sequence[_builtins.str]
+    """
+    List of values to match on `key`.
+    """
+    all: NotRequired[_builtins.bool]
+    """
+    Require every value to match. Defaults to `false`.
+    """
+    match_by: NotRequired[_builtins.str]
+    """
+    `exact`, `re`, or `substring`. Defaults to `exact`.
+    """
+
+@pulumi.input_type
+class GetMicrodropletImagesFilterArgs:
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 values: Sequence[_builtins.str],
+                 all: Optional[_builtins.bool] = None,
+                 match_by: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str key: Field to match.
+        :param Sequence[_builtins.str] values: List of values to match on `key`.
+        :param _builtins.bool all: Require every value to match. Defaults to `false`.
+        :param _builtins.str match_by: `exact`, `re`, or `substring`. Defaults to `exact`.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "values", values)
+        if all is not None:
+            pulumi.set(__self__, "all", all)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        Field to match.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: _builtins.str):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        """
+        List of values to match on `key`.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Sequence[_builtins.str]):
+        pulumi.set(self, "values", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def all(self) -> Optional[_builtins.bool]:
+        """
+        Require every value to match. Defaults to `false`.
+        """
+        return pulumi.get(self, "all")
+
+    @all.setter
+    def all(self, value: Optional[_builtins.bool]):
+        pulumi.set(self, "all", value)
+
+    @_builtins.property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[_builtins.str]:
+        """
+        `exact`, `re`, or `substring`. Defaults to `exact`.
+        """
+        return pulumi.get(self, "match_by")
+
+    @match_by.setter
+    def match_by(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "match_by", value)
+
+
+class GetMicrodropletImagesSortArgsDict(TypedDict):
+    key: _builtins.str
+    """
+    Field to sort by.
+    """
+    direction: NotRequired[_builtins.str]
+    """
+    `asc` (default) or `desc`.
+    """
+
+@pulumi.input_type
+class GetMicrodropletImagesSortArgs:
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 direction: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str key: Field to sort by.
+        :param _builtins.str direction: `asc` (default) or `desc`.
+        """
+        pulumi.set(__self__, "key", key)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        Field to sort by.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: _builtins.str):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def direction(self) -> Optional[_builtins.str]:
+        """
+        `asc` (default) or `desc`.
+        """
+        return pulumi.get(self, "direction")
+
+    @direction.setter
+    def direction(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "direction", value)
+
+
+class GetMicrodropletsFilterArgsDict(TypedDict):
+    key: _builtins.str
+    """
+    Field to match.
+    """
+    values: Sequence[_builtins.str]
+    """
+    List of values to match on `key`.
+    """
+    all: NotRequired[_builtins.bool]
+    """
+    Require every value to match. Defaults to `false`.
+    """
+    match_by: NotRequired[_builtins.str]
+    """
+    `exact`, `re`, or `substring`. Defaults to `exact`.
+    """
+
+@pulumi.input_type
+class GetMicrodropletsFilterArgs:
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 values: Sequence[_builtins.str],
+                 all: Optional[_builtins.bool] = None,
+                 match_by: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str key: Field to match.
+        :param Sequence[_builtins.str] values: List of values to match on `key`.
+        :param _builtins.bool all: Require every value to match. Defaults to `false`.
+        :param _builtins.str match_by: `exact`, `re`, or `substring`. Defaults to `exact`.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "values", values)
+        if all is not None:
+            pulumi.set(__self__, "all", all)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        Field to match.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: _builtins.str):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        """
+        List of values to match on `key`.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Sequence[_builtins.str]):
+        pulumi.set(self, "values", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def all(self) -> Optional[_builtins.bool]:
+        """
+        Require every value to match. Defaults to `false`.
+        """
+        return pulumi.get(self, "all")
+
+    @all.setter
+    def all(self, value: Optional[_builtins.bool]):
+        pulumi.set(self, "all", value)
+
+    @_builtins.property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[_builtins.str]:
+        """
+        `exact`, `re`, or `substring`. Defaults to `exact`.
+        """
+        return pulumi.get(self, "match_by")
+
+    @match_by.setter
+    def match_by(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "match_by", value)
+
+
+class GetMicrodropletsSortArgsDict(TypedDict):
+    key: _builtins.str
+    """
+    Field to sort by.
+    """
+    direction: NotRequired[_builtins.str]
+    """
+    `asc` (default) or `desc`.
+    """
+
+@pulumi.input_type
+class GetMicrodropletsSortArgs:
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 direction: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str key: Field to sort by.
+        :param _builtins.str direction: `asc` (default) or `desc`.
+        """
+        pulumi.set(__self__, "key", key)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        Field to sort by.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: _builtins.str):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def direction(self) -> Optional[_builtins.str]:
+        """
+        `asc` (default) or `desc`.
+        """
+        return pulumi.get(self, "direction")
+
+    @direction.setter
+    def direction(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "direction", value)
 
 
 class GetPartnerAttachmentBgpArgsDict(TypedDict):

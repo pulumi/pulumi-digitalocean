@@ -99,6 +99,10 @@ export interface GetDropletResult {
     readonly disk: number;
     readonly gpu?: boolean;
     /**
+     * The GPU partition mode the Droplet was created with. Note that read-back of this value from the DigitalOcean API is not yet available, so it is currently empty.
+     */
+    readonly gpuPartitionMode: string;
+    /**
      * The ID of the Droplet.
      */
     readonly id: number;

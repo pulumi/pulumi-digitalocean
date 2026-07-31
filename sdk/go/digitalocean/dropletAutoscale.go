@@ -30,15 +30,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			invokeFile, err := std.File(ctx, map[string]interface{}{
-//				"input": "/Users/terraform/.ssh/id_rsa.pub",
+//			invokeFile, err := std.File(ctx, &std.FileArgs{
+//				Input: "/Users/terraform/.ssh/id_rsa.pub",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			my_ssh_key, err := digitalocean.NewSshKey(ctx, "my-ssh-key", &digitalocean.SshKeyArgs{
 //				Name:      pulumi.String("terraform-example"),
-//				PublicKey: invokeFile.Result,
+//				PublicKey: pulumi.String(invokeFile.Result),
 //			})
 //			if err != nil {
 //				return err

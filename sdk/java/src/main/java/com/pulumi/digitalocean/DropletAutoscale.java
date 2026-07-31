@@ -33,6 +33,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.digitalocean.SshKey;
  * import com.pulumi.digitalocean.SshKeyArgs;
  * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FileArgs;
  * import com.pulumi.digitalocean.Tag;
  * import com.pulumi.digitalocean.TagArgs;
  * import com.pulumi.digitalocean.DropletAutoscale;
@@ -54,7 +55,9 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var my_ssh_key = new SshKey("my-ssh-key", SshKeyArgs.builder()
  *             .name("terraform-example")
- *             .publicKey(StdFunctions.file(Map.of("input", "/Users/terraform/.ssh/id_rsa.pub")).result())
+ *             .publicKey(StdFunctions.file(FileArgs.builder()
+ *                 .input("/Users/terraform/.ssh/id_rsa.pub")
+ *                 .build()).result())
  *             .build());
  * 
  *         var my_tag = new Tag("my-tag", TagArgs.builder()

@@ -22,7 +22,7 @@ import * as utilities from "./utilities";
  *     name: "Terraform Example",
  *     publicKey: std.file({
  *         input: "/Users/terraform/.ssh/id_rsa.pub",
- *     }).result,
+ *     }).then(invoke => invoke.result),
  * });
  * // Create a new Droplet using the SSH key
  * const web = new digitalocean.Droplet("web", {

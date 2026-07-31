@@ -91,6 +91,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.digitalocean.DatabaseLogsinkRsyslog;
  * import com.pulumi.digitalocean.DatabaseLogsinkRsyslogArgs;
  * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FileArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -111,7 +112,9 @@ import javax.annotation.Nullable;
  *             .port(6514)
  *             .tls(true)
  *             .format("rfc5424")
- *             .caCert(StdFunctions.file(Map.of("input", "/path/to/ca.pem")).result())
+ *             .caCert(StdFunctions.file(FileArgs.builder()
+ *                 .input("/path/to/ca.pem")
+ *                 .build()).result())
  *             .build());
  * 
  *     }
@@ -131,6 +134,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.digitalocean.DatabaseLogsinkRsyslog;
  * import com.pulumi.digitalocean.DatabaseLogsinkRsyslogArgs;
  * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FileArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -151,9 +155,15 @@ import javax.annotation.Nullable;
  *             .port(6514)
  *             .tls(true)
  *             .format("rfc5424")
- *             .caCert(StdFunctions.file(Map.of("input", "/path/to/ca.pem")).result())
- *             .clientCert(StdFunctions.file(Map.of("input", "/path/to/client.crt")).result())
- *             .clientKey(StdFunctions.file(Map.of("input", "/path/to/client.key")).result())
+ *             .caCert(StdFunctions.file(FileArgs.builder()
+ *                 .input("/path/to/ca.pem")
+ *                 .build()).result())
+ *             .clientCert(StdFunctions.file(FileArgs.builder()
+ *                 .input("/path/to/client.crt")
+ *                 .build()).result())
+ *             .clientKey(StdFunctions.file(FileArgs.builder()
+ *                 .input("/path/to/client.key")
+ *                 .build()).result())
  *             .build());
  * 
  *     }

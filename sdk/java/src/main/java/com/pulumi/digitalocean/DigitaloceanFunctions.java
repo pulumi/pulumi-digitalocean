@@ -125,6 +125,16 @@ import com.pulumi.digitalocean.inputs.GetKubernetesVersionsArgs;
 import com.pulumi.digitalocean.inputs.GetKubernetesVersionsPlainArgs;
 import com.pulumi.digitalocean.inputs.GetLoadBalancerArgs;
 import com.pulumi.digitalocean.inputs.GetLoadBalancerPlainArgs;
+import com.pulumi.digitalocean.inputs.GetMicrodropletArgs;
+import com.pulumi.digitalocean.inputs.GetMicrodropletCheckpointsArgs;
+import com.pulumi.digitalocean.inputs.GetMicrodropletCheckpointsPlainArgs;
+import com.pulumi.digitalocean.inputs.GetMicrodropletImageArgs;
+import com.pulumi.digitalocean.inputs.GetMicrodropletImagePlainArgs;
+import com.pulumi.digitalocean.inputs.GetMicrodropletImagesArgs;
+import com.pulumi.digitalocean.inputs.GetMicrodropletImagesPlainArgs;
+import com.pulumi.digitalocean.inputs.GetMicrodropletPlainArgs;
+import com.pulumi.digitalocean.inputs.GetMicrodropletsArgs;
+import com.pulumi.digitalocean.inputs.GetMicrodropletsPlainArgs;
 import com.pulumi.digitalocean.inputs.GetNfsAccessPointArgs;
 import com.pulumi.digitalocean.inputs.GetNfsAccessPointPlainArgs;
 import com.pulumi.digitalocean.inputs.GetNfsArgs;
@@ -245,6 +255,11 @@ import com.pulumi.digitalocean.outputs.GetImagesResult;
 import com.pulumi.digitalocean.outputs.GetKubernetesClusterResult;
 import com.pulumi.digitalocean.outputs.GetKubernetesVersionsResult;
 import com.pulumi.digitalocean.outputs.GetLoadBalancerResult;
+import com.pulumi.digitalocean.outputs.GetMicrodropletCheckpointsResult;
+import com.pulumi.digitalocean.outputs.GetMicrodropletImageResult;
+import com.pulumi.digitalocean.outputs.GetMicrodropletImagesResult;
+import com.pulumi.digitalocean.outputs.GetMicrodropletResult;
+import com.pulumi.digitalocean.outputs.GetMicrodropletsResult;
 import com.pulumi.digitalocean.outputs.GetNfsAccessPointResult;
 import com.pulumi.digitalocean.outputs.GetNfsResult;
 import com.pulumi.digitalocean.outputs.GetNfsSnapshotResult;
@@ -13837,6 +13852,1461 @@ public final class DigitaloceanFunctions {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getLoadBalancer:getLoadBalancer", TypeShape.of(GetLoadBalancerResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Fetches a single [DigitalOcean MicroDroplet](https://docs.digitalocean.com/products/microdroplets/) by `id` or by `name`.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetMicrodropletArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byid = DigitaloceanFunctions.getMicrodroplet(GetMicrodropletArgs.builder()
+     *             .id("506f78a4-e098-11e5-ad9f-000f53306ae1")
+     *             .build());
+     * 
+     *         final var byname = DigitaloceanFunctions.getMicrodroplet(GetMicrodropletArgs.builder()
+     *             .name("my-microdroplet")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetMicrodropletResult> getMicrodroplet() {
+        return getMicrodroplet(GetMicrodropletArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Fetches a single [DigitalOcean MicroDroplet](https://docs.digitalocean.com/products/microdroplets/) by `id` or by `name`.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetMicrodropletArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byid = DigitaloceanFunctions.getMicrodroplet(GetMicrodropletArgs.builder()
+     *             .id("506f78a4-e098-11e5-ad9f-000f53306ae1")
+     *             .build());
+     * 
+     *         final var byname = DigitaloceanFunctions.getMicrodroplet(GetMicrodropletArgs.builder()
+     *             .name("my-microdroplet")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetMicrodropletResult> getMicrodropletPlain() {
+        return getMicrodropletPlain(GetMicrodropletPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Fetches a single [DigitalOcean MicroDroplet](https://docs.digitalocean.com/products/microdroplets/) by `id` or by `name`.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetMicrodropletArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byid = DigitaloceanFunctions.getMicrodroplet(GetMicrodropletArgs.builder()
+     *             .id("506f78a4-e098-11e5-ad9f-000f53306ae1")
+     *             .build());
+     * 
+     *         final var byname = DigitaloceanFunctions.getMicrodroplet(GetMicrodropletArgs.builder()
+     *             .name("my-microdroplet")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetMicrodropletResult> getMicrodroplet(GetMicrodropletArgs args) {
+        return getMicrodroplet(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fetches a single [DigitalOcean MicroDroplet](https://docs.digitalocean.com/products/microdroplets/) by `id` or by `name`.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetMicrodropletArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byid = DigitaloceanFunctions.getMicrodroplet(GetMicrodropletArgs.builder()
+     *             .id("506f78a4-e098-11e5-ad9f-000f53306ae1")
+     *             .build());
+     * 
+     *         final var byname = DigitaloceanFunctions.getMicrodroplet(GetMicrodropletArgs.builder()
+     *             .name("my-microdroplet")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetMicrodropletResult> getMicrodropletPlain(GetMicrodropletPlainArgs args) {
+        return getMicrodropletPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fetches a single [DigitalOcean MicroDroplet](https://docs.digitalocean.com/products/microdroplets/) by `id` or by `name`.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetMicrodropletArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byid = DigitaloceanFunctions.getMicrodroplet(GetMicrodropletArgs.builder()
+     *             .id("506f78a4-e098-11e5-ad9f-000f53306ae1")
+     *             .build());
+     * 
+     *         final var byname = DigitaloceanFunctions.getMicrodroplet(GetMicrodropletArgs.builder()
+     *             .name("my-microdroplet")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetMicrodropletResult> getMicrodroplet(GetMicrodropletArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getMicrodroplet:getMicrodroplet", TypeShape.of(GetMicrodropletResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fetches a single [DigitalOcean MicroDroplet](https://docs.digitalocean.com/products/microdroplets/) by `id` or by `name`.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetMicrodropletArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byid = DigitaloceanFunctions.getMicrodroplet(GetMicrodropletArgs.builder()
+     *             .id("506f78a4-e098-11e5-ad9f-000f53306ae1")
+     *             .build());
+     * 
+     *         final var byname = DigitaloceanFunctions.getMicrodroplet(GetMicrodropletArgs.builder()
+     *             .name("my-microdroplet")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetMicrodropletResult> getMicrodroplet(GetMicrodropletArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getMicrodroplet:getMicrodroplet", TypeShape.of(GetMicrodropletResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fetches a single [DigitalOcean MicroDroplet](https://docs.digitalocean.com/products/microdroplets/) by `id` or by `name`.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetMicrodropletArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byid = DigitaloceanFunctions.getMicrodroplet(GetMicrodropletArgs.builder()
+     *             .id("506f78a4-e098-11e5-ad9f-000f53306ae1")
+     *             .build());
+     * 
+     *         final var byname = DigitaloceanFunctions.getMicrodroplet(GetMicrodropletArgs.builder()
+     *             .name("my-microdroplet")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetMicrodropletResult> getMicrodropletPlain(GetMicrodropletPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getMicrodroplet:getMicrodroplet", TypeShape.of(GetMicrodropletResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fetches the list of checkpoints belonging to a [DigitalOcean MicroDroplet](https://docs.digitalocean.com/products/microdroplets/).
+     * 
+     * Checkpoints are read-only artifacts: DigitalOcean captures one automatically each time a MicroDroplet is paused, preserving the memory and disk state needed to resume. They cannot be created or deleted directly through the customer API, so this provider only exposes them as a data source.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetMicrodropletCheckpointsResult> getMicrodropletCheckpoints(GetMicrodropletCheckpointsArgs args) {
+        return getMicrodropletCheckpoints(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fetches the list of checkpoints belonging to a [DigitalOcean MicroDroplet](https://docs.digitalocean.com/products/microdroplets/).
+     * 
+     * Checkpoints are read-only artifacts: DigitalOcean captures one automatically each time a MicroDroplet is paused, preserving the memory and disk state needed to resume. They cannot be created or deleted directly through the customer API, so this provider only exposes them as a data source.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static CompletableFuture<GetMicrodropletCheckpointsResult> getMicrodropletCheckpointsPlain(GetMicrodropletCheckpointsPlainArgs args) {
+        return getMicrodropletCheckpointsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fetches the list of checkpoints belonging to a [DigitalOcean MicroDroplet](https://docs.digitalocean.com/products/microdroplets/).
+     * 
+     * Checkpoints are read-only artifacts: DigitalOcean captures one automatically each time a MicroDroplet is paused, preserving the memory and disk state needed to resume. They cannot be created or deleted directly through the customer API, so this provider only exposes them as a data source.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetMicrodropletCheckpointsResult> getMicrodropletCheckpoints(GetMicrodropletCheckpointsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getMicrodropletCheckpoints:getMicrodropletCheckpoints", TypeShape.of(GetMicrodropletCheckpointsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fetches the list of checkpoints belonging to a [DigitalOcean MicroDroplet](https://docs.digitalocean.com/products/microdroplets/).
+     * 
+     * Checkpoints are read-only artifacts: DigitalOcean captures one automatically each time a MicroDroplet is paused, preserving the memory and disk state needed to resume. They cannot be created or deleted directly through the customer API, so this provider only exposes them as a data source.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetMicrodropletCheckpointsResult> getMicrodropletCheckpoints(GetMicrodropletCheckpointsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getMicrodropletCheckpoints:getMicrodropletCheckpoints", TypeShape.of(GetMicrodropletCheckpointsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fetches the list of checkpoints belonging to a [DigitalOcean MicroDroplet](https://docs.digitalocean.com/products/microdroplets/).
+     * 
+     * Checkpoints are read-only artifacts: DigitalOcean captures one automatically each time a MicroDroplet is paused, preserving the memory and disk state needed to resume. They cannot be created or deleted directly through the customer API, so this provider only exposes them as a data source.
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static CompletableFuture<GetMicrodropletCheckpointsResult> getMicrodropletCheckpointsPlain(GetMicrodropletCheckpointsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getMicrodropletCheckpoints:getMicrodropletCheckpoints", TypeShape.of(GetMicrodropletCheckpointsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fetches a single [DigitalOcean MicroDroplet image](https://docs.digitalocean.com/products/microdroplets/) by `id` or by `name`.
+     * 
+     * Name lookups page through the full image list on the account since the API has no filtered list endpoint for images.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetMicrodropletImageArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byid = DigitaloceanFunctions.getMicrodropletImage(GetMicrodropletImageArgs.builder()
+     *             .id("4a2c9f10-3d18-4b6a-9e3d-2b7f8e0f1c11")
+     *             .build());
+     * 
+     *         final var byname = DigitaloceanFunctions.getMicrodropletImage(GetMicrodropletImageArgs.builder()
+     *             .name("my-app-v1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetMicrodropletImageResult> getMicrodropletImage() {
+        return getMicrodropletImage(GetMicrodropletImageArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Fetches a single [DigitalOcean MicroDroplet image](https://docs.digitalocean.com/products/microdroplets/) by `id` or by `name`.
+     * 
+     * Name lookups page through the full image list on the account since the API has no filtered list endpoint for images.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetMicrodropletImageArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byid = DigitaloceanFunctions.getMicrodropletImage(GetMicrodropletImageArgs.builder()
+     *             .id("4a2c9f10-3d18-4b6a-9e3d-2b7f8e0f1c11")
+     *             .build());
+     * 
+     *         final var byname = DigitaloceanFunctions.getMicrodropletImage(GetMicrodropletImageArgs.builder()
+     *             .name("my-app-v1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetMicrodropletImageResult> getMicrodropletImagePlain() {
+        return getMicrodropletImagePlain(GetMicrodropletImagePlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Fetches a single [DigitalOcean MicroDroplet image](https://docs.digitalocean.com/products/microdroplets/) by `id` or by `name`.
+     * 
+     * Name lookups page through the full image list on the account since the API has no filtered list endpoint for images.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetMicrodropletImageArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byid = DigitaloceanFunctions.getMicrodropletImage(GetMicrodropletImageArgs.builder()
+     *             .id("4a2c9f10-3d18-4b6a-9e3d-2b7f8e0f1c11")
+     *             .build());
+     * 
+     *         final var byname = DigitaloceanFunctions.getMicrodropletImage(GetMicrodropletImageArgs.builder()
+     *             .name("my-app-v1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetMicrodropletImageResult> getMicrodropletImage(GetMicrodropletImageArgs args) {
+        return getMicrodropletImage(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fetches a single [DigitalOcean MicroDroplet image](https://docs.digitalocean.com/products/microdroplets/) by `id` or by `name`.
+     * 
+     * Name lookups page through the full image list on the account since the API has no filtered list endpoint for images.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetMicrodropletImageArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byid = DigitaloceanFunctions.getMicrodropletImage(GetMicrodropletImageArgs.builder()
+     *             .id("4a2c9f10-3d18-4b6a-9e3d-2b7f8e0f1c11")
+     *             .build());
+     * 
+     *         final var byname = DigitaloceanFunctions.getMicrodropletImage(GetMicrodropletImageArgs.builder()
+     *             .name("my-app-v1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetMicrodropletImageResult> getMicrodropletImagePlain(GetMicrodropletImagePlainArgs args) {
+        return getMicrodropletImagePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fetches a single [DigitalOcean MicroDroplet image](https://docs.digitalocean.com/products/microdroplets/) by `id` or by `name`.
+     * 
+     * Name lookups page through the full image list on the account since the API has no filtered list endpoint for images.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetMicrodropletImageArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byid = DigitaloceanFunctions.getMicrodropletImage(GetMicrodropletImageArgs.builder()
+     *             .id("4a2c9f10-3d18-4b6a-9e3d-2b7f8e0f1c11")
+     *             .build());
+     * 
+     *         final var byname = DigitaloceanFunctions.getMicrodropletImage(GetMicrodropletImageArgs.builder()
+     *             .name("my-app-v1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetMicrodropletImageResult> getMicrodropletImage(GetMicrodropletImageArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getMicrodropletImage:getMicrodropletImage", TypeShape.of(GetMicrodropletImageResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fetches a single [DigitalOcean MicroDroplet image](https://docs.digitalocean.com/products/microdroplets/) by `id` or by `name`.
+     * 
+     * Name lookups page through the full image list on the account since the API has no filtered list endpoint for images.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetMicrodropletImageArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byid = DigitaloceanFunctions.getMicrodropletImage(GetMicrodropletImageArgs.builder()
+     *             .id("4a2c9f10-3d18-4b6a-9e3d-2b7f8e0f1c11")
+     *             .build());
+     * 
+     *         final var byname = DigitaloceanFunctions.getMicrodropletImage(GetMicrodropletImageArgs.builder()
+     *             .name("my-app-v1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetMicrodropletImageResult> getMicrodropletImage(GetMicrodropletImageArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getMicrodropletImage:getMicrodropletImage", TypeShape.of(GetMicrodropletImageResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fetches a single [DigitalOcean MicroDroplet image](https://docs.digitalocean.com/products/microdroplets/) by `id` or by `name`.
+     * 
+     * Name lookups page through the full image list on the account since the API has no filtered list endpoint for images.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetMicrodropletImageArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byid = DigitaloceanFunctions.getMicrodropletImage(GetMicrodropletImageArgs.builder()
+     *             .id("4a2c9f10-3d18-4b6a-9e3d-2b7f8e0f1c11")
+     *             .build());
+     * 
+     *         final var byname = DigitaloceanFunctions.getMicrodropletImage(GetMicrodropletImageArgs.builder()
+     *             .name("my-app-v1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetMicrodropletImageResult> getMicrodropletImagePlain(GetMicrodropletImagePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getMicrodropletImage:getMicrodropletImage", TypeShape.of(GetMicrodropletImageResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fetches a list of [DigitalOcean MicroDroplet images](https://docs.digitalocean.com/products/microdroplets/) on the account. No server-side filters — narrow the results using `filter` and `sort`.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetMicrodropletImagesArgs;
+     * import com.pulumi.digitalocean.inputs.GetMicrodropletImagesFilterArgs;
+     * import com.pulumi.digitalocean.inputs.GetMicrodropletImagesSortArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DigitaloceanFunctions.getMicrodropletImages(GetMicrodropletImagesArgs.builder()
+     *             .build());
+     * 
+     *         final var available = DigitaloceanFunctions.getMicrodropletImages(GetMicrodropletImagesArgs.builder()
+     *             .filters(GetMicrodropletImagesFilterArgs.builder()
+     *                 .key("status")
+     *                 .values("IMAGE_AVAILABLE")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var newestFirst = DigitaloceanFunctions.getMicrodropletImages(GetMicrodropletImagesArgs.builder()
+     *             .sorts(GetMicrodropletImagesSortArgs.builder()
+     *                 .key("created_at")
+     *                 .direction("desc")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetMicrodropletImagesResult> getMicrodropletImages() {
+        return getMicrodropletImages(GetMicrodropletImagesArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Fetches a list of [DigitalOcean MicroDroplet images](https://docs.digitalocean.com/products/microdroplets/) on the account. No server-side filters — narrow the results using `filter` and `sort`.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetMicrodropletImagesArgs;
+     * import com.pulumi.digitalocean.inputs.GetMicrodropletImagesFilterArgs;
+     * import com.pulumi.digitalocean.inputs.GetMicrodropletImagesSortArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DigitaloceanFunctions.getMicrodropletImages(GetMicrodropletImagesArgs.builder()
+     *             .build());
+     * 
+     *         final var available = DigitaloceanFunctions.getMicrodropletImages(GetMicrodropletImagesArgs.builder()
+     *             .filters(GetMicrodropletImagesFilterArgs.builder()
+     *                 .key("status")
+     *                 .values("IMAGE_AVAILABLE")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var newestFirst = DigitaloceanFunctions.getMicrodropletImages(GetMicrodropletImagesArgs.builder()
+     *             .sorts(GetMicrodropletImagesSortArgs.builder()
+     *                 .key("created_at")
+     *                 .direction("desc")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetMicrodropletImagesResult> getMicrodropletImagesPlain() {
+        return getMicrodropletImagesPlain(GetMicrodropletImagesPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Fetches a list of [DigitalOcean MicroDroplet images](https://docs.digitalocean.com/products/microdroplets/) on the account. No server-side filters — narrow the results using `filter` and `sort`.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetMicrodropletImagesArgs;
+     * import com.pulumi.digitalocean.inputs.GetMicrodropletImagesFilterArgs;
+     * import com.pulumi.digitalocean.inputs.GetMicrodropletImagesSortArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DigitaloceanFunctions.getMicrodropletImages(GetMicrodropletImagesArgs.builder()
+     *             .build());
+     * 
+     *         final var available = DigitaloceanFunctions.getMicrodropletImages(GetMicrodropletImagesArgs.builder()
+     *             .filters(GetMicrodropletImagesFilterArgs.builder()
+     *                 .key("status")
+     *                 .values("IMAGE_AVAILABLE")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var newestFirst = DigitaloceanFunctions.getMicrodropletImages(GetMicrodropletImagesArgs.builder()
+     *             .sorts(GetMicrodropletImagesSortArgs.builder()
+     *                 .key("created_at")
+     *                 .direction("desc")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetMicrodropletImagesResult> getMicrodropletImages(GetMicrodropletImagesArgs args) {
+        return getMicrodropletImages(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fetches a list of [DigitalOcean MicroDroplet images](https://docs.digitalocean.com/products/microdroplets/) on the account. No server-side filters — narrow the results using `filter` and `sort`.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetMicrodropletImagesArgs;
+     * import com.pulumi.digitalocean.inputs.GetMicrodropletImagesFilterArgs;
+     * import com.pulumi.digitalocean.inputs.GetMicrodropletImagesSortArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DigitaloceanFunctions.getMicrodropletImages(GetMicrodropletImagesArgs.builder()
+     *             .build());
+     * 
+     *         final var available = DigitaloceanFunctions.getMicrodropletImages(GetMicrodropletImagesArgs.builder()
+     *             .filters(GetMicrodropletImagesFilterArgs.builder()
+     *                 .key("status")
+     *                 .values("IMAGE_AVAILABLE")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var newestFirst = DigitaloceanFunctions.getMicrodropletImages(GetMicrodropletImagesArgs.builder()
+     *             .sorts(GetMicrodropletImagesSortArgs.builder()
+     *                 .key("created_at")
+     *                 .direction("desc")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetMicrodropletImagesResult> getMicrodropletImagesPlain(GetMicrodropletImagesPlainArgs args) {
+        return getMicrodropletImagesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fetches a list of [DigitalOcean MicroDroplet images](https://docs.digitalocean.com/products/microdroplets/) on the account. No server-side filters — narrow the results using `filter` and `sort`.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetMicrodropletImagesArgs;
+     * import com.pulumi.digitalocean.inputs.GetMicrodropletImagesFilterArgs;
+     * import com.pulumi.digitalocean.inputs.GetMicrodropletImagesSortArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DigitaloceanFunctions.getMicrodropletImages(GetMicrodropletImagesArgs.builder()
+     *             .build());
+     * 
+     *         final var available = DigitaloceanFunctions.getMicrodropletImages(GetMicrodropletImagesArgs.builder()
+     *             .filters(GetMicrodropletImagesFilterArgs.builder()
+     *                 .key("status")
+     *                 .values("IMAGE_AVAILABLE")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var newestFirst = DigitaloceanFunctions.getMicrodropletImages(GetMicrodropletImagesArgs.builder()
+     *             .sorts(GetMicrodropletImagesSortArgs.builder()
+     *                 .key("created_at")
+     *                 .direction("desc")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetMicrodropletImagesResult> getMicrodropletImages(GetMicrodropletImagesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getMicrodropletImages:getMicrodropletImages", TypeShape.of(GetMicrodropletImagesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fetches a list of [DigitalOcean MicroDroplet images](https://docs.digitalocean.com/products/microdroplets/) on the account. No server-side filters — narrow the results using `filter` and `sort`.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetMicrodropletImagesArgs;
+     * import com.pulumi.digitalocean.inputs.GetMicrodropletImagesFilterArgs;
+     * import com.pulumi.digitalocean.inputs.GetMicrodropletImagesSortArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DigitaloceanFunctions.getMicrodropletImages(GetMicrodropletImagesArgs.builder()
+     *             .build());
+     * 
+     *         final var available = DigitaloceanFunctions.getMicrodropletImages(GetMicrodropletImagesArgs.builder()
+     *             .filters(GetMicrodropletImagesFilterArgs.builder()
+     *                 .key("status")
+     *                 .values("IMAGE_AVAILABLE")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var newestFirst = DigitaloceanFunctions.getMicrodropletImages(GetMicrodropletImagesArgs.builder()
+     *             .sorts(GetMicrodropletImagesSortArgs.builder()
+     *                 .key("created_at")
+     *                 .direction("desc")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetMicrodropletImagesResult> getMicrodropletImages(GetMicrodropletImagesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getMicrodropletImages:getMicrodropletImages", TypeShape.of(GetMicrodropletImagesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fetches a list of [DigitalOcean MicroDroplet images](https://docs.digitalocean.com/products/microdroplets/) on the account. No server-side filters — narrow the results using `filter` and `sort`.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetMicrodropletImagesArgs;
+     * import com.pulumi.digitalocean.inputs.GetMicrodropletImagesFilterArgs;
+     * import com.pulumi.digitalocean.inputs.GetMicrodropletImagesSortArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DigitaloceanFunctions.getMicrodropletImages(GetMicrodropletImagesArgs.builder()
+     *             .build());
+     * 
+     *         final var available = DigitaloceanFunctions.getMicrodropletImages(GetMicrodropletImagesArgs.builder()
+     *             .filters(GetMicrodropletImagesFilterArgs.builder()
+     *                 .key("status")
+     *                 .values("IMAGE_AVAILABLE")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var newestFirst = DigitaloceanFunctions.getMicrodropletImages(GetMicrodropletImagesArgs.builder()
+     *             .sorts(GetMicrodropletImagesSortArgs.builder()
+     *                 .key("created_at")
+     *                 .direction("desc")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetMicrodropletImagesResult> getMicrodropletImagesPlain(GetMicrodropletImagesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getMicrodropletImages:getMicrodropletImages", TypeShape.of(GetMicrodropletImagesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fetches a list of [DigitalOcean MicroDroplets](https://docs.digitalocean.com/products/microdroplets/) with optional `region` and `name` server-side filters, plus `filter` and `sort` blocks for client-side narrowing.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetMicrodropletsArgs;
+     * import com.pulumi.digitalocean.inputs.GetMicrodropletsFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DigitaloceanFunctions.getMicrodroplets(GetMicrodropletsArgs.builder()
+     *             .build());
+     * 
+     *         final var nyc3 = DigitaloceanFunctions.getMicrodroplets(GetMicrodropletsArgs.builder()
+     *             .region("nyc3")
+     *             .build());
+     * 
+     *         final var byName = DigitaloceanFunctions.getMicrodroplets(GetMicrodropletsArgs.builder()
+     *             .name("my-microdroplet")
+     *             .build());
+     * 
+     *         final var running = DigitaloceanFunctions.getMicrodroplets(GetMicrodropletsArgs.builder()
+     *             .filters(GetMicrodropletsFilterArgs.builder()
+     *                 .key("current_state")
+     *                 .values("running")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetMicrodropletsResult> getMicrodroplets() {
+        return getMicrodroplets(GetMicrodropletsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Fetches a list of [DigitalOcean MicroDroplets](https://docs.digitalocean.com/products/microdroplets/) with optional `region` and `name` server-side filters, plus `filter` and `sort` blocks for client-side narrowing.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetMicrodropletsArgs;
+     * import com.pulumi.digitalocean.inputs.GetMicrodropletsFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DigitaloceanFunctions.getMicrodroplets(GetMicrodropletsArgs.builder()
+     *             .build());
+     * 
+     *         final var nyc3 = DigitaloceanFunctions.getMicrodroplets(GetMicrodropletsArgs.builder()
+     *             .region("nyc3")
+     *             .build());
+     * 
+     *         final var byName = DigitaloceanFunctions.getMicrodroplets(GetMicrodropletsArgs.builder()
+     *             .name("my-microdroplet")
+     *             .build());
+     * 
+     *         final var running = DigitaloceanFunctions.getMicrodroplets(GetMicrodropletsArgs.builder()
+     *             .filters(GetMicrodropletsFilterArgs.builder()
+     *                 .key("current_state")
+     *                 .values("running")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetMicrodropletsResult> getMicrodropletsPlain() {
+        return getMicrodropletsPlain(GetMicrodropletsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Fetches a list of [DigitalOcean MicroDroplets](https://docs.digitalocean.com/products/microdroplets/) with optional `region` and `name` server-side filters, plus `filter` and `sort` blocks for client-side narrowing.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetMicrodropletsArgs;
+     * import com.pulumi.digitalocean.inputs.GetMicrodropletsFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DigitaloceanFunctions.getMicrodroplets(GetMicrodropletsArgs.builder()
+     *             .build());
+     * 
+     *         final var nyc3 = DigitaloceanFunctions.getMicrodroplets(GetMicrodropletsArgs.builder()
+     *             .region("nyc3")
+     *             .build());
+     * 
+     *         final var byName = DigitaloceanFunctions.getMicrodroplets(GetMicrodropletsArgs.builder()
+     *             .name("my-microdroplet")
+     *             .build());
+     * 
+     *         final var running = DigitaloceanFunctions.getMicrodroplets(GetMicrodropletsArgs.builder()
+     *             .filters(GetMicrodropletsFilterArgs.builder()
+     *                 .key("current_state")
+     *                 .values("running")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetMicrodropletsResult> getMicrodroplets(GetMicrodropletsArgs args) {
+        return getMicrodroplets(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fetches a list of [DigitalOcean MicroDroplets](https://docs.digitalocean.com/products/microdroplets/) with optional `region` and `name` server-side filters, plus `filter` and `sort` blocks for client-side narrowing.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetMicrodropletsArgs;
+     * import com.pulumi.digitalocean.inputs.GetMicrodropletsFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DigitaloceanFunctions.getMicrodroplets(GetMicrodropletsArgs.builder()
+     *             .build());
+     * 
+     *         final var nyc3 = DigitaloceanFunctions.getMicrodroplets(GetMicrodropletsArgs.builder()
+     *             .region("nyc3")
+     *             .build());
+     * 
+     *         final var byName = DigitaloceanFunctions.getMicrodroplets(GetMicrodropletsArgs.builder()
+     *             .name("my-microdroplet")
+     *             .build());
+     * 
+     *         final var running = DigitaloceanFunctions.getMicrodroplets(GetMicrodropletsArgs.builder()
+     *             .filters(GetMicrodropletsFilterArgs.builder()
+     *                 .key("current_state")
+     *                 .values("running")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetMicrodropletsResult> getMicrodropletsPlain(GetMicrodropletsPlainArgs args) {
+        return getMicrodropletsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fetches a list of [DigitalOcean MicroDroplets](https://docs.digitalocean.com/products/microdroplets/) with optional `region` and `name` server-side filters, plus `filter` and `sort` blocks for client-side narrowing.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetMicrodropletsArgs;
+     * import com.pulumi.digitalocean.inputs.GetMicrodropletsFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DigitaloceanFunctions.getMicrodroplets(GetMicrodropletsArgs.builder()
+     *             .build());
+     * 
+     *         final var nyc3 = DigitaloceanFunctions.getMicrodroplets(GetMicrodropletsArgs.builder()
+     *             .region("nyc3")
+     *             .build());
+     * 
+     *         final var byName = DigitaloceanFunctions.getMicrodroplets(GetMicrodropletsArgs.builder()
+     *             .name("my-microdroplet")
+     *             .build());
+     * 
+     *         final var running = DigitaloceanFunctions.getMicrodroplets(GetMicrodropletsArgs.builder()
+     *             .filters(GetMicrodropletsFilterArgs.builder()
+     *                 .key("current_state")
+     *                 .values("running")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetMicrodropletsResult> getMicrodroplets(GetMicrodropletsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getMicrodroplets:getMicrodroplets", TypeShape.of(GetMicrodropletsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fetches a list of [DigitalOcean MicroDroplets](https://docs.digitalocean.com/products/microdroplets/) with optional `region` and `name` server-side filters, plus `filter` and `sort` blocks for client-side narrowing.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetMicrodropletsArgs;
+     * import com.pulumi.digitalocean.inputs.GetMicrodropletsFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DigitaloceanFunctions.getMicrodroplets(GetMicrodropletsArgs.builder()
+     *             .build());
+     * 
+     *         final var nyc3 = DigitaloceanFunctions.getMicrodroplets(GetMicrodropletsArgs.builder()
+     *             .region("nyc3")
+     *             .build());
+     * 
+     *         final var byName = DigitaloceanFunctions.getMicrodroplets(GetMicrodropletsArgs.builder()
+     *             .name("my-microdroplet")
+     *             .build());
+     * 
+     *         final var running = DigitaloceanFunctions.getMicrodroplets(GetMicrodropletsArgs.builder()
+     *             .filters(GetMicrodropletsFilterArgs.builder()
+     *                 .key("current_state")
+     *                 .values("running")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetMicrodropletsResult> getMicrodroplets(GetMicrodropletsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getMicrodroplets:getMicrodroplets", TypeShape.of(GetMicrodropletsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fetches a list of [DigitalOcean MicroDroplets](https://docs.digitalocean.com/products/microdroplets/) with optional `region` and `name` server-side filters, plus `filter` and `sort` blocks for client-side narrowing.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetMicrodropletsArgs;
+     * import com.pulumi.digitalocean.inputs.GetMicrodropletsFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DigitaloceanFunctions.getMicrodroplets(GetMicrodropletsArgs.builder()
+     *             .build());
+     * 
+     *         final var nyc3 = DigitaloceanFunctions.getMicrodroplets(GetMicrodropletsArgs.builder()
+     *             .region("nyc3")
+     *             .build());
+     * 
+     *         final var byName = DigitaloceanFunctions.getMicrodroplets(GetMicrodropletsArgs.builder()
+     *             .name("my-microdroplet")
+     *             .build());
+     * 
+     *         final var running = DigitaloceanFunctions.getMicrodroplets(GetMicrodropletsArgs.builder()
+     *             .filters(GetMicrodropletsFilterArgs.builder()
+     *                 .key("current_state")
+     *                 .values("running")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetMicrodropletsResult> getMicrodropletsPlain(GetMicrodropletsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getMicrodroplets:getMicrodroplets", TypeShape.of(GetMicrodropletsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * Get information about a DigitalOcean NFS share.
      * 
      * ## Example Usage
@@ -15965,6 +17435,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetRecordsArgs;
      * import com.pulumi.digitalocean.inputs.GetRecordsFilterArgs;
      * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.JoinArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -15986,10 +17457,10 @@ public final class DigitaloceanFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("mailServers", StdFunctions.join(Map.ofEntries(
-     *             Map.entry("separator", ","),
-     *             Map.entry("input", example.records().stream().map(element -> element.value()).collect(toList()))
-     *         )).result());
+     *         ctx.export("mailServers", StdFunctions.join(JoinArgs.builder()
+     *             .separator(",")
+     *             .input(example.records().stream().map(element -> element.value()).collect(toList()))
+     *             .build()).result());
      *     }
      * }
      * }
@@ -16018,6 +17489,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetRecordsArgs;
      * import com.pulumi.digitalocean.inputs.GetRecordsFilterArgs;
      * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.JoinArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -16039,10 +17511,10 @@ public final class DigitaloceanFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("mailServers", StdFunctions.join(Map.ofEntries(
-     *             Map.entry("separator", ","),
-     *             Map.entry("input", example.records().stream().map(element -> element.value()).collect(toList()))
-     *         )).result());
+     *         ctx.export("mailServers", StdFunctions.join(JoinArgs.builder()
+     *             .separator(",")
+     *             .input(example.records().stream().map(element -> element.value()).collect(toList()))
+     *             .build()).result());
      *     }
      * }
      * }
@@ -16071,6 +17543,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetRecordsArgs;
      * import com.pulumi.digitalocean.inputs.GetRecordsFilterArgs;
      * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.JoinArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -16092,10 +17565,10 @@ public final class DigitaloceanFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("mailServers", StdFunctions.join(Map.ofEntries(
-     *             Map.entry("separator", ","),
-     *             Map.entry("input", example.records().stream().map(element -> element.value()).collect(toList()))
-     *         )).result());
+     *         ctx.export("mailServers", StdFunctions.join(JoinArgs.builder()
+     *             .separator(",")
+     *             .input(example.records().stream().map(element -> element.value()).collect(toList()))
+     *             .build()).result());
      *     }
      * }
      * }
@@ -16124,6 +17597,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetRecordsArgs;
      * import com.pulumi.digitalocean.inputs.GetRecordsFilterArgs;
      * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.JoinArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -16145,10 +17619,10 @@ public final class DigitaloceanFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("mailServers", StdFunctions.join(Map.ofEntries(
-     *             Map.entry("separator", ","),
-     *             Map.entry("input", example.records().stream().map(element -> element.value()).collect(toList()))
-     *         )).result());
+     *         ctx.export("mailServers", StdFunctions.join(JoinArgs.builder()
+     *             .separator(",")
+     *             .input(example.records().stream().map(element -> element.value()).collect(toList()))
+     *             .build()).result());
      *     }
      * }
      * }
@@ -16177,6 +17651,7 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetRecordsArgs;
      * import com.pulumi.digitalocean.inputs.GetRecordsFilterArgs;
      * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.JoinArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -16198,10 +17673,10 @@ public final class DigitaloceanFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("mailServers", StdFunctions.join(Map.ofEntries(
-     *             Map.entry("separator", ","),
-     *             Map.entry("input", example.records().stream().map(element -> element.value()).collect(toList()))
-     *         )).result());
+     *         ctx.export("mailServers", StdFunctions.join(JoinArgs.builder()
+     *             .separator(",")
+     *             .input(example.records().stream().map(element -> element.value()).collect(toList()))
+     *             .build()).result());
      *     }
      * }
      * }

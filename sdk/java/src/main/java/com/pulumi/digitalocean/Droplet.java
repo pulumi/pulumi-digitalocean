@@ -168,6 +168,38 @@ public class Droplet extends com.pulumi.resources.CustomResource {
         return this.dropletUrn;
     }
     /**
+     * The partition mode for a GPU Droplet. Omit to
+     * create a full GPU (equivalent to `PARTITION_MODE_SPX_NPS1`). Valid values are
+     * `PARTITION_MODE_SPX_NPS1` and `PARTITION_MODE_DPX_NPS2`. Only supported on GPU
+     * sizes that advertise the mode in their `supportedPartitionModes` (see the
+     * `digitalocean.getSizes` data source). Changing this forces a new resource to be
+     * created.
+     * 
+     * &gt; **NOTE:** If you use `volumeIds` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
+     * 
+     * &gt; **NOTE:** Read-back of `gpuPartitionMode` on an existing Droplet is not yet available from the DigitalOcean API. The value is only returned when the Droplet is created, so this provider preserves the configured value rather than refreshing it.
+     * 
+     */
+    @Export(name="gpuPartitionMode", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> gpuPartitionMode;
+
+    /**
+     * @return The partition mode for a GPU Droplet. Omit to
+     * create a full GPU (equivalent to `PARTITION_MODE_SPX_NPS1`). Valid values are
+     * `PARTITION_MODE_SPX_NPS1` and `PARTITION_MODE_DPX_NPS2`. Only supported on GPU
+     * sizes that advertise the mode in their `supportedPartitionModes` (see the
+     * `digitalocean.getSizes` data source). Changing this forces a new resource to be
+     * created.
+     * 
+     * &gt; **NOTE:** If you use `volumeIds` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
+     * 
+     * &gt; **NOTE:** Read-back of `gpuPartitionMode` on an existing Droplet is not yet available from the DigitalOcean API. The value is only returned when the Droplet is created, so this provider preserves the configured value rather than refreshing it.
+     * 
+     */
+    public Output<Optional<String>> gpuPartitionMode() {
+        return Codegen.optional(this.gpuPartitionMode);
+    }
+    /**
      * A boolean indicating whether the droplet
      * should be gracefully shut down before it is deleted.
      * 
@@ -364,8 +396,6 @@ public class Droplet extends com.pulumi.resources.CustomResource {
      * By default, this is always enabled on new droplets.
      * But, by explicitly setting it to false, you can create a droplet with public networking entirely disabled.
      * 
-     * &gt; **NOTE:** If you use `volumeIds` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
-     * 
      */
     @Export(name="publicNetworking", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> publicNetworking;
@@ -374,8 +404,6 @@ public class Droplet extends com.pulumi.resources.CustomResource {
      * @return A boolean indicating whether to enables public networking for the Droplet or not.
      * By default, this is always enabled on new droplets.
      * But, by explicitly setting it to false, you can create a droplet with public networking entirely disabled.
-     * 
-     * &gt; **NOTE:** If you use `volumeIds` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
      * 
      */
     public Output<Boolean> publicNetworking() {

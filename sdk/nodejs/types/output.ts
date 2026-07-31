@@ -6258,6 +6258,10 @@ export interface GetDropletsDroplet {
      */
     disk: number;
     /**
+     * the GPU partition mode the Droplet was created with
+     */
+    gpuPartitionMode: string;
+    /**
      * The ID of the Droplet.
      */
     id: number;
@@ -15787,6 +15791,239 @@ export interface GetLoadBalancerStickySession {
     type: string;
 }
 
+export interface GetMicrodropletAutoPause {
+    /**
+     * Whether auto-pause is enabled. Forces recreation on change (no in-place API path).
+     */
+    enabled: boolean;
+    /**
+     * Idle timeout as a Go duration string (e.g. '5m', '30s'). Forces recreation on change (no in-place API path).
+     */
+    idleTimeout: string;
+}
+
+export interface GetMicrodropletCheckpointsCheckpoint {
+    /**
+     * RFC3339 timestamp of when the checkpoint was created.
+     */
+    createdAt: string;
+    /**
+     * Size of the persisted disk image, in bytes.
+     */
+    diskBytes: number;
+    /**
+     * Checkpoint ID.
+     */
+    id: string;
+    /**
+     * Size of the persisted memory image, in bytes.
+     */
+    memoryBytes: number;
+    /**
+     * ID of the MicroDroplet whose checkpoints should be listed.
+     */
+    microdropletId: string;
+    /**
+     * Checkpoint name.
+     */
+    name: string;
+    /**
+     * Lifecycle status of the checkpoint (e.g. `CHECKPOINT_AVAILABLE`).
+     */
+    status: string;
+}
+
+export interface GetMicrodropletCheckpointsFilter {
+    /**
+     * Require every value to match. Defaults to `false`.
+     */
+    all?: boolean;
+    /**
+     * Field to match. Valid keys include `id`, `name`, `status`.
+     */
+    key: string;
+    /**
+     * `exact`, `re`, or `substring`. Defaults to `exact`.
+     */
+    matchBy?: string;
+    /**
+     * List of values to match on `key`.
+     */
+    values: string[];
+}
+
+export interface GetMicrodropletCheckpointsSort {
+    /**
+     * `asc` (default) or `desc`.
+     */
+    direction?: string;
+    /**
+     * Field to sort by (e.g. `createdAt`).
+     */
+    key: string;
+}
+
+export interface GetMicrodropletImagesFilter {
+    /**
+     * Require every value to match. Defaults to `false`.
+     */
+    all?: boolean;
+    /**
+     * Field to match.
+     */
+    key: string;
+    /**
+     * `exact`, `re`, or `substring`. Defaults to `exact`.
+     */
+    matchBy?: string;
+    /**
+     * List of values to match on `key`.
+     */
+    values: string[];
+}
+
+export interface GetMicrodropletImagesMicroDropletImage {
+    /**
+     * The creation timestamp for the MicroDroplet image
+     */
+    createdAt: string;
+    /**
+     * Name of the MicroDroplet image
+     */
+    name: string;
+    /**
+     * Source OCI reference for the MicroDroplet image
+     */
+    source: string;
+    /**
+     * Lifecycle status of the MicroDroplet image
+     */
+    status: string;
+    /**
+     * The uniform resource name (URN) for the MicroDroplet image
+     */
+    urn: string;
+}
+
+export interface GetMicrodropletImagesSort {
+    /**
+     * `asc` (default) or `desc`.
+     */
+    direction?: string;
+    /**
+     * Field to sort by.
+     */
+    key: string;
+}
+
+export interface GetMicrodropletsFilter {
+    /**
+     * Require every value to match. Defaults to `false`.
+     */
+    all?: boolean;
+    /**
+     * Field to match.
+     */
+    key: string;
+    /**
+     * `exact`, `re`, or `substring`. Defaults to `exact`.
+     */
+    matchBy?: string;
+    /**
+     * List of values to match on `key`.
+     */
+    values: string[];
+}
+
+export interface GetMicrodropletsMicroDroplet {
+    /**
+     * Auto-pause configuration. Forces recreation on change: the MicroDroplets API has no in-place update path for auto_pause.
+     */
+    autoPauses: outputs.GetMicrodropletsMicroDropletAutoPause[];
+    /**
+     * Whether the MicroDroplet should auto-resume on request. Forces recreation on change: the MicroDroplets API has no in-place update path for auto_resume.
+     */
+    autoResume: boolean;
+    /**
+     * The creation timestamp for the MicroDroplet
+     */
+    createdAt: string;
+    /**
+     * Observed lifecycle state of the MicroDroplet
+     */
+    currentState: string;
+    /**
+     * Public endpoint URL for the MicroDroplet
+     */
+    endpoint: string;
+    /**
+     * Environment variables passed to the MicroDroplet
+     */
+    environment: {[key: string]: string};
+    /**
+     * Port the MicroDroplet exposes over HTTP
+     */
+    httpPort: number;
+    /**
+     * HTTP protocol: 'http' or 'http2'
+     */
+    httpProtocol: string;
+    /**
+     * MicroDroplet image UUID or URN
+     */
+    image: string;
+    /**
+     * Server-side filter: only include MicroDroplets whose name matches exactly. Conflicts with `region`.
+     */
+    name: string;
+    /**
+     * Networking mode: 'public' or 'vpc'
+     */
+    networking: string;
+    /**
+     * Server-side filter: only include MicroDroplets in this region. Conflicts with `name`.
+     */
+    region: string;
+    /**
+     * MicroDroplet size slug
+     */
+    size: string;
+    /**
+     * Desired lifecycle state: 'running' or 'paused'. Changes are applied by calling the microdroplet pause / resume action endpoints.
+     */
+    state: string;
+    /**
+     * The uniform resource name (URN) for the MicroDroplet
+     */
+    urn: string;
+    /**
+     * UUID of the VPC to attach the MicroDroplet to. Only valid when networking is 'vpc'.
+     */
+    vpcUuid: string;
+}
+
+export interface GetMicrodropletsMicroDropletAutoPause {
+    /**
+     * Whether auto-pause is enabled. Forces recreation on change (no in-place API path).
+     */
+    enabled: boolean;
+    /**
+     * Idle timeout as a Go duration string (e.g. '5m', '30s'). Forces recreation on change (no in-place API path).
+     */
+    idleTimeout: string;
+}
+
+export interface GetMicrodropletsSort {
+    /**
+     * `asc` (default) or `desc`.
+     */
+    direction?: string;
+    /**
+     * Field to sort by.
+     */
+    key: string;
+}
+
 export interface GetNfsAccessPointAccessPolicy {
     anongid: number;
     anonuid: number;
@@ -16062,6 +16299,10 @@ export interface GetSizesSize {
      */
     disk: number;
     /**
+     * Information about the GPU available to Droplets created with this size. Only present on GPU sizes. The `gpuInfo` block is documented below.
+     */
+    gpuInfos: outputs.GetSizesSizeGpuInfo[];
+    /**
      * The amount of RAM allocated to Droplets created of this size. The value is measured in megabytes.
      */
     memory: number;
@@ -16089,6 +16330,36 @@ export interface GetSizesSize {
      * The number of CPUs allocated to Droplets of this size.
      */
     vcpus: number;
+}
+
+export interface GetSizesSizeGpuInfo {
+    /**
+     * The number of GPUs allocated to Droplets of this size.
+     */
+    count: number;
+    /**
+     * The model of the GPU.
+     */
+    model: string;
+    /**
+     * The GPU partition modes available for this size (e.g. `PARTITION_MODE_SPX_NPS1`, `PARTITION_MODE_DPX_NPS2`). Only returned to callers with access to the feature; an empty list means partition-mode selection is unavailable.
+     */
+    supportedPartitionModes: string[];
+    /**
+     * Information about the VRAM available to the GPU. The `vram` block exports `amount` (the amount of VRAM) and `unit` (the unit of measurement).
+     */
+    vrams: outputs.GetSizesSizeGpuInfoVram[];
+}
+
+export interface GetSizesSizeGpuInfoVram {
+    /**
+     * The amount of VRAM available to the GPU.
+     */
+    amount: number;
+    /**
+     * The unit of measurement for the VRAM amount.
+     */
+    unit: string;
 }
 
 export interface GetSizesSort {
@@ -18137,6 +18408,17 @@ export interface LoadBalancerStickySessions {
      * An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
      */
     type?: string;
+}
+
+export interface MicrodropletAutoPause {
+    /**
+     * Whether auto-pause is enabled.
+     */
+    enabled: boolean;
+    /**
+     * Idle timeout as a Go duration string (e.g. `5m`, `30s`).
+     */
+    idleTimeout: string;
 }
 
 export interface MonitorAlertAlerts {

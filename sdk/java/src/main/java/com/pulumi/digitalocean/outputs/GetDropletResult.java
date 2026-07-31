@@ -29,6 +29,11 @@ public final class GetDropletResult {
     private Integer disk;
     private @Nullable Boolean gpu;
     /**
+     * @return The GPU partition mode the Droplet was created with. Note that read-back of this value from the DigitalOcean API is not yet available, so it is currently empty.
+     * 
+     */
+    private String gpuPartitionMode;
+    /**
      * @return The ID of the Droplet.
      * 
      */
@@ -156,6 +161,13 @@ public final class GetDropletResult {
     }
     public Optional<Boolean> gpu() {
         return Optional.ofNullable(this.gpu);
+    }
+    /**
+     * @return The GPU partition mode the Droplet was created with. Note that read-back of this value from the DigitalOcean API is not yet available, so it is currently empty.
+     * 
+     */
+    public String gpuPartitionMode() {
+        return this.gpuPartitionMode;
     }
     /**
      * @return The ID of the Droplet.
@@ -324,6 +336,7 @@ public final class GetDropletResult {
         private String createdAt;
         private Integer disk;
         private @Nullable Boolean gpu;
+        private String gpuPartitionMode;
         private Integer id;
         private String image;
         private String ipv4Address;
@@ -354,6 +367,7 @@ public final class GetDropletResult {
     	      this.createdAt = defaults.createdAt;
     	      this.disk = defaults.disk;
     	      this.gpu = defaults.gpu;
+    	      this.gpuPartitionMode = defaults.gpuPartitionMode;
     	      this.id = defaults.id;
     	      this.image = defaults.image;
     	      this.ipv4Address = defaults.ipv4Address;
@@ -407,6 +421,14 @@ public final class GetDropletResult {
         public Builder gpu(@Nullable Boolean gpu) {
 
             this.gpu = gpu;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder gpuPartitionMode(String gpuPartitionMode) {
+            if (gpuPartitionMode == null) {
+              throw new MissingRequiredPropertyException("GetDropletResult", "gpuPartitionMode");
+            }
+            this.gpuPartitionMode = gpuPartitionMode;
             return this;
         }
         @CustomType.Setter
@@ -603,6 +625,7 @@ public final class GetDropletResult {
             _resultValue.createdAt = createdAt;
             _resultValue.disk = disk;
             _resultValue.gpu = gpu;
+            _resultValue.gpuPartitionMode = gpuPartitionMode;
             _resultValue.id = id;
             _resultValue.image = image;
             _resultValue.ipv4Address = ipv4Address;

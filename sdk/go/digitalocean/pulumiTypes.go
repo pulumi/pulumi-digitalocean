@@ -39593,6 +39593,162 @@ func (o LoadBalancerStickySessionsPtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type MicrodropletAutoPause struct {
+	// Whether auto-pause is enabled.
+	Enabled bool `pulumi:"enabled"`
+	// Idle timeout as a Go duration string (e.g. `5m`, `30s`).
+	IdleTimeout *string `pulumi:"idleTimeout"`
+}
+
+// MicrodropletAutoPauseInput is an input type that accepts MicrodropletAutoPauseArgs and MicrodropletAutoPauseOutput values.
+// You can construct a concrete instance of `MicrodropletAutoPauseInput` via:
+//
+//	MicrodropletAutoPauseArgs{...}
+type MicrodropletAutoPauseInput interface {
+	pulumi.Input
+
+	ToMicrodropletAutoPauseOutput() MicrodropletAutoPauseOutput
+	ToMicrodropletAutoPauseOutputWithContext(context.Context) MicrodropletAutoPauseOutput
+}
+
+type MicrodropletAutoPauseArgs struct {
+	// Whether auto-pause is enabled.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Idle timeout as a Go duration string (e.g. `5m`, `30s`).
+	IdleTimeout pulumi.StringPtrInput `pulumi:"idleTimeout"`
+}
+
+func (MicrodropletAutoPauseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MicrodropletAutoPause)(nil)).Elem()
+}
+
+func (i MicrodropletAutoPauseArgs) ToMicrodropletAutoPauseOutput() MicrodropletAutoPauseOutput {
+	return i.ToMicrodropletAutoPauseOutputWithContext(context.Background())
+}
+
+func (i MicrodropletAutoPauseArgs) ToMicrodropletAutoPauseOutputWithContext(ctx context.Context) MicrodropletAutoPauseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MicrodropletAutoPauseOutput)
+}
+
+func (i MicrodropletAutoPauseArgs) ToMicrodropletAutoPausePtrOutput() MicrodropletAutoPausePtrOutput {
+	return i.ToMicrodropletAutoPausePtrOutputWithContext(context.Background())
+}
+
+func (i MicrodropletAutoPauseArgs) ToMicrodropletAutoPausePtrOutputWithContext(ctx context.Context) MicrodropletAutoPausePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MicrodropletAutoPauseOutput).ToMicrodropletAutoPausePtrOutputWithContext(ctx)
+}
+
+// MicrodropletAutoPausePtrInput is an input type that accepts MicrodropletAutoPauseArgs, MicrodropletAutoPausePtr and MicrodropletAutoPausePtrOutput values.
+// You can construct a concrete instance of `MicrodropletAutoPausePtrInput` via:
+//
+//	        MicrodropletAutoPauseArgs{...}
+//
+//	or:
+//
+//	        nil
+type MicrodropletAutoPausePtrInput interface {
+	pulumi.Input
+
+	ToMicrodropletAutoPausePtrOutput() MicrodropletAutoPausePtrOutput
+	ToMicrodropletAutoPausePtrOutputWithContext(context.Context) MicrodropletAutoPausePtrOutput
+}
+
+type microdropletAutoPausePtrType MicrodropletAutoPauseArgs
+
+func MicrodropletAutoPausePtr(v *MicrodropletAutoPauseArgs) MicrodropletAutoPausePtrInput {
+	return (*microdropletAutoPausePtrType)(v)
+}
+
+func (*microdropletAutoPausePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MicrodropletAutoPause)(nil)).Elem()
+}
+
+func (i *microdropletAutoPausePtrType) ToMicrodropletAutoPausePtrOutput() MicrodropletAutoPausePtrOutput {
+	return i.ToMicrodropletAutoPausePtrOutputWithContext(context.Background())
+}
+
+func (i *microdropletAutoPausePtrType) ToMicrodropletAutoPausePtrOutputWithContext(ctx context.Context) MicrodropletAutoPausePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MicrodropletAutoPausePtrOutput)
+}
+
+type MicrodropletAutoPauseOutput struct{ *pulumi.OutputState }
+
+func (MicrodropletAutoPauseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MicrodropletAutoPause)(nil)).Elem()
+}
+
+func (o MicrodropletAutoPauseOutput) ToMicrodropletAutoPauseOutput() MicrodropletAutoPauseOutput {
+	return o
+}
+
+func (o MicrodropletAutoPauseOutput) ToMicrodropletAutoPauseOutputWithContext(ctx context.Context) MicrodropletAutoPauseOutput {
+	return o
+}
+
+func (o MicrodropletAutoPauseOutput) ToMicrodropletAutoPausePtrOutput() MicrodropletAutoPausePtrOutput {
+	return o.ToMicrodropletAutoPausePtrOutputWithContext(context.Background())
+}
+
+func (o MicrodropletAutoPauseOutput) ToMicrodropletAutoPausePtrOutputWithContext(ctx context.Context) MicrodropletAutoPausePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MicrodropletAutoPause) *MicrodropletAutoPause {
+		return &v
+	}).(MicrodropletAutoPausePtrOutput)
+}
+
+// Whether auto-pause is enabled.
+func (o MicrodropletAutoPauseOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v MicrodropletAutoPause) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Idle timeout as a Go duration string (e.g. `5m`, `30s`).
+func (o MicrodropletAutoPauseOutput) IdleTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MicrodropletAutoPause) *string { return v.IdleTimeout }).(pulumi.StringPtrOutput)
+}
+
+type MicrodropletAutoPausePtrOutput struct{ *pulumi.OutputState }
+
+func (MicrodropletAutoPausePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MicrodropletAutoPause)(nil)).Elem()
+}
+
+func (o MicrodropletAutoPausePtrOutput) ToMicrodropletAutoPausePtrOutput() MicrodropletAutoPausePtrOutput {
+	return o
+}
+
+func (o MicrodropletAutoPausePtrOutput) ToMicrodropletAutoPausePtrOutputWithContext(ctx context.Context) MicrodropletAutoPausePtrOutput {
+	return o
+}
+
+func (o MicrodropletAutoPausePtrOutput) Elem() MicrodropletAutoPauseOutput {
+	return o.ApplyT(func(v *MicrodropletAutoPause) MicrodropletAutoPause {
+		if v != nil {
+			return *v
+		}
+		var ret MicrodropletAutoPause
+		return ret
+	}).(MicrodropletAutoPauseOutput)
+}
+
+// Whether auto-pause is enabled.
+func (o MicrodropletAutoPausePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MicrodropletAutoPause) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Idle timeout as a Go duration string (e.g. `5m`, `30s`).
+func (o MicrodropletAutoPausePtrOutput) IdleTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MicrodropletAutoPause) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdleTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
 type MonitorAlertAlerts struct {
 	// List of email addresses to sent notifications to
 	Emails []string                  `pulumi:"emails"`
@@ -63715,6 +63871,8 @@ type GetDropletsDroplet struct {
 	CreatedAt string `pulumi:"createdAt"`
 	// The size of the Droplet's disk in GB.
 	Disk int `pulumi:"disk"`
+	// the GPU partition mode the Droplet was created with
+	GpuPartitionMode string `pulumi:"gpuPartitionMode"`
 	// The ID of the Droplet.
 	Id int `pulumi:"id"`
 	// The Droplet image ID or slug.
@@ -63779,6 +63937,8 @@ type GetDropletsDropletArgs struct {
 	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
 	// The size of the Droplet's disk in GB.
 	Disk pulumi.IntInput `pulumi:"disk"`
+	// the GPU partition mode the Droplet was created with
+	GpuPartitionMode pulumi.StringInput `pulumi:"gpuPartitionMode"`
 	// The ID of the Droplet.
 	Id pulumi.IntInput `pulumi:"id"`
 	// The Droplet image ID or slug.
@@ -63889,6 +64049,11 @@ func (o GetDropletsDropletOutput) CreatedAt() pulumi.StringOutput {
 // The size of the Droplet's disk in GB.
 func (o GetDropletsDropletOutput) Disk() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDropletsDroplet) int { return v.Disk }).(pulumi.IntOutput)
+}
+
+// the GPU partition mode the Droplet was created with
+func (o GetDropletsDropletOutput) GpuPartitionMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDropletsDroplet) string { return v.GpuPartitionMode }).(pulumi.StringOutput)
 }
 
 // The ID of the Droplet.
@@ -78985,157 +79150,6 @@ func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArrayOutput)
 	}).(GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierOutput)
 }
 
-type GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeployment struct {
-	// API Key value
-	CreatedAt string `pulumi:"createdAt"`
-	// Name of the API Key
-	Name *string `pulumi:"name"`
-	// Status of the Deployment
-	Status *string `pulumi:"status"`
-	// Updated At timestamp for the Agent
-	UpdatedAt string `pulumi:"updatedAt"`
-	// Url of the Deployment
-	Url *string `pulumi:"url"`
-	// API Key value
-	Uuid *string `pulumi:"uuid"`
-	// Visibility of the Deployment
-	Visibility *string `pulumi:"visibility"`
-}
-
-// GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArgs and GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput values.
-// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentInput` via:
-//
-//	GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArgs{...}
-type GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentInput interface {
-	pulumi.Input
-
-	ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput() GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput
-	ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput
-}
-
-type GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArgs struct {
-	// API Key value
-	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
-	// Name of the API Key
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Status of the Deployment
-	Status pulumi.StringPtrInput `pulumi:"status"`
-	// Updated At timestamp for the Agent
-	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
-	// Url of the Deployment
-	Url pulumi.StringPtrInput `pulumi:"url"`
-	// API Key value
-	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
-	// Visibility of the Deployment
-	Visibility pulumi.StringPtrInput `pulumi:"visibility"`
-}
-
-func (GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeployment)(nil)).Elem()
-}
-
-func (i GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput() GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput {
-	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutputWithContext(context.Background())
-}
-
-func (i GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput)
-}
-
-// GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArray and GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayOutput values.
-// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayInput` via:
-//
-//	GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArray{ GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArgs{...} }
-type GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayInput interface {
-	pulumi.Input
-
-	ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayOutput
-	ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayOutput
-}
-
-type GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArray []GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentInput
-
-func (GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeployment)(nil)).Elem()
-}
-
-func (i GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArray) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayOutput {
-	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayOutputWithContext(context.Background())
-}
-
-func (i GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArray) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayOutput)
-}
-
-type GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput struct{ *pulumi.OutputState }
-
-func (GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeployment)(nil)).Elem()
-}
-
-func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput() GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput {
-	return o
-}
-
-func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput {
-	return o
-}
-
-// API Key value
-func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput) CreatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeployment) string { return v.CreatedAt }).(pulumi.StringOutput)
-}
-
-// Name of the API Key
-func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeployment) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// Status of the Deployment
-func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeployment) *string { return v.Status }).(pulumi.StringPtrOutput)
-}
-
-// Updated At timestamp for the Agent
-func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput) UpdatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeployment) string { return v.UpdatedAt }).(pulumi.StringOutput)
-}
-
-// Url of the Deployment
-func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput) Url() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeployment) *string { return v.Url }).(pulumi.StringPtrOutput)
-}
-
-// API Key value
-func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput) Uuid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeployment) *string { return v.Uuid }).(pulumi.StringPtrOutput)
-}
-
-// Visibility of the Deployment
-func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput) Visibility() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeployment) *string { return v.Visibility }).(pulumi.StringPtrOutput)
-}
-
-type GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayOutput struct{ *pulumi.OutputState }
-
-func (GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeployment)(nil)).Elem()
-}
-
-func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayOutput {
-	return o
-}
-
-func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayOutput {
-	return o
-}
-
-func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayOutput) Index(i pulumi.IntInput) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeployment {
-		return vs[0].([]GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeployment)[vs[1].(int)]
-	}).(GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppDedicatedIpInput)(nil)).Elem(), AppDedicatedIpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppDedicatedIpArrayInput)(nil)).Elem(), AppDedicatedIpArray{})
@@ -79627,6 +79641,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerHealthcheckPtrInput)(nil)).Elem(), LoadBalancerHealthcheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerStickySessionsInput)(nil)).Elem(), LoadBalancerStickySessionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerStickySessionsPtrInput)(nil)).Elem(), LoadBalancerStickySessionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MicrodropletAutoPauseInput)(nil)).Elem(), MicrodropletAutoPauseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MicrodropletAutoPausePtrInput)(nil)).Elem(), MicrodropletAutoPauseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitorAlertAlertsInput)(nil)).Elem(), MonitorAlertAlertsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitorAlertAlertsPtrInput)(nil)).Elem(), MonitorAlertAlertsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitorAlertAlertsSlackInput)(nil)).Elem(), MonitorAlertAlertsSlackArgs{})
@@ -80136,8 +80152,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotArrayInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArrayInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArray{})
 	pulumi.RegisterOutputType(AppDedicatedIpOutput{})
 	pulumi.RegisterOutputType(AppDedicatedIpArrayOutput{})
 	pulumi.RegisterOutputType(AppSpecOutput{})
@@ -80628,6 +80642,8 @@ func init() {
 	pulumi.RegisterOutputType(LoadBalancerHealthcheckPtrOutput{})
 	pulumi.RegisterOutputType(LoadBalancerStickySessionsOutput{})
 	pulumi.RegisterOutputType(LoadBalancerStickySessionsPtrOutput{})
+	pulumi.RegisterOutputType(MicrodropletAutoPauseOutput{})
+	pulumi.RegisterOutputType(MicrodropletAutoPausePtrOutput{})
 	pulumi.RegisterOutputType(MonitorAlertAlertsOutput{})
 	pulumi.RegisterOutputType(MonitorAlertAlertsPtrOutput{})
 	pulumi.RegisterOutputType(MonitorAlertAlertsSlackOutput{})
@@ -81137,6 +81153,4 @@ func init() {
 	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotArrayOutput{})
 	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierOutput{})
 	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArrayOutput{})
-	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput{})
-	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayOutput{})
 }
