@@ -78,7 +78,7 @@ namespace Pulumi.DigitalOcean
     ///         CaCert = Std.File.Invoke(new()
     ///         {
     ///             Input = "/path/to/ca.pem",
-    ///         }).Result,
+    ///         }).Apply(invoke =&gt; invoke.Result),
     ///         TimeoutSeconds = 30,
     ///     });
     /// 

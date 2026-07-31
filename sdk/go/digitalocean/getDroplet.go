@@ -131,6 +131,8 @@ type LookupDropletResult struct {
 	// The size of the Droplets disk in GB.
 	Disk int   `pulumi:"disk"`
 	Gpu  *bool `pulumi:"gpu"`
+	// The GPU partition mode the Droplet was created with. Note that read-back of this value from the DigitalOcean API is not yet available, so it is currently empty.
+	GpuPartitionMode string `pulumi:"gpuPartitionMode"`
 	// The ID of the Droplet.
 	Id int `pulumi:"id"`
 	// The Droplet image ID or slug.
@@ -235,6 +237,11 @@ func (o LookupDropletResultOutput) Disk() pulumi.IntOutput {
 
 func (o LookupDropletResultOutput) Gpu() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupDropletResult) *bool { return v.Gpu }).(pulumi.BoolPtrOutput)
+}
+
+// The GPU partition mode the Droplet was created with. Note that read-back of this value from the DigitalOcean API is not yet available, so it is currently empty.
+func (o LookupDropletResultOutput) GpuPartitionMode() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDropletResult) string { return v.GpuPartitionMode }).(pulumi.StringOutput)
 }
 
 // The ID of the Droplet.

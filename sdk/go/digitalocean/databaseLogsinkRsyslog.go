@@ -81,8 +81,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			invokeFile, err := std.File(ctx, map[string]interface{}{
-//				"input": "/path/to/ca.pem",
+//			invokeFile, err := std.File(ctx, &std.FileArgs{
+//				Input: "/path/to/ca.pem",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -94,7 +94,7 @@ import (
 //				Port:      pulumi.Int(6514),
 //				Tls:       pulumi.Bool(true),
 //				Format:    pulumi.String("rfc5424"),
-//				CaCert:    invokeFile.Result,
+//				CaCert:    pulumi.String(invokeFile.Result),
 //			})
 //			if err != nil {
 //				return err
@@ -120,20 +120,20 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			invokeFile, err := std.File(ctx, map[string]interface{}{
-//				"input": "/path/to/ca.pem",
+//			invokeFile, err := std.File(ctx, &std.FileArgs{
+//				Input: "/path/to/ca.pem",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			invokeFile1, err := std.File(ctx, map[string]interface{}{
-//				"input": "/path/to/client.crt",
+//			invokeFile1, err := std.File(ctx, &std.FileArgs{
+//				Input: "/path/to/client.crt",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			invokeFile2, err := std.File(ctx, map[string]interface{}{
-//				"input": "/path/to/client.key",
+//			invokeFile2, err := std.File(ctx, &std.FileArgs{
+//				Input: "/path/to/client.key",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -145,9 +145,9 @@ import (
 //				Port:       pulumi.Int(6514),
 //				Tls:        pulumi.Bool(true),
 //				Format:     pulumi.String("rfc5424"),
-//				CaCert:     invokeFile.Result,
-//				ClientCert: invokeFile1.Result,
-//				ClientKey:  invokeFile2.Result,
+//				CaCert:     pulumi.String(invokeFile.Result),
+//				ClientCert: pulumi.String(invokeFile1.Result),
+//				ClientKey:  pulumi.String(invokeFile2.Result),
 //			})
 //			if err != nil {
 //				return err

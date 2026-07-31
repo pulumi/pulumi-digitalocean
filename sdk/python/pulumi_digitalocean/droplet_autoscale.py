@@ -229,7 +229,7 @@ class DropletAutoscale(pulumi.CustomResource):
 
         my_ssh_key = digitalocean.SshKey("my-ssh-key",
             name="terraform-example",
-            public_key=std.file(input="/Users/terraform/.ssh/id_rsa.pub")["result"])
+            public_key=std.file(input="/Users/terraform/.ssh/id_rsa.pub").result)
         my_tag = digitalocean.Tag("my-tag", name="terraform-example")
         my_autoscale_pool = digitalocean.DropletAutoscale("my-autoscale-pool",
             name="terraform-example",
@@ -294,7 +294,7 @@ class DropletAutoscale(pulumi.CustomResource):
 
         my_ssh_key = digitalocean.SshKey("my-ssh-key",
             name="terraform-example",
-            public_key=std.file(input="/Users/terraform/.ssh/id_rsa.pub")["result"])
+            public_key=std.file(input="/Users/terraform/.ssh/id_rsa.pub").result)
         my_tag = digitalocean.Tag("my-tag", name="terraform-example")
         my_autoscale_pool = digitalocean.DropletAutoscale("my-autoscale-pool",
             name="terraform-example",

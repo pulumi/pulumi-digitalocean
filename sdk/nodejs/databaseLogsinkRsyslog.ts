@@ -57,7 +57,7 @@ import * as utilities from "./utilities";
  *     format: "rfc5424",
  *     caCert: std.file({
  *         input: "/path/to/ca.pem",
- *     }).result,
+ *     }).then(invoke => invoke.result),
  * });
  * ```
  *
@@ -77,13 +77,13 @@ import * as utilities from "./utilities";
  *     format: "rfc5424",
  *     caCert: std.file({
  *         input: "/path/to/ca.pem",
- *     }).result,
+ *     }).then(invoke => invoke.result),
  *     clientCert: std.file({
  *         input: "/path/to/client.crt",
- *     }).result,
+ *     }).then(invoke => invoke.result),
  *     clientKey: std.file({
  *         input: "/path/to/client.key",
- *     }).result,
+ *     }).then(invoke => invoke.result),
  * });
  * ```
  *

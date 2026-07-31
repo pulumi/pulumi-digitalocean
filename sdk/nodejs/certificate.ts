@@ -29,13 +29,13 @@ import * as utilities from "./utilities";
  *     type: digitalocean.CertificateType.Custom,
  *     privateKey: std.file({
  *         input: "/Users/terraform/certs/privkey.pem",
- *     }).result,
+ *     }).then(invoke => invoke.result),
  *     leafCertificate: std.file({
  *         input: "/Users/terraform/certs/cert.pem",
- *     }).result,
+ *     }).then(invoke => invoke.result),
  *     certificateChain: std.file({
  *         input: "/Users/terraform/certs/fullchain.pem",
- *     }).result,
+ *     }).then(invoke => invoke.result),
  * });
  * ```
  *

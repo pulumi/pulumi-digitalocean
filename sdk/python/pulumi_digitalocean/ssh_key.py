@@ -142,7 +142,7 @@ class SshKey(pulumi.CustomResource):
         # Create a new SSH key
         default = digitalocean.SshKey("default",
             name="Terraform Example",
-            public_key=std.file(input="/Users/terraform/.ssh/id_rsa.pub")["result"])
+            public_key=std.file(input="/Users/terraform/.ssh/id_rsa.pub").result)
         # Create a new Droplet using the SSH key
         web = digitalocean.Droplet("web",
             image="ubuntu-18-04-x64",
@@ -189,7 +189,7 @@ class SshKey(pulumi.CustomResource):
         # Create a new SSH key
         default = digitalocean.SshKey("default",
             name="Terraform Example",
-            public_key=std.file(input="/Users/terraform/.ssh/id_rsa.pub")["result"])
+            public_key=std.file(input="/Users/terraform/.ssh/id_rsa.pub").result)
         # Create a new Droplet using the SSH key
         web = digitalocean.Droplet("web",
             image="ubuntu-18-04-x64",

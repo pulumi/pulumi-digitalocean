@@ -35,20 +35,20 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			invokeFile, err := std.File(ctx, map[string]interface{}{
-//				"input": "/Users/terraform/certs/privkey.pem",
+//			invokeFile, err := std.File(ctx, &std.FileArgs{
+//				Input: "/Users/terraform/certs/privkey.pem",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			invokeFile1, err := std.File(ctx, map[string]interface{}{
-//				"input": "/Users/terraform/certs/cert.pem",
+//			invokeFile1, err := std.File(ctx, &std.FileArgs{
+//				Input: "/Users/terraform/certs/cert.pem",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			invokeFile2, err := std.File(ctx, map[string]interface{}{
-//				"input": "/Users/terraform/certs/fullchain.pem",
+//			invokeFile2, err := std.File(ctx, &std.FileArgs{
+//				Input: "/Users/terraform/certs/fullchain.pem",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -56,9 +56,9 @@ import (
 //			_, err = digitalocean.NewCertificate(ctx, "cert", &digitalocean.CertificateArgs{
 //				Name:             pulumi.String("custom-terraform-example"),
 //				Type:             pulumi.String(digitalocean.CertificateTypeCustom),
-//				PrivateKey:       invokeFile.Result,
-//				LeafCertificate:  invokeFile1.Result,
-//				CertificateChain: invokeFile2.Result,
+//				PrivateKey:       pulumi.String(invokeFile.Result),
+//				LeafCertificate:  pulumi.String(invokeFile1.Result),
+//				CertificateChain: pulumi.String(invokeFile2.Result),
 //			})
 //			if err != nil {
 //				return err

@@ -113,7 +113,7 @@ def get_records(domain: Optional[_builtins.str] = None,
             "values": ["MX"],
         }])
     pulumi.export("mailServers", std.join(separator=",",
-        input=[__item.value for __item in example.records])["result"])
+        input=[__item.value for __item in example.records]).result)
     ```
 
 
@@ -159,7 +159,7 @@ def get_records_output(domain: pulumi.Input[Optional[_builtins.str]] = None,
             "values": ["MX"],
         }])
     pulumi.export("mailServers", std.join(separator=",",
-        input=[__item.value for __item in example.records])["result"])
+        input=[__item.value for __item in example.records]).result)
     ```
 
 

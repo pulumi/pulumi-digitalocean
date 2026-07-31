@@ -26,7 +26,7 @@ class GetDropletResult:
     """
     A collection of values returned by getDroplet.
     """
-    def __init__(__self__, backups=None, created_at=None, disk=None, gpu=None, id=None, image=None, ipv4_address=None, ipv4_address_private=None, ipv6=None, ipv6_address=None, ipv6_address_private=None, locked=None, memory=None, monitoring=None, name=None, price_hourly=None, price_monthly=None, private_networking=None, region=None, size=None, status=None, tag=None, tags=None, urn=None, vcpus=None, volume_ids=None, vpc_uuid=None):
+    def __init__(__self__, backups=None, created_at=None, disk=None, gpu=None, gpu_partition_mode=None, id=None, image=None, ipv4_address=None, ipv4_address_private=None, ipv6=None, ipv6_address=None, ipv6_address_private=None, locked=None, memory=None, monitoring=None, name=None, price_hourly=None, price_monthly=None, private_networking=None, region=None, size=None, status=None, tag=None, tags=None, urn=None, vcpus=None, volume_ids=None, vpc_uuid=None):
         if backups and not isinstance(backups, bool):
             raise TypeError("Expected argument 'backups' to be a bool")
         pulumi.set(__self__, "backups", backups)
@@ -39,6 +39,9 @@ class GetDropletResult:
         if gpu and not isinstance(gpu, bool):
             raise TypeError("Expected argument 'gpu' to be a bool")
         pulumi.set(__self__, "gpu", gpu)
+        if gpu_partition_mode and not isinstance(gpu_partition_mode, str):
+            raise TypeError("Expected argument 'gpu_partition_mode' to be a str")
+        pulumi.set(__self__, "gpu_partition_mode", gpu_partition_mode)
         if id and not isinstance(id, int):
             raise TypeError("Expected argument 'id' to be a int")
         pulumi.set(__self__, "id", id)
@@ -134,6 +137,14 @@ class GetDropletResult:
     @pulumi.getter
     def gpu(self) -> Optional[_builtins.bool]:
         return pulumi.get(self, "gpu")
+
+    @_builtins.property
+    @pulumi.getter(name="gpuPartitionMode")
+    def gpu_partition_mode(self) -> _builtins.str:
+        """
+        The GPU partition mode the Droplet was created with. Note that read-back of this value from the DigitalOcean API is not yet available, so it is currently empty.
+        """
+        return pulumi.get(self, "gpu_partition_mode")
 
     @_builtins.property
     @pulumi.getter
@@ -324,6 +335,7 @@ class AwaitableGetDropletResult(GetDropletResult):
             created_at=self.created_at,
             disk=self.disk,
             gpu=self.gpu,
+            gpu_partition_mode=self.gpu_partition_mode,
             id=self.id,
             image=self.image,
             ipv4_address=self.ipv4_address,
@@ -414,6 +426,7 @@ def get_droplet(gpu: Optional[_builtins.bool] = None,
         created_at=pulumi.get(__ret__, 'created_at'),
         disk=pulumi.get(__ret__, 'disk'),
         gpu=pulumi.get(__ret__, 'gpu'),
+        gpu_partition_mode=pulumi.get(__ret__, 'gpu_partition_mode'),
         id=pulumi.get(__ret__, 'id'),
         image=pulumi.get(__ret__, 'image'),
         ipv4_address=pulumi.get(__ret__, 'ipv4_address'),
@@ -501,6 +514,7 @@ def get_droplet_output(gpu: pulumi.Input[Optional[Optional[_builtins.bool]]] = N
         created_at=pulumi.get(__response__, 'created_at'),
         disk=pulumi.get(__response__, 'disk'),
         gpu=pulumi.get(__response__, 'gpu'),
+        gpu_partition_mode=pulumi.get(__response__, 'gpu_partition_mode'),
         id=pulumi.get(__response__, 'id'),
         image=pulumi.get(__response__, 'image'),
         ipv4_address=pulumi.get(__response__, 'ipv4_address'),

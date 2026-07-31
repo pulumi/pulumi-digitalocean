@@ -4,6 +4,7 @@
 package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.digitalocean.outputs.GetSizesSizeGpuInfo;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
@@ -24,6 +25,11 @@ public final class GetSizesSize {
      * 
      */
     private Integer disk;
+    /**
+     * @return Information about the GPU available to Droplets created with this size. Only present on GPU sizes. The `gpuInfo` block is documented below.
+     * 
+     */
+    private List<GetSizesSizeGpuInfo> gpuInfos;
     /**
      * @return The amount of RAM allocated to Droplets created of this size. The value is measured in megabytes.
      * 
@@ -74,6 +80,13 @@ public final class GetSizesSize {
      */
     public Integer disk() {
         return this.disk;
+    }
+    /**
+     * @return Information about the GPU available to Droplets created with this size. Only present on GPU sizes. The `gpuInfo` block is documented below.
+     * 
+     */
+    public List<GetSizesSizeGpuInfo> gpuInfos() {
+        return this.gpuInfos;
     }
     /**
      * @return The amount of RAM allocated to Droplets created of this size. The value is measured in megabytes.
@@ -136,6 +149,7 @@ public final class GetSizesSize {
     public static final class Builder {
         private Boolean available;
         private Integer disk;
+        private List<GetSizesSizeGpuInfo> gpuInfos;
         private Integer memory;
         private Double priceHourly;
         private Double priceMonthly;
@@ -148,6 +162,7 @@ public final class GetSizesSize {
     	      Objects.requireNonNull(defaults);
     	      this.available = defaults.available;
     	      this.disk = defaults.disk;
+    	      this.gpuInfos = defaults.gpuInfos;
     	      this.memory = defaults.memory;
     	      this.priceHourly = defaults.priceHourly;
     	      this.priceMonthly = defaults.priceMonthly;
@@ -172,6 +187,17 @@ public final class GetSizesSize {
             }
             this.disk = disk;
             return this;
+        }
+        @CustomType.Setter
+        public Builder gpuInfos(List<GetSizesSizeGpuInfo> gpuInfos) {
+            if (gpuInfos == null) {
+              throw new MissingRequiredPropertyException("GetSizesSize", "gpuInfos");
+            }
+            this.gpuInfos = gpuInfos;
+            return this;
+        }
+        public Builder gpuInfos(GetSizesSizeGpuInfo... gpuInfos) {
+            return gpuInfos(List.of(gpuInfos));
         }
         @CustomType.Setter
         public Builder memory(Integer memory) {
@@ -236,6 +262,7 @@ public final class GetSizesSize {
             final var _resultValue = new GetSizesSize();
             _resultValue.available = available;
             _resultValue.disk = disk;
+            _resultValue.gpuInfos = gpuInfos;
             _resultValue.memory = memory;
             _resultValue.priceHourly = priceHourly;
             _resultValue.priceMonthly = priceMonthly;

@@ -22,6 +22,10 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly int Disk;
         /// <summary>
+        /// Information about the GPU available to Droplets created with this size. Only present on GPU sizes. The `GpuInfo` block is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetSizesSizeGpuInfoResult> GpuInfos;
+        /// <summary>
         /// The amount of RAM allocated to Droplets created of this size. The value is measured in megabytes.
         /// </summary>
         public readonly int Memory;
@@ -56,6 +60,8 @@ namespace Pulumi.DigitalOcean.Outputs
 
             int disk,
 
+            ImmutableArray<Outputs.GetSizesSizeGpuInfoResult> gpuInfos,
+
             int memory,
 
             double priceHourly,
@@ -72,6 +78,7 @@ namespace Pulumi.DigitalOcean.Outputs
         {
             Available = available;
             Disk = disk;
+            GpuInfos = gpuInfos;
             Memory = memory;
             PriceHourly = priceHourly;
             PriceMonthly = priceMonthly;

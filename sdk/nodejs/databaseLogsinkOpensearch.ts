@@ -58,7 +58,7 @@ import * as utilities from "./utilities";
  *     indexDaysMax: 14,
  *     caCert: std.file({
  *         input: "/path/to/ca.pem",
- *     }).result,
+ *     }).then(invoke => invoke.result),
  *     timeoutSeconds: 30,
  * });
  * ```

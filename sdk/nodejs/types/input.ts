@@ -7574,6 +7574,186 @@ export interface GetKubernetesClusterSsoArgs {
     required?: pulumi.Input<boolean | undefined>;
 }
 
+export interface GetMicrodropletCheckpointsFilter {
+    /**
+     * Require every value to match. Defaults to `false`.
+     */
+    all?: boolean;
+    /**
+     * Field to match. Valid keys include `id`, `name`, `status`.
+     */
+    key: string;
+    /**
+     * `exact`, `re`, or `substring`. Defaults to `exact`.
+     */
+    matchBy?: string;
+    /**
+     * List of values to match on `key`.
+     */
+    values: string[];
+}
+
+export interface GetMicrodropletCheckpointsFilterArgs {
+    /**
+     * Require every value to match. Defaults to `false`.
+     */
+    all?: pulumi.Input<boolean | undefined>;
+    /**
+     * Field to match. Valid keys include `id`, `name`, `status`.
+     */
+    key: pulumi.Input<string>;
+    /**
+     * `exact`, `re`, or `substring`. Defaults to `exact`.
+     */
+    matchBy?: pulumi.Input<string | undefined>;
+    /**
+     * List of values to match on `key`.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetMicrodropletCheckpointsSort {
+    /**
+     * `asc` (default) or `desc`.
+     */
+    direction?: string;
+    /**
+     * Field to sort by (e.g. `createdAt`).
+     */
+    key: string;
+}
+
+export interface GetMicrodropletCheckpointsSortArgs {
+    /**
+     * `asc` (default) or `desc`.
+     */
+    direction?: pulumi.Input<string | undefined>;
+    /**
+     * Field to sort by (e.g. `createdAt`).
+     */
+    key: pulumi.Input<string>;
+}
+
+export interface GetMicrodropletImagesFilter {
+    /**
+     * Require every value to match. Defaults to `false`.
+     */
+    all?: boolean;
+    /**
+     * Field to match.
+     */
+    key: string;
+    /**
+     * `exact`, `re`, or `substring`. Defaults to `exact`.
+     */
+    matchBy?: string;
+    /**
+     * List of values to match on `key`.
+     */
+    values: string[];
+}
+
+export interface GetMicrodropletImagesFilterArgs {
+    /**
+     * Require every value to match. Defaults to `false`.
+     */
+    all?: pulumi.Input<boolean | undefined>;
+    /**
+     * Field to match.
+     */
+    key: pulumi.Input<string>;
+    /**
+     * `exact`, `re`, or `substring`. Defaults to `exact`.
+     */
+    matchBy?: pulumi.Input<string | undefined>;
+    /**
+     * List of values to match on `key`.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetMicrodropletImagesSort {
+    /**
+     * `asc` (default) or `desc`.
+     */
+    direction?: string;
+    /**
+     * Field to sort by.
+     */
+    key: string;
+}
+
+export interface GetMicrodropletImagesSortArgs {
+    /**
+     * `asc` (default) or `desc`.
+     */
+    direction?: pulumi.Input<string | undefined>;
+    /**
+     * Field to sort by.
+     */
+    key: pulumi.Input<string>;
+}
+
+export interface GetMicrodropletsFilter {
+    /**
+     * Require every value to match. Defaults to `false`.
+     */
+    all?: boolean;
+    /**
+     * Field to match.
+     */
+    key: string;
+    /**
+     * `exact`, `re`, or `substring`. Defaults to `exact`.
+     */
+    matchBy?: string;
+    /**
+     * List of values to match on `key`.
+     */
+    values: string[];
+}
+
+export interface GetMicrodropletsFilterArgs {
+    /**
+     * Require every value to match. Defaults to `false`.
+     */
+    all?: pulumi.Input<boolean | undefined>;
+    /**
+     * Field to match.
+     */
+    key: pulumi.Input<string>;
+    /**
+     * `exact`, `re`, or `substring`. Defaults to `exact`.
+     */
+    matchBy?: pulumi.Input<string | undefined>;
+    /**
+     * List of values to match on `key`.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetMicrodropletsSort {
+    /**
+     * `asc` (default) or `desc`.
+     */
+    direction?: string;
+    /**
+     * Field to sort by.
+     */
+    key: string;
+}
+
+export interface GetMicrodropletsSortArgs {
+    /**
+     * `asc` (default) or `desc`.
+     */
+    direction?: pulumi.Input<string | undefined>;
+    /**
+     * Field to sort by.
+     */
+    key: pulumi.Input<string>;
+}
+
 export interface GetPartnerAttachmentBgp {
     localRouterIp?: string;
     peerRouterAsn?: number;
@@ -9869,6 +10049,17 @@ export interface LoadBalancerStickySessions {
      * An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
      */
     type?: pulumi.Input<string | undefined>;
+}
+
+export interface MicrodropletAutoPause {
+    /**
+     * Whether auto-pause is enabled.
+     */
+    enabled: pulumi.Input<boolean>;
+    /**
+     * Idle timeout as a Go duration string (e.g. `5m`, `30s`).
+     */
+    idleTimeout?: pulumi.Input<string | undefined>;
 }
 
 export interface MonitorAlertAlerts {

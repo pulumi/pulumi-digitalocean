@@ -91,7 +91,7 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-//	"github.com/pulumi/pulumi-kubernetes/sdk/go/kubernetes"
+//	"github.com/pulumi/pulumi-kubernetes/sdk/v4/go/kubernetes"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )

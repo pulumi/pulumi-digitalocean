@@ -13,6 +13,157 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeployment struct {
+	// API Key value
+	CreatedAt string `pulumi:"createdAt"`
+	// Name of the API Key
+	Name *string `pulumi:"name"`
+	// Status of the Deployment
+	Status *string `pulumi:"status"`
+	// Updated At timestamp for the Agent
+	UpdatedAt string `pulumi:"updatedAt"`
+	// Url of the Deployment
+	Url *string `pulumi:"url"`
+	// API Key value
+	Uuid *string `pulumi:"uuid"`
+	// Visibility of the Deployment
+	Visibility *string `pulumi:"visibility"`
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArgs and GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArgs{...}
+type GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput() GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArgs struct {
+	// API Key value
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// Name of the API Key
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Status of the Deployment
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// Updated At timestamp for the Agent
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+	// Url of the Deployment
+	Url pulumi.StringPtrInput `pulumi:"url"`
+	// API Key value
+	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+	// Visibility of the Deployment
+	Visibility pulumi.StringPtrInput `pulumi:"visibility"`
+}
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeployment)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput() GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput)
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArray and GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArray{ GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArgs{...} }
+type GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArray []GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentInput
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeployment)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArray) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArray) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeployment)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput() GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput {
+	return o
+}
+
+// API Key value
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeployment) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Name of the API Key
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeployment) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Status of the Deployment
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeployment) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// Updated At timestamp for the Agent
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeployment) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// Url of the Deployment
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeployment) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+// API Key value
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeployment) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+}
+
+// Visibility of the Deployment
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput) Visibility() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeployment) *string { return v.Visibility }).(pulumi.StringPtrOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeployment)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayOutput) Index(i pulumi.IntInput) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeployment {
+		return vs[0].([]GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeployment)[vs[1].(int)]
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput)
+}
+
 type GetGenaiAgentsByOpenaiApiKeyAgentDeployment struct {
 	// API Key value
 	CreatedAt string `pulumi:"createdAt"`
@@ -35314,6 +35465,1424 @@ func (o GetLoadBalancerStickySessionArrayOutput) Index(i pulumi.IntInput) GetLoa
 	}).(GetLoadBalancerStickySessionOutput)
 }
 
+type GetMicrodropletAutoPause struct {
+	// Whether auto-pause is enabled. Forces recreation on change (no in-place API path).
+	Enabled bool `pulumi:"enabled"`
+	// Idle timeout as a Go duration string (e.g. '5m', '30s'). Forces recreation on change (no in-place API path).
+	IdleTimeout string `pulumi:"idleTimeout"`
+}
+
+// GetMicrodropletAutoPauseInput is an input type that accepts GetMicrodropletAutoPauseArgs and GetMicrodropletAutoPauseOutput values.
+// You can construct a concrete instance of `GetMicrodropletAutoPauseInput` via:
+//
+//	GetMicrodropletAutoPauseArgs{...}
+type GetMicrodropletAutoPauseInput interface {
+	pulumi.Input
+
+	ToGetMicrodropletAutoPauseOutput() GetMicrodropletAutoPauseOutput
+	ToGetMicrodropletAutoPauseOutputWithContext(context.Context) GetMicrodropletAutoPauseOutput
+}
+
+type GetMicrodropletAutoPauseArgs struct {
+	// Whether auto-pause is enabled. Forces recreation on change (no in-place API path).
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Idle timeout as a Go duration string (e.g. '5m', '30s'). Forces recreation on change (no in-place API path).
+	IdleTimeout pulumi.StringInput `pulumi:"idleTimeout"`
+}
+
+func (GetMicrodropletAutoPauseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMicrodropletAutoPause)(nil)).Elem()
+}
+
+func (i GetMicrodropletAutoPauseArgs) ToGetMicrodropletAutoPauseOutput() GetMicrodropletAutoPauseOutput {
+	return i.ToGetMicrodropletAutoPauseOutputWithContext(context.Background())
+}
+
+func (i GetMicrodropletAutoPauseArgs) ToGetMicrodropletAutoPauseOutputWithContext(ctx context.Context) GetMicrodropletAutoPauseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMicrodropletAutoPauseOutput)
+}
+
+// GetMicrodropletAutoPauseArrayInput is an input type that accepts GetMicrodropletAutoPauseArray and GetMicrodropletAutoPauseArrayOutput values.
+// You can construct a concrete instance of `GetMicrodropletAutoPauseArrayInput` via:
+//
+//	GetMicrodropletAutoPauseArray{ GetMicrodropletAutoPauseArgs{...} }
+type GetMicrodropletAutoPauseArrayInput interface {
+	pulumi.Input
+
+	ToGetMicrodropletAutoPauseArrayOutput() GetMicrodropletAutoPauseArrayOutput
+	ToGetMicrodropletAutoPauseArrayOutputWithContext(context.Context) GetMicrodropletAutoPauseArrayOutput
+}
+
+type GetMicrodropletAutoPauseArray []GetMicrodropletAutoPauseInput
+
+func (GetMicrodropletAutoPauseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMicrodropletAutoPause)(nil)).Elem()
+}
+
+func (i GetMicrodropletAutoPauseArray) ToGetMicrodropletAutoPauseArrayOutput() GetMicrodropletAutoPauseArrayOutput {
+	return i.ToGetMicrodropletAutoPauseArrayOutputWithContext(context.Background())
+}
+
+func (i GetMicrodropletAutoPauseArray) ToGetMicrodropletAutoPauseArrayOutputWithContext(ctx context.Context) GetMicrodropletAutoPauseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMicrodropletAutoPauseArrayOutput)
+}
+
+type GetMicrodropletAutoPauseOutput struct{ *pulumi.OutputState }
+
+func (GetMicrodropletAutoPauseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMicrodropletAutoPause)(nil)).Elem()
+}
+
+func (o GetMicrodropletAutoPauseOutput) ToGetMicrodropletAutoPauseOutput() GetMicrodropletAutoPauseOutput {
+	return o
+}
+
+func (o GetMicrodropletAutoPauseOutput) ToGetMicrodropletAutoPauseOutputWithContext(ctx context.Context) GetMicrodropletAutoPauseOutput {
+	return o
+}
+
+// Whether auto-pause is enabled. Forces recreation on change (no in-place API path).
+func (o GetMicrodropletAutoPauseOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetMicrodropletAutoPause) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Idle timeout as a Go duration string (e.g. '5m', '30s'). Forces recreation on change (no in-place API path).
+func (o GetMicrodropletAutoPauseOutput) IdleTimeout() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrodropletAutoPause) string { return v.IdleTimeout }).(pulumi.StringOutput)
+}
+
+type GetMicrodropletAutoPauseArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMicrodropletAutoPauseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMicrodropletAutoPause)(nil)).Elem()
+}
+
+func (o GetMicrodropletAutoPauseArrayOutput) ToGetMicrodropletAutoPauseArrayOutput() GetMicrodropletAutoPauseArrayOutput {
+	return o
+}
+
+func (o GetMicrodropletAutoPauseArrayOutput) ToGetMicrodropletAutoPauseArrayOutputWithContext(ctx context.Context) GetMicrodropletAutoPauseArrayOutput {
+	return o
+}
+
+func (o GetMicrodropletAutoPauseArrayOutput) Index(i pulumi.IntInput) GetMicrodropletAutoPauseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMicrodropletAutoPause {
+		return vs[0].([]GetMicrodropletAutoPause)[vs[1].(int)]
+	}).(GetMicrodropletAutoPauseOutput)
+}
+
+type GetMicrodropletCheckpointsCheckpoint struct {
+	// RFC3339 timestamp of when the checkpoint was created.
+	CreatedAt string `pulumi:"createdAt"`
+	// Size of the persisted disk image, in bytes.
+	DiskBytes int `pulumi:"diskBytes"`
+	// Checkpoint ID.
+	Id string `pulumi:"id"`
+	// Size of the persisted memory image, in bytes.
+	MemoryBytes int `pulumi:"memoryBytes"`
+	// ID of the MicroDroplet whose checkpoints should be listed.
+	MicrodropletId string `pulumi:"microdropletId"`
+	// Checkpoint name.
+	Name string `pulumi:"name"`
+	// Lifecycle status of the checkpoint (e.g. `CHECKPOINT_AVAILABLE`).
+	Status string `pulumi:"status"`
+}
+
+// GetMicrodropletCheckpointsCheckpointInput is an input type that accepts GetMicrodropletCheckpointsCheckpointArgs and GetMicrodropletCheckpointsCheckpointOutput values.
+// You can construct a concrete instance of `GetMicrodropletCheckpointsCheckpointInput` via:
+//
+//	GetMicrodropletCheckpointsCheckpointArgs{...}
+type GetMicrodropletCheckpointsCheckpointInput interface {
+	pulumi.Input
+
+	ToGetMicrodropletCheckpointsCheckpointOutput() GetMicrodropletCheckpointsCheckpointOutput
+	ToGetMicrodropletCheckpointsCheckpointOutputWithContext(context.Context) GetMicrodropletCheckpointsCheckpointOutput
+}
+
+type GetMicrodropletCheckpointsCheckpointArgs struct {
+	// RFC3339 timestamp of when the checkpoint was created.
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// Size of the persisted disk image, in bytes.
+	DiskBytes pulumi.IntInput `pulumi:"diskBytes"`
+	// Checkpoint ID.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Size of the persisted memory image, in bytes.
+	MemoryBytes pulumi.IntInput `pulumi:"memoryBytes"`
+	// ID of the MicroDroplet whose checkpoints should be listed.
+	MicrodropletId pulumi.StringInput `pulumi:"microdropletId"`
+	// Checkpoint name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Lifecycle status of the checkpoint (e.g. `CHECKPOINT_AVAILABLE`).
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetMicrodropletCheckpointsCheckpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMicrodropletCheckpointsCheckpoint)(nil)).Elem()
+}
+
+func (i GetMicrodropletCheckpointsCheckpointArgs) ToGetMicrodropletCheckpointsCheckpointOutput() GetMicrodropletCheckpointsCheckpointOutput {
+	return i.ToGetMicrodropletCheckpointsCheckpointOutputWithContext(context.Background())
+}
+
+func (i GetMicrodropletCheckpointsCheckpointArgs) ToGetMicrodropletCheckpointsCheckpointOutputWithContext(ctx context.Context) GetMicrodropletCheckpointsCheckpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMicrodropletCheckpointsCheckpointOutput)
+}
+
+// GetMicrodropletCheckpointsCheckpointArrayInput is an input type that accepts GetMicrodropletCheckpointsCheckpointArray and GetMicrodropletCheckpointsCheckpointArrayOutput values.
+// You can construct a concrete instance of `GetMicrodropletCheckpointsCheckpointArrayInput` via:
+//
+//	GetMicrodropletCheckpointsCheckpointArray{ GetMicrodropletCheckpointsCheckpointArgs{...} }
+type GetMicrodropletCheckpointsCheckpointArrayInput interface {
+	pulumi.Input
+
+	ToGetMicrodropletCheckpointsCheckpointArrayOutput() GetMicrodropletCheckpointsCheckpointArrayOutput
+	ToGetMicrodropletCheckpointsCheckpointArrayOutputWithContext(context.Context) GetMicrodropletCheckpointsCheckpointArrayOutput
+}
+
+type GetMicrodropletCheckpointsCheckpointArray []GetMicrodropletCheckpointsCheckpointInput
+
+func (GetMicrodropletCheckpointsCheckpointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMicrodropletCheckpointsCheckpoint)(nil)).Elem()
+}
+
+func (i GetMicrodropletCheckpointsCheckpointArray) ToGetMicrodropletCheckpointsCheckpointArrayOutput() GetMicrodropletCheckpointsCheckpointArrayOutput {
+	return i.ToGetMicrodropletCheckpointsCheckpointArrayOutputWithContext(context.Background())
+}
+
+func (i GetMicrodropletCheckpointsCheckpointArray) ToGetMicrodropletCheckpointsCheckpointArrayOutputWithContext(ctx context.Context) GetMicrodropletCheckpointsCheckpointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMicrodropletCheckpointsCheckpointArrayOutput)
+}
+
+type GetMicrodropletCheckpointsCheckpointOutput struct{ *pulumi.OutputState }
+
+func (GetMicrodropletCheckpointsCheckpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMicrodropletCheckpointsCheckpoint)(nil)).Elem()
+}
+
+func (o GetMicrodropletCheckpointsCheckpointOutput) ToGetMicrodropletCheckpointsCheckpointOutput() GetMicrodropletCheckpointsCheckpointOutput {
+	return o
+}
+
+func (o GetMicrodropletCheckpointsCheckpointOutput) ToGetMicrodropletCheckpointsCheckpointOutputWithContext(ctx context.Context) GetMicrodropletCheckpointsCheckpointOutput {
+	return o
+}
+
+// RFC3339 timestamp of when the checkpoint was created.
+func (o GetMicrodropletCheckpointsCheckpointOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrodropletCheckpointsCheckpoint) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Size of the persisted disk image, in bytes.
+func (o GetMicrodropletCheckpointsCheckpointOutput) DiskBytes() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMicrodropletCheckpointsCheckpoint) int { return v.DiskBytes }).(pulumi.IntOutput)
+}
+
+// Checkpoint ID.
+func (o GetMicrodropletCheckpointsCheckpointOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrodropletCheckpointsCheckpoint) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Size of the persisted memory image, in bytes.
+func (o GetMicrodropletCheckpointsCheckpointOutput) MemoryBytes() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMicrodropletCheckpointsCheckpoint) int { return v.MemoryBytes }).(pulumi.IntOutput)
+}
+
+// ID of the MicroDroplet whose checkpoints should be listed.
+func (o GetMicrodropletCheckpointsCheckpointOutput) MicrodropletId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrodropletCheckpointsCheckpoint) string { return v.MicrodropletId }).(pulumi.StringOutput)
+}
+
+// Checkpoint name.
+func (o GetMicrodropletCheckpointsCheckpointOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrodropletCheckpointsCheckpoint) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Lifecycle status of the checkpoint (e.g. `CHECKPOINT_AVAILABLE`).
+func (o GetMicrodropletCheckpointsCheckpointOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrodropletCheckpointsCheckpoint) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetMicrodropletCheckpointsCheckpointArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMicrodropletCheckpointsCheckpointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMicrodropletCheckpointsCheckpoint)(nil)).Elem()
+}
+
+func (o GetMicrodropletCheckpointsCheckpointArrayOutput) ToGetMicrodropletCheckpointsCheckpointArrayOutput() GetMicrodropletCheckpointsCheckpointArrayOutput {
+	return o
+}
+
+func (o GetMicrodropletCheckpointsCheckpointArrayOutput) ToGetMicrodropletCheckpointsCheckpointArrayOutputWithContext(ctx context.Context) GetMicrodropletCheckpointsCheckpointArrayOutput {
+	return o
+}
+
+func (o GetMicrodropletCheckpointsCheckpointArrayOutput) Index(i pulumi.IntInput) GetMicrodropletCheckpointsCheckpointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMicrodropletCheckpointsCheckpoint {
+		return vs[0].([]GetMicrodropletCheckpointsCheckpoint)[vs[1].(int)]
+	}).(GetMicrodropletCheckpointsCheckpointOutput)
+}
+
+type GetMicrodropletCheckpointsFilter struct {
+	// Require every value to match. Defaults to `false`.
+	All *bool `pulumi:"all"`
+	// Field to match. Valid keys include `id`, `name`, `status`.
+	Key string `pulumi:"key"`
+	// `exact`, `re`, or `substring`. Defaults to `exact`.
+	MatchBy *string `pulumi:"matchBy"`
+	// List of values to match on `key`.
+	Values []string `pulumi:"values"`
+}
+
+// GetMicrodropletCheckpointsFilterInput is an input type that accepts GetMicrodropletCheckpointsFilterArgs and GetMicrodropletCheckpointsFilterOutput values.
+// You can construct a concrete instance of `GetMicrodropletCheckpointsFilterInput` via:
+//
+//	GetMicrodropletCheckpointsFilterArgs{...}
+type GetMicrodropletCheckpointsFilterInput interface {
+	pulumi.Input
+
+	ToGetMicrodropletCheckpointsFilterOutput() GetMicrodropletCheckpointsFilterOutput
+	ToGetMicrodropletCheckpointsFilterOutputWithContext(context.Context) GetMicrodropletCheckpointsFilterOutput
+}
+
+type GetMicrodropletCheckpointsFilterArgs struct {
+	// Require every value to match. Defaults to `false`.
+	All pulumi.BoolPtrInput `pulumi:"all"`
+	// Field to match. Valid keys include `id`, `name`, `status`.
+	Key pulumi.StringInput `pulumi:"key"`
+	// `exact`, `re`, or `substring`. Defaults to `exact`.
+	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
+	// List of values to match on `key`.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetMicrodropletCheckpointsFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMicrodropletCheckpointsFilter)(nil)).Elem()
+}
+
+func (i GetMicrodropletCheckpointsFilterArgs) ToGetMicrodropletCheckpointsFilterOutput() GetMicrodropletCheckpointsFilterOutput {
+	return i.ToGetMicrodropletCheckpointsFilterOutputWithContext(context.Background())
+}
+
+func (i GetMicrodropletCheckpointsFilterArgs) ToGetMicrodropletCheckpointsFilterOutputWithContext(ctx context.Context) GetMicrodropletCheckpointsFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMicrodropletCheckpointsFilterOutput)
+}
+
+// GetMicrodropletCheckpointsFilterArrayInput is an input type that accepts GetMicrodropletCheckpointsFilterArray and GetMicrodropletCheckpointsFilterArrayOutput values.
+// You can construct a concrete instance of `GetMicrodropletCheckpointsFilterArrayInput` via:
+//
+//	GetMicrodropletCheckpointsFilterArray{ GetMicrodropletCheckpointsFilterArgs{...} }
+type GetMicrodropletCheckpointsFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetMicrodropletCheckpointsFilterArrayOutput() GetMicrodropletCheckpointsFilterArrayOutput
+	ToGetMicrodropletCheckpointsFilterArrayOutputWithContext(context.Context) GetMicrodropletCheckpointsFilterArrayOutput
+}
+
+type GetMicrodropletCheckpointsFilterArray []GetMicrodropletCheckpointsFilterInput
+
+func (GetMicrodropletCheckpointsFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMicrodropletCheckpointsFilter)(nil)).Elem()
+}
+
+func (i GetMicrodropletCheckpointsFilterArray) ToGetMicrodropletCheckpointsFilterArrayOutput() GetMicrodropletCheckpointsFilterArrayOutput {
+	return i.ToGetMicrodropletCheckpointsFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetMicrodropletCheckpointsFilterArray) ToGetMicrodropletCheckpointsFilterArrayOutputWithContext(ctx context.Context) GetMicrodropletCheckpointsFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMicrodropletCheckpointsFilterArrayOutput)
+}
+
+type GetMicrodropletCheckpointsFilterOutput struct{ *pulumi.OutputState }
+
+func (GetMicrodropletCheckpointsFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMicrodropletCheckpointsFilter)(nil)).Elem()
+}
+
+func (o GetMicrodropletCheckpointsFilterOutput) ToGetMicrodropletCheckpointsFilterOutput() GetMicrodropletCheckpointsFilterOutput {
+	return o
+}
+
+func (o GetMicrodropletCheckpointsFilterOutput) ToGetMicrodropletCheckpointsFilterOutputWithContext(ctx context.Context) GetMicrodropletCheckpointsFilterOutput {
+	return o
+}
+
+// Require every value to match. Defaults to `false`.
+func (o GetMicrodropletCheckpointsFilterOutput) All() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetMicrodropletCheckpointsFilter) *bool { return v.All }).(pulumi.BoolPtrOutput)
+}
+
+// Field to match. Valid keys include `id`, `name`, `status`.
+func (o GetMicrodropletCheckpointsFilterOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrodropletCheckpointsFilter) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// `exact`, `re`, or `substring`. Defaults to `exact`.
+func (o GetMicrodropletCheckpointsFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMicrodropletCheckpointsFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
+}
+
+// List of values to match on `key`.
+func (o GetMicrodropletCheckpointsFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetMicrodropletCheckpointsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetMicrodropletCheckpointsFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMicrodropletCheckpointsFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMicrodropletCheckpointsFilter)(nil)).Elem()
+}
+
+func (o GetMicrodropletCheckpointsFilterArrayOutput) ToGetMicrodropletCheckpointsFilterArrayOutput() GetMicrodropletCheckpointsFilterArrayOutput {
+	return o
+}
+
+func (o GetMicrodropletCheckpointsFilterArrayOutput) ToGetMicrodropletCheckpointsFilterArrayOutputWithContext(ctx context.Context) GetMicrodropletCheckpointsFilterArrayOutput {
+	return o
+}
+
+func (o GetMicrodropletCheckpointsFilterArrayOutput) Index(i pulumi.IntInput) GetMicrodropletCheckpointsFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMicrodropletCheckpointsFilter {
+		return vs[0].([]GetMicrodropletCheckpointsFilter)[vs[1].(int)]
+	}).(GetMicrodropletCheckpointsFilterOutput)
+}
+
+type GetMicrodropletCheckpointsSort struct {
+	// `asc` (default) or `desc`.
+	Direction *string `pulumi:"direction"`
+	// Field to sort by (e.g. `createdAt`).
+	Key string `pulumi:"key"`
+}
+
+// GetMicrodropletCheckpointsSortInput is an input type that accepts GetMicrodropletCheckpointsSortArgs and GetMicrodropletCheckpointsSortOutput values.
+// You can construct a concrete instance of `GetMicrodropletCheckpointsSortInput` via:
+//
+//	GetMicrodropletCheckpointsSortArgs{...}
+type GetMicrodropletCheckpointsSortInput interface {
+	pulumi.Input
+
+	ToGetMicrodropletCheckpointsSortOutput() GetMicrodropletCheckpointsSortOutput
+	ToGetMicrodropletCheckpointsSortOutputWithContext(context.Context) GetMicrodropletCheckpointsSortOutput
+}
+
+type GetMicrodropletCheckpointsSortArgs struct {
+	// `asc` (default) or `desc`.
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
+	// Field to sort by (e.g. `createdAt`).
+	Key pulumi.StringInput `pulumi:"key"`
+}
+
+func (GetMicrodropletCheckpointsSortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMicrodropletCheckpointsSort)(nil)).Elem()
+}
+
+func (i GetMicrodropletCheckpointsSortArgs) ToGetMicrodropletCheckpointsSortOutput() GetMicrodropletCheckpointsSortOutput {
+	return i.ToGetMicrodropletCheckpointsSortOutputWithContext(context.Background())
+}
+
+func (i GetMicrodropletCheckpointsSortArgs) ToGetMicrodropletCheckpointsSortOutputWithContext(ctx context.Context) GetMicrodropletCheckpointsSortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMicrodropletCheckpointsSortOutput)
+}
+
+// GetMicrodropletCheckpointsSortArrayInput is an input type that accepts GetMicrodropletCheckpointsSortArray and GetMicrodropletCheckpointsSortArrayOutput values.
+// You can construct a concrete instance of `GetMicrodropletCheckpointsSortArrayInput` via:
+//
+//	GetMicrodropletCheckpointsSortArray{ GetMicrodropletCheckpointsSortArgs{...} }
+type GetMicrodropletCheckpointsSortArrayInput interface {
+	pulumi.Input
+
+	ToGetMicrodropletCheckpointsSortArrayOutput() GetMicrodropletCheckpointsSortArrayOutput
+	ToGetMicrodropletCheckpointsSortArrayOutputWithContext(context.Context) GetMicrodropletCheckpointsSortArrayOutput
+}
+
+type GetMicrodropletCheckpointsSortArray []GetMicrodropletCheckpointsSortInput
+
+func (GetMicrodropletCheckpointsSortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMicrodropletCheckpointsSort)(nil)).Elem()
+}
+
+func (i GetMicrodropletCheckpointsSortArray) ToGetMicrodropletCheckpointsSortArrayOutput() GetMicrodropletCheckpointsSortArrayOutput {
+	return i.ToGetMicrodropletCheckpointsSortArrayOutputWithContext(context.Background())
+}
+
+func (i GetMicrodropletCheckpointsSortArray) ToGetMicrodropletCheckpointsSortArrayOutputWithContext(ctx context.Context) GetMicrodropletCheckpointsSortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMicrodropletCheckpointsSortArrayOutput)
+}
+
+type GetMicrodropletCheckpointsSortOutput struct{ *pulumi.OutputState }
+
+func (GetMicrodropletCheckpointsSortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMicrodropletCheckpointsSort)(nil)).Elem()
+}
+
+func (o GetMicrodropletCheckpointsSortOutput) ToGetMicrodropletCheckpointsSortOutput() GetMicrodropletCheckpointsSortOutput {
+	return o
+}
+
+func (o GetMicrodropletCheckpointsSortOutput) ToGetMicrodropletCheckpointsSortOutputWithContext(ctx context.Context) GetMicrodropletCheckpointsSortOutput {
+	return o
+}
+
+// `asc` (default) or `desc`.
+func (o GetMicrodropletCheckpointsSortOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMicrodropletCheckpointsSort) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
+// Field to sort by (e.g. `createdAt`).
+func (o GetMicrodropletCheckpointsSortOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrodropletCheckpointsSort) string { return v.Key }).(pulumi.StringOutput)
+}
+
+type GetMicrodropletCheckpointsSortArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMicrodropletCheckpointsSortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMicrodropletCheckpointsSort)(nil)).Elem()
+}
+
+func (o GetMicrodropletCheckpointsSortArrayOutput) ToGetMicrodropletCheckpointsSortArrayOutput() GetMicrodropletCheckpointsSortArrayOutput {
+	return o
+}
+
+func (o GetMicrodropletCheckpointsSortArrayOutput) ToGetMicrodropletCheckpointsSortArrayOutputWithContext(ctx context.Context) GetMicrodropletCheckpointsSortArrayOutput {
+	return o
+}
+
+func (o GetMicrodropletCheckpointsSortArrayOutput) Index(i pulumi.IntInput) GetMicrodropletCheckpointsSortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMicrodropletCheckpointsSort {
+		return vs[0].([]GetMicrodropletCheckpointsSort)[vs[1].(int)]
+	}).(GetMicrodropletCheckpointsSortOutput)
+}
+
+type GetMicrodropletImagesFilter struct {
+	// Require every value to match. Defaults to `false`.
+	All *bool `pulumi:"all"`
+	// Field to match.
+	Key string `pulumi:"key"`
+	// `exact`, `re`, or `substring`. Defaults to `exact`.
+	MatchBy *string `pulumi:"matchBy"`
+	// List of values to match on `key`.
+	Values []string `pulumi:"values"`
+}
+
+// GetMicrodropletImagesFilterInput is an input type that accepts GetMicrodropletImagesFilterArgs and GetMicrodropletImagesFilterOutput values.
+// You can construct a concrete instance of `GetMicrodropletImagesFilterInput` via:
+//
+//	GetMicrodropletImagesFilterArgs{...}
+type GetMicrodropletImagesFilterInput interface {
+	pulumi.Input
+
+	ToGetMicrodropletImagesFilterOutput() GetMicrodropletImagesFilterOutput
+	ToGetMicrodropletImagesFilterOutputWithContext(context.Context) GetMicrodropletImagesFilterOutput
+}
+
+type GetMicrodropletImagesFilterArgs struct {
+	// Require every value to match. Defaults to `false`.
+	All pulumi.BoolPtrInput `pulumi:"all"`
+	// Field to match.
+	Key pulumi.StringInput `pulumi:"key"`
+	// `exact`, `re`, or `substring`. Defaults to `exact`.
+	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
+	// List of values to match on `key`.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetMicrodropletImagesFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMicrodropletImagesFilter)(nil)).Elem()
+}
+
+func (i GetMicrodropletImagesFilterArgs) ToGetMicrodropletImagesFilterOutput() GetMicrodropletImagesFilterOutput {
+	return i.ToGetMicrodropletImagesFilterOutputWithContext(context.Background())
+}
+
+func (i GetMicrodropletImagesFilterArgs) ToGetMicrodropletImagesFilterOutputWithContext(ctx context.Context) GetMicrodropletImagesFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMicrodropletImagesFilterOutput)
+}
+
+// GetMicrodropletImagesFilterArrayInput is an input type that accepts GetMicrodropletImagesFilterArray and GetMicrodropletImagesFilterArrayOutput values.
+// You can construct a concrete instance of `GetMicrodropletImagesFilterArrayInput` via:
+//
+//	GetMicrodropletImagesFilterArray{ GetMicrodropletImagesFilterArgs{...} }
+type GetMicrodropletImagesFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetMicrodropletImagesFilterArrayOutput() GetMicrodropletImagesFilterArrayOutput
+	ToGetMicrodropletImagesFilterArrayOutputWithContext(context.Context) GetMicrodropletImagesFilterArrayOutput
+}
+
+type GetMicrodropletImagesFilterArray []GetMicrodropletImagesFilterInput
+
+func (GetMicrodropletImagesFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMicrodropletImagesFilter)(nil)).Elem()
+}
+
+func (i GetMicrodropletImagesFilterArray) ToGetMicrodropletImagesFilterArrayOutput() GetMicrodropletImagesFilterArrayOutput {
+	return i.ToGetMicrodropletImagesFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetMicrodropletImagesFilterArray) ToGetMicrodropletImagesFilterArrayOutputWithContext(ctx context.Context) GetMicrodropletImagesFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMicrodropletImagesFilterArrayOutput)
+}
+
+type GetMicrodropletImagesFilterOutput struct{ *pulumi.OutputState }
+
+func (GetMicrodropletImagesFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMicrodropletImagesFilter)(nil)).Elem()
+}
+
+func (o GetMicrodropletImagesFilterOutput) ToGetMicrodropletImagesFilterOutput() GetMicrodropletImagesFilterOutput {
+	return o
+}
+
+func (o GetMicrodropletImagesFilterOutput) ToGetMicrodropletImagesFilterOutputWithContext(ctx context.Context) GetMicrodropletImagesFilterOutput {
+	return o
+}
+
+// Require every value to match. Defaults to `false`.
+func (o GetMicrodropletImagesFilterOutput) All() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetMicrodropletImagesFilter) *bool { return v.All }).(pulumi.BoolPtrOutput)
+}
+
+// Field to match.
+func (o GetMicrodropletImagesFilterOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrodropletImagesFilter) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// `exact`, `re`, or `substring`. Defaults to `exact`.
+func (o GetMicrodropletImagesFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMicrodropletImagesFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
+}
+
+// List of values to match on `key`.
+func (o GetMicrodropletImagesFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetMicrodropletImagesFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetMicrodropletImagesFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMicrodropletImagesFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMicrodropletImagesFilter)(nil)).Elem()
+}
+
+func (o GetMicrodropletImagesFilterArrayOutput) ToGetMicrodropletImagesFilterArrayOutput() GetMicrodropletImagesFilterArrayOutput {
+	return o
+}
+
+func (o GetMicrodropletImagesFilterArrayOutput) ToGetMicrodropletImagesFilterArrayOutputWithContext(ctx context.Context) GetMicrodropletImagesFilterArrayOutput {
+	return o
+}
+
+func (o GetMicrodropletImagesFilterArrayOutput) Index(i pulumi.IntInput) GetMicrodropletImagesFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMicrodropletImagesFilter {
+		return vs[0].([]GetMicrodropletImagesFilter)[vs[1].(int)]
+	}).(GetMicrodropletImagesFilterOutput)
+}
+
+type GetMicrodropletImagesMicroDropletImage struct {
+	// The creation timestamp for the MicroDroplet image
+	CreatedAt string `pulumi:"createdAt"`
+	// Name of the MicroDroplet image
+	Name string `pulumi:"name"`
+	// Source OCI reference for the MicroDroplet image
+	Source string `pulumi:"source"`
+	// Lifecycle status of the MicroDroplet image
+	Status string `pulumi:"status"`
+	// The uniform resource name (URN) for the MicroDroplet image
+	Urn string `pulumi:"urn"`
+}
+
+// GetMicrodropletImagesMicroDropletImageInput is an input type that accepts GetMicrodropletImagesMicroDropletImageArgs and GetMicrodropletImagesMicroDropletImageOutput values.
+// You can construct a concrete instance of `GetMicrodropletImagesMicroDropletImageInput` via:
+//
+//	GetMicrodropletImagesMicroDropletImageArgs{...}
+type GetMicrodropletImagesMicroDropletImageInput interface {
+	pulumi.Input
+
+	ToGetMicrodropletImagesMicroDropletImageOutput() GetMicrodropletImagesMicroDropletImageOutput
+	ToGetMicrodropletImagesMicroDropletImageOutputWithContext(context.Context) GetMicrodropletImagesMicroDropletImageOutput
+}
+
+type GetMicrodropletImagesMicroDropletImageArgs struct {
+	// The creation timestamp for the MicroDroplet image
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// Name of the MicroDroplet image
+	Name pulumi.StringInput `pulumi:"name"`
+	// Source OCI reference for the MicroDroplet image
+	Source pulumi.StringInput `pulumi:"source"`
+	// Lifecycle status of the MicroDroplet image
+	Status pulumi.StringInput `pulumi:"status"`
+	// The uniform resource name (URN) for the MicroDroplet image
+	Urn pulumi.StringInput `pulumi:"urn"`
+}
+
+func (GetMicrodropletImagesMicroDropletImageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMicrodropletImagesMicroDropletImage)(nil)).Elem()
+}
+
+func (i GetMicrodropletImagesMicroDropletImageArgs) ToGetMicrodropletImagesMicroDropletImageOutput() GetMicrodropletImagesMicroDropletImageOutput {
+	return i.ToGetMicrodropletImagesMicroDropletImageOutputWithContext(context.Background())
+}
+
+func (i GetMicrodropletImagesMicroDropletImageArgs) ToGetMicrodropletImagesMicroDropletImageOutputWithContext(ctx context.Context) GetMicrodropletImagesMicroDropletImageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMicrodropletImagesMicroDropletImageOutput)
+}
+
+// GetMicrodropletImagesMicroDropletImageArrayInput is an input type that accepts GetMicrodropletImagesMicroDropletImageArray and GetMicrodropletImagesMicroDropletImageArrayOutput values.
+// You can construct a concrete instance of `GetMicrodropletImagesMicroDropletImageArrayInput` via:
+//
+//	GetMicrodropletImagesMicroDropletImageArray{ GetMicrodropletImagesMicroDropletImageArgs{...} }
+type GetMicrodropletImagesMicroDropletImageArrayInput interface {
+	pulumi.Input
+
+	ToGetMicrodropletImagesMicroDropletImageArrayOutput() GetMicrodropletImagesMicroDropletImageArrayOutput
+	ToGetMicrodropletImagesMicroDropletImageArrayOutputWithContext(context.Context) GetMicrodropletImagesMicroDropletImageArrayOutput
+}
+
+type GetMicrodropletImagesMicroDropletImageArray []GetMicrodropletImagesMicroDropletImageInput
+
+func (GetMicrodropletImagesMicroDropletImageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMicrodropletImagesMicroDropletImage)(nil)).Elem()
+}
+
+func (i GetMicrodropletImagesMicroDropletImageArray) ToGetMicrodropletImagesMicroDropletImageArrayOutput() GetMicrodropletImagesMicroDropletImageArrayOutput {
+	return i.ToGetMicrodropletImagesMicroDropletImageArrayOutputWithContext(context.Background())
+}
+
+func (i GetMicrodropletImagesMicroDropletImageArray) ToGetMicrodropletImagesMicroDropletImageArrayOutputWithContext(ctx context.Context) GetMicrodropletImagesMicroDropletImageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMicrodropletImagesMicroDropletImageArrayOutput)
+}
+
+type GetMicrodropletImagesMicroDropletImageOutput struct{ *pulumi.OutputState }
+
+func (GetMicrodropletImagesMicroDropletImageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMicrodropletImagesMicroDropletImage)(nil)).Elem()
+}
+
+func (o GetMicrodropletImagesMicroDropletImageOutput) ToGetMicrodropletImagesMicroDropletImageOutput() GetMicrodropletImagesMicroDropletImageOutput {
+	return o
+}
+
+func (o GetMicrodropletImagesMicroDropletImageOutput) ToGetMicrodropletImagesMicroDropletImageOutputWithContext(ctx context.Context) GetMicrodropletImagesMicroDropletImageOutput {
+	return o
+}
+
+// The creation timestamp for the MicroDroplet image
+func (o GetMicrodropletImagesMicroDropletImageOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrodropletImagesMicroDropletImage) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Name of the MicroDroplet image
+func (o GetMicrodropletImagesMicroDropletImageOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrodropletImagesMicroDropletImage) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Source OCI reference for the MicroDroplet image
+func (o GetMicrodropletImagesMicroDropletImageOutput) Source() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrodropletImagesMicroDropletImage) string { return v.Source }).(pulumi.StringOutput)
+}
+
+// Lifecycle status of the MicroDroplet image
+func (o GetMicrodropletImagesMicroDropletImageOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrodropletImagesMicroDropletImage) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The uniform resource name (URN) for the MicroDroplet image
+func (o GetMicrodropletImagesMicroDropletImageOutput) Urn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrodropletImagesMicroDropletImage) string { return v.Urn }).(pulumi.StringOutput)
+}
+
+type GetMicrodropletImagesMicroDropletImageArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMicrodropletImagesMicroDropletImageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMicrodropletImagesMicroDropletImage)(nil)).Elem()
+}
+
+func (o GetMicrodropletImagesMicroDropletImageArrayOutput) ToGetMicrodropletImagesMicroDropletImageArrayOutput() GetMicrodropletImagesMicroDropletImageArrayOutput {
+	return o
+}
+
+func (o GetMicrodropletImagesMicroDropletImageArrayOutput) ToGetMicrodropletImagesMicroDropletImageArrayOutputWithContext(ctx context.Context) GetMicrodropletImagesMicroDropletImageArrayOutput {
+	return o
+}
+
+func (o GetMicrodropletImagesMicroDropletImageArrayOutput) Index(i pulumi.IntInput) GetMicrodropletImagesMicroDropletImageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMicrodropletImagesMicroDropletImage {
+		return vs[0].([]GetMicrodropletImagesMicroDropletImage)[vs[1].(int)]
+	}).(GetMicrodropletImagesMicroDropletImageOutput)
+}
+
+type GetMicrodropletImagesSort struct {
+	// `asc` (default) or `desc`.
+	Direction *string `pulumi:"direction"`
+	// Field to sort by.
+	Key string `pulumi:"key"`
+}
+
+// GetMicrodropletImagesSortInput is an input type that accepts GetMicrodropletImagesSortArgs and GetMicrodropletImagesSortOutput values.
+// You can construct a concrete instance of `GetMicrodropletImagesSortInput` via:
+//
+//	GetMicrodropletImagesSortArgs{...}
+type GetMicrodropletImagesSortInput interface {
+	pulumi.Input
+
+	ToGetMicrodropletImagesSortOutput() GetMicrodropletImagesSortOutput
+	ToGetMicrodropletImagesSortOutputWithContext(context.Context) GetMicrodropletImagesSortOutput
+}
+
+type GetMicrodropletImagesSortArgs struct {
+	// `asc` (default) or `desc`.
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
+	// Field to sort by.
+	Key pulumi.StringInput `pulumi:"key"`
+}
+
+func (GetMicrodropletImagesSortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMicrodropletImagesSort)(nil)).Elem()
+}
+
+func (i GetMicrodropletImagesSortArgs) ToGetMicrodropletImagesSortOutput() GetMicrodropletImagesSortOutput {
+	return i.ToGetMicrodropletImagesSortOutputWithContext(context.Background())
+}
+
+func (i GetMicrodropletImagesSortArgs) ToGetMicrodropletImagesSortOutputWithContext(ctx context.Context) GetMicrodropletImagesSortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMicrodropletImagesSortOutput)
+}
+
+// GetMicrodropletImagesSortArrayInput is an input type that accepts GetMicrodropletImagesSortArray and GetMicrodropletImagesSortArrayOutput values.
+// You can construct a concrete instance of `GetMicrodropletImagesSortArrayInput` via:
+//
+//	GetMicrodropletImagesSortArray{ GetMicrodropletImagesSortArgs{...} }
+type GetMicrodropletImagesSortArrayInput interface {
+	pulumi.Input
+
+	ToGetMicrodropletImagesSortArrayOutput() GetMicrodropletImagesSortArrayOutput
+	ToGetMicrodropletImagesSortArrayOutputWithContext(context.Context) GetMicrodropletImagesSortArrayOutput
+}
+
+type GetMicrodropletImagesSortArray []GetMicrodropletImagesSortInput
+
+func (GetMicrodropletImagesSortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMicrodropletImagesSort)(nil)).Elem()
+}
+
+func (i GetMicrodropletImagesSortArray) ToGetMicrodropletImagesSortArrayOutput() GetMicrodropletImagesSortArrayOutput {
+	return i.ToGetMicrodropletImagesSortArrayOutputWithContext(context.Background())
+}
+
+func (i GetMicrodropletImagesSortArray) ToGetMicrodropletImagesSortArrayOutputWithContext(ctx context.Context) GetMicrodropletImagesSortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMicrodropletImagesSortArrayOutput)
+}
+
+type GetMicrodropletImagesSortOutput struct{ *pulumi.OutputState }
+
+func (GetMicrodropletImagesSortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMicrodropletImagesSort)(nil)).Elem()
+}
+
+func (o GetMicrodropletImagesSortOutput) ToGetMicrodropletImagesSortOutput() GetMicrodropletImagesSortOutput {
+	return o
+}
+
+func (o GetMicrodropletImagesSortOutput) ToGetMicrodropletImagesSortOutputWithContext(ctx context.Context) GetMicrodropletImagesSortOutput {
+	return o
+}
+
+// `asc` (default) or `desc`.
+func (o GetMicrodropletImagesSortOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMicrodropletImagesSort) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
+// Field to sort by.
+func (o GetMicrodropletImagesSortOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrodropletImagesSort) string { return v.Key }).(pulumi.StringOutput)
+}
+
+type GetMicrodropletImagesSortArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMicrodropletImagesSortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMicrodropletImagesSort)(nil)).Elem()
+}
+
+func (o GetMicrodropletImagesSortArrayOutput) ToGetMicrodropletImagesSortArrayOutput() GetMicrodropletImagesSortArrayOutput {
+	return o
+}
+
+func (o GetMicrodropletImagesSortArrayOutput) ToGetMicrodropletImagesSortArrayOutputWithContext(ctx context.Context) GetMicrodropletImagesSortArrayOutput {
+	return o
+}
+
+func (o GetMicrodropletImagesSortArrayOutput) Index(i pulumi.IntInput) GetMicrodropletImagesSortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMicrodropletImagesSort {
+		return vs[0].([]GetMicrodropletImagesSort)[vs[1].(int)]
+	}).(GetMicrodropletImagesSortOutput)
+}
+
+type GetMicrodropletsFilter struct {
+	// Require every value to match. Defaults to `false`.
+	All *bool `pulumi:"all"`
+	// Field to match.
+	Key string `pulumi:"key"`
+	// `exact`, `re`, or `substring`. Defaults to `exact`.
+	MatchBy *string `pulumi:"matchBy"`
+	// List of values to match on `key`.
+	Values []string `pulumi:"values"`
+}
+
+// GetMicrodropletsFilterInput is an input type that accepts GetMicrodropletsFilterArgs and GetMicrodropletsFilterOutput values.
+// You can construct a concrete instance of `GetMicrodropletsFilterInput` via:
+//
+//	GetMicrodropletsFilterArgs{...}
+type GetMicrodropletsFilterInput interface {
+	pulumi.Input
+
+	ToGetMicrodropletsFilterOutput() GetMicrodropletsFilterOutput
+	ToGetMicrodropletsFilterOutputWithContext(context.Context) GetMicrodropletsFilterOutput
+}
+
+type GetMicrodropletsFilterArgs struct {
+	// Require every value to match. Defaults to `false`.
+	All pulumi.BoolPtrInput `pulumi:"all"`
+	// Field to match.
+	Key pulumi.StringInput `pulumi:"key"`
+	// `exact`, `re`, or `substring`. Defaults to `exact`.
+	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
+	// List of values to match on `key`.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetMicrodropletsFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMicrodropletsFilter)(nil)).Elem()
+}
+
+func (i GetMicrodropletsFilterArgs) ToGetMicrodropletsFilterOutput() GetMicrodropletsFilterOutput {
+	return i.ToGetMicrodropletsFilterOutputWithContext(context.Background())
+}
+
+func (i GetMicrodropletsFilterArgs) ToGetMicrodropletsFilterOutputWithContext(ctx context.Context) GetMicrodropletsFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMicrodropletsFilterOutput)
+}
+
+// GetMicrodropletsFilterArrayInput is an input type that accepts GetMicrodropletsFilterArray and GetMicrodropletsFilterArrayOutput values.
+// You can construct a concrete instance of `GetMicrodropletsFilterArrayInput` via:
+//
+//	GetMicrodropletsFilterArray{ GetMicrodropletsFilterArgs{...} }
+type GetMicrodropletsFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetMicrodropletsFilterArrayOutput() GetMicrodropletsFilterArrayOutput
+	ToGetMicrodropletsFilterArrayOutputWithContext(context.Context) GetMicrodropletsFilterArrayOutput
+}
+
+type GetMicrodropletsFilterArray []GetMicrodropletsFilterInput
+
+func (GetMicrodropletsFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMicrodropletsFilter)(nil)).Elem()
+}
+
+func (i GetMicrodropletsFilterArray) ToGetMicrodropletsFilterArrayOutput() GetMicrodropletsFilterArrayOutput {
+	return i.ToGetMicrodropletsFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetMicrodropletsFilterArray) ToGetMicrodropletsFilterArrayOutputWithContext(ctx context.Context) GetMicrodropletsFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMicrodropletsFilterArrayOutput)
+}
+
+type GetMicrodropletsFilterOutput struct{ *pulumi.OutputState }
+
+func (GetMicrodropletsFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMicrodropletsFilter)(nil)).Elem()
+}
+
+func (o GetMicrodropletsFilterOutput) ToGetMicrodropletsFilterOutput() GetMicrodropletsFilterOutput {
+	return o
+}
+
+func (o GetMicrodropletsFilterOutput) ToGetMicrodropletsFilterOutputWithContext(ctx context.Context) GetMicrodropletsFilterOutput {
+	return o
+}
+
+// Require every value to match. Defaults to `false`.
+func (o GetMicrodropletsFilterOutput) All() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetMicrodropletsFilter) *bool { return v.All }).(pulumi.BoolPtrOutput)
+}
+
+// Field to match.
+func (o GetMicrodropletsFilterOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrodropletsFilter) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// `exact`, `re`, or `substring`. Defaults to `exact`.
+func (o GetMicrodropletsFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMicrodropletsFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
+}
+
+// List of values to match on `key`.
+func (o GetMicrodropletsFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetMicrodropletsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetMicrodropletsFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMicrodropletsFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMicrodropletsFilter)(nil)).Elem()
+}
+
+func (o GetMicrodropletsFilterArrayOutput) ToGetMicrodropletsFilterArrayOutput() GetMicrodropletsFilterArrayOutput {
+	return o
+}
+
+func (o GetMicrodropletsFilterArrayOutput) ToGetMicrodropletsFilterArrayOutputWithContext(ctx context.Context) GetMicrodropletsFilterArrayOutput {
+	return o
+}
+
+func (o GetMicrodropletsFilterArrayOutput) Index(i pulumi.IntInput) GetMicrodropletsFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMicrodropletsFilter {
+		return vs[0].([]GetMicrodropletsFilter)[vs[1].(int)]
+	}).(GetMicrodropletsFilterOutput)
+}
+
+type GetMicrodropletsMicroDroplet struct {
+	// Auto-pause configuration. Forces recreation on change: the MicroDroplets API has no in-place update path for auto_pause.
+	AutoPauses []GetMicrodropletsMicroDropletAutoPause `pulumi:"autoPauses"`
+	// Whether the MicroDroplet should auto-resume on request. Forces recreation on change: the MicroDroplets API has no in-place update path for auto_resume.
+	AutoResume bool `pulumi:"autoResume"`
+	// The creation timestamp for the MicroDroplet
+	CreatedAt string `pulumi:"createdAt"`
+	// Observed lifecycle state of the MicroDroplet
+	CurrentState string `pulumi:"currentState"`
+	// Public endpoint URL for the MicroDroplet
+	Endpoint string `pulumi:"endpoint"`
+	// Environment variables passed to the MicroDroplet
+	Environment map[string]string `pulumi:"environment"`
+	// Port the MicroDroplet exposes over HTTP
+	HttpPort int `pulumi:"httpPort"`
+	// HTTP protocol: 'http' or 'http2'
+	HttpProtocol string `pulumi:"httpProtocol"`
+	// MicroDroplet image UUID or URN
+	Image string `pulumi:"image"`
+	// Server-side filter: only include MicroDroplets whose name matches exactly. Conflicts with `region`.
+	Name string `pulumi:"name"`
+	// Networking mode: 'public' or 'vpc'
+	Networking string `pulumi:"networking"`
+	// Server-side filter: only include MicroDroplets in this region. Conflicts with `name`.
+	Region string `pulumi:"region"`
+	// MicroDroplet size slug
+	Size string `pulumi:"size"`
+	// Desired lifecycle state: 'running' or 'paused'. Changes are applied by calling the microdroplet pause / resume action endpoints.
+	State string `pulumi:"state"`
+	// The uniform resource name (URN) for the MicroDroplet
+	Urn string `pulumi:"urn"`
+	// UUID of the VPC to attach the MicroDroplet to. Only valid when networking is 'vpc'.
+	VpcUuid string `pulumi:"vpcUuid"`
+}
+
+// GetMicrodropletsMicroDropletInput is an input type that accepts GetMicrodropletsMicroDropletArgs and GetMicrodropletsMicroDropletOutput values.
+// You can construct a concrete instance of `GetMicrodropletsMicroDropletInput` via:
+//
+//	GetMicrodropletsMicroDropletArgs{...}
+type GetMicrodropletsMicroDropletInput interface {
+	pulumi.Input
+
+	ToGetMicrodropletsMicroDropletOutput() GetMicrodropletsMicroDropletOutput
+	ToGetMicrodropletsMicroDropletOutputWithContext(context.Context) GetMicrodropletsMicroDropletOutput
+}
+
+type GetMicrodropletsMicroDropletArgs struct {
+	// Auto-pause configuration. Forces recreation on change: the MicroDroplets API has no in-place update path for auto_pause.
+	AutoPauses GetMicrodropletsMicroDropletAutoPauseArrayInput `pulumi:"autoPauses"`
+	// Whether the MicroDroplet should auto-resume on request. Forces recreation on change: the MicroDroplets API has no in-place update path for auto_resume.
+	AutoResume pulumi.BoolInput `pulumi:"autoResume"`
+	// The creation timestamp for the MicroDroplet
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// Observed lifecycle state of the MicroDroplet
+	CurrentState pulumi.StringInput `pulumi:"currentState"`
+	// Public endpoint URL for the MicroDroplet
+	Endpoint pulumi.StringInput `pulumi:"endpoint"`
+	// Environment variables passed to the MicroDroplet
+	Environment pulumi.StringMapInput `pulumi:"environment"`
+	// Port the MicroDroplet exposes over HTTP
+	HttpPort pulumi.IntInput `pulumi:"httpPort"`
+	// HTTP protocol: 'http' or 'http2'
+	HttpProtocol pulumi.StringInput `pulumi:"httpProtocol"`
+	// MicroDroplet image UUID or URN
+	Image pulumi.StringInput `pulumi:"image"`
+	// Server-side filter: only include MicroDroplets whose name matches exactly. Conflicts with `region`.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Networking mode: 'public' or 'vpc'
+	Networking pulumi.StringInput `pulumi:"networking"`
+	// Server-side filter: only include MicroDroplets in this region. Conflicts with `name`.
+	Region pulumi.StringInput `pulumi:"region"`
+	// MicroDroplet size slug
+	Size pulumi.StringInput `pulumi:"size"`
+	// Desired lifecycle state: 'running' or 'paused'. Changes are applied by calling the microdroplet pause / resume action endpoints.
+	State pulumi.StringInput `pulumi:"state"`
+	// The uniform resource name (URN) for the MicroDroplet
+	Urn pulumi.StringInput `pulumi:"urn"`
+	// UUID of the VPC to attach the MicroDroplet to. Only valid when networking is 'vpc'.
+	VpcUuid pulumi.StringInput `pulumi:"vpcUuid"`
+}
+
+func (GetMicrodropletsMicroDropletArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMicrodropletsMicroDroplet)(nil)).Elem()
+}
+
+func (i GetMicrodropletsMicroDropletArgs) ToGetMicrodropletsMicroDropletOutput() GetMicrodropletsMicroDropletOutput {
+	return i.ToGetMicrodropletsMicroDropletOutputWithContext(context.Background())
+}
+
+func (i GetMicrodropletsMicroDropletArgs) ToGetMicrodropletsMicroDropletOutputWithContext(ctx context.Context) GetMicrodropletsMicroDropletOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMicrodropletsMicroDropletOutput)
+}
+
+// GetMicrodropletsMicroDropletArrayInput is an input type that accepts GetMicrodropletsMicroDropletArray and GetMicrodropletsMicroDropletArrayOutput values.
+// You can construct a concrete instance of `GetMicrodropletsMicroDropletArrayInput` via:
+//
+//	GetMicrodropletsMicroDropletArray{ GetMicrodropletsMicroDropletArgs{...} }
+type GetMicrodropletsMicroDropletArrayInput interface {
+	pulumi.Input
+
+	ToGetMicrodropletsMicroDropletArrayOutput() GetMicrodropletsMicroDropletArrayOutput
+	ToGetMicrodropletsMicroDropletArrayOutputWithContext(context.Context) GetMicrodropletsMicroDropletArrayOutput
+}
+
+type GetMicrodropletsMicroDropletArray []GetMicrodropletsMicroDropletInput
+
+func (GetMicrodropletsMicroDropletArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMicrodropletsMicroDroplet)(nil)).Elem()
+}
+
+func (i GetMicrodropletsMicroDropletArray) ToGetMicrodropletsMicroDropletArrayOutput() GetMicrodropletsMicroDropletArrayOutput {
+	return i.ToGetMicrodropletsMicroDropletArrayOutputWithContext(context.Background())
+}
+
+func (i GetMicrodropletsMicroDropletArray) ToGetMicrodropletsMicroDropletArrayOutputWithContext(ctx context.Context) GetMicrodropletsMicroDropletArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMicrodropletsMicroDropletArrayOutput)
+}
+
+type GetMicrodropletsMicroDropletOutput struct{ *pulumi.OutputState }
+
+func (GetMicrodropletsMicroDropletOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMicrodropletsMicroDroplet)(nil)).Elem()
+}
+
+func (o GetMicrodropletsMicroDropletOutput) ToGetMicrodropletsMicroDropletOutput() GetMicrodropletsMicroDropletOutput {
+	return o
+}
+
+func (o GetMicrodropletsMicroDropletOutput) ToGetMicrodropletsMicroDropletOutputWithContext(ctx context.Context) GetMicrodropletsMicroDropletOutput {
+	return o
+}
+
+// Auto-pause configuration. Forces recreation on change: the MicroDroplets API has no in-place update path for auto_pause.
+func (o GetMicrodropletsMicroDropletOutput) AutoPauses() GetMicrodropletsMicroDropletAutoPauseArrayOutput {
+	return o.ApplyT(func(v GetMicrodropletsMicroDroplet) []GetMicrodropletsMicroDropletAutoPause { return v.AutoPauses }).(GetMicrodropletsMicroDropletAutoPauseArrayOutput)
+}
+
+// Whether the MicroDroplet should auto-resume on request. Forces recreation on change: the MicroDroplets API has no in-place update path for auto_resume.
+func (o GetMicrodropletsMicroDropletOutput) AutoResume() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetMicrodropletsMicroDroplet) bool { return v.AutoResume }).(pulumi.BoolOutput)
+}
+
+// The creation timestamp for the MicroDroplet
+func (o GetMicrodropletsMicroDropletOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrodropletsMicroDroplet) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Observed lifecycle state of the MicroDroplet
+func (o GetMicrodropletsMicroDropletOutput) CurrentState() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrodropletsMicroDroplet) string { return v.CurrentState }).(pulumi.StringOutput)
+}
+
+// Public endpoint URL for the MicroDroplet
+func (o GetMicrodropletsMicroDropletOutput) Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrodropletsMicroDroplet) string { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+// Environment variables passed to the MicroDroplet
+func (o GetMicrodropletsMicroDropletOutput) Environment() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetMicrodropletsMicroDroplet) map[string]string { return v.Environment }).(pulumi.StringMapOutput)
+}
+
+// Port the MicroDroplet exposes over HTTP
+func (o GetMicrodropletsMicroDropletOutput) HttpPort() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMicrodropletsMicroDroplet) int { return v.HttpPort }).(pulumi.IntOutput)
+}
+
+// HTTP protocol: 'http' or 'http2'
+func (o GetMicrodropletsMicroDropletOutput) HttpProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrodropletsMicroDroplet) string { return v.HttpProtocol }).(pulumi.StringOutput)
+}
+
+// MicroDroplet image UUID or URN
+func (o GetMicrodropletsMicroDropletOutput) Image() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrodropletsMicroDroplet) string { return v.Image }).(pulumi.StringOutput)
+}
+
+// Server-side filter: only include MicroDroplets whose name matches exactly. Conflicts with `region`.
+func (o GetMicrodropletsMicroDropletOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrodropletsMicroDroplet) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Networking mode: 'public' or 'vpc'
+func (o GetMicrodropletsMicroDropletOutput) Networking() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrodropletsMicroDroplet) string { return v.Networking }).(pulumi.StringOutput)
+}
+
+// Server-side filter: only include MicroDroplets in this region. Conflicts with `name`.
+func (o GetMicrodropletsMicroDropletOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrodropletsMicroDroplet) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// MicroDroplet size slug
+func (o GetMicrodropletsMicroDropletOutput) Size() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrodropletsMicroDroplet) string { return v.Size }).(pulumi.StringOutput)
+}
+
+// Desired lifecycle state: 'running' or 'paused'. Changes are applied by calling the microdroplet pause / resume action endpoints.
+func (o GetMicrodropletsMicroDropletOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrodropletsMicroDroplet) string { return v.State }).(pulumi.StringOutput)
+}
+
+// The uniform resource name (URN) for the MicroDroplet
+func (o GetMicrodropletsMicroDropletOutput) Urn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrodropletsMicroDroplet) string { return v.Urn }).(pulumi.StringOutput)
+}
+
+// UUID of the VPC to attach the MicroDroplet to. Only valid when networking is 'vpc'.
+func (o GetMicrodropletsMicroDropletOutput) VpcUuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrodropletsMicroDroplet) string { return v.VpcUuid }).(pulumi.StringOutput)
+}
+
+type GetMicrodropletsMicroDropletArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMicrodropletsMicroDropletArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMicrodropletsMicroDroplet)(nil)).Elem()
+}
+
+func (o GetMicrodropletsMicroDropletArrayOutput) ToGetMicrodropletsMicroDropletArrayOutput() GetMicrodropletsMicroDropletArrayOutput {
+	return o
+}
+
+func (o GetMicrodropletsMicroDropletArrayOutput) ToGetMicrodropletsMicroDropletArrayOutputWithContext(ctx context.Context) GetMicrodropletsMicroDropletArrayOutput {
+	return o
+}
+
+func (o GetMicrodropletsMicroDropletArrayOutput) Index(i pulumi.IntInput) GetMicrodropletsMicroDropletOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMicrodropletsMicroDroplet {
+		return vs[0].([]GetMicrodropletsMicroDroplet)[vs[1].(int)]
+	}).(GetMicrodropletsMicroDropletOutput)
+}
+
+type GetMicrodropletsMicroDropletAutoPause struct {
+	// Whether auto-pause is enabled. Forces recreation on change (no in-place API path).
+	Enabled bool `pulumi:"enabled"`
+	// Idle timeout as a Go duration string (e.g. '5m', '30s'). Forces recreation on change (no in-place API path).
+	IdleTimeout string `pulumi:"idleTimeout"`
+}
+
+// GetMicrodropletsMicroDropletAutoPauseInput is an input type that accepts GetMicrodropletsMicroDropletAutoPauseArgs and GetMicrodropletsMicroDropletAutoPauseOutput values.
+// You can construct a concrete instance of `GetMicrodropletsMicroDropletAutoPauseInput` via:
+//
+//	GetMicrodropletsMicroDropletAutoPauseArgs{...}
+type GetMicrodropletsMicroDropletAutoPauseInput interface {
+	pulumi.Input
+
+	ToGetMicrodropletsMicroDropletAutoPauseOutput() GetMicrodropletsMicroDropletAutoPauseOutput
+	ToGetMicrodropletsMicroDropletAutoPauseOutputWithContext(context.Context) GetMicrodropletsMicroDropletAutoPauseOutput
+}
+
+type GetMicrodropletsMicroDropletAutoPauseArgs struct {
+	// Whether auto-pause is enabled. Forces recreation on change (no in-place API path).
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Idle timeout as a Go duration string (e.g. '5m', '30s'). Forces recreation on change (no in-place API path).
+	IdleTimeout pulumi.StringInput `pulumi:"idleTimeout"`
+}
+
+func (GetMicrodropletsMicroDropletAutoPauseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMicrodropletsMicroDropletAutoPause)(nil)).Elem()
+}
+
+func (i GetMicrodropletsMicroDropletAutoPauseArgs) ToGetMicrodropletsMicroDropletAutoPauseOutput() GetMicrodropletsMicroDropletAutoPauseOutput {
+	return i.ToGetMicrodropletsMicroDropletAutoPauseOutputWithContext(context.Background())
+}
+
+func (i GetMicrodropletsMicroDropletAutoPauseArgs) ToGetMicrodropletsMicroDropletAutoPauseOutputWithContext(ctx context.Context) GetMicrodropletsMicroDropletAutoPauseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMicrodropletsMicroDropletAutoPauseOutput)
+}
+
+// GetMicrodropletsMicroDropletAutoPauseArrayInput is an input type that accepts GetMicrodropletsMicroDropletAutoPauseArray and GetMicrodropletsMicroDropletAutoPauseArrayOutput values.
+// You can construct a concrete instance of `GetMicrodropletsMicroDropletAutoPauseArrayInput` via:
+//
+//	GetMicrodropletsMicroDropletAutoPauseArray{ GetMicrodropletsMicroDropletAutoPauseArgs{...} }
+type GetMicrodropletsMicroDropletAutoPauseArrayInput interface {
+	pulumi.Input
+
+	ToGetMicrodropletsMicroDropletAutoPauseArrayOutput() GetMicrodropletsMicroDropletAutoPauseArrayOutput
+	ToGetMicrodropletsMicroDropletAutoPauseArrayOutputWithContext(context.Context) GetMicrodropletsMicroDropletAutoPauseArrayOutput
+}
+
+type GetMicrodropletsMicroDropletAutoPauseArray []GetMicrodropletsMicroDropletAutoPauseInput
+
+func (GetMicrodropletsMicroDropletAutoPauseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMicrodropletsMicroDropletAutoPause)(nil)).Elem()
+}
+
+func (i GetMicrodropletsMicroDropletAutoPauseArray) ToGetMicrodropletsMicroDropletAutoPauseArrayOutput() GetMicrodropletsMicroDropletAutoPauseArrayOutput {
+	return i.ToGetMicrodropletsMicroDropletAutoPauseArrayOutputWithContext(context.Background())
+}
+
+func (i GetMicrodropletsMicroDropletAutoPauseArray) ToGetMicrodropletsMicroDropletAutoPauseArrayOutputWithContext(ctx context.Context) GetMicrodropletsMicroDropletAutoPauseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMicrodropletsMicroDropletAutoPauseArrayOutput)
+}
+
+type GetMicrodropletsMicroDropletAutoPauseOutput struct{ *pulumi.OutputState }
+
+func (GetMicrodropletsMicroDropletAutoPauseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMicrodropletsMicroDropletAutoPause)(nil)).Elem()
+}
+
+func (o GetMicrodropletsMicroDropletAutoPauseOutput) ToGetMicrodropletsMicroDropletAutoPauseOutput() GetMicrodropletsMicroDropletAutoPauseOutput {
+	return o
+}
+
+func (o GetMicrodropletsMicroDropletAutoPauseOutput) ToGetMicrodropletsMicroDropletAutoPauseOutputWithContext(ctx context.Context) GetMicrodropletsMicroDropletAutoPauseOutput {
+	return o
+}
+
+// Whether auto-pause is enabled. Forces recreation on change (no in-place API path).
+func (o GetMicrodropletsMicroDropletAutoPauseOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetMicrodropletsMicroDropletAutoPause) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Idle timeout as a Go duration string (e.g. '5m', '30s'). Forces recreation on change (no in-place API path).
+func (o GetMicrodropletsMicroDropletAutoPauseOutput) IdleTimeout() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrodropletsMicroDropletAutoPause) string { return v.IdleTimeout }).(pulumi.StringOutput)
+}
+
+type GetMicrodropletsMicroDropletAutoPauseArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMicrodropletsMicroDropletAutoPauseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMicrodropletsMicroDropletAutoPause)(nil)).Elem()
+}
+
+func (o GetMicrodropletsMicroDropletAutoPauseArrayOutput) ToGetMicrodropletsMicroDropletAutoPauseArrayOutput() GetMicrodropletsMicroDropletAutoPauseArrayOutput {
+	return o
+}
+
+func (o GetMicrodropletsMicroDropletAutoPauseArrayOutput) ToGetMicrodropletsMicroDropletAutoPauseArrayOutputWithContext(ctx context.Context) GetMicrodropletsMicroDropletAutoPauseArrayOutput {
+	return o
+}
+
+func (o GetMicrodropletsMicroDropletAutoPauseArrayOutput) Index(i pulumi.IntInput) GetMicrodropletsMicroDropletAutoPauseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMicrodropletsMicroDropletAutoPause {
+		return vs[0].([]GetMicrodropletsMicroDropletAutoPause)[vs[1].(int)]
+	}).(GetMicrodropletsMicroDropletAutoPauseOutput)
+}
+
+type GetMicrodropletsSort struct {
+	// `asc` (default) or `desc`.
+	Direction *string `pulumi:"direction"`
+	// Field to sort by.
+	Key string `pulumi:"key"`
+}
+
+// GetMicrodropletsSortInput is an input type that accepts GetMicrodropletsSortArgs and GetMicrodropletsSortOutput values.
+// You can construct a concrete instance of `GetMicrodropletsSortInput` via:
+//
+//	GetMicrodropletsSortArgs{...}
+type GetMicrodropletsSortInput interface {
+	pulumi.Input
+
+	ToGetMicrodropletsSortOutput() GetMicrodropletsSortOutput
+	ToGetMicrodropletsSortOutputWithContext(context.Context) GetMicrodropletsSortOutput
+}
+
+type GetMicrodropletsSortArgs struct {
+	// `asc` (default) or `desc`.
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
+	// Field to sort by.
+	Key pulumi.StringInput `pulumi:"key"`
+}
+
+func (GetMicrodropletsSortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMicrodropletsSort)(nil)).Elem()
+}
+
+func (i GetMicrodropletsSortArgs) ToGetMicrodropletsSortOutput() GetMicrodropletsSortOutput {
+	return i.ToGetMicrodropletsSortOutputWithContext(context.Background())
+}
+
+func (i GetMicrodropletsSortArgs) ToGetMicrodropletsSortOutputWithContext(ctx context.Context) GetMicrodropletsSortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMicrodropletsSortOutput)
+}
+
+// GetMicrodropletsSortArrayInput is an input type that accepts GetMicrodropletsSortArray and GetMicrodropletsSortArrayOutput values.
+// You can construct a concrete instance of `GetMicrodropletsSortArrayInput` via:
+//
+//	GetMicrodropletsSortArray{ GetMicrodropletsSortArgs{...} }
+type GetMicrodropletsSortArrayInput interface {
+	pulumi.Input
+
+	ToGetMicrodropletsSortArrayOutput() GetMicrodropletsSortArrayOutput
+	ToGetMicrodropletsSortArrayOutputWithContext(context.Context) GetMicrodropletsSortArrayOutput
+}
+
+type GetMicrodropletsSortArray []GetMicrodropletsSortInput
+
+func (GetMicrodropletsSortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMicrodropletsSort)(nil)).Elem()
+}
+
+func (i GetMicrodropletsSortArray) ToGetMicrodropletsSortArrayOutput() GetMicrodropletsSortArrayOutput {
+	return i.ToGetMicrodropletsSortArrayOutputWithContext(context.Background())
+}
+
+func (i GetMicrodropletsSortArray) ToGetMicrodropletsSortArrayOutputWithContext(ctx context.Context) GetMicrodropletsSortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMicrodropletsSortArrayOutput)
+}
+
+type GetMicrodropletsSortOutput struct{ *pulumi.OutputState }
+
+func (GetMicrodropletsSortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMicrodropletsSort)(nil)).Elem()
+}
+
+func (o GetMicrodropletsSortOutput) ToGetMicrodropletsSortOutput() GetMicrodropletsSortOutput {
+	return o
+}
+
+func (o GetMicrodropletsSortOutput) ToGetMicrodropletsSortOutputWithContext(ctx context.Context) GetMicrodropletsSortOutput {
+	return o
+}
+
+// `asc` (default) or `desc`.
+func (o GetMicrodropletsSortOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMicrodropletsSort) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
+// Field to sort by.
+func (o GetMicrodropletsSortOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrodropletsSort) string { return v.Key }).(pulumi.StringOutput)
+}
+
+type GetMicrodropletsSortArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMicrodropletsSortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMicrodropletsSort)(nil)).Elem()
+}
+
+func (o GetMicrodropletsSortArrayOutput) ToGetMicrodropletsSortArrayOutput() GetMicrodropletsSortArrayOutput {
+	return o
+}
+
+func (o GetMicrodropletsSortArrayOutput) ToGetMicrodropletsSortArrayOutputWithContext(ctx context.Context) GetMicrodropletsSortArrayOutput {
+	return o
+}
+
+func (o GetMicrodropletsSortArrayOutput) Index(i pulumi.IntInput) GetMicrodropletsSortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMicrodropletsSort {
+		return vs[0].([]GetMicrodropletsSort)[vs[1].(int)]
+	}).(GetMicrodropletsSortOutput)
+}
+
 type GetNfsAccessPointAccessPolicy struct {
 	Anongid                    int      `pulumi:"anongid"`
 	Anonuid                    int      `pulumi:"anonuid"`
@@ -37002,6 +38571,8 @@ type GetSizesSize struct {
 	Available bool `pulumi:"available"`
 	// The amount of disk space set aside for Droplets of this size. The value is measured in gigabytes.
 	Disk int `pulumi:"disk"`
+	// Information about the GPU available to Droplets created with this size. Only present on GPU sizes. The `gpuInfo` block is documented below.
+	GpuInfos []GetSizesSizeGpuInfo `pulumi:"gpuInfos"`
 	// The amount of RAM allocated to Droplets created of this size. The value is measured in megabytes.
 	Memory int `pulumi:"memory"`
 	// The hourly cost of Droplets created in this size as measured hourly. The value is measured in US dollars.
@@ -37034,6 +38605,8 @@ type GetSizesSizeArgs struct {
 	Available pulumi.BoolInput `pulumi:"available"`
 	// The amount of disk space set aside for Droplets of this size. The value is measured in gigabytes.
 	Disk pulumi.IntInput `pulumi:"disk"`
+	// Information about the GPU available to Droplets created with this size. Only present on GPU sizes. The `gpuInfo` block is documented below.
+	GpuInfos GetSizesSizeGpuInfoArrayInput `pulumi:"gpuInfos"`
 	// The amount of RAM allocated to Droplets created of this size. The value is measured in megabytes.
 	Memory pulumi.IntInput `pulumi:"memory"`
 	// The hourly cost of Droplets created in this size as measured hourly. The value is measured in US dollars.
@@ -37111,6 +38684,11 @@ func (o GetSizesSizeOutput) Disk() pulumi.IntOutput {
 	return o.ApplyT(func(v GetSizesSize) int { return v.Disk }).(pulumi.IntOutput)
 }
 
+// Information about the GPU available to Droplets created with this size. Only present on GPU sizes. The `gpuInfo` block is documented below.
+func (o GetSizesSizeOutput) GpuInfos() GetSizesSizeGpuInfoArrayOutput {
+	return o.ApplyT(func(v GetSizesSize) []GetSizesSizeGpuInfo { return v.GpuInfos }).(GetSizesSizeGpuInfoArrayOutput)
+}
+
 // The amount of RAM allocated to Droplets created of this size. The value is measured in megabytes.
 func (o GetSizesSizeOutput) Memory() pulumi.IntOutput {
 	return o.ApplyT(func(v GetSizesSize) int { return v.Memory }).(pulumi.IntOutput)
@@ -37164,6 +38742,236 @@ func (o GetSizesSizeArrayOutput) Index(i pulumi.IntInput) GetSizesSizeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSizesSize {
 		return vs[0].([]GetSizesSize)[vs[1].(int)]
 	}).(GetSizesSizeOutput)
+}
+
+type GetSizesSizeGpuInfo struct {
+	// The number of GPUs allocated to Droplets of this size.
+	Count int `pulumi:"count"`
+	// The model of the GPU.
+	Model string `pulumi:"model"`
+	// The GPU partition modes available for this size (e.g. `PARTITION_MODE_SPX_NPS1`, `PARTITION_MODE_DPX_NPS2`). Only returned to callers with access to the feature; an empty list means partition-mode selection is unavailable.
+	SupportedPartitionModes []string `pulumi:"supportedPartitionModes"`
+	// Information about the VRAM available to the GPU. The `vram` block exports `amount` (the amount of VRAM) and `unit` (the unit of measurement).
+	Vrams []GetSizesSizeGpuInfoVram `pulumi:"vrams"`
+}
+
+// GetSizesSizeGpuInfoInput is an input type that accepts GetSizesSizeGpuInfoArgs and GetSizesSizeGpuInfoOutput values.
+// You can construct a concrete instance of `GetSizesSizeGpuInfoInput` via:
+//
+//	GetSizesSizeGpuInfoArgs{...}
+type GetSizesSizeGpuInfoInput interface {
+	pulumi.Input
+
+	ToGetSizesSizeGpuInfoOutput() GetSizesSizeGpuInfoOutput
+	ToGetSizesSizeGpuInfoOutputWithContext(context.Context) GetSizesSizeGpuInfoOutput
+}
+
+type GetSizesSizeGpuInfoArgs struct {
+	// The number of GPUs allocated to Droplets of this size.
+	Count pulumi.IntInput `pulumi:"count"`
+	// The model of the GPU.
+	Model pulumi.StringInput `pulumi:"model"`
+	// The GPU partition modes available for this size (e.g. `PARTITION_MODE_SPX_NPS1`, `PARTITION_MODE_DPX_NPS2`). Only returned to callers with access to the feature; an empty list means partition-mode selection is unavailable.
+	SupportedPartitionModes pulumi.StringArrayInput `pulumi:"supportedPartitionModes"`
+	// Information about the VRAM available to the GPU. The `vram` block exports `amount` (the amount of VRAM) and `unit` (the unit of measurement).
+	Vrams GetSizesSizeGpuInfoVramArrayInput `pulumi:"vrams"`
+}
+
+func (GetSizesSizeGpuInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSizesSizeGpuInfo)(nil)).Elem()
+}
+
+func (i GetSizesSizeGpuInfoArgs) ToGetSizesSizeGpuInfoOutput() GetSizesSizeGpuInfoOutput {
+	return i.ToGetSizesSizeGpuInfoOutputWithContext(context.Background())
+}
+
+func (i GetSizesSizeGpuInfoArgs) ToGetSizesSizeGpuInfoOutputWithContext(ctx context.Context) GetSizesSizeGpuInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSizesSizeGpuInfoOutput)
+}
+
+// GetSizesSizeGpuInfoArrayInput is an input type that accepts GetSizesSizeGpuInfoArray and GetSizesSizeGpuInfoArrayOutput values.
+// You can construct a concrete instance of `GetSizesSizeGpuInfoArrayInput` via:
+//
+//	GetSizesSizeGpuInfoArray{ GetSizesSizeGpuInfoArgs{...} }
+type GetSizesSizeGpuInfoArrayInput interface {
+	pulumi.Input
+
+	ToGetSizesSizeGpuInfoArrayOutput() GetSizesSizeGpuInfoArrayOutput
+	ToGetSizesSizeGpuInfoArrayOutputWithContext(context.Context) GetSizesSizeGpuInfoArrayOutput
+}
+
+type GetSizesSizeGpuInfoArray []GetSizesSizeGpuInfoInput
+
+func (GetSizesSizeGpuInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSizesSizeGpuInfo)(nil)).Elem()
+}
+
+func (i GetSizesSizeGpuInfoArray) ToGetSizesSizeGpuInfoArrayOutput() GetSizesSizeGpuInfoArrayOutput {
+	return i.ToGetSizesSizeGpuInfoArrayOutputWithContext(context.Background())
+}
+
+func (i GetSizesSizeGpuInfoArray) ToGetSizesSizeGpuInfoArrayOutputWithContext(ctx context.Context) GetSizesSizeGpuInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSizesSizeGpuInfoArrayOutput)
+}
+
+type GetSizesSizeGpuInfoOutput struct{ *pulumi.OutputState }
+
+func (GetSizesSizeGpuInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSizesSizeGpuInfo)(nil)).Elem()
+}
+
+func (o GetSizesSizeGpuInfoOutput) ToGetSizesSizeGpuInfoOutput() GetSizesSizeGpuInfoOutput {
+	return o
+}
+
+func (o GetSizesSizeGpuInfoOutput) ToGetSizesSizeGpuInfoOutputWithContext(ctx context.Context) GetSizesSizeGpuInfoOutput {
+	return o
+}
+
+// The number of GPUs allocated to Droplets of this size.
+func (o GetSizesSizeGpuInfoOutput) Count() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSizesSizeGpuInfo) int { return v.Count }).(pulumi.IntOutput)
+}
+
+// The model of the GPU.
+func (o GetSizesSizeGpuInfoOutput) Model() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSizesSizeGpuInfo) string { return v.Model }).(pulumi.StringOutput)
+}
+
+// The GPU partition modes available for this size (e.g. `PARTITION_MODE_SPX_NPS1`, `PARTITION_MODE_DPX_NPS2`). Only returned to callers with access to the feature; an empty list means partition-mode selection is unavailable.
+func (o GetSizesSizeGpuInfoOutput) SupportedPartitionModes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSizesSizeGpuInfo) []string { return v.SupportedPartitionModes }).(pulumi.StringArrayOutput)
+}
+
+// Information about the VRAM available to the GPU. The `vram` block exports `amount` (the amount of VRAM) and `unit` (the unit of measurement).
+func (o GetSizesSizeGpuInfoOutput) Vrams() GetSizesSizeGpuInfoVramArrayOutput {
+	return o.ApplyT(func(v GetSizesSizeGpuInfo) []GetSizesSizeGpuInfoVram { return v.Vrams }).(GetSizesSizeGpuInfoVramArrayOutput)
+}
+
+type GetSizesSizeGpuInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSizesSizeGpuInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSizesSizeGpuInfo)(nil)).Elem()
+}
+
+func (o GetSizesSizeGpuInfoArrayOutput) ToGetSizesSizeGpuInfoArrayOutput() GetSizesSizeGpuInfoArrayOutput {
+	return o
+}
+
+func (o GetSizesSizeGpuInfoArrayOutput) ToGetSizesSizeGpuInfoArrayOutputWithContext(ctx context.Context) GetSizesSizeGpuInfoArrayOutput {
+	return o
+}
+
+func (o GetSizesSizeGpuInfoArrayOutput) Index(i pulumi.IntInput) GetSizesSizeGpuInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSizesSizeGpuInfo {
+		return vs[0].([]GetSizesSizeGpuInfo)[vs[1].(int)]
+	}).(GetSizesSizeGpuInfoOutput)
+}
+
+type GetSizesSizeGpuInfoVram struct {
+	// The amount of VRAM available to the GPU.
+	Amount int `pulumi:"amount"`
+	// The unit of measurement for the VRAM amount.
+	Unit string `pulumi:"unit"`
+}
+
+// GetSizesSizeGpuInfoVramInput is an input type that accepts GetSizesSizeGpuInfoVramArgs and GetSizesSizeGpuInfoVramOutput values.
+// You can construct a concrete instance of `GetSizesSizeGpuInfoVramInput` via:
+//
+//	GetSizesSizeGpuInfoVramArgs{...}
+type GetSizesSizeGpuInfoVramInput interface {
+	pulumi.Input
+
+	ToGetSizesSizeGpuInfoVramOutput() GetSizesSizeGpuInfoVramOutput
+	ToGetSizesSizeGpuInfoVramOutputWithContext(context.Context) GetSizesSizeGpuInfoVramOutput
+}
+
+type GetSizesSizeGpuInfoVramArgs struct {
+	// The amount of VRAM available to the GPU.
+	Amount pulumi.IntInput `pulumi:"amount"`
+	// The unit of measurement for the VRAM amount.
+	Unit pulumi.StringInput `pulumi:"unit"`
+}
+
+func (GetSizesSizeGpuInfoVramArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSizesSizeGpuInfoVram)(nil)).Elem()
+}
+
+func (i GetSizesSizeGpuInfoVramArgs) ToGetSizesSizeGpuInfoVramOutput() GetSizesSizeGpuInfoVramOutput {
+	return i.ToGetSizesSizeGpuInfoVramOutputWithContext(context.Background())
+}
+
+func (i GetSizesSizeGpuInfoVramArgs) ToGetSizesSizeGpuInfoVramOutputWithContext(ctx context.Context) GetSizesSizeGpuInfoVramOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSizesSizeGpuInfoVramOutput)
+}
+
+// GetSizesSizeGpuInfoVramArrayInput is an input type that accepts GetSizesSizeGpuInfoVramArray and GetSizesSizeGpuInfoVramArrayOutput values.
+// You can construct a concrete instance of `GetSizesSizeGpuInfoVramArrayInput` via:
+//
+//	GetSizesSizeGpuInfoVramArray{ GetSizesSizeGpuInfoVramArgs{...} }
+type GetSizesSizeGpuInfoVramArrayInput interface {
+	pulumi.Input
+
+	ToGetSizesSizeGpuInfoVramArrayOutput() GetSizesSizeGpuInfoVramArrayOutput
+	ToGetSizesSizeGpuInfoVramArrayOutputWithContext(context.Context) GetSizesSizeGpuInfoVramArrayOutput
+}
+
+type GetSizesSizeGpuInfoVramArray []GetSizesSizeGpuInfoVramInput
+
+func (GetSizesSizeGpuInfoVramArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSizesSizeGpuInfoVram)(nil)).Elem()
+}
+
+func (i GetSizesSizeGpuInfoVramArray) ToGetSizesSizeGpuInfoVramArrayOutput() GetSizesSizeGpuInfoVramArrayOutput {
+	return i.ToGetSizesSizeGpuInfoVramArrayOutputWithContext(context.Background())
+}
+
+func (i GetSizesSizeGpuInfoVramArray) ToGetSizesSizeGpuInfoVramArrayOutputWithContext(ctx context.Context) GetSizesSizeGpuInfoVramArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSizesSizeGpuInfoVramArrayOutput)
+}
+
+type GetSizesSizeGpuInfoVramOutput struct{ *pulumi.OutputState }
+
+func (GetSizesSizeGpuInfoVramOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSizesSizeGpuInfoVram)(nil)).Elem()
+}
+
+func (o GetSizesSizeGpuInfoVramOutput) ToGetSizesSizeGpuInfoVramOutput() GetSizesSizeGpuInfoVramOutput {
+	return o
+}
+
+func (o GetSizesSizeGpuInfoVramOutput) ToGetSizesSizeGpuInfoVramOutputWithContext(ctx context.Context) GetSizesSizeGpuInfoVramOutput {
+	return o
+}
+
+// The amount of VRAM available to the GPU.
+func (o GetSizesSizeGpuInfoVramOutput) Amount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSizesSizeGpuInfoVram) int { return v.Amount }).(pulumi.IntOutput)
+}
+
+// The unit of measurement for the VRAM amount.
+func (o GetSizesSizeGpuInfoVramOutput) Unit() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSizesSizeGpuInfoVram) string { return v.Unit }).(pulumi.StringOutput)
+}
+
+type GetSizesSizeGpuInfoVramArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSizesSizeGpuInfoVramArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSizesSizeGpuInfoVram)(nil)).Elem()
+}
+
+func (o GetSizesSizeGpuInfoVramArrayOutput) ToGetSizesSizeGpuInfoVramArrayOutput() GetSizesSizeGpuInfoVramArrayOutput {
+	return o
+}
+
+func (o GetSizesSizeGpuInfoVramArrayOutput) ToGetSizesSizeGpuInfoVramArrayOutputWithContext(ctx context.Context) GetSizesSizeGpuInfoVramArrayOutput {
+	return o
+}
+
+func (o GetSizesSizeGpuInfoVramArrayOutput) Index(i pulumi.IntInput) GetSizesSizeGpuInfoVramOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSizesSizeGpuInfoVram {
+		return vs[0].([]GetSizesSizeGpuInfoVram)[vs[1].(int)]
+	}).(GetSizesSizeGpuInfoVramOutput)
 }
 
 type GetSizesSort struct {
@@ -39043,6 +40851,8 @@ func (o GetVpcNatGatewayVpcArrayOutput) Index(i pulumi.IntInput) GetVpcNatGatewa
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentDeploymentInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArrayInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentFunctionInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentFunctionArgs{})
@@ -39503,6 +41313,28 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerHealthcheckArrayInput)(nil)).Elem(), GetLoadBalancerHealthcheckArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerStickySessionInput)(nil)).Elem(), GetLoadBalancerStickySessionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerStickySessionArrayInput)(nil)).Elem(), GetLoadBalancerStickySessionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrodropletAutoPauseInput)(nil)).Elem(), GetMicrodropletAutoPauseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrodropletAutoPauseArrayInput)(nil)).Elem(), GetMicrodropletAutoPauseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrodropletCheckpointsCheckpointInput)(nil)).Elem(), GetMicrodropletCheckpointsCheckpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrodropletCheckpointsCheckpointArrayInput)(nil)).Elem(), GetMicrodropletCheckpointsCheckpointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrodropletCheckpointsFilterInput)(nil)).Elem(), GetMicrodropletCheckpointsFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrodropletCheckpointsFilterArrayInput)(nil)).Elem(), GetMicrodropletCheckpointsFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrodropletCheckpointsSortInput)(nil)).Elem(), GetMicrodropletCheckpointsSortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrodropletCheckpointsSortArrayInput)(nil)).Elem(), GetMicrodropletCheckpointsSortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrodropletImagesFilterInput)(nil)).Elem(), GetMicrodropletImagesFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrodropletImagesFilterArrayInput)(nil)).Elem(), GetMicrodropletImagesFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrodropletImagesMicroDropletImageInput)(nil)).Elem(), GetMicrodropletImagesMicroDropletImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrodropletImagesMicroDropletImageArrayInput)(nil)).Elem(), GetMicrodropletImagesMicroDropletImageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrodropletImagesSortInput)(nil)).Elem(), GetMicrodropletImagesSortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrodropletImagesSortArrayInput)(nil)).Elem(), GetMicrodropletImagesSortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrodropletsFilterInput)(nil)).Elem(), GetMicrodropletsFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrodropletsFilterArrayInput)(nil)).Elem(), GetMicrodropletsFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrodropletsMicroDropletInput)(nil)).Elem(), GetMicrodropletsMicroDropletArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrodropletsMicroDropletArrayInput)(nil)).Elem(), GetMicrodropletsMicroDropletArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrodropletsMicroDropletAutoPauseInput)(nil)).Elem(), GetMicrodropletsMicroDropletAutoPauseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrodropletsMicroDropletAutoPauseArrayInput)(nil)).Elem(), GetMicrodropletsMicroDropletAutoPauseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrodropletsSortInput)(nil)).Elem(), GetMicrodropletsSortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrodropletsSortArrayInput)(nil)).Elem(), GetMicrodropletsSortArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNfsAccessPointAccessPolicyInput)(nil)).Elem(), GetNfsAccessPointAccessPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNfsAccessPointAccessPolicyArrayInput)(nil)).Elem(), GetNfsAccessPointAccessPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPartnerAttachmentBgpInput)(nil)).Elem(), GetPartnerAttachmentBgpArgs{})
@@ -39529,6 +41361,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSizesFilterArrayInput)(nil)).Elem(), GetSizesFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSizesSizeInput)(nil)).Elem(), GetSizesSizeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSizesSizeArrayInput)(nil)).Elem(), GetSizesSizeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSizesSizeGpuInfoInput)(nil)).Elem(), GetSizesSizeGpuInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSizesSizeGpuInfoArrayInput)(nil)).Elem(), GetSizesSizeGpuInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSizesSizeGpuInfoVramInput)(nil)).Elem(), GetSizesSizeGpuInfoVramArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSizesSizeGpuInfoVramArrayInput)(nil)).Elem(), GetSizesSizeGpuInfoVramArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSizesSortInput)(nil)).Elem(), GetSizesSortArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSizesSortArrayInput)(nil)).Elem(), GetSizesSortArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSpacesBucketsBucketInput)(nil)).Elem(), GetSpacesBucketsBucketArgs{})
@@ -39561,6 +41397,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcNatGatewayEgressPublicGatewayArrayInput)(nil)).Elem(), GetVpcNatGatewayEgressPublicGatewayArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcNatGatewayVpcInput)(nil)).Elem(), GetVpcNatGatewayVpcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcNatGatewayVpcArrayInput)(nil)).Elem(), GetVpcNatGatewayVpcArray{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayOutput{})
 	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentDeploymentOutput{})
 	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArrayOutput{})
 	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentFunctionOutput{})
@@ -40021,6 +41859,28 @@ func init() {
 	pulumi.RegisterOutputType(GetLoadBalancerHealthcheckArrayOutput{})
 	pulumi.RegisterOutputType(GetLoadBalancerStickySessionOutput{})
 	pulumi.RegisterOutputType(GetLoadBalancerStickySessionArrayOutput{})
+	pulumi.RegisterOutputType(GetMicrodropletAutoPauseOutput{})
+	pulumi.RegisterOutputType(GetMicrodropletAutoPauseArrayOutput{})
+	pulumi.RegisterOutputType(GetMicrodropletCheckpointsCheckpointOutput{})
+	pulumi.RegisterOutputType(GetMicrodropletCheckpointsCheckpointArrayOutput{})
+	pulumi.RegisterOutputType(GetMicrodropletCheckpointsFilterOutput{})
+	pulumi.RegisterOutputType(GetMicrodropletCheckpointsFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetMicrodropletCheckpointsSortOutput{})
+	pulumi.RegisterOutputType(GetMicrodropletCheckpointsSortArrayOutput{})
+	pulumi.RegisterOutputType(GetMicrodropletImagesFilterOutput{})
+	pulumi.RegisterOutputType(GetMicrodropletImagesFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetMicrodropletImagesMicroDropletImageOutput{})
+	pulumi.RegisterOutputType(GetMicrodropletImagesMicroDropletImageArrayOutput{})
+	pulumi.RegisterOutputType(GetMicrodropletImagesSortOutput{})
+	pulumi.RegisterOutputType(GetMicrodropletImagesSortArrayOutput{})
+	pulumi.RegisterOutputType(GetMicrodropletsFilterOutput{})
+	pulumi.RegisterOutputType(GetMicrodropletsFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetMicrodropletsMicroDropletOutput{})
+	pulumi.RegisterOutputType(GetMicrodropletsMicroDropletArrayOutput{})
+	pulumi.RegisterOutputType(GetMicrodropletsMicroDropletAutoPauseOutput{})
+	pulumi.RegisterOutputType(GetMicrodropletsMicroDropletAutoPauseArrayOutput{})
+	pulumi.RegisterOutputType(GetMicrodropletsSortOutput{})
+	pulumi.RegisterOutputType(GetMicrodropletsSortArrayOutput{})
 	pulumi.RegisterOutputType(GetNfsAccessPointAccessPolicyOutput{})
 	pulumi.RegisterOutputType(GetNfsAccessPointAccessPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetPartnerAttachmentBgpOutput{})
@@ -40047,6 +41907,10 @@ func init() {
 	pulumi.RegisterOutputType(GetSizesFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetSizesSizeOutput{})
 	pulumi.RegisterOutputType(GetSizesSizeArrayOutput{})
+	pulumi.RegisterOutputType(GetSizesSizeGpuInfoOutput{})
+	pulumi.RegisterOutputType(GetSizesSizeGpuInfoArrayOutput{})
+	pulumi.RegisterOutputType(GetSizesSizeGpuInfoVramOutput{})
+	pulumi.RegisterOutputType(GetSizesSizeGpuInfoVramArrayOutput{})
 	pulumi.RegisterOutputType(GetSizesSortOutput{})
 	pulumi.RegisterOutputType(GetSizesSortArrayOutput{})
 	pulumi.RegisterOutputType(GetSpacesBucketsBucketOutput{})

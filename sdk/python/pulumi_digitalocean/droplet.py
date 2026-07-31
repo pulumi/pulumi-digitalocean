@@ -27,6 +27,7 @@ class DropletArgs:
                  backup_policy: pulumi.Input[Optional['DropletBackupPolicyArgs']] = None,
                  backups: pulumi.Input[Optional[_builtins.bool]] = None,
                  droplet_agent: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gpu_partition_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  graceful_shutdown: pulumi.Input[Optional[_builtins.bool]] = None,
                  ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
                  ipv6_address: pulumi.Input[Optional[_builtins.str]] = None,
@@ -55,6 +56,16 @@ class DropletArgs:
                installation errors (i.e. OS not supported) are ignored. To prevent it from
                being installed, set to `false`. To make installation errors fatal, explicitly
                set it to `true`.
+        :param pulumi.Input[_builtins.str] gpu_partition_mode: The partition mode for a GPU Droplet. Omit to
+               create a full GPU (equivalent to `PARTITION_MODE_SPX_NPS1`). Valid values are
+               `PARTITION_MODE_SPX_NPS1` and `PARTITION_MODE_DPX_NPS2`. Only supported on GPU
+               sizes that advertise the mode in their `supported_partition_modes` (see the
+               `get_sizes` data source). Changing this forces a new resource to be
+               created.
+               
+               > **NOTE:** If you use `volume_ids` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volume_ids` must not be mixed with external `VolumeAttachment` resources for a given instance.
+               
+               > **NOTE:** Read-back of `gpu_partition_mode` on an existing Droplet is not yet available from the DigitalOcean API. The value is only returned when the Droplet is created, so this provider preserves the configured value rather than refreshing it.
         :param pulumi.Input[_builtins.bool] graceful_shutdown: A boolean indicating whether the droplet
                should be gracefully shut down before it is deleted.
         :param pulumi.Input[_builtins.bool] ipv6: Boolean controlling if IPv6 is enabled. Defaults to false.
@@ -71,8 +82,6 @@ class DropletArgs:
         :param pulumi.Input[_builtins.bool] public_networking: A boolean indicating whether to enables public networking for the Droplet or not.
                By default, this is always enabled on new droplets.
                But, by explicitly setting it to false, you can create a droplet with public networking entirely disabled.
-               
-               > **NOTE:** If you use `volume_ids` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volume_ids` must not be mixed with external `VolumeAttachment` resources for a given instance.
         :param pulumi.Input[Union[_builtins.str, 'Region']] region: The region where the Droplet will be created.
         :param pulumi.Input[_builtins.bool] resize_disk: Boolean controlling whether to increase the disk
                size when resizing a Droplet. It defaults to `true`. When set to `false`,
@@ -97,6 +106,8 @@ class DropletArgs:
             pulumi.set(__self__, "backups", backups)
         if droplet_agent is not None:
             pulumi.set(__self__, "droplet_agent", droplet_agent)
+        if gpu_partition_mode is not None:
+            pulumi.set(__self__, "gpu_partition_mode", gpu_partition_mode)
         if graceful_shutdown is not None:
             pulumi.set(__self__, "graceful_shutdown", graceful_shutdown)
         if ipv6 is not None:
@@ -196,6 +207,27 @@ class DropletArgs:
         pulumi.set(self, "droplet_agent", value)
 
     @_builtins.property
+    @pulumi.getter(name="gpuPartitionMode")
+    def gpu_partition_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The partition mode for a GPU Droplet. Omit to
+        create a full GPU (equivalent to `PARTITION_MODE_SPX_NPS1`). Valid values are
+        `PARTITION_MODE_SPX_NPS1` and `PARTITION_MODE_DPX_NPS2`. Only supported on GPU
+        sizes that advertise the mode in their `supported_partition_modes` (see the
+        `get_sizes` data source). Changing this forces a new resource to be
+        created.
+
+        > **NOTE:** If you use `volume_ids` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volume_ids` must not be mixed with external `VolumeAttachment` resources for a given instance.
+
+        > **NOTE:** Read-back of `gpu_partition_mode` on an existing Droplet is not yet available from the DigitalOcean API. The value is only returned when the Droplet is created, so this provider preserves the configured value rather than refreshing it.
+        """
+        return pulumi.get(self, "gpu_partition_mode")
+
+    @gpu_partition_mode.setter
+    def gpu_partition_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "gpu_partition_mode", value)
+
+    @_builtins.property
     @pulumi.getter(name="gracefulShutdown")
     def graceful_shutdown(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -282,8 +314,6 @@ class DropletArgs:
         A boolean indicating whether to enables public networking for the Droplet or not.
         By default, this is always enabled on new droplets.
         But, by explicitly setting it to false, you can create a droplet with public networking entirely disabled.
-
-        > **NOTE:** If you use `volume_ids` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volume_ids` must not be mixed with external `VolumeAttachment` resources for a given instance.
         """
         return pulumi.get(self, "public_networking")
 
@@ -393,6 +423,7 @@ class _DropletState:
                  disk: pulumi.Input[Optional[_builtins.int]] = None,
                  droplet_agent: pulumi.Input[Optional[_builtins.bool]] = None,
                  droplet_urn: pulumi.Input[Optional[_builtins.str]] = None,
+                 gpu_partition_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  graceful_shutdown: pulumi.Input[Optional[_builtins.bool]] = None,
                  image: pulumi.Input[Optional[_builtins.str]] = None,
                  ipv4_address: pulumi.Input[Optional[_builtins.str]] = None,
@@ -431,6 +462,16 @@ class _DropletState:
                being installed, set to `false`. To make installation errors fatal, explicitly
                set it to `true`.
         :param pulumi.Input[_builtins.str] droplet_urn: The uniform resource name of the Droplet
+        :param pulumi.Input[_builtins.str] gpu_partition_mode: The partition mode for a GPU Droplet. Omit to
+               create a full GPU (equivalent to `PARTITION_MODE_SPX_NPS1`). Valid values are
+               `PARTITION_MODE_SPX_NPS1` and `PARTITION_MODE_DPX_NPS2`. Only supported on GPU
+               sizes that advertise the mode in their `supported_partition_modes` (see the
+               `get_sizes` data source). Changing this forces a new resource to be
+               created.
+               
+               > **NOTE:** If you use `volume_ids` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volume_ids` must not be mixed with external `VolumeAttachment` resources for a given instance.
+               
+               > **NOTE:** Read-back of `gpu_partition_mode` on an existing Droplet is not yet available from the DigitalOcean API. The value is only returned when the Droplet is created, so this provider preserves the configured value rather than refreshing it.
         :param pulumi.Input[_builtins.bool] graceful_shutdown: A boolean indicating whether the droplet
                should be gracefully shut down before it is deleted.
         :param pulumi.Input[_builtins.str] image: The Droplet image ID or slug. This could be either image ID or droplet snapshot ID. You can find image IDs and slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images).
@@ -453,8 +494,6 @@ class _DropletState:
         :param pulumi.Input[_builtins.bool] public_networking: A boolean indicating whether to enables public networking for the Droplet or not.
                By default, this is always enabled on new droplets.
                But, by explicitly setting it to false, you can create a droplet with public networking entirely disabled.
-               
-               > **NOTE:** If you use `volume_ids` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volume_ids` must not be mixed with external `VolumeAttachment` resources for a given instance.
         :param pulumi.Input[Union[_builtins.str, 'Region']] region: The region where the Droplet will be created.
         :param pulumi.Input[_builtins.bool] resize_disk: Boolean controlling whether to increase the disk
                size when resizing a Droplet. It defaults to `true`. When set to `false`,
@@ -486,6 +525,8 @@ class _DropletState:
             pulumi.set(__self__, "droplet_agent", droplet_agent)
         if droplet_urn is not None:
             pulumi.set(__self__, "droplet_urn", droplet_urn)
+        if gpu_partition_mode is not None:
+            pulumi.set(__self__, "gpu_partition_mode", gpu_partition_mode)
         if graceful_shutdown is not None:
             pulumi.set(__self__, "graceful_shutdown", graceful_shutdown)
         if image is not None:
@@ -612,6 +653,27 @@ class _DropletState:
     @droplet_urn.setter
     def droplet_urn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "droplet_urn", value)
+
+    @_builtins.property
+    @pulumi.getter(name="gpuPartitionMode")
+    def gpu_partition_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The partition mode for a GPU Droplet. Omit to
+        create a full GPU (equivalent to `PARTITION_MODE_SPX_NPS1`). Valid values are
+        `PARTITION_MODE_SPX_NPS1` and `PARTITION_MODE_DPX_NPS2`. Only supported on GPU
+        sizes that advertise the mode in their `supported_partition_modes` (see the
+        `get_sizes` data source). Changing this forces a new resource to be
+        created.
+
+        > **NOTE:** If you use `volume_ids` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volume_ids` must not be mixed with external `VolumeAttachment` resources for a given instance.
+
+        > **NOTE:** Read-back of `gpu_partition_mode` on an existing Droplet is not yet available from the DigitalOcean API. The value is only returned when the Droplet is created, so this provider preserves the configured value rather than refreshing it.
+        """
+        return pulumi.get(self, "gpu_partition_mode")
+
+    @gpu_partition_mode.setter
+    def gpu_partition_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "gpu_partition_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="gracefulShutdown")
@@ -781,8 +843,6 @@ class _DropletState:
         A boolean indicating whether to enables public networking for the Droplet or not.
         By default, this is always enabled on new droplets.
         But, by explicitly setting it to false, you can create a droplet with public networking entirely disabled.
-
-        > **NOTE:** If you use `volume_ids` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volume_ids` must not be mixed with external `VolumeAttachment` resources for a given instance.
         """
         return pulumi.get(self, "public_networking")
 
@@ -928,6 +988,7 @@ class Droplet(pulumi.CustomResource):
                  backup_policy: pulumi.Input[Optional[Union['DropletBackupPolicyArgs', 'DropletBackupPolicyArgsDict']]] = None,
                  backups: pulumi.Input[Optional[_builtins.bool]] = None,
                  droplet_agent: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gpu_partition_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  graceful_shutdown: pulumi.Input[Optional[_builtins.bool]] = None,
                  image: pulumi.Input[Optional[_builtins.str]] = None,
                  ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -990,6 +1051,16 @@ class Droplet(pulumi.CustomResource):
                installation errors (i.e. OS not supported) are ignored. To prevent it from
                being installed, set to `false`. To make installation errors fatal, explicitly
                set it to `true`.
+        :param pulumi.Input[_builtins.str] gpu_partition_mode: The partition mode for a GPU Droplet. Omit to
+               create a full GPU (equivalent to `PARTITION_MODE_SPX_NPS1`). Valid values are
+               `PARTITION_MODE_SPX_NPS1` and `PARTITION_MODE_DPX_NPS2`. Only supported on GPU
+               sizes that advertise the mode in their `supported_partition_modes` (see the
+               `get_sizes` data source). Changing this forces a new resource to be
+               created.
+               
+               > **NOTE:** If you use `volume_ids` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volume_ids` must not be mixed with external `VolumeAttachment` resources for a given instance.
+               
+               > **NOTE:** Read-back of `gpu_partition_mode` on an existing Droplet is not yet available from the DigitalOcean API. The value is only returned when the Droplet is created, so this provider preserves the configured value rather than refreshing it.
         :param pulumi.Input[_builtins.bool] graceful_shutdown: A boolean indicating whether the droplet
                should be gracefully shut down before it is deleted.
         :param pulumi.Input[_builtins.str] image: The Droplet image ID or slug. This could be either image ID or droplet snapshot ID. You can find image IDs and slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images).
@@ -1007,8 +1078,6 @@ class Droplet(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] public_networking: A boolean indicating whether to enables public networking for the Droplet or not.
                By default, this is always enabled on new droplets.
                But, by explicitly setting it to false, you can create a droplet with public networking entirely disabled.
-               
-               > **NOTE:** If you use `volume_ids` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volume_ids` must not be mixed with external `VolumeAttachment` resources for a given instance.
         :param pulumi.Input[Union[_builtins.str, 'Region']] region: The region where the Droplet will be created.
         :param pulumi.Input[_builtins.bool] resize_disk: Boolean controlling whether to increase the disk
                size when resizing a Droplet. It defaults to `true`. When set to `false`,
@@ -1084,6 +1153,7 @@ class Droplet(pulumi.CustomResource):
                  backup_policy: pulumi.Input[Optional[Union['DropletBackupPolicyArgs', 'DropletBackupPolicyArgsDict']]] = None,
                  backups: pulumi.Input[Optional[_builtins.bool]] = None,
                  droplet_agent: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gpu_partition_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  graceful_shutdown: pulumi.Input[Optional[_builtins.bool]] = None,
                  image: pulumi.Input[Optional[_builtins.str]] = None,
                  ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1112,6 +1182,7 @@ class Droplet(pulumi.CustomResource):
             __props__.__dict__["backup_policy"] = backup_policy
             __props__.__dict__["backups"] = backups
             __props__.__dict__["droplet_agent"] = droplet_agent
+            __props__.__dict__["gpu_partition_mode"] = gpu_partition_mode
             __props__.__dict__["graceful_shutdown"] = graceful_shutdown
             if image is None and not opts.urn:
                 raise TypeError("Missing required property 'image'")
@@ -1159,6 +1230,7 @@ class Droplet(pulumi.CustomResource):
             disk: pulumi.Input[Optional[_builtins.int]] = None,
             droplet_agent: pulumi.Input[Optional[_builtins.bool]] = None,
             droplet_urn: pulumi.Input[Optional[_builtins.str]] = None,
+            gpu_partition_mode: pulumi.Input[Optional[_builtins.str]] = None,
             graceful_shutdown: pulumi.Input[Optional[_builtins.bool]] = None,
             image: pulumi.Input[Optional[_builtins.str]] = None,
             ipv4_address: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1201,6 +1273,16 @@ class Droplet(pulumi.CustomResource):
                being installed, set to `false`. To make installation errors fatal, explicitly
                set it to `true`.
         :param pulumi.Input[_builtins.str] droplet_urn: The uniform resource name of the Droplet
+        :param pulumi.Input[_builtins.str] gpu_partition_mode: The partition mode for a GPU Droplet. Omit to
+               create a full GPU (equivalent to `PARTITION_MODE_SPX_NPS1`). Valid values are
+               `PARTITION_MODE_SPX_NPS1` and `PARTITION_MODE_DPX_NPS2`. Only supported on GPU
+               sizes that advertise the mode in their `supported_partition_modes` (see the
+               `get_sizes` data source). Changing this forces a new resource to be
+               created.
+               
+               > **NOTE:** If you use `volume_ids` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volume_ids` must not be mixed with external `VolumeAttachment` resources for a given instance.
+               
+               > **NOTE:** Read-back of `gpu_partition_mode` on an existing Droplet is not yet available from the DigitalOcean API. The value is only returned when the Droplet is created, so this provider preserves the configured value rather than refreshing it.
         :param pulumi.Input[_builtins.bool] graceful_shutdown: A boolean indicating whether the droplet
                should be gracefully shut down before it is deleted.
         :param pulumi.Input[_builtins.str] image: The Droplet image ID or slug. This could be either image ID or droplet snapshot ID. You can find image IDs and slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images).
@@ -1223,8 +1305,6 @@ class Droplet(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] public_networking: A boolean indicating whether to enables public networking for the Droplet or not.
                By default, this is always enabled on new droplets.
                But, by explicitly setting it to false, you can create a droplet with public networking entirely disabled.
-               
-               > **NOTE:** If you use `volume_ids` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volume_ids` must not be mixed with external `VolumeAttachment` resources for a given instance.
         :param pulumi.Input[Union[_builtins.str, 'Region']] region: The region where the Droplet will be created.
         :param pulumi.Input[_builtins.bool] resize_disk: Boolean controlling whether to increase the disk
                size when resizing a Droplet. It defaults to `true`. When set to `false`,
@@ -1254,6 +1334,7 @@ class Droplet(pulumi.CustomResource):
         __props__.__dict__["disk"] = disk
         __props__.__dict__["droplet_agent"] = droplet_agent
         __props__.__dict__["droplet_urn"] = droplet_urn
+        __props__.__dict__["gpu_partition_mode"] = gpu_partition_mode
         __props__.__dict__["graceful_shutdown"] = graceful_shutdown
         __props__.__dict__["image"] = image
         __props__.__dict__["ipv4_address"] = ipv4_address
@@ -1330,6 +1411,23 @@ class Droplet(pulumi.CustomResource):
         The uniform resource name of the Droplet
         """
         return pulumi.get(self, "droplet_urn")
+
+    @_builtins.property
+    @pulumi.getter(name="gpuPartitionMode")
+    def gpu_partition_mode(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The partition mode for a GPU Droplet. Omit to
+        create a full GPU (equivalent to `PARTITION_MODE_SPX_NPS1`). Valid values are
+        `PARTITION_MODE_SPX_NPS1` and `PARTITION_MODE_DPX_NPS2`. Only supported on GPU
+        sizes that advertise the mode in their `supported_partition_modes` (see the
+        `get_sizes` data source). Changing this forces a new resource to be
+        created.
+
+        > **NOTE:** If you use `volume_ids` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volume_ids` must not be mixed with external `VolumeAttachment` resources for a given instance.
+
+        > **NOTE:** Read-back of `gpu_partition_mode` on an existing Droplet is not yet available from the DigitalOcean API. The value is only returned when the Droplet is created, so this provider preserves the configured value rather than refreshing it.
+        """
+        return pulumi.get(self, "gpu_partition_mode")
 
     @_builtins.property
     @pulumi.getter(name="gracefulShutdown")
@@ -1447,8 +1545,6 @@ class Droplet(pulumi.CustomResource):
         A boolean indicating whether to enables public networking for the Droplet or not.
         By default, this is always enabled on new droplets.
         But, by explicitly setting it to false, you can create a droplet with public networking entirely disabled.
-
-        > **NOTE:** If you use `volume_ids` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volume_ids` must not be mixed with external `VolumeAttachment` resources for a given instance.
         """
         return pulumi.get(self, "public_networking")
 
