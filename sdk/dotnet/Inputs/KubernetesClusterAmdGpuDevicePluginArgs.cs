@@ -14,7 +14,6 @@ namespace Pulumi.DigitalOcean.Inputs
     {
         /// <summary>
         /// Boolean flag whether the component should be enabled or not.
-        /// `AmdGpuDeviceMetricsExporterPlugin` - (Optional) Block containing options for the AMD GPU device metrics exporter component. If not specified, the component will not be installed in the cluster.
         /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;

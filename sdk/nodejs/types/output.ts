@@ -15472,6 +15472,10 @@ export interface GetKubernetesClusterAmdGpuDevicePlugin {
     enabled: boolean;
 }
 
+export interface GetKubernetesClusterAmdGpuDraDriver {
+    enabled: boolean;
+}
+
 export interface GetKubernetesClusterClusterAutoscalerConfiguration {
     expanders?: string[];
     scaleDownUnneededTime?: string;
@@ -15542,6 +15546,7 @@ export interface GetKubernetesClusterNodePool {
      * A boolean indicating whether auto-scaling is enabled on the node pool.
      */
     autoScale: boolean;
+    gpuPartitionMode: string;
     /**
      * A unique ID that can be used to identify and reference the node.
      */
@@ -15624,6 +15629,10 @@ export interface GetKubernetesClusterNodePoolTaint {
 }
 
 export interface GetKubernetesClusterNvidiaGpuDevicePlugin {
+    enabled: boolean;
+}
+
+export interface GetKubernetesClusterNvidiaGpuDraDriver {
     enabled: boolean;
 }
 
@@ -15789,239 +15798,6 @@ export interface GetLoadBalancerStickySession {
      * how and if requests from a client will be persistently served by the same backend droplet
      */
     type: string;
-}
-
-export interface GetMicrodropletAutoPause {
-    /**
-     * Whether auto-pause is enabled. Forces recreation on change (no in-place API path).
-     */
-    enabled: boolean;
-    /**
-     * Idle timeout as a Go duration string (e.g. '5m', '30s'). Forces recreation on change (no in-place API path).
-     */
-    idleTimeout: string;
-}
-
-export interface GetMicrodropletCheckpointsCheckpoint {
-    /**
-     * RFC3339 timestamp of when the checkpoint was created.
-     */
-    createdAt: string;
-    /**
-     * Size of the persisted disk image, in bytes.
-     */
-    diskBytes: number;
-    /**
-     * Checkpoint ID.
-     */
-    id: string;
-    /**
-     * Size of the persisted memory image, in bytes.
-     */
-    memoryBytes: number;
-    /**
-     * ID of the MicroDroplet whose checkpoints should be listed.
-     */
-    microdropletId: string;
-    /**
-     * Checkpoint name.
-     */
-    name: string;
-    /**
-     * Lifecycle status of the checkpoint (e.g. `CHECKPOINT_AVAILABLE`).
-     */
-    status: string;
-}
-
-export interface GetMicrodropletCheckpointsFilter {
-    /**
-     * Require every value to match. Defaults to `false`.
-     */
-    all?: boolean;
-    /**
-     * Field to match. Valid keys include `id`, `name`, `status`.
-     */
-    key: string;
-    /**
-     * `exact`, `re`, or `substring`. Defaults to `exact`.
-     */
-    matchBy?: string;
-    /**
-     * List of values to match on `key`.
-     */
-    values: string[];
-}
-
-export interface GetMicrodropletCheckpointsSort {
-    /**
-     * `asc` (default) or `desc`.
-     */
-    direction?: string;
-    /**
-     * Field to sort by (e.g. `createdAt`).
-     */
-    key: string;
-}
-
-export interface GetMicrodropletImagesFilter {
-    /**
-     * Require every value to match. Defaults to `false`.
-     */
-    all?: boolean;
-    /**
-     * Field to match.
-     */
-    key: string;
-    /**
-     * `exact`, `re`, or `substring`. Defaults to `exact`.
-     */
-    matchBy?: string;
-    /**
-     * List of values to match on `key`.
-     */
-    values: string[];
-}
-
-export interface GetMicrodropletImagesMicroDropletImage {
-    /**
-     * The creation timestamp for the MicroDroplet image
-     */
-    createdAt: string;
-    /**
-     * Name of the MicroDroplet image
-     */
-    name: string;
-    /**
-     * Source OCI reference for the MicroDroplet image
-     */
-    source: string;
-    /**
-     * Lifecycle status of the MicroDroplet image
-     */
-    status: string;
-    /**
-     * The uniform resource name (URN) for the MicroDroplet image
-     */
-    urn: string;
-}
-
-export interface GetMicrodropletImagesSort {
-    /**
-     * `asc` (default) or `desc`.
-     */
-    direction?: string;
-    /**
-     * Field to sort by.
-     */
-    key: string;
-}
-
-export interface GetMicrodropletsFilter {
-    /**
-     * Require every value to match. Defaults to `false`.
-     */
-    all?: boolean;
-    /**
-     * Field to match.
-     */
-    key: string;
-    /**
-     * `exact`, `re`, or `substring`. Defaults to `exact`.
-     */
-    matchBy?: string;
-    /**
-     * List of values to match on `key`.
-     */
-    values: string[];
-}
-
-export interface GetMicrodropletsMicroDroplet {
-    /**
-     * Auto-pause configuration. Forces recreation on change: the MicroDroplets API has no in-place update path for auto_pause.
-     */
-    autoPauses: outputs.GetMicrodropletsMicroDropletAutoPause[];
-    /**
-     * Whether the MicroDroplet should auto-resume on request. Forces recreation on change: the MicroDroplets API has no in-place update path for auto_resume.
-     */
-    autoResume: boolean;
-    /**
-     * The creation timestamp for the MicroDroplet
-     */
-    createdAt: string;
-    /**
-     * Observed lifecycle state of the MicroDroplet
-     */
-    currentState: string;
-    /**
-     * Public endpoint URL for the MicroDroplet
-     */
-    endpoint: string;
-    /**
-     * Environment variables passed to the MicroDroplet
-     */
-    environment: {[key: string]: string};
-    /**
-     * Port the MicroDroplet exposes over HTTP
-     */
-    httpPort: number;
-    /**
-     * HTTP protocol: 'http' or 'http2'
-     */
-    httpProtocol: string;
-    /**
-     * MicroDroplet image UUID or URN
-     */
-    image: string;
-    /**
-     * Server-side filter: only include MicroDroplets whose name matches exactly. Conflicts with `region`.
-     */
-    name: string;
-    /**
-     * Networking mode: 'public' or 'vpc'
-     */
-    networking: string;
-    /**
-     * Server-side filter: only include MicroDroplets in this region. Conflicts with `name`.
-     */
-    region: string;
-    /**
-     * MicroDroplet size slug
-     */
-    size: string;
-    /**
-     * Desired lifecycle state: 'running' or 'paused'. Changes are applied by calling the microdroplet pause / resume action endpoints.
-     */
-    state: string;
-    /**
-     * The uniform resource name (URN) for the MicroDroplet
-     */
-    urn: string;
-    /**
-     * UUID of the VPC to attach the MicroDroplet to. Only valid when networking is 'vpc'.
-     */
-    vpcUuid: string;
-}
-
-export interface GetMicrodropletsMicroDropletAutoPause {
-    /**
-     * Whether auto-pause is enabled. Forces recreation on change (no in-place API path).
-     */
-    enabled: boolean;
-    /**
-     * Idle timeout as a Go duration string (e.g. '5m', '30s'). Forces recreation on change (no in-place API path).
-     */
-    idleTimeout: string;
-}
-
-export interface GetMicrodropletsSort {
-    /**
-     * `asc` (default) or `desc`.
-     */
-    direction?: string;
-    /**
-     * Field to sort by.
-     */
-    key: string;
 }
 
 export interface GetNfsAccessPointAccessPolicy {
@@ -17983,7 +17759,7 @@ export interface GradientaiOpenaiApiKeyModelVersion {
 
 export interface KubernetesClusterAmdGpuDeviceMetricsExporterPlugin {
     /**
-     * Boolean flag whether the CoreDNS Autoscaler is enabled or not.
+     * Boolean flag whether the component should be enabled or not.
      */
     enabled: boolean;
 }
@@ -17991,7 +17767,13 @@ export interface KubernetesClusterAmdGpuDeviceMetricsExporterPlugin {
 export interface KubernetesClusterAmdGpuDevicePlugin {
     /**
      * Boolean flag whether the component should be enabled or not.
-     * `amdGpuDeviceMetricsExporterPlugin` - (Optional) Block containing options for the AMD GPU device metrics exporter component. If not specified, the component will not be installed in the cluster.
+     */
+    enabled: boolean;
+}
+
+export interface KubernetesClusterAmdGpuDraDriver {
+    /**
+     * Boolean flag whether the component should be enabled or not.
      */
     enabled: boolean;
 }
@@ -18085,6 +17867,10 @@ export interface KubernetesClusterNodePool {
      */
     autoScale?: boolean;
     /**
+     * The AMD GPU partition mode to use for nodes in this pool. Valid values are `AMD_PARTITION_MODE_SPX_NPS1` and `AMD_PARTITION_MODE_DPX_NPS2`. This can only be set when the pool is created.
+     */
+    gpuPartitionMode?: string;
+    /**
      * A unique ID that can be used to identify and reference the node.
      */
     id: string;
@@ -18171,7 +17957,13 @@ export interface KubernetesClusterNodePoolTaint {
 export interface KubernetesClusterNvidiaGpuDevicePlugin {
     /**
      * Boolean flag whether the component should be enabled or not.
-     * `rdmaSharedDevicePlugin` - (Optional) Block containing options for the RDMA Shared Device Plugin (k8s-rdma-shared-dev-plugin) component. If not specified, the component will be enabled by default for clusters with GPU nodes connected to a dedicated high-speed networking fabric.
+     */
+    enabled: boolean;
+}
+
+export interface KubernetesClusterNvidiaGpuDraDriver {
+    /**
+     * Boolean flag whether the component should be enabled or not.
      */
     enabled: boolean;
 }
@@ -18185,7 +17977,7 @@ export interface KubernetesClusterP2pOciRegistryPlugin {
 
 export interface KubernetesClusterRdmaSharedDevicePlugin {
     /**
-     * Boolean flag whether the CoreDNS Autoscaler is enabled or not.
+     * Boolean flag whether the component should be enabled or not.
      */
     enabled: boolean;
 }
@@ -18408,17 +18200,6 @@ export interface LoadBalancerStickySessions {
      * An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
      */
     type?: string;
-}
-
-export interface MicrodropletAutoPause {
-    /**
-     * Whether auto-pause is enabled.
-     */
-    enabled: boolean;
-    /**
-     * Idle timeout as a Go duration string (e.g. `5m`, `30s`).
-     */
-    idleTimeout: string;
 }
 
 export interface MonitorAlertAlerts {

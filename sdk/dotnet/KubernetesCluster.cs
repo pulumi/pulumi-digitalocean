@@ -199,16 +199,22 @@ namespace Pulumi.DigitalOcean
     public partial class KubernetesCluster : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Block containing options for the AMD GPU device metrics exporter component.
+        /// Block containing options for the AMD GPU device metrics exporter component. If not specified, the component will not be installed in the cluster.
         /// </summary>
         [Output("amdGpuDeviceMetricsExporterPlugin")]
         public Output<Outputs.KubernetesClusterAmdGpuDeviceMetricsExporterPlugin> AmdGpuDeviceMetricsExporterPlugin { get; private set; } = null!;
 
         /// <summary>
-        /// Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes.
+        /// Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes. Mutually exclusive with `AmdGpuDraDriver`.
         /// </summary>
         [Output("amdGpuDevicePlugin")]
         public Output<Outputs.KubernetesClusterAmdGpuDevicePlugin> AmdGpuDevicePlugin { get; private set; } = null!;
+
+        /// <summary>
+        /// Block containing options for the AMD GPU DRA driver component. Mutually exclusive with `AmdGpuDevicePlugin`.
+        /// </summary>
+        [Output("amdGpuDraDriver")]
+        public Output<Outputs.KubernetesClusterAmdGpuDraDriver> AmdGpuDraDriver { get; private set; } = null!;
 
         /// <summary>
         /// A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
@@ -307,10 +313,16 @@ namespace Pulumi.DigitalOcean
         public Output<Outputs.KubernetesClusterNodePool> NodePool { get; private set; } = null!;
 
         /// <summary>
-        /// Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes.
+        /// Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes. Mutually exclusive with `NvidiaGpuDraDriver`.
         /// </summary>
         [Output("nvidiaGpuDevicePlugin")]
         public Output<Outputs.KubernetesClusterNvidiaGpuDevicePlugin> NvidiaGpuDevicePlugin { get; private set; } = null!;
+
+        /// <summary>
+        /// Block containing options for the NVIDIA GPU DRA driver component. Mutually exclusive with `NvidiaGpuDevicePlugin`.
+        /// </summary>
+        [Output("nvidiaGpuDraDriver")]
+        public Output<Outputs.KubernetesClusterNvidiaGpuDraDriver> NvidiaGpuDraDriver { get; private set; } = null!;
 
         /// <summary>
         /// Block containing options for the Peer-to-peer OCI registry plugin component. If not specified, the p2p-oci-registry-plugin component will not be installed in the cluster.
@@ -318,6 +330,9 @@ namespace Pulumi.DigitalOcean
         [Output("p2pOciRegistryPlugin")]
         public Output<Outputs.KubernetesClusterP2pOciRegistryPlugin> P2pOciRegistryPlugin { get; private set; } = null!;
 
+        /// <summary>
+        /// Block containing options for the RDMA Shared Device Plugin (k8s-rdma-shared-dev-plugin) component. If not specified, the component will be enabled by default for clusters with GPU nodes connected to a dedicated high-speed networking fabric.
+        /// </summary>
         [Output("rdmaSharedDevicePlugin")]
         public Output<Outputs.KubernetesClusterRdmaSharedDevicePlugin> RdmaSharedDevicePlugin { get; private set; } = null!;
 
@@ -444,16 +459,22 @@ namespace Pulumi.DigitalOcean
     public sealed class KubernetesClusterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Block containing options for the AMD GPU device metrics exporter component.
+        /// Block containing options for the AMD GPU device metrics exporter component. If not specified, the component will not be installed in the cluster.
         /// </summary>
         [Input("amdGpuDeviceMetricsExporterPlugin")]
         public Input<Inputs.KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs>? AmdGpuDeviceMetricsExporterPlugin { get; set; }
 
         /// <summary>
-        /// Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes.
+        /// Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes. Mutually exclusive with `AmdGpuDraDriver`.
         /// </summary>
         [Input("amdGpuDevicePlugin")]
         public Input<Inputs.KubernetesClusterAmdGpuDevicePluginArgs>? AmdGpuDevicePlugin { get; set; }
+
+        /// <summary>
+        /// Block containing options for the AMD GPU DRA driver component. Mutually exclusive with `AmdGpuDevicePlugin`.
+        /// </summary>
+        [Input("amdGpuDraDriver")]
+        public Input<Inputs.KubernetesClusterAmdGpuDraDriverArgs>? AmdGpuDraDriver { get; set; }
 
         /// <summary>
         /// A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
@@ -528,10 +549,16 @@ namespace Pulumi.DigitalOcean
         public Input<Inputs.KubernetesClusterNodePoolArgs> NodePool { get; set; } = null!;
 
         /// <summary>
-        /// Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes.
+        /// Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes. Mutually exclusive with `NvidiaGpuDraDriver`.
         /// </summary>
         [Input("nvidiaGpuDevicePlugin")]
         public Input<Inputs.KubernetesClusterNvidiaGpuDevicePluginArgs>? NvidiaGpuDevicePlugin { get; set; }
+
+        /// <summary>
+        /// Block containing options for the NVIDIA GPU DRA driver component. Mutually exclusive with `NvidiaGpuDevicePlugin`.
+        /// </summary>
+        [Input("nvidiaGpuDraDriver")]
+        public Input<Inputs.KubernetesClusterNvidiaGpuDraDriverArgs>? NvidiaGpuDraDriver { get; set; }
 
         /// <summary>
         /// Block containing options for the Peer-to-peer OCI registry plugin component. If not specified, the p2p-oci-registry-plugin component will not be installed in the cluster.
@@ -539,6 +566,9 @@ namespace Pulumi.DigitalOcean
         [Input("p2pOciRegistryPlugin")]
         public Input<Inputs.KubernetesClusterP2pOciRegistryPluginArgs>? P2pOciRegistryPlugin { get; set; }
 
+        /// <summary>
+        /// Block containing options for the RDMA Shared Device Plugin (k8s-rdma-shared-dev-plugin) component. If not specified, the component will be enabled by default for clusters with GPU nodes connected to a dedicated high-speed networking fabric.
+        /// </summary>
         [Input("rdmaSharedDevicePlugin")]
         public Input<Inputs.KubernetesClusterRdmaSharedDevicePluginArgs>? RdmaSharedDevicePlugin { get; set; }
 
@@ -623,16 +653,22 @@ namespace Pulumi.DigitalOcean
     public sealed class KubernetesClusterState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Block containing options for the AMD GPU device metrics exporter component.
+        /// Block containing options for the AMD GPU device metrics exporter component. If not specified, the component will not be installed in the cluster.
         /// </summary>
         [Input("amdGpuDeviceMetricsExporterPlugin")]
         public Input<Inputs.KubernetesClusterAmdGpuDeviceMetricsExporterPluginGetArgs>? AmdGpuDeviceMetricsExporterPlugin { get; set; }
 
         /// <summary>
-        /// Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes.
+        /// Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes. Mutually exclusive with `AmdGpuDraDriver`.
         /// </summary>
         [Input("amdGpuDevicePlugin")]
         public Input<Inputs.KubernetesClusterAmdGpuDevicePluginGetArgs>? AmdGpuDevicePlugin { get; set; }
+
+        /// <summary>
+        /// Block containing options for the AMD GPU DRA driver component. Mutually exclusive with `AmdGpuDevicePlugin`.
+        /// </summary>
+        [Input("amdGpuDraDriver")]
+        public Input<Inputs.KubernetesClusterAmdGpuDraDriverGetArgs>? AmdGpuDraDriver { get; set; }
 
         /// <summary>
         /// A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
@@ -747,10 +783,16 @@ namespace Pulumi.DigitalOcean
         public Input<Inputs.KubernetesClusterNodePoolGetArgs>? NodePool { get; set; }
 
         /// <summary>
-        /// Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes.
+        /// Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes. Mutually exclusive with `NvidiaGpuDraDriver`.
         /// </summary>
         [Input("nvidiaGpuDevicePlugin")]
         public Input<Inputs.KubernetesClusterNvidiaGpuDevicePluginGetArgs>? NvidiaGpuDevicePlugin { get; set; }
+
+        /// <summary>
+        /// Block containing options for the NVIDIA GPU DRA driver component. Mutually exclusive with `NvidiaGpuDevicePlugin`.
+        /// </summary>
+        [Input("nvidiaGpuDraDriver")]
+        public Input<Inputs.KubernetesClusterNvidiaGpuDraDriverGetArgs>? NvidiaGpuDraDriver { get; set; }
 
         /// <summary>
         /// Block containing options for the Peer-to-peer OCI registry plugin component. If not specified, the p2p-oci-registry-plugin component will not be installed in the cluster.
@@ -758,6 +800,9 @@ namespace Pulumi.DigitalOcean
         [Input("p2pOciRegistryPlugin")]
         public Input<Inputs.KubernetesClusterP2pOciRegistryPluginGetArgs>? P2pOciRegistryPlugin { get; set; }
 
+        /// <summary>
+        /// Block containing options for the RDMA Shared Device Plugin (k8s-rdma-shared-dev-plugin) component. If not specified, the component will be enabled by default for clusters with GPU nodes connected to a dedicated high-speed networking fabric.
+        /// </summary>
         [Input("rdmaSharedDevicePlugin")]
         public Input<Inputs.KubernetesClusterRdmaSharedDevicePluginGetArgs>? RdmaSharedDevicePlugin { get; set; }
 

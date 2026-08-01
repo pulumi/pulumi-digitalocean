@@ -239,6 +239,7 @@ __all__ = [
     'GradientaiOpenaiApiKeyModelVersion',
     'KubernetesClusterAmdGpuDeviceMetricsExporterPlugin',
     'KubernetesClusterAmdGpuDevicePlugin',
+    'KubernetesClusterAmdGpuDraDriver',
     'KubernetesClusterClusterAutoscalerConfiguration',
     'KubernetesClusterControlPlaneFirewall',
     'KubernetesClusterCorednsAutoscaler',
@@ -248,6 +249,7 @@ __all__ = [
     'KubernetesClusterNodePoolNode',
     'KubernetesClusterNodePoolTaint',
     'KubernetesClusterNvidiaGpuDevicePlugin',
+    'KubernetesClusterNvidiaGpuDraDriver',
     'KubernetesClusterP2pOciRegistryPlugin',
     'KubernetesClusterRdmaSharedDevicePlugin',
     'KubernetesClusterRoutingAgent',
@@ -261,7 +263,6 @@ __all__ = [
     'LoadBalancerGlbSettingsCdn',
     'LoadBalancerHealthcheck',
     'LoadBalancerStickySessions',
-    'MicrodropletAutoPause',
     'MonitorAlertAlerts',
     'MonitorAlertAlertsSlack',
     'NfsAccessPointAccessPolicy',
@@ -728,6 +729,7 @@ __all__ = [
     'GetImagesSortResult',
     'GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginResult',
     'GetKubernetesClusterAmdGpuDevicePluginResult',
+    'GetKubernetesClusterAmdGpuDraDriverResult',
     'GetKubernetesClusterClusterAutoscalerConfigurationResult',
     'GetKubernetesClusterControlPlaneFirewallResult',
     'GetKubernetesClusterCorednsAutoscalerResult',
@@ -737,6 +739,7 @@ __all__ = [
     'GetKubernetesClusterNodePoolNodeResult',
     'GetKubernetesClusterNodePoolTaintResult',
     'GetKubernetesClusterNvidiaGpuDevicePluginResult',
+    'GetKubernetesClusterNvidiaGpuDraDriverResult',
     'GetKubernetesClusterP2pOciRegistryPluginResult',
     'GetKubernetesClusterRdmaSharedDevicePluginResult',
     'GetKubernetesClusterRoutingAgentResult',
@@ -748,17 +751,6 @@ __all__ = [
     'GetLoadBalancerGlbSettingCdnResult',
     'GetLoadBalancerHealthcheckResult',
     'GetLoadBalancerStickySessionResult',
-    'GetMicrodropletAutoPauseResult',
-    'GetMicrodropletCheckpointsCheckpointResult',
-    'GetMicrodropletCheckpointsFilterResult',
-    'GetMicrodropletCheckpointsSortResult',
-    'GetMicrodropletImagesFilterResult',
-    'GetMicrodropletImagesMicroDropletImageResult',
-    'GetMicrodropletImagesSortResult',
-    'GetMicrodropletsFilterResult',
-    'GetMicrodropletsMicroDropletResult',
-    'GetMicrodropletsMicroDropletAutoPauseResult',
-    'GetMicrodropletsSortResult',
     'GetNfsAccessPointAccessPolicyResult',
     'GetPartnerAttachmentBgpResult',
     'GetProjectsFilterResult',
@@ -19065,7 +19057,7 @@ class KubernetesClusterAmdGpuDeviceMetricsExporterPlugin(dict):
     def __init__(__self__, *,
                  enabled: _builtins.bool):
         """
-        :param _builtins.bool enabled: Boolean flag whether the CoreDNS Autoscaler is enabled or not.
+        :param _builtins.bool enabled: Boolean flag whether the component should be enabled or not.
         """
         pulumi.set(__self__, "enabled", enabled)
 
@@ -19073,7 +19065,7 @@ class KubernetesClusterAmdGpuDeviceMetricsExporterPlugin(dict):
     @pulumi.getter
     def enabled(self) -> _builtins.bool:
         """
-        Boolean flag whether the CoreDNS Autoscaler is enabled or not.
+        Boolean flag whether the component should be enabled or not.
         """
         return pulumi.get(self, "enabled")
 
@@ -19084,7 +19076,6 @@ class KubernetesClusterAmdGpuDevicePlugin(dict):
                  enabled: _builtins.bool):
         """
         :param _builtins.bool enabled: Boolean flag whether the component should be enabled or not.
-               `amd_gpu_device_metrics_exporter_plugin` - (Optional) Block containing options for the AMD GPU device metrics exporter component. If not specified, the component will not be installed in the cluster.
         """
         pulumi.set(__self__, "enabled", enabled)
 
@@ -19093,7 +19084,24 @@ class KubernetesClusterAmdGpuDevicePlugin(dict):
     def enabled(self) -> _builtins.bool:
         """
         Boolean flag whether the component should be enabled or not.
-        `amd_gpu_device_metrics_exporter_plugin` - (Optional) Block containing options for the AMD GPU device metrics exporter component. If not specified, the component will not be installed in the cluster.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class KubernetesClusterAmdGpuDraDriver(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        """
+        :param _builtins.bool enabled: Boolean flag whether the component should be enabled or not.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Boolean flag whether the component should be enabled or not.
         """
         return pulumi.get(self, "enabled")
 
@@ -19409,6 +19417,8 @@ class KubernetesClusterNodePool(dict):
             suggest = "actual_node_count"
         elif key == "autoScale":
             suggest = "auto_scale"
+        elif key == "gpuPartitionMode":
+            suggest = "gpu_partition_mode"
         elif key == "maxNodes":
             suggest = "max_nodes"
         elif key == "minNodes":
@@ -19432,6 +19442,7 @@ class KubernetesClusterNodePool(dict):
                  size: _builtins.str,
                  actual_node_count: Optional[_builtins.int] = None,
                  auto_scale: Optional[_builtins.bool] = None,
+                 gpu_partition_mode: Optional[_builtins.str] = None,
                  id: Optional[_builtins.str] = None,
                  labels: Optional[Mapping[str, _builtins.str]] = None,
                  max_nodes: Optional[_builtins.int] = None,
@@ -19445,6 +19456,7 @@ class KubernetesClusterNodePool(dict):
         :param _builtins.str size: The slug identifier for the type of Droplet to be used as workers in the node pool.
         :param _builtins.int actual_node_count: A computed field representing the actual number of nodes in the node pool, which is especially useful when auto-scaling is enabled.
         :param _builtins.bool auto_scale: Enable auto-scaling of the number of nodes in the node pool within the given min/max range.
+        :param _builtins.str gpu_partition_mode: The AMD GPU partition mode to use for nodes in this pool. Valid values are `AMD_PARTITION_MODE_SPX_NPS1` and `AMD_PARTITION_MODE_DPX_NPS2`. This can only be set when the pool is created.
         :param _builtins.str id: A unique ID that can be used to identify and reference the node.
         :param Mapping[str, _builtins.str] labels: A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
         :param _builtins.int max_nodes: If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
@@ -19460,6 +19472,8 @@ class KubernetesClusterNodePool(dict):
             pulumi.set(__self__, "actual_node_count", actual_node_count)
         if auto_scale is not None:
             pulumi.set(__self__, "auto_scale", auto_scale)
+        if gpu_partition_mode is not None:
+            pulumi.set(__self__, "gpu_partition_mode", gpu_partition_mode)
         if id is not None:
             pulumi.set(__self__, "id", id)
         if labels is not None:
@@ -19508,6 +19522,14 @@ class KubernetesClusterNodePool(dict):
         Enable auto-scaling of the number of nodes in the node pool within the given min/max range.
         """
         return pulumi.get(self, "auto_scale")
+
+    @_builtins.property
+    @pulumi.getter(name="gpuPartitionMode")
+    def gpu_partition_mode(self) -> Optional[_builtins.str]:
+        """
+        The AMD GPU partition mode to use for nodes in this pool. Valid values are `AMD_PARTITION_MODE_SPX_NPS1` and `AMD_PARTITION_MODE_DPX_NPS2`. This can only be set when the pool is created.
+        """
+        return pulumi.get(self, "gpu_partition_mode")
 
     @_builtins.property
     @pulumi.getter
@@ -19720,7 +19742,6 @@ class KubernetesClusterNvidiaGpuDevicePlugin(dict):
                  enabled: _builtins.bool):
         """
         :param _builtins.bool enabled: Boolean flag whether the component should be enabled or not.
-               `rdma_shared_device_plugin` - (Optional) Block containing options for the RDMA Shared Device Plugin (k8s-rdma-shared-dev-plugin) component. If not specified, the component will be enabled by default for clusters with GPU nodes connected to a dedicated high-speed networking fabric.
         """
         pulumi.set(__self__, "enabled", enabled)
 
@@ -19729,7 +19750,24 @@ class KubernetesClusterNvidiaGpuDevicePlugin(dict):
     def enabled(self) -> _builtins.bool:
         """
         Boolean flag whether the component should be enabled or not.
-        `rdma_shared_device_plugin` - (Optional) Block containing options for the RDMA Shared Device Plugin (k8s-rdma-shared-dev-plugin) component. If not specified, the component will be enabled by default for clusters with GPU nodes connected to a dedicated high-speed networking fabric.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class KubernetesClusterNvidiaGpuDraDriver(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        """
+        :param _builtins.bool enabled: Boolean flag whether the component should be enabled or not.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Boolean flag whether the component should be enabled or not.
         """
         return pulumi.get(self, "enabled")
 
@@ -19757,7 +19795,7 @@ class KubernetesClusterRdmaSharedDevicePlugin(dict):
     def __init__(__self__, *,
                  enabled: _builtins.bool):
         """
-        :param _builtins.bool enabled: Boolean flag whether the CoreDNS Autoscaler is enabled or not.
+        :param _builtins.bool enabled: Boolean flag whether the component should be enabled or not.
         """
         pulumi.set(__self__, "enabled", enabled)
 
@@ -19765,7 +19803,7 @@ class KubernetesClusterRdmaSharedDevicePlugin(dict):
     @pulumi.getter
     def enabled(self) -> _builtins.bool:
         """
-        Boolean flag whether the CoreDNS Autoscaler is enabled or not.
+        Boolean flag whether the component should be enabled or not.
         """
         return pulumi.get(self, "enabled")
 
@@ -20558,53 +20596,6 @@ class LoadBalancerStickySessions(dict):
         An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
         """
         return pulumi.get(self, "type")
-
-
-@pulumi.output_type
-class MicrodropletAutoPause(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "idleTimeout":
-            suggest = "idle_timeout"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in MicrodropletAutoPause. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        MicrodropletAutoPause.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        MicrodropletAutoPause.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 enabled: _builtins.bool,
-                 idle_timeout: Optional[_builtins.str] = None):
-        """
-        :param _builtins.bool enabled: Whether auto-pause is enabled.
-        :param _builtins.str idle_timeout: Idle timeout as a Go duration string (e.g. `5m`, `30s`).
-        """
-        pulumi.set(__self__, "enabled", enabled)
-        if idle_timeout is not None:
-            pulumi.set(__self__, "idle_timeout", idle_timeout)
-
-    @_builtins.property
-    @pulumi.getter
-    def enabled(self) -> _builtins.bool:
-        """
-        Whether auto-pause is enabled.
-        """
-        return pulumi.get(self, "enabled")
-
-    @_builtins.property
-    @pulumi.getter(name="idleTimeout")
-    def idle_timeout(self) -> Optional[_builtins.str]:
-        """
-        Idle timeout as a Go duration string (e.g. `5m`, `30s`).
-        """
-        return pulumi.get(self, "idle_timeout")
 
 
 @pulumi.output_type
@@ -55158,6 +55149,18 @@ class GetKubernetesClusterAmdGpuDevicePluginResult(dict):
 
 
 @pulumi.output_type
+class GetKubernetesClusterAmdGpuDraDriverResult(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
 class GetKubernetesClusterClusterAutoscalerConfigurationResult(dict):
     def __init__(__self__, *,
                  expanders: Optional[Sequence[_builtins.str]] = None,
@@ -55346,6 +55349,7 @@ class GetKubernetesClusterNodePoolResult(dict):
     def __init__(__self__, *,
                  actual_node_count: _builtins.int,
                  auto_scale: _builtins.bool,
+                 gpu_partition_mode: _builtins.str,
                  id: _builtins.str,
                  labels: Mapping[str, _builtins.str],
                  max_nodes: _builtins.int,
@@ -55372,6 +55376,7 @@ class GetKubernetesClusterNodePoolResult(dict):
         """
         pulumi.set(__self__, "actual_node_count", actual_node_count)
         pulumi.set(__self__, "auto_scale", auto_scale)
+        pulumi.set(__self__, "gpu_partition_mode", gpu_partition_mode)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "labels", labels)
         pulumi.set(__self__, "max_nodes", max_nodes)
@@ -55398,6 +55403,11 @@ class GetKubernetesClusterNodePoolResult(dict):
         A boolean indicating whether auto-scaling is enabled on the node pool.
         """
         return pulumi.get(self, "auto_scale")
+
+    @_builtins.property
+    @pulumi.getter(name="gpuPartitionMode")
+    def gpu_partition_mode(self) -> _builtins.str:
+        return pulumi.get(self, "gpu_partition_mode")
 
     @_builtins.property
     @pulumi.getter
@@ -55591,6 +55601,18 @@ class GetKubernetesClusterNodePoolTaintResult(dict):
 
 @pulumi.output_type
 class GetKubernetesClusterNvidiaGpuDevicePluginResult(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GetKubernetesClusterNvidiaGpuDraDriverResult(dict):
     def __init__(__self__, *,
                  enabled: _builtins.bool):
         pulumi.set(__self__, "enabled", enabled)
@@ -56058,642 +56080,6 @@ class GetLoadBalancerStickySessionResult(dict):
         how and if requests from a client will be persistently served by the same backend droplet
         """
         return pulumi.get(self, "type")
-
-
-@pulumi.output_type
-class GetMicrodropletAutoPauseResult(dict):
-    def __init__(__self__, *,
-                 enabled: _builtins.bool,
-                 idle_timeout: _builtins.str):
-        """
-        :param _builtins.bool enabled: Whether auto-pause is enabled. Forces recreation on change (no in-place API path).
-        :param _builtins.str idle_timeout: Idle timeout as a Go duration string (e.g. '5m', '30s'). Forces recreation on change (no in-place API path).
-        """
-        pulumi.set(__self__, "enabled", enabled)
-        pulumi.set(__self__, "idle_timeout", idle_timeout)
-
-    @_builtins.property
-    @pulumi.getter
-    def enabled(self) -> _builtins.bool:
-        """
-        Whether auto-pause is enabled. Forces recreation on change (no in-place API path).
-        """
-        return pulumi.get(self, "enabled")
-
-    @_builtins.property
-    @pulumi.getter(name="idleTimeout")
-    def idle_timeout(self) -> _builtins.str:
-        """
-        Idle timeout as a Go duration string (e.g. '5m', '30s'). Forces recreation on change (no in-place API path).
-        """
-        return pulumi.get(self, "idle_timeout")
-
-
-@pulumi.output_type
-class GetMicrodropletCheckpointsCheckpointResult(dict):
-    def __init__(__self__, *,
-                 created_at: _builtins.str,
-                 disk_bytes: _builtins.int,
-                 id: _builtins.str,
-                 memory_bytes: _builtins.int,
-                 microdroplet_id: _builtins.str,
-                 name: _builtins.str,
-                 status: _builtins.str):
-        """
-        :param _builtins.str created_at: RFC3339 timestamp of when the checkpoint was created.
-        :param _builtins.int disk_bytes: Size of the persisted disk image, in bytes.
-        :param _builtins.str id: Checkpoint ID.
-        :param _builtins.int memory_bytes: Size of the persisted memory image, in bytes.
-        :param _builtins.str microdroplet_id: ID of the MicroDroplet whose checkpoints should be listed.
-        :param _builtins.str name: Checkpoint name.
-        :param _builtins.str status: Lifecycle status of the checkpoint (e.g. `CHECKPOINT_AVAILABLE`).
-        """
-        pulumi.set(__self__, "created_at", created_at)
-        pulumi.set(__self__, "disk_bytes", disk_bytes)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "memory_bytes", memory_bytes)
-        pulumi.set(__self__, "microdroplet_id", microdroplet_id)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "status", status)
-
-    @_builtins.property
-    @pulumi.getter(name="createdAt")
-    def created_at(self) -> _builtins.str:
-        """
-        RFC3339 timestamp of when the checkpoint was created.
-        """
-        return pulumi.get(self, "created_at")
-
-    @_builtins.property
-    @pulumi.getter(name="diskBytes")
-    def disk_bytes(self) -> _builtins.int:
-        """
-        Size of the persisted disk image, in bytes.
-        """
-        return pulumi.get(self, "disk_bytes")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        Checkpoint ID.
-        """
-        return pulumi.get(self, "id")
-
-    @_builtins.property
-    @pulumi.getter(name="memoryBytes")
-    def memory_bytes(self) -> _builtins.int:
-        """
-        Size of the persisted memory image, in bytes.
-        """
-        return pulumi.get(self, "memory_bytes")
-
-    @_builtins.property
-    @pulumi.getter(name="microdropletId")
-    def microdroplet_id(self) -> _builtins.str:
-        """
-        ID of the MicroDroplet whose checkpoints should be listed.
-        """
-        return pulumi.get(self, "microdroplet_id")
-
-    @_builtins.property
-    @pulumi.getter
-    def name(self) -> _builtins.str:
-        """
-        Checkpoint name.
-        """
-        return pulumi.get(self, "name")
-
-    @_builtins.property
-    @pulumi.getter
-    def status(self) -> _builtins.str:
-        """
-        Lifecycle status of the checkpoint (e.g. `CHECKPOINT_AVAILABLE`).
-        """
-        return pulumi.get(self, "status")
-
-
-@pulumi.output_type
-class GetMicrodropletCheckpointsFilterResult(dict):
-    def __init__(__self__, *,
-                 key: _builtins.str,
-                 values: Sequence[_builtins.str],
-                 all: Optional[_builtins.bool] = None,
-                 match_by: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str key: Field to match. Valid keys include `id`, `name`, `status`.
-        :param Sequence[_builtins.str] values: List of values to match on `key`.
-        :param _builtins.bool all: Require every value to match. Defaults to `false`.
-        :param _builtins.str match_by: `exact`, `re`, or `substring`. Defaults to `exact`.
-        """
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "values", values)
-        if all is not None:
-            pulumi.set(__self__, "all", all)
-        if match_by is not None:
-            pulumi.set(__self__, "match_by", match_by)
-
-    @_builtins.property
-    @pulumi.getter
-    def key(self) -> _builtins.str:
-        """
-        Field to match. Valid keys include `id`, `name`, `status`.
-        """
-        return pulumi.get(self, "key")
-
-    @_builtins.property
-    @pulumi.getter
-    def values(self) -> Sequence[_builtins.str]:
-        """
-        List of values to match on `key`.
-        """
-        return pulumi.get(self, "values")
-
-    @_builtins.property
-    @pulumi.getter
-    def all(self) -> Optional[_builtins.bool]:
-        """
-        Require every value to match. Defaults to `false`.
-        """
-        return pulumi.get(self, "all")
-
-    @_builtins.property
-    @pulumi.getter(name="matchBy")
-    def match_by(self) -> Optional[_builtins.str]:
-        """
-        `exact`, `re`, or `substring`. Defaults to `exact`.
-        """
-        return pulumi.get(self, "match_by")
-
-
-@pulumi.output_type
-class GetMicrodropletCheckpointsSortResult(dict):
-    def __init__(__self__, *,
-                 key: _builtins.str,
-                 direction: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str key: Field to sort by (e.g. `created_at`).
-        :param _builtins.str direction: `asc` (default) or `desc`.
-        """
-        pulumi.set(__self__, "key", key)
-        if direction is not None:
-            pulumi.set(__self__, "direction", direction)
-
-    @_builtins.property
-    @pulumi.getter
-    def key(self) -> _builtins.str:
-        """
-        Field to sort by (e.g. `created_at`).
-        """
-        return pulumi.get(self, "key")
-
-    @_builtins.property
-    @pulumi.getter
-    def direction(self) -> Optional[_builtins.str]:
-        """
-        `asc` (default) or `desc`.
-        """
-        return pulumi.get(self, "direction")
-
-
-@pulumi.output_type
-class GetMicrodropletImagesFilterResult(dict):
-    def __init__(__self__, *,
-                 key: _builtins.str,
-                 values: Sequence[_builtins.str],
-                 all: Optional[_builtins.bool] = None,
-                 match_by: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str key: Field to match.
-        :param Sequence[_builtins.str] values: List of values to match on `key`.
-        :param _builtins.bool all: Require every value to match. Defaults to `false`.
-        :param _builtins.str match_by: `exact`, `re`, or `substring`. Defaults to `exact`.
-        """
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "values", values)
-        if all is not None:
-            pulumi.set(__self__, "all", all)
-        if match_by is not None:
-            pulumi.set(__self__, "match_by", match_by)
-
-    @_builtins.property
-    @pulumi.getter
-    def key(self) -> _builtins.str:
-        """
-        Field to match.
-        """
-        return pulumi.get(self, "key")
-
-    @_builtins.property
-    @pulumi.getter
-    def values(self) -> Sequence[_builtins.str]:
-        """
-        List of values to match on `key`.
-        """
-        return pulumi.get(self, "values")
-
-    @_builtins.property
-    @pulumi.getter
-    def all(self) -> Optional[_builtins.bool]:
-        """
-        Require every value to match. Defaults to `false`.
-        """
-        return pulumi.get(self, "all")
-
-    @_builtins.property
-    @pulumi.getter(name="matchBy")
-    def match_by(self) -> Optional[_builtins.str]:
-        """
-        `exact`, `re`, or `substring`. Defaults to `exact`.
-        """
-        return pulumi.get(self, "match_by")
-
-
-@pulumi.output_type
-class GetMicrodropletImagesMicroDropletImageResult(dict):
-    def __init__(__self__, *,
-                 created_at: _builtins.str,
-                 name: _builtins.str,
-                 source: _builtins.str,
-                 status: _builtins.str,
-                 urn: _builtins.str):
-        """
-        :param _builtins.str created_at: The creation timestamp for the MicroDroplet image
-        :param _builtins.str name: Name of the MicroDroplet image
-        :param _builtins.str source: Source OCI reference for the MicroDroplet image
-        :param _builtins.str status: Lifecycle status of the MicroDroplet image
-        :param _builtins.str urn: The uniform resource name (URN) for the MicroDroplet image
-        """
-        pulumi.set(__self__, "created_at", created_at)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "source", source)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "urn", urn)
-
-    @_builtins.property
-    @pulumi.getter(name="createdAt")
-    def created_at(self) -> _builtins.str:
-        """
-        The creation timestamp for the MicroDroplet image
-        """
-        return pulumi.get(self, "created_at")
-
-    @_builtins.property
-    @pulumi.getter
-    def name(self) -> _builtins.str:
-        """
-        Name of the MicroDroplet image
-        """
-        return pulumi.get(self, "name")
-
-    @_builtins.property
-    @pulumi.getter
-    def source(self) -> _builtins.str:
-        """
-        Source OCI reference for the MicroDroplet image
-        """
-        return pulumi.get(self, "source")
-
-    @_builtins.property
-    @pulumi.getter
-    def status(self) -> _builtins.str:
-        """
-        Lifecycle status of the MicroDroplet image
-        """
-        return pulumi.get(self, "status")
-
-    @_builtins.property
-    @pulumi.getter
-    def urn(self) -> _builtins.str:
-        """
-        The uniform resource name (URN) for the MicroDroplet image
-        """
-        return pulumi.get(self, "urn")
-
-
-@pulumi.output_type
-class GetMicrodropletImagesSortResult(dict):
-    def __init__(__self__, *,
-                 key: _builtins.str,
-                 direction: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str key: Field to sort by.
-        :param _builtins.str direction: `asc` (default) or `desc`.
-        """
-        pulumi.set(__self__, "key", key)
-        if direction is not None:
-            pulumi.set(__self__, "direction", direction)
-
-    @_builtins.property
-    @pulumi.getter
-    def key(self) -> _builtins.str:
-        """
-        Field to sort by.
-        """
-        return pulumi.get(self, "key")
-
-    @_builtins.property
-    @pulumi.getter
-    def direction(self) -> Optional[_builtins.str]:
-        """
-        `asc` (default) or `desc`.
-        """
-        return pulumi.get(self, "direction")
-
-
-@pulumi.output_type
-class GetMicrodropletsFilterResult(dict):
-    def __init__(__self__, *,
-                 key: _builtins.str,
-                 values: Sequence[_builtins.str],
-                 all: Optional[_builtins.bool] = None,
-                 match_by: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str key: Field to match.
-        :param Sequence[_builtins.str] values: List of values to match on `key`.
-        :param _builtins.bool all: Require every value to match. Defaults to `false`.
-        :param _builtins.str match_by: `exact`, `re`, or `substring`. Defaults to `exact`.
-        """
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "values", values)
-        if all is not None:
-            pulumi.set(__self__, "all", all)
-        if match_by is not None:
-            pulumi.set(__self__, "match_by", match_by)
-
-    @_builtins.property
-    @pulumi.getter
-    def key(self) -> _builtins.str:
-        """
-        Field to match.
-        """
-        return pulumi.get(self, "key")
-
-    @_builtins.property
-    @pulumi.getter
-    def values(self) -> Sequence[_builtins.str]:
-        """
-        List of values to match on `key`.
-        """
-        return pulumi.get(self, "values")
-
-    @_builtins.property
-    @pulumi.getter
-    def all(self) -> Optional[_builtins.bool]:
-        """
-        Require every value to match. Defaults to `false`.
-        """
-        return pulumi.get(self, "all")
-
-    @_builtins.property
-    @pulumi.getter(name="matchBy")
-    def match_by(self) -> Optional[_builtins.str]:
-        """
-        `exact`, `re`, or `substring`. Defaults to `exact`.
-        """
-        return pulumi.get(self, "match_by")
-
-
-@pulumi.output_type
-class GetMicrodropletsMicroDropletResult(dict):
-    def __init__(__self__, *,
-                 auto_pauses: Sequence['outputs.GetMicrodropletsMicroDropletAutoPauseResult'],
-                 auto_resume: _builtins.bool,
-                 created_at: _builtins.str,
-                 current_state: _builtins.str,
-                 endpoint: _builtins.str,
-                 environment: Mapping[str, _builtins.str],
-                 http_port: _builtins.int,
-                 http_protocol: _builtins.str,
-                 image: _builtins.str,
-                 name: _builtins.str,
-                 networking: _builtins.str,
-                 region: _builtins.str,
-                 size: _builtins.str,
-                 state: _builtins.str,
-                 urn: _builtins.str,
-                 vpc_uuid: _builtins.str):
-        """
-        :param Sequence['GetMicrodropletsMicroDropletAutoPauseArgs'] auto_pauses: Auto-pause configuration. Forces recreation on change: the MicroDroplets API has no in-place update path for auto_pause.
-        :param _builtins.bool auto_resume: Whether the MicroDroplet should auto-resume on request. Forces recreation on change: the MicroDroplets API has no in-place update path for auto_resume.
-        :param _builtins.str created_at: The creation timestamp for the MicroDroplet
-        :param _builtins.str current_state: Observed lifecycle state of the MicroDroplet
-        :param _builtins.str endpoint: Public endpoint URL for the MicroDroplet
-        :param Mapping[str, _builtins.str] environment: Environment variables passed to the MicroDroplet
-        :param _builtins.int http_port: Port the MicroDroplet exposes over HTTP
-        :param _builtins.str http_protocol: HTTP protocol: 'http' or 'http2'
-        :param _builtins.str image: MicroDroplet image UUID or URN
-        :param _builtins.str name: Server-side filter: only include MicroDroplets whose name matches exactly. Conflicts with `region`.
-        :param _builtins.str networking: Networking mode: 'public' or 'vpc'
-        :param _builtins.str region: Server-side filter: only include MicroDroplets in this region. Conflicts with `name`.
-        :param _builtins.str size: MicroDroplet size slug
-        :param _builtins.str state: Desired lifecycle state: 'running' or 'paused'. Changes are applied by calling the microdroplet pause / resume action endpoints.
-        :param _builtins.str urn: The uniform resource name (URN) for the MicroDroplet
-        :param _builtins.str vpc_uuid: UUID of the VPC to attach the MicroDroplet to. Only valid when networking is 'vpc'.
-        """
-        pulumi.set(__self__, "auto_pauses", auto_pauses)
-        pulumi.set(__self__, "auto_resume", auto_resume)
-        pulumi.set(__self__, "created_at", created_at)
-        pulumi.set(__self__, "current_state", current_state)
-        pulumi.set(__self__, "endpoint", endpoint)
-        pulumi.set(__self__, "environment", environment)
-        pulumi.set(__self__, "http_port", http_port)
-        pulumi.set(__self__, "http_protocol", http_protocol)
-        pulumi.set(__self__, "image", image)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "networking", networking)
-        pulumi.set(__self__, "region", region)
-        pulumi.set(__self__, "size", size)
-        pulumi.set(__self__, "state", state)
-        pulumi.set(__self__, "urn", urn)
-        pulumi.set(__self__, "vpc_uuid", vpc_uuid)
-
-    @_builtins.property
-    @pulumi.getter(name="autoPauses")
-    def auto_pauses(self) -> Sequence['outputs.GetMicrodropletsMicroDropletAutoPauseResult']:
-        """
-        Auto-pause configuration. Forces recreation on change: the MicroDroplets API has no in-place update path for auto_pause.
-        """
-        return pulumi.get(self, "auto_pauses")
-
-    @_builtins.property
-    @pulumi.getter(name="autoResume")
-    def auto_resume(self) -> _builtins.bool:
-        """
-        Whether the MicroDroplet should auto-resume on request. Forces recreation on change: the MicroDroplets API has no in-place update path for auto_resume.
-        """
-        return pulumi.get(self, "auto_resume")
-
-    @_builtins.property
-    @pulumi.getter(name="createdAt")
-    def created_at(self) -> _builtins.str:
-        """
-        The creation timestamp for the MicroDroplet
-        """
-        return pulumi.get(self, "created_at")
-
-    @_builtins.property
-    @pulumi.getter(name="currentState")
-    def current_state(self) -> _builtins.str:
-        """
-        Observed lifecycle state of the MicroDroplet
-        """
-        return pulumi.get(self, "current_state")
-
-    @_builtins.property
-    @pulumi.getter
-    def endpoint(self) -> _builtins.str:
-        """
-        Public endpoint URL for the MicroDroplet
-        """
-        return pulumi.get(self, "endpoint")
-
-    @_builtins.property
-    @pulumi.getter
-    def environment(self) -> Mapping[str, _builtins.str]:
-        """
-        Environment variables passed to the MicroDroplet
-        """
-        return pulumi.get(self, "environment")
-
-    @_builtins.property
-    @pulumi.getter(name="httpPort")
-    def http_port(self) -> _builtins.int:
-        """
-        Port the MicroDroplet exposes over HTTP
-        """
-        return pulumi.get(self, "http_port")
-
-    @_builtins.property
-    @pulumi.getter(name="httpProtocol")
-    def http_protocol(self) -> _builtins.str:
-        """
-        HTTP protocol: 'http' or 'http2'
-        """
-        return pulumi.get(self, "http_protocol")
-
-    @_builtins.property
-    @pulumi.getter
-    def image(self) -> _builtins.str:
-        """
-        MicroDroplet image UUID or URN
-        """
-        return pulumi.get(self, "image")
-
-    @_builtins.property
-    @pulumi.getter
-    def name(self) -> _builtins.str:
-        """
-        Server-side filter: only include MicroDroplets whose name matches exactly. Conflicts with `region`.
-        """
-        return pulumi.get(self, "name")
-
-    @_builtins.property
-    @pulumi.getter
-    def networking(self) -> _builtins.str:
-        """
-        Networking mode: 'public' or 'vpc'
-        """
-        return pulumi.get(self, "networking")
-
-    @_builtins.property
-    @pulumi.getter
-    def region(self) -> _builtins.str:
-        """
-        Server-side filter: only include MicroDroplets in this region. Conflicts with `name`.
-        """
-        return pulumi.get(self, "region")
-
-    @_builtins.property
-    @pulumi.getter
-    def size(self) -> _builtins.str:
-        """
-        MicroDroplet size slug
-        """
-        return pulumi.get(self, "size")
-
-    @_builtins.property
-    @pulumi.getter
-    def state(self) -> _builtins.str:
-        """
-        Desired lifecycle state: 'running' or 'paused'. Changes are applied by calling the microdroplet pause / resume action endpoints.
-        """
-        return pulumi.get(self, "state")
-
-    @_builtins.property
-    @pulumi.getter
-    def urn(self) -> _builtins.str:
-        """
-        The uniform resource name (URN) for the MicroDroplet
-        """
-        return pulumi.get(self, "urn")
-
-    @_builtins.property
-    @pulumi.getter(name="vpcUuid")
-    def vpc_uuid(self) -> _builtins.str:
-        """
-        UUID of the VPC to attach the MicroDroplet to. Only valid when networking is 'vpc'.
-        """
-        return pulumi.get(self, "vpc_uuid")
-
-
-@pulumi.output_type
-class GetMicrodropletsMicroDropletAutoPauseResult(dict):
-    def __init__(__self__, *,
-                 enabled: _builtins.bool,
-                 idle_timeout: _builtins.str):
-        """
-        :param _builtins.bool enabled: Whether auto-pause is enabled. Forces recreation on change (no in-place API path).
-        :param _builtins.str idle_timeout: Idle timeout as a Go duration string (e.g. '5m', '30s'). Forces recreation on change (no in-place API path).
-        """
-        pulumi.set(__self__, "enabled", enabled)
-        pulumi.set(__self__, "idle_timeout", idle_timeout)
-
-    @_builtins.property
-    @pulumi.getter
-    def enabled(self) -> _builtins.bool:
-        """
-        Whether auto-pause is enabled. Forces recreation on change (no in-place API path).
-        """
-        return pulumi.get(self, "enabled")
-
-    @_builtins.property
-    @pulumi.getter(name="idleTimeout")
-    def idle_timeout(self) -> _builtins.str:
-        """
-        Idle timeout as a Go duration string (e.g. '5m', '30s'). Forces recreation on change (no in-place API path).
-        """
-        return pulumi.get(self, "idle_timeout")
-
-
-@pulumi.output_type
-class GetMicrodropletsSortResult(dict):
-    def __init__(__self__, *,
-                 key: _builtins.str,
-                 direction: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str key: Field to sort by.
-        :param _builtins.str direction: `asc` (default) or `desc`.
-        """
-        pulumi.set(__self__, "key", key)
-        if direction is not None:
-            pulumi.set(__self__, "direction", direction)
-
-    @_builtins.property
-    @pulumi.getter
-    def key(self) -> _builtins.str:
-        """
-        Field to sort by.
-        """
-        return pulumi.get(self, "key")
-
-    @_builtins.property
-    @pulumi.getter
-    def direction(self) -> Optional[_builtins.str]:
-        """
-        `asc` (default) or `desc`.
-        """
-        return pulumi.get(self, "direction")
 
 
 @pulumi.output_type

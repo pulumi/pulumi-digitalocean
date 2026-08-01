@@ -15,6 +15,7 @@ from .container_registries import *
 from .container_registry import *
 from .container_registry_docker_credentials import *
 from .custom_image import *
+from .database_advanced_mysql_config import *
 from .database_advanced_postgresql_config import *
 from .database_cluster import *
 from .database_connection_pool import *
@@ -114,11 +115,6 @@ from .get_images import *
 from .get_kubernetes_cluster import *
 from .get_kubernetes_versions import *
 from .get_load_balancer import *
-from .get_microdroplet import *
-from .get_microdroplet_checkpoints import *
-from .get_microdroplet_image import *
-from .get_microdroplet_images import *
-from .get_microdroplets import *
 from .get_nfs import *
 from .get_nfs_access_point import *
 from .get_nfs_snapshot import *
@@ -160,8 +156,6 @@ from .gradientai_openai_api_key import *
 from .kubernetes_cluster import *
 from .kubernetes_node_pool import *
 from .load_balancer import *
-from .microdroplet import *
-from .microdroplet_image import *
 from .monitor_alert import *
 from .nfs import *
 from .nfs_access_point import *
@@ -267,6 +261,14 @@ _utilities.register(
   "fqn": "pulumi_digitalocean",
   "classes": {
    "digitalocean:index/customImage:CustomImage": "CustomImage"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/databaseAdvancedMysqlConfig",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/databaseAdvancedMysqlConfig:DatabaseAdvancedMysqlConfig": "DatabaseAdvancedMysqlConfig"
   }
  },
  {
@@ -659,22 +661,6 @@ _utilities.register(
   "fqn": "pulumi_digitalocean",
   "classes": {
    "digitalocean:index/loadBalancer:LoadBalancer": "LoadBalancer"
-  }
- },
- {
-  "pkg": "digitalocean",
-  "mod": "index/microdroplet",
-  "fqn": "pulumi_digitalocean",
-  "classes": {
-   "digitalocean:index/microdroplet:Microdroplet": "Microdroplet"
-  }
- },
- {
-  "pkg": "digitalocean",
-  "mod": "index/microdropletImage",
-  "fqn": "pulumi_digitalocean",
-  "classes": {
-   "digitalocean:index/microdropletImage:MicrodropletImage": "MicrodropletImage"
   }
  },
  {

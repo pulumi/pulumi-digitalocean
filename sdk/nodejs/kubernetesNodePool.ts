@@ -120,6 +120,12 @@ export class KubernetesNodePool extends pulumi.CustomResource {
      */
     declare public readonly clusterId: pulumi.Output<string>;
     /**
+     * The AMD GPU partition mode to use for nodes in this pool. Valid values are `AMD_PARTITION_MODE_SPX_NPS1` and `AMD_PARTITION_MODE_DPX_NPS2`. This can only be set when the pool is created.
+     *
+     * This resource supports customized create timeouts. The default timeout is 30 minutes.
+     */
+    declare public readonly gpuPartitionMode: pulumi.Output<string | undefined>;
+    /**
      * A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
      */
     declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
@@ -153,8 +159,6 @@ export class KubernetesNodePool extends pulumi.CustomResource {
     declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
      * A list of taints applied to all nodes in the pool.
-     *
-     * This resource supports customized create timeouts. The default timeout is 30 minutes.
      */
     declare public readonly taints: pulumi.Output<outputs.KubernetesNodePoolTaint[] | undefined>;
 
@@ -174,6 +178,7 @@ export class KubernetesNodePool extends pulumi.CustomResource {
             resourceInputs["actualNodeCount"] = state?.actualNodeCount;
             resourceInputs["autoScale"] = state?.autoScale;
             resourceInputs["clusterId"] = state?.clusterId;
+            resourceInputs["gpuPartitionMode"] = state?.gpuPartitionMode;
             resourceInputs["labels"] = state?.labels;
             resourceInputs["maxNodes"] = state?.maxNodes;
             resourceInputs["minNodes"] = state?.minNodes;
@@ -193,6 +198,7 @@ export class KubernetesNodePool extends pulumi.CustomResource {
             }
             resourceInputs["autoScale"] = args?.autoScale;
             resourceInputs["clusterId"] = args?.clusterId;
+            resourceInputs["gpuPartitionMode"] = args?.gpuPartitionMode;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["maxNodes"] = args?.maxNodes;
             resourceInputs["minNodes"] = args?.minNodes;
@@ -225,6 +231,12 @@ export interface KubernetesNodePoolState {
      * The ID of the Kubernetes cluster to which the node pool is associated.
      */
     clusterId?: pulumi.Input<string | undefined>;
+    /**
+     * The AMD GPU partition mode to use for nodes in this pool. Valid values are `AMD_PARTITION_MODE_SPX_NPS1` and `AMD_PARTITION_MODE_DPX_NPS2`. This can only be set when the pool is created.
+     *
+     * This resource supports customized create timeouts. The default timeout is 30 minutes.
+     */
+    gpuPartitionMode?: pulumi.Input<string | undefined>;
     /**
      * A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
      */
@@ -259,8 +271,6 @@ export interface KubernetesNodePoolState {
     tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of taints applied to all nodes in the pool.
-     *
-     * This resource supports customized create timeouts. The default timeout is 30 minutes.
      */
     taints?: pulumi.Input<pulumi.Input<inputs.KubernetesNodePoolTaint>[] | undefined>;
 }
@@ -277,6 +287,12 @@ export interface KubernetesNodePoolArgs {
      * The ID of the Kubernetes cluster to which the node pool is associated.
      */
     clusterId: pulumi.Input<string>;
+    /**
+     * The AMD GPU partition mode to use for nodes in this pool. Valid values are `AMD_PARTITION_MODE_SPX_NPS1` and `AMD_PARTITION_MODE_DPX_NPS2`. This can only be set when the pool is created.
+     *
+     * This resource supports customized create timeouts. The default timeout is 30 minutes.
+     */
+    gpuPartitionMode?: pulumi.Input<string | undefined>;
     /**
      * A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
      */
@@ -307,8 +323,6 @@ export interface KubernetesNodePoolArgs {
     tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of taints applied to all nodes in the pool.
-     *
-     * This resource supports customized create timeouts. The default timeout is 30 minutes.
      */
     taints?: pulumi.Input<pulumi.Input<inputs.KubernetesNodePoolTaint>[] | undefined>;
 }

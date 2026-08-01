@@ -27,6 +27,7 @@ class KubernetesClusterArgs:
                  version: pulumi.Input[_builtins.str],
                  amd_gpu_device_metrics_exporter_plugin: pulumi.Input[Optional['KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs']] = None,
                  amd_gpu_device_plugin: pulumi.Input[Optional['KubernetesClusterAmdGpuDevicePluginArgs']] = None,
+                 amd_gpu_dra_driver: pulumi.Input[Optional['KubernetesClusterAmdGpuDraDriverArgs']] = None,
                  auto_upgrade: pulumi.Input[Optional[_builtins.bool]] = None,
                  cluster_autoscaler_configurations: pulumi.Input[Optional[Sequence[pulumi.Input['KubernetesClusterClusterAutoscalerConfigurationArgs']]]] = None,
                  cluster_subnet: pulumi.Input[Optional[_builtins.str]] = None,
@@ -38,6 +39,7 @@ class KubernetesClusterArgs:
                  maintenance_policy: pulumi.Input[Optional['KubernetesClusterMaintenancePolicyArgs']] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  nvidia_gpu_device_plugin: pulumi.Input[Optional['KubernetesClusterNvidiaGpuDevicePluginArgs']] = None,
+                 nvidia_gpu_dra_driver: pulumi.Input[Optional['KubernetesClusterNvidiaGpuDraDriverArgs']] = None,
                  p2p_oci_registry_plugin: pulumi.Input[Optional['KubernetesClusterP2pOciRegistryPluginArgs']] = None,
                  rdma_shared_device_plugin: pulumi.Input[Optional['KubernetesClusterRdmaSharedDevicePluginArgs']] = None,
                  registry_integration: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -54,8 +56,9 @@ class KubernetesClusterArgs:
         :param pulumi.Input['KubernetesClusterNodePoolArgs'] node_pool: A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
         :param pulumi.Input[Union[_builtins.str, 'Region']] region: The slug identifier for the region where the Kubernetes cluster will be created.
         :param pulumi.Input[_builtins.str] version: The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
-        :param pulumi.Input['KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs'] amd_gpu_device_metrics_exporter_plugin: Block containing options for the AMD GPU device metrics exporter component.
-        :param pulumi.Input['KubernetesClusterAmdGpuDevicePluginArgs'] amd_gpu_device_plugin: Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes.
+        :param pulumi.Input['KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs'] amd_gpu_device_metrics_exporter_plugin: Block containing options for the AMD GPU device metrics exporter component. If not specified, the component will not be installed in the cluster.
+        :param pulumi.Input['KubernetesClusterAmdGpuDevicePluginArgs'] amd_gpu_device_plugin: Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes. Mutually exclusive with `amd_gpu_dra_driver`.
+        :param pulumi.Input['KubernetesClusterAmdGpuDraDriverArgs'] amd_gpu_dra_driver: Block containing options for the AMD GPU DRA driver component. Mutually exclusive with `amd_gpu_device_plugin`.
         :param pulumi.Input[_builtins.bool] auto_upgrade: A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
         :param pulumi.Input[Sequence[pulumi.Input['KubernetesClusterClusterAutoscalerConfigurationArgs']]] cluster_autoscaler_configurations: Block containing options for cluster auto-scaling. For more information.
         :param pulumi.Input[_builtins.str] cluster_subnet: The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
@@ -66,8 +69,10 @@ class KubernetesClusterArgs:
         :param pulumi.Input[_builtins.int] kubeconfig_expire_seconds: The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
         :param pulumi.Input['KubernetesClusterMaintenancePolicyArgs'] maintenance_policy: A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.
         :param pulumi.Input[_builtins.str] name: A name for the Kubernetes cluster.
-        :param pulumi.Input['KubernetesClusterNvidiaGpuDevicePluginArgs'] nvidia_gpu_device_plugin: Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes.
+        :param pulumi.Input['KubernetesClusterNvidiaGpuDevicePluginArgs'] nvidia_gpu_device_plugin: Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes. Mutually exclusive with `nvidia_gpu_dra_driver`.
+        :param pulumi.Input['KubernetesClusterNvidiaGpuDraDriverArgs'] nvidia_gpu_dra_driver: Block containing options for the NVIDIA GPU DRA driver component. Mutually exclusive with `nvidia_gpu_device_plugin`.
         :param pulumi.Input['KubernetesClusterP2pOciRegistryPluginArgs'] p2p_oci_registry_plugin: Block containing options for the Peer-to-peer OCI registry plugin component. If not specified, the p2p-oci-registry-plugin component will not be installed in the cluster.
+        :param pulumi.Input['KubernetesClusterRdmaSharedDevicePluginArgs'] rdma_shared_device_plugin: Block containing options for the RDMA Shared Device Plugin (k8s-rdma-shared-dev-plugin) component. If not specified, the component will be enabled by default for clusters with GPU nodes connected to a dedicated high-speed networking fabric.
         :param pulumi.Input[_builtins.bool] registry_integration: Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
         :param pulumi.Input['KubernetesClusterRoutingAgentArgs'] routing_agent: Block containing options for the routing-agent component. If not specified, the routing-agent component will not be installed in the cluster.
         :param pulumi.Input[_builtins.str] service_subnet: The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
@@ -84,6 +89,8 @@ class KubernetesClusterArgs:
             pulumi.set(__self__, "amd_gpu_device_metrics_exporter_plugin", amd_gpu_device_metrics_exporter_plugin)
         if amd_gpu_device_plugin is not None:
             pulumi.set(__self__, "amd_gpu_device_plugin", amd_gpu_device_plugin)
+        if amd_gpu_dra_driver is not None:
+            pulumi.set(__self__, "amd_gpu_dra_driver", amd_gpu_dra_driver)
         if auto_upgrade is not None:
             pulumi.set(__self__, "auto_upgrade", auto_upgrade)
         if cluster_autoscaler_configurations is not None:
@@ -106,6 +113,8 @@ class KubernetesClusterArgs:
             pulumi.set(__self__, "name", name)
         if nvidia_gpu_device_plugin is not None:
             pulumi.set(__self__, "nvidia_gpu_device_plugin", nvidia_gpu_device_plugin)
+        if nvidia_gpu_dra_driver is not None:
+            pulumi.set(__self__, "nvidia_gpu_dra_driver", nvidia_gpu_dra_driver)
         if p2p_oci_registry_plugin is not None:
             pulumi.set(__self__, "p2p_oci_registry_plugin", p2p_oci_registry_plugin)
         if rdma_shared_device_plugin is not None:
@@ -167,7 +176,7 @@ class KubernetesClusterArgs:
     @pulumi.getter(name="amdGpuDeviceMetricsExporterPlugin")
     def amd_gpu_device_metrics_exporter_plugin(self) -> pulumi.Input[Optional['KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs']]:
         """
-        Block containing options for the AMD GPU device metrics exporter component.
+        Block containing options for the AMD GPU device metrics exporter component. If not specified, the component will not be installed in the cluster.
         """
         return pulumi.get(self, "amd_gpu_device_metrics_exporter_plugin")
 
@@ -179,13 +188,25 @@ class KubernetesClusterArgs:
     @pulumi.getter(name="amdGpuDevicePlugin")
     def amd_gpu_device_plugin(self) -> pulumi.Input[Optional['KubernetesClusterAmdGpuDevicePluginArgs']]:
         """
-        Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes.
+        Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes. Mutually exclusive with `amd_gpu_dra_driver`.
         """
         return pulumi.get(self, "amd_gpu_device_plugin")
 
     @amd_gpu_device_plugin.setter
     def amd_gpu_device_plugin(self, value: pulumi.Input[Optional['KubernetesClusterAmdGpuDevicePluginArgs']]):
         pulumi.set(self, "amd_gpu_device_plugin", value)
+
+    @_builtins.property
+    @pulumi.getter(name="amdGpuDraDriver")
+    def amd_gpu_dra_driver(self) -> pulumi.Input[Optional['KubernetesClusterAmdGpuDraDriverArgs']]:
+        """
+        Block containing options for the AMD GPU DRA driver component. Mutually exclusive with `amd_gpu_device_plugin`.
+        """
+        return pulumi.get(self, "amd_gpu_dra_driver")
+
+    @amd_gpu_dra_driver.setter
+    def amd_gpu_dra_driver(self, value: pulumi.Input[Optional['KubernetesClusterAmdGpuDraDriverArgs']]):
+        pulumi.set(self, "amd_gpu_dra_driver", value)
 
     @_builtins.property
     @pulumi.getter(name="autoUpgrade")
@@ -311,13 +332,25 @@ class KubernetesClusterArgs:
     @pulumi.getter(name="nvidiaGpuDevicePlugin")
     def nvidia_gpu_device_plugin(self) -> pulumi.Input[Optional['KubernetesClusterNvidiaGpuDevicePluginArgs']]:
         """
-        Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes.
+        Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes. Mutually exclusive with `nvidia_gpu_dra_driver`.
         """
         return pulumi.get(self, "nvidia_gpu_device_plugin")
 
     @nvidia_gpu_device_plugin.setter
     def nvidia_gpu_device_plugin(self, value: pulumi.Input[Optional['KubernetesClusterNvidiaGpuDevicePluginArgs']]):
         pulumi.set(self, "nvidia_gpu_device_plugin", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nvidiaGpuDraDriver")
+    def nvidia_gpu_dra_driver(self) -> pulumi.Input[Optional['KubernetesClusterNvidiaGpuDraDriverArgs']]:
+        """
+        Block containing options for the NVIDIA GPU DRA driver component. Mutually exclusive with `nvidia_gpu_device_plugin`.
+        """
+        return pulumi.get(self, "nvidia_gpu_dra_driver")
+
+    @nvidia_gpu_dra_driver.setter
+    def nvidia_gpu_dra_driver(self, value: pulumi.Input[Optional['KubernetesClusterNvidiaGpuDraDriverArgs']]):
+        pulumi.set(self, "nvidia_gpu_dra_driver", value)
 
     @_builtins.property
     @pulumi.getter(name="p2pOciRegistryPlugin")
@@ -334,6 +367,9 @@ class KubernetesClusterArgs:
     @_builtins.property
     @pulumi.getter(name="rdmaSharedDevicePlugin")
     def rdma_shared_device_plugin(self) -> pulumi.Input[Optional['KubernetesClusterRdmaSharedDevicePluginArgs']]:
+        """
+        Block containing options for the RDMA Shared Device Plugin (k8s-rdma-shared-dev-plugin) component. If not specified, the component will be enabled by default for clusters with GPU nodes connected to a dedicated high-speed networking fabric.
+        """
         return pulumi.get(self, "rdma_shared_device_plugin")
 
     @rdma_shared_device_plugin.setter
@@ -442,6 +478,7 @@ class _KubernetesClusterState:
     def __init__(__self__, *,
                  amd_gpu_device_metrics_exporter_plugin: pulumi.Input[Optional['KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs']] = None,
                  amd_gpu_device_plugin: pulumi.Input[Optional['KubernetesClusterAmdGpuDevicePluginArgs']] = None,
+                 amd_gpu_dra_driver: pulumi.Input[Optional['KubernetesClusterAmdGpuDraDriverArgs']] = None,
                  auto_upgrade: pulumi.Input[Optional[_builtins.bool]] = None,
                  cluster_autoscaler_configurations: pulumi.Input[Optional[Sequence[pulumi.Input['KubernetesClusterClusterAutoscalerConfigurationArgs']]]] = None,
                  cluster_subnet: pulumi.Input[Optional[_builtins.str]] = None,
@@ -459,6 +496,7 @@ class _KubernetesClusterState:
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  node_pool: pulumi.Input[Optional['KubernetesClusterNodePoolArgs']] = None,
                  nvidia_gpu_device_plugin: pulumi.Input[Optional['KubernetesClusterNvidiaGpuDevicePluginArgs']] = None,
+                 nvidia_gpu_dra_driver: pulumi.Input[Optional['KubernetesClusterNvidiaGpuDraDriverArgs']] = None,
                  p2p_oci_registry_plugin: pulumi.Input[Optional['KubernetesClusterP2pOciRegistryPluginArgs']] = None,
                  rdma_shared_device_plugin: pulumi.Input[Optional['KubernetesClusterRdmaSharedDevicePluginArgs']] = None,
                  region: pulumi.Input[Optional[Union[_builtins.str, 'Region']]] = None,
@@ -476,8 +514,9 @@ class _KubernetesClusterState:
         """
         Input properties used for looking up and filtering KubernetesCluster resources.
 
-        :param pulumi.Input['KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs'] amd_gpu_device_metrics_exporter_plugin: Block containing options for the AMD GPU device metrics exporter component.
-        :param pulumi.Input['KubernetesClusterAmdGpuDevicePluginArgs'] amd_gpu_device_plugin: Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes.
+        :param pulumi.Input['KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs'] amd_gpu_device_metrics_exporter_plugin: Block containing options for the AMD GPU device metrics exporter component. If not specified, the component will not be installed in the cluster.
+        :param pulumi.Input['KubernetesClusterAmdGpuDevicePluginArgs'] amd_gpu_device_plugin: Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes. Mutually exclusive with `amd_gpu_dra_driver`.
+        :param pulumi.Input['KubernetesClusterAmdGpuDraDriverArgs'] amd_gpu_dra_driver: Block containing options for the AMD GPU DRA driver component. Mutually exclusive with `amd_gpu_device_plugin`.
         :param pulumi.Input[_builtins.bool] auto_upgrade: A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
         :param pulumi.Input[Sequence[pulumi.Input['KubernetesClusterClusterAutoscalerConfigurationArgs']]] cluster_autoscaler_configurations: Block containing options for cluster auto-scaling. For more information.
         :param pulumi.Input[_builtins.str] cluster_subnet: The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
@@ -494,8 +533,10 @@ class _KubernetesClusterState:
         :param pulumi.Input['KubernetesClusterMaintenancePolicyArgs'] maintenance_policy: A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.
         :param pulumi.Input[_builtins.str] name: A name for the Kubernetes cluster.
         :param pulumi.Input['KubernetesClusterNodePoolArgs'] node_pool: A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
-        :param pulumi.Input['KubernetesClusterNvidiaGpuDevicePluginArgs'] nvidia_gpu_device_plugin: Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes.
+        :param pulumi.Input['KubernetesClusterNvidiaGpuDevicePluginArgs'] nvidia_gpu_device_plugin: Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes. Mutually exclusive with `nvidia_gpu_dra_driver`.
+        :param pulumi.Input['KubernetesClusterNvidiaGpuDraDriverArgs'] nvidia_gpu_dra_driver: Block containing options for the NVIDIA GPU DRA driver component. Mutually exclusive with `nvidia_gpu_device_plugin`.
         :param pulumi.Input['KubernetesClusterP2pOciRegistryPluginArgs'] p2p_oci_registry_plugin: Block containing options for the Peer-to-peer OCI registry plugin component. If not specified, the p2p-oci-registry-plugin component will not be installed in the cluster.
+        :param pulumi.Input['KubernetesClusterRdmaSharedDevicePluginArgs'] rdma_shared_device_plugin: Block containing options for the RDMA Shared Device Plugin (k8s-rdma-shared-dev-plugin) component. If not specified, the component will be enabled by default for clusters with GPU nodes connected to a dedicated high-speed networking fabric.
         :param pulumi.Input[Union[_builtins.str, 'Region']] region: The slug identifier for the region where the Kubernetes cluster will be created.
         :param pulumi.Input[_builtins.bool] registry_integration: Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
         :param pulumi.Input['KubernetesClusterRoutingAgentArgs'] routing_agent: Block containing options for the routing-agent component. If not specified, the routing-agent component will not be installed in the cluster.
@@ -513,6 +554,8 @@ class _KubernetesClusterState:
             pulumi.set(__self__, "amd_gpu_device_metrics_exporter_plugin", amd_gpu_device_metrics_exporter_plugin)
         if amd_gpu_device_plugin is not None:
             pulumi.set(__self__, "amd_gpu_device_plugin", amd_gpu_device_plugin)
+        if amd_gpu_dra_driver is not None:
+            pulumi.set(__self__, "amd_gpu_dra_driver", amd_gpu_dra_driver)
         if auto_upgrade is not None:
             pulumi.set(__self__, "auto_upgrade", auto_upgrade)
         if cluster_autoscaler_configurations is not None:
@@ -547,6 +590,8 @@ class _KubernetesClusterState:
             pulumi.set(__self__, "node_pool", node_pool)
         if nvidia_gpu_device_plugin is not None:
             pulumi.set(__self__, "nvidia_gpu_device_plugin", nvidia_gpu_device_plugin)
+        if nvidia_gpu_dra_driver is not None:
+            pulumi.set(__self__, "nvidia_gpu_dra_driver", nvidia_gpu_dra_driver)
         if p2p_oci_registry_plugin is not None:
             pulumi.set(__self__, "p2p_oci_registry_plugin", p2p_oci_registry_plugin)
         if rdma_shared_device_plugin is not None:
@@ -580,7 +625,7 @@ class _KubernetesClusterState:
     @pulumi.getter(name="amdGpuDeviceMetricsExporterPlugin")
     def amd_gpu_device_metrics_exporter_plugin(self) -> pulumi.Input[Optional['KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs']]:
         """
-        Block containing options for the AMD GPU device metrics exporter component.
+        Block containing options for the AMD GPU device metrics exporter component. If not specified, the component will not be installed in the cluster.
         """
         return pulumi.get(self, "amd_gpu_device_metrics_exporter_plugin")
 
@@ -592,13 +637,25 @@ class _KubernetesClusterState:
     @pulumi.getter(name="amdGpuDevicePlugin")
     def amd_gpu_device_plugin(self) -> pulumi.Input[Optional['KubernetesClusterAmdGpuDevicePluginArgs']]:
         """
-        Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes.
+        Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes. Mutually exclusive with `amd_gpu_dra_driver`.
         """
         return pulumi.get(self, "amd_gpu_device_plugin")
 
     @amd_gpu_device_plugin.setter
     def amd_gpu_device_plugin(self, value: pulumi.Input[Optional['KubernetesClusterAmdGpuDevicePluginArgs']]):
         pulumi.set(self, "amd_gpu_device_plugin", value)
+
+    @_builtins.property
+    @pulumi.getter(name="amdGpuDraDriver")
+    def amd_gpu_dra_driver(self) -> pulumi.Input[Optional['KubernetesClusterAmdGpuDraDriverArgs']]:
+        """
+        Block containing options for the AMD GPU DRA driver component. Mutually exclusive with `amd_gpu_device_plugin`.
+        """
+        return pulumi.get(self, "amd_gpu_dra_driver")
+
+    @amd_gpu_dra_driver.setter
+    def amd_gpu_dra_driver(self, value: pulumi.Input[Optional['KubernetesClusterAmdGpuDraDriverArgs']]):
+        pulumi.set(self, "amd_gpu_dra_driver", value)
 
     @_builtins.property
     @pulumi.getter(name="autoUpgrade")
@@ -796,13 +853,25 @@ class _KubernetesClusterState:
     @pulumi.getter(name="nvidiaGpuDevicePlugin")
     def nvidia_gpu_device_plugin(self) -> pulumi.Input[Optional['KubernetesClusterNvidiaGpuDevicePluginArgs']]:
         """
-        Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes.
+        Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes. Mutually exclusive with `nvidia_gpu_dra_driver`.
         """
         return pulumi.get(self, "nvidia_gpu_device_plugin")
 
     @nvidia_gpu_device_plugin.setter
     def nvidia_gpu_device_plugin(self, value: pulumi.Input[Optional['KubernetesClusterNvidiaGpuDevicePluginArgs']]):
         pulumi.set(self, "nvidia_gpu_device_plugin", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nvidiaGpuDraDriver")
+    def nvidia_gpu_dra_driver(self) -> pulumi.Input[Optional['KubernetesClusterNvidiaGpuDraDriverArgs']]:
+        """
+        Block containing options for the NVIDIA GPU DRA driver component. Mutually exclusive with `nvidia_gpu_device_plugin`.
+        """
+        return pulumi.get(self, "nvidia_gpu_dra_driver")
+
+    @nvidia_gpu_dra_driver.setter
+    def nvidia_gpu_dra_driver(self, value: pulumi.Input[Optional['KubernetesClusterNvidiaGpuDraDriverArgs']]):
+        pulumi.set(self, "nvidia_gpu_dra_driver", value)
 
     @_builtins.property
     @pulumi.getter(name="p2pOciRegistryPlugin")
@@ -819,6 +888,9 @@ class _KubernetesClusterState:
     @_builtins.property
     @pulumi.getter(name="rdmaSharedDevicePlugin")
     def rdma_shared_device_plugin(self) -> pulumi.Input[Optional['KubernetesClusterRdmaSharedDevicePluginArgs']]:
+        """
+        Block containing options for the RDMA Shared Device Plugin (k8s-rdma-shared-dev-plugin) component. If not specified, the component will be enabled by default for clusters with GPU nodes connected to a dedicated high-speed networking fabric.
+        """
         return pulumi.get(self, "rdma_shared_device_plugin")
 
     @rdma_shared_device_plugin.setter
@@ -978,6 +1050,7 @@ class KubernetesCluster(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  amd_gpu_device_metrics_exporter_plugin: pulumi.Input[Optional[Union['KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs', 'KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgsDict']]] = None,
                  amd_gpu_device_plugin: pulumi.Input[Optional[Union['KubernetesClusterAmdGpuDevicePluginArgs', 'KubernetesClusterAmdGpuDevicePluginArgsDict']]] = None,
+                 amd_gpu_dra_driver: pulumi.Input[Optional[Union['KubernetesClusterAmdGpuDraDriverArgs', 'KubernetesClusterAmdGpuDraDriverArgsDict']]] = None,
                  auto_upgrade: pulumi.Input[Optional[_builtins.bool]] = None,
                  cluster_autoscaler_configurations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KubernetesClusterClusterAutoscalerConfigurationArgs', 'KubernetesClusterClusterAutoscalerConfigurationArgsDict']]]]] = None,
                  cluster_subnet: pulumi.Input[Optional[_builtins.str]] = None,
@@ -990,6 +1063,7 @@ class KubernetesCluster(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  node_pool: pulumi.Input[Optional[Union['KubernetesClusterNodePoolArgs', 'KubernetesClusterNodePoolArgsDict']]] = None,
                  nvidia_gpu_device_plugin: pulumi.Input[Optional[Union['KubernetesClusterNvidiaGpuDevicePluginArgs', 'KubernetesClusterNvidiaGpuDevicePluginArgsDict']]] = None,
+                 nvidia_gpu_dra_driver: pulumi.Input[Optional[Union['KubernetesClusterNvidiaGpuDraDriverArgs', 'KubernetesClusterNvidiaGpuDraDriverArgsDict']]] = None,
                  p2p_oci_registry_plugin: pulumi.Input[Optional[Union['KubernetesClusterP2pOciRegistryPluginArgs', 'KubernetesClusterP2pOciRegistryPluginArgsDict']]] = None,
                  rdma_shared_device_plugin: pulumi.Input[Optional[Union['KubernetesClusterRdmaSharedDevicePluginArgs', 'KubernetesClusterRdmaSharedDevicePluginArgsDict']]] = None,
                  region: pulumi.Input[Optional[Union[_builtins.str, 'Region']]] = None,
@@ -1141,8 +1215,9 @@ class KubernetesCluster(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs', 'KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgsDict']] amd_gpu_device_metrics_exporter_plugin: Block containing options for the AMD GPU device metrics exporter component.
-        :param pulumi.Input[Union['KubernetesClusterAmdGpuDevicePluginArgs', 'KubernetesClusterAmdGpuDevicePluginArgsDict']] amd_gpu_device_plugin: Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes.
+        :param pulumi.Input[Union['KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs', 'KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgsDict']] amd_gpu_device_metrics_exporter_plugin: Block containing options for the AMD GPU device metrics exporter component. If not specified, the component will not be installed in the cluster.
+        :param pulumi.Input[Union['KubernetesClusterAmdGpuDevicePluginArgs', 'KubernetesClusterAmdGpuDevicePluginArgsDict']] amd_gpu_device_plugin: Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes. Mutually exclusive with `amd_gpu_dra_driver`.
+        :param pulumi.Input[Union['KubernetesClusterAmdGpuDraDriverArgs', 'KubernetesClusterAmdGpuDraDriverArgsDict']] amd_gpu_dra_driver: Block containing options for the AMD GPU DRA driver component. Mutually exclusive with `amd_gpu_device_plugin`.
         :param pulumi.Input[_builtins.bool] auto_upgrade: A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
         :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesClusterClusterAutoscalerConfigurationArgs', 'KubernetesClusterClusterAutoscalerConfigurationArgsDict']]]] cluster_autoscaler_configurations: Block containing options for cluster auto-scaling. For more information.
         :param pulumi.Input[_builtins.str] cluster_subnet: The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
@@ -1154,8 +1229,10 @@ class KubernetesCluster(pulumi.CustomResource):
         :param pulumi.Input[Union['KubernetesClusterMaintenancePolicyArgs', 'KubernetesClusterMaintenancePolicyArgsDict']] maintenance_policy: A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.
         :param pulumi.Input[_builtins.str] name: A name for the Kubernetes cluster.
         :param pulumi.Input[Union['KubernetesClusterNodePoolArgs', 'KubernetesClusterNodePoolArgsDict']] node_pool: A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
-        :param pulumi.Input[Union['KubernetesClusterNvidiaGpuDevicePluginArgs', 'KubernetesClusterNvidiaGpuDevicePluginArgsDict']] nvidia_gpu_device_plugin: Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes.
+        :param pulumi.Input[Union['KubernetesClusterNvidiaGpuDevicePluginArgs', 'KubernetesClusterNvidiaGpuDevicePluginArgsDict']] nvidia_gpu_device_plugin: Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes. Mutually exclusive with `nvidia_gpu_dra_driver`.
+        :param pulumi.Input[Union['KubernetesClusterNvidiaGpuDraDriverArgs', 'KubernetesClusterNvidiaGpuDraDriverArgsDict']] nvidia_gpu_dra_driver: Block containing options for the NVIDIA GPU DRA driver component. Mutually exclusive with `nvidia_gpu_device_plugin`.
         :param pulumi.Input[Union['KubernetesClusterP2pOciRegistryPluginArgs', 'KubernetesClusterP2pOciRegistryPluginArgsDict']] p2p_oci_registry_plugin: Block containing options for the Peer-to-peer OCI registry plugin component. If not specified, the p2p-oci-registry-plugin component will not be installed in the cluster.
+        :param pulumi.Input[Union['KubernetesClusterRdmaSharedDevicePluginArgs', 'KubernetesClusterRdmaSharedDevicePluginArgsDict']] rdma_shared_device_plugin: Block containing options for the RDMA Shared Device Plugin (k8s-rdma-shared-dev-plugin) component. If not specified, the component will be enabled by default for clusters with GPU nodes connected to a dedicated high-speed networking fabric.
         :param pulumi.Input[Union[_builtins.str, 'Region']] region: The slug identifier for the region where the Kubernetes cluster will be created.
         :param pulumi.Input[_builtins.bool] registry_integration: Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
         :param pulumi.Input[Union['KubernetesClusterRoutingAgentArgs', 'KubernetesClusterRoutingAgentArgsDict']] routing_agent: Block containing options for the routing-agent component. If not specified, the routing-agent component will not be installed in the cluster.
@@ -1326,6 +1403,7 @@ class KubernetesCluster(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  amd_gpu_device_metrics_exporter_plugin: pulumi.Input[Optional[Union['KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs', 'KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgsDict']]] = None,
                  amd_gpu_device_plugin: pulumi.Input[Optional[Union['KubernetesClusterAmdGpuDevicePluginArgs', 'KubernetesClusterAmdGpuDevicePluginArgsDict']]] = None,
+                 amd_gpu_dra_driver: pulumi.Input[Optional[Union['KubernetesClusterAmdGpuDraDriverArgs', 'KubernetesClusterAmdGpuDraDriverArgsDict']]] = None,
                  auto_upgrade: pulumi.Input[Optional[_builtins.bool]] = None,
                  cluster_autoscaler_configurations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KubernetesClusterClusterAutoscalerConfigurationArgs', 'KubernetesClusterClusterAutoscalerConfigurationArgsDict']]]]] = None,
                  cluster_subnet: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1338,6 +1416,7 @@ class KubernetesCluster(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  node_pool: pulumi.Input[Optional[Union['KubernetesClusterNodePoolArgs', 'KubernetesClusterNodePoolArgsDict']]] = None,
                  nvidia_gpu_device_plugin: pulumi.Input[Optional[Union['KubernetesClusterNvidiaGpuDevicePluginArgs', 'KubernetesClusterNvidiaGpuDevicePluginArgsDict']]] = None,
+                 nvidia_gpu_dra_driver: pulumi.Input[Optional[Union['KubernetesClusterNvidiaGpuDraDriverArgs', 'KubernetesClusterNvidiaGpuDraDriverArgsDict']]] = None,
                  p2p_oci_registry_plugin: pulumi.Input[Optional[Union['KubernetesClusterP2pOciRegistryPluginArgs', 'KubernetesClusterP2pOciRegistryPluginArgsDict']]] = None,
                  rdma_shared_device_plugin: pulumi.Input[Optional[Union['KubernetesClusterRdmaSharedDevicePluginArgs', 'KubernetesClusterRdmaSharedDevicePluginArgsDict']]] = None,
                  region: pulumi.Input[Optional[Union[_builtins.str, 'Region']]] = None,
@@ -1361,6 +1440,7 @@ class KubernetesCluster(pulumi.CustomResource):
 
             __props__.__dict__["amd_gpu_device_metrics_exporter_plugin"] = amd_gpu_device_metrics_exporter_plugin
             __props__.__dict__["amd_gpu_device_plugin"] = amd_gpu_device_plugin
+            __props__.__dict__["amd_gpu_dra_driver"] = amd_gpu_dra_driver
             __props__.__dict__["auto_upgrade"] = auto_upgrade
             __props__.__dict__["cluster_autoscaler_configurations"] = cluster_autoscaler_configurations
             __props__.__dict__["cluster_subnet"] = cluster_subnet
@@ -1375,6 +1455,7 @@ class KubernetesCluster(pulumi.CustomResource):
                 raise TypeError("Missing required property 'node_pool'")
             __props__.__dict__["node_pool"] = node_pool
             __props__.__dict__["nvidia_gpu_device_plugin"] = nvidia_gpu_device_plugin
+            __props__.__dict__["nvidia_gpu_dra_driver"] = nvidia_gpu_dra_driver
             __props__.__dict__["p2p_oci_registry_plugin"] = p2p_oci_registry_plugin
             __props__.__dict__["rdma_shared_device_plugin"] = rdma_shared_device_plugin
             if region is None and not opts.urn:
@@ -1412,6 +1493,7 @@ class KubernetesCluster(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             amd_gpu_device_metrics_exporter_plugin: pulumi.Input[Optional[Union['KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs', 'KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgsDict']]] = None,
             amd_gpu_device_plugin: pulumi.Input[Optional[Union['KubernetesClusterAmdGpuDevicePluginArgs', 'KubernetesClusterAmdGpuDevicePluginArgsDict']]] = None,
+            amd_gpu_dra_driver: pulumi.Input[Optional[Union['KubernetesClusterAmdGpuDraDriverArgs', 'KubernetesClusterAmdGpuDraDriverArgsDict']]] = None,
             auto_upgrade: pulumi.Input[Optional[_builtins.bool]] = None,
             cluster_autoscaler_configurations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KubernetesClusterClusterAutoscalerConfigurationArgs', 'KubernetesClusterClusterAutoscalerConfigurationArgsDict']]]]] = None,
             cluster_subnet: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1429,6 +1511,7 @@ class KubernetesCluster(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             node_pool: pulumi.Input[Optional[Union['KubernetesClusterNodePoolArgs', 'KubernetesClusterNodePoolArgsDict']]] = None,
             nvidia_gpu_device_plugin: pulumi.Input[Optional[Union['KubernetesClusterNvidiaGpuDevicePluginArgs', 'KubernetesClusterNvidiaGpuDevicePluginArgsDict']]] = None,
+            nvidia_gpu_dra_driver: pulumi.Input[Optional[Union['KubernetesClusterNvidiaGpuDraDriverArgs', 'KubernetesClusterNvidiaGpuDraDriverArgsDict']]] = None,
             p2p_oci_registry_plugin: pulumi.Input[Optional[Union['KubernetesClusterP2pOciRegistryPluginArgs', 'KubernetesClusterP2pOciRegistryPluginArgsDict']]] = None,
             rdma_shared_device_plugin: pulumi.Input[Optional[Union['KubernetesClusterRdmaSharedDevicePluginArgs', 'KubernetesClusterRdmaSharedDevicePluginArgsDict']]] = None,
             region: pulumi.Input[Optional[Union[_builtins.str, 'Region']]] = None,
@@ -1450,8 +1533,9 @@ class KubernetesCluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs', 'KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgsDict']] amd_gpu_device_metrics_exporter_plugin: Block containing options for the AMD GPU device metrics exporter component.
-        :param pulumi.Input[Union['KubernetesClusterAmdGpuDevicePluginArgs', 'KubernetesClusterAmdGpuDevicePluginArgsDict']] amd_gpu_device_plugin: Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes.
+        :param pulumi.Input[Union['KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs', 'KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgsDict']] amd_gpu_device_metrics_exporter_plugin: Block containing options for the AMD GPU device metrics exporter component. If not specified, the component will not be installed in the cluster.
+        :param pulumi.Input[Union['KubernetesClusterAmdGpuDevicePluginArgs', 'KubernetesClusterAmdGpuDevicePluginArgsDict']] amd_gpu_device_plugin: Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes. Mutually exclusive with `amd_gpu_dra_driver`.
+        :param pulumi.Input[Union['KubernetesClusterAmdGpuDraDriverArgs', 'KubernetesClusterAmdGpuDraDriverArgsDict']] amd_gpu_dra_driver: Block containing options for the AMD GPU DRA driver component. Mutually exclusive with `amd_gpu_device_plugin`.
         :param pulumi.Input[_builtins.bool] auto_upgrade: A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
         :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesClusterClusterAutoscalerConfigurationArgs', 'KubernetesClusterClusterAutoscalerConfigurationArgsDict']]]] cluster_autoscaler_configurations: Block containing options for cluster auto-scaling. For more information.
         :param pulumi.Input[_builtins.str] cluster_subnet: The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
@@ -1468,8 +1552,10 @@ class KubernetesCluster(pulumi.CustomResource):
         :param pulumi.Input[Union['KubernetesClusterMaintenancePolicyArgs', 'KubernetesClusterMaintenancePolicyArgsDict']] maintenance_policy: A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.
         :param pulumi.Input[_builtins.str] name: A name for the Kubernetes cluster.
         :param pulumi.Input[Union['KubernetesClusterNodePoolArgs', 'KubernetesClusterNodePoolArgsDict']] node_pool: A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
-        :param pulumi.Input[Union['KubernetesClusterNvidiaGpuDevicePluginArgs', 'KubernetesClusterNvidiaGpuDevicePluginArgsDict']] nvidia_gpu_device_plugin: Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes.
+        :param pulumi.Input[Union['KubernetesClusterNvidiaGpuDevicePluginArgs', 'KubernetesClusterNvidiaGpuDevicePluginArgsDict']] nvidia_gpu_device_plugin: Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes. Mutually exclusive with `nvidia_gpu_dra_driver`.
+        :param pulumi.Input[Union['KubernetesClusterNvidiaGpuDraDriverArgs', 'KubernetesClusterNvidiaGpuDraDriverArgsDict']] nvidia_gpu_dra_driver: Block containing options for the NVIDIA GPU DRA driver component. Mutually exclusive with `nvidia_gpu_device_plugin`.
         :param pulumi.Input[Union['KubernetesClusterP2pOciRegistryPluginArgs', 'KubernetesClusterP2pOciRegistryPluginArgsDict']] p2p_oci_registry_plugin: Block containing options for the Peer-to-peer OCI registry plugin component. If not specified, the p2p-oci-registry-plugin component will not be installed in the cluster.
+        :param pulumi.Input[Union['KubernetesClusterRdmaSharedDevicePluginArgs', 'KubernetesClusterRdmaSharedDevicePluginArgsDict']] rdma_shared_device_plugin: Block containing options for the RDMA Shared Device Plugin (k8s-rdma-shared-dev-plugin) component. If not specified, the component will be enabled by default for clusters with GPU nodes connected to a dedicated high-speed networking fabric.
         :param pulumi.Input[Union[_builtins.str, 'Region']] region: The slug identifier for the region where the Kubernetes cluster will be created.
         :param pulumi.Input[_builtins.bool] registry_integration: Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
         :param pulumi.Input[Union['KubernetesClusterRoutingAgentArgs', 'KubernetesClusterRoutingAgentArgsDict']] routing_agent: Block containing options for the routing-agent component. If not specified, the routing-agent component will not be installed in the cluster.
@@ -1489,6 +1575,7 @@ class KubernetesCluster(pulumi.CustomResource):
 
         __props__.__dict__["amd_gpu_device_metrics_exporter_plugin"] = amd_gpu_device_metrics_exporter_plugin
         __props__.__dict__["amd_gpu_device_plugin"] = amd_gpu_device_plugin
+        __props__.__dict__["amd_gpu_dra_driver"] = amd_gpu_dra_driver
         __props__.__dict__["auto_upgrade"] = auto_upgrade
         __props__.__dict__["cluster_autoscaler_configurations"] = cluster_autoscaler_configurations
         __props__.__dict__["cluster_subnet"] = cluster_subnet
@@ -1506,6 +1593,7 @@ class KubernetesCluster(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["node_pool"] = node_pool
         __props__.__dict__["nvidia_gpu_device_plugin"] = nvidia_gpu_device_plugin
+        __props__.__dict__["nvidia_gpu_dra_driver"] = nvidia_gpu_dra_driver
         __props__.__dict__["p2p_oci_registry_plugin"] = p2p_oci_registry_plugin
         __props__.__dict__["rdma_shared_device_plugin"] = rdma_shared_device_plugin
         __props__.__dict__["region"] = region
@@ -1526,7 +1614,7 @@ class KubernetesCluster(pulumi.CustomResource):
     @pulumi.getter(name="amdGpuDeviceMetricsExporterPlugin")
     def amd_gpu_device_metrics_exporter_plugin(self) -> pulumi.Output['outputs.KubernetesClusterAmdGpuDeviceMetricsExporterPlugin']:
         """
-        Block containing options for the AMD GPU device metrics exporter component.
+        Block containing options for the AMD GPU device metrics exporter component. If not specified, the component will not be installed in the cluster.
         """
         return pulumi.get(self, "amd_gpu_device_metrics_exporter_plugin")
 
@@ -1534,9 +1622,17 @@ class KubernetesCluster(pulumi.CustomResource):
     @pulumi.getter(name="amdGpuDevicePlugin")
     def amd_gpu_device_plugin(self) -> pulumi.Output['outputs.KubernetesClusterAmdGpuDevicePlugin']:
         """
-        Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes.
+        Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes. Mutually exclusive with `amd_gpu_dra_driver`.
         """
         return pulumi.get(self, "amd_gpu_device_plugin")
+
+    @_builtins.property
+    @pulumi.getter(name="amdGpuDraDriver")
+    def amd_gpu_dra_driver(self) -> pulumi.Output['outputs.KubernetesClusterAmdGpuDraDriver']:
+        """
+        Block containing options for the AMD GPU DRA driver component. Mutually exclusive with `amd_gpu_device_plugin`.
+        """
+        return pulumi.get(self, "amd_gpu_dra_driver")
 
     @_builtins.property
     @pulumi.getter(name="autoUpgrade")
@@ -1670,9 +1766,17 @@ class KubernetesCluster(pulumi.CustomResource):
     @pulumi.getter(name="nvidiaGpuDevicePlugin")
     def nvidia_gpu_device_plugin(self) -> pulumi.Output['outputs.KubernetesClusterNvidiaGpuDevicePlugin']:
         """
-        Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes.
+        Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes. Mutually exclusive with `nvidia_gpu_dra_driver`.
         """
         return pulumi.get(self, "nvidia_gpu_device_plugin")
+
+    @_builtins.property
+    @pulumi.getter(name="nvidiaGpuDraDriver")
+    def nvidia_gpu_dra_driver(self) -> pulumi.Output['outputs.KubernetesClusterNvidiaGpuDraDriver']:
+        """
+        Block containing options for the NVIDIA GPU DRA driver component. Mutually exclusive with `nvidia_gpu_device_plugin`.
+        """
+        return pulumi.get(self, "nvidia_gpu_dra_driver")
 
     @_builtins.property
     @pulumi.getter(name="p2pOciRegistryPlugin")
@@ -1685,6 +1789,9 @@ class KubernetesCluster(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="rdmaSharedDevicePlugin")
     def rdma_shared_device_plugin(self) -> pulumi.Output['outputs.KubernetesClusterRdmaSharedDevicePlugin']:
+        """
+        Block containing options for the RDMA Shared Device Plugin (k8s-rdma-shared-dev-plugin) component. If not specified, the component will be enabled by default for clusters with GPU nodes connected to a dedicated high-speed networking fabric.
+        """
         return pulumi.get(self, "rdma_shared_device_plugin")
 
     @_builtins.property

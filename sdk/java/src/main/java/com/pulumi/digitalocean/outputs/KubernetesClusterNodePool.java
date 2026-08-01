@@ -29,6 +29,11 @@ public final class KubernetesClusterNodePool {
      */
     private @Nullable Boolean autoScale;
     /**
+     * @return The AMD GPU partition mode to use for nodes in this pool. Valid values are `AMD_PARTITION_MODE_SPX_NPS1` and `AMD_PARTITION_MODE_DPX_NPS2`. This can only be set when the pool is created.
+     * 
+     */
+    private @Nullable String gpuPartitionMode;
+    /**
      * @return A unique ID that can be used to identify and reference the node.
      * 
      */
@@ -93,6 +98,13 @@ public final class KubernetesClusterNodePool {
      */
     public Optional<Boolean> autoScale() {
         return Optional.ofNullable(this.autoScale);
+    }
+    /**
+     * @return The AMD GPU partition mode to use for nodes in this pool. Valid values are `AMD_PARTITION_MODE_SPX_NPS1` and `AMD_PARTITION_MODE_DPX_NPS2`. This can only be set when the pool is created.
+     * 
+     */
+    public Optional<String> gpuPartitionMode() {
+        return Optional.ofNullable(this.gpuPartitionMode);
     }
     /**
      * @return A unique ID that can be used to identify and reference the node.
@@ -176,6 +188,7 @@ public final class KubernetesClusterNodePool {
     public static final class Builder {
         private @Nullable Integer actualNodeCount;
         private @Nullable Boolean autoScale;
+        private @Nullable String gpuPartitionMode;
         private @Nullable String id;
         private @Nullable Map<String,String> labels;
         private @Nullable Integer maxNodes;
@@ -191,6 +204,7 @@ public final class KubernetesClusterNodePool {
     	      Objects.requireNonNull(defaults);
     	      this.actualNodeCount = defaults.actualNodeCount;
     	      this.autoScale = defaults.autoScale;
+    	      this.gpuPartitionMode = defaults.gpuPartitionMode;
     	      this.id = defaults.id;
     	      this.labels = defaults.labels;
     	      this.maxNodes = defaults.maxNodes;
@@ -213,6 +227,12 @@ public final class KubernetesClusterNodePool {
         public Builder autoScale(@Nullable Boolean autoScale) {
 
             this.autoScale = autoScale;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder gpuPartitionMode(@Nullable String gpuPartitionMode) {
+
+            this.gpuPartitionMode = gpuPartitionMode;
             return this;
         }
         @CustomType.Setter
@@ -292,6 +312,7 @@ public final class KubernetesClusterNodePool {
             final var _resultValue = new KubernetesClusterNodePool();
             _resultValue.actualNodeCount = actualNodeCount;
             _resultValue.autoScale = autoScale;
+            _resultValue.gpuPartitionMode = gpuPartitionMode;
             _resultValue.id = id;
             _resultValue.labels = labels;
             _resultValue.maxNodes = maxNodes;

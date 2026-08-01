@@ -187,6 +187,24 @@ public class KubernetesNodePool extends com.pulumi.resources.CustomResource {
         return this.clusterId;
     }
     /**
+     * The AMD GPU partition mode to use for nodes in this pool. Valid values are `AMD_PARTITION_MODE_SPX_NPS1` and `AMD_PARTITION_MODE_DPX_NPS2`. This can only be set when the pool is created.
+     * 
+     * This resource supports customized create timeouts. The default timeout is 30 minutes.
+     * 
+     */
+    @Export(name="gpuPartitionMode", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> gpuPartitionMode;
+
+    /**
+     * @return The AMD GPU partition mode to use for nodes in this pool. Valid values are `AMD_PARTITION_MODE_SPX_NPS1` and `AMD_PARTITION_MODE_DPX_NPS2`. This can only be set when the pool is created.
+     * 
+     * This resource supports customized create timeouts. The default timeout is 30 minutes.
+     * 
+     */
+    public Output<Optional<String>> gpuPartitionMode() {
+        return Codegen.optional(this.gpuPartitionMode);
+    }
+    /**
      * A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
      * 
      */
@@ -301,16 +319,12 @@ public class KubernetesNodePool extends com.pulumi.resources.CustomResource {
     /**
      * A list of taints applied to all nodes in the pool.
      * 
-     * This resource supports customized create timeouts. The default timeout is 30 minutes.
-     * 
      */
     @Export(name="taints", refs={List.class,KubernetesNodePoolTaint.class}, tree="[0,1]")
     private Output</* @Nullable */ List<KubernetesNodePoolTaint>> taints;
 
     /**
      * @return A list of taints applied to all nodes in the pool.
-     * 
-     * This resource supports customized create timeouts. The default timeout is 30 minutes.
      * 
      */
     public Output<Optional<List<KubernetesNodePoolTaint>>> taints() {

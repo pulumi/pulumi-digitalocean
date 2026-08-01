@@ -45,6 +45,11 @@ export type CustomImage = import("./customImage").CustomImage;
 export const CustomImage: typeof import("./customImage").CustomImage = null as any;
 utilities.lazyLoad(exports, ["CustomImage"], () => require("./customImage"));
 
+export { DatabaseAdvancedMysqlConfigArgs, DatabaseAdvancedMysqlConfigState } from "./databaseAdvancedMysqlConfig";
+export type DatabaseAdvancedMysqlConfig = import("./databaseAdvancedMysqlConfig").DatabaseAdvancedMysqlConfig;
+export const DatabaseAdvancedMysqlConfig: typeof import("./databaseAdvancedMysqlConfig").DatabaseAdvancedMysqlConfig = null as any;
+utilities.lazyLoad(exports, ["DatabaseAdvancedMysqlConfig"], () => require("./databaseAdvancedMysqlConfig"));
+
 export { DatabaseAdvancedPostgresqlConfigArgs, DatabaseAdvancedPostgresqlConfigState } from "./databaseAdvancedPostgresqlConfig";
 export type DatabaseAdvancedPostgresqlConfig = import("./databaseAdvancedPostgresqlConfig").DatabaseAdvancedPostgresqlConfig;
 export const DatabaseAdvancedPostgresqlConfig: typeof import("./databaseAdvancedPostgresqlConfig").DatabaseAdvancedPostgresqlConfig = null as any;
@@ -540,31 +545,6 @@ export const getLoadBalancer: typeof import("./getLoadBalancer").getLoadBalancer
 export const getLoadBalancerOutput: typeof import("./getLoadBalancer").getLoadBalancerOutput = null as any;
 utilities.lazyLoad(exports, ["getLoadBalancer","getLoadBalancerOutput"], () => require("./getLoadBalancer"));
 
-export { GetMicrodropletArgs, GetMicrodropletResult, GetMicrodropletOutputArgs } from "./getMicrodroplet";
-export const getMicrodroplet: typeof import("./getMicrodroplet").getMicrodroplet = null as any;
-export const getMicrodropletOutput: typeof import("./getMicrodroplet").getMicrodropletOutput = null as any;
-utilities.lazyLoad(exports, ["getMicrodroplet","getMicrodropletOutput"], () => require("./getMicrodroplet"));
-
-export { GetMicrodropletCheckpointsArgs, GetMicrodropletCheckpointsResult, GetMicrodropletCheckpointsOutputArgs } from "./getMicrodropletCheckpoints";
-export const getMicrodropletCheckpoints: typeof import("./getMicrodropletCheckpoints").getMicrodropletCheckpoints = null as any;
-export const getMicrodropletCheckpointsOutput: typeof import("./getMicrodropletCheckpoints").getMicrodropletCheckpointsOutput = null as any;
-utilities.lazyLoad(exports, ["getMicrodropletCheckpoints","getMicrodropletCheckpointsOutput"], () => require("./getMicrodropletCheckpoints"));
-
-export { GetMicrodropletImageArgs, GetMicrodropletImageResult, GetMicrodropletImageOutputArgs } from "./getMicrodropletImage";
-export const getMicrodropletImage: typeof import("./getMicrodropletImage").getMicrodropletImage = null as any;
-export const getMicrodropletImageOutput: typeof import("./getMicrodropletImage").getMicrodropletImageOutput = null as any;
-utilities.lazyLoad(exports, ["getMicrodropletImage","getMicrodropletImageOutput"], () => require("./getMicrodropletImage"));
-
-export { GetMicrodropletImagesArgs, GetMicrodropletImagesResult, GetMicrodropletImagesOutputArgs } from "./getMicrodropletImages";
-export const getMicrodropletImages: typeof import("./getMicrodropletImages").getMicrodropletImages = null as any;
-export const getMicrodropletImagesOutput: typeof import("./getMicrodropletImages").getMicrodropletImagesOutput = null as any;
-utilities.lazyLoad(exports, ["getMicrodropletImages","getMicrodropletImagesOutput"], () => require("./getMicrodropletImages"));
-
-export { GetMicrodropletsArgs, GetMicrodropletsResult, GetMicrodropletsOutputArgs } from "./getMicrodroplets";
-export const getMicrodroplets: typeof import("./getMicrodroplets").getMicrodroplets = null as any;
-export const getMicrodropletsOutput: typeof import("./getMicrodroplets").getMicrodropletsOutput = null as any;
-utilities.lazyLoad(exports, ["getMicrodroplets","getMicrodropletsOutput"], () => require("./getMicrodroplets"));
-
 export { GetNfsArgs, GetNfsResult, GetNfsOutputArgs } from "./getNfs";
 export const getNfs: typeof import("./getNfs").getNfs = null as any;
 export const getNfsOutput: typeof import("./getNfs").getNfsOutput = null as any;
@@ -770,16 +750,6 @@ export type LoadBalancer = import("./loadBalancer").LoadBalancer;
 export const LoadBalancer: typeof import("./loadBalancer").LoadBalancer = null as any;
 utilities.lazyLoad(exports, ["LoadBalancer"], () => require("./loadBalancer"));
 
-export { MicrodropletArgs, MicrodropletState } from "./microdroplet";
-export type Microdroplet = import("./microdroplet").Microdroplet;
-export const Microdroplet: typeof import("./microdroplet").Microdroplet = null as any;
-utilities.lazyLoad(exports, ["Microdroplet"], () => require("./microdroplet"));
-
-export { MicrodropletImageArgs, MicrodropletImageState } from "./microdropletImage";
-export type MicrodropletImage = import("./microdropletImage").MicrodropletImage;
-export const MicrodropletImage: typeof import("./microdropletImage").MicrodropletImage = null as any;
-utilities.lazyLoad(exports, ["MicrodropletImage"], () => require("./microdropletImage"));
-
 export { MonitorAlertArgs, MonitorAlertState } from "./monitorAlert";
 export type MonitorAlert = import("./monitorAlert").MonitorAlert;
 export const MonitorAlert: typeof import("./monitorAlert").MonitorAlert = null as any;
@@ -961,6 +931,8 @@ const _module = {
                 return new ContainerRegistryDockerCredentials(name, <any>undefined, { urn })
             case "digitalocean:index/customImage:CustomImage":
                 return new CustomImage(name, <any>undefined, { urn })
+            case "digitalocean:index/databaseAdvancedMysqlConfig:DatabaseAdvancedMysqlConfig":
+                return new DatabaseAdvancedMysqlConfig(name, <any>undefined, { urn })
             case "digitalocean:index/databaseAdvancedPostgresqlConfig:DatabaseAdvancedPostgresqlConfig":
                 return new DatabaseAdvancedPostgresqlConfig(name, <any>undefined, { urn })
             case "digitalocean:index/databaseCluster:DatabaseCluster":
@@ -1059,10 +1031,6 @@ const _module = {
                 return new KubernetesNodePool(name, <any>undefined, { urn })
             case "digitalocean:index/loadBalancer:LoadBalancer":
                 return new LoadBalancer(name, <any>undefined, { urn })
-            case "digitalocean:index/microdroplet:Microdroplet":
-                return new Microdroplet(name, <any>undefined, { urn })
-            case "digitalocean:index/microdropletImage:MicrodropletImage":
-                return new MicrodropletImage(name, <any>undefined, { urn })
             case "digitalocean:index/monitorAlert:MonitorAlert":
                 return new MonitorAlert(name, <any>undefined, { urn })
             case "digitalocean:index/nfs:Nfs":
@@ -1134,6 +1102,7 @@ pulumi.runtime.registerResourceModule("digitalocean", "index/containerRegistries
 pulumi.runtime.registerResourceModule("digitalocean", "index/containerRegistry", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/containerRegistryDockerCredentials", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/customImage", _module)
+pulumi.runtime.registerResourceModule("digitalocean", "index/databaseAdvancedMysqlConfig", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/databaseAdvancedPostgresqlConfig", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/databaseCluster", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/databaseConnectionPool", _module)
@@ -1183,8 +1152,6 @@ pulumi.runtime.registerResourceModule("digitalocean", "index/gradientaiOpenaiApi
 pulumi.runtime.registerResourceModule("digitalocean", "index/kubernetesCluster", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/kubernetesNodePool", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/loadBalancer", _module)
-pulumi.runtime.registerResourceModule("digitalocean", "index/microdroplet", _module)
-pulumi.runtime.registerResourceModule("digitalocean", "index/microdropletImage", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/monitorAlert", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/nfs", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/nfsAccessPoint", _module)

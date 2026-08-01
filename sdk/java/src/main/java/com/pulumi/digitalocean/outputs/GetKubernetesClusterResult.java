@@ -6,6 +6,7 @@ package com.pulumi.digitalocean.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.digitalocean.outputs.GetKubernetesClusterAmdGpuDeviceMetricsExporterPlugin;
 import com.pulumi.digitalocean.outputs.GetKubernetesClusterAmdGpuDevicePlugin;
+import com.pulumi.digitalocean.outputs.GetKubernetesClusterAmdGpuDraDriver;
 import com.pulumi.digitalocean.outputs.GetKubernetesClusterClusterAutoscalerConfiguration;
 import com.pulumi.digitalocean.outputs.GetKubernetesClusterControlPlaneFirewall;
 import com.pulumi.digitalocean.outputs.GetKubernetesClusterCorednsAutoscaler;
@@ -13,6 +14,7 @@ import com.pulumi.digitalocean.outputs.GetKubernetesClusterKubeConfig;
 import com.pulumi.digitalocean.outputs.GetKubernetesClusterMaintenancePolicy;
 import com.pulumi.digitalocean.outputs.GetKubernetesClusterNodePool;
 import com.pulumi.digitalocean.outputs.GetKubernetesClusterNvidiaGpuDevicePlugin;
+import com.pulumi.digitalocean.outputs.GetKubernetesClusterNvidiaGpuDraDriver;
 import com.pulumi.digitalocean.outputs.GetKubernetesClusterP2pOciRegistryPlugin;
 import com.pulumi.digitalocean.outputs.GetKubernetesClusterRdmaSharedDevicePlugin;
 import com.pulumi.digitalocean.outputs.GetKubernetesClusterRoutingAgent;
@@ -30,6 +32,7 @@ import javax.annotation.Nullable;
 public final class GetKubernetesClusterResult {
     private GetKubernetesClusterAmdGpuDeviceMetricsExporterPlugin amdGpuDeviceMetricsExporterPlugin;
     private GetKubernetesClusterAmdGpuDevicePlugin amdGpuDevicePlugin;
+    private GetKubernetesClusterAmdGpuDraDriver amdGpuDraDriver;
     /**
      * @return A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
      * 
@@ -86,6 +89,7 @@ public final class GetKubernetesClusterResult {
      */
     private List<GetKubernetesClusterNodePool> nodePools;
     private GetKubernetesClusterNvidiaGpuDevicePlugin nvidiaGpuDevicePlugin;
+    private GetKubernetesClusterNvidiaGpuDraDriver nvidiaGpuDraDriver;
     private GetKubernetesClusterP2pOciRegistryPlugin p2pOciRegistryPlugin;
     private GetKubernetesClusterRdmaSharedDevicePlugin rdmaSharedDevicePlugin;
     /**
@@ -139,6 +143,9 @@ public final class GetKubernetesClusterResult {
     }
     public GetKubernetesClusterAmdGpuDevicePlugin amdGpuDevicePlugin() {
         return this.amdGpuDevicePlugin;
+    }
+    public GetKubernetesClusterAmdGpuDraDriver amdGpuDraDriver() {
+        return this.amdGpuDraDriver;
     }
     /**
      * @return A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
@@ -228,6 +235,9 @@ public final class GetKubernetesClusterResult {
     public GetKubernetesClusterNvidiaGpuDevicePlugin nvidiaGpuDevicePlugin() {
         return this.nvidiaGpuDevicePlugin;
     }
+    public GetKubernetesClusterNvidiaGpuDraDriver nvidiaGpuDraDriver() {
+        return this.nvidiaGpuDraDriver;
+    }
     public GetKubernetesClusterP2pOciRegistryPlugin p2pOciRegistryPlugin() {
         return this.p2pOciRegistryPlugin;
     }
@@ -314,6 +324,7 @@ public final class GetKubernetesClusterResult {
     public static final class Builder {
         private GetKubernetesClusterAmdGpuDeviceMetricsExporterPlugin amdGpuDeviceMetricsExporterPlugin;
         private GetKubernetesClusterAmdGpuDevicePlugin amdGpuDevicePlugin;
+        private GetKubernetesClusterAmdGpuDraDriver amdGpuDraDriver;
         private Boolean autoUpgrade;
         private @Nullable List<GetKubernetesClusterClusterAutoscalerConfiguration> clusterAutoscalerConfigurations;
         private String clusterSubnet;
@@ -330,6 +341,7 @@ public final class GetKubernetesClusterResult {
         private String name;
         private List<GetKubernetesClusterNodePool> nodePools;
         private GetKubernetesClusterNvidiaGpuDevicePlugin nvidiaGpuDevicePlugin;
+        private GetKubernetesClusterNvidiaGpuDraDriver nvidiaGpuDraDriver;
         private GetKubernetesClusterP2pOciRegistryPlugin p2pOciRegistryPlugin;
         private GetKubernetesClusterRdmaSharedDevicePlugin rdmaSharedDevicePlugin;
         private String region;
@@ -349,6 +361,7 @@ public final class GetKubernetesClusterResult {
     	      Objects.requireNonNull(defaults);
     	      this.amdGpuDeviceMetricsExporterPlugin = defaults.amdGpuDeviceMetricsExporterPlugin;
     	      this.amdGpuDevicePlugin = defaults.amdGpuDevicePlugin;
+    	      this.amdGpuDraDriver = defaults.amdGpuDraDriver;
     	      this.autoUpgrade = defaults.autoUpgrade;
     	      this.clusterAutoscalerConfigurations = defaults.clusterAutoscalerConfigurations;
     	      this.clusterSubnet = defaults.clusterSubnet;
@@ -365,6 +378,7 @@ public final class GetKubernetesClusterResult {
     	      this.name = defaults.name;
     	      this.nodePools = defaults.nodePools;
     	      this.nvidiaGpuDevicePlugin = defaults.nvidiaGpuDevicePlugin;
+    	      this.nvidiaGpuDraDriver = defaults.nvidiaGpuDraDriver;
     	      this.p2pOciRegistryPlugin = defaults.p2pOciRegistryPlugin;
     	      this.rdmaSharedDevicePlugin = defaults.rdmaSharedDevicePlugin;
     	      this.region = defaults.region;
@@ -395,6 +409,14 @@ public final class GetKubernetesClusterResult {
               throw new MissingRequiredPropertyException("GetKubernetesClusterResult", "amdGpuDevicePlugin");
             }
             this.amdGpuDevicePlugin = amdGpuDevicePlugin;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder amdGpuDraDriver(GetKubernetesClusterAmdGpuDraDriver amdGpuDraDriver) {
+            if (amdGpuDraDriver == null) {
+              throw new MissingRequiredPropertyException("GetKubernetesClusterResult", "amdGpuDraDriver");
+            }
+            this.amdGpuDraDriver = amdGpuDraDriver;
             return this;
         }
         @CustomType.Setter
@@ -537,6 +559,14 @@ public final class GetKubernetesClusterResult {
             return this;
         }
         @CustomType.Setter
+        public Builder nvidiaGpuDraDriver(GetKubernetesClusterNvidiaGpuDraDriver nvidiaGpuDraDriver) {
+            if (nvidiaGpuDraDriver == null) {
+              throw new MissingRequiredPropertyException("GetKubernetesClusterResult", "nvidiaGpuDraDriver");
+            }
+            this.nvidiaGpuDraDriver = nvidiaGpuDraDriver;
+            return this;
+        }
+        @CustomType.Setter
         public Builder p2pOciRegistryPlugin(GetKubernetesClusterP2pOciRegistryPlugin p2pOciRegistryPlugin) {
             if (p2pOciRegistryPlugin == null) {
               throw new MissingRequiredPropertyException("GetKubernetesClusterResult", "p2pOciRegistryPlugin");
@@ -656,6 +686,7 @@ public final class GetKubernetesClusterResult {
             final var _resultValue = new GetKubernetesClusterResult();
             _resultValue.amdGpuDeviceMetricsExporterPlugin = amdGpuDeviceMetricsExporterPlugin;
             _resultValue.amdGpuDevicePlugin = amdGpuDevicePlugin;
+            _resultValue.amdGpuDraDriver = amdGpuDraDriver;
             _resultValue.autoUpgrade = autoUpgrade;
             _resultValue.clusterAutoscalerConfigurations = clusterAutoscalerConfigurations;
             _resultValue.clusterSubnet = clusterSubnet;
@@ -672,6 +703,7 @@ public final class GetKubernetesClusterResult {
             _resultValue.name = name;
             _resultValue.nodePools = nodePools;
             _resultValue.nvidiaGpuDevicePlugin = nvidiaGpuDevicePlugin;
+            _resultValue.nvidiaGpuDraDriver = nvidiaGpuDraDriver;
             _resultValue.p2pOciRegistryPlugin = p2pOciRegistryPlugin;
             _resultValue.rdmaSharedDevicePlugin = rdmaSharedDevicePlugin;
             _resultValue.region = region;

@@ -69,6 +69,25 @@ public final class KubernetesNodePoolState extends com.pulumi.resources.Resource
     }
 
     /**
+     * The AMD GPU partition mode to use for nodes in this pool. Valid values are `AMD_PARTITION_MODE_SPX_NPS1` and `AMD_PARTITION_MODE_DPX_NPS2`. This can only be set when the pool is created.
+     * 
+     * This resource supports customized create timeouts. The default timeout is 30 minutes.
+     * 
+     */
+    @Import(name="gpuPartitionMode")
+    private @Nullable Output<String> gpuPartitionMode;
+
+    /**
+     * @return The AMD GPU partition mode to use for nodes in this pool. Valid values are `AMD_PARTITION_MODE_SPX_NPS1` and `AMD_PARTITION_MODE_DPX_NPS2`. This can only be set when the pool is created.
+     * 
+     * This resource supports customized create timeouts. The default timeout is 30 minutes.
+     * 
+     */
+    public Optional<Output<String>> gpuPartitionMode() {
+        return Optional.ofNullable(this.gpuPartitionMode);
+    }
+
+    /**
      * A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
      * 
      */
@@ -191,16 +210,12 @@ public final class KubernetesNodePoolState extends com.pulumi.resources.Resource
     /**
      * A list of taints applied to all nodes in the pool.
      * 
-     * This resource supports customized create timeouts. The default timeout is 30 minutes.
-     * 
      */
     @Import(name="taints")
     private @Nullable Output<List<KubernetesNodePoolTaintArgs>> taints;
 
     /**
      * @return A list of taints applied to all nodes in the pool.
-     * 
-     * This resource supports customized create timeouts. The default timeout is 30 minutes.
      * 
      */
     public Optional<Output<List<KubernetesNodePoolTaintArgs>>> taints() {
@@ -213,6 +228,7 @@ public final class KubernetesNodePoolState extends com.pulumi.resources.Resource
         this.actualNodeCount = $.actualNodeCount;
         this.autoScale = $.autoScale;
         this.clusterId = $.clusterId;
+        this.gpuPartitionMode = $.gpuPartitionMode;
         this.labels = $.labels;
         this.maxNodes = $.maxNodes;
         this.minNodes = $.minNodes;
@@ -303,6 +319,31 @@ public final class KubernetesNodePoolState extends com.pulumi.resources.Resource
          */
         public Builder clusterId(String clusterId) {
             return clusterId(Output.of(clusterId));
+        }
+
+        /**
+         * @param gpuPartitionMode The AMD GPU partition mode to use for nodes in this pool. Valid values are `AMD_PARTITION_MODE_SPX_NPS1` and `AMD_PARTITION_MODE_DPX_NPS2`. This can only be set when the pool is created.
+         * 
+         * This resource supports customized create timeouts. The default timeout is 30 minutes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gpuPartitionMode(@Nullable Output<String> gpuPartitionMode) {
+            $.gpuPartitionMode = gpuPartitionMode;
+            return this;
+        }
+
+        /**
+         * @param gpuPartitionMode The AMD GPU partition mode to use for nodes in this pool. Valid values are `AMD_PARTITION_MODE_SPX_NPS1` and `AMD_PARTITION_MODE_DPX_NPS2`. This can only be set when the pool is created.
+         * 
+         * This resource supports customized create timeouts. The default timeout is 30 minutes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gpuPartitionMode(String gpuPartitionMode) {
+            return gpuPartitionMode(Output.of(gpuPartitionMode));
         }
 
         /**
@@ -516,8 +557,6 @@ public final class KubernetesNodePoolState extends com.pulumi.resources.Resource
         /**
          * @param taints A list of taints applied to all nodes in the pool.
          * 
-         * This resource supports customized create timeouts. The default timeout is 30 minutes.
-         * 
          * @return builder
          * 
          */
@@ -529,8 +568,6 @@ public final class KubernetesNodePoolState extends com.pulumi.resources.Resource
         /**
          * @param taints A list of taints applied to all nodes in the pool.
          * 
-         * This resource supports customized create timeouts. The default timeout is 30 minutes.
-         * 
          * @return builder
          * 
          */
@@ -540,8 +577,6 @@ public final class KubernetesNodePoolState extends com.pulumi.resources.Resource
 
         /**
          * @param taints A list of taints applied to all nodes in the pool.
-         * 
-         * This resource supports customized create timeouts. The default timeout is 30 minutes.
          * 
          * @return builder
          * 

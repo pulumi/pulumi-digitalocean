@@ -9,12 +9,14 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.digitalocean.enums.Region;
 import com.pulumi.digitalocean.inputs.KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs;
 import com.pulumi.digitalocean.inputs.KubernetesClusterAmdGpuDevicePluginArgs;
+import com.pulumi.digitalocean.inputs.KubernetesClusterAmdGpuDraDriverArgs;
 import com.pulumi.digitalocean.inputs.KubernetesClusterClusterAutoscalerConfigurationArgs;
 import com.pulumi.digitalocean.inputs.KubernetesClusterControlPlaneFirewallArgs;
 import com.pulumi.digitalocean.inputs.KubernetesClusterCorednsAutoscalerArgs;
 import com.pulumi.digitalocean.inputs.KubernetesClusterMaintenancePolicyArgs;
 import com.pulumi.digitalocean.inputs.KubernetesClusterNodePoolArgs;
 import com.pulumi.digitalocean.inputs.KubernetesClusterNvidiaGpuDevicePluginArgs;
+import com.pulumi.digitalocean.inputs.KubernetesClusterNvidiaGpuDraDriverArgs;
 import com.pulumi.digitalocean.inputs.KubernetesClusterP2pOciRegistryPluginArgs;
 import com.pulumi.digitalocean.inputs.KubernetesClusterRdmaSharedDevicePluginArgs;
 import com.pulumi.digitalocean.inputs.KubernetesClusterRoutingAgentArgs;
@@ -34,14 +36,14 @@ public final class KubernetesClusterArgs extends com.pulumi.resources.ResourceAr
     public static final KubernetesClusterArgs Empty = new KubernetesClusterArgs();
 
     /**
-     * Block containing options for the AMD GPU device metrics exporter component.
+     * Block containing options for the AMD GPU device metrics exporter component. If not specified, the component will not be installed in the cluster.
      * 
      */
     @Import(name="amdGpuDeviceMetricsExporterPlugin")
     private @Nullable Output<KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs> amdGpuDeviceMetricsExporterPlugin;
 
     /**
-     * @return Block containing options for the AMD GPU device metrics exporter component.
+     * @return Block containing options for the AMD GPU device metrics exporter component. If not specified, the component will not be installed in the cluster.
      * 
      */
     public Optional<Output<KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs>> amdGpuDeviceMetricsExporterPlugin() {
@@ -49,18 +51,33 @@ public final class KubernetesClusterArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes.
+     * Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes. Mutually exclusive with `amdGpuDraDriver`.
      * 
      */
     @Import(name="amdGpuDevicePlugin")
     private @Nullable Output<KubernetesClusterAmdGpuDevicePluginArgs> amdGpuDevicePlugin;
 
     /**
-     * @return Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes.
+     * @return Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes. Mutually exclusive with `amdGpuDraDriver`.
      * 
      */
     public Optional<Output<KubernetesClusterAmdGpuDevicePluginArgs>> amdGpuDevicePlugin() {
         return Optional.ofNullable(this.amdGpuDevicePlugin);
+    }
+
+    /**
+     * Block containing options for the AMD GPU DRA driver component. Mutually exclusive with `amdGpuDevicePlugin`.
+     * 
+     */
+    @Import(name="amdGpuDraDriver")
+    private @Nullable Output<KubernetesClusterAmdGpuDraDriverArgs> amdGpuDraDriver;
+
+    /**
+     * @return Block containing options for the AMD GPU DRA driver component. Mutually exclusive with `amdGpuDevicePlugin`.
+     * 
+     */
+    public Optional<Output<KubernetesClusterAmdGpuDraDriverArgs>> amdGpuDraDriver() {
+        return Optional.ofNullable(this.amdGpuDraDriver);
     }
 
     /**
@@ -229,18 +246,33 @@ public final class KubernetesClusterArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes.
+     * Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes. Mutually exclusive with `nvidiaGpuDraDriver`.
      * 
      */
     @Import(name="nvidiaGpuDevicePlugin")
     private @Nullable Output<KubernetesClusterNvidiaGpuDevicePluginArgs> nvidiaGpuDevicePlugin;
 
     /**
-     * @return Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes.
+     * @return Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes. Mutually exclusive with `nvidiaGpuDraDriver`.
      * 
      */
     public Optional<Output<KubernetesClusterNvidiaGpuDevicePluginArgs>> nvidiaGpuDevicePlugin() {
         return Optional.ofNullable(this.nvidiaGpuDevicePlugin);
+    }
+
+    /**
+     * Block containing options for the NVIDIA GPU DRA driver component. Mutually exclusive with `nvidiaGpuDevicePlugin`.
+     * 
+     */
+    @Import(name="nvidiaGpuDraDriver")
+    private @Nullable Output<KubernetesClusterNvidiaGpuDraDriverArgs> nvidiaGpuDraDriver;
+
+    /**
+     * @return Block containing options for the NVIDIA GPU DRA driver component. Mutually exclusive with `nvidiaGpuDevicePlugin`.
+     * 
+     */
+    public Optional<Output<KubernetesClusterNvidiaGpuDraDriverArgs>> nvidiaGpuDraDriver() {
+        return Optional.ofNullable(this.nvidiaGpuDraDriver);
     }
 
     /**
@@ -258,9 +290,17 @@ public final class KubernetesClusterArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.p2pOciRegistryPlugin);
     }
 
+    /**
+     * Block containing options for the RDMA Shared Device Plugin (k8s-rdma-shared-dev-plugin) component. If not specified, the component will be enabled by default for clusters with GPU nodes connected to a dedicated high-speed networking fabric.
+     * 
+     */
     @Import(name="rdmaSharedDevicePlugin")
     private @Nullable Output<KubernetesClusterRdmaSharedDevicePluginArgs> rdmaSharedDevicePlugin;
 
+    /**
+     * @return Block containing options for the RDMA Shared Device Plugin (k8s-rdma-shared-dev-plugin) component. If not specified, the component will be enabled by default for clusters with GPU nodes connected to a dedicated high-speed networking fabric.
+     * 
+     */
     public Optional<Output<KubernetesClusterRdmaSharedDevicePluginArgs>> rdmaSharedDevicePlugin() {
         return Optional.ofNullable(this.rdmaSharedDevicePlugin);
     }
@@ -420,6 +460,7 @@ public final class KubernetesClusterArgs extends com.pulumi.resources.ResourceAr
     private KubernetesClusterArgs(KubernetesClusterArgs $) {
         this.amdGpuDeviceMetricsExporterPlugin = $.amdGpuDeviceMetricsExporterPlugin;
         this.amdGpuDevicePlugin = $.amdGpuDevicePlugin;
+        this.amdGpuDraDriver = $.amdGpuDraDriver;
         this.autoUpgrade = $.autoUpgrade;
         this.clusterAutoscalerConfigurations = $.clusterAutoscalerConfigurations;
         this.clusterSubnet = $.clusterSubnet;
@@ -432,6 +473,7 @@ public final class KubernetesClusterArgs extends com.pulumi.resources.ResourceAr
         this.name = $.name;
         this.nodePool = $.nodePool;
         this.nvidiaGpuDevicePlugin = $.nvidiaGpuDevicePlugin;
+        this.nvidiaGpuDraDriver = $.nvidiaGpuDraDriver;
         this.p2pOciRegistryPlugin = $.p2pOciRegistryPlugin;
         this.rdmaSharedDevicePlugin = $.rdmaSharedDevicePlugin;
         this.region = $.region;
@@ -465,7 +507,7 @@ public final class KubernetesClusterArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param amdGpuDeviceMetricsExporterPlugin Block containing options for the AMD GPU device metrics exporter component.
+         * @param amdGpuDeviceMetricsExporterPlugin Block containing options for the AMD GPU device metrics exporter component. If not specified, the component will not be installed in the cluster.
          * 
          * @return builder
          * 
@@ -476,7 +518,7 @@ public final class KubernetesClusterArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param amdGpuDeviceMetricsExporterPlugin Block containing options for the AMD GPU device metrics exporter component.
+         * @param amdGpuDeviceMetricsExporterPlugin Block containing options for the AMD GPU device metrics exporter component. If not specified, the component will not be installed in the cluster.
          * 
          * @return builder
          * 
@@ -486,7 +528,7 @@ public final class KubernetesClusterArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param amdGpuDevicePlugin Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes.
+         * @param amdGpuDevicePlugin Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes. Mutually exclusive with `amdGpuDraDriver`.
          * 
          * @return builder
          * 
@@ -497,13 +539,34 @@ public final class KubernetesClusterArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param amdGpuDevicePlugin Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes.
+         * @param amdGpuDevicePlugin Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes. Mutually exclusive with `amdGpuDraDriver`.
          * 
          * @return builder
          * 
          */
         public Builder amdGpuDevicePlugin(KubernetesClusterAmdGpuDevicePluginArgs amdGpuDevicePlugin) {
             return amdGpuDevicePlugin(Output.of(amdGpuDevicePlugin));
+        }
+
+        /**
+         * @param amdGpuDraDriver Block containing options for the AMD GPU DRA driver component. Mutually exclusive with `amdGpuDevicePlugin`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder amdGpuDraDriver(@Nullable Output<KubernetesClusterAmdGpuDraDriverArgs> amdGpuDraDriver) {
+            $.amdGpuDraDriver = amdGpuDraDriver;
+            return this;
+        }
+
+        /**
+         * @param amdGpuDraDriver Block containing options for the AMD GPU DRA driver component. Mutually exclusive with `amdGpuDevicePlugin`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder amdGpuDraDriver(KubernetesClusterAmdGpuDraDriverArgs amdGpuDraDriver) {
+            return amdGpuDraDriver(Output.of(amdGpuDraDriver));
         }
 
         /**
@@ -748,7 +811,7 @@ public final class KubernetesClusterArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param nvidiaGpuDevicePlugin Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes.
+         * @param nvidiaGpuDevicePlugin Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes. Mutually exclusive with `nvidiaGpuDraDriver`.
          * 
          * @return builder
          * 
@@ -759,13 +822,34 @@ public final class KubernetesClusterArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param nvidiaGpuDevicePlugin Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes.
+         * @param nvidiaGpuDevicePlugin Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes. Mutually exclusive with `nvidiaGpuDraDriver`.
          * 
          * @return builder
          * 
          */
         public Builder nvidiaGpuDevicePlugin(KubernetesClusterNvidiaGpuDevicePluginArgs nvidiaGpuDevicePlugin) {
             return nvidiaGpuDevicePlugin(Output.of(nvidiaGpuDevicePlugin));
+        }
+
+        /**
+         * @param nvidiaGpuDraDriver Block containing options for the NVIDIA GPU DRA driver component. Mutually exclusive with `nvidiaGpuDevicePlugin`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nvidiaGpuDraDriver(@Nullable Output<KubernetesClusterNvidiaGpuDraDriverArgs> nvidiaGpuDraDriver) {
+            $.nvidiaGpuDraDriver = nvidiaGpuDraDriver;
+            return this;
+        }
+
+        /**
+         * @param nvidiaGpuDraDriver Block containing options for the NVIDIA GPU DRA driver component. Mutually exclusive with `nvidiaGpuDevicePlugin`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nvidiaGpuDraDriver(KubernetesClusterNvidiaGpuDraDriverArgs nvidiaGpuDraDriver) {
+            return nvidiaGpuDraDriver(Output.of(nvidiaGpuDraDriver));
         }
 
         /**
@@ -789,11 +873,23 @@ public final class KubernetesClusterArgs extends com.pulumi.resources.ResourceAr
             return p2pOciRegistryPlugin(Output.of(p2pOciRegistryPlugin));
         }
 
+        /**
+         * @param rdmaSharedDevicePlugin Block containing options for the RDMA Shared Device Plugin (k8s-rdma-shared-dev-plugin) component. If not specified, the component will be enabled by default for clusters with GPU nodes connected to a dedicated high-speed networking fabric.
+         * 
+         * @return builder
+         * 
+         */
         public Builder rdmaSharedDevicePlugin(@Nullable Output<KubernetesClusterRdmaSharedDevicePluginArgs> rdmaSharedDevicePlugin) {
             $.rdmaSharedDevicePlugin = rdmaSharedDevicePlugin;
             return this;
         }
 
+        /**
+         * @param rdmaSharedDevicePlugin Block containing options for the RDMA Shared Device Plugin (k8s-rdma-shared-dev-plugin) component. If not specified, the component will be enabled by default for clusters with GPU nodes connected to a dedicated high-speed networking fabric.
+         * 
+         * @return builder
+         * 
+         */
         public Builder rdmaSharedDevicePlugin(KubernetesClusterRdmaSharedDevicePluginArgs rdmaSharedDevicePlugin) {
             return rdmaSharedDevicePlugin(Output.of(rdmaSharedDevicePlugin));
         }

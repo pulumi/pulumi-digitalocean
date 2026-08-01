@@ -35797,7 +35797,7 @@ func (o GradientaiOpenaiApiKeyModelVersionArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type KubernetesClusterAmdGpuDeviceMetricsExporterPlugin struct {
-	// Boolean flag whether the CoreDNS Autoscaler is enabled or not.
+	// Boolean flag whether the component should be enabled or not.
 	Enabled bool `pulumi:"enabled"`
 }
 
@@ -35813,7 +35813,7 @@ type KubernetesClusterAmdGpuDeviceMetricsExporterPluginInput interface {
 }
 
 type KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs struct {
-	// Boolean flag whether the CoreDNS Autoscaler is enabled or not.
+	// Boolean flag whether the component should be enabled or not.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
@@ -35894,7 +35894,7 @@ func (o KubernetesClusterAmdGpuDeviceMetricsExporterPluginOutput) ToKubernetesCl
 	}).(KubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutput)
 }
 
-// Boolean flag whether the CoreDNS Autoscaler is enabled or not.
+// Boolean flag whether the component should be enabled or not.
 func (o KubernetesClusterAmdGpuDeviceMetricsExporterPluginOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v KubernetesClusterAmdGpuDeviceMetricsExporterPlugin) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -35923,7 +35923,7 @@ func (o KubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutput) Elem() Kube
 	}).(KubernetesClusterAmdGpuDeviceMetricsExporterPluginOutput)
 }
 
-// Boolean flag whether the CoreDNS Autoscaler is enabled or not.
+// Boolean flag whether the component should be enabled or not.
 func (o KubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *KubernetesClusterAmdGpuDeviceMetricsExporterPlugin) *bool {
 		if v == nil {
@@ -35935,7 +35935,6 @@ func (o KubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutput) Enabled() p
 
 type KubernetesClusterAmdGpuDevicePlugin struct {
 	// Boolean flag whether the component should be enabled or not.
-	// `amdGpuDeviceMetricsExporterPlugin` - (Optional) Block containing options for the AMD GPU device metrics exporter component. If not specified, the component will not be installed in the cluster.
 	Enabled bool `pulumi:"enabled"`
 }
 
@@ -35952,7 +35951,6 @@ type KubernetesClusterAmdGpuDevicePluginInput interface {
 
 type KubernetesClusterAmdGpuDevicePluginArgs struct {
 	// Boolean flag whether the component should be enabled or not.
-	// `amdGpuDeviceMetricsExporterPlugin` - (Optional) Block containing options for the AMD GPU device metrics exporter component. If not specified, the component will not be installed in the cluster.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
@@ -36034,7 +36032,6 @@ func (o KubernetesClusterAmdGpuDevicePluginOutput) ToKubernetesClusterAmdGpuDevi
 }
 
 // Boolean flag whether the component should be enabled or not.
-// `amdGpuDeviceMetricsExporterPlugin` - (Optional) Block containing options for the AMD GPU device metrics exporter component. If not specified, the component will not be installed in the cluster.
 func (o KubernetesClusterAmdGpuDevicePluginOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v KubernetesClusterAmdGpuDevicePlugin) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -36064,9 +36061,145 @@ func (o KubernetesClusterAmdGpuDevicePluginPtrOutput) Elem() KubernetesClusterAm
 }
 
 // Boolean flag whether the component should be enabled or not.
-// `amdGpuDeviceMetricsExporterPlugin` - (Optional) Block containing options for the AMD GPU device metrics exporter component. If not specified, the component will not be installed in the cluster.
 func (o KubernetesClusterAmdGpuDevicePluginPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *KubernetesClusterAmdGpuDevicePlugin) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type KubernetesClusterAmdGpuDraDriver struct {
+	// Boolean flag whether the component should be enabled or not.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// KubernetesClusterAmdGpuDraDriverInput is an input type that accepts KubernetesClusterAmdGpuDraDriverArgs and KubernetesClusterAmdGpuDraDriverOutput values.
+// You can construct a concrete instance of `KubernetesClusterAmdGpuDraDriverInput` via:
+//
+//	KubernetesClusterAmdGpuDraDriverArgs{...}
+type KubernetesClusterAmdGpuDraDriverInput interface {
+	pulumi.Input
+
+	ToKubernetesClusterAmdGpuDraDriverOutput() KubernetesClusterAmdGpuDraDriverOutput
+	ToKubernetesClusterAmdGpuDraDriverOutputWithContext(context.Context) KubernetesClusterAmdGpuDraDriverOutput
+}
+
+type KubernetesClusterAmdGpuDraDriverArgs struct {
+	// Boolean flag whether the component should be enabled or not.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (KubernetesClusterAmdGpuDraDriverArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesClusterAmdGpuDraDriver)(nil)).Elem()
+}
+
+func (i KubernetesClusterAmdGpuDraDriverArgs) ToKubernetesClusterAmdGpuDraDriverOutput() KubernetesClusterAmdGpuDraDriverOutput {
+	return i.ToKubernetesClusterAmdGpuDraDriverOutputWithContext(context.Background())
+}
+
+func (i KubernetesClusterAmdGpuDraDriverArgs) ToKubernetesClusterAmdGpuDraDriverOutputWithContext(ctx context.Context) KubernetesClusterAmdGpuDraDriverOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterAmdGpuDraDriverOutput)
+}
+
+func (i KubernetesClusterAmdGpuDraDriverArgs) ToKubernetesClusterAmdGpuDraDriverPtrOutput() KubernetesClusterAmdGpuDraDriverPtrOutput {
+	return i.ToKubernetesClusterAmdGpuDraDriverPtrOutputWithContext(context.Background())
+}
+
+func (i KubernetesClusterAmdGpuDraDriverArgs) ToKubernetesClusterAmdGpuDraDriverPtrOutputWithContext(ctx context.Context) KubernetesClusterAmdGpuDraDriverPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterAmdGpuDraDriverOutput).ToKubernetesClusterAmdGpuDraDriverPtrOutputWithContext(ctx)
+}
+
+// KubernetesClusterAmdGpuDraDriverPtrInput is an input type that accepts KubernetesClusterAmdGpuDraDriverArgs, KubernetesClusterAmdGpuDraDriverPtr and KubernetesClusterAmdGpuDraDriverPtrOutput values.
+// You can construct a concrete instance of `KubernetesClusterAmdGpuDraDriverPtrInput` via:
+//
+//	        KubernetesClusterAmdGpuDraDriverArgs{...}
+//
+//	or:
+//
+//	        nil
+type KubernetesClusterAmdGpuDraDriverPtrInput interface {
+	pulumi.Input
+
+	ToKubernetesClusterAmdGpuDraDriverPtrOutput() KubernetesClusterAmdGpuDraDriverPtrOutput
+	ToKubernetesClusterAmdGpuDraDriverPtrOutputWithContext(context.Context) KubernetesClusterAmdGpuDraDriverPtrOutput
+}
+
+type kubernetesClusterAmdGpuDraDriverPtrType KubernetesClusterAmdGpuDraDriverArgs
+
+func KubernetesClusterAmdGpuDraDriverPtr(v *KubernetesClusterAmdGpuDraDriverArgs) KubernetesClusterAmdGpuDraDriverPtrInput {
+	return (*kubernetesClusterAmdGpuDraDriverPtrType)(v)
+}
+
+func (*kubernetesClusterAmdGpuDraDriverPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubernetesClusterAmdGpuDraDriver)(nil)).Elem()
+}
+
+func (i *kubernetesClusterAmdGpuDraDriverPtrType) ToKubernetesClusterAmdGpuDraDriverPtrOutput() KubernetesClusterAmdGpuDraDriverPtrOutput {
+	return i.ToKubernetesClusterAmdGpuDraDriverPtrOutputWithContext(context.Background())
+}
+
+func (i *kubernetesClusterAmdGpuDraDriverPtrType) ToKubernetesClusterAmdGpuDraDriverPtrOutputWithContext(ctx context.Context) KubernetesClusterAmdGpuDraDriverPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterAmdGpuDraDriverPtrOutput)
+}
+
+type KubernetesClusterAmdGpuDraDriverOutput struct{ *pulumi.OutputState }
+
+func (KubernetesClusterAmdGpuDraDriverOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesClusterAmdGpuDraDriver)(nil)).Elem()
+}
+
+func (o KubernetesClusterAmdGpuDraDriverOutput) ToKubernetesClusterAmdGpuDraDriverOutput() KubernetesClusterAmdGpuDraDriverOutput {
+	return o
+}
+
+func (o KubernetesClusterAmdGpuDraDriverOutput) ToKubernetesClusterAmdGpuDraDriverOutputWithContext(ctx context.Context) KubernetesClusterAmdGpuDraDriverOutput {
+	return o
+}
+
+func (o KubernetesClusterAmdGpuDraDriverOutput) ToKubernetesClusterAmdGpuDraDriverPtrOutput() KubernetesClusterAmdGpuDraDriverPtrOutput {
+	return o.ToKubernetesClusterAmdGpuDraDriverPtrOutputWithContext(context.Background())
+}
+
+func (o KubernetesClusterAmdGpuDraDriverOutput) ToKubernetesClusterAmdGpuDraDriverPtrOutputWithContext(ctx context.Context) KubernetesClusterAmdGpuDraDriverPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubernetesClusterAmdGpuDraDriver) *KubernetesClusterAmdGpuDraDriver {
+		return &v
+	}).(KubernetesClusterAmdGpuDraDriverPtrOutput)
+}
+
+// Boolean flag whether the component should be enabled or not.
+func (o KubernetesClusterAmdGpuDraDriverOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v KubernetesClusterAmdGpuDraDriver) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type KubernetesClusterAmdGpuDraDriverPtrOutput struct{ *pulumi.OutputState }
+
+func (KubernetesClusterAmdGpuDraDriverPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubernetesClusterAmdGpuDraDriver)(nil)).Elem()
+}
+
+func (o KubernetesClusterAmdGpuDraDriverPtrOutput) ToKubernetesClusterAmdGpuDraDriverPtrOutput() KubernetesClusterAmdGpuDraDriverPtrOutput {
+	return o
+}
+
+func (o KubernetesClusterAmdGpuDraDriverPtrOutput) ToKubernetesClusterAmdGpuDraDriverPtrOutputWithContext(ctx context.Context) KubernetesClusterAmdGpuDraDriverPtrOutput {
+	return o
+}
+
+func (o KubernetesClusterAmdGpuDraDriverPtrOutput) Elem() KubernetesClusterAmdGpuDraDriverOutput {
+	return o.ApplyT(func(v *KubernetesClusterAmdGpuDraDriver) KubernetesClusterAmdGpuDraDriver {
+		if v != nil {
+			return *v
+		}
+		var ret KubernetesClusterAmdGpuDraDriver
+		return ret
+	}).(KubernetesClusterAmdGpuDraDriverOutput)
+}
+
+// Boolean flag whether the component should be enabled or not.
+func (o KubernetesClusterAmdGpuDraDriverPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *KubernetesClusterAmdGpuDraDriver) *bool {
 		if v == nil {
 			return nil
 		}
@@ -36815,6 +36948,8 @@ type KubernetesClusterNodePool struct {
 	ActualNodeCount *int `pulumi:"actualNodeCount"`
 	// Enable auto-scaling of the number of nodes in the node pool within the given min/max range.
 	AutoScale *bool `pulumi:"autoScale"`
+	// The AMD GPU partition mode to use for nodes in this pool. Valid values are `AMD_PARTITION_MODE_SPX_NPS1` and `AMD_PARTITION_MODE_DPX_NPS2`. This can only be set when the pool is created.
+	GpuPartitionMode *string `pulumi:"gpuPartitionMode"`
 	// A unique ID that can be used to identify and reference the node.
 	Id *string `pulumi:"id"`
 	// A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
@@ -36853,6 +36988,8 @@ type KubernetesClusterNodePoolArgs struct {
 	ActualNodeCount pulumi.IntPtrInput `pulumi:"actualNodeCount"`
 	// Enable auto-scaling of the number of nodes in the node pool within the given min/max range.
 	AutoScale pulumi.BoolPtrInput `pulumi:"autoScale"`
+	// The AMD GPU partition mode to use for nodes in this pool. Valid values are `AMD_PARTITION_MODE_SPX_NPS1` and `AMD_PARTITION_MODE_DPX_NPS2`. This can only be set when the pool is created.
+	GpuPartitionMode pulumi.StringPtrInput `pulumi:"gpuPartitionMode"`
 	// A unique ID that can be used to identify and reference the node.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
@@ -36962,6 +37099,11 @@ func (o KubernetesClusterNodePoolOutput) AutoScale() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v KubernetesClusterNodePool) *bool { return v.AutoScale }).(pulumi.BoolPtrOutput)
 }
 
+// The AMD GPU partition mode to use for nodes in this pool. Valid values are `AMD_PARTITION_MODE_SPX_NPS1` and `AMD_PARTITION_MODE_DPX_NPS2`. This can only be set when the pool is created.
+func (o KubernetesClusterNodePoolOutput) GpuPartitionMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KubernetesClusterNodePool) *string { return v.GpuPartitionMode }).(pulumi.StringPtrOutput)
+}
+
 // A unique ID that can be used to identify and reference the node.
 func (o KubernetesClusterNodePoolOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesClusterNodePool) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -37054,6 +37196,16 @@ func (o KubernetesClusterNodePoolPtrOutput) AutoScale() pulumi.BoolPtrOutput {
 		}
 		return v.AutoScale
 	}).(pulumi.BoolPtrOutput)
+}
+
+// The AMD GPU partition mode to use for nodes in this pool. Valid values are `AMD_PARTITION_MODE_SPX_NPS1` and `AMD_PARTITION_MODE_DPX_NPS2`. This can only be set when the pool is created.
+func (o KubernetesClusterNodePoolPtrOutput) GpuPartitionMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KubernetesClusterNodePool) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GpuPartitionMode
+	}).(pulumi.StringPtrOutput)
 }
 
 // A unique ID that can be used to identify and reference the node.
@@ -37415,7 +37567,6 @@ func (o KubernetesClusterNodePoolTaintArrayOutput) Index(i pulumi.IntInput) Kube
 
 type KubernetesClusterNvidiaGpuDevicePlugin struct {
 	// Boolean flag whether the component should be enabled or not.
-	// `rdmaSharedDevicePlugin` - (Optional) Block containing options for the RDMA Shared Device Plugin (k8s-rdma-shared-dev-plugin) component. If not specified, the component will be enabled by default for clusters with GPU nodes connected to a dedicated high-speed networking fabric.
 	Enabled bool `pulumi:"enabled"`
 }
 
@@ -37432,7 +37583,6 @@ type KubernetesClusterNvidiaGpuDevicePluginInput interface {
 
 type KubernetesClusterNvidiaGpuDevicePluginArgs struct {
 	// Boolean flag whether the component should be enabled or not.
-	// `rdmaSharedDevicePlugin` - (Optional) Block containing options for the RDMA Shared Device Plugin (k8s-rdma-shared-dev-plugin) component. If not specified, the component will be enabled by default for clusters with GPU nodes connected to a dedicated high-speed networking fabric.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
@@ -37514,7 +37664,6 @@ func (o KubernetesClusterNvidiaGpuDevicePluginOutput) ToKubernetesClusterNvidiaG
 }
 
 // Boolean flag whether the component should be enabled or not.
-// `rdmaSharedDevicePlugin` - (Optional) Block containing options for the RDMA Shared Device Plugin (k8s-rdma-shared-dev-plugin) component. If not specified, the component will be enabled by default for clusters with GPU nodes connected to a dedicated high-speed networking fabric.
 func (o KubernetesClusterNvidiaGpuDevicePluginOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v KubernetesClusterNvidiaGpuDevicePlugin) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -37544,9 +37693,145 @@ func (o KubernetesClusterNvidiaGpuDevicePluginPtrOutput) Elem() KubernetesCluste
 }
 
 // Boolean flag whether the component should be enabled or not.
-// `rdmaSharedDevicePlugin` - (Optional) Block containing options for the RDMA Shared Device Plugin (k8s-rdma-shared-dev-plugin) component. If not specified, the component will be enabled by default for clusters with GPU nodes connected to a dedicated high-speed networking fabric.
 func (o KubernetesClusterNvidiaGpuDevicePluginPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *KubernetesClusterNvidiaGpuDevicePlugin) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type KubernetesClusterNvidiaGpuDraDriver struct {
+	// Boolean flag whether the component should be enabled or not.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// KubernetesClusterNvidiaGpuDraDriverInput is an input type that accepts KubernetesClusterNvidiaGpuDraDriverArgs and KubernetesClusterNvidiaGpuDraDriverOutput values.
+// You can construct a concrete instance of `KubernetesClusterNvidiaGpuDraDriverInput` via:
+//
+//	KubernetesClusterNvidiaGpuDraDriverArgs{...}
+type KubernetesClusterNvidiaGpuDraDriverInput interface {
+	pulumi.Input
+
+	ToKubernetesClusterNvidiaGpuDraDriverOutput() KubernetesClusterNvidiaGpuDraDriverOutput
+	ToKubernetesClusterNvidiaGpuDraDriverOutputWithContext(context.Context) KubernetesClusterNvidiaGpuDraDriverOutput
+}
+
+type KubernetesClusterNvidiaGpuDraDriverArgs struct {
+	// Boolean flag whether the component should be enabled or not.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (KubernetesClusterNvidiaGpuDraDriverArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesClusterNvidiaGpuDraDriver)(nil)).Elem()
+}
+
+func (i KubernetesClusterNvidiaGpuDraDriverArgs) ToKubernetesClusterNvidiaGpuDraDriverOutput() KubernetesClusterNvidiaGpuDraDriverOutput {
+	return i.ToKubernetesClusterNvidiaGpuDraDriverOutputWithContext(context.Background())
+}
+
+func (i KubernetesClusterNvidiaGpuDraDriverArgs) ToKubernetesClusterNvidiaGpuDraDriverOutputWithContext(ctx context.Context) KubernetesClusterNvidiaGpuDraDriverOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterNvidiaGpuDraDriverOutput)
+}
+
+func (i KubernetesClusterNvidiaGpuDraDriverArgs) ToKubernetesClusterNvidiaGpuDraDriverPtrOutput() KubernetesClusterNvidiaGpuDraDriverPtrOutput {
+	return i.ToKubernetesClusterNvidiaGpuDraDriverPtrOutputWithContext(context.Background())
+}
+
+func (i KubernetesClusterNvidiaGpuDraDriverArgs) ToKubernetesClusterNvidiaGpuDraDriverPtrOutputWithContext(ctx context.Context) KubernetesClusterNvidiaGpuDraDriverPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterNvidiaGpuDraDriverOutput).ToKubernetesClusterNvidiaGpuDraDriverPtrOutputWithContext(ctx)
+}
+
+// KubernetesClusterNvidiaGpuDraDriverPtrInput is an input type that accepts KubernetesClusterNvidiaGpuDraDriverArgs, KubernetesClusterNvidiaGpuDraDriverPtr and KubernetesClusterNvidiaGpuDraDriverPtrOutput values.
+// You can construct a concrete instance of `KubernetesClusterNvidiaGpuDraDriverPtrInput` via:
+//
+//	        KubernetesClusterNvidiaGpuDraDriverArgs{...}
+//
+//	or:
+//
+//	        nil
+type KubernetesClusterNvidiaGpuDraDriverPtrInput interface {
+	pulumi.Input
+
+	ToKubernetesClusterNvidiaGpuDraDriverPtrOutput() KubernetesClusterNvidiaGpuDraDriverPtrOutput
+	ToKubernetesClusterNvidiaGpuDraDriverPtrOutputWithContext(context.Context) KubernetesClusterNvidiaGpuDraDriverPtrOutput
+}
+
+type kubernetesClusterNvidiaGpuDraDriverPtrType KubernetesClusterNvidiaGpuDraDriverArgs
+
+func KubernetesClusterNvidiaGpuDraDriverPtr(v *KubernetesClusterNvidiaGpuDraDriverArgs) KubernetesClusterNvidiaGpuDraDriverPtrInput {
+	return (*kubernetesClusterNvidiaGpuDraDriverPtrType)(v)
+}
+
+func (*kubernetesClusterNvidiaGpuDraDriverPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubernetesClusterNvidiaGpuDraDriver)(nil)).Elem()
+}
+
+func (i *kubernetesClusterNvidiaGpuDraDriverPtrType) ToKubernetesClusterNvidiaGpuDraDriverPtrOutput() KubernetesClusterNvidiaGpuDraDriverPtrOutput {
+	return i.ToKubernetesClusterNvidiaGpuDraDriverPtrOutputWithContext(context.Background())
+}
+
+func (i *kubernetesClusterNvidiaGpuDraDriverPtrType) ToKubernetesClusterNvidiaGpuDraDriverPtrOutputWithContext(ctx context.Context) KubernetesClusterNvidiaGpuDraDriverPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterNvidiaGpuDraDriverPtrOutput)
+}
+
+type KubernetesClusterNvidiaGpuDraDriverOutput struct{ *pulumi.OutputState }
+
+func (KubernetesClusterNvidiaGpuDraDriverOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesClusterNvidiaGpuDraDriver)(nil)).Elem()
+}
+
+func (o KubernetesClusterNvidiaGpuDraDriverOutput) ToKubernetesClusterNvidiaGpuDraDriverOutput() KubernetesClusterNvidiaGpuDraDriverOutput {
+	return o
+}
+
+func (o KubernetesClusterNvidiaGpuDraDriverOutput) ToKubernetesClusterNvidiaGpuDraDriverOutputWithContext(ctx context.Context) KubernetesClusterNvidiaGpuDraDriverOutput {
+	return o
+}
+
+func (o KubernetesClusterNvidiaGpuDraDriverOutput) ToKubernetesClusterNvidiaGpuDraDriverPtrOutput() KubernetesClusterNvidiaGpuDraDriverPtrOutput {
+	return o.ToKubernetesClusterNvidiaGpuDraDriverPtrOutputWithContext(context.Background())
+}
+
+func (o KubernetesClusterNvidiaGpuDraDriverOutput) ToKubernetesClusterNvidiaGpuDraDriverPtrOutputWithContext(ctx context.Context) KubernetesClusterNvidiaGpuDraDriverPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubernetesClusterNvidiaGpuDraDriver) *KubernetesClusterNvidiaGpuDraDriver {
+		return &v
+	}).(KubernetesClusterNvidiaGpuDraDriverPtrOutput)
+}
+
+// Boolean flag whether the component should be enabled or not.
+func (o KubernetesClusterNvidiaGpuDraDriverOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v KubernetesClusterNvidiaGpuDraDriver) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type KubernetesClusterNvidiaGpuDraDriverPtrOutput struct{ *pulumi.OutputState }
+
+func (KubernetesClusterNvidiaGpuDraDriverPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubernetesClusterNvidiaGpuDraDriver)(nil)).Elem()
+}
+
+func (o KubernetesClusterNvidiaGpuDraDriverPtrOutput) ToKubernetesClusterNvidiaGpuDraDriverPtrOutput() KubernetesClusterNvidiaGpuDraDriverPtrOutput {
+	return o
+}
+
+func (o KubernetesClusterNvidiaGpuDraDriverPtrOutput) ToKubernetesClusterNvidiaGpuDraDriverPtrOutputWithContext(ctx context.Context) KubernetesClusterNvidiaGpuDraDriverPtrOutput {
+	return o
+}
+
+func (o KubernetesClusterNvidiaGpuDraDriverPtrOutput) Elem() KubernetesClusterNvidiaGpuDraDriverOutput {
+	return o.ApplyT(func(v *KubernetesClusterNvidiaGpuDraDriver) KubernetesClusterNvidiaGpuDraDriver {
+		if v != nil {
+			return *v
+		}
+		var ret KubernetesClusterNvidiaGpuDraDriver
+		return ret
+	}).(KubernetesClusterNvidiaGpuDraDriverOutput)
+}
+
+// Boolean flag whether the component should be enabled or not.
+func (o KubernetesClusterNvidiaGpuDraDriverPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *KubernetesClusterNvidiaGpuDraDriver) *bool {
 		if v == nil {
 			return nil
 		}
@@ -37692,7 +37977,7 @@ func (o KubernetesClusterP2pOciRegistryPluginPtrOutput) Enabled() pulumi.BoolPtr
 }
 
 type KubernetesClusterRdmaSharedDevicePlugin struct {
-	// Boolean flag whether the CoreDNS Autoscaler is enabled or not.
+	// Boolean flag whether the component should be enabled or not.
 	Enabled bool `pulumi:"enabled"`
 }
 
@@ -37708,7 +37993,7 @@ type KubernetesClusterRdmaSharedDevicePluginInput interface {
 }
 
 type KubernetesClusterRdmaSharedDevicePluginArgs struct {
-	// Boolean flag whether the CoreDNS Autoscaler is enabled or not.
+	// Boolean flag whether the component should be enabled or not.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
@@ -37789,7 +38074,7 @@ func (o KubernetesClusterRdmaSharedDevicePluginOutput) ToKubernetesClusterRdmaSh
 	}).(KubernetesClusterRdmaSharedDevicePluginPtrOutput)
 }
 
-// Boolean flag whether the CoreDNS Autoscaler is enabled or not.
+// Boolean flag whether the component should be enabled or not.
 func (o KubernetesClusterRdmaSharedDevicePluginOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v KubernetesClusterRdmaSharedDevicePlugin) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -37818,7 +38103,7 @@ func (o KubernetesClusterRdmaSharedDevicePluginPtrOutput) Elem() KubernetesClust
 	}).(KubernetesClusterRdmaSharedDevicePluginOutput)
 }
 
-// Boolean flag whether the CoreDNS Autoscaler is enabled or not.
+// Boolean flag whether the component should be enabled or not.
 func (o KubernetesClusterRdmaSharedDevicePluginPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *KubernetesClusterRdmaSharedDevicePlugin) *bool {
 		if v == nil {
@@ -39590,162 +39875,6 @@ func (o LoadBalancerStickySessionsPtrOutput) Type() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
-type MicrodropletAutoPause struct {
-	// Whether auto-pause is enabled.
-	Enabled bool `pulumi:"enabled"`
-	// Idle timeout as a Go duration string (e.g. `5m`, `30s`).
-	IdleTimeout *string `pulumi:"idleTimeout"`
-}
-
-// MicrodropletAutoPauseInput is an input type that accepts MicrodropletAutoPauseArgs and MicrodropletAutoPauseOutput values.
-// You can construct a concrete instance of `MicrodropletAutoPauseInput` via:
-//
-//	MicrodropletAutoPauseArgs{...}
-type MicrodropletAutoPauseInput interface {
-	pulumi.Input
-
-	ToMicrodropletAutoPauseOutput() MicrodropletAutoPauseOutput
-	ToMicrodropletAutoPauseOutputWithContext(context.Context) MicrodropletAutoPauseOutput
-}
-
-type MicrodropletAutoPauseArgs struct {
-	// Whether auto-pause is enabled.
-	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// Idle timeout as a Go duration string (e.g. `5m`, `30s`).
-	IdleTimeout pulumi.StringPtrInput `pulumi:"idleTimeout"`
-}
-
-func (MicrodropletAutoPauseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MicrodropletAutoPause)(nil)).Elem()
-}
-
-func (i MicrodropletAutoPauseArgs) ToMicrodropletAutoPauseOutput() MicrodropletAutoPauseOutput {
-	return i.ToMicrodropletAutoPauseOutputWithContext(context.Background())
-}
-
-func (i MicrodropletAutoPauseArgs) ToMicrodropletAutoPauseOutputWithContext(ctx context.Context) MicrodropletAutoPauseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MicrodropletAutoPauseOutput)
-}
-
-func (i MicrodropletAutoPauseArgs) ToMicrodropletAutoPausePtrOutput() MicrodropletAutoPausePtrOutput {
-	return i.ToMicrodropletAutoPausePtrOutputWithContext(context.Background())
-}
-
-func (i MicrodropletAutoPauseArgs) ToMicrodropletAutoPausePtrOutputWithContext(ctx context.Context) MicrodropletAutoPausePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MicrodropletAutoPauseOutput).ToMicrodropletAutoPausePtrOutputWithContext(ctx)
-}
-
-// MicrodropletAutoPausePtrInput is an input type that accepts MicrodropletAutoPauseArgs, MicrodropletAutoPausePtr and MicrodropletAutoPausePtrOutput values.
-// You can construct a concrete instance of `MicrodropletAutoPausePtrInput` via:
-//
-//	        MicrodropletAutoPauseArgs{...}
-//
-//	or:
-//
-//	        nil
-type MicrodropletAutoPausePtrInput interface {
-	pulumi.Input
-
-	ToMicrodropletAutoPausePtrOutput() MicrodropletAutoPausePtrOutput
-	ToMicrodropletAutoPausePtrOutputWithContext(context.Context) MicrodropletAutoPausePtrOutput
-}
-
-type microdropletAutoPausePtrType MicrodropletAutoPauseArgs
-
-func MicrodropletAutoPausePtr(v *MicrodropletAutoPauseArgs) MicrodropletAutoPausePtrInput {
-	return (*microdropletAutoPausePtrType)(v)
-}
-
-func (*microdropletAutoPausePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MicrodropletAutoPause)(nil)).Elem()
-}
-
-func (i *microdropletAutoPausePtrType) ToMicrodropletAutoPausePtrOutput() MicrodropletAutoPausePtrOutput {
-	return i.ToMicrodropletAutoPausePtrOutputWithContext(context.Background())
-}
-
-func (i *microdropletAutoPausePtrType) ToMicrodropletAutoPausePtrOutputWithContext(ctx context.Context) MicrodropletAutoPausePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MicrodropletAutoPausePtrOutput)
-}
-
-type MicrodropletAutoPauseOutput struct{ *pulumi.OutputState }
-
-func (MicrodropletAutoPauseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MicrodropletAutoPause)(nil)).Elem()
-}
-
-func (o MicrodropletAutoPauseOutput) ToMicrodropletAutoPauseOutput() MicrodropletAutoPauseOutput {
-	return o
-}
-
-func (o MicrodropletAutoPauseOutput) ToMicrodropletAutoPauseOutputWithContext(ctx context.Context) MicrodropletAutoPauseOutput {
-	return o
-}
-
-func (o MicrodropletAutoPauseOutput) ToMicrodropletAutoPausePtrOutput() MicrodropletAutoPausePtrOutput {
-	return o.ToMicrodropletAutoPausePtrOutputWithContext(context.Background())
-}
-
-func (o MicrodropletAutoPauseOutput) ToMicrodropletAutoPausePtrOutputWithContext(ctx context.Context) MicrodropletAutoPausePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MicrodropletAutoPause) *MicrodropletAutoPause {
-		return &v
-	}).(MicrodropletAutoPausePtrOutput)
-}
-
-// Whether auto-pause is enabled.
-func (o MicrodropletAutoPauseOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v MicrodropletAutoPause) bool { return v.Enabled }).(pulumi.BoolOutput)
-}
-
-// Idle timeout as a Go duration string (e.g. `5m`, `30s`).
-func (o MicrodropletAutoPauseOutput) IdleTimeout() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MicrodropletAutoPause) *string { return v.IdleTimeout }).(pulumi.StringPtrOutput)
-}
-
-type MicrodropletAutoPausePtrOutput struct{ *pulumi.OutputState }
-
-func (MicrodropletAutoPausePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MicrodropletAutoPause)(nil)).Elem()
-}
-
-func (o MicrodropletAutoPausePtrOutput) ToMicrodropletAutoPausePtrOutput() MicrodropletAutoPausePtrOutput {
-	return o
-}
-
-func (o MicrodropletAutoPausePtrOutput) ToMicrodropletAutoPausePtrOutputWithContext(ctx context.Context) MicrodropletAutoPausePtrOutput {
-	return o
-}
-
-func (o MicrodropletAutoPausePtrOutput) Elem() MicrodropletAutoPauseOutput {
-	return o.ApplyT(func(v *MicrodropletAutoPause) MicrodropletAutoPause {
-		if v != nil {
-			return *v
-		}
-		var ret MicrodropletAutoPause
-		return ret
-	}).(MicrodropletAutoPauseOutput)
-}
-
-// Whether auto-pause is enabled.
-func (o MicrodropletAutoPausePtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *MicrodropletAutoPause) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.Enabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Idle timeout as a Go duration string (e.g. `5m`, `30s`).
-func (o MicrodropletAutoPausePtrOutput) IdleTimeout() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MicrodropletAutoPause) *string {
-		if v == nil {
-			return nil
-		}
-		return v.IdleTimeout
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -79056,100 +79185,6 @@ func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotArrayOutput) Index(i p
 	}).(GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotOutput)
 }
 
-type GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifier struct {
-	ChatbotId string `pulumi:"chatbotId"`
-}
-
-// GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArgs and GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierOutput values.
-// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierInput` via:
-//
-//	GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArgs{...}
-type GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierInput interface {
-	pulumi.Input
-
-	ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierOutput() GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierOutput
-	ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierOutput
-}
-
-type GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArgs struct {
-	ChatbotId pulumi.StringInput `pulumi:"chatbotId"`
-}
-
-func (GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifier)(nil)).Elem()
-}
-
-func (i GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierOutput() GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierOutput {
-	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierOutputWithContext(context.Background())
-}
-
-func (i GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierOutput)
-}
-
-// GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArrayInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArray and GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArrayOutput values.
-// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArrayInput` via:
-//
-//	GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArray{ GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArgs{...} }
-type GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArrayInput interface {
-	pulumi.Input
-
-	ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArrayOutput
-	ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArrayOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArrayOutput
-}
-
-type GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArray []GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierInput
-
-func (GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifier)(nil)).Elem()
-}
-
-func (i GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArray) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArrayOutput {
-	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArrayOutputWithContext(context.Background())
-}
-
-func (i GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArray) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArrayOutput)
-}
-
-type GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierOutput struct{ *pulumi.OutputState }
-
-func (GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifier)(nil)).Elem()
-}
-
-func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierOutput() GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierOutput {
-	return o
-}
-
-func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierOutput {
-	return o
-}
-
-func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierOutput) ChatbotId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifier) string { return v.ChatbotId }).(pulumi.StringOutput)
-}
-
-type GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArrayOutput struct{ *pulumi.OutputState }
-
-func (GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifier)(nil)).Elem()
-}
-
-func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArrayOutput {
-	return o
-}
-
-func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArrayOutput {
-	return o
-}
-
-func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArrayOutput) Index(i pulumi.IntInput) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifier {
-		return vs[0].([]GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifier)[vs[1].(int)]
-	}).(GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppDedicatedIpInput)(nil)).Elem(), AppDedicatedIpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppDedicatedIpArrayInput)(nil)).Elem(), AppDedicatedIpArray{})
@@ -79597,6 +79632,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrInput)(nil)).Elem(), KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterAmdGpuDevicePluginInput)(nil)).Elem(), KubernetesClusterAmdGpuDevicePluginArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterAmdGpuDevicePluginPtrInput)(nil)).Elem(), KubernetesClusterAmdGpuDevicePluginArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterAmdGpuDraDriverInput)(nil)).Elem(), KubernetesClusterAmdGpuDraDriverArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterAmdGpuDraDriverPtrInput)(nil)).Elem(), KubernetesClusterAmdGpuDraDriverArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterClusterAutoscalerConfigurationInput)(nil)).Elem(), KubernetesClusterClusterAutoscalerConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterClusterAutoscalerConfigurationArrayInput)(nil)).Elem(), KubernetesClusterClusterAutoscalerConfigurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterControlPlaneFirewallInput)(nil)).Elem(), KubernetesClusterControlPlaneFirewallArgs{})
@@ -79615,6 +79652,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterNodePoolTaintArrayInput)(nil)).Elem(), KubernetesClusterNodePoolTaintArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterNvidiaGpuDevicePluginInput)(nil)).Elem(), KubernetesClusterNvidiaGpuDevicePluginArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterNvidiaGpuDevicePluginPtrInput)(nil)).Elem(), KubernetesClusterNvidiaGpuDevicePluginArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterNvidiaGpuDraDriverInput)(nil)).Elem(), KubernetesClusterNvidiaGpuDraDriverArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterNvidiaGpuDraDriverPtrInput)(nil)).Elem(), KubernetesClusterNvidiaGpuDraDriverArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterP2pOciRegistryPluginInput)(nil)).Elem(), KubernetesClusterP2pOciRegistryPluginArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterP2pOciRegistryPluginPtrInput)(nil)).Elem(), KubernetesClusterP2pOciRegistryPluginArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterRdmaSharedDevicePluginInput)(nil)).Elem(), KubernetesClusterRdmaSharedDevicePluginArgs{})
@@ -79641,8 +79680,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerHealthcheckPtrInput)(nil)).Elem(), LoadBalancerHealthcheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerStickySessionsInput)(nil)).Elem(), LoadBalancerStickySessionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerStickySessionsPtrInput)(nil)).Elem(), LoadBalancerStickySessionsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MicrodropletAutoPauseInput)(nil)).Elem(), MicrodropletAutoPauseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MicrodropletAutoPausePtrInput)(nil)).Elem(), MicrodropletAutoPauseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitorAlertAlertsInput)(nil)).Elem(), MonitorAlertAlertsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitorAlertAlertsPtrInput)(nil)).Elem(), MonitorAlertAlertsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitorAlertAlertsSlackInput)(nil)).Elem(), MonitorAlertAlertsSlackArgs{})
@@ -80150,8 +80187,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoArrayInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotArrayInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArrayInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArray{})
 	pulumi.RegisterOutputType(AppDedicatedIpOutput{})
 	pulumi.RegisterOutputType(AppDedicatedIpArrayOutput{})
 	pulumi.RegisterOutputType(AppSpecOutput{})
@@ -80598,6 +80633,8 @@ func init() {
 	pulumi.RegisterOutputType(KubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutput{})
 	pulumi.RegisterOutputType(KubernetesClusterAmdGpuDevicePluginOutput{})
 	pulumi.RegisterOutputType(KubernetesClusterAmdGpuDevicePluginPtrOutput{})
+	pulumi.RegisterOutputType(KubernetesClusterAmdGpuDraDriverOutput{})
+	pulumi.RegisterOutputType(KubernetesClusterAmdGpuDraDriverPtrOutput{})
 	pulumi.RegisterOutputType(KubernetesClusterClusterAutoscalerConfigurationOutput{})
 	pulumi.RegisterOutputType(KubernetesClusterClusterAutoscalerConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(KubernetesClusterControlPlaneFirewallOutput{})
@@ -80616,6 +80653,8 @@ func init() {
 	pulumi.RegisterOutputType(KubernetesClusterNodePoolTaintArrayOutput{})
 	pulumi.RegisterOutputType(KubernetesClusterNvidiaGpuDevicePluginOutput{})
 	pulumi.RegisterOutputType(KubernetesClusterNvidiaGpuDevicePluginPtrOutput{})
+	pulumi.RegisterOutputType(KubernetesClusterNvidiaGpuDraDriverOutput{})
+	pulumi.RegisterOutputType(KubernetesClusterNvidiaGpuDraDriverPtrOutput{})
 	pulumi.RegisterOutputType(KubernetesClusterP2pOciRegistryPluginOutput{})
 	pulumi.RegisterOutputType(KubernetesClusterP2pOciRegistryPluginPtrOutput{})
 	pulumi.RegisterOutputType(KubernetesClusterRdmaSharedDevicePluginOutput{})
@@ -80642,8 +80681,6 @@ func init() {
 	pulumi.RegisterOutputType(LoadBalancerHealthcheckPtrOutput{})
 	pulumi.RegisterOutputType(LoadBalancerStickySessionsOutput{})
 	pulumi.RegisterOutputType(LoadBalancerStickySessionsPtrOutput{})
-	pulumi.RegisterOutputType(MicrodropletAutoPauseOutput{})
-	pulumi.RegisterOutputType(MicrodropletAutoPausePtrOutput{})
 	pulumi.RegisterOutputType(MonitorAlertAlertsOutput{})
 	pulumi.RegisterOutputType(MonitorAlertAlertsPtrOutput{})
 	pulumi.RegisterOutputType(MonitorAlertAlertsSlackOutput{})
@@ -81151,6 +81188,4 @@ func init() {
 	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoArrayOutput{})
 	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotOutput{})
 	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotArrayOutput{})
-	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierOutput{})
-	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArrayOutput{})
 }
