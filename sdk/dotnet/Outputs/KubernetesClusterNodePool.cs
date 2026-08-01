@@ -22,6 +22,10 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly bool? AutoScale;
         /// <summary>
+        /// The AMD GPU partition mode to use for nodes in this pool. Valid values are `AMD_PARTITION_MODE_SPX_NPS1` and `AMD_PARTITION_MODE_DPX_NPS2`. This can only be set when the pool is created.
+        /// </summary>
+        public readonly string? GpuPartitionMode;
+        /// <summary>
         /// A unique ID that can be used to identify and reference the node.
         /// </summary>
         public readonly string? Id;
@@ -68,6 +72,8 @@ namespace Pulumi.DigitalOcean.Outputs
 
             bool? autoScale,
 
+            string? gpuPartitionMode,
+
             string? id,
 
             ImmutableDictionary<string, string>? labels,
@@ -90,6 +96,7 @@ namespace Pulumi.DigitalOcean.Outputs
         {
             ActualNodeCount = actualNodeCount;
             AutoScale = autoScale;
+            GpuPartitionMode = gpuPartitionMode;
             Id = id;
             Labels = labels;
             MaxNodes = maxNodes;

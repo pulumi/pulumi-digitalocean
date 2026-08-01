@@ -233,10 +233,12 @@ import (
 type KubernetesCluster struct {
 	pulumi.CustomResourceState
 
-	// Block containing options for the AMD GPU device metrics exporter component.
+	// Block containing options for the AMD GPU device metrics exporter component. If not specified, the component will not be installed in the cluster.
 	AmdGpuDeviceMetricsExporterPlugin KubernetesClusterAmdGpuDeviceMetricsExporterPluginOutput `pulumi:"amdGpuDeviceMetricsExporterPlugin"`
-	// Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes.
+	// Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes. Mutually exclusive with `amdGpuDraDriver`.
 	AmdGpuDevicePlugin KubernetesClusterAmdGpuDevicePluginOutput `pulumi:"amdGpuDevicePlugin"`
+	// Block containing options for the AMD GPU DRA driver component. Mutually exclusive with `amdGpuDevicePlugin`.
+	AmdGpuDraDriver KubernetesClusterAmdGpuDraDriverOutput `pulumi:"amdGpuDraDriver"`
 	// A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
 	AutoUpgrade pulumi.BoolPtrOutput `pulumi:"autoUpgrade"`
 	// Block containing options for cluster auto-scaling. For more information.
@@ -269,10 +271,13 @@ type KubernetesCluster struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
 	NodePool KubernetesClusterNodePoolOutput `pulumi:"nodePool"`
-	// Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes.
+	// Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes. Mutually exclusive with `nvidiaGpuDraDriver`.
 	NvidiaGpuDevicePlugin KubernetesClusterNvidiaGpuDevicePluginOutput `pulumi:"nvidiaGpuDevicePlugin"`
+	// Block containing options for the NVIDIA GPU DRA driver component. Mutually exclusive with `nvidiaGpuDevicePlugin`.
+	NvidiaGpuDraDriver KubernetesClusterNvidiaGpuDraDriverOutput `pulumi:"nvidiaGpuDraDriver"`
 	// Block containing options for the Peer-to-peer OCI registry plugin component. If not specified, the p2p-oci-registry-plugin component will not be installed in the cluster.
-	P2pOciRegistryPlugin   KubernetesClusterP2pOciRegistryPluginOutput   `pulumi:"p2pOciRegistryPlugin"`
+	P2pOciRegistryPlugin KubernetesClusterP2pOciRegistryPluginOutput `pulumi:"p2pOciRegistryPlugin"`
+	// Block containing options for the RDMA Shared Device Plugin (k8s-rdma-shared-dev-plugin) component. If not specified, the component will be enabled by default for clusters with GPU nodes connected to a dedicated high-speed networking fabric.
 	RdmaSharedDevicePlugin KubernetesClusterRdmaSharedDevicePluginOutput `pulumi:"rdmaSharedDevicePlugin"`
 	// The slug identifier for the region where the Kubernetes cluster will be created.
 	Region pulumi.StringOutput `pulumi:"region"`
@@ -343,10 +348,12 @@ func GetKubernetesCluster(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering KubernetesCluster resources.
 type kubernetesClusterState struct {
-	// Block containing options for the AMD GPU device metrics exporter component.
+	// Block containing options for the AMD GPU device metrics exporter component. If not specified, the component will not be installed in the cluster.
 	AmdGpuDeviceMetricsExporterPlugin *KubernetesClusterAmdGpuDeviceMetricsExporterPlugin `pulumi:"amdGpuDeviceMetricsExporterPlugin"`
-	// Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes.
+	// Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes. Mutually exclusive with `amdGpuDraDriver`.
 	AmdGpuDevicePlugin *KubernetesClusterAmdGpuDevicePlugin `pulumi:"amdGpuDevicePlugin"`
+	// Block containing options for the AMD GPU DRA driver component. Mutually exclusive with `amdGpuDevicePlugin`.
+	AmdGpuDraDriver *KubernetesClusterAmdGpuDraDriver `pulumi:"amdGpuDraDriver"`
 	// A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
 	AutoUpgrade *bool `pulumi:"autoUpgrade"`
 	// Block containing options for cluster auto-scaling. For more information.
@@ -379,10 +386,13 @@ type kubernetesClusterState struct {
 	Name *string `pulumi:"name"`
 	// A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
 	NodePool *KubernetesClusterNodePool `pulumi:"nodePool"`
-	// Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes.
+	// Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes. Mutually exclusive with `nvidiaGpuDraDriver`.
 	NvidiaGpuDevicePlugin *KubernetesClusterNvidiaGpuDevicePlugin `pulumi:"nvidiaGpuDevicePlugin"`
+	// Block containing options for the NVIDIA GPU DRA driver component. Mutually exclusive with `nvidiaGpuDevicePlugin`.
+	NvidiaGpuDraDriver *KubernetesClusterNvidiaGpuDraDriver `pulumi:"nvidiaGpuDraDriver"`
 	// Block containing options for the Peer-to-peer OCI registry plugin component. If not specified, the p2p-oci-registry-plugin component will not be installed in the cluster.
-	P2pOciRegistryPlugin   *KubernetesClusterP2pOciRegistryPlugin   `pulumi:"p2pOciRegistryPlugin"`
+	P2pOciRegistryPlugin *KubernetesClusterP2pOciRegistryPlugin `pulumi:"p2pOciRegistryPlugin"`
+	// Block containing options for the RDMA Shared Device Plugin (k8s-rdma-shared-dev-plugin) component. If not specified, the component will be enabled by default for clusters with GPU nodes connected to a dedicated high-speed networking fabric.
 	RdmaSharedDevicePlugin *KubernetesClusterRdmaSharedDevicePlugin `pulumi:"rdmaSharedDevicePlugin"`
 	// The slug identifier for the region where the Kubernetes cluster will be created.
 	Region *string `pulumi:"region"`
@@ -411,10 +421,12 @@ type kubernetesClusterState struct {
 }
 
 type KubernetesClusterState struct {
-	// Block containing options for the AMD GPU device metrics exporter component.
+	// Block containing options for the AMD GPU device metrics exporter component. If not specified, the component will not be installed in the cluster.
 	AmdGpuDeviceMetricsExporterPlugin KubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrInput
-	// Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes.
+	// Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes. Mutually exclusive with `amdGpuDraDriver`.
 	AmdGpuDevicePlugin KubernetesClusterAmdGpuDevicePluginPtrInput
+	// Block containing options for the AMD GPU DRA driver component. Mutually exclusive with `amdGpuDevicePlugin`.
+	AmdGpuDraDriver KubernetesClusterAmdGpuDraDriverPtrInput
 	// A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
 	AutoUpgrade pulumi.BoolPtrInput
 	// Block containing options for cluster auto-scaling. For more information.
@@ -447,10 +459,13 @@ type KubernetesClusterState struct {
 	Name pulumi.StringPtrInput
 	// A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
 	NodePool KubernetesClusterNodePoolPtrInput
-	// Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes.
+	// Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes. Mutually exclusive with `nvidiaGpuDraDriver`.
 	NvidiaGpuDevicePlugin KubernetesClusterNvidiaGpuDevicePluginPtrInput
+	// Block containing options for the NVIDIA GPU DRA driver component. Mutually exclusive with `nvidiaGpuDevicePlugin`.
+	NvidiaGpuDraDriver KubernetesClusterNvidiaGpuDraDriverPtrInput
 	// Block containing options for the Peer-to-peer OCI registry plugin component. If not specified, the p2p-oci-registry-plugin component will not be installed in the cluster.
-	P2pOciRegistryPlugin   KubernetesClusterP2pOciRegistryPluginPtrInput
+	P2pOciRegistryPlugin KubernetesClusterP2pOciRegistryPluginPtrInput
+	// Block containing options for the RDMA Shared Device Plugin (k8s-rdma-shared-dev-plugin) component. If not specified, the component will be enabled by default for clusters with GPU nodes connected to a dedicated high-speed networking fabric.
 	RdmaSharedDevicePlugin KubernetesClusterRdmaSharedDevicePluginPtrInput
 	// The slug identifier for the region where the Kubernetes cluster will be created.
 	Region pulumi.StringPtrInput
@@ -483,10 +498,12 @@ func (KubernetesClusterState) ElementType() reflect.Type {
 }
 
 type kubernetesClusterArgs struct {
-	// Block containing options for the AMD GPU device metrics exporter component.
+	// Block containing options for the AMD GPU device metrics exporter component. If not specified, the component will not be installed in the cluster.
 	AmdGpuDeviceMetricsExporterPlugin *KubernetesClusterAmdGpuDeviceMetricsExporterPlugin `pulumi:"amdGpuDeviceMetricsExporterPlugin"`
-	// Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes.
+	// Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes. Mutually exclusive with `amdGpuDraDriver`.
 	AmdGpuDevicePlugin *KubernetesClusterAmdGpuDevicePlugin `pulumi:"amdGpuDevicePlugin"`
+	// Block containing options for the AMD GPU DRA driver component. Mutually exclusive with `amdGpuDevicePlugin`.
+	AmdGpuDraDriver *KubernetesClusterAmdGpuDraDriver `pulumi:"amdGpuDraDriver"`
 	// A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
 	AutoUpgrade *bool `pulumi:"autoUpgrade"`
 	// Block containing options for cluster auto-scaling. For more information.
@@ -509,10 +526,13 @@ type kubernetesClusterArgs struct {
 	Name *string `pulumi:"name"`
 	// A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
 	NodePool KubernetesClusterNodePool `pulumi:"nodePool"`
-	// Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes.
+	// Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes. Mutually exclusive with `nvidiaGpuDraDriver`.
 	NvidiaGpuDevicePlugin *KubernetesClusterNvidiaGpuDevicePlugin `pulumi:"nvidiaGpuDevicePlugin"`
+	// Block containing options for the NVIDIA GPU DRA driver component. Mutually exclusive with `nvidiaGpuDevicePlugin`.
+	NvidiaGpuDraDriver *KubernetesClusterNvidiaGpuDraDriver `pulumi:"nvidiaGpuDraDriver"`
 	// Block containing options for the Peer-to-peer OCI registry plugin component. If not specified, the p2p-oci-registry-plugin component will not be installed in the cluster.
-	P2pOciRegistryPlugin   *KubernetesClusterP2pOciRegistryPlugin   `pulumi:"p2pOciRegistryPlugin"`
+	P2pOciRegistryPlugin *KubernetesClusterP2pOciRegistryPlugin `pulumi:"p2pOciRegistryPlugin"`
+	// Block containing options for the RDMA Shared Device Plugin (k8s-rdma-shared-dev-plugin) component. If not specified, the component will be enabled by default for clusters with GPU nodes connected to a dedicated high-speed networking fabric.
 	RdmaSharedDevicePlugin *KubernetesClusterRdmaSharedDevicePlugin `pulumi:"rdmaSharedDevicePlugin"`
 	// The slug identifier for the region where the Kubernetes cluster will be created.
 	Region string `pulumi:"region"`
@@ -538,10 +558,12 @@ type kubernetesClusterArgs struct {
 
 // The set of arguments for constructing a KubernetesCluster resource.
 type KubernetesClusterArgs struct {
-	// Block containing options for the AMD GPU device metrics exporter component.
+	// Block containing options for the AMD GPU device metrics exporter component. If not specified, the component will not be installed in the cluster.
 	AmdGpuDeviceMetricsExporterPlugin KubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrInput
-	// Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes.
+	// Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes. Mutually exclusive with `amdGpuDraDriver`.
 	AmdGpuDevicePlugin KubernetesClusterAmdGpuDevicePluginPtrInput
+	// Block containing options for the AMD GPU DRA driver component. Mutually exclusive with `amdGpuDevicePlugin`.
+	AmdGpuDraDriver KubernetesClusterAmdGpuDraDriverPtrInput
 	// A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
 	AutoUpgrade pulumi.BoolPtrInput
 	// Block containing options for cluster auto-scaling. For more information.
@@ -564,10 +586,13 @@ type KubernetesClusterArgs struct {
 	Name pulumi.StringPtrInput
 	// A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
 	NodePool KubernetesClusterNodePoolInput
-	// Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes.
+	// Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes. Mutually exclusive with `nvidiaGpuDraDriver`.
 	NvidiaGpuDevicePlugin KubernetesClusterNvidiaGpuDevicePluginPtrInput
+	// Block containing options for the NVIDIA GPU DRA driver component. Mutually exclusive with `nvidiaGpuDevicePlugin`.
+	NvidiaGpuDraDriver KubernetesClusterNvidiaGpuDraDriverPtrInput
 	// Block containing options for the Peer-to-peer OCI registry plugin component. If not specified, the p2p-oci-registry-plugin component will not be installed in the cluster.
-	P2pOciRegistryPlugin   KubernetesClusterP2pOciRegistryPluginPtrInput
+	P2pOciRegistryPlugin KubernetesClusterP2pOciRegistryPluginPtrInput
+	// Block containing options for the RDMA Shared Device Plugin (k8s-rdma-shared-dev-plugin) component. If not specified, the component will be enabled by default for clusters with GPU nodes connected to a dedicated high-speed networking fabric.
 	RdmaSharedDevicePlugin KubernetesClusterRdmaSharedDevicePluginPtrInput
 	// The slug identifier for the region where the Kubernetes cluster will be created.
 	Region pulumi.StringInput
@@ -678,16 +703,21 @@ func (o KubernetesClusterOutput) ToKubernetesClusterOutputWithContext(ctx contex
 	return o
 }
 
-// Block containing options for the AMD GPU device metrics exporter component.
+// Block containing options for the AMD GPU device metrics exporter component. If not specified, the component will not be installed in the cluster.
 func (o KubernetesClusterOutput) AmdGpuDeviceMetricsExporterPlugin() KubernetesClusterAmdGpuDeviceMetricsExporterPluginOutput {
 	return o.ApplyT(func(v *KubernetesCluster) KubernetesClusterAmdGpuDeviceMetricsExporterPluginOutput {
 		return v.AmdGpuDeviceMetricsExporterPlugin
 	}).(KubernetesClusterAmdGpuDeviceMetricsExporterPluginOutput)
 }
 
-// Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes.
+// Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes. Mutually exclusive with `amdGpuDraDriver`.
 func (o KubernetesClusterOutput) AmdGpuDevicePlugin() KubernetesClusterAmdGpuDevicePluginOutput {
 	return o.ApplyT(func(v *KubernetesCluster) KubernetesClusterAmdGpuDevicePluginOutput { return v.AmdGpuDevicePlugin }).(KubernetesClusterAmdGpuDevicePluginOutput)
+}
+
+// Block containing options for the AMD GPU DRA driver component. Mutually exclusive with `amdGpuDevicePlugin`.
+func (o KubernetesClusterOutput) AmdGpuDraDriver() KubernetesClusterAmdGpuDraDriverOutput {
+	return o.ApplyT(func(v *KubernetesCluster) KubernetesClusterAmdGpuDraDriverOutput { return v.AmdGpuDraDriver }).(KubernetesClusterAmdGpuDraDriverOutput)
 }
 
 // A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
@@ -772,11 +802,16 @@ func (o KubernetesClusterOutput) NodePool() KubernetesClusterNodePoolOutput {
 	return o.ApplyT(func(v *KubernetesCluster) KubernetesClusterNodePoolOutput { return v.NodePool }).(KubernetesClusterNodePoolOutput)
 }
 
-// Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes.
+// Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes. Mutually exclusive with `nvidiaGpuDraDriver`.
 func (o KubernetesClusterOutput) NvidiaGpuDevicePlugin() KubernetesClusterNvidiaGpuDevicePluginOutput {
 	return o.ApplyT(func(v *KubernetesCluster) KubernetesClusterNvidiaGpuDevicePluginOutput {
 		return v.NvidiaGpuDevicePlugin
 	}).(KubernetesClusterNvidiaGpuDevicePluginOutput)
+}
+
+// Block containing options for the NVIDIA GPU DRA driver component. Mutually exclusive with `nvidiaGpuDevicePlugin`.
+func (o KubernetesClusterOutput) NvidiaGpuDraDriver() KubernetesClusterNvidiaGpuDraDriverOutput {
+	return o.ApplyT(func(v *KubernetesCluster) KubernetesClusterNvidiaGpuDraDriverOutput { return v.NvidiaGpuDraDriver }).(KubernetesClusterNvidiaGpuDraDriverOutput)
 }
 
 // Block containing options for the Peer-to-peer OCI registry plugin component. If not specified, the p2p-oci-registry-plugin component will not be installed in the cluster.
@@ -784,6 +819,7 @@ func (o KubernetesClusterOutput) P2pOciRegistryPlugin() KubernetesClusterP2pOciR
 	return o.ApplyT(func(v *KubernetesCluster) KubernetesClusterP2pOciRegistryPluginOutput { return v.P2pOciRegistryPlugin }).(KubernetesClusterP2pOciRegistryPluginOutput)
 }
 
+// Block containing options for the RDMA Shared Device Plugin (k8s-rdma-shared-dev-plugin) component. If not specified, the component will be enabled by default for clusters with GPU nodes connected to a dedicated high-speed networking fabric.
 func (o KubernetesClusterOutput) RdmaSharedDevicePlugin() KubernetesClusterRdmaSharedDevicePluginOutput {
 	return o.ApplyT(func(v *KubernetesCluster) KubernetesClusterRdmaSharedDevicePluginOutput {
 		return v.RdmaSharedDevicePlugin

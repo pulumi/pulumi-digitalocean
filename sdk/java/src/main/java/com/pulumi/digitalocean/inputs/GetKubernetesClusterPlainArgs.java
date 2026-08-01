@@ -6,9 +6,11 @@ package com.pulumi.digitalocean.inputs;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.digitalocean.inputs.GetKubernetesClusterAmdGpuDeviceMetricsExporterPlugin;
 import com.pulumi.digitalocean.inputs.GetKubernetesClusterAmdGpuDevicePlugin;
+import com.pulumi.digitalocean.inputs.GetKubernetesClusterAmdGpuDraDriver;
 import com.pulumi.digitalocean.inputs.GetKubernetesClusterClusterAutoscalerConfiguration;
 import com.pulumi.digitalocean.inputs.GetKubernetesClusterCorednsAutoscaler;
 import com.pulumi.digitalocean.inputs.GetKubernetesClusterNvidiaGpuDevicePlugin;
+import com.pulumi.digitalocean.inputs.GetKubernetesClusterNvidiaGpuDraDriver;
 import com.pulumi.digitalocean.inputs.GetKubernetesClusterP2pOciRegistryPlugin;
 import com.pulumi.digitalocean.inputs.GetKubernetesClusterRdmaSharedDevicePlugin;
 import com.pulumi.digitalocean.inputs.GetKubernetesClusterRoutingAgent;
@@ -38,6 +40,13 @@ public final class GetKubernetesClusterPlainArgs extends com.pulumi.resources.In
 
     public Optional<GetKubernetesClusterAmdGpuDevicePlugin> amdGpuDevicePlugin() {
         return Optional.ofNullable(this.amdGpuDevicePlugin);
+    }
+
+    @Import(name="amdGpuDraDriver")
+    private @Nullable GetKubernetesClusterAmdGpuDraDriver amdGpuDraDriver;
+
+    public Optional<GetKubernetesClusterAmdGpuDraDriver> amdGpuDraDriver() {
+        return Optional.ofNullable(this.amdGpuDraDriver);
     }
 
     @Import(name="clusterAutoscalerConfigurations")
@@ -81,6 +90,13 @@ public final class GetKubernetesClusterPlainArgs extends com.pulumi.resources.In
 
     public Optional<GetKubernetesClusterNvidiaGpuDevicePlugin> nvidiaGpuDevicePlugin() {
         return Optional.ofNullable(this.nvidiaGpuDevicePlugin);
+    }
+
+    @Import(name="nvidiaGpuDraDriver")
+    private @Nullable GetKubernetesClusterNvidiaGpuDraDriver nvidiaGpuDraDriver;
+
+    public Optional<GetKubernetesClusterNvidiaGpuDraDriver> nvidiaGpuDraDriver() {
+        return Optional.ofNullable(this.nvidiaGpuDraDriver);
     }
 
     @Import(name="p2pOciRegistryPlugin")
@@ -131,11 +147,13 @@ public final class GetKubernetesClusterPlainArgs extends com.pulumi.resources.In
     private GetKubernetesClusterPlainArgs(GetKubernetesClusterPlainArgs $) {
         this.amdGpuDeviceMetricsExporterPlugin = $.amdGpuDeviceMetricsExporterPlugin;
         this.amdGpuDevicePlugin = $.amdGpuDevicePlugin;
+        this.amdGpuDraDriver = $.amdGpuDraDriver;
         this.clusterAutoscalerConfigurations = $.clusterAutoscalerConfigurations;
         this.corednsAutoscaler = $.corednsAutoscaler;
         this.kubeconfigExpireSeconds = $.kubeconfigExpireSeconds;
         this.name = $.name;
         this.nvidiaGpuDevicePlugin = $.nvidiaGpuDevicePlugin;
+        this.nvidiaGpuDraDriver = $.nvidiaGpuDraDriver;
         this.p2pOciRegistryPlugin = $.p2pOciRegistryPlugin;
         this.rdmaSharedDevicePlugin = $.rdmaSharedDevicePlugin;
         this.routingAgent = $.routingAgent;
@@ -171,6 +189,11 @@ public final class GetKubernetesClusterPlainArgs extends com.pulumi.resources.In
             return this;
         }
 
+        public Builder amdGpuDraDriver(@Nullable GetKubernetesClusterAmdGpuDraDriver amdGpuDraDriver) {
+            $.amdGpuDraDriver = amdGpuDraDriver;
+            return this;
+        }
+
         public Builder clusterAutoscalerConfigurations(@Nullable List<GetKubernetesClusterClusterAutoscalerConfiguration> clusterAutoscalerConfigurations) {
             $.clusterAutoscalerConfigurations = clusterAutoscalerConfigurations;
             return this;
@@ -203,6 +226,11 @@ public final class GetKubernetesClusterPlainArgs extends com.pulumi.resources.In
 
         public Builder nvidiaGpuDevicePlugin(@Nullable GetKubernetesClusterNvidiaGpuDevicePlugin nvidiaGpuDevicePlugin) {
             $.nvidiaGpuDevicePlugin = nvidiaGpuDevicePlugin;
+            return this;
+        }
+
+        public Builder nvidiaGpuDraDriver(@Nullable GetKubernetesClusterNvidiaGpuDraDriver nvidiaGpuDraDriver) {
+            $.nvidiaGpuDraDriver = nvidiaGpuDraDriver;
             return this;
         }
 

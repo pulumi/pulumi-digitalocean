@@ -7508,6 +7508,14 @@ export interface GetKubernetesClusterAmdGpuDevicePluginArgs {
     enabled?: pulumi.Input<boolean | undefined>;
 }
 
+export interface GetKubernetesClusterAmdGpuDraDriver {
+    enabled?: boolean;
+}
+
+export interface GetKubernetesClusterAmdGpuDraDriverArgs {
+    enabled?: pulumi.Input<boolean | undefined>;
+}
+
 export interface GetKubernetesClusterClusterAutoscalerConfiguration {
     expanders?: string[];
     scaleDownUnneededTime?: string;
@@ -7533,6 +7541,14 @@ export interface GetKubernetesClusterNvidiaGpuDevicePlugin {
 }
 
 export interface GetKubernetesClusterNvidiaGpuDevicePluginArgs {
+    enabled?: pulumi.Input<boolean | undefined>;
+}
+
+export interface GetKubernetesClusterNvidiaGpuDraDriver {
+    enabled?: boolean;
+}
+
+export interface GetKubernetesClusterNvidiaGpuDraDriverArgs {
     enabled?: pulumi.Input<boolean | undefined>;
 }
 
@@ -7572,186 +7588,6 @@ export interface GetKubernetesClusterSsoArgs {
     enabled?: pulumi.Input<boolean | undefined>;
     issuerUrl?: pulumi.Input<string | undefined>;
     required?: pulumi.Input<boolean | undefined>;
-}
-
-export interface GetMicrodropletCheckpointsFilter {
-    /**
-     * Require every value to match. Defaults to `false`.
-     */
-    all?: boolean;
-    /**
-     * Field to match. Valid keys include `id`, `name`, `status`.
-     */
-    key: string;
-    /**
-     * `exact`, `re`, or `substring`. Defaults to `exact`.
-     */
-    matchBy?: string;
-    /**
-     * List of values to match on `key`.
-     */
-    values: string[];
-}
-
-export interface GetMicrodropletCheckpointsFilterArgs {
-    /**
-     * Require every value to match. Defaults to `false`.
-     */
-    all?: pulumi.Input<boolean | undefined>;
-    /**
-     * Field to match. Valid keys include `id`, `name`, `status`.
-     */
-    key: pulumi.Input<string>;
-    /**
-     * `exact`, `re`, or `substring`. Defaults to `exact`.
-     */
-    matchBy?: pulumi.Input<string | undefined>;
-    /**
-     * List of values to match on `key`.
-     */
-    values: pulumi.Input<pulumi.Input<string>[]>;
-}
-
-export interface GetMicrodropletCheckpointsSort {
-    /**
-     * `asc` (default) or `desc`.
-     */
-    direction?: string;
-    /**
-     * Field to sort by (e.g. `createdAt`).
-     */
-    key: string;
-}
-
-export interface GetMicrodropletCheckpointsSortArgs {
-    /**
-     * `asc` (default) or `desc`.
-     */
-    direction?: pulumi.Input<string | undefined>;
-    /**
-     * Field to sort by (e.g. `createdAt`).
-     */
-    key: pulumi.Input<string>;
-}
-
-export interface GetMicrodropletImagesFilter {
-    /**
-     * Require every value to match. Defaults to `false`.
-     */
-    all?: boolean;
-    /**
-     * Field to match.
-     */
-    key: string;
-    /**
-     * `exact`, `re`, or `substring`. Defaults to `exact`.
-     */
-    matchBy?: string;
-    /**
-     * List of values to match on `key`.
-     */
-    values: string[];
-}
-
-export interface GetMicrodropletImagesFilterArgs {
-    /**
-     * Require every value to match. Defaults to `false`.
-     */
-    all?: pulumi.Input<boolean | undefined>;
-    /**
-     * Field to match.
-     */
-    key: pulumi.Input<string>;
-    /**
-     * `exact`, `re`, or `substring`. Defaults to `exact`.
-     */
-    matchBy?: pulumi.Input<string | undefined>;
-    /**
-     * List of values to match on `key`.
-     */
-    values: pulumi.Input<pulumi.Input<string>[]>;
-}
-
-export interface GetMicrodropletImagesSort {
-    /**
-     * `asc` (default) or `desc`.
-     */
-    direction?: string;
-    /**
-     * Field to sort by.
-     */
-    key: string;
-}
-
-export interface GetMicrodropletImagesSortArgs {
-    /**
-     * `asc` (default) or `desc`.
-     */
-    direction?: pulumi.Input<string | undefined>;
-    /**
-     * Field to sort by.
-     */
-    key: pulumi.Input<string>;
-}
-
-export interface GetMicrodropletsFilter {
-    /**
-     * Require every value to match. Defaults to `false`.
-     */
-    all?: boolean;
-    /**
-     * Field to match.
-     */
-    key: string;
-    /**
-     * `exact`, `re`, or `substring`. Defaults to `exact`.
-     */
-    matchBy?: string;
-    /**
-     * List of values to match on `key`.
-     */
-    values: string[];
-}
-
-export interface GetMicrodropletsFilterArgs {
-    /**
-     * Require every value to match. Defaults to `false`.
-     */
-    all?: pulumi.Input<boolean | undefined>;
-    /**
-     * Field to match.
-     */
-    key: pulumi.Input<string>;
-    /**
-     * `exact`, `re`, or `substring`. Defaults to `exact`.
-     */
-    matchBy?: pulumi.Input<string | undefined>;
-    /**
-     * List of values to match on `key`.
-     */
-    values: pulumi.Input<pulumi.Input<string>[]>;
-}
-
-export interface GetMicrodropletsSort {
-    /**
-     * `asc` (default) or `desc`.
-     */
-    direction?: string;
-    /**
-     * Field to sort by.
-     */
-    key: string;
-}
-
-export interface GetMicrodropletsSortArgs {
-    /**
-     * `asc` (default) or `desc`.
-     */
-    direction?: pulumi.Input<string | undefined>;
-    /**
-     * Field to sort by.
-     */
-    key: pulumi.Input<string>;
 }
 
 export interface GetPartnerAttachmentBgp {
@@ -9624,7 +9460,7 @@ export interface GradientaiOpenaiApiKeyModelVersion {
 
 export interface KubernetesClusterAmdGpuDeviceMetricsExporterPlugin {
     /**
-     * Boolean flag whether the CoreDNS Autoscaler is enabled or not.
+     * Boolean flag whether the component should be enabled or not.
      */
     enabled: pulumi.Input<boolean>;
 }
@@ -9632,7 +9468,13 @@ export interface KubernetesClusterAmdGpuDeviceMetricsExporterPlugin {
 export interface KubernetesClusterAmdGpuDevicePlugin {
     /**
      * Boolean flag whether the component should be enabled or not.
-     * `amdGpuDeviceMetricsExporterPlugin` - (Optional) Block containing options for the AMD GPU device metrics exporter component. If not specified, the component will not be installed in the cluster.
+     */
+    enabled: pulumi.Input<boolean>;
+}
+
+export interface KubernetesClusterAmdGpuDraDriver {
+    /**
+     * Boolean flag whether the component should be enabled or not.
      */
     enabled: pulumi.Input<boolean>;
 }
@@ -9726,6 +9568,10 @@ export interface KubernetesClusterNodePool {
      */
     autoScale?: pulumi.Input<boolean | undefined>;
     /**
+     * The AMD GPU partition mode to use for nodes in this pool. Valid values are `AMD_PARTITION_MODE_SPX_NPS1` and `AMD_PARTITION_MODE_DPX_NPS2`. This can only be set when the pool is created.
+     */
+    gpuPartitionMode?: pulumi.Input<string | undefined>;
+    /**
      * A unique ID that can be used to identify and reference the node.
      */
     id?: pulumi.Input<string | undefined>;
@@ -9812,7 +9658,13 @@ export interface KubernetesClusterNodePoolTaint {
 export interface KubernetesClusterNvidiaGpuDevicePlugin {
     /**
      * Boolean flag whether the component should be enabled or not.
-     * `rdmaSharedDevicePlugin` - (Optional) Block containing options for the RDMA Shared Device Plugin (k8s-rdma-shared-dev-plugin) component. If not specified, the component will be enabled by default for clusters with GPU nodes connected to a dedicated high-speed networking fabric.
+     */
+    enabled: pulumi.Input<boolean>;
+}
+
+export interface KubernetesClusterNvidiaGpuDraDriver {
+    /**
+     * Boolean flag whether the component should be enabled or not.
      */
     enabled: pulumi.Input<boolean>;
 }
@@ -9826,7 +9678,7 @@ export interface KubernetesClusterP2pOciRegistryPlugin {
 
 export interface KubernetesClusterRdmaSharedDevicePlugin {
     /**
-     * Boolean flag whether the CoreDNS Autoscaler is enabled or not.
+     * Boolean flag whether the component should be enabled or not.
      */
     enabled: pulumi.Input<boolean>;
 }
@@ -10049,17 +9901,6 @@ export interface LoadBalancerStickySessions {
      * An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
      */
     type?: pulumi.Input<string | undefined>;
-}
-
-export interface MicrodropletAutoPause {
-    /**
-     * Whether auto-pause is enabled.
-     */
-    enabled: pulumi.Input<boolean>;
-    /**
-     * Idle timeout as a Go duration string (e.g. `5m`, `30s`).
-     */
-    idleTimeout?: pulumi.Input<string | undefined>;
 }
 
 export interface MonitorAlertAlerts {

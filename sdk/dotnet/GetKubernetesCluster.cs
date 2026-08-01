@@ -93,6 +93,9 @@ namespace Pulumi.DigitalOcean
         [Input("amdGpuDevicePlugin")]
         public Inputs.GetKubernetesClusterAmdGpuDevicePluginArgs? AmdGpuDevicePlugin { get; set; }
 
+        [Input("amdGpuDraDriver")]
+        public Inputs.GetKubernetesClusterAmdGpuDraDriverArgs? AmdGpuDraDriver { get; set; }
+
         [Input("clusterAutoscalerConfigurations")]
         private List<Inputs.GetKubernetesClusterClusterAutoscalerConfigurationArgs>? _clusterAutoscalerConfigurations;
         public List<Inputs.GetKubernetesClusterClusterAutoscalerConfigurationArgs> ClusterAutoscalerConfigurations
@@ -115,6 +118,9 @@ namespace Pulumi.DigitalOcean
 
         [Input("nvidiaGpuDevicePlugin")]
         public Inputs.GetKubernetesClusterNvidiaGpuDevicePluginArgs? NvidiaGpuDevicePlugin { get; set; }
+
+        [Input("nvidiaGpuDraDriver")]
+        public Inputs.GetKubernetesClusterNvidiaGpuDraDriverArgs? NvidiaGpuDraDriver { get; set; }
 
         [Input("p2pOciRegistryPlugin")]
         public Inputs.GetKubernetesClusterP2pOciRegistryPluginArgs? P2pOciRegistryPlugin { get; set; }
@@ -159,6 +165,9 @@ namespace Pulumi.DigitalOcean
         [Input("amdGpuDevicePlugin")]
         public Input<Inputs.GetKubernetesClusterAmdGpuDevicePluginInputArgs>? AmdGpuDevicePlugin { get; set; }
 
+        [Input("amdGpuDraDriver")]
+        public Input<Inputs.GetKubernetesClusterAmdGpuDraDriverInputArgs>? AmdGpuDraDriver { get; set; }
+
         [Input("clusterAutoscalerConfigurations")]
         private InputList<Inputs.GetKubernetesClusterClusterAutoscalerConfigurationInputArgs>? _clusterAutoscalerConfigurations;
         public InputList<Inputs.GetKubernetesClusterClusterAutoscalerConfigurationInputArgs> ClusterAutoscalerConfigurations
@@ -181,6 +190,9 @@ namespace Pulumi.DigitalOcean
 
         [Input("nvidiaGpuDevicePlugin")]
         public Input<Inputs.GetKubernetesClusterNvidiaGpuDevicePluginInputArgs>? NvidiaGpuDevicePlugin { get; set; }
+
+        [Input("nvidiaGpuDraDriver")]
+        public Input<Inputs.GetKubernetesClusterNvidiaGpuDraDriverInputArgs>? NvidiaGpuDraDriver { get; set; }
 
         [Input("p2pOciRegistryPlugin")]
         public Input<Inputs.GetKubernetesClusterP2pOciRegistryPluginInputArgs>? P2pOciRegistryPlugin { get; set; }
@@ -223,6 +235,7 @@ namespace Pulumi.DigitalOcean
     {
         public readonly Outputs.GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginResult AmdGpuDeviceMetricsExporterPlugin;
         public readonly Outputs.GetKubernetesClusterAmdGpuDevicePluginResult AmdGpuDevicePlugin;
+        public readonly Outputs.GetKubernetesClusterAmdGpuDraDriverResult AmdGpuDraDriver;
         /// <summary>
         /// A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
         /// </summary>
@@ -269,6 +282,7 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public readonly ImmutableArray<Outputs.GetKubernetesClusterNodePoolResult> NodePools;
         public readonly Outputs.GetKubernetesClusterNvidiaGpuDevicePluginResult NvidiaGpuDevicePlugin;
+        public readonly Outputs.GetKubernetesClusterNvidiaGpuDraDriverResult NvidiaGpuDraDriver;
         public readonly Outputs.GetKubernetesClusterP2pOciRegistryPluginResult P2pOciRegistryPlugin;
         public readonly Outputs.GetKubernetesClusterRdmaSharedDevicePluginResult RdmaSharedDevicePlugin;
         /// <summary>
@@ -314,6 +328,8 @@ namespace Pulumi.DigitalOcean
 
             Outputs.GetKubernetesClusterAmdGpuDevicePluginResult amdGpuDevicePlugin,
 
+            Outputs.GetKubernetesClusterAmdGpuDraDriverResult amdGpuDraDriver,
+
             bool autoUpgrade,
 
             ImmutableArray<Outputs.GetKubernetesClusterClusterAutoscalerConfigurationResult> clusterAutoscalerConfigurations,
@@ -346,6 +362,8 @@ namespace Pulumi.DigitalOcean
 
             Outputs.GetKubernetesClusterNvidiaGpuDevicePluginResult nvidiaGpuDevicePlugin,
 
+            Outputs.GetKubernetesClusterNvidiaGpuDraDriverResult nvidiaGpuDraDriver,
+
             Outputs.GetKubernetesClusterP2pOciRegistryPluginResult p2pOciRegistryPlugin,
 
             Outputs.GetKubernetesClusterRdmaSharedDevicePluginResult rdmaSharedDevicePlugin,
@@ -376,6 +394,7 @@ namespace Pulumi.DigitalOcean
         {
             AmdGpuDeviceMetricsExporterPlugin = amdGpuDeviceMetricsExporterPlugin;
             AmdGpuDevicePlugin = amdGpuDevicePlugin;
+            AmdGpuDraDriver = amdGpuDraDriver;
             AutoUpgrade = autoUpgrade;
             ClusterAutoscalerConfigurations = clusterAutoscalerConfigurations;
             ClusterSubnet = clusterSubnet;
@@ -392,6 +411,7 @@ namespace Pulumi.DigitalOcean
             Name = name;
             NodePools = nodePools;
             NvidiaGpuDevicePlugin = nvidiaGpuDevicePlugin;
+            NvidiaGpuDraDriver = nvidiaGpuDraDriver;
             P2pOciRegistryPlugin = p2pOciRegistryPlugin;
             RdmaSharedDevicePlugin = rdmaSharedDevicePlugin;
             Region = region;

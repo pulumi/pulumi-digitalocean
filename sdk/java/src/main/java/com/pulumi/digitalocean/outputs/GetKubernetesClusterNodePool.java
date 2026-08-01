@@ -26,6 +26,7 @@ public final class GetKubernetesClusterNodePool {
      * 
      */
     private Boolean autoScale;
+    private String gpuPartitionMode;
     /**
      * @return A unique ID that can be used to identify and reference the node.
      * 
@@ -91,6 +92,9 @@ public final class GetKubernetesClusterNodePool {
      */
     public Boolean autoScale() {
         return this.autoScale;
+    }
+    public String gpuPartitionMode() {
+        return this.gpuPartitionMode;
     }
     /**
      * @return A unique ID that can be used to identify and reference the node.
@@ -174,6 +178,7 @@ public final class GetKubernetesClusterNodePool {
     public static final class Builder {
         private Integer actualNodeCount;
         private Boolean autoScale;
+        private String gpuPartitionMode;
         private String id;
         private Map<String,String> labels;
         private Integer maxNodes;
@@ -189,6 +194,7 @@ public final class GetKubernetesClusterNodePool {
     	      Objects.requireNonNull(defaults);
     	      this.actualNodeCount = defaults.actualNodeCount;
     	      this.autoScale = defaults.autoScale;
+    	      this.gpuPartitionMode = defaults.gpuPartitionMode;
     	      this.id = defaults.id;
     	      this.labels = defaults.labels;
     	      this.maxNodes = defaults.maxNodes;
@@ -215,6 +221,14 @@ public final class GetKubernetesClusterNodePool {
               throw new MissingRequiredPropertyException("GetKubernetesClusterNodePool", "autoScale");
             }
             this.autoScale = autoScale;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder gpuPartitionMode(String gpuPartitionMode) {
+            if (gpuPartitionMode == null) {
+              throw new MissingRequiredPropertyException("GetKubernetesClusterNodePool", "gpuPartitionMode");
+            }
+            this.gpuPartitionMode = gpuPartitionMode;
             return this;
         }
         @CustomType.Setter
@@ -310,6 +324,7 @@ public final class GetKubernetesClusterNodePool {
             final var _resultValue = new GetKubernetesClusterNodePool();
             _resultValue.actualNodeCount = actualNodeCount;
             _resultValue.autoScale = autoScale;
+            _resultValue.gpuPartitionMode = gpuPartitionMode;
             _resultValue.id = id;
             _resultValue.labels = labels;
             _resultValue.maxNodes = maxNodes;

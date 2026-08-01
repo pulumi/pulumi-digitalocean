@@ -602,6 +602,10 @@
                     }
                 }
             },
+            "digitalocean_database_advanced_mysql_config": {
+                "current": "digitalocean:index/databaseAdvancedMysqlConfig:DatabaseAdvancedMysqlConfig",
+                "majorVersion": 4
+            },
             "digitalocean_database_advanced_postgresql_config": {
                 "current": "digitalocean:index/databaseAdvancedPostgresqlConfig:DatabaseAdvancedPostgresqlConfig",
                 "majorVersion": 4
@@ -1202,6 +1206,9 @@
                     "amd_gpu_device_plugin": {
                         "maxItemsOne": true
                     },
+                    "amd_gpu_dra_driver": {
+                        "maxItemsOne": true
+                    },
                     "cluster_autoscaler_configuration": {
                         "maxItemsOne": false,
                         "elem": {
@@ -1248,6 +1255,9 @@
                         }
                     },
                     "nvidia_gpu_device_plugin": {
+                        "maxItemsOne": true
+                    },
+                    "nvidia_gpu_dra_driver": {
                         "maxItemsOne": true
                     },
                     "p2p_oci_registry_plugin": {
@@ -1338,22 +1348,6 @@
                         "maxItemsOne": false
                     }
                 }
-            },
-            "digitalocean_microdroplet": {
-                "current": "digitalocean:index/microdroplet:Microdroplet",
-                "majorVersion": 4,
-                "fields": {
-                    "auto_pause": {
-                        "maxItemsOne": true
-                    },
-                    "tags": {
-                        "maxItemsOne": false
-                    }
-                }
-            },
-            "digitalocean_microdroplet_image": {
-                "current": "digitalocean:index/microdropletImage:MicrodropletImage",
-                "majorVersion": 4
             },
             "digitalocean_monitor_alert": {
                 "current": "digitalocean:index/monitorAlert:MonitorAlert",
@@ -3556,6 +3550,9 @@
                     "amd_gpu_device_plugin": {
                         "maxItemsOne": true
                     },
+                    "amd_gpu_dra_driver": {
+                        "maxItemsOne": true
+                    },
                     "cluster_autoscaler_configuration": {
                         "maxItemsOne": false,
                         "elem": {
@@ -3602,6 +3599,9 @@
                         }
                     },
                     "nvidia_gpu_device_plugin": {
+                        "maxItemsOne": true
+                    },
+                    "nvidia_gpu_dra_driver": {
                         "maxItemsOne": true
                     },
                     "p2p_oci_registry_plugin": {
@@ -3683,92 +3683,6 @@
                         "maxItemsOne": false
                     },
                     "target_load_balancer_ids": {
-                        "maxItemsOne": false
-                    }
-                }
-            },
-            "digitalocean_microdroplet": {
-                "current": "digitalocean:index/getMicrodroplet:getMicrodroplet",
-                "majorVersion": 4,
-                "fields": {
-                    "auto_pause": {
-                        "maxItemsOne": false
-                    }
-                }
-            },
-            "digitalocean_microdroplet_checkpoints": {
-                "current": "digitalocean:index/getMicrodropletCheckpoints:getMicrodropletCheckpoints",
-                "majorVersion": 4,
-                "fields": {
-                    "checkpoints": {
-                        "maxItemsOne": false
-                    },
-                    "filter": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "values": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    },
-                    "sort": {
-                        "maxItemsOne": false
-                    }
-                }
-            },
-            "digitalocean_microdroplet_image": {
-                "current": "digitalocean:index/getMicrodropletImage:getMicrodropletImage",
-                "majorVersion": 4
-            },
-            "digitalocean_microdroplet_images": {
-                "current": "digitalocean:index/getMicrodropletImages:getMicrodropletImages",
-                "majorVersion": 4,
-                "fields": {
-                    "filter": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "values": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    },
-                    "micro_droplet_images": {
-                        "maxItemsOne": false
-                    },
-                    "sort": {
-                        "maxItemsOne": false
-                    }
-                }
-            },
-            "digitalocean_microdroplets": {
-                "current": "digitalocean:index/getMicrodroplets:getMicrodroplets",
-                "majorVersion": 4,
-                "fields": {
-                    "filter": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "values": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    },
-                    "micro_droplets": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "auto_pause": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    },
-                    "sort": {
                         "maxItemsOne": false
                     }
                 }

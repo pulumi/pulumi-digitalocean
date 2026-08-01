@@ -52,12 +52,14 @@ func LookupKubernetesCluster(ctx *pulumi.Context, args *LookupKubernetesClusterA
 type LookupKubernetesClusterArgs struct {
 	AmdGpuDeviceMetricsExporterPlugin *GetKubernetesClusterAmdGpuDeviceMetricsExporterPlugin `pulumi:"amdGpuDeviceMetricsExporterPlugin"`
 	AmdGpuDevicePlugin                *GetKubernetesClusterAmdGpuDevicePlugin                `pulumi:"amdGpuDevicePlugin"`
+	AmdGpuDraDriver                   *GetKubernetesClusterAmdGpuDraDriver                   `pulumi:"amdGpuDraDriver"`
 	ClusterAutoscalerConfigurations   []GetKubernetesClusterClusterAutoscalerConfiguration   `pulumi:"clusterAutoscalerConfigurations"`
 	CorednsAutoscaler                 *GetKubernetesClusterCorednsAutoscaler                 `pulumi:"corednsAutoscaler"`
 	KubeconfigExpireSeconds           *int                                                   `pulumi:"kubeconfigExpireSeconds"`
 	// The name of Kubernetes cluster.
 	Name                   string                                      `pulumi:"name"`
 	NvidiaGpuDevicePlugin  *GetKubernetesClusterNvidiaGpuDevicePlugin  `pulumi:"nvidiaGpuDevicePlugin"`
+	NvidiaGpuDraDriver     *GetKubernetesClusterNvidiaGpuDraDriver     `pulumi:"nvidiaGpuDraDriver"`
 	P2pOciRegistryPlugin   *GetKubernetesClusterP2pOciRegistryPlugin   `pulumi:"p2pOciRegistryPlugin"`
 	RdmaSharedDevicePlugin *GetKubernetesClusterRdmaSharedDevicePlugin `pulumi:"rdmaSharedDevicePlugin"`
 	RoutingAgent           *GetKubernetesClusterRoutingAgent           `pulumi:"routingAgent"`
@@ -70,6 +72,7 @@ type LookupKubernetesClusterArgs struct {
 type LookupKubernetesClusterResult struct {
 	AmdGpuDeviceMetricsExporterPlugin GetKubernetesClusterAmdGpuDeviceMetricsExporterPlugin `pulumi:"amdGpuDeviceMetricsExporterPlugin"`
 	AmdGpuDevicePlugin                GetKubernetesClusterAmdGpuDevicePlugin                `pulumi:"amdGpuDevicePlugin"`
+	AmdGpuDraDriver                   GetKubernetesClusterAmdGpuDraDriver                   `pulumi:"amdGpuDraDriver"`
 	// A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
 	AutoUpgrade                     bool                                                 `pulumi:"autoUpgrade"`
 	ClusterAutoscalerConfigurations []GetKubernetesClusterClusterAutoscalerConfiguration `pulumi:"clusterAutoscalerConfigurations"`
@@ -96,6 +99,7 @@ type LookupKubernetesClusterResult struct {
 	// A list of node pools associated with the cluster. Each node pool exports the following attributes:
 	NodePools              []GetKubernetesClusterNodePool             `pulumi:"nodePools"`
 	NvidiaGpuDevicePlugin  GetKubernetesClusterNvidiaGpuDevicePlugin  `pulumi:"nvidiaGpuDevicePlugin"`
+	NvidiaGpuDraDriver     GetKubernetesClusterNvidiaGpuDraDriver     `pulumi:"nvidiaGpuDraDriver"`
 	P2pOciRegistryPlugin   GetKubernetesClusterP2pOciRegistryPlugin   `pulumi:"p2pOciRegistryPlugin"`
 	RdmaSharedDevicePlugin GetKubernetesClusterRdmaSharedDevicePlugin `pulumi:"rdmaSharedDevicePlugin"`
 	// The slug identifier for the region where the Kubernetes cluster is located.
@@ -133,12 +137,14 @@ func LookupKubernetesClusterOutput(ctx *pulumi.Context, args LookupKubernetesClu
 type LookupKubernetesClusterOutputArgs struct {
 	AmdGpuDeviceMetricsExporterPlugin GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrInput `pulumi:"amdGpuDeviceMetricsExporterPlugin"`
 	AmdGpuDevicePlugin                GetKubernetesClusterAmdGpuDevicePluginPtrInput                `pulumi:"amdGpuDevicePlugin"`
+	AmdGpuDraDriver                   GetKubernetesClusterAmdGpuDraDriverPtrInput                   `pulumi:"amdGpuDraDriver"`
 	ClusterAutoscalerConfigurations   GetKubernetesClusterClusterAutoscalerConfigurationArrayInput  `pulumi:"clusterAutoscalerConfigurations"`
 	CorednsAutoscaler                 GetKubernetesClusterCorednsAutoscalerPtrInput                 `pulumi:"corednsAutoscaler"`
 	KubeconfigExpireSeconds           pulumi.IntPtrInput                                            `pulumi:"kubeconfigExpireSeconds"`
 	// The name of Kubernetes cluster.
 	Name                   pulumi.StringInput                                 `pulumi:"name"`
 	NvidiaGpuDevicePlugin  GetKubernetesClusterNvidiaGpuDevicePluginPtrInput  `pulumi:"nvidiaGpuDevicePlugin"`
+	NvidiaGpuDraDriver     GetKubernetesClusterNvidiaGpuDraDriverPtrInput     `pulumi:"nvidiaGpuDraDriver"`
 	P2pOciRegistryPlugin   GetKubernetesClusterP2pOciRegistryPluginPtrInput   `pulumi:"p2pOciRegistryPlugin"`
 	RdmaSharedDevicePlugin GetKubernetesClusterRdmaSharedDevicePluginPtrInput `pulumi:"rdmaSharedDevicePlugin"`
 	RoutingAgent           GetKubernetesClusterRoutingAgentPtrInput           `pulumi:"routingAgent"`
@@ -176,6 +182,10 @@ func (o LookupKubernetesClusterResultOutput) AmdGpuDevicePlugin() GetKubernetesC
 	return o.ApplyT(func(v LookupKubernetesClusterResult) GetKubernetesClusterAmdGpuDevicePlugin {
 		return v.AmdGpuDevicePlugin
 	}).(GetKubernetesClusterAmdGpuDevicePluginOutput)
+}
+
+func (o LookupKubernetesClusterResultOutput) AmdGpuDraDriver() GetKubernetesClusterAmdGpuDraDriverOutput {
+	return o.ApplyT(func(v LookupKubernetesClusterResult) GetKubernetesClusterAmdGpuDraDriver { return v.AmdGpuDraDriver }).(GetKubernetesClusterAmdGpuDraDriverOutput)
 }
 
 // A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
@@ -260,6 +270,12 @@ func (o LookupKubernetesClusterResultOutput) NvidiaGpuDevicePlugin() GetKubernet
 	return o.ApplyT(func(v LookupKubernetesClusterResult) GetKubernetesClusterNvidiaGpuDevicePlugin {
 		return v.NvidiaGpuDevicePlugin
 	}).(GetKubernetesClusterNvidiaGpuDevicePluginOutput)
+}
+
+func (o LookupKubernetesClusterResultOutput) NvidiaGpuDraDriver() GetKubernetesClusterNvidiaGpuDraDriverOutput {
+	return o.ApplyT(func(v LookupKubernetesClusterResult) GetKubernetesClusterNvidiaGpuDraDriver {
+		return v.NvidiaGpuDraDriver
+	}).(GetKubernetesClusterNvidiaGpuDraDriverOutput)
 }
 
 func (o LookupKubernetesClusterResultOutput) P2pOciRegistryPlugin() GetKubernetesClusterP2pOciRegistryPluginOutput {

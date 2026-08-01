@@ -14,7 +14,6 @@ namespace Pulumi.DigitalOcean.Inputs
     {
         /// <summary>
         /// Boolean flag whether the component should be enabled or not.
-        /// `RdmaSharedDevicePlugin` - (Optional) Block containing options for the RDMA Shared Device Plugin (k8s-rdma-shared-dev-plugin) component. If not specified, the component will be enabled by default for clusters with GPU nodes connected to a dedicated high-speed networking fabric.
         /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;

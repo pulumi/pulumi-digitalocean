@@ -128,6 +128,14 @@ namespace Pulumi.DigitalOcean
         public Output<string> ClusterId { get; private set; } = null!;
 
         /// <summary>
+        /// The AMD GPU partition mode to use for nodes in this pool. Valid values are `AMD_PARTITION_MODE_SPX_NPS1` and `AMD_PARTITION_MODE_DPX_NPS2`. This can only be set when the pool is created.
+        /// 
+        /// This resource supports customized create timeouts. The default timeout is 30 minutes.
+        /// </summary>
+        [Output("gpuPartitionMode")]
+        public Output<string?> GpuPartitionMode { get; private set; } = null!;
+
+        /// <summary>
         /// A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
         /// </summary>
         [Output("labels")]
@@ -177,8 +185,6 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// A list of taints applied to all nodes in the pool.
-        /// 
-        /// This resource supports customized create timeouts. The default timeout is 30 minutes.
         /// </summary>
         [Output("taints")]
         public Output<ImmutableArray<Outputs.KubernetesNodePoolTaint>> Taints { get; private set; } = null!;
@@ -241,6 +247,14 @@ namespace Pulumi.DigitalOcean
         [Input("clusterId", required: true)]
         public Input<string> ClusterId { get; set; } = null!;
 
+        /// <summary>
+        /// The AMD GPU partition mode to use for nodes in this pool. Valid values are `AMD_PARTITION_MODE_SPX_NPS1` and `AMD_PARTITION_MODE_DPX_NPS2`. This can only be set when the pool is created.
+        /// 
+        /// This resource supports customized create timeouts. The default timeout is 30 minutes.
+        /// </summary>
+        [Input("gpuPartitionMode")]
+        public Input<string>? GpuPartitionMode { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -300,8 +314,6 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// A list of taints applied to all nodes in the pool.
-        /// 
-        /// This resource supports customized create timeouts. The default timeout is 30 minutes.
         /// </summary>
         public InputList<Inputs.KubernetesNodePoolTaintArgs> Taints
         {
@@ -334,6 +346,14 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
+
+        /// <summary>
+        /// The AMD GPU partition mode to use for nodes in this pool. Valid values are `AMD_PARTITION_MODE_SPX_NPS1` and `AMD_PARTITION_MODE_DPX_NPS2`. This can only be set when the pool is created.
+        /// 
+        /// This resource supports customized create timeouts. The default timeout is 30 minutes.
+        /// </summary>
+        [Input("gpuPartitionMode")]
+        public Input<string>? GpuPartitionMode { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -406,8 +426,6 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// A list of taints applied to all nodes in the pool.
-        /// 
-        /// This resource supports customized create timeouts. The default timeout is 30 minutes.
         /// </summary>
         public InputList<Inputs.KubernetesNodePoolTaintGetArgs> Taints
         {

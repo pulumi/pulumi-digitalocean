@@ -26,11 +26,13 @@ export function getKubernetesCluster(args: GetKubernetesClusterArgs, opts?: pulu
     return pulumi.runtime.invoke("digitalocean:index/getKubernetesCluster:getKubernetesCluster", {
         "amdGpuDeviceMetricsExporterPlugin": args.amdGpuDeviceMetricsExporterPlugin,
         "amdGpuDevicePlugin": args.amdGpuDevicePlugin,
+        "amdGpuDraDriver": args.amdGpuDraDriver,
         "clusterAutoscalerConfigurations": args.clusterAutoscalerConfigurations,
         "corednsAutoscaler": args.corednsAutoscaler,
         "kubeconfigExpireSeconds": args.kubeconfigExpireSeconds,
         "name": args.name,
         "nvidiaGpuDevicePlugin": args.nvidiaGpuDevicePlugin,
+        "nvidiaGpuDraDriver": args.nvidiaGpuDraDriver,
         "p2pOciRegistryPlugin": args.p2pOciRegistryPlugin,
         "rdmaSharedDevicePlugin": args.rdmaSharedDevicePlugin,
         "routingAgent": args.routingAgent,
@@ -45,6 +47,7 @@ export function getKubernetesCluster(args: GetKubernetesClusterArgs, opts?: pulu
 export interface GetKubernetesClusterArgs {
     amdGpuDeviceMetricsExporterPlugin?: inputs.GetKubernetesClusterAmdGpuDeviceMetricsExporterPlugin;
     amdGpuDevicePlugin?: inputs.GetKubernetesClusterAmdGpuDevicePlugin;
+    amdGpuDraDriver?: inputs.GetKubernetesClusterAmdGpuDraDriver;
     clusterAutoscalerConfigurations?: inputs.GetKubernetesClusterClusterAutoscalerConfiguration[];
     corednsAutoscaler?: inputs.GetKubernetesClusterCorednsAutoscaler;
     kubeconfigExpireSeconds?: number;
@@ -53,6 +56,7 @@ export interface GetKubernetesClusterArgs {
      */
     name: string;
     nvidiaGpuDevicePlugin?: inputs.GetKubernetesClusterNvidiaGpuDevicePlugin;
+    nvidiaGpuDraDriver?: inputs.GetKubernetesClusterNvidiaGpuDraDriver;
     p2pOciRegistryPlugin?: inputs.GetKubernetesClusterP2pOciRegistryPlugin;
     rdmaSharedDevicePlugin?: inputs.GetKubernetesClusterRdmaSharedDevicePlugin;
     routingAgent?: inputs.GetKubernetesClusterRoutingAgent;
@@ -69,6 +73,7 @@ export interface GetKubernetesClusterArgs {
 export interface GetKubernetesClusterResult {
     readonly amdGpuDeviceMetricsExporterPlugin: outputs.GetKubernetesClusterAmdGpuDeviceMetricsExporterPlugin;
     readonly amdGpuDevicePlugin: outputs.GetKubernetesClusterAmdGpuDevicePlugin;
+    readonly amdGpuDraDriver: outputs.GetKubernetesClusterAmdGpuDraDriver;
     /**
      * A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
      */
@@ -115,6 +120,7 @@ export interface GetKubernetesClusterResult {
      */
     readonly nodePools: outputs.GetKubernetesClusterNodePool[];
     readonly nvidiaGpuDevicePlugin: outputs.GetKubernetesClusterNvidiaGpuDevicePlugin;
+    readonly nvidiaGpuDraDriver: outputs.GetKubernetesClusterNvidiaGpuDraDriver;
     readonly p2pOciRegistryPlugin: outputs.GetKubernetesClusterP2pOciRegistryPlugin;
     readonly rdmaSharedDevicePlugin: outputs.GetKubernetesClusterRdmaSharedDevicePlugin;
     /**
@@ -173,11 +179,13 @@ export function getKubernetesClusterOutput(args: GetKubernetesClusterOutputArgs,
     return pulumi.runtime.invokeOutput("digitalocean:index/getKubernetesCluster:getKubernetesCluster", {
         "amdGpuDeviceMetricsExporterPlugin": args.amdGpuDeviceMetricsExporterPlugin,
         "amdGpuDevicePlugin": args.amdGpuDevicePlugin,
+        "amdGpuDraDriver": args.amdGpuDraDriver,
         "clusterAutoscalerConfigurations": args.clusterAutoscalerConfigurations,
         "corednsAutoscaler": args.corednsAutoscaler,
         "kubeconfigExpireSeconds": args.kubeconfigExpireSeconds,
         "name": args.name,
         "nvidiaGpuDevicePlugin": args.nvidiaGpuDevicePlugin,
+        "nvidiaGpuDraDriver": args.nvidiaGpuDraDriver,
         "p2pOciRegistryPlugin": args.p2pOciRegistryPlugin,
         "rdmaSharedDevicePlugin": args.rdmaSharedDevicePlugin,
         "routingAgent": args.routingAgent,
@@ -192,6 +200,7 @@ export function getKubernetesClusterOutput(args: GetKubernetesClusterOutputArgs,
 export interface GetKubernetesClusterOutputArgs {
     amdGpuDeviceMetricsExporterPlugin?: pulumi.Input<inputs.GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs | undefined>;
     amdGpuDevicePlugin?: pulumi.Input<inputs.GetKubernetesClusterAmdGpuDevicePluginArgs | undefined>;
+    amdGpuDraDriver?: pulumi.Input<inputs.GetKubernetesClusterAmdGpuDraDriverArgs | undefined>;
     clusterAutoscalerConfigurations?: pulumi.Input<pulumi.Input<inputs.GetKubernetesClusterClusterAutoscalerConfigurationArgs>[] | undefined>;
     corednsAutoscaler?: pulumi.Input<inputs.GetKubernetesClusterCorednsAutoscalerArgs | undefined>;
     kubeconfigExpireSeconds?: pulumi.Input<number | undefined>;
@@ -200,6 +209,7 @@ export interface GetKubernetesClusterOutputArgs {
      */
     name: pulumi.Input<string>;
     nvidiaGpuDevicePlugin?: pulumi.Input<inputs.GetKubernetesClusterNvidiaGpuDevicePluginArgs | undefined>;
+    nvidiaGpuDraDriver?: pulumi.Input<inputs.GetKubernetesClusterNvidiaGpuDraDriverArgs | undefined>;
     p2pOciRegistryPlugin?: pulumi.Input<inputs.GetKubernetesClusterP2pOciRegistryPluginArgs | undefined>;
     rdmaSharedDevicePlugin?: pulumi.Input<inputs.GetKubernetesClusterRdmaSharedDevicePluginArgs | undefined>;
     routingAgent?: pulumi.Input<inputs.GetKubernetesClusterRoutingAgentArgs | undefined>;

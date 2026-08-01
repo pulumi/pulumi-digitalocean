@@ -21,6 +21,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// A boolean indicating whether auto-scaling is enabled on the node pool.
         /// </summary>
         public readonly bool AutoScale;
+        public readonly string GpuPartitionMode;
         /// <summary>
         /// A unique ID that can be used to identify and reference the node.
         /// </summary>
@@ -68,6 +69,8 @@ namespace Pulumi.DigitalOcean.Outputs
 
             bool autoScale,
 
+            string gpuPartitionMode,
+
             string id,
 
             ImmutableDictionary<string, string> labels,
@@ -90,6 +93,7 @@ namespace Pulumi.DigitalOcean.Outputs
         {
             ActualNodeCount = actualNodeCount;
             AutoScale = autoScale;
+            GpuPartitionMode = gpuPartitionMode;
             Id = id;
             Labels = labels;
             MaxNodes = maxNodes;

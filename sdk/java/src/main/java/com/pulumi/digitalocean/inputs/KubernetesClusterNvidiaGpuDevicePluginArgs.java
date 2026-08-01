@@ -16,7 +16,6 @@ public final class KubernetesClusterNvidiaGpuDevicePluginArgs extends com.pulumi
 
     /**
      * Boolean flag whether the component should be enabled or not.
-     * `rdmaSharedDevicePlugin` - (Optional) Block containing options for the RDMA Shared Device Plugin (k8s-rdma-shared-dev-plugin) component. If not specified, the component will be enabled by default for clusters with GPU nodes connected to a dedicated high-speed networking fabric.
      * 
      */
     @Import(name="enabled", required=true)
@@ -24,7 +23,6 @@ public final class KubernetesClusterNvidiaGpuDevicePluginArgs extends com.pulumi
 
     /**
      * @return Boolean flag whether the component should be enabled or not.
-     * `rdmaSharedDevicePlugin` - (Optional) Block containing options for the RDMA Shared Device Plugin (k8s-rdma-shared-dev-plugin) component. If not specified, the component will be enabled by default for clusters with GPU nodes connected to a dedicated high-speed networking fabric.
      * 
      */
     public Output<Boolean> enabled() {
@@ -57,7 +55,6 @@ public final class KubernetesClusterNvidiaGpuDevicePluginArgs extends com.pulumi
 
         /**
          * @param enabled Boolean flag whether the component should be enabled or not.
-         * `rdmaSharedDevicePlugin` - (Optional) Block containing options for the RDMA Shared Device Plugin (k8s-rdma-shared-dev-plugin) component. If not specified, the component will be enabled by default for clusters with GPU nodes connected to a dedicated high-speed networking fabric.
          * 
          * @return builder
          * 
@@ -69,7 +66,6 @@ public final class KubernetesClusterNvidiaGpuDevicePluginArgs extends com.pulumi
 
         /**
          * @param enabled Boolean flag whether the component should be enabled or not.
-         * `rdmaSharedDevicePlugin` - (Optional) Block containing options for the RDMA Shared Device Plugin (k8s-rdma-shared-dev-plugin) component. If not specified, the component will be enabled by default for clusters with GPU nodes connected to a dedicated high-speed networking fabric.
          * 
          * @return builder
          * 

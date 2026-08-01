@@ -25,6 +25,7 @@ class KubernetesNodePoolArgs:
                  cluster_id: pulumi.Input[_builtins.str],
                  size: pulumi.Input[Union[_builtins.str, 'DropletSlug']],
                  auto_scale: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gpu_partition_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  max_nodes: pulumi.Input[Optional[_builtins.int]] = None,
                  min_nodes: pulumi.Input[Optional[_builtins.int]] = None,
@@ -38,6 +39,9 @@ class KubernetesNodePoolArgs:
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the Kubernetes cluster to which the node pool is associated.
         :param pulumi.Input[Union[_builtins.str, 'DropletSlug']] size: The slug identifier for the type of Droplet to be used as workers in the node pool.
         :param pulumi.Input[_builtins.bool] auto_scale: Enable auto-scaling of the number of nodes in the node pool within the given min/max range.
+        :param pulumi.Input[_builtins.str] gpu_partition_mode: The AMD GPU partition mode to use for nodes in this pool. Valid values are `AMD_PARTITION_MODE_SPX_NPS1` and `AMD_PARTITION_MODE_DPX_NPS2`. This can only be set when the pool is created.
+               
+               This resource supports customized create timeouts. The default timeout is 30 minutes.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
         :param pulumi.Input[_builtins.int] max_nodes: If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
         :param pulumi.Input[_builtins.int] min_nodes: If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
@@ -45,13 +49,13 @@ class KubernetesNodePoolArgs:
         :param pulumi.Input[_builtins.int] node_count: The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A list of tag names to be applied to the Kubernetes cluster.
         :param pulumi.Input[Sequence[pulumi.Input['KubernetesNodePoolTaintArgs']]] taints: A list of taints applied to all nodes in the pool.
-               
-               This resource supports customized create timeouts. The default timeout is 30 minutes.
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
         pulumi.set(__self__, "size", size)
         if auto_scale is not None:
             pulumi.set(__self__, "auto_scale", auto_scale)
+        if gpu_partition_mode is not None:
+            pulumi.set(__self__, "gpu_partition_mode", gpu_partition_mode)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if max_nodes is not None:
@@ -102,6 +106,20 @@ class KubernetesNodePoolArgs:
     @auto_scale.setter
     def auto_scale(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_scale", value)
+
+    @_builtins.property
+    @pulumi.getter(name="gpuPartitionMode")
+    def gpu_partition_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The AMD GPU partition mode to use for nodes in this pool. Valid values are `AMD_PARTITION_MODE_SPX_NPS1` and `AMD_PARTITION_MODE_DPX_NPS2`. This can only be set when the pool is created.
+
+        This resource supports customized create timeouts. The default timeout is 30 minutes.
+        """
+        return pulumi.get(self, "gpu_partition_mode")
+
+    @gpu_partition_mode.setter
+    def gpu_partition_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "gpu_partition_mode", value)
 
     @_builtins.property
     @pulumi.getter
@@ -180,8 +198,6 @@ class KubernetesNodePoolArgs:
     def taints(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['KubernetesNodePoolTaintArgs']]]]:
         """
         A list of taints applied to all nodes in the pool.
-
-        This resource supports customized create timeouts. The default timeout is 30 minutes.
         """
         return pulumi.get(self, "taints")
 
@@ -196,6 +212,7 @@ class _KubernetesNodePoolState:
                  actual_node_count: pulumi.Input[Optional[_builtins.int]] = None,
                  auto_scale: pulumi.Input[Optional[_builtins.bool]] = None,
                  cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 gpu_partition_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  max_nodes: pulumi.Input[Optional[_builtins.int]] = None,
                  min_nodes: pulumi.Input[Optional[_builtins.int]] = None,
@@ -211,6 +228,9 @@ class _KubernetesNodePoolState:
         :param pulumi.Input[_builtins.int] actual_node_count: A computed field representing the actual number of nodes in the node pool, which is especially useful when auto-scaling is enabled.
         :param pulumi.Input[_builtins.bool] auto_scale: Enable auto-scaling of the number of nodes in the node pool within the given min/max range.
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the Kubernetes cluster to which the node pool is associated.
+        :param pulumi.Input[_builtins.str] gpu_partition_mode: The AMD GPU partition mode to use for nodes in this pool. Valid values are `AMD_PARTITION_MODE_SPX_NPS1` and `AMD_PARTITION_MODE_DPX_NPS2`. This can only be set when the pool is created.
+               
+               This resource supports customized create timeouts. The default timeout is 30 minutes.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
         :param pulumi.Input[_builtins.int] max_nodes: If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
         :param pulumi.Input[_builtins.int] min_nodes: If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
@@ -220,8 +240,6 @@ class _KubernetesNodePoolState:
         :param pulumi.Input[Union[_builtins.str, 'DropletSlug']] size: The slug identifier for the type of Droplet to be used as workers in the node pool.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A list of tag names to be applied to the Kubernetes cluster.
         :param pulumi.Input[Sequence[pulumi.Input['KubernetesNodePoolTaintArgs']]] taints: A list of taints applied to all nodes in the pool.
-               
-               This resource supports customized create timeouts. The default timeout is 30 minutes.
         """
         if actual_node_count is not None:
             pulumi.set(__self__, "actual_node_count", actual_node_count)
@@ -229,6 +247,8 @@ class _KubernetesNodePoolState:
             pulumi.set(__self__, "auto_scale", auto_scale)
         if cluster_id is not None:
             pulumi.set(__self__, "cluster_id", cluster_id)
+        if gpu_partition_mode is not None:
+            pulumi.set(__self__, "gpu_partition_mode", gpu_partition_mode)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if max_nodes is not None:
@@ -283,6 +303,20 @@ class _KubernetesNodePoolState:
     @cluster_id.setter
     def cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="gpuPartitionMode")
+    def gpu_partition_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The AMD GPU partition mode to use for nodes in this pool. Valid values are `AMD_PARTITION_MODE_SPX_NPS1` and `AMD_PARTITION_MODE_DPX_NPS2`. This can only be set when the pool is created.
+
+        This resource supports customized create timeouts. The default timeout is 30 minutes.
+        """
+        return pulumi.get(self, "gpu_partition_mode")
+
+    @gpu_partition_mode.setter
+    def gpu_partition_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "gpu_partition_mode", value)
 
     @_builtins.property
     @pulumi.getter
@@ -385,8 +419,6 @@ class _KubernetesNodePoolState:
     def taints(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['KubernetesNodePoolTaintArgs']]]]:
         """
         A list of taints applied to all nodes in the pool.
-
-        This resource supports customized create timeouts. The default timeout is 30 minutes.
         """
         return pulumi.get(self, "taints")
 
@@ -403,6 +435,7 @@ class KubernetesNodePool(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_scale: pulumi.Input[Optional[_builtins.bool]] = None,
                  cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 gpu_partition_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  max_nodes: pulumi.Input[Optional[_builtins.int]] = None,
                  min_nodes: pulumi.Input[Optional[_builtins.int]] = None,
@@ -486,6 +519,9 @@ class KubernetesNodePool(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] auto_scale: Enable auto-scaling of the number of nodes in the node pool within the given min/max range.
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the Kubernetes cluster to which the node pool is associated.
+        :param pulumi.Input[_builtins.str] gpu_partition_mode: The AMD GPU partition mode to use for nodes in this pool. Valid values are `AMD_PARTITION_MODE_SPX_NPS1` and `AMD_PARTITION_MODE_DPX_NPS2`. This can only be set when the pool is created.
+               
+               This resource supports customized create timeouts. The default timeout is 30 minutes.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
         :param pulumi.Input[_builtins.int] max_nodes: If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
         :param pulumi.Input[_builtins.int] min_nodes: If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
@@ -494,8 +530,6 @@ class KubernetesNodePool(pulumi.CustomResource):
         :param pulumi.Input[Union[_builtins.str, 'DropletSlug']] size: The slug identifier for the type of Droplet to be used as workers in the node pool.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A list of tag names to be applied to the Kubernetes cluster.
         :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesNodePoolTaintArgs', 'KubernetesNodePoolTaintArgsDict']]]] taints: A list of taints applied to all nodes in the pool.
-               
-               This resource supports customized create timeouts. The default timeout is 30 minutes.
         """
         ...
     @overload
@@ -590,6 +624,7 @@ class KubernetesNodePool(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_scale: pulumi.Input[Optional[_builtins.bool]] = None,
                  cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 gpu_partition_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  max_nodes: pulumi.Input[Optional[_builtins.int]] = None,
                  min_nodes: pulumi.Input[Optional[_builtins.int]] = None,
@@ -611,6 +646,7 @@ class KubernetesNodePool(pulumi.CustomResource):
             if cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_id'")
             __props__.__dict__["cluster_id"] = cluster_id
+            __props__.__dict__["gpu_partition_mode"] = gpu_partition_mode
             __props__.__dict__["labels"] = labels
             __props__.__dict__["max_nodes"] = max_nodes
             __props__.__dict__["min_nodes"] = min_nodes
@@ -636,6 +672,7 @@ class KubernetesNodePool(pulumi.CustomResource):
             actual_node_count: pulumi.Input[Optional[_builtins.int]] = None,
             auto_scale: pulumi.Input[Optional[_builtins.bool]] = None,
             cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            gpu_partition_mode: pulumi.Input[Optional[_builtins.str]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             max_nodes: pulumi.Input[Optional[_builtins.int]] = None,
             min_nodes: pulumi.Input[Optional[_builtins.int]] = None,
@@ -655,6 +692,9 @@ class KubernetesNodePool(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] actual_node_count: A computed field representing the actual number of nodes in the node pool, which is especially useful when auto-scaling is enabled.
         :param pulumi.Input[_builtins.bool] auto_scale: Enable auto-scaling of the number of nodes in the node pool within the given min/max range.
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the Kubernetes cluster to which the node pool is associated.
+        :param pulumi.Input[_builtins.str] gpu_partition_mode: The AMD GPU partition mode to use for nodes in this pool. Valid values are `AMD_PARTITION_MODE_SPX_NPS1` and `AMD_PARTITION_MODE_DPX_NPS2`. This can only be set when the pool is created.
+               
+               This resource supports customized create timeouts. The default timeout is 30 minutes.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
         :param pulumi.Input[_builtins.int] max_nodes: If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
         :param pulumi.Input[_builtins.int] min_nodes: If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
@@ -664,8 +704,6 @@ class KubernetesNodePool(pulumi.CustomResource):
         :param pulumi.Input[Union[_builtins.str, 'DropletSlug']] size: The slug identifier for the type of Droplet to be used as workers in the node pool.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A list of tag names to be applied to the Kubernetes cluster.
         :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesNodePoolTaintArgs', 'KubernetesNodePoolTaintArgsDict']]]] taints: A list of taints applied to all nodes in the pool.
-               
-               This resource supports customized create timeouts. The default timeout is 30 minutes.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -674,6 +712,7 @@ class KubernetesNodePool(pulumi.CustomResource):
         __props__.__dict__["actual_node_count"] = actual_node_count
         __props__.__dict__["auto_scale"] = auto_scale
         __props__.__dict__["cluster_id"] = cluster_id
+        __props__.__dict__["gpu_partition_mode"] = gpu_partition_mode
         __props__.__dict__["labels"] = labels
         __props__.__dict__["max_nodes"] = max_nodes
         __props__.__dict__["min_nodes"] = min_nodes
@@ -708,6 +747,16 @@ class KubernetesNodePool(pulumi.CustomResource):
         The ID of the Kubernetes cluster to which the node pool is associated.
         """
         return pulumi.get(self, "cluster_id")
+
+    @_builtins.property
+    @pulumi.getter(name="gpuPartitionMode")
+    def gpu_partition_mode(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The AMD GPU partition mode to use for nodes in this pool. Valid values are `AMD_PARTITION_MODE_SPX_NPS1` and `AMD_PARTITION_MODE_DPX_NPS2`. This can only be set when the pool is created.
+
+        This resource supports customized create timeouts. The default timeout is 30 minutes.
+        """
+        return pulumi.get(self, "gpu_partition_mode")
 
     @_builtins.property
     @pulumi.getter
@@ -778,8 +827,6 @@ class KubernetesNodePool(pulumi.CustomResource):
     def taints(self) -> pulumi.Output[Optional[Sequence['outputs.KubernetesNodePoolTaint']]]:
         """
         A list of taints applied to all nodes in the pool.
-
-        This resource supports customized create timeouts. The default timeout is 30 minutes.
         """
         return pulumi.get(self, "taints")
 

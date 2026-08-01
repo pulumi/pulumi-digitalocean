@@ -460,6 +460,8 @@ __all__ = [
     'KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgsDict',
     'KubernetesClusterAmdGpuDevicePluginArgs',
     'KubernetesClusterAmdGpuDevicePluginArgsDict',
+    'KubernetesClusterAmdGpuDraDriverArgs',
+    'KubernetesClusterAmdGpuDraDriverArgsDict',
     'KubernetesClusterClusterAutoscalerConfigurationArgs',
     'KubernetesClusterClusterAutoscalerConfigurationArgsDict',
     'KubernetesClusterControlPlaneFirewallArgs',
@@ -478,6 +480,8 @@ __all__ = [
     'KubernetesClusterNodePoolTaintArgsDict',
     'KubernetesClusterNvidiaGpuDevicePluginArgs',
     'KubernetesClusterNvidiaGpuDevicePluginArgsDict',
+    'KubernetesClusterNvidiaGpuDraDriverArgs',
+    'KubernetesClusterNvidiaGpuDraDriverArgsDict',
     'KubernetesClusterP2pOciRegistryPluginArgs',
     'KubernetesClusterP2pOciRegistryPluginArgsDict',
     'KubernetesClusterRdmaSharedDevicePluginArgs',
@@ -504,8 +508,6 @@ __all__ = [
     'LoadBalancerHealthcheckArgsDict',
     'LoadBalancerStickySessionsArgs',
     'LoadBalancerStickySessionsArgsDict',
-    'MicrodropletAutoPauseArgs',
-    'MicrodropletAutoPauseArgsDict',
     'MonitorAlertAlertsArgs',
     'MonitorAlertAlertsArgsDict',
     'MonitorAlertAlertsSlackArgs',
@@ -712,12 +714,16 @@ __all__ = [
     'GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginArgsDict',
     'GetKubernetesClusterAmdGpuDevicePluginArgs',
     'GetKubernetesClusterAmdGpuDevicePluginArgsDict',
+    'GetKubernetesClusterAmdGpuDraDriverArgs',
+    'GetKubernetesClusterAmdGpuDraDriverArgsDict',
     'GetKubernetesClusterClusterAutoscalerConfigurationArgs',
     'GetKubernetesClusterClusterAutoscalerConfigurationArgsDict',
     'GetKubernetesClusterCorednsAutoscalerArgs',
     'GetKubernetesClusterCorednsAutoscalerArgsDict',
     'GetKubernetesClusterNvidiaGpuDevicePluginArgs',
     'GetKubernetesClusterNvidiaGpuDevicePluginArgsDict',
+    'GetKubernetesClusterNvidiaGpuDraDriverArgs',
+    'GetKubernetesClusterNvidiaGpuDraDriverArgsDict',
     'GetKubernetesClusterP2pOciRegistryPluginArgs',
     'GetKubernetesClusterP2pOciRegistryPluginArgsDict',
     'GetKubernetesClusterRdmaSharedDevicePluginArgs',
@@ -726,18 +732,6 @@ __all__ = [
     'GetKubernetesClusterRoutingAgentArgsDict',
     'GetKubernetesClusterSsoArgs',
     'GetKubernetesClusterSsoArgsDict',
-    'GetMicrodropletCheckpointsFilterArgs',
-    'GetMicrodropletCheckpointsFilterArgsDict',
-    'GetMicrodropletCheckpointsSortArgs',
-    'GetMicrodropletCheckpointsSortArgsDict',
-    'GetMicrodropletImagesFilterArgs',
-    'GetMicrodropletImagesFilterArgsDict',
-    'GetMicrodropletImagesSortArgs',
-    'GetMicrodropletImagesSortArgsDict',
-    'GetMicrodropletsFilterArgs',
-    'GetMicrodropletsFilterArgsDict',
-    'GetMicrodropletsSortArgs',
-    'GetMicrodropletsSortArgsDict',
     'GetPartnerAttachmentBgpArgs',
     'GetPartnerAttachmentBgpArgsDict',
     'GetProjectsFilterArgs',
@@ -24998,7 +24992,7 @@ class GradientaiOpenaiApiKeyModelVersionArgs:
 class KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgsDict(TypedDict):
     enabled: pulumi.Input[_builtins.bool]
     """
-    Boolean flag whether the CoreDNS Autoscaler is enabled or not.
+    Boolean flag whether the component should be enabled or not.
     """
 
 @pulumi.input_type
@@ -25006,7 +25000,7 @@ class KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[_builtins.bool]):
         """
-        :param pulumi.Input[_builtins.bool] enabled: Boolean flag whether the CoreDNS Autoscaler is enabled or not.
+        :param pulumi.Input[_builtins.bool] enabled: Boolean flag whether the component should be enabled or not.
         """
         pulumi.set(__self__, "enabled", enabled)
 
@@ -25014,7 +25008,7 @@ class KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs:
     @pulumi.getter
     def enabled(self) -> pulumi.Input[_builtins.bool]:
         """
-        Boolean flag whether the CoreDNS Autoscaler is enabled or not.
+        Boolean flag whether the component should be enabled or not.
         """
         return pulumi.get(self, "enabled")
 
@@ -25027,7 +25021,6 @@ class KubernetesClusterAmdGpuDevicePluginArgsDict(TypedDict):
     enabled: pulumi.Input[_builtins.bool]
     """
     Boolean flag whether the component should be enabled or not.
-    `amd_gpu_device_metrics_exporter_plugin` - (Optional) Block containing options for the AMD GPU device metrics exporter component. If not specified, the component will not be installed in the cluster.
     """
 
 @pulumi.input_type
@@ -25036,7 +25029,6 @@ class KubernetesClusterAmdGpuDevicePluginArgs:
                  enabled: pulumi.Input[_builtins.bool]):
         """
         :param pulumi.Input[_builtins.bool] enabled: Boolean flag whether the component should be enabled or not.
-               `amd_gpu_device_metrics_exporter_plugin` - (Optional) Block containing options for the AMD GPU device metrics exporter component. If not specified, the component will not be installed in the cluster.
         """
         pulumi.set(__self__, "enabled", enabled)
 
@@ -25045,7 +25037,34 @@ class KubernetesClusterAmdGpuDevicePluginArgs:
     def enabled(self) -> pulumi.Input[_builtins.bool]:
         """
         Boolean flag whether the component should be enabled or not.
-        `amd_gpu_device_metrics_exporter_plugin` - (Optional) Block containing options for the AMD GPU device metrics exporter component. If not specified, the component will not be installed in the cluster.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "enabled", value)
+
+
+class KubernetesClusterAmdGpuDraDriverArgsDict(TypedDict):
+    enabled: pulumi.Input[_builtins.bool]
+    """
+    Boolean flag whether the component should be enabled or not.
+    """
+
+@pulumi.input_type
+class KubernetesClusterAmdGpuDraDriverArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[_builtins.bool]):
+        """
+        :param pulumi.Input[_builtins.bool] enabled: Boolean flag whether the component should be enabled or not.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[_builtins.bool]:
+        """
+        Boolean flag whether the component should be enabled or not.
         """
         return pulumi.get(self, "enabled")
 
@@ -25433,6 +25452,10 @@ class KubernetesClusterNodePoolArgsDict(TypedDict):
     """
     Enable auto-scaling of the number of nodes in the node pool within the given min/max range.
     """
+    gpu_partition_mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The AMD GPU partition mode to use for nodes in this pool. Valid values are `AMD_PARTITION_MODE_SPX_NPS1` and `AMD_PARTITION_MODE_DPX_NPS2`. This can only be set when the pool is created.
+    """
     id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A unique ID that can be used to identify and reference the node.
@@ -25473,6 +25496,7 @@ class KubernetesClusterNodePoolArgs:
                  size: pulumi.Input[_builtins.str],
                  actual_node_count: pulumi.Input[Optional[_builtins.int]] = None,
                  auto_scale: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gpu_partition_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  id: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  max_nodes: pulumi.Input[Optional[_builtins.int]] = None,
@@ -25486,6 +25510,7 @@ class KubernetesClusterNodePoolArgs:
         :param pulumi.Input[_builtins.str] size: The slug identifier for the type of Droplet to be used as workers in the node pool.
         :param pulumi.Input[_builtins.int] actual_node_count: A computed field representing the actual number of nodes in the node pool, which is especially useful when auto-scaling is enabled.
         :param pulumi.Input[_builtins.bool] auto_scale: Enable auto-scaling of the number of nodes in the node pool within the given min/max range.
+        :param pulumi.Input[_builtins.str] gpu_partition_mode: The AMD GPU partition mode to use for nodes in this pool. Valid values are `AMD_PARTITION_MODE_SPX_NPS1` and `AMD_PARTITION_MODE_DPX_NPS2`. This can only be set when the pool is created.
         :param pulumi.Input[_builtins.str] id: A unique ID that can be used to identify and reference the node.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
         :param pulumi.Input[_builtins.int] max_nodes: If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
@@ -25501,6 +25526,8 @@ class KubernetesClusterNodePoolArgs:
             pulumi.set(__self__, "actual_node_count", actual_node_count)
         if auto_scale is not None:
             pulumi.set(__self__, "auto_scale", auto_scale)
+        if gpu_partition_mode is not None:
+            pulumi.set(__self__, "gpu_partition_mode", gpu_partition_mode)
         if id is not None:
             pulumi.set(__self__, "id", id)
         if labels is not None:
@@ -25565,6 +25592,18 @@ class KubernetesClusterNodePoolArgs:
     @auto_scale.setter
     def auto_scale(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_scale", value)
+
+    @_builtins.property
+    @pulumi.getter(name="gpuPartitionMode")
+    def gpu_partition_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The AMD GPU partition mode to use for nodes in this pool. Valid values are `AMD_PARTITION_MODE_SPX_NPS1` and `AMD_PARTITION_MODE_DPX_NPS2`. This can only be set when the pool is created.
+        """
+        return pulumi.get(self, "gpu_partition_mode")
+
+    @gpu_partition_mode.setter
+    def gpu_partition_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "gpu_partition_mode", value)
 
     @_builtins.property
     @pulumi.getter
@@ -25862,7 +25901,6 @@ class KubernetesClusterNvidiaGpuDevicePluginArgsDict(TypedDict):
     enabled: pulumi.Input[_builtins.bool]
     """
     Boolean flag whether the component should be enabled or not.
-    `rdma_shared_device_plugin` - (Optional) Block containing options for the RDMA Shared Device Plugin (k8s-rdma-shared-dev-plugin) component. If not specified, the component will be enabled by default for clusters with GPU nodes connected to a dedicated high-speed networking fabric.
     """
 
 @pulumi.input_type
@@ -25871,7 +25909,6 @@ class KubernetesClusterNvidiaGpuDevicePluginArgs:
                  enabled: pulumi.Input[_builtins.bool]):
         """
         :param pulumi.Input[_builtins.bool] enabled: Boolean flag whether the component should be enabled or not.
-               `rdma_shared_device_plugin` - (Optional) Block containing options for the RDMA Shared Device Plugin (k8s-rdma-shared-dev-plugin) component. If not specified, the component will be enabled by default for clusters with GPU nodes connected to a dedicated high-speed networking fabric.
         """
         pulumi.set(__self__, "enabled", enabled)
 
@@ -25880,7 +25917,34 @@ class KubernetesClusterNvidiaGpuDevicePluginArgs:
     def enabled(self) -> pulumi.Input[_builtins.bool]:
         """
         Boolean flag whether the component should be enabled or not.
-        `rdma_shared_device_plugin` - (Optional) Block containing options for the RDMA Shared Device Plugin (k8s-rdma-shared-dev-plugin) component. If not specified, the component will be enabled by default for clusters with GPU nodes connected to a dedicated high-speed networking fabric.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "enabled", value)
+
+
+class KubernetesClusterNvidiaGpuDraDriverArgsDict(TypedDict):
+    enabled: pulumi.Input[_builtins.bool]
+    """
+    Boolean flag whether the component should be enabled or not.
+    """
+
+@pulumi.input_type
+class KubernetesClusterNvidiaGpuDraDriverArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[_builtins.bool]):
+        """
+        :param pulumi.Input[_builtins.bool] enabled: Boolean flag whether the component should be enabled or not.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[_builtins.bool]:
+        """
+        Boolean flag whether the component should be enabled or not.
         """
         return pulumi.get(self, "enabled")
 
@@ -25920,7 +25984,7 @@ class KubernetesClusterP2pOciRegistryPluginArgs:
 class KubernetesClusterRdmaSharedDevicePluginArgsDict(TypedDict):
     enabled: pulumi.Input[_builtins.bool]
     """
-    Boolean flag whether the CoreDNS Autoscaler is enabled or not.
+    Boolean flag whether the component should be enabled or not.
     """
 
 @pulumi.input_type
@@ -25928,7 +25992,7 @@ class KubernetesClusterRdmaSharedDevicePluginArgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[_builtins.bool]):
         """
-        :param pulumi.Input[_builtins.bool] enabled: Boolean flag whether the CoreDNS Autoscaler is enabled or not.
+        :param pulumi.Input[_builtins.bool] enabled: Boolean flag whether the component should be enabled or not.
         """
         pulumi.set(__self__, "enabled", enabled)
 
@@ -25936,7 +26000,7 @@ class KubernetesClusterRdmaSharedDevicePluginArgs:
     @pulumi.getter
     def enabled(self) -> pulumi.Input[_builtins.bool]:
         """
-        Boolean flag whether the CoreDNS Autoscaler is enabled or not.
+        Boolean flag whether the component should be enabled or not.
         """
         return pulumi.get(self, "enabled")
 
@@ -26947,54 +27011,6 @@ class LoadBalancerStickySessionsArgs:
     @type.setter
     def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
-
-
-class MicrodropletAutoPauseArgsDict(TypedDict):
-    enabled: pulumi.Input[_builtins.bool]
-    """
-    Whether auto-pause is enabled.
-    """
-    idle_timeout: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    """
-    Idle timeout as a Go duration string (e.g. `5m`, `30s`).
-    """
-
-@pulumi.input_type
-class MicrodropletAutoPauseArgs:
-    def __init__(__self__, *,
-                 enabled: pulumi.Input[_builtins.bool],
-                 idle_timeout: pulumi.Input[Optional[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.bool] enabled: Whether auto-pause is enabled.
-        :param pulumi.Input[_builtins.str] idle_timeout: Idle timeout as a Go duration string (e.g. `5m`, `30s`).
-        """
-        pulumi.set(__self__, "enabled", enabled)
-        if idle_timeout is not None:
-            pulumi.set(__self__, "idle_timeout", idle_timeout)
-
-    @_builtins.property
-    @pulumi.getter
-    def enabled(self) -> pulumi.Input[_builtins.bool]:
-        """
-        Whether auto-pause is enabled.
-        """
-        return pulumi.get(self, "enabled")
-
-    @enabled.setter
-    def enabled(self, value: pulumi.Input[_builtins.bool]):
-        pulumi.set(self, "enabled", value)
-
-    @_builtins.property
-    @pulumi.getter(name="idleTimeout")
-    def idle_timeout(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Idle timeout as a Go duration string (e.g. `5m`, `30s`).
-        """
-        return pulumi.get(self, "idle_timeout")
-
-    @idle_timeout.setter
-    def idle_timeout(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "idle_timeout", value)
 
 
 class MonitorAlertAlertsArgsDict(TypedDict):
@@ -37362,6 +37378,25 @@ class GetKubernetesClusterAmdGpuDevicePluginArgs:
         pulumi.set(self, "enabled", value)
 
 
+class GetKubernetesClusterAmdGpuDraDriverArgsDict(TypedDict):
+    enabled: _builtins.bool
+
+@pulumi.input_type
+class GetKubernetesClusterAmdGpuDraDriverArgs:
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: _builtins.bool):
+        pulumi.set(self, "enabled", value)
+
+
 class GetKubernetesClusterClusterAutoscalerConfigurationArgsDict(TypedDict):
     expanders: NotRequired[Sequence[_builtins.str]]
     scale_down_unneeded_time: NotRequired[_builtins.str]
@@ -37432,6 +37467,25 @@ class GetKubernetesClusterNvidiaGpuDevicePluginArgsDict(TypedDict):
 
 @pulumi.input_type
 class GetKubernetesClusterNvidiaGpuDevicePluginArgs:
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: _builtins.bool):
+        pulumi.set(self, "enabled", value)
+
+
+class GetKubernetesClusterNvidiaGpuDraDriverArgsDict(TypedDict):
+    enabled: _builtins.bool
+
+@pulumi.input_type
+class GetKubernetesClusterNvidiaGpuDraDriverArgs:
     def __init__(__self__, *,
                  enabled: _builtins.bool):
         pulumi.set(__self__, "enabled", enabled)
@@ -37556,411 +37610,6 @@ class GetKubernetesClusterSsoArgs:
     @required.setter
     def required(self, value: _builtins.bool):
         pulumi.set(self, "required", value)
-
-
-class GetMicrodropletCheckpointsFilterArgsDict(TypedDict):
-    key: _builtins.str
-    """
-    Field to match. Valid keys include `id`, `name`, `status`.
-    """
-    values: Sequence[_builtins.str]
-    """
-    List of values to match on `key`.
-    """
-    all: NotRequired[_builtins.bool]
-    """
-    Require every value to match. Defaults to `false`.
-    """
-    match_by: NotRequired[_builtins.str]
-    """
-    `exact`, `re`, or `substring`. Defaults to `exact`.
-    """
-
-@pulumi.input_type
-class GetMicrodropletCheckpointsFilterArgs:
-    def __init__(__self__, *,
-                 key: _builtins.str,
-                 values: Sequence[_builtins.str],
-                 all: Optional[_builtins.bool] = None,
-                 match_by: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str key: Field to match. Valid keys include `id`, `name`, `status`.
-        :param Sequence[_builtins.str] values: List of values to match on `key`.
-        :param _builtins.bool all: Require every value to match. Defaults to `false`.
-        :param _builtins.str match_by: `exact`, `re`, or `substring`. Defaults to `exact`.
-        """
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "values", values)
-        if all is not None:
-            pulumi.set(__self__, "all", all)
-        if match_by is not None:
-            pulumi.set(__self__, "match_by", match_by)
-
-    @_builtins.property
-    @pulumi.getter
-    def key(self) -> _builtins.str:
-        """
-        Field to match. Valid keys include `id`, `name`, `status`.
-        """
-        return pulumi.get(self, "key")
-
-    @key.setter
-    def key(self, value: _builtins.str):
-        pulumi.set(self, "key", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def values(self) -> Sequence[_builtins.str]:
-        """
-        List of values to match on `key`.
-        """
-        return pulumi.get(self, "values")
-
-    @values.setter
-    def values(self, value: Sequence[_builtins.str]):
-        pulumi.set(self, "values", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def all(self) -> Optional[_builtins.bool]:
-        """
-        Require every value to match. Defaults to `false`.
-        """
-        return pulumi.get(self, "all")
-
-    @all.setter
-    def all(self, value: Optional[_builtins.bool]):
-        pulumi.set(self, "all", value)
-
-    @_builtins.property
-    @pulumi.getter(name="matchBy")
-    def match_by(self) -> Optional[_builtins.str]:
-        """
-        `exact`, `re`, or `substring`. Defaults to `exact`.
-        """
-        return pulumi.get(self, "match_by")
-
-    @match_by.setter
-    def match_by(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "match_by", value)
-
-
-class GetMicrodropletCheckpointsSortArgsDict(TypedDict):
-    key: _builtins.str
-    """
-    Field to sort by (e.g. `created_at`).
-    """
-    direction: NotRequired[_builtins.str]
-    """
-    `asc` (default) or `desc`.
-    """
-
-@pulumi.input_type
-class GetMicrodropletCheckpointsSortArgs:
-    def __init__(__self__, *,
-                 key: _builtins.str,
-                 direction: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str key: Field to sort by (e.g. `created_at`).
-        :param _builtins.str direction: `asc` (default) or `desc`.
-        """
-        pulumi.set(__self__, "key", key)
-        if direction is not None:
-            pulumi.set(__self__, "direction", direction)
-
-    @_builtins.property
-    @pulumi.getter
-    def key(self) -> _builtins.str:
-        """
-        Field to sort by (e.g. `created_at`).
-        """
-        return pulumi.get(self, "key")
-
-    @key.setter
-    def key(self, value: _builtins.str):
-        pulumi.set(self, "key", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def direction(self) -> Optional[_builtins.str]:
-        """
-        `asc` (default) or `desc`.
-        """
-        return pulumi.get(self, "direction")
-
-    @direction.setter
-    def direction(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "direction", value)
-
-
-class GetMicrodropletImagesFilterArgsDict(TypedDict):
-    key: _builtins.str
-    """
-    Field to match.
-    """
-    values: Sequence[_builtins.str]
-    """
-    List of values to match on `key`.
-    """
-    all: NotRequired[_builtins.bool]
-    """
-    Require every value to match. Defaults to `false`.
-    """
-    match_by: NotRequired[_builtins.str]
-    """
-    `exact`, `re`, or `substring`. Defaults to `exact`.
-    """
-
-@pulumi.input_type
-class GetMicrodropletImagesFilterArgs:
-    def __init__(__self__, *,
-                 key: _builtins.str,
-                 values: Sequence[_builtins.str],
-                 all: Optional[_builtins.bool] = None,
-                 match_by: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str key: Field to match.
-        :param Sequence[_builtins.str] values: List of values to match on `key`.
-        :param _builtins.bool all: Require every value to match. Defaults to `false`.
-        :param _builtins.str match_by: `exact`, `re`, or `substring`. Defaults to `exact`.
-        """
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "values", values)
-        if all is not None:
-            pulumi.set(__self__, "all", all)
-        if match_by is not None:
-            pulumi.set(__self__, "match_by", match_by)
-
-    @_builtins.property
-    @pulumi.getter
-    def key(self) -> _builtins.str:
-        """
-        Field to match.
-        """
-        return pulumi.get(self, "key")
-
-    @key.setter
-    def key(self, value: _builtins.str):
-        pulumi.set(self, "key", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def values(self) -> Sequence[_builtins.str]:
-        """
-        List of values to match on `key`.
-        """
-        return pulumi.get(self, "values")
-
-    @values.setter
-    def values(self, value: Sequence[_builtins.str]):
-        pulumi.set(self, "values", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def all(self) -> Optional[_builtins.bool]:
-        """
-        Require every value to match. Defaults to `false`.
-        """
-        return pulumi.get(self, "all")
-
-    @all.setter
-    def all(self, value: Optional[_builtins.bool]):
-        pulumi.set(self, "all", value)
-
-    @_builtins.property
-    @pulumi.getter(name="matchBy")
-    def match_by(self) -> Optional[_builtins.str]:
-        """
-        `exact`, `re`, or `substring`. Defaults to `exact`.
-        """
-        return pulumi.get(self, "match_by")
-
-    @match_by.setter
-    def match_by(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "match_by", value)
-
-
-class GetMicrodropletImagesSortArgsDict(TypedDict):
-    key: _builtins.str
-    """
-    Field to sort by.
-    """
-    direction: NotRequired[_builtins.str]
-    """
-    `asc` (default) or `desc`.
-    """
-
-@pulumi.input_type
-class GetMicrodropletImagesSortArgs:
-    def __init__(__self__, *,
-                 key: _builtins.str,
-                 direction: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str key: Field to sort by.
-        :param _builtins.str direction: `asc` (default) or `desc`.
-        """
-        pulumi.set(__self__, "key", key)
-        if direction is not None:
-            pulumi.set(__self__, "direction", direction)
-
-    @_builtins.property
-    @pulumi.getter
-    def key(self) -> _builtins.str:
-        """
-        Field to sort by.
-        """
-        return pulumi.get(self, "key")
-
-    @key.setter
-    def key(self, value: _builtins.str):
-        pulumi.set(self, "key", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def direction(self) -> Optional[_builtins.str]:
-        """
-        `asc` (default) or `desc`.
-        """
-        return pulumi.get(self, "direction")
-
-    @direction.setter
-    def direction(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "direction", value)
-
-
-class GetMicrodropletsFilterArgsDict(TypedDict):
-    key: _builtins.str
-    """
-    Field to match.
-    """
-    values: Sequence[_builtins.str]
-    """
-    List of values to match on `key`.
-    """
-    all: NotRequired[_builtins.bool]
-    """
-    Require every value to match. Defaults to `false`.
-    """
-    match_by: NotRequired[_builtins.str]
-    """
-    `exact`, `re`, or `substring`. Defaults to `exact`.
-    """
-
-@pulumi.input_type
-class GetMicrodropletsFilterArgs:
-    def __init__(__self__, *,
-                 key: _builtins.str,
-                 values: Sequence[_builtins.str],
-                 all: Optional[_builtins.bool] = None,
-                 match_by: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str key: Field to match.
-        :param Sequence[_builtins.str] values: List of values to match on `key`.
-        :param _builtins.bool all: Require every value to match. Defaults to `false`.
-        :param _builtins.str match_by: `exact`, `re`, or `substring`. Defaults to `exact`.
-        """
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "values", values)
-        if all is not None:
-            pulumi.set(__self__, "all", all)
-        if match_by is not None:
-            pulumi.set(__self__, "match_by", match_by)
-
-    @_builtins.property
-    @pulumi.getter
-    def key(self) -> _builtins.str:
-        """
-        Field to match.
-        """
-        return pulumi.get(self, "key")
-
-    @key.setter
-    def key(self, value: _builtins.str):
-        pulumi.set(self, "key", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def values(self) -> Sequence[_builtins.str]:
-        """
-        List of values to match on `key`.
-        """
-        return pulumi.get(self, "values")
-
-    @values.setter
-    def values(self, value: Sequence[_builtins.str]):
-        pulumi.set(self, "values", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def all(self) -> Optional[_builtins.bool]:
-        """
-        Require every value to match. Defaults to `false`.
-        """
-        return pulumi.get(self, "all")
-
-    @all.setter
-    def all(self, value: Optional[_builtins.bool]):
-        pulumi.set(self, "all", value)
-
-    @_builtins.property
-    @pulumi.getter(name="matchBy")
-    def match_by(self) -> Optional[_builtins.str]:
-        """
-        `exact`, `re`, or `substring`. Defaults to `exact`.
-        """
-        return pulumi.get(self, "match_by")
-
-    @match_by.setter
-    def match_by(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "match_by", value)
-
-
-class GetMicrodropletsSortArgsDict(TypedDict):
-    key: _builtins.str
-    """
-    Field to sort by.
-    """
-    direction: NotRequired[_builtins.str]
-    """
-    `asc` (default) or `desc`.
-    """
-
-@pulumi.input_type
-class GetMicrodropletsSortArgs:
-    def __init__(__self__, *,
-                 key: _builtins.str,
-                 direction: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str key: Field to sort by.
-        :param _builtins.str direction: `asc` (default) or `desc`.
-        """
-        pulumi.set(__self__, "key", key)
-        if direction is not None:
-            pulumi.set(__self__, "direction", direction)
-
-    @_builtins.property
-    @pulumi.getter
-    def key(self) -> _builtins.str:
-        """
-        Field to sort by.
-        """
-        return pulumi.get(self, "key")
-
-    @key.setter
-    def key(self, value: _builtins.str):
-        pulumi.set(self, "key", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def direction(self) -> Optional[_builtins.str]:
-        """
-        `asc` (default) or `desc`.
-        """
-        return pulumi.get(self, "direction")
-
-    @direction.setter
-    def direction(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "direction", value)
 
 
 class GetPartnerAttachmentBgpArgsDict(TypedDict):

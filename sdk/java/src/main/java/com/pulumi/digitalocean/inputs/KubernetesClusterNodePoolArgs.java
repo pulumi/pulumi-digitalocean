@@ -53,6 +53,21 @@ public final class KubernetesClusterNodePoolArgs extends com.pulumi.resources.Re
     }
 
     /**
+     * The AMD GPU partition mode to use for nodes in this pool. Valid values are `AMD_PARTITION_MODE_SPX_NPS1` and `AMD_PARTITION_MODE_DPX_NPS2`. This can only be set when the pool is created.
+     * 
+     */
+    @Import(name="gpuPartitionMode")
+    private @Nullable Output<String> gpuPartitionMode;
+
+    /**
+     * @return The AMD GPU partition mode to use for nodes in this pool. Valid values are `AMD_PARTITION_MODE_SPX_NPS1` and `AMD_PARTITION_MODE_DPX_NPS2`. This can only be set when the pool is created.
+     * 
+     */
+    public Optional<Output<String>> gpuPartitionMode() {
+        return Optional.ofNullable(this.gpuPartitionMode);
+    }
+
+    /**
      * A unique ID that can be used to identify and reference the node.
      * 
      */
@@ -207,6 +222,7 @@ public final class KubernetesClusterNodePoolArgs extends com.pulumi.resources.Re
     private KubernetesClusterNodePoolArgs(KubernetesClusterNodePoolArgs $) {
         this.actualNodeCount = $.actualNodeCount;
         this.autoScale = $.autoScale;
+        this.gpuPartitionMode = $.gpuPartitionMode;
         this.id = $.id;
         this.labels = $.labels;
         this.maxNodes = $.maxNodes;
@@ -277,6 +293,27 @@ public final class KubernetesClusterNodePoolArgs extends com.pulumi.resources.Re
          */
         public Builder autoScale(Boolean autoScale) {
             return autoScale(Output.of(autoScale));
+        }
+
+        /**
+         * @param gpuPartitionMode The AMD GPU partition mode to use for nodes in this pool. Valid values are `AMD_PARTITION_MODE_SPX_NPS1` and `AMD_PARTITION_MODE_DPX_NPS2`. This can only be set when the pool is created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gpuPartitionMode(@Nullable Output<String> gpuPartitionMode) {
+            $.gpuPartitionMode = gpuPartitionMode;
+            return this;
+        }
+
+        /**
+         * @param gpuPartitionMode The AMD GPU partition mode to use for nodes in this pool. Valid values are `AMD_PARTITION_MODE_SPX_NPS1` and `AMD_PARTITION_MODE_DPX_NPS2`. This can only be set when the pool is created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gpuPartitionMode(String gpuPartitionMode) {
+            return gpuPartitionMode(Output.of(gpuPartitionMode));
         }
 
         /**

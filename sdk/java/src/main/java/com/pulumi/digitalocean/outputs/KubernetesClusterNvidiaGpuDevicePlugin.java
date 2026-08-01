@@ -12,7 +12,6 @@ import java.util.Objects;
 public final class KubernetesClusterNvidiaGpuDevicePlugin {
     /**
      * @return Boolean flag whether the component should be enabled or not.
-     * `rdmaSharedDevicePlugin` - (Optional) Block containing options for the RDMA Shared Device Plugin (k8s-rdma-shared-dev-plugin) component. If not specified, the component will be enabled by default for clusters with GPU nodes connected to a dedicated high-speed networking fabric.
      * 
      */
     private Boolean enabled;
@@ -20,7 +19,6 @@ public final class KubernetesClusterNvidiaGpuDevicePlugin {
     private KubernetesClusterNvidiaGpuDevicePlugin() {}
     /**
      * @return Boolean flag whether the component should be enabled or not.
-     * `rdmaSharedDevicePlugin` - (Optional) Block containing options for the RDMA Shared Device Plugin (k8s-rdma-shared-dev-plugin) component. If not specified, the component will be enabled by default for clusters with GPU nodes connected to a dedicated high-speed networking fabric.
      * 
      */
     public Boolean enabled() {

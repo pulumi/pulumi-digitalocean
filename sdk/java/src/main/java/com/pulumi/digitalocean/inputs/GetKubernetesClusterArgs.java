@@ -7,9 +7,11 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.digitalocean.inputs.GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs;
 import com.pulumi.digitalocean.inputs.GetKubernetesClusterAmdGpuDevicePluginArgs;
+import com.pulumi.digitalocean.inputs.GetKubernetesClusterAmdGpuDraDriverArgs;
 import com.pulumi.digitalocean.inputs.GetKubernetesClusterClusterAutoscalerConfigurationArgs;
 import com.pulumi.digitalocean.inputs.GetKubernetesClusterCorednsAutoscalerArgs;
 import com.pulumi.digitalocean.inputs.GetKubernetesClusterNvidiaGpuDevicePluginArgs;
+import com.pulumi.digitalocean.inputs.GetKubernetesClusterNvidiaGpuDraDriverArgs;
 import com.pulumi.digitalocean.inputs.GetKubernetesClusterP2pOciRegistryPluginArgs;
 import com.pulumi.digitalocean.inputs.GetKubernetesClusterRdmaSharedDevicePluginArgs;
 import com.pulumi.digitalocean.inputs.GetKubernetesClusterRoutingAgentArgs;
@@ -39,6 +41,13 @@ public final class GetKubernetesClusterArgs extends com.pulumi.resources.InvokeA
 
     public Optional<Output<GetKubernetesClusterAmdGpuDevicePluginArgs>> amdGpuDevicePlugin() {
         return Optional.ofNullable(this.amdGpuDevicePlugin);
+    }
+
+    @Import(name="amdGpuDraDriver")
+    private @Nullable Output<GetKubernetesClusterAmdGpuDraDriverArgs> amdGpuDraDriver;
+
+    public Optional<Output<GetKubernetesClusterAmdGpuDraDriverArgs>> amdGpuDraDriver() {
+        return Optional.ofNullable(this.amdGpuDraDriver);
     }
 
     @Import(name="clusterAutoscalerConfigurations")
@@ -82,6 +91,13 @@ public final class GetKubernetesClusterArgs extends com.pulumi.resources.InvokeA
 
     public Optional<Output<GetKubernetesClusterNvidiaGpuDevicePluginArgs>> nvidiaGpuDevicePlugin() {
         return Optional.ofNullable(this.nvidiaGpuDevicePlugin);
+    }
+
+    @Import(name="nvidiaGpuDraDriver")
+    private @Nullable Output<GetKubernetesClusterNvidiaGpuDraDriverArgs> nvidiaGpuDraDriver;
+
+    public Optional<Output<GetKubernetesClusterNvidiaGpuDraDriverArgs>> nvidiaGpuDraDriver() {
+        return Optional.ofNullable(this.nvidiaGpuDraDriver);
     }
 
     @Import(name="p2pOciRegistryPlugin")
@@ -132,11 +148,13 @@ public final class GetKubernetesClusterArgs extends com.pulumi.resources.InvokeA
     private GetKubernetesClusterArgs(GetKubernetesClusterArgs $) {
         this.amdGpuDeviceMetricsExporterPlugin = $.amdGpuDeviceMetricsExporterPlugin;
         this.amdGpuDevicePlugin = $.amdGpuDevicePlugin;
+        this.amdGpuDraDriver = $.amdGpuDraDriver;
         this.clusterAutoscalerConfigurations = $.clusterAutoscalerConfigurations;
         this.corednsAutoscaler = $.corednsAutoscaler;
         this.kubeconfigExpireSeconds = $.kubeconfigExpireSeconds;
         this.name = $.name;
         this.nvidiaGpuDevicePlugin = $.nvidiaGpuDevicePlugin;
+        this.nvidiaGpuDraDriver = $.nvidiaGpuDraDriver;
         this.p2pOciRegistryPlugin = $.p2pOciRegistryPlugin;
         this.rdmaSharedDevicePlugin = $.rdmaSharedDevicePlugin;
         this.routingAgent = $.routingAgent;
@@ -178,6 +196,15 @@ public final class GetKubernetesClusterArgs extends com.pulumi.resources.InvokeA
 
         public Builder amdGpuDevicePlugin(GetKubernetesClusterAmdGpuDevicePluginArgs amdGpuDevicePlugin) {
             return amdGpuDevicePlugin(Output.of(amdGpuDevicePlugin));
+        }
+
+        public Builder amdGpuDraDriver(@Nullable Output<GetKubernetesClusterAmdGpuDraDriverArgs> amdGpuDraDriver) {
+            $.amdGpuDraDriver = amdGpuDraDriver;
+            return this;
+        }
+
+        public Builder amdGpuDraDriver(GetKubernetesClusterAmdGpuDraDriverArgs amdGpuDraDriver) {
+            return amdGpuDraDriver(Output.of(amdGpuDraDriver));
         }
 
         public Builder clusterAutoscalerConfigurations(@Nullable Output<List<GetKubernetesClusterClusterAutoscalerConfigurationArgs>> clusterAutoscalerConfigurations) {
@@ -239,6 +266,15 @@ public final class GetKubernetesClusterArgs extends com.pulumi.resources.InvokeA
 
         public Builder nvidiaGpuDevicePlugin(GetKubernetesClusterNvidiaGpuDevicePluginArgs nvidiaGpuDevicePlugin) {
             return nvidiaGpuDevicePlugin(Output.of(nvidiaGpuDevicePlugin));
+        }
+
+        public Builder nvidiaGpuDraDriver(@Nullable Output<GetKubernetesClusterNvidiaGpuDraDriverArgs> nvidiaGpuDraDriver) {
+            $.nvidiaGpuDraDriver = nvidiaGpuDraDriver;
+            return this;
+        }
+
+        public Builder nvidiaGpuDraDriver(GetKubernetesClusterNvidiaGpuDraDriverArgs nvidiaGpuDraDriver) {
+            return nvidiaGpuDraDriver(Output.of(nvidiaGpuDraDriver));
         }
 
         public Builder p2pOciRegistryPlugin(@Nullable Output<GetKubernetesClusterP2pOciRegistryPluginArgs> p2pOciRegistryPlugin) {
