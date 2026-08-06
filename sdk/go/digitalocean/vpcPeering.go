@@ -81,8 +81,8 @@ import (
 //			_, err = digitalocean.NewVpcPeering(ctx, "example", &digitalocean.VpcPeeringArgs{
 //				Name: pulumi.String("example-peering"),
 //				VpcIds: pulumi.StringArray{
-//					vpc1.ID(),
-//					vpc2.ID(),
+//					vpc1.ID().ToIDOutput().ToStringOutput(),
+//					vpc2.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			})
 //			if err != nil {
@@ -93,7 +93,7 @@ import (
 //				Size:    pulumi.String(digitalocean.DropletSlugDropletS1VCPU1GB),
 //				Image:   pulumi.String("ubuntu-18-04-x64"),
 //				Region:  pulumi.String(digitalocean.RegionNYC3),
-//				VpcUuid: vpc1.ID(),
+//				VpcUuid: vpc1.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -103,7 +103,7 @@ import (
 //				Size:    pulumi.String(digitalocean.DropletSlugDropletS1VCPU1GB),
 //				Image:   pulumi.String("ubuntu-18-04-x64"),
 //				Region:  pulumi.String(digitalocean.RegionNYC3),
-//				VpcUuid: vpc2.ID(),
+//				VpcUuid: vpc2.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

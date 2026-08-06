@@ -43,7 +43,7 @@ import (
 //				return err
 //			}
 //			_, err = digitalocean.NewDatabaseUser(ctx, "user-example", &digitalocean.DatabaseUserArgs{
-//				ClusterId: postgres_example.ID(),
+//				ClusterId: postgres_example.ID().ToIDOutput().ToStringOutput(),
 //				Name:      pulumi.String("foobar"),
 //			})
 //			if err != nil {
@@ -80,7 +80,7 @@ import (
 //				return err
 //			}
 //			replica_example, err := digitalocean.NewDatabaseReplica(ctx, "replica-example", &digitalocean.DatabaseReplicaArgs{
-//				ClusterId: postgres_example.ID(),
+//				ClusterId: postgres_example.ID().ToIDOutput().ToStringOutput(),
 //				Name:      pulumi.String("replica-example"),
 //				Size:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU1GB),
 //				Region:    pulumi.String(digitalocean.RegionNYC1),

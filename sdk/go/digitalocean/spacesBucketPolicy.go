@@ -95,8 +95,8 @@ import (
 //									fmt.Sprintf("arn:aws:s3:::%v", name),
 //									fmt.Sprintf("arn:aws:s3:::%v/*", name),
 //								},
-//								"Condition": map[string]interface{}{
-//									"NotIpAddress": map[string]interface{}{
+//								"Condition": map[string]map[string]string{
+//									"NotIpAddress": map[string]string{
 //										"aws:SourceIp": "54.240.143.0/24",
 //									},
 //								},

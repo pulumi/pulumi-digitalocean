@@ -53,7 +53,7 @@ import (
 //				return err
 //			}
 //			_, err = digitalocean.NewDedicatedInferenceToken(ctx, "example", &digitalocean.DedicatedInferenceTokenArgs{
-//				DedicatedInferenceId: example.ID(),
+//				DedicatedInferenceId: example.ID().ToIDOutput().ToStringOutput(),
 //				Name:                 pulumi.String("my-api-token"),
 //			})
 //			if err != nil {

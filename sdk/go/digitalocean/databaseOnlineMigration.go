@@ -62,14 +62,14 @@ import (
 //				return err
 //			}
 //			sourceDb, err := digitalocean.NewDatabaseDb(ctx, "source_db", &digitalocean.DatabaseDbArgs{
-//				ClusterId: source.ID(),
+//				ClusterId: source.ID().ToIDOutput().ToStringOutput(),
 //				Name:      pulumi.String("terraform-db-om-source"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = digitalocean.NewDatabaseOnlineMigration(ctx, "foobar", &digitalocean.DatabaseOnlineMigrationArgs{
-//				ClusterId: destination.ID(),
+//				ClusterId: destination.ID().ToIDOutput().ToStringOutput(),
 //				Source: &digitalocean.DatabaseOnlineMigrationSourceArgs{
 //					Host:     source.Host,
 //					DbName:   sourceDb.Name,

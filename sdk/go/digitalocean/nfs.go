@@ -39,7 +39,7 @@ import (
 //				Region:          pulumi.String("nyc1"),
 //				Name:            pulumi.String("example-nfs"),
 //				Size:            pulumi.Int(50),
-//				VpcId:           example.ID(),
+//				VpcId:           example.ID().ToIDOutput().ToStringOutput(),
 //				PerformanceTier: pulumi.String("high"),
 //			})
 //			if err != nil {
@@ -85,23 +85,23 @@ import (
 //				Region:          pulumi.String("nyc1"),
 //				Name:            pulumi.String("example-nfs"),
 //				Size:            pulumi.Int(50),
-//				VpcId:           primary.ID(),
+//				VpcId:           primary.ID().ToIDOutput().ToStringOutput(),
 //				PerformanceTier: pulumi.String("high"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			primaryNfsAttachment, err := digitalocean.NewNfsAttachment(ctx, "primary", &digitalocean.NfsAttachmentArgs{
-//				ShareId: example.ID(),
-//				VpcId:   primary.ID(),
+//				ShareId: example.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:   primary.ID().ToIDOutput().ToStringOutput(),
 //				Region:  pulumi.String("nyc1"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = digitalocean.NewNfsAttachment(ctx, "secondary", &digitalocean.NfsAttachmentArgs{
-//				ShareId: example.ID(),
-//				VpcId:   secondary.ID(),
+//				ShareId: example.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:   secondary.ID().ToIDOutput().ToStringOutput(),
 //				Region:  pulumi.String("nyc1"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				primaryNfsAttachment,

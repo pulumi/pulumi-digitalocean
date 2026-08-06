@@ -111,12 +111,12 @@ import (
 //				return err
 //			}
 //			_, err = kubernetes.NewSecret(ctx, "example", &kubernetes.SecretArgs{
-//				Metadata: []map[string]interface{}{
-//					map[string]interface{}{
+//				Metadata: []map[string]string{
+//					{
 //						"name": "docker-cfg",
 //					},
 //				},
-//				Data: map[string]interface{}{
+//				Data: map[string]pulumi.String{
 //					".dockerconfigjson": exampleContainerRegistryDockerCredentials.DockerCredentials,
 //				},
 //				Type: "kubernetes.io/dockerconfigjson",

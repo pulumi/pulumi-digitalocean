@@ -44,7 +44,7 @@ import (
 //				return err
 //			}
 //			_, err = digitalocean.NewDatabaseKafkaSchemaRegistry(ctx, "schema-01", &digitalocean.DatabaseKafkaSchemaRegistryArgs{
-//				ClusterId:   kafka_example.ID(),
+//				ClusterId:   kafka_example.ID().ToIDOutput().ToStringOutput(),
 //				SubjectName: pulumi.String("test-schema"),
 //				SchemaType:  pulumi.String("avro"),
 //				Schema: pulumi.String(`{

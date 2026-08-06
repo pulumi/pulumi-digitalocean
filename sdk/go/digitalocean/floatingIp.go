@@ -25,6 +25,8 @@ import (
 //
 // import (
 //
+//	"strconv"
+//
 //	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -44,7 +46,7 @@ import (
 //				return err
 //			}
 //			_, err = digitalocean.NewFloatingIp(ctx, "foobar", &digitalocean.FloatingIpArgs{
-//				DropletId: foobar.ID(),
+//				DropletId: foobar.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 //				Region:    foobar.Region,
 //			})
 //			if err != nil {

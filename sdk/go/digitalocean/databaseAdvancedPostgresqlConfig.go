@@ -44,7 +44,7 @@ import (
 //				return err
 //			}
 //			_, err = digitalocean.NewDatabaseAdvancedPostgresqlConfig(ctx, "example", &digitalocean.DatabaseAdvancedPostgresqlConfigArgs{
-//				ClusterId: exampleDatabaseCluster.ID(),
+//				ClusterId: exampleDatabaseCluster.ID().ToIDOutput().ToStringOutput(),
 //				PgParameters: pulumi.StringMap{
 //					"timezone": pulumi.String("UTC"),
 //					"work_mem": pulumi.String("4096"),

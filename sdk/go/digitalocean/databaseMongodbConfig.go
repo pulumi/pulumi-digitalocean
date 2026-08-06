@@ -43,7 +43,7 @@ import (
 //				return err
 //			}
 //			_, err = digitalocean.NewDatabaseMongodbConfig(ctx, "example", &digitalocean.DatabaseMongodbConfigArgs{
-//				ClusterId:                       exampleDatabaseCluster.ID(),
+//				ClusterId:                       exampleDatabaseCluster.ID().ToIDOutput().ToStringOutput(),
 //				DefaultReadConcern:              pulumi.String("majority"),
 //				DefaultWriteConcern:             pulumi.String("majority"),
 //				TransactionLifetimeLimitSeconds: pulumi.Int(100),

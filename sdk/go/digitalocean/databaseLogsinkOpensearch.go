@@ -53,7 +53,7 @@ import (
 //				return err
 //			}
 //			_, err = digitalocean.NewDatabaseLogsinkOpensearch(ctx, "example", &digitalocean.DatabaseLogsinkOpensearchArgs{
-//				ClusterId:    postgres_example.ID(),
+//				ClusterId:    postgres_example.ID().ToIDOutput().ToStringOutput(),
 //				Name:         pulumi.String("opensearch-logs"),
 //				Endpoint:     pulumi.String("https://opensearch.example.com:9200"),
 //				IndexPrefix:  pulumi.String("db-logs"),
@@ -163,7 +163,7 @@ import (
 //				return err
 //			}
 //			_, err = digitalocean.NewDatabaseLogsinkOpensearch(ctx, "mysql", &digitalocean.DatabaseLogsinkOpensearchArgs{
-//				ClusterId:    mysql_example.ID(),
+//				ClusterId:    mysql_example.ID().ToIDOutput().ToStringOutput(),
 //				Name:         pulumi.String("mysql-logs"),
 //				Endpoint:     pulumi.String("https://opensearch.example.com:9200"),
 //				IndexPrefix:  pulumi.String("mysql-logs"),

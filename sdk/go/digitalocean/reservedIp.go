@@ -23,6 +23,8 @@ import (
 //
 // import (
 //
+//	"strconv"
+//
 //	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -42,7 +44,7 @@ import (
 //				return err
 //			}
 //			_, err = digitalocean.NewReservedIp(ctx, "example", &digitalocean.ReservedIpArgs{
-//				DropletId: example.ID(),
+//				DropletId: example.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 //				Region:    example.Region,
 //			})
 //			if err != nil {

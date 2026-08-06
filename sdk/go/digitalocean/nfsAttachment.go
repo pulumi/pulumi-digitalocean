@@ -39,15 +39,15 @@ import (
 //				Region:          pulumi.String("atl1"),
 //				Name:            pulumi.String("example-nfs"),
 //				Size:            pulumi.Int(50),
-//				VpcId:           foobar.ID(),
+//				VpcId:           foobar.ID().ToIDOutput().ToStringOutput(),
 //				PerformanceTier: pulumi.String("high"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = digitalocean.NewNfsAttachment(ctx, "foobar", &digitalocean.NfsAttachmentArgs{
-//				ShareId: foobarNfs.ID(),
-//				VpcId:   foobar.ID(),
+//				ShareId: foobarNfs.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:   foobar.ID().ToIDOutput().ToStringOutput(),
 //				Region:  pulumi.String("atl1"),
 //			})
 //			if err != nil {
@@ -93,23 +93,23 @@ import (
 //				Region:          pulumi.String("atl1"),
 //				Name:            pulumi.String("example-nfs"),
 //				Size:            pulumi.Int(50),
-//				VpcId:           primary.ID(),
+//				VpcId:           primary.ID().ToIDOutput().ToStringOutput(),
 //				PerformanceTier: pulumi.String("high"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			primaryNfsAttachment, err := digitalocean.NewNfsAttachment(ctx, "primary", &digitalocean.NfsAttachmentArgs{
-//				ShareId: example.ID(),
-//				VpcId:   primary.ID(),
+//				ShareId: example.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:   primary.ID().ToIDOutput().ToStringOutput(),
 //				Region:  pulumi.String("atl1"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = digitalocean.NewNfsAttachment(ctx, "secondary", &digitalocean.NfsAttachmentArgs{
-//				ShareId: example.ID(),
-//				VpcId:   secondary.ID(),
+//				ShareId: example.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:   secondary.ID().ToIDOutput().ToStringOutput(),
 //				Region:  pulumi.String("atl1"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				primaryNfsAttachment,

@@ -51,7 +51,7 @@ import (
 //				return err
 //			}
 //			_, err = digitalocean.NewDatabaseLogsinkRsyslog(ctx, "example", &digitalocean.DatabaseLogsinkRsyslogArgs{
-//				ClusterId: postgres_example.ID(),
+//				ClusterId: postgres_example.ID().ToIDOutput().ToStringOutput(),
 //				Name:      pulumi.String("rsyslog-prod"),
 //				Server:    pulumi.String("192.0.2.10"),
 //				Port:      pulumi.Int(514),

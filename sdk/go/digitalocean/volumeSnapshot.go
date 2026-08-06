@@ -39,7 +39,7 @@ import (
 //			}
 //			_, err = digitalocean.NewVolumeSnapshot(ctx, "foobar", &digitalocean.VolumeSnapshotArgs{
 //				Name:     pulumi.String("foo"),
-//				VolumeId: foobar.ID(),
+//				VolumeId: foobar.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

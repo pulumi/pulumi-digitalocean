@@ -21,6 +21,8 @@ import (
 //
 // import (
 //
+//	"strconv"
+//
 //	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -40,7 +42,7 @@ import (
 //			_, err = digitalocean.NewFirewall(ctx, "web", &digitalocean.FirewallArgs{
 //				Name: pulumi.String("only-22-80-and-443"),
 //				DropletIds: pulumi.IntArray{
-//					web.ID(),
+//					web.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 //				},
 //				InboundRules: digitalocean.FirewallInboundRuleArray{
 //					&digitalocean.FirewallInboundRuleArgs{

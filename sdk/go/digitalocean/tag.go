@@ -44,7 +44,7 @@ import (
 //				Region: pulumi.String(digitalocean.RegionNYC3),
 //				Size:   pulumi.String(digitalocean.DropletSlugDropletS1VCPU1GB),
 //				Tags: pulumi.StringArray{
-//					foobar.ID(),
+//					foobar.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			})
 //			if err != nil {
