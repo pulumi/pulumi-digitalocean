@@ -63,10 +63,10 @@ import (
 //					Region: pulumi.String("nyc3"),
 //					Image:  pulumi.String("ubuntu-24-04-x64"),
 //					Tags: pulumi.StringArray{
-//						my_tag.ID(),
+//						my_tag.ID().ToIDOutput().ToStringOutput(),
 //					},
 //					SshKeys: pulumi.StringArray{
-//						my_ssh_key.ID(),
+//						my_ssh_key.ID().ToIDOutput().ToStringOutput(),
 //					},
 //					WithDropletAgent: pulumi.Bool(true),
 //					Ipv6:             pulumi.Bool(true),

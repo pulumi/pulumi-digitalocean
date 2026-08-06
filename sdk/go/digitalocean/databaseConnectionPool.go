@@ -41,7 +41,7 @@ import (
 //				return err
 //			}
 //			_, err = digitalocean.NewDatabaseConnectionPool(ctx, "pool-01", &digitalocean.DatabaseConnectionPoolArgs{
-//				ClusterId: postgres_example.ID(),
+//				ClusterId: postgres_example.ID().ToIDOutput().ToStringOutput(),
 //				Name:      pulumi.String("pool-01"),
 //				Mode:      pulumi.String("transaction"),
 //				Size:      pulumi.Int(20),

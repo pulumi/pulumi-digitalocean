@@ -75,7 +75,7 @@ import (
 //				return err
 //			}
 //			_, err = digitalocean.NewSpacesBucketCorsConfiguration(ctx, "test", &digitalocean.SpacesBucketCorsConfigurationArgs{
-//				Bucket: foobar.ID(),
+//				Bucket: foobar.ID().ToIDOutput().ToStringOutput(),
 //				Region: pulumi.String("nyc3"),
 //				CorsRules: digitalocean.SpacesBucketCorsConfigurationCorsRuleArray{
 //					&digitalocean.SpacesBucketCorsConfigurationCorsRuleArgs{

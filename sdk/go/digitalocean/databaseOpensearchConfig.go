@@ -43,7 +43,7 @@ import (
 //				return err
 //			}
 //			_, err = digitalocean.NewDatabaseOpensearchConfig(ctx, "example", &digitalocean.DatabaseOpensearchConfigArgs{
-//				ClusterId:                                        exampleDatabaseCluster.ID(),
+//				ClusterId:                                        exampleDatabaseCluster.ID().ToIDOutput().ToStringOutput(),
 //				IsmEnabled:                                       pulumi.Bool(true),
 //				IsmHistoryEnabled:                                pulumi.Bool(true),
 //				IsmHistoryMaxAgeHours:                            pulumi.Int(24),

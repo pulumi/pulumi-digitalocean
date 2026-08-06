@@ -45,7 +45,7 @@ import (
 //				Size:   pulumi.Int(1),
 //				Vpcs: digitalocean.VpcNatGatewayVpcArray{
 //					&digitalocean.VpcNatGatewayVpcArgs{
-//						VpcUuid: my_vpc.ID(),
+//						VpcUuid: my_vpc.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //				UdpTimeoutSeconds:  pulumi.Int(30),

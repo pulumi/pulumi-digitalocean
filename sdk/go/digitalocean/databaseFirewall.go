@@ -44,7 +44,7 @@ import (
 //				return err
 //			}
 //			_, err = digitalocean.NewDatabaseFirewall(ctx, "example-fw", &digitalocean.DatabaseFirewallArgs{
-//				ClusterId: postgres_example.ID(),
+//				ClusterId: postgres_example.ID().ToIDOutput().ToStringOutput(),
 //				Rules: digitalocean.DatabaseFirewallRuleArray{
 //					&digitalocean.DatabaseFirewallRuleArgs{
 //						Type:  pulumi.String("ip_addr"),
@@ -100,11 +100,11 @@ import (
 //				return err
 //			}
 //			_, err = digitalocean.NewDatabaseFirewall(ctx, "example-fw", &digitalocean.DatabaseFirewallArgs{
-//				ClusterId: postgres_example.ID(),
+//				ClusterId: postgres_example.ID().ToIDOutput().ToStringOutput(),
 //				Rules: digitalocean.DatabaseFirewallRuleArray{
 //					&digitalocean.DatabaseFirewallRuleArgs{
 //						Type:  pulumi.String("droplet"),
-//						Value: web.ID(),
+//						Value: web.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //			})
@@ -143,7 +143,7 @@ import (
 //				return err
 //			}
 //			replica_example, err := digitalocean.NewDatabaseReplica(ctx, "replica-example", &digitalocean.DatabaseReplicaArgs{
-//				ClusterId: postgres_example.ID(),
+//				ClusterId: postgres_example.ID().ToIDOutput().ToStringOutput(),
 //				Name:      pulumi.String("replica-example"),
 //				Size:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU1GB),
 //				Region:    pulumi.String(digitalocean.RegionNYC1),

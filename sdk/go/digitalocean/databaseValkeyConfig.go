@@ -43,7 +43,7 @@ import (
 //				return err
 //			}
 //			_, err = digitalocean.NewDatabaseValkeyConfig(ctx, "example", &digitalocean.DatabaseValkeyConfigArgs{
-//				ClusterId:             exampleDatabaseCluster.ID(),
+//				ClusterId:             exampleDatabaseCluster.ID().ToIDOutput().ToStringOutput(),
 //				NotifyKeyspaceEvents:  pulumi.String("KEA"),
 //				Timeout:               pulumi.Int(90),
 //				ValkeyMaxmemoryPolicy: pulumi.String("allkeys-random"),

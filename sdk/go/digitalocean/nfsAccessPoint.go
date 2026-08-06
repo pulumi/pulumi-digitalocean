@@ -39,7 +39,7 @@ import (
 //				Region:          pulumi.String("atl1"),
 //				Name:            pulumi.String("example-nfs"),
 //				Size:            pulumi.Int(50),
-//				VpcId:           foobar.ID(),
+//				VpcId:           foobar.ID().ToIDOutput().ToStringOutput(),
 //				PerformanceTier: pulumi.String("standard"),
 //			})
 //			if err != nil {
@@ -47,9 +47,9 @@ import (
 //			}
 //			_, err = digitalocean.NewNfsAccessPoint(ctx, "foobar", &digitalocean.NfsAccessPointArgs{
 //				Name:    pulumi.String("example-access-point"),
-//				ShareId: foobarNfs.ID(),
+//				ShareId: foobarNfs.ID().ToIDOutput().ToStringOutput(),
 //				Path:    pulumi.String("/data"),
-//				VpcId:   foobar.ID(),
+//				VpcId:   foobar.ID().ToIDOutput().ToStringOutput(),
 //				AccessPolicy: &digitalocean.NfsAccessPointAccessPolicyArgs{
 //					Anonuid: pulumi.Int(65534),
 //					Anongid: pulumi.Int(65534),

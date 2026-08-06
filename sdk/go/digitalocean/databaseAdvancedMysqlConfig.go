@@ -44,7 +44,7 @@ import (
 //				return err
 //			}
 //			_, err = digitalocean.NewDatabaseAdvancedMysqlConfig(ctx, "example", &digitalocean.DatabaseAdvancedMysqlConfigArgs{
-//				ClusterId: exampleDatabaseCluster.ID(),
+//				ClusterId: exampleDatabaseCluster.ID().ToIDOutput().ToStringOutput(),
 //				MysqlParameters: pulumi.StringMap{
 //					"time_zone":       pulumi.String("SYSTEM"),
 //					"connect_timeout": pulumi.String("10"),
