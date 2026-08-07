@@ -246,6 +246,21 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * Enable/disable isolated worker nodes for the cluster. When enabled, each worker node runs on dedicated hardware. This can only be set at creation time. The cluster&#39;s VPC must have a NAT gateway attached. Default: false
+     * 
+     */
+    @Import(name="isolatedWorkers")
+    private @Nullable Output<Boolean> isolatedWorkers;
+
+    /**
+     * @return Enable/disable isolated worker nodes for the cluster. When enabled, each worker node runs on dedicated hardware. This can only be set at creation time. The cluster&#39;s VPC must have a NAT gateway attached. Default: false
+     * 
+     */
+    public Optional<Output<Boolean>> isolatedWorkers() {
+        return Optional.ofNullable(this.isolatedWorkers);
+    }
+
+    /**
      * A representation of the Kubernetes cluster&#39;s kubeconfig with the following attributes:
      * 
      */
@@ -577,6 +592,7 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
         this.endpoint = $.endpoint;
         this.ha = $.ha;
         this.ipv4Address = $.ipv4Address;
+        this.isolatedWorkers = $.isolatedWorkers;
         this.kubeConfigs = $.kubeConfigs;
         this.kubeconfigExpireSeconds = $.kubeconfigExpireSeconds;
         this.maintenancePolicy = $.maintenancePolicy;
@@ -920,6 +936,27 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
          */
         public Builder ipv4Address(String ipv4Address) {
             return ipv4Address(Output.of(ipv4Address));
+        }
+
+        /**
+         * @param isolatedWorkers Enable/disable isolated worker nodes for the cluster. When enabled, each worker node runs on dedicated hardware. This can only be set at creation time. The cluster&#39;s VPC must have a NAT gateway attached. Default: false
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isolatedWorkers(@Nullable Output<Boolean> isolatedWorkers) {
+            $.isolatedWorkers = isolatedWorkers;
+            return this;
+        }
+
+        /**
+         * @param isolatedWorkers Enable/disable isolated worker nodes for the cluster. When enabled, each worker node runs on dedicated hardware. This can only be set at creation time. The cluster&#39;s VPC must have a NAT gateway attached. Default: false
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isolatedWorkers(Boolean isolatedWorkers) {
+            return isolatedWorkers(Output.of(isolatedWorkers));
         }
 
         /**

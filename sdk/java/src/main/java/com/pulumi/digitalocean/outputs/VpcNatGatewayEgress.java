@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class VpcNatGatewayEgress {
     /**
-     * @return List of public gateway IPs
+     * @return Set of public gateway IPs
      * 
      */
     private @Nullable List<VpcNatGatewayEgressPublicGateway> publicGateways;
 
     private VpcNatGatewayEgress() {}
     /**
-     * @return List of public gateway IPs
+     * @return Set of public gateway IPs
      * 
      */
     public List<VpcNatGatewayEgressPublicGateway> publicGateways() {

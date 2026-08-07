@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class GetVpcNatGatewayEgressPublicGateway {
     /**
-     * @return IPv4 address
+     * @return IPv4 address. On create, set this to an unassigned BYOIP on the account in the same region. When omitted, a system-allocated reserved IP is provisioned.
      * 
      */
     private String ipv4;
 
     private GetVpcNatGatewayEgressPublicGateway() {}
     /**
-     * @return IPv4 address
+     * @return IPv4 address. On create, set this to an unassigned BYOIP on the account in the same region. When omitted, a system-allocated reserved IP is provisioned.
      * 
      */
     public String ipv4() {

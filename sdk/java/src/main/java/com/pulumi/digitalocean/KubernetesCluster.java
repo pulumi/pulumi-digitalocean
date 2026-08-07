@@ -191,6 +191,53 @@ import javax.annotation.Nullable;
  * 
  * Note that a data source is used to supply the version. This is needed to prevent configuration diff whenever a cluster is upgraded.
  * 
+ * ### Isolated Workers Example
+ * 
+ * Kubernetes clusters may also be configured to use [isolated worker nodes](https://docs.digitalocean.com/products/kubernetes/concepts/isolated-workers/).
+ * When enabled, each worker node runs on dedicated hardware. The cluster&#39;s VPC must have a NAT gateway attached.
+ * For example:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.digitalocean.KubernetesCluster;
+ * import com.pulumi.digitalocean.KubernetesClusterArgs;
+ * import com.pulumi.digitalocean.inputs.KubernetesClusterNodePoolArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foo = new KubernetesCluster("foo", KubernetesClusterArgs.builder()
+ *             .name("foo")
+ *             .region("nyc1")
+ *             .version("latest")
+ *             .isolatedWorkers(true)
+ *             .vpcUuid(example.id())
+ *             .nodePool(KubernetesClusterNodePoolArgs.builder()
+ *                 .name("worker-pool")
+ *                 .size("s-2vcpu-2gb")
+ *                 .nodeCount(3)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ### Kubernetes Terraform Provider Example
  * 
  * The cluster&#39;s kubeconfig is exported as an attribute allowing you to use it with
@@ -489,6 +536,20 @@ public class KubernetesCluster extends com.pulumi.resources.CustomResource {
      */
     public Output<String> ipv4Address() {
         return this.ipv4Address;
+    }
+    /**
+     * Enable/disable isolated worker nodes for the cluster. When enabled, each worker node runs on dedicated hardware. This can only be set at creation time. The cluster&#39;s VPC must have a NAT gateway attached. Default: false
+     * 
+     */
+    @Export(name="isolatedWorkers", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> isolatedWorkers;
+
+    /**
+     * @return Enable/disable isolated worker nodes for the cluster. When enabled, each worker node runs on dedicated hardware. This can only be set at creation time. The cluster&#39;s VPC must have a NAT gateway attached. Default: false
+     * 
+     */
+    public Output<Optional<Boolean>> isolatedWorkers() {
+        return Codegen.optional(this.isolatedWorkers);
     }
     /**
      * A representation of the Kubernetes cluster&#39;s kubeconfig with the following attributes:

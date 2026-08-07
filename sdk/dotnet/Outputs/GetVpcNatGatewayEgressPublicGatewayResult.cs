@@ -14,7 +14,7 @@ namespace Pulumi.DigitalOcean.Outputs
     public sealed class GetVpcNatGatewayEgressPublicGatewayResult
     {
         /// <summary>
-        /// IPv4 address
+        /// IPv4 address. On create, set this to an unassigned BYOIP on the account in the same region. When omitted, a system-allocated reserved IP is provisioned.
         /// </summary>
         public readonly string Ipv4;
 

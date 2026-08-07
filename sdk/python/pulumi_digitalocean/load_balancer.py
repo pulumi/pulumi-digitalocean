@@ -34,6 +34,7 @@ class LoadBalancerArgs:
                  glb_settings: pulumi.Input[Optional['LoadBalancerGlbSettingsArgs']] = None,
                  healthcheck: pulumi.Input[Optional['LoadBalancerHealthcheckArgs']] = None,
                  http_idle_timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 ip: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  network: pulumi.Input[Optional[_builtins.str]] = None,
                  network_stack: pulumi.Input[Optional[_builtins.str]] = None,
@@ -43,6 +44,7 @@ class LoadBalancerArgs:
                  size: pulumi.Input[Optional[_builtins.str]] = None,
                  size_unit: pulumi.Input[Optional[_builtins.int]] = None,
                  sticky_sessions: pulumi.Input[Optional['LoadBalancerStickySessionsArgs']] = None,
+                 subnet_uuid: pulumi.Input[Optional[_builtins.str]] = None,
                  target_load_balancer_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  tls_cipher_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -67,6 +69,7 @@ class LoadBalancerArgs:
         :param pulumi.Input['LoadBalancerHealthcheckArgs'] healthcheck: A `healthcheck` block to be assigned to the
                Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
         :param pulumi.Input[_builtins.int] http_idle_timeout_seconds: Specifies the idle timeout for HTTPS connections on the load balancer in seconds.
+        :param pulumi.Input[_builtins.str] ip: The ip of the Load Balancer
         :param pulumi.Input[_builtins.str] name: The Load Balancer name
         :param pulumi.Input[_builtins.str] network: The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
         :param pulumi.Input[_builtins.str] network_stack: The network stack determines the allocation of ipv4/ipv6 addresses to the load balancer. It must be either of `IPV4` or `DUALSTACK`. Defaults to `IPV4`.
@@ -79,6 +82,7 @@ class LoadBalancerArgs:
         :param pulumi.Input[_builtins.int] size_unit: The size of the Load Balancer. It must be in the range (1, 200). Defaults to `1`. Only one of `size` or `size_unit` may be provided.
         :param pulumi.Input['LoadBalancerStickySessionsArgs'] sticky_sessions: A `sticky_sessions` block to be assigned to the
                Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
+        :param pulumi.Input[_builtins.str] subnet_uuid: The ID of the VPC subnet where the load balancer will be located. Must be a valid subnet in the specified VPC. Requires that `vpc_uuid` is also set.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] target_load_balancer_ids: A list of Load Balancer IDs to be attached behind a Global Load Balancer.
         :param pulumi.Input[_builtins.str] tls_cipher_policy: The tls cipher policy controls the cipher suites to be used by the load balancer. It must be either of `DEFAULT` or `STRONG`. Defaults to `DEFAULT`.
         :param pulumi.Input[_builtins.str] type: The type of the Load Balancer. It must be either of `REGIONAL`, `REGIONAL_NETWORK`, or `GLOBAL`. Defaults to `REGIONAL`.
@@ -111,6 +115,8 @@ class LoadBalancerArgs:
             pulumi.set(__self__, "healthcheck", healthcheck)
         if http_idle_timeout_seconds is not None:
             pulumi.set(__self__, "http_idle_timeout_seconds", http_idle_timeout_seconds)
+        if ip is not None:
+            pulumi.set(__self__, "ip", ip)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if network is not None:
@@ -129,6 +135,8 @@ class LoadBalancerArgs:
             pulumi.set(__self__, "size_unit", size_unit)
         if sticky_sessions is not None:
             pulumi.set(__self__, "sticky_sessions", sticky_sessions)
+        if subnet_uuid is not None:
+            pulumi.set(__self__, "subnet_uuid", subnet_uuid)
         if target_load_balancer_ids is not None:
             pulumi.set(__self__, "target_load_balancer_ids", target_load_balancer_ids)
         if tls_cipher_policy is not None:
@@ -290,6 +298,18 @@ class LoadBalancerArgs:
 
     @_builtins.property
     @pulumi.getter
+    def ip(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ip of the Load Balancer
+        """
+        return pulumi.get(self, "ip")
+
+    @ip.setter
+    def ip(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "ip", value)
+
+    @_builtins.property
+    @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Load Balancer name
@@ -400,6 +420,18 @@ class LoadBalancerArgs:
         pulumi.set(self, "sticky_sessions", value)
 
     @_builtins.property
+    @pulumi.getter(name="subnetUuid")
+    def subnet_uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the VPC subnet where the load balancer will be located. Must be a valid subnet in the specified VPC. Requires that `vpc_uuid` is also set.
+        """
+        return pulumi.get(self, "subnet_uuid")
+
+    @subnet_uuid.setter
+    def subnet_uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "subnet_uuid", value)
+
+    @_builtins.property
     @pulumi.getter(name="targetLoadBalancerIds")
     def target_load_balancer_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
@@ -476,6 +508,7 @@ class _LoadBalancerState:
                  size_unit: pulumi.Input[Optional[_builtins.int]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  sticky_sessions: pulumi.Input[Optional['LoadBalancerStickySessionsArgs']] = None,
+                 subnet_uuid: pulumi.Input[Optional[_builtins.str]] = None,
                  target_load_balancer_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  tls_cipher_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -514,6 +547,7 @@ class _LoadBalancerState:
         :param pulumi.Input[_builtins.int] size_unit: The size of the Load Balancer. It must be in the range (1, 200). Defaults to `1`. Only one of `size` or `size_unit` may be provided.
         :param pulumi.Input['LoadBalancerStickySessionsArgs'] sticky_sessions: A `sticky_sessions` block to be assigned to the
                Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
+        :param pulumi.Input[_builtins.str] subnet_uuid: The ID of the VPC subnet where the load balancer will be located. Must be a valid subnet in the specified VPC. Requires that `vpc_uuid` is also set.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] target_load_balancer_ids: A list of Load Balancer IDs to be attached behind a Global Load Balancer.
         :param pulumi.Input[_builtins.str] tls_cipher_policy: The tls cipher policy controls the cipher suites to be used by the load balancer. It must be either of `DEFAULT` or `STRONG`. Defaults to `DEFAULT`.
         :param pulumi.Input[_builtins.str] type: The type of the Load Balancer. It must be either of `REGIONAL`, `REGIONAL_NETWORK`, or `GLOBAL`. Defaults to `REGIONAL`.
@@ -572,6 +606,8 @@ class _LoadBalancerState:
             pulumi.set(__self__, "status", status)
         if sticky_sessions is not None:
             pulumi.set(__self__, "sticky_sessions", sticky_sessions)
+        if subnet_uuid is not None:
+            pulumi.set(__self__, "subnet_uuid", subnet_uuid)
         if target_load_balancer_ids is not None:
             pulumi.set(__self__, "target_load_balancer_ids", target_load_balancer_ids)
         if tls_cipher_policy is not None:
@@ -885,6 +921,18 @@ class _LoadBalancerState:
         pulumi.set(self, "sticky_sessions", value)
 
     @_builtins.property
+    @pulumi.getter(name="subnetUuid")
+    def subnet_uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the VPC subnet where the load balancer will be located. Must be a valid subnet in the specified VPC. Requires that `vpc_uuid` is also set.
+        """
+        return pulumi.get(self, "subnet_uuid")
+
+    @subnet_uuid.setter
+    def subnet_uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "subnet_uuid", value)
+
+    @_builtins.property
     @pulumi.getter(name="targetLoadBalancerIds")
     def target_load_balancer_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
@@ -951,6 +999,7 @@ class LoadBalancer(pulumi.CustomResource):
                  glb_settings: pulumi.Input[Optional[Union['LoadBalancerGlbSettingsArgs', 'LoadBalancerGlbSettingsArgsDict']]] = None,
                  healthcheck: pulumi.Input[Optional[Union['LoadBalancerHealthcheckArgs', 'LoadBalancerHealthcheckArgsDict']]] = None,
                  http_idle_timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 ip: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  network: pulumi.Input[Optional[_builtins.str]] = None,
                  network_stack: pulumi.Input[Optional[_builtins.str]] = None,
@@ -960,6 +1009,7 @@ class LoadBalancer(pulumi.CustomResource):
                  size: pulumi.Input[Optional[_builtins.str]] = None,
                  size_unit: pulumi.Input[Optional[_builtins.int]] = None,
                  sticky_sessions: pulumi.Input[Optional[Union['LoadBalancerStickySessionsArgs', 'LoadBalancerStickySessionsArgsDict']]] = None,
+                 subnet_uuid: pulumi.Input[Optional[_builtins.str]] = None,
                  target_load_balancer_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  tls_cipher_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1030,6 +1080,7 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[Union['LoadBalancerHealthcheckArgs', 'LoadBalancerHealthcheckArgsDict']] healthcheck: A `healthcheck` block to be assigned to the
                Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
         :param pulumi.Input[_builtins.int] http_idle_timeout_seconds: Specifies the idle timeout for HTTPS connections on the load balancer in seconds.
+        :param pulumi.Input[_builtins.str] ip: The ip of the Load Balancer
         :param pulumi.Input[_builtins.str] name: The Load Balancer name
         :param pulumi.Input[_builtins.str] network: The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
         :param pulumi.Input[_builtins.str] network_stack: The network stack determines the allocation of ipv4/ipv6 addresses to the load balancer. It must be either of `IPV4` or `DUALSTACK`. Defaults to `IPV4`.
@@ -1042,6 +1093,7 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] size_unit: The size of the Load Balancer. It must be in the range (1, 200). Defaults to `1`. Only one of `size` or `size_unit` may be provided.
         :param pulumi.Input[Union['LoadBalancerStickySessionsArgs', 'LoadBalancerStickySessionsArgsDict']] sticky_sessions: A `sticky_sessions` block to be assigned to the
                Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
+        :param pulumi.Input[_builtins.str] subnet_uuid: The ID of the VPC subnet where the load balancer will be located. Must be a valid subnet in the specified VPC. Requires that `vpc_uuid` is also set.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] target_load_balancer_ids: A list of Load Balancer IDs to be attached behind a Global Load Balancer.
         :param pulumi.Input[_builtins.str] tls_cipher_policy: The tls cipher policy controls the cipher suites to be used by the load balancer. It must be either of `DEFAULT` or `STRONG`. Defaults to `DEFAULT`.
         :param pulumi.Input[_builtins.str] type: The type of the Load Balancer. It must be either of `REGIONAL`, `REGIONAL_NETWORK`, or `GLOBAL`. Defaults to `REGIONAL`.
@@ -1126,6 +1178,7 @@ class LoadBalancer(pulumi.CustomResource):
                  glb_settings: pulumi.Input[Optional[Union['LoadBalancerGlbSettingsArgs', 'LoadBalancerGlbSettingsArgsDict']]] = None,
                  healthcheck: pulumi.Input[Optional[Union['LoadBalancerHealthcheckArgs', 'LoadBalancerHealthcheckArgsDict']]] = None,
                  http_idle_timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 ip: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  network: pulumi.Input[Optional[_builtins.str]] = None,
                  network_stack: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1135,6 +1188,7 @@ class LoadBalancer(pulumi.CustomResource):
                  size: pulumi.Input[Optional[_builtins.str]] = None,
                  size_unit: pulumi.Input[Optional[_builtins.int]] = None,
                  sticky_sessions: pulumi.Input[Optional[Union['LoadBalancerStickySessionsArgs', 'LoadBalancerStickySessionsArgsDict']]] = None,
+                 subnet_uuid: pulumi.Input[Optional[_builtins.str]] = None,
                  target_load_balancer_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  tls_cipher_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1160,6 +1214,7 @@ class LoadBalancer(pulumi.CustomResource):
             __props__.__dict__["glb_settings"] = glb_settings
             __props__.__dict__["healthcheck"] = healthcheck
             __props__.__dict__["http_idle_timeout_seconds"] = http_idle_timeout_seconds
+            __props__.__dict__["ip"] = ip
             __props__.__dict__["name"] = name
             __props__.__dict__["network"] = network
             __props__.__dict__["network_stack"] = network_stack
@@ -1169,11 +1224,11 @@ class LoadBalancer(pulumi.CustomResource):
             __props__.__dict__["size"] = size
             __props__.__dict__["size_unit"] = size_unit
             __props__.__dict__["sticky_sessions"] = sticky_sessions
+            __props__.__dict__["subnet_uuid"] = subnet_uuid
             __props__.__dict__["target_load_balancer_ids"] = target_load_balancer_ids
             __props__.__dict__["tls_cipher_policy"] = tls_cipher_policy
             __props__.__dict__["type"] = type
             __props__.__dict__["vpc_uuid"] = vpc_uuid
-            __props__.__dict__["ip"] = None
             __props__.__dict__["ipv6"] = None
             __props__.__dict__["load_balancer_urn"] = None
             __props__.__dict__["status"] = None
@@ -1212,6 +1267,7 @@ class LoadBalancer(pulumi.CustomResource):
             size_unit: pulumi.Input[Optional[_builtins.int]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             sticky_sessions: pulumi.Input[Optional[Union['LoadBalancerStickySessionsArgs', 'LoadBalancerStickySessionsArgsDict']]] = None,
+            subnet_uuid: pulumi.Input[Optional[_builtins.str]] = None,
             target_load_balancer_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             tls_cipher_policy: pulumi.Input[Optional[_builtins.str]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1254,6 +1310,7 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] size_unit: The size of the Load Balancer. It must be in the range (1, 200). Defaults to `1`. Only one of `size` or `size_unit` may be provided.
         :param pulumi.Input[Union['LoadBalancerStickySessionsArgs', 'LoadBalancerStickySessionsArgsDict']] sticky_sessions: A `sticky_sessions` block to be assigned to the
                Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
+        :param pulumi.Input[_builtins.str] subnet_uuid: The ID of the VPC subnet where the load balancer will be located. Must be a valid subnet in the specified VPC. Requires that `vpc_uuid` is also set.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] target_load_balancer_ids: A list of Load Balancer IDs to be attached behind a Global Load Balancer.
         :param pulumi.Input[_builtins.str] tls_cipher_policy: The tls cipher policy controls the cipher suites to be used by the load balancer. It must be either of `DEFAULT` or `STRONG`. Defaults to `DEFAULT`.
         :param pulumi.Input[_builtins.str] type: The type of the Load Balancer. It must be either of `REGIONAL`, `REGIONAL_NETWORK`, or `GLOBAL`. Defaults to `REGIONAL`.
@@ -1288,6 +1345,7 @@ class LoadBalancer(pulumi.CustomResource):
         __props__.__dict__["size_unit"] = size_unit
         __props__.__dict__["status"] = status
         __props__.__dict__["sticky_sessions"] = sticky_sessions
+        __props__.__dict__["subnet_uuid"] = subnet_uuid
         __props__.__dict__["target_load_balancer_ids"] = target_load_balancer_ids
         __props__.__dict__["tls_cipher_policy"] = tls_cipher_policy
         __props__.__dict__["type"] = type
@@ -1496,6 +1554,14 @@ class LoadBalancer(pulumi.CustomResource):
         Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
         """
         return pulumi.get(self, "sticky_sessions")
+
+    @_builtins.property
+    @pulumi.getter(name="subnetUuid")
+    def subnet_uuid(self) -> pulumi.Output[_builtins.str]:
+        """
+        The ID of the VPC subnet where the load balancer will be located. Must be a valid subnet in the specified VPC. Requires that `vpc_uuid` is also set.
+        """
+        return pulumi.get(self, "subnet_uuid")
 
     @_builtins.property
     @pulumi.getter(name="targetLoadBalancerIds")

@@ -226,6 +226,21 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The ip of the Load Balancer
+     * 
+     */
+    @Import(name="ip")
+    private @Nullable Output<String> ip;
+
+    /**
+     * @return The ip of the Load Balancer
+     * 
+     */
+    public Optional<Output<String>> ip() {
+        return Optional.ofNullable(this.ip);
+    }
+
+    /**
      * The Load Balancer name
      * 
      */
@@ -367,6 +382,21 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The ID of the VPC subnet where the load balancer will be located. Must be a valid subnet in the specified VPC. Requires that `vpcUuid` is also set.
+     * 
+     */
+    @Import(name="subnetUuid")
+    private @Nullable Output<String> subnetUuid;
+
+    /**
+     * @return The ID of the VPC subnet where the load balancer will be located. Must be a valid subnet in the specified VPC. Requires that `vpcUuid` is also set.
+     * 
+     */
+    public Optional<Output<String>> subnetUuid() {
+        return Optional.ofNullable(this.subnetUuid);
+    }
+
+    /**
      * A list of Load Balancer IDs to be attached behind a Global Load Balancer.
      * 
      */
@@ -441,6 +471,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         this.glbSettings = $.glbSettings;
         this.healthcheck = $.healthcheck;
         this.httpIdleTimeoutSeconds = $.httpIdleTimeoutSeconds;
+        this.ip = $.ip;
         this.name = $.name;
         this.network = $.network;
         this.networkStack = $.networkStack;
@@ -450,6 +481,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         this.size = $.size;
         this.sizeUnit = $.sizeUnit;
         this.stickySessions = $.stickySessions;
+        this.subnetUuid = $.subnetUuid;
         this.targetLoadBalancerIds = $.targetLoadBalancerIds;
         this.tlsCipherPolicy = $.tlsCipherPolicy;
         this.type = $.type;
@@ -806,6 +838,27 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param ip The ip of the Load Balancer
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ip(@Nullable Output<String> ip) {
+            $.ip = ip;
+            return this;
+        }
+
+        /**
+         * @param ip The ip of the Load Balancer
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ip(String ip) {
+            return ip(Output.of(ip));
+        }
+
+        /**
          * @param name The Load Balancer name
          * 
          * @return builder
@@ -1018,6 +1071,27 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder stickySessions(LoadBalancerStickySessionsArgs stickySessions) {
             return stickySessions(Output.of(stickySessions));
+        }
+
+        /**
+         * @param subnetUuid The ID of the VPC subnet where the load balancer will be located. Must be a valid subnet in the specified VPC. Requires that `vpcUuid` is also set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subnetUuid(@Nullable Output<String> subnetUuid) {
+            $.subnetUuid = subnetUuid;
+            return this;
+        }
+
+        /**
+         * @param subnetUuid The ID of the VPC subnet where the load balancer will be located. Must be a valid subnet in the specified VPC. Requires that `vpcUuid` is also set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subnetUuid(String subnetUuid) {
+            return subnetUuid(Output.of(subnetUuid));
         }
 
         /**

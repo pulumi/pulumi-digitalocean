@@ -92,6 +92,30 @@ import * as utilities from "./utilities";
  *
  * Note that a data source is used to supply the version. This is needed to prevent configuration diff whenever a cluster is upgraded.
  *
+ * ### Isolated Workers Example
+ *
+ * Kubernetes clusters may also be configured to use [isolated worker nodes](https://docs.digitalocean.com/products/kubernetes/concepts/isolated-workers/).
+ * When enabled, each worker node runs on dedicated hardware. The cluster's VPC must have a NAT gateway attached.
+ * For example:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const foo = new digitalocean.KubernetesCluster("foo", {
+ *     name: "foo",
+ *     region: digitalocean.Region.NYC1,
+ *     version: "latest",
+ *     isolatedWorkers: true,
+ *     vpcUuid: example.id,
+ *     nodePool: {
+ *         name: "worker-pool",
+ *         size: "s-2vcpu-2gb",
+ *         nodeCount: 3,
+ *     },
+ * });
+ * ```
+ *
  * ### Kubernetes Terraform Provider Example
  *
  * The cluster's kubeconfig is exported as an attribute allowing you to use it with
@@ -234,6 +258,10 @@ export class KubernetesCluster extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly ipv4Address: pulumi.Output<string>;
     /**
+     * Enable/disable isolated worker nodes for the cluster. When enabled, each worker node runs on dedicated hardware. This can only be set at creation time. The cluster's VPC must have a NAT gateway attached. Default: false
+     */
+    declare public readonly isolatedWorkers: pulumi.Output<boolean | undefined>;
+    /**
      * A representation of the Kubernetes cluster's kubeconfig with the following attributes:
      */
     declare public /*out*/ readonly kubeConfigs: pulumi.Output<outputs.KubernetesClusterKubeConfig[]>;
@@ -345,6 +373,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
             resourceInputs["endpoint"] = state?.endpoint;
             resourceInputs["ha"] = state?.ha;
             resourceInputs["ipv4Address"] = state?.ipv4Address;
+            resourceInputs["isolatedWorkers"] = state?.isolatedWorkers;
             resourceInputs["kubeConfigs"] = state?.kubeConfigs;
             resourceInputs["kubeconfigExpireSeconds"] = state?.kubeconfigExpireSeconds;
             resourceInputs["maintenancePolicy"] = state?.maintenancePolicy;
@@ -387,6 +416,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
             resourceInputs["corednsAutoscaler"] = args?.corednsAutoscaler;
             resourceInputs["destroyAllAssociatedResources"] = args?.destroyAllAssociatedResources;
             resourceInputs["ha"] = args?.ha;
+            resourceInputs["isolatedWorkers"] = args?.isolatedWorkers;
             resourceInputs["kubeconfigExpireSeconds"] = args?.kubeconfigExpireSeconds;
             resourceInputs["maintenancePolicy"] = args?.maintenancePolicy;
             resourceInputs["name"] = args?.name;
@@ -480,6 +510,10 @@ export interface KubernetesClusterState {
      * The public IPv4 address of the Kubernetes master node. This will not be set if high availability is configured on the cluster (v1.21+)
      */
     ipv4Address?: pulumi.Input<string | undefined>;
+    /**
+     * Enable/disable isolated worker nodes for the cluster. When enabled, each worker node runs on dedicated hardware. This can only be set at creation time. The cluster's VPC must have a NAT gateway attached. Default: false
+     */
+    isolatedWorkers?: pulumi.Input<boolean | undefined>;
     /**
      * A representation of the Kubernetes cluster's kubeconfig with the following attributes:
      */
@@ -610,6 +644,10 @@ export interface KubernetesClusterArgs {
      * Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: true (for 1.36.0 and later)
      */
     ha?: pulumi.Input<boolean | undefined>;
+    /**
+     * Enable/disable isolated worker nodes for the cluster. When enabled, each worker node runs on dedicated hardware. This can only be set at creation time. The cluster's VPC must have a NAT gateway attached. Default: false
+     */
+    isolatedWorkers?: pulumi.Input<boolean | undefined>;
     /**
      * The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
      */

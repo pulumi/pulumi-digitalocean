@@ -68,6 +68,11 @@ public final class GetKubernetesClusterResult {
      */
     private String ipv4Address;
     /**
+     * @return A boolean value indicating whether the cluster has isolated worker nodes enabled.
+     * 
+     */
+    private Boolean isolatedWorkers;
+    /**
      * @return A representation of the Kubernetes cluster&#39;s kubeconfig with the following attributes:
      * 
      */
@@ -200,6 +205,13 @@ public final class GetKubernetesClusterResult {
      */
     public String ipv4Address() {
         return this.ipv4Address;
+    }
+    /**
+     * @return A boolean value indicating whether the cluster has isolated worker nodes enabled.
+     * 
+     */
+    public Boolean isolatedWorkers() {
+        return this.isolatedWorkers;
     }
     /**
      * @return A representation of the Kubernetes cluster&#39;s kubeconfig with the following attributes:
@@ -335,6 +347,7 @@ public final class GetKubernetesClusterResult {
         private Boolean ha;
         private String id;
         private String ipv4Address;
+        private Boolean isolatedWorkers;
         private List<GetKubernetesClusterKubeConfig> kubeConfigs;
         private @Nullable Integer kubeconfigExpireSeconds;
         private List<GetKubernetesClusterMaintenancePolicy> maintenancePolicies;
@@ -372,6 +385,7 @@ public final class GetKubernetesClusterResult {
     	      this.ha = defaults.ha;
     	      this.id = defaults.id;
     	      this.ipv4Address = defaults.ipv4Address;
+    	      this.isolatedWorkers = defaults.isolatedWorkers;
     	      this.kubeConfigs = defaults.kubeConfigs;
     	      this.kubeconfigExpireSeconds = defaults.kubeconfigExpireSeconds;
     	      this.maintenancePolicies = defaults.maintenancePolicies;
@@ -501,6 +515,14 @@ public final class GetKubernetesClusterResult {
               throw new MissingRequiredPropertyException("GetKubernetesClusterResult", "ipv4Address");
             }
             this.ipv4Address = ipv4Address;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder isolatedWorkers(Boolean isolatedWorkers) {
+            if (isolatedWorkers == null) {
+              throw new MissingRequiredPropertyException("GetKubernetesClusterResult", "isolatedWorkers");
+            }
+            this.isolatedWorkers = isolatedWorkers;
             return this;
         }
         @CustomType.Setter
@@ -697,6 +719,7 @@ public final class GetKubernetesClusterResult {
             _resultValue.ha = ha;
             _resultValue.id = id;
             _resultValue.ipv4Address = ipv4Address;
+            _resultValue.isolatedWorkers = isolatedWorkers;
             _resultValue.kubeConfigs = kubeConfigs;
             _resultValue.kubeconfigExpireSeconds = kubeconfigExpireSeconds;
             _resultValue.maintenancePolicies = maintenancePolicies;

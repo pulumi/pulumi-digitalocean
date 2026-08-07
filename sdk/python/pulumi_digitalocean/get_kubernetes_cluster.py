@@ -28,7 +28,7 @@ class GetKubernetesClusterResult:
     """
     A collection of values returned by getKubernetesCluster.
     """
-    def __init__(__self__, amd_gpu_device_metrics_exporter_plugin=None, amd_gpu_device_plugin=None, amd_gpu_dra_driver=None, auto_upgrade=None, cluster_autoscaler_configurations=None, cluster_subnet=None, control_plane_firewalls=None, coredns_autoscaler=None, created_at=None, endpoint=None, ha=None, id=None, ipv4_address=None, kube_configs=None, kubeconfig_expire_seconds=None, maintenance_policies=None, name=None, node_pools=None, nvidia_gpu_device_plugin=None, nvidia_gpu_dra_driver=None, p2p_oci_registry_plugin=None, rdma_shared_device_plugin=None, region=None, routing_agent=None, service_subnet=None, ssos=None, status=None, surge_upgrade=None, tags=None, updated_at=None, urn=None, version=None, vpc_uuid=None, worker_subnet_uuid=None):
+    def __init__(__self__, amd_gpu_device_metrics_exporter_plugin=None, amd_gpu_device_plugin=None, amd_gpu_dra_driver=None, auto_upgrade=None, cluster_autoscaler_configurations=None, cluster_subnet=None, control_plane_firewalls=None, coredns_autoscaler=None, created_at=None, endpoint=None, ha=None, id=None, ipv4_address=None, isolated_workers=None, kube_configs=None, kubeconfig_expire_seconds=None, maintenance_policies=None, name=None, node_pools=None, nvidia_gpu_device_plugin=None, nvidia_gpu_dra_driver=None, p2p_oci_registry_plugin=None, rdma_shared_device_plugin=None, region=None, routing_agent=None, service_subnet=None, ssos=None, status=None, surge_upgrade=None, tags=None, updated_at=None, urn=None, version=None, vpc_uuid=None, worker_subnet_uuid=None):
         if amd_gpu_device_metrics_exporter_plugin and not isinstance(amd_gpu_device_metrics_exporter_plugin, dict):
             raise TypeError("Expected argument 'amd_gpu_device_metrics_exporter_plugin' to be a dict")
         pulumi.set(__self__, "amd_gpu_device_metrics_exporter_plugin", amd_gpu_device_metrics_exporter_plugin)
@@ -68,6 +68,9 @@ class GetKubernetesClusterResult:
         if ipv4_address and not isinstance(ipv4_address, str):
             raise TypeError("Expected argument 'ipv4_address' to be a str")
         pulumi.set(__self__, "ipv4_address", ipv4_address)
+        if isolated_workers and not isinstance(isolated_workers, bool):
+            raise TypeError("Expected argument 'isolated_workers' to be a bool")
+        pulumi.set(__self__, "isolated_workers", isolated_workers)
         if kube_configs and not isinstance(kube_configs, list):
             raise TypeError("Expected argument 'kube_configs' to be a list")
         pulumi.set(__self__, "kube_configs", kube_configs)
@@ -214,6 +217,14 @@ class GetKubernetesClusterResult:
         The public IPv4 address of the Kubernetes master node.
         """
         return pulumi.get(self, "ipv4_address")
+
+    @_builtins.property
+    @pulumi.getter(name="isolatedWorkers")
+    def isolated_workers(self) -> _builtins.bool:
+        """
+        A boolean value indicating whether the cluster has isolated worker nodes enabled.
+        """
+        return pulumi.get(self, "isolated_workers")
 
     @_builtins.property
     @pulumi.getter(name="kubeConfigs")
@@ -376,6 +387,7 @@ class AwaitableGetKubernetesClusterResult(GetKubernetesClusterResult):
             ha=self.ha,
             id=self.id,
             ipv4_address=self.ipv4_address,
+            isolated_workers=self.isolated_workers,
             kube_configs=self.kube_configs,
             kubeconfig_expire_seconds=self.kubeconfig_expire_seconds,
             maintenance_policies=self.maintenance_policies,
@@ -462,6 +474,7 @@ def get_kubernetes_cluster(amd_gpu_device_metrics_exporter_plugin: Optional[Unio
         ha=pulumi.get(__ret__, 'ha'),
         id=pulumi.get(__ret__, 'id'),
         ipv4_address=pulumi.get(__ret__, 'ipv4_address'),
+        isolated_workers=pulumi.get(__ret__, 'isolated_workers'),
         kube_configs=pulumi.get(__ret__, 'kube_configs'),
         kubeconfig_expire_seconds=pulumi.get(__ret__, 'kubeconfig_expire_seconds'),
         maintenance_policies=pulumi.get(__ret__, 'maintenance_policies'),
@@ -545,6 +558,7 @@ def get_kubernetes_cluster_output(amd_gpu_device_metrics_exporter_plugin: pulumi
         ha=pulumi.get(__response__, 'ha'),
         id=pulumi.get(__response__, 'id'),
         ipv4_address=pulumi.get(__response__, 'ipv4_address'),
+        isolated_workers=pulumi.get(__response__, 'isolated_workers'),
         kube_configs=pulumi.get(__response__, 'kube_configs'),
         kubeconfig_expire_seconds=pulumi.get(__response__, 'kubeconfig_expire_seconds'),
         maintenance_policies=pulumi.get(__response__, 'maintenance_policies'),

@@ -265,6 +265,10 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public readonly string Ipv4Address;
         /// <summary>
+        /// A boolean value indicating whether the cluster has isolated worker nodes enabled.
+        /// </summary>
+        public readonly bool IsolatedWorkers;
+        /// <summary>
         /// A representation of the Kubernetes cluster's kubeconfig with the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetKubernetesClusterKubeConfigResult> KubeConfigs;
@@ -350,6 +354,8 @@ namespace Pulumi.DigitalOcean
 
             string ipv4Address,
 
+            bool isolatedWorkers,
+
             ImmutableArray<Outputs.GetKubernetesClusterKubeConfigResult> kubeConfigs,
 
             int? kubeconfigExpireSeconds,
@@ -405,6 +411,7 @@ namespace Pulumi.DigitalOcean
             Ha = ha;
             Id = id;
             Ipv4Address = ipv4Address;
+            IsolatedWorkers = isolatedWorkers;
             KubeConfigs = kubeConfigs;
             KubeconfigExpireSeconds = kubeconfigExpireSeconds;
             MaintenancePolicies = maintenancePolicies;

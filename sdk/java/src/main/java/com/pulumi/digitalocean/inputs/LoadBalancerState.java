@@ -411,6 +411,21 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The ID of the VPC subnet where the load balancer will be located. Must be a valid subnet in the specified VPC. Requires that `vpcUuid` is also set.
+     * 
+     */
+    @Import(name="subnetUuid")
+    private @Nullable Output<String> subnetUuid;
+
+    /**
+     * @return The ID of the VPC subnet where the load balancer will be located. Must be a valid subnet in the specified VPC. Requires that `vpcUuid` is also set.
+     * 
+     */
+    public Optional<Output<String>> subnetUuid() {
+        return Optional.ofNullable(this.subnetUuid);
+    }
+
+    /**
      * A list of Load Balancer IDs to be attached behind a Global Load Balancer.
      * 
      */
@@ -498,6 +513,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         this.sizeUnit = $.sizeUnit;
         this.status = $.status;
         this.stickySessions = $.stickySessions;
+        this.subnetUuid = $.subnetUuid;
         this.targetLoadBalancerIds = $.targetLoadBalancerIds;
         this.tlsCipherPolicy = $.tlsCipherPolicy;
         this.type = $.type;
@@ -1126,6 +1142,27 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder stickySessions(LoadBalancerStickySessionsArgs stickySessions) {
             return stickySessions(Output.of(stickySessions));
+        }
+
+        /**
+         * @param subnetUuid The ID of the VPC subnet where the load balancer will be located. Must be a valid subnet in the specified VPC. Requires that `vpcUuid` is also set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subnetUuid(@Nullable Output<String> subnetUuid) {
+            $.subnetUuid = subnetUuid;
+            return this;
+        }
+
+        /**
+         * @param subnetUuid The ID of the VPC subnet where the load balancer will be located. Must be a valid subnet in the specified VPC. Requires that `vpcUuid` is also set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subnetUuid(String subnetUuid) {
+            return subnetUuid(Output.of(subnetUuid));
         }
 
         /**

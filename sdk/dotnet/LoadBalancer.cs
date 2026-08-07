@@ -229,6 +229,12 @@ namespace Pulumi.DigitalOcean
         public Output<Outputs.LoadBalancerStickySessions> StickySessions { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of the VPC subnet where the load balancer will be located. Must be a valid subnet in the specified VPC. Requires that `VpcUuid` is also set.
+        /// </summary>
+        [Output("subnetUuid")]
+        public Output<string> SubnetUuid { get; private set; } = null!;
+
+        /// <summary>
         /// A list of Load Balancer IDs to be attached behind a Global Load Balancer.
         /// </summary>
         [Output("targetLoadBalancerIds")]
@@ -394,6 +400,12 @@ namespace Pulumi.DigitalOcean
         public Input<int>? HttpIdleTimeoutSeconds { get; set; }
 
         /// <summary>
+        /// The ip of the Load Balancer
+        /// </summary>
+        [Input("ip")]
+        public Input<string>? Ip { get; set; }
+
+        /// <summary>
         /// The Load Balancer name
         /// </summary>
         [Input("name")]
@@ -449,6 +461,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("stickySessions")]
         public Input<Inputs.LoadBalancerStickySessionsArgs>? StickySessions { get; set; }
+
+        /// <summary>
+        /// The ID of the VPC subnet where the load balancer will be located. Must be a valid subnet in the specified VPC. Requires that `VpcUuid` is also set.
+        /// </summary>
+        [Input("subnetUuid")]
+        public Input<string>? SubnetUuid { get; set; }
 
         [Input("targetLoadBalancerIds")]
         private InputList<string>? _targetLoadBalancerIds;
@@ -657,6 +675,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("stickySessions")]
         public Input<Inputs.LoadBalancerStickySessionsGetArgs>? StickySessions { get; set; }
+
+        /// <summary>
+        /// The ID of the VPC subnet where the load balancer will be located. Must be a valid subnet in the specified VPC. Requires that `VpcUuid` is also set.
+        /// </summary>
+        [Input("subnetUuid")]
+        public Input<string>? SubnetUuid { get; set; }
 
         [Input("targetLoadBalancerIds")]
         private InputList<string>? _targetLoadBalancerIds;

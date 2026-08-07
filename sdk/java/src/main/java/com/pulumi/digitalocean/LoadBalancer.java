@@ -455,6 +455,20 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
         return this.stickySessions;
     }
     /**
+     * The ID of the VPC subnet where the load balancer will be located. Must be a valid subnet in the specified VPC. Requires that `vpcUuid` is also set.
+     * 
+     */
+    @Export(name="subnetUuid", refs={String.class}, tree="[0]")
+    private Output<String> subnetUuid;
+
+    /**
+     * @return The ID of the VPC subnet where the load balancer will be located. Must be a valid subnet in the specified VPC. Requires that `vpcUuid` is also set.
+     * 
+     */
+    public Output<String> subnetUuid() {
+        return this.subnetUuid;
+    }
+    /**
      * A list of Load Balancer IDs to be attached behind a Global Load Balancer.
      * 
      */

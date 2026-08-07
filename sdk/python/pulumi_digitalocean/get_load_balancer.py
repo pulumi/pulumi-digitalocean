@@ -27,7 +27,7 @@ class GetLoadBalancerResult:
     """
     A collection of values returned by getLoadBalancer.
     """
-    def __init__(__self__, algorithm=None, disable_lets_encrypt_dns_records=None, domains=None, droplet_ids=None, droplet_tag=None, enable_backend_keepalive=None, enable_proxy_protocol=None, firewalls=None, forwarding_rules=None, glb_settings=None, healthchecks=None, http_idle_timeout_seconds=None, id=None, ip=None, ipv6=None, load_balancer_urn=None, name=None, network=None, project_id=None, redirect_http_to_https=None, region=None, size=None, size_unit=None, status=None, sticky_sessions=None, target_load_balancer_ids=None, type=None, vpc_uuid=None):
+    def __init__(__self__, algorithm=None, disable_lets_encrypt_dns_records=None, domains=None, droplet_ids=None, droplet_tag=None, enable_backend_keepalive=None, enable_proxy_protocol=None, firewalls=None, forwarding_rules=None, glb_settings=None, healthchecks=None, http_idle_timeout_seconds=None, id=None, ip=None, ipv6=None, load_balancer_urn=None, name=None, network=None, project_id=None, redirect_http_to_https=None, region=None, size=None, size_unit=None, status=None, sticky_sessions=None, subnet_uuid=None, target_load_balancer_ids=None, type=None, vpc_uuid=None):
         if algorithm and not isinstance(algorithm, str):
             raise TypeError("Expected argument 'algorithm' to be a str")
         pulumi.set(__self__, "algorithm", algorithm)
@@ -103,6 +103,9 @@ class GetLoadBalancerResult:
         if sticky_sessions and not isinstance(sticky_sessions, list):
             raise TypeError("Expected argument 'sticky_sessions' to be a list")
         pulumi.set(__self__, "sticky_sessions", sticky_sessions)
+        if subnet_uuid and not isinstance(subnet_uuid, str):
+            raise TypeError("Expected argument 'subnet_uuid' to be a str")
+        pulumi.set(__self__, "subnet_uuid", subnet_uuid)
         if target_load_balancer_ids and not isinstance(target_load_balancer_ids, list):
             raise TypeError("Expected argument 'target_load_balancer_ids' to be a list")
         pulumi.set(__self__, "target_load_balancer_ids", target_load_balancer_ids)
@@ -240,6 +243,11 @@ class GetLoadBalancerResult:
         return pulumi.get(self, "sticky_sessions")
 
     @_builtins.property
+    @pulumi.getter(name="subnetUuid")
+    def subnet_uuid(self) -> _builtins.str:
+        return pulumi.get(self, "subnet_uuid")
+
+    @_builtins.property
     @pulumi.getter(name="targetLoadBalancerIds")
     def target_load_balancer_ids(self) -> Sequence[_builtins.str]:
         return pulumi.get(self, "target_load_balancer_ids")
@@ -286,6 +294,7 @@ class AwaitableGetLoadBalancerResult(GetLoadBalancerResult):
             size_unit=self.size_unit,
             status=self.status,
             sticky_sessions=self.sticky_sessions,
+            subnet_uuid=self.subnet_uuid,
             target_load_balancer_ids=self.target_load_balancer_ids,
             type=self.type,
             vpc_uuid=self.vpc_uuid)
@@ -359,6 +368,7 @@ def get_load_balancer(id: Optional[_builtins.str] = None,
         size_unit=pulumi.get(__ret__, 'size_unit'),
         status=pulumi.get(__ret__, 'status'),
         sticky_sessions=pulumi.get(__ret__, 'sticky_sessions'),
+        subnet_uuid=pulumi.get(__ret__, 'subnet_uuid'),
         target_load_balancer_ids=pulumi.get(__ret__, 'target_load_balancer_ids'),
         type=pulumi.get(__ret__, 'type'),
         vpc_uuid=pulumi.get(__ret__, 'vpc_uuid'))
@@ -429,6 +439,7 @@ def get_load_balancer_output(id: pulumi.Input[Optional[Optional[_builtins.str]]]
         size_unit=pulumi.get(__response__, 'size_unit'),
         status=pulumi.get(__response__, 'status'),
         sticky_sessions=pulumi.get(__response__, 'sticky_sessions'),
+        subnet_uuid=pulumi.get(__response__, 'subnet_uuid'),
         target_load_balancer_ids=pulumi.get(__response__, 'target_load_balancer_ids'),
         type=pulumi.get(__response__, 'type'),
         vpc_uuid=pulumi.get(__response__, 'vpc_uuid')))

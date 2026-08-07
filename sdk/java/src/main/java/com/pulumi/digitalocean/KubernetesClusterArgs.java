@@ -186,6 +186,21 @@ public final class KubernetesClusterArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Enable/disable isolated worker nodes for the cluster. When enabled, each worker node runs on dedicated hardware. This can only be set at creation time. The cluster&#39;s VPC must have a NAT gateway attached. Default: false
+     * 
+     */
+    @Import(name="isolatedWorkers")
+    private @Nullable Output<Boolean> isolatedWorkers;
+
+    /**
+     * @return Enable/disable isolated worker nodes for the cluster. When enabled, each worker node runs on dedicated hardware. This can only be set at creation time. The cluster&#39;s VPC must have a NAT gateway attached. Default: false
+     * 
+     */
+    public Optional<Output<Boolean>> isolatedWorkers() {
+        return Optional.ofNullable(this.isolatedWorkers);
+    }
+
+    /**
      * The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
      * 
      */
@@ -468,6 +483,7 @@ public final class KubernetesClusterArgs extends com.pulumi.resources.ResourceAr
         this.corednsAutoscaler = $.corednsAutoscaler;
         this.destroyAllAssociatedResources = $.destroyAllAssociatedResources;
         this.ha = $.ha;
+        this.isolatedWorkers = $.isolatedWorkers;
         this.kubeconfigExpireSeconds = $.kubeconfigExpireSeconds;
         this.maintenancePolicy = $.maintenancePolicy;
         this.name = $.name;
@@ -724,6 +740,27 @@ public final class KubernetesClusterArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder ha(Boolean ha) {
             return ha(Output.of(ha));
+        }
+
+        /**
+         * @param isolatedWorkers Enable/disable isolated worker nodes for the cluster. When enabled, each worker node runs on dedicated hardware. This can only be set at creation time. The cluster&#39;s VPC must have a NAT gateway attached. Default: false
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isolatedWorkers(@Nullable Output<Boolean> isolatedWorkers) {
+            $.isolatedWorkers = isolatedWorkers;
+            return this;
+        }
+
+        /**
+         * @param isolatedWorkers Enable/disable isolated worker nodes for the cluster. When enabled, each worker node runs on dedicated hardware. This can only be set at creation time. The cluster&#39;s VPC must have a NAT gateway attached. Default: false
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isolatedWorkers(Boolean isolatedWorkers) {
+            return isolatedWorkers(Output.of(isolatedWorkers));
         }
 
         /**

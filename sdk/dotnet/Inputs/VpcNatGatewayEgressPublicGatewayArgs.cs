@@ -13,7 +13,7 @@ namespace Pulumi.DigitalOcean.Inputs
     public sealed class VpcNatGatewayEgressPublicGatewayArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// IPv4 address
+        /// IPv4 address. On create, set this to an unassigned BYOIP on the account in the same region. When omitted, a system-allocated reserved IP is provisioned.
         /// </summary>
         [Input("ipv4")]
         public Input<string>? Ipv4 { get; set; }

@@ -241,6 +241,7 @@ namespace Pulumi.DigitalOcean
         public readonly int SizeUnit;
         public readonly string Status;
         public readonly ImmutableArray<Outputs.GetLoadBalancerStickySessionResult> StickySessions;
+        public readonly string SubnetUuid;
         public readonly ImmutableArray<string> TargetLoadBalancerIds;
         public readonly string Type;
         public readonly string VpcUuid;
@@ -297,6 +298,8 @@ namespace Pulumi.DigitalOcean
 
             ImmutableArray<Outputs.GetLoadBalancerStickySessionResult> stickySessions,
 
+            string subnetUuid,
+
             ImmutableArray<string> targetLoadBalancerIds,
 
             string type,
@@ -328,6 +331,7 @@ namespace Pulumi.DigitalOcean
             SizeUnit = sizeUnit;
             Status = status;
             StickySessions = stickySessions;
+            SubnetUuid = subnetUuid;
             TargetLoadBalancerIds = targetLoadBalancerIds;
             Type = type;
             VpcUuid = vpcUuid;

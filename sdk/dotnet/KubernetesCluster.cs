@@ -125,6 +125,38 @@ namespace Pulumi.DigitalOcean
     /// 
     /// Note that a data source is used to supply the version. This is needed to prevent configuration diff whenever a cluster is upgraded.
     /// 
+    /// ### Isolated Workers Example
+    /// 
+    /// Kubernetes clusters may also be configured to use [isolated worker nodes](https://docs.digitalocean.com/products/kubernetes/concepts/isolated-workers/).
+    /// When enabled, each worker node runs on dedicated hardware. The cluster's VPC must have a NAT gateway attached.
+    /// For example:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foo = new DigitalOcean.KubernetesCluster("foo", new()
+    ///     {
+    ///         Name = "foo",
+    ///         Region = DigitalOcean.Region.NYC1,
+    ///         Version = "latest",
+    ///         IsolatedWorkers = true,
+    ///         VpcUuid = example.Id,
+    ///         NodePool = new DigitalOcean.Inputs.KubernetesClusterNodePoolArgs
+    ///         {
+    ///             Name = "worker-pool",
+    ///             Size = "s-2vcpu-2gb",
+    ///             NodeCount = 3,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ### Kubernetes Terraform Provider Example
     /// 
     /// The cluster's kubeconfig is exported as an attribute allowing you to use it with
@@ -281,6 +313,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Output("ipv4Address")]
         public Output<string> Ipv4Address { get; private set; } = null!;
+
+        /// <summary>
+        /// Enable/disable isolated worker nodes for the cluster. When enabled, each worker node runs on dedicated hardware. This can only be set at creation time. The cluster's VPC must have a NAT gateway attached. Default: false
+        /// </summary>
+        [Output("isolatedWorkers")]
+        public Output<bool?> IsolatedWorkers { get; private set; } = null!;
 
         /// <summary>
         /// A representation of the Kubernetes cluster's kubeconfig with the following attributes:
@@ -525,6 +563,12 @@ namespace Pulumi.DigitalOcean
         public Input<bool>? Ha { get; set; }
 
         /// <summary>
+        /// Enable/disable isolated worker nodes for the cluster. When enabled, each worker node runs on dedicated hardware. This can only be set at creation time. The cluster's VPC must have a NAT gateway attached. Default: false
+        /// </summary>
+        [Input("isolatedWorkers")]
+        public Input<bool>? IsolatedWorkers { get; set; }
+
+        /// <summary>
         /// The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
         /// </summary>
         [Input("kubeconfigExpireSeconds")]
@@ -741,6 +785,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("ipv4Address")]
         public Input<string>? Ipv4Address { get; set; }
+
+        /// <summary>
+        /// Enable/disable isolated worker nodes for the cluster. When enabled, each worker node runs on dedicated hardware. This can only be set at creation time. The cluster's VPC must have a NAT gateway attached. Default: false
+        /// </summary>
+        [Input("isolatedWorkers")]
+        public Input<bool>? IsolatedWorkers { get; set; }
 
         [Input("kubeConfigs")]
         private InputList<Inputs.KubernetesClusterKubeConfigGetArgs>? _kubeConfigs;

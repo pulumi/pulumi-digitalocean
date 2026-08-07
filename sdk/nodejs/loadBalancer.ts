@@ -140,7 +140,7 @@ export class LoadBalancer extends pulumi.CustomResource {
     /**
      * The ip of the Load Balancer
      */
-    declare public /*out*/ readonly ip: pulumi.Output<string>;
+    declare public readonly ip: pulumi.Output<string>;
     declare public /*out*/ readonly ipv6: pulumi.Output<string>;
     /**
      * The uniform resource name for the Load Balancer
@@ -186,6 +186,10 @@ export class LoadBalancer extends pulumi.CustomResource {
      * Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
      */
     declare public readonly stickySessions: pulumi.Output<outputs.LoadBalancerStickySessions>;
+    /**
+     * The ID of the VPC subnet where the load balancer will be located. Must be a valid subnet in the specified VPC. Requires that `vpcUuid` is also set.
+     */
+    declare public readonly subnetUuid: pulumi.Output<string>;
     /**
      * A list of Load Balancer IDs to be attached behind a Global Load Balancer.
      */
@@ -241,6 +245,7 @@ export class LoadBalancer extends pulumi.CustomResource {
             resourceInputs["sizeUnit"] = state?.sizeUnit;
             resourceInputs["status"] = state?.status;
             resourceInputs["stickySessions"] = state?.stickySessions;
+            resourceInputs["subnetUuid"] = state?.subnetUuid;
             resourceInputs["targetLoadBalancerIds"] = state?.targetLoadBalancerIds;
             resourceInputs["tlsCipherPolicy"] = state?.tlsCipherPolicy;
             resourceInputs["type"] = state?.type;
@@ -259,6 +264,7 @@ export class LoadBalancer extends pulumi.CustomResource {
             resourceInputs["glbSettings"] = args?.glbSettings;
             resourceInputs["healthcheck"] = args?.healthcheck;
             resourceInputs["httpIdleTimeoutSeconds"] = args?.httpIdleTimeoutSeconds;
+            resourceInputs["ip"] = args?.ip;
             resourceInputs["name"] = args?.name;
             resourceInputs["network"] = args?.network;
             resourceInputs["networkStack"] = args?.networkStack;
@@ -268,11 +274,11 @@ export class LoadBalancer extends pulumi.CustomResource {
             resourceInputs["size"] = args?.size;
             resourceInputs["sizeUnit"] = args?.sizeUnit;
             resourceInputs["stickySessions"] = args?.stickySessions;
+            resourceInputs["subnetUuid"] = args?.subnetUuid;
             resourceInputs["targetLoadBalancerIds"] = args?.targetLoadBalancerIds;
             resourceInputs["tlsCipherPolicy"] = args?.tlsCipherPolicy;
             resourceInputs["type"] = args?.type;
             resourceInputs["vpcUuid"] = args?.vpcUuid;
-            resourceInputs["ip"] = undefined /*out*/;
             resourceInputs["ipv6"] = undefined /*out*/;
             resourceInputs["loadBalancerUrn"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
@@ -391,6 +397,10 @@ export interface LoadBalancerState {
      */
     stickySessions?: pulumi.Input<inputs.LoadBalancerStickySessions | undefined>;
     /**
+     * The ID of the VPC subnet where the load balancer will be located. Must be a valid subnet in the specified VPC. Requires that `vpcUuid` is also set.
+     */
+    subnetUuid?: pulumi.Input<string | undefined>;
+    /**
      * A list of Load Balancer IDs to be attached behind a Global Load Balancer.
      */
     targetLoadBalancerIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
@@ -468,6 +478,10 @@ export interface LoadBalancerArgs {
      */
     httpIdleTimeoutSeconds?: pulumi.Input<number | undefined>;
     /**
+     * The ip of the Load Balancer
+     */
+    ip?: pulumi.Input<string | undefined>;
+    /**
      * The Load Balancer name
      */
     name?: pulumi.Input<string | undefined>;
@@ -506,6 +520,10 @@ export interface LoadBalancerArgs {
      * Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
      */
     stickySessions?: pulumi.Input<inputs.LoadBalancerStickySessions | undefined>;
+    /**
+     * The ID of the VPC subnet where the load balancer will be located. Must be a valid subnet in the specified VPC. Requires that `vpcUuid` is also set.
+     */
+    subnetUuid?: pulumi.Input<string | undefined>;
     /**
      * A list of Load Balancer IDs to be attached behind a Global Load Balancer.
      */

@@ -5,6 +5,7 @@ package com.pulumi.digitalocean;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.digitalocean.inputs.VpcNatGatewayEgressArgs;
 import com.pulumi.digitalocean.inputs.VpcNatGatewayVpcArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
@@ -18,6 +19,23 @@ import javax.annotation.Nullable;
 public final class VpcNatGatewayArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final VpcNatGatewayArgs Empty = new VpcNatGatewayArgs();
+
+    /**
+     * Embeds the list of public egresses assigned to the VPC NAT Gateway: resolves as list of
+     * `publicGateways` embedding the reserved `ipv4` addresses.
+     * 
+     */
+    @Import(name="egresses")
+    private @Nullable Output<List<VpcNatGatewayEgressArgs>> egresses;
+
+    /**
+     * @return Embeds the list of public egresses assigned to the VPC NAT Gateway: resolves as list of
+     * `publicGateways` embedding the reserved `ipv4` addresses.
+     * 
+     */
+    public Optional<Output<List<VpcNatGatewayEgressArgs>>> egresses() {
+        return Optional.ofNullable(this.egresses);
+    }
 
     /**
      * The egress timeout value for ICMP connections of the VPC NAT Gateway.
@@ -159,6 +177,7 @@ public final class VpcNatGatewayArgs extends com.pulumi.resources.ResourceArgs {
     private VpcNatGatewayArgs() {}
 
     private VpcNatGatewayArgs(VpcNatGatewayArgs $) {
+        this.egresses = $.egresses;
         this.icmpTimeoutSeconds = $.icmpTimeoutSeconds;
         this.name = $.name;
         this.projectId = $.projectId;
@@ -186,6 +205,40 @@ public final class VpcNatGatewayArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(VpcNatGatewayArgs defaults) {
             $ = new VpcNatGatewayArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param egresses Embeds the list of public egresses assigned to the VPC NAT Gateway: resolves as list of
+         * `publicGateways` embedding the reserved `ipv4` addresses.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder egresses(@Nullable Output<List<VpcNatGatewayEgressArgs>> egresses) {
+            $.egresses = egresses;
+            return this;
+        }
+
+        /**
+         * @param egresses Embeds the list of public egresses assigned to the VPC NAT Gateway: resolves as list of
+         * `publicGateways` embedding the reserved `ipv4` addresses.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder egresses(List<VpcNatGatewayEgressArgs> egresses) {
+            return egresses(Output.of(egresses));
+        }
+
+        /**
+         * @param egresses Embeds the list of public egresses assigned to the VPC NAT Gateway: resolves as list of
+         * `publicGateways` embedding the reserved `ipv4` addresses.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder egresses(VpcNatGatewayEgressArgs... egresses) {
+            return egresses(List.of(egresses));
         }
 
         /**
