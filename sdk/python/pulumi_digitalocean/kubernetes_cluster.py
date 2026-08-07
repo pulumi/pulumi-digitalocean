@@ -35,6 +35,7 @@ class KubernetesClusterArgs:
                  coredns_autoscaler: pulumi.Input[Optional['KubernetesClusterCorednsAutoscalerArgs']] = None,
                  destroy_all_associated_resources: pulumi.Input[Optional[_builtins.bool]] = None,
                  ha: pulumi.Input[Optional[_builtins.bool]] = None,
+                 isolated_workers: pulumi.Input[Optional[_builtins.bool]] = None,
                  kubeconfig_expire_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  maintenance_policy: pulumi.Input[Optional['KubernetesClusterMaintenancePolicyArgs']] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -66,6 +67,7 @@ class KubernetesClusterArgs:
         :param pulumi.Input['KubernetesClusterCorednsAutoscalerArgs'] coredns_autoscaler: Block containing options for the CoreDNS Autoscaler component, which scales CoreDNS replicas in proportion to the cluster's size. Default: true (for 1.36.0 and later)
         :param pulumi.Input[_builtins.bool] destroy_all_associated_resources: **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
         :param pulumi.Input[_builtins.bool] ha: Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: true (for 1.36.0 and later)
+        :param pulumi.Input[_builtins.bool] isolated_workers: Enable/disable isolated worker nodes for the cluster. When enabled, each worker node runs on dedicated hardware. This can only be set at creation time. The cluster's VPC must have a NAT gateway attached. Default: false
         :param pulumi.Input[_builtins.int] kubeconfig_expire_seconds: The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
         :param pulumi.Input['KubernetesClusterMaintenancePolicyArgs'] maintenance_policy: A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.
         :param pulumi.Input[_builtins.str] name: A name for the Kubernetes cluster.
@@ -105,6 +107,8 @@ class KubernetesClusterArgs:
             pulumi.set(__self__, "destroy_all_associated_resources", destroy_all_associated_resources)
         if ha is not None:
             pulumi.set(__self__, "ha", ha)
+        if isolated_workers is not None:
+            pulumi.set(__self__, "isolated_workers", isolated_workers)
         if kubeconfig_expire_seconds is not None:
             pulumi.set(__self__, "kubeconfig_expire_seconds", kubeconfig_expire_seconds)
         if maintenance_policy is not None:
@@ -291,6 +295,18 @@ class KubernetesClusterArgs:
     @ha.setter
     def ha(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ha", value)
+
+    @_builtins.property
+    @pulumi.getter(name="isolatedWorkers")
+    def isolated_workers(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Enable/disable isolated worker nodes for the cluster. When enabled, each worker node runs on dedicated hardware. This can only be set at creation time. The cluster's VPC must have a NAT gateway attached. Default: false
+        """
+        return pulumi.get(self, "isolated_workers")
+
+    @isolated_workers.setter
+    def isolated_workers(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "isolated_workers", value)
 
     @_builtins.property
     @pulumi.getter(name="kubeconfigExpireSeconds")
@@ -490,6 +506,7 @@ class _KubernetesClusterState:
                  endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  ha: pulumi.Input[Optional[_builtins.bool]] = None,
                  ipv4_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 isolated_workers: pulumi.Input[Optional[_builtins.bool]] = None,
                  kube_configs: pulumi.Input[Optional[Sequence[pulumi.Input['KubernetesClusterKubeConfigArgs']]]] = None,
                  kubeconfig_expire_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  maintenance_policy: pulumi.Input[Optional['KubernetesClusterMaintenancePolicyArgs']] = None,
@@ -528,6 +545,7 @@ class _KubernetesClusterState:
         :param pulumi.Input[_builtins.str] endpoint: The base URL of the API server on the Kubernetes master node.
         :param pulumi.Input[_builtins.bool] ha: Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: true (for 1.36.0 and later)
         :param pulumi.Input[_builtins.str] ipv4_address: The public IPv4 address of the Kubernetes master node. This will not be set if high availability is configured on the cluster (v1.21+)
+        :param pulumi.Input[_builtins.bool] isolated_workers: Enable/disable isolated worker nodes for the cluster. When enabled, each worker node runs on dedicated hardware. This can only be set at creation time. The cluster's VPC must have a NAT gateway attached. Default: false
         :param pulumi.Input[Sequence[pulumi.Input['KubernetesClusterKubeConfigArgs']]] kube_configs: A representation of the Kubernetes cluster's kubeconfig with the following attributes:
         :param pulumi.Input[_builtins.int] kubeconfig_expire_seconds: The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
         :param pulumi.Input['KubernetesClusterMaintenancePolicyArgs'] maintenance_policy: A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.
@@ -578,6 +596,8 @@ class _KubernetesClusterState:
             pulumi.set(__self__, "ha", ha)
         if ipv4_address is not None:
             pulumi.set(__self__, "ipv4_address", ipv4_address)
+        if isolated_workers is not None:
+            pulumi.set(__self__, "isolated_workers", isolated_workers)
         if kube_configs is not None:
             pulumi.set(__self__, "kube_configs", kube_configs)
         if kubeconfig_expire_seconds is not None:
@@ -788,6 +808,18 @@ class _KubernetesClusterState:
     @ipv4_address.setter
     def ipv4_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipv4_address", value)
+
+    @_builtins.property
+    @pulumi.getter(name="isolatedWorkers")
+    def isolated_workers(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Enable/disable isolated worker nodes for the cluster. When enabled, each worker node runs on dedicated hardware. This can only be set at creation time. The cluster's VPC must have a NAT gateway attached. Default: false
+        """
+        return pulumi.get(self, "isolated_workers")
+
+    @isolated_workers.setter
+    def isolated_workers(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "isolated_workers", value)
 
     @_builtins.property
     @pulumi.getter(name="kubeConfigs")
@@ -1058,6 +1090,7 @@ class KubernetesCluster(pulumi.CustomResource):
                  coredns_autoscaler: pulumi.Input[Optional[Union['KubernetesClusterCorednsAutoscalerArgs', 'KubernetesClusterCorednsAutoscalerArgsDict']]] = None,
                  destroy_all_associated_resources: pulumi.Input[Optional[_builtins.bool]] = None,
                  ha: pulumi.Input[Optional[_builtins.bool]] = None,
+                 isolated_workers: pulumi.Input[Optional[_builtins.bool]] = None,
                  kubeconfig_expire_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  maintenance_policy: pulumi.Input[Optional[Union['KubernetesClusterMaintenancePolicyArgs', 'KubernetesClusterMaintenancePolicyArgsDict']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1157,6 +1190,29 @@ class KubernetesCluster(pulumi.CustomResource):
 
         Note that a data source is used to supply the version. This is needed to prevent configuration diff whenever a cluster is upgraded.
 
+        ### Isolated Workers Example
+
+        Kubernetes clusters may also be configured to use [isolated worker nodes](https://docs.digitalocean.com/products/kubernetes/concepts/isolated-workers/).
+        When enabled, each worker node runs on dedicated hardware. The cluster's VPC must have a NAT gateway attached.
+        For example:
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        foo = digitalocean.KubernetesCluster("foo",
+            name="foo",
+            region=digitalocean.Region.NYC1,
+            version="latest",
+            isolated_workers=True,
+            vpc_uuid=example["id"],
+            node_pool={
+                "name": "worker-pool",
+                "size": "s-2vcpu-2gb",
+                "node_count": 3,
+            })
+        ```
+
         ### Kubernetes Terraform Provider Example
 
         The cluster's kubeconfig is exported as an attribute allowing you to use it with
@@ -1225,6 +1281,7 @@ class KubernetesCluster(pulumi.CustomResource):
         :param pulumi.Input[Union['KubernetesClusterCorednsAutoscalerArgs', 'KubernetesClusterCorednsAutoscalerArgsDict']] coredns_autoscaler: Block containing options for the CoreDNS Autoscaler component, which scales CoreDNS replicas in proportion to the cluster's size. Default: true (for 1.36.0 and later)
         :param pulumi.Input[_builtins.bool] destroy_all_associated_resources: **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
         :param pulumi.Input[_builtins.bool] ha: Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: true (for 1.36.0 and later)
+        :param pulumi.Input[_builtins.bool] isolated_workers: Enable/disable isolated worker nodes for the cluster. When enabled, each worker node runs on dedicated hardware. This can only be set at creation time. The cluster's VPC must have a NAT gateway attached. Default: false
         :param pulumi.Input[_builtins.int] kubeconfig_expire_seconds: The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
         :param pulumi.Input[Union['KubernetesClusterMaintenancePolicyArgs', 'KubernetesClusterMaintenancePolicyArgsDict']] maintenance_policy: A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.
         :param pulumi.Input[_builtins.str] name: A name for the Kubernetes cluster.
@@ -1330,6 +1387,29 @@ class KubernetesCluster(pulumi.CustomResource):
 
         Note that a data source is used to supply the version. This is needed to prevent configuration diff whenever a cluster is upgraded.
 
+        ### Isolated Workers Example
+
+        Kubernetes clusters may also be configured to use [isolated worker nodes](https://docs.digitalocean.com/products/kubernetes/concepts/isolated-workers/).
+        When enabled, each worker node runs on dedicated hardware. The cluster's VPC must have a NAT gateway attached.
+        For example:
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        foo = digitalocean.KubernetesCluster("foo",
+            name="foo",
+            region=digitalocean.Region.NYC1,
+            version="latest",
+            isolated_workers=True,
+            vpc_uuid=example["id"],
+            node_pool={
+                "name": "worker-pool",
+                "size": "s-2vcpu-2gb",
+                "node_count": 3,
+            })
+        ```
+
         ### Kubernetes Terraform Provider Example
 
         The cluster's kubeconfig is exported as an attribute allowing you to use it with
@@ -1411,6 +1491,7 @@ class KubernetesCluster(pulumi.CustomResource):
                  coredns_autoscaler: pulumi.Input[Optional[Union['KubernetesClusterCorednsAutoscalerArgs', 'KubernetesClusterCorednsAutoscalerArgsDict']]] = None,
                  destroy_all_associated_resources: pulumi.Input[Optional[_builtins.bool]] = None,
                  ha: pulumi.Input[Optional[_builtins.bool]] = None,
+                 isolated_workers: pulumi.Input[Optional[_builtins.bool]] = None,
                  kubeconfig_expire_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  maintenance_policy: pulumi.Input[Optional[Union['KubernetesClusterMaintenancePolicyArgs', 'KubernetesClusterMaintenancePolicyArgsDict']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1448,6 +1529,7 @@ class KubernetesCluster(pulumi.CustomResource):
             __props__.__dict__["coredns_autoscaler"] = coredns_autoscaler
             __props__.__dict__["destroy_all_associated_resources"] = destroy_all_associated_resources
             __props__.__dict__["ha"] = ha
+            __props__.__dict__["isolated_workers"] = isolated_workers
             __props__.__dict__["kubeconfig_expire_seconds"] = kubeconfig_expire_seconds
             __props__.__dict__["maintenance_policy"] = maintenance_policy
             __props__.__dict__["name"] = name
@@ -1505,6 +1587,7 @@ class KubernetesCluster(pulumi.CustomResource):
             endpoint: pulumi.Input[Optional[_builtins.str]] = None,
             ha: pulumi.Input[Optional[_builtins.bool]] = None,
             ipv4_address: pulumi.Input[Optional[_builtins.str]] = None,
+            isolated_workers: pulumi.Input[Optional[_builtins.bool]] = None,
             kube_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KubernetesClusterKubeConfigArgs', 'KubernetesClusterKubeConfigArgsDict']]]]] = None,
             kubeconfig_expire_seconds: pulumi.Input[Optional[_builtins.int]] = None,
             maintenance_policy: pulumi.Input[Optional[Union['KubernetesClusterMaintenancePolicyArgs', 'KubernetesClusterMaintenancePolicyArgsDict']]] = None,
@@ -1547,6 +1630,7 @@ class KubernetesCluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] endpoint: The base URL of the API server on the Kubernetes master node.
         :param pulumi.Input[_builtins.bool] ha: Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: true (for 1.36.0 and later)
         :param pulumi.Input[_builtins.str] ipv4_address: The public IPv4 address of the Kubernetes master node. This will not be set if high availability is configured on the cluster (v1.21+)
+        :param pulumi.Input[_builtins.bool] isolated_workers: Enable/disable isolated worker nodes for the cluster. When enabled, each worker node runs on dedicated hardware. This can only be set at creation time. The cluster's VPC must have a NAT gateway attached. Default: false
         :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesClusterKubeConfigArgs', 'KubernetesClusterKubeConfigArgsDict']]]] kube_configs: A representation of the Kubernetes cluster's kubeconfig with the following attributes:
         :param pulumi.Input[_builtins.int] kubeconfig_expire_seconds: The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
         :param pulumi.Input[Union['KubernetesClusterMaintenancePolicyArgs', 'KubernetesClusterMaintenancePolicyArgsDict']] maintenance_policy: A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.
@@ -1587,6 +1671,7 @@ class KubernetesCluster(pulumi.CustomResource):
         __props__.__dict__["endpoint"] = endpoint
         __props__.__dict__["ha"] = ha
         __props__.__dict__["ipv4_address"] = ipv4_address
+        __props__.__dict__["isolated_workers"] = isolated_workers
         __props__.__dict__["kube_configs"] = kube_configs
         __props__.__dict__["kubeconfig_expire_seconds"] = kubeconfig_expire_seconds
         __props__.__dict__["maintenance_policy"] = maintenance_policy
@@ -1721,6 +1806,14 @@ class KubernetesCluster(pulumi.CustomResource):
         The public IPv4 address of the Kubernetes master node. This will not be set if high availability is configured on the cluster (v1.21+)
         """
         return pulumi.get(self, "ipv4_address")
+
+    @_builtins.property
+    @pulumi.getter(name="isolatedWorkers")
+    def isolated_workers(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Enable/disable isolated worker nodes for the cluster. When enabled, each worker node runs on dedicated hardware. This can only be set at creation time. The cluster's VPC must have a NAT gateway attached. Default: false
+        """
+        return pulumi.get(self, "isolated_workers")
 
     @_builtins.property
     @pulumi.getter(name="kubeConfigs")

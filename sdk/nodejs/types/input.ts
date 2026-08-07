@@ -10118,14 +10118,14 @@ export interface VectorDatabaseEndpoint {
 
 export interface VpcNatGatewayEgress {
     /**
-     * List of public gateway IPs
+     * Set of public gateway IPs
      */
     publicGateways?: pulumi.Input<pulumi.Input<inputs.VpcNatGatewayEgressPublicGateway>[] | undefined>;
 }
 
 export interface VpcNatGatewayEgressPublicGateway {
     /**
-     * IPv4 address
+     * IPv4 address. On create, set this to an unassigned BYOIP on the account in the same region. When omitted, a system-allocated reserved IP is provisioned.
      */
     ipv4?: pulumi.Input<string | undefined>;
 }

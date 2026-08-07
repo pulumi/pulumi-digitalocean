@@ -141,6 +141,8 @@ type LoadBalancer struct {
 	// A `stickySessions` block to be assigned to the
 	// Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
 	StickySessions LoadBalancerStickySessionsOutput `pulumi:"stickySessions"`
+	// The ID of the VPC subnet where the load balancer will be located. Must be a valid subnet in the specified VPC. Requires that `vpcUuid` is also set.
+	SubnetUuid pulumi.StringOutput `pulumi:"subnetUuid"`
 	// A list of Load Balancer IDs to be attached behind a Global Load Balancer.
 	TargetLoadBalancerIds pulumi.StringArrayOutput `pulumi:"targetLoadBalancerIds"`
 	// The tls cipher policy controls the cipher suites to be used by the load balancer. It must be either of `DEFAULT` or `STRONG`. Defaults to `DEFAULT`.
@@ -239,6 +241,8 @@ type loadBalancerState struct {
 	// A `stickySessions` block to be assigned to the
 	// Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
 	StickySessions *LoadBalancerStickySessions `pulumi:"stickySessions"`
+	// The ID of the VPC subnet where the load balancer will be located. Must be a valid subnet in the specified VPC. Requires that `vpcUuid` is also set.
+	SubnetUuid *string `pulumi:"subnetUuid"`
 	// A list of Load Balancer IDs to be attached behind a Global Load Balancer.
 	TargetLoadBalancerIds []string `pulumi:"targetLoadBalancerIds"`
 	// The tls cipher policy controls the cipher suites to be used by the load balancer. It must be either of `DEFAULT` or `STRONG`. Defaults to `DEFAULT`.
@@ -308,6 +312,8 @@ type LoadBalancerState struct {
 	// A `stickySessions` block to be assigned to the
 	// Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
 	StickySessions LoadBalancerStickySessionsPtrInput
+	// The ID of the VPC subnet where the load balancer will be located. Must be a valid subnet in the specified VPC. Requires that `vpcUuid` is also set.
+	SubnetUuid pulumi.StringPtrInput
 	// A list of Load Balancer IDs to be attached behind a Global Load Balancer.
 	TargetLoadBalancerIds pulumi.StringArrayInput
 	// The tls cipher policy controls the cipher suites to be used by the load balancer. It must be either of `DEFAULT` or `STRONG`. Defaults to `DEFAULT`.
@@ -354,6 +360,8 @@ type loadBalancerArgs struct {
 	Healthcheck *LoadBalancerHealthcheck `pulumi:"healthcheck"`
 	// Specifies the idle timeout for HTTPS connections on the load balancer in seconds.
 	HttpIdleTimeoutSeconds *int `pulumi:"httpIdleTimeoutSeconds"`
+	// The ip of the Load Balancer
+	Ip *string `pulumi:"ip"`
 	// The Load Balancer name
 	Name *string `pulumi:"name"`
 	// The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
@@ -375,6 +383,8 @@ type loadBalancerArgs struct {
 	// A `stickySessions` block to be assigned to the
 	// Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
 	StickySessions *LoadBalancerStickySessions `pulumi:"stickySessions"`
+	// The ID of the VPC subnet where the load balancer will be located. Must be a valid subnet in the specified VPC. Requires that `vpcUuid` is also set.
+	SubnetUuid *string `pulumi:"subnetUuid"`
 	// A list of Load Balancer IDs to be attached behind a Global Load Balancer.
 	TargetLoadBalancerIds []string `pulumi:"targetLoadBalancerIds"`
 	// The tls cipher policy controls the cipher suites to be used by the load balancer. It must be either of `DEFAULT` or `STRONG`. Defaults to `DEFAULT`.
@@ -418,6 +428,8 @@ type LoadBalancerArgs struct {
 	Healthcheck LoadBalancerHealthcheckPtrInput
 	// Specifies the idle timeout for HTTPS connections on the load balancer in seconds.
 	HttpIdleTimeoutSeconds pulumi.IntPtrInput
+	// The ip of the Load Balancer
+	Ip pulumi.StringPtrInput
 	// The Load Balancer name
 	Name pulumi.StringPtrInput
 	// The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
@@ -439,6 +451,8 @@ type LoadBalancerArgs struct {
 	// A `stickySessions` block to be assigned to the
 	// Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
 	StickySessions LoadBalancerStickySessionsPtrInput
+	// The ID of the VPC subnet where the load balancer will be located. Must be a valid subnet in the specified VPC. Requires that `vpcUuid` is also set.
+	SubnetUuid pulumi.StringPtrInput
 	// A list of Load Balancer IDs to be attached behind a Global Load Balancer.
 	TargetLoadBalancerIds pulumi.StringArrayInput
 	// The tls cipher policy controls the cipher suites to be used by the load balancer. It must be either of `DEFAULT` or `STRONG`. Defaults to `DEFAULT`.
@@ -667,6 +681,11 @@ func (o LoadBalancerOutput) Status() pulumi.StringOutput {
 // Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
 func (o LoadBalancerOutput) StickySessions() LoadBalancerStickySessionsOutput {
 	return o.ApplyT(func(v *LoadBalancer) LoadBalancerStickySessionsOutput { return v.StickySessions }).(LoadBalancerStickySessionsOutput)
+}
+
+// The ID of the VPC subnet where the load balancer will be located. Must be a valid subnet in the specified VPC. Requires that `vpcUuid` is also set.
+func (o LoadBalancerOutput) SubnetUuid() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.SubnetUuid }).(pulumi.StringOutput)
 }
 
 // A list of Load Balancer IDs to be attached behind a Global Load Balancer.

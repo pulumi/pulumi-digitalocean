@@ -39578,7 +39578,7 @@ func (o GetVpcNatGatewayEgressArrayOutput) Index(i pulumi.IntInput) GetVpcNatGat
 }
 
 type GetVpcNatGatewayEgressPublicGateway struct {
-	// IPv4 address
+	// IPv4 address. On create, set this to an unassigned BYOIP on the account in the same region. When omitted, a system-allocated reserved IP is provisioned.
 	Ipv4 string `pulumi:"ipv4"`
 }
 
@@ -39594,7 +39594,7 @@ type GetVpcNatGatewayEgressPublicGatewayInput interface {
 }
 
 type GetVpcNatGatewayEgressPublicGatewayArgs struct {
-	// IPv4 address
+	// IPv4 address. On create, set this to an unassigned BYOIP on the account in the same region. When omitted, a system-allocated reserved IP is provisioned.
 	Ipv4 pulumi.StringInput `pulumi:"ipv4"`
 }
 
@@ -39649,7 +39649,7 @@ func (o GetVpcNatGatewayEgressPublicGatewayOutput) ToGetVpcNatGatewayEgressPubli
 	return o
 }
 
-// IPv4 address
+// IPv4 address. On create, set this to an unassigned BYOIP on the account in the same region. When omitted, a system-allocated reserved IP is provisioned.
 func (o GetVpcNatGatewayEgressPublicGatewayOutput) Ipv4() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcNatGatewayEgressPublicGateway) string { return v.Ipv4 }).(pulumi.StringOutput)
 }

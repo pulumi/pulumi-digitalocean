@@ -4088,6 +4088,11 @@
                 "maxItemsOneOverrides": {
                     "sso": false
                 }
+            },
+            "digitalocean_vpc_nat_gateway": {
+                "maxItemsOneOverrides": {
+                    "egresses": false
+                }
             }
         },
         "datasources": {

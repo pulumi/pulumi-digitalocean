@@ -42004,7 +42004,7 @@ func (o VectorDatabaseEndpointArrayOutput) Index(i pulumi.IntInput) VectorDataba
 }
 
 type VpcNatGatewayEgress struct {
-	// List of public gateway IPs
+	// Set of public gateway IPs
 	PublicGateways []VpcNatGatewayEgressPublicGateway `pulumi:"publicGateways"`
 }
 
@@ -42020,7 +42020,7 @@ type VpcNatGatewayEgressInput interface {
 }
 
 type VpcNatGatewayEgressArgs struct {
-	// List of public gateway IPs
+	// Set of public gateway IPs
 	PublicGateways VpcNatGatewayEgressPublicGatewayArrayInput `pulumi:"publicGateways"`
 }
 
@@ -42075,7 +42075,7 @@ func (o VpcNatGatewayEgressOutput) ToVpcNatGatewayEgressOutputWithContext(ctx co
 	return o
 }
 
-// List of public gateway IPs
+// Set of public gateway IPs
 func (o VpcNatGatewayEgressOutput) PublicGateways() VpcNatGatewayEgressPublicGatewayArrayOutput {
 	return o.ApplyT(func(v VpcNatGatewayEgress) []VpcNatGatewayEgressPublicGateway { return v.PublicGateways }).(VpcNatGatewayEgressPublicGatewayArrayOutput)
 }
@@ -42101,7 +42101,7 @@ func (o VpcNatGatewayEgressArrayOutput) Index(i pulumi.IntInput) VpcNatGatewayEg
 }
 
 type VpcNatGatewayEgressPublicGateway struct {
-	// IPv4 address
+	// IPv4 address. On create, set this to an unassigned BYOIP on the account in the same region. When omitted, a system-allocated reserved IP is provisioned.
 	Ipv4 *string `pulumi:"ipv4"`
 }
 
@@ -42117,7 +42117,7 @@ type VpcNatGatewayEgressPublicGatewayInput interface {
 }
 
 type VpcNatGatewayEgressPublicGatewayArgs struct {
-	// IPv4 address
+	// IPv4 address. On create, set this to an unassigned BYOIP on the account in the same region. When omitted, a system-allocated reserved IP is provisioned.
 	Ipv4 pulumi.StringPtrInput `pulumi:"ipv4"`
 }
 
@@ -42172,7 +42172,7 @@ func (o VpcNatGatewayEgressPublicGatewayOutput) ToVpcNatGatewayEgressPublicGatew
 	return o
 }
 
-// IPv4 address
+// IPv4 address. On create, set this to an unassigned BYOIP on the account in the same region. When omitted, a system-allocated reserved IP is provisioned.
 func (o VpcNatGatewayEgressPublicGatewayOutput) Ipv4() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VpcNatGatewayEgressPublicGateway) *string { return v.Ipv4 }).(pulumi.StringPtrOutput)
 }

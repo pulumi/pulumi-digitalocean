@@ -95,6 +95,7 @@ export interface GetLoadBalancerResult {
     readonly sizeUnit: number;
     readonly status: string;
     readonly stickySessions: outputs.GetLoadBalancerStickySession[];
+    readonly subnetUuid: string;
     readonly targetLoadBalancerIds: string[];
     readonly type: string;
     readonly vpcUuid: string;

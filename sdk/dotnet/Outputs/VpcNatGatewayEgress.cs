@@ -14,7 +14,7 @@ namespace Pulumi.DigitalOcean.Outputs
     public sealed class VpcNatGatewayEgress
     {
         /// <summary>
-        /// List of public gateway IPs
+        /// Set of public gateway IPs
         /// </summary>
         public readonly ImmutableArray<Outputs.VpcNatGatewayEgressPublicGateway> PublicGateways;
 

@@ -81,7 +81,7 @@ export class VpcNatGateway extends pulumi.CustomResource {
      * Embeds the list of public egresses assigned to the VPC NAT Gateway: resolves as list of
      * `publicGateways` embedding the reserved `ipv4` addresses.
      */
-    declare public /*out*/ readonly egresses: pulumi.Output<outputs.VpcNatGatewayEgress[]>;
+    declare public readonly egresses: pulumi.Output<outputs.VpcNatGatewayEgress[]>;
     /**
      * The egress timeout value for ICMP connections of the VPC NAT Gateway.
      */
@@ -168,6 +168,7 @@ export class VpcNatGateway extends pulumi.CustomResource {
             if (args?.vpcs === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpcs'");
             }
+            resourceInputs["egresses"] = args?.egresses;
             resourceInputs["icmpTimeoutSeconds"] = args?.icmpTimeoutSeconds;
             resourceInputs["name"] = args?.name;
             resourceInputs["projectId"] = args?.projectId;
@@ -178,7 +179,6 @@ export class VpcNatGateway extends pulumi.CustomResource {
             resourceInputs["udpTimeoutSeconds"] = args?.udpTimeoutSeconds;
             resourceInputs["vpcs"] = args?.vpcs;
             resourceInputs["createdAt"] = undefined /*out*/;
-            resourceInputs["egresses"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;
         }
@@ -251,6 +251,11 @@ export interface VpcNatGatewayState {
  * The set of arguments for constructing a VpcNatGateway resource.
  */
 export interface VpcNatGatewayArgs {
+    /**
+     * Embeds the list of public egresses assigned to the VPC NAT Gateway: resolves as list of
+     * `publicGateways` embedding the reserved `ipv4` addresses.
+     */
+    egresses?: pulumi.Input<pulumi.Input<inputs.VpcNatGatewayEgress>[] | undefined>;
     /**
      * The egress timeout value for ICMP connections of the VPC NAT Gateway.
      */

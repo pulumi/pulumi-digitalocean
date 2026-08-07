@@ -103,6 +103,10 @@ export interface GetKubernetesClusterResult {
      */
     readonly ipv4Address: string;
     /**
+     * A boolean value indicating whether the cluster has isolated worker nodes enabled.
+     */
+    readonly isolatedWorkers: boolean;
+    /**
      * A representation of the Kubernetes cluster's kubeconfig with the following attributes:
      */
     readonly kubeConfigs: outputs.GetKubernetesClusterKubeConfig[];

@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class VpcNatGatewayEgressPublicGateway {
     /**
-     * @return IPv4 address
+     * @return IPv4 address. On create, set this to an unassigned BYOIP on the account in the same region. When omitted, a system-allocated reserved IP is provisioned.
      * 
      */
     private @Nullable String ipv4;
 
     private VpcNatGatewayEgressPublicGateway() {}
     /**
-     * @return IPv4 address
+     * @return IPv4 address. On create, set this to an unassigned BYOIP on the account in the same region. When omitted, a system-allocated reserved IP is provisioned.
      * 
      */
     public Optional<String> ipv4() {

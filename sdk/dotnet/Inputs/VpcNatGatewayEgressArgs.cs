@@ -16,7 +16,7 @@ namespace Pulumi.DigitalOcean.Inputs
         private InputList<Inputs.VpcNatGatewayEgressPublicGatewayArgs>? _publicGateways;
 
         /// <summary>
-        /// List of public gateway IPs
+        /// Set of public gateway IPs
         /// </summary>
         public InputList<Inputs.VpcNatGatewayEgressPublicGatewayArgs> PublicGateways
         {

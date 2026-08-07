@@ -17,14 +17,14 @@ public final class VpcNatGatewayEgressArgs extends com.pulumi.resources.Resource
     public static final VpcNatGatewayEgressArgs Empty = new VpcNatGatewayEgressArgs();
 
     /**
-     * List of public gateway IPs
+     * Set of public gateway IPs
      * 
      */
     @Import(name="publicGateways")
     private @Nullable Output<List<VpcNatGatewayEgressPublicGatewayArgs>> publicGateways;
 
     /**
-     * @return List of public gateway IPs
+     * @return Set of public gateway IPs
      * 
      */
     public Optional<Output<List<VpcNatGatewayEgressPublicGatewayArgs>>> publicGateways() {
@@ -56,7 +56,7 @@ public final class VpcNatGatewayEgressArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param publicGateways List of public gateway IPs
+         * @param publicGateways Set of public gateway IPs
          * 
          * @return builder
          * 
@@ -67,7 +67,7 @@ public final class VpcNatGatewayEgressArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param publicGateways List of public gateway IPs
+         * @param publicGateways Set of public gateway IPs
          * 
          * @return builder
          * 
@@ -77,7 +77,7 @@ public final class VpcNatGatewayEgressArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param publicGateways List of public gateway IPs
+         * @param publicGateways Set of public gateway IPs
          * 
          * @return builder
          * 

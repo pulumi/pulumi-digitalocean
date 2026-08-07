@@ -89,6 +89,8 @@ type LookupKubernetesClusterResult struct {
 	Id string `pulumi:"id"`
 	// The public IPv4 address of the Kubernetes master node.
 	Ipv4Address string `pulumi:"ipv4Address"`
+	// A boolean value indicating whether the cluster has isolated worker nodes enabled.
+	IsolatedWorkers bool `pulumi:"isolatedWorkers"`
 	// A representation of the Kubernetes cluster's kubeconfig with the following attributes:
 	KubeConfigs             []GetKubernetesClusterKubeConfig `pulumi:"kubeConfigs"`
 	KubeconfigExpireSeconds *int                             `pulumi:"kubeconfigExpireSeconds"`
@@ -238,6 +240,11 @@ func (o LookupKubernetesClusterResultOutput) Id() pulumi.StringOutput {
 // The public IPv4 address of the Kubernetes master node.
 func (o LookupKubernetesClusterResultOutput) Ipv4Address() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKubernetesClusterResult) string { return v.Ipv4Address }).(pulumi.StringOutput)
+}
+
+// A boolean value indicating whether the cluster has isolated worker nodes enabled.
+func (o LookupKubernetesClusterResultOutput) IsolatedWorkers() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupKubernetesClusterResult) bool { return v.IsolatedWorkers }).(pulumi.BoolOutput)
 }
 
 // A representation of the Kubernetes cluster's kubeconfig with the following attributes:

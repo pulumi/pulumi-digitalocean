@@ -189,6 +189,19 @@ namespace Pulumi.DigitalOcean
 
     public sealed class VpcNatGatewayArgs : global::Pulumi.ResourceArgs
     {
+        [Input("egresses")]
+        private InputList<Inputs.VpcNatGatewayEgressArgs>? _egresses;
+
+        /// <summary>
+        /// Embeds the list of public egresses assigned to the VPC NAT Gateway: resolves as list of
+        /// `PublicGateways` embedding the reserved `Ipv4` addresses.
+        /// </summary>
+        public InputList<Inputs.VpcNatGatewayEgressArgs> Egresses
+        {
+            get => _egresses ?? (_egresses = new InputList<Inputs.VpcNatGatewayEgressArgs>());
+            set => _egresses = value;
+        }
+
         /// <summary>
         /// The egress timeout value for ICMP connections of the VPC NAT Gateway.
         /// </summary>

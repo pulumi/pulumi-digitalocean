@@ -16,14 +16,14 @@ public final class VpcNatGatewayEgressPublicGatewayArgs extends com.pulumi.resou
     public static final VpcNatGatewayEgressPublicGatewayArgs Empty = new VpcNatGatewayEgressPublicGatewayArgs();
 
     /**
-     * IPv4 address
+     * IPv4 address. On create, set this to an unassigned BYOIP on the account in the same region. When omitted, a system-allocated reserved IP is provisioned.
      * 
      */
     @Import(name="ipv4")
     private @Nullable Output<String> ipv4;
 
     /**
-     * @return IPv4 address
+     * @return IPv4 address. On create, set this to an unassigned BYOIP on the account in the same region. When omitted, a system-allocated reserved IP is provisioned.
      * 
      */
     public Optional<Output<String>> ipv4() {
@@ -55,7 +55,7 @@ public final class VpcNatGatewayEgressPublicGatewayArgs extends com.pulumi.resou
         }
 
         /**
-         * @param ipv4 IPv4 address
+         * @param ipv4 IPv4 address. On create, set this to an unassigned BYOIP on the account in the same region. When omitted, a system-allocated reserved IP is provisioned.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class VpcNatGatewayEgressPublicGatewayArgs extends com.pulumi.resou
         }
 
         /**
-         * @param ipv4 IPv4 address
+         * @param ipv4 IPv4 address. On create, set this to an unassigned BYOIP on the account in the same region. When omitted, a system-allocated reserved IP is provisioned.
          * 
          * @return builder
          * 

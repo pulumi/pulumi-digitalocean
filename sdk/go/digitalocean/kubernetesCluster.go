@@ -146,6 +146,45 @@ import (
 //
 // Note that a data source is used to supply the version. This is needed to prevent configuration diff whenever a cluster is upgraded.
 //
+// ### Isolated Workers Example
+//
+// Kubernetes clusters may also be configured to use [isolated worker nodes](https://docs.digitalocean.com/products/kubernetes/concepts/isolated-workers/).
+// When enabled, each worker node runs on dedicated hardware. The cluster's VPC must have a NAT gateway attached.
+// For example:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := digitalocean.NewKubernetesCluster(ctx, "foo", &digitalocean.KubernetesClusterArgs{
+//				Name:            pulumi.String("foo"),
+//				Region:          pulumi.String(digitalocean.RegionNYC1),
+//				Version:         pulumi.String("latest"),
+//				IsolatedWorkers: pulumi.Bool(true),
+//				VpcUuid:         pulumi.Any(example.Id),
+//				NodePool: &digitalocean.KubernetesClusterNodePoolArgs{
+//					Name:      pulumi.String("worker-pool"),
+//					Size:      pulumi.String("s-2vcpu-2gb"),
+//					NodeCount: pulumi.Int(3),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ### Kubernetes Terraform Provider Example
 //
 // The cluster's kubeconfig is exported as an attribute allowing you to use it with
@@ -261,6 +300,8 @@ type KubernetesCluster struct {
 	Ha pulumi.BoolOutput `pulumi:"ha"`
 	// The public IPv4 address of the Kubernetes master node. This will not be set if high availability is configured on the cluster (v1.21+)
 	Ipv4Address pulumi.StringOutput `pulumi:"ipv4Address"`
+	// Enable/disable isolated worker nodes for the cluster. When enabled, each worker node runs on dedicated hardware. This can only be set at creation time. The cluster's VPC must have a NAT gateway attached. Default: false
+	IsolatedWorkers pulumi.BoolPtrOutput `pulumi:"isolatedWorkers"`
 	// A representation of the Kubernetes cluster's kubeconfig with the following attributes:
 	KubeConfigs KubernetesClusterKubeConfigArrayOutput `pulumi:"kubeConfigs"`
 	// The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
@@ -376,6 +417,8 @@ type kubernetesClusterState struct {
 	Ha *bool `pulumi:"ha"`
 	// The public IPv4 address of the Kubernetes master node. This will not be set if high availability is configured on the cluster (v1.21+)
 	Ipv4Address *string `pulumi:"ipv4Address"`
+	// Enable/disable isolated worker nodes for the cluster. When enabled, each worker node runs on dedicated hardware. This can only be set at creation time. The cluster's VPC must have a NAT gateway attached. Default: false
+	IsolatedWorkers *bool `pulumi:"isolatedWorkers"`
 	// A representation of the Kubernetes cluster's kubeconfig with the following attributes:
 	KubeConfigs []KubernetesClusterKubeConfig `pulumi:"kubeConfigs"`
 	// The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
@@ -449,6 +492,8 @@ type KubernetesClusterState struct {
 	Ha pulumi.BoolPtrInput
 	// The public IPv4 address of the Kubernetes master node. This will not be set if high availability is configured on the cluster (v1.21+)
 	Ipv4Address pulumi.StringPtrInput
+	// Enable/disable isolated worker nodes for the cluster. When enabled, each worker node runs on dedicated hardware. This can only be set at creation time. The cluster's VPC must have a NAT gateway attached. Default: false
+	IsolatedWorkers pulumi.BoolPtrInput
 	// A representation of the Kubernetes cluster's kubeconfig with the following attributes:
 	KubeConfigs KubernetesClusterKubeConfigArrayInput
 	// The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
@@ -518,6 +563,8 @@ type kubernetesClusterArgs struct {
 	DestroyAllAssociatedResources *bool `pulumi:"destroyAllAssociatedResources"`
 	// Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: true (for 1.36.0 and later)
 	Ha *bool `pulumi:"ha"`
+	// Enable/disable isolated worker nodes for the cluster. When enabled, each worker node runs on dedicated hardware. This can only be set at creation time. The cluster's VPC must have a NAT gateway attached. Default: false
+	IsolatedWorkers *bool `pulumi:"isolatedWorkers"`
 	// The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
 	KubeconfigExpireSeconds *int `pulumi:"kubeconfigExpireSeconds"`
 	// A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `autoUpgrade` must be set to `true` for this to have an effect.
@@ -578,6 +625,8 @@ type KubernetesClusterArgs struct {
 	DestroyAllAssociatedResources pulumi.BoolPtrInput
 	// Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: true (for 1.36.0 and later)
 	Ha pulumi.BoolPtrInput
+	// Enable/disable isolated worker nodes for the cluster. When enabled, each worker node runs on dedicated hardware. This can only be set at creation time. The cluster's VPC must have a NAT gateway attached. Default: false
+	IsolatedWorkers pulumi.BoolPtrInput
 	// The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
 	KubeconfigExpireSeconds pulumi.IntPtrInput
 	// A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `autoUpgrade` must be set to `true` for this to have an effect.
@@ -775,6 +824,11 @@ func (o KubernetesClusterOutput) Ha() pulumi.BoolOutput {
 // The public IPv4 address of the Kubernetes master node. This will not be set if high availability is configured on the cluster (v1.21+)
 func (o KubernetesClusterOutput) Ipv4Address() pulumi.StringOutput {
 	return o.ApplyT(func(v *KubernetesCluster) pulumi.StringOutput { return v.Ipv4Address }).(pulumi.StringOutput)
+}
+
+// Enable/disable isolated worker nodes for the cluster. When enabled, each worker node runs on dedicated hardware. This can only be set at creation time. The cluster's VPC must have a NAT gateway attached. Default: false
+func (o KubernetesClusterOutput) IsolatedWorkers() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *KubernetesCluster) pulumi.BoolPtrOutput { return v.IsolatedWorkers }).(pulumi.BoolPtrOutput)
 }
 
 // A representation of the Kubernetes cluster's kubeconfig with the following attributes:

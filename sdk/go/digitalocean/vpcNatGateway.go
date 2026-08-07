@@ -209,6 +209,9 @@ func (VpcNatGatewayState) ElementType() reflect.Type {
 }
 
 type vpcNatGatewayArgs struct {
+	// Embeds the list of public egresses assigned to the VPC NAT Gateway: resolves as list of
+	// `publicGateways` embedding the reserved `ipv4` addresses.
+	Egresses []VpcNatGatewayEgress `pulumi:"egresses"`
 	// The egress timeout value for ICMP connections of the VPC NAT Gateway.
 	IcmpTimeoutSeconds *int `pulumi:"icmpTimeoutSeconds"`
 	// The name of the VPC NAT Gateway.
@@ -232,6 +235,9 @@ type vpcNatGatewayArgs struct {
 
 // The set of arguments for constructing a VpcNatGateway resource.
 type VpcNatGatewayArgs struct {
+	// Embeds the list of public egresses assigned to the VPC NAT Gateway: resolves as list of
+	// `publicGateways` embedding the reserved `ipv4` addresses.
+	Egresses VpcNatGatewayEgressArrayInput
 	// The egress timeout value for ICMP connections of the VPC NAT Gateway.
 	IcmpTimeoutSeconds pulumi.IntPtrInput
 	// The name of the VPC NAT Gateway.

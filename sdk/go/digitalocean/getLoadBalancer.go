@@ -118,6 +118,7 @@ type LookupLoadBalancerResult struct {
 	SizeUnit                     int                             `pulumi:"sizeUnit"`
 	Status                       string                          `pulumi:"status"`
 	StickySessions               []GetLoadBalancerStickySession  `pulumi:"stickySessions"`
+	SubnetUuid                   string                          `pulumi:"subnetUuid"`
 	TargetLoadBalancerIds        []string                        `pulumi:"targetLoadBalancerIds"`
 	Type                         string                          `pulumi:"type"`
 	VpcUuid                      string                          `pulumi:"vpcUuid"`
@@ -258,6 +259,10 @@ func (o LookupLoadBalancerResultOutput) Status() pulumi.StringOutput {
 
 func (o LookupLoadBalancerResultOutput) StickySessions() GetLoadBalancerStickySessionArrayOutput {
 	return o.ApplyT(func(v LookupLoadBalancerResult) []GetLoadBalancerStickySession { return v.StickySessions }).(GetLoadBalancerStickySessionArrayOutput)
+}
+
+func (o LookupLoadBalancerResultOutput) SubnetUuid() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLoadBalancerResult) string { return v.SubnetUuid }).(pulumi.StringOutput)
 }
 
 func (o LookupLoadBalancerResultOutput) TargetLoadBalancerIds() pulumi.StringArrayOutput {

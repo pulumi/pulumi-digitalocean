@@ -28014,7 +28014,7 @@ class VectorDatabaseEndpointArgs:
 class VpcNatGatewayEgressArgsDict(TypedDict):
     public_gateways: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VpcNatGatewayEgressPublicGatewayArgsDict']]]]]
     """
-    List of public gateway IPs
+    Set of public gateway IPs
     """
 
 @pulumi.input_type
@@ -28022,7 +28022,7 @@ class VpcNatGatewayEgressArgs:
     def __init__(__self__, *,
                  public_gateways: pulumi.Input[Optional[Sequence[pulumi.Input['VpcNatGatewayEgressPublicGatewayArgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['VpcNatGatewayEgressPublicGatewayArgs']]] public_gateways: List of public gateway IPs
+        :param pulumi.Input[Sequence[pulumi.Input['VpcNatGatewayEgressPublicGatewayArgs']]] public_gateways: Set of public gateway IPs
         """
         if public_gateways is not None:
             pulumi.set(__self__, "public_gateways", public_gateways)
@@ -28031,7 +28031,7 @@ class VpcNatGatewayEgressArgs:
     @pulumi.getter(name="publicGateways")
     def public_gateways(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VpcNatGatewayEgressPublicGatewayArgs']]]]:
         """
-        List of public gateway IPs
+        Set of public gateway IPs
         """
         return pulumi.get(self, "public_gateways")
 
@@ -28043,7 +28043,7 @@ class VpcNatGatewayEgressArgs:
 class VpcNatGatewayEgressPublicGatewayArgsDict(TypedDict):
     ipv4: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    IPv4 address
+    IPv4 address. On create, set this to an unassigned BYOIP on the account in the same region. When omitted, a system-allocated reserved IP is provisioned.
     """
 
 @pulumi.input_type
@@ -28051,7 +28051,7 @@ class VpcNatGatewayEgressPublicGatewayArgs:
     def __init__(__self__, *,
                  ipv4: pulumi.Input[Optional[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] ipv4: IPv4 address
+        :param pulumi.Input[_builtins.str] ipv4: IPv4 address. On create, set this to an unassigned BYOIP on the account in the same region. When omitted, a system-allocated reserved IP is provisioned.
         """
         if ipv4 is not None:
             pulumi.set(__self__, "ipv4", ipv4)
@@ -28060,7 +28060,7 @@ class VpcNatGatewayEgressPublicGatewayArgs:
     @pulumi.getter
     def ipv4(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        IPv4 address
+        IPv4 address. On create, set this to an unassigned BYOIP on the account in the same region. When omitted, a system-allocated reserved IP is provisioned.
         """
         return pulumi.get(self, "ipv4")
 

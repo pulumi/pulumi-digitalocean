@@ -52,6 +52,7 @@ public final class GetLoadBalancerResult {
     private Integer sizeUnit;
     private String status;
     private List<GetLoadBalancerStickySession> stickySessions;
+    private String subnetUuid;
     private List<String> targetLoadBalancerIds;
     private String type;
     private String vpcUuid;
@@ -138,6 +139,9 @@ public final class GetLoadBalancerResult {
     public List<GetLoadBalancerStickySession> stickySessions() {
         return this.stickySessions;
     }
+    public String subnetUuid() {
+        return this.subnetUuid;
+    }
     public List<String> targetLoadBalancerIds() {
         return this.targetLoadBalancerIds;
     }
@@ -182,6 +186,7 @@ public final class GetLoadBalancerResult {
         private Integer sizeUnit;
         private String status;
         private List<GetLoadBalancerStickySession> stickySessions;
+        private String subnetUuid;
         private List<String> targetLoadBalancerIds;
         private String type;
         private String vpcUuid;
@@ -213,6 +218,7 @@ public final class GetLoadBalancerResult {
     	      this.sizeUnit = defaults.sizeUnit;
     	      this.status = defaults.status;
     	      this.stickySessions = defaults.stickySessions;
+    	      this.subnetUuid = defaults.subnetUuid;
     	      this.targetLoadBalancerIds = defaults.targetLoadBalancerIds;
     	      this.type = defaults.type;
     	      this.vpcUuid = defaults.vpcUuid;
@@ -436,6 +442,14 @@ public final class GetLoadBalancerResult {
             return stickySessions(List.of(stickySessions));
         }
         @CustomType.Setter
+        public Builder subnetUuid(String subnetUuid) {
+            if (subnetUuid == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerResult", "subnetUuid");
+            }
+            this.subnetUuid = subnetUuid;
+            return this;
+        }
+        @CustomType.Setter
         public Builder targetLoadBalancerIds(List<String> targetLoadBalancerIds) {
             if (targetLoadBalancerIds == null) {
               throw new MissingRequiredPropertyException("GetLoadBalancerResult", "targetLoadBalancerIds");
@@ -489,6 +503,7 @@ public final class GetLoadBalancerResult {
             _resultValue.sizeUnit = sizeUnit;
             _resultValue.status = status;
             _resultValue.stickySessions = stickySessions;
+            _resultValue.subnetUuid = subnetUuid;
             _resultValue.targetLoadBalancerIds = targetLoadBalancerIds;
             _resultValue.type = type;
             _resultValue.vpcUuid = vpcUuid;
