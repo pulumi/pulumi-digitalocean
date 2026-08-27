@@ -40,12 +40,8 @@ type GetGenaiAgentsResult struct {
 }
 
 func GetGenaiAgentsOutput(ctx *pulumi.Context, args GetGenaiAgentsOutputArgs, opts ...pulumi.InvokeOption) GetGenaiAgentsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetGenaiAgentsResultOutput, error) {
-			args := v.(GetGenaiAgentsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("digitalocean:index/getGenaiAgents:getGenaiAgents", args, GetGenaiAgentsResultOutput{}, options).(GetGenaiAgentsResultOutput), nil
-		}).(GetGenaiAgentsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("digitalocean:index/getGenaiAgents:getGenaiAgents", args, GetGenaiAgentsResultOutput{}, options).(GetGenaiAgentsResultOutput)
 }
 
 // A collection of arguments for invoking getGenaiAgents.

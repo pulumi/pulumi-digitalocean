@@ -35,12 +35,8 @@ type GetGradientaiIndexingJobDataSourcesResult struct {
 }
 
 func GetGradientaiIndexingJobDataSourcesOutput(ctx *pulumi.Context, args GetGradientaiIndexingJobDataSourcesOutputArgs, opts ...pulumi.InvokeOption) GetGradientaiIndexingJobDataSourcesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetGradientaiIndexingJobDataSourcesResultOutput, error) {
-			args := v.(GetGradientaiIndexingJobDataSourcesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("digitalocean:index/getGradientaiIndexingJobDataSources:getGradientaiIndexingJobDataSources", args, GetGradientaiIndexingJobDataSourcesResultOutput{}, options).(GetGradientaiIndexingJobDataSourcesResultOutput), nil
-		}).(GetGradientaiIndexingJobDataSourcesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("digitalocean:index/getGradientaiIndexingJobDataSources:getGradientaiIndexingJobDataSources", args, GetGradientaiIndexingJobDataSourcesResultOutput{}, options).(GetGradientaiIndexingJobDataSourcesResultOutput)
 }
 
 // A collection of arguments for invoking getGradientaiIndexingJobDataSources.

@@ -128,12 +128,8 @@ type LookupDropletSnapshotResult struct {
 }
 
 func LookupDropletSnapshotOutput(ctx *pulumi.Context, args LookupDropletSnapshotOutputArgs, opts ...pulumi.InvokeOption) LookupDropletSnapshotResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDropletSnapshotResultOutput, error) {
-			args := v.(LookupDropletSnapshotArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("digitalocean:index/getDropletSnapshot:getDropletSnapshot", args, LookupDropletSnapshotResultOutput{}, options).(LookupDropletSnapshotResultOutput), nil
-		}).(LookupDropletSnapshotResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("digitalocean:index/getDropletSnapshot:getDropletSnapshot", args, LookupDropletSnapshotResultOutput{}, options).(LookupDropletSnapshotResultOutput)
 }
 
 // A collection of arguments for invoking getDropletSnapshot.

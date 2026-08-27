@@ -119,12 +119,8 @@ type LookupByoipPrefixResult struct {
 }
 
 func LookupByoipPrefixOutput(ctx *pulumi.Context, args LookupByoipPrefixOutputArgs, opts ...pulumi.InvokeOption) LookupByoipPrefixResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupByoipPrefixResultOutput, error) {
-			args := v.(LookupByoipPrefixArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("digitalocean:index/getByoipPrefix:getByoipPrefix", args, LookupByoipPrefixResultOutput{}, options).(LookupByoipPrefixResultOutput), nil
-		}).(LookupByoipPrefixResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("digitalocean:index/getByoipPrefix:getByoipPrefix", args, LookupByoipPrefixResultOutput{}, options).(LookupByoipPrefixResultOutput)
 }
 
 // A collection of arguments for invoking getByoipPrefix.

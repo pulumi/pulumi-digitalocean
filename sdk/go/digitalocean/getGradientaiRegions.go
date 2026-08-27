@@ -37,12 +37,8 @@ type GetGradientaiRegionsResult struct {
 }
 
 func GetGradientaiRegionsOutput(ctx *pulumi.Context, args GetGradientaiRegionsOutputArgs, opts ...pulumi.InvokeOption) GetGradientaiRegionsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetGradientaiRegionsResultOutput, error) {
-			args := v.(GetGradientaiRegionsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("digitalocean:index/getGradientaiRegions:getGradientaiRegions", args, GetGradientaiRegionsResultOutput{}, options).(GetGradientaiRegionsResultOutput), nil
-		}).(GetGradientaiRegionsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("digitalocean:index/getGradientaiRegions:getGradientaiRegions", args, GetGradientaiRegionsResultOutput{}, options).(GetGradientaiRegionsResultOutput)
 }
 
 // A collection of arguments for invoking getGradientaiRegions.

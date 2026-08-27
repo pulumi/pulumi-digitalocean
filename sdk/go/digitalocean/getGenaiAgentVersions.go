@@ -40,12 +40,8 @@ type GetGenaiAgentVersionsResult struct {
 }
 
 func GetGenaiAgentVersionsOutput(ctx *pulumi.Context, args GetGenaiAgentVersionsOutputArgs, opts ...pulumi.InvokeOption) GetGenaiAgentVersionsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetGenaiAgentVersionsResultOutput, error) {
-			args := v.(GetGenaiAgentVersionsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("digitalocean:index/getGenaiAgentVersions:getGenaiAgentVersions", args, GetGenaiAgentVersionsResultOutput{}, options).(GetGenaiAgentVersionsResultOutput), nil
-		}).(GetGenaiAgentVersionsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("digitalocean:index/getGenaiAgentVersions:getGenaiAgentVersions", args, GetGenaiAgentVersionsResultOutput{}, options).(GetGenaiAgentVersionsResultOutput)
 }
 
 // A collection of arguments for invoking getGenaiAgentVersions.

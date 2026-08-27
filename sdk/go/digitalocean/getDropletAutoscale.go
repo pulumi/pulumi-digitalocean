@@ -100,12 +100,8 @@ type LookupDropletAutoscaleResult struct {
 }
 
 func LookupDropletAutoscaleOutput(ctx *pulumi.Context, args LookupDropletAutoscaleOutputArgs, opts ...pulumi.InvokeOption) LookupDropletAutoscaleResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDropletAutoscaleResultOutput, error) {
-			args := v.(LookupDropletAutoscaleArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("digitalocean:index/getDropletAutoscale:getDropletAutoscale", args, LookupDropletAutoscaleResultOutput{}, options).(LookupDropletAutoscaleResultOutput), nil
-		}).(LookupDropletAutoscaleResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("digitalocean:index/getDropletAutoscale:getDropletAutoscale", args, LookupDropletAutoscaleResultOutput{}, options).(LookupDropletAutoscaleResultOutput)
 }
 
 // A collection of arguments for invoking getDropletAutoscale.

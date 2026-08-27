@@ -58,10 +58,8 @@ type GetDedicatedInferenceGpuModelConfigResult struct {
 }
 
 func GetDedicatedInferenceGpuModelConfigOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetDedicatedInferenceGpuModelConfigResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetDedicatedInferenceGpuModelConfigResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("digitalocean:index/getDedicatedInferenceGpuModelConfig:getDedicatedInferenceGpuModelConfig", nil, GetDedicatedInferenceGpuModelConfigResultOutput{}, options).(GetDedicatedInferenceGpuModelConfigResultOutput), nil
-	}).(GetDedicatedInferenceGpuModelConfigResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("digitalocean:index/getDedicatedInferenceGpuModelConfig:getDedicatedInferenceGpuModelConfig", nil, GetDedicatedInferenceGpuModelConfigResultOutput{}, options).(GetDedicatedInferenceGpuModelConfigResultOutput)
 }
 
 // A collection of values returned by getDedicatedInferenceGpuModelConfig.

@@ -110,12 +110,8 @@ type LookupVectorDatabaseResult struct {
 }
 
 func LookupVectorDatabaseOutput(ctx *pulumi.Context, args LookupVectorDatabaseOutputArgs, opts ...pulumi.InvokeOption) LookupVectorDatabaseResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupVectorDatabaseResultOutput, error) {
-			args := v.(LookupVectorDatabaseArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("digitalocean:index/getVectorDatabase:getVectorDatabase", args, LookupVectorDatabaseResultOutput{}, options).(LookupVectorDatabaseResultOutput), nil
-		}).(LookupVectorDatabaseResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("digitalocean:index/getVectorDatabase:getVectorDatabase", args, LookupVectorDatabaseResultOutput{}, options).(LookupVectorDatabaseResultOutput)
 }
 
 // A collection of arguments for invoking getVectorDatabase.

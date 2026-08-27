@@ -120,12 +120,8 @@ type LookupSpacesBucketObjectResult struct {
 }
 
 func LookupSpacesBucketObjectOutput(ctx *pulumi.Context, args LookupSpacesBucketObjectOutputArgs, opts ...pulumi.InvokeOption) LookupSpacesBucketObjectResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSpacesBucketObjectResultOutput, error) {
-			args := v.(LookupSpacesBucketObjectArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("digitalocean:index/getSpacesBucketObject:getSpacesBucketObject", args, LookupSpacesBucketObjectResultOutput{}, options).(LookupSpacesBucketObjectResultOutput), nil
-		}).(LookupSpacesBucketObjectResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("digitalocean:index/getSpacesBucketObject:getSpacesBucketObject", args, LookupSpacesBucketObjectResultOutput{}, options).(LookupSpacesBucketObjectResultOutput)
 }
 
 // A collection of arguments for invoking getSpacesBucketObject.

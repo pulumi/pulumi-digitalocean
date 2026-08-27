@@ -76,12 +76,8 @@ type LookupReservedIpv6Result struct {
 }
 
 func LookupReservedIpv6Output(ctx *pulumi.Context, args LookupReservedIpv6OutputArgs, opts ...pulumi.InvokeOption) LookupReservedIpv6ResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupReservedIpv6ResultOutput, error) {
-			args := v.(LookupReservedIpv6Args)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("digitalocean:index/getReservedIpv6:getReservedIpv6", args, LookupReservedIpv6ResultOutput{}, options).(LookupReservedIpv6ResultOutput), nil
-		}).(LookupReservedIpv6ResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("digitalocean:index/getReservedIpv6:getReservedIpv6", args, LookupReservedIpv6ResultOutput{}, options).(LookupReservedIpv6ResultOutput)
 }
 
 // A collection of arguments for invoking getReservedIpv6.

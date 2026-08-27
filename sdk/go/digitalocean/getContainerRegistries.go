@@ -40,12 +40,8 @@ type LookupContainerRegistriesResult struct {
 }
 
 func LookupContainerRegistriesOutput(ctx *pulumi.Context, args LookupContainerRegistriesOutputArgs, opts ...pulumi.InvokeOption) LookupContainerRegistriesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupContainerRegistriesResultOutput, error) {
-			args := v.(LookupContainerRegistriesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("digitalocean:index/getContainerRegistries:getContainerRegistries", args, LookupContainerRegistriesResultOutput{}, options).(LookupContainerRegistriesResultOutput), nil
-		}).(LookupContainerRegistriesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("digitalocean:index/getContainerRegistries:getContainerRegistries", args, LookupContainerRegistriesResultOutput{}, options).(LookupContainerRegistriesResultOutput)
 }
 
 // A collection of arguments for invoking getContainerRegistries.

@@ -98,12 +98,8 @@ type LookupDatabaseReplicaResult struct {
 }
 
 func LookupDatabaseReplicaOutput(ctx *pulumi.Context, args LookupDatabaseReplicaOutputArgs, opts ...pulumi.InvokeOption) LookupDatabaseReplicaResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDatabaseReplicaResultOutput, error) {
-			args := v.(LookupDatabaseReplicaArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("digitalocean:index/getDatabaseReplica:getDatabaseReplica", args, LookupDatabaseReplicaResultOutput{}, options).(LookupDatabaseReplicaResultOutput), nil
-		}).(LookupDatabaseReplicaResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("digitalocean:index/getDatabaseReplica:getDatabaseReplica", args, LookupDatabaseReplicaResultOutput{}, options).(LookupDatabaseReplicaResultOutput)
 }
 
 // A collection of arguments for invoking getDatabaseReplica.

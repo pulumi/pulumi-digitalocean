@@ -73,12 +73,8 @@ type LookupSpacesKeyResult struct {
 }
 
 func LookupSpacesKeyOutput(ctx *pulumi.Context, args LookupSpacesKeyOutputArgs, opts ...pulumi.InvokeOption) LookupSpacesKeyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSpacesKeyResultOutput, error) {
-			args := v.(LookupSpacesKeyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("digitalocean:index/getSpacesKey:getSpacesKey", args, LookupSpacesKeyResultOutput{}, options).(LookupSpacesKeyResultOutput), nil
-		}).(LookupSpacesKeyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("digitalocean:index/getSpacesKey:getSpacesKey", args, LookupSpacesKeyResultOutput{}, options).(LookupSpacesKeyResultOutput)
 }
 
 // A collection of arguments for invoking getSpacesKey.

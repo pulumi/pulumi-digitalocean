@@ -82,12 +82,8 @@ type LookupFloatingIpResult struct {
 }
 
 func LookupFloatingIpOutput(ctx *pulumi.Context, args LookupFloatingIpOutputArgs, opts ...pulumi.InvokeOption) LookupFloatingIpResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupFloatingIpResultOutput, error) {
-			args := v.(LookupFloatingIpArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("digitalocean:index/getFloatingIp:getFloatingIp", args, LookupFloatingIpResultOutput{}, options).(LookupFloatingIpResultOutput), nil
-		}).(LookupFloatingIpResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("digitalocean:index/getFloatingIp:getFloatingIp", args, LookupFloatingIpResultOutput{}, options).(LookupFloatingIpResultOutput)
 }
 
 // A collection of arguments for invoking getFloatingIp.

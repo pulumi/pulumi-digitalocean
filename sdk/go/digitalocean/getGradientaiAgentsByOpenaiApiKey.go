@@ -35,12 +35,8 @@ type GetGradientaiAgentsByOpenaiApiKeyResult struct {
 }
 
 func GetGradientaiAgentsByOpenaiApiKeyOutput(ctx *pulumi.Context, args GetGradientaiAgentsByOpenaiApiKeyOutputArgs, opts ...pulumi.InvokeOption) GetGradientaiAgentsByOpenaiApiKeyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetGradientaiAgentsByOpenaiApiKeyResultOutput, error) {
-			args := v.(GetGradientaiAgentsByOpenaiApiKeyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("digitalocean:index/getGradientaiAgentsByOpenaiApiKey:getGradientaiAgentsByOpenaiApiKey", args, GetGradientaiAgentsByOpenaiApiKeyResultOutput{}, options).(GetGradientaiAgentsByOpenaiApiKeyResultOutput), nil
-		}).(GetGradientaiAgentsByOpenaiApiKeyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("digitalocean:index/getGradientaiAgentsByOpenaiApiKey:getGradientaiAgentsByOpenaiApiKey", args, GetGradientaiAgentsByOpenaiApiKeyResultOutput{}, options).(GetGradientaiAgentsByOpenaiApiKeyResultOutput)
 }
 
 // A collection of arguments for invoking getGradientaiAgentsByOpenaiApiKey.

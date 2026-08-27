@@ -132,12 +132,8 @@ type GetProjectsResult struct {
 }
 
 func GetProjectsOutput(ctx *pulumi.Context, args GetProjectsOutputArgs, opts ...pulumi.InvokeOption) GetProjectsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetProjectsResultOutput, error) {
-			args := v.(GetProjectsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("digitalocean:index/getProjects:getProjects", args, GetProjectsResultOutput{}, options).(GetProjectsResultOutput), nil
-		}).(GetProjectsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("digitalocean:index/getProjects:getProjects", args, GetProjectsResultOutput{}, options).(GetProjectsResultOutput)
 }
 
 // A collection of arguments for invoking getProjects.

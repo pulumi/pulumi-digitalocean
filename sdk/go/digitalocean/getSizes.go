@@ -178,12 +178,8 @@ type GetSizesResult struct {
 }
 
 func GetSizesOutput(ctx *pulumi.Context, args GetSizesOutputArgs, opts ...pulumi.InvokeOption) GetSizesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetSizesResultOutput, error) {
-			args := v.(GetSizesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("digitalocean:index/getSizes:getSizes", args, GetSizesResultOutput{}, options).(GetSizesResultOutput), nil
-		}).(GetSizesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("digitalocean:index/getSizes:getSizes", args, GetSizesResultOutput{}, options).(GetSizesResultOutput)
 }
 
 // A collection of arguments for invoking getSizes.

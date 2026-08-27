@@ -81,12 +81,8 @@ type LookupNfsResult struct {
 }
 
 func LookupNfsOutput(ctx *pulumi.Context, args LookupNfsOutputArgs, opts ...pulumi.InvokeOption) LookupNfsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupNfsResultOutput, error) {
-			args := v.(LookupNfsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("digitalocean:index/getNfs:getNfs", args, LookupNfsResultOutput{}, options).(LookupNfsResultOutput), nil
-		}).(LookupNfsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("digitalocean:index/getNfs:getNfs", args, LookupNfsResultOutput{}, options).(LookupNfsResultOutput)
 }
 
 // A collection of arguments for invoking getNfs.

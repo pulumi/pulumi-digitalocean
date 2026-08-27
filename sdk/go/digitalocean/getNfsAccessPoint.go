@@ -105,12 +105,8 @@ type LookupNfsAccessPointResult struct {
 }
 
 func LookupNfsAccessPointOutput(ctx *pulumi.Context, args LookupNfsAccessPointOutputArgs, opts ...pulumi.InvokeOption) LookupNfsAccessPointResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupNfsAccessPointResultOutput, error) {
-			args := v.(LookupNfsAccessPointArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("digitalocean:index/getNfsAccessPoint:getNfsAccessPoint", args, LookupNfsAccessPointResultOutput{}, options).(LookupNfsAccessPointResultOutput), nil
-		}).(LookupNfsAccessPointResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("digitalocean:index/getNfsAccessPoint:getNfsAccessPoint", args, LookupNfsAccessPointResultOutput{}, options).(LookupNfsAccessPointResultOutput)
 }
 
 // A collection of arguments for invoking getNfsAccessPoint.

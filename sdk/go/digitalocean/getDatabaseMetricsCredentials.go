@@ -59,10 +59,8 @@ type GetDatabaseMetricsCredentialsResult struct {
 }
 
 func GetDatabaseMetricsCredentialsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetDatabaseMetricsCredentialsResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetDatabaseMetricsCredentialsResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("digitalocean:index/getDatabaseMetricsCredentials:getDatabaseMetricsCredentials", nil, GetDatabaseMetricsCredentialsResultOutput{}, options).(GetDatabaseMetricsCredentialsResultOutput), nil
-	}).(GetDatabaseMetricsCredentialsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("digitalocean:index/getDatabaseMetricsCredentials:getDatabaseMetricsCredentials", nil, GetDatabaseMetricsCredentialsResultOutput{}, options).(GetDatabaseMetricsCredentialsResultOutput)
 }
 
 // A collection of values returned by getDatabaseMetricsCredentials.

@@ -38,12 +38,8 @@ type GetGenaiOpenaiApiKeysResult struct {
 }
 
 func GetGenaiOpenaiApiKeysOutput(ctx *pulumi.Context, args GetGenaiOpenaiApiKeysOutputArgs, opts ...pulumi.InvokeOption) GetGenaiOpenaiApiKeysResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetGenaiOpenaiApiKeysResultOutput, error) {
-			args := v.(GetGenaiOpenaiApiKeysArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("digitalocean:index/getGenaiOpenaiApiKeys:getGenaiOpenaiApiKeys", args, GetGenaiOpenaiApiKeysResultOutput{}, options).(GetGenaiOpenaiApiKeysResultOutput), nil
-		}).(GetGenaiOpenaiApiKeysResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("digitalocean:index/getGenaiOpenaiApiKeys:getGenaiOpenaiApiKeys", args, GetGenaiOpenaiApiKeysResultOutput{}, options).(GetGenaiOpenaiApiKeysResultOutput)
 }
 
 // A collection of arguments for invoking getGenaiOpenaiApiKeys.

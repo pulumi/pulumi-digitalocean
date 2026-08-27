@@ -48,12 +48,8 @@ type GetGradientaiIndexingJobResult struct {
 }
 
 func GetGradientaiIndexingJobOutput(ctx *pulumi.Context, args GetGradientaiIndexingJobOutputArgs, opts ...pulumi.InvokeOption) GetGradientaiIndexingJobResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetGradientaiIndexingJobResultOutput, error) {
-			args := v.(GetGradientaiIndexingJobArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("digitalocean:index/getGradientaiIndexingJob:getGradientaiIndexingJob", args, GetGradientaiIndexingJobResultOutput{}, options).(GetGradientaiIndexingJobResultOutput), nil
-		}).(GetGradientaiIndexingJobResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("digitalocean:index/getGradientaiIndexingJob:getGradientaiIndexingJob", args, GetGradientaiIndexingJobResultOutput{}, options).(GetGradientaiIndexingJobResultOutput)
 }
 
 // A collection of arguments for invoking getGradientaiIndexingJob.

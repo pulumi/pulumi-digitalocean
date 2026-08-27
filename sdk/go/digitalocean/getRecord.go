@@ -91,12 +91,8 @@ type GetRecordResult struct {
 }
 
 func GetRecordOutput(ctx *pulumi.Context, args GetRecordOutputArgs, opts ...pulumi.InvokeOption) GetRecordResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetRecordResultOutput, error) {
-			args := v.(GetRecordArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("digitalocean:index/getRecord:getRecord", args, GetRecordResultOutput{}, options).(GetRecordResultOutput), nil
-		}).(GetRecordResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("digitalocean:index/getRecord:getRecord", args, GetRecordResultOutput{}, options).(GetRecordResultOutput)
 }
 
 // A collection of arguments for invoking getRecord.
