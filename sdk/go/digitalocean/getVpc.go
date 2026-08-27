@@ -124,12 +124,8 @@ type LookupVpcResult struct {
 }
 
 func LookupVpcOutput(ctx *pulumi.Context, args LookupVpcOutputArgs, opts ...pulumi.InvokeOption) LookupVpcResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupVpcResultOutput, error) {
-			args := v.(LookupVpcArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("digitalocean:index/getVpc:getVpc", args, LookupVpcResultOutput{}, options).(LookupVpcResultOutput), nil
-		}).(LookupVpcResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("digitalocean:index/getVpc:getVpc", args, LookupVpcResultOutput{}, options).(LookupVpcResultOutput)
 }
 
 // A collection of arguments for invoking getVpc.

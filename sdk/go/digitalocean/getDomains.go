@@ -87,12 +87,8 @@ type GetDomainsResult struct {
 }
 
 func GetDomainsOutput(ctx *pulumi.Context, args GetDomainsOutputArgs, opts ...pulumi.InvokeOption) GetDomainsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetDomainsResultOutput, error) {
-			args := v.(GetDomainsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("digitalocean:index/getDomains:getDomains", args, GetDomainsResultOutput{}, options).(GetDomainsResultOutput), nil
-		}).(GetDomainsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("digitalocean:index/getDomains:getDomains", args, GetDomainsResultOutput{}, options).(GetDomainsResultOutput)
 }
 
 // A collection of arguments for invoking getDomains.

@@ -107,12 +107,8 @@ type LookupVpcNatGatewayResult struct {
 }
 
 func LookupVpcNatGatewayOutput(ctx *pulumi.Context, args LookupVpcNatGatewayOutputArgs, opts ...pulumi.InvokeOption) LookupVpcNatGatewayResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupVpcNatGatewayResultOutput, error) {
-			args := v.(LookupVpcNatGatewayArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("digitalocean:index/getVpcNatGateway:getVpcNatGateway", args, LookupVpcNatGatewayResultOutput{}, options).(LookupVpcNatGatewayResultOutput), nil
-		}).(LookupVpcNatGatewayResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("digitalocean:index/getVpcNatGateway:getVpcNatGateway", args, LookupVpcNatGatewayResultOutput{}, options).(LookupVpcNatGatewayResultOutput)
 }
 
 // A collection of arguments for invoking getVpcNatGateway.

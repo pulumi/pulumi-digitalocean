@@ -40,12 +40,8 @@ type LookupGradientaiOpenaiApiKeyResult struct {
 }
 
 func LookupGradientaiOpenaiApiKeyOutput(ctx *pulumi.Context, args LookupGradientaiOpenaiApiKeyOutputArgs, opts ...pulumi.InvokeOption) LookupGradientaiOpenaiApiKeyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupGradientaiOpenaiApiKeyResultOutput, error) {
-			args := v.(LookupGradientaiOpenaiApiKeyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("digitalocean:index/getGradientaiOpenaiApiKey:getGradientaiOpenaiApiKey", args, LookupGradientaiOpenaiApiKeyResultOutput{}, options).(LookupGradientaiOpenaiApiKeyResultOutput), nil
-		}).(LookupGradientaiOpenaiApiKeyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("digitalocean:index/getGradientaiOpenaiApiKey:getGradientaiOpenaiApiKey", args, LookupGradientaiOpenaiApiKeyResultOutput{}, options).(LookupGradientaiOpenaiApiKeyResultOutput)
 }
 
 // A collection of arguments for invoking getGradientaiOpenaiApiKey.

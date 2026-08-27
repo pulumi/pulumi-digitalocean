@@ -37,12 +37,8 @@ type GetGradientaiKnowledgeBasesResult struct {
 }
 
 func GetGradientaiKnowledgeBasesOutput(ctx *pulumi.Context, args GetGradientaiKnowledgeBasesOutputArgs, opts ...pulumi.InvokeOption) GetGradientaiKnowledgeBasesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetGradientaiKnowledgeBasesResultOutput, error) {
-			args := v.(GetGradientaiKnowledgeBasesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("digitalocean:index/getGradientaiKnowledgeBases:getGradientaiKnowledgeBases", args, GetGradientaiKnowledgeBasesResultOutput{}, options).(GetGradientaiKnowledgeBasesResultOutput), nil
-		}).(GetGradientaiKnowledgeBasesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("digitalocean:index/getGradientaiKnowledgeBases:getGradientaiKnowledgeBases", args, GetGradientaiKnowledgeBasesResultOutput{}, options).(GetGradientaiKnowledgeBasesResultOutput)
 }
 
 // A collection of arguments for invoking getGradientaiKnowledgeBases.

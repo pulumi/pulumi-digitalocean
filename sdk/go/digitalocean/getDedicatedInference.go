@@ -83,12 +83,8 @@ type LookupDedicatedInferenceResult struct {
 }
 
 func LookupDedicatedInferenceOutput(ctx *pulumi.Context, args LookupDedicatedInferenceOutputArgs, opts ...pulumi.InvokeOption) LookupDedicatedInferenceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDedicatedInferenceResultOutput, error) {
-			args := v.(LookupDedicatedInferenceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("digitalocean:index/getDedicatedInference:getDedicatedInference", args, LookupDedicatedInferenceResultOutput{}, options).(LookupDedicatedInferenceResultOutput), nil
-		}).(LookupDedicatedInferenceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("digitalocean:index/getDedicatedInference:getDedicatedInference", args, LookupDedicatedInferenceResultOutput{}, options).(LookupDedicatedInferenceResultOutput)
 }
 
 // A collection of arguments for invoking getDedicatedInference.

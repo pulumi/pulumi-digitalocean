@@ -38,12 +38,8 @@ type GetGenaiRegionsResult struct {
 }
 
 func GetGenaiRegionsOutput(ctx *pulumi.Context, args GetGenaiRegionsOutputArgs, opts ...pulumi.InvokeOption) GetGenaiRegionsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetGenaiRegionsResultOutput, error) {
-			args := v.(GetGenaiRegionsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("digitalocean:index/getGenaiRegions:getGenaiRegions", args, GetGenaiRegionsResultOutput{}, options).(GetGenaiRegionsResultOutput), nil
-		}).(GetGenaiRegionsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("digitalocean:index/getGenaiRegions:getGenaiRegions", args, GetGenaiRegionsResultOutput{}, options).(GetGenaiRegionsResultOutput)
 }
 
 // A collection of arguments for invoking getGenaiRegions.

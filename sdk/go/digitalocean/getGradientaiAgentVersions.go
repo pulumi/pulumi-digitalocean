@@ -39,12 +39,8 @@ type GetGradientaiAgentVersionsResult struct {
 }
 
 func GetGradientaiAgentVersionsOutput(ctx *pulumi.Context, args GetGradientaiAgentVersionsOutputArgs, opts ...pulumi.InvokeOption) GetGradientaiAgentVersionsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetGradientaiAgentVersionsResultOutput, error) {
-			args := v.(GetGradientaiAgentVersionsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("digitalocean:index/getGradientaiAgentVersions:getGradientaiAgentVersions", args, GetGradientaiAgentVersionsResultOutput{}, options).(GetGradientaiAgentVersionsResultOutput), nil
-		}).(GetGradientaiAgentVersionsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("digitalocean:index/getGradientaiAgentVersions:getGradientaiAgentVersions", args, GetGradientaiAgentVersionsResultOutput{}, options).(GetGradientaiAgentVersionsResultOutput)
 }
 
 // A collection of arguments for invoking getGradientaiAgentVersions.

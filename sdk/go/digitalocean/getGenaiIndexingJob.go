@@ -49,12 +49,8 @@ type GetGenaiIndexingJobResult struct {
 }
 
 func GetGenaiIndexingJobOutput(ctx *pulumi.Context, args GetGenaiIndexingJobOutputArgs, opts ...pulumi.InvokeOption) GetGenaiIndexingJobResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetGenaiIndexingJobResultOutput, error) {
-			args := v.(GetGenaiIndexingJobArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("digitalocean:index/getGenaiIndexingJob:getGenaiIndexingJob", args, GetGenaiIndexingJobResultOutput{}, options).(GetGenaiIndexingJobResultOutput), nil
-		}).(GetGenaiIndexingJobResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("digitalocean:index/getGenaiIndexingJob:getGenaiIndexingJob", args, GetGenaiIndexingJobResultOutput{}, options).(GetGenaiIndexingJobResultOutput)
 }
 
 // A collection of arguments for invoking getGenaiIndexingJob.

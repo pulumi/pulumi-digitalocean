@@ -130,12 +130,8 @@ type LookupVolumeSnapshotResult struct {
 }
 
 func LookupVolumeSnapshotOutput(ctx *pulumi.Context, args LookupVolumeSnapshotOutputArgs, opts ...pulumi.InvokeOption) LookupVolumeSnapshotResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupVolumeSnapshotResultOutput, error) {
-			args := v.(LookupVolumeSnapshotArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("digitalocean:index/getVolumeSnapshot:getVolumeSnapshot", args, LookupVolumeSnapshotResultOutput{}, options).(LookupVolumeSnapshotResultOutput), nil
-		}).(LookupVolumeSnapshotResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("digitalocean:index/getVolumeSnapshot:getVolumeSnapshot", args, LookupVolumeSnapshotResultOutput{}, options).(LookupVolumeSnapshotResultOutput)
 }
 
 // A collection of arguments for invoking getVolumeSnapshot.

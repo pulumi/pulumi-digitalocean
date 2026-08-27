@@ -60,10 +60,8 @@ type GetDedicatedInferenceSizesResult struct {
 }
 
 func GetDedicatedInferenceSizesOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetDedicatedInferenceSizesResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetDedicatedInferenceSizesResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("digitalocean:index/getDedicatedInferenceSizes:getDedicatedInferenceSizes", nil, GetDedicatedInferenceSizesResultOutput{}, options).(GetDedicatedInferenceSizesResultOutput), nil
-	}).(GetDedicatedInferenceSizesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("digitalocean:index/getDedicatedInferenceSizes:getDedicatedInferenceSizes", nil, GetDedicatedInferenceSizesResultOutput{}, options).(GetDedicatedInferenceSizesResultOutput)
 }
 
 // A collection of values returned by getDedicatedInferenceSizes.

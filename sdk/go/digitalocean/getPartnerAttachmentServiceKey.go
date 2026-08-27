@@ -37,12 +37,8 @@ type GetPartnerAttachmentServiceKeyResult struct {
 }
 
 func GetPartnerAttachmentServiceKeyOutput(ctx *pulumi.Context, args GetPartnerAttachmentServiceKeyOutputArgs, opts ...pulumi.InvokeOption) GetPartnerAttachmentServiceKeyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetPartnerAttachmentServiceKeyResultOutput, error) {
-			args := v.(GetPartnerAttachmentServiceKeyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("digitalocean:index/getPartnerAttachmentServiceKey:getPartnerAttachmentServiceKey", args, GetPartnerAttachmentServiceKeyResultOutput{}, options).(GetPartnerAttachmentServiceKeyResultOutput), nil
-		}).(GetPartnerAttachmentServiceKeyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("digitalocean:index/getPartnerAttachmentServiceKey:getPartnerAttachmentServiceKey", args, GetPartnerAttachmentServiceKeyResultOutput{}, options).(GetPartnerAttachmentServiceKeyResultOutput)
 }
 
 // A collection of arguments for invoking getPartnerAttachmentServiceKey.

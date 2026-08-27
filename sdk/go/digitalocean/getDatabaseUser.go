@@ -84,12 +84,8 @@ type LookupDatabaseUserResult struct {
 }
 
 func LookupDatabaseUserOutput(ctx *pulumi.Context, args LookupDatabaseUserOutputArgs, opts ...pulumi.InvokeOption) LookupDatabaseUserResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDatabaseUserResultOutput, error) {
-			args := v.(LookupDatabaseUserArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("digitalocean:index/getDatabaseUser:getDatabaseUser", args, LookupDatabaseUserResultOutput{}, options).(LookupDatabaseUserResultOutput), nil
-		}).(LookupDatabaseUserResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("digitalocean:index/getDatabaseUser:getDatabaseUser", args, LookupDatabaseUserResultOutput{}, options).(LookupDatabaseUserResultOutput)
 }
 
 // A collection of arguments for invoking getDatabaseUser.

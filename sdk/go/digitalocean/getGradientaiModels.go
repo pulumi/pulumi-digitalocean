@@ -37,12 +37,8 @@ type GetGradientaiModelsResult struct {
 }
 
 func GetGradientaiModelsOutput(ctx *pulumi.Context, args GetGradientaiModelsOutputArgs, opts ...pulumi.InvokeOption) GetGradientaiModelsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetGradientaiModelsResultOutput, error) {
-			args := v.(GetGradientaiModelsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("digitalocean:index/getGradientaiModels:getGradientaiModels", args, GetGradientaiModelsResultOutput{}, options).(GetGradientaiModelsResultOutput), nil
-		}).(GetGradientaiModelsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("digitalocean:index/getGradientaiModels:getGradientaiModels", args, GetGradientaiModelsResultOutput{}, options).(GetGradientaiModelsResultOutput)
 }
 
 // A collection of arguments for invoking getGradientaiModels.

@@ -85,12 +85,8 @@ type LookupSshKeyResult struct {
 }
 
 func LookupSshKeyOutput(ctx *pulumi.Context, args LookupSshKeyOutputArgs, opts ...pulumi.InvokeOption) LookupSshKeyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSshKeyResultOutput, error) {
-			args := v.(LookupSshKeyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("digitalocean:index/getSshKey:getSshKey", args, LookupSshKeyResultOutput{}, options).(LookupSshKeyResultOutput), nil
-		}).(LookupSshKeyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("digitalocean:index/getSshKey:getSshKey", args, LookupSshKeyResultOutput{}, options).(LookupSshKeyResultOutput)
 }
 
 // A collection of arguments for invoking getSshKey.

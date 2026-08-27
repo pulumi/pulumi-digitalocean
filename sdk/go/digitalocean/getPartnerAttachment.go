@@ -46,12 +46,8 @@ type LookupPartnerAttachmentResult struct {
 }
 
 func LookupPartnerAttachmentOutput(ctx *pulumi.Context, args LookupPartnerAttachmentOutputArgs, opts ...pulumi.InvokeOption) LookupPartnerAttachmentResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPartnerAttachmentResultOutput, error) {
-			args := v.(LookupPartnerAttachmentArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("digitalocean:index/getPartnerAttachment:getPartnerAttachment", args, LookupPartnerAttachmentResultOutput{}, options).(LookupPartnerAttachmentResultOutput), nil
-		}).(LookupPartnerAttachmentResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("digitalocean:index/getPartnerAttachment:getPartnerAttachment", args, LookupPartnerAttachmentResultOutput{}, options).(LookupPartnerAttachmentResultOutput)
 }
 
 // A collection of arguments for invoking getPartnerAttachment.

@@ -50,12 +50,8 @@ type LookupNfsSnapshotResult struct {
 }
 
 func LookupNfsSnapshotOutput(ctx *pulumi.Context, args LookupNfsSnapshotOutputArgs, opts ...pulumi.InvokeOption) LookupNfsSnapshotResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupNfsSnapshotResultOutput, error) {
-			args := v.(LookupNfsSnapshotArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("digitalocean:index/getNfsSnapshot:getNfsSnapshot", args, LookupNfsSnapshotResultOutput{}, options).(LookupNfsSnapshotResultOutput), nil
-		}).(LookupNfsSnapshotResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("digitalocean:index/getNfsSnapshot:getNfsSnapshot", args, LookupNfsSnapshotResultOutput{}, options).(LookupNfsSnapshotResultOutput)
 }
 
 // A collection of arguments for invoking getNfsSnapshot.

@@ -36,12 +36,8 @@ type GetGenaiKnowledgeBaseDataSourcesResult struct {
 }
 
 func GetGenaiKnowledgeBaseDataSourcesOutput(ctx *pulumi.Context, args GetGenaiKnowledgeBaseDataSourcesOutputArgs, opts ...pulumi.InvokeOption) GetGenaiKnowledgeBaseDataSourcesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetGenaiKnowledgeBaseDataSourcesResultOutput, error) {
-			args := v.(GetGenaiKnowledgeBaseDataSourcesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("digitalocean:index/getGenaiKnowledgeBaseDataSources:getGenaiKnowledgeBaseDataSources", args, GetGenaiKnowledgeBaseDataSourcesResultOutput{}, options).(GetGenaiKnowledgeBaseDataSourcesResultOutput), nil
-		}).(GetGenaiKnowledgeBaseDataSourcesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("digitalocean:index/getGenaiKnowledgeBaseDataSources:getGenaiKnowledgeBaseDataSources", args, GetGenaiKnowledgeBaseDataSourcesResultOutput{}, options).(GetGenaiKnowledgeBaseDataSourcesResultOutput)
 }
 
 // A collection of arguments for invoking getGenaiKnowledgeBaseDataSources.

@@ -143,12 +143,8 @@ type GetKubernetesVersionsResult struct {
 }
 
 func GetKubernetesVersionsOutput(ctx *pulumi.Context, args GetKubernetesVersionsOutputArgs, opts ...pulumi.InvokeOption) GetKubernetesVersionsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetKubernetesVersionsResultOutput, error) {
-			args := v.(GetKubernetesVersionsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("digitalocean:index/getKubernetesVersions:getKubernetesVersions", args, GetKubernetesVersionsResultOutput{}, options).(GetKubernetesVersionsResultOutput), nil
-		}).(GetKubernetesVersionsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("digitalocean:index/getKubernetesVersions:getKubernetesVersions", args, GetKubernetesVersionsResultOutput{}, options).(GetKubernetesVersionsResultOutput)
 }
 
 // A collection of arguments for invoking getKubernetesVersions.

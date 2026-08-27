@@ -106,12 +106,8 @@ type GetDedicatedInferenceAcceleratorsResult struct {
 }
 
 func GetDedicatedInferenceAcceleratorsOutput(ctx *pulumi.Context, args GetDedicatedInferenceAcceleratorsOutputArgs, opts ...pulumi.InvokeOption) GetDedicatedInferenceAcceleratorsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetDedicatedInferenceAcceleratorsResultOutput, error) {
-			args := v.(GetDedicatedInferenceAcceleratorsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("digitalocean:index/getDedicatedInferenceAccelerators:getDedicatedInferenceAccelerators", args, GetDedicatedInferenceAcceleratorsResultOutput{}, options).(GetDedicatedInferenceAcceleratorsResultOutput), nil
-		}).(GetDedicatedInferenceAcceleratorsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("digitalocean:index/getDedicatedInferenceAccelerators:getDedicatedInferenceAccelerators", args, GetDedicatedInferenceAcceleratorsResultOutput{}, options).(GetDedicatedInferenceAcceleratorsResultOutput)
 }
 
 // A collection of arguments for invoking getDedicatedInferenceAccelerators.

@@ -80,12 +80,8 @@ type LookupReservedIpResult struct {
 }
 
 func LookupReservedIpOutput(ctx *pulumi.Context, args LookupReservedIpOutputArgs, opts ...pulumi.InvokeOption) LookupReservedIpResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupReservedIpResultOutput, error) {
-			args := v.(LookupReservedIpArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("digitalocean:index/getReservedIp:getReservedIp", args, LookupReservedIpResultOutput{}, options).(LookupReservedIpResultOutput), nil
-		}).(LookupReservedIpResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("digitalocean:index/getReservedIp:getReservedIp", args, LookupReservedIpResultOutput{}, options).(LookupReservedIpResultOutput)
 }
 
 // A collection of arguments for invoking getReservedIp.

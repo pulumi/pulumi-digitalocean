@@ -55,12 +55,8 @@ type LookupGradientaiCustomModelResult struct {
 }
 
 func LookupGradientaiCustomModelOutput(ctx *pulumi.Context, args LookupGradientaiCustomModelOutputArgs, opts ...pulumi.InvokeOption) LookupGradientaiCustomModelResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupGradientaiCustomModelResultOutput, error) {
-			args := v.(LookupGradientaiCustomModelArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("digitalocean:index/getGradientaiCustomModel:getGradientaiCustomModel", args, LookupGradientaiCustomModelResultOutput{}, options).(LookupGradientaiCustomModelResultOutput), nil
-		}).(LookupGradientaiCustomModelResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("digitalocean:index/getGradientaiCustomModel:getGradientaiCustomModel", args, LookupGradientaiCustomModelResultOutput{}, options).(LookupGradientaiCustomModelResultOutput)
 }
 
 // A collection of arguments for invoking getGradientaiCustomModel.
