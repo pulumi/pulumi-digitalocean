@@ -8,7 +8,7 @@ upstream edits vendored code directly
 
 diff --git a/vendor/github.com/digitalocean/godo/go.mod b/vendor/github.com/digitalocean/godo/go.mod
 new file mode 100644
-index 00000000..fa88d243
+index 000000000000..fa88d24332ff
 --- /dev/null
 +++ b/vendor/github.com/digitalocean/godo/go.mod
 @@ -0,0 +1,15 @@
@@ -29,7 +29,7 @@ index 00000000..fa88d243
 +)
 diff --git a/vendor/github.com/digitalocean/godo/go.sum b/vendor/github.com/digitalocean/godo/go.sum
 new file mode 100644
-index 00000000..00abbb73
+index 000000000000..00abbb739d6f
 --- /dev/null
 +++ b/vendor/github.com/digitalocean/godo/go.sum
 @@ -0,0 +1,24 @@
