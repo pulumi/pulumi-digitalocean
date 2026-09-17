@@ -16,7 +16,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// <summary>
         /// The timestamp of an existing database cluster backup in ISO8601 combined date and time format. The most recent backup will be used if excluded.
         /// 
-        /// This resource supports customized create timeouts. The default timeout is 30 minutes.
+        /// This resource supports customized create and delete timeouts. The default timeout is 30 minutes.
         /// </summary>
         public readonly string? BackupCreatedAt;
         /// <summary>

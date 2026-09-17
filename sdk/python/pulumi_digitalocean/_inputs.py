@@ -10442,7 +10442,7 @@ class DatabaseClusterBackupRestoreArgsDict(TypedDict):
     """
     The timestamp of an existing database cluster backup in ISO8601 combined date and time format. The most recent backup will be used if excluded.
 
-    This resource supports customized create timeouts. The default timeout is 30 minutes.
+    This resource supports customized create and delete timeouts. The default timeout is 30 minutes.
     """
 
 @pulumi.input_type
@@ -10454,7 +10454,7 @@ class DatabaseClusterBackupRestoreArgs:
         :param pulumi.Input[_builtins.str] database_name: The name of an existing database cluster from which the backup will be restored.
         :param pulumi.Input[_builtins.str] backup_created_at: The timestamp of an existing database cluster backup in ISO8601 combined date and time format. The most recent backup will be used if excluded.
                
-               This resource supports customized create timeouts. The default timeout is 30 minutes.
+               This resource supports customized create and delete timeouts. The default timeout is 30 minutes.
         """
         pulumi.set(__self__, "database_name", database_name)
         if backup_created_at is not None:
@@ -10478,7 +10478,7 @@ class DatabaseClusterBackupRestoreArgs:
         """
         The timestamp of an existing database cluster backup in ISO8601 combined date and time format. The most recent backup will be used if excluded.
 
-        This resource supports customized create timeouts. The default timeout is 30 minutes.
+        This resource supports customized create and delete timeouts. The default timeout is 30 minutes.
         """
         return pulumi.get(self, "backup_created_at")
 
