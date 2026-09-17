@@ -18733,7 +18733,7 @@ func (o AppSpecWorkerTerminationPtrOutput) GracePeriodSeconds() pulumi.IntPtrOut
 type DatabaseClusterBackupRestore struct {
 	// The timestamp of an existing database cluster backup in ISO8601 combined date and time format. The most recent backup will be used if excluded.
 	//
-	// This resource supports customized create timeouts. The default timeout is 30 minutes.
+	// This resource supports customized create and delete timeouts. The default timeout is 30 minutes.
 	BackupCreatedAt *string `pulumi:"backupCreatedAt"`
 	// The name of an existing database cluster from which the backup will be restored.
 	DatabaseName string `pulumi:"databaseName"`
@@ -18753,7 +18753,7 @@ type DatabaseClusterBackupRestoreInput interface {
 type DatabaseClusterBackupRestoreArgs struct {
 	// The timestamp of an existing database cluster backup in ISO8601 combined date and time format. The most recent backup will be used if excluded.
 	//
-	// This resource supports customized create timeouts. The default timeout is 30 minutes.
+	// This resource supports customized create and delete timeouts. The default timeout is 30 minutes.
 	BackupCreatedAt pulumi.StringPtrInput `pulumi:"backupCreatedAt"`
 	// The name of an existing database cluster from which the backup will be restored.
 	DatabaseName pulumi.StringInput `pulumi:"databaseName"`
@@ -18838,7 +18838,7 @@ func (o DatabaseClusterBackupRestoreOutput) ToDatabaseClusterBackupRestorePtrOut
 
 // The timestamp of an existing database cluster backup in ISO8601 combined date and time format. The most recent backup will be used if excluded.
 //
-// This resource supports customized create timeouts. The default timeout is 30 minutes.
+// This resource supports customized create and delete timeouts. The default timeout is 30 minutes.
 func (o DatabaseClusterBackupRestoreOutput) BackupCreatedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseClusterBackupRestore) *string { return v.BackupCreatedAt }).(pulumi.StringPtrOutput)
 }
@@ -18874,7 +18874,7 @@ func (o DatabaseClusterBackupRestorePtrOutput) Elem() DatabaseClusterBackupResto
 
 // The timestamp of an existing database cluster backup in ISO8601 combined date and time format. The most recent backup will be used if excluded.
 //
-// This resource supports customized create timeouts. The default timeout is 30 minutes.
+// This resource supports customized create and delete timeouts. The default timeout is 30 minutes.
 func (o DatabaseClusterBackupRestorePtrOutput) BackupCreatedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseClusterBackupRestore) *string {
 		if v == nil {
