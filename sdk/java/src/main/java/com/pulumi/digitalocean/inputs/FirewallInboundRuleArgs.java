@@ -19,6 +19,23 @@ public final class FirewallInboundRuleArgs extends com.pulumi.resources.Resource
     public static final FirewallInboundRuleArgs Empty = new FirewallInboundRuleArgs();
 
     /**
+     * The action to take for traffic matching this rule.
+     * This may be one of &#34;allow&#34; or &#34;deny&#34;. If not specified, defaults to &#34;allow&#34;.
+     * 
+     */
+    @Import(name="action")
+    private @Nullable Output<String> action;
+
+    /**
+     * @return The action to take for traffic matching this rule.
+     * This may be one of &#34;allow&#34; or &#34;deny&#34;. If not specified, defaults to &#34;allow&#34;.
+     * 
+     */
+    public Optional<Output<String>> action() {
+        return Optional.ofNullable(this.action);
+    }
+
+    /**
      * The ports on which traffic will be allowed
      * specified as a string containing a single port, a range (e.g. &#34;8000-9000&#34;),
      * or &#34;1-65535&#34; to open all ports for a protocol. Required for when protocol is
@@ -148,6 +165,7 @@ public final class FirewallInboundRuleArgs extends com.pulumi.resources.Resource
     private FirewallInboundRuleArgs() {}
 
     private FirewallInboundRuleArgs(FirewallInboundRuleArgs $) {
+        this.action = $.action;
         this.portRange = $.portRange;
         this.protocol = $.protocol;
         this.sourceAddresses = $.sourceAddresses;
@@ -173,6 +191,29 @@ public final class FirewallInboundRuleArgs extends com.pulumi.resources.Resource
 
         public Builder(FirewallInboundRuleArgs defaults) {
             $ = new FirewallInboundRuleArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param action The action to take for traffic matching this rule.
+         * This may be one of &#34;allow&#34; or &#34;deny&#34;. If not specified, defaults to &#34;allow&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder action(@Nullable Output<String> action) {
+            $.action = action;
+            return this;
+        }
+
+        /**
+         * @param action The action to take for traffic matching this rule.
+         * This may be one of &#34;allow&#34; or &#34;deny&#34;. If not specified, defaults to &#34;allow&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder action(String action) {
+            return action(Output.of(action));
         }
 
         /**

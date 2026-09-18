@@ -15,6 +15,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetFirewallOutboundRule {
     /**
+     * @return The action to take for traffic matching this rule.
+     * This may be one of &#34;allow&#34; or &#34;deny&#34;. Defaults to &#34;allow&#34; when not set.
+     * 
+     */
+    private @Nullable String action;
+    /**
      * @return An array of strings containing the IPv4
      * addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the
      * outbound traffic will be allowed.
@@ -58,6 +64,14 @@ public final class GetFirewallOutboundRule {
     private String protocol;
 
     private GetFirewallOutboundRule() {}
+    /**
+     * @return The action to take for traffic matching this rule.
+     * This may be one of &#34;allow&#34; or &#34;deny&#34;. Defaults to &#34;allow&#34; when not set.
+     * 
+     */
+    public Optional<String> action() {
+        return Optional.ofNullable(this.action);
+    }
     /**
      * @return An array of strings containing the IPv4
      * addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the
@@ -124,6 +138,7 @@ public final class GetFirewallOutboundRule {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String action;
         private @Nullable List<String> destinationAddresses;
         private @Nullable List<Integer> destinationDropletIds;
         private @Nullable List<String> destinationKubernetesIds;
@@ -134,6 +149,7 @@ public final class GetFirewallOutboundRule {
         public Builder() {}
         public Builder(GetFirewallOutboundRule defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.action = defaults.action;
     	      this.destinationAddresses = defaults.destinationAddresses;
     	      this.destinationDropletIds = defaults.destinationDropletIds;
     	      this.destinationKubernetesIds = defaults.destinationKubernetesIds;
@@ -143,6 +159,12 @@ public final class GetFirewallOutboundRule {
     	      this.protocol = defaults.protocol;
         }
 
+        @CustomType.Setter
+        public Builder action(@Nullable String action) {
+
+            this.action = action;
+            return this;
+        }
         @CustomType.Setter
         public Builder destinationAddresses(@Nullable List<String> destinationAddresses) {
 
@@ -204,6 +226,7 @@ public final class GetFirewallOutboundRule {
         }
         public GetFirewallOutboundRule build() {
             final var _resultValue = new GetFirewallOutboundRule();
+            _resultValue.action = action;
             _resultValue.destinationAddresses = destinationAddresses;
             _resultValue.destinationDropletIds = destinationDropletIds;
             _resultValue.destinationKubernetesIds = destinationKubernetesIds;

@@ -159,7 +159,7 @@ namespace Pulumi.DigitalOcean
         public Output<string> InternalTmpMemStorageEngine { get; private set; } = null!;
 
         /// <summary>
-        /// The time, in seconds, for a query to take to execute before being captured by `SlowQueryLogs`. Default is `10` seconds.
+        /// The time, in seconds, for a query to take to execute before being captured by `SlowQueryLog`. `0` logs all queries. Default is `10` seconds.
         /// </summary>
         [Output("longQueryTime")]
         public Output<double> LongQueryTime { get; private set; } = null!;
@@ -373,7 +373,7 @@ namespace Pulumi.DigitalOcean
         public Input<string>? InternalTmpMemStorageEngine { get; set; }
 
         /// <summary>
-        /// The time, in seconds, for a query to take to execute before being captured by `SlowQueryLogs`. Default is `10` seconds.
+        /// The time, in seconds, for a query to take to execute before being captured by `SlowQueryLog`. `0` logs all queries. Default is `10` seconds.
         /// </summary>
         [Input("longQueryTime")]
         public Input<double>? LongQueryTime { get; set; }
@@ -549,7 +549,7 @@ namespace Pulumi.DigitalOcean
         public Input<string>? InternalTmpMemStorageEngine { get; set; }
 
         /// <summary>
-        /// The time, in seconds, for a query to take to execute before being captured by `SlowQueryLogs`. Default is `10` seconds.
+        /// The time, in seconds, for a query to take to execute before being captured by `SlowQueryLog`. `0` logs all queries. Default is `10` seconds.
         /// </summary>
         [Input("longQueryTime")]
         public Input<double>? LongQueryTime { get; set; }

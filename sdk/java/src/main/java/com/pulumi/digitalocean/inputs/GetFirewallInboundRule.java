@@ -18,6 +18,23 @@ public final class GetFirewallInboundRule extends com.pulumi.resources.InvokeArg
     public static final GetFirewallInboundRule Empty = new GetFirewallInboundRule();
 
     /**
+     * The action to take for traffic matching this rule.
+     * This may be one of &#34;allow&#34; or &#34;deny&#34;. Defaults to &#34;allow&#34; when not set.
+     * 
+     */
+    @Import(name="action")
+    private @Nullable String action;
+
+    /**
+     * @return The action to take for traffic matching this rule.
+     * This may be one of &#34;allow&#34; or &#34;deny&#34;. Defaults to &#34;allow&#34; when not set.
+     * 
+     */
+    public Optional<String> action() {
+        return Optional.ofNullable(this.action);
+    }
+
+    /**
      * The ports on which traffic will be allowed
      * specified as a string containing a single port, a range (e.g. &#34;8000-9000&#34;),
      * or &#34;1-65535&#34; to open all ports for a protocol. Required for when protocol is
@@ -135,6 +152,7 @@ public final class GetFirewallInboundRule extends com.pulumi.resources.InvokeArg
     private GetFirewallInboundRule() {}
 
     private GetFirewallInboundRule(GetFirewallInboundRule $) {
+        this.action = $.action;
         this.portRange = $.portRange;
         this.protocol = $.protocol;
         this.sourceAddresses = $.sourceAddresses;
@@ -160,6 +178,18 @@ public final class GetFirewallInboundRule extends com.pulumi.resources.InvokeArg
 
         public Builder(GetFirewallInboundRule defaults) {
             $ = new GetFirewallInboundRule(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param action The action to take for traffic matching this rule.
+         * This may be one of &#34;allow&#34; or &#34;deny&#34;. Defaults to &#34;allow&#34; when not set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder action(@Nullable String action) {
+            $.action = action;
+            return this;
         }
 
         /**

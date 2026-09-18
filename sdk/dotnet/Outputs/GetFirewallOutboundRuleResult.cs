@@ -14,6 +14,11 @@ namespace Pulumi.DigitalOcean.Outputs
     public sealed class GetFirewallOutboundRuleResult
     {
         /// <summary>
+        /// The action to take for traffic matching this rule.
+        /// This may be one of "allow" or "deny". Defaults to "allow" when not set.
+        /// </summary>
+        public readonly string? Action;
+        /// <summary>
         /// An array of strings containing the IPv4
         /// addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the
         /// outbound traffic will be allowed.
@@ -52,6 +57,8 @@ namespace Pulumi.DigitalOcean.Outputs
 
         [OutputConstructor]
         private GetFirewallOutboundRuleResult(
+            string? action,
+
             ImmutableArray<string> destinationAddresses,
 
             ImmutableArray<int> destinationDropletIds,
@@ -66,6 +73,7 @@ namespace Pulumi.DigitalOcean.Outputs
 
             string protocol)
         {
+            Action = action;
             DestinationAddresses = destinationAddresses;
             DestinationDropletIds = destinationDropletIds;
             DestinationKubernetesIds = destinationKubernetesIds;

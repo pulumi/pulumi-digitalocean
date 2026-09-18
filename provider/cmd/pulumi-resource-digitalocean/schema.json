@@ -3450,6 +3450,10 @@
         },
         "digitalocean:index/FirewallInboundRule:FirewallInboundRule": {
             "properties": {
+                "action": {
+                    "type": "string",
+                    "description": "The action to take for traffic matching this rule.\nThis may be one of \"allow\" or \"deny\". If not specified, defaults to \"allow\".\n"
+                },
                 "portRange": {
                     "type": "string",
                     "description": "The ports on which traffic will be allowed\nspecified as a string containing a single port, a range (e.g. \"8000-9000\"),\nor \"1-65535\" to open all ports for a protocol. Required for when protocol is\n\u003cspan pulumi-lang-nodejs=\"`tcp`\" pulumi-lang-dotnet=\"`Tcp`\" pulumi-lang-go=\"`tcp`\" pulumi-lang-python=\"`tcp`\" pulumi-lang-yaml=\"`tcp`\" pulumi-lang-java=\"`tcp`\" pulumi-lang-hcl=\"`tcp`\"\u003e`tcp`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`udp`\" pulumi-lang-dotnet=\"`Udp`\" pulumi-lang-go=\"`udp`\" pulumi-lang-python=\"`udp`\" pulumi-lang-yaml=\"`udp`\" pulumi-lang-java=\"`udp`\" pulumi-lang-hcl=\"`udp`\"\u003e`udp`\u003c/span\u003e.\n"
@@ -3501,6 +3505,10 @@
         },
         "digitalocean:index/FirewallOutboundRule:FirewallOutboundRule": {
             "properties": {
+                "action": {
+                    "type": "string",
+                    "description": "The action to take for traffic matching this rule.\nThis may be one of \"allow\" or \"deny\". If not specified, defaults to \"allow\".\n"
+                },
                 "destinationAddresses": {
                     "type": "array",
                     "items": {
@@ -12071,6 +12079,10 @@
         },
         "digitalocean:index/getFirewallInboundRule:getFirewallInboundRule": {
             "properties": {
+                "action": {
+                    "type": "string",
+                    "description": "The action to take for traffic matching this rule.\nThis may be one of \"allow\" or \"deny\". Defaults to \"allow\" when not set.\n"
+                },
                 "portRange": {
                     "type": "string",
                     "description": "The ports on which traffic will be allowed\nspecified as a string containing a single port, a range (e.g. \"8000-9000\"),\nor \"1-65535\" to open all ports for a protocol. Required for when protocol is\n\u003cspan pulumi-lang-nodejs=\"`tcp`\" pulumi-lang-dotnet=\"`Tcp`\" pulumi-lang-go=\"`tcp`\" pulumi-lang-python=\"`tcp`\" pulumi-lang-yaml=\"`tcp`\" pulumi-lang-java=\"`tcp`\" pulumi-lang-hcl=\"`tcp`\"\u003e`tcp`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`udp`\" pulumi-lang-dotnet=\"`Udp`\" pulumi-lang-go=\"`udp`\" pulumi-lang-python=\"`udp`\" pulumi-lang-yaml=\"`udp`\" pulumi-lang-java=\"`udp`\" pulumi-lang-hcl=\"`udp`\"\u003e`udp`\u003c/span\u003e.\n"
@@ -12121,6 +12133,10 @@
         },
         "digitalocean:index/getFirewallOutboundRule:getFirewallOutboundRule": {
             "properties": {
+                "action": {
+                    "type": "string",
+                    "description": "The action to take for traffic matching this rule.\nThis may be one of \"allow\" or \"deny\". Defaults to \"allow\" when not set.\n"
+                },
                 "destinationAddresses": {
                     "type": "array",
                     "items": {
@@ -30167,7 +30183,7 @@
                 },
                 "longQueryTime": {
                     "type": "number",
-                    "description": "The time, in seconds, for a query to take to execute before being captured by \u003cspan pulumi-lang-nodejs=\"`slowQueryLogs`\" pulumi-lang-dotnet=\"`SlowQueryLogs`\" pulumi-lang-go=\"`slowQueryLogs`\" pulumi-lang-python=\"`slow_query_logs`\" pulumi-lang-yaml=\"`slowQueryLogs`\" pulumi-lang-java=\"`slowQueryLogs`\" pulumi-lang-hcl=\"`slow_query_logs`\"\u003e`slowQueryLogs`\u003c/span\u003e. Default is \u003cspan pulumi-lang-nodejs=\"`10`\" pulumi-lang-dotnet=\"`10`\" pulumi-lang-go=\"`10`\" pulumi-lang-python=\"`10`\" pulumi-lang-yaml=\"`10`\" pulumi-lang-java=\"`10`\" pulumi-lang-hcl=\"`10`\"\u003e`10`\u003c/span\u003e seconds.\n"
+                    "description": "The time, in seconds, for a query to take to execute before being captured by \u003cspan pulumi-lang-nodejs=\"`slowQueryLog`\" pulumi-lang-dotnet=\"`SlowQueryLog`\" pulumi-lang-go=\"`slowQueryLog`\" pulumi-lang-python=\"`slow_query_log`\" pulumi-lang-yaml=\"`slowQueryLog`\" pulumi-lang-java=\"`slowQueryLog`\" pulumi-lang-hcl=\"`slow_query_log`\"\u003e`slowQueryLog`\u003c/span\u003e. \u003cspan pulumi-lang-nodejs=\"`0`\" pulumi-lang-dotnet=\"`0`\" pulumi-lang-go=\"`0`\" pulumi-lang-python=\"`0`\" pulumi-lang-yaml=\"`0`\" pulumi-lang-java=\"`0`\" pulumi-lang-hcl=\"`0`\"\u003e`0`\u003c/span\u003e logs all queries. Default is \u003cspan pulumi-lang-nodejs=\"`10`\" pulumi-lang-dotnet=\"`10`\" pulumi-lang-go=\"`10`\" pulumi-lang-python=\"`10`\" pulumi-lang-yaml=\"`10`\" pulumi-lang-java=\"`10`\" pulumi-lang-hcl=\"`10`\"\u003e`10`\u003c/span\u003e seconds.\n"
                 },
                 "maxAllowedPacket": {
                     "type": "integer",
@@ -30312,7 +30328,7 @@
                 },
                 "longQueryTime": {
                     "type": "number",
-                    "description": "The time, in seconds, for a query to take to execute before being captured by \u003cspan pulumi-lang-nodejs=\"`slowQueryLogs`\" pulumi-lang-dotnet=\"`SlowQueryLogs`\" pulumi-lang-go=\"`slowQueryLogs`\" pulumi-lang-python=\"`slow_query_logs`\" pulumi-lang-yaml=\"`slowQueryLogs`\" pulumi-lang-java=\"`slowQueryLogs`\" pulumi-lang-hcl=\"`slow_query_logs`\"\u003e`slowQueryLogs`\u003c/span\u003e. Default is \u003cspan pulumi-lang-nodejs=\"`10`\" pulumi-lang-dotnet=\"`10`\" pulumi-lang-go=\"`10`\" pulumi-lang-python=\"`10`\" pulumi-lang-yaml=\"`10`\" pulumi-lang-java=\"`10`\" pulumi-lang-hcl=\"`10`\"\u003e`10`\u003c/span\u003e seconds.\n"
+                    "description": "The time, in seconds, for a query to take to execute before being captured by \u003cspan pulumi-lang-nodejs=\"`slowQueryLog`\" pulumi-lang-dotnet=\"`SlowQueryLog`\" pulumi-lang-go=\"`slowQueryLog`\" pulumi-lang-python=\"`slow_query_log`\" pulumi-lang-yaml=\"`slowQueryLog`\" pulumi-lang-java=\"`slowQueryLog`\" pulumi-lang-hcl=\"`slow_query_log`\"\u003e`slowQueryLog`\u003c/span\u003e. \u003cspan pulumi-lang-nodejs=\"`0`\" pulumi-lang-dotnet=\"`0`\" pulumi-lang-go=\"`0`\" pulumi-lang-python=\"`0`\" pulumi-lang-yaml=\"`0`\" pulumi-lang-java=\"`0`\" pulumi-lang-hcl=\"`0`\"\u003e`0`\u003c/span\u003e logs all queries. Default is \u003cspan pulumi-lang-nodejs=\"`10`\" pulumi-lang-dotnet=\"`10`\" pulumi-lang-go=\"`10`\" pulumi-lang-python=\"`10`\" pulumi-lang-yaml=\"`10`\" pulumi-lang-java=\"`10`\" pulumi-lang-hcl=\"`10`\"\u003e`10`\u003c/span\u003e seconds.\n"
                 },
                 "maxAllowedPacket": {
                     "type": "integer",
@@ -30432,7 +30448,7 @@
                     },
                     "longQueryTime": {
                         "type": "number",
-                        "description": "The time, in seconds, for a query to take to execute before being captured by \u003cspan pulumi-lang-nodejs=\"`slowQueryLogs`\" pulumi-lang-dotnet=\"`SlowQueryLogs`\" pulumi-lang-go=\"`slowQueryLogs`\" pulumi-lang-python=\"`slow_query_logs`\" pulumi-lang-yaml=\"`slowQueryLogs`\" pulumi-lang-java=\"`slowQueryLogs`\" pulumi-lang-hcl=\"`slow_query_logs`\"\u003e`slowQueryLogs`\u003c/span\u003e. Default is \u003cspan pulumi-lang-nodejs=\"`10`\" pulumi-lang-dotnet=\"`10`\" pulumi-lang-go=\"`10`\" pulumi-lang-python=\"`10`\" pulumi-lang-yaml=\"`10`\" pulumi-lang-java=\"`10`\" pulumi-lang-hcl=\"`10`\"\u003e`10`\u003c/span\u003e seconds.\n"
+                        "description": "The time, in seconds, for a query to take to execute before being captured by \u003cspan pulumi-lang-nodejs=\"`slowQueryLog`\" pulumi-lang-dotnet=\"`SlowQueryLog`\" pulumi-lang-go=\"`slowQueryLog`\" pulumi-lang-python=\"`slow_query_log`\" pulumi-lang-yaml=\"`slowQueryLog`\" pulumi-lang-java=\"`slowQueryLog`\" pulumi-lang-hcl=\"`slow_query_log`\"\u003e`slowQueryLog`\u003c/span\u003e. \u003cspan pulumi-lang-nodejs=\"`0`\" pulumi-lang-dotnet=\"`0`\" pulumi-lang-go=\"`0`\" pulumi-lang-python=\"`0`\" pulumi-lang-yaml=\"`0`\" pulumi-lang-java=\"`0`\" pulumi-lang-hcl=\"`0`\"\u003e`0`\u003c/span\u003e logs all queries. Default is \u003cspan pulumi-lang-nodejs=\"`10`\" pulumi-lang-dotnet=\"`10`\" pulumi-lang-go=\"`10`\" pulumi-lang-python=\"`10`\" pulumi-lang-yaml=\"`10`\" pulumi-lang-java=\"`10`\" pulumi-lang-hcl=\"`10`\"\u003e`10`\u003c/span\u003e seconds.\n"
                     },
                     "maxAllowedPacket": {
                         "type": "integer",
