@@ -67,7 +67,7 @@ class DatabaseMysqlConfigArgs:
         :param pulumi.Input[_builtins.bool] innodb_rollback_on_timeout: When enabled, transaction timeouts cause InnoDB to abort and roll back the entire transaction.
         :param pulumi.Input[_builtins.int] interactive_timeout: The time, in seconds, the server waits for activity on an interactive. connection before closing it.
         :param pulumi.Input[_builtins.str] internal_tmp_mem_storage_engine: The storage engine for in-memory internal temporary tables. Supported values are: `TempTable`, `MEMORY`.
-        :param pulumi.Input[_builtins.float] long_query_time: The time, in seconds, for a query to take to execute before being captured by `slow_query_logs`. Default is `10` seconds.
+        :param pulumi.Input[_builtins.float] long_query_time: The time, in seconds, for a query to take to execute before being captured by `slow_query_log`. `0` logs all queries. Default is `10` seconds.
         :param pulumi.Input[_builtins.int] max_allowed_packet: The size of the largest message, in bytes, that can be received by the server. Default is `67108864` (64M).
         :param pulumi.Input[_builtins.int] max_heap_table_size: The maximum size, in bytes, of internal in-memory tables. Also set `tmp_table_size`. Default is `16777216` (16M)
         :param pulumi.Input[_builtins.int] net_read_timeout: The time, in seconds, to wait for more data from an existing connection. aborting the read.
@@ -343,7 +343,7 @@ class DatabaseMysqlConfigArgs:
     @pulumi.getter(name="longQueryTime")
     def long_query_time(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
-        The time, in seconds, for a query to take to execute before being captured by `slow_query_logs`. Default is `10` seconds.
+        The time, in seconds, for a query to take to execute before being captured by `slow_query_log`. `0` logs all queries. Default is `10` seconds.
         """
         return pulumi.get(self, "long_query_time")
 
@@ -523,7 +523,7 @@ class _DatabaseMysqlConfigState:
         :param pulumi.Input[_builtins.bool] innodb_rollback_on_timeout: When enabled, transaction timeouts cause InnoDB to abort and roll back the entire transaction.
         :param pulumi.Input[_builtins.int] interactive_timeout: The time, in seconds, the server waits for activity on an interactive. connection before closing it.
         :param pulumi.Input[_builtins.str] internal_tmp_mem_storage_engine: The storage engine for in-memory internal temporary tables. Supported values are: `TempTable`, `MEMORY`.
-        :param pulumi.Input[_builtins.float] long_query_time: The time, in seconds, for a query to take to execute before being captured by `slow_query_logs`. Default is `10` seconds.
+        :param pulumi.Input[_builtins.float] long_query_time: The time, in seconds, for a query to take to execute before being captured by `slow_query_log`. `0` logs all queries. Default is `10` seconds.
         :param pulumi.Input[_builtins.int] max_allowed_packet: The size of the largest message, in bytes, that can be received by the server. Default is `67108864` (64M).
         :param pulumi.Input[_builtins.int] max_heap_table_size: The maximum size, in bytes, of internal in-memory tables. Also set `tmp_table_size`. Default is `16777216` (16M)
         :param pulumi.Input[_builtins.int] net_read_timeout: The time, in seconds, to wait for more data from an existing connection. aborting the read.
@@ -800,7 +800,7 @@ class _DatabaseMysqlConfigState:
     @pulumi.getter(name="longQueryTime")
     def long_query_time(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
-        The time, in seconds, for a query to take to execute before being captured by `slow_query_logs`. Default is `10` seconds.
+        The time, in seconds, for a query to take to execute before being captured by `slow_query_log`. `0` logs all queries. Default is `10` seconds.
         """
         return pulumi.get(self, "long_query_time")
 
@@ -1017,7 +1017,7 @@ class DatabaseMysqlConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] innodb_rollback_on_timeout: When enabled, transaction timeouts cause InnoDB to abort and roll back the entire transaction.
         :param pulumi.Input[_builtins.int] interactive_timeout: The time, in seconds, the server waits for activity on an interactive. connection before closing it.
         :param pulumi.Input[_builtins.str] internal_tmp_mem_storage_engine: The storage engine for in-memory internal temporary tables. Supported values are: `TempTable`, `MEMORY`.
-        :param pulumi.Input[_builtins.float] long_query_time: The time, in seconds, for a query to take to execute before being captured by `slow_query_logs`. Default is `10` seconds.
+        :param pulumi.Input[_builtins.float] long_query_time: The time, in seconds, for a query to take to execute before being captured by `slow_query_log`. `0` logs all queries. Default is `10` seconds.
         :param pulumi.Input[_builtins.int] max_allowed_packet: The size of the largest message, in bytes, that can be received by the server. Default is `67108864` (64M).
         :param pulumi.Input[_builtins.int] max_heap_table_size: The maximum size, in bytes, of internal in-memory tables. Also set `tmp_table_size`. Default is `16777216` (16M)
         :param pulumi.Input[_builtins.int] net_read_timeout: The time, in seconds, to wait for more data from an existing connection. aborting the read.
@@ -1213,7 +1213,7 @@ class DatabaseMysqlConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] innodb_rollback_on_timeout: When enabled, transaction timeouts cause InnoDB to abort and roll back the entire transaction.
         :param pulumi.Input[_builtins.int] interactive_timeout: The time, in seconds, the server waits for activity on an interactive. connection before closing it.
         :param pulumi.Input[_builtins.str] internal_tmp_mem_storage_engine: The storage engine for in-memory internal temporary tables. Supported values are: `TempTable`, `MEMORY`.
-        :param pulumi.Input[_builtins.float] long_query_time: The time, in seconds, for a query to take to execute before being captured by `slow_query_logs`. Default is `10` seconds.
+        :param pulumi.Input[_builtins.float] long_query_time: The time, in seconds, for a query to take to execute before being captured by `slow_query_log`. `0` logs all queries. Default is `10` seconds.
         :param pulumi.Input[_builtins.int] max_allowed_packet: The size of the largest message, in bytes, that can be received by the server. Default is `67108864` (64M).
         :param pulumi.Input[_builtins.int] max_heap_table_size: The maximum size, in bytes, of internal in-memory tables. Also set `tmp_table_size`. Default is `16777216` (16M)
         :param pulumi.Input[_builtins.int] net_read_timeout: The time, in seconds, to wait for more data from an existing connection. aborting the read.
@@ -1399,7 +1399,7 @@ class DatabaseMysqlConfig(pulumi.CustomResource):
     @pulumi.getter(name="longQueryTime")
     def long_query_time(self) -> pulumi.Output[_builtins.float]:
         """
-        The time, in seconds, for a query to take to execute before being captured by `slow_query_logs`. Default is `10` seconds.
+        The time, in seconds, for a query to take to execute before being captured by `slow_query_log`. `0` logs all queries. Default is `10` seconds.
         """
         return pulumi.get(self, "long_query_time")
 

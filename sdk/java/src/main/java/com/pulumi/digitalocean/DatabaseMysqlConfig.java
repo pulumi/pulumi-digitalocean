@@ -318,14 +318,14 @@ public class DatabaseMysqlConfig extends com.pulumi.resources.CustomResource {
         return this.internalTmpMemStorageEngine;
     }
     /**
-     * The time, in seconds, for a query to take to execute before being captured by `slowQueryLogs`. Default is `10` seconds.
+     * The time, in seconds, for a query to take to execute before being captured by `slowQueryLog`. `0` logs all queries. Default is `10` seconds.
      * 
      */
     @Export(name="longQueryTime", refs={Double.class}, tree="[0]")
     private Output<Double> longQueryTime;
 
     /**
-     * @return The time, in seconds, for a query to take to execute before being captured by `slowQueryLogs`. Default is `10` seconds.
+     * @return The time, in seconds, for a query to take to execute before being captured by `slowQueryLog`. `0` logs all queries. Default is `10` seconds.
      * 
      */
     public Output<Double> longQueryTime() {

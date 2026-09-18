@@ -12,6 +12,13 @@ namespace Pulumi.DigitalOcean.Inputs
 
     public sealed class FirewallOutboundRuleArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The action to take for traffic matching this rule.
+        /// This may be one of "allow" or "deny". If not specified, defaults to "allow".
+        /// </summary>
+        [Input("action")]
+        public Input<string>? Action { get; set; }
+
         [Input("destinationAddresses")]
         private InputList<string>? _destinationAddresses;
 

@@ -2466,6 +2466,11 @@ export interface DropletBackupPolicy {
 
 export interface FirewallInboundRule {
     /**
+     * The action to take for traffic matching this rule.
+     * This may be one of "allow" or "deny". If not specified, defaults to "allow".
+     */
+    action?: pulumi.Input<string | undefined>;
+    /**
      * The ports on which traffic will be allowed
      * specified as a string containing a single port, a range (e.g. "8000-9000"),
      * or "1-65535" to open all ports for a protocol. Required for when protocol is
@@ -2507,6 +2512,11 @@ export interface FirewallInboundRule {
 }
 
 export interface FirewallOutboundRule {
+    /**
+     * The action to take for traffic matching this rule.
+     * This may be one of "allow" or "deny". If not specified, defaults to "allow".
+     */
+    action?: pulumi.Input<string | undefined>;
     /**
      * An array of strings containing the IPv4
      * addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the
@@ -4126,6 +4136,11 @@ export interface GetDropletsSortArgs {
 
 export interface GetFirewallInboundRule {
     /**
+     * The action to take for traffic matching this rule.
+     * This may be one of "allow" or "deny". Defaults to "allow" when not set.
+     */
+    action?: string;
+    /**
      * The ports on which traffic will be allowed
      * specified as a string containing a single port, a range (e.g. "8000-9000"),
      * or "1-65535" to open all ports for a protocol. Required for when protocol is
@@ -4163,6 +4178,11 @@ export interface GetFirewallInboundRule {
 
 export interface GetFirewallInboundRuleArgs {
     /**
+     * The action to take for traffic matching this rule.
+     * This may be one of "allow" or "deny". Defaults to "allow" when not set.
+     */
+    action?: pulumi.Input<string | undefined>;
+    /**
      * The ports on which traffic will be allowed
      * specified as a string containing a single port, a range (e.g. "8000-9000"),
      * or "1-65535" to open all ports for a protocol. Required for when protocol is
@@ -4199,6 +4219,11 @@ export interface GetFirewallInboundRuleArgs {
 }
 
 export interface GetFirewallOutboundRule {
+    /**
+     * The action to take for traffic matching this rule.
+     * This may be one of "allow" or "deny". Defaults to "allow" when not set.
+     */
+    action?: string;
     /**
      * An array of strings containing the IPv4
      * addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the
@@ -4238,6 +4263,11 @@ export interface GetFirewallOutboundRule {
 }
 
 export interface GetFirewallOutboundRuleArgs {
+    /**
+     * The action to take for traffic matching this rule.
+     * This may be one of "allow" or "deny". Defaults to "allow" when not set.
+     */
+    action?: pulumi.Input<string | undefined>;
     /**
      * An array of strings containing the IPv4
      * addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the

@@ -21484,6 +21484,9 @@ func (o DropletBackupPolicyPtrOutput) Weekday() pulumi.StringPtrOutput {
 }
 
 type FirewallInboundRule struct {
+	// The action to take for traffic matching this rule.
+	// This may be one of "allow" or "deny". If not specified, defaults to "allow".
+	Action *string `pulumi:"action"`
 	// The ports on which traffic will be allowed
 	// specified as a string containing a single port, a range (e.g. "8000-9000"),
 	// or "1-65535" to open all ports for a protocol. Required for when protocol is
@@ -21523,6 +21526,9 @@ type FirewallInboundRuleInput interface {
 }
 
 type FirewallInboundRuleArgs struct {
+	// The action to take for traffic matching this rule.
+	// This may be one of "allow" or "deny". If not specified, defaults to "allow".
+	Action pulumi.StringPtrInput `pulumi:"action"`
 	// The ports on which traffic will be allowed
 	// specified as a string containing a single port, a range (e.g. "8000-9000"),
 	// or "1-65535" to open all ports for a protocol. Required for when protocol is
@@ -21601,6 +21607,12 @@ func (o FirewallInboundRuleOutput) ToFirewallInboundRuleOutputWithContext(ctx co
 	return o
 }
 
+// The action to take for traffic matching this rule.
+// This may be one of "allow" or "deny". If not specified, defaults to "allow".
+func (o FirewallInboundRuleOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirewallInboundRule) *string { return v.Action }).(pulumi.StringPtrOutput)
+}
+
 // The ports on which traffic will be allowed
 // specified as a string containing a single port, a range (e.g. "8000-9000"),
 // or "1-65535" to open all ports for a protocol. Required for when protocol is
@@ -21668,6 +21680,9 @@ func (o FirewallInboundRuleArrayOutput) Index(i pulumi.IntInput) FirewallInbound
 }
 
 type FirewallOutboundRule struct {
+	// The action to take for traffic matching this rule.
+	// This may be one of "allow" or "deny". If not specified, defaults to "allow".
+	Action *string `pulumi:"action"`
 	// An array of strings containing the IPv4
 	// addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the
 	// outbound traffic will be allowed.
@@ -21707,6 +21722,9 @@ type FirewallOutboundRuleInput interface {
 }
 
 type FirewallOutboundRuleArgs struct {
+	// The action to take for traffic matching this rule.
+	// This may be one of "allow" or "deny". If not specified, defaults to "allow".
+	Action pulumi.StringPtrInput `pulumi:"action"`
 	// An array of strings containing the IPv4
 	// addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the
 	// outbound traffic will be allowed.
@@ -21783,6 +21801,12 @@ func (o FirewallOutboundRuleOutput) ToFirewallOutboundRuleOutput() FirewallOutbo
 
 func (o FirewallOutboundRuleOutput) ToFirewallOutboundRuleOutputWithContext(ctx context.Context) FirewallOutboundRuleOutput {
 	return o
+}
+
+// The action to take for traffic matching this rule.
+// This may be one of "allow" or "deny". If not specified, defaults to "allow".
+func (o FirewallOutboundRuleOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirewallOutboundRule) *string { return v.Action }).(pulumi.StringPtrOutput)
 }
 
 // An array of strings containing the IPv4
@@ -64579,6 +64603,9 @@ func (o GetDropletsSortArrayOutput) Index(i pulumi.IntInput) GetDropletsSortOutp
 }
 
 type GetFirewallInboundRule struct {
+	// The action to take for traffic matching this rule.
+	// This may be one of "allow" or "deny". Defaults to "allow" when not set.
+	Action *string `pulumi:"action"`
 	// The ports on which traffic will be allowed
 	// specified as a string containing a single port, a range (e.g. "8000-9000"),
 	// or "1-65535" to open all ports for a protocol. Required for when protocol is
@@ -64615,6 +64642,9 @@ type GetFirewallInboundRuleInput interface {
 }
 
 type GetFirewallInboundRuleArgs struct {
+	// The action to take for traffic matching this rule.
+	// This may be one of "allow" or "deny". Defaults to "allow" when not set.
+	Action pulumi.StringPtrInput `pulumi:"action"`
 	// The ports on which traffic will be allowed
 	// specified as a string containing a single port, a range (e.g. "8000-9000"),
 	// or "1-65535" to open all ports for a protocol. Required for when protocol is
@@ -64690,6 +64720,12 @@ func (o GetFirewallInboundRuleOutput) ToGetFirewallInboundRuleOutputWithContext(
 	return o
 }
 
+// The action to take for traffic matching this rule.
+// This may be one of "allow" or "deny". Defaults to "allow" when not set.
+func (o GetFirewallInboundRuleOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFirewallInboundRule) *string { return v.Action }).(pulumi.StringPtrOutput)
+}
+
 // The ports on which traffic will be allowed
 // specified as a string containing a single port, a range (e.g. "8000-9000"),
 // or "1-65535" to open all ports for a protocol. Required for when protocol is
@@ -64754,6 +64790,9 @@ func (o GetFirewallInboundRuleArrayOutput) Index(i pulumi.IntInput) GetFirewallI
 }
 
 type GetFirewallOutboundRule struct {
+	// The action to take for traffic matching this rule.
+	// This may be one of "allow" or "deny". Defaults to "allow" when not set.
+	Action *string `pulumi:"action"`
 	// An array of strings containing the IPv4
 	// addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the
 	// outbound traffic will be allowed.
@@ -64792,6 +64831,9 @@ type GetFirewallOutboundRuleInput interface {
 }
 
 type GetFirewallOutboundRuleArgs struct {
+	// The action to take for traffic matching this rule.
+	// This may be one of "allow" or "deny". Defaults to "allow" when not set.
+	Action pulumi.StringPtrInput `pulumi:"action"`
 	// An array of strings containing the IPv4
 	// addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the
 	// outbound traffic will be allowed.
@@ -64867,6 +64909,12 @@ func (o GetFirewallOutboundRuleOutput) ToGetFirewallOutboundRuleOutput() GetFire
 
 func (o GetFirewallOutboundRuleOutput) ToGetFirewallOutboundRuleOutputWithContext(ctx context.Context) GetFirewallOutboundRuleOutput {
 	return o
+}
+
+// The action to take for traffic matching this rule.
+// This may be one of "allow" or "deny". Defaults to "allow" when not set.
+func (o GetFirewallOutboundRuleOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFirewallOutboundRule) *string { return v.Action }).(pulumi.StringPtrOutput)
 }
 
 // An array of strings containing the IPv4

@@ -136,7 +136,7 @@ export class DatabaseMysqlConfig extends pulumi.CustomResource {
      */
     declare public readonly internalTmpMemStorageEngine: pulumi.Output<string>;
     /**
-     * The time, in seconds, for a query to take to execute before being captured by `slowQueryLogs`. Default is `10` seconds.
+     * The time, in seconds, for a query to take to execute before being captured by `slowQueryLog`. `0` logs all queries. Default is `10` seconds.
      */
     declare public readonly longQueryTime: pulumi.Output<number>;
     /**
@@ -333,7 +333,7 @@ export interface DatabaseMysqlConfigState {
      */
     internalTmpMemStorageEngine?: pulumi.Input<string | undefined>;
     /**
-     * The time, in seconds, for a query to take to execute before being captured by `slowQueryLogs`. Default is `10` seconds.
+     * The time, in seconds, for a query to take to execute before being captured by `slowQueryLog`. `0` logs all queries. Default is `10` seconds.
      */
     longQueryTime?: pulumi.Input<number | undefined>;
     /**
@@ -451,7 +451,7 @@ export interface DatabaseMysqlConfigArgs {
      */
     internalTmpMemStorageEngine?: pulumi.Input<string | undefined>;
     /**
-     * The time, in seconds, for a query to take to execute before being captured by `slowQueryLogs`. Default is `10` seconds.
+     * The time, in seconds, for a query to take to execute before being captured by `slowQueryLog`. `0` logs all queries. Default is `10` seconds.
      */
     longQueryTime?: pulumi.Input<number | undefined>;
     /**

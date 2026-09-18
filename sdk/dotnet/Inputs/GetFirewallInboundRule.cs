@@ -13,6 +13,13 @@ namespace Pulumi.DigitalOcean.Inputs
     public sealed class GetFirewallInboundRuleArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
+        /// The action to take for traffic matching this rule.
+        /// This may be one of "allow" or "deny". Defaults to "allow" when not set.
+        /// </summary>
+        [Input("action")]
+        public string? Action { get; set; }
+
+        /// <summary>
         /// The ports on which traffic will be allowed
         /// specified as a string containing a single port, a range (e.g. "8000-9000"),
         /// or "1-65535" to open all ports for a protocol. Required for when protocol is

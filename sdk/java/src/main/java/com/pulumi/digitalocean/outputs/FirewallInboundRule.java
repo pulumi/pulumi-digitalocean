@@ -15,6 +15,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class FirewallInboundRule {
     /**
+     * @return The action to take for traffic matching this rule.
+     * This may be one of &#34;allow&#34; or &#34;deny&#34;. If not specified, defaults to &#34;allow&#34;.
+     * 
+     */
+    private @Nullable String action;
+    /**
      * @return The ports on which traffic will be allowed
      * specified as a string containing a single port, a range (e.g. &#34;8000-9000&#34;),
      * or &#34;1-65535&#34; to open all ports for a protocol. Required for when protocol is
@@ -62,6 +68,14 @@ public final class FirewallInboundRule {
     private @Nullable List<String> sourceTags;
 
     private FirewallInboundRule() {}
+    /**
+     * @return The action to take for traffic matching this rule.
+     * This may be one of &#34;allow&#34; or &#34;deny&#34;. If not specified, defaults to &#34;allow&#34;.
+     * 
+     */
+    public Optional<String> action() {
+        return Optional.ofNullable(this.action);
+    }
     /**
      * @return The ports on which traffic will be allowed
      * specified as a string containing a single port, a range (e.g. &#34;8000-9000&#34;),
@@ -132,6 +146,7 @@ public final class FirewallInboundRule {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String action;
         private @Nullable String portRange;
         private String protocol;
         private @Nullable List<String> sourceAddresses;
@@ -142,6 +157,7 @@ public final class FirewallInboundRule {
         public Builder() {}
         public Builder(FirewallInboundRule defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.action = defaults.action;
     	      this.portRange = defaults.portRange;
     	      this.protocol = defaults.protocol;
     	      this.sourceAddresses = defaults.sourceAddresses;
@@ -151,6 +167,12 @@ public final class FirewallInboundRule {
     	      this.sourceTags = defaults.sourceTags;
         }
 
+        @CustomType.Setter
+        public Builder action(@Nullable String action) {
+
+            this.action = action;
+            return this;
+        }
         @CustomType.Setter
         public Builder portRange(@Nullable String portRange) {
 
@@ -212,6 +234,7 @@ public final class FirewallInboundRule {
         }
         public FirewallInboundRule build() {
             final var _resultValue = new FirewallInboundRule();
+            _resultValue.action = action;
             _resultValue.portRange = portRange;
             _resultValue.protocol = protocol;
             _resultValue.sourceAddresses = sourceAddresses;

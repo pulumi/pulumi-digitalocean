@@ -9451,6 +9451,7 @@ class FirewallInboundRule(dict):
 
     def __init__(__self__, *,
                  protocol: _builtins.str,
+                 action: Optional[_builtins.str] = None,
                  port_range: Optional[_builtins.str] = None,
                  source_addresses: Optional[Sequence[_builtins.str]] = None,
                  source_droplet_ids: Optional[Sequence[_builtins.int]] = None,
@@ -9460,6 +9461,8 @@ class FirewallInboundRule(dict):
         """
         :param _builtins.str protocol: The type of traffic to be allowed.
                This may be one of "tcp", "udp", or "icmp".
+        :param _builtins.str action: The action to take for traffic matching this rule.
+               This may be one of "allow" or "deny". If not specified, defaults to "allow".
         :param _builtins.str port_range: The ports on which traffic will be allowed
                specified as a string containing a single port, a range (e.g. "8000-9000"),
                or "1-65535" to open all ports for a protocol. Required for when protocol is
@@ -9478,6 +9481,8 @@ class FirewallInboundRule(dict):
                will be accepted.
         """
         pulumi.set(__self__, "protocol", protocol)
+        if action is not None:
+            pulumi.set(__self__, "action", action)
         if port_range is not None:
             pulumi.set(__self__, "port_range", port_range)
         if source_addresses is not None:
@@ -9499,6 +9504,15 @@ class FirewallInboundRule(dict):
         This may be one of "tcp", "udp", or "icmp".
         """
         return pulumi.get(self, "protocol")
+
+    @_builtins.property
+    @pulumi.getter
+    def action(self) -> Optional[_builtins.str]:
+        """
+        The action to take for traffic matching this rule.
+        This may be one of "allow" or "deny". If not specified, defaults to "allow".
+        """
+        return pulumi.get(self, "action")
 
     @_builtins.property
     @pulumi.getter(name="portRange")
@@ -9590,6 +9604,7 @@ class FirewallOutboundRule(dict):
 
     def __init__(__self__, *,
                  protocol: _builtins.str,
+                 action: Optional[_builtins.str] = None,
                  destination_addresses: Optional[Sequence[_builtins.str]] = None,
                  destination_droplet_ids: Optional[Sequence[_builtins.int]] = None,
                  destination_kubernetes_ids: Optional[Sequence[_builtins.str]] = None,
@@ -9599,6 +9614,8 @@ class FirewallOutboundRule(dict):
         """
         :param _builtins.str protocol: The type of traffic to be allowed.
                This may be one of "tcp", "udp", or "icmp".
+        :param _builtins.str action: The action to take for traffic matching this rule.
+               This may be one of "allow" or "deny". If not specified, defaults to "allow".
         :param Sequence[_builtins.str] destination_addresses: An array of strings containing the IPv4
                addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the
                outbound traffic will be allowed.
@@ -9617,6 +9634,8 @@ class FirewallOutboundRule(dict):
                `tcp` or `udp`.
         """
         pulumi.set(__self__, "protocol", protocol)
+        if action is not None:
+            pulumi.set(__self__, "action", action)
         if destination_addresses is not None:
             pulumi.set(__self__, "destination_addresses", destination_addresses)
         if destination_droplet_ids is not None:
@@ -9638,6 +9657,15 @@ class FirewallOutboundRule(dict):
         This may be one of "tcp", "udp", or "icmp".
         """
         return pulumi.get(self, "protocol")
+
+    @_builtins.property
+    @pulumi.getter
+    def action(self) -> Optional[_builtins.str]:
+        """
+        The action to take for traffic matching this rule.
+        This may be one of "allow" or "deny". If not specified, defaults to "allow".
+        """
+        return pulumi.get(self, "action")
 
     @_builtins.property
     @pulumi.getter(name="destinationAddresses")
@@ -29026,6 +29054,7 @@ class GetDropletsSortResult(dict):
 class GetFirewallInboundRuleResult(dict):
     def __init__(__self__, *,
                  protocol: _builtins.str,
+                 action: Optional[_builtins.str] = None,
                  port_range: Optional[_builtins.str] = None,
                  source_addresses: Optional[Sequence[_builtins.str]] = None,
                  source_droplet_ids: Optional[Sequence[_builtins.int]] = None,
@@ -29035,6 +29064,8 @@ class GetFirewallInboundRuleResult(dict):
         """
         :param _builtins.str protocol: The type of traffic to be allowed.
                This may be one of "tcp", "udp", or "icmp".
+        :param _builtins.str action: The action to take for traffic matching this rule.
+               This may be one of "allow" or "deny". Defaults to "allow" when not set.
         :param _builtins.str port_range: The ports on which traffic will be allowed
                specified as a string containing a single port, a range (e.g. "8000-9000"),
                or "1-65535" to open all ports for a protocol. Required for when protocol is
@@ -29050,6 +29081,8 @@ class GetFirewallInboundRuleResult(dict):
                Droplets from which the inbound traffic will be accepted.
         """
         pulumi.set(__self__, "protocol", protocol)
+        if action is not None:
+            pulumi.set(__self__, "action", action)
         if port_range is not None:
             pulumi.set(__self__, "port_range", port_range)
         if source_addresses is not None:
@@ -29071,6 +29104,15 @@ class GetFirewallInboundRuleResult(dict):
         This may be one of "tcp", "udp", or "icmp".
         """
         return pulumi.get(self, "protocol")
+
+    @_builtins.property
+    @pulumi.getter
+    def action(self) -> Optional[_builtins.str]:
+        """
+        The action to take for traffic matching this rule.
+        This may be one of "allow" or "deny". Defaults to "allow" when not set.
+        """
+        return pulumi.get(self, "action")
 
     @_builtins.property
     @pulumi.getter(name="portRange")
@@ -29130,6 +29172,7 @@ class GetFirewallInboundRuleResult(dict):
 class GetFirewallOutboundRuleResult(dict):
     def __init__(__self__, *,
                  protocol: _builtins.str,
+                 action: Optional[_builtins.str] = None,
                  destination_addresses: Optional[Sequence[_builtins.str]] = None,
                  destination_droplet_ids: Optional[Sequence[_builtins.int]] = None,
                  destination_kubernetes_ids: Optional[Sequence[_builtins.str]] = None,
@@ -29139,6 +29182,8 @@ class GetFirewallOutboundRuleResult(dict):
         """
         :param _builtins.str protocol: The type of traffic to be allowed.
                This may be one of "tcp", "udp", or "icmp".
+        :param _builtins.str action: The action to take for traffic matching this rule.
+               This may be one of "allow" or "deny". Defaults to "allow" when not set.
         :param Sequence[_builtins.str] destination_addresses: An array of strings containing the IPv4
                addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the
                outbound traffic will be allowed.
@@ -29156,6 +29201,8 @@ class GetFirewallOutboundRuleResult(dict):
                `tcp` or `udp`.
         """
         pulumi.set(__self__, "protocol", protocol)
+        if action is not None:
+            pulumi.set(__self__, "action", action)
         if destination_addresses is not None:
             pulumi.set(__self__, "destination_addresses", destination_addresses)
         if destination_droplet_ids is not None:
@@ -29177,6 +29224,15 @@ class GetFirewallOutboundRuleResult(dict):
         This may be one of "tcp", "udp", or "icmp".
         """
         return pulumi.get(self, "protocol")
+
+    @_builtins.property
+    @pulumi.getter
+    def action(self) -> Optional[_builtins.str]:
+        """
+        The action to take for traffic matching this rule.
+        This may be one of "allow" or "deny". Defaults to "allow" when not set.
+        """
+        return pulumi.get(self, "action")
 
     @_builtins.property
     @pulumi.getter(name="destinationAddresses")

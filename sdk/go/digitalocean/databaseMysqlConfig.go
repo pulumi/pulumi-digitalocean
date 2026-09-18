@@ -100,7 +100,7 @@ type DatabaseMysqlConfig struct {
 	InteractiveTimeout pulumi.IntOutput `pulumi:"interactiveTimeout"`
 	// The storage engine for in-memory internal temporary tables. Supported values are: `TempTable`, `MEMORY`.
 	InternalTmpMemStorageEngine pulumi.StringOutput `pulumi:"internalTmpMemStorageEngine"`
-	// The time, in seconds, for a query to take to execute before being captured by `slowQueryLogs`. Default is `10` seconds.
+	// The time, in seconds, for a query to take to execute before being captured by `slowQueryLog`. `0` logs all queries. Default is `10` seconds.
 	LongQueryTime pulumi.Float64Output `pulumi:"longQueryTime"`
 	// The size of the largest message, in bytes, that can be received by the server. Default is `67108864` (64M).
 	MaxAllowedPacket pulumi.IntOutput `pulumi:"maxAllowedPacket"`
@@ -191,7 +191,7 @@ type databaseMysqlConfigState struct {
 	InteractiveTimeout *int `pulumi:"interactiveTimeout"`
 	// The storage engine for in-memory internal temporary tables. Supported values are: `TempTable`, `MEMORY`.
 	InternalTmpMemStorageEngine *string `pulumi:"internalTmpMemStorageEngine"`
-	// The time, in seconds, for a query to take to execute before being captured by `slowQueryLogs`. Default is `10` seconds.
+	// The time, in seconds, for a query to take to execute before being captured by `slowQueryLog`. `0` logs all queries. Default is `10` seconds.
 	LongQueryTime *float64 `pulumi:"longQueryTime"`
 	// The size of the largest message, in bytes, that can be received by the server. Default is `67108864` (64M).
 	MaxAllowedPacket *int `pulumi:"maxAllowedPacket"`
@@ -250,7 +250,7 @@ type DatabaseMysqlConfigState struct {
 	InteractiveTimeout pulumi.IntPtrInput
 	// The storage engine for in-memory internal temporary tables. Supported values are: `TempTable`, `MEMORY`.
 	InternalTmpMemStorageEngine pulumi.StringPtrInput
-	// The time, in seconds, for a query to take to execute before being captured by `slowQueryLogs`. Default is `10` seconds.
+	// The time, in seconds, for a query to take to execute before being captured by `slowQueryLog`. `0` logs all queries. Default is `10` seconds.
 	LongQueryTime pulumi.Float64PtrInput
 	// The size of the largest message, in bytes, that can be received by the server. Default is `67108864` (64M).
 	MaxAllowedPacket pulumi.IntPtrInput
@@ -313,7 +313,7 @@ type databaseMysqlConfigArgs struct {
 	InteractiveTimeout *int `pulumi:"interactiveTimeout"`
 	// The storage engine for in-memory internal temporary tables. Supported values are: `TempTable`, `MEMORY`.
 	InternalTmpMemStorageEngine *string `pulumi:"internalTmpMemStorageEngine"`
-	// The time, in seconds, for a query to take to execute before being captured by `slowQueryLogs`. Default is `10` seconds.
+	// The time, in seconds, for a query to take to execute before being captured by `slowQueryLog`. `0` logs all queries. Default is `10` seconds.
 	LongQueryTime *float64 `pulumi:"longQueryTime"`
 	// The size of the largest message, in bytes, that can be received by the server. Default is `67108864` (64M).
 	MaxAllowedPacket *int `pulumi:"maxAllowedPacket"`
@@ -373,7 +373,7 @@ type DatabaseMysqlConfigArgs struct {
 	InteractiveTimeout pulumi.IntPtrInput
 	// The storage engine for in-memory internal temporary tables. Supported values are: `TempTable`, `MEMORY`.
 	InternalTmpMemStorageEngine pulumi.StringPtrInput
-	// The time, in seconds, for a query to take to execute before being captured by `slowQueryLogs`. Default is `10` seconds.
+	// The time, in seconds, for a query to take to execute before being captured by `slowQueryLog`. `0` logs all queries. Default is `10` seconds.
 	LongQueryTime pulumi.Float64PtrInput
 	// The size of the largest message, in bytes, that can be received by the server. Default is `67108864` (64M).
 	MaxAllowedPacket pulumi.IntPtrInput
@@ -569,7 +569,7 @@ func (o DatabaseMysqlConfigOutput) InternalTmpMemStorageEngine() pulumi.StringOu
 	return o.ApplyT(func(v *DatabaseMysqlConfig) pulumi.StringOutput { return v.InternalTmpMemStorageEngine }).(pulumi.StringOutput)
 }
 
-// The time, in seconds, for a query to take to execute before being captured by `slowQueryLogs`. Default is `10` seconds.
+// The time, in seconds, for a query to take to execute before being captured by `slowQueryLog`. `0` logs all queries. Default is `10` seconds.
 func (o DatabaseMysqlConfigOutput) LongQueryTime() pulumi.Float64Output {
 	return o.ApplyT(func(v *DatabaseMysqlConfig) pulumi.Float64Output { return v.LongQueryTime }).(pulumi.Float64Output)
 }
