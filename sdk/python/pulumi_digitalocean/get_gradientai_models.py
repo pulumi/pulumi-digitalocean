@@ -78,8 +78,8 @@ class AwaitableGetGradientaiModelsResult(GetGradientaiModelsResult):
             sorts=self.sorts)
 
 
-def get_gradientai_models(filters: Optional[Sequence[Union['GetGradientaiModelsFilterArgs', 'GetGradientaiModelsFilterArgsDict']]] = None,
-                          sorts: Optional[Sequence[Union['GetGradientaiModelsSortArgs', 'GetGradientaiModelsSortArgsDict']]] = None,
+def get_gradientai_models(filters: Optional[Sequence[Union['GetGradientaiModelsFilterArgs', 'GetGradientaiModelsFilterArgsDict', 'outputs.GetGradientaiModelsFilterResult']]] = None,
+                          sorts: Optional[Sequence[Union['GetGradientaiModelsSortArgs', 'GetGradientaiModelsSortArgsDict', 'outputs.GetGradientaiModelsSortResult']]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGradientaiModelsResult:
     """
     Use this data source to access information about an existing resource.
@@ -95,8 +95,8 @@ def get_gradientai_models(filters: Optional[Sequence[Union['GetGradientaiModelsF
         id=pulumi.get(__ret__, 'id'),
         models=pulumi.get(__ret__, 'models'),
         sorts=pulumi.get(__ret__, 'sorts'))
-def get_gradientai_models_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetGradientaiModelsFilterArgs', 'GetGradientaiModelsFilterArgsDict']]]]] = None,
-                                 sorts: pulumi.Input[Optional[Optional[Sequence[Union['GetGradientaiModelsSortArgs', 'GetGradientaiModelsSortArgsDict']]]]] = None,
+def get_gradientai_models_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetGradientaiModelsFilterArgs', 'GetGradientaiModelsFilterArgsDict', 'outputs.GetGradientaiModelsFilterResult']]]]] = None,
+                                 sorts: pulumi.Input[Optional[Optional[Sequence[Union['GetGradientaiModelsSortArgs', 'GetGradientaiModelsSortArgsDict', 'outputs.GetGradientaiModelsSortResult']]]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGradientaiModelsResult]:
     """
     Use this data source to access information about an existing resource.

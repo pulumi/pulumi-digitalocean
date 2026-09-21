@@ -91,8 +91,8 @@ class AwaitableGetRecordsResult(GetRecordsResult):
 
 
 def get_records(domain: Optional[_builtins.str] = None,
-                filters: Optional[Sequence[Union['GetRecordsFilterArgs', 'GetRecordsFilterArgsDict']]] = None,
-                sorts: Optional[Sequence[Union['GetRecordsSortArgs', 'GetRecordsSortArgsDict']]] = None,
+                filters: Optional[Sequence[Union['GetRecordsFilterArgs', 'GetRecordsFilterArgsDict', 'outputs.GetRecordsFilterResult']]] = None,
+                sorts: Optional[Sequence[Union['GetRecordsSortArgs', 'GetRecordsSortArgsDict', 'outputs.GetRecordsSortResult']]] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRecordsResult:
     """
     Retrieve information about all DNS records within a domain, with the ability to filter and sort the results.
@@ -118,9 +118,9 @@ def get_records(domain: Optional[_builtins.str] = None,
 
 
     :param _builtins.str domain: The domain name to search for DNS records
-    :param Sequence[Union['GetRecordsFilterArgs', 'GetRecordsFilterArgsDict']] filters: Filter the results.
+    :param Sequence[Union['GetRecordsFilterArgs', 'GetRecordsFilterArgsDict', 'outputs.GetRecordsFilterResult']] filters: Filter the results.
            The `filter` block is documented below.
-    :param Sequence[Union['GetRecordsSortArgs', 'GetRecordsSortArgsDict']] sorts: Sort the results.
+    :param Sequence[Union['GetRecordsSortArgs', 'GetRecordsSortArgsDict', 'outputs.GetRecordsSortResult']] sorts: Sort the results.
            The `sort` block is documented below.
     """
     __args__ = dict()
@@ -137,8 +137,8 @@ def get_records(domain: Optional[_builtins.str] = None,
         records=pulumi.get(__ret__, 'records'),
         sorts=pulumi.get(__ret__, 'sorts'))
 def get_records_output(domain: pulumi.Input[Optional[_builtins.str]] = None,
-                       filters: pulumi.Input[Optional[Optional[Sequence[Union['GetRecordsFilterArgs', 'GetRecordsFilterArgsDict']]]]] = None,
-                       sorts: pulumi.Input[Optional[Optional[Sequence[Union['GetRecordsSortArgs', 'GetRecordsSortArgsDict']]]]] = None,
+                       filters: pulumi.Input[Optional[Optional[Sequence[Union['GetRecordsFilterArgs', 'GetRecordsFilterArgsDict', 'outputs.GetRecordsFilterResult']]]]] = None,
+                       sorts: pulumi.Input[Optional[Optional[Sequence[Union['GetRecordsSortArgs', 'GetRecordsSortArgsDict', 'outputs.GetRecordsSortResult']]]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRecordsResult]:
     """
     Retrieve information about all DNS records within a domain, with the ability to filter and sort the results.
@@ -164,9 +164,9 @@ def get_records_output(domain: pulumi.Input[Optional[_builtins.str]] = None,
 
 
     :param _builtins.str domain: The domain name to search for DNS records
-    :param Sequence[Union['GetRecordsFilterArgs', 'GetRecordsFilterArgsDict']] filters: Filter the results.
+    :param Sequence[Union['GetRecordsFilterArgs', 'GetRecordsFilterArgsDict', 'outputs.GetRecordsFilterResult']] filters: Filter the results.
            The `filter` block is documented below.
-    :param Sequence[Union['GetRecordsSortArgs', 'GetRecordsSortArgsDict']] sorts: Sort the results.
+    :param Sequence[Union['GetRecordsSortArgs', 'GetRecordsSortArgsDict', 'outputs.GetRecordsSortResult']] sorts: Sort the results.
            The `sort` block is documented below.
     """
     __args__ = dict()

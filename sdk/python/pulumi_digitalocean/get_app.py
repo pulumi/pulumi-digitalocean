@@ -181,7 +181,7 @@ class AwaitableGetAppResult(GetAppResult):
 
 
 def get_app(app_id: Optional[_builtins.str] = None,
-            dedicated_ips: Optional[Sequence[Union['GetAppDedicatedIpArgs', 'GetAppDedicatedIpArgsDict']]] = None,
+            dedicated_ips: Optional[Sequence[Union['GetAppDedicatedIpArgs', 'GetAppDedicatedIpArgsDict', 'outputs.GetAppDedicatedIpResult']]] = None,
             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAppResult:
     """
     Get information on a DigitalOcean App.
@@ -200,7 +200,7 @@ def get_app(app_id: Optional[_builtins.str] = None,
 
 
     :param _builtins.str app_id: The ID of the app to retrieve information about.
-    :param Sequence[Union['GetAppDedicatedIpArgs', 'GetAppDedicatedIpArgsDict']] dedicated_ips: A list of dedicated egress IP addresses associated with the app.
+    :param Sequence[Union['GetAppDedicatedIpArgs', 'GetAppDedicatedIpArgsDict', 'outputs.GetAppDedicatedIpResult']] dedicated_ips: A list of dedicated egress IP addresses associated with the app.
     """
     __args__ = dict()
     __args__['appId'] = app_id
@@ -222,7 +222,7 @@ def get_app(app_id: Optional[_builtins.str] = None,
         updated_at=pulumi.get(__ret__, 'updated_at'),
         urn=pulumi.get(__ret__, 'urn'))
 def get_app_output(app_id: pulumi.Input[Optional[_builtins.str]] = None,
-                   dedicated_ips: pulumi.Input[Optional[Optional[Sequence[Union['GetAppDedicatedIpArgs', 'GetAppDedicatedIpArgsDict']]]]] = None,
+                   dedicated_ips: pulumi.Input[Optional[Optional[Sequence[Union['GetAppDedicatedIpArgs', 'GetAppDedicatedIpArgsDict', 'outputs.GetAppDedicatedIpResult']]]]] = None,
                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAppResult]:
     """
     Get information on a DigitalOcean App.
@@ -241,7 +241,7 @@ def get_app_output(app_id: pulumi.Input[Optional[_builtins.str]] = None,
 
 
     :param _builtins.str app_id: The ID of the app to retrieve information about.
-    :param Sequence[Union['GetAppDedicatedIpArgs', 'GetAppDedicatedIpArgsDict']] dedicated_ips: A list of dedicated egress IP addresses associated with the app.
+    :param Sequence[Union['GetAppDedicatedIpArgs', 'GetAppDedicatedIpArgsDict', 'outputs.GetAppDedicatedIpResult']] dedicated_ips: A list of dedicated egress IP addresses associated with the app.
     """
     __args__ = dict()
     __args__['appId'] = app_id

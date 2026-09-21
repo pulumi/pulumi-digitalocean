@@ -222,7 +222,7 @@ class DatabaseKafkaTopic(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabaseKafkaTopicConfigArgs', 'DatabaseKafkaTopicConfigArgsDict']]]]] = None,
+                 configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabaseKafkaTopicConfigArgs', 'DatabaseKafkaTopicConfigArgsDict', 'outputs.DatabaseKafkaTopicConfig']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  partition_count: pulumi.Input[Optional[_builtins.int]] = None,
                  replication_factor: pulumi.Input[Optional[_builtins.int]] = None,
@@ -289,7 +289,7 @@ class DatabaseKafkaTopic(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the source database cluster. Note: This must be a Kafka cluster.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseKafkaTopicConfigArgs', 'DatabaseKafkaTopicConfigArgsDict']]]] configs: A set of advanced configuration parameters. Defaults will be set for any of the parameters that are not included.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseKafkaTopicConfigArgs', 'DatabaseKafkaTopicConfigArgsDict', 'outputs.DatabaseKafkaTopicConfig']]]] configs: A set of advanced configuration parameters. Defaults will be set for any of the parameters that are not included.
                The `config` block is documented below.
         :param pulumi.Input[_builtins.str] name: The name for the topic.
         :param pulumi.Input[_builtins.int] partition_count: The number of partitions for the topic. Default and minimum set at 3, maximum is 2048.
@@ -376,7 +376,7 @@ class DatabaseKafkaTopic(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabaseKafkaTopicConfigArgs', 'DatabaseKafkaTopicConfigArgsDict']]]]] = None,
+                 configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabaseKafkaTopicConfigArgs', 'DatabaseKafkaTopicConfigArgsDict', 'outputs.DatabaseKafkaTopicConfig']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  partition_count: pulumi.Input[Optional[_builtins.int]] = None,
                  replication_factor: pulumi.Input[Optional[_builtins.int]] = None,
@@ -408,7 +408,7 @@ class DatabaseKafkaTopic(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
-            configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabaseKafkaTopicConfigArgs', 'DatabaseKafkaTopicConfigArgsDict']]]]] = None,
+            configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabaseKafkaTopicConfigArgs', 'DatabaseKafkaTopicConfigArgsDict', 'outputs.DatabaseKafkaTopicConfig']]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             partition_count: pulumi.Input[Optional[_builtins.int]] = None,
             replication_factor: pulumi.Input[Optional[_builtins.int]] = None,
@@ -421,7 +421,7 @@ class DatabaseKafkaTopic(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the source database cluster. Note: This must be a Kafka cluster.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseKafkaTopicConfigArgs', 'DatabaseKafkaTopicConfigArgsDict']]]] configs: A set of advanced configuration parameters. Defaults will be set for any of the parameters that are not included.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseKafkaTopicConfigArgs', 'DatabaseKafkaTopicConfigArgsDict', 'outputs.DatabaseKafkaTopicConfig']]]] configs: A set of advanced configuration parameters. Defaults will be set for any of the parameters that are not included.
                The `config` block is documented below.
         :param pulumi.Input[_builtins.str] name: The name for the topic.
         :param pulumi.Input[_builtins.int] partition_count: The number of partitions for the topic. Default and minimum set at 3, maximum is 2048.

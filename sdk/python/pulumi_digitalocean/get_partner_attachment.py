@@ -147,7 +147,7 @@ class AwaitableGetPartnerAttachmentResult(GetPartnerAttachmentResult):
             vpc_ids=self.vpc_ids)
 
 
-def get_partner_attachment(bgp: Optional[Union['GetPartnerAttachmentBgpArgs', 'GetPartnerAttachmentBgpArgsDict']] = None,
+def get_partner_attachment(bgp: Optional[Union['GetPartnerAttachmentBgpArgs', 'GetPartnerAttachmentBgpArgsDict', 'outputs.GetPartnerAttachmentBgpResult']] = None,
                            id: Optional[_builtins.str] = None,
                            name: Optional[_builtins.str] = None,
                            redundancy_zone: Optional[_builtins.str] = None,
@@ -176,7 +176,7 @@ def get_partner_attachment(bgp: Optional[Union['GetPartnerAttachmentBgpArgs', 'G
         region=pulumi.get(__ret__, 'region'),
         state=pulumi.get(__ret__, 'state'),
         vpc_ids=pulumi.get(__ret__, 'vpc_ids'))
-def get_partner_attachment_output(bgp: pulumi.Input[Optional[Optional[Union['GetPartnerAttachmentBgpArgs', 'GetPartnerAttachmentBgpArgsDict']]]] = None,
+def get_partner_attachment_output(bgp: pulumi.Input[Optional[Optional[Union['GetPartnerAttachmentBgpArgs', 'GetPartnerAttachmentBgpArgsDict', 'outputs.GetPartnerAttachmentBgpResult']]]] = None,
                                   id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                   name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                   redundancy_zone: pulumi.Input[Optional[Optional[_builtins.str]]] = None,

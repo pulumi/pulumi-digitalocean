@@ -298,10 +298,10 @@ class App(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dedicated_ips: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppDedicatedIpArgs', 'AppDedicatedIpArgsDict']]]]] = None,
+                 dedicated_ips: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppDedicatedIpArgs', 'AppDedicatedIpArgsDict', 'outputs.AppDedicatedIp']]]]] = None,
                  deployment_per_page: pulumi.Input[Optional[_builtins.int]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 spec: pulumi.Input[Optional[Union['AppSpecArgs', 'AppSpecArgsDict']]] = None,
+                 spec: pulumi.Input[Optional[Union['AppSpecArgs', 'AppSpecArgsDict', 'outputs.AppSpec']]] = None,
                  __props__=None):
         """
         Provides a DigitalOcean App resource.
@@ -445,14 +445,14 @@ class App(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AppDedicatedIpArgs', 'AppDedicatedIpArgsDict']]]] dedicated_ips: The dedicated egress IP addresses associated with the app.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AppDedicatedIpArgs', 'AppDedicatedIpArgsDict', 'outputs.AppDedicatedIp']]]] dedicated_ips: The dedicated egress IP addresses associated with the app.
         :param pulumi.Input[_builtins.int] deployment_per_page: (Optional) Controls how many deployments are requested per API page when listing deployments during create/update waits. Defaults to `20`. Reduce this value (for example `5`) if you experience API timeouts when listing deployments.
         :param pulumi.Input[_builtins.str] project_id: The ID of the project that the app is assigned to.
                
                A spec can contain multiple components.
                
                A `service` can contain:
-        :param pulumi.Input[Union['AppSpecArgs', 'AppSpecArgsDict']] spec: A DigitalOcean App spec describing the app.
+        :param pulumi.Input[Union['AppSpecArgs', 'AppSpecArgsDict', 'outputs.AppSpec']] spec: A DigitalOcean App spec describing the app.
         """
         ...
     @overload
@@ -615,10 +615,10 @@ class App(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dedicated_ips: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppDedicatedIpArgs', 'AppDedicatedIpArgsDict']]]]] = None,
+                 dedicated_ips: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppDedicatedIpArgs', 'AppDedicatedIpArgsDict', 'outputs.AppDedicatedIp']]]]] = None,
                  deployment_per_page: pulumi.Input[Optional[_builtins.int]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 spec: pulumi.Input[Optional[Union['AppSpecArgs', 'AppSpecArgsDict']]] = None,
+                 spec: pulumi.Input[Optional[Union['AppSpecArgs', 'AppSpecArgsDict', 'outputs.AppSpec']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -652,13 +652,13 @@ class App(pulumi.CustomResource):
             active_deployment_id: pulumi.Input[Optional[_builtins.str]] = None,
             app_urn: pulumi.Input[Optional[_builtins.str]] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
-            dedicated_ips: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppDedicatedIpArgs', 'AppDedicatedIpArgsDict']]]]] = None,
+            dedicated_ips: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppDedicatedIpArgs', 'AppDedicatedIpArgsDict', 'outputs.AppDedicatedIp']]]]] = None,
             default_ingress: pulumi.Input[Optional[_builtins.str]] = None,
             deployment_per_page: pulumi.Input[Optional[_builtins.int]] = None,
             live_domain: pulumi.Input[Optional[_builtins.str]] = None,
             live_url: pulumi.Input[Optional[_builtins.str]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
-            spec: pulumi.Input[Optional[Union['AppSpecArgs', 'AppSpecArgsDict']]] = None,
+            spec: pulumi.Input[Optional[Union['AppSpecArgs', 'AppSpecArgsDict', 'outputs.AppSpec']]] = None,
             updated_at: pulumi.Input[Optional[_builtins.str]] = None) -> 'App':
         """
         Get an existing App resource's state with the given name, id, and optional extra
@@ -670,7 +670,7 @@ class App(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] active_deployment_id: The ID the app's currently active deployment.
         :param pulumi.Input[_builtins.str] app_urn: The uniform resource identifier for the app.
         :param pulumi.Input[_builtins.str] created_at: The date and time of when the app was created.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AppDedicatedIpArgs', 'AppDedicatedIpArgsDict']]]] dedicated_ips: The dedicated egress IP addresses associated with the app.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AppDedicatedIpArgs', 'AppDedicatedIpArgsDict', 'outputs.AppDedicatedIp']]]] dedicated_ips: The dedicated egress IP addresses associated with the app.
         :param pulumi.Input[_builtins.str] default_ingress: The default URL to access the app.
         :param pulumi.Input[_builtins.int] deployment_per_page: (Optional) Controls how many deployments are requested per API page when listing deployments during create/update waits. Defaults to `20`. Reduce this value (for example `5`) if you experience API timeouts when listing deployments.
         :param pulumi.Input[_builtins.str] live_domain: The live domain of the app.
@@ -680,7 +680,7 @@ class App(pulumi.CustomResource):
                A spec can contain multiple components.
                
                A `service` can contain:
-        :param pulumi.Input[Union['AppSpecArgs', 'AppSpecArgsDict']] spec: A DigitalOcean App spec describing the app.
+        :param pulumi.Input[Union['AppSpecArgs', 'AppSpecArgsDict', 'outputs.AppSpec']] spec: A DigitalOcean App spec describing the app.
         :param pulumi.Input[_builtins.str] updated_at: The date and time of when the app was last updated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

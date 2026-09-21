@@ -78,8 +78,8 @@ class AwaitableGetGradientaiKnowledgeBasesResult(GetGradientaiKnowledgeBasesResu
             sorts=self.sorts)
 
 
-def get_gradientai_knowledge_bases(filters: Optional[Sequence[Union['GetGradientaiKnowledgeBasesFilterArgs', 'GetGradientaiKnowledgeBasesFilterArgsDict']]] = None,
-                                   sorts: Optional[Sequence[Union['GetGradientaiKnowledgeBasesSortArgs', 'GetGradientaiKnowledgeBasesSortArgsDict']]] = None,
+def get_gradientai_knowledge_bases(filters: Optional[Sequence[Union['GetGradientaiKnowledgeBasesFilterArgs', 'GetGradientaiKnowledgeBasesFilterArgsDict', 'outputs.GetGradientaiKnowledgeBasesFilterResult']]] = None,
+                                   sorts: Optional[Sequence[Union['GetGradientaiKnowledgeBasesSortArgs', 'GetGradientaiKnowledgeBasesSortArgsDict', 'outputs.GetGradientaiKnowledgeBasesSortResult']]] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGradientaiKnowledgeBasesResult:
     """
     Use this data source to access information about an existing resource.
@@ -95,8 +95,8 @@ def get_gradientai_knowledge_bases(filters: Optional[Sequence[Union['GetGradient
         id=pulumi.get(__ret__, 'id'),
         knowledge_bases=pulumi.get(__ret__, 'knowledge_bases'),
         sorts=pulumi.get(__ret__, 'sorts'))
-def get_gradientai_knowledge_bases_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetGradientaiKnowledgeBasesFilterArgs', 'GetGradientaiKnowledgeBasesFilterArgsDict']]]]] = None,
-                                          sorts: pulumi.Input[Optional[Optional[Sequence[Union['GetGradientaiKnowledgeBasesSortArgs', 'GetGradientaiKnowledgeBasesSortArgsDict']]]]] = None,
+def get_gradientai_knowledge_bases_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetGradientaiKnowledgeBasesFilterArgs', 'GetGradientaiKnowledgeBasesFilterArgsDict', 'outputs.GetGradientaiKnowledgeBasesFilterResult']]]]] = None,
+                                          sorts: pulumi.Input[Optional[Optional[Sequence[Union['GetGradientaiKnowledgeBasesSortArgs', 'GetGradientaiKnowledgeBasesSortArgsDict', 'outputs.GetGradientaiKnowledgeBasesSortResult']]]]] = None,
                                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGradientaiKnowledgeBasesResult]:
     """
     Use this data source to access information about an existing resource.

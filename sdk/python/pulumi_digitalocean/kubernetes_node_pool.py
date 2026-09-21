@@ -443,7 +443,7 @@ class KubernetesNodePool(pulumi.CustomResource):
                  node_count: pulumi.Input[Optional[_builtins.int]] = None,
                  size: pulumi.Input[Optional[Union[_builtins.str, 'DropletSlug']]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 taints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KubernetesNodePoolTaintArgs', 'KubernetesNodePoolTaintArgsDict']]]]] = None,
+                 taints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KubernetesNodePoolTaintArgs', 'KubernetesNodePoolTaintArgsDict', 'outputs.KubernetesNodePoolTaint']]]]] = None,
                  __props__=None):
         """
         Provides a DigitalOcean Kubernetes node pool resource. While the default node pool must be defined in the `KubernetesCluster` resource, this resource can be used to add additional ones to a cluster.
@@ -529,7 +529,7 @@ class KubernetesNodePool(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] node_count: The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
         :param pulumi.Input[Union[_builtins.str, 'DropletSlug']] size: The slug identifier for the type of Droplet to be used as workers in the node pool.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A list of tag names to be applied to the Kubernetes cluster.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesNodePoolTaintArgs', 'KubernetesNodePoolTaintArgsDict']]]] taints: A list of taints applied to all nodes in the pool.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesNodePoolTaintArgs', 'KubernetesNodePoolTaintArgsDict', 'outputs.KubernetesNodePoolTaint']]]] taints: A list of taints applied to all nodes in the pool.
         """
         ...
     @overload
@@ -632,7 +632,7 @@ class KubernetesNodePool(pulumi.CustomResource):
                  node_count: pulumi.Input[Optional[_builtins.int]] = None,
                  size: pulumi.Input[Optional[Union[_builtins.str, 'DropletSlug']]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 taints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KubernetesNodePoolTaintArgs', 'KubernetesNodePoolTaintArgsDict']]]]] = None,
+                 taints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KubernetesNodePoolTaintArgs', 'KubernetesNodePoolTaintArgsDict', 'outputs.KubernetesNodePoolTaint']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -678,10 +678,10 @@ class KubernetesNodePool(pulumi.CustomResource):
             min_nodes: pulumi.Input[Optional[_builtins.int]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             node_count: pulumi.Input[Optional[_builtins.int]] = None,
-            nodes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KubernetesNodePoolNodeArgs', 'KubernetesNodePoolNodeArgsDict']]]]] = None,
+            nodes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KubernetesNodePoolNodeArgs', 'KubernetesNodePoolNodeArgsDict', 'outputs.KubernetesNodePoolNode']]]]] = None,
             size: pulumi.Input[Optional[Union[_builtins.str, 'DropletSlug']]] = None,
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            taints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KubernetesNodePoolTaintArgs', 'KubernetesNodePoolTaintArgsDict']]]]] = None) -> 'KubernetesNodePool':
+            taints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KubernetesNodePoolTaintArgs', 'KubernetesNodePoolTaintArgsDict', 'outputs.KubernetesNodePoolTaint']]]]] = None) -> 'KubernetesNodePool':
         """
         Get an existing KubernetesNodePool resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -700,10 +700,10 @@ class KubernetesNodePool(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] min_nodes: If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
         :param pulumi.Input[_builtins.str] name: A name for the node pool.
         :param pulumi.Input[_builtins.int] node_count: The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesNodePoolNodeArgs', 'KubernetesNodePoolNodeArgsDict']]]] nodes: A list of nodes in the pool. Each node exports the following attributes:
+        :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesNodePoolNodeArgs', 'KubernetesNodePoolNodeArgsDict', 'outputs.KubernetesNodePoolNode']]]] nodes: A list of nodes in the pool. Each node exports the following attributes:
         :param pulumi.Input[Union[_builtins.str, 'DropletSlug']] size: The slug identifier for the type of Droplet to be used as workers in the node pool.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A list of tag names to be applied to the Kubernetes cluster.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesNodePoolTaintArgs', 'KubernetesNodePoolTaintArgsDict']]]] taints: A list of taints applied to all nodes in the pool.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesNodePoolTaintArgs', 'KubernetesNodePoolTaintArgsDict', 'outputs.KubernetesNodePoolTaint']]]] taints: A list of taints applied to all nodes in the pool.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

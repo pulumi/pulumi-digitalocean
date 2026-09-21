@@ -312,7 +312,7 @@ class VectorDatabase(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: pulumi.Input[Optional[Union['VectorDatabaseConfigArgs', 'VectorDatabaseConfigArgsDict']]] = None,
+                 config: pulumi.Input[Optional[Union['VectorDatabaseConfigArgs', 'VectorDatabaseConfigArgsDict', 'outputs.VectorDatabaseConfig']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -365,7 +365,7 @@ class VectorDatabase(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['VectorDatabaseConfigArgs', 'VectorDatabaseConfigArgsDict']] config: Advanced configuration for the vector database. The structure is documented below.
+        :param pulumi.Input[Union['VectorDatabaseConfigArgs', 'VectorDatabaseConfigArgsDict', 'outputs.VectorDatabaseConfig']] config: Advanced configuration for the vector database. The structure is documented below.
         :param pulumi.Input[_builtins.str] name: The name of the vector database. Changing this forces a new resource to be created.
         :param pulumi.Input[_builtins.str] project_id: The ID of the project that the vector database is assigned to. If excluded, the database will be assigned to your default project. Changing this forces a new resource to be created.
         :param pulumi.Input[_builtins.str] region: The slug identifier for the region where the vector database will be created (ex. `nyc1`). Changing this forces a new resource to be created.
@@ -437,7 +437,7 @@ class VectorDatabase(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: pulumi.Input[Optional[Union['VectorDatabaseConfigArgs', 'VectorDatabaseConfigArgsDict']]] = None,
+                 config: pulumi.Input[Optional[Union['VectorDatabaseConfigArgs', 'VectorDatabaseConfigArgsDict', 'outputs.VectorDatabaseConfig']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -477,9 +477,9 @@ class VectorDatabase(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            config: pulumi.Input[Optional[Union['VectorDatabaseConfigArgs', 'VectorDatabaseConfigArgsDict']]] = None,
+            config: pulumi.Input[Optional[Union['VectorDatabaseConfigArgs', 'VectorDatabaseConfigArgsDict', 'outputs.VectorDatabaseConfig']]] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
-            endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VectorDatabaseEndpointArgs', 'VectorDatabaseEndpointArgsDict']]]]] = None,
+            endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VectorDatabaseEndpointArgs', 'VectorDatabaseEndpointArgsDict', 'outputs.VectorDatabaseEndpoint']]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             owner_uuid: pulumi.Input[Optional[_builtins.str]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -495,9 +495,9 @@ class VectorDatabase(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['VectorDatabaseConfigArgs', 'VectorDatabaseConfigArgsDict']] config: Advanced configuration for the vector database. The structure is documented below.
+        :param pulumi.Input[Union['VectorDatabaseConfigArgs', 'VectorDatabaseConfigArgsDict', 'outputs.VectorDatabaseConfig']] config: Advanced configuration for the vector database. The structure is documented below.
         :param pulumi.Input[_builtins.str] created_at: The date and time when the vector database was created.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VectorDatabaseEndpointArgs', 'VectorDatabaseEndpointArgsDict']]]] endpoints: The connection endpoints for the vector database. The structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VectorDatabaseEndpointArgs', 'VectorDatabaseEndpointArgsDict', 'outputs.VectorDatabaseEndpoint']]]] endpoints: The connection endpoints for the vector database. The structure is documented below.
         :param pulumi.Input[_builtins.str] name: The name of the vector database. Changing this forces a new resource to be created.
         :param pulumi.Input[_builtins.str] owner_uuid: The UUID of the account that owns the vector database.
         :param pulumi.Input[_builtins.str] project_id: The ID of the project that the vector database is assigned to. If excluded, the database will be assigned to your default project. Changing this forces a new resource to be created.

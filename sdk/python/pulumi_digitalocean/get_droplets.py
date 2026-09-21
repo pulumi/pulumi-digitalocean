@@ -90,9 +90,9 @@ class AwaitableGetDropletsResult(GetDropletsResult):
             sorts=self.sorts)
 
 
-def get_droplets(filters: Optional[Sequence[Union['GetDropletsFilterArgs', 'GetDropletsFilterArgsDict']]] = None,
+def get_droplets(filters: Optional[Sequence[Union['GetDropletsFilterArgs', 'GetDropletsFilterArgsDict', 'outputs.GetDropletsFilterResult']]] = None,
                  gpus: Optional[_builtins.bool] = None,
-                 sorts: Optional[Sequence[Union['GetDropletsSortArgs', 'GetDropletsSortArgsDict']]] = None,
+                 sorts: Optional[Sequence[Union['GetDropletsSortArgs', 'GetDropletsSortArgsDict', 'outputs.GetDropletsSortResult']]] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDropletsResult:
     """
     Get information on Droplets for use in other resources, with the ability to filter and sort the results.
@@ -146,10 +146,10 @@ def get_droplets(filters: Optional[Sequence[Union['GetDropletsFilterArgs', 'GetD
     ```
 
 
-    :param Sequence[Union['GetDropletsFilterArgs', 'GetDropletsFilterArgsDict']] filters: Filter the results.
+    :param Sequence[Union['GetDropletsFilterArgs', 'GetDropletsFilterArgsDict', 'outputs.GetDropletsFilterResult']] filters: Filter the results.
            The `filter` block is documented below.
     :param _builtins.bool gpus: A boolean value specifying whether or not to list GPU Droplets
-    :param Sequence[Union['GetDropletsSortArgs', 'GetDropletsSortArgsDict']] sorts: Sort the results.
+    :param Sequence[Union['GetDropletsSortArgs', 'GetDropletsSortArgsDict', 'outputs.GetDropletsSortResult']] sorts: Sort the results.
            The `sort` block is documented below.
     """
     __args__ = dict()
@@ -165,9 +165,9 @@ def get_droplets(filters: Optional[Sequence[Union['GetDropletsFilterArgs', 'GetD
         gpus=pulumi.get(__ret__, 'gpus'),
         id=pulumi.get(__ret__, 'id'),
         sorts=pulumi.get(__ret__, 'sorts'))
-def get_droplets_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetDropletsFilterArgs', 'GetDropletsFilterArgsDict']]]]] = None,
+def get_droplets_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetDropletsFilterArgs', 'GetDropletsFilterArgsDict', 'outputs.GetDropletsFilterResult']]]]] = None,
                         gpus: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
-                        sorts: pulumi.Input[Optional[Optional[Sequence[Union['GetDropletsSortArgs', 'GetDropletsSortArgsDict']]]]] = None,
+                        sorts: pulumi.Input[Optional[Optional[Sequence[Union['GetDropletsSortArgs', 'GetDropletsSortArgsDict', 'outputs.GetDropletsSortResult']]]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDropletsResult]:
     """
     Get information on Droplets for use in other resources, with the ability to filter and sort the results.
@@ -221,10 +221,10 @@ def get_droplets_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['
     ```
 
 
-    :param Sequence[Union['GetDropletsFilterArgs', 'GetDropletsFilterArgsDict']] filters: Filter the results.
+    :param Sequence[Union['GetDropletsFilterArgs', 'GetDropletsFilterArgsDict', 'outputs.GetDropletsFilterResult']] filters: Filter the results.
            The `filter` block is documented below.
     :param _builtins.bool gpus: A boolean value specifying whether or not to list GPU Droplets
-    :param Sequence[Union['GetDropletsSortArgs', 'GetDropletsSortArgsDict']] sorts: Sort the results.
+    :param Sequence[Union['GetDropletsSortArgs', 'GetDropletsSortArgsDict', 'outputs.GetDropletsSortResult']] sorts: Sort the results.
            The `sort` block is documented below.
     """
     __args__ = dict()

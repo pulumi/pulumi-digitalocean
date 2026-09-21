@@ -81,8 +81,8 @@ class AwaitableGetDomainsResult(GetDomainsResult):
             sorts=self.sorts)
 
 
-def get_domains(filters: Optional[Sequence[Union['GetDomainsFilterArgs', 'GetDomainsFilterArgsDict']]] = None,
-                sorts: Optional[Sequence[Union['GetDomainsSortArgs', 'GetDomainsSortArgsDict']]] = None,
+def get_domains(filters: Optional[Sequence[Union['GetDomainsFilterArgs', 'GetDomainsFilterArgsDict', 'outputs.GetDomainsFilterResult']]] = None,
+                sorts: Optional[Sequence[Union['GetDomainsSortArgs', 'GetDomainsSortArgsDict', 'outputs.GetDomainsSortResult']]] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDomainsResult:
     """
     Get information on domains for use in other resources, with the ability to filter and sort the results.
@@ -111,9 +111,9 @@ def get_domains(filters: Optional[Sequence[Union['GetDomainsFilterArgs', 'GetDom
     ```
 
 
-    :param Sequence[Union['GetDomainsFilterArgs', 'GetDomainsFilterArgsDict']] filters: Filter the results.
+    :param Sequence[Union['GetDomainsFilterArgs', 'GetDomainsFilterArgsDict', 'outputs.GetDomainsFilterResult']] filters: Filter the results.
            The `filter` block is documented below.
-    :param Sequence[Union['GetDomainsSortArgs', 'GetDomainsSortArgsDict']] sorts: Sort the results.
+    :param Sequence[Union['GetDomainsSortArgs', 'GetDomainsSortArgsDict', 'outputs.GetDomainsSortResult']] sorts: Sort the results.
            The `sort` block is documented below.
     """
     __args__ = dict()
@@ -127,8 +127,8 @@ def get_domains(filters: Optional[Sequence[Union['GetDomainsFilterArgs', 'GetDom
         filters=pulumi.get(__ret__, 'filters'),
         id=pulumi.get(__ret__, 'id'),
         sorts=pulumi.get(__ret__, 'sorts'))
-def get_domains_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetDomainsFilterArgs', 'GetDomainsFilterArgsDict']]]]] = None,
-                       sorts: pulumi.Input[Optional[Optional[Sequence[Union['GetDomainsSortArgs', 'GetDomainsSortArgsDict']]]]] = None,
+def get_domains_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetDomainsFilterArgs', 'GetDomainsFilterArgsDict', 'outputs.GetDomainsFilterResult']]]]] = None,
+                       sorts: pulumi.Input[Optional[Optional[Sequence[Union['GetDomainsSortArgs', 'GetDomainsSortArgsDict', 'outputs.GetDomainsSortResult']]]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDomainsResult]:
     """
     Get information on domains for use in other resources, with the ability to filter and sort the results.
@@ -157,9 +157,9 @@ def get_domains_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['G
     ```
 
 
-    :param Sequence[Union['GetDomainsFilterArgs', 'GetDomainsFilterArgsDict']] filters: Filter the results.
+    :param Sequence[Union['GetDomainsFilterArgs', 'GetDomainsFilterArgsDict', 'outputs.GetDomainsFilterResult']] filters: Filter the results.
            The `filter` block is documented below.
-    :param Sequence[Union['GetDomainsSortArgs', 'GetDomainsSortArgsDict']] sorts: Sort the results.
+    :param Sequence[Union['GetDomainsSortArgs', 'GetDomainsSortArgsDict', 'outputs.GetDomainsSortResult']] sorts: Sort the results.
            The `sort` block is documented below.
     """
     __args__ = dict()

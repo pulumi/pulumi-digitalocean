@@ -608,7 +608,7 @@ class GradientaiCustomModel(pulumi.CustomResource):
                  output_modalities: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  parameters: pulumi.Input[Optional[_builtins.str]] = None,
                  preferred_gpu_region: pulumi.Input[Optional[_builtins.str]] = None,
-                 source_ref: pulumi.Input[Optional[Union['GradientaiCustomModelSourceRefArgs', 'GradientaiCustomModelSourceRefArgsDict']]] = None,
+                 source_ref: pulumi.Input[Optional[Union['GradientaiCustomModelSourceRefArgs', 'GradientaiCustomModelSourceRefArgsDict', 'outputs.GradientaiCustomModelSourceRef']]] = None,
                  source_type: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
@@ -625,7 +625,7 @@ class GradientaiCustomModel(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] output_modalities: Output modalities produced by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
         :param pulumi.Input[_builtins.str] parameters: Parameter-count summary for the model. Defaults to the value reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
         :param pulumi.Input[_builtins.str] preferred_gpu_region: Preferred GPU region where the model artifacts should be staged.
-        :param pulumi.Input[Union['GradientaiCustomModelSourceRefArgs', 'GradientaiCustomModelSourceRefArgsDict']] source_ref: Reference to the source from which to import the custom model.
+        :param pulumi.Input[Union['GradientaiCustomModelSourceRefArgs', 'GradientaiCustomModelSourceRefArgsDict', 'outputs.GradientaiCustomModelSourceRef']] source_ref: Reference to the source from which to import the custom model.
         :param pulumi.Input[_builtins.str] source_type: Source of the model to import. One of SOURCE_TYPE_HUGGINGFACE, SOURCE_TYPE_SPACES_BUCKET, SOURCE_TYPE_SDK_UPLOAD, SOURCE_TYPE_FINE_TUNING.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: User-defined tags associated with the custom model.
         """
@@ -661,7 +661,7 @@ class GradientaiCustomModel(pulumi.CustomResource):
                  output_modalities: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  parameters: pulumi.Input[Optional[_builtins.str]] = None,
                  preferred_gpu_region: pulumi.Input[Optional[_builtins.str]] = None,
-                 source_ref: pulumi.Input[Optional[Union['GradientaiCustomModelSourceRefArgs', 'GradientaiCustomModelSourceRefArgsDict']]] = None,
+                 source_ref: pulumi.Input[Optional[Union['GradientaiCustomModelSourceRefArgs', 'GradientaiCustomModelSourceRefArgsDict', 'outputs.GradientaiCustomModelSourceRef']]] = None,
                  source_type: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
@@ -712,7 +712,7 @@ class GradientaiCustomModel(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             accept_terms_and_conditions: pulumi.Input[Optional[_builtins.bool]] = None,
-            active_deployments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiCustomModelActiveDeploymentArgs', 'GradientaiCustomModelActiveDeploymentArgsDict']]]]] = None,
+            active_deployments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiCustomModelActiveDeploymentArgs', 'GradientaiCustomModelActiveDeploymentArgsDict', 'outputs.GradientaiCustomModelActiveDeployment']]]]] = None,
             architecture: pulumi.Input[Optional[_builtins.str]] = None,
             context_length: pulumi.Input[Optional[_builtins.int]] = None,
             cost_estimate_per_month: pulumi.Input[Optional[_builtins.int]] = None,
@@ -726,7 +726,7 @@ class GradientaiCustomModel(pulumi.CustomResource):
             output_modalities: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             parameters: pulumi.Input[Optional[_builtins.str]] = None,
             preferred_gpu_region: pulumi.Input[Optional[_builtins.str]] = None,
-            source_ref: pulumi.Input[Optional[Union['GradientaiCustomModelSourceRefArgs', 'GradientaiCustomModelSourceRefArgsDict']]] = None,
+            source_ref: pulumi.Input[Optional[Union['GradientaiCustomModelSourceRefArgs', 'GradientaiCustomModelSourceRefArgsDict', 'outputs.GradientaiCustomModelSourceRef']]] = None,
             source_type: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             storage_region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -743,7 +743,7 @@ class GradientaiCustomModel(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] accept_terms_and_conditions: Whether the caller accepts the model provider's terms and conditions. Write-only.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GradientaiCustomModelActiveDeploymentArgs', 'GradientaiCustomModelActiveDeploymentArgsDict']]]] active_deployments: Active dedicated inference deployments referencing this custom model.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GradientaiCustomModelActiveDeploymentArgs', 'GradientaiCustomModelActiveDeploymentArgsDict', 'outputs.GradientaiCustomModelActiveDeployment']]]] active_deployments: Active dedicated inference deployments referencing this custom model.
         :param pulumi.Input[_builtins.str] architecture: Model architecture as reported by the importer.
         :param pulumi.Input[_builtins.int] context_length: Maximum context length supported by the model.
         :param pulumi.Input[_builtins.int] cost_estimate_per_month: Estimated monthly cost of running the custom model.
@@ -757,7 +757,7 @@ class GradientaiCustomModel(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] output_modalities: Output modalities produced by the model. Defaults to the values reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
         :param pulumi.Input[_builtins.str] parameters: Parameter-count summary for the model. Defaults to the value reported by the importer. Caller-supplied overrides are honored only for SOURCE_TYPE_SPACES_BUCKET imports.
         :param pulumi.Input[_builtins.str] preferred_gpu_region: Preferred GPU region where the model artifacts should be staged.
-        :param pulumi.Input[Union['GradientaiCustomModelSourceRefArgs', 'GradientaiCustomModelSourceRefArgsDict']] source_ref: Reference to the source from which to import the custom model.
+        :param pulumi.Input[Union['GradientaiCustomModelSourceRefArgs', 'GradientaiCustomModelSourceRefArgsDict', 'outputs.GradientaiCustomModelSourceRef']] source_ref: Reference to the source from which to import the custom model.
         :param pulumi.Input[_builtins.str] source_type: Source of the model to import. One of SOURCE_TYPE_HUGGINGFACE, SOURCE_TYPE_SPACES_BUCKET, SOURCE_TYPE_SDK_UPLOAD, SOURCE_TYPE_FINE_TUNING.
         :param pulumi.Input[_builtins.str] status: Current status of the custom model.
         :param pulumi.Input[_builtins.str] storage_region: Region where the custom model artifacts are stored.

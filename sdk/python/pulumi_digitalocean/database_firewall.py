@@ -105,7 +105,7 @@ class DatabaseFirewall(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabaseFirewallRuleArgs', 'DatabaseFirewallRuleArgsDict']]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabaseFirewallRuleArgs', 'DatabaseFirewallRuleArgsDict', 'outputs.DatabaseFirewallRule']]]]] = None,
                  __props__=None):
         """
         Provides a DigitalOcean database firewall resource allowing you to restrict
@@ -207,7 +207,7 @@ class DatabaseFirewall(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the target database cluster.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseFirewallRuleArgs', 'DatabaseFirewallRuleArgsDict']]]] rules: A rule specifying a resource allowed to access the database cluster. The following arguments must be specified:
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseFirewallRuleArgs', 'DatabaseFirewallRuleArgsDict', 'outputs.DatabaseFirewallRule']]]] rules: A rule specifying a resource allowed to access the database cluster. The following arguments must be specified:
         """
         ...
     @overload
@@ -328,7 +328,7 @@ class DatabaseFirewall(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabaseFirewallRuleArgs', 'DatabaseFirewallRuleArgsDict']]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabaseFirewallRuleArgs', 'DatabaseFirewallRuleArgsDict', 'outputs.DatabaseFirewallRule']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -355,7 +355,7 @@ class DatabaseFirewall(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
-            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabaseFirewallRuleArgs', 'DatabaseFirewallRuleArgsDict']]]]] = None) -> 'DatabaseFirewall':
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabaseFirewallRuleArgs', 'DatabaseFirewallRuleArgsDict', 'outputs.DatabaseFirewallRule']]]]] = None) -> 'DatabaseFirewall':
         """
         Get an existing DatabaseFirewall resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -364,7 +364,7 @@ class DatabaseFirewall(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the target database cluster.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseFirewallRuleArgs', 'DatabaseFirewallRuleArgsDict']]]] rules: A rule specifying a resource allowed to access the database cluster. The following arguments must be specified:
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseFirewallRuleArgs', 'DatabaseFirewallRuleArgsDict', 'outputs.DatabaseFirewallRule']]]] rules: A rule specifying a resource allowed to access the database cluster. The following arguments must be specified:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

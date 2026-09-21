@@ -87,8 +87,8 @@ class AwaitableGetGradientaiCustomModelsResult(GetGradientaiCustomModelsResult):
             status=self.status)
 
 
-def get_gradientai_custom_models(filters: Optional[Sequence[Union['GetGradientaiCustomModelsFilterArgs', 'GetGradientaiCustomModelsFilterArgsDict']]] = None,
-                                 sorts: Optional[Sequence[Union['GetGradientaiCustomModelsSortArgs', 'GetGradientaiCustomModelsSortArgsDict']]] = None,
+def get_gradientai_custom_models(filters: Optional[Sequence[Union['GetGradientaiCustomModelsFilterArgs', 'GetGradientaiCustomModelsFilterArgsDict', 'outputs.GetGradientaiCustomModelsFilterResult']]] = None,
+                                 sorts: Optional[Sequence[Union['GetGradientaiCustomModelsSortArgs', 'GetGradientaiCustomModelsSortArgsDict', 'outputs.GetGradientaiCustomModelsSortResult']]] = None,
                                  status: Optional[_builtins.str] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGradientaiCustomModelsResult:
     """
@@ -107,8 +107,8 @@ def get_gradientai_custom_models(filters: Optional[Sequence[Union['GetGradientai
         id=pulumi.get(__ret__, 'id'),
         sorts=pulumi.get(__ret__, 'sorts'),
         status=pulumi.get(__ret__, 'status'))
-def get_gradientai_custom_models_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetGradientaiCustomModelsFilterArgs', 'GetGradientaiCustomModelsFilterArgsDict']]]]] = None,
-                                        sorts: pulumi.Input[Optional[Optional[Sequence[Union['GetGradientaiCustomModelsSortArgs', 'GetGradientaiCustomModelsSortArgsDict']]]]] = None,
+def get_gradientai_custom_models_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetGradientaiCustomModelsFilterArgs', 'GetGradientaiCustomModelsFilterArgsDict', 'outputs.GetGradientaiCustomModelsFilterResult']]]]] = None,
+                                        sorts: pulumi.Input[Optional[Optional[Sequence[Union['GetGradientaiCustomModelsSortArgs', 'GetGradientaiCustomModelsSortArgsDict', 'outputs.GetGradientaiCustomModelsSortResult']]]]] = None,
                                         status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGradientaiCustomModelsResult]:
     """

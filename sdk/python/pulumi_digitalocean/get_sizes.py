@@ -78,8 +78,8 @@ class AwaitableGetSizesResult(GetSizesResult):
             sorts=self.sorts)
 
 
-def get_sizes(filters: Optional[Sequence[Union['GetSizesFilterArgs', 'GetSizesFilterArgsDict']]] = None,
-              sorts: Optional[Sequence[Union['GetSizesSortArgs', 'GetSizesSortArgsDict']]] = None,
+def get_sizes(filters: Optional[Sequence[Union['GetSizesFilterArgs', 'GetSizesFilterArgsDict', 'outputs.GetSizesFilterResult']]] = None,
+              sorts: Optional[Sequence[Union['GetSizesSortArgs', 'GetSizesSortArgsDict', 'outputs.GetSizesSortResult']]] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSizesResult:
     """
     Retrieves information about the Droplet sizes that DigitalOcean supports, with
@@ -154,9 +154,9 @@ def get_sizes(filters: Optional[Sequence[Union['GetSizesFilterArgs', 'GetSizesFi
     ```
 
 
-    :param Sequence[Union['GetSizesFilterArgs', 'GetSizesFilterArgsDict']] filters: Filter the results.
+    :param Sequence[Union['GetSizesFilterArgs', 'GetSizesFilterArgsDict', 'outputs.GetSizesFilterResult']] filters: Filter the results.
            The `filter` block is documented below.
-    :param Sequence[Union['GetSizesSortArgs', 'GetSizesSortArgsDict']] sorts: Sort the results.
+    :param Sequence[Union['GetSizesSortArgs', 'GetSizesSortArgsDict', 'outputs.GetSizesSortResult']] sorts: Sort the results.
            The `sort` block is documented below.
     """
     __args__ = dict()
@@ -170,8 +170,8 @@ def get_sizes(filters: Optional[Sequence[Union['GetSizesFilterArgs', 'GetSizesFi
         id=pulumi.get(__ret__, 'id'),
         sizes=pulumi.get(__ret__, 'sizes'),
         sorts=pulumi.get(__ret__, 'sorts'))
-def get_sizes_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetSizesFilterArgs', 'GetSizesFilterArgsDict']]]]] = None,
-                     sorts: pulumi.Input[Optional[Optional[Sequence[Union['GetSizesSortArgs', 'GetSizesSortArgsDict']]]]] = None,
+def get_sizes_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetSizesFilterArgs', 'GetSizesFilterArgsDict', 'outputs.GetSizesFilterResult']]]]] = None,
+                     sorts: pulumi.Input[Optional[Optional[Sequence[Union['GetSizesSortArgs', 'GetSizesSortArgsDict', 'outputs.GetSizesSortResult']]]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSizesResult]:
     """
     Retrieves information about the Droplet sizes that DigitalOcean supports, with
@@ -246,9 +246,9 @@ def get_sizes_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['Get
     ```
 
 
-    :param Sequence[Union['GetSizesFilterArgs', 'GetSizesFilterArgsDict']] filters: Filter the results.
+    :param Sequence[Union['GetSizesFilterArgs', 'GetSizesFilterArgsDict', 'outputs.GetSizesFilterResult']] filters: Filter the results.
            The `filter` block is documented below.
-    :param Sequence[Union['GetSizesSortArgs', 'GetSizesSortArgsDict']] sorts: Sort the results.
+    :param Sequence[Union['GetSizesSortArgs', 'GetSizesSortArgsDict', 'outputs.GetSizesSortResult']] sorts: Sort the results.
            The `sort` block is documented below.
     """
     __args__ = dict()

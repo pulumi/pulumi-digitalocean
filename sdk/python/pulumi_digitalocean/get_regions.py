@@ -81,8 +81,8 @@ class AwaitableGetRegionsResult(GetRegionsResult):
             sorts=self.sorts)
 
 
-def get_regions(filters: Optional[Sequence[Union['GetRegionsFilterArgs', 'GetRegionsFilterArgsDict']]] = None,
-                sorts: Optional[Sequence[Union['GetRegionsSortArgs', 'GetRegionsSortArgsDict']]] = None,
+def get_regions(filters: Optional[Sequence[Union['GetRegionsFilterArgs', 'GetRegionsFilterArgsDict', 'outputs.GetRegionsFilterResult']]] = None,
+                sorts: Optional[Sequence[Union['GetRegionsSortArgs', 'GetRegionsSortArgsDict', 'outputs.GetRegionsSortResult']]] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRegionsResult:
     """
     Retrieve information about all supported DigitalOcean regions, with the ability to
@@ -130,9 +130,9 @@ def get_regions(filters: Optional[Sequence[Union['GetRegionsFilterArgs', 'GetReg
     ```
 
 
-    :param Sequence[Union['GetRegionsFilterArgs', 'GetRegionsFilterArgsDict']] filters: Filter the results.
+    :param Sequence[Union['GetRegionsFilterArgs', 'GetRegionsFilterArgsDict', 'outputs.GetRegionsFilterResult']] filters: Filter the results.
            The `filter` block is documented below.
-    :param Sequence[Union['GetRegionsSortArgs', 'GetRegionsSortArgsDict']] sorts: Sort the results.
+    :param Sequence[Union['GetRegionsSortArgs', 'GetRegionsSortArgsDict', 'outputs.GetRegionsSortResult']] sorts: Sort the results.
            The `sort` block is documented below.
     """
     __args__ = dict()
@@ -146,8 +146,8 @@ def get_regions(filters: Optional[Sequence[Union['GetRegionsFilterArgs', 'GetReg
         id=pulumi.get(__ret__, 'id'),
         regions=pulumi.get(__ret__, 'regions'),
         sorts=pulumi.get(__ret__, 'sorts'))
-def get_regions_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetRegionsFilterArgs', 'GetRegionsFilterArgsDict']]]]] = None,
-                       sorts: pulumi.Input[Optional[Optional[Sequence[Union['GetRegionsSortArgs', 'GetRegionsSortArgsDict']]]]] = None,
+def get_regions_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetRegionsFilterArgs', 'GetRegionsFilterArgsDict', 'outputs.GetRegionsFilterResult']]]]] = None,
+                       sorts: pulumi.Input[Optional[Optional[Sequence[Union['GetRegionsSortArgs', 'GetRegionsSortArgsDict', 'outputs.GetRegionsSortResult']]]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegionsResult]:
     """
     Retrieve information about all supported DigitalOcean regions, with the ability to
@@ -195,9 +195,9 @@ def get_regions_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['G
     ```
 
 
-    :param Sequence[Union['GetRegionsFilterArgs', 'GetRegionsFilterArgsDict']] filters: Filter the results.
+    :param Sequence[Union['GetRegionsFilterArgs', 'GetRegionsFilterArgsDict', 'outputs.GetRegionsFilterResult']] filters: Filter the results.
            The `filter` block is documented below.
-    :param Sequence[Union['GetRegionsSortArgs', 'GetRegionsSortArgsDict']] sorts: Sort the results.
+    :param Sequence[Union['GetRegionsSortArgs', 'GetRegionsSortArgsDict', 'outputs.GetRegionsSortResult']] sorts: Sort the results.
            The `sort` block is documented below.
     """
     __args__ = dict()

@@ -122,8 +122,8 @@ class GradientaiKnowledgeBaseDataSource(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  knowledge_base_uuid: pulumi.Input[Optional[_builtins.str]] = None,
-                 spaces_data_source: pulumi.Input[Optional[Union['GradientaiKnowledgeBaseDataSourceSpacesDataSourceArgs', 'GradientaiKnowledgeBaseDataSourceSpacesDataSourceArgsDict']]] = None,
-                 web_crawler_data_source: pulumi.Input[Optional[Union['GradientaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs', 'GradientaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgsDict']]] = None,
+                 spaces_data_source: pulumi.Input[Optional[Union['GradientaiKnowledgeBaseDataSourceSpacesDataSourceArgs', 'GradientaiKnowledgeBaseDataSourceSpacesDataSourceArgsDict', 'outputs.GradientaiKnowledgeBaseDataSourceSpacesDataSource']]] = None,
+                 web_crawler_data_source: pulumi.Input[Optional[Union['GradientaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs', 'GradientaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgsDict', 'outputs.GradientaiKnowledgeBaseDataSourceWebCrawlerDataSource']]] = None,
                  __props__=None):
         """
         Create a GradientaiKnowledgeBaseDataSource resource with the given unique name, props, and options.
@@ -157,8 +157,8 @@ class GradientaiKnowledgeBaseDataSource(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  knowledge_base_uuid: pulumi.Input[Optional[_builtins.str]] = None,
-                 spaces_data_source: pulumi.Input[Optional[Union['GradientaiKnowledgeBaseDataSourceSpacesDataSourceArgs', 'GradientaiKnowledgeBaseDataSourceSpacesDataSourceArgsDict']]] = None,
-                 web_crawler_data_source: pulumi.Input[Optional[Union['GradientaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs', 'GradientaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgsDict']]] = None,
+                 spaces_data_source: pulumi.Input[Optional[Union['GradientaiKnowledgeBaseDataSourceSpacesDataSourceArgs', 'GradientaiKnowledgeBaseDataSourceSpacesDataSourceArgsDict', 'outputs.GradientaiKnowledgeBaseDataSourceSpacesDataSource']]] = None,
+                 web_crawler_data_source: pulumi.Input[Optional[Union['GradientaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs', 'GradientaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgsDict', 'outputs.GradientaiKnowledgeBaseDataSourceWebCrawlerDataSource']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -186,8 +186,8 @@ class GradientaiKnowledgeBaseDataSource(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             knowledge_base_uuid: pulumi.Input[Optional[_builtins.str]] = None,
-            spaces_data_source: pulumi.Input[Optional[Union['GradientaiKnowledgeBaseDataSourceSpacesDataSourceArgs', 'GradientaiKnowledgeBaseDataSourceSpacesDataSourceArgsDict']]] = None,
-            web_crawler_data_source: pulumi.Input[Optional[Union['GradientaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs', 'GradientaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgsDict']]] = None) -> 'GradientaiKnowledgeBaseDataSource':
+            spaces_data_source: pulumi.Input[Optional[Union['GradientaiKnowledgeBaseDataSourceSpacesDataSourceArgs', 'GradientaiKnowledgeBaseDataSourceSpacesDataSourceArgsDict', 'outputs.GradientaiKnowledgeBaseDataSourceSpacesDataSource']]] = None,
+            web_crawler_data_source: pulumi.Input[Optional[Union['GradientaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs', 'GradientaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgsDict', 'outputs.GradientaiKnowledgeBaseDataSourceWebCrawlerDataSource']]] = None) -> 'GradientaiKnowledgeBaseDataSource':
         """
         Get an existing GradientaiKnowledgeBaseDataSource resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

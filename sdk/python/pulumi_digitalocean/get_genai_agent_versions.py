@@ -90,8 +90,8 @@ class AwaitableGetGenaiAgentVersionsResult(GetGenaiAgentVersionsResult):
 
 
 def get_genai_agent_versions(agent_id: Optional[_builtins.str] = None,
-                             filters: Optional[Sequence[Union['GetGenaiAgentVersionsFilterArgs', 'GetGenaiAgentVersionsFilterArgsDict']]] = None,
-                             sorts: Optional[Sequence[Union['GetGenaiAgentVersionsSortArgs', 'GetGenaiAgentVersionsSortArgsDict']]] = None,
+                             filters: Optional[Sequence[Union['GetGenaiAgentVersionsFilterArgs', 'GetGenaiAgentVersionsFilterArgsDict', 'outputs.GetGenaiAgentVersionsFilterResult']]] = None,
+                             sorts: Optional[Sequence[Union['GetGenaiAgentVersionsSortArgs', 'GetGenaiAgentVersionsSortArgsDict', 'outputs.GetGenaiAgentVersionsSortResult']]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGenaiAgentVersionsResult:
     """
     Use this data source to access information about an existing resource.
@@ -111,8 +111,8 @@ def get_genai_agent_versions(agent_id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         sorts=pulumi.get(__ret__, 'sorts'))
 def get_genai_agent_versions_output(agent_id: pulumi.Input[Optional[_builtins.str]] = None,
-                                    filters: pulumi.Input[Optional[Optional[Sequence[Union['GetGenaiAgentVersionsFilterArgs', 'GetGenaiAgentVersionsFilterArgsDict']]]]] = None,
-                                    sorts: pulumi.Input[Optional[Optional[Sequence[Union['GetGenaiAgentVersionsSortArgs', 'GetGenaiAgentVersionsSortArgsDict']]]]] = None,
+                                    filters: pulumi.Input[Optional[Optional[Sequence[Union['GetGenaiAgentVersionsFilterArgs', 'GetGenaiAgentVersionsFilterArgsDict', 'outputs.GetGenaiAgentVersionsFilterResult']]]]] = None,
+                                    sorts: pulumi.Input[Optional[Optional[Sequence[Union['GetGenaiAgentVersionsSortArgs', 'GetGenaiAgentVersionsSortArgsDict', 'outputs.GetGenaiAgentVersionsSortResult']]]]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGenaiAgentVersionsResult]:
     """
     Use this data source to access information about an existing resource.

@@ -81,8 +81,8 @@ class AwaitableGetSshKeysResult(GetSshKeysResult):
             ssh_keys=self.ssh_keys)
 
 
-def get_ssh_keys(filters: Optional[Sequence[Union['GetSshKeysFilterArgs', 'GetSshKeysFilterArgsDict']]] = None,
-                 sorts: Optional[Sequence[Union['GetSshKeysSortArgs', 'GetSshKeysSortArgsDict']]] = None,
+def get_ssh_keys(filters: Optional[Sequence[Union['GetSshKeysFilterArgs', 'GetSshKeysFilterArgsDict', 'outputs.GetSshKeysFilterResult']]] = None,
+                 sorts: Optional[Sequence[Union['GetSshKeysSortArgs', 'GetSshKeysSortArgsDict', 'outputs.GetSshKeysSortResult']]] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSshKeysResult:
     """
     Get information on SSH Keys for use in other resources.
@@ -123,9 +123,9 @@ def get_ssh_keys(filters: Optional[Sequence[Union['GetSshKeysFilterArgs', 'GetSs
     ```
 
 
-    :param Sequence[Union['GetSshKeysFilterArgs', 'GetSshKeysFilterArgsDict']] filters: Filter the results.
+    :param Sequence[Union['GetSshKeysFilterArgs', 'GetSshKeysFilterArgsDict', 'outputs.GetSshKeysFilterResult']] filters: Filter the results.
            The `filter` block is documented below.
-    :param Sequence[Union['GetSshKeysSortArgs', 'GetSshKeysSortArgsDict']] sorts: Sort the results.
+    :param Sequence[Union['GetSshKeysSortArgs', 'GetSshKeysSortArgsDict', 'outputs.GetSshKeysSortResult']] sorts: Sort the results.
            The `sort` block is documented below.
     """
     __args__ = dict()
@@ -139,8 +139,8 @@ def get_ssh_keys(filters: Optional[Sequence[Union['GetSshKeysFilterArgs', 'GetSs
         id=pulumi.get(__ret__, 'id'),
         sorts=pulumi.get(__ret__, 'sorts'),
         ssh_keys=pulumi.get(__ret__, 'ssh_keys'))
-def get_ssh_keys_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetSshKeysFilterArgs', 'GetSshKeysFilterArgsDict']]]]] = None,
-                        sorts: pulumi.Input[Optional[Optional[Sequence[Union['GetSshKeysSortArgs', 'GetSshKeysSortArgsDict']]]]] = None,
+def get_ssh_keys_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetSshKeysFilterArgs', 'GetSshKeysFilterArgsDict', 'outputs.GetSshKeysFilterResult']]]]] = None,
+                        sorts: pulumi.Input[Optional[Optional[Sequence[Union['GetSshKeysSortArgs', 'GetSshKeysSortArgsDict', 'outputs.GetSshKeysSortResult']]]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSshKeysResult]:
     """
     Get information on SSH Keys for use in other resources.
@@ -181,9 +181,9 @@ def get_ssh_keys_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['
     ```
 
 
-    :param Sequence[Union['GetSshKeysFilterArgs', 'GetSshKeysFilterArgsDict']] filters: Filter the results.
+    :param Sequence[Union['GetSshKeysFilterArgs', 'GetSshKeysFilterArgsDict', 'outputs.GetSshKeysFilterResult']] filters: Filter the results.
            The `filter` block is documented below.
-    :param Sequence[Union['GetSshKeysSortArgs', 'GetSshKeysSortArgsDict']] sorts: Sort the results.
+    :param Sequence[Union['GetSshKeysSortArgs', 'GetSshKeysSortArgsDict', 'outputs.GetSshKeysSortResult']] sorts: Sort the results.
            The `sort` block is documented below.
     """
     __args__ = dict()

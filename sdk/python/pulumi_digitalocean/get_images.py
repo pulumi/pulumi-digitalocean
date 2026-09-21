@@ -81,8 +81,8 @@ class AwaitableGetImagesResult(GetImagesResult):
             sorts=self.sorts)
 
 
-def get_images(filters: Optional[Sequence[Union['GetImagesFilterArgs', 'GetImagesFilterArgsDict']]] = None,
-               sorts: Optional[Sequence[Union['GetImagesSortArgs', 'GetImagesSortArgsDict']]] = None,
+def get_images(filters: Optional[Sequence[Union['GetImagesFilterArgs', 'GetImagesFilterArgsDict', 'outputs.GetImagesFilterResult']]] = None,
+               sorts: Optional[Sequence[Union['GetImagesSortArgs', 'GetImagesSortArgsDict', 'outputs.GetImagesSortResult']]] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetImagesResult:
     """
     Get information on images for use in other resources (e.g. creating a Droplet
@@ -134,9 +134,9 @@ def get_images(filters: Optional[Sequence[Union['GetImagesFilterArgs', 'GetImage
     ```
 
 
-    :param Sequence[Union['GetImagesFilterArgs', 'GetImagesFilterArgsDict']] filters: Filter the results.
+    :param Sequence[Union['GetImagesFilterArgs', 'GetImagesFilterArgsDict', 'outputs.GetImagesFilterResult']] filters: Filter the results.
            The `filter` block is documented below.
-    :param Sequence[Union['GetImagesSortArgs', 'GetImagesSortArgsDict']] sorts: Sort the results.
+    :param Sequence[Union['GetImagesSortArgs', 'GetImagesSortArgsDict', 'outputs.GetImagesSortResult']] sorts: Sort the results.
            The `sort` block is documented below.
     """
     __args__ = dict()
@@ -150,8 +150,8 @@ def get_images(filters: Optional[Sequence[Union['GetImagesFilterArgs', 'GetImage
         id=pulumi.get(__ret__, 'id'),
         images=pulumi.get(__ret__, 'images'),
         sorts=pulumi.get(__ret__, 'sorts'))
-def get_images_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetImagesFilterArgs', 'GetImagesFilterArgsDict']]]]] = None,
-                      sorts: pulumi.Input[Optional[Optional[Sequence[Union['GetImagesSortArgs', 'GetImagesSortArgsDict']]]]] = None,
+def get_images_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetImagesFilterArgs', 'GetImagesFilterArgsDict', 'outputs.GetImagesFilterResult']]]]] = None,
+                      sorts: pulumi.Input[Optional[Optional[Sequence[Union['GetImagesSortArgs', 'GetImagesSortArgsDict', 'outputs.GetImagesSortResult']]]]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetImagesResult]:
     """
     Get information on images for use in other resources (e.g. creating a Droplet
@@ -203,9 +203,9 @@ def get_images_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['Ge
     ```
 
 
-    :param Sequence[Union['GetImagesFilterArgs', 'GetImagesFilterArgsDict']] filters: Filter the results.
+    :param Sequence[Union['GetImagesFilterArgs', 'GetImagesFilterArgsDict', 'outputs.GetImagesFilterResult']] filters: Filter the results.
            The `filter` block is documented below.
-    :param Sequence[Union['GetImagesSortArgs', 'GetImagesSortArgsDict']] sorts: Sort the results.
+    :param Sequence[Union['GetImagesSortArgs', 'GetImagesSortArgsDict', 'outputs.GetImagesSortResult']] sorts: Sort the results.
            The `sort` block is documented below.
     """
     __args__ = dict()

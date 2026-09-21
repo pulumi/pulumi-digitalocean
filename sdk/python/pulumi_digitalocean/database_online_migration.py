@@ -203,7 +203,7 @@ class DatabaseOnlineMigration(pulumi.CustomResource):
                  cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  disable_ssl: pulumi.Input[Optional[_builtins.bool]] = None,
                  ignore_dbs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 source: pulumi.Input[Optional[Union['DatabaseOnlineMigrationSourceArgs', 'DatabaseOnlineMigrationSourceArgsDict']]] = None,
+                 source: pulumi.Input[Optional[Union['DatabaseOnlineMigrationSourceArgs', 'DatabaseOnlineMigrationSourceArgsDict', 'outputs.DatabaseOnlineMigrationSource']]] = None,
                  __props__=None):
         """
         Provides a virtual resource that can be used to start an online migration
@@ -268,7 +268,7 @@ class DatabaseOnlineMigration(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the target MySQL cluster.
         :param pulumi.Input[_builtins.bool] disable_ssl: When set to true, enables SSL encryption when connecting to the source database.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ignore_dbs: A list of databases that should be ignored during migration.
-        :param pulumi.Input[Union['DatabaseOnlineMigrationSourceArgs', 'DatabaseOnlineMigrationSourceArgsDict']] source: Configuration for migration
+        :param pulumi.Input[Union['DatabaseOnlineMigrationSourceArgs', 'DatabaseOnlineMigrationSourceArgsDict', 'outputs.DatabaseOnlineMigrationSource']] source: Configuration for migration
         """
         ...
     @overload
@@ -352,7 +352,7 @@ class DatabaseOnlineMigration(pulumi.CustomResource):
                  cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  disable_ssl: pulumi.Input[Optional[_builtins.bool]] = None,
                  ignore_dbs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 source: pulumi.Input[Optional[Union['DatabaseOnlineMigrationSourceArgs', 'DatabaseOnlineMigrationSourceArgsDict']]] = None,
+                 source: pulumi.Input[Optional[Union['DatabaseOnlineMigrationSourceArgs', 'DatabaseOnlineMigrationSourceArgsDict', 'outputs.DatabaseOnlineMigrationSource']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -386,7 +386,7 @@ class DatabaseOnlineMigration(pulumi.CustomResource):
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
             disable_ssl: pulumi.Input[Optional[_builtins.bool]] = None,
             ignore_dbs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            source: pulumi.Input[Optional[Union['DatabaseOnlineMigrationSourceArgs', 'DatabaseOnlineMigrationSourceArgsDict']]] = None,
+            source: pulumi.Input[Optional[Union['DatabaseOnlineMigrationSourceArgs', 'DatabaseOnlineMigrationSourceArgsDict', 'outputs.DatabaseOnlineMigrationSource']]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None) -> 'DatabaseOnlineMigration':
         """
         Get an existing DatabaseOnlineMigration resource's state with the given name, id, and optional extra
@@ -399,7 +399,7 @@ class DatabaseOnlineMigration(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] created_at: The date and time when the online migration was created
         :param pulumi.Input[_builtins.bool] disable_ssl: When set to true, enables SSL encryption when connecting to the source database.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ignore_dbs: A list of databases that should be ignored during migration.
-        :param pulumi.Input[Union['DatabaseOnlineMigrationSourceArgs', 'DatabaseOnlineMigrationSourceArgsDict']] source: Configuration for migration
+        :param pulumi.Input[Union['DatabaseOnlineMigrationSourceArgs', 'DatabaseOnlineMigrationSourceArgsDict', 'outputs.DatabaseOnlineMigrationSource']] source: Configuration for migration
         :param pulumi.Input[_builtins.str] status: The status of the online migration
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

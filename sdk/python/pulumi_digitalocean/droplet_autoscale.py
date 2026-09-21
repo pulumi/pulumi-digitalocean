@@ -212,8 +212,8 @@ class DropletAutoscale(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: pulumi.Input[Optional[Union['DropletAutoscaleConfigArgs', 'DropletAutoscaleConfigArgsDict']]] = None,
-                 droplet_template: pulumi.Input[Optional[Union['DropletAutoscaleDropletTemplateArgs', 'DropletAutoscaleDropletTemplateArgsDict']]] = None,
+                 config: pulumi.Input[Optional[Union['DropletAutoscaleConfigArgs', 'DropletAutoscaleConfigArgsDict', 'outputs.DropletAutoscaleConfig']]] = None,
+                 droplet_template: pulumi.Input[Optional[Union['DropletAutoscaleDropletTemplateArgs', 'DropletAutoscaleDropletTemplateArgsDict', 'outputs.DropletAutoscaleDropletTemplate']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -269,9 +269,9 @@ class DropletAutoscale(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['DropletAutoscaleConfigArgs', 'DropletAutoscaleConfigArgsDict']] config: The configuration parameters for Droplet Autoscale pool, the supported arguments are
+        :param pulumi.Input[Union['DropletAutoscaleConfigArgs', 'DropletAutoscaleConfigArgsDict', 'outputs.DropletAutoscaleConfig']] config: The configuration parameters for Droplet Autoscale pool, the supported arguments are
                documented below.
-        :param pulumi.Input[Union['DropletAutoscaleDropletTemplateArgs', 'DropletAutoscaleDropletTemplateArgsDict']] droplet_template: The droplet template parameters for Droplet Autoscale pool, the supported arguments
+        :param pulumi.Input[Union['DropletAutoscaleDropletTemplateArgs', 'DropletAutoscaleDropletTemplateArgsDict', 'outputs.DropletAutoscaleDropletTemplate']] droplet_template: The droplet template parameters for Droplet Autoscale pool, the supported arguments
                are documented below.
         :param pulumi.Input[_builtins.str] name: The name of the Droplet Autoscale pool.
         """
@@ -347,8 +347,8 @@ class DropletAutoscale(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: pulumi.Input[Optional[Union['DropletAutoscaleConfigArgs', 'DropletAutoscaleConfigArgsDict']]] = None,
-                 droplet_template: pulumi.Input[Optional[Union['DropletAutoscaleDropletTemplateArgs', 'DropletAutoscaleDropletTemplateArgsDict']]] = None,
+                 config: pulumi.Input[Optional[Union['DropletAutoscaleConfigArgs', 'DropletAutoscaleConfigArgsDict', 'outputs.DropletAutoscaleConfig']]] = None,
+                 droplet_template: pulumi.Input[Optional[Union['DropletAutoscaleDropletTemplateArgs', 'DropletAutoscaleDropletTemplateArgsDict', 'outputs.DropletAutoscaleDropletTemplate']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -380,10 +380,10 @@ class DropletAutoscale(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            config: pulumi.Input[Optional[Union['DropletAutoscaleConfigArgs', 'DropletAutoscaleConfigArgsDict']]] = None,
+            config: pulumi.Input[Optional[Union['DropletAutoscaleConfigArgs', 'DropletAutoscaleConfigArgsDict', 'outputs.DropletAutoscaleConfig']]] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
-            current_utilizations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DropletAutoscaleCurrentUtilizationArgs', 'DropletAutoscaleCurrentUtilizationArgsDict']]]]] = None,
-            droplet_template: pulumi.Input[Optional[Union['DropletAutoscaleDropletTemplateArgs', 'DropletAutoscaleDropletTemplateArgsDict']]] = None,
+            current_utilizations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DropletAutoscaleCurrentUtilizationArgs', 'DropletAutoscaleCurrentUtilizationArgsDict', 'outputs.DropletAutoscaleCurrentUtilization']]]]] = None,
+            droplet_template: pulumi.Input[Optional[Union['DropletAutoscaleDropletTemplateArgs', 'DropletAutoscaleDropletTemplateArgsDict', 'outputs.DropletAutoscaleDropletTemplate']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             updated_at: pulumi.Input[Optional[_builtins.str]] = None) -> 'DropletAutoscale':
@@ -394,12 +394,12 @@ class DropletAutoscale(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['DropletAutoscaleConfigArgs', 'DropletAutoscaleConfigArgsDict']] config: The configuration parameters for Droplet Autoscale pool, the supported arguments are
+        :param pulumi.Input[Union['DropletAutoscaleConfigArgs', 'DropletAutoscaleConfigArgsDict', 'outputs.DropletAutoscaleConfig']] config: The configuration parameters for Droplet Autoscale pool, the supported arguments are
                documented below.
         :param pulumi.Input[_builtins.str] created_at: Created at timestamp for the Droplet Autoscale pool.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DropletAutoscaleCurrentUtilizationArgs', 'DropletAutoscaleCurrentUtilizationArgsDict']]]] current_utilizations: The current average resource utilization of the Droplet Autoscale pool, this attribute further
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DropletAutoscaleCurrentUtilizationArgs', 'DropletAutoscaleCurrentUtilizationArgsDict', 'outputs.DropletAutoscaleCurrentUtilization']]]] current_utilizations: The current average resource utilization of the Droplet Autoscale pool, this attribute further
                embeds `memory` and `cpu` attributes to respectively report utilization data.
-        :param pulumi.Input[Union['DropletAutoscaleDropletTemplateArgs', 'DropletAutoscaleDropletTemplateArgsDict']] droplet_template: The droplet template parameters for Droplet Autoscale pool, the supported arguments
+        :param pulumi.Input[Union['DropletAutoscaleDropletTemplateArgs', 'DropletAutoscaleDropletTemplateArgsDict', 'outputs.DropletAutoscaleDropletTemplate']] droplet_template: The droplet template parameters for Droplet Autoscale pool, the supported arguments
                are documented below.
         :param pulumi.Input[_builtins.str] name: The name of the Droplet Autoscale pool.
         :param pulumi.Input[_builtins.str] status: Droplet Autoscale pool health status; this reflects if the pool is currently healthy and ready to accept

@@ -1080,30 +1080,30 @@ class KubernetesCluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 amd_gpu_device_metrics_exporter_plugin: pulumi.Input[Optional[Union['KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs', 'KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgsDict']]] = None,
-                 amd_gpu_device_plugin: pulumi.Input[Optional[Union['KubernetesClusterAmdGpuDevicePluginArgs', 'KubernetesClusterAmdGpuDevicePluginArgsDict']]] = None,
-                 amd_gpu_dra_driver: pulumi.Input[Optional[Union['KubernetesClusterAmdGpuDraDriverArgs', 'KubernetesClusterAmdGpuDraDriverArgsDict']]] = None,
+                 amd_gpu_device_metrics_exporter_plugin: pulumi.Input[Optional[Union['KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs', 'KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgsDict', 'outputs.KubernetesClusterAmdGpuDeviceMetricsExporterPlugin']]] = None,
+                 amd_gpu_device_plugin: pulumi.Input[Optional[Union['KubernetesClusterAmdGpuDevicePluginArgs', 'KubernetesClusterAmdGpuDevicePluginArgsDict', 'outputs.KubernetesClusterAmdGpuDevicePlugin']]] = None,
+                 amd_gpu_dra_driver: pulumi.Input[Optional[Union['KubernetesClusterAmdGpuDraDriverArgs', 'KubernetesClusterAmdGpuDraDriverArgsDict', 'outputs.KubernetesClusterAmdGpuDraDriver']]] = None,
                  auto_upgrade: pulumi.Input[Optional[_builtins.bool]] = None,
-                 cluster_autoscaler_configurations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KubernetesClusterClusterAutoscalerConfigurationArgs', 'KubernetesClusterClusterAutoscalerConfigurationArgsDict']]]]] = None,
+                 cluster_autoscaler_configurations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KubernetesClusterClusterAutoscalerConfigurationArgs', 'KubernetesClusterClusterAutoscalerConfigurationArgsDict', 'outputs.KubernetesClusterClusterAutoscalerConfiguration']]]]] = None,
                  cluster_subnet: pulumi.Input[Optional[_builtins.str]] = None,
-                 control_plane_firewall: pulumi.Input[Optional[Union['KubernetesClusterControlPlaneFirewallArgs', 'KubernetesClusterControlPlaneFirewallArgsDict']]] = None,
-                 coredns_autoscaler: pulumi.Input[Optional[Union['KubernetesClusterCorednsAutoscalerArgs', 'KubernetesClusterCorednsAutoscalerArgsDict']]] = None,
+                 control_plane_firewall: pulumi.Input[Optional[Union['KubernetesClusterControlPlaneFirewallArgs', 'KubernetesClusterControlPlaneFirewallArgsDict', 'outputs.KubernetesClusterControlPlaneFirewall']]] = None,
+                 coredns_autoscaler: pulumi.Input[Optional[Union['KubernetesClusterCorednsAutoscalerArgs', 'KubernetesClusterCorednsAutoscalerArgsDict', 'outputs.KubernetesClusterCorednsAutoscaler']]] = None,
                  destroy_all_associated_resources: pulumi.Input[Optional[_builtins.bool]] = None,
                  ha: pulumi.Input[Optional[_builtins.bool]] = None,
                  isolated_workers: pulumi.Input[Optional[_builtins.bool]] = None,
                  kubeconfig_expire_seconds: pulumi.Input[Optional[_builtins.int]] = None,
-                 maintenance_policy: pulumi.Input[Optional[Union['KubernetesClusterMaintenancePolicyArgs', 'KubernetesClusterMaintenancePolicyArgsDict']]] = None,
+                 maintenance_policy: pulumi.Input[Optional[Union['KubernetesClusterMaintenancePolicyArgs', 'KubernetesClusterMaintenancePolicyArgsDict', 'outputs.KubernetesClusterMaintenancePolicy']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 node_pool: pulumi.Input[Optional[Union['KubernetesClusterNodePoolArgs', 'KubernetesClusterNodePoolArgsDict']]] = None,
-                 nvidia_gpu_device_plugin: pulumi.Input[Optional[Union['KubernetesClusterNvidiaGpuDevicePluginArgs', 'KubernetesClusterNvidiaGpuDevicePluginArgsDict']]] = None,
-                 nvidia_gpu_dra_driver: pulumi.Input[Optional[Union['KubernetesClusterNvidiaGpuDraDriverArgs', 'KubernetesClusterNvidiaGpuDraDriverArgsDict']]] = None,
-                 p2p_oci_registry_plugin: pulumi.Input[Optional[Union['KubernetesClusterP2pOciRegistryPluginArgs', 'KubernetesClusterP2pOciRegistryPluginArgsDict']]] = None,
-                 rdma_shared_device_plugin: pulumi.Input[Optional[Union['KubernetesClusterRdmaSharedDevicePluginArgs', 'KubernetesClusterRdmaSharedDevicePluginArgsDict']]] = None,
+                 node_pool: pulumi.Input[Optional[Union['KubernetesClusterNodePoolArgs', 'KubernetesClusterNodePoolArgsDict', 'outputs.KubernetesClusterNodePool']]] = None,
+                 nvidia_gpu_device_plugin: pulumi.Input[Optional[Union['KubernetesClusterNvidiaGpuDevicePluginArgs', 'KubernetesClusterNvidiaGpuDevicePluginArgsDict', 'outputs.KubernetesClusterNvidiaGpuDevicePlugin']]] = None,
+                 nvidia_gpu_dra_driver: pulumi.Input[Optional[Union['KubernetesClusterNvidiaGpuDraDriverArgs', 'KubernetesClusterNvidiaGpuDraDriverArgsDict', 'outputs.KubernetesClusterNvidiaGpuDraDriver']]] = None,
+                 p2p_oci_registry_plugin: pulumi.Input[Optional[Union['KubernetesClusterP2pOciRegistryPluginArgs', 'KubernetesClusterP2pOciRegistryPluginArgsDict', 'outputs.KubernetesClusterP2pOciRegistryPlugin']]] = None,
+                 rdma_shared_device_plugin: pulumi.Input[Optional[Union['KubernetesClusterRdmaSharedDevicePluginArgs', 'KubernetesClusterRdmaSharedDevicePluginArgsDict', 'outputs.KubernetesClusterRdmaSharedDevicePlugin']]] = None,
                  region: pulumi.Input[Optional[Union[_builtins.str, 'Region']]] = None,
                  registry_integration: pulumi.Input[Optional[_builtins.bool]] = None,
-                 routing_agent: pulumi.Input[Optional[Union['KubernetesClusterRoutingAgentArgs', 'KubernetesClusterRoutingAgentArgsDict']]] = None,
+                 routing_agent: pulumi.Input[Optional[Union['KubernetesClusterRoutingAgentArgs', 'KubernetesClusterRoutingAgentArgsDict', 'outputs.KubernetesClusterRoutingAgent']]] = None,
                  service_subnet: pulumi.Input[Optional[_builtins.str]] = None,
-                 ssos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KubernetesClusterSsoArgs', 'KubernetesClusterSsoArgsDict']]]]] = None,
+                 ssos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KubernetesClusterSsoArgs', 'KubernetesClusterSsoArgsDict', 'outputs.KubernetesClusterSso']]]]] = None,
                  surge_upgrade: pulumi.Input[Optional[_builtins.bool]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  version: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1271,30 +1271,30 @@ class KubernetesCluster(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs', 'KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgsDict']] amd_gpu_device_metrics_exporter_plugin: Block containing options for the AMD GPU device metrics exporter component. If not specified, the component will not be installed in the cluster.
-        :param pulumi.Input[Union['KubernetesClusterAmdGpuDevicePluginArgs', 'KubernetesClusterAmdGpuDevicePluginArgsDict']] amd_gpu_device_plugin: Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes. Mutually exclusive with `amd_gpu_dra_driver`.
-        :param pulumi.Input[Union['KubernetesClusterAmdGpuDraDriverArgs', 'KubernetesClusterAmdGpuDraDriverArgsDict']] amd_gpu_dra_driver: Block containing options for the AMD GPU DRA driver component. Mutually exclusive with `amd_gpu_device_plugin`.
+        :param pulumi.Input[Union['KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs', 'KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgsDict', 'outputs.KubernetesClusterAmdGpuDeviceMetricsExporterPlugin']] amd_gpu_device_metrics_exporter_plugin: Block containing options for the AMD GPU device metrics exporter component. If not specified, the component will not be installed in the cluster.
+        :param pulumi.Input[Union['KubernetesClusterAmdGpuDevicePluginArgs', 'KubernetesClusterAmdGpuDevicePluginArgsDict', 'outputs.KubernetesClusterAmdGpuDevicePlugin']] amd_gpu_device_plugin: Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes. Mutually exclusive with `amd_gpu_dra_driver`.
+        :param pulumi.Input[Union['KubernetesClusterAmdGpuDraDriverArgs', 'KubernetesClusterAmdGpuDraDriverArgsDict', 'outputs.KubernetesClusterAmdGpuDraDriver']] amd_gpu_dra_driver: Block containing options for the AMD GPU DRA driver component. Mutually exclusive with `amd_gpu_device_plugin`.
         :param pulumi.Input[_builtins.bool] auto_upgrade: A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesClusterClusterAutoscalerConfigurationArgs', 'KubernetesClusterClusterAutoscalerConfigurationArgsDict']]]] cluster_autoscaler_configurations: Block containing options for cluster auto-scaling. For more information.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesClusterClusterAutoscalerConfigurationArgs', 'KubernetesClusterClusterAutoscalerConfigurationArgsDict', 'outputs.KubernetesClusterClusterAutoscalerConfiguration']]]] cluster_autoscaler_configurations: Block containing options for cluster auto-scaling. For more information.
         :param pulumi.Input[_builtins.str] cluster_subnet: The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
-        :param pulumi.Input[Union['KubernetesClusterControlPlaneFirewallArgs', 'KubernetesClusterControlPlaneFirewallArgsDict']] control_plane_firewall: A block representing the cluster's control plane firewall
-        :param pulumi.Input[Union['KubernetesClusterCorednsAutoscalerArgs', 'KubernetesClusterCorednsAutoscalerArgsDict']] coredns_autoscaler: Block containing options for the CoreDNS Autoscaler component, which scales CoreDNS replicas in proportion to the cluster's size. Default: true (for 1.36.0 and later)
+        :param pulumi.Input[Union['KubernetesClusterControlPlaneFirewallArgs', 'KubernetesClusterControlPlaneFirewallArgsDict', 'outputs.KubernetesClusterControlPlaneFirewall']] control_plane_firewall: A block representing the cluster's control plane firewall
+        :param pulumi.Input[Union['KubernetesClusterCorednsAutoscalerArgs', 'KubernetesClusterCorednsAutoscalerArgsDict', 'outputs.KubernetesClusterCorednsAutoscaler']] coredns_autoscaler: Block containing options for the CoreDNS Autoscaler component, which scales CoreDNS replicas in proportion to the cluster's size. Default: true (for 1.36.0 and later)
         :param pulumi.Input[_builtins.bool] destroy_all_associated_resources: **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
         :param pulumi.Input[_builtins.bool] ha: Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: true (for 1.36.0 and later)
         :param pulumi.Input[_builtins.bool] isolated_workers: Enable/disable isolated worker nodes for the cluster. When enabled, each worker node runs on dedicated hardware. This can only be set at creation time. The cluster's VPC must have a NAT gateway attached. Default: false
         :param pulumi.Input[_builtins.int] kubeconfig_expire_seconds: The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
-        :param pulumi.Input[Union['KubernetesClusterMaintenancePolicyArgs', 'KubernetesClusterMaintenancePolicyArgsDict']] maintenance_policy: A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.
+        :param pulumi.Input[Union['KubernetesClusterMaintenancePolicyArgs', 'KubernetesClusterMaintenancePolicyArgsDict', 'outputs.KubernetesClusterMaintenancePolicy']] maintenance_policy: A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.
         :param pulumi.Input[_builtins.str] name: A name for the Kubernetes cluster.
-        :param pulumi.Input[Union['KubernetesClusterNodePoolArgs', 'KubernetesClusterNodePoolArgsDict']] node_pool: A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
-        :param pulumi.Input[Union['KubernetesClusterNvidiaGpuDevicePluginArgs', 'KubernetesClusterNvidiaGpuDevicePluginArgsDict']] nvidia_gpu_device_plugin: Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes. Mutually exclusive with `nvidia_gpu_dra_driver`.
-        :param pulumi.Input[Union['KubernetesClusterNvidiaGpuDraDriverArgs', 'KubernetesClusterNvidiaGpuDraDriverArgsDict']] nvidia_gpu_dra_driver: Block containing options for the NVIDIA GPU DRA driver component. Mutually exclusive with `nvidia_gpu_device_plugin`.
-        :param pulumi.Input[Union['KubernetesClusterP2pOciRegistryPluginArgs', 'KubernetesClusterP2pOciRegistryPluginArgsDict']] p2p_oci_registry_plugin: Block containing options for the Peer-to-peer OCI registry plugin component. If not specified, the p2p-oci-registry-plugin component will not be installed in the cluster.
-        :param pulumi.Input[Union['KubernetesClusterRdmaSharedDevicePluginArgs', 'KubernetesClusterRdmaSharedDevicePluginArgsDict']] rdma_shared_device_plugin: Block containing options for the RDMA Shared Device Plugin (k8s-rdma-shared-dev-plugin) component. If not specified, the component will be enabled by default for clusters with GPU nodes connected to a dedicated high-speed networking fabric.
+        :param pulumi.Input[Union['KubernetesClusterNodePoolArgs', 'KubernetesClusterNodePoolArgsDict', 'outputs.KubernetesClusterNodePool']] node_pool: A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
+        :param pulumi.Input[Union['KubernetesClusterNvidiaGpuDevicePluginArgs', 'KubernetesClusterNvidiaGpuDevicePluginArgsDict', 'outputs.KubernetesClusterNvidiaGpuDevicePlugin']] nvidia_gpu_device_plugin: Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes. Mutually exclusive with `nvidia_gpu_dra_driver`.
+        :param pulumi.Input[Union['KubernetesClusterNvidiaGpuDraDriverArgs', 'KubernetesClusterNvidiaGpuDraDriverArgsDict', 'outputs.KubernetesClusterNvidiaGpuDraDriver']] nvidia_gpu_dra_driver: Block containing options for the NVIDIA GPU DRA driver component. Mutually exclusive with `nvidia_gpu_device_plugin`.
+        :param pulumi.Input[Union['KubernetesClusterP2pOciRegistryPluginArgs', 'KubernetesClusterP2pOciRegistryPluginArgsDict', 'outputs.KubernetesClusterP2pOciRegistryPlugin']] p2p_oci_registry_plugin: Block containing options for the Peer-to-peer OCI registry plugin component. If not specified, the p2p-oci-registry-plugin component will not be installed in the cluster.
+        :param pulumi.Input[Union['KubernetesClusterRdmaSharedDevicePluginArgs', 'KubernetesClusterRdmaSharedDevicePluginArgsDict', 'outputs.KubernetesClusterRdmaSharedDevicePlugin']] rdma_shared_device_plugin: Block containing options for the RDMA Shared Device Plugin (k8s-rdma-shared-dev-plugin) component. If not specified, the component will be enabled by default for clusters with GPU nodes connected to a dedicated high-speed networking fabric.
         :param pulumi.Input[Union[_builtins.str, 'Region']] region: The slug identifier for the region where the Kubernetes cluster will be created.
         :param pulumi.Input[_builtins.bool] registry_integration: Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
-        :param pulumi.Input[Union['KubernetesClusterRoutingAgentArgs', 'KubernetesClusterRoutingAgentArgsDict']] routing_agent: Block containing options for the routing-agent component. If not specified, the routing-agent component will not be installed in the cluster.
+        :param pulumi.Input[Union['KubernetesClusterRoutingAgentArgs', 'KubernetesClusterRoutingAgentArgsDict', 'outputs.KubernetesClusterRoutingAgent']] routing_agent: Block containing options for the routing-agent component. If not specified, the routing-agent component will not be installed in the cluster.
         :param pulumi.Input[_builtins.str] service_subnet: The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
-        :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesClusterSsoArgs', 'KubernetesClusterSsoArgsDict']]]] ssos: Block containing Single Sign-On (SSO) configuration for the cluster using OpenID Connect (OIDC).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesClusterSsoArgs', 'KubernetesClusterSsoArgsDict', 'outputs.KubernetesClusterSso']]]] ssos: Block containing Single Sign-On (SSO) configuration for the cluster using OpenID Connect (OIDC).
         :param pulumi.Input[_builtins.bool] surge_upgrade: Enable/disable surge upgrades for a cluster. Default: true
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A list of tag names to be applied to the Kubernetes cluster.
         :param pulumi.Input[_builtins.str] version: The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
@@ -1481,30 +1481,30 @@ class KubernetesCluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 amd_gpu_device_metrics_exporter_plugin: pulumi.Input[Optional[Union['KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs', 'KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgsDict']]] = None,
-                 amd_gpu_device_plugin: pulumi.Input[Optional[Union['KubernetesClusterAmdGpuDevicePluginArgs', 'KubernetesClusterAmdGpuDevicePluginArgsDict']]] = None,
-                 amd_gpu_dra_driver: pulumi.Input[Optional[Union['KubernetesClusterAmdGpuDraDriverArgs', 'KubernetesClusterAmdGpuDraDriverArgsDict']]] = None,
+                 amd_gpu_device_metrics_exporter_plugin: pulumi.Input[Optional[Union['KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs', 'KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgsDict', 'outputs.KubernetesClusterAmdGpuDeviceMetricsExporterPlugin']]] = None,
+                 amd_gpu_device_plugin: pulumi.Input[Optional[Union['KubernetesClusterAmdGpuDevicePluginArgs', 'KubernetesClusterAmdGpuDevicePluginArgsDict', 'outputs.KubernetesClusterAmdGpuDevicePlugin']]] = None,
+                 amd_gpu_dra_driver: pulumi.Input[Optional[Union['KubernetesClusterAmdGpuDraDriverArgs', 'KubernetesClusterAmdGpuDraDriverArgsDict', 'outputs.KubernetesClusterAmdGpuDraDriver']]] = None,
                  auto_upgrade: pulumi.Input[Optional[_builtins.bool]] = None,
-                 cluster_autoscaler_configurations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KubernetesClusterClusterAutoscalerConfigurationArgs', 'KubernetesClusterClusterAutoscalerConfigurationArgsDict']]]]] = None,
+                 cluster_autoscaler_configurations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KubernetesClusterClusterAutoscalerConfigurationArgs', 'KubernetesClusterClusterAutoscalerConfigurationArgsDict', 'outputs.KubernetesClusterClusterAutoscalerConfiguration']]]]] = None,
                  cluster_subnet: pulumi.Input[Optional[_builtins.str]] = None,
-                 control_plane_firewall: pulumi.Input[Optional[Union['KubernetesClusterControlPlaneFirewallArgs', 'KubernetesClusterControlPlaneFirewallArgsDict']]] = None,
-                 coredns_autoscaler: pulumi.Input[Optional[Union['KubernetesClusterCorednsAutoscalerArgs', 'KubernetesClusterCorednsAutoscalerArgsDict']]] = None,
+                 control_plane_firewall: pulumi.Input[Optional[Union['KubernetesClusterControlPlaneFirewallArgs', 'KubernetesClusterControlPlaneFirewallArgsDict', 'outputs.KubernetesClusterControlPlaneFirewall']]] = None,
+                 coredns_autoscaler: pulumi.Input[Optional[Union['KubernetesClusterCorednsAutoscalerArgs', 'KubernetesClusterCorednsAutoscalerArgsDict', 'outputs.KubernetesClusterCorednsAutoscaler']]] = None,
                  destroy_all_associated_resources: pulumi.Input[Optional[_builtins.bool]] = None,
                  ha: pulumi.Input[Optional[_builtins.bool]] = None,
                  isolated_workers: pulumi.Input[Optional[_builtins.bool]] = None,
                  kubeconfig_expire_seconds: pulumi.Input[Optional[_builtins.int]] = None,
-                 maintenance_policy: pulumi.Input[Optional[Union['KubernetesClusterMaintenancePolicyArgs', 'KubernetesClusterMaintenancePolicyArgsDict']]] = None,
+                 maintenance_policy: pulumi.Input[Optional[Union['KubernetesClusterMaintenancePolicyArgs', 'KubernetesClusterMaintenancePolicyArgsDict', 'outputs.KubernetesClusterMaintenancePolicy']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 node_pool: pulumi.Input[Optional[Union['KubernetesClusterNodePoolArgs', 'KubernetesClusterNodePoolArgsDict']]] = None,
-                 nvidia_gpu_device_plugin: pulumi.Input[Optional[Union['KubernetesClusterNvidiaGpuDevicePluginArgs', 'KubernetesClusterNvidiaGpuDevicePluginArgsDict']]] = None,
-                 nvidia_gpu_dra_driver: pulumi.Input[Optional[Union['KubernetesClusterNvidiaGpuDraDriverArgs', 'KubernetesClusterNvidiaGpuDraDriverArgsDict']]] = None,
-                 p2p_oci_registry_plugin: pulumi.Input[Optional[Union['KubernetesClusterP2pOciRegistryPluginArgs', 'KubernetesClusterP2pOciRegistryPluginArgsDict']]] = None,
-                 rdma_shared_device_plugin: pulumi.Input[Optional[Union['KubernetesClusterRdmaSharedDevicePluginArgs', 'KubernetesClusterRdmaSharedDevicePluginArgsDict']]] = None,
+                 node_pool: pulumi.Input[Optional[Union['KubernetesClusterNodePoolArgs', 'KubernetesClusterNodePoolArgsDict', 'outputs.KubernetesClusterNodePool']]] = None,
+                 nvidia_gpu_device_plugin: pulumi.Input[Optional[Union['KubernetesClusterNvidiaGpuDevicePluginArgs', 'KubernetesClusterNvidiaGpuDevicePluginArgsDict', 'outputs.KubernetesClusterNvidiaGpuDevicePlugin']]] = None,
+                 nvidia_gpu_dra_driver: pulumi.Input[Optional[Union['KubernetesClusterNvidiaGpuDraDriverArgs', 'KubernetesClusterNvidiaGpuDraDriverArgsDict', 'outputs.KubernetesClusterNvidiaGpuDraDriver']]] = None,
+                 p2p_oci_registry_plugin: pulumi.Input[Optional[Union['KubernetesClusterP2pOciRegistryPluginArgs', 'KubernetesClusterP2pOciRegistryPluginArgsDict', 'outputs.KubernetesClusterP2pOciRegistryPlugin']]] = None,
+                 rdma_shared_device_plugin: pulumi.Input[Optional[Union['KubernetesClusterRdmaSharedDevicePluginArgs', 'KubernetesClusterRdmaSharedDevicePluginArgsDict', 'outputs.KubernetesClusterRdmaSharedDevicePlugin']]] = None,
                  region: pulumi.Input[Optional[Union[_builtins.str, 'Region']]] = None,
                  registry_integration: pulumi.Input[Optional[_builtins.bool]] = None,
-                 routing_agent: pulumi.Input[Optional[Union['KubernetesClusterRoutingAgentArgs', 'KubernetesClusterRoutingAgentArgsDict']]] = None,
+                 routing_agent: pulumi.Input[Optional[Union['KubernetesClusterRoutingAgentArgs', 'KubernetesClusterRoutingAgentArgsDict', 'outputs.KubernetesClusterRoutingAgent']]] = None,
                  service_subnet: pulumi.Input[Optional[_builtins.str]] = None,
-                 ssos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KubernetesClusterSsoArgs', 'KubernetesClusterSsoArgsDict']]]]] = None,
+                 ssos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KubernetesClusterSsoArgs', 'KubernetesClusterSsoArgsDict', 'outputs.KubernetesClusterSso']]]]] = None,
                  surge_upgrade: pulumi.Input[Optional[_builtins.bool]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  version: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1573,35 +1573,35 @@ class KubernetesCluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            amd_gpu_device_metrics_exporter_plugin: pulumi.Input[Optional[Union['KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs', 'KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgsDict']]] = None,
-            amd_gpu_device_plugin: pulumi.Input[Optional[Union['KubernetesClusterAmdGpuDevicePluginArgs', 'KubernetesClusterAmdGpuDevicePluginArgsDict']]] = None,
-            amd_gpu_dra_driver: pulumi.Input[Optional[Union['KubernetesClusterAmdGpuDraDriverArgs', 'KubernetesClusterAmdGpuDraDriverArgsDict']]] = None,
+            amd_gpu_device_metrics_exporter_plugin: pulumi.Input[Optional[Union['KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs', 'KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgsDict', 'outputs.KubernetesClusterAmdGpuDeviceMetricsExporterPlugin']]] = None,
+            amd_gpu_device_plugin: pulumi.Input[Optional[Union['KubernetesClusterAmdGpuDevicePluginArgs', 'KubernetesClusterAmdGpuDevicePluginArgsDict', 'outputs.KubernetesClusterAmdGpuDevicePlugin']]] = None,
+            amd_gpu_dra_driver: pulumi.Input[Optional[Union['KubernetesClusterAmdGpuDraDriverArgs', 'KubernetesClusterAmdGpuDraDriverArgsDict', 'outputs.KubernetesClusterAmdGpuDraDriver']]] = None,
             auto_upgrade: pulumi.Input[Optional[_builtins.bool]] = None,
-            cluster_autoscaler_configurations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KubernetesClusterClusterAutoscalerConfigurationArgs', 'KubernetesClusterClusterAutoscalerConfigurationArgsDict']]]]] = None,
+            cluster_autoscaler_configurations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KubernetesClusterClusterAutoscalerConfigurationArgs', 'KubernetesClusterClusterAutoscalerConfigurationArgsDict', 'outputs.KubernetesClusterClusterAutoscalerConfiguration']]]]] = None,
             cluster_subnet: pulumi.Input[Optional[_builtins.str]] = None,
             cluster_urn: pulumi.Input[Optional[_builtins.str]] = None,
-            control_plane_firewall: pulumi.Input[Optional[Union['KubernetesClusterControlPlaneFirewallArgs', 'KubernetesClusterControlPlaneFirewallArgsDict']]] = None,
-            coredns_autoscaler: pulumi.Input[Optional[Union['KubernetesClusterCorednsAutoscalerArgs', 'KubernetesClusterCorednsAutoscalerArgsDict']]] = None,
+            control_plane_firewall: pulumi.Input[Optional[Union['KubernetesClusterControlPlaneFirewallArgs', 'KubernetesClusterControlPlaneFirewallArgsDict', 'outputs.KubernetesClusterControlPlaneFirewall']]] = None,
+            coredns_autoscaler: pulumi.Input[Optional[Union['KubernetesClusterCorednsAutoscalerArgs', 'KubernetesClusterCorednsAutoscalerArgsDict', 'outputs.KubernetesClusterCorednsAutoscaler']]] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
             destroy_all_associated_resources: pulumi.Input[Optional[_builtins.bool]] = None,
             endpoint: pulumi.Input[Optional[_builtins.str]] = None,
             ha: pulumi.Input[Optional[_builtins.bool]] = None,
             ipv4_address: pulumi.Input[Optional[_builtins.str]] = None,
             isolated_workers: pulumi.Input[Optional[_builtins.bool]] = None,
-            kube_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KubernetesClusterKubeConfigArgs', 'KubernetesClusterKubeConfigArgsDict']]]]] = None,
+            kube_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KubernetesClusterKubeConfigArgs', 'KubernetesClusterKubeConfigArgsDict', 'outputs.KubernetesClusterKubeConfig']]]]] = None,
             kubeconfig_expire_seconds: pulumi.Input[Optional[_builtins.int]] = None,
-            maintenance_policy: pulumi.Input[Optional[Union['KubernetesClusterMaintenancePolicyArgs', 'KubernetesClusterMaintenancePolicyArgsDict']]] = None,
+            maintenance_policy: pulumi.Input[Optional[Union['KubernetesClusterMaintenancePolicyArgs', 'KubernetesClusterMaintenancePolicyArgsDict', 'outputs.KubernetesClusterMaintenancePolicy']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            node_pool: pulumi.Input[Optional[Union['KubernetesClusterNodePoolArgs', 'KubernetesClusterNodePoolArgsDict']]] = None,
-            nvidia_gpu_device_plugin: pulumi.Input[Optional[Union['KubernetesClusterNvidiaGpuDevicePluginArgs', 'KubernetesClusterNvidiaGpuDevicePluginArgsDict']]] = None,
-            nvidia_gpu_dra_driver: pulumi.Input[Optional[Union['KubernetesClusterNvidiaGpuDraDriverArgs', 'KubernetesClusterNvidiaGpuDraDriverArgsDict']]] = None,
-            p2p_oci_registry_plugin: pulumi.Input[Optional[Union['KubernetesClusterP2pOciRegistryPluginArgs', 'KubernetesClusterP2pOciRegistryPluginArgsDict']]] = None,
-            rdma_shared_device_plugin: pulumi.Input[Optional[Union['KubernetesClusterRdmaSharedDevicePluginArgs', 'KubernetesClusterRdmaSharedDevicePluginArgsDict']]] = None,
+            node_pool: pulumi.Input[Optional[Union['KubernetesClusterNodePoolArgs', 'KubernetesClusterNodePoolArgsDict', 'outputs.KubernetesClusterNodePool']]] = None,
+            nvidia_gpu_device_plugin: pulumi.Input[Optional[Union['KubernetesClusterNvidiaGpuDevicePluginArgs', 'KubernetesClusterNvidiaGpuDevicePluginArgsDict', 'outputs.KubernetesClusterNvidiaGpuDevicePlugin']]] = None,
+            nvidia_gpu_dra_driver: pulumi.Input[Optional[Union['KubernetesClusterNvidiaGpuDraDriverArgs', 'KubernetesClusterNvidiaGpuDraDriverArgsDict', 'outputs.KubernetesClusterNvidiaGpuDraDriver']]] = None,
+            p2p_oci_registry_plugin: pulumi.Input[Optional[Union['KubernetesClusterP2pOciRegistryPluginArgs', 'KubernetesClusterP2pOciRegistryPluginArgsDict', 'outputs.KubernetesClusterP2pOciRegistryPlugin']]] = None,
+            rdma_shared_device_plugin: pulumi.Input[Optional[Union['KubernetesClusterRdmaSharedDevicePluginArgs', 'KubernetesClusterRdmaSharedDevicePluginArgsDict', 'outputs.KubernetesClusterRdmaSharedDevicePlugin']]] = None,
             region: pulumi.Input[Optional[Union[_builtins.str, 'Region']]] = None,
             registry_integration: pulumi.Input[Optional[_builtins.bool]] = None,
-            routing_agent: pulumi.Input[Optional[Union['KubernetesClusterRoutingAgentArgs', 'KubernetesClusterRoutingAgentArgsDict']]] = None,
+            routing_agent: pulumi.Input[Optional[Union['KubernetesClusterRoutingAgentArgs', 'KubernetesClusterRoutingAgentArgsDict', 'outputs.KubernetesClusterRoutingAgent']]] = None,
             service_subnet: pulumi.Input[Optional[_builtins.str]] = None,
-            ssos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KubernetesClusterSsoArgs', 'KubernetesClusterSsoArgsDict']]]]] = None,
+            ssos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KubernetesClusterSsoArgs', 'KubernetesClusterSsoArgsDict', 'outputs.KubernetesClusterSso']]]]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             surge_upgrade: pulumi.Input[Optional[_builtins.bool]] = None,
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1616,35 +1616,35 @@ class KubernetesCluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs', 'KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgsDict']] amd_gpu_device_metrics_exporter_plugin: Block containing options for the AMD GPU device metrics exporter component. If not specified, the component will not be installed in the cluster.
-        :param pulumi.Input[Union['KubernetesClusterAmdGpuDevicePluginArgs', 'KubernetesClusterAmdGpuDevicePluginArgsDict']] amd_gpu_device_plugin: Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes. Mutually exclusive with `amd_gpu_dra_driver`.
-        :param pulumi.Input[Union['KubernetesClusterAmdGpuDraDriverArgs', 'KubernetesClusterAmdGpuDraDriverArgsDict']] amd_gpu_dra_driver: Block containing options for the AMD GPU DRA driver component. Mutually exclusive with `amd_gpu_device_plugin`.
+        :param pulumi.Input[Union['KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs', 'KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgsDict', 'outputs.KubernetesClusterAmdGpuDeviceMetricsExporterPlugin']] amd_gpu_device_metrics_exporter_plugin: Block containing options for the AMD GPU device metrics exporter component. If not specified, the component will not be installed in the cluster.
+        :param pulumi.Input[Union['KubernetesClusterAmdGpuDevicePluginArgs', 'KubernetesClusterAmdGpuDevicePluginArgsDict', 'outputs.KubernetesClusterAmdGpuDevicePlugin']] amd_gpu_device_plugin: Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes. Mutually exclusive with `amd_gpu_dra_driver`.
+        :param pulumi.Input[Union['KubernetesClusterAmdGpuDraDriverArgs', 'KubernetesClusterAmdGpuDraDriverArgsDict', 'outputs.KubernetesClusterAmdGpuDraDriver']] amd_gpu_dra_driver: Block containing options for the AMD GPU DRA driver component. Mutually exclusive with `amd_gpu_device_plugin`.
         :param pulumi.Input[_builtins.bool] auto_upgrade: A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesClusterClusterAutoscalerConfigurationArgs', 'KubernetesClusterClusterAutoscalerConfigurationArgsDict']]]] cluster_autoscaler_configurations: Block containing options for cluster auto-scaling. For more information.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesClusterClusterAutoscalerConfigurationArgs', 'KubernetesClusterClusterAutoscalerConfigurationArgsDict', 'outputs.KubernetesClusterClusterAutoscalerConfiguration']]]] cluster_autoscaler_configurations: Block containing options for cluster auto-scaling. For more information.
         :param pulumi.Input[_builtins.str] cluster_subnet: The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
         :param pulumi.Input[_builtins.str] cluster_urn: The uniform resource name (URN) for the Kubernetes cluster.
-        :param pulumi.Input[Union['KubernetesClusterControlPlaneFirewallArgs', 'KubernetesClusterControlPlaneFirewallArgsDict']] control_plane_firewall: A block representing the cluster's control plane firewall
-        :param pulumi.Input[Union['KubernetesClusterCorednsAutoscalerArgs', 'KubernetesClusterCorednsAutoscalerArgsDict']] coredns_autoscaler: Block containing options for the CoreDNS Autoscaler component, which scales CoreDNS replicas in proportion to the cluster's size. Default: true (for 1.36.0 and later)
+        :param pulumi.Input[Union['KubernetesClusterControlPlaneFirewallArgs', 'KubernetesClusterControlPlaneFirewallArgsDict', 'outputs.KubernetesClusterControlPlaneFirewall']] control_plane_firewall: A block representing the cluster's control plane firewall
+        :param pulumi.Input[Union['KubernetesClusterCorednsAutoscalerArgs', 'KubernetesClusterCorednsAutoscalerArgsDict', 'outputs.KubernetesClusterCorednsAutoscaler']] coredns_autoscaler: Block containing options for the CoreDNS Autoscaler component, which scales CoreDNS replicas in proportion to the cluster's size. Default: true (for 1.36.0 and later)
         :param pulumi.Input[_builtins.str] created_at: The date and time when the node was created.
         :param pulumi.Input[_builtins.bool] destroy_all_associated_resources: **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
         :param pulumi.Input[_builtins.str] endpoint: The base URL of the API server on the Kubernetes master node.
         :param pulumi.Input[_builtins.bool] ha: Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: true (for 1.36.0 and later)
         :param pulumi.Input[_builtins.str] ipv4_address: The public IPv4 address of the Kubernetes master node. This will not be set if high availability is configured on the cluster (v1.21+)
         :param pulumi.Input[_builtins.bool] isolated_workers: Enable/disable isolated worker nodes for the cluster. When enabled, each worker node runs on dedicated hardware. This can only be set at creation time. The cluster's VPC must have a NAT gateway attached. Default: false
-        :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesClusterKubeConfigArgs', 'KubernetesClusterKubeConfigArgsDict']]]] kube_configs: A representation of the Kubernetes cluster's kubeconfig with the following attributes:
+        :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesClusterKubeConfigArgs', 'KubernetesClusterKubeConfigArgsDict', 'outputs.KubernetesClusterKubeConfig']]]] kube_configs: A representation of the Kubernetes cluster's kubeconfig with the following attributes:
         :param pulumi.Input[_builtins.int] kubeconfig_expire_seconds: The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
-        :param pulumi.Input[Union['KubernetesClusterMaintenancePolicyArgs', 'KubernetesClusterMaintenancePolicyArgsDict']] maintenance_policy: A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.
+        :param pulumi.Input[Union['KubernetesClusterMaintenancePolicyArgs', 'KubernetesClusterMaintenancePolicyArgsDict', 'outputs.KubernetesClusterMaintenancePolicy']] maintenance_policy: A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.
         :param pulumi.Input[_builtins.str] name: A name for the Kubernetes cluster.
-        :param pulumi.Input[Union['KubernetesClusterNodePoolArgs', 'KubernetesClusterNodePoolArgsDict']] node_pool: A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
-        :param pulumi.Input[Union['KubernetesClusterNvidiaGpuDevicePluginArgs', 'KubernetesClusterNvidiaGpuDevicePluginArgsDict']] nvidia_gpu_device_plugin: Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes. Mutually exclusive with `nvidia_gpu_dra_driver`.
-        :param pulumi.Input[Union['KubernetesClusterNvidiaGpuDraDriverArgs', 'KubernetesClusterNvidiaGpuDraDriverArgsDict']] nvidia_gpu_dra_driver: Block containing options for the NVIDIA GPU DRA driver component. Mutually exclusive with `nvidia_gpu_device_plugin`.
-        :param pulumi.Input[Union['KubernetesClusterP2pOciRegistryPluginArgs', 'KubernetesClusterP2pOciRegistryPluginArgsDict']] p2p_oci_registry_plugin: Block containing options for the Peer-to-peer OCI registry plugin component. If not specified, the p2p-oci-registry-plugin component will not be installed in the cluster.
-        :param pulumi.Input[Union['KubernetesClusterRdmaSharedDevicePluginArgs', 'KubernetesClusterRdmaSharedDevicePluginArgsDict']] rdma_shared_device_plugin: Block containing options for the RDMA Shared Device Plugin (k8s-rdma-shared-dev-plugin) component. If not specified, the component will be enabled by default for clusters with GPU nodes connected to a dedicated high-speed networking fabric.
+        :param pulumi.Input[Union['KubernetesClusterNodePoolArgs', 'KubernetesClusterNodePoolArgsDict', 'outputs.KubernetesClusterNodePool']] node_pool: A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
+        :param pulumi.Input[Union['KubernetesClusterNvidiaGpuDevicePluginArgs', 'KubernetesClusterNvidiaGpuDevicePluginArgsDict', 'outputs.KubernetesClusterNvidiaGpuDevicePlugin']] nvidia_gpu_device_plugin: Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes. Mutually exclusive with `nvidia_gpu_dra_driver`.
+        :param pulumi.Input[Union['KubernetesClusterNvidiaGpuDraDriverArgs', 'KubernetesClusterNvidiaGpuDraDriverArgsDict', 'outputs.KubernetesClusterNvidiaGpuDraDriver']] nvidia_gpu_dra_driver: Block containing options for the NVIDIA GPU DRA driver component. Mutually exclusive with `nvidia_gpu_device_plugin`.
+        :param pulumi.Input[Union['KubernetesClusterP2pOciRegistryPluginArgs', 'KubernetesClusterP2pOciRegistryPluginArgsDict', 'outputs.KubernetesClusterP2pOciRegistryPlugin']] p2p_oci_registry_plugin: Block containing options for the Peer-to-peer OCI registry plugin component. If not specified, the p2p-oci-registry-plugin component will not be installed in the cluster.
+        :param pulumi.Input[Union['KubernetesClusterRdmaSharedDevicePluginArgs', 'KubernetesClusterRdmaSharedDevicePluginArgsDict', 'outputs.KubernetesClusterRdmaSharedDevicePlugin']] rdma_shared_device_plugin: Block containing options for the RDMA Shared Device Plugin (k8s-rdma-shared-dev-plugin) component. If not specified, the component will be enabled by default for clusters with GPU nodes connected to a dedicated high-speed networking fabric.
         :param pulumi.Input[Union[_builtins.str, 'Region']] region: The slug identifier for the region where the Kubernetes cluster will be created.
         :param pulumi.Input[_builtins.bool] registry_integration: Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
-        :param pulumi.Input[Union['KubernetesClusterRoutingAgentArgs', 'KubernetesClusterRoutingAgentArgsDict']] routing_agent: Block containing options for the routing-agent component. If not specified, the routing-agent component will not be installed in the cluster.
+        :param pulumi.Input[Union['KubernetesClusterRoutingAgentArgs', 'KubernetesClusterRoutingAgentArgsDict', 'outputs.KubernetesClusterRoutingAgent']] routing_agent: Block containing options for the routing-agent component. If not specified, the routing-agent component will not be installed in the cluster.
         :param pulumi.Input[_builtins.str] service_subnet: The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
-        :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesClusterSsoArgs', 'KubernetesClusterSsoArgsDict']]]] ssos: Block containing Single Sign-On (SSO) configuration for the cluster using OpenID Connect (OIDC).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesClusterSsoArgs', 'KubernetesClusterSsoArgsDict', 'outputs.KubernetesClusterSso']]]] ssos: Block containing Single Sign-On (SSO) configuration for the cluster using OpenID Connect (OIDC).
         :param pulumi.Input[_builtins.str] status: A string indicating the current status of the individual node.
         :param pulumi.Input[_builtins.bool] surge_upgrade: Enable/disable surge upgrades for a cluster. Default: true
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A list of tag names to be applied to the Kubernetes cluster.

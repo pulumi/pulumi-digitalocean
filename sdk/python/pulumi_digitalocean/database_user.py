@@ -240,7 +240,7 @@ class DatabaseUser(pulumi.CustomResource):
                  cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  mysql_auth_plugin: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 settings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabaseUserSettingArgs', 'DatabaseUserSettingArgsDict']]]]] = None,
+                 settings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabaseUserSettingArgs', 'DatabaseUserSettingArgsDict', 'outputs.DatabaseUserSetting']]]]] = None,
                  __props__=None):
         """
         Provides a DigitalOcean database user resource. When creating a new database cluster, a default admin user with name `doadmin` will be created. Then, this resource can be used to provide additional normal users inside the cluster.
@@ -341,7 +341,7 @@ class DatabaseUser(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the original source database cluster.
         :param pulumi.Input[_builtins.str] mysql_auth_plugin: The authentication method to use for connections to the MySQL user account. The valid values are `mysql_native_password` or `caching_sha2_password` (this is the default).
         :param pulumi.Input[_builtins.str] name: The name for the database user.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseUserSettingArgs', 'DatabaseUserSettingArgsDict']]]] settings: Contains optional settings for the user.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseUserSettingArgs', 'DatabaseUserSettingArgsDict', 'outputs.DatabaseUserSetting']]]] settings: Contains optional settings for the user.
                The `settings` block is documented below.
         """
         ...
@@ -462,7 +462,7 @@ class DatabaseUser(pulumi.CustomResource):
                  cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  mysql_auth_plugin: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 settings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabaseUserSettingArgs', 'DatabaseUserSettingArgsDict']]]]] = None,
+                 settings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabaseUserSettingArgs', 'DatabaseUserSettingArgsDict', 'outputs.DatabaseUserSetting']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -501,7 +501,7 @@ class DatabaseUser(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             password: pulumi.Input[Optional[_builtins.str]] = None,
             role: pulumi.Input[Optional[_builtins.str]] = None,
-            settings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabaseUserSettingArgs', 'DatabaseUserSettingArgsDict']]]]] = None) -> 'DatabaseUser':
+            settings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabaseUserSettingArgs', 'DatabaseUserSettingArgsDict', 'outputs.DatabaseUserSetting']]]]] = None) -> 'DatabaseUser':
         """
         Get an existing DatabaseUser resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -516,7 +516,7 @@ class DatabaseUser(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The name for the database user.
         :param pulumi.Input[_builtins.str] password: Password for the database user.
         :param pulumi.Input[_builtins.str] role: Role for the database user. The value will be either "primary" or "normal".
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseUserSettingArgs', 'DatabaseUserSettingArgsDict']]]] settings: Contains optional settings for the user.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseUserSettingArgs', 'DatabaseUserSettingArgsDict', 'outputs.DatabaseUserSetting']]]] settings: Contains optional settings for the user.
                The `settings` block is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

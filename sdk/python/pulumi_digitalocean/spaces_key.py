@@ -154,7 +154,7 @@ class SpacesKey(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 grants: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SpacesKeyGrantArgs', 'SpacesKeyGrantArgsDict']]]]] = None,
+                 grants: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SpacesKeyGrantArgs', 'SpacesKeyGrantArgsDict', 'outputs.SpacesKeyGrant']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -214,7 +214,7 @@ class SpacesKey(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SpacesKeyGrantArgs', 'SpacesKeyGrantArgsDict']]]] grants: A grant for the key (documented below).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SpacesKeyGrantArgs', 'SpacesKeyGrantArgsDict', 'outputs.SpacesKeyGrant']]]] grants: A grant for the key (documented below).
         :param pulumi.Input[_builtins.str] name: The name of the key
         """
         ...
@@ -293,7 +293,7 @@ class SpacesKey(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 grants: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SpacesKeyGrantArgs', 'SpacesKeyGrantArgsDict']]]]] = None,
+                 grants: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SpacesKeyGrantArgs', 'SpacesKeyGrantArgsDict', 'outputs.SpacesKeyGrant']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -323,7 +323,7 @@ class SpacesKey(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             access_key: pulumi.Input[Optional[_builtins.str]] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
-            grants: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SpacesKeyGrantArgs', 'SpacesKeyGrantArgsDict']]]]] = None,
+            grants: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SpacesKeyGrantArgs', 'SpacesKeyGrantArgsDict', 'outputs.SpacesKeyGrant']]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             secret_key: pulumi.Input[Optional[_builtins.str]] = None) -> 'SpacesKey':
         """
@@ -335,7 +335,7 @@ class SpacesKey(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] access_key: The access key ID of the key
         :param pulumi.Input[_builtins.str] created_at: The creation time of the key
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SpacesKeyGrantArgs', 'SpacesKeyGrantArgsDict']]]] grants: A grant for the key (documented below).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SpacesKeyGrantArgs', 'SpacesKeyGrantArgsDict', 'outputs.SpacesKeyGrant']]]] grants: A grant for the key (documented below).
         :param pulumi.Input[_builtins.str] name: The name of the key
         :param pulumi.Input[_builtins.str] secret_key: The access key secret of the key
         """

@@ -91,8 +91,8 @@ class AwaitableGetDedicatedInferenceTokensResult(GetDedicatedInferenceTokensResu
 
 
 def get_dedicated_inference_tokens(dedicated_inference_id: Optional[_builtins.str] = None,
-                                   filters: Optional[Sequence[Union['GetDedicatedInferenceTokensFilterArgs', 'GetDedicatedInferenceTokensFilterArgsDict']]] = None,
-                                   sorts: Optional[Sequence[Union['GetDedicatedInferenceTokensSortArgs', 'GetDedicatedInferenceTokensSortArgsDict']]] = None,
+                                   filters: Optional[Sequence[Union['GetDedicatedInferenceTokensFilterArgs', 'GetDedicatedInferenceTokensFilterArgsDict', 'outputs.GetDedicatedInferenceTokensFilterResult']]] = None,
+                                   sorts: Optional[Sequence[Union['GetDedicatedInferenceTokensSortArgs', 'GetDedicatedInferenceTokensSortArgsDict', 'outputs.GetDedicatedInferenceTokensSortResult']]] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDedicatedInferenceTokensResult:
     """
     Returns a list of API tokens for a dedicated inference endpoint, with the ability
@@ -126,8 +126,8 @@ def get_dedicated_inference_tokens(dedicated_inference_id: Optional[_builtins.st
 
 
     :param _builtins.str dedicated_inference_id: The ID of the dedicated inference endpoint to list tokens for.
-    :param Sequence[Union['GetDedicatedInferenceTokensFilterArgs', 'GetDedicatedInferenceTokensFilterArgsDict']] filters: Filter the results. The `filter` block is documented below.
-    :param Sequence[Union['GetDedicatedInferenceTokensSortArgs', 'GetDedicatedInferenceTokensSortArgsDict']] sorts: Sort the results. The `sort` block is documented below.
+    :param Sequence[Union['GetDedicatedInferenceTokensFilterArgs', 'GetDedicatedInferenceTokensFilterArgsDict', 'outputs.GetDedicatedInferenceTokensFilterResult']] filters: Filter the results. The `filter` block is documented below.
+    :param Sequence[Union['GetDedicatedInferenceTokensSortArgs', 'GetDedicatedInferenceTokensSortArgsDict', 'outputs.GetDedicatedInferenceTokensSortResult']] sorts: Sort the results. The `sort` block is documented below.
     """
     __args__ = dict()
     __args__['dedicatedInferenceId'] = dedicated_inference_id
@@ -143,8 +143,8 @@ def get_dedicated_inference_tokens(dedicated_inference_id: Optional[_builtins.st
         sorts=pulumi.get(__ret__, 'sorts'),
         tokens=pulumi.get(__ret__, 'tokens'))
 def get_dedicated_inference_tokens_output(dedicated_inference_id: pulumi.Input[Optional[_builtins.str]] = None,
-                                          filters: pulumi.Input[Optional[Optional[Sequence[Union['GetDedicatedInferenceTokensFilterArgs', 'GetDedicatedInferenceTokensFilterArgsDict']]]]] = None,
-                                          sorts: pulumi.Input[Optional[Optional[Sequence[Union['GetDedicatedInferenceTokensSortArgs', 'GetDedicatedInferenceTokensSortArgsDict']]]]] = None,
+                                          filters: pulumi.Input[Optional[Optional[Sequence[Union['GetDedicatedInferenceTokensFilterArgs', 'GetDedicatedInferenceTokensFilterArgsDict', 'outputs.GetDedicatedInferenceTokensFilterResult']]]]] = None,
+                                          sorts: pulumi.Input[Optional[Optional[Sequence[Union['GetDedicatedInferenceTokensSortArgs', 'GetDedicatedInferenceTokensSortArgsDict', 'outputs.GetDedicatedInferenceTokensSortResult']]]]] = None,
                                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDedicatedInferenceTokensResult]:
     """
     Returns a list of API tokens for a dedicated inference endpoint, with the ability
@@ -178,8 +178,8 @@ def get_dedicated_inference_tokens_output(dedicated_inference_id: pulumi.Input[O
 
 
     :param _builtins.str dedicated_inference_id: The ID of the dedicated inference endpoint to list tokens for.
-    :param Sequence[Union['GetDedicatedInferenceTokensFilterArgs', 'GetDedicatedInferenceTokensFilterArgsDict']] filters: Filter the results. The `filter` block is documented below.
-    :param Sequence[Union['GetDedicatedInferenceTokensSortArgs', 'GetDedicatedInferenceTokensSortArgsDict']] sorts: Sort the results. The `sort` block is documented below.
+    :param Sequence[Union['GetDedicatedInferenceTokensFilterArgs', 'GetDedicatedInferenceTokensFilterArgsDict', 'outputs.GetDedicatedInferenceTokensFilterResult']] filters: Filter the results. The `filter` block is documented below.
+    :param Sequence[Union['GetDedicatedInferenceTokensSortArgs', 'GetDedicatedInferenceTokensSortArgsDict', 'outputs.GetDedicatedInferenceTokensSortResult']] sorts: Sort the results. The `sort` block is documented below.
     """
     __args__ = dict()
     __args__['dedicatedInferenceId'] = dedicated_inference_id

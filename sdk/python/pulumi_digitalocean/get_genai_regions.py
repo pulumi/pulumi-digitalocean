@@ -80,8 +80,8 @@ class AwaitableGetGenaiRegionsResult(GetGenaiRegionsResult):
             sorts=self.sorts)
 
 
-def get_genai_regions(filters: Optional[Sequence[Union['GetGenaiRegionsFilterArgs', 'GetGenaiRegionsFilterArgsDict']]] = None,
-                      sorts: Optional[Sequence[Union['GetGenaiRegionsSortArgs', 'GetGenaiRegionsSortArgsDict']]] = None,
+def get_genai_regions(filters: Optional[Sequence[Union['GetGenaiRegionsFilterArgs', 'GetGenaiRegionsFilterArgsDict', 'outputs.GetGenaiRegionsFilterResult']]] = None,
+                      sorts: Optional[Sequence[Union['GetGenaiRegionsSortArgs', 'GetGenaiRegionsSortArgsDict', 'outputs.GetGenaiRegionsSortResult']]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGenaiRegionsResult:
     """
     Use this data source to access information about an existing resource.
@@ -98,8 +98,8 @@ def get_genai_regions(filters: Optional[Sequence[Union['GetGenaiRegionsFilterArg
         id=pulumi.get(__ret__, 'id'),
         regions=pulumi.get(__ret__, 'regions'),
         sorts=pulumi.get(__ret__, 'sorts'))
-def get_genai_regions_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetGenaiRegionsFilterArgs', 'GetGenaiRegionsFilterArgsDict']]]]] = None,
-                             sorts: pulumi.Input[Optional[Optional[Sequence[Union['GetGenaiRegionsSortArgs', 'GetGenaiRegionsSortArgsDict']]]]] = None,
+def get_genai_regions_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetGenaiRegionsFilterArgs', 'GetGenaiRegionsFilterArgsDict', 'outputs.GetGenaiRegionsFilterResult']]]]] = None,
+                             sorts: pulumi.Input[Optional[Optional[Sequence[Union['GetGenaiRegionsSortArgs', 'GetGenaiRegionsSortArgsDict', 'outputs.GetGenaiRegionsSortResult']]]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGenaiRegionsResult]:
     """
     Use this data source to access information about an existing resource.

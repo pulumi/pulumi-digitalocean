@@ -78,8 +78,8 @@ class AwaitableGetGradientaiOpenaiApiKeysResult(GetGradientaiOpenaiApiKeysResult
             sorts=self.sorts)
 
 
-def get_gradientai_openai_api_keys(filters: Optional[Sequence[Union['GetGradientaiOpenaiApiKeysFilterArgs', 'GetGradientaiOpenaiApiKeysFilterArgsDict']]] = None,
-                                   sorts: Optional[Sequence[Union['GetGradientaiOpenaiApiKeysSortArgs', 'GetGradientaiOpenaiApiKeysSortArgsDict']]] = None,
+def get_gradientai_openai_api_keys(filters: Optional[Sequence[Union['GetGradientaiOpenaiApiKeysFilterArgs', 'GetGradientaiOpenaiApiKeysFilterArgsDict', 'outputs.GetGradientaiOpenaiApiKeysFilterResult']]] = None,
+                                   sorts: Optional[Sequence[Union['GetGradientaiOpenaiApiKeysSortArgs', 'GetGradientaiOpenaiApiKeysSortArgsDict', 'outputs.GetGradientaiOpenaiApiKeysSortResult']]] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGradientaiOpenaiApiKeysResult:
     """
     Use this data source to access information about an existing resource.
@@ -95,8 +95,8 @@ def get_gradientai_openai_api_keys(filters: Optional[Sequence[Union['GetGradient
         id=pulumi.get(__ret__, 'id'),
         openai_api_keys=pulumi.get(__ret__, 'openai_api_keys'),
         sorts=pulumi.get(__ret__, 'sorts'))
-def get_gradientai_openai_api_keys_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetGradientaiOpenaiApiKeysFilterArgs', 'GetGradientaiOpenaiApiKeysFilterArgsDict']]]]] = None,
-                                          sorts: pulumi.Input[Optional[Optional[Sequence[Union['GetGradientaiOpenaiApiKeysSortArgs', 'GetGradientaiOpenaiApiKeysSortArgsDict']]]]] = None,
+def get_gradientai_openai_api_keys_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetGradientaiOpenaiApiKeysFilterArgs', 'GetGradientaiOpenaiApiKeysFilterArgsDict', 'outputs.GetGradientaiOpenaiApiKeysFilterResult']]]]] = None,
+                                          sorts: pulumi.Input[Optional[Optional[Sequence[Union['GetGradientaiOpenaiApiKeysSortArgs', 'GetGradientaiOpenaiApiKeysSortArgsDict', 'outputs.GetGradientaiOpenaiApiKeysSortResult']]]]] = None,
                                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGradientaiOpenaiApiKeysResult]:
     """
     Use this data source to access information about an existing resource.

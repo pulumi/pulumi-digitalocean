@@ -82,8 +82,8 @@ class AwaitableGetProjectsResult(GetProjectsResult):
             sorts=self.sorts)
 
 
-def get_projects(filters: Optional[Sequence[Union['GetProjectsFilterArgs', 'GetProjectsFilterArgsDict']]] = None,
-                 sorts: Optional[Sequence[Union['GetProjectsSortArgs', 'GetProjectsSortArgsDict']]] = None,
+def get_projects(filters: Optional[Sequence[Union['GetProjectsFilterArgs', 'GetProjectsFilterArgsDict', 'outputs.GetProjectsFilterResult']]] = None,
+                 sorts: Optional[Sequence[Union['GetProjectsSortArgs', 'GetProjectsSortArgsDict', 'outputs.GetProjectsSortResult']]] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProjectsResult:
     """
     Retrieve information about all DigitalOcean projects associated with an account, with
@@ -133,9 +133,9 @@ def get_projects(filters: Optional[Sequence[Union['GetProjectsFilterArgs', 'GetP
     ```
 
 
-    :param Sequence[Union['GetProjectsFilterArgs', 'GetProjectsFilterArgsDict']] filters: Filter the results.
+    :param Sequence[Union['GetProjectsFilterArgs', 'GetProjectsFilterArgsDict', 'outputs.GetProjectsFilterResult']] filters: Filter the results.
            The `filter` block is documented below.
-    :param Sequence[Union['GetProjectsSortArgs', 'GetProjectsSortArgsDict']] sorts: Sort the results.
+    :param Sequence[Union['GetProjectsSortArgs', 'GetProjectsSortArgsDict', 'outputs.GetProjectsSortResult']] sorts: Sort the results.
            The `sort` block is documented below.
     """
     __args__ = dict()
@@ -149,8 +149,8 @@ def get_projects(filters: Optional[Sequence[Union['GetProjectsFilterArgs', 'GetP
         id=pulumi.get(__ret__, 'id'),
         projects=pulumi.get(__ret__, 'projects'),
         sorts=pulumi.get(__ret__, 'sorts'))
-def get_projects_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetProjectsFilterArgs', 'GetProjectsFilterArgsDict']]]]] = None,
-                        sorts: pulumi.Input[Optional[Optional[Sequence[Union['GetProjectsSortArgs', 'GetProjectsSortArgsDict']]]]] = None,
+def get_projects_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetProjectsFilterArgs', 'GetProjectsFilterArgsDict', 'outputs.GetProjectsFilterResult']]]]] = None,
+                        sorts: pulumi.Input[Optional[Optional[Sequence[Union['GetProjectsSortArgs', 'GetProjectsSortArgsDict', 'outputs.GetProjectsSortResult']]]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectsResult]:
     """
     Retrieve information about all DigitalOcean projects associated with an account, with
@@ -200,9 +200,9 @@ def get_projects_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['
     ```
 
 
-    :param Sequence[Union['GetProjectsFilterArgs', 'GetProjectsFilterArgsDict']] filters: Filter the results.
+    :param Sequence[Union['GetProjectsFilterArgs', 'GetProjectsFilterArgsDict', 'outputs.GetProjectsFilterResult']] filters: Filter the results.
            The `filter` block is documented below.
-    :param Sequence[Union['GetProjectsSortArgs', 'GetProjectsSortArgsDict']] sorts: Sort the results.
+    :param Sequence[Union['GetProjectsSortArgs', 'GetProjectsSortArgsDict', 'outputs.GetProjectsSortResult']] sorts: Sort the results.
            The `sort` block is documented below.
     """
     __args__ = dict()

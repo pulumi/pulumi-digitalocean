@@ -218,7 +218,7 @@ class GradientaiOpenaiApiKey(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_key: pulumi.Input[Optional[_builtins.str]] = None,
-                 models: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiOpenaiApiKeyModelArgs', 'GradientaiOpenaiApiKeyModelArgsDict']]]]] = None,
+                 models: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiOpenaiApiKeyModelArgs', 'GradientaiOpenaiApiKeyModelArgsDict', 'outputs.GradientaiOpenaiApiKeyModel']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -227,7 +227,7 @@ class GradientaiOpenaiApiKey(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] api_key: The OpenAI API key.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GradientaiOpenaiApiKeyModelArgs', 'GradientaiOpenaiApiKeyModelArgsDict']]]] models: Models associated with the OpenAI API key
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GradientaiOpenaiApiKeyModelArgs', 'GradientaiOpenaiApiKeyModelArgsDict', 'outputs.GradientaiOpenaiApiKeyModel']]]] models: Models associated with the OpenAI API key
         :param pulumi.Input[_builtins.str] name: A name for the API key.
         """
         ...
@@ -255,7 +255,7 @@ class GradientaiOpenaiApiKey(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_key: pulumi.Input[Optional[_builtins.str]] = None,
-                 models: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiOpenaiApiKeyModelArgs', 'GradientaiOpenaiApiKeyModelArgsDict']]]]] = None,
+                 models: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiOpenaiApiKeyModelArgs', 'GradientaiOpenaiApiKeyModelArgsDict', 'outputs.GradientaiOpenaiApiKeyModel']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -292,7 +292,7 @@ class GradientaiOpenaiApiKey(pulumi.CustomResource):
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
             created_by: pulumi.Input[Optional[_builtins.str]] = None,
             deleted_at: pulumi.Input[Optional[_builtins.str]] = None,
-            models: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiOpenaiApiKeyModelArgs', 'GradientaiOpenaiApiKeyModelArgsDict']]]]] = None,
+            models: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiOpenaiApiKeyModelArgs', 'GradientaiOpenaiApiKeyModelArgsDict', 'outputs.GradientaiOpenaiApiKeyModel']]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             updated_at: pulumi.Input[Optional[_builtins.str]] = None,
             uuid: pulumi.Input[Optional[_builtins.str]] = None) -> 'GradientaiOpenaiApiKey':
@@ -307,7 +307,7 @@ class GradientaiOpenaiApiKey(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] created_at: When the API key was created.
         :param pulumi.Input[_builtins.str] created_by: Who created the API key.
         :param pulumi.Input[_builtins.str] deleted_at: When the API key was deleted.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GradientaiOpenaiApiKeyModelArgs', 'GradientaiOpenaiApiKeyModelArgsDict']]]] models: Models associated with the OpenAI API key
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GradientaiOpenaiApiKeyModelArgs', 'GradientaiOpenaiApiKeyModelArgsDict', 'outputs.GradientaiOpenaiApiKeyModel']]]] models: Models associated with the OpenAI API key
         :param pulumi.Input[_builtins.str] name: A name for the API key.
         :param pulumi.Input[_builtins.str] updated_at: When the API key was last updated.
         :param pulumi.Input[_builtins.str] uuid: The UUID of the API key.
