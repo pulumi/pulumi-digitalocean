@@ -80,8 +80,8 @@ class AwaitableGetGenaiKnowledgeBasesResult(GetGenaiKnowledgeBasesResult):
             sorts=self.sorts)
 
 
-def get_genai_knowledge_bases(filters: Optional[Sequence[Union['GetGenaiKnowledgeBasesFilterArgs', 'GetGenaiKnowledgeBasesFilterArgsDict']]] = None,
-                              sorts: Optional[Sequence[Union['GetGenaiKnowledgeBasesSortArgs', 'GetGenaiKnowledgeBasesSortArgsDict']]] = None,
+def get_genai_knowledge_bases(filters: Optional[Sequence[Union['GetGenaiKnowledgeBasesFilterArgs', 'GetGenaiKnowledgeBasesFilterArgsDict', 'outputs.GetGenaiKnowledgeBasesFilterResult']]] = None,
+                              sorts: Optional[Sequence[Union['GetGenaiKnowledgeBasesSortArgs', 'GetGenaiKnowledgeBasesSortArgsDict', 'outputs.GetGenaiKnowledgeBasesSortResult']]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGenaiKnowledgeBasesResult:
     """
     Use this data source to access information about an existing resource.
@@ -98,8 +98,8 @@ def get_genai_knowledge_bases(filters: Optional[Sequence[Union['GetGenaiKnowledg
         id=pulumi.get(__ret__, 'id'),
         knowledge_bases=pulumi.get(__ret__, 'knowledge_bases'),
         sorts=pulumi.get(__ret__, 'sorts'))
-def get_genai_knowledge_bases_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetGenaiKnowledgeBasesFilterArgs', 'GetGenaiKnowledgeBasesFilterArgsDict']]]]] = None,
-                                     sorts: pulumi.Input[Optional[Optional[Sequence[Union['GetGenaiKnowledgeBasesSortArgs', 'GetGenaiKnowledgeBasesSortArgsDict']]]]] = None,
+def get_genai_knowledge_bases_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetGenaiKnowledgeBasesFilterArgs', 'GetGenaiKnowledgeBasesFilterArgsDict', 'outputs.GetGenaiKnowledgeBasesFilterResult']]]]] = None,
+                                     sorts: pulumi.Input[Optional[Optional[Sequence[Union['GetGenaiKnowledgeBasesSortArgs', 'GetGenaiKnowledgeBasesSortArgsDict', 'outputs.GetGenaiKnowledgeBasesSortResult']]]]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGenaiKnowledgeBasesResult]:
     """
     Use this data source to access information about an existing resource.

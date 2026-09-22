@@ -314,7 +314,7 @@ class DedicatedInference(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  enable_public_endpoint: pulumi.Input[Optional[_builtins.bool]] = None,
                  hugging_face_token: pulumi.Input[Optional[_builtins.str]] = None,
-                 model_deployments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DedicatedInferenceModelDeploymentArgs', 'DedicatedInferenceModelDeploymentArgsDict']]]]] = None,
+                 model_deployments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DedicatedInferenceModelDeploymentArgs', 'DedicatedInferenceModelDeploymentArgsDict', 'outputs.DedicatedInferenceModelDeployment']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  vpc_uuid: pulumi.Input[Optional[_builtins.str]] = None,
@@ -399,7 +399,7 @@ class DedicatedInference(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] enable_public_endpoint: Whether to enable a public HTTPS endpoint for the dedicated inference endpoint. Defaults to `false`. This field is immutable after creation and changing it forces a new resource.
         :param pulumi.Input[_builtins.str] hugging_face_token: A HuggingFace token for accessing gated models.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DedicatedInferenceModelDeploymentArgs', 'DedicatedInferenceModelDeploymentArgsDict']]]] model_deployments: The list of model deployments to run on the dedicated inference endpoint. Each `model_deployments` block supports:
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DedicatedInferenceModelDeploymentArgs', 'DedicatedInferenceModelDeploymentArgsDict', 'outputs.DedicatedInferenceModelDeployment']]]] model_deployments: The list of model deployments to run on the dedicated inference endpoint. Each `model_deployments` block supports:
         :param pulumi.Input[_builtins.str] name: A human-readable name for the dedicated inference endpoint.
         :param pulumi.Input[_builtins.str] region: The region slug where the dedicated inference endpoint will be deployed. Changing this forces a new resource.
         :param pulumi.Input[_builtins.str] vpc_uuid: The UUID of the VPC to deploy the dedicated inference endpoint into. Changing this forces a new resource.
@@ -503,7 +503,7 @@ class DedicatedInference(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  enable_public_endpoint: pulumi.Input[Optional[_builtins.bool]] = None,
                  hugging_face_token: pulumi.Input[Optional[_builtins.str]] = None,
-                 model_deployments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DedicatedInferenceModelDeploymentArgs', 'DedicatedInferenceModelDeploymentArgsDict']]]]] = None,
+                 model_deployments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DedicatedInferenceModelDeploymentArgs', 'DedicatedInferenceModelDeploymentArgsDict', 'outputs.DedicatedInferenceModelDeployment']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  vpc_uuid: pulumi.Input[Optional[_builtins.str]] = None,
@@ -546,7 +546,7 @@ class DedicatedInference(pulumi.CustomResource):
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
             enable_public_endpoint: pulumi.Input[Optional[_builtins.bool]] = None,
             hugging_face_token: pulumi.Input[Optional[_builtins.str]] = None,
-            model_deployments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DedicatedInferenceModelDeploymentArgs', 'DedicatedInferenceModelDeploymentArgsDict']]]]] = None,
+            model_deployments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DedicatedInferenceModelDeploymentArgs', 'DedicatedInferenceModelDeploymentArgsDict', 'outputs.DedicatedInferenceModelDeployment']]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             private_endpoint_fqdn: pulumi.Input[Optional[_builtins.str]] = None,
             public_endpoint_fqdn: pulumi.Input[Optional[_builtins.str]] = None,
@@ -564,7 +564,7 @@ class DedicatedInference(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] created_at: The date and time when the dedicated inference endpoint was created.
         :param pulumi.Input[_builtins.bool] enable_public_endpoint: Whether to enable a public HTTPS endpoint for the dedicated inference endpoint. Defaults to `false`. This field is immutable after creation and changing it forces a new resource.
         :param pulumi.Input[_builtins.str] hugging_face_token: A HuggingFace token for accessing gated models.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DedicatedInferenceModelDeploymentArgs', 'DedicatedInferenceModelDeploymentArgsDict']]]] model_deployments: The list of model deployments to run on the dedicated inference endpoint. Each `model_deployments` block supports:
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DedicatedInferenceModelDeploymentArgs', 'DedicatedInferenceModelDeploymentArgsDict', 'outputs.DedicatedInferenceModelDeployment']]]] model_deployments: The list of model deployments to run on the dedicated inference endpoint. Each `model_deployments` block supports:
         :param pulumi.Input[_builtins.str] name: A human-readable name for the dedicated inference endpoint.
         :param pulumi.Input[_builtins.str] private_endpoint_fqdn: The fully-qualified domain name of the private endpoint.
         :param pulumi.Input[_builtins.str] public_endpoint_fqdn: The fully-qualified domain name of the public endpoint, if enabled.

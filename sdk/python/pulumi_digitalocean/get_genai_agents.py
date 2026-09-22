@@ -89,9 +89,9 @@ class AwaitableGetGenaiAgentsResult(GetGenaiAgentsResult):
             sorts=self.sorts)
 
 
-def get_genai_agents(filters: Optional[Sequence[Union['GetGenaiAgentsFilterArgs', 'GetGenaiAgentsFilterArgsDict']]] = None,
+def get_genai_agents(filters: Optional[Sequence[Union['GetGenaiAgentsFilterArgs', 'GetGenaiAgentsFilterArgsDict', 'outputs.GetGenaiAgentsFilterResult']]] = None,
                      only_deployed: Optional[_builtins.bool] = None,
-                     sorts: Optional[Sequence[Union['GetGenaiAgentsSortArgs', 'GetGenaiAgentsSortArgsDict']]] = None,
+                     sorts: Optional[Sequence[Union['GetGenaiAgentsSortArgs', 'GetGenaiAgentsSortArgsDict', 'outputs.GetGenaiAgentsSortResult']]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGenaiAgentsResult:
     """
     Use this data source to access information about an existing resource.
@@ -110,9 +110,9 @@ def get_genai_agents(filters: Optional[Sequence[Union['GetGenaiAgentsFilterArgs'
         id=pulumi.get(__ret__, 'id'),
         only_deployed=pulumi.get(__ret__, 'only_deployed'),
         sorts=pulumi.get(__ret__, 'sorts'))
-def get_genai_agents_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetGenaiAgentsFilterArgs', 'GetGenaiAgentsFilterArgsDict']]]]] = None,
+def get_genai_agents_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetGenaiAgentsFilterArgs', 'GetGenaiAgentsFilterArgsDict', 'outputs.GetGenaiAgentsFilterResult']]]]] = None,
                             only_deployed: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
-                            sorts: pulumi.Input[Optional[Optional[Sequence[Union['GetGenaiAgentsSortArgs', 'GetGenaiAgentsSortArgsDict']]]]] = None,
+                            sorts: pulumi.Input[Optional[Optional[Sequence[Union['GetGenaiAgentsSortArgs', 'GetGenaiAgentsSortArgsDict', 'outputs.GetGenaiAgentsSortResult']]]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGenaiAgentsResult]:
     """
     Use this data source to access information about an existing resource.

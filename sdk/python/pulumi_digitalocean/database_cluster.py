@@ -771,10 +771,10 @@ class DatabaseCluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backup_restore: pulumi.Input[Optional[Union['DatabaseClusterBackupRestoreArgs', 'DatabaseClusterBackupRestoreArgsDict']]] = None,
+                 backup_restore: pulumi.Input[Optional[Union['DatabaseClusterBackupRestoreArgs', 'DatabaseClusterBackupRestoreArgsDict', 'outputs.DatabaseClusterBackupRestore']]] = None,
                  engine: pulumi.Input[Optional[_builtins.str]] = None,
                  eviction_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 maintenance_windows: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabaseClusterMaintenanceWindowArgs', 'DatabaseClusterMaintenanceWindowArgsDict']]]]] = None,
+                 maintenance_windows: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabaseClusterMaintenanceWindowArgs', 'DatabaseClusterMaintenanceWindowArgsDict', 'outputs.DatabaseClusterMaintenanceWindow']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  node_count: pulumi.Input[Optional[_builtins.int]] = None,
                  private_network_uuid: pulumi.Input[Optional[_builtins.str]] = None,
@@ -782,7 +782,7 @@ class DatabaseCluster(pulumi.CustomResource):
                  region: pulumi.Input[Optional[Union[_builtins.str, 'Region']]] = None,
                  size: pulumi.Input[Optional[Union[_builtins.str, 'DatabaseSlug']]] = None,
                  sql_mode: pulumi.Input[Optional[_builtins.str]] = None,
-                 storage_autoscale: pulumi.Input[Optional[Union['DatabaseClusterStorageAutoscaleArgs', 'DatabaseClusterStorageAutoscaleArgsDict']]] = None,
+                 storage_autoscale: pulumi.Input[Optional[Union['DatabaseClusterStorageAutoscaleArgs', 'DatabaseClusterStorageAutoscaleArgsDict', 'outputs.DatabaseClusterStorageAutoscale']]] = None,
                  storage_size_mib: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  version: pulumi.Input[Optional[_builtins.str]] = None,
@@ -917,7 +917,7 @@ class DatabaseCluster(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] engine: Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `valkey` for Valkey, `mongodb` for MongoDB, or `kafka` for Kafka).
         :param pulumi.Input[_builtins.str] eviction_policy: A string specifying the eviction policy for a Valkey cluster. Valid values are: `noeviction`, `allkeys_lru`, `allkeys_random`, `volatile_lru`, `volatile_random`, or `volatile_ttl`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseClusterMaintenanceWindowArgs', 'DatabaseClusterMaintenanceWindowArgsDict']]]] maintenance_windows: Defines when the automatic maintenance should be performed for the database cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseClusterMaintenanceWindowArgs', 'DatabaseClusterMaintenanceWindowArgsDict', 'outputs.DatabaseClusterMaintenanceWindow']]]] maintenance_windows: Defines when the automatic maintenance should be performed for the database cluster.
         :param pulumi.Input[_builtins.str] name: The name of the database cluster.
         :param pulumi.Input[_builtins.int] node_count: Number of nodes that will be included in the cluster. For `kafka` clusters, this must be 3.
         :param pulumi.Input[_builtins.str] private_network_uuid: The ID of the VPC where the database cluster will be located.
@@ -925,7 +925,7 @@ class DatabaseCluster(pulumi.CustomResource):
         :param pulumi.Input[Union[_builtins.str, 'Region']] region: DigitalOcean region where the cluster will reside.
         :param pulumi.Input[Union[_builtins.str, 'DatabaseSlug']] size: Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See the DigitalOcean API for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Databases/operation/databases_list_options).
         :param pulumi.Input[_builtins.str] sql_mode: A comma separated string specifying the  SQL modes for a MySQL cluster.
-        :param pulumi.Input[Union['DatabaseClusterStorageAutoscaleArgs', 'DatabaseClusterStorageAutoscaleArgsDict']] storage_autoscale: Storage autoscaling configuration for the database cluster.
+        :param pulumi.Input[Union['DatabaseClusterStorageAutoscaleArgs', 'DatabaseClusterStorageAutoscaleArgsDict', 'outputs.DatabaseClusterStorageAutoscale']] storage_autoscale: Storage autoscaling configuration for the database cluster.
         :param pulumi.Input[_builtins.str] storage_size_mib: Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostgreSQL clusters based on predefined ranges for each slug/droplet size.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A list of tag names to be applied to the database cluster.
         :param pulumi.Input[_builtins.str] version: Engine version used by the cluster (ex. `14` for PostgreSQL 14).
@@ -1078,10 +1078,10 @@ class DatabaseCluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backup_restore: pulumi.Input[Optional[Union['DatabaseClusterBackupRestoreArgs', 'DatabaseClusterBackupRestoreArgsDict']]] = None,
+                 backup_restore: pulumi.Input[Optional[Union['DatabaseClusterBackupRestoreArgs', 'DatabaseClusterBackupRestoreArgsDict', 'outputs.DatabaseClusterBackupRestore']]] = None,
                  engine: pulumi.Input[Optional[_builtins.str]] = None,
                  eviction_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 maintenance_windows: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabaseClusterMaintenanceWindowArgs', 'DatabaseClusterMaintenanceWindowArgsDict']]]]] = None,
+                 maintenance_windows: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabaseClusterMaintenanceWindowArgs', 'DatabaseClusterMaintenanceWindowArgsDict', 'outputs.DatabaseClusterMaintenanceWindow']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  node_count: pulumi.Input[Optional[_builtins.int]] = None,
                  private_network_uuid: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1089,7 +1089,7 @@ class DatabaseCluster(pulumi.CustomResource):
                  region: pulumi.Input[Optional[Union[_builtins.str, 'Region']]] = None,
                  size: pulumi.Input[Optional[Union[_builtins.str, 'DatabaseSlug']]] = None,
                  sql_mode: pulumi.Input[Optional[_builtins.str]] = None,
-                 storage_autoscale: pulumi.Input[Optional[Union['DatabaseClusterStorageAutoscaleArgs', 'DatabaseClusterStorageAutoscaleArgsDict']]] = None,
+                 storage_autoscale: pulumi.Input[Optional[Union['DatabaseClusterStorageAutoscaleArgs', 'DatabaseClusterStorageAutoscaleArgsDict', 'outputs.DatabaseClusterStorageAutoscale']]] = None,
                  storage_size_mib: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  version: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1153,13 +1153,13 @@ class DatabaseCluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            backup_restore: pulumi.Input[Optional[Union['DatabaseClusterBackupRestoreArgs', 'DatabaseClusterBackupRestoreArgsDict']]] = None,
+            backup_restore: pulumi.Input[Optional[Union['DatabaseClusterBackupRestoreArgs', 'DatabaseClusterBackupRestoreArgsDict', 'outputs.DatabaseClusterBackupRestore']]] = None,
             cluster_urn: pulumi.Input[Optional[_builtins.str]] = None,
             database: pulumi.Input[Optional[_builtins.str]] = None,
             engine: pulumi.Input[Optional[_builtins.str]] = None,
             eviction_policy: pulumi.Input[Optional[_builtins.str]] = None,
             host: pulumi.Input[Optional[_builtins.str]] = None,
-            maintenance_windows: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabaseClusterMaintenanceWindowArgs', 'DatabaseClusterMaintenanceWindowArgsDict']]]]] = None,
+            maintenance_windows: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabaseClusterMaintenanceWindowArgs', 'DatabaseClusterMaintenanceWindowArgsDict', 'outputs.DatabaseClusterMaintenanceWindow']]]]] = None,
             metrics_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             node_count: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1172,7 +1172,7 @@ class DatabaseCluster(pulumi.CustomResource):
             region: pulumi.Input[Optional[Union[_builtins.str, 'Region']]] = None,
             size: pulumi.Input[Optional[Union[_builtins.str, 'DatabaseSlug']]] = None,
             sql_mode: pulumi.Input[Optional[_builtins.str]] = None,
-            storage_autoscale: pulumi.Input[Optional[Union['DatabaseClusterStorageAutoscaleArgs', 'DatabaseClusterStorageAutoscaleArgsDict']]] = None,
+            storage_autoscale: pulumi.Input[Optional[Union['DatabaseClusterStorageAutoscaleArgs', 'DatabaseClusterStorageAutoscaleArgsDict', 'outputs.DatabaseClusterStorageAutoscale']]] = None,
             storage_size_mib: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             ui_database: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1196,7 +1196,7 @@ class DatabaseCluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] engine: Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `valkey` for Valkey, `mongodb` for MongoDB, or `kafka` for Kafka).
         :param pulumi.Input[_builtins.str] eviction_policy: A string specifying the eviction policy for a Valkey cluster. Valid values are: `noeviction`, `allkeys_lru`, `allkeys_random`, `volatile_lru`, `volatile_random`, or `volatile_ttl`.
         :param pulumi.Input[_builtins.str] host: Database cluster's hostname.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseClusterMaintenanceWindowArgs', 'DatabaseClusterMaintenanceWindowArgsDict']]]] maintenance_windows: Defines when the automatic maintenance should be performed for the database cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseClusterMaintenanceWindowArgs', 'DatabaseClusterMaintenanceWindowArgsDict', 'outputs.DatabaseClusterMaintenanceWindow']]]] maintenance_windows: Defines when the automatic maintenance should be performed for the database cluster.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] metrics_endpoints: A list of metrics endpoints for the database cluster, providing URLs to access Prometheus-compatible metrics.
         :param pulumi.Input[_builtins.str] name: The name of the database cluster.
         :param pulumi.Input[_builtins.int] node_count: Number of nodes that will be included in the cluster. For `kafka` clusters, this must be 3.
@@ -1209,7 +1209,7 @@ class DatabaseCluster(pulumi.CustomResource):
         :param pulumi.Input[Union[_builtins.str, 'Region']] region: DigitalOcean region where the cluster will reside.
         :param pulumi.Input[Union[_builtins.str, 'DatabaseSlug']] size: Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See the DigitalOcean API for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Databases/operation/databases_list_options).
         :param pulumi.Input[_builtins.str] sql_mode: A comma separated string specifying the  SQL modes for a MySQL cluster.
-        :param pulumi.Input[Union['DatabaseClusterStorageAutoscaleArgs', 'DatabaseClusterStorageAutoscaleArgsDict']] storage_autoscale: Storage autoscaling configuration for the database cluster.
+        :param pulumi.Input[Union['DatabaseClusterStorageAutoscaleArgs', 'DatabaseClusterStorageAutoscaleArgsDict', 'outputs.DatabaseClusterStorageAutoscale']] storage_autoscale: Storage autoscaling configuration for the database cluster.
         :param pulumi.Input[_builtins.str] storage_size_mib: Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostgreSQL clusters based on predefined ranges for each slug/droplet size.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A list of tag names to be applied to the database cluster.
         :param pulumi.Input[_builtins.str] ui_database: Name of the OpenSearch dashboard db.

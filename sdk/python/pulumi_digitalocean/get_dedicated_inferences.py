@@ -81,8 +81,8 @@ class AwaitableGetDedicatedInferencesResult(GetDedicatedInferencesResult):
             sorts=self.sorts)
 
 
-def get_dedicated_inferences(filters: Optional[Sequence[Union['GetDedicatedInferencesFilterArgs', 'GetDedicatedInferencesFilterArgsDict']]] = None,
-                             sorts: Optional[Sequence[Union['GetDedicatedInferencesSortArgs', 'GetDedicatedInferencesSortArgsDict']]] = None,
+def get_dedicated_inferences(filters: Optional[Sequence[Union['GetDedicatedInferencesFilterArgs', 'GetDedicatedInferencesFilterArgsDict', 'outputs.GetDedicatedInferencesFilterResult']]] = None,
+                             sorts: Optional[Sequence[Union['GetDedicatedInferencesSortArgs', 'GetDedicatedInferencesSortArgsDict', 'outputs.GetDedicatedInferencesSortResult']]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDedicatedInferencesResult:
     """
     Returns a list of dedicated inference endpoints in your DigitalOcean account,
@@ -128,8 +128,8 @@ def get_dedicated_inferences(filters: Optional[Sequence[Union['GetDedicatedInfer
     ```
 
 
-    :param Sequence[Union['GetDedicatedInferencesFilterArgs', 'GetDedicatedInferencesFilterArgsDict']] filters: Filter the results. The `filter` block is documented below.
-    :param Sequence[Union['GetDedicatedInferencesSortArgs', 'GetDedicatedInferencesSortArgsDict']] sorts: Sort the results. The `sort` block is documented below.
+    :param Sequence[Union['GetDedicatedInferencesFilterArgs', 'GetDedicatedInferencesFilterArgsDict', 'outputs.GetDedicatedInferencesFilterResult']] filters: Filter the results. The `filter` block is documented below.
+    :param Sequence[Union['GetDedicatedInferencesSortArgs', 'GetDedicatedInferencesSortArgsDict', 'outputs.GetDedicatedInferencesSortResult']] sorts: Sort the results. The `sort` block is documented below.
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -142,8 +142,8 @@ def get_dedicated_inferences(filters: Optional[Sequence[Union['GetDedicatedInfer
         filters=pulumi.get(__ret__, 'filters'),
         id=pulumi.get(__ret__, 'id'),
         sorts=pulumi.get(__ret__, 'sorts'))
-def get_dedicated_inferences_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetDedicatedInferencesFilterArgs', 'GetDedicatedInferencesFilterArgsDict']]]]] = None,
-                                    sorts: pulumi.Input[Optional[Optional[Sequence[Union['GetDedicatedInferencesSortArgs', 'GetDedicatedInferencesSortArgsDict']]]]] = None,
+def get_dedicated_inferences_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetDedicatedInferencesFilterArgs', 'GetDedicatedInferencesFilterArgsDict', 'outputs.GetDedicatedInferencesFilterResult']]]]] = None,
+                                    sorts: pulumi.Input[Optional[Optional[Sequence[Union['GetDedicatedInferencesSortArgs', 'GetDedicatedInferencesSortArgsDict', 'outputs.GetDedicatedInferencesSortResult']]]]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDedicatedInferencesResult]:
     """
     Returns a list of dedicated inference endpoints in your DigitalOcean account,
@@ -189,8 +189,8 @@ def get_dedicated_inferences_output(filters: pulumi.Input[Optional[Optional[Sequ
     ```
 
 
-    :param Sequence[Union['GetDedicatedInferencesFilterArgs', 'GetDedicatedInferencesFilterArgsDict']] filters: Filter the results. The `filter` block is documented below.
-    :param Sequence[Union['GetDedicatedInferencesSortArgs', 'GetDedicatedInferencesSortArgsDict']] sorts: Sort the results. The `sort` block is documented below.
+    :param Sequence[Union['GetDedicatedInferencesFilterArgs', 'GetDedicatedInferencesFilterArgsDict', 'outputs.GetDedicatedInferencesFilterResult']] filters: Filter the results. The `filter` block is documented below.
+    :param Sequence[Union['GetDedicatedInferencesSortArgs', 'GetDedicatedInferencesSortArgsDict', 'outputs.GetDedicatedInferencesSortResult']] sorts: Sort the results. The `sort` block is documented below.
     """
     __args__ = dict()
     __args__['filters'] = filters

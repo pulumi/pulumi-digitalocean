@@ -277,9 +277,9 @@ class Firewall(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  droplet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 inbound_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallInboundRuleArgs', 'FirewallInboundRuleArgsDict']]]]] = None,
+                 inbound_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallInboundRuleArgs', 'FirewallInboundRuleArgsDict', 'outputs.FirewallInboundRule']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 outbound_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallOutboundRuleArgs', 'FirewallOutboundRuleArgsDict']]]]] = None,
+                 outbound_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallOutboundRuleArgs', 'FirewallOutboundRuleArgsDict', 'outputs.FirewallOutboundRule']]]]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
@@ -374,10 +374,10 @@ class Firewall(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] droplet_ids: The list of the IDs of the Droplets assigned
                to the Firewall (max. 10). If you want to assign more droplets to the
                Firewall, add Tags to them and use the `tags` argument below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FirewallInboundRuleArgs', 'FirewallInboundRuleArgsDict']]]] inbound_rules: The inbound access rule block for the Firewall.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FirewallInboundRuleArgs', 'FirewallInboundRuleArgsDict', 'outputs.FirewallInboundRule']]]] inbound_rules: The inbound access rule block for the Firewall.
                The `inbound_rule` block is documented below.
         :param pulumi.Input[_builtins.str] name: The Firewall name
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FirewallOutboundRuleArgs', 'FirewallOutboundRuleArgsDict']]]] outbound_rules: The outbound access rule block for the Firewall.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FirewallOutboundRuleArgs', 'FirewallOutboundRuleArgsDict', 'outputs.FirewallOutboundRule']]]] outbound_rules: The outbound access rule block for the Firewall.
                The `outbound_rule` block is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The names of the Tags assigned to the Firewall (max. 5).
         """
@@ -490,9 +490,9 @@ class Firewall(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  droplet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 inbound_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallInboundRuleArgs', 'FirewallInboundRuleArgsDict']]]]] = None,
+                 inbound_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallInboundRuleArgs', 'FirewallInboundRuleArgsDict', 'outputs.FirewallInboundRule']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 outbound_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallOutboundRuleArgs', 'FirewallOutboundRuleArgsDict']]]]] = None,
+                 outbound_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallOutboundRuleArgs', 'FirewallOutboundRuleArgsDict', 'outputs.FirewallOutboundRule']]]]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -523,10 +523,10 @@ class Firewall(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
             droplet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
-            inbound_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallInboundRuleArgs', 'FirewallInboundRuleArgsDict']]]]] = None,
+            inbound_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallInboundRuleArgs', 'FirewallInboundRuleArgsDict', 'outputs.FirewallInboundRule']]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            outbound_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallOutboundRuleArgs', 'FirewallOutboundRuleArgsDict']]]]] = None,
-            pending_changes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallPendingChangeArgs', 'FirewallPendingChangeArgsDict']]]]] = None,
+            outbound_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallOutboundRuleArgs', 'FirewallOutboundRuleArgsDict', 'outputs.FirewallOutboundRule']]]]] = None,
+            pending_changes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallPendingChangeArgs', 'FirewallPendingChangeArgsDict', 'outputs.FirewallPendingChange']]]]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Firewall':
         """
@@ -541,12 +541,12 @@ class Firewall(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] droplet_ids: The list of the IDs of the Droplets assigned
                to the Firewall (max. 10). If you want to assign more droplets to the
                Firewall, add Tags to them and use the `tags` argument below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FirewallInboundRuleArgs', 'FirewallInboundRuleArgsDict']]]] inbound_rules: The inbound access rule block for the Firewall.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FirewallInboundRuleArgs', 'FirewallInboundRuleArgsDict', 'outputs.FirewallInboundRule']]]] inbound_rules: The inbound access rule block for the Firewall.
                The `inbound_rule` block is documented below.
         :param pulumi.Input[_builtins.str] name: The Firewall name
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FirewallOutboundRuleArgs', 'FirewallOutboundRuleArgsDict']]]] outbound_rules: The outbound access rule block for the Firewall.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FirewallOutboundRuleArgs', 'FirewallOutboundRuleArgsDict', 'outputs.FirewallOutboundRule']]]] outbound_rules: The outbound access rule block for the Firewall.
                The `outbound_rule` block is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FirewallPendingChangeArgs', 'FirewallPendingChangeArgsDict']]]] pending_changes: An list of object containing the fields, "droplet_id",
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FirewallPendingChangeArgs', 'FirewallPendingChangeArgsDict', 'outputs.FirewallPendingChange']]]] pending_changes: An list of object containing the fields, "droplet_id",
                "removing", and "status".  It is provided to detail exactly which Droplets
                are having their security policies updated.  When empty, all changes
                have been successfully applied.

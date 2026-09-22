@@ -91,8 +91,8 @@ class AwaitableGetDedicatedInferenceAcceleratorsResult(GetDedicatedInferenceAcce
 
 
 def get_dedicated_inference_accelerators(dedicated_inference_id: Optional[_builtins.str] = None,
-                                         filters: Optional[Sequence[Union['GetDedicatedInferenceAcceleratorsFilterArgs', 'GetDedicatedInferenceAcceleratorsFilterArgsDict']]] = None,
-                                         sorts: Optional[Sequence[Union['GetDedicatedInferenceAcceleratorsSortArgs', 'GetDedicatedInferenceAcceleratorsSortArgsDict']]] = None,
+                                         filters: Optional[Sequence[Union['GetDedicatedInferenceAcceleratorsFilterArgs', 'GetDedicatedInferenceAcceleratorsFilterArgsDict', 'outputs.GetDedicatedInferenceAcceleratorsFilterResult']]] = None,
+                                         sorts: Optional[Sequence[Union['GetDedicatedInferenceAcceleratorsSortArgs', 'GetDedicatedInferenceAcceleratorsSortArgsDict', 'outputs.GetDedicatedInferenceAcceleratorsSortResult']]] = None,
                                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDedicatedInferenceAcceleratorsResult:
     """
     Returns a list of accelerators (GPUs) attached to a dedicated inference endpoint,
@@ -123,8 +123,8 @@ def get_dedicated_inference_accelerators(dedicated_inference_id: Optional[_built
 
 
     :param _builtins.str dedicated_inference_id: The ID of the dedicated inference endpoint to list accelerators for.
-    :param Sequence[Union['GetDedicatedInferenceAcceleratorsFilterArgs', 'GetDedicatedInferenceAcceleratorsFilterArgsDict']] filters: Filter the results. The `filter` block is documented below.
-    :param Sequence[Union['GetDedicatedInferenceAcceleratorsSortArgs', 'GetDedicatedInferenceAcceleratorsSortArgsDict']] sorts: Sort the results. The `sort` block is documented below.
+    :param Sequence[Union['GetDedicatedInferenceAcceleratorsFilterArgs', 'GetDedicatedInferenceAcceleratorsFilterArgsDict', 'outputs.GetDedicatedInferenceAcceleratorsFilterResult']] filters: Filter the results. The `filter` block is documented below.
+    :param Sequence[Union['GetDedicatedInferenceAcceleratorsSortArgs', 'GetDedicatedInferenceAcceleratorsSortArgsDict', 'outputs.GetDedicatedInferenceAcceleratorsSortResult']] sorts: Sort the results. The `sort` block is documented below.
     """
     __args__ = dict()
     __args__['dedicatedInferenceId'] = dedicated_inference_id
@@ -140,8 +140,8 @@ def get_dedicated_inference_accelerators(dedicated_inference_id: Optional[_built
         id=pulumi.get(__ret__, 'id'),
         sorts=pulumi.get(__ret__, 'sorts'))
 def get_dedicated_inference_accelerators_output(dedicated_inference_id: pulumi.Input[Optional[_builtins.str]] = None,
-                                                filters: pulumi.Input[Optional[Optional[Sequence[Union['GetDedicatedInferenceAcceleratorsFilterArgs', 'GetDedicatedInferenceAcceleratorsFilterArgsDict']]]]] = None,
-                                                sorts: pulumi.Input[Optional[Optional[Sequence[Union['GetDedicatedInferenceAcceleratorsSortArgs', 'GetDedicatedInferenceAcceleratorsSortArgsDict']]]]] = None,
+                                                filters: pulumi.Input[Optional[Optional[Sequence[Union['GetDedicatedInferenceAcceleratorsFilterArgs', 'GetDedicatedInferenceAcceleratorsFilterArgsDict', 'outputs.GetDedicatedInferenceAcceleratorsFilterResult']]]]] = None,
+                                                sorts: pulumi.Input[Optional[Optional[Sequence[Union['GetDedicatedInferenceAcceleratorsSortArgs', 'GetDedicatedInferenceAcceleratorsSortArgsDict', 'outputs.GetDedicatedInferenceAcceleratorsSortResult']]]]] = None,
                                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDedicatedInferenceAcceleratorsResult]:
     """
     Returns a list of accelerators (GPUs) attached to a dedicated inference endpoint,
@@ -172,8 +172,8 @@ def get_dedicated_inference_accelerators_output(dedicated_inference_id: pulumi.I
 
 
     :param _builtins.str dedicated_inference_id: The ID of the dedicated inference endpoint to list accelerators for.
-    :param Sequence[Union['GetDedicatedInferenceAcceleratorsFilterArgs', 'GetDedicatedInferenceAcceleratorsFilterArgsDict']] filters: Filter the results. The `filter` block is documented below.
-    :param Sequence[Union['GetDedicatedInferenceAcceleratorsSortArgs', 'GetDedicatedInferenceAcceleratorsSortArgsDict']] sorts: Sort the results. The `sort` block is documented below.
+    :param Sequence[Union['GetDedicatedInferenceAcceleratorsFilterArgs', 'GetDedicatedInferenceAcceleratorsFilterArgsDict', 'outputs.GetDedicatedInferenceAcceleratorsFilterResult']] filters: Filter the results. The `filter` block is documented below.
+    :param Sequence[Union['GetDedicatedInferenceAcceleratorsSortArgs', 'GetDedicatedInferenceAcceleratorsSortArgsDict', 'outputs.GetDedicatedInferenceAcceleratorsSortResult']] sorts: Sort the results. The `sort` block is documented below.
     """
     __args__ = dict()
     __args__['dedicatedInferenceId'] = dedicated_inference_id

@@ -223,7 +223,7 @@ class GenaiOpenaiApiKey(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_key: pulumi.Input[Optional[_builtins.str]] = None,
-                 models: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiOpenaiApiKeyModelArgs', 'GenaiOpenaiApiKeyModelArgsDict']]]]] = None,
+                 models: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiOpenaiApiKeyModelArgs', 'GenaiOpenaiApiKeyModelArgsDict', 'outputs.GenaiOpenaiApiKeyModel']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -232,7 +232,7 @@ class GenaiOpenaiApiKey(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] api_key: The OpenAI API key.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GenaiOpenaiApiKeyModelArgs', 'GenaiOpenaiApiKeyModelArgsDict']]]] models: Models associated with the OpenAI API key
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GenaiOpenaiApiKeyModelArgs', 'GenaiOpenaiApiKeyModelArgsDict', 'outputs.GenaiOpenaiApiKeyModel']]]] models: Models associated with the OpenAI API key
         :param pulumi.Input[_builtins.str] name: A name for the API key.
         """
         ...
@@ -260,7 +260,7 @@ class GenaiOpenaiApiKey(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_key: pulumi.Input[Optional[_builtins.str]] = None,
-                 models: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiOpenaiApiKeyModelArgs', 'GenaiOpenaiApiKeyModelArgsDict']]]]] = None,
+                 models: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiOpenaiApiKeyModelArgs', 'GenaiOpenaiApiKeyModelArgsDict', 'outputs.GenaiOpenaiApiKeyModel']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         pulumi.log.warn("""GenaiOpenaiApiKey is deprecated: digitalocean.GenaiOpenaiApiKey has been deprecated in favor of digitalocean.GradientaiOpenaiApiKey""")
@@ -296,7 +296,7 @@ class GenaiOpenaiApiKey(pulumi.CustomResource):
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
             created_by: pulumi.Input[Optional[_builtins.str]] = None,
             deleted_at: pulumi.Input[Optional[_builtins.str]] = None,
-            models: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiOpenaiApiKeyModelArgs', 'GenaiOpenaiApiKeyModelArgsDict']]]]] = None,
+            models: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiOpenaiApiKeyModelArgs', 'GenaiOpenaiApiKeyModelArgsDict', 'outputs.GenaiOpenaiApiKeyModel']]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             updated_at: pulumi.Input[Optional[_builtins.str]] = None,
             uuid: pulumi.Input[Optional[_builtins.str]] = None) -> 'GenaiOpenaiApiKey':
@@ -311,7 +311,7 @@ class GenaiOpenaiApiKey(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] created_at: When the API key was created.
         :param pulumi.Input[_builtins.str] created_by: Who created the API key.
         :param pulumi.Input[_builtins.str] deleted_at: When the API key was deleted.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GenaiOpenaiApiKeyModelArgs', 'GenaiOpenaiApiKeyModelArgsDict']]]] models: Models associated with the OpenAI API key
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GenaiOpenaiApiKeyModelArgs', 'GenaiOpenaiApiKeyModelArgsDict', 'outputs.GenaiOpenaiApiKeyModel']]]] models: Models associated with the OpenAI API key
         :param pulumi.Input[_builtins.str] name: A name for the API key.
         :param pulumi.Input[_builtins.str] updated_at: When the API key was last updated.
         :param pulumi.Input[_builtins.str] uuid: The UUID of the API key.

@@ -158,8 +158,8 @@ class AwaitableGetFirewallResult(GetFirewallResult):
 
 def get_firewall(droplet_ids: Optional[Sequence[_builtins.int]] = None,
                  firewall_id: Optional[_builtins.str] = None,
-                 inbound_rules: Optional[Sequence[Union['GetFirewallInboundRuleArgs', 'GetFirewallInboundRuleArgsDict']]] = None,
-                 outbound_rules: Optional[Sequence[Union['GetFirewallOutboundRuleArgs', 'GetFirewallOutboundRuleArgsDict']]] = None,
+                 inbound_rules: Optional[Sequence[Union['GetFirewallInboundRuleArgs', 'GetFirewallInboundRuleArgsDict', 'outputs.GetFirewallInboundRuleResult']]] = None,
+                 outbound_rules: Optional[Sequence[Union['GetFirewallOutboundRuleArgs', 'GetFirewallOutboundRuleArgsDict', 'outputs.GetFirewallOutboundRuleResult']]] = None,
                  tags: Optional[Sequence[_builtins.str]] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFirewallResult:
     """
@@ -206,8 +206,8 @@ def get_firewall(droplet_ids: Optional[Sequence[_builtins.int]] = None,
         tags=pulumi.get(__ret__, 'tags'))
 def get_firewall_output(droplet_ids: pulumi.Input[Optional[Optional[Sequence[_builtins.int]]]] = None,
                         firewall_id: pulumi.Input[Optional[_builtins.str]] = None,
-                        inbound_rules: pulumi.Input[Optional[Optional[Sequence[Union['GetFirewallInboundRuleArgs', 'GetFirewallInboundRuleArgsDict']]]]] = None,
-                        outbound_rules: pulumi.Input[Optional[Optional[Sequence[Union['GetFirewallOutboundRuleArgs', 'GetFirewallOutboundRuleArgsDict']]]]] = None,
+                        inbound_rules: pulumi.Input[Optional[Optional[Sequence[Union['GetFirewallInboundRuleArgs', 'GetFirewallInboundRuleArgsDict', 'outputs.GetFirewallInboundRuleResult']]]]] = None,
+                        outbound_rules: pulumi.Input[Optional[Optional[Sequence[Union['GetFirewallOutboundRuleArgs', 'GetFirewallOutboundRuleArgsDict', 'outputs.GetFirewallOutboundRuleResult']]]]] = None,
                         tags: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFirewallResult]:
     """

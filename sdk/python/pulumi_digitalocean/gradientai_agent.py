@@ -1286,30 +1286,30 @@ class GradientaiAgent(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 agent_guardrails: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentAgentGuardrailArgs', 'GradientaiAgentAgentGuardrailArgsDict']]]]] = None,
-                 anthropic_api_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentAnthropicApiKeyArgs', 'GradientaiAgentAnthropicApiKeyArgsDict']]]]] = None,
+                 agent_guardrails: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentAgentGuardrailArgs', 'GradientaiAgentAgentGuardrailArgsDict', 'outputs.GradientaiAgentAgentGuardrail']]]]] = None,
+                 anthropic_api_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentAnthropicApiKeyArgs', 'GradientaiAgentAnthropicApiKeyArgsDict', 'outputs.GradientaiAgentAnthropicApiKey']]]]] = None,
                  anthropic_key_uuid: pulumi.Input[Optional[_builtins.str]] = None,
-                 api_key_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentApiKeyInfoArgs', 'GradientaiAgentApiKeyInfoArgsDict']]]]] = None,
-                 api_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentApiKeyArgs', 'GradientaiAgentApiKeyArgsDict']]]]] = None,
-                 chatbot_identifiers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentChatbotIdentifierArgs', 'GradientaiAgentChatbotIdentifierArgsDict']]]]] = None,
-                 chatbots: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentChatbotArgs', 'GradientaiAgentChatbotArgsDict']]]]] = None,
-                 child_agents: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentChildAgentArgs', 'GradientaiAgentChildAgentArgsDict']]]]] = None,
+                 api_key_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentApiKeyInfoArgs', 'GradientaiAgentApiKeyInfoArgsDict', 'outputs.GradientaiAgentApiKeyInfo']]]]] = None,
+                 api_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentApiKeyArgs', 'GradientaiAgentApiKeyArgsDict', 'outputs.GradientaiAgentApiKey']]]]] = None,
+                 chatbot_identifiers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentChatbotIdentifierArgs', 'GradientaiAgentChatbotIdentifierArgsDict', 'outputs.GradientaiAgentChatbotIdentifier']]]]] = None,
+                 chatbots: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentChatbotArgs', 'GradientaiAgentChatbotArgsDict', 'outputs.GradientaiAgentChatbot']]]]] = None,
+                 child_agents: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentChildAgentArgs', 'GradientaiAgentChildAgentArgsDict', 'outputs.GradientaiAgentChildAgent']]]]] = None,
                  created_at: pulumi.Input[Optional[_builtins.str]] = None,
-                 deployments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentDeploymentArgs', 'GradientaiAgentDeploymentArgsDict']]]]] = None,
+                 deployments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentDeploymentArgs', 'GradientaiAgentDeploymentArgsDict', 'outputs.GradientaiAgentDeployment']]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 functions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentFunctionArgs', 'GradientaiAgentFunctionArgsDict']]]]] = None,
+                 functions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentFunctionArgs', 'GradientaiAgentFunctionArgsDict', 'outputs.GradientaiAgentFunction']]]]] = None,
                  if_case: pulumi.Input[Optional[_builtins.str]] = None,
                  instruction: pulumi.Input[Optional[_builtins.str]] = None,
                  k: pulumi.Input[Optional[_builtins.int]] = None,
                  knowledge_base_uuids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 knowledge_bases: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentKnowledgeBaseArgs', 'GradientaiAgentKnowledgeBaseArgsDict']]]]] = None,
+                 knowledge_bases: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentKnowledgeBaseArgs', 'GradientaiAgentKnowledgeBaseArgsDict', 'outputs.GradientaiAgentKnowledgeBase']]]]] = None,
                  max_tokens: pulumi.Input[Optional[_builtins.int]] = None,
                  model_uuid: pulumi.Input[Optional[_builtins.str]] = None,
-                 models: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentModelArgs', 'GradientaiAgentModelArgsDict']]]]] = None,
+                 models: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentModelArgs', 'GradientaiAgentModelArgsDict', 'outputs.GradientaiAgentModel']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 open_ai_api_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentOpenAiApiKeyArgs', 'GradientaiAgentOpenAiApiKeyArgsDict']]]]] = None,
+                 open_ai_api_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentOpenAiApiKeyArgs', 'GradientaiAgentOpenAiApiKeyArgsDict', 'outputs.GradientaiAgentOpenAiApiKey']]]]] = None,
                  open_ai_key_uuid: pulumi.Input[Optional[_builtins.str]] = None,
-                 parent_agents: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentParentAgentArgs', 'GradientaiAgentParentAgentArgsDict']]]]] = None,
+                 parent_agents: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentParentAgentArgs', 'GradientaiAgentParentAgentArgsDict', 'outputs.GradientaiAgentParentAgent']]]]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  provide_citations: pulumi.Input[Optional[_builtins.bool]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1319,7 +1319,7 @@ class GradientaiAgent(pulumi.CustomResource):
                  route_uuid: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  temperature: pulumi.Input[Optional[_builtins.float]] = None,
-                 templates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentTemplateArgs', 'GradientaiAgentTemplateArgsDict']]]]] = None,
+                 templates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentTemplateArgs', 'GradientaiAgentTemplateArgsDict', 'outputs.GradientaiAgentTemplate']]]]] = None,
                  top_p: pulumi.Input[Optional[_builtins.float]] = None,
                  url: pulumi.Input[Optional[_builtins.str]] = None,
                  user_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1330,30 +1330,30 @@ class GradientaiAgent(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GradientaiAgentAgentGuardrailArgs', 'GradientaiAgentAgentGuardrailArgsDict']]]] agent_guardrails: AgentGuardrail represents a Guardrail attached to Gen AI Agent
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GradientaiAgentAnthropicApiKeyArgs', 'GradientaiAgentAnthropicApiKeyArgsDict']]]] anthropic_api_keys: Anthropic API Key information
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GradientaiAgentAgentGuardrailArgs', 'GradientaiAgentAgentGuardrailArgsDict', 'outputs.GradientaiAgentAgentGuardrail']]]] agent_guardrails: AgentGuardrail represents a Guardrail attached to Gen AI Agent
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GradientaiAgentAnthropicApiKeyArgs', 'GradientaiAgentAnthropicApiKeyArgsDict', 'outputs.GradientaiAgentAnthropicApiKey']]]] anthropic_api_keys: Anthropic API Key information
         :param pulumi.Input[_builtins.str] anthropic_key_uuid: Optional Anthropic API key ID to use with Anthropic models
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GradientaiAgentApiKeyInfoArgs', 'GradientaiAgentApiKeyInfoArgsDict']]]] api_key_infos: List of API Key Infos
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GradientaiAgentApiKeyArgs', 'GradientaiAgentApiKeyArgsDict']]]] api_keys: List of API Keys
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GradientaiAgentChatbotIdentifierArgs', 'GradientaiAgentChatbotIdentifierArgsDict']]]] chatbot_identifiers: List of Chatbot Identifiers
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GradientaiAgentChatbotArgs', 'GradientaiAgentChatbotArgsDict']]]] chatbots: ChatBot configuration
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GradientaiAgentChildAgentArgs', 'GradientaiAgentChildAgentArgsDict']]]] child_agents: List of child agents
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GradientaiAgentApiKeyInfoArgs', 'GradientaiAgentApiKeyInfoArgsDict', 'outputs.GradientaiAgentApiKeyInfo']]]] api_key_infos: List of API Key Infos
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GradientaiAgentApiKeyArgs', 'GradientaiAgentApiKeyArgsDict', 'outputs.GradientaiAgentApiKey']]]] api_keys: List of API Keys
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GradientaiAgentChatbotIdentifierArgs', 'GradientaiAgentChatbotIdentifierArgsDict', 'outputs.GradientaiAgentChatbotIdentifier']]]] chatbot_identifiers: List of Chatbot Identifiers
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GradientaiAgentChatbotArgs', 'GradientaiAgentChatbotArgsDict', 'outputs.GradientaiAgentChatbot']]]] chatbots: ChatBot configuration
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GradientaiAgentChildAgentArgs', 'GradientaiAgentChildAgentArgsDict', 'outputs.GradientaiAgentChildAgent']]]] child_agents: List of child agents
         :param pulumi.Input[_builtins.str] created_at: Timestamp when the Agent was created
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GradientaiAgentDeploymentArgs', 'GradientaiAgentDeploymentArgsDict']]]] deployments: List of API Key Infos
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GradientaiAgentDeploymentArgs', 'GradientaiAgentDeploymentArgsDict', 'outputs.GradientaiAgentDeployment']]]] deployments: List of API Key Infos
         :param pulumi.Input[_builtins.str] description: Description for the Agent
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GradientaiAgentFunctionArgs', 'GradientaiAgentFunctionArgsDict']]]] functions: List of Functions
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GradientaiAgentFunctionArgs', 'GradientaiAgentFunctionArgsDict', 'outputs.GradientaiAgentFunction']]]] functions: List of Functions
         :param pulumi.Input[_builtins.str] if_case: If case condition
         :param pulumi.Input[_builtins.str] instruction: Instruction for the Agent
         :param pulumi.Input[_builtins.int] k: K value
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] knowledge_base_uuids: Ids of the knowledge base(s) to attach to the agent
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GradientaiAgentKnowledgeBaseArgs', 'GradientaiAgentKnowledgeBaseArgsDict']]]] knowledge_bases: List of Knowledge Bases
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GradientaiAgentKnowledgeBaseArgs', 'GradientaiAgentKnowledgeBaseArgsDict', 'outputs.GradientaiAgentKnowledgeBase']]]] knowledge_bases: List of Knowledge Bases
         :param pulumi.Input[_builtins.int] max_tokens: Maximum tokens allowed
         :param pulumi.Input[_builtins.str] model_uuid: Model UUID of the Agent
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GradientaiAgentModelArgs', 'GradientaiAgentModelArgsDict']]]] models: Model of the Agent
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GradientaiAgentModelArgs', 'GradientaiAgentModelArgsDict', 'outputs.GradientaiAgentModel']]]] models: Model of the Agent
         :param pulumi.Input[_builtins.str] name: Name of the Agent
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GradientaiAgentOpenAiApiKeyArgs', 'GradientaiAgentOpenAiApiKeyArgsDict']]]] open_ai_api_keys: OpenAI API Key information
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GradientaiAgentOpenAiApiKeyArgs', 'GradientaiAgentOpenAiApiKeyArgsDict', 'outputs.GradientaiAgentOpenAiApiKey']]]] open_ai_api_keys: OpenAI API Key information
         :param pulumi.Input[_builtins.str] open_ai_key_uuid: Optional OpenAI API key ID to use with OpenAI models
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GradientaiAgentParentAgentArgs', 'GradientaiAgentParentAgentArgsDict']]]] parent_agents: List of child agents
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GradientaiAgentParentAgentArgs', 'GradientaiAgentParentAgentArgsDict', 'outputs.GradientaiAgentParentAgent']]]] parent_agents: List of child agents
         :param pulumi.Input[_builtins.str] project_id: Project ID of the Agent
         :param pulumi.Input[_builtins.bool] provide_citations: Indicates if the agent should provide citations in responses
         :param pulumi.Input[_builtins.str] region: Region where the Agent is deployed
@@ -1363,7 +1363,7 @@ class GradientaiAgent(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] route_uuid: Route UUID
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: List of Tags
         :param pulumi.Input[_builtins.float] temperature: Agent temperature setting
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GradientaiAgentTemplateArgs', 'GradientaiAgentTemplateArgsDict']]]] templates: Agent Template
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GradientaiAgentTemplateArgs', 'GradientaiAgentTemplateArgsDict', 'outputs.GradientaiAgentTemplate']]]] templates: Agent Template
         :param pulumi.Input[_builtins.float] top_p: Top P sampling parameter
         :param pulumi.Input[_builtins.str] url: URL for the Agent
         :param pulumi.Input[_builtins.str] user_id: User ID linked with the Agent
@@ -1393,30 +1393,30 @@ class GradientaiAgent(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 agent_guardrails: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentAgentGuardrailArgs', 'GradientaiAgentAgentGuardrailArgsDict']]]]] = None,
-                 anthropic_api_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentAnthropicApiKeyArgs', 'GradientaiAgentAnthropicApiKeyArgsDict']]]]] = None,
+                 agent_guardrails: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentAgentGuardrailArgs', 'GradientaiAgentAgentGuardrailArgsDict', 'outputs.GradientaiAgentAgentGuardrail']]]]] = None,
+                 anthropic_api_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentAnthropicApiKeyArgs', 'GradientaiAgentAnthropicApiKeyArgsDict', 'outputs.GradientaiAgentAnthropicApiKey']]]]] = None,
                  anthropic_key_uuid: pulumi.Input[Optional[_builtins.str]] = None,
-                 api_key_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentApiKeyInfoArgs', 'GradientaiAgentApiKeyInfoArgsDict']]]]] = None,
-                 api_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentApiKeyArgs', 'GradientaiAgentApiKeyArgsDict']]]]] = None,
-                 chatbot_identifiers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentChatbotIdentifierArgs', 'GradientaiAgentChatbotIdentifierArgsDict']]]]] = None,
-                 chatbots: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentChatbotArgs', 'GradientaiAgentChatbotArgsDict']]]]] = None,
-                 child_agents: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentChildAgentArgs', 'GradientaiAgentChildAgentArgsDict']]]]] = None,
+                 api_key_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentApiKeyInfoArgs', 'GradientaiAgentApiKeyInfoArgsDict', 'outputs.GradientaiAgentApiKeyInfo']]]]] = None,
+                 api_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentApiKeyArgs', 'GradientaiAgentApiKeyArgsDict', 'outputs.GradientaiAgentApiKey']]]]] = None,
+                 chatbot_identifiers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentChatbotIdentifierArgs', 'GradientaiAgentChatbotIdentifierArgsDict', 'outputs.GradientaiAgentChatbotIdentifier']]]]] = None,
+                 chatbots: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentChatbotArgs', 'GradientaiAgentChatbotArgsDict', 'outputs.GradientaiAgentChatbot']]]]] = None,
+                 child_agents: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentChildAgentArgs', 'GradientaiAgentChildAgentArgsDict', 'outputs.GradientaiAgentChildAgent']]]]] = None,
                  created_at: pulumi.Input[Optional[_builtins.str]] = None,
-                 deployments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentDeploymentArgs', 'GradientaiAgentDeploymentArgsDict']]]]] = None,
+                 deployments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentDeploymentArgs', 'GradientaiAgentDeploymentArgsDict', 'outputs.GradientaiAgentDeployment']]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 functions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentFunctionArgs', 'GradientaiAgentFunctionArgsDict']]]]] = None,
+                 functions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentFunctionArgs', 'GradientaiAgentFunctionArgsDict', 'outputs.GradientaiAgentFunction']]]]] = None,
                  if_case: pulumi.Input[Optional[_builtins.str]] = None,
                  instruction: pulumi.Input[Optional[_builtins.str]] = None,
                  k: pulumi.Input[Optional[_builtins.int]] = None,
                  knowledge_base_uuids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 knowledge_bases: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentKnowledgeBaseArgs', 'GradientaiAgentKnowledgeBaseArgsDict']]]]] = None,
+                 knowledge_bases: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentKnowledgeBaseArgs', 'GradientaiAgentKnowledgeBaseArgsDict', 'outputs.GradientaiAgentKnowledgeBase']]]]] = None,
                  max_tokens: pulumi.Input[Optional[_builtins.int]] = None,
                  model_uuid: pulumi.Input[Optional[_builtins.str]] = None,
-                 models: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentModelArgs', 'GradientaiAgentModelArgsDict']]]]] = None,
+                 models: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentModelArgs', 'GradientaiAgentModelArgsDict', 'outputs.GradientaiAgentModel']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 open_ai_api_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentOpenAiApiKeyArgs', 'GradientaiAgentOpenAiApiKeyArgsDict']]]]] = None,
+                 open_ai_api_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentOpenAiApiKeyArgs', 'GradientaiAgentOpenAiApiKeyArgsDict', 'outputs.GradientaiAgentOpenAiApiKey']]]]] = None,
                  open_ai_key_uuid: pulumi.Input[Optional[_builtins.str]] = None,
-                 parent_agents: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentParentAgentArgs', 'GradientaiAgentParentAgentArgsDict']]]]] = None,
+                 parent_agents: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentParentAgentArgs', 'GradientaiAgentParentAgentArgsDict', 'outputs.GradientaiAgentParentAgent']]]]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  provide_citations: pulumi.Input[Optional[_builtins.bool]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1426,7 +1426,7 @@ class GradientaiAgent(pulumi.CustomResource):
                  route_uuid: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  temperature: pulumi.Input[Optional[_builtins.float]] = None,
-                 templates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentTemplateArgs', 'GradientaiAgentTemplateArgsDict']]]]] = None,
+                 templates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentTemplateArgs', 'GradientaiAgentTemplateArgsDict', 'outputs.GradientaiAgentTemplate']]]]] = None,
                  top_p: pulumi.Input[Optional[_builtins.float]] = None,
                  url: pulumi.Input[Optional[_builtins.str]] = None,
                  user_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1500,30 +1500,30 @@ class GradientaiAgent(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            agent_guardrails: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentAgentGuardrailArgs', 'GradientaiAgentAgentGuardrailArgsDict']]]]] = None,
-            anthropic_api_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentAnthropicApiKeyArgs', 'GradientaiAgentAnthropicApiKeyArgsDict']]]]] = None,
+            agent_guardrails: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentAgentGuardrailArgs', 'GradientaiAgentAgentGuardrailArgsDict', 'outputs.GradientaiAgentAgentGuardrail']]]]] = None,
+            anthropic_api_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentAnthropicApiKeyArgs', 'GradientaiAgentAnthropicApiKeyArgsDict', 'outputs.GradientaiAgentAnthropicApiKey']]]]] = None,
             anthropic_key_uuid: pulumi.Input[Optional[_builtins.str]] = None,
-            api_key_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentApiKeyInfoArgs', 'GradientaiAgentApiKeyInfoArgsDict']]]]] = None,
-            api_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentApiKeyArgs', 'GradientaiAgentApiKeyArgsDict']]]]] = None,
-            chatbot_identifiers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentChatbotIdentifierArgs', 'GradientaiAgentChatbotIdentifierArgsDict']]]]] = None,
-            chatbots: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentChatbotArgs', 'GradientaiAgentChatbotArgsDict']]]]] = None,
-            child_agents: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentChildAgentArgs', 'GradientaiAgentChildAgentArgsDict']]]]] = None,
+            api_key_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentApiKeyInfoArgs', 'GradientaiAgentApiKeyInfoArgsDict', 'outputs.GradientaiAgentApiKeyInfo']]]]] = None,
+            api_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentApiKeyArgs', 'GradientaiAgentApiKeyArgsDict', 'outputs.GradientaiAgentApiKey']]]]] = None,
+            chatbot_identifiers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentChatbotIdentifierArgs', 'GradientaiAgentChatbotIdentifierArgsDict', 'outputs.GradientaiAgentChatbotIdentifier']]]]] = None,
+            chatbots: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentChatbotArgs', 'GradientaiAgentChatbotArgsDict', 'outputs.GradientaiAgentChatbot']]]]] = None,
+            child_agents: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentChildAgentArgs', 'GradientaiAgentChildAgentArgsDict', 'outputs.GradientaiAgentChildAgent']]]]] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
-            deployments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentDeploymentArgs', 'GradientaiAgentDeploymentArgsDict']]]]] = None,
+            deployments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentDeploymentArgs', 'GradientaiAgentDeploymentArgsDict', 'outputs.GradientaiAgentDeployment']]]]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            functions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentFunctionArgs', 'GradientaiAgentFunctionArgsDict']]]]] = None,
+            functions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentFunctionArgs', 'GradientaiAgentFunctionArgsDict', 'outputs.GradientaiAgentFunction']]]]] = None,
             if_case: pulumi.Input[Optional[_builtins.str]] = None,
             instruction: pulumi.Input[Optional[_builtins.str]] = None,
             k: pulumi.Input[Optional[_builtins.int]] = None,
             knowledge_base_uuids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            knowledge_bases: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentKnowledgeBaseArgs', 'GradientaiAgentKnowledgeBaseArgsDict']]]]] = None,
+            knowledge_bases: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentKnowledgeBaseArgs', 'GradientaiAgentKnowledgeBaseArgsDict', 'outputs.GradientaiAgentKnowledgeBase']]]]] = None,
             max_tokens: pulumi.Input[Optional[_builtins.int]] = None,
             model_uuid: pulumi.Input[Optional[_builtins.str]] = None,
-            models: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentModelArgs', 'GradientaiAgentModelArgsDict']]]]] = None,
+            models: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentModelArgs', 'GradientaiAgentModelArgsDict', 'outputs.GradientaiAgentModel']]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            open_ai_api_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentOpenAiApiKeyArgs', 'GradientaiAgentOpenAiApiKeyArgsDict']]]]] = None,
+            open_ai_api_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentOpenAiApiKeyArgs', 'GradientaiAgentOpenAiApiKeyArgsDict', 'outputs.GradientaiAgentOpenAiApiKey']]]]] = None,
             open_ai_key_uuid: pulumi.Input[Optional[_builtins.str]] = None,
-            parent_agents: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentParentAgentArgs', 'GradientaiAgentParentAgentArgsDict']]]]] = None,
+            parent_agents: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentParentAgentArgs', 'GradientaiAgentParentAgentArgsDict', 'outputs.GradientaiAgentParentAgent']]]]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
             provide_citations: pulumi.Input[Optional[_builtins.bool]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1534,7 +1534,7 @@ class GradientaiAgent(pulumi.CustomResource):
             route_uuid: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             temperature: pulumi.Input[Optional[_builtins.float]] = None,
-            templates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentTemplateArgs', 'GradientaiAgentTemplateArgsDict']]]]] = None,
+            templates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiAgentTemplateArgs', 'GradientaiAgentTemplateArgsDict', 'outputs.GradientaiAgentTemplate']]]]] = None,
             top_p: pulumi.Input[Optional[_builtins.float]] = None,
             updated_at: pulumi.Input[Optional[_builtins.str]] = None,
             url: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1547,30 +1547,30 @@ class GradientaiAgent(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GradientaiAgentAgentGuardrailArgs', 'GradientaiAgentAgentGuardrailArgsDict']]]] agent_guardrails: AgentGuardrail represents a Guardrail attached to Gen AI Agent
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GradientaiAgentAnthropicApiKeyArgs', 'GradientaiAgentAnthropicApiKeyArgsDict']]]] anthropic_api_keys: Anthropic API Key information
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GradientaiAgentAgentGuardrailArgs', 'GradientaiAgentAgentGuardrailArgsDict', 'outputs.GradientaiAgentAgentGuardrail']]]] agent_guardrails: AgentGuardrail represents a Guardrail attached to Gen AI Agent
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GradientaiAgentAnthropicApiKeyArgs', 'GradientaiAgentAnthropicApiKeyArgsDict', 'outputs.GradientaiAgentAnthropicApiKey']]]] anthropic_api_keys: Anthropic API Key information
         :param pulumi.Input[_builtins.str] anthropic_key_uuid: Optional Anthropic API key ID to use with Anthropic models
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GradientaiAgentApiKeyInfoArgs', 'GradientaiAgentApiKeyInfoArgsDict']]]] api_key_infos: List of API Key Infos
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GradientaiAgentApiKeyArgs', 'GradientaiAgentApiKeyArgsDict']]]] api_keys: List of API Keys
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GradientaiAgentChatbotIdentifierArgs', 'GradientaiAgentChatbotIdentifierArgsDict']]]] chatbot_identifiers: List of Chatbot Identifiers
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GradientaiAgentChatbotArgs', 'GradientaiAgentChatbotArgsDict']]]] chatbots: ChatBot configuration
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GradientaiAgentChildAgentArgs', 'GradientaiAgentChildAgentArgsDict']]]] child_agents: List of child agents
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GradientaiAgentApiKeyInfoArgs', 'GradientaiAgentApiKeyInfoArgsDict', 'outputs.GradientaiAgentApiKeyInfo']]]] api_key_infos: List of API Key Infos
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GradientaiAgentApiKeyArgs', 'GradientaiAgentApiKeyArgsDict', 'outputs.GradientaiAgentApiKey']]]] api_keys: List of API Keys
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GradientaiAgentChatbotIdentifierArgs', 'GradientaiAgentChatbotIdentifierArgsDict', 'outputs.GradientaiAgentChatbotIdentifier']]]] chatbot_identifiers: List of Chatbot Identifiers
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GradientaiAgentChatbotArgs', 'GradientaiAgentChatbotArgsDict', 'outputs.GradientaiAgentChatbot']]]] chatbots: ChatBot configuration
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GradientaiAgentChildAgentArgs', 'GradientaiAgentChildAgentArgsDict', 'outputs.GradientaiAgentChildAgent']]]] child_agents: List of child agents
         :param pulumi.Input[_builtins.str] created_at: Timestamp when the Agent was created
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GradientaiAgentDeploymentArgs', 'GradientaiAgentDeploymentArgsDict']]]] deployments: List of API Key Infos
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GradientaiAgentDeploymentArgs', 'GradientaiAgentDeploymentArgsDict', 'outputs.GradientaiAgentDeployment']]]] deployments: List of API Key Infos
         :param pulumi.Input[_builtins.str] description: Description for the Agent
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GradientaiAgentFunctionArgs', 'GradientaiAgentFunctionArgsDict']]]] functions: List of Functions
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GradientaiAgentFunctionArgs', 'GradientaiAgentFunctionArgsDict', 'outputs.GradientaiAgentFunction']]]] functions: List of Functions
         :param pulumi.Input[_builtins.str] if_case: If case condition
         :param pulumi.Input[_builtins.str] instruction: Instruction for the Agent
         :param pulumi.Input[_builtins.int] k: K value
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] knowledge_base_uuids: Ids of the knowledge base(s) to attach to the agent
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GradientaiAgentKnowledgeBaseArgs', 'GradientaiAgentKnowledgeBaseArgsDict']]]] knowledge_bases: List of Knowledge Bases
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GradientaiAgentKnowledgeBaseArgs', 'GradientaiAgentKnowledgeBaseArgsDict', 'outputs.GradientaiAgentKnowledgeBase']]]] knowledge_bases: List of Knowledge Bases
         :param pulumi.Input[_builtins.int] max_tokens: Maximum tokens allowed
         :param pulumi.Input[_builtins.str] model_uuid: Model UUID of the Agent
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GradientaiAgentModelArgs', 'GradientaiAgentModelArgsDict']]]] models: Model of the Agent
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GradientaiAgentModelArgs', 'GradientaiAgentModelArgsDict', 'outputs.GradientaiAgentModel']]]] models: Model of the Agent
         :param pulumi.Input[_builtins.str] name: Name of the Agent
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GradientaiAgentOpenAiApiKeyArgs', 'GradientaiAgentOpenAiApiKeyArgsDict']]]] open_ai_api_keys: OpenAI API Key information
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GradientaiAgentOpenAiApiKeyArgs', 'GradientaiAgentOpenAiApiKeyArgsDict', 'outputs.GradientaiAgentOpenAiApiKey']]]] open_ai_api_keys: OpenAI API Key information
         :param pulumi.Input[_builtins.str] open_ai_key_uuid: Optional OpenAI API key ID to use with OpenAI models
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GradientaiAgentParentAgentArgs', 'GradientaiAgentParentAgentArgsDict']]]] parent_agents: List of child agents
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GradientaiAgentParentAgentArgs', 'GradientaiAgentParentAgentArgsDict', 'outputs.GradientaiAgentParentAgent']]]] parent_agents: List of child agents
         :param pulumi.Input[_builtins.str] project_id: Project ID of the Agent
         :param pulumi.Input[_builtins.bool] provide_citations: Indicates if the agent should provide citations in responses
         :param pulumi.Input[_builtins.str] region: Region where the Agent is deployed
@@ -1581,7 +1581,7 @@ class GradientaiAgent(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] route_uuid: Route UUID
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: List of Tags
         :param pulumi.Input[_builtins.float] temperature: Agent temperature setting
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GradientaiAgentTemplateArgs', 'GradientaiAgentTemplateArgsDict']]]] templates: Agent Template
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GradientaiAgentTemplateArgs', 'GradientaiAgentTemplateArgsDict', 'outputs.GradientaiAgentTemplate']]]] templates: Agent Template
         :param pulumi.Input[_builtins.float] top_p: Top P sampling parameter
         :param pulumi.Input[_builtins.str] updated_at: Timestamp when the Agent was updated
         :param pulumi.Input[_builtins.str] url: URL for the Agent

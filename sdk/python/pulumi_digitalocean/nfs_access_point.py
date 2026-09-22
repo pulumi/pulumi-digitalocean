@@ -262,7 +262,7 @@ class NfsAccessPoint(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_policy: pulumi.Input[Optional[Union['NfsAccessPointAccessPolicyArgs', 'NfsAccessPointAccessPolicyArgsDict']]] = None,
+                 access_policy: pulumi.Input[Optional[Union['NfsAccessPointAccessPolicyArgs', 'NfsAccessPointAccessPolicyArgsDict', 'outputs.NfsAccessPointAccessPolicy']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  path: pulumi.Input[Optional[_builtins.str]] = None,
                  share_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -311,7 +311,7 @@ class NfsAccessPoint(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['NfsAccessPointAccessPolicyArgs', 'NfsAccessPointAccessPolicyArgsDict']] access_policy: Access policy configuration for the access point. See Access Policy below.
+        :param pulumi.Input[Union['NfsAccessPointAccessPolicyArgs', 'NfsAccessPointAccessPolicyArgsDict', 'outputs.NfsAccessPointAccessPolicy']] access_policy: Access policy configuration for the access point. See Access Policy below.
         :param pulumi.Input[_builtins.str] name: A name for the NFS access point.
         :param pulumi.Input[_builtins.str] path: The export path for the access point.
         :param pulumi.Input[_builtins.str] share_id: The ID of the NFS share.
@@ -379,7 +379,7 @@ class NfsAccessPoint(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_policy: pulumi.Input[Optional[Union['NfsAccessPointAccessPolicyArgs', 'NfsAccessPointAccessPolicyArgsDict']]] = None,
+                 access_policy: pulumi.Input[Optional[Union['NfsAccessPointAccessPolicyArgs', 'NfsAccessPointAccessPolicyArgsDict', 'outputs.NfsAccessPointAccessPolicy']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  path: pulumi.Input[Optional[_builtins.str]] = None,
                  share_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -420,7 +420,7 @@ class NfsAccessPoint(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_policy: pulumi.Input[Optional[Union['NfsAccessPointAccessPolicyArgs', 'NfsAccessPointAccessPolicyArgsDict']]] = None,
+            access_policy: pulumi.Input[Optional[Union['NfsAccessPointAccessPolicyArgs', 'NfsAccessPointAccessPolicyArgsDict', 'outputs.NfsAccessPointAccessPolicy']]] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
             is_default: pulumi.Input[Optional[_builtins.bool]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -436,7 +436,7 @@ class NfsAccessPoint(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['NfsAccessPointAccessPolicyArgs', 'NfsAccessPointAccessPolicyArgsDict']] access_policy: Access policy configuration for the access point. See Access Policy below.
+        :param pulumi.Input[Union['NfsAccessPointAccessPolicyArgs', 'NfsAccessPointAccessPolicyArgsDict', 'outputs.NfsAccessPointAccessPolicy']] access_policy: Access policy configuration for the access point. See Access Policy below.
         :param pulumi.Input[_builtins.str] created_at: The date and time when the access point was created.
         :param pulumi.Input[_builtins.bool] is_default: Whether this is the default access point for the share.
         :param pulumi.Input[_builtins.str] name: A name for the NFS access point.

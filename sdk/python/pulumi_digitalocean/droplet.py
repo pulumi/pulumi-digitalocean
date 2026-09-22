@@ -985,7 +985,7 @@ class Droplet(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backup_policy: pulumi.Input[Optional[Union['DropletBackupPolicyArgs', 'DropletBackupPolicyArgsDict']]] = None,
+                 backup_policy: pulumi.Input[Optional[Union['DropletBackupPolicyArgs', 'DropletBackupPolicyArgsDict', 'outputs.DropletBackupPolicy']]] = None,
                  backups: pulumi.Input[Optional[_builtins.bool]] = None,
                  droplet_agent: pulumi.Input[Optional[_builtins.bool]] = None,
                  gpu_partition_mode: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1042,7 +1042,7 @@ class Droplet(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['DropletBackupPolicyArgs', 'DropletBackupPolicyArgsDict']] backup_policy: An object specifying the backup policy for the Droplet. If omitted and `backups` is `true`, the backup plan will default to daily.
+        :param pulumi.Input[Union['DropletBackupPolicyArgs', 'DropletBackupPolicyArgsDict', 'outputs.DropletBackupPolicy']] backup_policy: An object specifying the backup policy for the Droplet. If omitted and `backups` is `true`, the backup plan will default to daily.
         :param pulumi.Input[_builtins.bool] backups: Boolean controlling if backups are made. Defaults to
                false.
         :param pulumi.Input[_builtins.bool] droplet_agent: A boolean indicating whether to install the
@@ -1150,7 +1150,7 @@ class Droplet(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backup_policy: pulumi.Input[Optional[Union['DropletBackupPolicyArgs', 'DropletBackupPolicyArgsDict']]] = None,
+                 backup_policy: pulumi.Input[Optional[Union['DropletBackupPolicyArgs', 'DropletBackupPolicyArgsDict', 'outputs.DropletBackupPolicy']]] = None,
                  backups: pulumi.Input[Optional[_builtins.bool]] = None,
                  droplet_agent: pulumi.Input[Optional[_builtins.bool]] = None,
                  gpu_partition_mode: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1224,7 +1224,7 @@ class Droplet(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            backup_policy: pulumi.Input[Optional[Union['DropletBackupPolicyArgs', 'DropletBackupPolicyArgsDict']]] = None,
+            backup_policy: pulumi.Input[Optional[Union['DropletBackupPolicyArgs', 'DropletBackupPolicyArgsDict', 'outputs.DropletBackupPolicy']]] = None,
             backups: pulumi.Input[Optional[_builtins.bool]] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
             disk: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1262,7 +1262,7 @@ class Droplet(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['DropletBackupPolicyArgs', 'DropletBackupPolicyArgsDict']] backup_policy: An object specifying the backup policy for the Droplet. If omitted and `backups` is `true`, the backup plan will default to daily.
+        :param pulumi.Input[Union['DropletBackupPolicyArgs', 'DropletBackupPolicyArgsDict', 'outputs.DropletBackupPolicy']] backup_policy: An object specifying the backup policy for the Droplet. If omitted and `backups` is `true`, the backup plan will default to daily.
         :param pulumi.Input[_builtins.bool] backups: Boolean controlling if backups are made. Defaults to
                false.
         :param pulumi.Input[_builtins.int] disk: The size of the instance's disk in GB

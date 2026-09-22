@@ -136,7 +136,7 @@ class SpacesBucketCorsConfiguration(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket: pulumi.Input[Optional[_builtins.str]] = None,
-                 cors_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SpacesBucketCorsConfigurationCorsRuleArgs', 'SpacesBucketCorsConfigurationCorsRuleArgsDict']]]]] = None,
+                 cors_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SpacesBucketCorsConfigurationCorsRuleArgs', 'SpacesBucketCorsConfigurationCorsRuleArgsDict', 'outputs.SpacesBucketCorsConfigurationCorsRule']]]]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -202,7 +202,7 @@ class SpacesBucketCorsConfiguration(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket to which to apply the CORS configuration.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SpacesBucketCorsConfigurationCorsRuleArgs', 'SpacesBucketCorsConfigurationCorsRuleArgsDict']]]] cors_rules: Set of origins and methods (cross-origin access that you want to allow). See below. You can configure up to 100 rules.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SpacesBucketCorsConfigurationCorsRuleArgs', 'SpacesBucketCorsConfigurationCorsRuleArgsDict', 'outputs.SpacesBucketCorsConfigurationCorsRule']]]] cors_rules: Set of origins and methods (cross-origin access that you want to allow). See below. You can configure up to 100 rules.
         :param pulumi.Input[_builtins.str] region: The region where the bucket resides.
         """
         ...
@@ -287,7 +287,7 @@ class SpacesBucketCorsConfiguration(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket: pulumi.Input[Optional[_builtins.str]] = None,
-                 cors_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SpacesBucketCorsConfigurationCorsRuleArgs', 'SpacesBucketCorsConfigurationCorsRuleArgsDict']]]]] = None,
+                 cors_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SpacesBucketCorsConfigurationCorsRuleArgs', 'SpacesBucketCorsConfigurationCorsRuleArgsDict', 'outputs.SpacesBucketCorsConfigurationCorsRule']]]]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -318,7 +318,7 @@ class SpacesBucketCorsConfiguration(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             bucket: pulumi.Input[Optional[_builtins.str]] = None,
-            cors_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SpacesBucketCorsConfigurationCorsRuleArgs', 'SpacesBucketCorsConfigurationCorsRuleArgsDict']]]]] = None,
+            cors_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SpacesBucketCorsConfigurationCorsRuleArgs', 'SpacesBucketCorsConfigurationCorsRuleArgsDict', 'outputs.SpacesBucketCorsConfigurationCorsRule']]]]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None) -> 'SpacesBucketCorsConfiguration':
         """
         Get an existing SpacesBucketCorsConfiguration resource's state with the given name, id, and optional extra
@@ -328,7 +328,7 @@ class SpacesBucketCorsConfiguration(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket to which to apply the CORS configuration.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SpacesBucketCorsConfigurationCorsRuleArgs', 'SpacesBucketCorsConfigurationCorsRuleArgsDict']]]] cors_rules: Set of origins and methods (cross-origin access that you want to allow). See below. You can configure up to 100 rules.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SpacesBucketCorsConfigurationCorsRuleArgs', 'SpacesBucketCorsConfigurationCorsRuleArgsDict', 'outputs.SpacesBucketCorsConfigurationCorsRule']]]] cors_rules: Set of origins and methods (cross-origin access that you want to allow). See below. You can configure up to 100 rules.
         :param pulumi.Input[_builtins.str] region: The region where the bucket resides.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

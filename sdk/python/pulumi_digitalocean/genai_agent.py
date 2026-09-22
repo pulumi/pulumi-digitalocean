@@ -1291,30 +1291,30 @@ class GenaiAgent(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 agent_guardrails: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentAgentGuardrailArgs', 'GenaiAgentAgentGuardrailArgsDict']]]]] = None,
-                 anthropic_api_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentAnthropicApiKeyArgs', 'GenaiAgentAnthropicApiKeyArgsDict']]]]] = None,
+                 agent_guardrails: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentAgentGuardrailArgs', 'GenaiAgentAgentGuardrailArgsDict', 'outputs.GenaiAgentAgentGuardrail']]]]] = None,
+                 anthropic_api_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentAnthropicApiKeyArgs', 'GenaiAgentAnthropicApiKeyArgsDict', 'outputs.GenaiAgentAnthropicApiKey']]]]] = None,
                  anthropic_key_uuid: pulumi.Input[Optional[_builtins.str]] = None,
-                 api_key_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentApiKeyInfoArgs', 'GenaiAgentApiKeyInfoArgsDict']]]]] = None,
-                 api_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentApiKeyArgs', 'GenaiAgentApiKeyArgsDict']]]]] = None,
-                 chatbot_identifiers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentChatbotIdentifierArgs', 'GenaiAgentChatbotIdentifierArgsDict']]]]] = None,
-                 chatbots: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentChatbotArgs', 'GenaiAgentChatbotArgsDict']]]]] = None,
-                 child_agents: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentChildAgentArgs', 'GenaiAgentChildAgentArgsDict']]]]] = None,
+                 api_key_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentApiKeyInfoArgs', 'GenaiAgentApiKeyInfoArgsDict', 'outputs.GenaiAgentApiKeyInfo']]]]] = None,
+                 api_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentApiKeyArgs', 'GenaiAgentApiKeyArgsDict', 'outputs.GenaiAgentApiKey']]]]] = None,
+                 chatbot_identifiers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentChatbotIdentifierArgs', 'GenaiAgentChatbotIdentifierArgsDict', 'outputs.GenaiAgentChatbotIdentifier']]]]] = None,
+                 chatbots: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentChatbotArgs', 'GenaiAgentChatbotArgsDict', 'outputs.GenaiAgentChatbot']]]]] = None,
+                 child_agents: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentChildAgentArgs', 'GenaiAgentChildAgentArgsDict', 'outputs.GenaiAgentChildAgent']]]]] = None,
                  created_at: pulumi.Input[Optional[_builtins.str]] = None,
-                 deployments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentDeploymentArgs', 'GenaiAgentDeploymentArgsDict']]]]] = None,
+                 deployments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentDeploymentArgs', 'GenaiAgentDeploymentArgsDict', 'outputs.GenaiAgentDeployment']]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 functions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentFunctionArgs', 'GenaiAgentFunctionArgsDict']]]]] = None,
+                 functions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentFunctionArgs', 'GenaiAgentFunctionArgsDict', 'outputs.GenaiAgentFunction']]]]] = None,
                  if_case: pulumi.Input[Optional[_builtins.str]] = None,
                  instruction: pulumi.Input[Optional[_builtins.str]] = None,
                  k: pulumi.Input[Optional[_builtins.int]] = None,
                  knowledge_base_uuids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 knowledge_bases: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentKnowledgeBaseArgs', 'GenaiAgentKnowledgeBaseArgsDict']]]]] = None,
+                 knowledge_bases: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentKnowledgeBaseArgs', 'GenaiAgentKnowledgeBaseArgsDict', 'outputs.GenaiAgentKnowledgeBase']]]]] = None,
                  max_tokens: pulumi.Input[Optional[_builtins.int]] = None,
                  model_uuid: pulumi.Input[Optional[_builtins.str]] = None,
-                 models: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentModelArgs', 'GenaiAgentModelArgsDict']]]]] = None,
+                 models: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentModelArgs', 'GenaiAgentModelArgsDict', 'outputs.GenaiAgentModel']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 open_ai_api_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentOpenAiApiKeyArgs', 'GenaiAgentOpenAiApiKeyArgsDict']]]]] = None,
+                 open_ai_api_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentOpenAiApiKeyArgs', 'GenaiAgentOpenAiApiKeyArgsDict', 'outputs.GenaiAgentOpenAiApiKey']]]]] = None,
                  open_ai_key_uuid: pulumi.Input[Optional[_builtins.str]] = None,
-                 parent_agents: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentParentAgentArgs', 'GenaiAgentParentAgentArgsDict']]]]] = None,
+                 parent_agents: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentParentAgentArgs', 'GenaiAgentParentAgentArgsDict', 'outputs.GenaiAgentParentAgent']]]]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  provide_citations: pulumi.Input[Optional[_builtins.bool]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1324,7 +1324,7 @@ class GenaiAgent(pulumi.CustomResource):
                  route_uuid: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  temperature: pulumi.Input[Optional[_builtins.float]] = None,
-                 templates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentTemplateArgs', 'GenaiAgentTemplateArgsDict']]]]] = None,
+                 templates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentTemplateArgs', 'GenaiAgentTemplateArgsDict', 'outputs.GenaiAgentTemplate']]]]] = None,
                  top_p: pulumi.Input[Optional[_builtins.float]] = None,
                  url: pulumi.Input[Optional[_builtins.str]] = None,
                  user_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1335,30 +1335,30 @@ class GenaiAgent(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentAgentGuardrailArgs', 'GenaiAgentAgentGuardrailArgsDict']]]] agent_guardrails: AgentGuardrail represents a Guardrail attached to Gen AI Agent
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentAnthropicApiKeyArgs', 'GenaiAgentAnthropicApiKeyArgsDict']]]] anthropic_api_keys: Anthropic API Key information
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentAgentGuardrailArgs', 'GenaiAgentAgentGuardrailArgsDict', 'outputs.GenaiAgentAgentGuardrail']]]] agent_guardrails: AgentGuardrail represents a Guardrail attached to Gen AI Agent
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentAnthropicApiKeyArgs', 'GenaiAgentAnthropicApiKeyArgsDict', 'outputs.GenaiAgentAnthropicApiKey']]]] anthropic_api_keys: Anthropic API Key information
         :param pulumi.Input[_builtins.str] anthropic_key_uuid: Optional Anthropic API key ID to use with Anthropic models
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentApiKeyInfoArgs', 'GenaiAgentApiKeyInfoArgsDict']]]] api_key_infos: List of API Key Infos
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentApiKeyArgs', 'GenaiAgentApiKeyArgsDict']]]] api_keys: List of API Keys
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentChatbotIdentifierArgs', 'GenaiAgentChatbotIdentifierArgsDict']]]] chatbot_identifiers: List of Chatbot Identifiers
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentChatbotArgs', 'GenaiAgentChatbotArgsDict']]]] chatbots: ChatBot configuration
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentChildAgentArgs', 'GenaiAgentChildAgentArgsDict']]]] child_agents: List of child agents
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentApiKeyInfoArgs', 'GenaiAgentApiKeyInfoArgsDict', 'outputs.GenaiAgentApiKeyInfo']]]] api_key_infos: List of API Key Infos
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentApiKeyArgs', 'GenaiAgentApiKeyArgsDict', 'outputs.GenaiAgentApiKey']]]] api_keys: List of API Keys
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentChatbotIdentifierArgs', 'GenaiAgentChatbotIdentifierArgsDict', 'outputs.GenaiAgentChatbotIdentifier']]]] chatbot_identifiers: List of Chatbot Identifiers
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentChatbotArgs', 'GenaiAgentChatbotArgsDict', 'outputs.GenaiAgentChatbot']]]] chatbots: ChatBot configuration
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentChildAgentArgs', 'GenaiAgentChildAgentArgsDict', 'outputs.GenaiAgentChildAgent']]]] child_agents: List of child agents
         :param pulumi.Input[_builtins.str] created_at: Timestamp when the Agent was created
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentDeploymentArgs', 'GenaiAgentDeploymentArgsDict']]]] deployments: List of API Key Infos
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentDeploymentArgs', 'GenaiAgentDeploymentArgsDict', 'outputs.GenaiAgentDeployment']]]] deployments: List of API Key Infos
         :param pulumi.Input[_builtins.str] description: Description for the Agent
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentFunctionArgs', 'GenaiAgentFunctionArgsDict']]]] functions: List of Functions
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentFunctionArgs', 'GenaiAgentFunctionArgsDict', 'outputs.GenaiAgentFunction']]]] functions: List of Functions
         :param pulumi.Input[_builtins.str] if_case: If case condition
         :param pulumi.Input[_builtins.str] instruction: Instruction for the Agent
         :param pulumi.Input[_builtins.int] k: K value
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] knowledge_base_uuids: Ids of the knowledge base(s) to attach to the agent
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentKnowledgeBaseArgs', 'GenaiAgentKnowledgeBaseArgsDict']]]] knowledge_bases: List of Knowledge Bases
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentKnowledgeBaseArgs', 'GenaiAgentKnowledgeBaseArgsDict', 'outputs.GenaiAgentKnowledgeBase']]]] knowledge_bases: List of Knowledge Bases
         :param pulumi.Input[_builtins.int] max_tokens: Maximum tokens allowed
         :param pulumi.Input[_builtins.str] model_uuid: Model UUID of the Agent
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentModelArgs', 'GenaiAgentModelArgsDict']]]] models: Model of the Agent
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentModelArgs', 'GenaiAgentModelArgsDict', 'outputs.GenaiAgentModel']]]] models: Model of the Agent
         :param pulumi.Input[_builtins.str] name: Name of the Agent
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentOpenAiApiKeyArgs', 'GenaiAgentOpenAiApiKeyArgsDict']]]] open_ai_api_keys: OpenAI API Key information
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentOpenAiApiKeyArgs', 'GenaiAgentOpenAiApiKeyArgsDict', 'outputs.GenaiAgentOpenAiApiKey']]]] open_ai_api_keys: OpenAI API Key information
         :param pulumi.Input[_builtins.str] open_ai_key_uuid: Optional OpenAI API key ID to use with OpenAI models
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentParentAgentArgs', 'GenaiAgentParentAgentArgsDict']]]] parent_agents: List of child agents
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentParentAgentArgs', 'GenaiAgentParentAgentArgsDict', 'outputs.GenaiAgentParentAgent']]]] parent_agents: List of child agents
         :param pulumi.Input[_builtins.str] project_id: Project ID of the Agent
         :param pulumi.Input[_builtins.bool] provide_citations: Indicates if the agent should provide citations in responses
         :param pulumi.Input[_builtins.str] region: Region where the Agent is deployed
@@ -1368,7 +1368,7 @@ class GenaiAgent(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] route_uuid: Route UUID
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: List of Tags
         :param pulumi.Input[_builtins.float] temperature: Agent temperature setting
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentTemplateArgs', 'GenaiAgentTemplateArgsDict']]]] templates: Agent Template
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentTemplateArgs', 'GenaiAgentTemplateArgsDict', 'outputs.GenaiAgentTemplate']]]] templates: Agent Template
         :param pulumi.Input[_builtins.float] top_p: Top P sampling parameter
         :param pulumi.Input[_builtins.str] url: URL for the Agent
         :param pulumi.Input[_builtins.str] user_id: User ID linked with the Agent
@@ -1398,30 +1398,30 @@ class GenaiAgent(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 agent_guardrails: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentAgentGuardrailArgs', 'GenaiAgentAgentGuardrailArgsDict']]]]] = None,
-                 anthropic_api_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentAnthropicApiKeyArgs', 'GenaiAgentAnthropicApiKeyArgsDict']]]]] = None,
+                 agent_guardrails: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentAgentGuardrailArgs', 'GenaiAgentAgentGuardrailArgsDict', 'outputs.GenaiAgentAgentGuardrail']]]]] = None,
+                 anthropic_api_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentAnthropicApiKeyArgs', 'GenaiAgentAnthropicApiKeyArgsDict', 'outputs.GenaiAgentAnthropicApiKey']]]]] = None,
                  anthropic_key_uuid: pulumi.Input[Optional[_builtins.str]] = None,
-                 api_key_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentApiKeyInfoArgs', 'GenaiAgentApiKeyInfoArgsDict']]]]] = None,
-                 api_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentApiKeyArgs', 'GenaiAgentApiKeyArgsDict']]]]] = None,
-                 chatbot_identifiers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentChatbotIdentifierArgs', 'GenaiAgentChatbotIdentifierArgsDict']]]]] = None,
-                 chatbots: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentChatbotArgs', 'GenaiAgentChatbotArgsDict']]]]] = None,
-                 child_agents: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentChildAgentArgs', 'GenaiAgentChildAgentArgsDict']]]]] = None,
+                 api_key_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentApiKeyInfoArgs', 'GenaiAgentApiKeyInfoArgsDict', 'outputs.GenaiAgentApiKeyInfo']]]]] = None,
+                 api_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentApiKeyArgs', 'GenaiAgentApiKeyArgsDict', 'outputs.GenaiAgentApiKey']]]]] = None,
+                 chatbot_identifiers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentChatbotIdentifierArgs', 'GenaiAgentChatbotIdentifierArgsDict', 'outputs.GenaiAgentChatbotIdentifier']]]]] = None,
+                 chatbots: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentChatbotArgs', 'GenaiAgentChatbotArgsDict', 'outputs.GenaiAgentChatbot']]]]] = None,
+                 child_agents: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentChildAgentArgs', 'GenaiAgentChildAgentArgsDict', 'outputs.GenaiAgentChildAgent']]]]] = None,
                  created_at: pulumi.Input[Optional[_builtins.str]] = None,
-                 deployments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentDeploymentArgs', 'GenaiAgentDeploymentArgsDict']]]]] = None,
+                 deployments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentDeploymentArgs', 'GenaiAgentDeploymentArgsDict', 'outputs.GenaiAgentDeployment']]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 functions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentFunctionArgs', 'GenaiAgentFunctionArgsDict']]]]] = None,
+                 functions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentFunctionArgs', 'GenaiAgentFunctionArgsDict', 'outputs.GenaiAgentFunction']]]]] = None,
                  if_case: pulumi.Input[Optional[_builtins.str]] = None,
                  instruction: pulumi.Input[Optional[_builtins.str]] = None,
                  k: pulumi.Input[Optional[_builtins.int]] = None,
                  knowledge_base_uuids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 knowledge_bases: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentKnowledgeBaseArgs', 'GenaiAgentKnowledgeBaseArgsDict']]]]] = None,
+                 knowledge_bases: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentKnowledgeBaseArgs', 'GenaiAgentKnowledgeBaseArgsDict', 'outputs.GenaiAgentKnowledgeBase']]]]] = None,
                  max_tokens: pulumi.Input[Optional[_builtins.int]] = None,
                  model_uuid: pulumi.Input[Optional[_builtins.str]] = None,
-                 models: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentModelArgs', 'GenaiAgentModelArgsDict']]]]] = None,
+                 models: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentModelArgs', 'GenaiAgentModelArgsDict', 'outputs.GenaiAgentModel']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 open_ai_api_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentOpenAiApiKeyArgs', 'GenaiAgentOpenAiApiKeyArgsDict']]]]] = None,
+                 open_ai_api_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentOpenAiApiKeyArgs', 'GenaiAgentOpenAiApiKeyArgsDict', 'outputs.GenaiAgentOpenAiApiKey']]]]] = None,
                  open_ai_key_uuid: pulumi.Input[Optional[_builtins.str]] = None,
-                 parent_agents: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentParentAgentArgs', 'GenaiAgentParentAgentArgsDict']]]]] = None,
+                 parent_agents: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentParentAgentArgs', 'GenaiAgentParentAgentArgsDict', 'outputs.GenaiAgentParentAgent']]]]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  provide_citations: pulumi.Input[Optional[_builtins.bool]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1431,7 +1431,7 @@ class GenaiAgent(pulumi.CustomResource):
                  route_uuid: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  temperature: pulumi.Input[Optional[_builtins.float]] = None,
-                 templates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentTemplateArgs', 'GenaiAgentTemplateArgsDict']]]]] = None,
+                 templates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentTemplateArgs', 'GenaiAgentTemplateArgsDict', 'outputs.GenaiAgentTemplate']]]]] = None,
                  top_p: pulumi.Input[Optional[_builtins.float]] = None,
                  url: pulumi.Input[Optional[_builtins.str]] = None,
                  user_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1504,30 +1504,30 @@ class GenaiAgent(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            agent_guardrails: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentAgentGuardrailArgs', 'GenaiAgentAgentGuardrailArgsDict']]]]] = None,
-            anthropic_api_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentAnthropicApiKeyArgs', 'GenaiAgentAnthropicApiKeyArgsDict']]]]] = None,
+            agent_guardrails: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentAgentGuardrailArgs', 'GenaiAgentAgentGuardrailArgsDict', 'outputs.GenaiAgentAgentGuardrail']]]]] = None,
+            anthropic_api_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentAnthropicApiKeyArgs', 'GenaiAgentAnthropicApiKeyArgsDict', 'outputs.GenaiAgentAnthropicApiKey']]]]] = None,
             anthropic_key_uuid: pulumi.Input[Optional[_builtins.str]] = None,
-            api_key_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentApiKeyInfoArgs', 'GenaiAgentApiKeyInfoArgsDict']]]]] = None,
-            api_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentApiKeyArgs', 'GenaiAgentApiKeyArgsDict']]]]] = None,
-            chatbot_identifiers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentChatbotIdentifierArgs', 'GenaiAgentChatbotIdentifierArgsDict']]]]] = None,
-            chatbots: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentChatbotArgs', 'GenaiAgentChatbotArgsDict']]]]] = None,
-            child_agents: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentChildAgentArgs', 'GenaiAgentChildAgentArgsDict']]]]] = None,
+            api_key_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentApiKeyInfoArgs', 'GenaiAgentApiKeyInfoArgsDict', 'outputs.GenaiAgentApiKeyInfo']]]]] = None,
+            api_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentApiKeyArgs', 'GenaiAgentApiKeyArgsDict', 'outputs.GenaiAgentApiKey']]]]] = None,
+            chatbot_identifiers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentChatbotIdentifierArgs', 'GenaiAgentChatbotIdentifierArgsDict', 'outputs.GenaiAgentChatbotIdentifier']]]]] = None,
+            chatbots: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentChatbotArgs', 'GenaiAgentChatbotArgsDict', 'outputs.GenaiAgentChatbot']]]]] = None,
+            child_agents: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentChildAgentArgs', 'GenaiAgentChildAgentArgsDict', 'outputs.GenaiAgentChildAgent']]]]] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
-            deployments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentDeploymentArgs', 'GenaiAgentDeploymentArgsDict']]]]] = None,
+            deployments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentDeploymentArgs', 'GenaiAgentDeploymentArgsDict', 'outputs.GenaiAgentDeployment']]]]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            functions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentFunctionArgs', 'GenaiAgentFunctionArgsDict']]]]] = None,
+            functions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentFunctionArgs', 'GenaiAgentFunctionArgsDict', 'outputs.GenaiAgentFunction']]]]] = None,
             if_case: pulumi.Input[Optional[_builtins.str]] = None,
             instruction: pulumi.Input[Optional[_builtins.str]] = None,
             k: pulumi.Input[Optional[_builtins.int]] = None,
             knowledge_base_uuids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            knowledge_bases: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentKnowledgeBaseArgs', 'GenaiAgentKnowledgeBaseArgsDict']]]]] = None,
+            knowledge_bases: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentKnowledgeBaseArgs', 'GenaiAgentKnowledgeBaseArgsDict', 'outputs.GenaiAgentKnowledgeBase']]]]] = None,
             max_tokens: pulumi.Input[Optional[_builtins.int]] = None,
             model_uuid: pulumi.Input[Optional[_builtins.str]] = None,
-            models: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentModelArgs', 'GenaiAgentModelArgsDict']]]]] = None,
+            models: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentModelArgs', 'GenaiAgentModelArgsDict', 'outputs.GenaiAgentModel']]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            open_ai_api_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentOpenAiApiKeyArgs', 'GenaiAgentOpenAiApiKeyArgsDict']]]]] = None,
+            open_ai_api_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentOpenAiApiKeyArgs', 'GenaiAgentOpenAiApiKeyArgsDict', 'outputs.GenaiAgentOpenAiApiKey']]]]] = None,
             open_ai_key_uuid: pulumi.Input[Optional[_builtins.str]] = None,
-            parent_agents: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentParentAgentArgs', 'GenaiAgentParentAgentArgsDict']]]]] = None,
+            parent_agents: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentParentAgentArgs', 'GenaiAgentParentAgentArgsDict', 'outputs.GenaiAgentParentAgent']]]]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
             provide_citations: pulumi.Input[Optional[_builtins.bool]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1538,7 +1538,7 @@ class GenaiAgent(pulumi.CustomResource):
             route_uuid: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             temperature: pulumi.Input[Optional[_builtins.float]] = None,
-            templates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentTemplateArgs', 'GenaiAgentTemplateArgsDict']]]]] = None,
+            templates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentTemplateArgs', 'GenaiAgentTemplateArgsDict', 'outputs.GenaiAgentTemplate']]]]] = None,
             top_p: pulumi.Input[Optional[_builtins.float]] = None,
             updated_at: pulumi.Input[Optional[_builtins.str]] = None,
             url: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1551,30 +1551,30 @@ class GenaiAgent(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentAgentGuardrailArgs', 'GenaiAgentAgentGuardrailArgsDict']]]] agent_guardrails: AgentGuardrail represents a Guardrail attached to Gen AI Agent
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentAnthropicApiKeyArgs', 'GenaiAgentAnthropicApiKeyArgsDict']]]] anthropic_api_keys: Anthropic API Key information
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentAgentGuardrailArgs', 'GenaiAgentAgentGuardrailArgsDict', 'outputs.GenaiAgentAgentGuardrail']]]] agent_guardrails: AgentGuardrail represents a Guardrail attached to Gen AI Agent
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentAnthropicApiKeyArgs', 'GenaiAgentAnthropicApiKeyArgsDict', 'outputs.GenaiAgentAnthropicApiKey']]]] anthropic_api_keys: Anthropic API Key information
         :param pulumi.Input[_builtins.str] anthropic_key_uuid: Optional Anthropic API key ID to use with Anthropic models
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentApiKeyInfoArgs', 'GenaiAgentApiKeyInfoArgsDict']]]] api_key_infos: List of API Key Infos
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentApiKeyArgs', 'GenaiAgentApiKeyArgsDict']]]] api_keys: List of API Keys
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentChatbotIdentifierArgs', 'GenaiAgentChatbotIdentifierArgsDict']]]] chatbot_identifiers: List of Chatbot Identifiers
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentChatbotArgs', 'GenaiAgentChatbotArgsDict']]]] chatbots: ChatBot configuration
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentChildAgentArgs', 'GenaiAgentChildAgentArgsDict']]]] child_agents: List of child agents
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentApiKeyInfoArgs', 'GenaiAgentApiKeyInfoArgsDict', 'outputs.GenaiAgentApiKeyInfo']]]] api_key_infos: List of API Key Infos
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentApiKeyArgs', 'GenaiAgentApiKeyArgsDict', 'outputs.GenaiAgentApiKey']]]] api_keys: List of API Keys
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentChatbotIdentifierArgs', 'GenaiAgentChatbotIdentifierArgsDict', 'outputs.GenaiAgentChatbotIdentifier']]]] chatbot_identifiers: List of Chatbot Identifiers
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentChatbotArgs', 'GenaiAgentChatbotArgsDict', 'outputs.GenaiAgentChatbot']]]] chatbots: ChatBot configuration
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentChildAgentArgs', 'GenaiAgentChildAgentArgsDict', 'outputs.GenaiAgentChildAgent']]]] child_agents: List of child agents
         :param pulumi.Input[_builtins.str] created_at: Timestamp when the Agent was created
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentDeploymentArgs', 'GenaiAgentDeploymentArgsDict']]]] deployments: List of API Key Infos
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentDeploymentArgs', 'GenaiAgentDeploymentArgsDict', 'outputs.GenaiAgentDeployment']]]] deployments: List of API Key Infos
         :param pulumi.Input[_builtins.str] description: Description for the Agent
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentFunctionArgs', 'GenaiAgentFunctionArgsDict']]]] functions: List of Functions
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentFunctionArgs', 'GenaiAgentFunctionArgsDict', 'outputs.GenaiAgentFunction']]]] functions: List of Functions
         :param pulumi.Input[_builtins.str] if_case: If case condition
         :param pulumi.Input[_builtins.str] instruction: Instruction for the Agent
         :param pulumi.Input[_builtins.int] k: K value
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] knowledge_base_uuids: Ids of the knowledge base(s) to attach to the agent
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentKnowledgeBaseArgs', 'GenaiAgentKnowledgeBaseArgsDict']]]] knowledge_bases: List of Knowledge Bases
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentKnowledgeBaseArgs', 'GenaiAgentKnowledgeBaseArgsDict', 'outputs.GenaiAgentKnowledgeBase']]]] knowledge_bases: List of Knowledge Bases
         :param pulumi.Input[_builtins.int] max_tokens: Maximum tokens allowed
         :param pulumi.Input[_builtins.str] model_uuid: Model UUID of the Agent
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentModelArgs', 'GenaiAgentModelArgsDict']]]] models: Model of the Agent
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentModelArgs', 'GenaiAgentModelArgsDict', 'outputs.GenaiAgentModel']]]] models: Model of the Agent
         :param pulumi.Input[_builtins.str] name: Name of the Agent
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentOpenAiApiKeyArgs', 'GenaiAgentOpenAiApiKeyArgsDict']]]] open_ai_api_keys: OpenAI API Key information
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentOpenAiApiKeyArgs', 'GenaiAgentOpenAiApiKeyArgsDict', 'outputs.GenaiAgentOpenAiApiKey']]]] open_ai_api_keys: OpenAI API Key information
         :param pulumi.Input[_builtins.str] open_ai_key_uuid: Optional OpenAI API key ID to use with OpenAI models
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentParentAgentArgs', 'GenaiAgentParentAgentArgsDict']]]] parent_agents: List of child agents
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentParentAgentArgs', 'GenaiAgentParentAgentArgsDict', 'outputs.GenaiAgentParentAgent']]]] parent_agents: List of child agents
         :param pulumi.Input[_builtins.str] project_id: Project ID of the Agent
         :param pulumi.Input[_builtins.bool] provide_citations: Indicates if the agent should provide citations in responses
         :param pulumi.Input[_builtins.str] region: Region where the Agent is deployed
@@ -1585,7 +1585,7 @@ class GenaiAgent(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] route_uuid: Route UUID
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: List of Tags
         :param pulumi.Input[_builtins.float] temperature: Agent temperature setting
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentTemplateArgs', 'GenaiAgentTemplateArgsDict']]]] templates: Agent Template
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentTemplateArgs', 'GenaiAgentTemplateArgsDict', 'outputs.GenaiAgentTemplate']]]] templates: Agent Template
         :param pulumi.Input[_builtins.float] top_p: Top P sampling parameter
         :param pulumi.Input[_builtins.str] updated_at: Timestamp when the Agent was updated
         :param pulumi.Input[_builtins.str] url: URL for the Agent

@@ -408,7 +408,7 @@ class MonitorAlert(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alerts: pulumi.Input[Optional[Union['MonitorAlertAlertsArgs', 'MonitorAlertAlertsArgsDict']]] = None,
+                 alerts: pulumi.Input[Optional[Union['MonitorAlertAlertsArgs', 'MonitorAlertAlertsArgsDict', 'outputs.MonitorAlertAlerts']]] = None,
                  compare: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -435,7 +435,7 @@ class MonitorAlert(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['MonitorAlertAlertsArgs', 'MonitorAlertAlertsArgsDict']] alerts: How to send notifications about the alerts. This is a list with one element, .
+        :param pulumi.Input[Union['MonitorAlertAlertsArgs', 'MonitorAlertAlertsArgsDict', 'outputs.MonitorAlertAlerts']] alerts: How to send notifications about the alerts. This is a list with one element, .
                Note that for Slack, the DigitalOcean app needs to have permissions for your workspace. You can
                read more in [Slack's documentation](https://slack.com/intl/en-dk/help/articles/222386767-Manage-app-installation-settings-for-your-workspace)
         :param pulumi.Input[_builtins.str] compare: The comparison for `value`.
@@ -498,7 +498,7 @@ class MonitorAlert(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alerts: pulumi.Input[Optional[Union['MonitorAlertAlertsArgs', 'MonitorAlertAlertsArgsDict']]] = None,
+                 alerts: pulumi.Input[Optional[Union['MonitorAlertAlertsArgs', 'MonitorAlertAlertsArgsDict', 'outputs.MonitorAlertAlerts']]] = None,
                  compare: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -548,7 +548,7 @@ class MonitorAlert(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            alerts: pulumi.Input[Optional[Union['MonitorAlertAlertsArgs', 'MonitorAlertAlertsArgsDict']]] = None,
+            alerts: pulumi.Input[Optional[Union['MonitorAlertAlertsArgs', 'MonitorAlertAlertsArgsDict', 'outputs.MonitorAlertAlerts']]] = None,
             compare: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             enabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -565,7 +565,7 @@ class MonitorAlert(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['MonitorAlertAlertsArgs', 'MonitorAlertAlertsArgsDict']] alerts: How to send notifications about the alerts. This is a list with one element, .
+        :param pulumi.Input[Union['MonitorAlertAlertsArgs', 'MonitorAlertAlertsArgsDict', 'outputs.MonitorAlertAlerts']] alerts: How to send notifications about the alerts. This is a list with one element, .
                Note that for Slack, the DigitalOcean app needs to have permissions for your workspace. You can
                read more in [Slack's documentation](https://slack.com/intl/en-dk/help/articles/222386767-Manage-app-installation-settings-for-your-workspace)
         :param pulumi.Input[_builtins.str] compare: The comparison for `value`.

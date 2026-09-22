@@ -414,7 +414,7 @@ class VpcNatGateway(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 egresses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VpcNatGatewayEgressArgs', 'VpcNatGatewayEgressArgsDict']]]]] = None,
+                 egresses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VpcNatGatewayEgressArgs', 'VpcNatGatewayEgressArgsDict', 'outputs.VpcNatGatewayEgress']]]]] = None,
                  icmp_timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -423,7 +423,7 @@ class VpcNatGateway(pulumi.CustomResource):
                  tcp_timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  udp_timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None,
-                 vpcs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VpcNatGatewayVpcArgs', 'VpcNatGatewayVpcArgsDict']]]]] = None,
+                 vpcs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VpcNatGatewayVpcArgs', 'VpcNatGatewayVpcArgsDict', 'outputs.VpcNatGatewayVpc']]]]] = None,
                  __props__=None):
         """
         Provides a DigitalOcean VPC NAT Gateway resource. This can be used to create, modify,
@@ -464,7 +464,7 @@ class VpcNatGateway(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VpcNatGatewayEgressArgs', 'VpcNatGatewayEgressArgsDict']]]] egresses: Embeds the list of public egresses assigned to the VPC NAT Gateway: resolves as list of
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VpcNatGatewayEgressArgs', 'VpcNatGatewayEgressArgsDict', 'outputs.VpcNatGatewayEgress']]]] egresses: Embeds the list of public egresses assigned to the VPC NAT Gateway: resolves as list of
                `public_gateways` embedding the reserved `ipv4` addresses.
         :param pulumi.Input[_builtins.int] icmp_timeout_seconds: The egress timeout value for ICMP connections of the VPC NAT Gateway.
         :param pulumi.Input[_builtins.str] name: The name of the VPC NAT Gateway.
@@ -474,7 +474,7 @@ class VpcNatGateway(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] tcp_timeout_seconds: The egress timeout value for TCP connections of the VPC NAT Gateway.
         :param pulumi.Input[_builtins.str] type: The type of the VPC NAT Gateway.
         :param pulumi.Input[_builtins.int] udp_timeout_seconds: The egress timeout value for UDP connections of the VPC NAT Gateway.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VpcNatGatewayVpcArgs', 'VpcNatGatewayVpcArgsDict']]]] vpcs: The ingress VPC configuration of the VPC NAT Gateway, the supported arguments are
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VpcNatGatewayVpcArgs', 'VpcNatGatewayVpcArgsDict', 'outputs.VpcNatGatewayVpc']]]] vpcs: The ingress VPC configuration of the VPC NAT Gateway, the supported arguments are
                documented below.
         """
         ...
@@ -535,7 +535,7 @@ class VpcNatGateway(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 egresses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VpcNatGatewayEgressArgs', 'VpcNatGatewayEgressArgsDict']]]]] = None,
+                 egresses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VpcNatGatewayEgressArgs', 'VpcNatGatewayEgressArgsDict', 'outputs.VpcNatGatewayEgress']]]]] = None,
                  icmp_timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -544,7 +544,7 @@ class VpcNatGateway(pulumi.CustomResource):
                  tcp_timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  udp_timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None,
-                 vpcs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VpcNatGatewayVpcArgs', 'VpcNatGatewayVpcArgsDict']]]]] = None,
+                 vpcs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VpcNatGatewayVpcArgs', 'VpcNatGatewayVpcArgsDict', 'outputs.VpcNatGatewayVpc']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -586,7 +586,7 @@ class VpcNatGateway(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
-            egresses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VpcNatGatewayEgressArgs', 'VpcNatGatewayEgressArgsDict']]]]] = None,
+            egresses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VpcNatGatewayEgressArgs', 'VpcNatGatewayEgressArgsDict', 'outputs.VpcNatGatewayEgress']]]]] = None,
             icmp_timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -597,7 +597,7 @@ class VpcNatGateway(pulumi.CustomResource):
             type: pulumi.Input[Optional[_builtins.str]] = None,
             udp_timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None,
             updated_at: pulumi.Input[Optional[_builtins.str]] = None,
-            vpcs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VpcNatGatewayVpcArgs', 'VpcNatGatewayVpcArgsDict']]]]] = None) -> 'VpcNatGateway':
+            vpcs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VpcNatGatewayVpcArgs', 'VpcNatGatewayVpcArgsDict', 'outputs.VpcNatGatewayVpc']]]]] = None) -> 'VpcNatGateway':
         """
         Get an existing VpcNatGateway resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -606,7 +606,7 @@ class VpcNatGateway(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] created_at: Created at timestamp for the VPC NAT Gateway.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VpcNatGatewayEgressArgs', 'VpcNatGatewayEgressArgsDict']]]] egresses: Embeds the list of public egresses assigned to the VPC NAT Gateway: resolves as list of
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VpcNatGatewayEgressArgs', 'VpcNatGatewayEgressArgsDict', 'outputs.VpcNatGatewayEgress']]]] egresses: Embeds the list of public egresses assigned to the VPC NAT Gateway: resolves as list of
                `public_gateways` embedding the reserved `ipv4` addresses.
         :param pulumi.Input[_builtins.int] icmp_timeout_seconds: The egress timeout value for ICMP connections of the VPC NAT Gateway.
         :param pulumi.Input[_builtins.str] name: The name of the VPC NAT Gateway.
@@ -618,7 +618,7 @@ class VpcNatGateway(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] type: The type of the VPC NAT Gateway.
         :param pulumi.Input[_builtins.int] udp_timeout_seconds: The egress timeout value for UDP connections of the VPC NAT Gateway.
         :param pulumi.Input[_builtins.str] updated_at: Updated at timestamp for the VPC NAT Gateway.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VpcNatGatewayVpcArgs', 'VpcNatGatewayVpcArgsDict']]]] vpcs: The ingress VPC configuration of the VPC NAT Gateway, the supported arguments are
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VpcNatGatewayVpcArgs', 'VpcNatGatewayVpcArgsDict', 'outputs.VpcNatGatewayVpc']]]] vpcs: The ingress VPC configuration of the VPC NAT Gateway, the supported arguments are
                documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

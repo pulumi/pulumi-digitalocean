@@ -127,8 +127,8 @@ class GenaiKnowledgeBaseDataSource(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  knowledge_base_uuid: pulumi.Input[Optional[_builtins.str]] = None,
-                 spaces_data_source: pulumi.Input[Optional[Union['GenaiKnowledgeBaseDataSourceSpacesDataSourceArgs', 'GenaiKnowledgeBaseDataSourceSpacesDataSourceArgsDict']]] = None,
-                 web_crawler_data_source: pulumi.Input[Optional[Union['GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs', 'GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgsDict']]] = None,
+                 spaces_data_source: pulumi.Input[Optional[Union['GenaiKnowledgeBaseDataSourceSpacesDataSourceArgs', 'GenaiKnowledgeBaseDataSourceSpacesDataSourceArgsDict', 'outputs.GenaiKnowledgeBaseDataSourceSpacesDataSource']]] = None,
+                 web_crawler_data_source: pulumi.Input[Optional[Union['GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs', 'GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgsDict', 'outputs.GenaiKnowledgeBaseDataSourceWebCrawlerDataSource']]] = None,
                  __props__=None):
         """
         Create a GenaiKnowledgeBaseDataSource resource with the given unique name, props, and options.
@@ -162,8 +162,8 @@ class GenaiKnowledgeBaseDataSource(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  knowledge_base_uuid: pulumi.Input[Optional[_builtins.str]] = None,
-                 spaces_data_source: pulumi.Input[Optional[Union['GenaiKnowledgeBaseDataSourceSpacesDataSourceArgs', 'GenaiKnowledgeBaseDataSourceSpacesDataSourceArgsDict']]] = None,
-                 web_crawler_data_source: pulumi.Input[Optional[Union['GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs', 'GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgsDict']]] = None,
+                 spaces_data_source: pulumi.Input[Optional[Union['GenaiKnowledgeBaseDataSourceSpacesDataSourceArgs', 'GenaiKnowledgeBaseDataSourceSpacesDataSourceArgsDict', 'outputs.GenaiKnowledgeBaseDataSourceSpacesDataSource']]] = None,
+                 web_crawler_data_source: pulumi.Input[Optional[Union['GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs', 'GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgsDict', 'outputs.GenaiKnowledgeBaseDataSourceWebCrawlerDataSource']]] = None,
                  __props__=None):
         pulumi.log.warn("""GenaiKnowledgeBaseDataSource is deprecated: digitalocean.GenaiKnowledgeBaseDataSource has been deprecated in favor of digitalocean.GradientaiKnowledgeBaseDataSource""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -190,8 +190,8 @@ class GenaiKnowledgeBaseDataSource(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             knowledge_base_uuid: pulumi.Input[Optional[_builtins.str]] = None,
-            spaces_data_source: pulumi.Input[Optional[Union['GenaiKnowledgeBaseDataSourceSpacesDataSourceArgs', 'GenaiKnowledgeBaseDataSourceSpacesDataSourceArgsDict']]] = None,
-            web_crawler_data_source: pulumi.Input[Optional[Union['GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs', 'GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgsDict']]] = None) -> 'GenaiKnowledgeBaseDataSource':
+            spaces_data_source: pulumi.Input[Optional[Union['GenaiKnowledgeBaseDataSourceSpacesDataSourceArgs', 'GenaiKnowledgeBaseDataSourceSpacesDataSourceArgsDict', 'outputs.GenaiKnowledgeBaseDataSourceSpacesDataSource']]] = None,
+            web_crawler_data_source: pulumi.Input[Optional[Union['GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs', 'GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgsDict', 'outputs.GenaiKnowledgeBaseDataSourceWebCrawlerDataSource']]] = None) -> 'GenaiKnowledgeBaseDataSource':
         """
         Get an existing GenaiKnowledgeBaseDataSource resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

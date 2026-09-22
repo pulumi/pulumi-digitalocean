@@ -78,8 +78,8 @@ class AwaitableGetGradientaiRegionsResult(GetGradientaiRegionsResult):
             sorts=self.sorts)
 
 
-def get_gradientai_regions(filters: Optional[Sequence[Union['GetGradientaiRegionsFilterArgs', 'GetGradientaiRegionsFilterArgsDict']]] = None,
-                           sorts: Optional[Sequence[Union['GetGradientaiRegionsSortArgs', 'GetGradientaiRegionsSortArgsDict']]] = None,
+def get_gradientai_regions(filters: Optional[Sequence[Union['GetGradientaiRegionsFilterArgs', 'GetGradientaiRegionsFilterArgsDict', 'outputs.GetGradientaiRegionsFilterResult']]] = None,
+                           sorts: Optional[Sequence[Union['GetGradientaiRegionsSortArgs', 'GetGradientaiRegionsSortArgsDict', 'outputs.GetGradientaiRegionsSortResult']]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGradientaiRegionsResult:
     """
     Use this data source to access information about an existing resource.
@@ -95,8 +95,8 @@ def get_gradientai_regions(filters: Optional[Sequence[Union['GetGradientaiRegion
         id=pulumi.get(__ret__, 'id'),
         regions=pulumi.get(__ret__, 'regions'),
         sorts=pulumi.get(__ret__, 'sorts'))
-def get_gradientai_regions_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetGradientaiRegionsFilterArgs', 'GetGradientaiRegionsFilterArgsDict']]]]] = None,
-                                  sorts: pulumi.Input[Optional[Optional[Sequence[Union['GetGradientaiRegionsSortArgs', 'GetGradientaiRegionsSortArgsDict']]]]] = None,
+def get_gradientai_regions_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetGradientaiRegionsFilterArgs', 'GetGradientaiRegionsFilterArgsDict', 'outputs.GetGradientaiRegionsFilterResult']]]]] = None,
+                                  sorts: pulumi.Input[Optional[Optional[Sequence[Union['GetGradientaiRegionsSortArgs', 'GetGradientaiRegionsSortArgsDict', 'outputs.GetGradientaiRegionsSortResult']]]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGradientaiRegionsResult]:
     """
     Use this data source to access information about an existing resource.

@@ -88,8 +88,8 @@ class AwaitableGetGradientaiAgentVersionsResult(GetGradientaiAgentVersionsResult
 
 
 def get_gradientai_agent_versions(agent_id: Optional[_builtins.str] = None,
-                                  filters: Optional[Sequence[Union['GetGradientaiAgentVersionsFilterArgs', 'GetGradientaiAgentVersionsFilterArgsDict']]] = None,
-                                  sorts: Optional[Sequence[Union['GetGradientaiAgentVersionsSortArgs', 'GetGradientaiAgentVersionsSortArgsDict']]] = None,
+                                  filters: Optional[Sequence[Union['GetGradientaiAgentVersionsFilterArgs', 'GetGradientaiAgentVersionsFilterArgsDict', 'outputs.GetGradientaiAgentVersionsFilterResult']]] = None,
+                                  sorts: Optional[Sequence[Union['GetGradientaiAgentVersionsSortArgs', 'GetGradientaiAgentVersionsSortArgsDict', 'outputs.GetGradientaiAgentVersionsSortResult']]] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGradientaiAgentVersionsResult:
     """
     Use this data source to access information about an existing resource.
@@ -108,8 +108,8 @@ def get_gradientai_agent_versions(agent_id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         sorts=pulumi.get(__ret__, 'sorts'))
 def get_gradientai_agent_versions_output(agent_id: pulumi.Input[Optional[_builtins.str]] = None,
-                                         filters: pulumi.Input[Optional[Optional[Sequence[Union['GetGradientaiAgentVersionsFilterArgs', 'GetGradientaiAgentVersionsFilterArgsDict']]]]] = None,
-                                         sorts: pulumi.Input[Optional[Optional[Sequence[Union['GetGradientaiAgentVersionsSortArgs', 'GetGradientaiAgentVersionsSortArgsDict']]]]] = None,
+                                         filters: pulumi.Input[Optional[Optional[Sequence[Union['GetGradientaiAgentVersionsFilterArgs', 'GetGradientaiAgentVersionsFilterArgsDict', 'outputs.GetGradientaiAgentVersionsFilterResult']]]]] = None,
+                                         sorts: pulumi.Input[Optional[Optional[Sequence[Union['GetGradientaiAgentVersionsSortArgs', 'GetGradientaiAgentVersionsSortArgsDict', 'outputs.GetGradientaiAgentVersionsSortResult']]]]] = None,
                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGradientaiAgentVersionsResult]:
     """
     Use this data source to access information about an existing resource.
