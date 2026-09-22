@@ -45,6 +45,15 @@ const (
 )
 
 // makeMember manufactures a type token for the DigitalOcean package and the given module and type.
+const (
+	stringType                      = "string"
+	regionProperty                  = "region"
+	sizeProperty                    = "size"
+	urnProperty                     = "urn"
+	nameProperty                    = "name"
+	gradientAIKnowledgeBaseResource = "digitalocean_gradientai_knowledge_base"
+)
+
 func makeMember(mod string, mem string) tokens.ModuleMember {
 	return tokens.ModuleMember(digitalOceanPkg + ":" + mod + ":" + mem)
 }
@@ -75,14 +84,14 @@ func Provider() tfbridge.ProviderInfo {
 	p := shimv2.NewProvider(digitalocean.Provider())
 	prov := tfbridge.ProviderInfo{
 		P:                p,
-		Name:             "digitalocean",
+		Name:             digitalOceanPkg,
 		DisplayName:      "DigitalOcean",
 		Description:      "A Pulumi package for creating and managing DigitalOcean cloud resources.",
-		Keywords:         []string{"pulumi", "digitalocean"},
+		Keywords:         []string{"pulumi", digitalOceanPkg},
 		License:          "Apache-2.0",
 		Homepage:         "https://pulumi.io",
 		Repository:       "https://github.com/pulumi/pulumi-digitalocean",
-		GitHubOrg:        "digitalocean",
+		GitHubOrg:        digitalOceanPkg,
 		UpstreamRepoPath: "./upstream",
 		Config: map[string]*tfbridge.SchemaInfo{
 			"token": {
@@ -106,7 +115,7 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: makeResource(digitalOceanMod, "Certificate"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"type": {
-						Type:     "string",
+						Type:     stringType,
 						AltTypes: []tokens.Type{makeType(digitalOceanMod, "CertificateType")},
 					},
 				},
@@ -114,15 +123,15 @@ func Provider() tfbridge.ProviderInfo {
 			"digitalocean_database_cluster": {
 				Tok: makeResource(digitalOceanMod, "DatabaseCluster"),
 				Fields: map[string]*tfbridge.SchemaInfo{
-					"region": {
-						Type:     "string",
+					regionProperty: {
+						Type:     stringType,
 						AltTypes: []tokens.Type{makeType(digitalOceanMod, "Region")},
 					},
-					"size": {
-						Type:     "string",
+					sizeProperty: {
+						Type:     stringType,
 						AltTypes: []tokens.Type{makeType(digitalOceanMod, "DatabaseSlug")},
 					},
-					"urn": {
+					urnProperty: {
 						Name: "clusterUrn",
 					},
 				},
@@ -133,12 +142,12 @@ func Provider() tfbridge.ProviderInfo {
 			"digitalocean_database_replica": {
 				Tok: makeResource(digitalOceanMod, "DatabaseReplica"),
 				Fields: map[string]*tfbridge.SchemaInfo{
-					"region": {
-						Type:     "string",
+					regionProperty: {
+						Type:     stringType,
 						AltTypes: []tokens.Type{makeType(digitalOceanMod, "Region")},
 					},
-					"size": {
-						Type:     "string",
+					sizeProperty: {
+						Type:     stringType,
 						AltTypes: []tokens.Type{makeType(digitalOceanMod, "DatabaseSlug")},
 					},
 				},
@@ -149,10 +158,10 @@ func Provider() tfbridge.ProviderInfo {
 			"digitalocean_domain": {
 				Tok: makeResource(digitalOceanMod, "Domain"),
 				Fields: map[string]*tfbridge.SchemaInfo{
-					"name": {
-						Name: "name",
+					nameProperty: {
+						Name: nameProperty,
 					},
-					"urn": {
+					urnProperty: {
 						Name: "domainUrn",
 					},
 				},
@@ -160,15 +169,15 @@ func Provider() tfbridge.ProviderInfo {
 			"digitalocean_droplet": {
 				Tok: makeResource(digitalOceanMod, "Droplet"),
 				Fields: map[string]*tfbridge.SchemaInfo{
-					"region": {
-						Type:     "string",
+					regionProperty: {
+						Type:     stringType,
 						AltTypes: []tokens.Type{makeType(digitalOceanMod, "Region")},
 					},
-					"size": {
-						Type:     "string",
+					sizeProperty: {
+						Type:     stringType,
 						AltTypes: []tokens.Type{makeType(digitalOceanMod, "DropletSlug")},
 					},
-					"urn": {
+					urnProperty: {
 						Name: "dropletUrn",
 					},
 				},
@@ -178,13 +187,13 @@ func Provider() tfbridge.ProviderInfo {
 			"digitalocean_floating_ip": {
 				Tok: makeResource(digitalOceanMod, "FloatingIp"),
 				Fields: map[string]*tfbridge.SchemaInfo{
-					"urn": {
+					urnProperty: {
 						Name: "floatingIpUrn",
 					},
 				},
 			},
 			"digitalocean_floating_ip_assignment": {Tok: makeResource(digitalOceanMod, "FloatingIpAssignment")},
-			"digitalocean_gradientai_knowledge_base": {
+			gradientAIKnowledgeBaseResource: {
 				Tok: makeResource(digitalOceanMod, "GradientaiKnowledgeBase"),
 				Fields: map[string]*info.Schema{
 					"datasources": {
@@ -198,11 +207,11 @@ func Provider() tfbridge.ProviderInfo {
 			"digitalocean_kubernetes_cluster": {
 				Tok: makeResource(digitalOceanMod, "KubernetesCluster"),
 				Fields: map[string]*tfbridge.SchemaInfo{
-					"region": {
-						Type:     "string",
+					regionProperty: {
+						Type:     stringType,
 						AltTypes: []tokens.Type{makeType(digitalOceanMod, "Region")},
 					},
-					"urn": {
+					urnProperty: {
 						Name: "clusterUrn",
 					},
 				},
@@ -210,8 +219,8 @@ func Provider() tfbridge.ProviderInfo {
 			"digitalocean_kubernetes_node_pool": {
 				Tok: makeResource(digitalOceanMod, "KubernetesNodePool"),
 				Fields: map[string]*tfbridge.SchemaInfo{
-					"size": {
-						Type:     "string",
+					sizeProperty: {
+						Type:     stringType,
 						AltTypes: []tokens.Type{makeType(digitalOceanMod, "DropletSlug")},
 					},
 				},
@@ -219,15 +228,15 @@ func Provider() tfbridge.ProviderInfo {
 			"digitalocean_loadbalancer": {
 				Tok: makeResource(digitalOceanMod, "LoadBalancer"),
 				Fields: map[string]*tfbridge.SchemaInfo{
-					"region": {
-						Type:     "string",
+					regionProperty: {
+						Type:     stringType,
 						AltTypes: []tokens.Type{makeType(digitalOceanMod, "Region")},
 					},
 					"algorithm": {
-						Type:     "string",
+						Type:     stringType,
 						AltTypes: []tokens.Type{makeType(digitalOceanMod, "Algorithm")},
 					},
-					"urn": {
+					urnProperty: {
 						Name: "loadBalancerUrn",
 					},
 				},
@@ -237,7 +246,7 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: makeResource(digitalOceanMod, "DnsRecord"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"type": {
-						Type:     "string",
+						Type:     stringType,
 						AltTypes: []tokens.Type{makeType(digitalOceanMod, "RecordType")},
 					},
 				},
@@ -246,11 +255,11 @@ func Provider() tfbridge.ProviderInfo {
 			"digitalocean_spaces_bucket": {
 				Tok: makeResource(digitalOceanMod, "SpacesBucket"),
 				Fields: map[string]*tfbridge.SchemaInfo{
-					"region": {
-						Type:     "string",
+					regionProperty: {
+						Type:     stringType,
 						AltTypes: []tokens.Type{makeType(digitalOceanMod, "Region")},
 					},
-					"urn": {
+					urnProperty: {
 						Name: "bucketUrn",
 					},
 				},
@@ -260,18 +269,18 @@ func Provider() tfbridge.ProviderInfo {
 			"digitalocean_volume": {
 				Tok: makeResource(digitalOceanMod, "Volume"),
 				Fields: map[string]*tfbridge.SchemaInfo{
-					"name": tfbridge.AutoNameTransform("name", 64, func(name string) string {
+					nameProperty: tfbridge.AutoNameTransform(nameProperty, 64, func(name string) string {
 						return strings.ToLower(name)
 					}),
-					"region": {
-						Type:     "string",
+					regionProperty: {
+						Type:     stringType,
 						AltTypes: []tokens.Type{makeType(digitalOceanMod, "Region")},
 					},
 					"initial_filesystem_type": {
-						Type:     "string",
+						Type:     stringType,
 						AltTypes: []tokens.Type{makeType(digitalOceanMod, "FileSystemType")},
 					},
-					"urn": {
+					urnProperty: {
 						Name: "volumeUrn",
 					},
 				},
@@ -281,7 +290,7 @@ func Provider() tfbridge.ProviderInfo {
 			"digitalocean_vpc": {
 				Tok: makeResource(digitalOceanMod, "Vpc"),
 				Fields: map[string]*tfbridge.SchemaInfo{
-					"urn": {
+					urnProperty: {
 						Name: "vpcUrn",
 					},
 				},
@@ -294,7 +303,7 @@ func Provider() tfbridge.ProviderInfo {
 			"digitalocean_app": {
 				Tok: makeResource(digitalOceanMod, "App"),
 				Fields: map[string]*tfbridge.SchemaInfo{
-					"urn": {Name: "appUrn"},
+					urnProperty: {Name: "appUrn"},
 					"spec": {
 						Elem: &tfbridge.SchemaInfo{
 							Fields: map[string]*tfbridge.SchemaInfo{
@@ -312,7 +321,7 @@ func Provider() tfbridge.ProviderInfo {
 			"digitalocean_reserved_ip": {
 				Tok: makeResource(digitalOceanMod, "ReservedIp"),
 				Fields: map[string]*tfbridge.SchemaInfo{
-					"urn": {Name: "reservedIpUrn"},
+					urnProperty: {Name: "reservedIpUrn"},
 				},
 			},
 			"digitalocean_reserved_ip_assignment": {Tok: makeResource(digitalOceanMod, "ReservedIpAssignment")},
@@ -320,7 +329,7 @@ func Provider() tfbridge.ProviderInfo {
 			"digitalocean_reserved_ipv6": {
 				Docs: &info.Doc{AllowMissing: true},
 				Fields: map[string]*tfbridge.SchemaInfo{
-					"urn": {Name: "reservedIpv6Urn"},
+					urnProperty: {Name: "reservedIpv6Urn"},
 				},
 			},
 			"digitalocean_reserved_ipv6_assignment": {Docs: &info.Doc{AllowMissing: true}},
@@ -328,7 +337,7 @@ func Provider() tfbridge.ProviderInfo {
 		ExtraTypes: map[string]schema.ComplexTypeSpec{
 			"digitalocean:index:Region": {
 				ObjectTypeSpec: schema.ObjectTypeSpec{
-					Type: "string",
+					Type: stringType,
 				},
 				Enum: []schema.EnumValueSpec{
 					{Name: "NYC1", Value: "nyc1"},
@@ -349,7 +358,7 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"digitalocean:index:RecordType": {
 				ObjectTypeSpec: schema.ObjectTypeSpec{
-					Type: "string",
+					Type: stringType,
 				},
 				Enum: []schema.EnumValueSpec{
 					{Name: "A", Value: "A"},
@@ -364,7 +373,7 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"digitalocean:index:Protocol": {
 				ObjectTypeSpec: schema.ObjectTypeSpec{
-					Type: "string",
+					Type: stringType,
 				},
 				Enum: []schema.EnumValueSpec{
 					{Name: "TCP", Value: "tcp"},
@@ -376,7 +385,7 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"digitalocean:index:Algorithm": {
 				ObjectTypeSpec: schema.ObjectTypeSpec{
-					Type: "string",
+					Type: stringType,
 				},
 				Enum: []schema.EnumValueSpec{
 					{Name: "RoundRobin", Value: "round_robin"},
@@ -385,7 +394,7 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"digitalocean:index:FileSystemType": {
 				ObjectTypeSpec: schema.ObjectTypeSpec{
-					Type: "string",
+					Type: stringType,
 				},
 				Enum: []schema.EnumValueSpec{
 					{Name: "EXT4", Value: "ext4"},
@@ -394,7 +403,7 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"digitalocean:index:CertificateType": {
 				ObjectTypeSpec: schema.ObjectTypeSpec{
-					Type: "string",
+					Type: stringType,
 				},
 				Enum: []schema.EnumValueSpec{
 					{Name: "LetsEncrypt", Value: "lets_encrypt"},
@@ -403,7 +412,7 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"digitalocean:index:DatabaseSlug": {
 				ObjectTypeSpec: schema.ObjectTypeSpec{
-					Type: "string",
+					Type: stringType,
 				},
 				Enum: []schema.EnumValueSpec{
 					{Name: "DB_1VPCU1GB", Value: "db-s-1vcpu-1gb"},
@@ -417,7 +426,7 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"digitalocean:index:DropletSlug": {
 				ObjectTypeSpec: schema.ObjectTypeSpec{
-					Type: "string",
+					Type: stringType,
 				},
 				// Generated with `doctl compute size list --output json | jq -r '.[].slug'`.
 				Enum: []schema.EnumValueSpec{
@@ -600,7 +609,7 @@ func Provider() tfbridge.ProviderInfo {
 			"digitalocean_domain": {
 				Tok: makeDataSource(digitalOceanMod, "getDomain"),
 				Fields: map[string]*tfbridge.SchemaInfo{
-					"urn": {Name: "domainUrn"},
+					urnProperty: {Name: "domainUrn"},
 				},
 			},
 			"digitalocean_droplet":          {Tok: makeDataSource(digitalOceanMod, "getDroplet")},
@@ -608,7 +617,7 @@ func Provider() tfbridge.ProviderInfo {
 			"digitalocean_floating_ip": {
 				Tok: makeDataSource(digitalOceanMod, "getFloatingIp"),
 				Fields: map[string]*tfbridge.SchemaInfo{
-					"urn": {Name: "floatingIpUrn"},
+					urnProperty: {Name: "floatingIpUrn"},
 				},
 			},
 			"digitalocean_image":               {Tok: makeDataSource(digitalOceanMod, "getImage")},
@@ -617,7 +626,7 @@ func Provider() tfbridge.ProviderInfo {
 			"digitalocean_loadbalancer": {
 				Tok: makeDataSource(digitalOceanMod, "getLoadBalancer"),
 				Fields: map[string]*tfbridge.SchemaInfo{
-					"urn": {Name: "loadBalancerUrn"},
+					urnProperty: {Name: "loadBalancerUrn"},
 				},
 			},
 			"digitalocean_record":                {Tok: makeDataSource(digitalOceanMod, "getRecord")},
@@ -679,7 +688,7 @@ func Provider() tfbridge.ProviderInfo {
 				"Pulumi": "3.*",
 			},
 			Namespaces: map[string]string{
-				"digitalocean": "DigitalOcean",
+				digitalOceanPkg: "DigitalOcean",
 			},
 		},
 		MetadataInfo:                   tfbridge.NewProviderMetadata(metadata),
@@ -714,7 +723,7 @@ func Provider() tfbridge.ProviderInfo {
 		{"digitalocean_gradientai_agent_route", "GenaiAgentRoute", "GradientaiAgentRoute"},
 		{"digitalocean_gradientai_function", "GenaiFunction", "GradientaiFunction"},
 		{"digitalocean_gradientai_indexing_job_cancel", "GenaiIndexingJobCancel", "GradientaiIndexingJobCancel"},
-		{"digitalocean_gradientai_knowledge_base", "GenaiKnowledgeBase", "GradientaiKnowledgeBase"},
+		{gradientAIKnowledgeBaseResource, "GenaiKnowledgeBase", "GradientaiKnowledgeBase"},
 		{
 			"digitalocean_gradientai_knowledge_base_data_source",
 			"GenaiKnowledgeBaseDataSource",
@@ -743,7 +752,7 @@ func Provider() tfbridge.ProviderInfo {
 			"getGenaiIndexingJobDataSources",
 			"getGradientaiIndexingJobDataSources",
 		},
-		{"digitalocean_gradientai_knowledge_base", "getGenaiKnowledgeBase", "getGradientaiKnowledgeBase"},
+		{gradientAIKnowledgeBaseResource, "getGenaiKnowledgeBase", "getGradientaiKnowledgeBase"},
 		{
 			"digitalocean_gradientai_knowledge_base_data_sources",
 			"getGenaiKnowledgeBaseDataSources",
