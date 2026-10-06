@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.DigitalOcean
 {
+    [Obsolete(@"digitalocean.GradientaiKnowledgeBase has been deprecated in favor of digitalocean.AgentPlatformKnowledgeBase")]
     [DigitalOceanResourceType("digitalocean:index/gradientaiKnowledgeBase:GradientaiKnowledgeBase")]
     public partial class GradientaiKnowledgeBase : global::Pulumi.CustomResource
     {
@@ -34,7 +35,7 @@ namespace Pulumi.DigitalOcean
         /// Data sources for the knowledge base
         /// </summary>
         [Output("datasources")]
-        public Output<ImmutableArray<Outputs.GradientaiKnowledgeBaseDataSource>> Datasources { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.AgentPlatformKnowledgeBaseDataSource>> Datasources { get; private set; } = null!;
 
         /// <summary>
         /// The unique identifier of the embedding model
@@ -101,10 +102,6 @@ namespace Pulumi.DigitalOcean
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                Aliases =
-                {
-                    new global::Pulumi.Alias { Type = "digitalocean:index/genaiKnowledgeBase:GenaiKnowledgeBase" },
-                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -141,14 +138,14 @@ namespace Pulumi.DigitalOcean
         public Input<string>? DatabaseId { get; set; }
 
         [Input("datasources", required: true)]
-        private InputList<Inputs.GradientaiKnowledgeBaseDataSourceArgs>? _datasources;
+        private InputList<Inputs.AgentPlatformKnowledgeBaseDataSourceArgs>? _datasources;
 
         /// <summary>
         /// Data sources for the knowledge base
         /// </summary>
-        public InputList<Inputs.GradientaiKnowledgeBaseDataSourceArgs> Datasources
+        public InputList<Inputs.AgentPlatformKnowledgeBaseDataSourceArgs> Datasources
         {
-            get => _datasources ?? (_datasources = new InputList<Inputs.GradientaiKnowledgeBaseDataSourceArgs>());
+            get => _datasources ?? (_datasources = new InputList<Inputs.AgentPlatformKnowledgeBaseDataSourceArgs>());
             set => _datasources = value;
         }
 
@@ -232,14 +229,14 @@ namespace Pulumi.DigitalOcean
         public Input<string>? DatabaseId { get; set; }
 
         [Input("datasources")]
-        private InputList<Inputs.GradientaiKnowledgeBaseDataSourceGetArgs>? _datasources;
+        private InputList<Inputs.AgentPlatformKnowledgeBaseDataSourceGetArgs>? _datasources;
 
         /// <summary>
         /// Data sources for the knowledge base
         /// </summary>
-        public InputList<Inputs.GradientaiKnowledgeBaseDataSourceGetArgs> Datasources
+        public InputList<Inputs.AgentPlatformKnowledgeBaseDataSourceGetArgs> Datasources
         {
-            get => _datasources ?? (_datasources = new InputList<Inputs.GradientaiKnowledgeBaseDataSourceGetArgs>());
+            get => _datasources ?? (_datasources = new InputList<Inputs.AgentPlatformKnowledgeBaseDataSourceGetArgs>());
             set => _datasources = value;
         }
 

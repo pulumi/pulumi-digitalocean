@@ -23,6 +23,8 @@ __all__ = [
     'get_gradientai_knowledge_base_output',
 ]
 
+warnings.warn("""digitalocean.getGradientaiKnowledgeBase has been deprecated in favor of digitalocean.getAgentPlatformKnowledgeBase""", DeprecationWarning)
+
 @pulumi.output_type
 class GetGradientaiKnowledgeBaseResult:
     """
@@ -183,6 +185,7 @@ def get_gradientai_knowledge_base(added_to_agent_at: Optional[_builtins.str] = N
     """
     Use this data source to access information about an existing resource.
     """
+    pulumi.log.warn("""get_gradientai_knowledge_base is deprecated: digitalocean.getGradientaiKnowledgeBase has been deprecated in favor of digitalocean.getAgentPlatformKnowledgeBase""")
     __args__ = dict()
     __args__['addedToAgentAt'] = added_to_agent_at
     __args__['databaseId'] = database_id
@@ -228,6 +231,7 @@ def get_gradientai_knowledge_base_output(added_to_agent_at: pulumi.Input[Optiona
     """
     Use this data source to access information about an existing resource.
     """
+    pulumi.log.warn("""get_gradientai_knowledge_base is deprecated: digitalocean.getGradientaiKnowledgeBase has been deprecated in favor of digitalocean.getAgentPlatformKnowledgeBase""")
     __args__ = dict()
     __args__['addedToAgentAt'] = added_to_agent_at
     __args__['databaseId'] = database_id

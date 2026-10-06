@@ -3,7 +3,6 @@
 
 package com.pulumi.digitalocean;
 
-import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -16,6 +15,12 @@ import java.lang.String;
 import java.util.List;
 import javax.annotation.Nullable;
 
+/**
+ * @deprecated
+ * digitalocean.GradientaiIndexingJobCancel has been deprecated in favor of digitalocean.AgentPlatformIndexingJobCancel
+ * 
+ */
+@Deprecated /* digitalocean.GradientaiIndexingJobCancel has been deprecated in favor of digitalocean.AgentPlatformIndexingJobCancel */
 @ResourceType(type="digitalocean:index/gradientaiIndexingJobCancel:GradientaiIndexingJobCancel")
 public class GradientaiIndexingJobCancel extends com.pulumi.resources.CustomResource {
     /**
@@ -268,9 +273,6 @@ public class GradientaiIndexingJobCancel extends com.pulumi.resources.CustomReso
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .aliases(List.of(
-                Output.of(Alias.builder().type("digitalocean:index/genaiIndexingJobCancel:GenaiIndexingJobCancel").build())
-            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

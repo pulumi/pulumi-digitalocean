@@ -29,13 +29,13 @@ class GradientaiFunctionArgs:
         """
         The set of arguments for constructing a GradientaiFunction resource.
 
-        :param pulumi.Input[_builtins.str] agent_id: The name of the GradientAI resource.
-        :param pulumi.Input[_builtins.str] description: The region where the GradientAI resource will be created.
-        :param pulumi.Input[_builtins.str] faas_namespace: The current status of the GradientAI resource.
-        :param pulumi.Input[_builtins.str] function_name: The creation timestamp of the GradientAI resource.
-        :param pulumi.Input[_builtins.str] input_schema: The input schema of the GradientAI resource.
-        :param pulumi.Input[_builtins.str] faas_name: The model to use for the GradientAI resource.
-        :param pulumi.Input[_builtins.str] output_schema: The output schema of the GradientAI resource.
+        :param pulumi.Input[_builtins.str] agent_id: The name of the Agent Platform resource.
+        :param pulumi.Input[_builtins.str] description: The region where the Agent Platform resource will be created.
+        :param pulumi.Input[_builtins.str] faas_namespace: The current status of the Agent Platform resource.
+        :param pulumi.Input[_builtins.str] function_name: The creation timestamp of the Agent Platform resource.
+        :param pulumi.Input[_builtins.str] input_schema: The input schema of the Agent Platform resource.
+        :param pulumi.Input[_builtins.str] faas_name: The model to use for the Agent Platform resource.
+        :param pulumi.Input[_builtins.str] output_schema: The output schema of the Agent Platform resource.
         """
         pulumi.set(__self__, "agent_id", agent_id)
         pulumi.set(__self__, "description", description)
@@ -51,7 +51,7 @@ class GradientaiFunctionArgs:
     @pulumi.getter(name="agentId")
     def agent_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The name of the GradientAI resource.
+        The name of the Agent Platform resource.
         """
         return pulumi.get(self, "agent_id")
 
@@ -63,7 +63,7 @@ class GradientaiFunctionArgs:
     @pulumi.getter
     def description(self) -> pulumi.Input[_builtins.str]:
         """
-        The region where the GradientAI resource will be created.
+        The region where the Agent Platform resource will be created.
         """
         return pulumi.get(self, "description")
 
@@ -75,7 +75,7 @@ class GradientaiFunctionArgs:
     @pulumi.getter(name="faasNamespace")
     def faas_namespace(self) -> pulumi.Input[_builtins.str]:
         """
-        The current status of the GradientAI resource.
+        The current status of the Agent Platform resource.
         """
         return pulumi.get(self, "faas_namespace")
 
@@ -87,7 +87,7 @@ class GradientaiFunctionArgs:
     @pulumi.getter(name="functionName")
     def function_name(self) -> pulumi.Input[_builtins.str]:
         """
-        The creation timestamp of the GradientAI resource.
+        The creation timestamp of the Agent Platform resource.
         """
         return pulumi.get(self, "function_name")
 
@@ -99,7 +99,7 @@ class GradientaiFunctionArgs:
     @pulumi.getter(name="inputSchema")
     def input_schema(self) -> pulumi.Input[_builtins.str]:
         """
-        The input schema of the GradientAI resource.
+        The input schema of the Agent Platform resource.
         """
         return pulumi.get(self, "input_schema")
 
@@ -111,7 +111,7 @@ class GradientaiFunctionArgs:
     @pulumi.getter(name="faasName")
     def faas_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The model to use for the GradientAI resource.
+        The model to use for the Agent Platform resource.
         """
         return pulumi.get(self, "faas_name")
 
@@ -123,7 +123,7 @@ class GradientaiFunctionArgs:
     @pulumi.getter(name="outputSchema")
     def output_schema(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The output schema of the GradientAI resource.
+        The output schema of the Agent Platform resource.
         """
         return pulumi.get(self, "output_schema")
 
@@ -146,14 +146,14 @@ class _GradientaiFunctionState:
         """
         Input properties used for looking up and filtering GradientaiFunction resources.
 
-        :param pulumi.Input[_builtins.str] agent_id: The name of the GradientAI resource.
-        :param pulumi.Input[_builtins.str] description: The region where the GradientAI resource will be created.
-        :param pulumi.Input[_builtins.str] faas_name: The model to use for the GradientAI resource.
-        :param pulumi.Input[_builtins.str] faas_namespace: The current status of the GradientAI resource.
-        :param pulumi.Input[_builtins.str] function_name: The creation timestamp of the GradientAI resource.
-        :param pulumi.Input[_builtins.str] function_uuid: The unique identifier of the GradientAI function.
-        :param pulumi.Input[_builtins.str] input_schema: The input schema of the GradientAI resource.
-        :param pulumi.Input[_builtins.str] output_schema: The output schema of the GradientAI resource.
+        :param pulumi.Input[_builtins.str] agent_id: The name of the Agent Platform resource.
+        :param pulumi.Input[_builtins.str] description: The region where the Agent Platform resource will be created.
+        :param pulumi.Input[_builtins.str] faas_name: The model to use for the Agent Platform resource.
+        :param pulumi.Input[_builtins.str] faas_namespace: The current status of the Agent Platform resource.
+        :param pulumi.Input[_builtins.str] function_name: The creation timestamp of the Agent Platform resource.
+        :param pulumi.Input[_builtins.str] function_uuid: The unique identifier of the Agent Platform function.
+        :param pulumi.Input[_builtins.str] input_schema: The input schema of the Agent Platform resource.
+        :param pulumi.Input[_builtins.str] output_schema: The output schema of the Agent Platform resource.
         """
         if agent_id is not None:
             pulumi.set(__self__, "agent_id", agent_id)
@@ -176,7 +176,7 @@ class _GradientaiFunctionState:
     @pulumi.getter(name="agentId")
     def agent_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The name of the GradientAI resource.
+        The name of the Agent Platform resource.
         """
         return pulumi.get(self, "agent_id")
 
@@ -188,7 +188,7 @@ class _GradientaiFunctionState:
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The region where the GradientAI resource will be created.
+        The region where the Agent Platform resource will be created.
         """
         return pulumi.get(self, "description")
 
@@ -200,7 +200,7 @@ class _GradientaiFunctionState:
     @pulumi.getter(name="faasName")
     def faas_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The model to use for the GradientAI resource.
+        The model to use for the Agent Platform resource.
         """
         return pulumi.get(self, "faas_name")
 
@@ -212,7 +212,7 @@ class _GradientaiFunctionState:
     @pulumi.getter(name="faasNamespace")
     def faas_namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The current status of the GradientAI resource.
+        The current status of the Agent Platform resource.
         """
         return pulumi.get(self, "faas_namespace")
 
@@ -224,7 +224,7 @@ class _GradientaiFunctionState:
     @pulumi.getter(name="functionName")
     def function_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The creation timestamp of the GradientAI resource.
+        The creation timestamp of the Agent Platform resource.
         """
         return pulumi.get(self, "function_name")
 
@@ -236,7 +236,7 @@ class _GradientaiFunctionState:
     @pulumi.getter(name="functionUuid")
     def function_uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The unique identifier of the GradientAI function.
+        The unique identifier of the Agent Platform function.
         """
         return pulumi.get(self, "function_uuid")
 
@@ -248,7 +248,7 @@ class _GradientaiFunctionState:
     @pulumi.getter(name="inputSchema")
     def input_schema(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The input schema of the GradientAI resource.
+        The input schema of the Agent Platform resource.
         """
         return pulumi.get(self, "input_schema")
 
@@ -260,7 +260,7 @@ class _GradientaiFunctionState:
     @pulumi.getter(name="outputSchema")
     def output_schema(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The output schema of the GradientAI resource.
+        The output schema of the Agent Platform resource.
         """
         return pulumi.get(self, "output_schema")
 
@@ -269,8 +269,13 @@ class _GradientaiFunctionState:
         pulumi.set(self, "output_schema", value)
 
 
+warnings.warn("""digitalocean.GradientaiFunction has been deprecated in favor of digitalocean.AgentPlatformFunction""", DeprecationWarning)
+
+
 @pulumi.type_token("digitalocean:index/gradientaiFunction:GradientaiFunction")
 class GradientaiFunction(pulumi.CustomResource):
+    warnings.warn("""digitalocean.GradientaiFunction has been deprecated in favor of digitalocean.AgentPlatformFunction""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -288,13 +293,13 @@ class GradientaiFunction(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] agent_id: The name of the GradientAI resource.
-        :param pulumi.Input[_builtins.str] description: The region where the GradientAI resource will be created.
-        :param pulumi.Input[_builtins.str] faas_name: The model to use for the GradientAI resource.
-        :param pulumi.Input[_builtins.str] faas_namespace: The current status of the GradientAI resource.
-        :param pulumi.Input[_builtins.str] function_name: The creation timestamp of the GradientAI resource.
-        :param pulumi.Input[_builtins.str] input_schema: The input schema of the GradientAI resource.
-        :param pulumi.Input[_builtins.str] output_schema: The output schema of the GradientAI resource.
+        :param pulumi.Input[_builtins.str] agent_id: The name of the Agent Platform resource.
+        :param pulumi.Input[_builtins.str] description: The region where the Agent Platform resource will be created.
+        :param pulumi.Input[_builtins.str] faas_name: The model to use for the Agent Platform resource.
+        :param pulumi.Input[_builtins.str] faas_namespace: The current status of the Agent Platform resource.
+        :param pulumi.Input[_builtins.str] function_name: The creation timestamp of the Agent Platform resource.
+        :param pulumi.Input[_builtins.str] input_schema: The input schema of the Agent Platform resource.
+        :param pulumi.Input[_builtins.str] output_schema: The output schema of the Agent Platform resource.
         """
         ...
     @overload
@@ -328,6 +333,7 @@ class GradientaiFunction(pulumi.CustomResource):
                  input_schema: pulumi.Input[Optional[_builtins.str]] = None,
                  output_schema: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""GradientaiFunction is deprecated: digitalocean.GradientaiFunction has been deprecated in favor of digitalocean.AgentPlatformFunction""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -354,8 +360,6 @@ class GradientaiFunction(pulumi.CustomResource):
             __props__.__dict__["input_schema"] = input_schema
             __props__.__dict__["output_schema"] = output_schema
             __props__.__dict__["function_uuid"] = None
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="digitalocean:index/genaiFunction:GenaiFunction")])
-        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(GradientaiFunction, __self__).__init__(
             'digitalocean:index/gradientaiFunction:GradientaiFunction',
             resource_name,
@@ -381,14 +385,14 @@ class GradientaiFunction(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] agent_id: The name of the GradientAI resource.
-        :param pulumi.Input[_builtins.str] description: The region where the GradientAI resource will be created.
-        :param pulumi.Input[_builtins.str] faas_name: The model to use for the GradientAI resource.
-        :param pulumi.Input[_builtins.str] faas_namespace: The current status of the GradientAI resource.
-        :param pulumi.Input[_builtins.str] function_name: The creation timestamp of the GradientAI resource.
-        :param pulumi.Input[_builtins.str] function_uuid: The unique identifier of the GradientAI function.
-        :param pulumi.Input[_builtins.str] input_schema: The input schema of the GradientAI resource.
-        :param pulumi.Input[_builtins.str] output_schema: The output schema of the GradientAI resource.
+        :param pulumi.Input[_builtins.str] agent_id: The name of the Agent Platform resource.
+        :param pulumi.Input[_builtins.str] description: The region where the Agent Platform resource will be created.
+        :param pulumi.Input[_builtins.str] faas_name: The model to use for the Agent Platform resource.
+        :param pulumi.Input[_builtins.str] faas_namespace: The current status of the Agent Platform resource.
+        :param pulumi.Input[_builtins.str] function_name: The creation timestamp of the Agent Platform resource.
+        :param pulumi.Input[_builtins.str] function_uuid: The unique identifier of the Agent Platform function.
+        :param pulumi.Input[_builtins.str] input_schema: The input schema of the Agent Platform resource.
+        :param pulumi.Input[_builtins.str] output_schema: The output schema of the Agent Platform resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -408,7 +412,7 @@ class GradientaiFunction(pulumi.CustomResource):
     @pulumi.getter(name="agentId")
     def agent_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the GradientAI resource.
+        The name of the Agent Platform resource.
         """
         return pulumi.get(self, "agent_id")
 
@@ -416,7 +420,7 @@ class GradientaiFunction(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[_builtins.str]:
         """
-        The region where the GradientAI resource will be created.
+        The region where the Agent Platform resource will be created.
         """
         return pulumi.get(self, "description")
 
@@ -424,7 +428,7 @@ class GradientaiFunction(pulumi.CustomResource):
     @pulumi.getter(name="faasName")
     def faas_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The model to use for the GradientAI resource.
+        The model to use for the Agent Platform resource.
         """
         return pulumi.get(self, "faas_name")
 
@@ -432,7 +436,7 @@ class GradientaiFunction(pulumi.CustomResource):
     @pulumi.getter(name="faasNamespace")
     def faas_namespace(self) -> pulumi.Output[_builtins.str]:
         """
-        The current status of the GradientAI resource.
+        The current status of the Agent Platform resource.
         """
         return pulumi.get(self, "faas_namespace")
 
@@ -440,7 +444,7 @@ class GradientaiFunction(pulumi.CustomResource):
     @pulumi.getter(name="functionName")
     def function_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The creation timestamp of the GradientAI resource.
+        The creation timestamp of the Agent Platform resource.
         """
         return pulumi.get(self, "function_name")
 
@@ -448,7 +452,7 @@ class GradientaiFunction(pulumi.CustomResource):
     @pulumi.getter(name="functionUuid")
     def function_uuid(self) -> pulumi.Output[_builtins.str]:
         """
-        The unique identifier of the GradientAI function.
+        The unique identifier of the Agent Platform function.
         """
         return pulumi.get(self, "function_uuid")
 
@@ -456,7 +460,7 @@ class GradientaiFunction(pulumi.CustomResource):
     @pulumi.getter(name="inputSchema")
     def input_schema(self) -> pulumi.Output[_builtins.str]:
         """
-        The input schema of the GradientAI resource.
+        The input schema of the Agent Platform resource.
         """
         return pulumi.get(self, "input_schema")
 
@@ -464,7 +468,7 @@ class GradientaiFunction(pulumi.CustomResource):
     @pulumi.getter(name="outputSchema")
     def output_schema(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The output schema of the GradientAI resource.
+        The output schema of the Agent Platform resource.
         """
         return pulumi.get(self, "output_schema")
 

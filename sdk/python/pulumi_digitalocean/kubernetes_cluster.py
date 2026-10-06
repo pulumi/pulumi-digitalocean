@@ -39,6 +39,7 @@ class KubernetesClusterArgs:
                  kubeconfig_expire_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  maintenance_policy: pulumi.Input[Optional['KubernetesClusterMaintenancePolicyArgs']] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 nfs_csi_plugin: pulumi.Input[Optional['KubernetesClusterNfsCsiPluginArgs']] = None,
                  nvidia_gpu_device_plugin: pulumi.Input[Optional['KubernetesClusterNvidiaGpuDevicePluginArgs']] = None,
                  nvidia_gpu_dra_driver: pulumi.Input[Optional['KubernetesClusterNvidiaGpuDraDriverArgs']] = None,
                  p2p_oci_registry_plugin: pulumi.Input[Optional['KubernetesClusterP2pOciRegistryPluginArgs']] = None,
@@ -71,6 +72,7 @@ class KubernetesClusterArgs:
         :param pulumi.Input[_builtins.int] kubeconfig_expire_seconds: The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
         :param pulumi.Input['KubernetesClusterMaintenancePolicyArgs'] maintenance_policy: A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.
         :param pulumi.Input[_builtins.str] name: A name for the Kubernetes cluster.
+        :param pulumi.Input['KubernetesClusterNfsCsiPluginArgs'] nfs_csi_plugin: Block containing options for the NFS CSI driver plugin component. If not specified, the NFS CSI plugin will not be installed in the cluster.
         :param pulumi.Input['KubernetesClusterNvidiaGpuDevicePluginArgs'] nvidia_gpu_device_plugin: Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes. Mutually exclusive with `nvidia_gpu_dra_driver`.
         :param pulumi.Input['KubernetesClusterNvidiaGpuDraDriverArgs'] nvidia_gpu_dra_driver: Block containing options for the NVIDIA GPU DRA driver component. Mutually exclusive with `nvidia_gpu_device_plugin`.
         :param pulumi.Input['KubernetesClusterP2pOciRegistryPluginArgs'] p2p_oci_registry_plugin: Block containing options for the Peer-to-peer OCI registry plugin component. If not specified, the p2p-oci-registry-plugin component will not be installed in the cluster.
@@ -115,6 +117,8 @@ class KubernetesClusterArgs:
             pulumi.set(__self__, "maintenance_policy", maintenance_policy)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if nfs_csi_plugin is not None:
+            pulumi.set(__self__, "nfs_csi_plugin", nfs_csi_plugin)
         if nvidia_gpu_device_plugin is not None:
             pulumi.set(__self__, "nvidia_gpu_device_plugin", nvidia_gpu_device_plugin)
         if nvidia_gpu_dra_driver is not None:
@@ -345,6 +349,18 @@ class KubernetesClusterArgs:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="nfsCsiPlugin")
+    def nfs_csi_plugin(self) -> pulumi.Input[Optional['KubernetesClusterNfsCsiPluginArgs']]:
+        """
+        Block containing options for the NFS CSI driver plugin component. If not specified, the NFS CSI plugin will not be installed in the cluster.
+        """
+        return pulumi.get(self, "nfs_csi_plugin")
+
+    @nfs_csi_plugin.setter
+    def nfs_csi_plugin(self, value: pulumi.Input[Optional['KubernetesClusterNfsCsiPluginArgs']]):
+        pulumi.set(self, "nfs_csi_plugin", value)
+
+    @_builtins.property
     @pulumi.getter(name="nvidiaGpuDevicePlugin")
     def nvidia_gpu_device_plugin(self) -> pulumi.Input[Optional['KubernetesClusterNvidiaGpuDevicePluginArgs']]:
         """
@@ -511,6 +527,7 @@ class _KubernetesClusterState:
                  kubeconfig_expire_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  maintenance_policy: pulumi.Input[Optional['KubernetesClusterMaintenancePolicyArgs']] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 nfs_csi_plugin: pulumi.Input[Optional['KubernetesClusterNfsCsiPluginArgs']] = None,
                  node_pool: pulumi.Input[Optional['KubernetesClusterNodePoolArgs']] = None,
                  nvidia_gpu_device_plugin: pulumi.Input[Optional['KubernetesClusterNvidiaGpuDevicePluginArgs']] = None,
                  nvidia_gpu_dra_driver: pulumi.Input[Optional['KubernetesClusterNvidiaGpuDraDriverArgs']] = None,
@@ -550,6 +567,7 @@ class _KubernetesClusterState:
         :param pulumi.Input[_builtins.int] kubeconfig_expire_seconds: The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
         :param pulumi.Input['KubernetesClusterMaintenancePolicyArgs'] maintenance_policy: A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.
         :param pulumi.Input[_builtins.str] name: A name for the Kubernetes cluster.
+        :param pulumi.Input['KubernetesClusterNfsCsiPluginArgs'] nfs_csi_plugin: Block containing options for the NFS CSI driver plugin component. If not specified, the NFS CSI plugin will not be installed in the cluster.
         :param pulumi.Input['KubernetesClusterNodePoolArgs'] node_pool: A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
         :param pulumi.Input['KubernetesClusterNvidiaGpuDevicePluginArgs'] nvidia_gpu_device_plugin: Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes. Mutually exclusive with `nvidia_gpu_dra_driver`.
         :param pulumi.Input['KubernetesClusterNvidiaGpuDraDriverArgs'] nvidia_gpu_dra_driver: Block containing options for the NVIDIA GPU DRA driver component. Mutually exclusive with `nvidia_gpu_device_plugin`.
@@ -606,6 +624,8 @@ class _KubernetesClusterState:
             pulumi.set(__self__, "maintenance_policy", maintenance_policy)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if nfs_csi_plugin is not None:
+            pulumi.set(__self__, "nfs_csi_plugin", nfs_csi_plugin)
         if node_pool is not None:
             pulumi.set(__self__, "node_pool", node_pool)
         if nvidia_gpu_device_plugin is not None:
@@ -870,6 +890,18 @@ class _KubernetesClusterState:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="nfsCsiPlugin")
+    def nfs_csi_plugin(self) -> pulumi.Input[Optional['KubernetesClusterNfsCsiPluginArgs']]:
+        """
+        Block containing options for the NFS CSI driver plugin component. If not specified, the NFS CSI plugin will not be installed in the cluster.
+        """
+        return pulumi.get(self, "nfs_csi_plugin")
+
+    @nfs_csi_plugin.setter
+    def nfs_csi_plugin(self, value: pulumi.Input[Optional['KubernetesClusterNfsCsiPluginArgs']]):
+        pulumi.set(self, "nfs_csi_plugin", value)
+
+    @_builtins.property
     @pulumi.getter(name="nodePool")
     def node_pool(self) -> pulumi.Input[Optional['KubernetesClusterNodePoolArgs']]:
         """
@@ -1094,6 +1126,7 @@ class KubernetesCluster(pulumi.CustomResource):
                  kubeconfig_expire_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  maintenance_policy: pulumi.Input[Optional[Union['KubernetesClusterMaintenancePolicyArgs', 'KubernetesClusterMaintenancePolicyArgsDict', 'outputs.KubernetesClusterMaintenancePolicy']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 nfs_csi_plugin: pulumi.Input[Optional[Union['KubernetesClusterNfsCsiPluginArgs', 'KubernetesClusterNfsCsiPluginArgsDict', 'outputs.KubernetesClusterNfsCsiPlugin']]] = None,
                  node_pool: pulumi.Input[Optional[Union['KubernetesClusterNodePoolArgs', 'KubernetesClusterNodePoolArgsDict', 'outputs.KubernetesClusterNodePool']]] = None,
                  nvidia_gpu_device_plugin: pulumi.Input[Optional[Union['KubernetesClusterNvidiaGpuDevicePluginArgs', 'KubernetesClusterNvidiaGpuDevicePluginArgsDict', 'outputs.KubernetesClusterNvidiaGpuDevicePlugin']]] = None,
                  nvidia_gpu_dra_driver: pulumi.Input[Optional[Union['KubernetesClusterNvidiaGpuDraDriverArgs', 'KubernetesClusterNvidiaGpuDraDriverArgsDict', 'outputs.KubernetesClusterNvidiaGpuDraDriver']]] = None,
@@ -1285,6 +1318,7 @@ class KubernetesCluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] kubeconfig_expire_seconds: The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
         :param pulumi.Input[Union['KubernetesClusterMaintenancePolicyArgs', 'KubernetesClusterMaintenancePolicyArgsDict', 'outputs.KubernetesClusterMaintenancePolicy']] maintenance_policy: A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.
         :param pulumi.Input[_builtins.str] name: A name for the Kubernetes cluster.
+        :param pulumi.Input[Union['KubernetesClusterNfsCsiPluginArgs', 'KubernetesClusterNfsCsiPluginArgsDict', 'outputs.KubernetesClusterNfsCsiPlugin']] nfs_csi_plugin: Block containing options for the NFS CSI driver plugin component. If not specified, the NFS CSI plugin will not be installed in the cluster.
         :param pulumi.Input[Union['KubernetesClusterNodePoolArgs', 'KubernetesClusterNodePoolArgsDict', 'outputs.KubernetesClusterNodePool']] node_pool: A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
         :param pulumi.Input[Union['KubernetesClusterNvidiaGpuDevicePluginArgs', 'KubernetesClusterNvidiaGpuDevicePluginArgsDict', 'outputs.KubernetesClusterNvidiaGpuDevicePlugin']] nvidia_gpu_device_plugin: Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes. Mutually exclusive with `nvidia_gpu_dra_driver`.
         :param pulumi.Input[Union['KubernetesClusterNvidiaGpuDraDriverArgs', 'KubernetesClusterNvidiaGpuDraDriverArgsDict', 'outputs.KubernetesClusterNvidiaGpuDraDriver']] nvidia_gpu_dra_driver: Block containing options for the NVIDIA GPU DRA driver component. Mutually exclusive with `nvidia_gpu_device_plugin`.
@@ -1495,6 +1529,7 @@ class KubernetesCluster(pulumi.CustomResource):
                  kubeconfig_expire_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  maintenance_policy: pulumi.Input[Optional[Union['KubernetesClusterMaintenancePolicyArgs', 'KubernetesClusterMaintenancePolicyArgsDict', 'outputs.KubernetesClusterMaintenancePolicy']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 nfs_csi_plugin: pulumi.Input[Optional[Union['KubernetesClusterNfsCsiPluginArgs', 'KubernetesClusterNfsCsiPluginArgsDict', 'outputs.KubernetesClusterNfsCsiPlugin']]] = None,
                  node_pool: pulumi.Input[Optional[Union['KubernetesClusterNodePoolArgs', 'KubernetesClusterNodePoolArgsDict', 'outputs.KubernetesClusterNodePool']]] = None,
                  nvidia_gpu_device_plugin: pulumi.Input[Optional[Union['KubernetesClusterNvidiaGpuDevicePluginArgs', 'KubernetesClusterNvidiaGpuDevicePluginArgsDict', 'outputs.KubernetesClusterNvidiaGpuDevicePlugin']]] = None,
                  nvidia_gpu_dra_driver: pulumi.Input[Optional[Union['KubernetesClusterNvidiaGpuDraDriverArgs', 'KubernetesClusterNvidiaGpuDraDriverArgsDict', 'outputs.KubernetesClusterNvidiaGpuDraDriver']]] = None,
@@ -1533,6 +1568,7 @@ class KubernetesCluster(pulumi.CustomResource):
             __props__.__dict__["kubeconfig_expire_seconds"] = kubeconfig_expire_seconds
             __props__.__dict__["maintenance_policy"] = maintenance_policy
             __props__.__dict__["name"] = name
+            __props__.__dict__["nfs_csi_plugin"] = nfs_csi_plugin
             if node_pool is None and not opts.urn:
                 raise TypeError("Missing required property 'node_pool'")
             __props__.__dict__["node_pool"] = node_pool
@@ -1592,6 +1628,7 @@ class KubernetesCluster(pulumi.CustomResource):
             kubeconfig_expire_seconds: pulumi.Input[Optional[_builtins.int]] = None,
             maintenance_policy: pulumi.Input[Optional[Union['KubernetesClusterMaintenancePolicyArgs', 'KubernetesClusterMaintenancePolicyArgsDict', 'outputs.KubernetesClusterMaintenancePolicy']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
+            nfs_csi_plugin: pulumi.Input[Optional[Union['KubernetesClusterNfsCsiPluginArgs', 'KubernetesClusterNfsCsiPluginArgsDict', 'outputs.KubernetesClusterNfsCsiPlugin']]] = None,
             node_pool: pulumi.Input[Optional[Union['KubernetesClusterNodePoolArgs', 'KubernetesClusterNodePoolArgsDict', 'outputs.KubernetesClusterNodePool']]] = None,
             nvidia_gpu_device_plugin: pulumi.Input[Optional[Union['KubernetesClusterNvidiaGpuDevicePluginArgs', 'KubernetesClusterNvidiaGpuDevicePluginArgsDict', 'outputs.KubernetesClusterNvidiaGpuDevicePlugin']]] = None,
             nvidia_gpu_dra_driver: pulumi.Input[Optional[Union['KubernetesClusterNvidiaGpuDraDriverArgs', 'KubernetesClusterNvidiaGpuDraDriverArgsDict', 'outputs.KubernetesClusterNvidiaGpuDraDriver']]] = None,
@@ -1635,6 +1672,7 @@ class KubernetesCluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] kubeconfig_expire_seconds: The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
         :param pulumi.Input[Union['KubernetesClusterMaintenancePolicyArgs', 'KubernetesClusterMaintenancePolicyArgsDict', 'outputs.KubernetesClusterMaintenancePolicy']] maintenance_policy: A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.
         :param pulumi.Input[_builtins.str] name: A name for the Kubernetes cluster.
+        :param pulumi.Input[Union['KubernetesClusterNfsCsiPluginArgs', 'KubernetesClusterNfsCsiPluginArgsDict', 'outputs.KubernetesClusterNfsCsiPlugin']] nfs_csi_plugin: Block containing options for the NFS CSI driver plugin component. If not specified, the NFS CSI plugin will not be installed in the cluster.
         :param pulumi.Input[Union['KubernetesClusterNodePoolArgs', 'KubernetesClusterNodePoolArgsDict', 'outputs.KubernetesClusterNodePool']] node_pool: A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
         :param pulumi.Input[Union['KubernetesClusterNvidiaGpuDevicePluginArgs', 'KubernetesClusterNvidiaGpuDevicePluginArgsDict', 'outputs.KubernetesClusterNvidiaGpuDevicePlugin']] nvidia_gpu_device_plugin: Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes. Mutually exclusive with `nvidia_gpu_dra_driver`.
         :param pulumi.Input[Union['KubernetesClusterNvidiaGpuDraDriverArgs', 'KubernetesClusterNvidiaGpuDraDriverArgsDict', 'outputs.KubernetesClusterNvidiaGpuDraDriver']] nvidia_gpu_dra_driver: Block containing options for the NVIDIA GPU DRA driver component. Mutually exclusive with `nvidia_gpu_device_plugin`.
@@ -1676,6 +1714,7 @@ class KubernetesCluster(pulumi.CustomResource):
         __props__.__dict__["kubeconfig_expire_seconds"] = kubeconfig_expire_seconds
         __props__.__dict__["maintenance_policy"] = maintenance_policy
         __props__.__dict__["name"] = name
+        __props__.__dict__["nfs_csi_plugin"] = nfs_csi_plugin
         __props__.__dict__["node_pool"] = node_pool
         __props__.__dict__["nvidia_gpu_device_plugin"] = nvidia_gpu_device_plugin
         __props__.__dict__["nvidia_gpu_dra_driver"] = nvidia_gpu_dra_driver
@@ -1846,6 +1885,14 @@ class KubernetesCluster(pulumi.CustomResource):
         A name for the Kubernetes cluster.
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="nfsCsiPlugin")
+    def nfs_csi_plugin(self) -> pulumi.Output['outputs.KubernetesClusterNfsCsiPlugin']:
+        """
+        Block containing options for the NFS CSI driver plugin component. If not specified, the NFS CSI plugin will not be installed in the cluster.
+        """
+        return pulumi.get(self, "nfs_csi_plugin")
 
     @_builtins.property
     @pulumi.getter(name="nodePool")

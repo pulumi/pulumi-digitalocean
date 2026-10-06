@@ -23,6 +23,8 @@ __all__ = [
     'get_gradientai_knowledge_bases_output',
 ]
 
+warnings.warn("""digitalocean.getGradientaiKnowledgeBases has been deprecated in favor of digitalocean.getAgentPlatformKnowledgeBases""", DeprecationWarning)
+
 @pulumi.output_type
 class GetGradientaiKnowledgeBasesResult:
     """
@@ -84,6 +86,7 @@ def get_gradientai_knowledge_bases(filters: Optional[Sequence[Union['GetGradient
     """
     Use this data source to access information about an existing resource.
     """
+    pulumi.log.warn("""get_gradientai_knowledge_bases is deprecated: digitalocean.getGradientaiKnowledgeBases has been deprecated in favor of digitalocean.getAgentPlatformKnowledgeBases""")
     __args__ = dict()
     __args__['filters'] = filters
     __args__['sorts'] = sorts
@@ -101,6 +104,7 @@ def get_gradientai_knowledge_bases_output(filters: pulumi.Input[Optional[Optiona
     """
     Use this data source to access information about an existing resource.
     """
+    pulumi.log.warn("""get_gradientai_knowledge_bases is deprecated: digitalocean.getGradientaiKnowledgeBases has been deprecated in favor of digitalocean.getAgentPlatformKnowledgeBases""")
     __args__ = dict()
     __args__['filters'] = filters
     __args__['sorts'] = sorts

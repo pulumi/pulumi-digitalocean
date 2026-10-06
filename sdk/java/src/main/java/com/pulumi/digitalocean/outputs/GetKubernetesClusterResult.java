@@ -12,6 +12,7 @@ import com.pulumi.digitalocean.outputs.GetKubernetesClusterControlPlaneFirewall;
 import com.pulumi.digitalocean.outputs.GetKubernetesClusterCorednsAutoscaler;
 import com.pulumi.digitalocean.outputs.GetKubernetesClusterKubeConfig;
 import com.pulumi.digitalocean.outputs.GetKubernetesClusterMaintenancePolicy;
+import com.pulumi.digitalocean.outputs.GetKubernetesClusterNfsCsiPlugin;
 import com.pulumi.digitalocean.outputs.GetKubernetesClusterNodePool;
 import com.pulumi.digitalocean.outputs.GetKubernetesClusterNvidiaGpuDevicePlugin;
 import com.pulumi.digitalocean.outputs.GetKubernetesClusterNvidiaGpuDraDriver;
@@ -88,6 +89,7 @@ public final class GetKubernetesClusterResult {
      * 
      */
     private String name;
+    private GetKubernetesClusterNfsCsiPlugin nfsCsiPlugin;
     /**
      * @return A list of node pools associated with the cluster. Each node pool exports the following attributes:
      * 
@@ -237,6 +239,9 @@ public final class GetKubernetesClusterResult {
     public String name() {
         return this.name;
     }
+    public GetKubernetesClusterNfsCsiPlugin nfsCsiPlugin() {
+        return this.nfsCsiPlugin;
+    }
     /**
      * @return A list of node pools associated with the cluster. Each node pool exports the following attributes:
      * 
@@ -352,6 +357,7 @@ public final class GetKubernetesClusterResult {
         private @Nullable Integer kubeconfigExpireSeconds;
         private List<GetKubernetesClusterMaintenancePolicy> maintenancePolicies;
         private String name;
+        private GetKubernetesClusterNfsCsiPlugin nfsCsiPlugin;
         private List<GetKubernetesClusterNodePool> nodePools;
         private GetKubernetesClusterNvidiaGpuDevicePlugin nvidiaGpuDevicePlugin;
         private GetKubernetesClusterNvidiaGpuDraDriver nvidiaGpuDraDriver;
@@ -390,6 +396,7 @@ public final class GetKubernetesClusterResult {
     	      this.kubeconfigExpireSeconds = defaults.kubeconfigExpireSeconds;
     	      this.maintenancePolicies = defaults.maintenancePolicies;
     	      this.name = defaults.name;
+    	      this.nfsCsiPlugin = defaults.nfsCsiPlugin;
     	      this.nodePools = defaults.nodePools;
     	      this.nvidiaGpuDevicePlugin = defaults.nvidiaGpuDevicePlugin;
     	      this.nvidiaGpuDraDriver = defaults.nvidiaGpuDraDriver;
@@ -562,6 +569,14 @@ public final class GetKubernetesClusterResult {
             return this;
         }
         @CustomType.Setter
+        public Builder nfsCsiPlugin(GetKubernetesClusterNfsCsiPlugin nfsCsiPlugin) {
+            if (nfsCsiPlugin == null) {
+              throw new MissingRequiredPropertyException("GetKubernetesClusterResult", "nfsCsiPlugin");
+            }
+            this.nfsCsiPlugin = nfsCsiPlugin;
+            return this;
+        }
+        @CustomType.Setter
         public Builder nodePools(List<GetKubernetesClusterNodePool> nodePools) {
             if (nodePools == null) {
               throw new MissingRequiredPropertyException("GetKubernetesClusterResult", "nodePools");
@@ -724,6 +739,7 @@ public final class GetKubernetesClusterResult {
             _resultValue.kubeconfigExpireSeconds = kubeconfigExpireSeconds;
             _resultValue.maintenancePolicies = maintenancePolicies;
             _resultValue.name = name;
+            _resultValue.nfsCsiPlugin = nfsCsiPlugin;
             _resultValue.nodePools = nodePools;
             _resultValue.nvidiaGpuDevicePlugin = nvidiaGpuDevicePlugin;
             _resultValue.nvidiaGpuDraDriver = nvidiaGpuDraDriver;

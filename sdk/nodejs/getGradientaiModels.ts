@@ -7,7 +7,9 @@ import * as outputs from "./types/output";
 import * as enums from "./types/enums";
 import * as utilities from "./utilities";
 
+/** @deprecated digitalocean.getGradientaiModels has been deprecated in favor of digitalocean.getAgentPlatformModels */
 export function getGradientaiModels(args?: GetGradientaiModelsArgs, opts?: pulumi.InvokeOptions): Promise<GetGradientaiModelsResult> {
+    pulumi.log.warn("getGradientaiModels is deprecated: digitalocean.getGradientaiModels has been deprecated in favor of digitalocean.getAgentPlatformModels")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("digitalocean:index/getGradientaiModels:getGradientaiModels", {
@@ -36,7 +38,9 @@ export interface GetGradientaiModelsResult {
     readonly models: outputs.GetGradientaiModelsModel[];
     readonly sorts?: outputs.GetGradientaiModelsSort[];
 }
+/** @deprecated digitalocean.getGradientaiModels has been deprecated in favor of digitalocean.getAgentPlatformModels */
 export function getGradientaiModelsOutput(args?: GetGradientaiModelsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGradientaiModelsResult> {
+    pulumi.log.warn("getGradientaiModels is deprecated: digitalocean.getGradientaiModels has been deprecated in favor of digitalocean.getAgentPlatformModels")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("digitalocean:index/getGradientaiModels:getGradientaiModels", {

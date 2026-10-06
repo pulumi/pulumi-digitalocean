@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.DigitalOcean
 {
+    [Obsolete(@"digitalocean.GradientaiIndexingJobCancel has been deprecated in favor of digitalocean.AgentPlatformIndexingJobCancel")]
     [DigitalOceanResourceType("digitalocean:index/gradientaiIndexingJobCancel:GradientaiIndexingJobCancel")]
     public partial class GradientaiIndexingJobCancel : global::Pulumi.CustomResource
     {
@@ -125,10 +126,6 @@ namespace Pulumi.DigitalOcean
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                Aliases =
-                {
-                    new global::Pulumi.Alias { Type = "digitalocean:index/genaiIndexingJobCancel:GenaiIndexingJobCancel" },
-                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

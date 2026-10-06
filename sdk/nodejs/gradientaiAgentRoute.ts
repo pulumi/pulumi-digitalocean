@@ -4,6 +4,9 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * @deprecated digitalocean.GradientaiAgentRoute has been deprecated in favor of digitalocean.AgentPlatformAgentRoute
+ */
 export class GradientaiAgentRoute extends pulumi.CustomResource {
     /**
      * Get an existing GradientaiAgentRoute resource's state with the given name, ID, and optional extra
@@ -15,6 +18,7 @@ export class GradientaiAgentRoute extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: GradientaiAgentRouteState, opts?: pulumi.CustomResourceOptions): GradientaiAgentRoute {
+        pulumi.log.warn("GradientaiAgentRoute is deprecated: digitalocean.GradientaiAgentRoute has been deprecated in favor of digitalocean.AgentPlatformAgentRoute")
         return new GradientaiAgentRoute(name, <any>state, { ...opts, id: id });
     }
 
@@ -61,8 +65,11 @@ export class GradientaiAgentRoute extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated digitalocean.GradientaiAgentRoute has been deprecated in favor of digitalocean.AgentPlatformAgentRoute */
     constructor(name: string, args: GradientaiAgentRouteArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated digitalocean.GradientaiAgentRoute has been deprecated in favor of digitalocean.AgentPlatformAgentRoute */
     constructor(name: string, argsOrState?: GradientaiAgentRouteArgs | GradientaiAgentRouteState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("GradientaiAgentRoute is deprecated: digitalocean.GradientaiAgentRoute has been deprecated in favor of digitalocean.AgentPlatformAgentRoute")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
@@ -89,8 +96,6 @@ export class GradientaiAgentRoute extends pulumi.CustomResource {
             resourceInputs["uuid"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "digitalocean:index/genaiAgentRoute:GenaiAgentRoute" }] };
-        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(GradientaiAgentRoute.__pulumiType, name, resourceInputs, opts);
     }
 }

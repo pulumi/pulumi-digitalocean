@@ -21,6 +21,24 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "digitalocean:index/agentPlatformAgent:AgentPlatformAgent":
+		r = &AgentPlatformAgent{}
+	case "digitalocean:index/agentPlatformAgentKnowledgeBaseAttachment:AgentPlatformAgentKnowledgeBaseAttachment":
+		r = &AgentPlatformAgentKnowledgeBaseAttachment{}
+	case "digitalocean:index/agentPlatformAgentRoute:AgentPlatformAgentRoute":
+		r = &AgentPlatformAgentRoute{}
+	case "digitalocean:index/agentPlatformCustomModel:AgentPlatformCustomModel":
+		r = &AgentPlatformCustomModel{}
+	case "digitalocean:index/agentPlatformFunction:AgentPlatformFunction":
+		r = &AgentPlatformFunction{}
+	case "digitalocean:index/agentPlatformIndexingJobCancel:AgentPlatformIndexingJobCancel":
+		r = &AgentPlatformIndexingJobCancel{}
+	case "digitalocean:index/agentPlatformKnowledgeBase:AgentPlatformKnowledgeBase":
+		r = &AgentPlatformKnowledgeBase{}
+	case "digitalocean:index/agentPlatformKnowledgeBaseDataSource:AgentPlatformKnowledgeBaseDataSource":
+		r = &AgentPlatformKnowledgeBaseDataSource{}
+	case "digitalocean:index/agentPlatformOpenaiApiKey:AgentPlatformOpenaiApiKey":
+		r = &AgentPlatformOpenaiApiKey{}
 	case "digitalocean:index/app:App":
 		r = &App{}
 	case "digitalocean:index/byoipPrefix:ByoipPrefix":
@@ -97,30 +115,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &FloatingIp{}
 	case "digitalocean:index/floatingIpAssignment:FloatingIpAssignment":
 		r = &FloatingIpAssignment{}
-	case "digitalocean:index/genaiAgent:GenaiAgent":
-		r = &GenaiAgent{}
-	case "digitalocean:index/genaiAgentKnowledgeBaseAttachment:GenaiAgentKnowledgeBaseAttachment":
-		r = &GenaiAgentKnowledgeBaseAttachment{}
-	case "digitalocean:index/genaiAgentRoute:GenaiAgentRoute":
-		r = &GenaiAgentRoute{}
-	case "digitalocean:index/genaiFunction:GenaiFunction":
-		r = &GenaiFunction{}
-	case "digitalocean:index/genaiIndexingJobCancel:GenaiIndexingJobCancel":
-		r = &GenaiIndexingJobCancel{}
-	case "digitalocean:index/genaiKnowledgeBase:GenaiKnowledgeBase":
-		r = &GenaiKnowledgeBase{}
-	case "digitalocean:index/genaiKnowledgeBaseDataSource:GenaiKnowledgeBaseDataSource":
-		r = &GenaiKnowledgeBaseDataSource{}
-	case "digitalocean:index/genaiOpenaiApiKey:GenaiOpenaiApiKey":
-		r = &GenaiOpenaiApiKey{}
 	case "digitalocean:index/gradientaiAgent:GradientaiAgent":
 		r = &GradientaiAgent{}
 	case "digitalocean:index/gradientaiAgentKnowledgeBaseAttachment:GradientaiAgentKnowledgeBaseAttachment":
 		r = &GradientaiAgentKnowledgeBaseAttachment{}
 	case "digitalocean:index/gradientaiAgentRoute:GradientaiAgentRoute":
 		r = &GradientaiAgentRoute{}
-	case "digitalocean:index/gradientaiCustomModel:GradientaiCustomModel":
-		r = &GradientaiCustomModel{}
 	case "digitalocean:index/gradientaiFunction:GradientaiFunction":
 		r = &GradientaiFunction{}
 	case "digitalocean:index/gradientaiIndexingJobCancel:GradientaiIndexingJobCancel":
@@ -226,6 +226,51 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"digitalocean",
+		"index/agentPlatformAgent",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
+		"index/agentPlatformAgentKnowledgeBaseAttachment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
+		"index/agentPlatformAgentRoute",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
+		"index/agentPlatformCustomModel",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
+		"index/agentPlatformFunction",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
+		"index/agentPlatformIndexingJobCancel",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
+		"index/agentPlatformKnowledgeBase",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
+		"index/agentPlatformKnowledgeBaseDataSource",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
+		"index/agentPlatformOpenaiApiKey",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"digitalocean",
 		"index/app",
@@ -418,46 +463,6 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"digitalocean",
-		"index/genaiAgent",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"digitalocean",
-		"index/genaiAgentKnowledgeBaseAttachment",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"digitalocean",
-		"index/genaiAgentRoute",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"digitalocean",
-		"index/genaiFunction",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"digitalocean",
-		"index/genaiIndexingJobCancel",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"digitalocean",
-		"index/genaiKnowledgeBase",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"digitalocean",
-		"index/genaiKnowledgeBaseDataSource",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"digitalocean",
-		"index/genaiOpenaiApiKey",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"digitalocean",
 		"index/gradientaiAgent",
 		&module{version},
 	)
@@ -469,11 +474,6 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"digitalocean",
 		"index/gradientaiAgentRoute",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"digitalocean",
-		"index/gradientaiCustomModel",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

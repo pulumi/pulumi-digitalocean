@@ -22,6 +22,8 @@ __all__ = [
     'get_gradientai_knowledge_base_data_sources_output',
 ]
 
+warnings.warn("""digitalocean.getGradientaiKnowledgeBaseDataSources has been deprecated in favor of digitalocean.getAgentPlatformKnowledgeBaseDataSources""", DeprecationWarning)
+
 @pulumi.output_type
 class GetGradientaiKnowledgeBaseDataSourcesResult:
     """
@@ -73,6 +75,7 @@ def get_gradientai_knowledge_base_data_sources(knowledge_base_uuid: Optional[_bu
     """
     Use this data source to access information about an existing resource.
     """
+    pulumi.log.warn("""get_gradientai_knowledge_base_data_sources is deprecated: digitalocean.getGradientaiKnowledgeBaseDataSources has been deprecated in favor of digitalocean.getAgentPlatformKnowledgeBaseDataSources""")
     __args__ = dict()
     __args__['knowledgeBaseUuid'] = knowledge_base_uuid
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -87,6 +90,7 @@ def get_gradientai_knowledge_base_data_sources_output(knowledge_base_uuid: pulum
     """
     Use this data source to access information about an existing resource.
     """
+    pulumi.log.warn("""get_gradientai_knowledge_base_data_sources is deprecated: digitalocean.getGradientaiKnowledgeBaseDataSources has been deprecated in favor of digitalocean.getAgentPlatformKnowledgeBaseDataSources""")
     __args__ = dict()
     __args__['knowledgeBaseUuid'] = knowledge_base_uuid
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

@@ -7,7 +7,9 @@ import * as outputs from "./types/output";
 import * as enums from "./types/enums";
 import * as utilities from "./utilities";
 
+/** @deprecated digitalocean.getGradientaiKnowledgeBaseIndexingJobs has been deprecated in favor of digitalocean.getAgentPlatformKnowledgeBaseIndexingJobs */
 export function getGradientaiKnowledgeBaseIndexingJobs(args: GetGradientaiKnowledgeBaseIndexingJobsArgs, opts?: pulumi.InvokeOptions): Promise<GetGradientaiKnowledgeBaseIndexingJobsResult> {
+    pulumi.log.warn("getGradientaiKnowledgeBaseIndexingJobs is deprecated: digitalocean.getGradientaiKnowledgeBaseIndexingJobs has been deprecated in favor of digitalocean.getAgentPlatformKnowledgeBaseIndexingJobs")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("digitalocean:index/getGradientaiKnowledgeBaseIndexingJobs:getGradientaiKnowledgeBaseIndexingJobs", {
         "knowledgeBaseUuid": args.knowledgeBaseUuid,
@@ -33,7 +35,9 @@ export interface GetGradientaiKnowledgeBaseIndexingJobsResult {
     readonly knowledgeBaseUuid: string;
     readonly metas: outputs.GetGradientaiKnowledgeBaseIndexingJobsMeta[];
 }
+/** @deprecated digitalocean.getGradientaiKnowledgeBaseIndexingJobs has been deprecated in favor of digitalocean.getAgentPlatformKnowledgeBaseIndexingJobs */
 export function getGradientaiKnowledgeBaseIndexingJobsOutput(args: GetGradientaiKnowledgeBaseIndexingJobsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGradientaiKnowledgeBaseIndexingJobsResult> {
+    pulumi.log.warn("getGradientaiKnowledgeBaseIndexingJobs is deprecated: digitalocean.getGradientaiKnowledgeBaseIndexingJobs has been deprecated in favor of digitalocean.getAgentPlatformKnowledgeBaseIndexingJobs")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("digitalocean:index/getGradientaiKnowledgeBaseIndexingJobs:getGradientaiKnowledgeBaseIndexingJobs", {
         "knowledgeBaseUuid": args.knowledgeBaseUuid,

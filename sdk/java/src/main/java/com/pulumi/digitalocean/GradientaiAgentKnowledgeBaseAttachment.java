@@ -3,7 +3,6 @@
 
 package com.pulumi.digitalocean;
 
-import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -12,9 +11,14 @@ import com.pulumi.digitalocean.GradientaiAgentKnowledgeBaseAttachmentArgs;
 import com.pulumi.digitalocean.Utilities;
 import com.pulumi.digitalocean.inputs.GradientaiAgentKnowledgeBaseAttachmentState;
 import java.lang.String;
-import java.util.List;
 import javax.annotation.Nullable;
 
+/**
+ * @deprecated
+ * digitalocean.GradientaiAgentKnowledgeBaseAttachment has been deprecated in favor of digitalocean.AgentPlatformAgentKnowledgeBaseAttachment
+ * 
+ */
+@Deprecated /* digitalocean.GradientaiAgentKnowledgeBaseAttachment has been deprecated in favor of digitalocean.AgentPlatformAgentKnowledgeBaseAttachment */
 @ResourceType(type="digitalocean:index/gradientaiAgentKnowledgeBaseAttachment:GradientaiAgentKnowledgeBaseAttachment")
 public class GradientaiAgentKnowledgeBaseAttachment extends com.pulumi.resources.CustomResource {
     /**
@@ -85,9 +89,6 @@ public class GradientaiAgentKnowledgeBaseAttachment extends com.pulumi.resources
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .aliases(List.of(
-                Output.of(Alias.builder().type("digitalocean:index/genaiAgentKnowledgeBaseAttachment:GenaiAgentKnowledgeBaseAttachment").build())
-            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

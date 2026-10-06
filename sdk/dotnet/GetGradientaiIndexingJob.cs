@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.DigitalOcean
 {
+    [Obsolete(@"digitalocean.getGradientaiIndexingJob has been deprecated in favor of digitalocean.getAgentPlatformIndexingJob")]
     public static class GetGradientaiIndexingJob
     {
         public static Task<GetGradientaiIndexingJobResult> InvokeAsync(GetGradientaiIndexingJobArgs args, InvokeOptions? options = null)

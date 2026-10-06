@@ -16,10 +16,10 @@ from . import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['GradientaiKnowledgeBaseDataSourceInitArgs', 'GradientaiKnowledgeBaseDataSource']
+__all__ = ['GradientaiKnowledgeBaseDataSourceArgs', 'GradientaiKnowledgeBaseDataSource']
 
 @pulumi.input_type
-class GradientaiKnowledgeBaseDataSourceInitArgs:
+class GradientaiKnowledgeBaseDataSourceArgs:
     def __init__(__self__, *,
                  knowledge_base_uuid: pulumi.Input[_builtins.str],
                  spaces_data_source: pulumi.Input[Optional['GradientaiKnowledgeBaseDataSourceSpacesDataSourceArgs']] = None,
@@ -115,8 +115,13 @@ class _GradientaiKnowledgeBaseDataSourceState:
         pulumi.set(self, "web_crawler_data_source", value)
 
 
+warnings.warn("""digitalocean.GradientaiKnowledgeBaseDataSource has been deprecated in favor of digitalocean.AgentPlatformKnowledgeBaseDataSource""", DeprecationWarning)
+
+
 @pulumi.type_token("digitalocean:index/gradientaiKnowledgeBaseDataSource:GradientaiKnowledgeBaseDataSource")
 class GradientaiKnowledgeBaseDataSource(pulumi.CustomResource):
+    warnings.warn("""digitalocean.GradientaiKnowledgeBaseDataSource has been deprecated in favor of digitalocean.AgentPlatformKnowledgeBaseDataSource""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -136,18 +141,18 @@ class GradientaiKnowledgeBaseDataSource(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: GradientaiKnowledgeBaseDataSourceInitArgs,
+                 args: GradientaiKnowledgeBaseDataSourceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Create a GradientaiKnowledgeBaseDataSource resource with the given unique name, props, and options.
 
         :param str resource_name: The name of the resource.
-        :param GradientaiKnowledgeBaseDataSourceInitArgs args: The arguments to use to populate this resource's properties.
+        :param GradientaiKnowledgeBaseDataSourceArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(GradientaiKnowledgeBaseDataSourceInitArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(GradientaiKnowledgeBaseDataSourceArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -160,21 +165,20 @@ class GradientaiKnowledgeBaseDataSource(pulumi.CustomResource):
                  spaces_data_source: pulumi.Input[Optional[Union['GradientaiKnowledgeBaseDataSourceSpacesDataSourceArgs', 'GradientaiKnowledgeBaseDataSourceSpacesDataSourceArgsDict', 'outputs.GradientaiKnowledgeBaseDataSourceSpacesDataSource']]] = None,
                  web_crawler_data_source: pulumi.Input[Optional[Union['GradientaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs', 'GradientaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgsDict', 'outputs.GradientaiKnowledgeBaseDataSourceWebCrawlerDataSource']]] = None,
                  __props__=None):
+        pulumi.log.warn("""GradientaiKnowledgeBaseDataSource is deprecated: digitalocean.GradientaiKnowledgeBaseDataSource has been deprecated in favor of digitalocean.AgentPlatformKnowledgeBaseDataSource""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = GradientaiKnowledgeBaseDataSourceInitArgs.__new__(GradientaiKnowledgeBaseDataSourceInitArgs)
+            __props__ = GradientaiKnowledgeBaseDataSourceArgs.__new__(GradientaiKnowledgeBaseDataSourceArgs)
 
             if knowledge_base_uuid is None and not opts.urn:
                 raise TypeError("Missing required property 'knowledge_base_uuid'")
             __props__.__dict__["knowledge_base_uuid"] = knowledge_base_uuid
             __props__.__dict__["spaces_data_source"] = spaces_data_source
             __props__.__dict__["web_crawler_data_source"] = web_crawler_data_source
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="digitalocean:index/genaiKnowledgeBaseDataSource:GenaiKnowledgeBaseDataSource")])
-        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(GradientaiKnowledgeBaseDataSource, __self__).__init__(
             'digitalocean:index/gradientaiKnowledgeBaseDataSource:GradientaiKnowledgeBaseDataSource',
             resource_name,

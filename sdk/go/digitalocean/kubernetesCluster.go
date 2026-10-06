@@ -310,6 +310,8 @@ type KubernetesCluster struct {
 	MaintenancePolicy KubernetesClusterMaintenancePolicyOutput `pulumi:"maintenancePolicy"`
 	// A name for the Kubernetes cluster.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Block containing options for the NFS CSI driver plugin component. If not specified, the NFS CSI plugin will not be installed in the cluster.
+	NfsCsiPlugin KubernetesClusterNfsCsiPluginOutput `pulumi:"nfsCsiPlugin"`
 	// A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
 	NodePool KubernetesClusterNodePoolOutput `pulumi:"nodePool"`
 	// Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes. Mutually exclusive with `nvidiaGpuDraDriver`.
@@ -427,6 +429,8 @@ type kubernetesClusterState struct {
 	MaintenancePolicy *KubernetesClusterMaintenancePolicy `pulumi:"maintenancePolicy"`
 	// A name for the Kubernetes cluster.
 	Name *string `pulumi:"name"`
+	// Block containing options for the NFS CSI driver plugin component. If not specified, the NFS CSI plugin will not be installed in the cluster.
+	NfsCsiPlugin *KubernetesClusterNfsCsiPlugin `pulumi:"nfsCsiPlugin"`
 	// A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
 	NodePool *KubernetesClusterNodePool `pulumi:"nodePool"`
 	// Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes. Mutually exclusive with `nvidiaGpuDraDriver`.
@@ -502,6 +506,8 @@ type KubernetesClusterState struct {
 	MaintenancePolicy KubernetesClusterMaintenancePolicyPtrInput
 	// A name for the Kubernetes cluster.
 	Name pulumi.StringPtrInput
+	// Block containing options for the NFS CSI driver plugin component. If not specified, the NFS CSI plugin will not be installed in the cluster.
+	NfsCsiPlugin KubernetesClusterNfsCsiPluginPtrInput
 	// A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
 	NodePool KubernetesClusterNodePoolPtrInput
 	// Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes. Mutually exclusive with `nvidiaGpuDraDriver`.
@@ -571,6 +577,8 @@ type kubernetesClusterArgs struct {
 	MaintenancePolicy *KubernetesClusterMaintenancePolicy `pulumi:"maintenancePolicy"`
 	// A name for the Kubernetes cluster.
 	Name *string `pulumi:"name"`
+	// Block containing options for the NFS CSI driver plugin component. If not specified, the NFS CSI plugin will not be installed in the cluster.
+	NfsCsiPlugin *KubernetesClusterNfsCsiPlugin `pulumi:"nfsCsiPlugin"`
 	// A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
 	NodePool KubernetesClusterNodePool `pulumi:"nodePool"`
 	// Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes. Mutually exclusive with `nvidiaGpuDraDriver`.
@@ -633,6 +641,8 @@ type KubernetesClusterArgs struct {
 	MaintenancePolicy KubernetesClusterMaintenancePolicyPtrInput
 	// A name for the Kubernetes cluster.
 	Name pulumi.StringPtrInput
+	// Block containing options for the NFS CSI driver plugin component. If not specified, the NFS CSI plugin will not be installed in the cluster.
+	NfsCsiPlugin KubernetesClusterNfsCsiPluginPtrInput
 	// A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
 	NodePool KubernetesClusterNodePoolInput
 	// Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes. Mutually exclusive with `nvidiaGpuDraDriver`.
@@ -849,6 +859,11 @@ func (o KubernetesClusterOutput) MaintenancePolicy() KubernetesClusterMaintenanc
 // A name for the Kubernetes cluster.
 func (o KubernetesClusterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *KubernetesCluster) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Block containing options for the NFS CSI driver plugin component. If not specified, the NFS CSI plugin will not be installed in the cluster.
+func (o KubernetesClusterOutput) NfsCsiPlugin() KubernetesClusterNfsCsiPluginOutput {
+	return o.ApplyT(func(v *KubernetesCluster) KubernetesClusterNfsCsiPluginOutput { return v.NfsCsiPlugin }).(KubernetesClusterNfsCsiPluginOutput)
 }
 
 // A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:

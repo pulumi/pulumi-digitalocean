@@ -4,6 +4,9 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * @deprecated digitalocean.GradientaiAgentKnowledgeBaseAttachment has been deprecated in favor of digitalocean.AgentPlatformAgentKnowledgeBaseAttachment
+ */
 export class GradientaiAgentKnowledgeBaseAttachment extends pulumi.CustomResource {
     /**
      * Get an existing GradientaiAgentKnowledgeBaseAttachment resource's state with the given name, ID, and optional extra
@@ -15,6 +18,7 @@ export class GradientaiAgentKnowledgeBaseAttachment extends pulumi.CustomResourc
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: GradientaiAgentKnowledgeBaseAttachmentState, opts?: pulumi.CustomResourceOptions): GradientaiAgentKnowledgeBaseAttachment {
+        pulumi.log.warn("GradientaiAgentKnowledgeBaseAttachment is deprecated: digitalocean.GradientaiAgentKnowledgeBaseAttachment has been deprecated in favor of digitalocean.AgentPlatformAgentKnowledgeBaseAttachment")
         return new GradientaiAgentKnowledgeBaseAttachment(name, <any>state, { ...opts, id: id });
     }
 
@@ -48,8 +52,11 @@ export class GradientaiAgentKnowledgeBaseAttachment extends pulumi.CustomResourc
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated digitalocean.GradientaiAgentKnowledgeBaseAttachment has been deprecated in favor of digitalocean.AgentPlatformAgentKnowledgeBaseAttachment */
     constructor(name: string, args: GradientaiAgentKnowledgeBaseAttachmentArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated digitalocean.GradientaiAgentKnowledgeBaseAttachment has been deprecated in favor of digitalocean.AgentPlatformAgentKnowledgeBaseAttachment */
     constructor(name: string, argsOrState?: GradientaiAgentKnowledgeBaseAttachmentArgs | GradientaiAgentKnowledgeBaseAttachmentState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("GradientaiAgentKnowledgeBaseAttachment is deprecated: digitalocean.GradientaiAgentKnowledgeBaseAttachment has been deprecated in favor of digitalocean.AgentPlatformAgentKnowledgeBaseAttachment")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
@@ -68,8 +75,6 @@ export class GradientaiAgentKnowledgeBaseAttachment extends pulumi.CustomResourc
             resourceInputs["knowledgeBaseUuid"] = args?.knowledgeBaseUuid;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "digitalocean:index/genaiAgentKnowledgeBaseAttachment:GenaiAgentKnowledgeBaseAttachment" }] };
-        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(GradientaiAgentKnowledgeBaseAttachment.__pulumiType, name, resourceInputs, opts);
     }
 }

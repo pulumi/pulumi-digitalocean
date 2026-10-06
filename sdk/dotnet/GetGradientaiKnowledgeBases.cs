@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.DigitalOcean
 {
+    [Obsolete(@"digitalocean.getGradientaiKnowledgeBases has been deprecated in favor of digitalocean.getAgentPlatformKnowledgeBases")]
     public static class GetGradientaiKnowledgeBases
     {
         public static Task<GetGradientaiKnowledgeBasesResult> InvokeAsync(GetGradientaiKnowledgeBasesArgs? args = null, InvokeOptions? options = null)

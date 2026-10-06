@@ -116,6 +116,9 @@ namespace Pulumi.DigitalOcean
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
+        [Input("nfsCsiPlugin")]
+        public Inputs.GetKubernetesClusterNfsCsiPluginArgs? NfsCsiPlugin { get; set; }
+
         [Input("nvidiaGpuDevicePlugin")]
         public Inputs.GetKubernetesClusterNvidiaGpuDevicePluginArgs? NvidiaGpuDevicePlugin { get; set; }
 
@@ -187,6 +190,9 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
+
+        [Input("nfsCsiPlugin")]
+        public Input<Inputs.GetKubernetesClusterNfsCsiPluginInputArgs>? NfsCsiPlugin { get; set; }
 
         [Input("nvidiaGpuDevicePlugin")]
         public Input<Inputs.GetKubernetesClusterNvidiaGpuDevicePluginInputArgs>? NvidiaGpuDevicePlugin { get; set; }
@@ -281,6 +287,7 @@ namespace Pulumi.DigitalOcean
         /// The auto-generated name for the node.
         /// </summary>
         public readonly string Name;
+        public readonly Outputs.GetKubernetesClusterNfsCsiPluginResult NfsCsiPlugin;
         /// <summary>
         /// A list of node pools associated with the cluster. Each node pool exports the following attributes:
         /// </summary>
@@ -364,6 +371,8 @@ namespace Pulumi.DigitalOcean
 
             string name,
 
+            Outputs.GetKubernetesClusterNfsCsiPluginResult nfsCsiPlugin,
+
             ImmutableArray<Outputs.GetKubernetesClusterNodePoolResult> nodePools,
 
             Outputs.GetKubernetesClusterNvidiaGpuDevicePluginResult nvidiaGpuDevicePlugin,
@@ -416,6 +425,7 @@ namespace Pulumi.DigitalOcean
             KubeconfigExpireSeconds = kubeconfigExpireSeconds;
             MaintenancePolicies = maintenancePolicies;
             Name = name;
+            NfsCsiPlugin = nfsCsiPlugin;
             NodePools = nodePools;
             NvidiaGpuDevicePlugin = nvidiaGpuDevicePlugin;
             NvidiaGpuDraDriver = nvidiaGpuDraDriver;

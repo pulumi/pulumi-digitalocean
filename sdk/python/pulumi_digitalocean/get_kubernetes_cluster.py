@@ -28,7 +28,7 @@ class GetKubernetesClusterResult:
     """
     A collection of values returned by getKubernetesCluster.
     """
-    def __init__(__self__, amd_gpu_device_metrics_exporter_plugin=None, amd_gpu_device_plugin=None, amd_gpu_dra_driver=None, auto_upgrade=None, cluster_autoscaler_configurations=None, cluster_subnet=None, control_plane_firewalls=None, coredns_autoscaler=None, created_at=None, endpoint=None, ha=None, id=None, ipv4_address=None, isolated_workers=None, kube_configs=None, kubeconfig_expire_seconds=None, maintenance_policies=None, name=None, node_pools=None, nvidia_gpu_device_plugin=None, nvidia_gpu_dra_driver=None, p2p_oci_registry_plugin=None, rdma_shared_device_plugin=None, region=None, routing_agent=None, service_subnet=None, ssos=None, status=None, surge_upgrade=None, tags=None, updated_at=None, urn=None, version=None, vpc_uuid=None, worker_subnet_uuid=None):
+    def __init__(__self__, amd_gpu_device_metrics_exporter_plugin=None, amd_gpu_device_plugin=None, amd_gpu_dra_driver=None, auto_upgrade=None, cluster_autoscaler_configurations=None, cluster_subnet=None, control_plane_firewalls=None, coredns_autoscaler=None, created_at=None, endpoint=None, ha=None, id=None, ipv4_address=None, isolated_workers=None, kube_configs=None, kubeconfig_expire_seconds=None, maintenance_policies=None, name=None, nfs_csi_plugin=None, node_pools=None, nvidia_gpu_device_plugin=None, nvidia_gpu_dra_driver=None, p2p_oci_registry_plugin=None, rdma_shared_device_plugin=None, region=None, routing_agent=None, service_subnet=None, ssos=None, status=None, surge_upgrade=None, tags=None, updated_at=None, urn=None, version=None, vpc_uuid=None, worker_subnet_uuid=None):
         if amd_gpu_device_metrics_exporter_plugin and not isinstance(amd_gpu_device_metrics_exporter_plugin, dict):
             raise TypeError("Expected argument 'amd_gpu_device_metrics_exporter_plugin' to be a dict")
         pulumi.set(__self__, "amd_gpu_device_metrics_exporter_plugin", amd_gpu_device_metrics_exporter_plugin)
@@ -83,6 +83,9 @@ class GetKubernetesClusterResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if nfs_csi_plugin and not isinstance(nfs_csi_plugin, dict):
+            raise TypeError("Expected argument 'nfs_csi_plugin' to be a dict")
+        pulumi.set(__self__, "nfs_csi_plugin", nfs_csi_plugin)
         if node_pools and not isinstance(node_pools, list):
             raise TypeError("Expected argument 'node_pools' to be a list")
         pulumi.set(__self__, "node_pools", node_pools)
@@ -256,6 +259,11 @@ class GetKubernetesClusterResult:
         return pulumi.get(self, "name")
 
     @_builtins.property
+    @pulumi.getter(name="nfsCsiPlugin")
+    def nfs_csi_plugin(self) -> 'outputs.GetKubernetesClusterNfsCsiPluginResult':
+        return pulumi.get(self, "nfs_csi_plugin")
+
+    @_builtins.property
     @pulumi.getter(name="nodePools")
     def node_pools(self) -> Sequence['outputs.GetKubernetesClusterNodePoolResult']:
         """
@@ -392,6 +400,7 @@ class AwaitableGetKubernetesClusterResult(GetKubernetesClusterResult):
             kubeconfig_expire_seconds=self.kubeconfig_expire_seconds,
             maintenance_policies=self.maintenance_policies,
             name=self.name,
+            nfs_csi_plugin=self.nfs_csi_plugin,
             node_pools=self.node_pools,
             nvidia_gpu_device_plugin=self.nvidia_gpu_device_plugin,
             nvidia_gpu_dra_driver=self.nvidia_gpu_dra_driver,
@@ -418,6 +427,7 @@ def get_kubernetes_cluster(amd_gpu_device_metrics_exporter_plugin: Optional[Unio
                            coredns_autoscaler: Optional[Union['GetKubernetesClusterCorednsAutoscalerArgs', 'GetKubernetesClusterCorednsAutoscalerArgsDict', 'outputs.GetKubernetesClusterCorednsAutoscalerResult']] = None,
                            kubeconfig_expire_seconds: Optional[_builtins.int] = None,
                            name: Optional[_builtins.str] = None,
+                           nfs_csi_plugin: Optional[Union['GetKubernetesClusterNfsCsiPluginArgs', 'GetKubernetesClusterNfsCsiPluginArgsDict', 'outputs.GetKubernetesClusterNfsCsiPluginResult']] = None,
                            nvidia_gpu_device_plugin: Optional[Union['GetKubernetesClusterNvidiaGpuDevicePluginArgs', 'GetKubernetesClusterNvidiaGpuDevicePluginArgsDict', 'outputs.GetKubernetesClusterNvidiaGpuDevicePluginResult']] = None,
                            nvidia_gpu_dra_driver: Optional[Union['GetKubernetesClusterNvidiaGpuDraDriverArgs', 'GetKubernetesClusterNvidiaGpuDraDriverArgsDict', 'outputs.GetKubernetesClusterNvidiaGpuDraDriverResult']] = None,
                            p2p_oci_registry_plugin: Optional[Union['GetKubernetesClusterP2pOciRegistryPluginArgs', 'GetKubernetesClusterP2pOciRegistryPluginArgsDict', 'outputs.GetKubernetesClusterP2pOciRegistryPluginResult']] = None,
@@ -450,6 +460,7 @@ def get_kubernetes_cluster(amd_gpu_device_metrics_exporter_plugin: Optional[Unio
     __args__['corednsAutoscaler'] = coredns_autoscaler
     __args__['kubeconfigExpireSeconds'] = kubeconfig_expire_seconds
     __args__['name'] = name
+    __args__['nfsCsiPlugin'] = nfs_csi_plugin
     __args__['nvidiaGpuDevicePlugin'] = nvidia_gpu_device_plugin
     __args__['nvidiaGpuDraDriver'] = nvidia_gpu_dra_driver
     __args__['p2pOciRegistryPlugin'] = p2p_oci_registry_plugin
@@ -479,6 +490,7 @@ def get_kubernetes_cluster(amd_gpu_device_metrics_exporter_plugin: Optional[Unio
         kubeconfig_expire_seconds=pulumi.get(__ret__, 'kubeconfig_expire_seconds'),
         maintenance_policies=pulumi.get(__ret__, 'maintenance_policies'),
         name=pulumi.get(__ret__, 'name'),
+        nfs_csi_plugin=pulumi.get(__ret__, 'nfs_csi_plugin'),
         node_pools=pulumi.get(__ret__, 'node_pools'),
         nvidia_gpu_device_plugin=pulumi.get(__ret__, 'nvidia_gpu_device_plugin'),
         nvidia_gpu_dra_driver=pulumi.get(__ret__, 'nvidia_gpu_dra_driver'),
@@ -503,6 +515,7 @@ def get_kubernetes_cluster_output(amd_gpu_device_metrics_exporter_plugin: pulumi
                                   coredns_autoscaler: pulumi.Input[Optional[Optional[Union['GetKubernetesClusterCorednsAutoscalerArgs', 'GetKubernetesClusterCorednsAutoscalerArgsDict', 'outputs.GetKubernetesClusterCorednsAutoscalerResult']]]] = None,
                                   kubeconfig_expire_seconds: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                                   name: pulumi.Input[Optional[_builtins.str]] = None,
+                                  nfs_csi_plugin: pulumi.Input[Optional[Optional[Union['GetKubernetesClusterNfsCsiPluginArgs', 'GetKubernetesClusterNfsCsiPluginArgsDict', 'outputs.GetKubernetesClusterNfsCsiPluginResult']]]] = None,
                                   nvidia_gpu_device_plugin: pulumi.Input[Optional[Optional[Union['GetKubernetesClusterNvidiaGpuDevicePluginArgs', 'GetKubernetesClusterNvidiaGpuDevicePluginArgsDict', 'outputs.GetKubernetesClusterNvidiaGpuDevicePluginResult']]]] = None,
                                   nvidia_gpu_dra_driver: pulumi.Input[Optional[Optional[Union['GetKubernetesClusterNvidiaGpuDraDriverArgs', 'GetKubernetesClusterNvidiaGpuDraDriverArgsDict', 'outputs.GetKubernetesClusterNvidiaGpuDraDriverResult']]]] = None,
                                   p2p_oci_registry_plugin: pulumi.Input[Optional[Optional[Union['GetKubernetesClusterP2pOciRegistryPluginArgs', 'GetKubernetesClusterP2pOciRegistryPluginArgsDict', 'outputs.GetKubernetesClusterP2pOciRegistryPluginResult']]]] = None,
@@ -535,6 +548,7 @@ def get_kubernetes_cluster_output(amd_gpu_device_metrics_exporter_plugin: pulumi
     __args__['corednsAutoscaler'] = coredns_autoscaler
     __args__['kubeconfigExpireSeconds'] = kubeconfig_expire_seconds
     __args__['name'] = name
+    __args__['nfsCsiPlugin'] = nfs_csi_plugin
     __args__['nvidiaGpuDevicePlugin'] = nvidia_gpu_device_plugin
     __args__['nvidiaGpuDraDriver'] = nvidia_gpu_dra_driver
     __args__['p2pOciRegistryPlugin'] = p2p_oci_registry_plugin
@@ -563,6 +577,7 @@ def get_kubernetes_cluster_output(amd_gpu_device_metrics_exporter_plugin: pulumi
         kubeconfig_expire_seconds=pulumi.get(__response__, 'kubeconfig_expire_seconds'),
         maintenance_policies=pulumi.get(__response__, 'maintenance_policies'),
         name=pulumi.get(__response__, 'name'),
+        nfs_csi_plugin=pulumi.get(__response__, 'nfs_csi_plugin'),
         node_pools=pulumi.get(__response__, 'node_pools'),
         nvidia_gpu_device_plugin=pulumi.get(__response__, 'nvidia_gpu_device_plugin'),
         nvidia_gpu_dra_driver=pulumi.get(__response__, 'nvidia_gpu_dra_driver'),

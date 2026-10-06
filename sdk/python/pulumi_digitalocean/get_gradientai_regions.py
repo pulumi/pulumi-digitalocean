@@ -23,6 +23,8 @@ __all__ = [
     'get_gradientai_regions_output',
 ]
 
+warnings.warn("""digitalocean.getGradientaiRegions has been deprecated in favor of digitalocean.getAgentPlatformRegions""", DeprecationWarning)
+
 @pulumi.output_type
 class GetGradientaiRegionsResult:
     """
@@ -84,6 +86,7 @@ def get_gradientai_regions(filters: Optional[Sequence[Union['GetGradientaiRegion
     """
     Use this data source to access information about an existing resource.
     """
+    pulumi.log.warn("""get_gradientai_regions is deprecated: digitalocean.getGradientaiRegions has been deprecated in favor of digitalocean.getAgentPlatformRegions""")
     __args__ = dict()
     __args__['filters'] = filters
     __args__['sorts'] = sorts
@@ -101,6 +104,7 @@ def get_gradientai_regions_output(filters: pulumi.Input[Optional[Optional[Sequen
     """
     Use this data source to access information about an existing resource.
     """
+    pulumi.log.warn("""get_gradientai_regions is deprecated: digitalocean.getGradientaiRegions has been deprecated in favor of digitalocean.getAgentPlatformRegions""")
     __args__ = dict()
     __args__['filters'] = filters
     __args__['sorts'] = sorts

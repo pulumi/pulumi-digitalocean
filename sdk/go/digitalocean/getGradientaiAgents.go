@@ -11,6 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Deprecated: digitalocean.getGradientaiAgents has been deprecated in favor of digitalocean.getAgentPlatformAgents
 func GetGradientaiAgents(ctx *pulumi.Context, args *GetGradientaiAgentsArgs, opts ...pulumi.InvokeOption) (*GetGradientaiAgentsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetGradientaiAgentsResult

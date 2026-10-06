@@ -4,6 +4,9 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * @deprecated digitalocean.GradientaiIndexingJobCancel has been deprecated in favor of digitalocean.AgentPlatformIndexingJobCancel
+ */
 export class GradientaiIndexingJobCancel extends pulumi.CustomResource {
     /**
      * Get an existing GradientaiIndexingJobCancel resource's state with the given name, ID, and optional extra
@@ -15,6 +18,7 @@ export class GradientaiIndexingJobCancel extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: GradientaiIndexingJobCancelState, opts?: pulumi.CustomResourceOptions): GradientaiIndexingJobCancel {
+        pulumi.log.warn("GradientaiIndexingJobCancel is deprecated: digitalocean.GradientaiIndexingJobCancel has been deprecated in favor of digitalocean.AgentPlatformIndexingJobCancel")
         return new GradientaiIndexingJobCancel(name, <any>state, { ...opts, id: id });
     }
 
@@ -100,8 +104,11 @@ export class GradientaiIndexingJobCancel extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated digitalocean.GradientaiIndexingJobCancel has been deprecated in favor of digitalocean.AgentPlatformIndexingJobCancel */
     constructor(name: string, args: GradientaiIndexingJobCancelArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated digitalocean.GradientaiIndexingJobCancel has been deprecated in favor of digitalocean.AgentPlatformIndexingJobCancel */
     constructor(name: string, argsOrState?: GradientaiIndexingJobCancelArgs | GradientaiIndexingJobCancelState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("GradientaiIndexingJobCancel is deprecated: digitalocean.GradientaiIndexingJobCancel has been deprecated in favor of digitalocean.AgentPlatformIndexingJobCancel")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
@@ -143,8 +150,6 @@ export class GradientaiIndexingJobCancel extends pulumi.CustomResource {
             resourceInputs["updatedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "digitalocean:index/genaiIndexingJobCancel:GenaiIndexingJobCancel" }] };
-        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(GradientaiIndexingJobCancel.__pulumiType, name, resourceInputs, opts);
     }
 }

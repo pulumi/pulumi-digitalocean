@@ -3,7 +3,6 @@
 
 package com.pulumi.digitalocean;
 
-import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -12,119 +11,124 @@ import com.pulumi.digitalocean.GradientaiFunctionArgs;
 import com.pulumi.digitalocean.Utilities;
 import com.pulumi.digitalocean.inputs.GradientaiFunctionState;
 import java.lang.String;
-import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * @deprecated
+ * digitalocean.GradientaiFunction has been deprecated in favor of digitalocean.AgentPlatformFunction
+ * 
+ */
+@Deprecated /* digitalocean.GradientaiFunction has been deprecated in favor of digitalocean.AgentPlatformFunction */
 @ResourceType(type="digitalocean:index/gradientaiFunction:GradientaiFunction")
 public class GradientaiFunction extends com.pulumi.resources.CustomResource {
     /**
-     * The name of the GradientAI resource.
+     * The name of the Agent Platform resource.
      * 
      */
     @Export(name="agentId", refs={String.class}, tree="[0]")
     private Output<String> agentId;
 
     /**
-     * @return The name of the GradientAI resource.
+     * @return The name of the Agent Platform resource.
      * 
      */
     public Output<String> agentId() {
         return this.agentId;
     }
     /**
-     * The region where the GradientAI resource will be created.
+     * The region where the Agent Platform resource will be created.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
-     * @return The region where the GradientAI resource will be created.
+     * @return The region where the Agent Platform resource will be created.
      * 
      */
     public Output<String> description() {
         return this.description;
     }
     /**
-     * The model to use for the GradientAI resource.
+     * The model to use for the Agent Platform resource.
      * 
      */
     @Export(name="faasName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> faasName;
 
     /**
-     * @return The model to use for the GradientAI resource.
+     * @return The model to use for the Agent Platform resource.
      * 
      */
     public Output<Optional<String>> faasName() {
         return Codegen.optional(this.faasName);
     }
     /**
-     * The current status of the GradientAI resource.
+     * The current status of the Agent Platform resource.
      * 
      */
     @Export(name="faasNamespace", refs={String.class}, tree="[0]")
     private Output<String> faasNamespace;
 
     /**
-     * @return The current status of the GradientAI resource.
+     * @return The current status of the Agent Platform resource.
      * 
      */
     public Output<String> faasNamespace() {
         return this.faasNamespace;
     }
     /**
-     * The creation timestamp of the GradientAI resource.
+     * The creation timestamp of the Agent Platform resource.
      * 
      */
     @Export(name="functionName", refs={String.class}, tree="[0]")
     private Output<String> functionName;
 
     /**
-     * @return The creation timestamp of the GradientAI resource.
+     * @return The creation timestamp of the Agent Platform resource.
      * 
      */
     public Output<String> functionName() {
         return this.functionName;
     }
     /**
-     * The unique identifier of the GradientAI function.
+     * The unique identifier of the Agent Platform function.
      * 
      */
     @Export(name="functionUuid", refs={String.class}, tree="[0]")
     private Output<String> functionUuid;
 
     /**
-     * @return The unique identifier of the GradientAI function.
+     * @return The unique identifier of the Agent Platform function.
      * 
      */
     public Output<String> functionUuid() {
         return this.functionUuid;
     }
     /**
-     * The input schema of the GradientAI resource.
+     * The input schema of the Agent Platform resource.
      * 
      */
     @Export(name="inputSchema", refs={String.class}, tree="[0]")
     private Output<String> inputSchema;
 
     /**
-     * @return The input schema of the GradientAI resource.
+     * @return The input schema of the Agent Platform resource.
      * 
      */
     public Output<String> inputSchema() {
         return this.inputSchema;
     }
     /**
-     * The output schema of the GradientAI resource.
+     * The output schema of the Agent Platform resource.
      * 
      */
     @Export(name="outputSchema", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> outputSchema;
 
     /**
-     * @return The output schema of the GradientAI resource.
+     * @return The output schema of the Agent Platform resource.
      * 
      */
     public Output<Optional<String>> outputSchema() {
@@ -170,9 +174,6 @@ public class GradientaiFunction extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .aliases(List.of(
-                Output.of(Alias.builder().type("digitalocean:index/genaiFunction:GenaiFunction").build())
-            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

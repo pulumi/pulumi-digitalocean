@@ -7,6 +7,9 @@ import * as outputs from "./types/output";
 import * as enums from "./types/enums";
 import * as utilities from "./utilities";
 
+/**
+ * @deprecated digitalocean.GradientaiKnowledgeBaseDataSource has been deprecated in favor of digitalocean.AgentPlatformKnowledgeBaseDataSource
+ */
 export class GradientaiKnowledgeBaseDataSource extends pulumi.CustomResource {
     /**
      * Get an existing GradientaiKnowledgeBaseDataSource resource's state with the given name, ID, and optional extra
@@ -18,6 +21,7 @@ export class GradientaiKnowledgeBaseDataSource extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: GradientaiKnowledgeBaseDataSourceState, opts?: pulumi.CustomResourceOptions): GradientaiKnowledgeBaseDataSource {
+        pulumi.log.warn("GradientaiKnowledgeBaseDataSource is deprecated: digitalocean.GradientaiKnowledgeBaseDataSource has been deprecated in favor of digitalocean.AgentPlatformKnowledgeBaseDataSource")
         return new GradientaiKnowledgeBaseDataSource(name, <any>state, { ...opts, id: id });
     }
 
@@ -49,8 +53,11 @@ export class GradientaiKnowledgeBaseDataSource extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated digitalocean.GradientaiKnowledgeBaseDataSource has been deprecated in favor of digitalocean.AgentPlatformKnowledgeBaseDataSource */
     constructor(name: string, args: GradientaiKnowledgeBaseDataSourceArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated digitalocean.GradientaiKnowledgeBaseDataSource has been deprecated in favor of digitalocean.AgentPlatformKnowledgeBaseDataSource */
     constructor(name: string, argsOrState?: GradientaiKnowledgeBaseDataSourceArgs | GradientaiKnowledgeBaseDataSourceState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("GradientaiKnowledgeBaseDataSource is deprecated: digitalocean.GradientaiKnowledgeBaseDataSource has been deprecated in favor of digitalocean.AgentPlatformKnowledgeBaseDataSource")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
@@ -68,8 +75,6 @@ export class GradientaiKnowledgeBaseDataSource extends pulumi.CustomResource {
             resourceInputs["webCrawlerDataSource"] = args?.webCrawlerDataSource;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "digitalocean:index/genaiKnowledgeBaseDataSource:GenaiKnowledgeBaseDataSource" }] };
-        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(GradientaiKnowledgeBaseDataSource.__pulumiType, name, resourceInputs, opts);
     }
 }

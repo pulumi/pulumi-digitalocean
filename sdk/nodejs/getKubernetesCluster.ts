@@ -31,6 +31,7 @@ export function getKubernetesCluster(args: GetKubernetesClusterArgs, opts?: pulu
         "corednsAutoscaler": args.corednsAutoscaler,
         "kubeconfigExpireSeconds": args.kubeconfigExpireSeconds,
         "name": args.name,
+        "nfsCsiPlugin": args.nfsCsiPlugin,
         "nvidiaGpuDevicePlugin": args.nvidiaGpuDevicePlugin,
         "nvidiaGpuDraDriver": args.nvidiaGpuDraDriver,
         "p2pOciRegistryPlugin": args.p2pOciRegistryPlugin,
@@ -55,6 +56,7 @@ export interface GetKubernetesClusterArgs {
      * The name of Kubernetes cluster.
      */
     name: string;
+    nfsCsiPlugin?: inputs.GetKubernetesClusterNfsCsiPlugin;
     nvidiaGpuDevicePlugin?: inputs.GetKubernetesClusterNvidiaGpuDevicePlugin;
     nvidiaGpuDraDriver?: inputs.GetKubernetesClusterNvidiaGpuDraDriver;
     p2pOciRegistryPlugin?: inputs.GetKubernetesClusterP2pOciRegistryPlugin;
@@ -119,6 +121,7 @@ export interface GetKubernetesClusterResult {
      * The auto-generated name for the node.
      */
     readonly name: string;
+    readonly nfsCsiPlugin: outputs.GetKubernetesClusterNfsCsiPlugin;
     /**
      * A list of node pools associated with the cluster. Each node pool exports the following attributes:
      */
@@ -188,6 +191,7 @@ export function getKubernetesClusterOutput(args: GetKubernetesClusterOutputArgs,
         "corednsAutoscaler": args.corednsAutoscaler,
         "kubeconfigExpireSeconds": args.kubeconfigExpireSeconds,
         "name": args.name,
+        "nfsCsiPlugin": args.nfsCsiPlugin,
         "nvidiaGpuDevicePlugin": args.nvidiaGpuDevicePlugin,
         "nvidiaGpuDraDriver": args.nvidiaGpuDraDriver,
         "p2pOciRegistryPlugin": args.p2pOciRegistryPlugin,
@@ -212,6 +216,7 @@ export interface GetKubernetesClusterOutputArgs {
      * The name of Kubernetes cluster.
      */
     name: pulumi.Input<string>;
+    nfsCsiPlugin?: pulumi.Input<inputs.GetKubernetesClusterNfsCsiPluginArgs | undefined>;
     nvidiaGpuDevicePlugin?: pulumi.Input<inputs.GetKubernetesClusterNvidiaGpuDevicePluginArgs | undefined>;
     nvidiaGpuDraDriver?: pulumi.Input<inputs.GetKubernetesClusterNvidiaGpuDraDriverArgs | undefined>;
     p2pOciRegistryPlugin?: pulumi.Input<inputs.GetKubernetesClusterP2pOciRegistryPluginArgs | undefined>;

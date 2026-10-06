@@ -18,6 +18,7 @@ import com.pulumi.digitalocean.outputs.KubernetesClusterControlPlaneFirewall;
 import com.pulumi.digitalocean.outputs.KubernetesClusterCorednsAutoscaler;
 import com.pulumi.digitalocean.outputs.KubernetesClusterKubeConfig;
 import com.pulumi.digitalocean.outputs.KubernetesClusterMaintenancePolicy;
+import com.pulumi.digitalocean.outputs.KubernetesClusterNfsCsiPlugin;
 import com.pulumi.digitalocean.outputs.KubernetesClusterNodePool;
 import com.pulumi.digitalocean.outputs.KubernetesClusterNvidiaGpuDevicePlugin;
 import com.pulumi.digitalocean.outputs.KubernetesClusterNvidiaGpuDraDriver;
@@ -606,6 +607,20 @@ public class KubernetesCluster extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * Block containing options for the NFS CSI driver plugin component. If not specified, the NFS CSI plugin will not be installed in the cluster.
+     * 
+     */
+    @Export(name="nfsCsiPlugin", refs={KubernetesClusterNfsCsiPlugin.class}, tree="[0]")
+    private Output<KubernetesClusterNfsCsiPlugin> nfsCsiPlugin;
+
+    /**
+     * @return Block containing options for the NFS CSI driver plugin component. If not specified, the NFS CSI plugin will not be installed in the cluster.
+     * 
+     */
+    public Output<KubernetesClusterNfsCsiPlugin> nfsCsiPlugin() {
+        return this.nfsCsiPlugin;
     }
     /**
      * A block representing the cluster&#39;s default node pool. Additional node pools may be added to the cluster using the `digitalocean.KubernetesNodePool` resource. The following arguments may be specified:

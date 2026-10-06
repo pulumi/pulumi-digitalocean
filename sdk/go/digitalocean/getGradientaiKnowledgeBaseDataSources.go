@@ -11,6 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Deprecated: digitalocean.getGradientaiKnowledgeBaseDataSources has been deprecated in favor of digitalocean.getAgentPlatformKnowledgeBaseDataSources
 func GetGradientaiKnowledgeBaseDataSources(ctx *pulumi.Context, args *GetGradientaiKnowledgeBaseDataSourcesArgs, opts ...pulumi.InvokeOption) (*GetGradientaiKnowledgeBaseDataSourcesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetGradientaiKnowledgeBaseDataSourcesResult

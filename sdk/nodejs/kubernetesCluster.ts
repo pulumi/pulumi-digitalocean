@@ -278,6 +278,10 @@ export class KubernetesCluster extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
+     * Block containing options for the NFS CSI driver plugin component. If not specified, the NFS CSI plugin will not be installed in the cluster.
+     */
+    declare public readonly nfsCsiPlugin: pulumi.Output<outputs.KubernetesClusterNfsCsiPlugin>;
+    /**
      * A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `digitalocean.KubernetesNodePool` resource. The following arguments may be specified:
      */
     declare public readonly nodePool: pulumi.Output<outputs.KubernetesClusterNodePool>;
@@ -378,6 +382,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
             resourceInputs["kubeconfigExpireSeconds"] = state?.kubeconfigExpireSeconds;
             resourceInputs["maintenancePolicy"] = state?.maintenancePolicy;
             resourceInputs["name"] = state?.name;
+            resourceInputs["nfsCsiPlugin"] = state?.nfsCsiPlugin;
             resourceInputs["nodePool"] = state?.nodePool;
             resourceInputs["nvidiaGpuDevicePlugin"] = state?.nvidiaGpuDevicePlugin;
             resourceInputs["nvidiaGpuDraDriver"] = state?.nvidiaGpuDraDriver;
@@ -420,6 +425,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
             resourceInputs["kubeconfigExpireSeconds"] = args?.kubeconfigExpireSeconds;
             resourceInputs["maintenancePolicy"] = args?.maintenancePolicy;
             resourceInputs["name"] = args?.name;
+            resourceInputs["nfsCsiPlugin"] = args?.nfsCsiPlugin;
             resourceInputs["nodePool"] = args?.nodePool;
             resourceInputs["nvidiaGpuDevicePlugin"] = args?.nvidiaGpuDevicePlugin;
             resourceInputs["nvidiaGpuDraDriver"] = args?.nvidiaGpuDraDriver;
@@ -530,6 +536,10 @@ export interface KubernetesClusterState {
      * A name for the Kubernetes cluster.
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Block containing options for the NFS CSI driver plugin component. If not specified, the NFS CSI plugin will not be installed in the cluster.
+     */
+    nfsCsiPlugin?: pulumi.Input<inputs.KubernetesClusterNfsCsiPlugin | undefined>;
     /**
      * A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `digitalocean.KubernetesNodePool` resource. The following arguments may be specified:
      */
@@ -660,6 +670,10 @@ export interface KubernetesClusterArgs {
      * A name for the Kubernetes cluster.
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Block containing options for the NFS CSI driver plugin component. If not specified, the NFS CSI plugin will not be installed in the cluster.
+     */
+    nfsCsiPlugin?: pulumi.Input<inputs.KubernetesClusterNfsCsiPlugin | undefined>;
     /**
      * A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `digitalocean.KubernetesNodePool` resource. The following arguments may be specified:
      */

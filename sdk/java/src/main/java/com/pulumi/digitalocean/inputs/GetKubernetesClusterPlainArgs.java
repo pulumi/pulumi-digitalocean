@@ -9,6 +9,7 @@ import com.pulumi.digitalocean.inputs.GetKubernetesClusterAmdGpuDevicePlugin;
 import com.pulumi.digitalocean.inputs.GetKubernetesClusterAmdGpuDraDriver;
 import com.pulumi.digitalocean.inputs.GetKubernetesClusterClusterAutoscalerConfiguration;
 import com.pulumi.digitalocean.inputs.GetKubernetesClusterCorednsAutoscaler;
+import com.pulumi.digitalocean.inputs.GetKubernetesClusterNfsCsiPlugin;
 import com.pulumi.digitalocean.inputs.GetKubernetesClusterNvidiaGpuDevicePlugin;
 import com.pulumi.digitalocean.inputs.GetKubernetesClusterNvidiaGpuDraDriver;
 import com.pulumi.digitalocean.inputs.GetKubernetesClusterP2pOciRegistryPlugin;
@@ -85,6 +86,13 @@ public final class GetKubernetesClusterPlainArgs extends com.pulumi.resources.In
         return this.name;
     }
 
+    @Import(name="nfsCsiPlugin")
+    private @Nullable GetKubernetesClusterNfsCsiPlugin nfsCsiPlugin;
+
+    public Optional<GetKubernetesClusterNfsCsiPlugin> nfsCsiPlugin() {
+        return Optional.ofNullable(this.nfsCsiPlugin);
+    }
+
     @Import(name="nvidiaGpuDevicePlugin")
     private @Nullable GetKubernetesClusterNvidiaGpuDevicePlugin nvidiaGpuDevicePlugin;
 
@@ -152,6 +160,7 @@ public final class GetKubernetesClusterPlainArgs extends com.pulumi.resources.In
         this.corednsAutoscaler = $.corednsAutoscaler;
         this.kubeconfigExpireSeconds = $.kubeconfigExpireSeconds;
         this.name = $.name;
+        this.nfsCsiPlugin = $.nfsCsiPlugin;
         this.nvidiaGpuDevicePlugin = $.nvidiaGpuDevicePlugin;
         this.nvidiaGpuDraDriver = $.nvidiaGpuDraDriver;
         this.p2pOciRegistryPlugin = $.p2pOciRegistryPlugin;
@@ -221,6 +230,11 @@ public final class GetKubernetesClusterPlainArgs extends com.pulumi.resources.In
          */
         public Builder name(String name) {
             $.name = name;
+            return this;
+        }
+
+        public Builder nfsCsiPlugin(@Nullable GetKubernetesClusterNfsCsiPlugin nfsCsiPlugin) {
+            $.nfsCsiPlugin = nfsCsiPlugin;
             return this;
         }
 

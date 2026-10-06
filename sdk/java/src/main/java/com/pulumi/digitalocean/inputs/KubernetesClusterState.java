@@ -15,6 +15,7 @@ import com.pulumi.digitalocean.inputs.KubernetesClusterControlPlaneFirewallArgs;
 import com.pulumi.digitalocean.inputs.KubernetesClusterCorednsAutoscalerArgs;
 import com.pulumi.digitalocean.inputs.KubernetesClusterKubeConfigArgs;
 import com.pulumi.digitalocean.inputs.KubernetesClusterMaintenancePolicyArgs;
+import com.pulumi.digitalocean.inputs.KubernetesClusterNfsCsiPluginArgs;
 import com.pulumi.digitalocean.inputs.KubernetesClusterNodePoolArgs;
 import com.pulumi.digitalocean.inputs.KubernetesClusterNvidiaGpuDevicePluginArgs;
 import com.pulumi.digitalocean.inputs.KubernetesClusterNvidiaGpuDraDriverArgs;
@@ -321,6 +322,21 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * Block containing options for the NFS CSI driver plugin component. If not specified, the NFS CSI plugin will not be installed in the cluster.
+     * 
+     */
+    @Import(name="nfsCsiPlugin")
+    private @Nullable Output<KubernetesClusterNfsCsiPluginArgs> nfsCsiPlugin;
+
+    /**
+     * @return Block containing options for the NFS CSI driver plugin component. If not specified, the NFS CSI plugin will not be installed in the cluster.
+     * 
+     */
+    public Optional<Output<KubernetesClusterNfsCsiPluginArgs>> nfsCsiPlugin() {
+        return Optional.ofNullable(this.nfsCsiPlugin);
+    }
+
+    /**
      * A block representing the cluster&#39;s default node pool. Additional node pools may be added to the cluster using the `digitalocean.KubernetesNodePool` resource. The following arguments may be specified:
      * 
      */
@@ -597,6 +613,7 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
         this.kubeconfigExpireSeconds = $.kubeconfigExpireSeconds;
         this.maintenancePolicy = $.maintenancePolicy;
         this.name = $.name;
+        this.nfsCsiPlugin = $.nfsCsiPlugin;
         this.nodePool = $.nodePool;
         this.nvidiaGpuDevicePlugin = $.nvidiaGpuDevicePlugin;
         this.nvidiaGpuDraDriver = $.nvidiaGpuDraDriver;
@@ -1051,6 +1068,27 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param nfsCsiPlugin Block containing options for the NFS CSI driver plugin component. If not specified, the NFS CSI plugin will not be installed in the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nfsCsiPlugin(@Nullable Output<KubernetesClusterNfsCsiPluginArgs> nfsCsiPlugin) {
+            $.nfsCsiPlugin = nfsCsiPlugin;
+            return this;
+        }
+
+        /**
+         * @param nfsCsiPlugin Block containing options for the NFS CSI driver plugin component. If not specified, the NFS CSI plugin will not be installed in the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nfsCsiPlugin(KubernetesClusterNfsCsiPluginArgs nfsCsiPlugin) {
+            return nfsCsiPlugin(Output.of(nfsCsiPlugin));
         }
 
         /**

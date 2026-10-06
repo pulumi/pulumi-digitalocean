@@ -7,6 +7,9 @@ import * as outputs from "./types/output";
 import * as enums from "./types/enums";
 import * as utilities from "./utilities";
 
+/**
+ * @deprecated digitalocean.GradientaiOpenaiApiKey has been deprecated in favor of digitalocean.AgentPlatformOpenaiApiKey
+ */
 export class GradientaiOpenaiApiKey extends pulumi.CustomResource {
     /**
      * Get an existing GradientaiOpenaiApiKey resource's state with the given name, ID, and optional extra
@@ -18,6 +21,7 @@ export class GradientaiOpenaiApiKey extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: GradientaiOpenaiApiKeyState, opts?: pulumi.CustomResourceOptions): GradientaiOpenaiApiKey {
+        pulumi.log.warn("GradientaiOpenaiApiKey is deprecated: digitalocean.GradientaiOpenaiApiKey has been deprecated in favor of digitalocean.AgentPlatformOpenaiApiKey")
         return new GradientaiOpenaiApiKey(name, <any>state, { ...opts, id: id });
     }
 
@@ -75,8 +79,11 @@ export class GradientaiOpenaiApiKey extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated digitalocean.GradientaiOpenaiApiKey has been deprecated in favor of digitalocean.AgentPlatformOpenaiApiKey */
     constructor(name: string, args: GradientaiOpenaiApiKeyArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated digitalocean.GradientaiOpenaiApiKey has been deprecated in favor of digitalocean.AgentPlatformOpenaiApiKey */
     constructor(name: string, argsOrState?: GradientaiOpenaiApiKeyArgs | GradientaiOpenaiApiKeyState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("GradientaiOpenaiApiKey is deprecated: digitalocean.GradientaiOpenaiApiKey has been deprecated in favor of digitalocean.AgentPlatformOpenaiApiKey")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
@@ -104,8 +111,6 @@ export class GradientaiOpenaiApiKey extends pulumi.CustomResource {
             resourceInputs["uuid"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "digitalocean:index/genaiOpenaiApiKey:GenaiOpenaiApiKey" }] };
-        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(GradientaiOpenaiApiKey.__pulumiType, name, resourceInputs, opts);
     }
 }

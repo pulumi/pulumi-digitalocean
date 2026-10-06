@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.DigitalOcean
 {
+    [Obsolete(@"digitalocean.GradientaiAgent has been deprecated in favor of digitalocean.AgentPlatformAgent")]
     [DigitalOceanResourceType("digitalocean:index/gradientaiAgent:GradientaiAgent")]
     public partial class GradientaiAgent : global::Pulumi.CustomResource
     {
@@ -275,10 +276,6 @@ namespace Pulumi.DigitalOcean
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                Aliases =
-                {
-                    new global::Pulumi.Alias { Type = "digitalocean:index/genaiAgent:GenaiAgent" },
-                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

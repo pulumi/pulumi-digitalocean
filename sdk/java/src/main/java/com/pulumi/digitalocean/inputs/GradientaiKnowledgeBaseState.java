@@ -5,7 +5,7 @@ package com.pulumi.digitalocean.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.digitalocean.inputs.GradientaiKnowledgeBaseDataSourceArgs;
+import com.pulumi.digitalocean.inputs.AgentPlatformKnowledgeBaseDataSourceArgs;
 import com.pulumi.digitalocean.inputs.GradientaiKnowledgeBaseLastIndexingJobArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -69,13 +69,13 @@ public final class GradientaiKnowledgeBaseState extends com.pulumi.resources.Res
      * 
      */
     @Import(name="datasources")
-    private @Nullable Output<List<GradientaiKnowledgeBaseDataSourceArgs>> datasources;
+    private @Nullable Output<List<AgentPlatformKnowledgeBaseDataSourceArgs>> datasources;
 
     /**
      * @return Data sources for the knowledge base
      * 
      */
-    public Optional<Output<List<GradientaiKnowledgeBaseDataSourceArgs>>> datasources() {
+    public Optional<Output<List<AgentPlatformKnowledgeBaseDataSourceArgs>>> datasources() {
         return Optional.ofNullable(this.datasources);
     }
 
@@ -287,7 +287,7 @@ public final class GradientaiKnowledgeBaseState extends com.pulumi.resources.Res
          * @return builder
          * 
          */
-        public Builder datasources(@Nullable Output<List<GradientaiKnowledgeBaseDataSourceArgs>> datasources) {
+        public Builder datasources(@Nullable Output<List<AgentPlatformKnowledgeBaseDataSourceArgs>> datasources) {
             $.datasources = datasources;
             return this;
         }
@@ -298,7 +298,7 @@ public final class GradientaiKnowledgeBaseState extends com.pulumi.resources.Res
          * @return builder
          * 
          */
-        public Builder datasources(List<GradientaiKnowledgeBaseDataSourceArgs> datasources) {
+        public Builder datasources(List<AgentPlatformKnowledgeBaseDataSourceArgs> datasources) {
             return datasources(Output.of(datasources));
         }
 
@@ -308,7 +308,7 @@ public final class GradientaiKnowledgeBaseState extends com.pulumi.resources.Res
          * @return builder
          * 
          */
-        public Builder datasources(GradientaiKnowledgeBaseDataSourceArgs... datasources) {
+        public Builder datasources(AgentPlatformKnowledgeBaseDataSourceArgs... datasources) {
             return datasources(List.of(datasources));
         }
 

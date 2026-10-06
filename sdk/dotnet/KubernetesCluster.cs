@@ -345,6 +345,12 @@ namespace Pulumi.DigitalOcean
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Block containing options for the NFS CSI driver plugin component. If not specified, the NFS CSI plugin will not be installed in the cluster.
+        /// </summary>
+        [Output("nfsCsiPlugin")]
+        public Output<Outputs.KubernetesClusterNfsCsiPlugin> NfsCsiPlugin { get; private set; } = null!;
+
+        /// <summary>
         /// A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `digitalocean.KubernetesNodePool` resource. The following arguments may be specified:
         /// </summary>
         [Output("nodePool")]
@@ -587,6 +593,12 @@ namespace Pulumi.DigitalOcean
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// Block containing options for the NFS CSI driver plugin component. If not specified, the NFS CSI plugin will not be installed in the cluster.
+        /// </summary>
+        [Input("nfsCsiPlugin")]
+        public Input<Inputs.KubernetesClusterNfsCsiPluginArgs>? NfsCsiPlugin { get; set; }
+
+        /// <summary>
         /// A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `digitalocean.KubernetesNodePool` resource. The following arguments may be specified:
         /// </summary>
         [Input("nodePool", required: true)]
@@ -825,6 +837,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Block containing options for the NFS CSI driver plugin component. If not specified, the NFS CSI plugin will not be installed in the cluster.
+        /// </summary>
+        [Input("nfsCsiPlugin")]
+        public Input<Inputs.KubernetesClusterNfsCsiPluginGetArgs>? NfsCsiPlugin { get; set; }
 
         /// <summary>
         /// A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `digitalocean.KubernetesNodePool` resource. The following arguments may be specified:

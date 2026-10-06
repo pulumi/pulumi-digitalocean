@@ -12,6 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Deprecated: digitalocean.GradientaiKnowledgeBase has been deprecated in favor of digitalocean.AgentPlatformKnowledgeBase
 type GradientaiKnowledgeBase struct {
 	pulumi.CustomResourceState
 
@@ -22,7 +23,7 @@ type GradientaiKnowledgeBase struct {
 	// The unique identifier of the DigitalOcean OpenSearch database this knowledge base will use
 	DatabaseId pulumi.StringPtrOutput `pulumi:"databaseId"`
 	// Data sources for the knowledge base
-	Datasources GradientaiKnowledgeBaseDataSourceTypeArrayOutput `pulumi:"datasources"`
+	Datasources AgentPlatformKnowledgeBaseDataSourceTypeArrayOutput `pulumi:"datasources"`
 	// The unique identifier of the embedding model
 	EmbeddingModelUuid pulumi.StringOutput `pulumi:"embeddingModelUuid"`
 	// Indicates whether the knowledge base is public or private.
@@ -58,12 +59,6 @@ func NewGradientaiKnowledgeBase(ctx *pulumi.Context,
 	if args.Region == nil {
 		return nil, errors.New("invalid value for required argument 'Region'")
 	}
-	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("digitalocean:index/genaiKnowledgeBase:GenaiKnowledgeBase"),
-		},
-	})
-	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource GradientaiKnowledgeBase
 	err := ctx.RegisterResource("digitalocean:index/gradientaiKnowledgeBase:GradientaiKnowledgeBase", name, args, &resource, opts...)
@@ -94,7 +89,7 @@ type gradientaiKnowledgeBaseState struct {
 	// The unique identifier of the DigitalOcean OpenSearch database this knowledge base will use
 	DatabaseId *string `pulumi:"databaseId"`
 	// Data sources for the knowledge base
-	Datasources []GradientaiKnowledgeBaseDataSourceType `pulumi:"datasources"`
+	Datasources []AgentPlatformKnowledgeBaseDataSourceType `pulumi:"datasources"`
 	// The unique identifier of the embedding model
 	EmbeddingModelUuid *string `pulumi:"embeddingModelUuid"`
 	// Indicates whether the knowledge base is public or private.
@@ -119,7 +114,7 @@ type GradientaiKnowledgeBaseState struct {
 	// The unique identifier of the DigitalOcean OpenSearch database this knowledge base will use
 	DatabaseId pulumi.StringPtrInput
 	// Data sources for the knowledge base
-	Datasources GradientaiKnowledgeBaseDataSourceTypeArrayInput
+	Datasources AgentPlatformKnowledgeBaseDataSourceTypeArrayInput
 	// The unique identifier of the embedding model
 	EmbeddingModelUuid pulumi.StringPtrInput
 	// Indicates whether the knowledge base is public or private.
@@ -146,7 +141,7 @@ type gradientaiKnowledgeBaseArgs struct {
 	// The unique identifier of the DigitalOcean OpenSearch database this knowledge base will use
 	DatabaseId *string `pulumi:"databaseId"`
 	// Data sources for the knowledge base
-	Datasources []GradientaiKnowledgeBaseDataSourceType `pulumi:"datasources"`
+	Datasources []AgentPlatformKnowledgeBaseDataSourceType `pulumi:"datasources"`
 	// The unique identifier of the embedding model
 	EmbeddingModelUuid string `pulumi:"embeddingModelUuid"`
 	// Indicates whether the knowledge base is public or private.
@@ -170,7 +165,7 @@ type GradientaiKnowledgeBaseArgs struct {
 	// The unique identifier of the DigitalOcean OpenSearch database this knowledge base will use
 	DatabaseId pulumi.StringPtrInput
 	// Data sources for the knowledge base
-	Datasources GradientaiKnowledgeBaseDataSourceTypeArrayInput
+	Datasources AgentPlatformKnowledgeBaseDataSourceTypeArrayInput
 	// The unique identifier of the embedding model
 	EmbeddingModelUuid pulumi.StringInput
 	// Indicates whether the knowledge base is public or private.
@@ -290,10 +285,10 @@ func (o GradientaiKnowledgeBaseOutput) DatabaseId() pulumi.StringPtrOutput {
 }
 
 // Data sources for the knowledge base
-func (o GradientaiKnowledgeBaseOutput) Datasources() GradientaiKnowledgeBaseDataSourceTypeArrayOutput {
-	return o.ApplyT(func(v *GradientaiKnowledgeBase) GradientaiKnowledgeBaseDataSourceTypeArrayOutput {
+func (o GradientaiKnowledgeBaseOutput) Datasources() AgentPlatformKnowledgeBaseDataSourceTypeArrayOutput {
+	return o.ApplyT(func(v *GradientaiKnowledgeBase) AgentPlatformKnowledgeBaseDataSourceTypeArrayOutput {
 		return v.Datasources
-	}).(GradientaiKnowledgeBaseDataSourceTypeArrayOutput)
+	}).(AgentPlatformKnowledgeBaseDataSourceTypeArrayOutput)
 }
 
 // The unique identifier of the embedding model

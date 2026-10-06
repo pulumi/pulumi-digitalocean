@@ -7,7 +7,9 @@ import * as outputs from "./types/output";
 import * as enums from "./types/enums";
 import * as utilities from "./utilities";
 
+/** @deprecated digitalocean.getGradientaiRegions has been deprecated in favor of digitalocean.getAgentPlatformRegions */
 export function getGradientaiRegions(args?: GetGradientaiRegionsArgs, opts?: pulumi.InvokeOptions): Promise<GetGradientaiRegionsResult> {
+    pulumi.log.warn("getGradientaiRegions is deprecated: digitalocean.getGradientaiRegions has been deprecated in favor of digitalocean.getAgentPlatformRegions")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("digitalocean:index/getGradientaiRegions:getGradientaiRegions", {
@@ -36,7 +38,9 @@ export interface GetGradientaiRegionsResult {
     readonly regions: outputs.GetGradientaiRegionsRegion[];
     readonly sorts?: outputs.GetGradientaiRegionsSort[];
 }
+/** @deprecated digitalocean.getGradientaiRegions has been deprecated in favor of digitalocean.getAgentPlatformRegions */
 export function getGradientaiRegionsOutput(args?: GetGradientaiRegionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGradientaiRegionsResult> {
+    pulumi.log.warn("getGradientaiRegions is deprecated: digitalocean.getGradientaiRegions has been deprecated in favor of digitalocean.getAgentPlatformRegions")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("digitalocean:index/getGradientaiRegions:getGradientaiRegions", {

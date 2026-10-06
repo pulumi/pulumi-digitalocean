@@ -58,6 +58,7 @@ type LookupKubernetesClusterArgs struct {
 	KubeconfigExpireSeconds           *int                                                   `pulumi:"kubeconfigExpireSeconds"`
 	// The name of Kubernetes cluster.
 	Name                   string                                      `pulumi:"name"`
+	NfsCsiPlugin           *GetKubernetesClusterNfsCsiPlugin           `pulumi:"nfsCsiPlugin"`
 	NvidiaGpuDevicePlugin  *GetKubernetesClusterNvidiaGpuDevicePlugin  `pulumi:"nvidiaGpuDevicePlugin"`
 	NvidiaGpuDraDriver     *GetKubernetesClusterNvidiaGpuDraDriver     `pulumi:"nvidiaGpuDraDriver"`
 	P2pOciRegistryPlugin   *GetKubernetesClusterP2pOciRegistryPlugin   `pulumi:"p2pOciRegistryPlugin"`
@@ -97,7 +98,8 @@ type LookupKubernetesClusterResult struct {
 	// The maintenance policy of the Kubernetes cluster. Digital Ocean has a default maintenancen window.
 	MaintenancePolicies []GetKubernetesClusterMaintenancePolicy `pulumi:"maintenancePolicies"`
 	// The auto-generated name for the node.
-	Name string `pulumi:"name"`
+	Name         string                           `pulumi:"name"`
+	NfsCsiPlugin GetKubernetesClusterNfsCsiPlugin `pulumi:"nfsCsiPlugin"`
 	// A list of node pools associated with the cluster. Each node pool exports the following attributes:
 	NodePools              []GetKubernetesClusterNodePool             `pulumi:"nodePools"`
 	NvidiaGpuDevicePlugin  GetKubernetesClusterNvidiaGpuDevicePlugin  `pulumi:"nvidiaGpuDevicePlugin"`
@@ -141,6 +143,7 @@ type LookupKubernetesClusterOutputArgs struct {
 	KubeconfigExpireSeconds           pulumi.IntPtrInput                                            `pulumi:"kubeconfigExpireSeconds"`
 	// The name of Kubernetes cluster.
 	Name                   pulumi.StringInput                                 `pulumi:"name"`
+	NfsCsiPlugin           GetKubernetesClusterNfsCsiPluginPtrInput           `pulumi:"nfsCsiPlugin"`
 	NvidiaGpuDevicePlugin  GetKubernetesClusterNvidiaGpuDevicePluginPtrInput  `pulumi:"nvidiaGpuDevicePlugin"`
 	NvidiaGpuDraDriver     GetKubernetesClusterNvidiaGpuDraDriverPtrInput     `pulumi:"nvidiaGpuDraDriver"`
 	P2pOciRegistryPlugin   GetKubernetesClusterP2pOciRegistryPluginPtrInput   `pulumi:"p2pOciRegistryPlugin"`
@@ -262,6 +265,10 @@ func (o LookupKubernetesClusterResultOutput) MaintenancePolicies() GetKubernetes
 // The auto-generated name for the node.
 func (o LookupKubernetesClusterResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKubernetesClusterResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupKubernetesClusterResultOutput) NfsCsiPlugin() GetKubernetesClusterNfsCsiPluginOutput {
+	return o.ApplyT(func(v LookupKubernetesClusterResult) GetKubernetesClusterNfsCsiPlugin { return v.NfsCsiPlugin }).(GetKubernetesClusterNfsCsiPluginOutput)
 }
 
 // A list of node pools associated with the cluster. Each node pool exports the following attributes:

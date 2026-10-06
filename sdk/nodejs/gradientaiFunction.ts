@@ -4,6 +4,9 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * @deprecated digitalocean.GradientaiFunction has been deprecated in favor of digitalocean.AgentPlatformFunction
+ */
 export class GradientaiFunction extends pulumi.CustomResource {
     /**
      * Get an existing GradientaiFunction resource's state with the given name, ID, and optional extra
@@ -15,6 +18,7 @@ export class GradientaiFunction extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: GradientaiFunctionState, opts?: pulumi.CustomResourceOptions): GradientaiFunction {
+        pulumi.log.warn("GradientaiFunction is deprecated: digitalocean.GradientaiFunction has been deprecated in favor of digitalocean.AgentPlatformFunction")
         return new GradientaiFunction(name, <any>state, { ...opts, id: id });
     }
 
@@ -33,35 +37,35 @@ export class GradientaiFunction extends pulumi.CustomResource {
     }
 
     /**
-     * The name of the GradientAI resource.
+     * The name of the Agent Platform resource.
      */
     declare public readonly agentId: pulumi.Output<string>;
     /**
-     * The region where the GradientAI resource will be created.
+     * The region where the Agent Platform resource will be created.
      */
     declare public readonly description: pulumi.Output<string>;
     /**
-     * The model to use for the GradientAI resource.
+     * The model to use for the Agent Platform resource.
      */
     declare public readonly faasName: pulumi.Output<string | undefined>;
     /**
-     * The current status of the GradientAI resource.
+     * The current status of the Agent Platform resource.
      */
     declare public readonly faasNamespace: pulumi.Output<string>;
     /**
-     * The creation timestamp of the GradientAI resource.
+     * The creation timestamp of the Agent Platform resource.
      */
     declare public readonly functionName: pulumi.Output<string>;
     /**
-     * The unique identifier of the GradientAI function.
+     * The unique identifier of the Agent Platform function.
      */
     declare public /*out*/ readonly functionUuid: pulumi.Output<string>;
     /**
-     * The input schema of the GradientAI resource.
+     * The input schema of the Agent Platform resource.
      */
     declare public readonly inputSchema: pulumi.Output<string>;
     /**
-     * The output schema of the GradientAI resource.
+     * The output schema of the Agent Platform resource.
      */
     declare public readonly outputSchema: pulumi.Output<string | undefined>;
 
@@ -72,8 +76,11 @@ export class GradientaiFunction extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated digitalocean.GradientaiFunction has been deprecated in favor of digitalocean.AgentPlatformFunction */
     constructor(name: string, args: GradientaiFunctionArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated digitalocean.GradientaiFunction has been deprecated in favor of digitalocean.AgentPlatformFunction */
     constructor(name: string, argsOrState?: GradientaiFunctionArgs | GradientaiFunctionState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("GradientaiFunction is deprecated: digitalocean.GradientaiFunction has been deprecated in favor of digitalocean.AgentPlatformFunction")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
@@ -113,8 +120,6 @@ export class GradientaiFunction extends pulumi.CustomResource {
             resourceInputs["functionUuid"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "digitalocean:index/genaiFunction:GenaiFunction" }] };
-        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(GradientaiFunction.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -124,35 +129,35 @@ export class GradientaiFunction extends pulumi.CustomResource {
  */
 export interface GradientaiFunctionState {
     /**
-     * The name of the GradientAI resource.
+     * The name of the Agent Platform resource.
      */
     agentId?: pulumi.Input<string | undefined>;
     /**
-     * The region where the GradientAI resource will be created.
+     * The region where the Agent Platform resource will be created.
      */
     description?: pulumi.Input<string | undefined>;
     /**
-     * The model to use for the GradientAI resource.
+     * The model to use for the Agent Platform resource.
      */
     faasName?: pulumi.Input<string | undefined>;
     /**
-     * The current status of the GradientAI resource.
+     * The current status of the Agent Platform resource.
      */
     faasNamespace?: pulumi.Input<string | undefined>;
     /**
-     * The creation timestamp of the GradientAI resource.
+     * The creation timestamp of the Agent Platform resource.
      */
     functionName?: pulumi.Input<string | undefined>;
     /**
-     * The unique identifier of the GradientAI function.
+     * The unique identifier of the Agent Platform function.
      */
     functionUuid?: pulumi.Input<string | undefined>;
     /**
-     * The input schema of the GradientAI resource.
+     * The input schema of the Agent Platform resource.
      */
     inputSchema?: pulumi.Input<string | undefined>;
     /**
-     * The output schema of the GradientAI resource.
+     * The output schema of the Agent Platform resource.
      */
     outputSchema?: pulumi.Input<string | undefined>;
 }
@@ -162,31 +167,31 @@ export interface GradientaiFunctionState {
  */
 export interface GradientaiFunctionArgs {
     /**
-     * The name of the GradientAI resource.
+     * The name of the Agent Platform resource.
      */
     agentId: pulumi.Input<string>;
     /**
-     * The region where the GradientAI resource will be created.
+     * The region where the Agent Platform resource will be created.
      */
     description: pulumi.Input<string>;
     /**
-     * The model to use for the GradientAI resource.
+     * The model to use for the Agent Platform resource.
      */
     faasName?: pulumi.Input<string | undefined>;
     /**
-     * The current status of the GradientAI resource.
+     * The current status of the Agent Platform resource.
      */
     faasNamespace: pulumi.Input<string>;
     /**
-     * The creation timestamp of the GradientAI resource.
+     * The creation timestamp of the Agent Platform resource.
      */
     functionName: pulumi.Input<string>;
     /**
-     * The input schema of the GradientAI resource.
+     * The input schema of the Agent Platform resource.
      */
     inputSchema: pulumi.Input<string>;
     /**
-     * The output schema of the GradientAI resource.
+     * The output schema of the Agent Platform resource.
      */
     outputSchema?: pulumi.Input<string | undefined>;
 }
