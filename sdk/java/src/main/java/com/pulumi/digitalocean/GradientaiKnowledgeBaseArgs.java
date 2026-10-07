@@ -5,7 +5,7 @@ package com.pulumi.digitalocean;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.digitalocean.inputs.GradientaiKnowledgeBaseDataSourceArgs;
+import com.pulumi.digitalocean.inputs.AgentPlatformKnowledgeBaseDataSourceArgs;
 import com.pulumi.digitalocean.inputs.GradientaiKnowledgeBaseLastIndexingJobArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
@@ -55,13 +55,13 @@ public final class GradientaiKnowledgeBaseArgs extends com.pulumi.resources.Reso
      * 
      */
     @Import(name="datasources", required=true)
-    private Output<List<GradientaiKnowledgeBaseDataSourceArgs>> datasources;
+    private Output<List<AgentPlatformKnowledgeBaseDataSourceArgs>> datasources;
 
     /**
      * @return Data sources for the knowledge base
      * 
      */
-    public Output<List<GradientaiKnowledgeBaseDataSourceArgs>> datasources() {
+    public Output<List<AgentPlatformKnowledgeBaseDataSourceArgs>> datasources() {
         return this.datasources;
     }
 
@@ -251,7 +251,7 @@ public final class GradientaiKnowledgeBaseArgs extends com.pulumi.resources.Reso
          * @return builder
          * 
          */
-        public Builder datasources(Output<List<GradientaiKnowledgeBaseDataSourceArgs>> datasources) {
+        public Builder datasources(Output<List<AgentPlatformKnowledgeBaseDataSourceArgs>> datasources) {
             $.datasources = datasources;
             return this;
         }
@@ -262,7 +262,7 @@ public final class GradientaiKnowledgeBaseArgs extends com.pulumi.resources.Reso
          * @return builder
          * 
          */
-        public Builder datasources(List<GradientaiKnowledgeBaseDataSourceArgs> datasources) {
+        public Builder datasources(List<AgentPlatformKnowledgeBaseDataSourceArgs> datasources) {
             return datasources(Output.of(datasources));
         }
 
@@ -272,7 +272,7 @@ public final class GradientaiKnowledgeBaseArgs extends com.pulumi.resources.Reso
          * @return builder
          * 
          */
-        public Builder datasources(GradientaiKnowledgeBaseDataSourceArgs... datasources) {
+        public Builder datasources(AgentPlatformKnowledgeBaseDataSourceArgs... datasources) {
             return datasources(List.of(datasources));
         }
 

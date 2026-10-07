@@ -23,6 +23,8 @@ __all__ = [
     'get_gradientai_models_output',
 ]
 
+warnings.warn("""digitalocean.getGradientaiModels has been deprecated in favor of digitalocean.getAgentPlatformModels""", DeprecationWarning)
+
 @pulumi.output_type
 class GetGradientaiModelsResult:
     """
@@ -84,6 +86,7 @@ def get_gradientai_models(filters: Optional[Sequence[Union['GetGradientaiModelsF
     """
     Use this data source to access information about an existing resource.
     """
+    pulumi.log.warn("""get_gradientai_models is deprecated: digitalocean.getGradientaiModels has been deprecated in favor of digitalocean.getAgentPlatformModels""")
     __args__ = dict()
     __args__['filters'] = filters
     __args__['sorts'] = sorts
@@ -101,6 +104,7 @@ def get_gradientai_models_output(filters: pulumi.Input[Optional[Optional[Sequenc
     """
     Use this data source to access information about an existing resource.
     """
+    pulumi.log.warn("""get_gradientai_models is deprecated: digitalocean.getGradientaiModels has been deprecated in favor of digitalocean.getAgentPlatformModels""")
     __args__ = dict()
     __args__['filters'] = filters
     __args__['sorts'] = sorts

@@ -11,6 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Deprecated: digitalocean.getGradientaiKnowledgeBaseIndexingJobs has been deprecated in favor of digitalocean.getAgentPlatformKnowledgeBaseIndexingJobs
 func GetGradientaiKnowledgeBaseIndexingJobs(ctx *pulumi.Context, args *GetGradientaiKnowledgeBaseIndexingJobsArgs, opts ...pulumi.InvokeOption) (*GetGradientaiKnowledgeBaseIndexingJobsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetGradientaiKnowledgeBaseIndexingJobsResult

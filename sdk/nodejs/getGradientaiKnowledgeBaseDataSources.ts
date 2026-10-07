@@ -7,7 +7,9 @@ import * as outputs from "./types/output";
 import * as enums from "./types/enums";
 import * as utilities from "./utilities";
 
+/** @deprecated digitalocean.getGradientaiKnowledgeBaseDataSources has been deprecated in favor of digitalocean.getAgentPlatformKnowledgeBaseDataSources */
 export function getGradientaiKnowledgeBaseDataSources(args: GetGradientaiKnowledgeBaseDataSourcesArgs, opts?: pulumi.InvokeOptions): Promise<GetGradientaiKnowledgeBaseDataSourcesResult> {
+    pulumi.log.warn("getGradientaiKnowledgeBaseDataSources is deprecated: digitalocean.getGradientaiKnowledgeBaseDataSources has been deprecated in favor of digitalocean.getAgentPlatformKnowledgeBaseDataSources")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("digitalocean:index/getGradientaiKnowledgeBaseDataSources:getGradientaiKnowledgeBaseDataSources", {
         "knowledgeBaseUuid": args.knowledgeBaseUuid,
@@ -32,7 +34,9 @@ export interface GetGradientaiKnowledgeBaseDataSourcesResult {
     readonly id: string;
     readonly knowledgeBaseUuid: string;
 }
+/** @deprecated digitalocean.getGradientaiKnowledgeBaseDataSources has been deprecated in favor of digitalocean.getAgentPlatformKnowledgeBaseDataSources */
 export function getGradientaiKnowledgeBaseDataSourcesOutput(args: GetGradientaiKnowledgeBaseDataSourcesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGradientaiKnowledgeBaseDataSourcesResult> {
+    pulumi.log.warn("getGradientaiKnowledgeBaseDataSources is deprecated: digitalocean.getGradientaiKnowledgeBaseDataSources has been deprecated in favor of digitalocean.getAgentPlatformKnowledgeBaseDataSources")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("digitalocean:index/getGradientaiKnowledgeBaseDataSources:getGradientaiKnowledgeBaseDataSources", {
         "knowledgeBaseUuid": args.knowledgeBaseUuid,

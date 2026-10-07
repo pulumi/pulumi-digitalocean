@@ -5,6 +5,51 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
+export { AgentPlatformAgentArgs, AgentPlatformAgentState } from "./agentPlatformAgent";
+export type AgentPlatformAgent = import("./agentPlatformAgent").AgentPlatformAgent;
+export const AgentPlatformAgent: typeof import("./agentPlatformAgent").AgentPlatformAgent = null as any;
+utilities.lazyLoad(exports, ["AgentPlatformAgent"], () => require("./agentPlatformAgent"));
+
+export { AgentPlatformAgentKnowledgeBaseAttachmentArgs, AgentPlatformAgentKnowledgeBaseAttachmentState } from "./agentPlatformAgentKnowledgeBaseAttachment";
+export type AgentPlatformAgentKnowledgeBaseAttachment = import("./agentPlatformAgentKnowledgeBaseAttachment").AgentPlatformAgentKnowledgeBaseAttachment;
+export const AgentPlatformAgentKnowledgeBaseAttachment: typeof import("./agentPlatformAgentKnowledgeBaseAttachment").AgentPlatformAgentKnowledgeBaseAttachment = null as any;
+utilities.lazyLoad(exports, ["AgentPlatformAgentKnowledgeBaseAttachment"], () => require("./agentPlatformAgentKnowledgeBaseAttachment"));
+
+export { AgentPlatformAgentRouteArgs, AgentPlatformAgentRouteState } from "./agentPlatformAgentRoute";
+export type AgentPlatformAgentRoute = import("./agentPlatformAgentRoute").AgentPlatformAgentRoute;
+export const AgentPlatformAgentRoute: typeof import("./agentPlatformAgentRoute").AgentPlatformAgentRoute = null as any;
+utilities.lazyLoad(exports, ["AgentPlatformAgentRoute"], () => require("./agentPlatformAgentRoute"));
+
+export { AgentPlatformCustomModelArgs, AgentPlatformCustomModelState } from "./agentPlatformCustomModel";
+export type AgentPlatformCustomModel = import("./agentPlatformCustomModel").AgentPlatformCustomModel;
+export const AgentPlatformCustomModel: typeof import("./agentPlatformCustomModel").AgentPlatformCustomModel = null as any;
+utilities.lazyLoad(exports, ["AgentPlatformCustomModel"], () => require("./agentPlatformCustomModel"));
+
+export { AgentPlatformFunctionArgs, AgentPlatformFunctionState } from "./agentPlatformFunction";
+export type AgentPlatformFunction = import("./agentPlatformFunction").AgentPlatformFunction;
+export const AgentPlatformFunction: typeof import("./agentPlatformFunction").AgentPlatformFunction = null as any;
+utilities.lazyLoad(exports, ["AgentPlatformFunction"], () => require("./agentPlatformFunction"));
+
+export { AgentPlatformIndexingJobCancelArgs, AgentPlatformIndexingJobCancelState } from "./agentPlatformIndexingJobCancel";
+export type AgentPlatformIndexingJobCancel = import("./agentPlatformIndexingJobCancel").AgentPlatformIndexingJobCancel;
+export const AgentPlatformIndexingJobCancel: typeof import("./agentPlatformIndexingJobCancel").AgentPlatformIndexingJobCancel = null as any;
+utilities.lazyLoad(exports, ["AgentPlatformIndexingJobCancel"], () => require("./agentPlatformIndexingJobCancel"));
+
+export { AgentPlatformKnowledgeBaseArgs, AgentPlatformKnowledgeBaseState } from "./agentPlatformKnowledgeBase";
+export type AgentPlatformKnowledgeBase = import("./agentPlatformKnowledgeBase").AgentPlatformKnowledgeBase;
+export const AgentPlatformKnowledgeBase: typeof import("./agentPlatformKnowledgeBase").AgentPlatformKnowledgeBase = null as any;
+utilities.lazyLoad(exports, ["AgentPlatformKnowledgeBase"], () => require("./agentPlatformKnowledgeBase"));
+
+export { AgentPlatformKnowledgeBaseDataSourceArgs, AgentPlatformKnowledgeBaseDataSourceState } from "./agentPlatformKnowledgeBaseDataSource";
+export type AgentPlatformKnowledgeBaseDataSource = import("./agentPlatformKnowledgeBaseDataSource").AgentPlatformKnowledgeBaseDataSource;
+export const AgentPlatformKnowledgeBaseDataSource: typeof import("./agentPlatformKnowledgeBaseDataSource").AgentPlatformKnowledgeBaseDataSource = null as any;
+utilities.lazyLoad(exports, ["AgentPlatformKnowledgeBaseDataSource"], () => require("./agentPlatformKnowledgeBaseDataSource"));
+
+export { AgentPlatformOpenaiApiKeyArgs, AgentPlatformOpenaiApiKeyState } from "./agentPlatformOpenaiApiKey";
+export type AgentPlatformOpenaiApiKey = import("./agentPlatformOpenaiApiKey").AgentPlatformOpenaiApiKey;
+export const AgentPlatformOpenaiApiKey: typeof import("./agentPlatformOpenaiApiKey").AgentPlatformOpenaiApiKey = null as any;
+utilities.lazyLoad(exports, ["AgentPlatformOpenaiApiKey"], () => require("./agentPlatformOpenaiApiKey"));
+
 export { AppArgs, AppState } from "./app";
 export type App = import("./app").App;
 export const App: typeof import("./app").App = null as any;
@@ -195,50 +240,90 @@ export type FloatingIpAssignment = import("./floatingIpAssignment").FloatingIpAs
 export const FloatingIpAssignment: typeof import("./floatingIpAssignment").FloatingIpAssignment = null as any;
 utilities.lazyLoad(exports, ["FloatingIpAssignment"], () => require("./floatingIpAssignment"));
 
-export { GenaiAgentArgs, GenaiAgentState } from "./genaiAgent";
-export type GenaiAgent = import("./genaiAgent").GenaiAgent;
-export const GenaiAgent: typeof import("./genaiAgent").GenaiAgent = null as any;
-utilities.lazyLoad(exports, ["GenaiAgent"], () => require("./genaiAgent"));
-
-export { GenaiAgentKnowledgeBaseAttachmentArgs, GenaiAgentKnowledgeBaseAttachmentState } from "./genaiAgentKnowledgeBaseAttachment";
-export type GenaiAgentKnowledgeBaseAttachment = import("./genaiAgentKnowledgeBaseAttachment").GenaiAgentKnowledgeBaseAttachment;
-export const GenaiAgentKnowledgeBaseAttachment: typeof import("./genaiAgentKnowledgeBaseAttachment").GenaiAgentKnowledgeBaseAttachment = null as any;
-utilities.lazyLoad(exports, ["GenaiAgentKnowledgeBaseAttachment"], () => require("./genaiAgentKnowledgeBaseAttachment"));
-
-export { GenaiAgentRouteArgs, GenaiAgentRouteState } from "./genaiAgentRoute";
-export type GenaiAgentRoute = import("./genaiAgentRoute").GenaiAgentRoute;
-export const GenaiAgentRoute: typeof import("./genaiAgentRoute").GenaiAgentRoute = null as any;
-utilities.lazyLoad(exports, ["GenaiAgentRoute"], () => require("./genaiAgentRoute"));
-
-export { GenaiFunctionArgs, GenaiFunctionState } from "./genaiFunction";
-export type GenaiFunction = import("./genaiFunction").GenaiFunction;
-export const GenaiFunction: typeof import("./genaiFunction").GenaiFunction = null as any;
-utilities.lazyLoad(exports, ["GenaiFunction"], () => require("./genaiFunction"));
-
-export { GenaiIndexingJobCancelArgs, GenaiIndexingJobCancelState } from "./genaiIndexingJobCancel";
-export type GenaiIndexingJobCancel = import("./genaiIndexingJobCancel").GenaiIndexingJobCancel;
-export const GenaiIndexingJobCancel: typeof import("./genaiIndexingJobCancel").GenaiIndexingJobCancel = null as any;
-utilities.lazyLoad(exports, ["GenaiIndexingJobCancel"], () => require("./genaiIndexingJobCancel"));
-
-export { GenaiKnowledgeBaseArgs, GenaiKnowledgeBaseState } from "./genaiKnowledgeBase";
-export type GenaiKnowledgeBase = import("./genaiKnowledgeBase").GenaiKnowledgeBase;
-export const GenaiKnowledgeBase: typeof import("./genaiKnowledgeBase").GenaiKnowledgeBase = null as any;
-utilities.lazyLoad(exports, ["GenaiKnowledgeBase"], () => require("./genaiKnowledgeBase"));
-
-export { GenaiKnowledgeBaseDataSourceArgs, GenaiKnowledgeBaseDataSourceState } from "./genaiKnowledgeBaseDataSource";
-export type GenaiKnowledgeBaseDataSource = import("./genaiKnowledgeBaseDataSource").GenaiKnowledgeBaseDataSource;
-export const GenaiKnowledgeBaseDataSource: typeof import("./genaiKnowledgeBaseDataSource").GenaiKnowledgeBaseDataSource = null as any;
-utilities.lazyLoad(exports, ["GenaiKnowledgeBaseDataSource"], () => require("./genaiKnowledgeBaseDataSource"));
-
-export { GenaiOpenaiApiKeyArgs, GenaiOpenaiApiKeyState } from "./genaiOpenaiApiKey";
-export type GenaiOpenaiApiKey = import("./genaiOpenaiApiKey").GenaiOpenaiApiKey;
-export const GenaiOpenaiApiKey: typeof import("./genaiOpenaiApiKey").GenaiOpenaiApiKey = null as any;
-utilities.lazyLoad(exports, ["GenaiOpenaiApiKey"], () => require("./genaiOpenaiApiKey"));
-
 export { GetAccountResult } from "./getAccount";
 export const getAccount: typeof import("./getAccount").getAccount = null as any;
 export const getAccountOutput: typeof import("./getAccount").getAccountOutput = null as any;
 utilities.lazyLoad(exports, ["getAccount","getAccountOutput"], () => require("./getAccount"));
+
+export { GetAgentPlatformAgentArgs, GetAgentPlatformAgentResult, GetAgentPlatformAgentOutputArgs } from "./getAgentPlatformAgent";
+export const getAgentPlatformAgent: typeof import("./getAgentPlatformAgent").getAgentPlatformAgent = null as any;
+export const getAgentPlatformAgentOutput: typeof import("./getAgentPlatformAgent").getAgentPlatformAgentOutput = null as any;
+utilities.lazyLoad(exports, ["getAgentPlatformAgent","getAgentPlatformAgentOutput"], () => require("./getAgentPlatformAgent"));
+
+export { GetAgentPlatformAgentVersionsArgs, GetAgentPlatformAgentVersionsResult, GetAgentPlatformAgentVersionsOutputArgs } from "./getAgentPlatformAgentVersions";
+export const getAgentPlatformAgentVersions: typeof import("./getAgentPlatformAgentVersions").getAgentPlatformAgentVersions = null as any;
+export const getAgentPlatformAgentVersionsOutput: typeof import("./getAgentPlatformAgentVersions").getAgentPlatformAgentVersionsOutput = null as any;
+utilities.lazyLoad(exports, ["getAgentPlatformAgentVersions","getAgentPlatformAgentVersionsOutput"], () => require("./getAgentPlatformAgentVersions"));
+
+export { GetAgentPlatformAgentsArgs, GetAgentPlatformAgentsResult, GetAgentPlatformAgentsOutputArgs } from "./getAgentPlatformAgents";
+export const getAgentPlatformAgents: typeof import("./getAgentPlatformAgents").getAgentPlatformAgents = null as any;
+export const getAgentPlatformAgentsOutput: typeof import("./getAgentPlatformAgents").getAgentPlatformAgentsOutput = null as any;
+utilities.lazyLoad(exports, ["getAgentPlatformAgents","getAgentPlatformAgentsOutput"], () => require("./getAgentPlatformAgents"));
+
+export { GetAgentPlatformAgentsByOpenaiApiKeyArgs, GetAgentPlatformAgentsByOpenaiApiKeyResult, GetAgentPlatformAgentsByOpenaiApiKeyOutputArgs } from "./getAgentPlatformAgentsByOpenaiApiKey";
+export const getAgentPlatformAgentsByOpenaiApiKey: typeof import("./getAgentPlatformAgentsByOpenaiApiKey").getAgentPlatformAgentsByOpenaiApiKey = null as any;
+export const getAgentPlatformAgentsByOpenaiApiKeyOutput: typeof import("./getAgentPlatformAgentsByOpenaiApiKey").getAgentPlatformAgentsByOpenaiApiKeyOutput = null as any;
+utilities.lazyLoad(exports, ["getAgentPlatformAgentsByOpenaiApiKey","getAgentPlatformAgentsByOpenaiApiKeyOutput"], () => require("./getAgentPlatformAgentsByOpenaiApiKey"));
+
+export { GetAgentPlatformCustomModelArgs, GetAgentPlatformCustomModelResult, GetAgentPlatformCustomModelOutputArgs } from "./getAgentPlatformCustomModel";
+export const getAgentPlatformCustomModel: typeof import("./getAgentPlatformCustomModel").getAgentPlatformCustomModel = null as any;
+export const getAgentPlatformCustomModelOutput: typeof import("./getAgentPlatformCustomModel").getAgentPlatformCustomModelOutput = null as any;
+utilities.lazyLoad(exports, ["getAgentPlatformCustomModel","getAgentPlatformCustomModelOutput"], () => require("./getAgentPlatformCustomModel"));
+
+export { GetAgentPlatformCustomModelsArgs, GetAgentPlatformCustomModelsResult, GetAgentPlatformCustomModelsOutputArgs } from "./getAgentPlatformCustomModels";
+export const getAgentPlatformCustomModels: typeof import("./getAgentPlatformCustomModels").getAgentPlatformCustomModels = null as any;
+export const getAgentPlatformCustomModelsOutput: typeof import("./getAgentPlatformCustomModels").getAgentPlatformCustomModelsOutput = null as any;
+utilities.lazyLoad(exports, ["getAgentPlatformCustomModels","getAgentPlatformCustomModelsOutput"], () => require("./getAgentPlatformCustomModels"));
+
+export { GetAgentPlatformIndexingJobArgs, GetAgentPlatformIndexingJobResult, GetAgentPlatformIndexingJobOutputArgs } from "./getAgentPlatformIndexingJob";
+export const getAgentPlatformIndexingJob: typeof import("./getAgentPlatformIndexingJob").getAgentPlatformIndexingJob = null as any;
+export const getAgentPlatformIndexingJobOutput: typeof import("./getAgentPlatformIndexingJob").getAgentPlatformIndexingJobOutput = null as any;
+utilities.lazyLoad(exports, ["getAgentPlatformIndexingJob","getAgentPlatformIndexingJobOutput"], () => require("./getAgentPlatformIndexingJob"));
+
+export { GetAgentPlatformIndexingJobDataSourcesArgs, GetAgentPlatformIndexingJobDataSourcesResult, GetAgentPlatformIndexingJobDataSourcesOutputArgs } from "./getAgentPlatformIndexingJobDataSources";
+export const getAgentPlatformIndexingJobDataSources: typeof import("./getAgentPlatformIndexingJobDataSources").getAgentPlatformIndexingJobDataSources = null as any;
+export const getAgentPlatformIndexingJobDataSourcesOutput: typeof import("./getAgentPlatformIndexingJobDataSources").getAgentPlatformIndexingJobDataSourcesOutput = null as any;
+utilities.lazyLoad(exports, ["getAgentPlatformIndexingJobDataSources","getAgentPlatformIndexingJobDataSourcesOutput"], () => require("./getAgentPlatformIndexingJobDataSources"));
+
+export { GetAgentPlatformKnowledgeBaseArgs, GetAgentPlatformKnowledgeBaseResult, GetAgentPlatformKnowledgeBaseOutputArgs } from "./getAgentPlatformKnowledgeBase";
+export const getAgentPlatformKnowledgeBase: typeof import("./getAgentPlatformKnowledgeBase").getAgentPlatformKnowledgeBase = null as any;
+export const getAgentPlatformKnowledgeBaseOutput: typeof import("./getAgentPlatformKnowledgeBase").getAgentPlatformKnowledgeBaseOutput = null as any;
+utilities.lazyLoad(exports, ["getAgentPlatformKnowledgeBase","getAgentPlatformKnowledgeBaseOutput"], () => require("./getAgentPlatformKnowledgeBase"));
+
+export { GetAgentPlatformKnowledgeBaseDataSourcesArgs, GetAgentPlatformKnowledgeBaseDataSourcesResult, GetAgentPlatformKnowledgeBaseDataSourcesOutputArgs } from "./getAgentPlatformKnowledgeBaseDataSources";
+export const getAgentPlatformKnowledgeBaseDataSources: typeof import("./getAgentPlatformKnowledgeBaseDataSources").getAgentPlatformKnowledgeBaseDataSources = null as any;
+export const getAgentPlatformKnowledgeBaseDataSourcesOutput: typeof import("./getAgentPlatformKnowledgeBaseDataSources").getAgentPlatformKnowledgeBaseDataSourcesOutput = null as any;
+utilities.lazyLoad(exports, ["getAgentPlatformKnowledgeBaseDataSources","getAgentPlatformKnowledgeBaseDataSourcesOutput"], () => require("./getAgentPlatformKnowledgeBaseDataSources"));
+
+export { GetAgentPlatformKnowledgeBaseIndexingJobsArgs, GetAgentPlatformKnowledgeBaseIndexingJobsResult, GetAgentPlatformKnowledgeBaseIndexingJobsOutputArgs } from "./getAgentPlatformKnowledgeBaseIndexingJobs";
+export const getAgentPlatformKnowledgeBaseIndexingJobs: typeof import("./getAgentPlatformKnowledgeBaseIndexingJobs").getAgentPlatformKnowledgeBaseIndexingJobs = null as any;
+export const getAgentPlatformKnowledgeBaseIndexingJobsOutput: typeof import("./getAgentPlatformKnowledgeBaseIndexingJobs").getAgentPlatformKnowledgeBaseIndexingJobsOutput = null as any;
+utilities.lazyLoad(exports, ["getAgentPlatformKnowledgeBaseIndexingJobs","getAgentPlatformKnowledgeBaseIndexingJobsOutput"], () => require("./getAgentPlatformKnowledgeBaseIndexingJobs"));
+
+export { GetAgentPlatformKnowledgeBasesArgs, GetAgentPlatformKnowledgeBasesResult, GetAgentPlatformKnowledgeBasesOutputArgs } from "./getAgentPlatformKnowledgeBases";
+export const getAgentPlatformKnowledgeBases: typeof import("./getAgentPlatformKnowledgeBases").getAgentPlatformKnowledgeBases = null as any;
+export const getAgentPlatformKnowledgeBasesOutput: typeof import("./getAgentPlatformKnowledgeBases").getAgentPlatformKnowledgeBasesOutput = null as any;
+utilities.lazyLoad(exports, ["getAgentPlatformKnowledgeBases","getAgentPlatformKnowledgeBasesOutput"], () => require("./getAgentPlatformKnowledgeBases"));
+
+export { GetAgentPlatformModelsArgs, GetAgentPlatformModelsResult, GetAgentPlatformModelsOutputArgs } from "./getAgentPlatformModels";
+export const getAgentPlatformModels: typeof import("./getAgentPlatformModels").getAgentPlatformModels = null as any;
+export const getAgentPlatformModelsOutput: typeof import("./getAgentPlatformModels").getAgentPlatformModelsOutput = null as any;
+utilities.lazyLoad(exports, ["getAgentPlatformModels","getAgentPlatformModelsOutput"], () => require("./getAgentPlatformModels"));
+
+export { GetAgentPlatformOpenaiApiKeyArgs, GetAgentPlatformOpenaiApiKeyResult, GetAgentPlatformOpenaiApiKeyOutputArgs } from "./getAgentPlatformOpenaiApiKey";
+export const getAgentPlatformOpenaiApiKey: typeof import("./getAgentPlatformOpenaiApiKey").getAgentPlatformOpenaiApiKey = null as any;
+export const getAgentPlatformOpenaiApiKeyOutput: typeof import("./getAgentPlatformOpenaiApiKey").getAgentPlatformOpenaiApiKeyOutput = null as any;
+utilities.lazyLoad(exports, ["getAgentPlatformOpenaiApiKey","getAgentPlatformOpenaiApiKeyOutput"], () => require("./getAgentPlatformOpenaiApiKey"));
+
+export { GetAgentPlatformOpenaiApiKeysArgs, GetAgentPlatformOpenaiApiKeysResult, GetAgentPlatformOpenaiApiKeysOutputArgs } from "./getAgentPlatformOpenaiApiKeys";
+export const getAgentPlatformOpenaiApiKeys: typeof import("./getAgentPlatformOpenaiApiKeys").getAgentPlatformOpenaiApiKeys = null as any;
+export const getAgentPlatformOpenaiApiKeysOutput: typeof import("./getAgentPlatformOpenaiApiKeys").getAgentPlatformOpenaiApiKeysOutput = null as any;
+utilities.lazyLoad(exports, ["getAgentPlatformOpenaiApiKeys","getAgentPlatformOpenaiApiKeysOutput"], () => require("./getAgentPlatformOpenaiApiKeys"));
+
+export { GetAgentPlatformRegionsArgs, GetAgentPlatformRegionsResult, GetAgentPlatformRegionsOutputArgs } from "./getAgentPlatformRegions";
+export const getAgentPlatformRegions: typeof import("./getAgentPlatformRegions").getAgentPlatformRegions = null as any;
+export const getAgentPlatformRegionsOutput: typeof import("./getAgentPlatformRegions").getAgentPlatformRegionsOutput = null as any;
+utilities.lazyLoad(exports, ["getAgentPlatformRegions","getAgentPlatformRegionsOutput"], () => require("./getAgentPlatformRegions"));
 
 export { GetAppArgs, GetAppResult, GetAppOutputArgs } from "./getApp";
 export const getApp: typeof import("./getApp").getApp = null as any;
@@ -370,76 +455,6 @@ export const getFloatingIp: typeof import("./getFloatingIp").getFloatingIp = nul
 export const getFloatingIpOutput: typeof import("./getFloatingIp").getFloatingIpOutput = null as any;
 utilities.lazyLoad(exports, ["getFloatingIp","getFloatingIpOutput"], () => require("./getFloatingIp"));
 
-export { GetGenaiAgentArgs, GetGenaiAgentResult, GetGenaiAgentOutputArgs } from "./getGenaiAgent";
-export const getGenaiAgent: typeof import("./getGenaiAgent").getGenaiAgent = null as any;
-export const getGenaiAgentOutput: typeof import("./getGenaiAgent").getGenaiAgentOutput = null as any;
-utilities.lazyLoad(exports, ["getGenaiAgent","getGenaiAgentOutput"], () => require("./getGenaiAgent"));
-
-export { GetGenaiAgentVersionsArgs, GetGenaiAgentVersionsResult, GetGenaiAgentVersionsOutputArgs } from "./getGenaiAgentVersions";
-export const getGenaiAgentVersions: typeof import("./getGenaiAgentVersions").getGenaiAgentVersions = null as any;
-export const getGenaiAgentVersionsOutput: typeof import("./getGenaiAgentVersions").getGenaiAgentVersionsOutput = null as any;
-utilities.lazyLoad(exports, ["getGenaiAgentVersions","getGenaiAgentVersionsOutput"], () => require("./getGenaiAgentVersions"));
-
-export { GetGenaiAgentsArgs, GetGenaiAgentsResult, GetGenaiAgentsOutputArgs } from "./getGenaiAgents";
-export const getGenaiAgents: typeof import("./getGenaiAgents").getGenaiAgents = null as any;
-export const getGenaiAgentsOutput: typeof import("./getGenaiAgents").getGenaiAgentsOutput = null as any;
-utilities.lazyLoad(exports, ["getGenaiAgents","getGenaiAgentsOutput"], () => require("./getGenaiAgents"));
-
-export { GetGenaiAgentsByOpenaiApiKeyArgs, GetGenaiAgentsByOpenaiApiKeyResult, GetGenaiAgentsByOpenaiApiKeyOutputArgs } from "./getGenaiAgentsByOpenaiApiKey";
-export const getGenaiAgentsByOpenaiApiKey: typeof import("./getGenaiAgentsByOpenaiApiKey").getGenaiAgentsByOpenaiApiKey = null as any;
-export const getGenaiAgentsByOpenaiApiKeyOutput: typeof import("./getGenaiAgentsByOpenaiApiKey").getGenaiAgentsByOpenaiApiKeyOutput = null as any;
-utilities.lazyLoad(exports, ["getGenaiAgentsByOpenaiApiKey","getGenaiAgentsByOpenaiApiKeyOutput"], () => require("./getGenaiAgentsByOpenaiApiKey"));
-
-export { GetGenaiIndexingJobArgs, GetGenaiIndexingJobResult, GetGenaiIndexingJobOutputArgs } from "./getGenaiIndexingJob";
-export const getGenaiIndexingJob: typeof import("./getGenaiIndexingJob").getGenaiIndexingJob = null as any;
-export const getGenaiIndexingJobOutput: typeof import("./getGenaiIndexingJob").getGenaiIndexingJobOutput = null as any;
-utilities.lazyLoad(exports, ["getGenaiIndexingJob","getGenaiIndexingJobOutput"], () => require("./getGenaiIndexingJob"));
-
-export { GetGenaiIndexingJobDataSourcesArgs, GetGenaiIndexingJobDataSourcesResult, GetGenaiIndexingJobDataSourcesOutputArgs } from "./getGenaiIndexingJobDataSources";
-export const getGenaiIndexingJobDataSources: typeof import("./getGenaiIndexingJobDataSources").getGenaiIndexingJobDataSources = null as any;
-export const getGenaiIndexingJobDataSourcesOutput: typeof import("./getGenaiIndexingJobDataSources").getGenaiIndexingJobDataSourcesOutput = null as any;
-utilities.lazyLoad(exports, ["getGenaiIndexingJobDataSources","getGenaiIndexingJobDataSourcesOutput"], () => require("./getGenaiIndexingJobDataSources"));
-
-export { GetGenaiKnowledgeBaseArgs, GetGenaiKnowledgeBaseResult, GetGenaiKnowledgeBaseOutputArgs } from "./getGenaiKnowledgeBase";
-export const getGenaiKnowledgeBase: typeof import("./getGenaiKnowledgeBase").getGenaiKnowledgeBase = null as any;
-export const getGenaiKnowledgeBaseOutput: typeof import("./getGenaiKnowledgeBase").getGenaiKnowledgeBaseOutput = null as any;
-utilities.lazyLoad(exports, ["getGenaiKnowledgeBase","getGenaiKnowledgeBaseOutput"], () => require("./getGenaiKnowledgeBase"));
-
-export { GetGenaiKnowledgeBaseDataSourcesArgs, GetGenaiKnowledgeBaseDataSourcesResult, GetGenaiKnowledgeBaseDataSourcesOutputArgs } from "./getGenaiKnowledgeBaseDataSources";
-export const getGenaiKnowledgeBaseDataSources: typeof import("./getGenaiKnowledgeBaseDataSources").getGenaiKnowledgeBaseDataSources = null as any;
-export const getGenaiKnowledgeBaseDataSourcesOutput: typeof import("./getGenaiKnowledgeBaseDataSources").getGenaiKnowledgeBaseDataSourcesOutput = null as any;
-utilities.lazyLoad(exports, ["getGenaiKnowledgeBaseDataSources","getGenaiKnowledgeBaseDataSourcesOutput"], () => require("./getGenaiKnowledgeBaseDataSources"));
-
-export { GetGenaiKnowledgeBaseIndexingJobsArgs, GetGenaiKnowledgeBaseIndexingJobsResult, GetGenaiKnowledgeBaseIndexingJobsOutputArgs } from "./getGenaiKnowledgeBaseIndexingJobs";
-export const getGenaiKnowledgeBaseIndexingJobs: typeof import("./getGenaiKnowledgeBaseIndexingJobs").getGenaiKnowledgeBaseIndexingJobs = null as any;
-export const getGenaiKnowledgeBaseIndexingJobsOutput: typeof import("./getGenaiKnowledgeBaseIndexingJobs").getGenaiKnowledgeBaseIndexingJobsOutput = null as any;
-utilities.lazyLoad(exports, ["getGenaiKnowledgeBaseIndexingJobs","getGenaiKnowledgeBaseIndexingJobsOutput"], () => require("./getGenaiKnowledgeBaseIndexingJobs"));
-
-export { GetGenaiKnowledgeBasesArgs, GetGenaiKnowledgeBasesResult, GetGenaiKnowledgeBasesOutputArgs } from "./getGenaiKnowledgeBases";
-export const getGenaiKnowledgeBases: typeof import("./getGenaiKnowledgeBases").getGenaiKnowledgeBases = null as any;
-export const getGenaiKnowledgeBasesOutput: typeof import("./getGenaiKnowledgeBases").getGenaiKnowledgeBasesOutput = null as any;
-utilities.lazyLoad(exports, ["getGenaiKnowledgeBases","getGenaiKnowledgeBasesOutput"], () => require("./getGenaiKnowledgeBases"));
-
-export { GetGenaiModelsArgs, GetGenaiModelsResult, GetGenaiModelsOutputArgs } from "./getGenaiModels";
-export const getGenaiModels: typeof import("./getGenaiModels").getGenaiModels = null as any;
-export const getGenaiModelsOutput: typeof import("./getGenaiModels").getGenaiModelsOutput = null as any;
-utilities.lazyLoad(exports, ["getGenaiModels","getGenaiModelsOutput"], () => require("./getGenaiModels"));
-
-export { GetGenaiOpenaiApiKeyArgs, GetGenaiOpenaiApiKeyResult, GetGenaiOpenaiApiKeyOutputArgs } from "./getGenaiOpenaiApiKey";
-export const getGenaiOpenaiApiKey: typeof import("./getGenaiOpenaiApiKey").getGenaiOpenaiApiKey = null as any;
-export const getGenaiOpenaiApiKeyOutput: typeof import("./getGenaiOpenaiApiKey").getGenaiOpenaiApiKeyOutput = null as any;
-utilities.lazyLoad(exports, ["getGenaiOpenaiApiKey","getGenaiOpenaiApiKeyOutput"], () => require("./getGenaiOpenaiApiKey"));
-
-export { GetGenaiOpenaiApiKeysArgs, GetGenaiOpenaiApiKeysResult, GetGenaiOpenaiApiKeysOutputArgs } from "./getGenaiOpenaiApiKeys";
-export const getGenaiOpenaiApiKeys: typeof import("./getGenaiOpenaiApiKeys").getGenaiOpenaiApiKeys = null as any;
-export const getGenaiOpenaiApiKeysOutput: typeof import("./getGenaiOpenaiApiKeys").getGenaiOpenaiApiKeysOutput = null as any;
-utilities.lazyLoad(exports, ["getGenaiOpenaiApiKeys","getGenaiOpenaiApiKeysOutput"], () => require("./getGenaiOpenaiApiKeys"));
-
-export { GetGenaiRegionsArgs, GetGenaiRegionsResult, GetGenaiRegionsOutputArgs } from "./getGenaiRegions";
-export const getGenaiRegions: typeof import("./getGenaiRegions").getGenaiRegions = null as any;
-export const getGenaiRegionsOutput: typeof import("./getGenaiRegions").getGenaiRegionsOutput = null as any;
-utilities.lazyLoad(exports, ["getGenaiRegions","getGenaiRegionsOutput"], () => require("./getGenaiRegions"));
-
 export { GetGradientaiAgentArgs, GetGradientaiAgentResult, GetGradientaiAgentOutputArgs } from "./getGradientaiAgent";
 export const getGradientaiAgent: typeof import("./getGradientaiAgent").getGradientaiAgent = null as any;
 export const getGradientaiAgentOutput: typeof import("./getGradientaiAgent").getGradientaiAgentOutput = null as any;
@@ -459,16 +474,6 @@ export { GetGradientaiAgentsByOpenaiApiKeyArgs, GetGradientaiAgentsByOpenaiApiKe
 export const getGradientaiAgentsByOpenaiApiKey: typeof import("./getGradientaiAgentsByOpenaiApiKey").getGradientaiAgentsByOpenaiApiKey = null as any;
 export const getGradientaiAgentsByOpenaiApiKeyOutput: typeof import("./getGradientaiAgentsByOpenaiApiKey").getGradientaiAgentsByOpenaiApiKeyOutput = null as any;
 utilities.lazyLoad(exports, ["getGradientaiAgentsByOpenaiApiKey","getGradientaiAgentsByOpenaiApiKeyOutput"], () => require("./getGradientaiAgentsByOpenaiApiKey"));
-
-export { GetGradientaiCustomModelArgs, GetGradientaiCustomModelResult, GetGradientaiCustomModelOutputArgs } from "./getGradientaiCustomModel";
-export const getGradientaiCustomModel: typeof import("./getGradientaiCustomModel").getGradientaiCustomModel = null as any;
-export const getGradientaiCustomModelOutput: typeof import("./getGradientaiCustomModel").getGradientaiCustomModelOutput = null as any;
-utilities.lazyLoad(exports, ["getGradientaiCustomModel","getGradientaiCustomModelOutput"], () => require("./getGradientaiCustomModel"));
-
-export { GetGradientaiCustomModelsArgs, GetGradientaiCustomModelsResult, GetGradientaiCustomModelsOutputArgs } from "./getGradientaiCustomModels";
-export const getGradientaiCustomModels: typeof import("./getGradientaiCustomModels").getGradientaiCustomModels = null as any;
-export const getGradientaiCustomModelsOutput: typeof import("./getGradientaiCustomModels").getGradientaiCustomModelsOutput = null as any;
-utilities.lazyLoad(exports, ["getGradientaiCustomModels","getGradientaiCustomModelsOutput"], () => require("./getGradientaiCustomModels"));
 
 export { GetGradientaiIndexingJobArgs, GetGradientaiIndexingJobResult, GetGradientaiIndexingJobOutputArgs } from "./getGradientaiIndexingJob";
 export const getGradientaiIndexingJob: typeof import("./getGradientaiIndexingJob").getGradientaiIndexingJob = null as any;
@@ -705,11 +710,6 @@ export type GradientaiAgentRoute = import("./gradientaiAgentRoute").GradientaiAg
 export const GradientaiAgentRoute: typeof import("./gradientaiAgentRoute").GradientaiAgentRoute = null as any;
 utilities.lazyLoad(exports, ["GradientaiAgentRoute"], () => require("./gradientaiAgentRoute"));
 
-export { GradientaiCustomModelArgs, GradientaiCustomModelState } from "./gradientaiCustomModel";
-export type GradientaiCustomModel = import("./gradientaiCustomModel").GradientaiCustomModel;
-export const GradientaiCustomModel: typeof import("./gradientaiCustomModel").GradientaiCustomModel = null as any;
-utilities.lazyLoad(exports, ["GradientaiCustomModel"], () => require("./gradientaiCustomModel"));
-
 export { GradientaiFunctionArgs, GradientaiFunctionState } from "./gradientaiFunction";
 export type GradientaiFunction = import("./gradientaiFunction").GradientaiFunction;
 export const GradientaiFunction: typeof import("./gradientaiFunction").GradientaiFunction = null as any;
@@ -915,6 +915,24 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "digitalocean:index/agentPlatformAgent:AgentPlatformAgent":
+                return new AgentPlatformAgent(name, <any>undefined, { urn })
+            case "digitalocean:index/agentPlatformAgentKnowledgeBaseAttachment:AgentPlatformAgentKnowledgeBaseAttachment":
+                return new AgentPlatformAgentKnowledgeBaseAttachment(name, <any>undefined, { urn })
+            case "digitalocean:index/agentPlatformAgentRoute:AgentPlatformAgentRoute":
+                return new AgentPlatformAgentRoute(name, <any>undefined, { urn })
+            case "digitalocean:index/agentPlatformCustomModel:AgentPlatformCustomModel":
+                return new AgentPlatformCustomModel(name, <any>undefined, { urn })
+            case "digitalocean:index/agentPlatformFunction:AgentPlatformFunction":
+                return new AgentPlatformFunction(name, <any>undefined, { urn })
+            case "digitalocean:index/agentPlatformIndexingJobCancel:AgentPlatformIndexingJobCancel":
+                return new AgentPlatformIndexingJobCancel(name, <any>undefined, { urn })
+            case "digitalocean:index/agentPlatformKnowledgeBase:AgentPlatformKnowledgeBase":
+                return new AgentPlatformKnowledgeBase(name, <any>undefined, { urn })
+            case "digitalocean:index/agentPlatformKnowledgeBaseDataSource:AgentPlatformKnowledgeBaseDataSource":
+                return new AgentPlatformKnowledgeBaseDataSource(name, <any>undefined, { urn })
+            case "digitalocean:index/agentPlatformOpenaiApiKey:AgentPlatformOpenaiApiKey":
+                return new AgentPlatformOpenaiApiKey(name, <any>undefined, { urn })
             case "digitalocean:index/app:App":
                 return new App(name, <any>undefined, { urn })
             case "digitalocean:index/byoipPrefix:ByoipPrefix":
@@ -991,30 +1009,12 @@ const _module = {
                 return new FloatingIp(name, <any>undefined, { urn })
             case "digitalocean:index/floatingIpAssignment:FloatingIpAssignment":
                 return new FloatingIpAssignment(name, <any>undefined, { urn })
-            case "digitalocean:index/genaiAgent:GenaiAgent":
-                return new GenaiAgent(name, <any>undefined, { urn })
-            case "digitalocean:index/genaiAgentKnowledgeBaseAttachment:GenaiAgentKnowledgeBaseAttachment":
-                return new GenaiAgentKnowledgeBaseAttachment(name, <any>undefined, { urn })
-            case "digitalocean:index/genaiAgentRoute:GenaiAgentRoute":
-                return new GenaiAgentRoute(name, <any>undefined, { urn })
-            case "digitalocean:index/genaiFunction:GenaiFunction":
-                return new GenaiFunction(name, <any>undefined, { urn })
-            case "digitalocean:index/genaiIndexingJobCancel:GenaiIndexingJobCancel":
-                return new GenaiIndexingJobCancel(name, <any>undefined, { urn })
-            case "digitalocean:index/genaiKnowledgeBase:GenaiKnowledgeBase":
-                return new GenaiKnowledgeBase(name, <any>undefined, { urn })
-            case "digitalocean:index/genaiKnowledgeBaseDataSource:GenaiKnowledgeBaseDataSource":
-                return new GenaiKnowledgeBaseDataSource(name, <any>undefined, { urn })
-            case "digitalocean:index/genaiOpenaiApiKey:GenaiOpenaiApiKey":
-                return new GenaiOpenaiApiKey(name, <any>undefined, { urn })
             case "digitalocean:index/gradientaiAgent:GradientaiAgent":
                 return new GradientaiAgent(name, <any>undefined, { urn })
             case "digitalocean:index/gradientaiAgentKnowledgeBaseAttachment:GradientaiAgentKnowledgeBaseAttachment":
                 return new GradientaiAgentKnowledgeBaseAttachment(name, <any>undefined, { urn })
             case "digitalocean:index/gradientaiAgentRoute:GradientaiAgentRoute":
                 return new GradientaiAgentRoute(name, <any>undefined, { urn })
-            case "digitalocean:index/gradientaiCustomModel:GradientaiCustomModel":
-                return new GradientaiCustomModel(name, <any>undefined, { urn })
             case "digitalocean:index/gradientaiFunction:GradientaiFunction":
                 return new GradientaiFunction(name, <any>undefined, { urn })
             case "digitalocean:index/gradientaiIndexingJobCancel:GradientaiIndexingJobCancel":
@@ -1094,6 +1094,15 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("digitalocean", "index/agentPlatformAgent", _module)
+pulumi.runtime.registerResourceModule("digitalocean", "index/agentPlatformAgentKnowledgeBaseAttachment", _module)
+pulumi.runtime.registerResourceModule("digitalocean", "index/agentPlatformAgentRoute", _module)
+pulumi.runtime.registerResourceModule("digitalocean", "index/agentPlatformCustomModel", _module)
+pulumi.runtime.registerResourceModule("digitalocean", "index/agentPlatformFunction", _module)
+pulumi.runtime.registerResourceModule("digitalocean", "index/agentPlatformIndexingJobCancel", _module)
+pulumi.runtime.registerResourceModule("digitalocean", "index/agentPlatformKnowledgeBase", _module)
+pulumi.runtime.registerResourceModule("digitalocean", "index/agentPlatformKnowledgeBaseDataSource", _module)
+pulumi.runtime.registerResourceModule("digitalocean", "index/agentPlatformOpenaiApiKey", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/app", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/byoipPrefix", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/cdn", _module)
@@ -1132,18 +1141,9 @@ pulumi.runtime.registerResourceModule("digitalocean", "index/dropletSnapshot", _
 pulumi.runtime.registerResourceModule("digitalocean", "index/firewall", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/floatingIp", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/floatingIpAssignment", _module)
-pulumi.runtime.registerResourceModule("digitalocean", "index/genaiAgent", _module)
-pulumi.runtime.registerResourceModule("digitalocean", "index/genaiAgentKnowledgeBaseAttachment", _module)
-pulumi.runtime.registerResourceModule("digitalocean", "index/genaiAgentRoute", _module)
-pulumi.runtime.registerResourceModule("digitalocean", "index/genaiFunction", _module)
-pulumi.runtime.registerResourceModule("digitalocean", "index/genaiIndexingJobCancel", _module)
-pulumi.runtime.registerResourceModule("digitalocean", "index/genaiKnowledgeBase", _module)
-pulumi.runtime.registerResourceModule("digitalocean", "index/genaiKnowledgeBaseDataSource", _module)
-pulumi.runtime.registerResourceModule("digitalocean", "index/genaiOpenaiApiKey", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/gradientaiAgent", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/gradientaiAgentKnowledgeBaseAttachment", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/gradientaiAgentRoute", _module)
-pulumi.runtime.registerResourceModule("digitalocean", "index/gradientaiCustomModel", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/gradientaiFunction", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/gradientaiIndexingJobCancel", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/gradientaiKnowledgeBase", _module)

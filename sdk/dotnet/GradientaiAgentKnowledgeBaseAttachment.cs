@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.DigitalOcean
 {
+    [Obsolete(@"digitalocean.GradientaiAgentKnowledgeBaseAttachment has been deprecated in favor of digitalocean.AgentPlatformAgentKnowledgeBaseAttachment")]
     [DigitalOceanResourceType("digitalocean:index/gradientaiAgentKnowledgeBaseAttachment:GradientaiAgentKnowledgeBaseAttachment")]
     public partial class GradientaiAgentKnowledgeBaseAttachment : global::Pulumi.CustomResource
     {
@@ -47,10 +48,6 @@ namespace Pulumi.DigitalOcean
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                Aliases =
-                {
-                    new global::Pulumi.Alias { Type = "digitalocean:index/genaiAgentKnowledgeBaseAttachment:GenaiAgentKnowledgeBaseAttachment" },
-                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

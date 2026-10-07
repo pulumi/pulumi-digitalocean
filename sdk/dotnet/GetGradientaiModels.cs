@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.DigitalOcean
 {
+    [Obsolete(@"digitalocean.getGradientaiModels has been deprecated in favor of digitalocean.getAgentPlatformModels")]
     public static class GetGradientaiModels
     {
         public static Task<GetGradientaiModelsResult> InvokeAsync(GetGradientaiModelsArgs? args = null, InvokeOptions? options = null)

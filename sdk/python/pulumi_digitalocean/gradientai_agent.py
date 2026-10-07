@@ -1280,8 +1280,13 @@ class _GradientaiAgentState:
         pulumi.set(self, "workspace_uuid", value)
 
 
+warnings.warn("""digitalocean.GradientaiAgent has been deprecated in favor of digitalocean.AgentPlatformAgent""", DeprecationWarning)
+
+
 @pulumi.type_token("digitalocean:index/gradientaiAgent:GradientaiAgent")
 class GradientaiAgent(pulumi.CustomResource):
+    warnings.warn("""digitalocean.GradientaiAgent has been deprecated in favor of digitalocean.AgentPlatformAgent""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -1432,6 +1437,7 @@ class GradientaiAgent(pulumi.CustomResource):
                  user_id: pulumi.Input[Optional[_builtins.str]] = None,
                  workspace_uuid: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""GradientaiAgent is deprecated: digitalocean.GradientaiAgent has been deprecated in favor of digitalocean.AgentPlatformAgent""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -1488,8 +1494,6 @@ class GradientaiAgent(pulumi.CustomResource):
             __props__.__dict__["workspace_uuid"] = workspace_uuid
             __props__.__dict__["route_created_at"] = None
             __props__.__dict__["updated_at"] = None
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="digitalocean:index/genaiAgent:GenaiAgent")])
-        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(GradientaiAgent, __self__).__init__(
             'digitalocean:index/gradientaiAgent:GradientaiAgent',
             resource_name,

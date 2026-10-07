@@ -7,7 +7,9 @@ import * as outputs from "./types/output";
 import * as enums from "./types/enums";
 import * as utilities from "./utilities";
 
+/** @deprecated digitalocean.getGradientaiOpenaiApiKey has been deprecated in favor of digitalocean.getAgentPlatformOpenaiApiKey */
 export function getGradientaiOpenaiApiKey(args: GetGradientaiOpenaiApiKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetGradientaiOpenaiApiKeyResult> {
+    pulumi.log.warn("getGradientaiOpenaiApiKey is deprecated: digitalocean.getGradientaiOpenaiApiKey has been deprecated in favor of digitalocean.getAgentPlatformOpenaiApiKey")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("digitalocean:index/getGradientaiOpenaiApiKey:getGradientaiOpenaiApiKey", {
         "uuid": args.uuid,
@@ -37,7 +39,9 @@ export interface GetGradientaiOpenaiApiKeyResult {
     readonly updatedAt: string;
     readonly uuid: string;
 }
+/** @deprecated digitalocean.getGradientaiOpenaiApiKey has been deprecated in favor of digitalocean.getAgentPlatformOpenaiApiKey */
 export function getGradientaiOpenaiApiKeyOutput(args: GetGradientaiOpenaiApiKeyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGradientaiOpenaiApiKeyResult> {
+    pulumi.log.warn("getGradientaiOpenaiApiKey is deprecated: digitalocean.getGradientaiOpenaiApiKey has been deprecated in favor of digitalocean.getAgentPlatformOpenaiApiKey")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("digitalocean:index/getGradientaiOpenaiApiKey:getGradientaiOpenaiApiKey", {
         "uuid": args.uuid,

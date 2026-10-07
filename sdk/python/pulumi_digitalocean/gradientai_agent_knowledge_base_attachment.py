@@ -96,8 +96,13 @@ class _GradientaiAgentKnowledgeBaseAttachmentState:
         pulumi.set(self, "knowledge_base_uuid", value)
 
 
+warnings.warn("""digitalocean.GradientaiAgentKnowledgeBaseAttachment has been deprecated in favor of digitalocean.AgentPlatformAgentKnowledgeBaseAttachment""", DeprecationWarning)
+
+
 @pulumi.type_token("digitalocean:index/gradientaiAgentKnowledgeBaseAttachment:GradientaiAgentKnowledgeBaseAttachment")
 class GradientaiAgentKnowledgeBaseAttachment(pulumi.CustomResource):
+    warnings.warn("""digitalocean.GradientaiAgentKnowledgeBaseAttachment has been deprecated in favor of digitalocean.AgentPlatformAgentKnowledgeBaseAttachment""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -140,6 +145,7 @@ class GradientaiAgentKnowledgeBaseAttachment(pulumi.CustomResource):
                  agent_uuid: pulumi.Input[Optional[_builtins.str]] = None,
                  knowledge_base_uuid: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""GradientaiAgentKnowledgeBaseAttachment is deprecated: digitalocean.GradientaiAgentKnowledgeBaseAttachment has been deprecated in favor of digitalocean.AgentPlatformAgentKnowledgeBaseAttachment""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -154,8 +160,6 @@ class GradientaiAgentKnowledgeBaseAttachment(pulumi.CustomResource):
             if knowledge_base_uuid is None and not opts.urn:
                 raise TypeError("Missing required property 'knowledge_base_uuid'")
             __props__.__dict__["knowledge_base_uuid"] = knowledge_base_uuid
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="digitalocean:index/genaiAgentKnowledgeBaseAttachment:GenaiAgentKnowledgeBaseAttachment")])
-        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(GradientaiAgentKnowledgeBaseAttachment, __self__).__init__(
             'digitalocean:index/gradientaiAgentKnowledgeBaseAttachment:GradientaiAgentKnowledgeBaseAttachment',
             resource_name,

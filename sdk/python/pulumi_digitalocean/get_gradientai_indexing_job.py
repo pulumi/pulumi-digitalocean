@@ -21,6 +21,8 @@ __all__ = [
     'get_gradientai_indexing_job_output',
 ]
 
+warnings.warn("""digitalocean.getGradientaiIndexingJob has been deprecated in favor of digitalocean.getAgentPlatformIndexingJob""", DeprecationWarning)
+
 @pulumi.output_type
 class GetGradientaiIndexingJobResult:
     """
@@ -189,6 +191,7 @@ def get_gradientai_indexing_job(uuid: Optional[_builtins.str] = None,
     """
     Use this data source to access information about an existing resource.
     """
+    pulumi.log.warn("""get_gradientai_indexing_job is deprecated: digitalocean.getGradientaiIndexingJob has been deprecated in favor of digitalocean.getAgentPlatformIndexingJob""")
     __args__ = dict()
     __args__['uuid'] = uuid
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -216,6 +219,7 @@ def get_gradientai_indexing_job_output(uuid: pulumi.Input[Optional[_builtins.str
     """
     Use this data source to access information about an existing resource.
     """
+    pulumi.log.warn("""get_gradientai_indexing_job is deprecated: digitalocean.getGradientaiIndexingJob has been deprecated in favor of digitalocean.getAgentPlatformIndexingJob""")
     __args__ = dict()
     __args__['uuid'] = uuid
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

@@ -12,6 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Deprecated: digitalocean.GradientaiAgentRoute has been deprecated in favor of digitalocean.AgentPlatformAgentRoute
 type GradientaiAgentRoute struct {
 	pulumi.CustomResourceState
 
@@ -41,12 +42,6 @@ func NewGradientaiAgentRoute(ctx *pulumi.Context,
 	if args.ParentAgentUuid == nil {
 		return nil, errors.New("invalid value for required argument 'ParentAgentUuid'")
 	}
-	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("digitalocean:index/genaiAgentRoute:GenaiAgentRoute"),
-		},
-	})
-	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource GradientaiAgentRoute
 	err := ctx.RegisterResource("digitalocean:index/gradientaiAgentRoute:GradientaiAgentRoute", name, args, &resource, opts...)

@@ -10,6 +10,7 @@ import com.pulumi.digitalocean.inputs.GetKubernetesClusterAmdGpuDevicePluginArgs
 import com.pulumi.digitalocean.inputs.GetKubernetesClusterAmdGpuDraDriverArgs;
 import com.pulumi.digitalocean.inputs.GetKubernetesClusterClusterAutoscalerConfigurationArgs;
 import com.pulumi.digitalocean.inputs.GetKubernetesClusterCorednsAutoscalerArgs;
+import com.pulumi.digitalocean.inputs.GetKubernetesClusterNfsCsiPluginArgs;
 import com.pulumi.digitalocean.inputs.GetKubernetesClusterNvidiaGpuDevicePluginArgs;
 import com.pulumi.digitalocean.inputs.GetKubernetesClusterNvidiaGpuDraDriverArgs;
 import com.pulumi.digitalocean.inputs.GetKubernetesClusterP2pOciRegistryPluginArgs;
@@ -86,6 +87,13 @@ public final class GetKubernetesClusterArgs extends com.pulumi.resources.InvokeA
         return this.name;
     }
 
+    @Import(name="nfsCsiPlugin")
+    private @Nullable Output<GetKubernetesClusterNfsCsiPluginArgs> nfsCsiPlugin;
+
+    public Optional<Output<GetKubernetesClusterNfsCsiPluginArgs>> nfsCsiPlugin() {
+        return Optional.ofNullable(this.nfsCsiPlugin);
+    }
+
     @Import(name="nvidiaGpuDevicePlugin")
     private @Nullable Output<GetKubernetesClusterNvidiaGpuDevicePluginArgs> nvidiaGpuDevicePlugin;
 
@@ -153,6 +161,7 @@ public final class GetKubernetesClusterArgs extends com.pulumi.resources.InvokeA
         this.corednsAutoscaler = $.corednsAutoscaler;
         this.kubeconfigExpireSeconds = $.kubeconfigExpireSeconds;
         this.name = $.name;
+        this.nfsCsiPlugin = $.nfsCsiPlugin;
         this.nvidiaGpuDevicePlugin = $.nvidiaGpuDevicePlugin;
         this.nvidiaGpuDraDriver = $.nvidiaGpuDraDriver;
         this.p2pOciRegistryPlugin = $.p2pOciRegistryPlugin;
@@ -257,6 +266,15 @@ public final class GetKubernetesClusterArgs extends com.pulumi.resources.InvokeA
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        public Builder nfsCsiPlugin(@Nullable Output<GetKubernetesClusterNfsCsiPluginArgs> nfsCsiPlugin) {
+            $.nfsCsiPlugin = nfsCsiPlugin;
+            return this;
+        }
+
+        public Builder nfsCsiPlugin(GetKubernetesClusterNfsCsiPluginArgs nfsCsiPlugin) {
+            return nfsCsiPlugin(Output.of(nfsCsiPlugin));
         }
 
         public Builder nvidiaGpuDevicePlugin(@Nullable Output<GetKubernetesClusterNvidiaGpuDevicePluginArgs> nvidiaGpuDevicePlugin) {

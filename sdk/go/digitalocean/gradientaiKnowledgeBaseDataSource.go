@@ -12,6 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Deprecated: digitalocean.GradientaiKnowledgeBaseDataSource has been deprecated in favor of digitalocean.AgentPlatformKnowledgeBaseDataSource
 type GradientaiKnowledgeBaseDataSource struct {
 	pulumi.CustomResourceState
 
@@ -31,12 +32,6 @@ func NewGradientaiKnowledgeBaseDataSource(ctx *pulumi.Context,
 	if args.KnowledgeBaseUuid == nil {
 		return nil, errors.New("invalid value for required argument 'KnowledgeBaseUuid'")
 	}
-	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("digitalocean:index/genaiKnowledgeBaseDataSource:GenaiKnowledgeBaseDataSource"),
-		},
-	})
-	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource GradientaiKnowledgeBaseDataSource
 	err := ctx.RegisterResource("digitalocean:index/gradientaiKnowledgeBaseDataSource:GradientaiKnowledgeBaseDataSource", name, args, &resource, opts...)

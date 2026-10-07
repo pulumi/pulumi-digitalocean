@@ -12,24 +12,25 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Deprecated: digitalocean.GradientaiFunction has been deprecated in favor of digitalocean.AgentPlatformFunction
 type GradientaiFunction struct {
 	pulumi.CustomResourceState
 
-	// The name of the GradientAI resource.
+	// The name of the Agent Platform resource.
 	AgentId pulumi.StringOutput `pulumi:"agentId"`
-	// The region where the GradientAI resource will be created.
+	// The region where the Agent Platform resource will be created.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// The model to use for the GradientAI resource.
+	// The model to use for the Agent Platform resource.
 	FaasName pulumi.StringPtrOutput `pulumi:"faasName"`
-	// The current status of the GradientAI resource.
+	// The current status of the Agent Platform resource.
 	FaasNamespace pulumi.StringOutput `pulumi:"faasNamespace"`
-	// The creation timestamp of the GradientAI resource.
+	// The creation timestamp of the Agent Platform resource.
 	FunctionName pulumi.StringOutput `pulumi:"functionName"`
-	// The unique identifier of the GradientAI function.
+	// The unique identifier of the Agent Platform function.
 	FunctionUuid pulumi.StringOutput `pulumi:"functionUuid"`
-	// The input schema of the GradientAI resource.
+	// The input schema of the Agent Platform resource.
 	InputSchema pulumi.StringOutput `pulumi:"inputSchema"`
-	// The output schema of the GradientAI resource.
+	// The output schema of the Agent Platform resource.
 	OutputSchema pulumi.StringPtrOutput `pulumi:"outputSchema"`
 }
 
@@ -55,12 +56,6 @@ func NewGradientaiFunction(ctx *pulumi.Context,
 	if args.InputSchema == nil {
 		return nil, errors.New("invalid value for required argument 'InputSchema'")
 	}
-	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("digitalocean:index/genaiFunction:GenaiFunction"),
-		},
-	})
-	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource GradientaiFunction
 	err := ctx.RegisterResource("digitalocean:index/gradientaiFunction:GradientaiFunction", name, args, &resource, opts...)
@@ -84,40 +79,40 @@ func GetGradientaiFunction(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GradientaiFunction resources.
 type gradientaiFunctionState struct {
-	// The name of the GradientAI resource.
+	// The name of the Agent Platform resource.
 	AgentId *string `pulumi:"agentId"`
-	// The region where the GradientAI resource will be created.
+	// The region where the Agent Platform resource will be created.
 	Description *string `pulumi:"description"`
-	// The model to use for the GradientAI resource.
+	// The model to use for the Agent Platform resource.
 	FaasName *string `pulumi:"faasName"`
-	// The current status of the GradientAI resource.
+	// The current status of the Agent Platform resource.
 	FaasNamespace *string `pulumi:"faasNamespace"`
-	// The creation timestamp of the GradientAI resource.
+	// The creation timestamp of the Agent Platform resource.
 	FunctionName *string `pulumi:"functionName"`
-	// The unique identifier of the GradientAI function.
+	// The unique identifier of the Agent Platform function.
 	FunctionUuid *string `pulumi:"functionUuid"`
-	// The input schema of the GradientAI resource.
+	// The input schema of the Agent Platform resource.
 	InputSchema *string `pulumi:"inputSchema"`
-	// The output schema of the GradientAI resource.
+	// The output schema of the Agent Platform resource.
 	OutputSchema *string `pulumi:"outputSchema"`
 }
 
 type GradientaiFunctionState struct {
-	// The name of the GradientAI resource.
+	// The name of the Agent Platform resource.
 	AgentId pulumi.StringPtrInput
-	// The region where the GradientAI resource will be created.
+	// The region where the Agent Platform resource will be created.
 	Description pulumi.StringPtrInput
-	// The model to use for the GradientAI resource.
+	// The model to use for the Agent Platform resource.
 	FaasName pulumi.StringPtrInput
-	// The current status of the GradientAI resource.
+	// The current status of the Agent Platform resource.
 	FaasNamespace pulumi.StringPtrInput
-	// The creation timestamp of the GradientAI resource.
+	// The creation timestamp of the Agent Platform resource.
 	FunctionName pulumi.StringPtrInput
-	// The unique identifier of the GradientAI function.
+	// The unique identifier of the Agent Platform function.
 	FunctionUuid pulumi.StringPtrInput
-	// The input schema of the GradientAI resource.
+	// The input schema of the Agent Platform resource.
 	InputSchema pulumi.StringPtrInput
-	// The output schema of the GradientAI resource.
+	// The output schema of the Agent Platform resource.
 	OutputSchema pulumi.StringPtrInput
 }
 
@@ -126,37 +121,37 @@ func (GradientaiFunctionState) ElementType() reflect.Type {
 }
 
 type gradientaiFunctionArgs struct {
-	// The name of the GradientAI resource.
+	// The name of the Agent Platform resource.
 	AgentId string `pulumi:"agentId"`
-	// The region where the GradientAI resource will be created.
+	// The region where the Agent Platform resource will be created.
 	Description string `pulumi:"description"`
-	// The model to use for the GradientAI resource.
+	// The model to use for the Agent Platform resource.
 	FaasName *string `pulumi:"faasName"`
-	// The current status of the GradientAI resource.
+	// The current status of the Agent Platform resource.
 	FaasNamespace string `pulumi:"faasNamespace"`
-	// The creation timestamp of the GradientAI resource.
+	// The creation timestamp of the Agent Platform resource.
 	FunctionName string `pulumi:"functionName"`
-	// The input schema of the GradientAI resource.
+	// The input schema of the Agent Platform resource.
 	InputSchema string `pulumi:"inputSchema"`
-	// The output schema of the GradientAI resource.
+	// The output schema of the Agent Platform resource.
 	OutputSchema *string `pulumi:"outputSchema"`
 }
 
 // The set of arguments for constructing a GradientaiFunction resource.
 type GradientaiFunctionArgs struct {
-	// The name of the GradientAI resource.
+	// The name of the Agent Platform resource.
 	AgentId pulumi.StringInput
-	// The region where the GradientAI resource will be created.
+	// The region where the Agent Platform resource will be created.
 	Description pulumi.StringInput
-	// The model to use for the GradientAI resource.
+	// The model to use for the Agent Platform resource.
 	FaasName pulumi.StringPtrInput
-	// The current status of the GradientAI resource.
+	// The current status of the Agent Platform resource.
 	FaasNamespace pulumi.StringInput
-	// The creation timestamp of the GradientAI resource.
+	// The creation timestamp of the Agent Platform resource.
 	FunctionName pulumi.StringInput
-	// The input schema of the GradientAI resource.
+	// The input schema of the Agent Platform resource.
 	InputSchema pulumi.StringInput
-	// The output schema of the GradientAI resource.
+	// The output schema of the Agent Platform resource.
 	OutputSchema pulumi.StringPtrInput
 }
 
@@ -247,42 +242,42 @@ func (o GradientaiFunctionOutput) ToGradientaiFunctionOutputWithContext(ctx cont
 	return o
 }
 
-// The name of the GradientAI resource.
+// The name of the Agent Platform resource.
 func (o GradientaiFunctionOutput) AgentId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GradientaiFunction) pulumi.StringOutput { return v.AgentId }).(pulumi.StringOutput)
 }
 
-// The region where the GradientAI resource will be created.
+// The region where the Agent Platform resource will be created.
 func (o GradientaiFunctionOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *GradientaiFunction) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// The model to use for the GradientAI resource.
+// The model to use for the Agent Platform resource.
 func (o GradientaiFunctionOutput) FaasName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GradientaiFunction) pulumi.StringPtrOutput { return v.FaasName }).(pulumi.StringPtrOutput)
 }
 
-// The current status of the GradientAI resource.
+// The current status of the Agent Platform resource.
 func (o GradientaiFunctionOutput) FaasNamespace() pulumi.StringOutput {
 	return o.ApplyT(func(v *GradientaiFunction) pulumi.StringOutput { return v.FaasNamespace }).(pulumi.StringOutput)
 }
 
-// The creation timestamp of the GradientAI resource.
+// The creation timestamp of the Agent Platform resource.
 func (o GradientaiFunctionOutput) FunctionName() pulumi.StringOutput {
 	return o.ApplyT(func(v *GradientaiFunction) pulumi.StringOutput { return v.FunctionName }).(pulumi.StringOutput)
 }
 
-// The unique identifier of the GradientAI function.
+// The unique identifier of the Agent Platform function.
 func (o GradientaiFunctionOutput) FunctionUuid() pulumi.StringOutput {
 	return o.ApplyT(func(v *GradientaiFunction) pulumi.StringOutput { return v.FunctionUuid }).(pulumi.StringOutput)
 }
 
-// The input schema of the GradientAI resource.
+// The input schema of the Agent Platform resource.
 func (o GradientaiFunctionOutput) InputSchema() pulumi.StringOutput {
 	return o.ApplyT(func(v *GradientaiFunction) pulumi.StringOutput { return v.InputSchema }).(pulumi.StringOutput)
 }
 
-// The output schema of the GradientAI resource.
+// The output schema of the Agent Platform resource.
 func (o GradientaiFunctionOutput) OutputSchema() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GradientaiFunction) pulumi.StringPtrOutput { return v.OutputSchema }).(pulumi.StringPtrOutput)
 }

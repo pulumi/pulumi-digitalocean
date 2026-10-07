@@ -1,6 +1,302 @@
 {
     "auto-aliasing": {
         "resources": {
+            "digitalocean_agent_platform_agent": {
+                "current": "digitalocean:index/agentPlatformAgent:AgentPlatformAgent",
+                "majorVersion": 4,
+                "fields": {
+                    "agent_guardrail": {
+                        "maxItemsOne": false
+                    },
+                    "anthropic_api_key": {
+                        "maxItemsOne": false
+                    },
+                    "api_key_infos": {
+                        "maxItemsOne": false
+                    },
+                    "api_keys": {
+                        "maxItemsOne": false
+                    },
+                    "chatbot": {
+                        "maxItemsOne": false
+                    },
+                    "chatbot_identifiers": {
+                        "maxItemsOne": false
+                    },
+                    "child_agents": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "anthropic_api_key": {
+                                    "maxItemsOne": false
+                                },
+                                "api_key_infos": {
+                                    "maxItemsOne": false
+                                },
+                                "api_keys": {
+                                    "maxItemsOne": false
+                                },
+                                "chatbot": {
+                                    "maxItemsOne": false
+                                },
+                                "chatbot_identifiers": {
+                                    "maxItemsOne": false
+                                },
+                                "deployment": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "deployment": {
+                        "maxItemsOne": false
+                    },
+                    "functions": {
+                        "maxItemsOne": false
+                    },
+                    "knowledge_base_uuid": {
+                        "maxItemsOne": false
+                    },
+                    "knowledge_bases": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "last_indexing_job": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "data_source_uuids": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "tags": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "model": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "agreement": {
+                                    "maxItemsOne": false
+                                },
+                                "usecases": {
+                                    "maxItemsOne": false
+                                },
+                                "versions": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "open_ai_api_key": {
+                        "maxItemsOne": false
+                    },
+                    "parent_agents": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "anthropic_api_key": {
+                                    "maxItemsOne": false
+                                },
+                                "api_key_infos": {
+                                    "maxItemsOne": false
+                                },
+                                "api_keys": {
+                                    "maxItemsOne": false
+                                },
+                                "chatbot": {
+                                    "maxItemsOne": false
+                                },
+                                "chatbot_identifiers": {
+                                    "maxItemsOne": false
+                                },
+                                "deployment": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    },
+                    "template": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "knowledge_bases": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "last_indexing_job": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "data_source_uuids": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "tags": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "model": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "agreement": {
+                                                "maxItemsOne": false
+                                            },
+                                            "usecases": {
+                                                "maxItemsOne": false
+                                            },
+                                            "versions": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "digitalocean_agent_platform_agent_knowledge_base_attachment": {
+                "current": "digitalocean:index/agentPlatformAgentKnowledgeBaseAttachment:AgentPlatformAgentKnowledgeBaseAttachment",
+                "majorVersion": 4
+            },
+            "digitalocean_agent_platform_agent_route": {
+                "current": "digitalocean:index/agentPlatformAgentRoute:AgentPlatformAgentRoute",
+                "majorVersion": 4
+            },
+            "digitalocean_agent_platform_custom_model": {
+                "current": "digitalocean:index/agentPlatformCustomModel:AgentPlatformCustomModel",
+                "majorVersion": 4,
+                "fields": {
+                    "active_deployments": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "endpoints": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "input_modalities": {
+                        "maxItemsOne": false
+                    },
+                    "output_modalities": {
+                        "maxItemsOne": false
+                    },
+                    "source_ref": {
+                        "maxItemsOne": true
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "digitalocean_agent_platform_function": {
+                "current": "digitalocean:index/agentPlatformFunction:AgentPlatformFunction",
+                "majorVersion": 4
+            },
+            "digitalocean_agent_platform_indexing_job_cancel": {
+                "current": "digitalocean:index/agentPlatformIndexingJobCancel:AgentPlatformIndexingJobCancel",
+                "majorVersion": 4,
+                "fields": {
+                    "data_source_uuids": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "digitalocean_agent_platform_knowledge_base": {
+                "current": "digitalocean:index/agentPlatformKnowledgeBase:AgentPlatformKnowledgeBase",
+                "majorVersion": 4,
+                "fields": {
+                    "datasources": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "file_upload_data_source": {
+                                    "maxItemsOne": false
+                                },
+                                "last_indexing_job": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "data_source_uuids": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "spaces_data_source": {
+                                    "maxItemsOne": false
+                                },
+                                "web_crawler_data_source": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "last_indexing_job": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "data_source_uuids": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "digitalocean_agent_platform_knowledge_base_data_source": {
+                "current": "digitalocean:index/agentPlatformKnowledgeBaseDataSource:AgentPlatformKnowledgeBaseDataSource",
+                "majorVersion": 4,
+                "fields": {
+                    "spaces_data_source": {
+                        "maxItemsOne": true
+                    },
+                    "web_crawler_data_source": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "digitalocean_agent_platform_openai_api_key": {
+                "current": "digitalocean:index/agentPlatformOpenaiApiKey:AgentPlatformOpenaiApiKey",
+                "majorVersion": 4,
+                "fields": {
+                    "model": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "agreement": {
+                                    "maxItemsOne": false
+                                },
+                                "usecases": {
+                                    "maxItemsOne": false
+                                },
+                                "versions": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "digitalocean_app": {
                 "current": "digitalocean:index/app:App",
                 "majorVersion": 4,
@@ -900,302 +1196,6 @@
                 "current": "digitalocean:index/floatingIpAssignment:FloatingIpAssignment",
                 "majorVersion": 4
             },
-            "digitalocean_gradientai_agent": {
-                "current": "digitalocean:index/gradientaiAgent:GradientaiAgent",
-                "majorVersion": 4,
-                "fields": {
-                    "agent_guardrail": {
-                        "maxItemsOne": false
-                    },
-                    "anthropic_api_key": {
-                        "maxItemsOne": false
-                    },
-                    "api_key_infos": {
-                        "maxItemsOne": false
-                    },
-                    "api_keys": {
-                        "maxItemsOne": false
-                    },
-                    "chatbot": {
-                        "maxItemsOne": false
-                    },
-                    "chatbot_identifiers": {
-                        "maxItemsOne": false
-                    },
-                    "child_agents": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "anthropic_api_key": {
-                                    "maxItemsOne": false
-                                },
-                                "api_key_infos": {
-                                    "maxItemsOne": false
-                                },
-                                "api_keys": {
-                                    "maxItemsOne": false
-                                },
-                                "chatbot": {
-                                    "maxItemsOne": false
-                                },
-                                "chatbot_identifiers": {
-                                    "maxItemsOne": false
-                                },
-                                "deployment": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    },
-                    "deployment": {
-                        "maxItemsOne": false
-                    },
-                    "functions": {
-                        "maxItemsOne": false
-                    },
-                    "knowledge_base_uuid": {
-                        "maxItemsOne": false
-                    },
-                    "knowledge_bases": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "last_indexing_job": {
-                                    "maxItemsOne": true,
-                                    "elem": {
-                                        "fields": {
-                                            "data_source_uuids": {
-                                                "maxItemsOne": false
-                                            }
-                                        }
-                                    }
-                                },
-                                "tags": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    },
-                    "model": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "agreement": {
-                                    "maxItemsOne": false
-                                },
-                                "usecases": {
-                                    "maxItemsOne": false
-                                },
-                                "versions": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    },
-                    "open_ai_api_key": {
-                        "maxItemsOne": false
-                    },
-                    "parent_agents": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "anthropic_api_key": {
-                                    "maxItemsOne": false
-                                },
-                                "api_key_infos": {
-                                    "maxItemsOne": false
-                                },
-                                "api_keys": {
-                                    "maxItemsOne": false
-                                },
-                                "chatbot": {
-                                    "maxItemsOne": false
-                                },
-                                "chatbot_identifiers": {
-                                    "maxItemsOne": false
-                                },
-                                "deployment": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    },
-                    "tags": {
-                        "maxItemsOne": false
-                    },
-                    "template": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "knowledge_bases": {
-                                    "maxItemsOne": false,
-                                    "elem": {
-                                        "fields": {
-                                            "last_indexing_job": {
-                                                "maxItemsOne": true,
-                                                "elem": {
-                                                    "fields": {
-                                                        "data_source_uuids": {
-                                                            "maxItemsOne": false
-                                                        }
-                                                    }
-                                                }
-                                            },
-                                            "tags": {
-                                                "maxItemsOne": false
-                                            }
-                                        }
-                                    }
-                                },
-                                "model": {
-                                    "maxItemsOne": false,
-                                    "elem": {
-                                        "fields": {
-                                            "agreement": {
-                                                "maxItemsOne": false
-                                            },
-                                            "usecases": {
-                                                "maxItemsOne": false
-                                            },
-                                            "versions": {
-                                                "maxItemsOne": false
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "digitalocean_gradientai_agent_knowledge_base_attachment": {
-                "current": "digitalocean:index/gradientaiAgentKnowledgeBaseAttachment:GradientaiAgentKnowledgeBaseAttachment",
-                "majorVersion": 4
-            },
-            "digitalocean_gradientai_agent_route": {
-                "current": "digitalocean:index/gradientaiAgentRoute:GradientaiAgentRoute",
-                "majorVersion": 4
-            },
-            "digitalocean_gradientai_custom_model": {
-                "current": "digitalocean:index/gradientaiCustomModel:GradientaiCustomModel",
-                "majorVersion": 4,
-                "fields": {
-                    "active_deployments": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "endpoints": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    },
-                    "input_modalities": {
-                        "maxItemsOne": false
-                    },
-                    "output_modalities": {
-                        "maxItemsOne": false
-                    },
-                    "source_ref": {
-                        "maxItemsOne": true
-                    },
-                    "tags": {
-                        "maxItemsOne": false
-                    }
-                }
-            },
-            "digitalocean_gradientai_function": {
-                "current": "digitalocean:index/gradientaiFunction:GradientaiFunction",
-                "majorVersion": 4
-            },
-            "digitalocean_gradientai_indexing_job_cancel": {
-                "current": "digitalocean:index/gradientaiIndexingJobCancel:GradientaiIndexingJobCancel",
-                "majorVersion": 4,
-                "fields": {
-                    "data_source_uuids": {
-                        "maxItemsOne": false
-                    }
-                }
-            },
-            "digitalocean_gradientai_knowledge_base": {
-                "current": "digitalocean:index/gradientaiKnowledgeBase:GradientaiKnowledgeBase",
-                "majorVersion": 4,
-                "fields": {
-                    "datasources": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "file_upload_data_source": {
-                                    "maxItemsOne": false
-                                },
-                                "last_indexing_job": {
-                                    "maxItemsOne": false,
-                                    "elem": {
-                                        "fields": {
-                                            "data_source_uuids": {
-                                                "maxItemsOne": false
-                                            }
-                                        }
-                                    }
-                                },
-                                "spaces_data_source": {
-                                    "maxItemsOne": false
-                                },
-                                "web_crawler_data_source": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    },
-                    "last_indexing_job": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "data_source_uuids": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    },
-                    "tags": {
-                        "maxItemsOne": false
-                    }
-                }
-            },
-            "digitalocean_gradientai_knowledge_base_data_source": {
-                "current": "digitalocean:index/gradientaiKnowledgeBaseDataSource:GradientaiKnowledgeBaseDataSource",
-                "majorVersion": 4,
-                "fields": {
-                    "spaces_data_source": {
-                        "maxItemsOne": true
-                    },
-                    "web_crawler_data_source": {
-                        "maxItemsOne": true
-                    }
-                }
-            },
-            "digitalocean_gradientai_openai_api_key": {
-                "current": "digitalocean:index/gradientaiOpenaiApiKey:GradientaiOpenaiApiKey",
-                "majorVersion": 4,
-                "fields": {
-                    "model": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "agreement": {
-                                    "maxItemsOne": false
-                                },
-                                "usecases": {
-                                    "maxItemsOne": false
-                                },
-                                "versions": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    }
-                }
-            },
             "digitalocean_kubernetes_cluster": {
                 "current": "digitalocean:index/kubernetesCluster:KubernetesCluster",
                 "majorVersion": 4,
@@ -1236,6 +1236,9 @@
                         "maxItemsOne": false
                     },
                     "maintenance_policy": {
+                        "maxItemsOne": true
+                    },
+                    "nfs_csi_plugin": {
                         "maxItemsOne": true
                     },
                     "node_pool": {
@@ -1663,6 +1666,890 @@
             "digitalocean_account": {
                 "current": "digitalocean:index/getAccount:getAccount",
                 "majorVersion": 4
+            },
+            "digitalocean_agent_platform_agent": {
+                "current": "digitalocean:index/getAgentPlatformAgent:getAgentPlatformAgent",
+                "majorVersion": 4,
+                "fields": {
+                    "agent_guardrail": {
+                        "maxItemsOne": false
+                    },
+                    "anthropic_api_key": {
+                        "maxItemsOne": false
+                    },
+                    "api_key_infos": {
+                        "maxItemsOne": false
+                    },
+                    "api_keys": {
+                        "maxItemsOne": false
+                    },
+                    "chatbot": {
+                        "maxItemsOne": false
+                    },
+                    "chatbot_identifiers": {
+                        "maxItemsOne": false
+                    },
+                    "child_agents": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "anthropic_api_key": {
+                                    "maxItemsOne": false
+                                },
+                                "api_key_infos": {
+                                    "maxItemsOne": false
+                                },
+                                "api_keys": {
+                                    "maxItemsOne": false
+                                },
+                                "chatbot": {
+                                    "maxItemsOne": false
+                                },
+                                "chatbot_identifiers": {
+                                    "maxItemsOne": false
+                                },
+                                "deployment": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "deployment": {
+                        "maxItemsOne": false
+                    },
+                    "functions": {
+                        "maxItemsOne": false
+                    },
+                    "knowledge_bases": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "last_indexing_job": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "data_source_uuids": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "tags": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "model": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "agreement": {
+                                    "maxItemsOne": false
+                                },
+                                "usecases": {
+                                    "maxItemsOne": false
+                                },
+                                "versions": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "open_ai_api_key": {
+                        "maxItemsOne": false
+                    },
+                    "parent_agents": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "anthropic_api_key": {
+                                    "maxItemsOne": false
+                                },
+                                "api_key_infos": {
+                                    "maxItemsOne": false
+                                },
+                                "api_keys": {
+                                    "maxItemsOne": false
+                                },
+                                "chatbot": {
+                                    "maxItemsOne": false
+                                },
+                                "chatbot_identifiers": {
+                                    "maxItemsOne": false
+                                },
+                                "deployment": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    },
+                    "template": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "knowledge_bases": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "last_indexing_job": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "data_source_uuids": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "tags": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "model": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "agreement": {
+                                                "maxItemsOne": false
+                                            },
+                                            "usecases": {
+                                                "maxItemsOne": false
+                                            },
+                                            "versions": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "digitalocean_agent_platform_agent_versions": {
+                "current": "digitalocean:index/getAgentPlatformAgentVersions:getAgentPlatformAgentVersions",
+                "majorVersion": 4,
+                "fields": {
+                    "agent_versions": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "attached_child_agents": {
+                                    "maxItemsOne": false
+                                },
+                                "attached_functions": {
+                                    "maxItemsOne": false
+                                },
+                                "attached_guardrails": {
+                                    "maxItemsOne": false
+                                },
+                                "attached_knowledge_bases": {
+                                    "maxItemsOne": false
+                                },
+                                "tags": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "filter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "sort": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "digitalocean_agent_platform_agents": {
+                "current": "digitalocean:index/getAgentPlatformAgents:getAgentPlatformAgents",
+                "majorVersion": 4,
+                "fields": {
+                    "agents": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "agent_guardrail": {
+                                    "maxItemsOne": false
+                                },
+                                "anthropic_api_key": {
+                                    "maxItemsOne": false
+                                },
+                                "api_key_infos": {
+                                    "maxItemsOne": false
+                                },
+                                "api_keys": {
+                                    "maxItemsOne": false
+                                },
+                                "chatbot": {
+                                    "maxItemsOne": false
+                                },
+                                "chatbot_identifiers": {
+                                    "maxItemsOne": false
+                                },
+                                "child_agents": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "anthropic_api_key": {
+                                                "maxItemsOne": false
+                                            },
+                                            "api_key_infos": {
+                                                "maxItemsOne": false
+                                            },
+                                            "api_keys": {
+                                                "maxItemsOne": false
+                                            },
+                                            "chatbot": {
+                                                "maxItemsOne": false
+                                            },
+                                            "chatbot_identifiers": {
+                                                "maxItemsOne": false
+                                            },
+                                            "deployment": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "deployment": {
+                                    "maxItemsOne": false
+                                },
+                                "functions": {
+                                    "maxItemsOne": false
+                                },
+                                "knowledge_bases": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "last_indexing_job": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "data_source_uuids": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "tags": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "model": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "agreement": {
+                                                "maxItemsOne": false
+                                            },
+                                            "usecases": {
+                                                "maxItemsOne": false
+                                            },
+                                            "versions": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "open_ai_api_key": {
+                                    "maxItemsOne": false
+                                },
+                                "parent_agents": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "anthropic_api_key": {
+                                                "maxItemsOne": false
+                                            },
+                                            "api_key_infos": {
+                                                "maxItemsOne": false
+                                            },
+                                            "api_keys": {
+                                                "maxItemsOne": false
+                                            },
+                                            "chatbot": {
+                                                "maxItemsOne": false
+                                            },
+                                            "chatbot_identifiers": {
+                                                "maxItemsOne": false
+                                            },
+                                            "deployment": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "tags": {
+                                    "maxItemsOne": false
+                                },
+                                "template": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "knowledge_bases": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "last_indexing_job": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "data_source_uuids": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "tags": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "model": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "agreement": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "usecases": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "versions": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "filter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "sort": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "digitalocean_agent_platform_agents_by_openai_api_key": {
+                "current": "digitalocean:index/getAgentPlatformAgentsByOpenaiApiKey:getAgentPlatformAgentsByOpenaiApiKey",
+                "majorVersion": 4,
+                "fields": {
+                    "agents": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "agent_guardrail": {
+                                    "maxItemsOne": false
+                                },
+                                "anthropic_api_key": {
+                                    "maxItemsOne": false
+                                },
+                                "api_key_infos": {
+                                    "maxItemsOne": false
+                                },
+                                "api_keys": {
+                                    "maxItemsOne": false
+                                },
+                                "chatbot": {
+                                    "maxItemsOne": false
+                                },
+                                "chatbot_identifiers": {
+                                    "maxItemsOne": false
+                                },
+                                "child_agents": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "anthropic_api_key": {
+                                                "maxItemsOne": false
+                                            },
+                                            "api_key_infos": {
+                                                "maxItemsOne": false
+                                            },
+                                            "api_keys": {
+                                                "maxItemsOne": false
+                                            },
+                                            "chatbot": {
+                                                "maxItemsOne": false
+                                            },
+                                            "chatbot_identifiers": {
+                                                "maxItemsOne": false
+                                            },
+                                            "deployment": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "deployment": {
+                                    "maxItemsOne": false
+                                },
+                                "functions": {
+                                    "maxItemsOne": false
+                                },
+                                "knowledge_bases": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "last_indexing_job": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "data_source_uuids": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "tags": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "model": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "agreement": {
+                                                "maxItemsOne": false
+                                            },
+                                            "usecases": {
+                                                "maxItemsOne": false
+                                            },
+                                            "versions": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "open_ai_api_key": {
+                                    "maxItemsOne": false
+                                },
+                                "parent_agents": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "anthropic_api_key": {
+                                                "maxItemsOne": false
+                                            },
+                                            "api_key_infos": {
+                                                "maxItemsOne": false
+                                            },
+                                            "api_keys": {
+                                                "maxItemsOne": false
+                                            },
+                                            "chatbot": {
+                                                "maxItemsOne": false
+                                            },
+                                            "chatbot_identifiers": {
+                                                "maxItemsOne": false
+                                            },
+                                            "deployment": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "tags": {
+                                    "maxItemsOne": false
+                                },
+                                "template": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "knowledge_bases": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "last_indexing_job": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "data_source_uuids": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "tags": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "model": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "agreement": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "usecases": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "versions": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "digitalocean_agent_platform_custom_model": {
+                "current": "digitalocean:index/getAgentPlatformCustomModel:getAgentPlatformCustomModel",
+                "majorVersion": 4,
+                "fields": {
+                    "active_deployments": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "endpoints": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "input_modalities": {
+                        "maxItemsOne": false
+                    },
+                    "output_modalities": {
+                        "maxItemsOne": false
+                    },
+                    "source_ref": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "digitalocean_agent_platform_custom_models": {
+                "current": "digitalocean:index/getAgentPlatformCustomModels:getAgentPlatformCustomModels",
+                "majorVersion": 4,
+                "fields": {
+                    "custom_models": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "active_deployments": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "endpoints": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "input_modalities": {
+                                    "maxItemsOne": false
+                                },
+                                "output_modalities": {
+                                    "maxItemsOne": false
+                                },
+                                "source_ref": {
+                                    "maxItemsOne": false
+                                },
+                                "tags": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "filter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "sort": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "digitalocean_agent_platform_indexing_job": {
+                "current": "digitalocean:index/getAgentPlatformIndexingJob:getAgentPlatformIndexingJob",
+                "majorVersion": 4,
+                "fields": {
+                    "data_source_uuids": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "digitalocean_agent_platform_indexing_job_data_sources": {
+                "current": "digitalocean:index/getAgentPlatformIndexingJobDataSources:getAgentPlatformIndexingJobDataSources",
+                "majorVersion": 4,
+                "fields": {
+                    "indexed_data_sources": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "digitalocean_agent_platform_knowledge_base": {
+                "current": "digitalocean:index/getAgentPlatformKnowledgeBase:getAgentPlatformKnowledgeBase",
+                "majorVersion": 4,
+                "fields": {
+                    "last_indexing_job": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "data_source_uuids": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "digitalocean_agent_platform_knowledge_base_data_sources": {
+                "current": "digitalocean:index/getAgentPlatformKnowledgeBaseDataSources:getAgentPlatformKnowledgeBaseDataSources",
+                "majorVersion": 4,
+                "fields": {
+                    "datasources": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "file_upload_data_source": {
+                                    "maxItemsOne": false
+                                },
+                                "last_indexing_job": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "data_source_uuids": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "spaces_data_source": {
+                                    "maxItemsOne": false
+                                },
+                                "web_crawler_data_source": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "digitalocean_agent_platform_knowledge_base_indexing_jobs": {
+                "current": "digitalocean:index/getAgentPlatformKnowledgeBaseIndexingJobs:getAgentPlatformKnowledgeBaseIndexingJobs",
+                "majorVersion": 4,
+                "fields": {
+                    "jobs": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "data_source_uuids": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "meta": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "digitalocean_agent_platform_knowledge_bases": {
+                "current": "digitalocean:index/getAgentPlatformKnowledgeBases:getAgentPlatformKnowledgeBases",
+                "majorVersion": 4,
+                "fields": {
+                    "filter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "knowledge_bases": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "last_indexing_job": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "data_source_uuids": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "tags": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "sort": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "digitalocean_agent_platform_models": {
+                "current": "digitalocean:index/getAgentPlatformModels:getAgentPlatformModels",
+                "majorVersion": 4,
+                "fields": {
+                    "filter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "models": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "agreement": {
+                                    "maxItemsOne": false
+                                },
+                                "version": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "sort": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "digitalocean_agent_platform_openai_api_key": {
+                "current": "digitalocean:index/getAgentPlatformOpenaiApiKey:getAgentPlatformOpenaiApiKey",
+                "majorVersion": 4,
+                "fields": {
+                    "models": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "agreement": {
+                                    "maxItemsOne": false
+                                },
+                                "usecases": {
+                                    "maxItemsOne": false
+                                },
+                                "versions": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "digitalocean_agent_platform_openai_api_keys": {
+                "current": "digitalocean:index/getAgentPlatformOpenaiApiKeys:getAgentPlatformOpenaiApiKeys",
+                "majorVersion": 4,
+                "fields": {
+                    "filter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "openai_api_keys": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "models": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "agreement": {
+                                                "maxItemsOne": false
+                                            },
+                                            "usecases": {
+                                                "maxItemsOne": false
+                                            },
+                                            "versions": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "sort": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "digitalocean_agent_platform_regions": {
+                "current": "digitalocean:index/getAgentPlatformRegions:getAgentPlatformRegions",
+                "majorVersion": 4,
+                "fields": {
+                    "filter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "regions": {
+                        "maxItemsOne": false
+                    },
+                    "sort": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "digitalocean_app": {
                 "current": "digitalocean:index/getApp:getApp",
@@ -2612,890 +3499,6 @@
                 "current": "digitalocean:index/getFloatingIp:getFloatingIp",
                 "majorVersion": 4
             },
-            "digitalocean_gradientai_agent": {
-                "current": "digitalocean:index/getGradientaiAgent:getGradientaiAgent",
-                "majorVersion": 4,
-                "fields": {
-                    "agent_guardrail": {
-                        "maxItemsOne": false
-                    },
-                    "anthropic_api_key": {
-                        "maxItemsOne": false
-                    },
-                    "api_key_infos": {
-                        "maxItemsOne": false
-                    },
-                    "api_keys": {
-                        "maxItemsOne": false
-                    },
-                    "chatbot": {
-                        "maxItemsOne": false
-                    },
-                    "chatbot_identifiers": {
-                        "maxItemsOne": false
-                    },
-                    "child_agents": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "anthropic_api_key": {
-                                    "maxItemsOne": false
-                                },
-                                "api_key_infos": {
-                                    "maxItemsOne": false
-                                },
-                                "api_keys": {
-                                    "maxItemsOne": false
-                                },
-                                "chatbot": {
-                                    "maxItemsOne": false
-                                },
-                                "chatbot_identifiers": {
-                                    "maxItemsOne": false
-                                },
-                                "deployment": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    },
-                    "deployment": {
-                        "maxItemsOne": false
-                    },
-                    "functions": {
-                        "maxItemsOne": false
-                    },
-                    "knowledge_bases": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "last_indexing_job": {
-                                    "maxItemsOne": true,
-                                    "elem": {
-                                        "fields": {
-                                            "data_source_uuids": {
-                                                "maxItemsOne": false
-                                            }
-                                        }
-                                    }
-                                },
-                                "tags": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    },
-                    "model": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "agreement": {
-                                    "maxItemsOne": false
-                                },
-                                "usecases": {
-                                    "maxItemsOne": false
-                                },
-                                "versions": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    },
-                    "open_ai_api_key": {
-                        "maxItemsOne": false
-                    },
-                    "parent_agents": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "anthropic_api_key": {
-                                    "maxItemsOne": false
-                                },
-                                "api_key_infos": {
-                                    "maxItemsOne": false
-                                },
-                                "api_keys": {
-                                    "maxItemsOne": false
-                                },
-                                "chatbot": {
-                                    "maxItemsOne": false
-                                },
-                                "chatbot_identifiers": {
-                                    "maxItemsOne": false
-                                },
-                                "deployment": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    },
-                    "tags": {
-                        "maxItemsOne": false
-                    },
-                    "template": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "knowledge_bases": {
-                                    "maxItemsOne": false,
-                                    "elem": {
-                                        "fields": {
-                                            "last_indexing_job": {
-                                                "maxItemsOne": true,
-                                                "elem": {
-                                                    "fields": {
-                                                        "data_source_uuids": {
-                                                            "maxItemsOne": false
-                                                        }
-                                                    }
-                                                }
-                                            },
-                                            "tags": {
-                                                "maxItemsOne": false
-                                            }
-                                        }
-                                    }
-                                },
-                                "model": {
-                                    "maxItemsOne": false,
-                                    "elem": {
-                                        "fields": {
-                                            "agreement": {
-                                                "maxItemsOne": false
-                                            },
-                                            "usecases": {
-                                                "maxItemsOne": false
-                                            },
-                                            "versions": {
-                                                "maxItemsOne": false
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "digitalocean_gradientai_agent_versions": {
-                "current": "digitalocean:index/getGradientaiAgentVersions:getGradientaiAgentVersions",
-                "majorVersion": 4,
-                "fields": {
-                    "agent_versions": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "attached_child_agents": {
-                                    "maxItemsOne": false
-                                },
-                                "attached_functions": {
-                                    "maxItemsOne": false
-                                },
-                                "attached_guardrails": {
-                                    "maxItemsOne": false
-                                },
-                                "attached_knowledge_bases": {
-                                    "maxItemsOne": false
-                                },
-                                "tags": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    },
-                    "filter": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "values": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    },
-                    "sort": {
-                        "maxItemsOne": false
-                    }
-                }
-            },
-            "digitalocean_gradientai_agents": {
-                "current": "digitalocean:index/getGradientaiAgents:getGradientaiAgents",
-                "majorVersion": 4,
-                "fields": {
-                    "agents": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "agent_guardrail": {
-                                    "maxItemsOne": false
-                                },
-                                "anthropic_api_key": {
-                                    "maxItemsOne": false
-                                },
-                                "api_key_infos": {
-                                    "maxItemsOne": false
-                                },
-                                "api_keys": {
-                                    "maxItemsOne": false
-                                },
-                                "chatbot": {
-                                    "maxItemsOne": false
-                                },
-                                "chatbot_identifiers": {
-                                    "maxItemsOne": false
-                                },
-                                "child_agents": {
-                                    "maxItemsOne": false,
-                                    "elem": {
-                                        "fields": {
-                                            "anthropic_api_key": {
-                                                "maxItemsOne": false
-                                            },
-                                            "api_key_infos": {
-                                                "maxItemsOne": false
-                                            },
-                                            "api_keys": {
-                                                "maxItemsOne": false
-                                            },
-                                            "chatbot": {
-                                                "maxItemsOne": false
-                                            },
-                                            "chatbot_identifiers": {
-                                                "maxItemsOne": false
-                                            },
-                                            "deployment": {
-                                                "maxItemsOne": false
-                                            }
-                                        }
-                                    }
-                                },
-                                "deployment": {
-                                    "maxItemsOne": false
-                                },
-                                "functions": {
-                                    "maxItemsOne": false
-                                },
-                                "knowledge_bases": {
-                                    "maxItemsOne": false,
-                                    "elem": {
-                                        "fields": {
-                                            "last_indexing_job": {
-                                                "maxItemsOne": true,
-                                                "elem": {
-                                                    "fields": {
-                                                        "data_source_uuids": {
-                                                            "maxItemsOne": false
-                                                        }
-                                                    }
-                                                }
-                                            },
-                                            "tags": {
-                                                "maxItemsOne": false
-                                            }
-                                        }
-                                    }
-                                },
-                                "model": {
-                                    "maxItemsOne": false,
-                                    "elem": {
-                                        "fields": {
-                                            "agreement": {
-                                                "maxItemsOne": false
-                                            },
-                                            "usecases": {
-                                                "maxItemsOne": false
-                                            },
-                                            "versions": {
-                                                "maxItemsOne": false
-                                            }
-                                        }
-                                    }
-                                },
-                                "open_ai_api_key": {
-                                    "maxItemsOne": false
-                                },
-                                "parent_agents": {
-                                    "maxItemsOne": false,
-                                    "elem": {
-                                        "fields": {
-                                            "anthropic_api_key": {
-                                                "maxItemsOne": false
-                                            },
-                                            "api_key_infos": {
-                                                "maxItemsOne": false
-                                            },
-                                            "api_keys": {
-                                                "maxItemsOne": false
-                                            },
-                                            "chatbot": {
-                                                "maxItemsOne": false
-                                            },
-                                            "chatbot_identifiers": {
-                                                "maxItemsOne": false
-                                            },
-                                            "deployment": {
-                                                "maxItemsOne": false
-                                            }
-                                        }
-                                    }
-                                },
-                                "tags": {
-                                    "maxItemsOne": false
-                                },
-                                "template": {
-                                    "maxItemsOne": false,
-                                    "elem": {
-                                        "fields": {
-                                            "knowledge_bases": {
-                                                "maxItemsOne": false,
-                                                "elem": {
-                                                    "fields": {
-                                                        "last_indexing_job": {
-                                                            "maxItemsOne": true,
-                                                            "elem": {
-                                                                "fields": {
-                                                                    "data_source_uuids": {
-                                                                        "maxItemsOne": false
-                                                                    }
-                                                                }
-                                                            }
-                                                        },
-                                                        "tags": {
-                                                            "maxItemsOne": false
-                                                        }
-                                                    }
-                                                }
-                                            },
-                                            "model": {
-                                                "maxItemsOne": false,
-                                                "elem": {
-                                                    "fields": {
-                                                        "agreement": {
-                                                            "maxItemsOne": false
-                                                        },
-                                                        "usecases": {
-                                                            "maxItemsOne": false
-                                                        },
-                                                        "versions": {
-                                                            "maxItemsOne": false
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "filter": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "values": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    },
-                    "sort": {
-                        "maxItemsOne": false
-                    }
-                }
-            },
-            "digitalocean_gradientai_agents_by_openai_api_key": {
-                "current": "digitalocean:index/getGradientaiAgentsByOpenaiApiKey:getGradientaiAgentsByOpenaiApiKey",
-                "majorVersion": 4,
-                "fields": {
-                    "agents": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "agent_guardrail": {
-                                    "maxItemsOne": false
-                                },
-                                "anthropic_api_key": {
-                                    "maxItemsOne": false
-                                },
-                                "api_key_infos": {
-                                    "maxItemsOne": false
-                                },
-                                "api_keys": {
-                                    "maxItemsOne": false
-                                },
-                                "chatbot": {
-                                    "maxItemsOne": false
-                                },
-                                "chatbot_identifiers": {
-                                    "maxItemsOne": false
-                                },
-                                "child_agents": {
-                                    "maxItemsOne": false,
-                                    "elem": {
-                                        "fields": {
-                                            "anthropic_api_key": {
-                                                "maxItemsOne": false
-                                            },
-                                            "api_key_infos": {
-                                                "maxItemsOne": false
-                                            },
-                                            "api_keys": {
-                                                "maxItemsOne": false
-                                            },
-                                            "chatbot": {
-                                                "maxItemsOne": false
-                                            },
-                                            "chatbot_identifiers": {
-                                                "maxItemsOne": false
-                                            },
-                                            "deployment": {
-                                                "maxItemsOne": false
-                                            }
-                                        }
-                                    }
-                                },
-                                "deployment": {
-                                    "maxItemsOne": false
-                                },
-                                "functions": {
-                                    "maxItemsOne": false
-                                },
-                                "knowledge_bases": {
-                                    "maxItemsOne": false,
-                                    "elem": {
-                                        "fields": {
-                                            "last_indexing_job": {
-                                                "maxItemsOne": true,
-                                                "elem": {
-                                                    "fields": {
-                                                        "data_source_uuids": {
-                                                            "maxItemsOne": false
-                                                        }
-                                                    }
-                                                }
-                                            },
-                                            "tags": {
-                                                "maxItemsOne": false
-                                            }
-                                        }
-                                    }
-                                },
-                                "model": {
-                                    "maxItemsOne": false,
-                                    "elem": {
-                                        "fields": {
-                                            "agreement": {
-                                                "maxItemsOne": false
-                                            },
-                                            "usecases": {
-                                                "maxItemsOne": false
-                                            },
-                                            "versions": {
-                                                "maxItemsOne": false
-                                            }
-                                        }
-                                    }
-                                },
-                                "open_ai_api_key": {
-                                    "maxItemsOne": false
-                                },
-                                "parent_agents": {
-                                    "maxItemsOne": false,
-                                    "elem": {
-                                        "fields": {
-                                            "anthropic_api_key": {
-                                                "maxItemsOne": false
-                                            },
-                                            "api_key_infos": {
-                                                "maxItemsOne": false
-                                            },
-                                            "api_keys": {
-                                                "maxItemsOne": false
-                                            },
-                                            "chatbot": {
-                                                "maxItemsOne": false
-                                            },
-                                            "chatbot_identifiers": {
-                                                "maxItemsOne": false
-                                            },
-                                            "deployment": {
-                                                "maxItemsOne": false
-                                            }
-                                        }
-                                    }
-                                },
-                                "tags": {
-                                    "maxItemsOne": false
-                                },
-                                "template": {
-                                    "maxItemsOne": false,
-                                    "elem": {
-                                        "fields": {
-                                            "knowledge_bases": {
-                                                "maxItemsOne": false,
-                                                "elem": {
-                                                    "fields": {
-                                                        "last_indexing_job": {
-                                                            "maxItemsOne": true,
-                                                            "elem": {
-                                                                "fields": {
-                                                                    "data_source_uuids": {
-                                                                        "maxItemsOne": false
-                                                                    }
-                                                                }
-                                                            }
-                                                        },
-                                                        "tags": {
-                                                            "maxItemsOne": false
-                                                        }
-                                                    }
-                                                }
-                                            },
-                                            "model": {
-                                                "maxItemsOne": false,
-                                                "elem": {
-                                                    "fields": {
-                                                        "agreement": {
-                                                            "maxItemsOne": false
-                                                        },
-                                                        "usecases": {
-                                                            "maxItemsOne": false
-                                                        },
-                                                        "versions": {
-                                                            "maxItemsOne": false
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "digitalocean_gradientai_custom_model": {
-                "current": "digitalocean:index/getGradientaiCustomModel:getGradientaiCustomModel",
-                "majorVersion": 4,
-                "fields": {
-                    "active_deployments": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "endpoints": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    },
-                    "input_modalities": {
-                        "maxItemsOne": false
-                    },
-                    "output_modalities": {
-                        "maxItemsOne": false
-                    },
-                    "source_ref": {
-                        "maxItemsOne": false
-                    },
-                    "tags": {
-                        "maxItemsOne": false
-                    }
-                }
-            },
-            "digitalocean_gradientai_custom_models": {
-                "current": "digitalocean:index/getGradientaiCustomModels:getGradientaiCustomModels",
-                "majorVersion": 4,
-                "fields": {
-                    "custom_models": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "active_deployments": {
-                                    "maxItemsOne": false,
-                                    "elem": {
-                                        "fields": {
-                                            "endpoints": {
-                                                "maxItemsOne": false
-                                            }
-                                        }
-                                    }
-                                },
-                                "input_modalities": {
-                                    "maxItemsOne": false
-                                },
-                                "output_modalities": {
-                                    "maxItemsOne": false
-                                },
-                                "source_ref": {
-                                    "maxItemsOne": false
-                                },
-                                "tags": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    },
-                    "filter": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "values": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    },
-                    "sort": {
-                        "maxItemsOne": false
-                    }
-                }
-            },
-            "digitalocean_gradientai_indexing_job": {
-                "current": "digitalocean:index/getGradientaiIndexingJob:getGradientaiIndexingJob",
-                "majorVersion": 4,
-                "fields": {
-                    "data_source_uuids": {
-                        "maxItemsOne": false
-                    }
-                }
-            },
-            "digitalocean_gradientai_indexing_job_data_sources": {
-                "current": "digitalocean:index/getGradientaiIndexingJobDataSources:getGradientaiIndexingJobDataSources",
-                "majorVersion": 4,
-                "fields": {
-                    "indexed_data_sources": {
-                        "maxItemsOne": false
-                    }
-                }
-            },
-            "digitalocean_gradientai_knowledge_base": {
-                "current": "digitalocean:index/getGradientaiKnowledgeBase:getGradientaiKnowledgeBase",
-                "majorVersion": 4,
-                "fields": {
-                    "last_indexing_job": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "data_source_uuids": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    },
-                    "tags": {
-                        "maxItemsOne": false
-                    }
-                }
-            },
-            "digitalocean_gradientai_knowledge_base_data_sources": {
-                "current": "digitalocean:index/getGradientaiKnowledgeBaseDataSources:getGradientaiKnowledgeBaseDataSources",
-                "majorVersion": 4,
-                "fields": {
-                    "datasources": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "file_upload_data_source": {
-                                    "maxItemsOne": false
-                                },
-                                "last_indexing_job": {
-                                    "maxItemsOne": false,
-                                    "elem": {
-                                        "fields": {
-                                            "data_source_uuids": {
-                                                "maxItemsOne": false
-                                            }
-                                        }
-                                    }
-                                },
-                                "spaces_data_source": {
-                                    "maxItemsOne": false
-                                },
-                                "web_crawler_data_source": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "digitalocean_gradientai_knowledge_base_indexing_jobs": {
-                "current": "digitalocean:index/getGradientaiKnowledgeBaseIndexingJobs:getGradientaiKnowledgeBaseIndexingJobs",
-                "majorVersion": 4,
-                "fields": {
-                    "jobs": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "data_source_uuids": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    },
-                    "meta": {
-                        "maxItemsOne": false
-                    }
-                }
-            },
-            "digitalocean_gradientai_knowledge_bases": {
-                "current": "digitalocean:index/getGradientaiKnowledgeBases:getGradientaiKnowledgeBases",
-                "majorVersion": 4,
-                "fields": {
-                    "filter": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "values": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    },
-                    "knowledge_bases": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "last_indexing_job": {
-                                    "maxItemsOne": false,
-                                    "elem": {
-                                        "fields": {
-                                            "data_source_uuids": {
-                                                "maxItemsOne": false
-                                            }
-                                        }
-                                    }
-                                },
-                                "tags": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    },
-                    "sort": {
-                        "maxItemsOne": false
-                    }
-                }
-            },
-            "digitalocean_gradientai_models": {
-                "current": "digitalocean:index/getGradientaiModels:getGradientaiModels",
-                "majorVersion": 4,
-                "fields": {
-                    "filter": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "values": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    },
-                    "models": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "agreement": {
-                                    "maxItemsOne": false
-                                },
-                                "version": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    },
-                    "sort": {
-                        "maxItemsOne": false
-                    }
-                }
-            },
-            "digitalocean_gradientai_openai_api_key": {
-                "current": "digitalocean:index/getGradientaiOpenaiApiKey:getGradientaiOpenaiApiKey",
-                "majorVersion": 4,
-                "fields": {
-                    "models": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "agreement": {
-                                    "maxItemsOne": false
-                                },
-                                "usecases": {
-                                    "maxItemsOne": false
-                                },
-                                "versions": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "digitalocean_gradientai_openai_api_keys": {
-                "current": "digitalocean:index/getGradientaiOpenaiApiKeys:getGradientaiOpenaiApiKeys",
-                "majorVersion": 4,
-                "fields": {
-                    "filter": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "values": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    },
-                    "openai_api_keys": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "models": {
-                                    "maxItemsOne": false,
-                                    "elem": {
-                                        "fields": {
-                                            "agreement": {
-                                                "maxItemsOne": false
-                                            },
-                                            "usecases": {
-                                                "maxItemsOne": false
-                                            },
-                                            "versions": {
-                                                "maxItemsOne": false
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "sort": {
-                        "maxItemsOne": false
-                    }
-                }
-            },
-            "digitalocean_gradientai_regions": {
-                "current": "digitalocean:index/getGradientaiRegions:getGradientaiRegions",
-                "majorVersion": 4,
-                "fields": {
-                    "filter": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "values": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    },
-                    "regions": {
-                        "maxItemsOne": false
-                    },
-                    "sort": {
-                        "maxItemsOne": false
-                    }
-                }
-            },
             "digitalocean_image": {
                 "current": "digitalocean:index/getImage:getImage",
                 "majorVersion": 4,
@@ -3581,6 +3584,9 @@
                     },
                     "maintenance_policy": {
                         "maxItemsOne": false
+                    },
+                    "nfs_csi_plugin": {
+                        "maxItemsOne": true
                     },
                     "node_pool": {
                         "maxItemsOne": false,

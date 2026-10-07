@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.DigitalOcean
 {
+    [Obsolete(@"digitalocean.getGradientaiRegions has been deprecated in favor of digitalocean.getAgentPlatformRegions")]
     public static class GetGradientaiRegions
     {
         public static Task<GetGradientaiRegionsResult> InvokeAsync(GetGradientaiRegionsArgs? args = null, InvokeOptions? options = null)

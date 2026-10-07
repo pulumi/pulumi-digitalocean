@@ -7,6 +7,9 @@ import * as outputs from "./types/output";
 import * as enums from "./types/enums";
 import * as utilities from "./utilities";
 
+/**
+ * @deprecated digitalocean.GradientaiAgent has been deprecated in favor of digitalocean.AgentPlatformAgent
+ */
 export class GradientaiAgent extends pulumi.CustomResource {
     /**
      * Get an existing GradientaiAgent resource's state with the given name, ID, and optional extra
@@ -18,6 +21,7 @@ export class GradientaiAgent extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: GradientaiAgentState, opts?: pulumi.CustomResourceOptions): GradientaiAgent {
+        pulumi.log.warn("GradientaiAgent is deprecated: digitalocean.GradientaiAgent has been deprecated in favor of digitalocean.AgentPlatformAgent")
         return new GradientaiAgent(name, <any>state, { ...opts, id: id });
     }
 
@@ -203,8 +207,11 @@ export class GradientaiAgent extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated digitalocean.GradientaiAgent has been deprecated in favor of digitalocean.AgentPlatformAgent */
     constructor(name: string, args: GradientaiAgentArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated digitalocean.GradientaiAgent has been deprecated in favor of digitalocean.AgentPlatformAgent */
     constructor(name: string, argsOrState?: GradientaiAgentArgs | GradientaiAgentState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("GradientaiAgent is deprecated: digitalocean.GradientaiAgent has been deprecated in favor of digitalocean.AgentPlatformAgent")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
@@ -305,8 +312,6 @@ export class GradientaiAgent extends pulumi.CustomResource {
             resourceInputs["updatedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "digitalocean:index/genaiAgent:GenaiAgent" }] };
-        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(GradientaiAgent.__pulumiType, name, resourceInputs, opts);
     }
 }

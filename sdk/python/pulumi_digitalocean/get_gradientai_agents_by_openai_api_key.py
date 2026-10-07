@@ -22,6 +22,8 @@ __all__ = [
     'get_gradientai_agents_by_openai_api_key_output',
 ]
 
+warnings.warn("""digitalocean.getGradientaiAgentsByOpenaiApiKey has been deprecated in favor of digitalocean.getAgentPlatformAgentsByOpenaiApiKey""", DeprecationWarning)
+
 @pulumi.output_type
 class GetGradientaiAgentsByOpenaiApiKeyResult:
     """
@@ -73,6 +75,7 @@ def get_gradientai_agents_by_openai_api_key(uuid: Optional[_builtins.str] = None
     """
     Use this data source to access information about an existing resource.
     """
+    pulumi.log.warn("""get_gradientai_agents_by_openai_api_key is deprecated: digitalocean.getGradientaiAgentsByOpenaiApiKey has been deprecated in favor of digitalocean.getAgentPlatformAgentsByOpenaiApiKey""")
     __args__ = dict()
     __args__['uuid'] = uuid
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -87,6 +90,7 @@ def get_gradientai_agents_by_openai_api_key_output(uuid: pulumi.Input[Optional[_
     """
     Use this data source to access information about an existing resource.
     """
+    pulumi.log.warn("""get_gradientai_agents_by_openai_api_key is deprecated: digitalocean.getGradientaiAgentsByOpenaiApiKey has been deprecated in favor of digitalocean.getAgentPlatformAgentsByOpenaiApiKey""")
     __args__ = dict()
     __args__['uuid'] = uuid
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

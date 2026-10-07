@@ -46,12 +46,12 @@ const (
 
 // makeMember manufactures a type token for the DigitalOcean package and the given module and type.
 const (
-	stringType                      = "string"
-	regionProperty                  = "region"
-	sizeProperty                    = "size"
-	urnProperty                     = "urn"
-	nameProperty                    = "name"
-	gradientAIKnowledgeBaseResource = "digitalocean_gradientai_knowledge_base"
+	stringType                         = "string"
+	regionProperty                     = "region"
+	sizeProperty                       = "size"
+	urnProperty                        = "urn"
+	nameProperty                       = "name"
+	agentPlatformKnowledgeBaseResource = "digitalocean_agent_platform_knowledge_base"
 )
 
 func makeMember(mod string, mem string) tokens.ModuleMember {
@@ -193,12 +193,12 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 			"digitalocean_floating_ip_assignment": {Tok: makeResource(digitalOceanMod, "FloatingIpAssignment")},
-			gradientAIKnowledgeBaseResource: {
-				Tok: makeResource(digitalOceanMod, "GradientaiKnowledgeBase"),
+			agentPlatformKnowledgeBaseResource: {
+				Tok: makeResource(digitalOceanMod, "AgentPlatformKnowledgeBase"),
 				Fields: map[string]*info.Schema{
 					"datasources": {
 						Elem: &info.Schema{
-							TypeName: tfbridge.Ref("GradientaiKnowledgeBaseDataSource"),
+							TypeName: tfbridge.Ref("AgentPlatformKnowledgeBaseDataSource"),
 						},
 					},
 				},
@@ -711,25 +711,30 @@ func Provider() tfbridge.ProviderInfo {
 	prov.MustApplyAutoAliases()
 	prov.SetAutonaming(255, "-")
 
-	// Upstream renamed genai -> gradientai. Create hard aliases so existing stacks
-	// referencing the old Genai* tokens continue to work without replacement.
+	// Upstream renamed genai -> gradientai -> agent_platform. Create hard aliases so
+	// existing stacks referencing the old Gradientai* tokens continue to work without
+	// replacement.
 	for _, r := range []struct{ tf, legacy, current string }{
-		{"digitalocean_gradientai_agent", "GenaiAgent", "GradientaiAgent"},
+		{"digitalocean_agent_platform_agent", "GradientaiAgent", "AgentPlatformAgent"},
 		{
-			"digitalocean_gradientai_agent_knowledge_base_attachment",
-			"GenaiAgentKnowledgeBaseAttachment",
+			"digitalocean_agent_platform_agent_knowledge_base_attachment",
 			"GradientaiAgentKnowledgeBaseAttachment",
+			"AgentPlatformAgentKnowledgeBaseAttachment",
 		},
-		{"digitalocean_gradientai_agent_route", "GenaiAgentRoute", "GradientaiAgentRoute"},
-		{"digitalocean_gradientai_function", "GenaiFunction", "GradientaiFunction"},
-		{"digitalocean_gradientai_indexing_job_cancel", "GenaiIndexingJobCancel", "GradientaiIndexingJobCancel"},
-		{gradientAIKnowledgeBaseResource, "GenaiKnowledgeBase", "GradientaiKnowledgeBase"},
+		{"digitalocean_agent_platform_agent_route", "GradientaiAgentRoute", "AgentPlatformAgentRoute"},
+		{"digitalocean_agent_platform_function", "GradientaiFunction", "AgentPlatformFunction"},
 		{
-			"digitalocean_gradientai_knowledge_base_data_source",
-			"GenaiKnowledgeBaseDataSource",
-			"GradientaiKnowledgeBaseDataSource",
+			"digitalocean_agent_platform_indexing_job_cancel",
+			"GradientaiIndexingJobCancel",
+			"AgentPlatformIndexingJobCancel",
 		},
-		{"digitalocean_gradientai_openai_api_key", "GenaiOpenaiApiKey", "GradientaiOpenaiApiKey"},
+		{agentPlatformKnowledgeBaseResource, "GradientaiKnowledgeBase", "AgentPlatformKnowledgeBase"},
+		{
+			"digitalocean_agent_platform_knowledge_base_data_source",
+			"GradientaiKnowledgeBaseDataSource",
+			"AgentPlatformKnowledgeBaseDataSource",
+		},
+		{"digitalocean_agent_platform_openai_api_key", "GradientaiOpenaiApiKey", "AgentPlatformOpenaiApiKey"},
 	} {
 		prov.RenameResourceWithAlias(r.tf,
 			makeResource(digitalOceanMod, r.legacy),
@@ -738,36 +743,52 @@ func Provider() tfbridge.ProviderInfo {
 			prov.Resources[r.tf])
 	}
 	for _, d := range []struct{ tf, legacy, current string }{
-		{"digitalocean_gradientai_agent", "getGenaiAgent", "getGradientaiAgent"},
-		{"digitalocean_gradientai_agent_versions", "getGenaiAgentVersions", "getGradientaiAgentVersions"},
-		{"digitalocean_gradientai_agents", "getGenaiAgents", "getGradientaiAgents"},
+		{"digitalocean_agent_platform_agent", "getGradientaiAgent", "getAgentPlatformAgent"},
 		{
-			"digitalocean_gradientai_agents_by_openai_api_key",
-			"getGenaiAgentsByOpenaiApiKey",
+			"digitalocean_agent_platform_agent_versions",
+			"getGradientaiAgentVersions",
+			"getAgentPlatformAgentVersions",
+		},
+		{"digitalocean_agent_platform_agents", "getGradientaiAgents", "getAgentPlatformAgents"},
+		{
+			"digitalocean_agent_platform_agents_by_openai_api_key",
 			"getGradientaiAgentsByOpenaiApiKey",
+			"getAgentPlatformAgentsByOpenaiApiKey",
 		},
-		{"digitalocean_gradientai_indexing_job", "getGenaiIndexingJob", "getGradientaiIndexingJob"},
+		{"digitalocean_agent_platform_indexing_job", "getGradientaiIndexingJob", "getAgentPlatformIndexingJob"},
 		{
-			"digitalocean_gradientai_indexing_job_data_sources",
-			"getGenaiIndexingJobDataSources",
+			"digitalocean_agent_platform_indexing_job_data_sources",
 			"getGradientaiIndexingJobDataSources",
+			"getAgentPlatformIndexingJobDataSources",
 		},
-		{gradientAIKnowledgeBaseResource, "getGenaiKnowledgeBase", "getGradientaiKnowledgeBase"},
+		{agentPlatformKnowledgeBaseResource, "getGradientaiKnowledgeBase", "getAgentPlatformKnowledgeBase"},
 		{
-			"digitalocean_gradientai_knowledge_base_data_sources",
-			"getGenaiKnowledgeBaseDataSources",
+			"digitalocean_agent_platform_knowledge_base_data_sources",
 			"getGradientaiKnowledgeBaseDataSources",
+			"getAgentPlatformKnowledgeBaseDataSources",
 		},
 		{
-			"digitalocean_gradientai_knowledge_base_indexing_jobs",
-			"getGenaiKnowledgeBaseIndexingJobs",
+			"digitalocean_agent_platform_knowledge_base_indexing_jobs",
 			"getGradientaiKnowledgeBaseIndexingJobs",
+			"getAgentPlatformKnowledgeBaseIndexingJobs",
 		},
-		{"digitalocean_gradientai_knowledge_bases", "getGenaiKnowledgeBases", "getGradientaiKnowledgeBases"},
-		{"digitalocean_gradientai_models", "getGenaiModels", "getGradientaiModels"},
-		{"digitalocean_gradientai_openai_api_key", "getGenaiOpenaiApiKey", "getGradientaiOpenaiApiKey"},
-		{"digitalocean_gradientai_openai_api_keys", "getGenaiOpenaiApiKeys", "getGradientaiOpenaiApiKeys"},
-		{"digitalocean_gradientai_regions", "getGenaiRegions", "getGradientaiRegions"},
+		{
+			"digitalocean_agent_platform_knowledge_bases",
+			"getGradientaiKnowledgeBases",
+			"getAgentPlatformKnowledgeBases",
+		},
+		{"digitalocean_agent_platform_models", "getGradientaiModels", "getAgentPlatformModels"},
+		{
+			"digitalocean_agent_platform_openai_api_key",
+			"getGradientaiOpenaiApiKey",
+			"getAgentPlatformOpenaiApiKey",
+		},
+		{
+			"digitalocean_agent_platform_openai_api_keys",
+			"getGradientaiOpenaiApiKeys",
+			"getAgentPlatformOpenaiApiKeys",
+		},
+		{"digitalocean_agent_platform_regions", "getGradientaiRegions", "getAgentPlatformRegions"},
 	} {
 		prov.RenameDataSource(d.tf,
 			makeDataSource(digitalOceanMod, d.legacy),

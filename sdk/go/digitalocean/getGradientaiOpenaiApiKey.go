@@ -11,6 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Deprecated: digitalocean.getGradientaiOpenaiApiKey has been deprecated in favor of digitalocean.getAgentPlatformOpenaiApiKey
 func LookupGradientaiOpenaiApiKey(ctx *pulumi.Context, args *LookupGradientaiOpenaiApiKeyArgs, opts ...pulumi.InvokeOption) (*LookupGradientaiOpenaiApiKeyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupGradientaiOpenaiApiKeyResult

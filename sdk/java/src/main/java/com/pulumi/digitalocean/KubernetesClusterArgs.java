@@ -14,6 +14,7 @@ import com.pulumi.digitalocean.inputs.KubernetesClusterClusterAutoscalerConfigur
 import com.pulumi.digitalocean.inputs.KubernetesClusterControlPlaneFirewallArgs;
 import com.pulumi.digitalocean.inputs.KubernetesClusterCorednsAutoscalerArgs;
 import com.pulumi.digitalocean.inputs.KubernetesClusterMaintenancePolicyArgs;
+import com.pulumi.digitalocean.inputs.KubernetesClusterNfsCsiPluginArgs;
 import com.pulumi.digitalocean.inputs.KubernetesClusterNodePoolArgs;
 import com.pulumi.digitalocean.inputs.KubernetesClusterNvidiaGpuDevicePluginArgs;
 import com.pulumi.digitalocean.inputs.KubernetesClusterNvidiaGpuDraDriverArgs;
@@ -243,6 +244,21 @@ public final class KubernetesClusterArgs extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
+    }
+
+    /**
+     * Block containing options for the NFS CSI driver plugin component. If not specified, the NFS CSI plugin will not be installed in the cluster.
+     * 
+     */
+    @Import(name="nfsCsiPlugin")
+    private @Nullable Output<KubernetesClusterNfsCsiPluginArgs> nfsCsiPlugin;
+
+    /**
+     * @return Block containing options for the NFS CSI driver plugin component. If not specified, the NFS CSI plugin will not be installed in the cluster.
+     * 
+     */
+    public Optional<Output<KubernetesClusterNfsCsiPluginArgs>> nfsCsiPlugin() {
+        return Optional.ofNullable(this.nfsCsiPlugin);
     }
 
     /**
@@ -487,6 +503,7 @@ public final class KubernetesClusterArgs extends com.pulumi.resources.ResourceAr
         this.kubeconfigExpireSeconds = $.kubeconfigExpireSeconds;
         this.maintenancePolicy = $.maintenancePolicy;
         this.name = $.name;
+        this.nfsCsiPlugin = $.nfsCsiPlugin;
         this.nodePool = $.nodePool;
         this.nvidiaGpuDevicePlugin = $.nvidiaGpuDevicePlugin;
         this.nvidiaGpuDraDriver = $.nvidiaGpuDraDriver;
@@ -824,6 +841,27 @@ public final class KubernetesClusterArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param nfsCsiPlugin Block containing options for the NFS CSI driver plugin component. If not specified, the NFS CSI plugin will not be installed in the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nfsCsiPlugin(@Nullable Output<KubernetesClusterNfsCsiPluginArgs> nfsCsiPlugin) {
+            $.nfsCsiPlugin = nfsCsiPlugin;
+            return this;
+        }
+
+        /**
+         * @param nfsCsiPlugin Block containing options for the NFS CSI driver plugin component. If not specified, the NFS CSI plugin will not be installed in the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nfsCsiPlugin(KubernetesClusterNfsCsiPluginArgs nfsCsiPlugin) {
+            return nfsCsiPlugin(Output.of(nfsCsiPlugin));
         }
 
         /**

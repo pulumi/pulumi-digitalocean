@@ -16,14 +16,14 @@ public final class GradientaiFunctionState extends com.pulumi.resources.Resource
     public static final GradientaiFunctionState Empty = new GradientaiFunctionState();
 
     /**
-     * The name of the GradientAI resource.
+     * The name of the Agent Platform resource.
      * 
      */
     @Import(name="agentId")
     private @Nullable Output<String> agentId;
 
     /**
-     * @return The name of the GradientAI resource.
+     * @return The name of the Agent Platform resource.
      * 
      */
     public Optional<Output<String>> agentId() {
@@ -31,14 +31,14 @@ public final class GradientaiFunctionState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The region where the GradientAI resource will be created.
+     * The region where the Agent Platform resource will be created.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The region where the GradientAI resource will be created.
+     * @return The region where the Agent Platform resource will be created.
      * 
      */
     public Optional<Output<String>> description() {
@@ -46,14 +46,14 @@ public final class GradientaiFunctionState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The model to use for the GradientAI resource.
+     * The model to use for the Agent Platform resource.
      * 
      */
     @Import(name="faasName")
     private @Nullable Output<String> faasName;
 
     /**
-     * @return The model to use for the GradientAI resource.
+     * @return The model to use for the Agent Platform resource.
      * 
      */
     public Optional<Output<String>> faasName() {
@@ -61,14 +61,14 @@ public final class GradientaiFunctionState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The current status of the GradientAI resource.
+     * The current status of the Agent Platform resource.
      * 
      */
     @Import(name="faasNamespace")
     private @Nullable Output<String> faasNamespace;
 
     /**
-     * @return The current status of the GradientAI resource.
+     * @return The current status of the Agent Platform resource.
      * 
      */
     public Optional<Output<String>> faasNamespace() {
@@ -76,14 +76,14 @@ public final class GradientaiFunctionState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The creation timestamp of the GradientAI resource.
+     * The creation timestamp of the Agent Platform resource.
      * 
      */
     @Import(name="functionName")
     private @Nullable Output<String> functionName;
 
     /**
-     * @return The creation timestamp of the GradientAI resource.
+     * @return The creation timestamp of the Agent Platform resource.
      * 
      */
     public Optional<Output<String>> functionName() {
@@ -91,14 +91,14 @@ public final class GradientaiFunctionState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The unique identifier of the GradientAI function.
+     * The unique identifier of the Agent Platform function.
      * 
      */
     @Import(name="functionUuid")
     private @Nullable Output<String> functionUuid;
 
     /**
-     * @return The unique identifier of the GradientAI function.
+     * @return The unique identifier of the Agent Platform function.
      * 
      */
     public Optional<Output<String>> functionUuid() {
@@ -106,14 +106,14 @@ public final class GradientaiFunctionState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The input schema of the GradientAI resource.
+     * The input schema of the Agent Platform resource.
      * 
      */
     @Import(name="inputSchema")
     private @Nullable Output<String> inputSchema;
 
     /**
-     * @return The input schema of the GradientAI resource.
+     * @return The input schema of the Agent Platform resource.
      * 
      */
     public Optional<Output<String>> inputSchema() {
@@ -121,14 +121,14 @@ public final class GradientaiFunctionState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The output schema of the GradientAI resource.
+     * The output schema of the Agent Platform resource.
      * 
      */
     @Import(name="outputSchema")
     private @Nullable Output<String> outputSchema;
 
     /**
-     * @return The output schema of the GradientAI resource.
+     * @return The output schema of the Agent Platform resource.
      * 
      */
     public Optional<Output<String>> outputSchema() {
@@ -167,7 +167,7 @@ public final class GradientaiFunctionState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param agentId The name of the GradientAI resource.
+         * @param agentId The name of the Agent Platform resource.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class GradientaiFunctionState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param agentId The name of the GradientAI resource.
+         * @param agentId The name of the Agent Platform resource.
          * 
          * @return builder
          * 
@@ -188,7 +188,7 @@ public final class GradientaiFunctionState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param description The region where the GradientAI resource will be created.
+         * @param description The region where the Agent Platform resource will be created.
          * 
          * @return builder
          * 
@@ -199,7 +199,7 @@ public final class GradientaiFunctionState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param description The region where the GradientAI resource will be created.
+         * @param description The region where the Agent Platform resource will be created.
          * 
          * @return builder
          * 
@@ -209,7 +209,7 @@ public final class GradientaiFunctionState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param faasName The model to use for the GradientAI resource.
+         * @param faasName The model to use for the Agent Platform resource.
          * 
          * @return builder
          * 
@@ -220,7 +220,7 @@ public final class GradientaiFunctionState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param faasName The model to use for the GradientAI resource.
+         * @param faasName The model to use for the Agent Platform resource.
          * 
          * @return builder
          * 
@@ -230,7 +230,7 @@ public final class GradientaiFunctionState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param faasNamespace The current status of the GradientAI resource.
+         * @param faasNamespace The current status of the Agent Platform resource.
          * 
          * @return builder
          * 
@@ -241,7 +241,7 @@ public final class GradientaiFunctionState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param faasNamespace The current status of the GradientAI resource.
+         * @param faasNamespace The current status of the Agent Platform resource.
          * 
          * @return builder
          * 
@@ -251,7 +251,7 @@ public final class GradientaiFunctionState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param functionName The creation timestamp of the GradientAI resource.
+         * @param functionName The creation timestamp of the Agent Platform resource.
          * 
          * @return builder
          * 
@@ -262,7 +262,7 @@ public final class GradientaiFunctionState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param functionName The creation timestamp of the GradientAI resource.
+         * @param functionName The creation timestamp of the Agent Platform resource.
          * 
          * @return builder
          * 
@@ -272,7 +272,7 @@ public final class GradientaiFunctionState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param functionUuid The unique identifier of the GradientAI function.
+         * @param functionUuid The unique identifier of the Agent Platform function.
          * 
          * @return builder
          * 
@@ -283,7 +283,7 @@ public final class GradientaiFunctionState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param functionUuid The unique identifier of the GradientAI function.
+         * @param functionUuid The unique identifier of the Agent Platform function.
          * 
          * @return builder
          * 
@@ -293,7 +293,7 @@ public final class GradientaiFunctionState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param inputSchema The input schema of the GradientAI resource.
+         * @param inputSchema The input schema of the Agent Platform resource.
          * 
          * @return builder
          * 
@@ -304,7 +304,7 @@ public final class GradientaiFunctionState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param inputSchema The input schema of the GradientAI resource.
+         * @param inputSchema The input schema of the Agent Platform resource.
          * 
          * @return builder
          * 
@@ -314,7 +314,7 @@ public final class GradientaiFunctionState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param outputSchema The output schema of the GradientAI resource.
+         * @param outputSchema The output schema of the Agent Platform resource.
          * 
          * @return builder
          * 
@@ -325,7 +325,7 @@ public final class GradientaiFunctionState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param outputSchema The output schema of the GradientAI resource.
+         * @param outputSchema The output schema of the Agent Platform resource.
          * 
          * @return builder
          * 

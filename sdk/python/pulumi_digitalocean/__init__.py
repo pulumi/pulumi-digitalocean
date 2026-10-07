@@ -7,6 +7,15 @@ from . import _utilities
 import typing
 # Export this package's modules as members:
 from ._enums import *
+from .agent_platform_agent import *
+from .agent_platform_agent_knowledge_base_attachment import *
+from .agent_platform_agent_route import *
+from .agent_platform_custom_model import *
+from .agent_platform_function import *
+from .agent_platform_indexing_job_cancel import *
+from .agent_platform_knowledge_base import *
+from .agent_platform_knowledge_base_data_source import *
+from .agent_platform_openai_api_key import *
 from .app import *
 from .byoip_prefix import *
 from .cdn import *
@@ -45,15 +54,23 @@ from .droplet_snapshot import *
 from .firewall import *
 from .floating_ip import *
 from .floating_ip_assignment import *
-from .genai_agent import *
-from .genai_agent_knowledge_base_attachment import *
-from .genai_agent_route import *
-from .genai_function import *
-from .genai_indexing_job_cancel import *
-from .genai_knowledge_base import *
-from .genai_knowledge_base_data_source import *
-from .genai_openai_api_key import *
 from .get_account import *
+from .get_agent_platform_agent import *
+from .get_agent_platform_agent_versions import *
+from .get_agent_platform_agents import *
+from .get_agent_platform_agents_by_openai_api_key import *
+from .get_agent_platform_custom_model import *
+from .get_agent_platform_custom_models import *
+from .get_agent_platform_indexing_job import *
+from .get_agent_platform_indexing_job_data_sources import *
+from .get_agent_platform_knowledge_base import *
+from .get_agent_platform_knowledge_base_data_sources import *
+from .get_agent_platform_knowledge_base_indexing_jobs import *
+from .get_agent_platform_knowledge_bases import *
+from .get_agent_platform_models import *
+from .get_agent_platform_openai_api_key import *
+from .get_agent_platform_openai_api_keys import *
+from .get_agent_platform_regions import *
 from .get_app import *
 from .get_byoip_prefix import *
 from .get_byoip_prefix_resources import *
@@ -80,26 +97,10 @@ from .get_droplet_snapshot import *
 from .get_droplets import *
 from .get_firewall import *
 from .get_floating_ip import *
-from .get_genai_agent import *
-from .get_genai_agent_versions import *
-from .get_genai_agents import *
-from .get_genai_agents_by_openai_api_key import *
-from .get_genai_indexing_job import *
-from .get_genai_indexing_job_data_sources import *
-from .get_genai_knowledge_base import *
-from .get_genai_knowledge_base_data_sources import *
-from .get_genai_knowledge_base_indexing_jobs import *
-from .get_genai_knowledge_bases import *
-from .get_genai_models import *
-from .get_genai_openai_api_key import *
-from .get_genai_openai_api_keys import *
-from .get_genai_regions import *
 from .get_gradientai_agent import *
 from .get_gradientai_agent_versions import *
 from .get_gradientai_agents import *
 from .get_gradientai_agents_by_openai_api_key import *
-from .get_gradientai_custom_model import *
-from .get_gradientai_custom_models import *
 from .get_gradientai_indexing_job import *
 from .get_gradientai_indexing_job_data_sources import *
 from .get_gradientai_knowledge_base import *
@@ -147,7 +148,6 @@ from .get_vpc_peering import *
 from .gradientai_agent import *
 from .gradientai_agent_knowledge_base_attachment import *
 from .gradientai_agent_route import *
-from .gradientai_custom_model import *
 from .gradientai_function import *
 from .gradientai_indexing_job_cancel import *
 from .gradientai_knowledge_base import *
@@ -199,6 +199,78 @@ else:
 _utilities.register(
     resource_modules="""
 [
+ {
+  "pkg": "digitalocean",
+  "mod": "index/agentPlatformAgent",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/agentPlatformAgent:AgentPlatformAgent": "AgentPlatformAgent"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/agentPlatformAgentKnowledgeBaseAttachment",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/agentPlatformAgentKnowledgeBaseAttachment:AgentPlatformAgentKnowledgeBaseAttachment": "AgentPlatformAgentKnowledgeBaseAttachment"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/agentPlatformAgentRoute",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/agentPlatformAgentRoute:AgentPlatformAgentRoute": "AgentPlatformAgentRoute"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/agentPlatformCustomModel",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/agentPlatformCustomModel:AgentPlatformCustomModel": "AgentPlatformCustomModel"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/agentPlatformFunction",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/agentPlatformFunction:AgentPlatformFunction": "AgentPlatformFunction"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/agentPlatformIndexingJobCancel",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/agentPlatformIndexingJobCancel:AgentPlatformIndexingJobCancel": "AgentPlatformIndexingJobCancel"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/agentPlatformKnowledgeBase",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/agentPlatformKnowledgeBase:AgentPlatformKnowledgeBase": "AgentPlatformKnowledgeBase"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/agentPlatformKnowledgeBaseDataSource",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/agentPlatformKnowledgeBaseDataSource:AgentPlatformKnowledgeBaseDataSource": "AgentPlatformKnowledgeBaseDataSource"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/agentPlatformOpenaiApiKey",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/agentPlatformOpenaiApiKey:AgentPlatformOpenaiApiKey": "AgentPlatformOpenaiApiKey"
+  }
+ },
  {
   "pkg": "digitalocean",
   "mod": "index/app",
@@ -505,70 +577,6 @@ _utilities.register(
  },
  {
   "pkg": "digitalocean",
-  "mod": "index/genaiAgent",
-  "fqn": "pulumi_digitalocean",
-  "classes": {
-   "digitalocean:index/genaiAgent:GenaiAgent": "GenaiAgent"
-  }
- },
- {
-  "pkg": "digitalocean",
-  "mod": "index/genaiAgentKnowledgeBaseAttachment",
-  "fqn": "pulumi_digitalocean",
-  "classes": {
-   "digitalocean:index/genaiAgentKnowledgeBaseAttachment:GenaiAgentKnowledgeBaseAttachment": "GenaiAgentKnowledgeBaseAttachment"
-  }
- },
- {
-  "pkg": "digitalocean",
-  "mod": "index/genaiAgentRoute",
-  "fqn": "pulumi_digitalocean",
-  "classes": {
-   "digitalocean:index/genaiAgentRoute:GenaiAgentRoute": "GenaiAgentRoute"
-  }
- },
- {
-  "pkg": "digitalocean",
-  "mod": "index/genaiFunction",
-  "fqn": "pulumi_digitalocean",
-  "classes": {
-   "digitalocean:index/genaiFunction:GenaiFunction": "GenaiFunction"
-  }
- },
- {
-  "pkg": "digitalocean",
-  "mod": "index/genaiIndexingJobCancel",
-  "fqn": "pulumi_digitalocean",
-  "classes": {
-   "digitalocean:index/genaiIndexingJobCancel:GenaiIndexingJobCancel": "GenaiIndexingJobCancel"
-  }
- },
- {
-  "pkg": "digitalocean",
-  "mod": "index/genaiKnowledgeBase",
-  "fqn": "pulumi_digitalocean",
-  "classes": {
-   "digitalocean:index/genaiKnowledgeBase:GenaiKnowledgeBase": "GenaiKnowledgeBase"
-  }
- },
- {
-  "pkg": "digitalocean",
-  "mod": "index/genaiKnowledgeBaseDataSource",
-  "fqn": "pulumi_digitalocean",
-  "classes": {
-   "digitalocean:index/genaiKnowledgeBaseDataSource:GenaiKnowledgeBaseDataSource": "GenaiKnowledgeBaseDataSource"
-  }
- },
- {
-  "pkg": "digitalocean",
-  "mod": "index/genaiOpenaiApiKey",
-  "fqn": "pulumi_digitalocean",
-  "classes": {
-   "digitalocean:index/genaiOpenaiApiKey:GenaiOpenaiApiKey": "GenaiOpenaiApiKey"
-  }
- },
- {
-  "pkg": "digitalocean",
   "mod": "index/gradientaiAgent",
   "fqn": "pulumi_digitalocean",
   "classes": {
@@ -589,14 +597,6 @@ _utilities.register(
   "fqn": "pulumi_digitalocean",
   "classes": {
    "digitalocean:index/gradientaiAgentRoute:GradientaiAgentRoute": "GradientaiAgentRoute"
-  }
- },
- {
-  "pkg": "digitalocean",
-  "mod": "index/gradientaiCustomModel",
-  "fqn": "pulumi_digitalocean",
-  "classes": {
-   "digitalocean:index/gradientaiCustomModel:GradientaiCustomModel": "GradientaiCustomModel"
   }
  },
  {

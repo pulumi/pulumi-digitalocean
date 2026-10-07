@@ -4,7 +4,9 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/** @deprecated digitalocean.getGradientaiIndexingJob has been deprecated in favor of digitalocean.getAgentPlatformIndexingJob */
 export function getGradientaiIndexingJob(args: GetGradientaiIndexingJobArgs, opts?: pulumi.InvokeOptions): Promise<GetGradientaiIndexingJobResult> {
+    pulumi.log.warn("getGradientaiIndexingJob is deprecated: digitalocean.getGradientaiIndexingJob has been deprecated in favor of digitalocean.getAgentPlatformIndexingJob")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("digitalocean:index/getGradientaiIndexingJob:getGradientaiIndexingJob", {
         "uuid": args.uuid,
@@ -42,7 +44,9 @@ export interface GetGradientaiIndexingJobResult {
     readonly updatedAt: string;
     readonly uuid: string;
 }
+/** @deprecated digitalocean.getGradientaiIndexingJob has been deprecated in favor of digitalocean.getAgentPlatformIndexingJob */
 export function getGradientaiIndexingJobOutput(args: GetGradientaiIndexingJobOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGradientaiIndexingJobResult> {
+    pulumi.log.warn("getGradientaiIndexingJob is deprecated: digitalocean.getGradientaiIndexingJob has been deprecated in favor of digitalocean.getAgentPlatformIndexingJob")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("digitalocean:index/getGradientaiIndexingJob:getGradientaiIndexingJob", {
         "uuid": args.uuid,

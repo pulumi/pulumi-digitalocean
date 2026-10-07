@@ -21,7 +21,7 @@ __all__ = ['GradientaiKnowledgeBaseArgs', 'GradientaiKnowledgeBase']
 @pulumi.input_type
 class GradientaiKnowledgeBaseArgs:
     def __init__(__self__, *,
-                 datasources: pulumi.Input[Sequence[pulumi.Input['GradientaiKnowledgeBaseDataSourceArgs']]],
+                 datasources: pulumi.Input[Sequence[pulumi.Input['AgentPlatformKnowledgeBaseDataSourceArgs']]],
                  embedding_model_uuid: pulumi.Input[_builtins.str],
                  project_id: pulumi.Input[_builtins.str],
                  region: pulumi.Input[_builtins.str],
@@ -35,7 +35,7 @@ class GradientaiKnowledgeBaseArgs:
         """
         The set of arguments for constructing a GradientaiKnowledgeBase resource.
 
-        :param pulumi.Input[Sequence[pulumi.Input['GradientaiKnowledgeBaseDataSourceArgs']]] datasources: Data sources for the knowledge base
+        :param pulumi.Input[Sequence[pulumi.Input['AgentPlatformKnowledgeBaseDataSourceArgs']]] datasources: Data sources for the knowledge base
         :param pulumi.Input[_builtins.str] embedding_model_uuid: The unique identifier of the embedding model
         :param pulumi.Input[_builtins.str] project_id: The unique identifier of the project to which the knowledge base belongs.
         :param pulumi.Input[_builtins.str] added_to_agent_at: The time when the knowledge base was added to the agent.
@@ -66,14 +66,14 @@ class GradientaiKnowledgeBaseArgs:
 
     @_builtins.property
     @pulumi.getter
-    def datasources(self) -> pulumi.Input[Sequence[pulumi.Input['GradientaiKnowledgeBaseDataSourceArgs']]]:
+    def datasources(self) -> pulumi.Input[Sequence[pulumi.Input['AgentPlatformKnowledgeBaseDataSourceArgs']]]:
         """
         Data sources for the knowledge base
         """
         return pulumi.get(self, "datasources")
 
     @datasources.setter
-    def datasources(self, value: pulumi.Input[Sequence[pulumi.Input['GradientaiKnowledgeBaseDataSourceArgs']]]):
+    def datasources(self, value: pulumi.Input[Sequence[pulumi.Input['AgentPlatformKnowledgeBaseDataSourceArgs']]]):
         pulumi.set(self, "datasources", value)
 
     @_builtins.property
@@ -197,7 +197,7 @@ class _GradientaiKnowledgeBaseState:
                  added_to_agent_at: pulumi.Input[Optional[_builtins.str]] = None,
                  created_at: pulumi.Input[Optional[_builtins.str]] = None,
                  database_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 datasources: pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiKnowledgeBaseDataSourceArgs']]]] = None,
+                 datasources: pulumi.Input[Optional[Sequence[pulumi.Input['AgentPlatformKnowledgeBaseDataSourceArgs']]]] = None,
                  embedding_model_uuid: pulumi.Input[Optional[_builtins.str]] = None,
                  is_public: pulumi.Input[Optional[_builtins.bool]] = None,
                  last_indexing_jobs: pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiKnowledgeBaseLastIndexingJobArgs']]]] = None,
@@ -212,7 +212,7 @@ class _GradientaiKnowledgeBaseState:
         :param pulumi.Input[_builtins.str] added_to_agent_at: The time when the knowledge base was added to the agent.
         :param pulumi.Input[_builtins.str] created_at: The time when the knowledge base was created.
         :param pulumi.Input[_builtins.str] database_id: The unique identifier of the DigitalOcean OpenSearch database this knowledge base will use
-        :param pulumi.Input[Sequence[pulumi.Input['GradientaiKnowledgeBaseDataSourceArgs']]] datasources: Data sources for the knowledge base
+        :param pulumi.Input[Sequence[pulumi.Input['AgentPlatformKnowledgeBaseDataSourceArgs']]] datasources: Data sources for the knowledge base
         :param pulumi.Input[_builtins.str] embedding_model_uuid: The unique identifier of the embedding model
         :param pulumi.Input[_builtins.bool] is_public: Indicates whether the knowledge base is public or private.
         :param pulumi.Input[Sequence[pulumi.Input['GradientaiKnowledgeBaseLastIndexingJobArgs']]] last_indexing_jobs: The last indexing job for the knowledge base.
@@ -283,14 +283,14 @@ class _GradientaiKnowledgeBaseState:
 
     @_builtins.property
     @pulumi.getter
-    def datasources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiKnowledgeBaseDataSourceArgs']]]]:
+    def datasources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AgentPlatformKnowledgeBaseDataSourceArgs']]]]:
         """
         Data sources for the knowledge base
         """
         return pulumi.get(self, "datasources")
 
     @datasources.setter
-    def datasources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GradientaiKnowledgeBaseDataSourceArgs']]]]):
+    def datasources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AgentPlatformKnowledgeBaseDataSourceArgs']]]]):
         pulumi.set(self, "datasources", value)
 
     @_builtins.property
@@ -384,15 +384,20 @@ class _GradientaiKnowledgeBaseState:
         pulumi.set(self, "vpc_uuid", value)
 
 
+warnings.warn("""digitalocean.GradientaiKnowledgeBase has been deprecated in favor of digitalocean.AgentPlatformKnowledgeBase""", DeprecationWarning)
+
+
 @pulumi.type_token("digitalocean:index/gradientaiKnowledgeBase:GradientaiKnowledgeBase")
 class GradientaiKnowledgeBase(pulumi.CustomResource):
+    warnings.warn("""digitalocean.GradientaiKnowledgeBase has been deprecated in favor of digitalocean.AgentPlatformKnowledgeBase""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  added_to_agent_at: pulumi.Input[Optional[_builtins.str]] = None,
                  database_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 datasources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiKnowledgeBaseDataSourceArgs', 'GradientaiKnowledgeBaseDataSourceArgsDict', 'outputs.GradientaiKnowledgeBaseDataSource']]]]] = None,
+                 datasources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentPlatformKnowledgeBaseDataSourceArgs', 'AgentPlatformKnowledgeBaseDataSourceArgsDict', 'outputs.AgentPlatformKnowledgeBaseDataSource']]]]] = None,
                  embedding_model_uuid: pulumi.Input[Optional[_builtins.str]] = None,
                  is_public: pulumi.Input[Optional[_builtins.bool]] = None,
                  last_indexing_jobs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiKnowledgeBaseLastIndexingJobArgs', 'GradientaiKnowledgeBaseLastIndexingJobArgsDict', 'outputs.GradientaiKnowledgeBaseLastIndexingJob']]]]] = None,
@@ -409,7 +414,7 @@ class GradientaiKnowledgeBase(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] added_to_agent_at: The time when the knowledge base was added to the agent.
         :param pulumi.Input[_builtins.str] database_id: The unique identifier of the DigitalOcean OpenSearch database this knowledge base will use
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GradientaiKnowledgeBaseDataSourceArgs', 'GradientaiKnowledgeBaseDataSourceArgsDict', 'outputs.GradientaiKnowledgeBaseDataSource']]]] datasources: Data sources for the knowledge base
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AgentPlatformKnowledgeBaseDataSourceArgs', 'AgentPlatformKnowledgeBaseDataSourceArgsDict', 'outputs.AgentPlatformKnowledgeBaseDataSource']]]] datasources: Data sources for the knowledge base
         :param pulumi.Input[_builtins.str] embedding_model_uuid: The unique identifier of the embedding model
         :param pulumi.Input[_builtins.bool] is_public: Indicates whether the knowledge base is public or private.
         :param pulumi.Input[Sequence[pulumi.Input[Union['GradientaiKnowledgeBaseLastIndexingJobArgs', 'GradientaiKnowledgeBaseLastIndexingJobArgsDict', 'outputs.GradientaiKnowledgeBaseLastIndexingJob']]]] last_indexing_jobs: The last indexing job for the knowledge base.
@@ -443,7 +448,7 @@ class GradientaiKnowledgeBase(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  added_to_agent_at: pulumi.Input[Optional[_builtins.str]] = None,
                  database_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 datasources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiKnowledgeBaseDataSourceArgs', 'GradientaiKnowledgeBaseDataSourceArgsDict', 'outputs.GradientaiKnowledgeBaseDataSource']]]]] = None,
+                 datasources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentPlatformKnowledgeBaseDataSourceArgs', 'AgentPlatformKnowledgeBaseDataSourceArgsDict', 'outputs.AgentPlatformKnowledgeBaseDataSource']]]]] = None,
                  embedding_model_uuid: pulumi.Input[Optional[_builtins.str]] = None,
                  is_public: pulumi.Input[Optional[_builtins.bool]] = None,
                  last_indexing_jobs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiKnowledgeBaseLastIndexingJobArgs', 'GradientaiKnowledgeBaseLastIndexingJobArgsDict', 'outputs.GradientaiKnowledgeBaseLastIndexingJob']]]]] = None,
@@ -453,6 +458,7 @@ class GradientaiKnowledgeBase(pulumi.CustomResource):
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  vpc_uuid: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""GradientaiKnowledgeBase is deprecated: digitalocean.GradientaiKnowledgeBase has been deprecated in favor of digitalocean.AgentPlatformKnowledgeBase""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -481,8 +487,6 @@ class GradientaiKnowledgeBase(pulumi.CustomResource):
             __props__.__dict__["tags"] = tags
             __props__.__dict__["vpc_uuid"] = vpc_uuid
             __props__.__dict__["created_at"] = None
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="digitalocean:index/genaiKnowledgeBase:GenaiKnowledgeBase")])
-        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(GradientaiKnowledgeBase, __self__).__init__(
             'digitalocean:index/gradientaiKnowledgeBase:GradientaiKnowledgeBase',
             resource_name,
@@ -496,7 +500,7 @@ class GradientaiKnowledgeBase(pulumi.CustomResource):
             added_to_agent_at: pulumi.Input[Optional[_builtins.str]] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
             database_id: pulumi.Input[Optional[_builtins.str]] = None,
-            datasources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiKnowledgeBaseDataSourceArgs', 'GradientaiKnowledgeBaseDataSourceArgsDict', 'outputs.GradientaiKnowledgeBaseDataSource']]]]] = None,
+            datasources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentPlatformKnowledgeBaseDataSourceArgs', 'AgentPlatformKnowledgeBaseDataSourceArgsDict', 'outputs.AgentPlatformKnowledgeBaseDataSource']]]]] = None,
             embedding_model_uuid: pulumi.Input[Optional[_builtins.str]] = None,
             is_public: pulumi.Input[Optional[_builtins.bool]] = None,
             last_indexing_jobs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiKnowledgeBaseLastIndexingJobArgs', 'GradientaiKnowledgeBaseLastIndexingJobArgsDict', 'outputs.GradientaiKnowledgeBaseLastIndexingJob']]]]] = None,
@@ -515,7 +519,7 @@ class GradientaiKnowledgeBase(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] added_to_agent_at: The time when the knowledge base was added to the agent.
         :param pulumi.Input[_builtins.str] created_at: The time when the knowledge base was created.
         :param pulumi.Input[_builtins.str] database_id: The unique identifier of the DigitalOcean OpenSearch database this knowledge base will use
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GradientaiKnowledgeBaseDataSourceArgs', 'GradientaiKnowledgeBaseDataSourceArgsDict', 'outputs.GradientaiKnowledgeBaseDataSource']]]] datasources: Data sources for the knowledge base
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AgentPlatformKnowledgeBaseDataSourceArgs', 'AgentPlatformKnowledgeBaseDataSourceArgsDict', 'outputs.AgentPlatformKnowledgeBaseDataSource']]]] datasources: Data sources for the knowledge base
         :param pulumi.Input[_builtins.str] embedding_model_uuid: The unique identifier of the embedding model
         :param pulumi.Input[_builtins.bool] is_public: Indicates whether the knowledge base is public or private.
         :param pulumi.Input[Sequence[pulumi.Input[Union['GradientaiKnowledgeBaseLastIndexingJobArgs', 'GradientaiKnowledgeBaseLastIndexingJobArgsDict', 'outputs.GradientaiKnowledgeBaseLastIndexingJob']]]] last_indexing_jobs: The last indexing job for the knowledge base.
@@ -567,7 +571,7 @@ class GradientaiKnowledgeBase(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def datasources(self) -> pulumi.Output[Sequence['outputs.GradientaiKnowledgeBaseDataSource']]:
+    def datasources(self) -> pulumi.Output[Sequence['outputs.AgentPlatformKnowledgeBaseDataSource']]:
         """
         Data sources for the knowledge base
         """

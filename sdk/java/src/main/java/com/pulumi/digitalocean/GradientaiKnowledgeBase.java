@@ -3,7 +3,6 @@
 
 package com.pulumi.digitalocean;
 
-import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -11,7 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.digitalocean.GradientaiKnowledgeBaseArgs;
 import com.pulumi.digitalocean.Utilities;
 import com.pulumi.digitalocean.inputs.GradientaiKnowledgeBaseState;
-import com.pulumi.digitalocean.outputs.GradientaiKnowledgeBaseDataSource;
+import com.pulumi.digitalocean.outputs.AgentPlatformKnowledgeBaseDataSource;
 import com.pulumi.digitalocean.outputs.GradientaiKnowledgeBaseLastIndexingJob;
 import java.lang.Boolean;
 import java.lang.String;
@@ -19,6 +18,12 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * @deprecated
+ * digitalocean.GradientaiKnowledgeBase has been deprecated in favor of digitalocean.AgentPlatformKnowledgeBase
+ * 
+ */
+@Deprecated /* digitalocean.GradientaiKnowledgeBase has been deprecated in favor of digitalocean.AgentPlatformKnowledgeBase */
 @ResourceType(type="digitalocean:index/gradientaiKnowledgeBase:GradientaiKnowledgeBase")
 public class GradientaiKnowledgeBase extends com.pulumi.resources.CustomResource {
     /**
@@ -67,14 +72,14 @@ public class GradientaiKnowledgeBase extends com.pulumi.resources.CustomResource
      * Data sources for the knowledge base
      * 
      */
-    @Export(name="datasources", refs={List.class,GradientaiKnowledgeBaseDataSource.class}, tree="[0,1]")
-    private Output<List<GradientaiKnowledgeBaseDataSource>> datasources;
+    @Export(name="datasources", refs={List.class,AgentPlatformKnowledgeBaseDataSource.class}, tree="[0,1]")
+    private Output<List<AgentPlatformKnowledgeBaseDataSource>> datasources;
 
     /**
      * @return Data sources for the knowledge base
      * 
      */
-    public Output<List<GradientaiKnowledgeBaseDataSource>> datasources() {
+    public Output<List<AgentPlatformKnowledgeBaseDataSource>> datasources() {
         return this.datasources;
     }
     /**
@@ -213,9 +218,6 @@ public class GradientaiKnowledgeBase extends com.pulumi.resources.CustomResource
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .aliases(List.of(
-                Output.of(Alias.builder().type("digitalocean:index/genaiKnowledgeBase:GenaiKnowledgeBase").build())
-            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

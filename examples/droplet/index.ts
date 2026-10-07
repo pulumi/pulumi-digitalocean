@@ -26,7 +26,9 @@ const sshKey = new digitalocean.SshKey("my-ssh-key", {
  const web = new digitalocean.Droplet("web", {
      image: "ubuntu-24-04-x64",
      region: digitalocean.Region.NYC3,
-     size: digitalocean.DropletSlug.DropletS1VCPU1GB,
+     // Regular-CPU "s-1vcpu-1gb" Droplets are no longer available in every region
+     // (e.g. NYC3), so use the Premium AMD variant of the same size instead.
+     size: digitalocean.DropletSlug.DropletS1VCPU1GB_AMD,
      sshKeys: [sshKey.id],
  });
 

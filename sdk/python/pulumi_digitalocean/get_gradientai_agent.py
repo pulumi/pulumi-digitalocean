@@ -23,6 +23,8 @@ __all__ = [
     'get_gradientai_agent_output',
 ]
 
+warnings.warn("""digitalocean.getGradientaiAgent has been deprecated in favor of digitalocean.getAgentPlatformAgent""", DeprecationWarning)
+
 @pulumi.output_type
 class GetGradientaiAgentResult:
     """
@@ -405,6 +407,7 @@ def get_gradientai_agent(agent_guardrails: Optional[Sequence[Union['GetGradienta
     """
     Use this data source to access information about an existing resource.
     """
+    pulumi.log.warn("""get_gradientai_agent is deprecated: digitalocean.getGradientaiAgent has been deprecated in favor of digitalocean.getAgentPlatformAgent""")
     __args__ = dict()
     __args__['agentGuardrails'] = agent_guardrails
     __args__['agentId'] = agent_id
@@ -503,6 +506,7 @@ def get_gradientai_agent_output(agent_guardrails: pulumi.Input[Optional[Optional
     """
     Use this data source to access information about an existing resource.
     """
+    pulumi.log.warn("""get_gradientai_agent is deprecated: digitalocean.getGradientaiAgent has been deprecated in favor of digitalocean.getAgentPlatformAgent""")
     __args__ = dict()
     __args__['agentGuardrails'] = agent_guardrails
     __args__['agentId'] = agent_id

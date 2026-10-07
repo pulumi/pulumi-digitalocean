@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.DigitalOcean
 {
+    [Obsolete(@"digitalocean.getGradientaiAgentVersions has been deprecated in favor of digitalocean.getAgentPlatformAgentVersions")]
     public static class GetGradientaiAgentVersions
     {
         public static Task<GetGradientaiAgentVersionsResult> InvokeAsync(GetGradientaiAgentVersionsArgs args, InvokeOptions? options = null)
