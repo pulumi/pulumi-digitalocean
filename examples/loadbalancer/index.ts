@@ -28,7 +28,9 @@ const foobar = new digitalocean.Tag("foobar");
 new digitalocean.Droplet("web", {
     image: "ubuntu-24-04-x64",
     region: digitalocean.Region.NYC3,
-    size: "s-1vcpu-1gb",
+    // Regular-CPU "s-1vcpu-1gb" Droplets are no longer available in every region
+    // (e.g. NYC3), so use the Premium AMD variant of the same size instead.
+    size: digitalocean.DropletSlug.DropletS1VCPU1GB_AMD,
     tags: [foobar.id],
     sshKeys: [sshKey.id],
 });
