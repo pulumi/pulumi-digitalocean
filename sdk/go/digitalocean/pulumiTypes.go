@@ -40051,6 +40051,732 @@ func (o LoadBalancerStickySessionsPtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type MicrovmAutoPause struct {
+	// Whether the MicroVM pauses after it has been idle for `idleTimeout`.
+	Enabled bool `pulumi:"enabled"`
+	// How long the MicroVM must be idle before it pauses, as a duration such as `5m` or `30s`.
+	IdleTimeout *string `pulumi:"idleTimeout"`
+}
+
+// MicrovmAutoPauseInput is an input type that accepts MicrovmAutoPauseArgs and MicrovmAutoPauseOutput values.
+// You can construct a concrete instance of `MicrovmAutoPauseInput` via:
+//
+//	MicrovmAutoPauseArgs{...}
+type MicrovmAutoPauseInput interface {
+	pulumi.Input
+
+	ToMicrovmAutoPauseOutput() MicrovmAutoPauseOutput
+	ToMicrovmAutoPauseOutputWithContext(context.Context) MicrovmAutoPauseOutput
+}
+
+type MicrovmAutoPauseArgs struct {
+	// Whether the MicroVM pauses after it has been idle for `idleTimeout`.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// How long the MicroVM must be idle before it pauses, as a duration such as `5m` or `30s`.
+	IdleTimeout pulumi.StringPtrInput `pulumi:"idleTimeout"`
+}
+
+func (MicrovmAutoPauseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MicrovmAutoPause)(nil)).Elem()
+}
+
+func (i MicrovmAutoPauseArgs) ToMicrovmAutoPauseOutput() MicrovmAutoPauseOutput {
+	return i.ToMicrovmAutoPauseOutputWithContext(context.Background())
+}
+
+func (i MicrovmAutoPauseArgs) ToMicrovmAutoPauseOutputWithContext(ctx context.Context) MicrovmAutoPauseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MicrovmAutoPauseOutput)
+}
+
+func (i MicrovmAutoPauseArgs) ToMicrovmAutoPausePtrOutput() MicrovmAutoPausePtrOutput {
+	return i.ToMicrovmAutoPausePtrOutputWithContext(context.Background())
+}
+
+func (i MicrovmAutoPauseArgs) ToMicrovmAutoPausePtrOutputWithContext(ctx context.Context) MicrovmAutoPausePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MicrovmAutoPauseOutput).ToMicrovmAutoPausePtrOutputWithContext(ctx)
+}
+
+// MicrovmAutoPausePtrInput is an input type that accepts MicrovmAutoPauseArgs, MicrovmAutoPausePtr and MicrovmAutoPausePtrOutput values.
+// You can construct a concrete instance of `MicrovmAutoPausePtrInput` via:
+//
+//	        MicrovmAutoPauseArgs{...}
+//
+//	or:
+//
+//	        nil
+type MicrovmAutoPausePtrInput interface {
+	pulumi.Input
+
+	ToMicrovmAutoPausePtrOutput() MicrovmAutoPausePtrOutput
+	ToMicrovmAutoPausePtrOutputWithContext(context.Context) MicrovmAutoPausePtrOutput
+}
+
+type microvmAutoPausePtrType MicrovmAutoPauseArgs
+
+func MicrovmAutoPausePtr(v *MicrovmAutoPauseArgs) MicrovmAutoPausePtrInput {
+	return (*microvmAutoPausePtrType)(v)
+}
+
+func (*microvmAutoPausePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MicrovmAutoPause)(nil)).Elem()
+}
+
+func (i *microvmAutoPausePtrType) ToMicrovmAutoPausePtrOutput() MicrovmAutoPausePtrOutput {
+	return i.ToMicrovmAutoPausePtrOutputWithContext(context.Background())
+}
+
+func (i *microvmAutoPausePtrType) ToMicrovmAutoPausePtrOutputWithContext(ctx context.Context) MicrovmAutoPausePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MicrovmAutoPausePtrOutput)
+}
+
+type MicrovmAutoPauseOutput struct{ *pulumi.OutputState }
+
+func (MicrovmAutoPauseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MicrovmAutoPause)(nil)).Elem()
+}
+
+func (o MicrovmAutoPauseOutput) ToMicrovmAutoPauseOutput() MicrovmAutoPauseOutput {
+	return o
+}
+
+func (o MicrovmAutoPauseOutput) ToMicrovmAutoPauseOutputWithContext(ctx context.Context) MicrovmAutoPauseOutput {
+	return o
+}
+
+func (o MicrovmAutoPauseOutput) ToMicrovmAutoPausePtrOutput() MicrovmAutoPausePtrOutput {
+	return o.ToMicrovmAutoPausePtrOutputWithContext(context.Background())
+}
+
+func (o MicrovmAutoPauseOutput) ToMicrovmAutoPausePtrOutputWithContext(ctx context.Context) MicrovmAutoPausePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MicrovmAutoPause) *MicrovmAutoPause {
+		return &v
+	}).(MicrovmAutoPausePtrOutput)
+}
+
+// Whether the MicroVM pauses after it has been idle for `idleTimeout`.
+func (o MicrovmAutoPauseOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v MicrovmAutoPause) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// How long the MicroVM must be idle before it pauses, as a duration such as `5m` or `30s`.
+func (o MicrovmAutoPauseOutput) IdleTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MicrovmAutoPause) *string { return v.IdleTimeout }).(pulumi.StringPtrOutput)
+}
+
+type MicrovmAutoPausePtrOutput struct{ *pulumi.OutputState }
+
+func (MicrovmAutoPausePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MicrovmAutoPause)(nil)).Elem()
+}
+
+func (o MicrovmAutoPausePtrOutput) ToMicrovmAutoPausePtrOutput() MicrovmAutoPausePtrOutput {
+	return o
+}
+
+func (o MicrovmAutoPausePtrOutput) ToMicrovmAutoPausePtrOutputWithContext(ctx context.Context) MicrovmAutoPausePtrOutput {
+	return o
+}
+
+func (o MicrovmAutoPausePtrOutput) Elem() MicrovmAutoPauseOutput {
+	return o.ApplyT(func(v *MicrovmAutoPause) MicrovmAutoPause {
+		if v != nil {
+			return *v
+		}
+		var ret MicrovmAutoPause
+		return ret
+	}).(MicrovmAutoPauseOutput)
+}
+
+// Whether the MicroVM pauses after it has been idle for `idleTimeout`.
+func (o MicrovmAutoPausePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MicrovmAutoPause) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// How long the MicroVM must be idle before it pauses, as a duration such as `5m` or `30s`.
+func (o MicrovmAutoPausePtrOutput) IdleTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MicrovmAutoPause) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdleTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
+type MicrovmCheckpointSize struct {
+	// The number of vCPUs.
+	Cpu *int `pulumi:"cpu"`
+	// The size of the disk in GB.
+	Disk *int `pulumi:"disk"`
+	// The amount of memory in MiB.
+	Memory *int `pulumi:"memory"`
+}
+
+// MicrovmCheckpointSizeInput is an input type that accepts MicrovmCheckpointSizeArgs and MicrovmCheckpointSizeOutput values.
+// You can construct a concrete instance of `MicrovmCheckpointSizeInput` via:
+//
+//	MicrovmCheckpointSizeArgs{...}
+type MicrovmCheckpointSizeInput interface {
+	pulumi.Input
+
+	ToMicrovmCheckpointSizeOutput() MicrovmCheckpointSizeOutput
+	ToMicrovmCheckpointSizeOutputWithContext(context.Context) MicrovmCheckpointSizeOutput
+}
+
+type MicrovmCheckpointSizeArgs struct {
+	// The number of vCPUs.
+	Cpu pulumi.IntPtrInput `pulumi:"cpu"`
+	// The size of the disk in GB.
+	Disk pulumi.IntPtrInput `pulumi:"disk"`
+	// The amount of memory in MiB.
+	Memory pulumi.IntPtrInput `pulumi:"memory"`
+}
+
+func (MicrovmCheckpointSizeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MicrovmCheckpointSize)(nil)).Elem()
+}
+
+func (i MicrovmCheckpointSizeArgs) ToMicrovmCheckpointSizeOutput() MicrovmCheckpointSizeOutput {
+	return i.ToMicrovmCheckpointSizeOutputWithContext(context.Background())
+}
+
+func (i MicrovmCheckpointSizeArgs) ToMicrovmCheckpointSizeOutputWithContext(ctx context.Context) MicrovmCheckpointSizeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MicrovmCheckpointSizeOutput)
+}
+
+// MicrovmCheckpointSizeArrayInput is an input type that accepts MicrovmCheckpointSizeArray and MicrovmCheckpointSizeArrayOutput values.
+// You can construct a concrete instance of `MicrovmCheckpointSizeArrayInput` via:
+//
+//	MicrovmCheckpointSizeArray{ MicrovmCheckpointSizeArgs{...} }
+type MicrovmCheckpointSizeArrayInput interface {
+	pulumi.Input
+
+	ToMicrovmCheckpointSizeArrayOutput() MicrovmCheckpointSizeArrayOutput
+	ToMicrovmCheckpointSizeArrayOutputWithContext(context.Context) MicrovmCheckpointSizeArrayOutput
+}
+
+type MicrovmCheckpointSizeArray []MicrovmCheckpointSizeInput
+
+func (MicrovmCheckpointSizeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MicrovmCheckpointSize)(nil)).Elem()
+}
+
+func (i MicrovmCheckpointSizeArray) ToMicrovmCheckpointSizeArrayOutput() MicrovmCheckpointSizeArrayOutput {
+	return i.ToMicrovmCheckpointSizeArrayOutputWithContext(context.Background())
+}
+
+func (i MicrovmCheckpointSizeArray) ToMicrovmCheckpointSizeArrayOutputWithContext(ctx context.Context) MicrovmCheckpointSizeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MicrovmCheckpointSizeArrayOutput)
+}
+
+type MicrovmCheckpointSizeOutput struct{ *pulumi.OutputState }
+
+func (MicrovmCheckpointSizeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MicrovmCheckpointSize)(nil)).Elem()
+}
+
+func (o MicrovmCheckpointSizeOutput) ToMicrovmCheckpointSizeOutput() MicrovmCheckpointSizeOutput {
+	return o
+}
+
+func (o MicrovmCheckpointSizeOutput) ToMicrovmCheckpointSizeOutputWithContext(ctx context.Context) MicrovmCheckpointSizeOutput {
+	return o
+}
+
+// The number of vCPUs.
+func (o MicrovmCheckpointSizeOutput) Cpu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MicrovmCheckpointSize) *int { return v.Cpu }).(pulumi.IntPtrOutput)
+}
+
+// The size of the disk in GB.
+func (o MicrovmCheckpointSizeOutput) Disk() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MicrovmCheckpointSize) *int { return v.Disk }).(pulumi.IntPtrOutput)
+}
+
+// The amount of memory in MiB.
+func (o MicrovmCheckpointSizeOutput) Memory() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MicrovmCheckpointSize) *int { return v.Memory }).(pulumi.IntPtrOutput)
+}
+
+type MicrovmCheckpointSizeArrayOutput struct{ *pulumi.OutputState }
+
+func (MicrovmCheckpointSizeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MicrovmCheckpointSize)(nil)).Elem()
+}
+
+func (o MicrovmCheckpointSizeArrayOutput) ToMicrovmCheckpointSizeArrayOutput() MicrovmCheckpointSizeArrayOutput {
+	return o
+}
+
+func (o MicrovmCheckpointSizeArrayOutput) ToMicrovmCheckpointSizeArrayOutputWithContext(ctx context.Context) MicrovmCheckpointSizeArrayOutput {
+	return o
+}
+
+func (o MicrovmCheckpointSizeArrayOutput) Index(i pulumi.IntInput) MicrovmCheckpointSizeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MicrovmCheckpointSize {
+		return vs[0].([]MicrovmCheckpointSize)[vs[1].(int)]
+	}).(MicrovmCheckpointSizeOutput)
+}
+
+type MicrovmSize struct {
+	// The number of vCPUs.
+	Cpu int `pulumi:"cpu"`
+	// The size of the attached disk in GB.
+	Disk *int `pulumi:"disk"`
+	// The amount of memory in MiB.
+	Memory int `pulumi:"memory"`
+}
+
+// MicrovmSizeInput is an input type that accepts MicrovmSizeArgs and MicrovmSizeOutput values.
+// You can construct a concrete instance of `MicrovmSizeInput` via:
+//
+//	MicrovmSizeArgs{...}
+type MicrovmSizeInput interface {
+	pulumi.Input
+
+	ToMicrovmSizeOutput() MicrovmSizeOutput
+	ToMicrovmSizeOutputWithContext(context.Context) MicrovmSizeOutput
+}
+
+type MicrovmSizeArgs struct {
+	// The number of vCPUs.
+	Cpu pulumi.IntInput `pulumi:"cpu"`
+	// The size of the attached disk in GB.
+	Disk pulumi.IntPtrInput `pulumi:"disk"`
+	// The amount of memory in MiB.
+	Memory pulumi.IntInput `pulumi:"memory"`
+}
+
+func (MicrovmSizeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MicrovmSize)(nil)).Elem()
+}
+
+func (i MicrovmSizeArgs) ToMicrovmSizeOutput() MicrovmSizeOutput {
+	return i.ToMicrovmSizeOutputWithContext(context.Background())
+}
+
+func (i MicrovmSizeArgs) ToMicrovmSizeOutputWithContext(ctx context.Context) MicrovmSizeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MicrovmSizeOutput)
+}
+
+func (i MicrovmSizeArgs) ToMicrovmSizePtrOutput() MicrovmSizePtrOutput {
+	return i.ToMicrovmSizePtrOutputWithContext(context.Background())
+}
+
+func (i MicrovmSizeArgs) ToMicrovmSizePtrOutputWithContext(ctx context.Context) MicrovmSizePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MicrovmSizeOutput).ToMicrovmSizePtrOutputWithContext(ctx)
+}
+
+// MicrovmSizePtrInput is an input type that accepts MicrovmSizeArgs, MicrovmSizePtr and MicrovmSizePtrOutput values.
+// You can construct a concrete instance of `MicrovmSizePtrInput` via:
+//
+//	        MicrovmSizeArgs{...}
+//
+//	or:
+//
+//	        nil
+type MicrovmSizePtrInput interface {
+	pulumi.Input
+
+	ToMicrovmSizePtrOutput() MicrovmSizePtrOutput
+	ToMicrovmSizePtrOutputWithContext(context.Context) MicrovmSizePtrOutput
+}
+
+type microvmSizePtrType MicrovmSizeArgs
+
+func MicrovmSizePtr(v *MicrovmSizeArgs) MicrovmSizePtrInput {
+	return (*microvmSizePtrType)(v)
+}
+
+func (*microvmSizePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MicrovmSize)(nil)).Elem()
+}
+
+func (i *microvmSizePtrType) ToMicrovmSizePtrOutput() MicrovmSizePtrOutput {
+	return i.ToMicrovmSizePtrOutputWithContext(context.Background())
+}
+
+func (i *microvmSizePtrType) ToMicrovmSizePtrOutputWithContext(ctx context.Context) MicrovmSizePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MicrovmSizePtrOutput)
+}
+
+type MicrovmSizeOutput struct{ *pulumi.OutputState }
+
+func (MicrovmSizeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MicrovmSize)(nil)).Elem()
+}
+
+func (o MicrovmSizeOutput) ToMicrovmSizeOutput() MicrovmSizeOutput {
+	return o
+}
+
+func (o MicrovmSizeOutput) ToMicrovmSizeOutputWithContext(ctx context.Context) MicrovmSizeOutput {
+	return o
+}
+
+func (o MicrovmSizeOutput) ToMicrovmSizePtrOutput() MicrovmSizePtrOutput {
+	return o.ToMicrovmSizePtrOutputWithContext(context.Background())
+}
+
+func (o MicrovmSizeOutput) ToMicrovmSizePtrOutputWithContext(ctx context.Context) MicrovmSizePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MicrovmSize) *MicrovmSize {
+		return &v
+	}).(MicrovmSizePtrOutput)
+}
+
+// The number of vCPUs.
+func (o MicrovmSizeOutput) Cpu() pulumi.IntOutput {
+	return o.ApplyT(func(v MicrovmSize) int { return v.Cpu }).(pulumi.IntOutput)
+}
+
+// The size of the attached disk in GB.
+func (o MicrovmSizeOutput) Disk() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MicrovmSize) *int { return v.Disk }).(pulumi.IntPtrOutput)
+}
+
+// The amount of memory in MiB.
+func (o MicrovmSizeOutput) Memory() pulumi.IntOutput {
+	return o.ApplyT(func(v MicrovmSize) int { return v.Memory }).(pulumi.IntOutput)
+}
+
+type MicrovmSizePtrOutput struct{ *pulumi.OutputState }
+
+func (MicrovmSizePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MicrovmSize)(nil)).Elem()
+}
+
+func (o MicrovmSizePtrOutput) ToMicrovmSizePtrOutput() MicrovmSizePtrOutput {
+	return o
+}
+
+func (o MicrovmSizePtrOutput) ToMicrovmSizePtrOutputWithContext(ctx context.Context) MicrovmSizePtrOutput {
+	return o
+}
+
+func (o MicrovmSizePtrOutput) Elem() MicrovmSizeOutput {
+	return o.ApplyT(func(v *MicrovmSize) MicrovmSize {
+		if v != nil {
+			return *v
+		}
+		var ret MicrovmSize
+		return ret
+	}).(MicrovmSizeOutput)
+}
+
+// The number of vCPUs.
+func (o MicrovmSizePtrOutput) Cpu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MicrovmSize) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Cpu
+	}).(pulumi.IntPtrOutput)
+}
+
+// The size of the attached disk in GB.
+func (o MicrovmSizePtrOutput) Disk() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MicrovmSize) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Disk
+	}).(pulumi.IntPtrOutput)
+}
+
+// The amount of memory in MiB.
+func (o MicrovmSizePtrOutput) Memory() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MicrovmSize) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Memory
+	}).(pulumi.IntPtrOutput)
+}
+
+type MicrovmSource struct {
+	// The ID of a checkpoint to restore.
+	CheckpointId *string `pulumi:"checkpointId"`
+	// The OCI reference of the workload container image, such as `docker.io/library/nginx:latest`.
+	OciRef *string `pulumi:"ociRef"`
+}
+
+// MicrovmSourceInput is an input type that accepts MicrovmSourceArgs and MicrovmSourceOutput values.
+// You can construct a concrete instance of `MicrovmSourceInput` via:
+//
+//	MicrovmSourceArgs{...}
+type MicrovmSourceInput interface {
+	pulumi.Input
+
+	ToMicrovmSourceOutput() MicrovmSourceOutput
+	ToMicrovmSourceOutputWithContext(context.Context) MicrovmSourceOutput
+}
+
+type MicrovmSourceArgs struct {
+	// The ID of a checkpoint to restore.
+	CheckpointId pulumi.StringPtrInput `pulumi:"checkpointId"`
+	// The OCI reference of the workload container image, such as `docker.io/library/nginx:latest`.
+	OciRef pulumi.StringPtrInput `pulumi:"ociRef"`
+}
+
+func (MicrovmSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MicrovmSource)(nil)).Elem()
+}
+
+func (i MicrovmSourceArgs) ToMicrovmSourceOutput() MicrovmSourceOutput {
+	return i.ToMicrovmSourceOutputWithContext(context.Background())
+}
+
+func (i MicrovmSourceArgs) ToMicrovmSourceOutputWithContext(ctx context.Context) MicrovmSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MicrovmSourceOutput)
+}
+
+func (i MicrovmSourceArgs) ToMicrovmSourcePtrOutput() MicrovmSourcePtrOutput {
+	return i.ToMicrovmSourcePtrOutputWithContext(context.Background())
+}
+
+func (i MicrovmSourceArgs) ToMicrovmSourcePtrOutputWithContext(ctx context.Context) MicrovmSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MicrovmSourceOutput).ToMicrovmSourcePtrOutputWithContext(ctx)
+}
+
+// MicrovmSourcePtrInput is an input type that accepts MicrovmSourceArgs, MicrovmSourcePtr and MicrovmSourcePtrOutput values.
+// You can construct a concrete instance of `MicrovmSourcePtrInput` via:
+//
+//	        MicrovmSourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type MicrovmSourcePtrInput interface {
+	pulumi.Input
+
+	ToMicrovmSourcePtrOutput() MicrovmSourcePtrOutput
+	ToMicrovmSourcePtrOutputWithContext(context.Context) MicrovmSourcePtrOutput
+}
+
+type microvmSourcePtrType MicrovmSourceArgs
+
+func MicrovmSourcePtr(v *MicrovmSourceArgs) MicrovmSourcePtrInput {
+	return (*microvmSourcePtrType)(v)
+}
+
+func (*microvmSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MicrovmSource)(nil)).Elem()
+}
+
+func (i *microvmSourcePtrType) ToMicrovmSourcePtrOutput() MicrovmSourcePtrOutput {
+	return i.ToMicrovmSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *microvmSourcePtrType) ToMicrovmSourcePtrOutputWithContext(ctx context.Context) MicrovmSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MicrovmSourcePtrOutput)
+}
+
+type MicrovmSourceOutput struct{ *pulumi.OutputState }
+
+func (MicrovmSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MicrovmSource)(nil)).Elem()
+}
+
+func (o MicrovmSourceOutput) ToMicrovmSourceOutput() MicrovmSourceOutput {
+	return o
+}
+
+func (o MicrovmSourceOutput) ToMicrovmSourceOutputWithContext(ctx context.Context) MicrovmSourceOutput {
+	return o
+}
+
+func (o MicrovmSourceOutput) ToMicrovmSourcePtrOutput() MicrovmSourcePtrOutput {
+	return o.ToMicrovmSourcePtrOutputWithContext(context.Background())
+}
+
+func (o MicrovmSourceOutput) ToMicrovmSourcePtrOutputWithContext(ctx context.Context) MicrovmSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MicrovmSource) *MicrovmSource {
+		return &v
+	}).(MicrovmSourcePtrOutput)
+}
+
+// The ID of a checkpoint to restore.
+func (o MicrovmSourceOutput) CheckpointId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MicrovmSource) *string { return v.CheckpointId }).(pulumi.StringPtrOutput)
+}
+
+// The OCI reference of the workload container image, such as `docker.io/library/nginx:latest`.
+func (o MicrovmSourceOutput) OciRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MicrovmSource) *string { return v.OciRef }).(pulumi.StringPtrOutput)
+}
+
+type MicrovmSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (MicrovmSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MicrovmSource)(nil)).Elem()
+}
+
+func (o MicrovmSourcePtrOutput) ToMicrovmSourcePtrOutput() MicrovmSourcePtrOutput {
+	return o
+}
+
+func (o MicrovmSourcePtrOutput) ToMicrovmSourcePtrOutputWithContext(ctx context.Context) MicrovmSourcePtrOutput {
+	return o
+}
+
+func (o MicrovmSourcePtrOutput) Elem() MicrovmSourceOutput {
+	return o.ApplyT(func(v *MicrovmSource) MicrovmSource {
+		if v != nil {
+			return *v
+		}
+		var ret MicrovmSource
+		return ret
+	}).(MicrovmSourceOutput)
+}
+
+// The ID of a checkpoint to restore.
+func (o MicrovmSourcePtrOutput) CheckpointId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MicrovmSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CheckpointId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The OCI reference of the workload container image, such as `docker.io/library/nginx:latest`.
+func (o MicrovmSourcePtrOutput) OciRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MicrovmSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OciRef
+	}).(pulumi.StringPtrOutput)
+}
+
+type MicrovmUrl struct {
+	// Whether this is the default URL.
+	Default *bool `pulumi:"default"`
+	// The hostname, without a scheme.
+	Hostname *string `pulumi:"hostname"`
+	// The guest port the URL forwards to.
+	Port *int `pulumi:"port"`
+	// The URL status: `PENDING` or `ACTIVE`.
+	Status *string `pulumi:"status"`
+}
+
+// MicrovmUrlInput is an input type that accepts MicrovmUrlArgs and MicrovmUrlOutput values.
+// You can construct a concrete instance of `MicrovmUrlInput` via:
+//
+//	MicrovmUrlArgs{...}
+type MicrovmUrlInput interface {
+	pulumi.Input
+
+	ToMicrovmUrlOutput() MicrovmUrlOutput
+	ToMicrovmUrlOutputWithContext(context.Context) MicrovmUrlOutput
+}
+
+type MicrovmUrlArgs struct {
+	// Whether this is the default URL.
+	Default pulumi.BoolPtrInput `pulumi:"default"`
+	// The hostname, without a scheme.
+	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
+	// The guest port the URL forwards to.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// The URL status: `PENDING` or `ACTIVE`.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (MicrovmUrlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MicrovmUrl)(nil)).Elem()
+}
+
+func (i MicrovmUrlArgs) ToMicrovmUrlOutput() MicrovmUrlOutput {
+	return i.ToMicrovmUrlOutputWithContext(context.Background())
+}
+
+func (i MicrovmUrlArgs) ToMicrovmUrlOutputWithContext(ctx context.Context) MicrovmUrlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MicrovmUrlOutput)
+}
+
+// MicrovmUrlArrayInput is an input type that accepts MicrovmUrlArray and MicrovmUrlArrayOutput values.
+// You can construct a concrete instance of `MicrovmUrlArrayInput` via:
+//
+//	MicrovmUrlArray{ MicrovmUrlArgs{...} }
+type MicrovmUrlArrayInput interface {
+	pulumi.Input
+
+	ToMicrovmUrlArrayOutput() MicrovmUrlArrayOutput
+	ToMicrovmUrlArrayOutputWithContext(context.Context) MicrovmUrlArrayOutput
+}
+
+type MicrovmUrlArray []MicrovmUrlInput
+
+func (MicrovmUrlArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MicrovmUrl)(nil)).Elem()
+}
+
+func (i MicrovmUrlArray) ToMicrovmUrlArrayOutput() MicrovmUrlArrayOutput {
+	return i.ToMicrovmUrlArrayOutputWithContext(context.Background())
+}
+
+func (i MicrovmUrlArray) ToMicrovmUrlArrayOutputWithContext(ctx context.Context) MicrovmUrlArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MicrovmUrlArrayOutput)
+}
+
+type MicrovmUrlOutput struct{ *pulumi.OutputState }
+
+func (MicrovmUrlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MicrovmUrl)(nil)).Elem()
+}
+
+func (o MicrovmUrlOutput) ToMicrovmUrlOutput() MicrovmUrlOutput {
+	return o
+}
+
+func (o MicrovmUrlOutput) ToMicrovmUrlOutputWithContext(ctx context.Context) MicrovmUrlOutput {
+	return o
+}
+
+// Whether this is the default URL.
+func (o MicrovmUrlOutput) Default() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MicrovmUrl) *bool { return v.Default }).(pulumi.BoolPtrOutput)
+}
+
+// The hostname, without a scheme.
+func (o MicrovmUrlOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MicrovmUrl) *string { return v.Hostname }).(pulumi.StringPtrOutput)
+}
+
+// The guest port the URL forwards to.
+func (o MicrovmUrlOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MicrovmUrl) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// The URL status: `PENDING` or `ACTIVE`.
+func (o MicrovmUrlOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MicrovmUrl) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type MicrovmUrlArrayOutput struct{ *pulumi.OutputState }
+
+func (MicrovmUrlArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MicrovmUrl)(nil)).Elem()
+}
+
+func (o MicrovmUrlArrayOutput) ToMicrovmUrlArrayOutput() MicrovmUrlArrayOutput {
+	return o
+}
+
+func (o MicrovmUrlArrayOutput) ToMicrovmUrlArrayOutputWithContext(ctx context.Context) MicrovmUrlArrayOutput {
+	return o
+}
+
+func (o MicrovmUrlArrayOutput) Index(i pulumi.IntInput) MicrovmUrlOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MicrovmUrl {
+		return vs[0].([]MicrovmUrl)[vs[1].(int)]
+	}).(MicrovmUrlOutput)
+}
+
 type MonitorAlertAlerts struct {
 	// List of email addresses to sent notifications to
 	Emails []string                  `pulumi:"emails"`
@@ -78862,799 +79588,6 @@ func (o GetAppSpecServiceLogDestinationOpenSearchPtrOutput) IndexName() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
-type GetAppSpecServiceLogDestinationOpenSearchBasicAuth struct {
-	// Password for user defined in User. Is required when endpoint is set. Cannot be set if using a DigitalOcean DBaaS OpenSearch cluster.
-	Password *string `pulumi:"password"`
-	// Username to authenticate with. Only required when endpoint is set. Defaults to doadmin when clusterName is set.
-	User *string `pulumi:"user"`
-}
-
-// GetAppSpecServiceLogDestinationOpenSearchBasicAuthInput is an input type that accepts GetAppSpecServiceLogDestinationOpenSearchBasicAuthArgs and GetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput values.
-// You can construct a concrete instance of `GetAppSpecServiceLogDestinationOpenSearchBasicAuthInput` via:
-//
-//	GetAppSpecServiceLogDestinationOpenSearchBasicAuthArgs{...}
-type GetAppSpecServiceLogDestinationOpenSearchBasicAuthInput interface {
-	pulumi.Input
-
-	ToGetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput() GetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput
-	ToGetAppSpecServiceLogDestinationOpenSearchBasicAuthOutputWithContext(context.Context) GetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput
-}
-
-type GetAppSpecServiceLogDestinationOpenSearchBasicAuthArgs struct {
-	// Password for user defined in User. Is required when endpoint is set. Cannot be set if using a DigitalOcean DBaaS OpenSearch cluster.
-	Password pulumi.StringPtrInput `pulumi:"password"`
-	// Username to authenticate with. Only required when endpoint is set. Defaults to doadmin when clusterName is set.
-	User pulumi.StringPtrInput `pulumi:"user"`
-}
-
-func (GetAppSpecServiceLogDestinationOpenSearchBasicAuthArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppSpecServiceLogDestinationOpenSearchBasicAuth)(nil)).Elem()
-}
-
-func (i GetAppSpecServiceLogDestinationOpenSearchBasicAuthArgs) ToGetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput() GetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput {
-	return i.ToGetAppSpecServiceLogDestinationOpenSearchBasicAuthOutputWithContext(context.Background())
-}
-
-func (i GetAppSpecServiceLogDestinationOpenSearchBasicAuthArgs) ToGetAppSpecServiceLogDestinationOpenSearchBasicAuthOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput)
-}
-
-func (i GetAppSpecServiceLogDestinationOpenSearchBasicAuthArgs) ToGetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput() GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput {
-	return i.ToGetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutputWithContext(context.Background())
-}
-
-func (i GetAppSpecServiceLogDestinationOpenSearchBasicAuthArgs) ToGetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput).ToGetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutputWithContext(ctx)
-}
-
-// GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrInput is an input type that accepts GetAppSpecServiceLogDestinationOpenSearchBasicAuthArgs, GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtr and GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput values.
-// You can construct a concrete instance of `GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrInput` via:
-//
-//	        GetAppSpecServiceLogDestinationOpenSearchBasicAuthArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrInput interface {
-	pulumi.Input
-
-	ToGetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput() GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput
-	ToGetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutputWithContext(context.Context) GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput
-}
-
-type getAppSpecServiceLogDestinationOpenSearchBasicAuthPtrType GetAppSpecServiceLogDestinationOpenSearchBasicAuthArgs
-
-func GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtr(v *GetAppSpecServiceLogDestinationOpenSearchBasicAuthArgs) GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrInput {
-	return (*getAppSpecServiceLogDestinationOpenSearchBasicAuthPtrType)(v)
-}
-
-func (*getAppSpecServiceLogDestinationOpenSearchBasicAuthPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAppSpecServiceLogDestinationOpenSearchBasicAuth)(nil)).Elem()
-}
-
-func (i *getAppSpecServiceLogDestinationOpenSearchBasicAuthPtrType) ToGetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput() GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput {
-	return i.ToGetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutputWithContext(context.Background())
-}
-
-func (i *getAppSpecServiceLogDestinationOpenSearchBasicAuthPtrType) ToGetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput)
-}
-
-type GetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput struct{ *pulumi.OutputState }
-
-func (GetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppSpecServiceLogDestinationOpenSearchBasicAuth)(nil)).Elem()
-}
-
-func (o GetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput) ToGetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput() GetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput {
-	return o
-}
-
-func (o GetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput) ToGetAppSpecServiceLogDestinationOpenSearchBasicAuthOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput {
-	return o
-}
-
-func (o GetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput) ToGetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput() GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput {
-	return o.ToGetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutputWithContext(context.Background())
-}
-
-func (o GetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput) ToGetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecServiceLogDestinationOpenSearchBasicAuth) *GetAppSpecServiceLogDestinationOpenSearchBasicAuth {
-		return &v
-	}).(GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput)
-}
-
-// Password for user defined in User. Is required when endpoint is set. Cannot be set if using a DigitalOcean DBaaS OpenSearch cluster.
-func (o GetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput) Password() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetAppSpecServiceLogDestinationOpenSearchBasicAuth) *string { return v.Password }).(pulumi.StringPtrOutput)
-}
-
-// Username to authenticate with. Only required when endpoint is set. Defaults to doadmin when clusterName is set.
-func (o GetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput) User() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetAppSpecServiceLogDestinationOpenSearchBasicAuth) *string { return v.User }).(pulumi.StringPtrOutput)
-}
-
-type GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput struct{ *pulumi.OutputState }
-
-func (GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAppSpecServiceLogDestinationOpenSearchBasicAuth)(nil)).Elem()
-}
-
-func (o GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput) ToGetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput() GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput {
-	return o
-}
-
-func (o GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput) ToGetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput {
-	return o
-}
-
-func (o GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput) Elem() GetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput {
-	return o.ApplyT(func(v *GetAppSpecServiceLogDestinationOpenSearchBasicAuth) GetAppSpecServiceLogDestinationOpenSearchBasicAuth {
-		if v != nil {
-			return *v
-		}
-		var ret GetAppSpecServiceLogDestinationOpenSearchBasicAuth
-		return ret
-	}).(GetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput)
-}
-
-// Password for user defined in User. Is required when endpoint is set. Cannot be set if using a DigitalOcean DBaaS OpenSearch cluster.
-func (o GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput) Password() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetAppSpecServiceLogDestinationOpenSearchBasicAuth) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Password
-	}).(pulumi.StringPtrOutput)
-}
-
-// Username to authenticate with. Only required when endpoint is set. Defaults to doadmin when clusterName is set.
-func (o GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput) User() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetAppSpecServiceLogDestinationOpenSearchBasicAuth) *string {
-		if v == nil {
-			return nil
-		}
-		return v.User
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetAppSpecServiceLogDestinationPapertrail struct {
-	// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
-	Endpoint string `pulumi:"endpoint"`
-}
-
-// GetAppSpecServiceLogDestinationPapertrailInput is an input type that accepts GetAppSpecServiceLogDestinationPapertrailArgs and GetAppSpecServiceLogDestinationPapertrailOutput values.
-// You can construct a concrete instance of `GetAppSpecServiceLogDestinationPapertrailInput` via:
-//
-//	GetAppSpecServiceLogDestinationPapertrailArgs{...}
-type GetAppSpecServiceLogDestinationPapertrailInput interface {
-	pulumi.Input
-
-	ToGetAppSpecServiceLogDestinationPapertrailOutput() GetAppSpecServiceLogDestinationPapertrailOutput
-	ToGetAppSpecServiceLogDestinationPapertrailOutputWithContext(context.Context) GetAppSpecServiceLogDestinationPapertrailOutput
-}
-
-type GetAppSpecServiceLogDestinationPapertrailArgs struct {
-	// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
-	Endpoint pulumi.StringInput `pulumi:"endpoint"`
-}
-
-func (GetAppSpecServiceLogDestinationPapertrailArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppSpecServiceLogDestinationPapertrail)(nil)).Elem()
-}
-
-func (i GetAppSpecServiceLogDestinationPapertrailArgs) ToGetAppSpecServiceLogDestinationPapertrailOutput() GetAppSpecServiceLogDestinationPapertrailOutput {
-	return i.ToGetAppSpecServiceLogDestinationPapertrailOutputWithContext(context.Background())
-}
-
-func (i GetAppSpecServiceLogDestinationPapertrailArgs) ToGetAppSpecServiceLogDestinationPapertrailOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationPapertrailOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceLogDestinationPapertrailOutput)
-}
-
-func (i GetAppSpecServiceLogDestinationPapertrailArgs) ToGetAppSpecServiceLogDestinationPapertrailPtrOutput() GetAppSpecServiceLogDestinationPapertrailPtrOutput {
-	return i.ToGetAppSpecServiceLogDestinationPapertrailPtrOutputWithContext(context.Background())
-}
-
-func (i GetAppSpecServiceLogDestinationPapertrailArgs) ToGetAppSpecServiceLogDestinationPapertrailPtrOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationPapertrailPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceLogDestinationPapertrailOutput).ToGetAppSpecServiceLogDestinationPapertrailPtrOutputWithContext(ctx)
-}
-
-// GetAppSpecServiceLogDestinationPapertrailPtrInput is an input type that accepts GetAppSpecServiceLogDestinationPapertrailArgs, GetAppSpecServiceLogDestinationPapertrailPtr and GetAppSpecServiceLogDestinationPapertrailPtrOutput values.
-// You can construct a concrete instance of `GetAppSpecServiceLogDestinationPapertrailPtrInput` via:
-//
-//	        GetAppSpecServiceLogDestinationPapertrailArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetAppSpecServiceLogDestinationPapertrailPtrInput interface {
-	pulumi.Input
-
-	ToGetAppSpecServiceLogDestinationPapertrailPtrOutput() GetAppSpecServiceLogDestinationPapertrailPtrOutput
-	ToGetAppSpecServiceLogDestinationPapertrailPtrOutputWithContext(context.Context) GetAppSpecServiceLogDestinationPapertrailPtrOutput
-}
-
-type getAppSpecServiceLogDestinationPapertrailPtrType GetAppSpecServiceLogDestinationPapertrailArgs
-
-func GetAppSpecServiceLogDestinationPapertrailPtr(v *GetAppSpecServiceLogDestinationPapertrailArgs) GetAppSpecServiceLogDestinationPapertrailPtrInput {
-	return (*getAppSpecServiceLogDestinationPapertrailPtrType)(v)
-}
-
-func (*getAppSpecServiceLogDestinationPapertrailPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAppSpecServiceLogDestinationPapertrail)(nil)).Elem()
-}
-
-func (i *getAppSpecServiceLogDestinationPapertrailPtrType) ToGetAppSpecServiceLogDestinationPapertrailPtrOutput() GetAppSpecServiceLogDestinationPapertrailPtrOutput {
-	return i.ToGetAppSpecServiceLogDestinationPapertrailPtrOutputWithContext(context.Background())
-}
-
-func (i *getAppSpecServiceLogDestinationPapertrailPtrType) ToGetAppSpecServiceLogDestinationPapertrailPtrOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationPapertrailPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceLogDestinationPapertrailPtrOutput)
-}
-
-type GetAppSpecServiceLogDestinationPapertrailOutput struct{ *pulumi.OutputState }
-
-func (GetAppSpecServiceLogDestinationPapertrailOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppSpecServiceLogDestinationPapertrail)(nil)).Elem()
-}
-
-func (o GetAppSpecServiceLogDestinationPapertrailOutput) ToGetAppSpecServiceLogDestinationPapertrailOutput() GetAppSpecServiceLogDestinationPapertrailOutput {
-	return o
-}
-
-func (o GetAppSpecServiceLogDestinationPapertrailOutput) ToGetAppSpecServiceLogDestinationPapertrailOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationPapertrailOutput {
-	return o
-}
-
-func (o GetAppSpecServiceLogDestinationPapertrailOutput) ToGetAppSpecServiceLogDestinationPapertrailPtrOutput() GetAppSpecServiceLogDestinationPapertrailPtrOutput {
-	return o.ToGetAppSpecServiceLogDestinationPapertrailPtrOutputWithContext(context.Background())
-}
-
-func (o GetAppSpecServiceLogDestinationPapertrailOutput) ToGetAppSpecServiceLogDestinationPapertrailPtrOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationPapertrailPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecServiceLogDestinationPapertrail) *GetAppSpecServiceLogDestinationPapertrail {
-		return &v
-	}).(GetAppSpecServiceLogDestinationPapertrailPtrOutput)
-}
-
-// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
-func (o GetAppSpecServiceLogDestinationPapertrailOutput) Endpoint() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAppSpecServiceLogDestinationPapertrail) string { return v.Endpoint }).(pulumi.StringOutput)
-}
-
-type GetAppSpecServiceLogDestinationPapertrailPtrOutput struct{ *pulumi.OutputState }
-
-func (GetAppSpecServiceLogDestinationPapertrailPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAppSpecServiceLogDestinationPapertrail)(nil)).Elem()
-}
-
-func (o GetAppSpecServiceLogDestinationPapertrailPtrOutput) ToGetAppSpecServiceLogDestinationPapertrailPtrOutput() GetAppSpecServiceLogDestinationPapertrailPtrOutput {
-	return o
-}
-
-func (o GetAppSpecServiceLogDestinationPapertrailPtrOutput) ToGetAppSpecServiceLogDestinationPapertrailPtrOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationPapertrailPtrOutput {
-	return o
-}
-
-func (o GetAppSpecServiceLogDestinationPapertrailPtrOutput) Elem() GetAppSpecServiceLogDestinationPapertrailOutput {
-	return o.ApplyT(func(v *GetAppSpecServiceLogDestinationPapertrail) GetAppSpecServiceLogDestinationPapertrail {
-		if v != nil {
-			return *v
-		}
-		var ret GetAppSpecServiceLogDestinationPapertrail
-		return ret
-	}).(GetAppSpecServiceLogDestinationPapertrailOutput)
-}
-
-// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
-func (o GetAppSpecServiceLogDestinationPapertrailPtrOutput) Endpoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetAppSpecServiceLogDestinationPapertrail) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Endpoint
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetAppSpecServiceRoute struct {
-	// Paths must start with `/` and must be unique within the app.
-	Path *string `pulumi:"path"`
-	// An optional flag to preserve the path that is forwarded to the backend service.
-	PreservePathPrefix *bool `pulumi:"preservePathPrefix"`
-}
-
-// GetAppSpecServiceRouteInput is an input type that accepts GetAppSpecServiceRouteArgs and GetAppSpecServiceRouteOutput values.
-// You can construct a concrete instance of `GetAppSpecServiceRouteInput` via:
-//
-//	GetAppSpecServiceRouteArgs{...}
-type GetAppSpecServiceRouteInput interface {
-	pulumi.Input
-
-	ToGetAppSpecServiceRouteOutput() GetAppSpecServiceRouteOutput
-	ToGetAppSpecServiceRouteOutputWithContext(context.Context) GetAppSpecServiceRouteOutput
-}
-
-type GetAppSpecServiceRouteArgs struct {
-	// Paths must start with `/` and must be unique within the app.
-	Path pulumi.StringPtrInput `pulumi:"path"`
-	// An optional flag to preserve the path that is forwarded to the backend service.
-	PreservePathPrefix pulumi.BoolPtrInput `pulumi:"preservePathPrefix"`
-}
-
-func (GetAppSpecServiceRouteArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppSpecServiceRoute)(nil)).Elem()
-}
-
-func (i GetAppSpecServiceRouteArgs) ToGetAppSpecServiceRouteOutput() GetAppSpecServiceRouteOutput {
-	return i.ToGetAppSpecServiceRouteOutputWithContext(context.Background())
-}
-
-func (i GetAppSpecServiceRouteArgs) ToGetAppSpecServiceRouteOutputWithContext(ctx context.Context) GetAppSpecServiceRouteOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceRouteOutput)
-}
-
-// GetAppSpecServiceRouteArrayInput is an input type that accepts GetAppSpecServiceRouteArray and GetAppSpecServiceRouteArrayOutput values.
-// You can construct a concrete instance of `GetAppSpecServiceRouteArrayInput` via:
-//
-//	GetAppSpecServiceRouteArray{ GetAppSpecServiceRouteArgs{...} }
-type GetAppSpecServiceRouteArrayInput interface {
-	pulumi.Input
-
-	ToGetAppSpecServiceRouteArrayOutput() GetAppSpecServiceRouteArrayOutput
-	ToGetAppSpecServiceRouteArrayOutputWithContext(context.Context) GetAppSpecServiceRouteArrayOutput
-}
-
-type GetAppSpecServiceRouteArray []GetAppSpecServiceRouteInput
-
-func (GetAppSpecServiceRouteArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetAppSpecServiceRoute)(nil)).Elem()
-}
-
-func (i GetAppSpecServiceRouteArray) ToGetAppSpecServiceRouteArrayOutput() GetAppSpecServiceRouteArrayOutput {
-	return i.ToGetAppSpecServiceRouteArrayOutputWithContext(context.Background())
-}
-
-func (i GetAppSpecServiceRouteArray) ToGetAppSpecServiceRouteArrayOutputWithContext(ctx context.Context) GetAppSpecServiceRouteArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceRouteArrayOutput)
-}
-
-type GetAppSpecServiceRouteOutput struct{ *pulumi.OutputState }
-
-func (GetAppSpecServiceRouteOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppSpecServiceRoute)(nil)).Elem()
-}
-
-func (o GetAppSpecServiceRouteOutput) ToGetAppSpecServiceRouteOutput() GetAppSpecServiceRouteOutput {
-	return o
-}
-
-func (o GetAppSpecServiceRouteOutput) ToGetAppSpecServiceRouteOutputWithContext(ctx context.Context) GetAppSpecServiceRouteOutput {
-	return o
-}
-
-// Paths must start with `/` and must be unique within the app.
-func (o GetAppSpecServiceRouteOutput) Path() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetAppSpecServiceRoute) *string { return v.Path }).(pulumi.StringPtrOutput)
-}
-
-// An optional flag to preserve the path that is forwarded to the backend service.
-func (o GetAppSpecServiceRouteOutput) PreservePathPrefix() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetAppSpecServiceRoute) *bool { return v.PreservePathPrefix }).(pulumi.BoolPtrOutput)
-}
-
-type GetAppSpecServiceRouteArrayOutput struct{ *pulumi.OutputState }
-
-func (GetAppSpecServiceRouteArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetAppSpecServiceRoute)(nil)).Elem()
-}
-
-func (o GetAppSpecServiceRouteArrayOutput) ToGetAppSpecServiceRouteArrayOutput() GetAppSpecServiceRouteArrayOutput {
-	return o
-}
-
-func (o GetAppSpecServiceRouteArrayOutput) ToGetAppSpecServiceRouteArrayOutputWithContext(ctx context.Context) GetAppSpecServiceRouteArrayOutput {
-	return o
-}
-
-func (o GetAppSpecServiceRouteArrayOutput) Index(i pulumi.IntInput) GetAppSpecServiceRouteOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppSpecServiceRoute {
-		return vs[0].([]GetAppSpecServiceRoute)[vs[1].(int)]
-	}).(GetAppSpecServiceRouteOutput)
-}
-
-type GetAppSpecServiceTermination struct {
-	// The number of seconds to wait between selecting a container instance for termination and issuing the TERM signal. Selecting a container instance for termination begins an asynchronous drain of new requests on upstream load-balancers. Default: 15 seconds, Minimum 1, Maximum 110.
-	DrainSeconds *int `pulumi:"drainSeconds"`
-	// The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
-	GracePeriodSeconds *int `pulumi:"gracePeriodSeconds"`
-}
-
-// GetAppSpecServiceTerminationInput is an input type that accepts GetAppSpecServiceTerminationArgs and GetAppSpecServiceTerminationOutput values.
-// You can construct a concrete instance of `GetAppSpecServiceTerminationInput` via:
-//
-//	GetAppSpecServiceTerminationArgs{...}
-type GetAppSpecServiceTerminationInput interface {
-	pulumi.Input
-
-	ToGetAppSpecServiceTerminationOutput() GetAppSpecServiceTerminationOutput
-	ToGetAppSpecServiceTerminationOutputWithContext(context.Context) GetAppSpecServiceTerminationOutput
-}
-
-type GetAppSpecServiceTerminationArgs struct {
-	// The number of seconds to wait between selecting a container instance for termination and issuing the TERM signal. Selecting a container instance for termination begins an asynchronous drain of new requests on upstream load-balancers. Default: 15 seconds, Minimum 1, Maximum 110.
-	DrainSeconds pulumi.IntPtrInput `pulumi:"drainSeconds"`
-	// The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
-	GracePeriodSeconds pulumi.IntPtrInput `pulumi:"gracePeriodSeconds"`
-}
-
-func (GetAppSpecServiceTerminationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppSpecServiceTermination)(nil)).Elem()
-}
-
-func (i GetAppSpecServiceTerminationArgs) ToGetAppSpecServiceTerminationOutput() GetAppSpecServiceTerminationOutput {
-	return i.ToGetAppSpecServiceTerminationOutputWithContext(context.Background())
-}
-
-func (i GetAppSpecServiceTerminationArgs) ToGetAppSpecServiceTerminationOutputWithContext(ctx context.Context) GetAppSpecServiceTerminationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceTerminationOutput)
-}
-
-func (i GetAppSpecServiceTerminationArgs) ToGetAppSpecServiceTerminationPtrOutput() GetAppSpecServiceTerminationPtrOutput {
-	return i.ToGetAppSpecServiceTerminationPtrOutputWithContext(context.Background())
-}
-
-func (i GetAppSpecServiceTerminationArgs) ToGetAppSpecServiceTerminationPtrOutputWithContext(ctx context.Context) GetAppSpecServiceTerminationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceTerminationOutput).ToGetAppSpecServiceTerminationPtrOutputWithContext(ctx)
-}
-
-// GetAppSpecServiceTerminationPtrInput is an input type that accepts GetAppSpecServiceTerminationArgs, GetAppSpecServiceTerminationPtr and GetAppSpecServiceTerminationPtrOutput values.
-// You can construct a concrete instance of `GetAppSpecServiceTerminationPtrInput` via:
-//
-//	        GetAppSpecServiceTerminationArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetAppSpecServiceTerminationPtrInput interface {
-	pulumi.Input
-
-	ToGetAppSpecServiceTerminationPtrOutput() GetAppSpecServiceTerminationPtrOutput
-	ToGetAppSpecServiceTerminationPtrOutputWithContext(context.Context) GetAppSpecServiceTerminationPtrOutput
-}
-
-type getAppSpecServiceTerminationPtrType GetAppSpecServiceTerminationArgs
-
-func GetAppSpecServiceTerminationPtr(v *GetAppSpecServiceTerminationArgs) GetAppSpecServiceTerminationPtrInput {
-	return (*getAppSpecServiceTerminationPtrType)(v)
-}
-
-func (*getAppSpecServiceTerminationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAppSpecServiceTermination)(nil)).Elem()
-}
-
-func (i *getAppSpecServiceTerminationPtrType) ToGetAppSpecServiceTerminationPtrOutput() GetAppSpecServiceTerminationPtrOutput {
-	return i.ToGetAppSpecServiceTerminationPtrOutputWithContext(context.Background())
-}
-
-func (i *getAppSpecServiceTerminationPtrType) ToGetAppSpecServiceTerminationPtrOutputWithContext(ctx context.Context) GetAppSpecServiceTerminationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceTerminationPtrOutput)
-}
-
-type GetAppSpecServiceTerminationOutput struct{ *pulumi.OutputState }
-
-func (GetAppSpecServiceTerminationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppSpecServiceTermination)(nil)).Elem()
-}
-
-func (o GetAppSpecServiceTerminationOutput) ToGetAppSpecServiceTerminationOutput() GetAppSpecServiceTerminationOutput {
-	return o
-}
-
-func (o GetAppSpecServiceTerminationOutput) ToGetAppSpecServiceTerminationOutputWithContext(ctx context.Context) GetAppSpecServiceTerminationOutput {
-	return o
-}
-
-func (o GetAppSpecServiceTerminationOutput) ToGetAppSpecServiceTerminationPtrOutput() GetAppSpecServiceTerminationPtrOutput {
-	return o.ToGetAppSpecServiceTerminationPtrOutputWithContext(context.Background())
-}
-
-func (o GetAppSpecServiceTerminationOutput) ToGetAppSpecServiceTerminationPtrOutputWithContext(ctx context.Context) GetAppSpecServiceTerminationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecServiceTermination) *GetAppSpecServiceTermination {
-		return &v
-	}).(GetAppSpecServiceTerminationPtrOutput)
-}
-
-// The number of seconds to wait between selecting a container instance for termination and issuing the TERM signal. Selecting a container instance for termination begins an asynchronous drain of new requests on upstream load-balancers. Default: 15 seconds, Minimum 1, Maximum 110.
-func (o GetAppSpecServiceTerminationOutput) DrainSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetAppSpecServiceTermination) *int { return v.DrainSeconds }).(pulumi.IntPtrOutput)
-}
-
-// The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
-func (o GetAppSpecServiceTerminationOutput) GracePeriodSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetAppSpecServiceTermination) *int { return v.GracePeriodSeconds }).(pulumi.IntPtrOutput)
-}
-
-type GetAppSpecServiceTerminationPtrOutput struct{ *pulumi.OutputState }
-
-func (GetAppSpecServiceTerminationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAppSpecServiceTermination)(nil)).Elem()
-}
-
-func (o GetAppSpecServiceTerminationPtrOutput) ToGetAppSpecServiceTerminationPtrOutput() GetAppSpecServiceTerminationPtrOutput {
-	return o
-}
-
-func (o GetAppSpecServiceTerminationPtrOutput) ToGetAppSpecServiceTerminationPtrOutputWithContext(ctx context.Context) GetAppSpecServiceTerminationPtrOutput {
-	return o
-}
-
-func (o GetAppSpecServiceTerminationPtrOutput) Elem() GetAppSpecServiceTerminationOutput {
-	return o.ApplyT(func(v *GetAppSpecServiceTermination) GetAppSpecServiceTermination {
-		if v != nil {
-			return *v
-		}
-		var ret GetAppSpecServiceTermination
-		return ret
-	}).(GetAppSpecServiceTerminationOutput)
-}
-
-// The number of seconds to wait between selecting a container instance for termination and issuing the TERM signal. Selecting a container instance for termination begins an asynchronous drain of new requests on upstream load-balancers. Default: 15 seconds, Minimum 1, Maximum 110.
-func (o GetAppSpecServiceTerminationPtrOutput) DrainSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetAppSpecServiceTermination) *int {
-		if v == nil {
-			return nil
-		}
-		return v.DrainSeconds
-	}).(pulumi.IntPtrOutput)
-}
-
-// The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
-func (o GetAppSpecServiceTerminationPtrOutput) GracePeriodSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetAppSpecServiceTermination) *int {
-		if v == nil {
-			return nil
-		}
-		return v.GracePeriodSeconds
-	}).(pulumi.IntPtrOutput)
-}
-
-type GetAppSpecStaticSite struct {
-	// A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set. To read your repo, App Platform must be authorized to access your Bitbucket account. Go to this URL to link App Platform to your Bitbucket account: `https://cloud.digitalocean.com/apps/bitbucket/install`.
-	Bitbucket *GetAppSpecStaticSiteBitbucket `pulumi:"bitbucket"`
-	// An optional build command to run while building this component from source.
-	BuildCommand *string `pulumi:"buildCommand"`
-	// The name of the document to use as the fallback for any requests to documents that are not found when serving this static site.
-	CatchallDocument *string `pulumi:"catchallDocument"`
-	// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
-	//
-	// Deprecated: Service level CORS rules are deprecated in favor of ingresses
-	Cors *GetAppSpecStaticSiteCors `pulumi:"cors"`
-	// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
-	DockerfilePath *string `pulumi:"dockerfilePath"`
-	// An environment slug describing the type of this app.
-	EnvironmentSlug *string `pulumi:"environmentSlug"`
-	// Describes an environment variable made available to an app competent.
-	Envs []GetAppSpecStaticSiteEnv `pulumi:"envs"`
-	// The name of the error document to use when serving this static site.
-	ErrorDocument *string `pulumi:"errorDocument"`
-	// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
-	Git *GetAppSpecStaticSiteGit `pulumi:"git"`
-	// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
-	Github *GetAppSpecStaticSiteGithub `pulumi:"github"`
-	// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
-	Gitlab *GetAppSpecStaticSiteGitlab `pulumi:"gitlab"`
-	// The name of the index document to use when serving this static site.
-	IndexDocument *string `pulumi:"indexDocument"`
-	// The name of the component.
-	Name string `pulumi:"name"`
-	// An optional path to where the built assets will be located, relative to the build context. If not set, App Platform will automatically scan for these directory names: `_static`, `dist`, `public`.
-	OutputDir *string `pulumi:"outputDir"`
-	// Deprecated: Service level routes are deprecated in favor of ingresses
-	Routes []GetAppSpecStaticSiteRoute `pulumi:"routes"`
-	// An optional path to the working directory to use for the build.
-	SourceDir *string `pulumi:"sourceDir"`
-}
-
-// GetAppSpecStaticSiteInput is an input type that accepts GetAppSpecStaticSiteArgs and GetAppSpecStaticSiteOutput values.
-// You can construct a concrete instance of `GetAppSpecStaticSiteInput` via:
-//
-//	GetAppSpecStaticSiteArgs{...}
-type GetAppSpecStaticSiteInput interface {
-	pulumi.Input
-
-	ToGetAppSpecStaticSiteOutput() GetAppSpecStaticSiteOutput
-	ToGetAppSpecStaticSiteOutputWithContext(context.Context) GetAppSpecStaticSiteOutput
-}
-
-type GetAppSpecStaticSiteArgs struct {
-	// A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set. To read your repo, App Platform must be authorized to access your Bitbucket account. Go to this URL to link App Platform to your Bitbucket account: `https://cloud.digitalocean.com/apps/bitbucket/install`.
-	Bitbucket GetAppSpecStaticSiteBitbucketPtrInput `pulumi:"bitbucket"`
-	// An optional build command to run while building this component from source.
-	BuildCommand pulumi.StringPtrInput `pulumi:"buildCommand"`
-	// The name of the document to use as the fallback for any requests to documents that are not found when serving this static site.
-	CatchallDocument pulumi.StringPtrInput `pulumi:"catchallDocument"`
-	// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
-	//
-	// Deprecated: Service level CORS rules are deprecated in favor of ingresses
-	Cors GetAppSpecStaticSiteCorsPtrInput `pulumi:"cors"`
-	// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
-	DockerfilePath pulumi.StringPtrInput `pulumi:"dockerfilePath"`
-	// An environment slug describing the type of this app.
-	EnvironmentSlug pulumi.StringPtrInput `pulumi:"environmentSlug"`
-	// Describes an environment variable made available to an app competent.
-	Envs GetAppSpecStaticSiteEnvArrayInput `pulumi:"envs"`
-	// The name of the error document to use when serving this static site.
-	ErrorDocument pulumi.StringPtrInput `pulumi:"errorDocument"`
-	// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
-	Git GetAppSpecStaticSiteGitPtrInput `pulumi:"git"`
-	// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
-	Github GetAppSpecStaticSiteGithubPtrInput `pulumi:"github"`
-	// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
-	Gitlab GetAppSpecStaticSiteGitlabPtrInput `pulumi:"gitlab"`
-	// The name of the index document to use when serving this static site.
-	IndexDocument pulumi.StringPtrInput `pulumi:"indexDocument"`
-	// The name of the component.
-	Name pulumi.StringInput `pulumi:"name"`
-	// An optional path to where the built assets will be located, relative to the build context. If not set, App Platform will automatically scan for these directory names: `_static`, `dist`, `public`.
-	OutputDir pulumi.StringPtrInput `pulumi:"outputDir"`
-	// Deprecated: Service level routes are deprecated in favor of ingresses
-	Routes GetAppSpecStaticSiteRouteArrayInput `pulumi:"routes"`
-	// An optional path to the working directory to use for the build.
-	SourceDir pulumi.StringPtrInput `pulumi:"sourceDir"`
-}
-
-func (GetAppSpecStaticSiteArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppSpecStaticSite)(nil)).Elem()
-}
-
-func (i GetAppSpecStaticSiteArgs) ToGetAppSpecStaticSiteOutput() GetAppSpecStaticSiteOutput {
-	return i.ToGetAppSpecStaticSiteOutputWithContext(context.Background())
-}
-
-func (i GetAppSpecStaticSiteArgs) ToGetAppSpecStaticSiteOutputWithContext(ctx context.Context) GetAppSpecStaticSiteOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecStaticSiteOutput)
-}
-
-// GetAppSpecStaticSiteArrayInput is an input type that accepts GetAppSpecStaticSiteArray and GetAppSpecStaticSiteArrayOutput values.
-// You can construct a concrete instance of `GetAppSpecStaticSiteArrayInput` via:
-//
-//	GetAppSpecStaticSiteArray{ GetAppSpecStaticSiteArgs{...} }
-type GetAppSpecStaticSiteArrayInput interface {
-	pulumi.Input
-
-	ToGetAppSpecStaticSiteArrayOutput() GetAppSpecStaticSiteArrayOutput
-	ToGetAppSpecStaticSiteArrayOutputWithContext(context.Context) GetAppSpecStaticSiteArrayOutput
-}
-
-type GetAppSpecStaticSiteArray []GetAppSpecStaticSiteInput
-
-func (GetAppSpecStaticSiteArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetAppSpecStaticSite)(nil)).Elem()
-}
-
-func (i GetAppSpecStaticSiteArray) ToGetAppSpecStaticSiteArrayOutput() GetAppSpecStaticSiteArrayOutput {
-	return i.ToGetAppSpecStaticSiteArrayOutputWithContext(context.Background())
-}
-
-func (i GetAppSpecStaticSiteArray) ToGetAppSpecStaticSiteArrayOutputWithContext(ctx context.Context) GetAppSpecStaticSiteArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecStaticSiteArrayOutput)
-}
-
-type GetAppSpecStaticSiteOutput struct{ *pulumi.OutputState }
-
-func (GetAppSpecStaticSiteOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppSpecStaticSite)(nil)).Elem()
-}
-
-func (o GetAppSpecStaticSiteOutput) ToGetAppSpecStaticSiteOutput() GetAppSpecStaticSiteOutput {
-	return o
-}
-
-func (o GetAppSpecStaticSiteOutput) ToGetAppSpecStaticSiteOutputWithContext(ctx context.Context) GetAppSpecStaticSiteOutput {
-	return o
-}
-
-// A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set. To read your repo, App Platform must be authorized to access your Bitbucket account. Go to this URL to link App Platform to your Bitbucket account: `https://cloud.digitalocean.com/apps/bitbucket/install`.
-func (o GetAppSpecStaticSiteOutput) Bitbucket() GetAppSpecStaticSiteBitbucketPtrOutput {
-	return o.ApplyT(func(v GetAppSpecStaticSite) *GetAppSpecStaticSiteBitbucket { return v.Bitbucket }).(GetAppSpecStaticSiteBitbucketPtrOutput)
-}
-
-// An optional build command to run while building this component from source.
-func (o GetAppSpecStaticSiteOutput) BuildCommand() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetAppSpecStaticSite) *string { return v.BuildCommand }).(pulumi.StringPtrOutput)
-}
-
-// The name of the document to use as the fallback for any requests to documents that are not found when serving this static site.
-func (o GetAppSpecStaticSiteOutput) CatchallDocument() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetAppSpecStaticSite) *string { return v.CatchallDocument }).(pulumi.StringPtrOutput)
-}
-
-// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
-//
-// Deprecated: Service level CORS rules are deprecated in favor of ingresses
-func (o GetAppSpecStaticSiteOutput) Cors() GetAppSpecStaticSiteCorsPtrOutput {
-	return o.ApplyT(func(v GetAppSpecStaticSite) *GetAppSpecStaticSiteCors { return v.Cors }).(GetAppSpecStaticSiteCorsPtrOutput)
-}
-
-// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
-func (o GetAppSpecStaticSiteOutput) DockerfilePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetAppSpecStaticSite) *string { return v.DockerfilePath }).(pulumi.StringPtrOutput)
-}
-
-// An environment slug describing the type of this app.
-func (o GetAppSpecStaticSiteOutput) EnvironmentSlug() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetAppSpecStaticSite) *string { return v.EnvironmentSlug }).(pulumi.StringPtrOutput)
-}
-
-// Describes an environment variable made available to an app competent.
-func (o GetAppSpecStaticSiteOutput) Envs() GetAppSpecStaticSiteEnvArrayOutput {
-	return o.ApplyT(func(v GetAppSpecStaticSite) []GetAppSpecStaticSiteEnv { return v.Envs }).(GetAppSpecStaticSiteEnvArrayOutput)
-}
-
-// The name of the error document to use when serving this static site.
-func (o GetAppSpecStaticSiteOutput) ErrorDocument() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetAppSpecStaticSite) *string { return v.ErrorDocument }).(pulumi.StringPtrOutput)
-}
-
-// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
-func (o GetAppSpecStaticSiteOutput) Git() GetAppSpecStaticSiteGitPtrOutput {
-	return o.ApplyT(func(v GetAppSpecStaticSite) *GetAppSpecStaticSiteGit { return v.Git }).(GetAppSpecStaticSiteGitPtrOutput)
-}
-
-// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
-func (o GetAppSpecStaticSiteOutput) Github() GetAppSpecStaticSiteGithubPtrOutput {
-	return o.ApplyT(func(v GetAppSpecStaticSite) *GetAppSpecStaticSiteGithub { return v.Github }).(GetAppSpecStaticSiteGithubPtrOutput)
-}
-
-// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
-func (o GetAppSpecStaticSiteOutput) Gitlab() GetAppSpecStaticSiteGitlabPtrOutput {
-	return o.ApplyT(func(v GetAppSpecStaticSite) *GetAppSpecStaticSiteGitlab { return v.Gitlab }).(GetAppSpecStaticSiteGitlabPtrOutput)
-}
-
-// The name of the index document to use when serving this static site.
-func (o GetAppSpecStaticSiteOutput) IndexDocument() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetAppSpecStaticSite) *string { return v.IndexDocument }).(pulumi.StringPtrOutput)
-}
-
-// The name of the component.
-func (o GetAppSpecStaticSiteOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAppSpecStaticSite) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// An optional path to where the built assets will be located, relative to the build context. If not set, App Platform will automatically scan for these directory names: `_static`, `dist`, `public`.
-func (o GetAppSpecStaticSiteOutput) OutputDir() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetAppSpecStaticSite) *string { return v.OutputDir }).(pulumi.StringPtrOutput)
-}
-
-// Deprecated: Service level routes are deprecated in favor of ingresses
-func (o GetAppSpecStaticSiteOutput) Routes() GetAppSpecStaticSiteRouteArrayOutput {
-	return o.ApplyT(func(v GetAppSpecStaticSite) []GetAppSpecStaticSiteRoute { return v.Routes }).(GetAppSpecStaticSiteRouteArrayOutput)
-}
-
-// An optional path to the working directory to use for the build.
-func (o GetAppSpecStaticSiteOutput) SourceDir() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetAppSpecStaticSite) *string { return v.SourceDir }).(pulumi.StringPtrOutput)
-}
-
-type GetAppSpecStaticSiteArrayOutput struct{ *pulumi.OutputState }
-
-func (GetAppSpecStaticSiteArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetAppSpecStaticSite)(nil)).Elem()
-}
-
-func (o GetAppSpecStaticSiteArrayOutput) ToGetAppSpecStaticSiteArrayOutput() GetAppSpecStaticSiteArrayOutput {
-	return o
-}
-
-func (o GetAppSpecStaticSiteArrayOutput) ToGetAppSpecStaticSiteArrayOutputWithContext(ctx context.Context) GetAppSpecStaticSiteArrayOutput {
-	return o
-}
-
-func (o GetAppSpecStaticSiteArrayOutput) Index(i pulumi.IntInput) GetAppSpecStaticSiteOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppSpecStaticSite {
-		return vs[0].([]GetAppSpecStaticSite)[vs[1].(int)]
-	}).(GetAppSpecStaticSiteOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AgentPlatformAgentAgentGuardrailInput)(nil)).Elem(), AgentPlatformAgentAgentGuardrailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AgentPlatformAgentAgentGuardrailArrayInput)(nil)).Elem(), AgentPlatformAgentAgentGuardrailArray{})
@@ -80152,6 +80085,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerHealthcheckPtrInput)(nil)).Elem(), LoadBalancerHealthcheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerStickySessionsInput)(nil)).Elem(), LoadBalancerStickySessionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerStickySessionsPtrInput)(nil)).Elem(), LoadBalancerStickySessionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MicrovmAutoPauseInput)(nil)).Elem(), MicrovmAutoPauseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MicrovmAutoPausePtrInput)(nil)).Elem(), MicrovmAutoPauseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MicrovmCheckpointSizeInput)(nil)).Elem(), MicrovmCheckpointSizeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MicrovmCheckpointSizeArrayInput)(nil)).Elem(), MicrovmCheckpointSizeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MicrovmSizeInput)(nil)).Elem(), MicrovmSizeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MicrovmSizePtrInput)(nil)).Elem(), MicrovmSizeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MicrovmSourceInput)(nil)).Elem(), MicrovmSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MicrovmSourcePtrInput)(nil)).Elem(), MicrovmSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MicrovmUrlInput)(nil)).Elem(), MicrovmUrlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MicrovmUrlArrayInput)(nil)).Elem(), MicrovmUrlArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitorAlertAlertsInput)(nil)).Elem(), MonitorAlertAlertsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitorAlertAlertsPtrInput)(nil)).Elem(), MonitorAlertAlertsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitorAlertAlertsSlackInput)(nil)).Elem(), MonitorAlertAlertsSlackArgs{})
@@ -80647,16 +80590,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceLogDestinationLogtailPtrInput)(nil)).Elem(), GetAppSpecServiceLogDestinationLogtailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceLogDestinationOpenSearchInput)(nil)).Elem(), GetAppSpecServiceLogDestinationOpenSearchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceLogDestinationOpenSearchPtrInput)(nil)).Elem(), GetAppSpecServiceLogDestinationOpenSearchArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceLogDestinationOpenSearchBasicAuthInput)(nil)).Elem(), GetAppSpecServiceLogDestinationOpenSearchBasicAuthArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrInput)(nil)).Elem(), GetAppSpecServiceLogDestinationOpenSearchBasicAuthArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceLogDestinationPapertrailInput)(nil)).Elem(), GetAppSpecServiceLogDestinationPapertrailArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceLogDestinationPapertrailPtrInput)(nil)).Elem(), GetAppSpecServiceLogDestinationPapertrailArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceRouteInput)(nil)).Elem(), GetAppSpecServiceRouteArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceRouteArrayInput)(nil)).Elem(), GetAppSpecServiceRouteArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceTerminationInput)(nil)).Elem(), GetAppSpecServiceTerminationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceTerminationPtrInput)(nil)).Elem(), GetAppSpecServiceTerminationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecStaticSiteInput)(nil)).Elem(), GetAppSpecStaticSiteArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecStaticSiteArrayInput)(nil)).Elem(), GetAppSpecStaticSiteArray{})
 	pulumi.RegisterOutputType(AgentPlatformAgentAgentGuardrailOutput{})
 	pulumi.RegisterOutputType(AgentPlatformAgentAgentGuardrailArrayOutput{})
 	pulumi.RegisterOutputType(AgentPlatformAgentAnthropicApiKeyOutput{})
@@ -81153,6 +81086,16 @@ func init() {
 	pulumi.RegisterOutputType(LoadBalancerHealthcheckPtrOutput{})
 	pulumi.RegisterOutputType(LoadBalancerStickySessionsOutput{})
 	pulumi.RegisterOutputType(LoadBalancerStickySessionsPtrOutput{})
+	pulumi.RegisterOutputType(MicrovmAutoPauseOutput{})
+	pulumi.RegisterOutputType(MicrovmAutoPausePtrOutput{})
+	pulumi.RegisterOutputType(MicrovmCheckpointSizeOutput{})
+	pulumi.RegisterOutputType(MicrovmCheckpointSizeArrayOutput{})
+	pulumi.RegisterOutputType(MicrovmSizeOutput{})
+	pulumi.RegisterOutputType(MicrovmSizePtrOutput{})
+	pulumi.RegisterOutputType(MicrovmSourceOutput{})
+	pulumi.RegisterOutputType(MicrovmSourcePtrOutput{})
+	pulumi.RegisterOutputType(MicrovmUrlOutput{})
+	pulumi.RegisterOutputType(MicrovmUrlArrayOutput{})
 	pulumi.RegisterOutputType(MonitorAlertAlertsOutput{})
 	pulumi.RegisterOutputType(MonitorAlertAlertsPtrOutput{})
 	pulumi.RegisterOutputType(MonitorAlertAlertsSlackOutput{})
@@ -81648,14 +81591,4 @@ func init() {
 	pulumi.RegisterOutputType(GetAppSpecServiceLogDestinationLogtailPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecServiceLogDestinationOpenSearchOutput{})
 	pulumi.RegisterOutputType(GetAppSpecServiceLogDestinationOpenSearchPtrOutput{})
-	pulumi.RegisterOutputType(GetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput{})
-	pulumi.RegisterOutputType(GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput{})
-	pulumi.RegisterOutputType(GetAppSpecServiceLogDestinationPapertrailOutput{})
-	pulumi.RegisterOutputType(GetAppSpecServiceLogDestinationPapertrailPtrOutput{})
-	pulumi.RegisterOutputType(GetAppSpecServiceRouteOutput{})
-	pulumi.RegisterOutputType(GetAppSpecServiceRouteArrayOutput{})
-	pulumi.RegisterOutputType(GetAppSpecServiceTerminationOutput{})
-	pulumi.RegisterOutputType(GetAppSpecServiceTerminationPtrOutput{})
-	pulumi.RegisterOutputType(GetAppSpecStaticSiteOutput{})
-	pulumi.RegisterOutputType(GetAppSpecStaticSiteArrayOutput{})
 }

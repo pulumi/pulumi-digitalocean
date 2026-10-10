@@ -264,6 +264,11 @@ __all__ = [
     'LoadBalancerGlbSettingsCdn',
     'LoadBalancerHealthcheck',
     'LoadBalancerStickySessions',
+    'MicrovmAutoPause',
+    'MicrovmCheckpointSize',
+    'MicrovmSize',
+    'MicrovmSource',
+    'MicrovmUrl',
     'MonitorAlertAlerts',
     'MonitorAlertAlertsSlack',
     'NfsAccessPointAccessPolicy',
@@ -753,6 +758,21 @@ __all__ = [
     'GetLoadBalancerGlbSettingCdnResult',
     'GetLoadBalancerHealthcheckResult',
     'GetLoadBalancerStickySessionResult',
+    'GetMicrovmAutoPauseResult',
+    'GetMicrovmCheckpointsCheckpointResult',
+    'GetMicrovmCheckpointsCheckpointSizeResult',
+    'GetMicrovmCheckpointsFilterResult',
+    'GetMicrovmCheckpointsSortResult',
+    'GetMicrovmSizeResult',
+    'GetMicrovmSourceResult',
+    'GetMicrovmUrlResult',
+    'GetMicrovmsFilterResult',
+    'GetMicrovmsMicroVmResult',
+    'GetMicrovmsMicroVmAutoPauseResult',
+    'GetMicrovmsMicroVmSizeResult',
+    'GetMicrovmsMicroVmSourceResult',
+    'GetMicrovmsMicroVmUrlResult',
+    'GetMicrovmsSortResult',
     'GetNfsAccessPointAccessPolicyResult',
     'GetPartnerAttachmentBgpResult',
     'GetProjectsFilterResult',
@@ -20644,6 +20664,242 @@ class LoadBalancerStickySessions(dict):
         An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class MicrovmAutoPause(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "idleTimeout":
+            suggest = "idle_timeout"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MicrovmAutoPause. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MicrovmAutoPause.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MicrovmAutoPause.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: _builtins.bool,
+                 idle_timeout: Optional[_builtins.str] = None):
+        """
+        :param _builtins.bool enabled: Whether the MicroVM pauses after it has been idle for `idle_timeout`.
+        :param _builtins.str idle_timeout: How long the MicroVM must be idle before it pauses, as a duration such as `5m` or `30s`.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        if idle_timeout is not None:
+            pulumi.set(__self__, "idle_timeout", idle_timeout)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether the MicroVM pauses after it has been idle for `idle_timeout`.
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="idleTimeout")
+    def idle_timeout(self) -> Optional[_builtins.str]:
+        """
+        How long the MicroVM must be idle before it pauses, as a duration such as `5m` or `30s`.
+        """
+        return pulumi.get(self, "idle_timeout")
+
+
+@pulumi.output_type
+class MicrovmCheckpointSize(dict):
+    def __init__(__self__, *,
+                 cpu: Optional[_builtins.int] = None,
+                 disk: Optional[_builtins.int] = None,
+                 memory: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int cpu: The number of vCPUs.
+        :param _builtins.int disk: The size of the disk in GB.
+        :param _builtins.int memory: The amount of memory in MiB.
+        """
+        if cpu is not None:
+            pulumi.set(__self__, "cpu", cpu)
+        if disk is not None:
+            pulumi.set(__self__, "disk", disk)
+        if memory is not None:
+            pulumi.set(__self__, "memory", memory)
+
+    @_builtins.property
+    @pulumi.getter
+    def cpu(self) -> Optional[_builtins.int]:
+        """
+        The number of vCPUs.
+        """
+        return pulumi.get(self, "cpu")
+
+    @_builtins.property
+    @pulumi.getter
+    def disk(self) -> Optional[_builtins.int]:
+        """
+        The size of the disk in GB.
+        """
+        return pulumi.get(self, "disk")
+
+    @_builtins.property
+    @pulumi.getter
+    def memory(self) -> Optional[_builtins.int]:
+        """
+        The amount of memory in MiB.
+        """
+        return pulumi.get(self, "memory")
+
+
+@pulumi.output_type
+class MicrovmSize(dict):
+    def __init__(__self__, *,
+                 cpu: _builtins.int,
+                 memory: _builtins.int,
+                 disk: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int cpu: The number of vCPUs.
+        :param _builtins.int memory: The amount of memory in MiB.
+        :param _builtins.int disk: The size of the attached disk in GB.
+        """
+        pulumi.set(__self__, "cpu", cpu)
+        pulumi.set(__self__, "memory", memory)
+        if disk is not None:
+            pulumi.set(__self__, "disk", disk)
+
+    @_builtins.property
+    @pulumi.getter
+    def cpu(self) -> _builtins.int:
+        """
+        The number of vCPUs.
+        """
+        return pulumi.get(self, "cpu")
+
+    @_builtins.property
+    @pulumi.getter
+    def memory(self) -> _builtins.int:
+        """
+        The amount of memory in MiB.
+        """
+        return pulumi.get(self, "memory")
+
+    @_builtins.property
+    @pulumi.getter
+    def disk(self) -> Optional[_builtins.int]:
+        """
+        The size of the attached disk in GB.
+        """
+        return pulumi.get(self, "disk")
+
+
+@pulumi.output_type
+class MicrovmSource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "checkpointId":
+            suggest = "checkpoint_id"
+        elif key == "ociRef":
+            suggest = "oci_ref"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MicrovmSource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MicrovmSource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MicrovmSource.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 checkpoint_id: Optional[_builtins.str] = None,
+                 oci_ref: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str checkpoint_id: The ID of a checkpoint to restore.
+        :param _builtins.str oci_ref: The OCI reference of the workload container image, such as `docker.io/library/nginx:latest`.
+        """
+        if checkpoint_id is not None:
+            pulumi.set(__self__, "checkpoint_id", checkpoint_id)
+        if oci_ref is not None:
+            pulumi.set(__self__, "oci_ref", oci_ref)
+
+    @_builtins.property
+    @pulumi.getter(name="checkpointId")
+    def checkpoint_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of a checkpoint to restore.
+        """
+        return pulumi.get(self, "checkpoint_id")
+
+    @_builtins.property
+    @pulumi.getter(name="ociRef")
+    def oci_ref(self) -> Optional[_builtins.str]:
+        """
+        The OCI reference of the workload container image, such as `docker.io/library/nginx:latest`.
+        """
+        return pulumi.get(self, "oci_ref")
+
+
+@pulumi.output_type
+class MicrovmUrl(dict):
+    def __init__(__self__, *,
+                 default: Optional[_builtins.bool] = None,
+                 hostname: Optional[_builtins.str] = None,
+                 port: Optional[_builtins.int] = None,
+                 status: Optional[_builtins.str] = None):
+        """
+        :param _builtins.bool default: Whether this is the default URL.
+        :param _builtins.str hostname: The hostname, without a scheme.
+        :param _builtins.int port: The guest port the URL forwards to.
+        :param _builtins.str status: The URL status: `PENDING` or `ACTIVE`.
+        """
+        if default is not None:
+            pulumi.set(__self__, "default", default)
+        if hostname is not None:
+            pulumi.set(__self__, "hostname", hostname)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter
+    def default(self) -> Optional[_builtins.bool]:
+        """
+        Whether this is the default URL.
+        """
+        return pulumi.get(self, "default")
+
+    @_builtins.property
+    @pulumi.getter
+    def hostname(self) -> Optional[_builtins.str]:
+        """
+        The hostname, without a scheme.
+        """
+        return pulumi.get(self, "hostname")
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> Optional[_builtins.int]:
+        """
+        The guest port the URL forwards to.
+        """
+        return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> Optional[_builtins.str]:
+        """
+        The URL status: `PENDING` or `ACTIVE`.
+        """
+        return pulumi.get(self, "status")
 
 
 @pulumi.output_type
@@ -56168,6 +56424,888 @@ class GetLoadBalancerStickySessionResult(dict):
         how and if requests from a client will be persistently served by the same backend droplet
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetMicrovmAutoPauseResult(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool,
+                 idle_timeout: _builtins.str):
+        """
+        :param _builtins.bool enabled: Whether auto-pause is enabled.
+        :param _builtins.str idle_timeout: How long the MicroVM must be idle before it pauses.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "idle_timeout", idle_timeout)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether auto-pause is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="idleTimeout")
+    def idle_timeout(self) -> _builtins.str:
+        """
+        How long the MicroVM must be idle before it pauses.
+        """
+        return pulumi.get(self, "idle_timeout")
+
+
+@pulumi.output_type
+class GetMicrovmCheckpointsCheckpointResult(dict):
+    def __init__(__self__, *,
+                 created_at: _builtins.str,
+                 disk_bytes: _builtins.int,
+                 id: _builtins.str,
+                 memory_bytes: _builtins.int,
+                 microvm_id: _builtins.str,
+                 microvm_name: _builtins.str,
+                 name: _builtins.str,
+                 region: _builtins.str,
+                 sizes: Sequence['outputs.GetMicrovmCheckpointsCheckpointSizeResult'],
+                 status: _builtins.str):
+        """
+        :param _builtins.str created_at: The date and time the checkpoint was created.
+        :param _builtins.int disk_bytes: The size of the persisted disk image in bytes.
+        :param _builtins.str id: The ID of the checkpoint.
+        :param _builtins.int memory_bytes: The size of the persisted memory image in bytes.
+        :param _builtins.str microvm_id: Only return checkpoints captured from this MicroVM.
+        :param _builtins.str microvm_name: The name of the MicroVM the checkpoint was captured from.
+        :param _builtins.str name: The name of the checkpoint.
+        :param _builtins.str region: The slug of the region the checkpoint is stored in.
+        :param Sequence['GetMicrovmCheckpointsCheckpointSizeArgs'] sizes: The size a MicroVM restored from this checkpoint inherits (`cpu`, `memory`, `disk`). Empty when the checkpoint does not record one.
+        :param _builtins.str status: The status of the checkpoint, such as `CHECKPOINT_AVAILABLE`.
+        """
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "disk_bytes", disk_bytes)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "memory_bytes", memory_bytes)
+        pulumi.set(__self__, "microvm_id", microvm_id)
+        pulumi.set(__self__, "microvm_name", microvm_name)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "sizes", sizes)
+        pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        The date and time the checkpoint was created.
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter(name="diskBytes")
+    def disk_bytes(self) -> _builtins.int:
+        """
+        The size of the persisted disk image in bytes.
+        """
+        return pulumi.get(self, "disk_bytes")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the checkpoint.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="memoryBytes")
+    def memory_bytes(self) -> _builtins.int:
+        """
+        The size of the persisted memory image in bytes.
+        """
+        return pulumi.get(self, "memory_bytes")
+
+    @_builtins.property
+    @pulumi.getter(name="microvmId")
+    def microvm_id(self) -> _builtins.str:
+        """
+        Only return checkpoints captured from this MicroVM.
+        """
+        return pulumi.get(self, "microvm_id")
+
+    @_builtins.property
+    @pulumi.getter(name="microvmName")
+    def microvm_name(self) -> _builtins.str:
+        """
+        The name of the MicroVM the checkpoint was captured from.
+        """
+        return pulumi.get(self, "microvm_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the checkpoint.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        The slug of the region the checkpoint is stored in.
+        """
+        return pulumi.get(self, "region")
+
+    @_builtins.property
+    @pulumi.getter
+    def sizes(self) -> Sequence['outputs.GetMicrovmCheckpointsCheckpointSizeResult']:
+        """
+        The size a MicroVM restored from this checkpoint inherits (`cpu`, `memory`, `disk`). Empty when the checkpoint does not record one.
+        """
+        return pulumi.get(self, "sizes")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        The status of the checkpoint, such as `CHECKPOINT_AVAILABLE`.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetMicrovmCheckpointsCheckpointSizeResult(dict):
+    def __init__(__self__, *,
+                 cpu: _builtins.int,
+                 disk: _builtins.int,
+                 memory: _builtins.int):
+        """
+        :param _builtins.int cpu: Number of vCPUs
+        :param _builtins.int disk: Attached disk in GB
+        :param _builtins.int memory: Memory in MiB
+        """
+        pulumi.set(__self__, "cpu", cpu)
+        pulumi.set(__self__, "disk", disk)
+        pulumi.set(__self__, "memory", memory)
+
+    @_builtins.property
+    @pulumi.getter
+    def cpu(self) -> _builtins.int:
+        """
+        Number of vCPUs
+        """
+        return pulumi.get(self, "cpu")
+
+    @_builtins.property
+    @pulumi.getter
+    def disk(self) -> _builtins.int:
+        """
+        Attached disk in GB
+        """
+        return pulumi.get(self, "disk")
+
+    @_builtins.property
+    @pulumi.getter
+    def memory(self) -> _builtins.int:
+        """
+        Memory in MiB
+        """
+        return pulumi.get(self, "memory")
+
+
+@pulumi.output_type
+class GetMicrovmCheckpointsFilterResult(dict):
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 values: Sequence[_builtins.str],
+                 all: Optional[_builtins.bool] = None,
+                 match_by: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str key: Filter the checkpoints by this key. This may be one of
+               `id`, `name`, `microvm_id`, `microvm_name`, `region`, `status`,
+               `memory_bytes`, `disk_bytes`, or `created_at`.
+        :param Sequence[_builtins.str] values: A list of values to match against the `key` field.
+        :param _builtins.bool all: Set to `true` to require that a field match all of the
+               `values` instead of just one or more of them.
+        :param _builtins.str match_by: One of `exact` (default), `re`, or `substring`.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "values", values)
+        if all is not None:
+            pulumi.set(__self__, "all", all)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        Filter the checkpoints by this key. This may be one of
+        `id`, `name`, `microvm_id`, `microvm_name`, `region`, `status`,
+        `memory_bytes`, `disk_bytes`, or `created_at`.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        """
+        A list of values to match against the `key` field.
+        """
+        return pulumi.get(self, "values")
+
+    @_builtins.property
+    @pulumi.getter
+    def all(self) -> Optional[_builtins.bool]:
+        """
+        Set to `true` to require that a field match all of the
+        `values` instead of just one or more of them.
+        """
+        return pulumi.get(self, "all")
+
+    @_builtins.property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[_builtins.str]:
+        """
+        One of `exact` (default), `re`, or `substring`.
+        """
+        return pulumi.get(self, "match_by")
+
+
+@pulumi.output_type
+class GetMicrovmCheckpointsSortResult(dict):
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 direction: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str key: Sort the checkpoints by this key. This may be one of `id`,
+               `name`, `microvm_id`, `microvm_name`, `region`, `status`, `memory_bytes`,
+               `disk_bytes`, or `created_at`.
+        :param _builtins.str direction: The sort direction. This may be either `asc` or `desc`.
+        """
+        pulumi.set(__self__, "key", key)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        Sort the checkpoints by this key. This may be one of `id`,
+        `name`, `microvm_id`, `microvm_name`, `region`, `status`, `memory_bytes`,
+        `disk_bytes`, or `created_at`.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def direction(self) -> Optional[_builtins.str]:
+        """
+        The sort direction. This may be either `asc` or `desc`.
+        """
+        return pulumi.get(self, "direction")
+
+
+@pulumi.output_type
+class GetMicrovmSizeResult(dict):
+    def __init__(__self__, *,
+                 cpu: _builtins.int,
+                 disk: _builtins.int,
+                 memory: _builtins.int):
+        """
+        :param _builtins.int cpu: The number of vCPUs.
+        :param _builtins.int disk: The size of the attached disk in GB.
+        :param _builtins.int memory: The amount of memory in MiB.
+        """
+        pulumi.set(__self__, "cpu", cpu)
+        pulumi.set(__self__, "disk", disk)
+        pulumi.set(__self__, "memory", memory)
+
+    @_builtins.property
+    @pulumi.getter
+    def cpu(self) -> _builtins.int:
+        """
+        The number of vCPUs.
+        """
+        return pulumi.get(self, "cpu")
+
+    @_builtins.property
+    @pulumi.getter
+    def disk(self) -> _builtins.int:
+        """
+        The size of the attached disk in GB.
+        """
+        return pulumi.get(self, "disk")
+
+    @_builtins.property
+    @pulumi.getter
+    def memory(self) -> _builtins.int:
+        """
+        The amount of memory in MiB.
+        """
+        return pulumi.get(self, "memory")
+
+
+@pulumi.output_type
+class GetMicrovmSourceResult(dict):
+    def __init__(__self__, *,
+                 checkpoint_id: Optional[_builtins.str] = None,
+                 oci_ref: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str checkpoint_id: The ID of the checkpoint the MicroVM was restored from.
+        :param _builtins.str oci_ref: The OCI reference of the workload container image.
+        """
+        if checkpoint_id is not None:
+            pulumi.set(__self__, "checkpoint_id", checkpoint_id)
+        if oci_ref is not None:
+            pulumi.set(__self__, "oci_ref", oci_ref)
+
+    @_builtins.property
+    @pulumi.getter(name="checkpointId")
+    def checkpoint_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the checkpoint the MicroVM was restored from.
+        """
+        return pulumi.get(self, "checkpoint_id")
+
+    @_builtins.property
+    @pulumi.getter(name="ociRef")
+    def oci_ref(self) -> Optional[_builtins.str]:
+        """
+        The OCI reference of the workload container image.
+        """
+        return pulumi.get(self, "oci_ref")
+
+
+@pulumi.output_type
+class GetMicrovmUrlResult(dict):
+    def __init__(__self__, *,
+                 default: _builtins.bool,
+                 hostname: _builtins.str,
+                 port: _builtins.int,
+                 status: _builtins.str):
+        """
+        :param _builtins.bool default: Whether this is the default URL.
+        :param _builtins.str hostname: The hostname, without a scheme.
+        :param _builtins.int port: The guest port the URL forwards to.
+        :param _builtins.str status: The URL status: `PENDING` or `ACTIVE`.
+        """
+        pulumi.set(__self__, "default", default)
+        pulumi.set(__self__, "hostname", hostname)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter
+    def default(self) -> _builtins.bool:
+        """
+        Whether this is the default URL.
+        """
+        return pulumi.get(self, "default")
+
+    @_builtins.property
+    @pulumi.getter
+    def hostname(self) -> _builtins.str:
+        """
+        The hostname, without a scheme.
+        """
+        return pulumi.get(self, "hostname")
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> _builtins.int:
+        """
+        The guest port the URL forwards to.
+        """
+        return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        The URL status: `PENDING` or `ACTIVE`.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetMicrovmsFilterResult(dict):
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 values: Sequence[_builtins.str],
+                 all: Optional[_builtins.bool] = None,
+                 match_by: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str key: Filter the MicroVMs by this key. This may be one of `id`,
+               `name`, `region`, `networking`, `http_protocol`, `current_state`,
+               `failure_reason`, `auto_resume`, `ports`, `tags`, `urn`, or `created_at`.
+        :param Sequence[_builtins.str] values: A list of values to match against the `key` field. Only
+               retrieves MicroVMs where the `key` field takes on one or more of the values
+               provided here.
+        :param _builtins.bool all: Set to `true` to require that a field match all of the
+               `values` instead of just one or more of them. This is useful when matching
+               against multi-valued fields such as lists or sets where you want to ensure
+               that all of the `values` are present in the list or set.
+        :param _builtins.str match_by: One of `exact` (default), `re`, or `substring`. For
+               string-typed fields, specify `re` to match by using the `values` as regular
+               expressions, or specify `substring` to match by treating the `values` as
+               substrings to find within the string field.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "values", values)
+        if all is not None:
+            pulumi.set(__self__, "all", all)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        Filter the MicroVMs by this key. This may be one of `id`,
+        `name`, `region`, `networking`, `http_protocol`, `current_state`,
+        `failure_reason`, `auto_resume`, `ports`, `tags`, `urn`, or `created_at`.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        """
+        A list of values to match against the `key` field. Only
+        retrieves MicroVMs where the `key` field takes on one or more of the values
+        provided here.
+        """
+        return pulumi.get(self, "values")
+
+    @_builtins.property
+    @pulumi.getter
+    def all(self) -> Optional[_builtins.bool]:
+        """
+        Set to `true` to require that a field match all of the
+        `values` instead of just one or more of them. This is useful when matching
+        against multi-valued fields such as lists or sets where you want to ensure
+        that all of the `values` are present in the list or set.
+        """
+        return pulumi.get(self, "all")
+
+    @_builtins.property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[_builtins.str]:
+        """
+        One of `exact` (default), `re`, or `substring`. For
+        string-typed fields, specify `re` to match by using the `values` as regular
+        expressions, or specify `substring` to match by treating the `values` as
+        substrings to find within the string field.
+        """
+        return pulumi.get(self, "match_by")
+
+
+@pulumi.output_type
+class GetMicrovmsMicroVmResult(dict):
+    def __init__(__self__, *,
+                 auto_pauses: Sequence['outputs.GetMicrovmsMicroVmAutoPauseResult'],
+                 auto_resume: _builtins.bool,
+                 created_at: _builtins.str,
+                 current_state: _builtins.str,
+                 environment: Mapping[str, _builtins.str],
+                 failure_reason: _builtins.str,
+                 http_port: _builtins.int,
+                 http_protocol: _builtins.str,
+                 id: _builtins.str,
+                 name: _builtins.str,
+                 networking: _builtins.str,
+                 ports: Sequence[_builtins.int],
+                 region: _builtins.str,
+                 sizes: Sequence['outputs.GetMicrovmsMicroVmSizeResult'],
+                 sources: Sequence['outputs.GetMicrovmsMicroVmSourceResult'],
+                 state: _builtins.str,
+                 tags: Sequence[_builtins.str],
+                 urls: Sequence['outputs.GetMicrovmsMicroVmUrlResult'],
+                 urn: _builtins.str,
+                 vpc_uuid: _builtins.str):
+        """
+        :param Sequence['GetMicrovmsMicroVmAutoPauseArgs'] auto_pauses: Auto-pause configuration. Forces recreation on change: the MicroVMs API has no in-place update path for auto_pause.
+        :param _builtins.bool auto_resume: Whether the MicroVM should auto-resume on request. Forces recreation on change: the MicroVMs API has no in-place update path for auto_resume.
+        :param _builtins.str created_at: The creation timestamp for the MicroVM
+        :param _builtins.str current_state: Observed lifecycle state of the MicroVM
+        :param Mapping[str, _builtins.str] environment: Environment variables passed to the MicroVM
+        :param _builtins.str failure_reason: Human-readable explanation when current_state is failed
+        :param _builtins.int http_port: Port the MicroVM exposes over HTTP
+        :param _builtins.str http_protocol: HTTP protocol: 'http' or 'http2'
+        :param _builtins.str id: MicroVM ID
+        :param _builtins.str name: Only return MicroVMs with this exact name.
+        :param _builtins.str networking: Networking mode: 'public' or 'vpc'
+        :param Sequence[_builtins.int] ports: Guest ports open for ingress. Defaults to just http_port when omitted.
+        :param _builtins.str region: Only return MicroVMs in this region.
+        :param Sequence['GetMicrovmsMicroVmSizeArgs'] sizes: Compute size. Required when creating from oci_ref; optional when restoring from a checkpoint (inherited).
+        :param Sequence['GetMicrovmsMicroVmSourceArgs'] sources: Workload source. Exactly one of oci_ref or checkpoint_id must be set.
+        :param _builtins.str state: Desired lifecycle state: 'running' or 'paused'. Changes are applied by calling the microvm pause / resume action endpoints.
+        :param Sequence['GetMicrovmsMicroVmUrlArgs'] urls: Ingress URLs for the MicroVM
+        :param _builtins.str urn: The uniform resource name (URN) for the MicroVM
+        :param _builtins.str vpc_uuid: UUID of the VPC to attach the MicroVM to. Only valid when networking is 'vpc'.
+        """
+        pulumi.set(__self__, "auto_pauses", auto_pauses)
+        pulumi.set(__self__, "auto_resume", auto_resume)
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "current_state", current_state)
+        pulumi.set(__self__, "environment", environment)
+        pulumi.set(__self__, "failure_reason", failure_reason)
+        pulumi.set(__self__, "http_port", http_port)
+        pulumi.set(__self__, "http_protocol", http_protocol)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "networking", networking)
+        pulumi.set(__self__, "ports", ports)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "sizes", sizes)
+        pulumi.set(__self__, "sources", sources)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "urls", urls)
+        pulumi.set(__self__, "urn", urn)
+        pulumi.set(__self__, "vpc_uuid", vpc_uuid)
+
+    @_builtins.property
+    @pulumi.getter(name="autoPauses")
+    def auto_pauses(self) -> Sequence['outputs.GetMicrovmsMicroVmAutoPauseResult']:
+        """
+        Auto-pause configuration. Forces recreation on change: the MicroVMs API has no in-place update path for auto_pause.
+        """
+        return pulumi.get(self, "auto_pauses")
+
+    @_builtins.property
+    @pulumi.getter(name="autoResume")
+    def auto_resume(self) -> _builtins.bool:
+        """
+        Whether the MicroVM should auto-resume on request. Forces recreation on change: the MicroVMs API has no in-place update path for auto_resume.
+        """
+        return pulumi.get(self, "auto_resume")
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        The creation timestamp for the MicroVM
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter(name="currentState")
+    def current_state(self) -> _builtins.str:
+        """
+        Observed lifecycle state of the MicroVM
+        """
+        return pulumi.get(self, "current_state")
+
+    @_builtins.property
+    @pulumi.getter
+    def environment(self) -> Mapping[str, _builtins.str]:
+        """
+        Environment variables passed to the MicroVM
+        """
+        return pulumi.get(self, "environment")
+
+    @_builtins.property
+    @pulumi.getter(name="failureReason")
+    def failure_reason(self) -> _builtins.str:
+        """
+        Human-readable explanation when current_state is failed
+        """
+        return pulumi.get(self, "failure_reason")
+
+    @_builtins.property
+    @pulumi.getter(name="httpPort")
+    def http_port(self) -> _builtins.int:
+        """
+        Port the MicroVM exposes over HTTP
+        """
+        return pulumi.get(self, "http_port")
+
+    @_builtins.property
+    @pulumi.getter(name="httpProtocol")
+    def http_protocol(self) -> _builtins.str:
+        """
+        HTTP protocol: 'http' or 'http2'
+        """
+        return pulumi.get(self, "http_protocol")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        MicroVM ID
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Only return MicroVMs with this exact name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def networking(self) -> _builtins.str:
+        """
+        Networking mode: 'public' or 'vpc'
+        """
+        return pulumi.get(self, "networking")
+
+    @_builtins.property
+    @pulumi.getter
+    def ports(self) -> Sequence[_builtins.int]:
+        """
+        Guest ports open for ingress. Defaults to just http_port when omitted.
+        """
+        return pulumi.get(self, "ports")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Only return MicroVMs in this region.
+        """
+        return pulumi.get(self, "region")
+
+    @_builtins.property
+    @pulumi.getter
+    def sizes(self) -> Sequence['outputs.GetMicrovmsMicroVmSizeResult']:
+        """
+        Compute size. Required when creating from oci_ref; optional when restoring from a checkpoint (inherited).
+        """
+        return pulumi.get(self, "sizes")
+
+    @_builtins.property
+    @pulumi.getter
+    def sources(self) -> Sequence['outputs.GetMicrovmsMicroVmSourceResult']:
+        """
+        Workload source. Exactly one of oci_ref or checkpoint_id must be set.
+        """
+        return pulumi.get(self, "sources")
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> _builtins.str:
+        """
+        Desired lifecycle state: 'running' or 'paused'. Changes are applied by calling the microvm pause / resume action endpoints.
+        """
+        return pulumi.get(self, "state")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Sequence[_builtins.str]:
+        return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter
+    def urls(self) -> Sequence['outputs.GetMicrovmsMicroVmUrlResult']:
+        """
+        Ingress URLs for the MicroVM
+        """
+        return pulumi.get(self, "urls")
+
+    @_builtins.property
+    @pulumi.getter
+    def urn(self) -> _builtins.str:
+        """
+        The uniform resource name (URN) for the MicroVM
+        """
+        return pulumi.get(self, "urn")
+
+    @_builtins.property
+    @pulumi.getter(name="vpcUuid")
+    def vpc_uuid(self) -> _builtins.str:
+        """
+        UUID of the VPC to attach the MicroVM to. Only valid when networking is 'vpc'.
+        """
+        return pulumi.get(self, "vpc_uuid")
+
+
+@pulumi.output_type
+class GetMicrovmsMicroVmAutoPauseResult(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool,
+                 idle_timeout: _builtins.str):
+        """
+        :param _builtins.bool enabled: Whether auto-pause is enabled. Forces recreation on change (no in-place API path).
+        :param _builtins.str idle_timeout: Idle timeout as a Go duration string (e.g. '5m', '30s'). Forces recreation on change (no in-place API path).
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "idle_timeout", idle_timeout)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether auto-pause is enabled. Forces recreation on change (no in-place API path).
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="idleTimeout")
+    def idle_timeout(self) -> _builtins.str:
+        """
+        Idle timeout as a Go duration string (e.g. '5m', '30s'). Forces recreation on change (no in-place API path).
+        """
+        return pulumi.get(self, "idle_timeout")
+
+
+@pulumi.output_type
+class GetMicrovmsMicroVmSizeResult(dict):
+    def __init__(__self__, *,
+                 cpu: _builtins.int,
+                 disk: _builtins.int,
+                 memory: _builtins.int):
+        """
+        :param _builtins.int cpu: Number of vCPUs
+        :param _builtins.int disk: Attached disk in GB (provisioned with the size)
+        :param _builtins.int memory: Memory in MiB
+        """
+        pulumi.set(__self__, "cpu", cpu)
+        pulumi.set(__self__, "disk", disk)
+        pulumi.set(__self__, "memory", memory)
+
+    @_builtins.property
+    @pulumi.getter
+    def cpu(self) -> _builtins.int:
+        """
+        Number of vCPUs
+        """
+        return pulumi.get(self, "cpu")
+
+    @_builtins.property
+    @pulumi.getter
+    def disk(self) -> _builtins.int:
+        """
+        Attached disk in GB (provisioned with the size)
+        """
+        return pulumi.get(self, "disk")
+
+    @_builtins.property
+    @pulumi.getter
+    def memory(self) -> _builtins.int:
+        """
+        Memory in MiB
+        """
+        return pulumi.get(self, "memory")
+
+
+@pulumi.output_type
+class GetMicrovmsMicroVmSourceResult(dict):
+    def __init__(__self__, *,
+                 checkpoint_id: Optional[_builtins.str] = None,
+                 oci_ref: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str checkpoint_id: Checkpoint UUID to restore
+        :param _builtins.str oci_ref: OCI reference for the workload container
+        """
+        if checkpoint_id is not None:
+            pulumi.set(__self__, "checkpoint_id", checkpoint_id)
+        if oci_ref is not None:
+            pulumi.set(__self__, "oci_ref", oci_ref)
+
+    @_builtins.property
+    @pulumi.getter(name="checkpointId")
+    def checkpoint_id(self) -> Optional[_builtins.str]:
+        """
+        Checkpoint UUID to restore
+        """
+        return pulumi.get(self, "checkpoint_id")
+
+    @_builtins.property
+    @pulumi.getter(name="ociRef")
+    def oci_ref(self) -> Optional[_builtins.str]:
+        """
+        OCI reference for the workload container
+        """
+        return pulumi.get(self, "oci_ref")
+
+
+@pulumi.output_type
+class GetMicrovmsMicroVmUrlResult(dict):
+    def __init__(__self__, *,
+                 default: _builtins.bool,
+                 hostname: _builtins.str,
+                 port: _builtins.int,
+                 status: _builtins.str):
+        """
+        :param _builtins.bool default: Whether this is the system default URL
+        :param _builtins.str hostname: Hostname (no scheme)
+        :param _builtins.int port: Guest port this URL forwards to
+        :param _builtins.str status: URL lifecycle status (PENDING or ACTIVE)
+        """
+        pulumi.set(__self__, "default", default)
+        pulumi.set(__self__, "hostname", hostname)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter
+    def default(self) -> _builtins.bool:
+        """
+        Whether this is the system default URL
+        """
+        return pulumi.get(self, "default")
+
+    @_builtins.property
+    @pulumi.getter
+    def hostname(self) -> _builtins.str:
+        """
+        Hostname (no scheme)
+        """
+        return pulumi.get(self, "hostname")
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> _builtins.int:
+        """
+        Guest port this URL forwards to
+        """
+        return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        URL lifecycle status (PENDING or ACTIVE)
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetMicrovmsSortResult(dict):
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 direction: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str key: Sort the MicroVMs by this key. This may be one of `id`,
+               `name`, `region`, `networking`, `http_protocol`, `current_state`,
+               `auto_resume`, `urn`, or `created_at`.
+        :param _builtins.str direction: The sort direction. This may be either `asc` or `desc`.
+        """
+        pulumi.set(__self__, "key", key)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        Sort the MicroVMs by this key. This may be one of `id`,
+        `name`, `region`, `networking`, `http_protocol`, `current_state`,
+        `auto_resume`, `urn`, or `created_at`.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def direction(self) -> Optional[_builtins.str]:
+        """
+        The sort direction. This may be either `asc` or `desc`.
+        """
+        return pulumi.get(self, "direction")
 
 
 @pulumi.output_type

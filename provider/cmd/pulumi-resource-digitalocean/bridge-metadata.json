@@ -1352,6 +1352,39 @@
                     }
                 }
             },
+            "digitalocean_microvm": {
+                "current": "digitalocean:index/microvm:Microvm",
+                "majorVersion": 4,
+                "fields": {
+                    "auto_pause": {
+                        "maxItemsOne": true
+                    },
+                    "ports": {
+                        "maxItemsOne": false
+                    },
+                    "size": {
+                        "maxItemsOne": true
+                    },
+                    "source": {
+                        "maxItemsOne": true
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    },
+                    "urls": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "digitalocean_microvm_checkpoint": {
+                "current": "digitalocean:index/microvmCheckpoint:MicrovmCheckpoint",
+                "majorVersion": 4,
+                "fields": {
+                    "size": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "digitalocean_monitor_alert": {
                 "current": "digitalocean:index/monitorAlert:MonitorAlert",
                 "majorVersion": 4,
@@ -3689,6 +3722,103 @@
                         "maxItemsOne": false
                     },
                     "target_load_balancer_ids": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "digitalocean_microvm": {
+                "current": "digitalocean:index/getMicrovm:getMicrovm",
+                "majorVersion": 4,
+                "fields": {
+                    "auto_pause": {
+                        "maxItemsOne": false
+                    },
+                    "ports": {
+                        "maxItemsOne": false
+                    },
+                    "size": {
+                        "maxItemsOne": false
+                    },
+                    "source": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    },
+                    "urls": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "digitalocean_microvm_checkpoints": {
+                "current": "digitalocean:index/getMicrovmCheckpoints:getMicrovmCheckpoints",
+                "majorVersion": 4,
+                "fields": {
+                    "checkpoints": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "size": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "filter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "sort": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "digitalocean_microvms": {
+                "current": "digitalocean:index/getMicrovms:getMicrovms",
+                "majorVersion": 4,
+                "fields": {
+                    "filter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "micro_vms": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "auto_pause": {
+                                    "maxItemsOne": false
+                                },
+                                "ports": {
+                                    "maxItemsOne": false
+                                },
+                                "size": {
+                                    "maxItemsOne": false
+                                },
+                                "source": {
+                                    "maxItemsOne": false
+                                },
+                                "tags": {
+                                    "maxItemsOne": false
+                                },
+                                "urls": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "sort": {
                         "maxItemsOne": false
                     }
                 }

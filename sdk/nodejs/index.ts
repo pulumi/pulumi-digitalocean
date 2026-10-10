@@ -550,6 +550,21 @@ export const getLoadBalancer: typeof import("./getLoadBalancer").getLoadBalancer
 export const getLoadBalancerOutput: typeof import("./getLoadBalancer").getLoadBalancerOutput = null as any;
 utilities.lazyLoad(exports, ["getLoadBalancer","getLoadBalancerOutput"], () => require("./getLoadBalancer"));
 
+export { GetMicrovmArgs, GetMicrovmResult, GetMicrovmOutputArgs } from "./getMicrovm";
+export const getMicrovm: typeof import("./getMicrovm").getMicrovm = null as any;
+export const getMicrovmOutput: typeof import("./getMicrovm").getMicrovmOutput = null as any;
+utilities.lazyLoad(exports, ["getMicrovm","getMicrovmOutput"], () => require("./getMicrovm"));
+
+export { GetMicrovmCheckpointsArgs, GetMicrovmCheckpointsResult, GetMicrovmCheckpointsOutputArgs } from "./getMicrovmCheckpoints";
+export const getMicrovmCheckpoints: typeof import("./getMicrovmCheckpoints").getMicrovmCheckpoints = null as any;
+export const getMicrovmCheckpointsOutput: typeof import("./getMicrovmCheckpoints").getMicrovmCheckpointsOutput = null as any;
+utilities.lazyLoad(exports, ["getMicrovmCheckpoints","getMicrovmCheckpointsOutput"], () => require("./getMicrovmCheckpoints"));
+
+export { GetMicrovmsArgs, GetMicrovmsResult, GetMicrovmsOutputArgs } from "./getMicrovms";
+export const getMicrovms: typeof import("./getMicrovms").getMicrovms = null as any;
+export const getMicrovmsOutput: typeof import("./getMicrovms").getMicrovmsOutput = null as any;
+utilities.lazyLoad(exports, ["getMicrovms","getMicrovmsOutput"], () => require("./getMicrovms"));
+
 export { GetNfsArgs, GetNfsResult, GetNfsOutputArgs } from "./getNfs";
 export const getNfs: typeof import("./getNfs").getNfs = null as any;
 export const getNfsOutput: typeof import("./getNfs").getNfsOutput = null as any;
@@ -749,6 +764,16 @@ export { LoadBalancerArgs, LoadBalancerState } from "./loadBalancer";
 export type LoadBalancer = import("./loadBalancer").LoadBalancer;
 export const LoadBalancer: typeof import("./loadBalancer").LoadBalancer = null as any;
 utilities.lazyLoad(exports, ["LoadBalancer"], () => require("./loadBalancer"));
+
+export { MicrovmArgs, MicrovmState } from "./microvm";
+export type Microvm = import("./microvm").Microvm;
+export const Microvm: typeof import("./microvm").Microvm = null as any;
+utilities.lazyLoad(exports, ["Microvm"], () => require("./microvm"));
+
+export { MicrovmCheckpointArgs, MicrovmCheckpointState } from "./microvmCheckpoint";
+export type MicrovmCheckpoint = import("./microvmCheckpoint").MicrovmCheckpoint;
+export const MicrovmCheckpoint: typeof import("./microvmCheckpoint").MicrovmCheckpoint = null as any;
+utilities.lazyLoad(exports, ["MicrovmCheckpoint"], () => require("./microvmCheckpoint"));
 
 export { MonitorAlertArgs, MonitorAlertState } from "./monitorAlert";
 export type MonitorAlert = import("./monitorAlert").MonitorAlert;
@@ -1031,6 +1056,10 @@ const _module = {
                 return new KubernetesNodePool(name, <any>undefined, { urn })
             case "digitalocean:index/loadBalancer:LoadBalancer":
                 return new LoadBalancer(name, <any>undefined, { urn })
+            case "digitalocean:index/microvm:Microvm":
+                return new Microvm(name, <any>undefined, { urn })
+            case "digitalocean:index/microvmCheckpoint:MicrovmCheckpoint":
+                return new MicrovmCheckpoint(name, <any>undefined, { urn })
             case "digitalocean:index/monitorAlert:MonitorAlert":
                 return new MonitorAlert(name, <any>undefined, { urn })
             case "digitalocean:index/nfs:Nfs":
@@ -1152,6 +1181,8 @@ pulumi.runtime.registerResourceModule("digitalocean", "index/gradientaiOpenaiApi
 pulumi.runtime.registerResourceModule("digitalocean", "index/kubernetesCluster", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/kubernetesNodePool", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/loadBalancer", _module)
+pulumi.runtime.registerResourceModule("digitalocean", "index/microvm", _module)
+pulumi.runtime.registerResourceModule("digitalocean", "index/microvmCheckpoint", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/monitorAlert", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/nfs", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/nfsAccessPoint", _module)

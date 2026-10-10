@@ -7728,6 +7728,136 @@
             },
             "type": "object"
         },
+        "digitalocean:index/MicrovmAutoPause:MicrovmAutoPause": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether the MicroVM pauses after it has been idle for \u003cspan pulumi-lang-nodejs=\"`idleTimeout`\" pulumi-lang-dotnet=\"`IdleTimeout`\" pulumi-lang-go=\"`idleTimeout`\" pulumi-lang-python=\"`idle_timeout`\" pulumi-lang-yaml=\"`idleTimeout`\" pulumi-lang-java=\"`idleTimeout`\" pulumi-lang-hcl=\"`idle_timeout`\"\u003e`idleTimeout`\u003c/span\u003e.\n",
+                    "willReplaceOnChanges": true
+                },
+                "idleTimeout": {
+                    "type": "string",
+                    "description": "How long the MicroVM must be idle before it pauses, as a duration such as \u003cspan pulumi-lang-nodejs=\"`5m`\" pulumi-lang-dotnet=\"`5m`\" pulumi-lang-go=\"`5m`\" pulumi-lang-python=\"`5m`\" pulumi-lang-yaml=\"`5m`\" pulumi-lang-java=\"`5m`\" pulumi-lang-hcl=\"`5m`\"\u003e`5m`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`30s`\" pulumi-lang-dotnet=\"`30s`\" pulumi-lang-go=\"`30s`\" pulumi-lang-python=\"`30s`\" pulumi-lang-yaml=\"`30s`\" pulumi-lang-java=\"`30s`\" pulumi-lang-hcl=\"`30s`\"\u003e`30s`\u003c/span\u003e.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "enabled",
+                        "idleTimeout"
+                    ]
+                }
+            }
+        },
+        "digitalocean:index/MicrovmCheckpointSize:MicrovmCheckpointSize": {
+            "properties": {
+                "cpu": {
+                    "type": "integer",
+                    "description": "The number of vCPUs.\n"
+                },
+                "disk": {
+                    "type": "integer",
+                    "description": "The size of the disk in GB.\n"
+                },
+                "memory": {
+                    "type": "integer",
+                    "description": "The amount of memory in MiB.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "cpu",
+                        "disk",
+                        "memory"
+                    ]
+                }
+            }
+        },
+        "digitalocean:index/MicrovmSize:MicrovmSize": {
+            "properties": {
+                "cpu": {
+                    "type": "integer",
+                    "description": "The number of vCPUs.\n",
+                    "willReplaceOnChanges": true
+                },
+                "disk": {
+                    "type": "integer",
+                    "description": "The size of the attached disk in GB.\n"
+                },
+                "memory": {
+                    "type": "integer",
+                    "description": "The amount of memory in MiB.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "type": "object",
+            "required": [
+                "cpu",
+                "memory"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "cpu",
+                        "disk",
+                        "memory"
+                    ]
+                }
+            }
+        },
+        "digitalocean:index/MicrovmSource:MicrovmSource": {
+            "properties": {
+                "checkpointId": {
+                    "type": "string",
+                    "description": "The ID of a checkpoint to restore.\n",
+                    "willReplaceOnChanges": true
+                },
+                "ociRef": {
+                    "type": "string",
+                    "description": "The OCI reference of the workload container image, such as `docker.io/library/nginx:latest`.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "type": "object"
+        },
+        "digitalocean:index/MicrovmUrl:MicrovmUrl": {
+            "properties": {
+                "default": {
+                    "type": "boolean",
+                    "description": "Whether this is the default URL.\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "The hostname, without a scheme.\n"
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "The guest port the URL forwards to.\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "The URL status: `PENDING` or `ACTIVE`.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "default",
+                        "hostname",
+                        "port",
+                        "status"
+                    ]
+                }
+            }
+        },
         "digitalocean:index/MonitorAlertAlerts:MonitorAlertAlerts": {
             "properties": {
                 "emails": {
@@ -25667,6 +25797,506 @@
                 }
             }
         },
+        "digitalocean:index/getMicrovmAutoPause:getMicrovmAutoPause": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether auto-pause is enabled.\n"
+                },
+                "idleTimeout": {
+                    "type": "string",
+                    "description": "How long the MicroVM must be idle before it pauses.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled",
+                "idleTimeout"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getMicrovmCheckpointsCheckpoint:getMicrovmCheckpointsCheckpoint": {
+            "properties": {
+                "createdAt": {
+                    "type": "string",
+                    "description": "The date and time the checkpoint was created.\n"
+                },
+                "diskBytes": {
+                    "type": "integer",
+                    "description": "The size of the persisted disk image in bytes.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The ID of the checkpoint.\n"
+                },
+                "memoryBytes": {
+                    "type": "integer",
+                    "description": "The size of the persisted memory image in bytes.\n"
+                },
+                "microvmId": {
+                    "type": "string",
+                    "description": "Only return checkpoints captured from this MicroVM.\n"
+                },
+                "microvmName": {
+                    "type": "string",
+                    "description": "The name of the MicroVM the checkpoint was captured from.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the checkpoint.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The slug of the region the checkpoint is stored in.\n"
+                },
+                "sizes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/getMicrovmCheckpointsCheckpointSize:getMicrovmCheckpointsCheckpointSize"
+                    },
+                    "description": "The size a MicroVM restored from this checkpoint inherits (\u003cspan pulumi-lang-nodejs=\"`cpu`\" pulumi-lang-dotnet=\"`Cpu`\" pulumi-lang-go=\"`cpu`\" pulumi-lang-python=\"`cpu`\" pulumi-lang-yaml=\"`cpu`\" pulumi-lang-java=\"`cpu`\" pulumi-lang-hcl=\"`cpu`\"\u003e`cpu`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`memory`\" pulumi-lang-dotnet=\"`Memory`\" pulumi-lang-go=\"`memory`\" pulumi-lang-python=\"`memory`\" pulumi-lang-yaml=\"`memory`\" pulumi-lang-java=\"`memory`\" pulumi-lang-hcl=\"`memory`\"\u003e`memory`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`disk`\" pulumi-lang-dotnet=\"`Disk`\" pulumi-lang-go=\"`disk`\" pulumi-lang-python=\"`disk`\" pulumi-lang-yaml=\"`disk`\" pulumi-lang-java=\"`disk`\" pulumi-lang-hcl=\"`disk`\"\u003e`disk`\u003c/span\u003e). Empty when the checkpoint does not record one.\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "The status of the checkpoint, such as `CHECKPOINT_AVAILABLE`.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "createdAt",
+                "diskBytes",
+                "id",
+                "memoryBytes",
+                "microvmId",
+                "microvmName",
+                "name",
+                "region",
+                "sizes",
+                "status"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getMicrovmCheckpointsCheckpointSize:getMicrovmCheckpointsCheckpointSize": {
+            "properties": {
+                "cpu": {
+                    "type": "integer",
+                    "description": "Number of vCPUs\n"
+                },
+                "disk": {
+                    "type": "integer",
+                    "description": "Attached disk in GB\n"
+                },
+                "memory": {
+                    "type": "integer",
+                    "description": "Memory in MiB\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "cpu",
+                "disk",
+                "memory"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getMicrovmCheckpointsFilter:getMicrovmCheckpointsFilter": {
+            "properties": {
+                "all": {
+                    "type": "boolean",
+                    "description": "Set to \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\" pulumi-lang-hcl=\"`true`\"\u003e`true`\u003c/span\u003e to require that a field match all of the\n\u003cspan pulumi-lang-nodejs=\"`values`\" pulumi-lang-dotnet=\"`Values`\" pulumi-lang-go=\"`values`\" pulumi-lang-python=\"`values`\" pulumi-lang-yaml=\"`values`\" pulumi-lang-java=\"`values`\" pulumi-lang-hcl=\"`values`\"\u003e`values`\u003c/span\u003e instead of just one or more of them.\n"
+                },
+                "key": {
+                    "type": "string",
+                    "description": "Filter the checkpoints by this key. This may be one of\n\u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\" pulumi-lang-hcl=\"`id`\"\u003e`id`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\" pulumi-lang-hcl=\"`name`\"\u003e`name`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`microvmId`\" pulumi-lang-dotnet=\"`MicrovmId`\" pulumi-lang-go=\"`microvmId`\" pulumi-lang-python=\"`microvm_id`\" pulumi-lang-yaml=\"`microvmId`\" pulumi-lang-java=\"`microvmId`\" pulumi-lang-hcl=\"`microvm_id`\"\u003e`microvmId`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`microvmName`\" pulumi-lang-dotnet=\"`MicrovmName`\" pulumi-lang-go=\"`microvmName`\" pulumi-lang-python=\"`microvm_name`\" pulumi-lang-yaml=\"`microvmName`\" pulumi-lang-java=\"`microvmName`\" pulumi-lang-hcl=\"`microvm_name`\"\u003e`microvmName`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\" pulumi-lang-hcl=\"`region`\"\u003e`region`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`status`\" pulumi-lang-dotnet=\"`Status`\" pulumi-lang-go=\"`status`\" pulumi-lang-python=\"`status`\" pulumi-lang-yaml=\"`status`\" pulumi-lang-java=\"`status`\" pulumi-lang-hcl=\"`status`\"\u003e`status`\u003c/span\u003e,\n\u003cspan pulumi-lang-nodejs=\"`memoryBytes`\" pulumi-lang-dotnet=\"`MemoryBytes`\" pulumi-lang-go=\"`memoryBytes`\" pulumi-lang-python=\"`memory_bytes`\" pulumi-lang-yaml=\"`memoryBytes`\" pulumi-lang-java=\"`memoryBytes`\" pulumi-lang-hcl=\"`memory_bytes`\"\u003e`memoryBytes`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`diskBytes`\" pulumi-lang-dotnet=\"`DiskBytes`\" pulumi-lang-go=\"`diskBytes`\" pulumi-lang-python=\"`disk_bytes`\" pulumi-lang-yaml=\"`diskBytes`\" pulumi-lang-java=\"`diskBytes`\" pulumi-lang-hcl=\"`disk_bytes`\"\u003e`diskBytes`\u003c/span\u003e, or \u003cspan pulumi-lang-nodejs=\"`createdAt`\" pulumi-lang-dotnet=\"`CreatedAt`\" pulumi-lang-go=\"`createdAt`\" pulumi-lang-python=\"`created_at`\" pulumi-lang-yaml=\"`createdAt`\" pulumi-lang-java=\"`createdAt`\" pulumi-lang-hcl=\"`created_at`\"\u003e`createdAt`\u003c/span\u003e.\n"
+                },
+                "matchBy": {
+                    "type": "string",
+                    "description": "One of \u003cspan pulumi-lang-nodejs=\"`exact`\" pulumi-lang-dotnet=\"`Exact`\" pulumi-lang-go=\"`exact`\" pulumi-lang-python=\"`exact`\" pulumi-lang-yaml=\"`exact`\" pulumi-lang-java=\"`exact`\" pulumi-lang-hcl=\"`exact`\"\u003e`exact`\u003c/span\u003e (default), \u003cspan pulumi-lang-nodejs=\"`re`\" pulumi-lang-dotnet=\"`Re`\" pulumi-lang-go=\"`re`\" pulumi-lang-python=\"`re`\" pulumi-lang-yaml=\"`re`\" pulumi-lang-java=\"`re`\" pulumi-lang-hcl=\"`re`\"\u003e`re`\u003c/span\u003e, or \u003cspan pulumi-lang-nodejs=\"`substring`\" pulumi-lang-dotnet=\"`Substring`\" pulumi-lang-go=\"`substring`\" pulumi-lang-python=\"`substring`\" pulumi-lang-yaml=\"`substring`\" pulumi-lang-java=\"`substring`\" pulumi-lang-hcl=\"`substring`\"\u003e`substring`\u003c/span\u003e.\n"
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of values to match against the \u003cspan pulumi-lang-nodejs=\"`key`\" pulumi-lang-dotnet=\"`Key`\" pulumi-lang-go=\"`key`\" pulumi-lang-python=\"`key`\" pulumi-lang-yaml=\"`key`\" pulumi-lang-java=\"`key`\" pulumi-lang-hcl=\"`key`\"\u003e`key`\u003c/span\u003e field.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "key",
+                "values"
+            ]
+        },
+        "digitalocean:index/getMicrovmCheckpointsSort:getMicrovmCheckpointsSort": {
+            "properties": {
+                "direction": {
+                    "type": "string",
+                    "description": "The sort direction. This may be either \u003cspan pulumi-lang-nodejs=\"`asc`\" pulumi-lang-dotnet=\"`Asc`\" pulumi-lang-go=\"`asc`\" pulumi-lang-python=\"`asc`\" pulumi-lang-yaml=\"`asc`\" pulumi-lang-java=\"`asc`\" pulumi-lang-hcl=\"`asc`\"\u003e`asc`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`desc`\" pulumi-lang-dotnet=\"`Desc`\" pulumi-lang-go=\"`desc`\" pulumi-lang-python=\"`desc`\" pulumi-lang-yaml=\"`desc`\" pulumi-lang-java=\"`desc`\" pulumi-lang-hcl=\"`desc`\"\u003e`desc`\u003c/span\u003e.\n"
+                },
+                "key": {
+                    "type": "string",
+                    "description": "Sort the checkpoints by this key. This may be one of \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\" pulumi-lang-hcl=\"`id`\"\u003e`id`\u003c/span\u003e,\n\u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\" pulumi-lang-hcl=\"`name`\"\u003e`name`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`microvmId`\" pulumi-lang-dotnet=\"`MicrovmId`\" pulumi-lang-go=\"`microvmId`\" pulumi-lang-python=\"`microvm_id`\" pulumi-lang-yaml=\"`microvmId`\" pulumi-lang-java=\"`microvmId`\" pulumi-lang-hcl=\"`microvm_id`\"\u003e`microvmId`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`microvmName`\" pulumi-lang-dotnet=\"`MicrovmName`\" pulumi-lang-go=\"`microvmName`\" pulumi-lang-python=\"`microvm_name`\" pulumi-lang-yaml=\"`microvmName`\" pulumi-lang-java=\"`microvmName`\" pulumi-lang-hcl=\"`microvm_name`\"\u003e`microvmName`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\" pulumi-lang-hcl=\"`region`\"\u003e`region`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`status`\" pulumi-lang-dotnet=\"`Status`\" pulumi-lang-go=\"`status`\" pulumi-lang-python=\"`status`\" pulumi-lang-yaml=\"`status`\" pulumi-lang-java=\"`status`\" pulumi-lang-hcl=\"`status`\"\u003e`status`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`memoryBytes`\" pulumi-lang-dotnet=\"`MemoryBytes`\" pulumi-lang-go=\"`memoryBytes`\" pulumi-lang-python=\"`memory_bytes`\" pulumi-lang-yaml=\"`memoryBytes`\" pulumi-lang-java=\"`memoryBytes`\" pulumi-lang-hcl=\"`memory_bytes`\"\u003e`memoryBytes`\u003c/span\u003e,\n\u003cspan pulumi-lang-nodejs=\"`diskBytes`\" pulumi-lang-dotnet=\"`DiskBytes`\" pulumi-lang-go=\"`diskBytes`\" pulumi-lang-python=\"`disk_bytes`\" pulumi-lang-yaml=\"`diskBytes`\" pulumi-lang-java=\"`diskBytes`\" pulumi-lang-hcl=\"`disk_bytes`\"\u003e`diskBytes`\u003c/span\u003e, or \u003cspan pulumi-lang-nodejs=\"`createdAt`\" pulumi-lang-dotnet=\"`CreatedAt`\" pulumi-lang-go=\"`createdAt`\" pulumi-lang-python=\"`created_at`\" pulumi-lang-yaml=\"`createdAt`\" pulumi-lang-java=\"`createdAt`\" pulumi-lang-hcl=\"`created_at`\"\u003e`createdAt`\u003c/span\u003e.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "key"
+            ]
+        },
+        "digitalocean:index/getMicrovmSize:getMicrovmSize": {
+            "properties": {
+                "cpu": {
+                    "type": "integer",
+                    "description": "The number of vCPUs.\n"
+                },
+                "disk": {
+                    "type": "integer",
+                    "description": "The size of the attached disk in GB.\n"
+                },
+                "memory": {
+                    "type": "integer",
+                    "description": "The amount of memory in MiB.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "cpu",
+                "disk",
+                "memory"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getMicrovmSource:getMicrovmSource": {
+            "properties": {
+                "checkpointId": {
+                    "type": "string",
+                    "description": "The ID of the checkpoint the MicroVM was restored from.\n"
+                },
+                "ociRef": {
+                    "type": "string",
+                    "description": "The OCI reference of the workload container image.\n"
+                }
+            },
+            "type": "object"
+        },
+        "digitalocean:index/getMicrovmUrl:getMicrovmUrl": {
+            "properties": {
+                "default": {
+                    "type": "boolean",
+                    "description": "Whether this is the default URL.\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "The hostname, without a scheme.\n"
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "The guest port the URL forwards to.\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "The URL status: `PENDING` or `ACTIVE`.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "default",
+                "hostname",
+                "port",
+                "status"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getMicrovmsFilter:getMicrovmsFilter": {
+            "properties": {
+                "all": {
+                    "type": "boolean",
+                    "description": "Set to \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\" pulumi-lang-hcl=\"`true`\"\u003e`true`\u003c/span\u003e to require that a field match all of the\n\u003cspan pulumi-lang-nodejs=\"`values`\" pulumi-lang-dotnet=\"`Values`\" pulumi-lang-go=\"`values`\" pulumi-lang-python=\"`values`\" pulumi-lang-yaml=\"`values`\" pulumi-lang-java=\"`values`\" pulumi-lang-hcl=\"`values`\"\u003e`values`\u003c/span\u003e instead of just one or more of them. This is useful when matching\nagainst multi-valued fields such as lists or sets where you want to ensure\nthat all of the \u003cspan pulumi-lang-nodejs=\"`values`\" pulumi-lang-dotnet=\"`Values`\" pulumi-lang-go=\"`values`\" pulumi-lang-python=\"`values`\" pulumi-lang-yaml=\"`values`\" pulumi-lang-java=\"`values`\" pulumi-lang-hcl=\"`values`\"\u003e`values`\u003c/span\u003e are present in the list or set.\n"
+                },
+                "key": {
+                    "type": "string",
+                    "description": "Filter the MicroVMs by this key. This may be one of \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\" pulumi-lang-hcl=\"`id`\"\u003e`id`\u003c/span\u003e,\n\u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\" pulumi-lang-hcl=\"`name`\"\u003e`name`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\" pulumi-lang-hcl=\"`region`\"\u003e`region`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`networking`\" pulumi-lang-dotnet=\"`Networking`\" pulumi-lang-go=\"`networking`\" pulumi-lang-python=\"`networking`\" pulumi-lang-yaml=\"`networking`\" pulumi-lang-java=\"`networking`\" pulumi-lang-hcl=\"`networking`\"\u003e`networking`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`httpProtocol`\" pulumi-lang-dotnet=\"`HttpProtocol`\" pulumi-lang-go=\"`httpProtocol`\" pulumi-lang-python=\"`http_protocol`\" pulumi-lang-yaml=\"`httpProtocol`\" pulumi-lang-java=\"`httpProtocol`\" pulumi-lang-hcl=\"`http_protocol`\"\u003e`httpProtocol`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`currentState`\" pulumi-lang-dotnet=\"`CurrentState`\" pulumi-lang-go=\"`currentState`\" pulumi-lang-python=\"`current_state`\" pulumi-lang-yaml=\"`currentState`\" pulumi-lang-java=\"`currentState`\" pulumi-lang-hcl=\"`current_state`\"\u003e`currentState`\u003c/span\u003e,\n\u003cspan pulumi-lang-nodejs=\"`failureReason`\" pulumi-lang-dotnet=\"`FailureReason`\" pulumi-lang-go=\"`failureReason`\" pulumi-lang-python=\"`failure_reason`\" pulumi-lang-yaml=\"`failureReason`\" pulumi-lang-java=\"`failureReason`\" pulumi-lang-hcl=\"`failure_reason`\"\u003e`failureReason`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`autoResume`\" pulumi-lang-dotnet=\"`AutoResume`\" pulumi-lang-go=\"`autoResume`\" pulumi-lang-python=\"`auto_resume`\" pulumi-lang-yaml=\"`autoResume`\" pulumi-lang-java=\"`autoResume`\" pulumi-lang-hcl=\"`auto_resume`\"\u003e`autoResume`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`ports`\" pulumi-lang-dotnet=\"`Ports`\" pulumi-lang-go=\"`ports`\" pulumi-lang-python=\"`ports`\" pulumi-lang-yaml=\"`ports`\" pulumi-lang-java=\"`ports`\" pulumi-lang-hcl=\"`ports`\"\u003e`ports`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`tags`\" pulumi-lang-dotnet=\"`Tags`\" pulumi-lang-go=\"`tags`\" pulumi-lang-python=\"`tags`\" pulumi-lang-yaml=\"`tags`\" pulumi-lang-java=\"`tags`\" pulumi-lang-hcl=\"`tags`\"\u003e`tags`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`urn`\" pulumi-lang-dotnet=\"`Urn`\" pulumi-lang-go=\"`urn`\" pulumi-lang-python=\"`urn`\" pulumi-lang-yaml=\"`urn`\" pulumi-lang-java=\"`urn`\" pulumi-lang-hcl=\"`urn`\"\u003e`urn`\u003c/span\u003e, or \u003cspan pulumi-lang-nodejs=\"`createdAt`\" pulumi-lang-dotnet=\"`CreatedAt`\" pulumi-lang-go=\"`createdAt`\" pulumi-lang-python=\"`created_at`\" pulumi-lang-yaml=\"`createdAt`\" pulumi-lang-java=\"`createdAt`\" pulumi-lang-hcl=\"`created_at`\"\u003e`createdAt`\u003c/span\u003e.\n"
+                },
+                "matchBy": {
+                    "type": "string",
+                    "description": "One of \u003cspan pulumi-lang-nodejs=\"`exact`\" pulumi-lang-dotnet=\"`Exact`\" pulumi-lang-go=\"`exact`\" pulumi-lang-python=\"`exact`\" pulumi-lang-yaml=\"`exact`\" pulumi-lang-java=\"`exact`\" pulumi-lang-hcl=\"`exact`\"\u003e`exact`\u003c/span\u003e (default), \u003cspan pulumi-lang-nodejs=\"`re`\" pulumi-lang-dotnet=\"`Re`\" pulumi-lang-go=\"`re`\" pulumi-lang-python=\"`re`\" pulumi-lang-yaml=\"`re`\" pulumi-lang-java=\"`re`\" pulumi-lang-hcl=\"`re`\"\u003e`re`\u003c/span\u003e, or \u003cspan pulumi-lang-nodejs=\"`substring`\" pulumi-lang-dotnet=\"`Substring`\" pulumi-lang-go=\"`substring`\" pulumi-lang-python=\"`substring`\" pulumi-lang-yaml=\"`substring`\" pulumi-lang-java=\"`substring`\" pulumi-lang-hcl=\"`substring`\"\u003e`substring`\u003c/span\u003e. For\nstring-typed fields, specify \u003cspan pulumi-lang-nodejs=\"`re`\" pulumi-lang-dotnet=\"`Re`\" pulumi-lang-go=\"`re`\" pulumi-lang-python=\"`re`\" pulumi-lang-yaml=\"`re`\" pulumi-lang-java=\"`re`\" pulumi-lang-hcl=\"`re`\"\u003e`re`\u003c/span\u003e to match by using the \u003cspan pulumi-lang-nodejs=\"`values`\" pulumi-lang-dotnet=\"`Values`\" pulumi-lang-go=\"`values`\" pulumi-lang-python=\"`values`\" pulumi-lang-yaml=\"`values`\" pulumi-lang-java=\"`values`\" pulumi-lang-hcl=\"`values`\"\u003e`values`\u003c/span\u003e as regular\nexpressions, or specify \u003cspan pulumi-lang-nodejs=\"`substring`\" pulumi-lang-dotnet=\"`Substring`\" pulumi-lang-go=\"`substring`\" pulumi-lang-python=\"`substring`\" pulumi-lang-yaml=\"`substring`\" pulumi-lang-java=\"`substring`\" pulumi-lang-hcl=\"`substring`\"\u003e`substring`\u003c/span\u003e to match by treating the \u003cspan pulumi-lang-nodejs=\"`values`\" pulumi-lang-dotnet=\"`Values`\" pulumi-lang-go=\"`values`\" pulumi-lang-python=\"`values`\" pulumi-lang-yaml=\"`values`\" pulumi-lang-java=\"`values`\" pulumi-lang-hcl=\"`values`\"\u003e`values`\u003c/span\u003e as\nsubstrings to find within the string field.\n"
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of values to match against the \u003cspan pulumi-lang-nodejs=\"`key`\" pulumi-lang-dotnet=\"`Key`\" pulumi-lang-go=\"`key`\" pulumi-lang-python=\"`key`\" pulumi-lang-yaml=\"`key`\" pulumi-lang-java=\"`key`\" pulumi-lang-hcl=\"`key`\"\u003e`key`\u003c/span\u003e field. Only\nretrieves MicroVMs where the \u003cspan pulumi-lang-nodejs=\"`key`\" pulumi-lang-dotnet=\"`Key`\" pulumi-lang-go=\"`key`\" pulumi-lang-python=\"`key`\" pulumi-lang-yaml=\"`key`\" pulumi-lang-java=\"`key`\" pulumi-lang-hcl=\"`key`\"\u003e`key`\u003c/span\u003e field takes on one or more of the values\nprovided here.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "key",
+                "values"
+            ]
+        },
+        "digitalocean:index/getMicrovmsMicroVm:getMicrovmsMicroVm": {
+            "properties": {
+                "autoPauses": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/getMicrovmsMicroVmAutoPause:getMicrovmsMicroVmAutoPause"
+                    },
+                    "description": "Auto-pause configuration. Forces recreation on change: the MicroVMs API has no in-place update path for auto_pause.\n"
+                },
+                "autoResume": {
+                    "type": "boolean",
+                    "description": "Whether the MicroVM should auto-resume on request. Forces recreation on change: the MicroVMs API has no in-place update path for auto_resume.\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "The creation timestamp for the MicroVM\n"
+                },
+                "currentState": {
+                    "type": "string",
+                    "description": "Observed lifecycle state of the MicroVM\n"
+                },
+                "environment": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Environment variables passed to the MicroVM\n"
+                },
+                "failureReason": {
+                    "type": "string",
+                    "description": "Human-readable explanation when\u003cspan pulumi-lang-nodejs=\" currentState \" pulumi-lang-dotnet=\" CurrentState \" pulumi-lang-go=\" currentState \" pulumi-lang-python=\" current_state \" pulumi-lang-yaml=\" currentState \" pulumi-lang-java=\" currentState \" pulumi-lang-hcl=\" current_state \"\u003e currentState \u003c/span\u003eis failed\n"
+                },
+                "httpPort": {
+                    "type": "integer",
+                    "description": "Port the MicroVM exposes over HTTP\n"
+                },
+                "httpProtocol": {
+                    "type": "string",
+                    "description": "HTTP protocol: 'http' or 'http2'\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "MicroVM ID\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Only return MicroVMs with this exact name.\n"
+                },
+                "networking": {
+                    "type": "string",
+                    "description": "Networking mode: 'public' or 'vpc'\n"
+                },
+                "ports": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "description": "Guest ports open for ingress. Defaults to just\u003cspan pulumi-lang-nodejs=\" httpPort \" pulumi-lang-dotnet=\" HttpPort \" pulumi-lang-go=\" httpPort \" pulumi-lang-python=\" http_port \" pulumi-lang-yaml=\" httpPort \" pulumi-lang-java=\" httpPort \" pulumi-lang-hcl=\" http_port \"\u003e httpPort \u003c/span\u003ewhen omitted.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "Only return MicroVMs in this region.\n"
+                },
+                "sizes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/getMicrovmsMicroVmSize:getMicrovmsMicroVmSize"
+                    },
+                    "description": "Compute size. Required when creating from oci_ref; optional when restoring from a checkpoint (inherited).\n"
+                },
+                "sources": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/getMicrovmsMicroVmSource:getMicrovmsMicroVmSource"
+                    },
+                    "description": "Workload source. Exactly one of\u003cspan pulumi-lang-nodejs=\" ociRef \" pulumi-lang-dotnet=\" OciRef \" pulumi-lang-go=\" ociRef \" pulumi-lang-python=\" oci_ref \" pulumi-lang-yaml=\" ociRef \" pulumi-lang-java=\" ociRef \" pulumi-lang-hcl=\" oci_ref \"\u003e ociRef \u003c/span\u003eor\u003cspan pulumi-lang-nodejs=\" checkpointId \" pulumi-lang-dotnet=\" CheckpointId \" pulumi-lang-go=\" checkpointId \" pulumi-lang-python=\" checkpoint_id \" pulumi-lang-yaml=\" checkpointId \" pulumi-lang-java=\" checkpointId \" pulumi-lang-hcl=\" checkpoint_id \"\u003e checkpointId \u003c/span\u003emust be set.\n"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "Desired lifecycle state: 'running' or 'paused'. Changes are applied by calling the microvm pause / resume action endpoints.\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "urls": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/getMicrovmsMicroVmUrl:getMicrovmsMicroVmUrl"
+                    },
+                    "description": "Ingress URLs for the MicroVM\n"
+                },
+                "urn": {
+                    "type": "string",
+                    "description": "The uniform resource name (URN) for the MicroVM\n"
+                },
+                "vpcUuid": {
+                    "type": "string",
+                    "description": "UUID of the VPC to attach the MicroVM to. Only valid when networking is 'vpc'.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "autoPauses",
+                "autoResume",
+                "createdAt",
+                "currentState",
+                "environment",
+                "failureReason",
+                "httpPort",
+                "httpProtocol",
+                "id",
+                "name",
+                "networking",
+                "ports",
+                "region",
+                "sizes",
+                "sources",
+                "state",
+                "tags",
+                "urls",
+                "urn",
+                "vpcUuid"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getMicrovmsMicroVmAutoPause:getMicrovmsMicroVmAutoPause": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether auto-pause is enabled. Forces recreation on change (no in-place API path).\n"
+                },
+                "idleTimeout": {
+                    "type": "string",
+                    "description": "Idle timeout as a Go duration string (e.g. '5m', '30s'). Forces recreation on change (no in-place API path).\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled",
+                "idleTimeout"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getMicrovmsMicroVmSize:getMicrovmsMicroVmSize": {
+            "properties": {
+                "cpu": {
+                    "type": "integer",
+                    "description": "Number of vCPUs\n"
+                },
+                "disk": {
+                    "type": "integer",
+                    "description": "Attached disk in GB (provisioned with the size)\n"
+                },
+                "memory": {
+                    "type": "integer",
+                    "description": "Memory in MiB\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "cpu",
+                "disk",
+                "memory"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getMicrovmsMicroVmSource:getMicrovmsMicroVmSource": {
+            "properties": {
+                "checkpointId": {
+                    "type": "string",
+                    "description": "Checkpoint UUID to restore\n"
+                },
+                "ociRef": {
+                    "type": "string",
+                    "description": "OCI reference for the workload container\n"
+                }
+            },
+            "type": "object"
+        },
+        "digitalocean:index/getMicrovmsMicroVmUrl:getMicrovmsMicroVmUrl": {
+            "properties": {
+                "default": {
+                    "type": "boolean",
+                    "description": "Whether this is the system default URL\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "Hostname (no scheme)\n"
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "Guest port this URL forwards to\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "URL lifecycle status (PENDING or ACTIVE)\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "default",
+                "hostname",
+                "port",
+                "status"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getMicrovmsSort:getMicrovmsSort": {
+            "properties": {
+                "direction": {
+                    "type": "string",
+                    "description": "The sort direction. This may be either \u003cspan pulumi-lang-nodejs=\"`asc`\" pulumi-lang-dotnet=\"`Asc`\" pulumi-lang-go=\"`asc`\" pulumi-lang-python=\"`asc`\" pulumi-lang-yaml=\"`asc`\" pulumi-lang-java=\"`asc`\" pulumi-lang-hcl=\"`asc`\"\u003e`asc`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`desc`\" pulumi-lang-dotnet=\"`Desc`\" pulumi-lang-go=\"`desc`\" pulumi-lang-python=\"`desc`\" pulumi-lang-yaml=\"`desc`\" pulumi-lang-java=\"`desc`\" pulumi-lang-hcl=\"`desc`\"\u003e`desc`\u003c/span\u003e.\n"
+                },
+                "key": {
+                    "type": "string",
+                    "description": "Sort the MicroVMs by this key. This may be one of \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\" pulumi-lang-hcl=\"`id`\"\u003e`id`\u003c/span\u003e,\n\u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\" pulumi-lang-hcl=\"`name`\"\u003e`name`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\" pulumi-lang-hcl=\"`region`\"\u003e`region`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`networking`\" pulumi-lang-dotnet=\"`Networking`\" pulumi-lang-go=\"`networking`\" pulumi-lang-python=\"`networking`\" pulumi-lang-yaml=\"`networking`\" pulumi-lang-java=\"`networking`\" pulumi-lang-hcl=\"`networking`\"\u003e`networking`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`httpProtocol`\" pulumi-lang-dotnet=\"`HttpProtocol`\" pulumi-lang-go=\"`httpProtocol`\" pulumi-lang-python=\"`http_protocol`\" pulumi-lang-yaml=\"`httpProtocol`\" pulumi-lang-java=\"`httpProtocol`\" pulumi-lang-hcl=\"`http_protocol`\"\u003e`httpProtocol`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`currentState`\" pulumi-lang-dotnet=\"`CurrentState`\" pulumi-lang-go=\"`currentState`\" pulumi-lang-python=\"`current_state`\" pulumi-lang-yaml=\"`currentState`\" pulumi-lang-java=\"`currentState`\" pulumi-lang-hcl=\"`current_state`\"\u003e`currentState`\u003c/span\u003e,\n\u003cspan pulumi-lang-nodejs=\"`autoResume`\" pulumi-lang-dotnet=\"`AutoResume`\" pulumi-lang-go=\"`autoResume`\" pulumi-lang-python=\"`auto_resume`\" pulumi-lang-yaml=\"`autoResume`\" pulumi-lang-java=\"`autoResume`\" pulumi-lang-hcl=\"`auto_resume`\"\u003e`autoResume`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`urn`\" pulumi-lang-dotnet=\"`Urn`\" pulumi-lang-go=\"`urn`\" pulumi-lang-python=\"`urn`\" pulumi-lang-yaml=\"`urn`\" pulumi-lang-java=\"`urn`\" pulumi-lang-hcl=\"`urn`\"\u003e`urn`\u003c/span\u003e, or \u003cspan pulumi-lang-nodejs=\"`createdAt`\" pulumi-lang-dotnet=\"`CreatedAt`\" pulumi-lang-go=\"`createdAt`\" pulumi-lang-python=\"`created_at`\" pulumi-lang-yaml=\"`createdAt`\" pulumi-lang-java=\"`createdAt`\" pulumi-lang-hcl=\"`created_at`\"\u003e`createdAt`\u003c/span\u003e.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "key"
+            ]
+        },
         "digitalocean:index/getNfsAccessPointAccessPolicy:getNfsAccessPointAccessPolicy": {
             "properties": {
                 "anongid": {
@@ -38402,6 +39032,423 @@
                 "type": "object"
             }
         },
+        "digitalocean:index/microvm:Microvm": {
+            "description": "Provides a DigitalOcean MicroVM resource. MicroVMs are lightweight sandboxes\nthat run an OCI container image, pause when idle, and resume on demand.\n\n\u003e **Note:** MicroVMs are in public preview.\n\n## Example Usage\n\nCreate a MicroVM from an OCI image:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst web = new digitalocean.Microvm(\"web\", {\n    name: \"example-microvm\",\n    region: \"nyc3\",\n    httpPort: 8080,\n    size: {\n        cpu: 2,\n        memory: 4096,\n    },\n    source: {\n        ociRef: \"docker.io/library/nginx:latest\",\n    },\n    autoPause: {\n        enabled: true,\n        idleTimeout: \"5m\",\n    },\n    environment: {\n        LOG_LEVEL: \"info\",\n    },\n    tags: [\"web\"],\n});\nexport const url = web.urls[0].hostname;\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nweb = digitalocean.Microvm(\"web\",\n    name=\"example-microvm\",\n    region=\"nyc3\",\n    http_port=8080,\n    size={\n        \"cpu\": 2,\n        \"memory\": 4096,\n    },\n    source={\n        \"oci_ref\": \"docker.io/library/nginx:latest\",\n    },\n    auto_pause={\n        \"enabled\": True,\n        \"idle_timeout\": \"5m\",\n    },\n    environment={\n        \"LOG_LEVEL\": \"info\",\n    },\n    tags=[\"web\"])\npulumi.export(\"url\", web.urls[0].hostname)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var web = new DigitalOcean.Microvm(\"web\", new()\n    {\n        Name = \"example-microvm\",\n        Region = \"nyc3\",\n        HttpPort = 8080,\n        Size = new DigitalOcean.Inputs.MicrovmSizeArgs\n        {\n            Cpu = 2,\n            Memory = 4096,\n        },\n        Source = new DigitalOcean.Inputs.MicrovmSourceArgs\n        {\n            OciRef = \"docker.io/library/nginx:latest\",\n        },\n        AutoPause = new DigitalOcean.Inputs.MicrovmAutoPauseArgs\n        {\n            Enabled = true,\n            IdleTimeout = \"5m\",\n        },\n        Environment = \n        {\n            { \"LOG_LEVEL\", \"info\" },\n        },\n        Tags = new[]\n        {\n            \"web\",\n        },\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"url\"] = web.Urls.Apply(urls =\u003e urls[0].Hostname),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tweb, err := digitalocean.NewMicrovm(ctx, \"web\", \u0026digitalocean.MicrovmArgs{\n\t\t\tName:     pulumi.String(\"example-microvm\"),\n\t\t\tRegion:   pulumi.String(\"nyc3\"),\n\t\t\tHttpPort: pulumi.Int(8080),\n\t\t\tSize: \u0026digitalocean.MicrovmSizeArgs{\n\t\t\t\tCpu:    pulumi.Int(2),\n\t\t\t\tMemory: pulumi.Int(4096),\n\t\t\t},\n\t\t\tSource: \u0026digitalocean.MicrovmSourceArgs{\n\t\t\t\tOciRef: pulumi.String(\"docker.io/library/nginx:latest\"),\n\t\t\t},\n\t\t\tAutoPause: \u0026digitalocean.MicrovmAutoPauseArgs{\n\t\t\t\tEnabled:     pulumi.Bool(true),\n\t\t\t\tIdleTimeout: pulumi.String(\"5m\"),\n\t\t\t},\n\t\t\tEnvironment: pulumi.StringMap{\n\t\t\t\t\"LOG_LEVEL\": pulumi.String(\"info\"),\n\t\t\t},\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"web\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"url\", web.Urls.ApplyT(func(urls []digitalocean.MicrovmUrl) (*string, error) {\n\t\t\treturn urls[0].Hostname, nil\n\t\t}).(pulumi.StringPtrOutput))\n\t\treturn nil\n\t})\n}\n```\n```hcl\npulumi {\n  required_providers {\n    digitalocean = {\n      source = \"pulumi/digitalocean\"\n    }\n  }\n}\n\nresource \"digitalocean_microvm\" \"web\" {\n  name      = \"example-microvm\"\n  region    = \"nyc3\"\n  http_port = 8080\n  size = {\n    cpu    = 2\n    memory = 4096\n  }\n  source = {\n    oci_ref = \"docker.io/library/nginx:latest\"\n  }\n  auto_pause = {\n    enabled      = true\n    idle_timeout = \"5m\"\n  }\n  environment = {\n    \"LOG_LEVEL\" = \"info\"\n  }\n  tags = [\"web\"]\n}\noutput \"url\" {\n  value = digitalocean_microvm.web.urls[0].hostname\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.Microvm;\nimport com.pulumi.digitalocean.MicrovmArgs;\nimport com.pulumi.digitalocean.inputs.MicrovmSizeArgs;\nimport com.pulumi.digitalocean.inputs.MicrovmSourceArgs;\nimport com.pulumi.digitalocean.inputs.MicrovmAutoPauseArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var web = new Microvm(\"web\", MicrovmArgs.builder()\n            .name(\"example-microvm\")\n            .region(\"nyc3\")\n            .httpPort(8080)\n            .size(MicrovmSizeArgs.builder()\n                .cpu(2)\n                .memory(4096)\n                .build())\n            .source(MicrovmSourceArgs.builder()\n                .ociRef(\"docker.io/library/nginx:latest\")\n                .build())\n            .autoPause(MicrovmAutoPauseArgs.builder()\n                .enabled(true)\n                .idleTimeout(\"5m\")\n                .build())\n            .environment(Map.of(\"LOG_LEVEL\", \"info\"))\n            .tags(\"web\")\n            .build());\n\n        ctx.export(\"url\", web.urls().applyValue(_urls -\u003e _urls[0].hostname()));\n    }\n}\n```\n```yaml\nresources:\n  web:\n    type: digitalocean:Microvm\n    properties:\n      name: example-microvm\n      region: nyc3\n      httpPort: 8080\n      size:\n        cpu: 2\n        memory: 4096\n      source:\n        ociRef: docker.io/library/nginx:latest\n      autoPause:\n        enabled: true\n        idleTimeout: 5m\n      environment:\n        LOG_LEVEL: info\n      tags:\n        - web\noutputs:\n  url: ${web.urls[0].hostname}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Pause and Resume\n\nSet \u003cspan pulumi-lang-nodejs=\"`state`\" pulumi-lang-dotnet=\"`State`\" pulumi-lang-go=\"`state`\" pulumi-lang-python=\"`state`\" pulumi-lang-yaml=\"`state`\" pulumi-lang-java=\"`state`\" pulumi-lang-hcl=\"`state`\"\u003e`state`\u003c/span\u003e to \u003cspan pulumi-lang-nodejs=\"`paused`\" pulumi-lang-dotnet=\"`Paused`\" pulumi-lang-go=\"`paused`\" pulumi-lang-python=\"`paused`\" pulumi-lang-yaml=\"`paused`\" pulumi-lang-java=\"`paused`\" pulumi-lang-hcl=\"`paused`\"\u003e`paused`\u003c/span\u003e to pause a running MicroVM, and back to \u003cspan pulumi-lang-nodejs=\"`running`\" pulumi-lang-dotnet=\"`Running`\" pulumi-lang-go=\"`running`\" pulumi-lang-python=\"`running`\" pulumi-lang-yaml=\"`running`\" pulumi-lang-java=\"`running`\" pulumi-lang-hcl=\"`running`\"\u003e`running`\u003c/span\u003e to\nresume it. This is the only change that is applied in place; every other\nargument forces a new MicroVM.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst worker = new digitalocean.Microvm(\"worker\", {\n    name: \"example-worker\",\n    region: \"nyc3\",\n    state: \"paused\",\n    size: {\n        cpu: 1,\n        memory: 2048,\n    },\n    source: {\n        ociRef: \"docker.io/library/alpine:latest\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nworker = digitalocean.Microvm(\"worker\",\n    name=\"example-worker\",\n    region=\"nyc3\",\n    state=\"paused\",\n    size={\n        \"cpu\": 1,\n        \"memory\": 2048,\n    },\n    source={\n        \"oci_ref\": \"docker.io/library/alpine:latest\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var worker = new DigitalOcean.Microvm(\"worker\", new()\n    {\n        Name = \"example-worker\",\n        Region = \"nyc3\",\n        State = \"paused\",\n        Size = new DigitalOcean.Inputs.MicrovmSizeArgs\n        {\n            Cpu = 1,\n            Memory = 2048,\n        },\n        Source = new DigitalOcean.Inputs.MicrovmSourceArgs\n        {\n            OciRef = \"docker.io/library/alpine:latest\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewMicrovm(ctx, \"worker\", \u0026digitalocean.MicrovmArgs{\n\t\t\tName:   pulumi.String(\"example-worker\"),\n\t\t\tRegion: pulumi.String(\"nyc3\"),\n\t\t\tState:  pulumi.String(\"paused\"),\n\t\t\tSize: \u0026digitalocean.MicrovmSizeArgs{\n\t\t\t\tCpu:    pulumi.Int(1),\n\t\t\t\tMemory: pulumi.Int(2048),\n\t\t\t},\n\t\t\tSource: \u0026digitalocean.MicrovmSourceArgs{\n\t\t\t\tOciRef: pulumi.String(\"docker.io/library/alpine:latest\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\npulumi {\n  required_providers {\n    digitalocean = {\n      source = \"pulumi/digitalocean\"\n    }\n  }\n}\n\nresource \"digitalocean_microvm\" \"worker\" {\n  name   = \"example-worker\"\n  region = \"nyc3\"\n  state  = \"paused\"\n  size = {\n    cpu    = 1\n    memory = 2048\n  }\n  source = {\n    oci_ref = \"docker.io/library/alpine:latest\"\n  }\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.Microvm;\nimport com.pulumi.digitalocean.MicrovmArgs;\nimport com.pulumi.digitalocean.inputs.MicrovmSizeArgs;\nimport com.pulumi.digitalocean.inputs.MicrovmSourceArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var worker = new Microvm(\"worker\", MicrovmArgs.builder()\n            .name(\"example-worker\")\n            .region(\"nyc3\")\n            .state(\"paused\")\n            .size(MicrovmSizeArgs.builder()\n                .cpu(1)\n                .memory(2048)\n                .build())\n            .source(MicrovmSourceArgs.builder()\n                .ociRef(\"docker.io/library/alpine:latest\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  worker:\n    type: digitalocean:Microvm\n    properties:\n      name: example-worker\n      region: nyc3\n      state: paused\n      size:\n        cpu: 1\n        memory: 2048\n      source:\n        ociRef: docker.io/library/alpine:latest\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Restore from a Checkpoint\n\nWhen `source.checkpoint_id` is set, \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\" pulumi-lang-hcl=\"`region`\"\u003e`region`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`size`\" pulumi-lang-dotnet=\"`Size`\" pulumi-lang-go=\"`size`\" pulumi-lang-python=\"`size`\" pulumi-lang-yaml=\"`size`\" pulumi-lang-java=\"`size`\" pulumi-lang-hcl=\"`size`\"\u003e`size`\u003c/span\u003e may be omitted and are\ninherited from the checkpoint.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst snapshot = new digitalocean.MicrovmCheckpoint(\"snapshot\", {\n    microvmId: web.id,\n    name: \"web-checkpoint\",\n});\nconst restored = new digitalocean.Microvm(\"restored\", {\n    name: \"example-restored\",\n    source: {\n        checkpointId: snapshot.id,\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nsnapshot = digitalocean.MicrovmCheckpoint(\"snapshot\",\n    microvm_id=web[\"id\"],\n    name=\"web-checkpoint\")\nrestored = digitalocean.Microvm(\"restored\",\n    name=\"example-restored\",\n    source={\n        \"checkpoint_id\": snapshot.id,\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var snapshot = new DigitalOcean.MicrovmCheckpoint(\"snapshot\", new()\n    {\n        MicrovmId = web.Id,\n        Name = \"web-checkpoint\",\n    });\n\n    var restored = new DigitalOcean.Microvm(\"restored\", new()\n    {\n        Name = \"example-restored\",\n        Source = new DigitalOcean.Inputs.MicrovmSourceArgs\n        {\n            CheckpointId = snapshot.Id,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tsnapshot, err := digitalocean.NewMicrovmCheckpoint(ctx, \"snapshot\", \u0026digitalocean.MicrovmCheckpointArgs{\n\t\t\tMicrovmId: pulumi.Any(web.Id),\n\t\t\tName:      pulumi.String(\"web-checkpoint\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewMicrovm(ctx, \"restored\", \u0026digitalocean.MicrovmArgs{\n\t\t\tName: pulumi.String(\"example-restored\"),\n\t\t\tSource: \u0026digitalocean.MicrovmSourceArgs{\n\t\t\t\tCheckpointId: snapshot.ID().ToIDOutput().ToStringOutput(),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\npulumi {\n  required_providers {\n    digitalocean = {\n      source = \"pulumi/digitalocean\"\n    }\n  }\n}\n\nresource \"digitalocean_microvmcheckpoint\" \"snapshot\" {\n  microvm_id = web.id\n  name       = \"web-checkpoint\"\n}\nresource \"digitalocean_microvm\" \"restored\" {\n  name = \"example-restored\"\n  source = {\n    checkpoint_id = digitalocean_microvmcheckpoint.snapshot.id\n  }\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.MicrovmCheckpoint;\nimport com.pulumi.digitalocean.MicrovmCheckpointArgs;\nimport com.pulumi.digitalocean.Microvm;\nimport com.pulumi.digitalocean.MicrovmArgs;\nimport com.pulumi.digitalocean.inputs.MicrovmSourceArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var snapshot = new MicrovmCheckpoint(\"snapshot\", MicrovmCheckpointArgs.builder()\n            .microvmId(web.id())\n            .name(\"web-checkpoint\")\n            .build());\n\n        var restored = new Microvm(\"restored\", MicrovmArgs.builder()\n            .name(\"example-restored\")\n            .source(MicrovmSourceArgs.builder()\n                .checkpointId(snapshot.id())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  snapshot:\n    type: digitalocean:MicrovmCheckpoint\n    properties:\n      microvmId: ${web.id}\n      name: web-checkpoint\n  restored:\n    type: digitalocean:Microvm\n    properties:\n      name: example-restored\n      source:\n        checkpointId: ${snapshot.id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nA MicroVM can be imported using its \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\" pulumi-lang-hcl=\"`id`\"\u003e`id`\u003c/span\u003e, e.g.\n\n```sh\n$ pulumi import digitalocean:index/microvm:Microvm web 506f78a4-e098-11e5-ad9f-000f53306ae1\n```\n\n",
+            "properties": {
+                "autoPause": {
+                    "$ref": "#/types/digitalocean:index/MicrovmAutoPause:MicrovmAutoPause",
+                    "description": "Auto-pause configuration. When omitted, the product default (enabled) applies.\n"
+                },
+                "autoResume": {
+                    "type": "boolean",
+                    "description": "Whether the MicroVM resumes automatically on incoming HTTP traffic. When omitted, the product default (enabled) applies.\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "The date and time the MicroVM was created.\n"
+                },
+                "currentState": {
+                    "type": "string",
+                    "description": "The observed lifecycle state of the MicroVM, such as \u003cspan pulumi-lang-nodejs=\"`running`\" pulumi-lang-dotnet=\"`Running`\" pulumi-lang-go=\"`running`\" pulumi-lang-python=\"`running`\" pulumi-lang-yaml=\"`running`\" pulumi-lang-java=\"`running`\" pulumi-lang-hcl=\"`running`\"\u003e`running`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`paused`\" pulumi-lang-dotnet=\"`Paused`\" pulumi-lang-go=\"`paused`\" pulumi-lang-python=\"`paused`\" pulumi-lang-yaml=\"`paused`\" pulumi-lang-java=\"`paused`\" pulumi-lang-hcl=\"`paused`\"\u003e`paused`\u003c/span\u003e.\n"
+                },
+                "digitaloceanUrn": {
+                    "type": "string",
+                    "description": "The uniform resource name (URN) for the MicroVM.\n"
+                },
+                "environment": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "A map of environment variables to pass to the workload.\n"
+                },
+                "failureReason": {
+                    "type": "string",
+                    "description": "A description of the failure when \u003cspan pulumi-lang-nodejs=\"`currentState`\" pulumi-lang-dotnet=\"`CurrentState`\" pulumi-lang-go=\"`currentState`\" pulumi-lang-python=\"`current_state`\" pulumi-lang-yaml=\"`currentState`\" pulumi-lang-java=\"`currentState`\" pulumi-lang-hcl=\"`current_state`\"\u003e`currentState`\u003c/span\u003e is \u003cspan pulumi-lang-nodejs=\"`failed`\" pulumi-lang-dotnet=\"`Failed`\" pulumi-lang-go=\"`failed`\" pulumi-lang-python=\"`failed`\" pulumi-lang-yaml=\"`failed`\" pulumi-lang-java=\"`failed`\" pulumi-lang-hcl=\"`failed`\"\u003e`failed`\u003c/span\u003e.\n"
+                },
+                "httpPort": {
+                    "type": "integer",
+                    "description": "The port the workload serves HTTP on.\n"
+                },
+                "httpProtocol": {
+                    "type": "string",
+                    "description": "The HTTP protocol the workload serves: \u003cspan pulumi-lang-nodejs=\"`http`\" pulumi-lang-dotnet=\"`Http`\" pulumi-lang-go=\"`http`\" pulumi-lang-python=\"`http`\" pulumi-lang-yaml=\"`http`\" pulumi-lang-java=\"`http`\" pulumi-lang-hcl=\"`http`\"\u003e`http`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`http2`\" pulumi-lang-dotnet=\"`Http2`\" pulumi-lang-go=\"`http2`\" pulumi-lang-python=\"`http2`\" pulumi-lang-yaml=\"`http2`\" pulumi-lang-java=\"`http2`\" pulumi-lang-hcl=\"`http2`\"\u003e`http2`\u003c/span\u003e.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the MicroVM.\n"
+                },
+                "networking": {
+                    "type": "string",
+                    "description": "The networking mode: \u003cspan pulumi-lang-nodejs=\"`public`\" pulumi-lang-dotnet=\"`Public`\" pulumi-lang-go=\"`public`\" pulumi-lang-python=\"`public`\" pulumi-lang-yaml=\"`public`\" pulumi-lang-java=\"`public`\" pulumi-lang-hcl=\"`public`\"\u003e`public`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`vpc`\" pulumi-lang-dotnet=\"`Vpc`\" pulumi-lang-go=\"`vpc`\" pulumi-lang-python=\"`vpc`\" pulumi-lang-yaml=\"`vpc`\" pulumi-lang-java=\"`vpc`\" pulumi-lang-hcl=\"`vpc`\"\u003e`vpc`\u003c/span\u003e.\n"
+                },
+                "ports": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "description": "A list of guest ports to open for ingress. Defaults to \u003cspan pulumi-lang-nodejs=\"`httpPort`\" pulumi-lang-dotnet=\"`HttpPort`\" pulumi-lang-go=\"`httpPort`\" pulumi-lang-python=\"`http_port`\" pulumi-lang-yaml=\"`httpPort`\" pulumi-lang-java=\"`httpPort`\" pulumi-lang-hcl=\"`http_port`\"\u003e`httpPort`\u003c/span\u003e only.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The slug of the region to create the MicroVM in. Required when creating from `source.oci_ref`; inherited from the checkpoint when omitted on a restore.\n"
+                },
+                "size": {
+                    "$ref": "#/types/digitalocean:index/MicrovmSize:MicrovmSize",
+                    "description": "The compute size of the MicroVM. Required when creating from `source.oci_ref`; inherited from the checkpoint when omitted on a restore.\n"
+                },
+                "source": {
+                    "$ref": "#/types/digitalocean:index/MicrovmSource:MicrovmSource",
+                    "description": "What the MicroVM runs. Exactly one of the following must be set:\n"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "The desired lifecycle state: \u003cspan pulumi-lang-nodejs=\"`running`\" pulumi-lang-dotnet=\"`Running`\" pulumi-lang-go=\"`running`\" pulumi-lang-python=\"`running`\" pulumi-lang-yaml=\"`running`\" pulumi-lang-java=\"`running`\" pulumi-lang-hcl=\"`running`\"\u003e`running`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`paused`\" pulumi-lang-dotnet=\"`Paused`\" pulumi-lang-go=\"`paused`\" pulumi-lang-python=\"`paused`\" pulumi-lang-yaml=\"`paused`\" pulumi-lang-java=\"`paused`\" pulumi-lang-hcl=\"`paused`\"\u003e`paused`\u003c/span\u003e. Defaults to \u003cspan pulumi-lang-nodejs=\"`running`\" pulumi-lang-dotnet=\"`Running`\" pulumi-lang-go=\"`running`\" pulumi-lang-python=\"`running`\" pulumi-lang-yaml=\"`running`\" pulumi-lang-java=\"`running`\" pulumi-lang-hcl=\"`running`\"\u003e`running`\u003c/span\u003e. When \u003cspan pulumi-lang-nodejs=\"`autoPause`\" pulumi-lang-dotnet=\"`AutoPause`\" pulumi-lang-go=\"`autoPause`\" pulumi-lang-python=\"`auto_pause`\" pulumi-lang-yaml=\"`autoPause`\" pulumi-lang-java=\"`autoPause`\" pulumi-lang-hcl=\"`auto_pause`\"\u003e`autoPause`\u003c/span\u003e is enabled, a MicroVM that the platform has paused is not resumed to match \u003cspan pulumi-lang-nodejs=\"`running`\" pulumi-lang-dotnet=\"`Running`\" pulumi-lang-go=\"`running`\" pulumi-lang-python=\"`running`\" pulumi-lang-yaml=\"`running`\" pulumi-lang-java=\"`running`\" pulumi-lang-hcl=\"`running`\"\u003e`running`\u003c/span\u003e.\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of tag names to apply to the MicroVM.\n"
+                },
+                "urls": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/MicrovmUrl:MicrovmUrl"
+                    },
+                    "description": "A list of ingress URLs for the MicroVM:\n"
+                },
+                "vpcUuid": {
+                    "type": "string",
+                    "description": "The ID of the VPC to place the MicroVM in. Only valid when \u003cspan pulumi-lang-nodejs=\"`networking`\" pulumi-lang-dotnet=\"`Networking`\" pulumi-lang-go=\"`networking`\" pulumi-lang-python=\"`networking`\" pulumi-lang-yaml=\"`networking`\" pulumi-lang-java=\"`networking`\" pulumi-lang-hcl=\"`networking`\"\u003e`networking`\u003c/span\u003e is \u003cspan pulumi-lang-nodejs=\"`vpc`\" pulumi-lang-dotnet=\"`Vpc`\" pulumi-lang-go=\"`vpc`\" pulumi-lang-python=\"`vpc`\" pulumi-lang-yaml=\"`vpc`\" pulumi-lang-java=\"`vpc`\" pulumi-lang-hcl=\"`vpc`\"\u003e`vpc`\u003c/span\u003e.\n"
+                }
+            },
+            "required": [
+                "autoPause",
+                "autoResume",
+                "createdAt",
+                "currentState",
+                "failureReason",
+                "httpProtocol",
+                "name",
+                "networking",
+                "ports",
+                "region",
+                "size",
+                "source",
+                "urls",
+                "digitaloceanUrn",
+                "vpcUuid"
+            ],
+            "inputProperties": {
+                "autoPause": {
+                    "$ref": "#/types/digitalocean:index/MicrovmAutoPause:MicrovmAutoPause",
+                    "description": "Auto-pause configuration. When omitted, the product default (enabled) applies.\n",
+                    "willReplaceOnChanges": true
+                },
+                "autoResume": {
+                    "type": "boolean",
+                    "description": "Whether the MicroVM resumes automatically on incoming HTTP traffic. When omitted, the product default (enabled) applies.\n",
+                    "willReplaceOnChanges": true
+                },
+                "environment": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "A map of environment variables to pass to the workload.\n",
+                    "willReplaceOnChanges": true
+                },
+                "httpPort": {
+                    "type": "integer",
+                    "description": "The port the workload serves HTTP on.\n",
+                    "willReplaceOnChanges": true
+                },
+                "httpProtocol": {
+                    "type": "string",
+                    "description": "The HTTP protocol the workload serves: \u003cspan pulumi-lang-nodejs=\"`http`\" pulumi-lang-dotnet=\"`Http`\" pulumi-lang-go=\"`http`\" pulumi-lang-python=\"`http`\" pulumi-lang-yaml=\"`http`\" pulumi-lang-java=\"`http`\" pulumi-lang-hcl=\"`http`\"\u003e`http`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`http2`\" pulumi-lang-dotnet=\"`Http2`\" pulumi-lang-go=\"`http2`\" pulumi-lang-python=\"`http2`\" pulumi-lang-yaml=\"`http2`\" pulumi-lang-java=\"`http2`\" pulumi-lang-hcl=\"`http2`\"\u003e`http2`\u003c/span\u003e.\n",
+                    "willReplaceOnChanges": true
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the MicroVM.\n",
+                    "willReplaceOnChanges": true
+                },
+                "networking": {
+                    "type": "string",
+                    "description": "The networking mode: \u003cspan pulumi-lang-nodejs=\"`public`\" pulumi-lang-dotnet=\"`Public`\" pulumi-lang-go=\"`public`\" pulumi-lang-python=\"`public`\" pulumi-lang-yaml=\"`public`\" pulumi-lang-java=\"`public`\" pulumi-lang-hcl=\"`public`\"\u003e`public`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`vpc`\" pulumi-lang-dotnet=\"`Vpc`\" pulumi-lang-go=\"`vpc`\" pulumi-lang-python=\"`vpc`\" pulumi-lang-yaml=\"`vpc`\" pulumi-lang-java=\"`vpc`\" pulumi-lang-hcl=\"`vpc`\"\u003e`vpc`\u003c/span\u003e.\n",
+                    "willReplaceOnChanges": true
+                },
+                "ports": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "description": "A list of guest ports to open for ingress. Defaults to \u003cspan pulumi-lang-nodejs=\"`httpPort`\" pulumi-lang-dotnet=\"`HttpPort`\" pulumi-lang-go=\"`httpPort`\" pulumi-lang-python=\"`http_port`\" pulumi-lang-yaml=\"`httpPort`\" pulumi-lang-java=\"`httpPort`\" pulumi-lang-hcl=\"`http_port`\"\u003e`httpPort`\u003c/span\u003e only.\n",
+                    "willReplaceOnChanges": true
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The slug of the region to create the MicroVM in. Required when creating from `source.oci_ref`; inherited from the checkpoint when omitted on a restore.\n",
+                    "willReplaceOnChanges": true
+                },
+                "size": {
+                    "$ref": "#/types/digitalocean:index/MicrovmSize:MicrovmSize",
+                    "description": "The compute size of the MicroVM. Required when creating from `source.oci_ref`; inherited from the checkpoint when omitted on a restore.\n",
+                    "willReplaceOnChanges": true
+                },
+                "source": {
+                    "$ref": "#/types/digitalocean:index/MicrovmSource:MicrovmSource",
+                    "description": "What the MicroVM runs. Exactly one of the following must be set:\n",
+                    "willReplaceOnChanges": true
+                },
+                "state": {
+                    "type": "string",
+                    "description": "The desired lifecycle state: \u003cspan pulumi-lang-nodejs=\"`running`\" pulumi-lang-dotnet=\"`Running`\" pulumi-lang-go=\"`running`\" pulumi-lang-python=\"`running`\" pulumi-lang-yaml=\"`running`\" pulumi-lang-java=\"`running`\" pulumi-lang-hcl=\"`running`\"\u003e`running`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`paused`\" pulumi-lang-dotnet=\"`Paused`\" pulumi-lang-go=\"`paused`\" pulumi-lang-python=\"`paused`\" pulumi-lang-yaml=\"`paused`\" pulumi-lang-java=\"`paused`\" pulumi-lang-hcl=\"`paused`\"\u003e`paused`\u003c/span\u003e. Defaults to \u003cspan pulumi-lang-nodejs=\"`running`\" pulumi-lang-dotnet=\"`Running`\" pulumi-lang-go=\"`running`\" pulumi-lang-python=\"`running`\" pulumi-lang-yaml=\"`running`\" pulumi-lang-java=\"`running`\" pulumi-lang-hcl=\"`running`\"\u003e`running`\u003c/span\u003e. When \u003cspan pulumi-lang-nodejs=\"`autoPause`\" pulumi-lang-dotnet=\"`AutoPause`\" pulumi-lang-go=\"`autoPause`\" pulumi-lang-python=\"`auto_pause`\" pulumi-lang-yaml=\"`autoPause`\" pulumi-lang-java=\"`autoPause`\" pulumi-lang-hcl=\"`auto_pause`\"\u003e`autoPause`\u003c/span\u003e is enabled, a MicroVM that the platform has paused is not resumed to match \u003cspan pulumi-lang-nodejs=\"`running`\" pulumi-lang-dotnet=\"`Running`\" pulumi-lang-go=\"`running`\" pulumi-lang-python=\"`running`\" pulumi-lang-yaml=\"`running`\" pulumi-lang-java=\"`running`\" pulumi-lang-hcl=\"`running`\"\u003e`running`\u003c/span\u003e.\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of tag names to apply to the MicroVM.\n",
+                    "willReplaceOnChanges": true
+                },
+                "vpcUuid": {
+                    "type": "string",
+                    "description": "The ID of the VPC to place the MicroVM in. Only valid when \u003cspan pulumi-lang-nodejs=\"`networking`\" pulumi-lang-dotnet=\"`Networking`\" pulumi-lang-go=\"`networking`\" pulumi-lang-python=\"`networking`\" pulumi-lang-yaml=\"`networking`\" pulumi-lang-java=\"`networking`\" pulumi-lang-hcl=\"`networking`\"\u003e`networking`\u003c/span\u003e is \u003cspan pulumi-lang-nodejs=\"`vpc`\" pulumi-lang-dotnet=\"`Vpc`\" pulumi-lang-go=\"`vpc`\" pulumi-lang-python=\"`vpc`\" pulumi-lang-yaml=\"`vpc`\" pulumi-lang-java=\"`vpc`\" pulumi-lang-hcl=\"`vpc`\"\u003e`vpc`\u003c/span\u003e.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "source"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Microvm resources.\n",
+                "properties": {
+                    "autoPause": {
+                        "$ref": "#/types/digitalocean:index/MicrovmAutoPause:MicrovmAutoPause",
+                        "description": "Auto-pause configuration. When omitted, the product default (enabled) applies.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "autoResume": {
+                        "type": "boolean",
+                        "description": "Whether the MicroVM resumes automatically on incoming HTTP traffic. When omitted, the product default (enabled) applies.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "description": "The date and time the MicroVM was created.\n"
+                    },
+                    "currentState": {
+                        "type": "string",
+                        "description": "The observed lifecycle state of the MicroVM, such as \u003cspan pulumi-lang-nodejs=\"`running`\" pulumi-lang-dotnet=\"`Running`\" pulumi-lang-go=\"`running`\" pulumi-lang-python=\"`running`\" pulumi-lang-yaml=\"`running`\" pulumi-lang-java=\"`running`\" pulumi-lang-hcl=\"`running`\"\u003e`running`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`paused`\" pulumi-lang-dotnet=\"`Paused`\" pulumi-lang-go=\"`paused`\" pulumi-lang-python=\"`paused`\" pulumi-lang-yaml=\"`paused`\" pulumi-lang-java=\"`paused`\" pulumi-lang-hcl=\"`paused`\"\u003e`paused`\u003c/span\u003e.\n"
+                    },
+                    "digitaloceanUrn": {
+                        "type": "string",
+                        "description": "The uniform resource name (URN) for the MicroVM.\n"
+                    },
+                    "environment": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "A map of environment variables to pass to the workload.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "failureReason": {
+                        "type": "string",
+                        "description": "A description of the failure when \u003cspan pulumi-lang-nodejs=\"`currentState`\" pulumi-lang-dotnet=\"`CurrentState`\" pulumi-lang-go=\"`currentState`\" pulumi-lang-python=\"`current_state`\" pulumi-lang-yaml=\"`currentState`\" pulumi-lang-java=\"`currentState`\" pulumi-lang-hcl=\"`current_state`\"\u003e`currentState`\u003c/span\u003e is \u003cspan pulumi-lang-nodejs=\"`failed`\" pulumi-lang-dotnet=\"`Failed`\" pulumi-lang-go=\"`failed`\" pulumi-lang-python=\"`failed`\" pulumi-lang-yaml=\"`failed`\" pulumi-lang-java=\"`failed`\" pulumi-lang-hcl=\"`failed`\"\u003e`failed`\u003c/span\u003e.\n"
+                    },
+                    "httpPort": {
+                        "type": "integer",
+                        "description": "The port the workload serves HTTP on.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "httpProtocol": {
+                        "type": "string",
+                        "description": "The HTTP protocol the workload serves: \u003cspan pulumi-lang-nodejs=\"`http`\" pulumi-lang-dotnet=\"`Http`\" pulumi-lang-go=\"`http`\" pulumi-lang-python=\"`http`\" pulumi-lang-yaml=\"`http`\" pulumi-lang-java=\"`http`\" pulumi-lang-hcl=\"`http`\"\u003e`http`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`http2`\" pulumi-lang-dotnet=\"`Http2`\" pulumi-lang-go=\"`http2`\" pulumi-lang-python=\"`http2`\" pulumi-lang-yaml=\"`http2`\" pulumi-lang-java=\"`http2`\" pulumi-lang-hcl=\"`http2`\"\u003e`http2`\u003c/span\u003e.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the MicroVM.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "networking": {
+                        "type": "string",
+                        "description": "The networking mode: \u003cspan pulumi-lang-nodejs=\"`public`\" pulumi-lang-dotnet=\"`Public`\" pulumi-lang-go=\"`public`\" pulumi-lang-python=\"`public`\" pulumi-lang-yaml=\"`public`\" pulumi-lang-java=\"`public`\" pulumi-lang-hcl=\"`public`\"\u003e`public`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`vpc`\" pulumi-lang-dotnet=\"`Vpc`\" pulumi-lang-go=\"`vpc`\" pulumi-lang-python=\"`vpc`\" pulumi-lang-yaml=\"`vpc`\" pulumi-lang-java=\"`vpc`\" pulumi-lang-hcl=\"`vpc`\"\u003e`vpc`\u003c/span\u003e.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "ports": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer"
+                        },
+                        "description": "A list of guest ports to open for ingress. Defaults to \u003cspan pulumi-lang-nodejs=\"`httpPort`\" pulumi-lang-dotnet=\"`HttpPort`\" pulumi-lang-go=\"`httpPort`\" pulumi-lang-python=\"`http_port`\" pulumi-lang-yaml=\"`httpPort`\" pulumi-lang-java=\"`httpPort`\" pulumi-lang-hcl=\"`http_port`\"\u003e`httpPort`\u003c/span\u003e only.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The slug of the region to create the MicroVM in. Required when creating from `source.oci_ref`; inherited from the checkpoint when omitted on a restore.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "size": {
+                        "$ref": "#/types/digitalocean:index/MicrovmSize:MicrovmSize",
+                        "description": "The compute size of the MicroVM. Required when creating from `source.oci_ref`; inherited from the checkpoint when omitted on a restore.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "source": {
+                        "$ref": "#/types/digitalocean:index/MicrovmSource:MicrovmSource",
+                        "description": "What the MicroVM runs. Exactly one of the following must be set:\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "state": {
+                        "type": "string",
+                        "description": "The desired lifecycle state: \u003cspan pulumi-lang-nodejs=\"`running`\" pulumi-lang-dotnet=\"`Running`\" pulumi-lang-go=\"`running`\" pulumi-lang-python=\"`running`\" pulumi-lang-yaml=\"`running`\" pulumi-lang-java=\"`running`\" pulumi-lang-hcl=\"`running`\"\u003e`running`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`paused`\" pulumi-lang-dotnet=\"`Paused`\" pulumi-lang-go=\"`paused`\" pulumi-lang-python=\"`paused`\" pulumi-lang-yaml=\"`paused`\" pulumi-lang-java=\"`paused`\" pulumi-lang-hcl=\"`paused`\"\u003e`paused`\u003c/span\u003e. Defaults to \u003cspan pulumi-lang-nodejs=\"`running`\" pulumi-lang-dotnet=\"`Running`\" pulumi-lang-go=\"`running`\" pulumi-lang-python=\"`running`\" pulumi-lang-yaml=\"`running`\" pulumi-lang-java=\"`running`\" pulumi-lang-hcl=\"`running`\"\u003e`running`\u003c/span\u003e. When \u003cspan pulumi-lang-nodejs=\"`autoPause`\" pulumi-lang-dotnet=\"`AutoPause`\" pulumi-lang-go=\"`autoPause`\" pulumi-lang-python=\"`auto_pause`\" pulumi-lang-yaml=\"`autoPause`\" pulumi-lang-java=\"`autoPause`\" pulumi-lang-hcl=\"`auto_pause`\"\u003e`autoPause`\u003c/span\u003e is enabled, a MicroVM that the platform has paused is not resumed to match \u003cspan pulumi-lang-nodejs=\"`running`\" pulumi-lang-dotnet=\"`Running`\" pulumi-lang-go=\"`running`\" pulumi-lang-python=\"`running`\" pulumi-lang-yaml=\"`running`\" pulumi-lang-java=\"`running`\" pulumi-lang-hcl=\"`running`\"\u003e`running`\u003c/span\u003e.\n"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of tag names to apply to the MicroVM.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "urls": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/MicrovmUrl:MicrovmUrl"
+                        },
+                        "description": "A list of ingress URLs for the MicroVM:\n"
+                    },
+                    "vpcUuid": {
+                        "type": "string",
+                        "description": "The ID of the VPC to place the MicroVM in. Only valid when \u003cspan pulumi-lang-nodejs=\"`networking`\" pulumi-lang-dotnet=\"`Networking`\" pulumi-lang-go=\"`networking`\" pulumi-lang-python=\"`networking`\" pulumi-lang-yaml=\"`networking`\" pulumi-lang-java=\"`networking`\" pulumi-lang-hcl=\"`networking`\"\u003e`networking`\u003c/span\u003e is \u003cspan pulumi-lang-nodejs=\"`vpc`\" pulumi-lang-dotnet=\"`Vpc`\" pulumi-lang-go=\"`vpc`\" pulumi-lang-python=\"`vpc`\" pulumi-lang-yaml=\"`vpc`\" pulumi-lang-java=\"`vpc`\" pulumi-lang-hcl=\"`vpc`\"\u003e`vpc`\u003c/span\u003e.\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "digitalocean:index/microvmCheckpoint:MicrovmCheckpoint": {
+            "description": "Provides a DigitalOcean MicroVM checkpoint resource. A checkpoint captures the\nmemory and disk state of a running MicroVM, and can be used as the source of a\nnew \u003cspan pulumi-lang-nodejs=\"`digitalocean.Microvm`\" pulumi-lang-dotnet=\"`digitalocean.Microvm`\" pulumi-lang-go=\"`Microvm`\" pulumi-lang-python=\"`Microvm`\" pulumi-lang-yaml=\"`digitalocean.Microvm`\" pulumi-lang-java=\"`digitalocean.Microvm`\" pulumi-lang-hcl=\"`digitalocean_microvm`\"\u003e`digitalocean.Microvm`\u003c/span\u003e.\n\n\u003e **Note:** MicroVMs are in public preview.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst web = new digitalocean.Microvm(\"web\", {\n    name: \"example-microvm\",\n    region: \"nyc3\",\n    size: {\n        cpu: 2,\n        memory: 4096,\n    },\n    source: {\n        ociRef: \"docker.io/library/nginx:latest\",\n    },\n});\nconst webMicrovmCheckpoint = new digitalocean.MicrovmCheckpoint(\"web\", {\n    microvmId: web.id,\n    name: \"web-checkpoint\",\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nweb = digitalocean.Microvm(\"web\",\n    name=\"example-microvm\",\n    region=\"nyc3\",\n    size={\n        \"cpu\": 2,\n        \"memory\": 4096,\n    },\n    source={\n        \"oci_ref\": \"docker.io/library/nginx:latest\",\n    })\nweb_microvm_checkpoint = digitalocean.MicrovmCheckpoint(\"web\",\n    microvm_id=web.id,\n    name=\"web-checkpoint\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var web = new DigitalOcean.Microvm(\"web\", new()\n    {\n        Name = \"example-microvm\",\n        Region = \"nyc3\",\n        Size = new DigitalOcean.Inputs.MicrovmSizeArgs\n        {\n            Cpu = 2,\n            Memory = 4096,\n        },\n        Source = new DigitalOcean.Inputs.MicrovmSourceArgs\n        {\n            OciRef = \"docker.io/library/nginx:latest\",\n        },\n    });\n\n    var webMicrovmCheckpoint = new DigitalOcean.MicrovmCheckpoint(\"web\", new()\n    {\n        MicrovmId = web.Id,\n        Name = \"web-checkpoint\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tweb, err := digitalocean.NewMicrovm(ctx, \"web\", \u0026digitalocean.MicrovmArgs{\n\t\t\tName:   pulumi.String(\"example-microvm\"),\n\t\t\tRegion: pulumi.String(\"nyc3\"),\n\t\t\tSize: \u0026digitalocean.MicrovmSizeArgs{\n\t\t\t\tCpu:    pulumi.Int(2),\n\t\t\t\tMemory: pulumi.Int(4096),\n\t\t\t},\n\t\t\tSource: \u0026digitalocean.MicrovmSourceArgs{\n\t\t\t\tOciRef: pulumi.String(\"docker.io/library/nginx:latest\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewMicrovmCheckpoint(ctx, \"web\", \u0026digitalocean.MicrovmCheckpointArgs{\n\t\t\tMicrovmId: web.ID().ToIDOutput().ToStringOutput(),\n\t\t\tName:      pulumi.String(\"web-checkpoint\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\npulumi {\n  required_providers {\n    digitalocean = {\n      source = \"pulumi/digitalocean\"\n    }\n  }\n}\n\nresource \"digitalocean_microvm\" \"web\" {\n  name   = \"example-microvm\"\n  region = \"nyc3\"\n  size = {\n    cpu    = 2\n    memory = 4096\n  }\n  source = {\n    oci_ref = \"docker.io/library/nginx:latest\"\n  }\n}\nresource \"digitalocean_microvmcheckpoint\" \"web\" {\n  microvm_id = digitalocean_microvm.web.id\n  name       = \"web-checkpoint\"\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.Microvm;\nimport com.pulumi.digitalocean.MicrovmArgs;\nimport com.pulumi.digitalocean.inputs.MicrovmSizeArgs;\nimport com.pulumi.digitalocean.inputs.MicrovmSourceArgs;\nimport com.pulumi.digitalocean.MicrovmCheckpoint;\nimport com.pulumi.digitalocean.MicrovmCheckpointArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var web = new Microvm(\"web\", MicrovmArgs.builder()\n            .name(\"example-microvm\")\n            .region(\"nyc3\")\n            .size(MicrovmSizeArgs.builder()\n                .cpu(2)\n                .memory(4096)\n                .build())\n            .source(MicrovmSourceArgs.builder()\n                .ociRef(\"docker.io/library/nginx:latest\")\n                .build())\n            .build());\n\n        var webMicrovmCheckpoint = new MicrovmCheckpoint(\"webMicrovmCheckpoint\", MicrovmCheckpointArgs.builder()\n            .microvmId(web.id())\n            .name(\"web-checkpoint\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  web:\n    type: digitalocean:Microvm\n    properties:\n      name: example-microvm\n      region: nyc3\n      size:\n        cpu: 2\n        memory: 4096\n      source:\n        ociRef: docker.io/library/nginx:latest\n  webMicrovmCheckpoint:\n    type: digitalocean:MicrovmCheckpoint\n    name: web\n    properties:\n      microvmId: ${web.id}\n      name: web-checkpoint\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nA MicroVM checkpoint can be imported using its \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\" pulumi-lang-hcl=\"`id`\"\u003e`id`\u003c/span\u003e, e.g.\n\n```sh\n$ pulumi import digitalocean:index/microvmCheckpoint:MicrovmCheckpoint web 506f78a4-e098-11e5-ad9f-000f53306ae1\n```\n\n",
+            "properties": {
+                "createdAt": {
+                    "type": "string",
+                    "description": "The date and time the checkpoint was created.\n"
+                },
+                "diskBytes": {
+                    "type": "integer",
+                    "description": "The size of the persisted disk image in bytes.\n"
+                },
+                "memoryBytes": {
+                    "type": "integer",
+                    "description": "The size of the persisted memory image in bytes.\n"
+                },
+                "microvmId": {
+                    "type": "string",
+                    "description": "The ID of the running MicroVM to checkpoint. Changing this forces a new checkpoint.\n"
+                },
+                "microvmName": {
+                    "type": "string",
+                    "description": "The name of the MicroVM the checkpoint was captured from.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "A name for the checkpoint. Changing this forces a new checkpoint.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The slug of the region the checkpoint is stored in.\n"
+                },
+                "sizes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/MicrovmCheckpointSize:MicrovmCheckpointSize"
+                    },
+                    "description": "The size a MicroVM restored from this checkpoint inherits. Empty when the checkpoint does not record one, in which case the restored MicroVM must set \u003cspan pulumi-lang-nodejs=\"`size`\" pulumi-lang-dotnet=\"`Size`\" pulumi-lang-go=\"`size`\" pulumi-lang-python=\"`size`\" pulumi-lang-yaml=\"`size`\" pulumi-lang-java=\"`size`\" pulumi-lang-hcl=\"`size`\"\u003e`size`\u003c/span\u003e.\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "The status of the checkpoint, such as `CHECKPOINT_AVAILABLE`.\n"
+                }
+            },
+            "required": [
+                "createdAt",
+                "diskBytes",
+                "memoryBytes",
+                "microvmId",
+                "microvmName",
+                "name",
+                "region",
+                "sizes",
+                "status"
+            ],
+            "inputProperties": {
+                "microvmId": {
+                    "type": "string",
+                    "description": "The ID of the running MicroVM to checkpoint. Changing this forces a new checkpoint.\n",
+                    "willReplaceOnChanges": true
+                },
+                "name": {
+                    "type": "string",
+                    "description": "A name for the checkpoint. Changing this forces a new checkpoint.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "microvmId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering MicrovmCheckpoint resources.\n",
+                "properties": {
+                    "createdAt": {
+                        "type": "string",
+                        "description": "The date and time the checkpoint was created.\n"
+                    },
+                    "diskBytes": {
+                        "type": "integer",
+                        "description": "The size of the persisted disk image in bytes.\n"
+                    },
+                    "memoryBytes": {
+                        "type": "integer",
+                        "description": "The size of the persisted memory image in bytes.\n"
+                    },
+                    "microvmId": {
+                        "type": "string",
+                        "description": "The ID of the running MicroVM to checkpoint. Changing this forces a new checkpoint.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "microvmName": {
+                        "type": "string",
+                        "description": "The name of the MicroVM the checkpoint was captured from.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "A name for the checkpoint. Changing this forces a new checkpoint.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The slug of the region the checkpoint is stored in.\n"
+                    },
+                    "sizes": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/MicrovmCheckpointSize:MicrovmCheckpointSize"
+                        },
+                        "description": "The size a MicroVM restored from this checkpoint inherits. Empty when the checkpoint does not record one, in which case the restored MicroVM must set \u003cspan pulumi-lang-nodejs=\"`size`\" pulumi-lang-dotnet=\"`Size`\" pulumi-lang-go=\"`size`\" pulumi-lang-python=\"`size`\" pulumi-lang-yaml=\"`size`\" pulumi-lang-java=\"`size`\" pulumi-lang-hcl=\"`size`\"\u003e`size`\u003c/span\u003e.\n"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "The status of the checkpoint, such as `CHECKPOINT_AVAILABLE`.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "digitalocean:index/monitorAlert:MonitorAlert": {
             "description": "Provides a [DigitalOcean Monitoring](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Monitoring)\nresource. Monitor alerts can be configured to alert about, e.g., disk or memory\nusage exceeding a certain threshold or traffic at a certain limit. Notifications\ncan be sent to either an email address or a Slack channel.\n\n## Import\n\nMonitor alerts can be imported using the monitor alert \u003cspan pulumi-lang-nodejs=\"`uuid`\" pulumi-lang-dotnet=\"`Uuid`\" pulumi-lang-go=\"`uuid`\" pulumi-lang-python=\"`uuid`\" pulumi-lang-yaml=\"`uuid`\" pulumi-lang-java=\"`uuid`\" pulumi-lang-hcl=\"`uuid`\"\u003e`uuid`\u003c/span\u003e, e.g.\n\n```sh\n$ pulumi import digitalocean:index/monitorAlert:MonitorAlert cpu_alert b8ecd2ab-2267-4a5e-8692-cbf1d32583e3\n```\n\n",
             "properties": {
@@ -46422,6 +47469,289 @@
                     "type",
                     "loadBalancerUrn",
                     "vpcUuid"
+                ],
+                "type": "object"
+            }
+        },
+        "digitalocean:index/getMicrovm:getMicrovm": {
+            "description": "Get information on a MicroVM for use in other resources. This is useful if the\nMicroVM is not managed by Terraform or you need to use any of its data.\n\n**Note:** This data source returns a single MicroVM. When looking up by \u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\" pulumi-lang-hcl=\"`name`\"\u003e`name`\u003c/span\u003e,\nan error is triggered if more than one MicroVM has that name.\n\n\u003e **Note:** MicroVMs are in public preview.\n\n## Example Usage\n\nGet the MicroVM by name:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst example = digitalocean.getMicrovm({\n    name: \"example-microvm\",\n});\nexport const hostname = example.then(example =\u003e example.urls?.[0]?.hostname);\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nexample = digitalocean.get_microvm(name=\"example-microvm\")\npulumi.export(\"hostname\", example.urls[0].hostname)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = DigitalOcean.GetMicrovm.Invoke(new()\n    {\n        Name = \"example-microvm\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"hostname\"] = example.Apply(getMicrovmResult =\u003e getMicrovmResult.Urls[0]?.Hostname),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := digitalocean.GetMicrovm(ctx, \u0026digitalocean.LookupMicrovmArgs{\n\t\t\tName: pulumi.StringRef(\"example-microvm\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"hostname\", example.Urls[0].Hostname)\n\t\treturn nil\n\t})\n}\n```\n```hcl\npulumi {\n  required_providers {\n    digitalocean = {\n      source = \"pulumi/digitalocean\"\n    }\n  }\n}\n\ndata \"digitalocean_getmicrovm\" \"example\" {\n  name = \"example-microvm\"\n}\n\noutput \"hostname\" {\n  value = data.digitalocean_getmicrovm.example.urls[0].hostname\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DigitaloceanFunctions;\nimport com.pulumi.digitalocean.inputs.GetMicrovmArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = DigitaloceanFunctions.getMicrovm(GetMicrovmArgs.builder()\n            .name(\"example-microvm\")\n            .build());\n\n        ctx.export(\"hostname\", example.urls()[0].hostname());\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      function: digitalocean:getMicrovm\n      arguments:\n        name: example-microvm\noutputs:\n  hostname: ${example.urls[0].hostname}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nGet the MicroVM by ID:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst example = digitalocean.getMicrovm({\n    id: \"506f78a4-e098-11e5-ad9f-000f53306ae1\",\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nexample = digitalocean.get_microvm(id=\"506f78a4-e098-11e5-ad9f-000f53306ae1\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = DigitalOcean.GetMicrovm.Invoke(new()\n    {\n        Id = \"506f78a4-e098-11e5-ad9f-000f53306ae1\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.GetMicrovm(ctx, \u0026digitalocean.LookupMicrovmArgs{\n\t\t\tId: pulumi.StringRef(\"506f78a4-e098-11e5-ad9f-000f53306ae1\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\npulumi {\n  required_providers {\n    digitalocean = {\n      source = \"pulumi/digitalocean\"\n    }\n  }\n}\n\ndata \"digitalocean_getmicrovm\" \"example\" {\n  id = \"506f78a4-e098-11e5-ad9f-000f53306ae1\"\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DigitaloceanFunctions;\nimport com.pulumi.digitalocean.inputs.GetMicrovmArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = DigitaloceanFunctions.getMicrovm(GetMicrovmArgs.builder()\n            .id(\"506f78a4-e098-11e5-ad9f-000f53306ae1\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      function: digitalocean:getMicrovm\n      arguments:\n        id: 506f78a4-e098-11e5-ad9f-000f53306ae1\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getMicrovm.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The ID of the MicroVM.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the MicroVM.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getMicrovm.\n",
+                "properties": {
+                    "autoPauses": {
+                        "description": "Auto-pause configuration:\n",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getMicrovmAutoPause:getMicrovmAutoPause"
+                        },
+                        "type": "array"
+                    },
+                    "autoResume": {
+                        "description": "Whether the MicroVM resumes automatically on incoming HTTP traffic.\n",
+                        "type": "boolean"
+                    },
+                    "createdAt": {
+                        "description": "The date and time the MicroVM was created.\n",
+                        "type": "string"
+                    },
+                    "currentState": {
+                        "description": "The observed lifecycle state of the MicroVM, such as \u003cspan pulumi-lang-nodejs=\"`running`\" pulumi-lang-dotnet=\"`Running`\" pulumi-lang-go=\"`running`\" pulumi-lang-python=\"`running`\" pulumi-lang-yaml=\"`running`\" pulumi-lang-java=\"`running`\" pulumi-lang-hcl=\"`running`\"\u003e`running`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`paused`\" pulumi-lang-dotnet=\"`Paused`\" pulumi-lang-go=\"`paused`\" pulumi-lang-python=\"`paused`\" pulumi-lang-yaml=\"`paused`\" pulumi-lang-java=\"`paused`\" pulumi-lang-hcl=\"`paused`\"\u003e`paused`\u003c/span\u003e.\n",
+                        "type": "string"
+                    },
+                    "environment": {
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "type": "object"
+                    },
+                    "failureReason": {
+                        "description": "A description of the failure when \u003cspan pulumi-lang-nodejs=\"`currentState`\" pulumi-lang-dotnet=\"`CurrentState`\" pulumi-lang-go=\"`currentState`\" pulumi-lang-python=\"`current_state`\" pulumi-lang-yaml=\"`currentState`\" pulumi-lang-java=\"`currentState`\" pulumi-lang-hcl=\"`current_state`\"\u003e`currentState`\u003c/span\u003e is \u003cspan pulumi-lang-nodejs=\"`failed`\" pulumi-lang-dotnet=\"`Failed`\" pulumi-lang-go=\"`failed`\" pulumi-lang-python=\"`failed`\" pulumi-lang-yaml=\"`failed`\" pulumi-lang-java=\"`failed`\" pulumi-lang-hcl=\"`failed`\"\u003e`failed`\u003c/span\u003e.\n",
+                        "type": "string"
+                    },
+                    "httpPort": {
+                        "type": "integer"
+                    },
+                    "httpProtocol": {
+                        "description": "The HTTP protocol the workload serves: \u003cspan pulumi-lang-nodejs=\"`http`\" pulumi-lang-dotnet=\"`Http`\" pulumi-lang-go=\"`http`\" pulumi-lang-python=\"`http`\" pulumi-lang-yaml=\"`http`\" pulumi-lang-java=\"`http`\" pulumi-lang-hcl=\"`http`\"\u003e`http`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`http2`\" pulumi-lang-dotnet=\"`Http2`\" pulumi-lang-go=\"`http2`\" pulumi-lang-python=\"`http2`\" pulumi-lang-yaml=\"`http2`\" pulumi-lang-java=\"`http2`\" pulumi-lang-hcl=\"`http2`\"\u003e`http2`\u003c/span\u003e.\n",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The ID of the MicroVM.\n",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "The name of the MicroVM.\n",
+                        "type": "string"
+                    },
+                    "networking": {
+                        "description": "The networking mode: \u003cspan pulumi-lang-nodejs=\"`public`\" pulumi-lang-dotnet=\"`Public`\" pulumi-lang-go=\"`public`\" pulumi-lang-python=\"`public`\" pulumi-lang-yaml=\"`public`\" pulumi-lang-java=\"`public`\" pulumi-lang-hcl=\"`public`\"\u003e`public`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`vpc`\" pulumi-lang-dotnet=\"`Vpc`\" pulumi-lang-go=\"`vpc`\" pulumi-lang-python=\"`vpc`\" pulumi-lang-yaml=\"`vpc`\" pulumi-lang-java=\"`vpc`\" pulumi-lang-hcl=\"`vpc`\"\u003e`vpc`\u003c/span\u003e.\n",
+                        "type": "string"
+                    },
+                    "ports": {
+                        "description": "The guest ports open for ingress.\n",
+                        "items": {
+                            "type": "integer"
+                        },
+                        "type": "array"
+                    },
+                    "region": {
+                        "description": "The slug of the region the MicroVM is in.\n",
+                        "type": "string"
+                    },
+                    "sizes": {
+                        "description": "The compute size of the MicroVM:\n",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getMicrovmSize:getMicrovmSize"
+                        },
+                        "type": "array"
+                    },
+                    "sources": {
+                        "description": "What the MicroVM runs:\n",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getMicrovmSource:getMicrovmSource"
+                        },
+                        "type": "array"
+                    },
+                    "state": {
+                        "type": "string"
+                    },
+                    "tags": {
+                        "description": "The tags applied to the MicroVM.\n",
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "urls": {
+                        "description": "A list of ingress URLs for the MicroVM:\n",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getMicrovmUrl:getMicrovmUrl"
+                        },
+                        "type": "array"
+                    },
+                    "urn": {
+                        "description": "The uniform resource name (URN) for the MicroVM.\n",
+                        "type": "string"
+                    },
+                    "vpcUuid": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "autoPauses",
+                    "autoResume",
+                    "createdAt",
+                    "currentState",
+                    "environment",
+                    "failureReason",
+                    "httpPort",
+                    "httpProtocol",
+                    "id",
+                    "name",
+                    "networking",
+                    "ports",
+                    "region",
+                    "sizes",
+                    "sources",
+                    "state",
+                    "tags",
+                    "urls",
+                    "urn",
+                    "vpcUuid"
+                ],
+                "type": "object"
+            }
+        },
+        "digitalocean:index/getMicrovmCheckpoints:getMicrovmCheckpoints": {
+            "description": "Get information on MicroVM checkpoints for use in other resources, with the\nability to filter and sort the results. If no arguments are specified, all\ncheckpoints on the account are returned.\n\n\u003e **Note:** MicroVMs are in public preview.\n\n## Example Usage\n\nGet the checkpoints captured from a MicroVM and restore the newest one:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst web = digitalocean.getMicrovmCheckpoints({\n    microvmId: webDigitaloceanMicrovm.id,\n    filters: [{\n        key: \"status\",\n        values: [\"CHECKPOINT_AVAILABLE\"],\n    }],\n    sorts: [{\n        key: \"created_at\",\n        direction: \"desc\",\n    }],\n});\nconst restored = new digitalocean.Microvm(\"restored\", {\n    name: \"example-restored\",\n    source: {\n        checkpointId: web.then(web =\u003e web.checkpoints?.[0]?.id),\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nweb = digitalocean.get_microvm_checkpoints(microvm_id=web_digitalocean_microvm[\"id\"],\n    filters=[{\n        \"key\": \"status\",\n        \"values\": [\"CHECKPOINT_AVAILABLE\"],\n    }],\n    sorts=[{\n        \"key\": \"created_at\",\n        \"direction\": \"desc\",\n    }])\nrestored = digitalocean.Microvm(\"restored\",\n    name=\"example-restored\",\n    source={\n        \"checkpoint_id\": web.checkpoints[0].id,\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var web = DigitalOcean.GetMicrovmCheckpoints.Invoke(new()\n    {\n        MicrovmId = webDigitaloceanMicrovm.Id,\n        Filters = new[]\n        {\n            new DigitalOcean.Inputs.GetMicrovmCheckpointsFilterInputArgs\n            {\n                Key = \"status\",\n                Values = new[]\n                {\n                    \"CHECKPOINT_AVAILABLE\",\n                },\n            },\n        },\n        Sorts = new[]\n        {\n            new DigitalOcean.Inputs.GetMicrovmCheckpointsSortInputArgs\n            {\n                Key = \"created_at\",\n                Direction = \"desc\",\n            },\n        },\n    });\n\n    var restored = new DigitalOcean.Microvm(\"restored\", new()\n    {\n        Name = \"example-restored\",\n        Source = new DigitalOcean.Inputs.MicrovmSourceArgs\n        {\n            CheckpointId = web.Apply(getMicrovmCheckpointsResult =\u003e getMicrovmCheckpointsResult.Checkpoints[0]?.Id),\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tweb, err := digitalocean.GetMicrovmCheckpoints(ctx, \u0026digitalocean.GetMicrovmCheckpointsArgs{\n\t\t\tMicrovmId: pulumi.StringRef(webDigitaloceanMicrovm.Id),\n\t\t\tFilters: []digitalocean.GetMicrovmCheckpointsFilter{\n\t\t\t\t{\n\t\t\t\t\tKey: \"status\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"CHECKPOINT_AVAILABLE\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tSorts: []digitalocean.GetMicrovmCheckpointsSort{\n\t\t\t\t{\n\t\t\t\t\tKey:       \"created_at\",\n\t\t\t\t\tDirection: pulumi.StringRef(\"desc\"),\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewMicrovm(ctx, \"restored\", \u0026digitalocean.MicrovmArgs{\n\t\t\tName: pulumi.String(\"example-restored\"),\n\t\t\tSource: \u0026digitalocean.MicrovmSourceArgs{\n\t\t\t\tCheckpointId: pulumi.String(web.Checkpoints[0].Id),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\npulumi {\n  required_providers {\n    digitalocean = {\n      source = \"pulumi/digitalocean\"\n    }\n  }\n}\n\ndata \"digitalocean_getmicrovmcheckpoints\" \"web\" {\n  microvm_id = webDigitaloceanMicrovm.id\n  filters {\n    key    = \"status\"\n    values = [\"CHECKPOINT_AVAILABLE\"]\n  }\n  sorts {\n    key       = \"created_at\"\n    direction = \"desc\"\n  }\n}\n\nresource \"digitalocean_microvm\" \"restored\" {\n  name = \"example-restored\"\n  source = {\n    checkpoint_id = data.digitalocean_getmicrovmcheckpoints.web.checkpoints[0].id\n  }\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DigitaloceanFunctions;\nimport com.pulumi.digitalocean.inputs.GetMicrovmCheckpointsArgs;\nimport com.pulumi.digitalocean.inputs.GetMicrovmCheckpointsFilterArgs;\nimport com.pulumi.digitalocean.inputs.GetMicrovmCheckpointsSortArgs;\nimport com.pulumi.digitalocean.Microvm;\nimport com.pulumi.digitalocean.MicrovmArgs;\nimport com.pulumi.digitalocean.inputs.MicrovmSourceArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var web = DigitaloceanFunctions.getMicrovmCheckpoints(GetMicrovmCheckpointsArgs.builder()\n            .microvmId(webDigitaloceanMicrovm.id())\n            .filters(GetMicrovmCheckpointsFilterArgs.builder()\n                .key(\"status\")\n                .values(\"CHECKPOINT_AVAILABLE\")\n                .build())\n            .sorts(GetMicrovmCheckpointsSortArgs.builder()\n                .key(\"created_at\")\n                .direction(\"desc\")\n                .build())\n            .build());\n\n        var restored = new Microvm(\"restored\", MicrovmArgs.builder()\n            .name(\"example-restored\")\n            .source(MicrovmSourceArgs.builder()\n                .checkpointId(web.checkpoints()[0].id())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  restored:\n    type: digitalocean:Microvm\n    properties:\n      name: example-restored\n      source:\n        checkpointId: ${web.checkpoints[0].id}\nvariables:\n  web:\n    fn::invoke:\n      function: digitalocean:getMicrovmCheckpoints\n      arguments:\n        microvmId: ${webDigitaloceanMicrovm.id}\n        filters:\n          - key: status\n            values:\n              - CHECKPOINT_AVAILABLE\n        sorts:\n          - key: created_at\n            direction: desc\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getMicrovmCheckpoints.\n",
+                "properties": {
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getMicrovmCheckpointsFilter:getMicrovmCheckpointsFilter"
+                        },
+                        "description": "Filter the results.\nThe \u003cspan pulumi-lang-nodejs=\"`filter`\" pulumi-lang-dotnet=\"`Filter`\" pulumi-lang-go=\"`filter`\" pulumi-lang-python=\"`filter`\" pulumi-lang-yaml=\"`filter`\" pulumi-lang-java=\"`filter`\" pulumi-lang-hcl=\"`filter`\"\u003e`filter`\u003c/span\u003e block is documented below.\n"
+                    },
+                    "microvmId": {
+                        "type": "string",
+                        "description": "Only return checkpoints captured from this MicroVM.\n"
+                    },
+                    "sorts": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getMicrovmCheckpointsSort:getMicrovmCheckpointsSort"
+                        },
+                        "description": "Sort the results.\nThe \u003cspan pulumi-lang-nodejs=\"`sort`\" pulumi-lang-dotnet=\"`Sort`\" pulumi-lang-go=\"`sort`\" pulumi-lang-python=\"`sort`\" pulumi-lang-yaml=\"`sort`\" pulumi-lang-java=\"`sort`\" pulumi-lang-hcl=\"`sort`\"\u003e`sort`\u003c/span\u003e block is documented below.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getMicrovmCheckpoints.\n",
+                "properties": {
+                    "checkpoints": {
+                        "description": "A list of checkpoints satisfying any \u003cspan pulumi-lang-nodejs=\"`filter`\" pulumi-lang-dotnet=\"`Filter`\" pulumi-lang-go=\"`filter`\" pulumi-lang-python=\"`filter`\" pulumi-lang-yaml=\"`filter`\" pulumi-lang-java=\"`filter`\" pulumi-lang-hcl=\"`filter`\"\u003e`filter`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`sort`\" pulumi-lang-dotnet=\"`Sort`\" pulumi-lang-go=\"`sort`\" pulumi-lang-python=\"`sort`\" pulumi-lang-yaml=\"`sort`\" pulumi-lang-java=\"`sort`\" pulumi-lang-hcl=\"`sort`\"\u003e`sort`\u003c/span\u003e criteria. Each checkpoint has the following attributes:\n",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getMicrovmCheckpointsCheckpoint:getMicrovmCheckpointsCheckpoint"
+                        },
+                        "type": "array"
+                    },
+                    "filters": {
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getMicrovmCheckpointsFilter:getMicrovmCheckpointsFilter"
+                        },
+                        "type": "array"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.",
+                        "type": "string"
+                    },
+                    "microvmId": {
+                        "description": "The ID of the MicroVM the checkpoint was captured from.\n",
+                        "type": "string"
+                    },
+                    "sorts": {
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getMicrovmCheckpointsSort:getMicrovmCheckpointsSort"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "checkpoints",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "digitalocean:index/getMicrovms:getMicrovms": {
+            "description": "Get information on MicroVMs for use in other resources, with the ability to\nfilter and sort the results. If no filters are specified, all MicroVMs are\nreturned.\n\nThe \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\" pulumi-lang-hcl=\"`region`\"\u003e`region`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\" pulumi-lang-hcl=\"`name`\"\u003e`name`\u003c/span\u003e, and \u003cspan pulumi-lang-nodejs=\"`tagName`\" pulumi-lang-dotnet=\"`TagName`\" pulumi-lang-go=\"`tagName`\" pulumi-lang-python=\"`tag_name`\" pulumi-lang-yaml=\"`tagName`\" pulumi-lang-java=\"`tagName`\" pulumi-lang-hcl=\"`tag_name`\"\u003e`tagName`\u003c/span\u003e arguments are applied by the API and\ncombine with logical AND. The \u003cspan pulumi-lang-nodejs=\"`filter`\" pulumi-lang-dotnet=\"`Filter`\" pulumi-lang-go=\"`filter`\" pulumi-lang-python=\"`filter`\" pulumi-lang-yaml=\"`filter`\" pulumi-lang-java=\"`filter`\" pulumi-lang-hcl=\"`filter`\"\u003e`filter`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`sort`\" pulumi-lang-dotnet=\"`Sort`\" pulumi-lang-go=\"`sort`\" pulumi-lang-python=\"`sort`\" pulumi-lang-yaml=\"`sort`\" pulumi-lang-java=\"`sort`\" pulumi-lang-hcl=\"`sort`\"\u003e`sort`\u003c/span\u003e blocks are applied to the\nresults afterwards.\n\nNote: You can use the \u003cspan pulumi-lang-nodejs=\"`digitalocean.Microvm`\" pulumi-lang-dotnet=\"`digitalocean.Microvm`\" pulumi-lang-go=\"`Microvm`\" pulumi-lang-python=\"`Microvm`\" pulumi-lang-yaml=\"`digitalocean.Microvm`\" pulumi-lang-java=\"`digitalocean.Microvm`\" pulumi-lang-hcl=\"`digitalocean_microvm`\"\u003e`digitalocean.Microvm`\u003c/span\u003e data source to obtain\nmetadata about a single MicroVM if you already know its \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\" pulumi-lang-hcl=\"`id`\"\u003e`id`\u003c/span\u003e or unique \u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\" pulumi-lang-hcl=\"`name`\"\u003e`name`\u003c/span\u003e.\n\n\u003e **Note:** MicroVMs are in public preview.\n\n## Example Usage\n\nGet all MicroVMs in a region that carry a tag:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst web = digitalocean.getMicrovms({\n    region: \"nyc3\",\n    tagName: \"web\",\n});\nexport const names = web.then(web =\u003e web.microVms.map(__item =\u003e __item.name));\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nweb = digitalocean.get_microvms(region=\"nyc3\",\n    tag_name=\"web\")\npulumi.export(\"names\", [__item.name for __item in web.micro_vms])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var web = DigitalOcean.GetMicrovms.Invoke(new()\n    {\n        Region = \"nyc3\",\n        TagName = \"web\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"names\"] = web.Apply(getMicrovmsResult =\u003e getMicrovmsResult.MicroVms).Select(__item =\u003e __item.Name).ToList(),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\nfunc main() {\npulumi.Run(func(ctx *pulumi.Context) error {\nweb, err := digitalocean.GetMicrovms(ctx, \u0026digitalocean.GetMicrovmsArgs{\nRegion: pulumi.StringRef(\"nyc3\"),\nTagName: pulumi.StringRef(\"web\"),\n}, nil);\nif err != nil {\nreturn err\n}\nctx.Export(\"names\", pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:6,11-31)))\nreturn nil\n})\n}\n```\n```hcl\npulumi {\n  required_providers {\n    digitalocean = {\n      source = \"pulumi/digitalocean\"\n    }\n  }\n}\n\ndata \"digitalocean_getmicrovms\" \"web\" {\n  region   = \"nyc3\"\n  tag_name = \"web\"\n}\n\noutput \"names\" {\n  value = data.digitalocean_getmicrovms.web.micro_vms[*].name\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DigitaloceanFunctions;\nimport com.pulumi.digitalocean.inputs.GetMicrovmsArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var web = DigitaloceanFunctions.getMicrovms(GetMicrovmsArgs.builder()\n            .region(\"nyc3\")\n            .tagName(\"web\")\n            .build());\n\n        ctx.export(\"names\", web.microVms().stream().map(element -\u003e element.name()).collect(toList()));\n    }\n}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nGet all running MicroVMs, sorted by creation time:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst running = digitalocean.getMicrovms({\n    filters: [{\n        key: \"current_state\",\n        values: [\"running\"],\n    }],\n    sorts: [{\n        key: \"created_at\",\n        direction: \"desc\",\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nrunning = digitalocean.get_microvms(filters=[{\n        \"key\": \"current_state\",\n        \"values\": [\"running\"],\n    }],\n    sorts=[{\n        \"key\": \"created_at\",\n        \"direction\": \"desc\",\n    }])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var running = DigitalOcean.GetMicrovms.Invoke(new()\n    {\n        Filters = new[]\n        {\n            new DigitalOcean.Inputs.GetMicrovmsFilterInputArgs\n            {\n                Key = \"current_state\",\n                Values = new[]\n                {\n                    \"running\",\n                },\n            },\n        },\n        Sorts = new[]\n        {\n            new DigitalOcean.Inputs.GetMicrovmsSortInputArgs\n            {\n                Key = \"created_at\",\n                Direction = \"desc\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.GetMicrovms(ctx, \u0026digitalocean.GetMicrovmsArgs{\n\t\t\tFilters: []digitalocean.GetMicrovmsFilter{\n\t\t\t\t{\n\t\t\t\t\tKey: \"current_state\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"running\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tSorts: []digitalocean.GetMicrovmsSort{\n\t\t\t\t{\n\t\t\t\t\tKey:       \"created_at\",\n\t\t\t\t\tDirection: pulumi.StringRef(\"desc\"),\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\npulumi {\n  required_providers {\n    digitalocean = {\n      source = \"pulumi/digitalocean\"\n    }\n  }\n}\n\ndata \"digitalocean_getmicrovms\" \"running\" {\n  filters {\n    key    = \"current_state\"\n    values = [\"running\"]\n  }\n  sorts {\n    key       = \"created_at\"\n    direction = \"desc\"\n  }\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DigitaloceanFunctions;\nimport com.pulumi.digitalocean.inputs.GetMicrovmsArgs;\nimport com.pulumi.digitalocean.inputs.GetMicrovmsFilterArgs;\nimport com.pulumi.digitalocean.inputs.GetMicrovmsSortArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var running = DigitaloceanFunctions.getMicrovms(GetMicrovmsArgs.builder()\n            .filters(GetMicrovmsFilterArgs.builder()\n                .key(\"current_state\")\n                .values(\"running\")\n                .build())\n            .sorts(GetMicrovmsSortArgs.builder()\n                .key(\"created_at\")\n                .direction(\"desc\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  running:\n    fn::invoke:\n      function: digitalocean:getMicrovms\n      arguments:\n        filters:\n          - key: current_state\n            values:\n              - running\n        sorts:\n          - key: created_at\n            direction: desc\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getMicrovms.\n",
+                "properties": {
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getMicrovmsFilter:getMicrovmsFilter"
+                        },
+                        "description": "Filter the results.\nThe \u003cspan pulumi-lang-nodejs=\"`filter`\" pulumi-lang-dotnet=\"`Filter`\" pulumi-lang-go=\"`filter`\" pulumi-lang-python=\"`filter`\" pulumi-lang-yaml=\"`filter`\" pulumi-lang-java=\"`filter`\" pulumi-lang-hcl=\"`filter`\"\u003e`filter`\u003c/span\u003e block is documented below.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Only return MicroVMs with this exact name.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "Only return MicroVMs in this region.\n"
+                    },
+                    "sorts": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getMicrovmsSort:getMicrovmsSort"
+                        },
+                        "description": "Sort the results.\nThe \u003cspan pulumi-lang-nodejs=\"`sort`\" pulumi-lang-dotnet=\"`Sort`\" pulumi-lang-go=\"`sort`\" pulumi-lang-python=\"`sort`\" pulumi-lang-yaml=\"`sort`\" pulumi-lang-java=\"`sort`\" pulumi-lang-hcl=\"`sort`\"\u003e`sort`\u003c/span\u003e block is documented below.\n"
+                    },
+                    "tagName": {
+                        "type": "string",
+                        "description": "Only return MicroVMs that carry this tag.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getMicrovms.\n",
+                "properties": {
+                    "filters": {
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getMicrovmsFilter:getMicrovmsFilter"
+                        },
+                        "type": "array"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.",
+                        "type": "string"
+                    },
+                    "microVms": {
+                        "description": "A list of MicroVMs satisfying any \u003cspan pulumi-lang-nodejs=\"`filter`\" pulumi-lang-dotnet=\"`Filter`\" pulumi-lang-go=\"`filter`\" pulumi-lang-python=\"`filter`\" pulumi-lang-yaml=\"`filter`\" pulumi-lang-java=\"`filter`\" pulumi-lang-hcl=\"`filter`\"\u003e`filter`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`sort`\" pulumi-lang-dotnet=\"`Sort`\" pulumi-lang-go=\"`sort`\" pulumi-lang-python=\"`sort`\" pulumi-lang-yaml=\"`sort`\" pulumi-lang-java=\"`sort`\" pulumi-lang-hcl=\"`sort`\"\u003e`sort`\u003c/span\u003e criteria.\nEach MicroVM has the same attributes as the\n\u003cspan pulumi-lang-nodejs=\"`digitalocean.Microvm`\" pulumi-lang-dotnet=\"`digitalocean.Microvm`\" pulumi-lang-go=\"`Microvm`\" pulumi-lang-python=\"`Microvm`\" pulumi-lang-yaml=\"`digitalocean.Microvm`\" pulumi-lang-java=\"`digitalocean.Microvm`\" pulumi-lang-hcl=\"`digitalocean_microvm`\"\u003e`digitalocean.Microvm`\u003c/span\u003e data source.\n",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getMicrovmsMicroVm:getMicrovmsMicroVm"
+                        },
+                        "type": "array"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "region": {
+                        "type": "string"
+                    },
+                    "sorts": {
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getMicrovmsSort:getMicrovmsSort"
+                        },
+                        "type": "array"
+                    },
+                    "tagName": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "microVms",
+                    "id"
                 ],
                 "type": "object"
             }

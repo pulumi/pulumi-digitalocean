@@ -7794,6 +7794,160 @@ export interface GetKubernetesClusterSsoArgs {
     required?: pulumi.Input<boolean | undefined>;
 }
 
+export interface GetMicrovmCheckpointsFilter {
+    /**
+     * Set to `true` to require that a field match all of the
+     * `values` instead of just one or more of them.
+     */
+    all?: boolean;
+    /**
+     * Filter the checkpoints by this key. This may be one of
+     * `id`, `name`, `microvmId`, `microvmName`, `region`, `status`,
+     * `memoryBytes`, `diskBytes`, or `createdAt`.
+     */
+    key: string;
+    /**
+     * One of `exact` (default), `re`, or `substring`.
+     */
+    matchBy?: string;
+    /**
+     * A list of values to match against the `key` field.
+     */
+    values: string[];
+}
+
+export interface GetMicrovmCheckpointsFilterArgs {
+    /**
+     * Set to `true` to require that a field match all of the
+     * `values` instead of just one or more of them.
+     */
+    all?: pulumi.Input<boolean | undefined>;
+    /**
+     * Filter the checkpoints by this key. This may be one of
+     * `id`, `name`, `microvmId`, `microvmName`, `region`, `status`,
+     * `memoryBytes`, `diskBytes`, or `createdAt`.
+     */
+    key: pulumi.Input<string>;
+    /**
+     * One of `exact` (default), `re`, or `substring`.
+     */
+    matchBy?: pulumi.Input<string | undefined>;
+    /**
+     * A list of values to match against the `key` field.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetMicrovmCheckpointsSort {
+    /**
+     * The sort direction. This may be either `asc` or `desc`.
+     */
+    direction?: string;
+    /**
+     * Sort the checkpoints by this key. This may be one of `id`,
+     * `name`, `microvmId`, `microvmName`, `region`, `status`, `memoryBytes`,
+     * `diskBytes`, or `createdAt`.
+     */
+    key: string;
+}
+
+export interface GetMicrovmCheckpointsSortArgs {
+    /**
+     * The sort direction. This may be either `asc` or `desc`.
+     */
+    direction?: pulumi.Input<string | undefined>;
+    /**
+     * Sort the checkpoints by this key. This may be one of `id`,
+     * `name`, `microvmId`, `microvmName`, `region`, `status`, `memoryBytes`,
+     * `diskBytes`, or `createdAt`.
+     */
+    key: pulumi.Input<string>;
+}
+
+export interface GetMicrovmsFilter {
+    /**
+     * Set to `true` to require that a field match all of the
+     * `values` instead of just one or more of them. This is useful when matching
+     * against multi-valued fields such as lists or sets where you want to ensure
+     * that all of the `values` are present in the list or set.
+     */
+    all?: boolean;
+    /**
+     * Filter the MicroVMs by this key. This may be one of `id`,
+     * `name`, `region`, `networking`, `httpProtocol`, `currentState`,
+     * `failureReason`, `autoResume`, `ports`, `tags`, `urn`, or `createdAt`.
+     */
+    key: string;
+    /**
+     * One of `exact` (default), `re`, or `substring`. For
+     * string-typed fields, specify `re` to match by using the `values` as regular
+     * expressions, or specify `substring` to match by treating the `values` as
+     * substrings to find within the string field.
+     */
+    matchBy?: string;
+    /**
+     * A list of values to match against the `key` field. Only
+     * retrieves MicroVMs where the `key` field takes on one or more of the values
+     * provided here.
+     */
+    values: string[];
+}
+
+export interface GetMicrovmsFilterArgs {
+    /**
+     * Set to `true` to require that a field match all of the
+     * `values` instead of just one or more of them. This is useful when matching
+     * against multi-valued fields such as lists or sets where you want to ensure
+     * that all of the `values` are present in the list or set.
+     */
+    all?: pulumi.Input<boolean | undefined>;
+    /**
+     * Filter the MicroVMs by this key. This may be one of `id`,
+     * `name`, `region`, `networking`, `httpProtocol`, `currentState`,
+     * `failureReason`, `autoResume`, `ports`, `tags`, `urn`, or `createdAt`.
+     */
+    key: pulumi.Input<string>;
+    /**
+     * One of `exact` (default), `re`, or `substring`. For
+     * string-typed fields, specify `re` to match by using the `values` as regular
+     * expressions, or specify `substring` to match by treating the `values` as
+     * substrings to find within the string field.
+     */
+    matchBy?: pulumi.Input<string | undefined>;
+    /**
+     * A list of values to match against the `key` field. Only
+     * retrieves MicroVMs where the `key` field takes on one or more of the values
+     * provided here.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetMicrovmsSort {
+    /**
+     * The sort direction. This may be either `asc` or `desc`.
+     */
+    direction?: string;
+    /**
+     * Sort the MicroVMs by this key. This may be one of `id`,
+     * `name`, `region`, `networking`, `httpProtocol`, `currentState`,
+     * `autoResume`, `urn`, or `createdAt`.
+     */
+    key: string;
+}
+
+export interface GetMicrovmsSortArgs {
+    /**
+     * The sort direction. This may be either `asc` or `desc`.
+     */
+    direction?: pulumi.Input<string | undefined>;
+    /**
+     * Sort the MicroVMs by this key. This may be one of `id`,
+     * `name`, `region`, `networking`, `httpProtocol`, `currentState`,
+     * `autoResume`, `urn`, or `createdAt`.
+     */
+    key: pulumi.Input<string>;
+}
+
 export interface GetPartnerAttachmentBgp {
     localRouterIp?: string;
     peerRouterAsn?: number;
@@ -9946,6 +10100,77 @@ export interface LoadBalancerStickySessions {
      * An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
      */
     type?: pulumi.Input<string | undefined>;
+}
+
+export interface MicrovmAutoPause {
+    /**
+     * Whether the MicroVM pauses after it has been idle for `idleTimeout`.
+     */
+    enabled: pulumi.Input<boolean>;
+    /**
+     * How long the MicroVM must be idle before it pauses, as a duration such as `5m` or `30s`.
+     */
+    idleTimeout?: pulumi.Input<string | undefined>;
+}
+
+export interface MicrovmCheckpointSize {
+    /**
+     * The number of vCPUs.
+     */
+    cpu?: pulumi.Input<number | undefined>;
+    /**
+     * The size of the disk in GB.
+     */
+    disk?: pulumi.Input<number | undefined>;
+    /**
+     * The amount of memory in MiB.
+     */
+    memory?: pulumi.Input<number | undefined>;
+}
+
+export interface MicrovmSize {
+    /**
+     * The number of vCPUs.
+     */
+    cpu: pulumi.Input<number>;
+    /**
+     * The size of the attached disk in GB.
+     */
+    disk?: pulumi.Input<number | undefined>;
+    /**
+     * The amount of memory in MiB.
+     */
+    memory: pulumi.Input<number>;
+}
+
+export interface MicrovmSource {
+    /**
+     * The ID of a checkpoint to restore.
+     */
+    checkpointId?: pulumi.Input<string | undefined>;
+    /**
+     * The OCI reference of the workload container image, such as `docker.io/library/nginx:latest`.
+     */
+    ociRef?: pulumi.Input<string | undefined>;
+}
+
+export interface MicrovmUrl {
+    /**
+     * Whether this is the default URL.
+     */
+    default?: pulumi.Input<boolean | undefined>;
+    /**
+     * The hostname, without a scheme.
+     */
+    hostname?: pulumi.Input<string | undefined>;
+    /**
+     * The guest port the URL forwards to.
+     */
+    port?: pulumi.Input<number | undefined>;
+    /**
+     * The URL status: `PENDING` or `ACTIVE`.
+     */
+    status?: pulumi.Input<string | undefined>;
 }
 
 export interface MonitorAlertAlerts {
