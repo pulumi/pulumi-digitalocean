@@ -510,6 +510,16 @@ __all__ = [
     'LoadBalancerHealthcheckArgsDict',
     'LoadBalancerStickySessionsArgs',
     'LoadBalancerStickySessionsArgsDict',
+    'MicrovmAutoPauseArgs',
+    'MicrovmAutoPauseArgsDict',
+    'MicrovmCheckpointSizeArgs',
+    'MicrovmCheckpointSizeArgsDict',
+    'MicrovmSizeArgs',
+    'MicrovmSizeArgsDict',
+    'MicrovmSourceArgs',
+    'MicrovmSourceArgsDict',
+    'MicrovmUrlArgs',
+    'MicrovmUrlArgsDict',
     'MonitorAlertAlertsArgs',
     'MonitorAlertAlertsArgsDict',
     'MonitorAlertAlertsSlackArgs',
@@ -736,6 +746,14 @@ __all__ = [
     'GetKubernetesClusterRoutingAgentArgsDict',
     'GetKubernetesClusterSsoArgs',
     'GetKubernetesClusterSsoArgsDict',
+    'GetMicrovmCheckpointsFilterArgs',
+    'GetMicrovmCheckpointsFilterArgsDict',
+    'GetMicrovmCheckpointsSortArgs',
+    'GetMicrovmCheckpointsSortArgsDict',
+    'GetMicrovmsFilterArgs',
+    'GetMicrovmsFilterArgsDict',
+    'GetMicrovmsSortArgs',
+    'GetMicrovmsSortArgsDict',
     'GetPartnerAttachmentBgpArgs',
     'GetPartnerAttachmentBgpArgsDict',
     'GetProjectsFilterArgs',
@@ -27091,6 +27109,328 @@ class LoadBalancerStickySessionsArgs:
         pulumi.set(self, "type", value)
 
 
+class MicrovmAutoPauseArgsDict(TypedDict):
+    enabled: pulumi.Input[_builtins.bool]
+    """
+    Whether the MicroVM pauses after it has been idle for `idle_timeout`.
+    """
+    idle_timeout: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    How long the MicroVM must be idle before it pauses, as a duration such as `5m` or `30s`.
+    """
+
+@pulumi.input_type
+class MicrovmAutoPauseArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[_builtins.bool],
+                 idle_timeout: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enabled: Whether the MicroVM pauses after it has been idle for `idle_timeout`.
+        :param pulumi.Input[_builtins.str] idle_timeout: How long the MicroVM must be idle before it pauses, as a duration such as `5m` or `30s`.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        if idle_timeout is not None:
+            pulumi.set(__self__, "idle_timeout", idle_timeout)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[_builtins.bool]:
+        """
+        Whether the MicroVM pauses after it has been idle for `idle_timeout`.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="idleTimeout")
+    def idle_timeout(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        How long the MicroVM must be idle before it pauses, as a duration such as `5m` or `30s`.
+        """
+        return pulumi.get(self, "idle_timeout")
+
+    @idle_timeout.setter
+    def idle_timeout(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "idle_timeout", value)
+
+
+class MicrovmCheckpointSizeArgsDict(TypedDict):
+    cpu: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The number of vCPUs.
+    """
+    disk: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The size of the disk in GB.
+    """
+    memory: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The amount of memory in MiB.
+    """
+
+@pulumi.input_type
+class MicrovmCheckpointSizeArgs:
+    def __init__(__self__, *,
+                 cpu: pulumi.Input[Optional[_builtins.int]] = None,
+                 disk: pulumi.Input[Optional[_builtins.int]] = None,
+                 memory: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] cpu: The number of vCPUs.
+        :param pulumi.Input[_builtins.int] disk: The size of the disk in GB.
+        :param pulumi.Input[_builtins.int] memory: The amount of memory in MiB.
+        """
+        if cpu is not None:
+            pulumi.set(__self__, "cpu", cpu)
+        if disk is not None:
+            pulumi.set(__self__, "disk", disk)
+        if memory is not None:
+            pulumi.set(__self__, "memory", memory)
+
+    @_builtins.property
+    @pulumi.getter
+    def cpu(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The number of vCPUs.
+        """
+        return pulumi.get(self, "cpu")
+
+    @cpu.setter
+    def cpu(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "cpu", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def disk(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The size of the disk in GB.
+        """
+        return pulumi.get(self, "disk")
+
+    @disk.setter
+    def disk(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "disk", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def memory(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The amount of memory in MiB.
+        """
+        return pulumi.get(self, "memory")
+
+    @memory.setter
+    def memory(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "memory", value)
+
+
+class MicrovmSizeArgsDict(TypedDict):
+    cpu: pulumi.Input[_builtins.int]
+    """
+    The number of vCPUs.
+    """
+    memory: pulumi.Input[_builtins.int]
+    """
+    The amount of memory in MiB.
+    """
+    disk: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The size of the attached disk in GB.
+    """
+
+@pulumi.input_type
+class MicrovmSizeArgs:
+    def __init__(__self__, *,
+                 cpu: pulumi.Input[_builtins.int],
+                 memory: pulumi.Input[_builtins.int],
+                 disk: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] cpu: The number of vCPUs.
+        :param pulumi.Input[_builtins.int] memory: The amount of memory in MiB.
+        :param pulumi.Input[_builtins.int] disk: The size of the attached disk in GB.
+        """
+        pulumi.set(__self__, "cpu", cpu)
+        pulumi.set(__self__, "memory", memory)
+        if disk is not None:
+            pulumi.set(__self__, "disk", disk)
+
+    @_builtins.property
+    @pulumi.getter
+    def cpu(self) -> pulumi.Input[_builtins.int]:
+        """
+        The number of vCPUs.
+        """
+        return pulumi.get(self, "cpu")
+
+    @cpu.setter
+    def cpu(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "cpu", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def memory(self) -> pulumi.Input[_builtins.int]:
+        """
+        The amount of memory in MiB.
+        """
+        return pulumi.get(self, "memory")
+
+    @memory.setter
+    def memory(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "memory", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def disk(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The size of the attached disk in GB.
+        """
+        return pulumi.get(self, "disk")
+
+    @disk.setter
+    def disk(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "disk", value)
+
+
+class MicrovmSourceArgsDict(TypedDict):
+    checkpoint_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The ID of a checkpoint to restore.
+    """
+    oci_ref: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The OCI reference of the workload container image, such as `docker.io/library/nginx:latest`.
+    """
+
+@pulumi.input_type
+class MicrovmSourceArgs:
+    def __init__(__self__, *,
+                 checkpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 oci_ref: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] checkpoint_id: The ID of a checkpoint to restore.
+        :param pulumi.Input[_builtins.str] oci_ref: The OCI reference of the workload container image, such as `docker.io/library/nginx:latest`.
+        """
+        if checkpoint_id is not None:
+            pulumi.set(__self__, "checkpoint_id", checkpoint_id)
+        if oci_ref is not None:
+            pulumi.set(__self__, "oci_ref", oci_ref)
+
+    @_builtins.property
+    @pulumi.getter(name="checkpointId")
+    def checkpoint_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of a checkpoint to restore.
+        """
+        return pulumi.get(self, "checkpoint_id")
+
+    @checkpoint_id.setter
+    def checkpoint_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "checkpoint_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ociRef")
+    def oci_ref(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The OCI reference of the workload container image, such as `docker.io/library/nginx:latest`.
+        """
+        return pulumi.get(self, "oci_ref")
+
+    @oci_ref.setter
+    def oci_ref(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "oci_ref", value)
+
+
+class MicrovmUrlArgsDict(TypedDict):
+    default: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether this is the default URL.
+    """
+    hostname: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The hostname, without a scheme.
+    """
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The guest port the URL forwards to.
+    """
+    status: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The URL status: `PENDING` or `ACTIVE`.
+    """
+
+@pulumi.input_type
+class MicrovmUrlArgs:
+    def __init__(__self__, *,
+                 default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] default: Whether this is the default URL.
+        :param pulumi.Input[_builtins.str] hostname: The hostname, without a scheme.
+        :param pulumi.Input[_builtins.int] port: The guest port the URL forwards to.
+        :param pulumi.Input[_builtins.str] status: The URL status: `PENDING` or `ACTIVE`.
+        """
+        if default is not None:
+            pulumi.set(__self__, "default", default)
+        if hostname is not None:
+            pulumi.set(__self__, "hostname", hostname)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter
+    def default(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether this is the default URL.
+        """
+        return pulumi.get(self, "default")
+
+    @default.setter
+    def default(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "default", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def hostname(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The hostname, without a scheme.
+        """
+        return pulumi.get(self, "hostname")
+
+    @hostname.setter
+    def hostname(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "hostname", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The guest port the URL forwards to.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "port", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The URL status: `PENDING` or `ACTIVE`.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "status", value)
+
+
 class MonitorAlertAlertsArgsDict(TypedDict):
     emails: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
@@ -37753,6 +38093,327 @@ class GetKubernetesClusterSsoArgs:
     @required.setter
     def required(self, value: _builtins.bool):
         pulumi.set(self, "required", value)
+
+
+class GetMicrovmCheckpointsFilterArgsDict(TypedDict):
+    key: _builtins.str
+    """
+    Filter the checkpoints by this key. This may be one of
+    `id`, `name`, `microvm_id`, `microvm_name`, `region`, `status`,
+    `memory_bytes`, `disk_bytes`, or `created_at`.
+    """
+    values: Sequence[_builtins.str]
+    """
+    A list of values to match against the `key` field.
+    """
+    all: NotRequired[_builtins.bool]
+    """
+    Set to `true` to require that a field match all of the
+    `values` instead of just one or more of them.
+    """
+    match_by: NotRequired[_builtins.str]
+    """
+    One of `exact` (default), `re`, or `substring`.
+    """
+
+@pulumi.input_type
+class GetMicrovmCheckpointsFilterArgs:
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 values: Sequence[_builtins.str],
+                 all: Optional[_builtins.bool] = None,
+                 match_by: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str key: Filter the checkpoints by this key. This may be one of
+               `id`, `name`, `microvm_id`, `microvm_name`, `region`, `status`,
+               `memory_bytes`, `disk_bytes`, or `created_at`.
+        :param Sequence[_builtins.str] values: A list of values to match against the `key` field.
+        :param _builtins.bool all: Set to `true` to require that a field match all of the
+               `values` instead of just one or more of them.
+        :param _builtins.str match_by: One of `exact` (default), `re`, or `substring`.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "values", values)
+        if all is not None:
+            pulumi.set(__self__, "all", all)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        Filter the checkpoints by this key. This may be one of
+        `id`, `name`, `microvm_id`, `microvm_name`, `region`, `status`,
+        `memory_bytes`, `disk_bytes`, or `created_at`.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: _builtins.str):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        """
+        A list of values to match against the `key` field.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Sequence[_builtins.str]):
+        pulumi.set(self, "values", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def all(self) -> Optional[_builtins.bool]:
+        """
+        Set to `true` to require that a field match all of the
+        `values` instead of just one or more of them.
+        """
+        return pulumi.get(self, "all")
+
+    @all.setter
+    def all(self, value: Optional[_builtins.bool]):
+        pulumi.set(self, "all", value)
+
+    @_builtins.property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[_builtins.str]:
+        """
+        One of `exact` (default), `re`, or `substring`.
+        """
+        return pulumi.get(self, "match_by")
+
+    @match_by.setter
+    def match_by(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "match_by", value)
+
+
+class GetMicrovmCheckpointsSortArgsDict(TypedDict):
+    key: _builtins.str
+    """
+    Sort the checkpoints by this key. This may be one of `id`,
+    `name`, `microvm_id`, `microvm_name`, `region`, `status`, `memory_bytes`,
+    `disk_bytes`, or `created_at`.
+    """
+    direction: NotRequired[_builtins.str]
+    """
+    The sort direction. This may be either `asc` or `desc`.
+    """
+
+@pulumi.input_type
+class GetMicrovmCheckpointsSortArgs:
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 direction: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str key: Sort the checkpoints by this key. This may be one of `id`,
+               `name`, `microvm_id`, `microvm_name`, `region`, `status`, `memory_bytes`,
+               `disk_bytes`, or `created_at`.
+        :param _builtins.str direction: The sort direction. This may be either `asc` or `desc`.
+        """
+        pulumi.set(__self__, "key", key)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        Sort the checkpoints by this key. This may be one of `id`,
+        `name`, `microvm_id`, `microvm_name`, `region`, `status`, `memory_bytes`,
+        `disk_bytes`, or `created_at`.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: _builtins.str):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def direction(self) -> Optional[_builtins.str]:
+        """
+        The sort direction. This may be either `asc` or `desc`.
+        """
+        return pulumi.get(self, "direction")
+
+    @direction.setter
+    def direction(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "direction", value)
+
+
+class GetMicrovmsFilterArgsDict(TypedDict):
+    key: _builtins.str
+    """
+    Filter the MicroVMs by this key. This may be one of `id`,
+    `name`, `region`, `networking`, `http_protocol`, `current_state`,
+    `failure_reason`, `auto_resume`, `ports`, `tags`, `urn`, or `created_at`.
+    """
+    values: Sequence[_builtins.str]
+    """
+    A list of values to match against the `key` field. Only
+    retrieves MicroVMs where the `key` field takes on one or more of the values
+    provided here.
+    """
+    all: NotRequired[_builtins.bool]
+    """
+    Set to `true` to require that a field match all of the
+    `values` instead of just one or more of them. This is useful when matching
+    against multi-valued fields such as lists or sets where you want to ensure
+    that all of the `values` are present in the list or set.
+    """
+    match_by: NotRequired[_builtins.str]
+    """
+    One of `exact` (default), `re`, or `substring`. For
+    string-typed fields, specify `re` to match by using the `values` as regular
+    expressions, or specify `substring` to match by treating the `values` as
+    substrings to find within the string field.
+    """
+
+@pulumi.input_type
+class GetMicrovmsFilterArgs:
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 values: Sequence[_builtins.str],
+                 all: Optional[_builtins.bool] = None,
+                 match_by: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str key: Filter the MicroVMs by this key. This may be one of `id`,
+               `name`, `region`, `networking`, `http_protocol`, `current_state`,
+               `failure_reason`, `auto_resume`, `ports`, `tags`, `urn`, or `created_at`.
+        :param Sequence[_builtins.str] values: A list of values to match against the `key` field. Only
+               retrieves MicroVMs where the `key` field takes on one or more of the values
+               provided here.
+        :param _builtins.bool all: Set to `true` to require that a field match all of the
+               `values` instead of just one or more of them. This is useful when matching
+               against multi-valued fields such as lists or sets where you want to ensure
+               that all of the `values` are present in the list or set.
+        :param _builtins.str match_by: One of `exact` (default), `re`, or `substring`. For
+               string-typed fields, specify `re` to match by using the `values` as regular
+               expressions, or specify `substring` to match by treating the `values` as
+               substrings to find within the string field.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "values", values)
+        if all is not None:
+            pulumi.set(__self__, "all", all)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        Filter the MicroVMs by this key. This may be one of `id`,
+        `name`, `region`, `networking`, `http_protocol`, `current_state`,
+        `failure_reason`, `auto_resume`, `ports`, `tags`, `urn`, or `created_at`.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: _builtins.str):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        """
+        A list of values to match against the `key` field. Only
+        retrieves MicroVMs where the `key` field takes on one or more of the values
+        provided here.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Sequence[_builtins.str]):
+        pulumi.set(self, "values", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def all(self) -> Optional[_builtins.bool]:
+        """
+        Set to `true` to require that a field match all of the
+        `values` instead of just one or more of them. This is useful when matching
+        against multi-valued fields such as lists or sets where you want to ensure
+        that all of the `values` are present in the list or set.
+        """
+        return pulumi.get(self, "all")
+
+    @all.setter
+    def all(self, value: Optional[_builtins.bool]):
+        pulumi.set(self, "all", value)
+
+    @_builtins.property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[_builtins.str]:
+        """
+        One of `exact` (default), `re`, or `substring`. For
+        string-typed fields, specify `re` to match by using the `values` as regular
+        expressions, or specify `substring` to match by treating the `values` as
+        substrings to find within the string field.
+        """
+        return pulumi.get(self, "match_by")
+
+    @match_by.setter
+    def match_by(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "match_by", value)
+
+
+class GetMicrovmsSortArgsDict(TypedDict):
+    key: _builtins.str
+    """
+    Sort the MicroVMs by this key. This may be one of `id`,
+    `name`, `region`, `networking`, `http_protocol`, `current_state`,
+    `auto_resume`, `urn`, or `created_at`.
+    """
+    direction: NotRequired[_builtins.str]
+    """
+    The sort direction. This may be either `asc` or `desc`.
+    """
+
+@pulumi.input_type
+class GetMicrovmsSortArgs:
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 direction: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str key: Sort the MicroVMs by this key. This may be one of `id`,
+               `name`, `region`, `networking`, `http_protocol`, `current_state`,
+               `auto_resume`, `urn`, or `created_at`.
+        :param _builtins.str direction: The sort direction. This may be either `asc` or `desc`.
+        """
+        pulumi.set(__self__, "key", key)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        Sort the MicroVMs by this key. This may be one of `id`,
+        `name`, `region`, `networking`, `http_protocol`, `current_state`,
+        `auto_resume`, `urn`, or `created_at`.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: _builtins.str):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def direction(self) -> Optional[_builtins.str]:
+        """
+        The sort direction. This may be either `asc` or `desc`.
+        """
+        return pulumi.get(self, "direction")
+
+    @direction.setter
+    def direction(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "direction", value)
 
 
 class GetPartnerAttachmentBgpArgsDict(TypedDict):

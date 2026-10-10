@@ -13,6 +13,799 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetAppSpecServiceLogDestinationOpenSearchBasicAuth struct {
+	// Password for user defined in User. Is required when endpoint is set. Cannot be set if using a DigitalOcean DBaaS OpenSearch cluster.
+	Password *string `pulumi:"password"`
+	// Username to authenticate with. Only required when endpoint is set. Defaults to doadmin when clusterName is set.
+	User *string `pulumi:"user"`
+}
+
+// GetAppSpecServiceLogDestinationOpenSearchBasicAuthInput is an input type that accepts GetAppSpecServiceLogDestinationOpenSearchBasicAuthArgs and GetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceLogDestinationOpenSearchBasicAuthInput` via:
+//
+//	GetAppSpecServiceLogDestinationOpenSearchBasicAuthArgs{...}
+type GetAppSpecServiceLogDestinationOpenSearchBasicAuthInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput() GetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput
+	ToGetAppSpecServiceLogDestinationOpenSearchBasicAuthOutputWithContext(context.Context) GetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput
+}
+
+type GetAppSpecServiceLogDestinationOpenSearchBasicAuthArgs struct {
+	// Password for user defined in User. Is required when endpoint is set. Cannot be set if using a DigitalOcean DBaaS OpenSearch cluster.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// Username to authenticate with. Only required when endpoint is set. Defaults to doadmin when clusterName is set.
+	User pulumi.StringPtrInput `pulumi:"user"`
+}
+
+func (GetAppSpecServiceLogDestinationOpenSearchBasicAuthArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceLogDestinationOpenSearchBasicAuth)(nil)).Elem()
+}
+
+func (i GetAppSpecServiceLogDestinationOpenSearchBasicAuthArgs) ToGetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput() GetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput {
+	return i.ToGetAppSpecServiceLogDestinationOpenSearchBasicAuthOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceLogDestinationOpenSearchBasicAuthArgs) ToGetAppSpecServiceLogDestinationOpenSearchBasicAuthOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput)
+}
+
+func (i GetAppSpecServiceLogDestinationOpenSearchBasicAuthArgs) ToGetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput() GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput {
+	return i.ToGetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceLogDestinationOpenSearchBasicAuthArgs) ToGetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput).ToGetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrInput is an input type that accepts GetAppSpecServiceLogDestinationOpenSearchBasicAuthArgs, GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtr and GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrInput` via:
+//
+//	        GetAppSpecServiceLogDestinationOpenSearchBasicAuthArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput() GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput
+	ToGetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutputWithContext(context.Context) GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput
+}
+
+type getAppSpecServiceLogDestinationOpenSearchBasicAuthPtrType GetAppSpecServiceLogDestinationOpenSearchBasicAuthArgs
+
+func GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtr(v *GetAppSpecServiceLogDestinationOpenSearchBasicAuthArgs) GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrInput {
+	return (*getAppSpecServiceLogDestinationOpenSearchBasicAuthPtrType)(v)
+}
+
+func (*getAppSpecServiceLogDestinationOpenSearchBasicAuthPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceLogDestinationOpenSearchBasicAuth)(nil)).Elem()
+}
+
+func (i *getAppSpecServiceLogDestinationOpenSearchBasicAuthPtrType) ToGetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput() GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput {
+	return i.ToGetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecServiceLogDestinationOpenSearchBasicAuthPtrType) ToGetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput)
+}
+
+type GetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceLogDestinationOpenSearchBasicAuth)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput) ToGetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput() GetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput {
+	return o
+}
+
+func (o GetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput) ToGetAppSpecServiceLogDestinationOpenSearchBasicAuthOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput {
+	return o
+}
+
+func (o GetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput) ToGetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput() GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput {
+	return o.ToGetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput) ToGetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecServiceLogDestinationOpenSearchBasicAuth) *GetAppSpecServiceLogDestinationOpenSearchBasicAuth {
+		return &v
+	}).(GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput)
+}
+
+// Password for user defined in User. Is required when endpoint is set. Cannot be set if using a DigitalOcean DBaaS OpenSearch cluster.
+func (o GetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceLogDestinationOpenSearchBasicAuth) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// Username to authenticate with. Only required when endpoint is set. Defaults to doadmin when clusterName is set.
+func (o GetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput) User() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceLogDestinationOpenSearchBasicAuth) *string { return v.User }).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceLogDestinationOpenSearchBasicAuth)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput) ToGetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput() GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput) ToGetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput) Elem() GetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceLogDestinationOpenSearchBasicAuth) GetAppSpecServiceLogDestinationOpenSearchBasicAuth {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecServiceLogDestinationOpenSearchBasicAuth
+		return ret
+	}).(GetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput)
+}
+
+// Password for user defined in User. Is required when endpoint is set. Cannot be set if using a DigitalOcean DBaaS OpenSearch cluster.
+func (o GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceLogDestinationOpenSearchBasicAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// Username to authenticate with. Only required when endpoint is set. Defaults to doadmin when clusterName is set.
+func (o GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput) User() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceLogDestinationOpenSearchBasicAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.User
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecServiceLogDestinationPapertrail struct {
+	// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
+	Endpoint string `pulumi:"endpoint"`
+}
+
+// GetAppSpecServiceLogDestinationPapertrailInput is an input type that accepts GetAppSpecServiceLogDestinationPapertrailArgs and GetAppSpecServiceLogDestinationPapertrailOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceLogDestinationPapertrailInput` via:
+//
+//	GetAppSpecServiceLogDestinationPapertrailArgs{...}
+type GetAppSpecServiceLogDestinationPapertrailInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceLogDestinationPapertrailOutput() GetAppSpecServiceLogDestinationPapertrailOutput
+	ToGetAppSpecServiceLogDestinationPapertrailOutputWithContext(context.Context) GetAppSpecServiceLogDestinationPapertrailOutput
+}
+
+type GetAppSpecServiceLogDestinationPapertrailArgs struct {
+	// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
+	Endpoint pulumi.StringInput `pulumi:"endpoint"`
+}
+
+func (GetAppSpecServiceLogDestinationPapertrailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceLogDestinationPapertrail)(nil)).Elem()
+}
+
+func (i GetAppSpecServiceLogDestinationPapertrailArgs) ToGetAppSpecServiceLogDestinationPapertrailOutput() GetAppSpecServiceLogDestinationPapertrailOutput {
+	return i.ToGetAppSpecServiceLogDestinationPapertrailOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceLogDestinationPapertrailArgs) ToGetAppSpecServiceLogDestinationPapertrailOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationPapertrailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceLogDestinationPapertrailOutput)
+}
+
+func (i GetAppSpecServiceLogDestinationPapertrailArgs) ToGetAppSpecServiceLogDestinationPapertrailPtrOutput() GetAppSpecServiceLogDestinationPapertrailPtrOutput {
+	return i.ToGetAppSpecServiceLogDestinationPapertrailPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceLogDestinationPapertrailArgs) ToGetAppSpecServiceLogDestinationPapertrailPtrOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationPapertrailPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceLogDestinationPapertrailOutput).ToGetAppSpecServiceLogDestinationPapertrailPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecServiceLogDestinationPapertrailPtrInput is an input type that accepts GetAppSpecServiceLogDestinationPapertrailArgs, GetAppSpecServiceLogDestinationPapertrailPtr and GetAppSpecServiceLogDestinationPapertrailPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceLogDestinationPapertrailPtrInput` via:
+//
+//	        GetAppSpecServiceLogDestinationPapertrailArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetAppSpecServiceLogDestinationPapertrailPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceLogDestinationPapertrailPtrOutput() GetAppSpecServiceLogDestinationPapertrailPtrOutput
+	ToGetAppSpecServiceLogDestinationPapertrailPtrOutputWithContext(context.Context) GetAppSpecServiceLogDestinationPapertrailPtrOutput
+}
+
+type getAppSpecServiceLogDestinationPapertrailPtrType GetAppSpecServiceLogDestinationPapertrailArgs
+
+func GetAppSpecServiceLogDestinationPapertrailPtr(v *GetAppSpecServiceLogDestinationPapertrailArgs) GetAppSpecServiceLogDestinationPapertrailPtrInput {
+	return (*getAppSpecServiceLogDestinationPapertrailPtrType)(v)
+}
+
+func (*getAppSpecServiceLogDestinationPapertrailPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceLogDestinationPapertrail)(nil)).Elem()
+}
+
+func (i *getAppSpecServiceLogDestinationPapertrailPtrType) ToGetAppSpecServiceLogDestinationPapertrailPtrOutput() GetAppSpecServiceLogDestinationPapertrailPtrOutput {
+	return i.ToGetAppSpecServiceLogDestinationPapertrailPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecServiceLogDestinationPapertrailPtrType) ToGetAppSpecServiceLogDestinationPapertrailPtrOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationPapertrailPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceLogDestinationPapertrailPtrOutput)
+}
+
+type GetAppSpecServiceLogDestinationPapertrailOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceLogDestinationPapertrailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceLogDestinationPapertrail)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceLogDestinationPapertrailOutput) ToGetAppSpecServiceLogDestinationPapertrailOutput() GetAppSpecServiceLogDestinationPapertrailOutput {
+	return o
+}
+
+func (o GetAppSpecServiceLogDestinationPapertrailOutput) ToGetAppSpecServiceLogDestinationPapertrailOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationPapertrailOutput {
+	return o
+}
+
+func (o GetAppSpecServiceLogDestinationPapertrailOutput) ToGetAppSpecServiceLogDestinationPapertrailPtrOutput() GetAppSpecServiceLogDestinationPapertrailPtrOutput {
+	return o.ToGetAppSpecServiceLogDestinationPapertrailPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecServiceLogDestinationPapertrailOutput) ToGetAppSpecServiceLogDestinationPapertrailPtrOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationPapertrailPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecServiceLogDestinationPapertrail) *GetAppSpecServiceLogDestinationPapertrail {
+		return &v
+	}).(GetAppSpecServiceLogDestinationPapertrailPtrOutput)
+}
+
+// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
+func (o GetAppSpecServiceLogDestinationPapertrailOutput) Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppSpecServiceLogDestinationPapertrail) string { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+type GetAppSpecServiceLogDestinationPapertrailPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceLogDestinationPapertrailPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceLogDestinationPapertrail)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceLogDestinationPapertrailPtrOutput) ToGetAppSpecServiceLogDestinationPapertrailPtrOutput() GetAppSpecServiceLogDestinationPapertrailPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceLogDestinationPapertrailPtrOutput) ToGetAppSpecServiceLogDestinationPapertrailPtrOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationPapertrailPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceLogDestinationPapertrailPtrOutput) Elem() GetAppSpecServiceLogDestinationPapertrailOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceLogDestinationPapertrail) GetAppSpecServiceLogDestinationPapertrail {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecServiceLogDestinationPapertrail
+		return ret
+	}).(GetAppSpecServiceLogDestinationPapertrailOutput)
+}
+
+// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
+func (o GetAppSpecServiceLogDestinationPapertrailPtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceLogDestinationPapertrail) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecServiceRoute struct {
+	// Paths must start with `/` and must be unique within the app.
+	Path *string `pulumi:"path"`
+	// An optional flag to preserve the path that is forwarded to the backend service.
+	PreservePathPrefix *bool `pulumi:"preservePathPrefix"`
+}
+
+// GetAppSpecServiceRouteInput is an input type that accepts GetAppSpecServiceRouteArgs and GetAppSpecServiceRouteOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceRouteInput` via:
+//
+//	GetAppSpecServiceRouteArgs{...}
+type GetAppSpecServiceRouteInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceRouteOutput() GetAppSpecServiceRouteOutput
+	ToGetAppSpecServiceRouteOutputWithContext(context.Context) GetAppSpecServiceRouteOutput
+}
+
+type GetAppSpecServiceRouteArgs struct {
+	// Paths must start with `/` and must be unique within the app.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// An optional flag to preserve the path that is forwarded to the backend service.
+	PreservePathPrefix pulumi.BoolPtrInput `pulumi:"preservePathPrefix"`
+}
+
+func (GetAppSpecServiceRouteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceRoute)(nil)).Elem()
+}
+
+func (i GetAppSpecServiceRouteArgs) ToGetAppSpecServiceRouteOutput() GetAppSpecServiceRouteOutput {
+	return i.ToGetAppSpecServiceRouteOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceRouteArgs) ToGetAppSpecServiceRouteOutputWithContext(ctx context.Context) GetAppSpecServiceRouteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceRouteOutput)
+}
+
+// GetAppSpecServiceRouteArrayInput is an input type that accepts GetAppSpecServiceRouteArray and GetAppSpecServiceRouteArrayOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceRouteArrayInput` via:
+//
+//	GetAppSpecServiceRouteArray{ GetAppSpecServiceRouteArgs{...} }
+type GetAppSpecServiceRouteArrayInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceRouteArrayOutput() GetAppSpecServiceRouteArrayOutput
+	ToGetAppSpecServiceRouteArrayOutputWithContext(context.Context) GetAppSpecServiceRouteArrayOutput
+}
+
+type GetAppSpecServiceRouteArray []GetAppSpecServiceRouteInput
+
+func (GetAppSpecServiceRouteArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecServiceRoute)(nil)).Elem()
+}
+
+func (i GetAppSpecServiceRouteArray) ToGetAppSpecServiceRouteArrayOutput() GetAppSpecServiceRouteArrayOutput {
+	return i.ToGetAppSpecServiceRouteArrayOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceRouteArray) ToGetAppSpecServiceRouteArrayOutputWithContext(ctx context.Context) GetAppSpecServiceRouteArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceRouteArrayOutput)
+}
+
+type GetAppSpecServiceRouteOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceRouteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceRoute)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceRouteOutput) ToGetAppSpecServiceRouteOutput() GetAppSpecServiceRouteOutput {
+	return o
+}
+
+func (o GetAppSpecServiceRouteOutput) ToGetAppSpecServiceRouteOutputWithContext(ctx context.Context) GetAppSpecServiceRouteOutput {
+	return o
+}
+
+// Paths must start with `/` and must be unique within the app.
+func (o GetAppSpecServiceRouteOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceRoute) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// An optional flag to preserve the path that is forwarded to the backend service.
+func (o GetAppSpecServiceRouteOutput) PreservePathPrefix() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceRoute) *bool { return v.PreservePathPrefix }).(pulumi.BoolPtrOutput)
+}
+
+type GetAppSpecServiceRouteArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceRouteArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecServiceRoute)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceRouteArrayOutput) ToGetAppSpecServiceRouteArrayOutput() GetAppSpecServiceRouteArrayOutput {
+	return o
+}
+
+func (o GetAppSpecServiceRouteArrayOutput) ToGetAppSpecServiceRouteArrayOutputWithContext(ctx context.Context) GetAppSpecServiceRouteArrayOutput {
+	return o
+}
+
+func (o GetAppSpecServiceRouteArrayOutput) Index(i pulumi.IntInput) GetAppSpecServiceRouteOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppSpecServiceRoute {
+		return vs[0].([]GetAppSpecServiceRoute)[vs[1].(int)]
+	}).(GetAppSpecServiceRouteOutput)
+}
+
+type GetAppSpecServiceTermination struct {
+	// The number of seconds to wait between selecting a container instance for termination and issuing the TERM signal. Selecting a container instance for termination begins an asynchronous drain of new requests on upstream load-balancers. Default: 15 seconds, Minimum 1, Maximum 110.
+	DrainSeconds *int `pulumi:"drainSeconds"`
+	// The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
+	GracePeriodSeconds *int `pulumi:"gracePeriodSeconds"`
+}
+
+// GetAppSpecServiceTerminationInput is an input type that accepts GetAppSpecServiceTerminationArgs and GetAppSpecServiceTerminationOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceTerminationInput` via:
+//
+//	GetAppSpecServiceTerminationArgs{...}
+type GetAppSpecServiceTerminationInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceTerminationOutput() GetAppSpecServiceTerminationOutput
+	ToGetAppSpecServiceTerminationOutputWithContext(context.Context) GetAppSpecServiceTerminationOutput
+}
+
+type GetAppSpecServiceTerminationArgs struct {
+	// The number of seconds to wait between selecting a container instance for termination and issuing the TERM signal. Selecting a container instance for termination begins an asynchronous drain of new requests on upstream load-balancers. Default: 15 seconds, Minimum 1, Maximum 110.
+	DrainSeconds pulumi.IntPtrInput `pulumi:"drainSeconds"`
+	// The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
+	GracePeriodSeconds pulumi.IntPtrInput `pulumi:"gracePeriodSeconds"`
+}
+
+func (GetAppSpecServiceTerminationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceTermination)(nil)).Elem()
+}
+
+func (i GetAppSpecServiceTerminationArgs) ToGetAppSpecServiceTerminationOutput() GetAppSpecServiceTerminationOutput {
+	return i.ToGetAppSpecServiceTerminationOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceTerminationArgs) ToGetAppSpecServiceTerminationOutputWithContext(ctx context.Context) GetAppSpecServiceTerminationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceTerminationOutput)
+}
+
+func (i GetAppSpecServiceTerminationArgs) ToGetAppSpecServiceTerminationPtrOutput() GetAppSpecServiceTerminationPtrOutput {
+	return i.ToGetAppSpecServiceTerminationPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceTerminationArgs) ToGetAppSpecServiceTerminationPtrOutputWithContext(ctx context.Context) GetAppSpecServiceTerminationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceTerminationOutput).ToGetAppSpecServiceTerminationPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecServiceTerminationPtrInput is an input type that accepts GetAppSpecServiceTerminationArgs, GetAppSpecServiceTerminationPtr and GetAppSpecServiceTerminationPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceTerminationPtrInput` via:
+//
+//	        GetAppSpecServiceTerminationArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetAppSpecServiceTerminationPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceTerminationPtrOutput() GetAppSpecServiceTerminationPtrOutput
+	ToGetAppSpecServiceTerminationPtrOutputWithContext(context.Context) GetAppSpecServiceTerminationPtrOutput
+}
+
+type getAppSpecServiceTerminationPtrType GetAppSpecServiceTerminationArgs
+
+func GetAppSpecServiceTerminationPtr(v *GetAppSpecServiceTerminationArgs) GetAppSpecServiceTerminationPtrInput {
+	return (*getAppSpecServiceTerminationPtrType)(v)
+}
+
+func (*getAppSpecServiceTerminationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceTermination)(nil)).Elem()
+}
+
+func (i *getAppSpecServiceTerminationPtrType) ToGetAppSpecServiceTerminationPtrOutput() GetAppSpecServiceTerminationPtrOutput {
+	return i.ToGetAppSpecServiceTerminationPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecServiceTerminationPtrType) ToGetAppSpecServiceTerminationPtrOutputWithContext(ctx context.Context) GetAppSpecServiceTerminationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceTerminationPtrOutput)
+}
+
+type GetAppSpecServiceTerminationOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceTerminationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceTermination)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceTerminationOutput) ToGetAppSpecServiceTerminationOutput() GetAppSpecServiceTerminationOutput {
+	return o
+}
+
+func (o GetAppSpecServiceTerminationOutput) ToGetAppSpecServiceTerminationOutputWithContext(ctx context.Context) GetAppSpecServiceTerminationOutput {
+	return o
+}
+
+func (o GetAppSpecServiceTerminationOutput) ToGetAppSpecServiceTerminationPtrOutput() GetAppSpecServiceTerminationPtrOutput {
+	return o.ToGetAppSpecServiceTerminationPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecServiceTerminationOutput) ToGetAppSpecServiceTerminationPtrOutputWithContext(ctx context.Context) GetAppSpecServiceTerminationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecServiceTermination) *GetAppSpecServiceTermination {
+		return &v
+	}).(GetAppSpecServiceTerminationPtrOutput)
+}
+
+// The number of seconds to wait between selecting a container instance for termination and issuing the TERM signal. Selecting a container instance for termination begins an asynchronous drain of new requests on upstream load-balancers. Default: 15 seconds, Minimum 1, Maximum 110.
+func (o GetAppSpecServiceTerminationOutput) DrainSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceTermination) *int { return v.DrainSeconds }).(pulumi.IntPtrOutput)
+}
+
+// The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
+func (o GetAppSpecServiceTerminationOutput) GracePeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceTermination) *int { return v.GracePeriodSeconds }).(pulumi.IntPtrOutput)
+}
+
+type GetAppSpecServiceTerminationPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceTerminationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceTermination)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceTerminationPtrOutput) ToGetAppSpecServiceTerminationPtrOutput() GetAppSpecServiceTerminationPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceTerminationPtrOutput) ToGetAppSpecServiceTerminationPtrOutputWithContext(ctx context.Context) GetAppSpecServiceTerminationPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceTerminationPtrOutput) Elem() GetAppSpecServiceTerminationOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceTermination) GetAppSpecServiceTermination {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecServiceTermination
+		return ret
+	}).(GetAppSpecServiceTerminationOutput)
+}
+
+// The number of seconds to wait between selecting a container instance for termination and issuing the TERM signal. Selecting a container instance for termination begins an asynchronous drain of new requests on upstream load-balancers. Default: 15 seconds, Minimum 1, Maximum 110.
+func (o GetAppSpecServiceTerminationPtrOutput) DrainSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceTermination) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DrainSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
+func (o GetAppSpecServiceTerminationPtrOutput) GracePeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceTermination) *int {
+		if v == nil {
+			return nil
+		}
+		return v.GracePeriodSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+type GetAppSpecStaticSite struct {
+	// A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set. To read your repo, App Platform must be authorized to access your Bitbucket account. Go to this URL to link App Platform to your Bitbucket account: `https://cloud.digitalocean.com/apps/bitbucket/install`.
+	Bitbucket *GetAppSpecStaticSiteBitbucket `pulumi:"bitbucket"`
+	// An optional build command to run while building this component from source.
+	BuildCommand *string `pulumi:"buildCommand"`
+	// The name of the document to use as the fallback for any requests to documents that are not found when serving this static site.
+	CatchallDocument *string `pulumi:"catchallDocument"`
+	// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+	//
+	// Deprecated: Service level CORS rules are deprecated in favor of ingresses
+	Cors *GetAppSpecStaticSiteCors `pulumi:"cors"`
+	// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
+	DockerfilePath *string `pulumi:"dockerfilePath"`
+	// An environment slug describing the type of this app.
+	EnvironmentSlug *string `pulumi:"environmentSlug"`
+	// Describes an environment variable made available to an app competent.
+	Envs []GetAppSpecStaticSiteEnv `pulumi:"envs"`
+	// The name of the error document to use when serving this static site.
+	ErrorDocument *string `pulumi:"errorDocument"`
+	// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+	Git *GetAppSpecStaticSiteGit `pulumi:"git"`
+	// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+	Github *GetAppSpecStaticSiteGithub `pulumi:"github"`
+	// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+	Gitlab *GetAppSpecStaticSiteGitlab `pulumi:"gitlab"`
+	// The name of the index document to use when serving this static site.
+	IndexDocument *string `pulumi:"indexDocument"`
+	// The name of the component.
+	Name string `pulumi:"name"`
+	// An optional path to where the built assets will be located, relative to the build context. If not set, App Platform will automatically scan for these directory names: `_static`, `dist`, `public`.
+	OutputDir *string `pulumi:"outputDir"`
+	// Deprecated: Service level routes are deprecated in favor of ingresses
+	Routes []GetAppSpecStaticSiteRoute `pulumi:"routes"`
+	// An optional path to the working directory to use for the build.
+	SourceDir *string `pulumi:"sourceDir"`
+}
+
+// GetAppSpecStaticSiteInput is an input type that accepts GetAppSpecStaticSiteArgs and GetAppSpecStaticSiteOutput values.
+// You can construct a concrete instance of `GetAppSpecStaticSiteInput` via:
+//
+//	GetAppSpecStaticSiteArgs{...}
+type GetAppSpecStaticSiteInput interface {
+	pulumi.Input
+
+	ToGetAppSpecStaticSiteOutput() GetAppSpecStaticSiteOutput
+	ToGetAppSpecStaticSiteOutputWithContext(context.Context) GetAppSpecStaticSiteOutput
+}
+
+type GetAppSpecStaticSiteArgs struct {
+	// A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set. To read your repo, App Platform must be authorized to access your Bitbucket account. Go to this URL to link App Platform to your Bitbucket account: `https://cloud.digitalocean.com/apps/bitbucket/install`.
+	Bitbucket GetAppSpecStaticSiteBitbucketPtrInput `pulumi:"bitbucket"`
+	// An optional build command to run while building this component from source.
+	BuildCommand pulumi.StringPtrInput `pulumi:"buildCommand"`
+	// The name of the document to use as the fallback for any requests to documents that are not found when serving this static site.
+	CatchallDocument pulumi.StringPtrInput `pulumi:"catchallDocument"`
+	// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+	//
+	// Deprecated: Service level CORS rules are deprecated in favor of ingresses
+	Cors GetAppSpecStaticSiteCorsPtrInput `pulumi:"cors"`
+	// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
+	DockerfilePath pulumi.StringPtrInput `pulumi:"dockerfilePath"`
+	// An environment slug describing the type of this app.
+	EnvironmentSlug pulumi.StringPtrInput `pulumi:"environmentSlug"`
+	// Describes an environment variable made available to an app competent.
+	Envs GetAppSpecStaticSiteEnvArrayInput `pulumi:"envs"`
+	// The name of the error document to use when serving this static site.
+	ErrorDocument pulumi.StringPtrInput `pulumi:"errorDocument"`
+	// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+	Git GetAppSpecStaticSiteGitPtrInput `pulumi:"git"`
+	// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+	Github GetAppSpecStaticSiteGithubPtrInput `pulumi:"github"`
+	// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+	Gitlab GetAppSpecStaticSiteGitlabPtrInput `pulumi:"gitlab"`
+	// The name of the index document to use when serving this static site.
+	IndexDocument pulumi.StringPtrInput `pulumi:"indexDocument"`
+	// The name of the component.
+	Name pulumi.StringInput `pulumi:"name"`
+	// An optional path to where the built assets will be located, relative to the build context. If not set, App Platform will automatically scan for these directory names: `_static`, `dist`, `public`.
+	OutputDir pulumi.StringPtrInput `pulumi:"outputDir"`
+	// Deprecated: Service level routes are deprecated in favor of ingresses
+	Routes GetAppSpecStaticSiteRouteArrayInput `pulumi:"routes"`
+	// An optional path to the working directory to use for the build.
+	SourceDir pulumi.StringPtrInput `pulumi:"sourceDir"`
+}
+
+func (GetAppSpecStaticSiteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecStaticSite)(nil)).Elem()
+}
+
+func (i GetAppSpecStaticSiteArgs) ToGetAppSpecStaticSiteOutput() GetAppSpecStaticSiteOutput {
+	return i.ToGetAppSpecStaticSiteOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecStaticSiteArgs) ToGetAppSpecStaticSiteOutputWithContext(ctx context.Context) GetAppSpecStaticSiteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecStaticSiteOutput)
+}
+
+// GetAppSpecStaticSiteArrayInput is an input type that accepts GetAppSpecStaticSiteArray and GetAppSpecStaticSiteArrayOutput values.
+// You can construct a concrete instance of `GetAppSpecStaticSiteArrayInput` via:
+//
+//	GetAppSpecStaticSiteArray{ GetAppSpecStaticSiteArgs{...} }
+type GetAppSpecStaticSiteArrayInput interface {
+	pulumi.Input
+
+	ToGetAppSpecStaticSiteArrayOutput() GetAppSpecStaticSiteArrayOutput
+	ToGetAppSpecStaticSiteArrayOutputWithContext(context.Context) GetAppSpecStaticSiteArrayOutput
+}
+
+type GetAppSpecStaticSiteArray []GetAppSpecStaticSiteInput
+
+func (GetAppSpecStaticSiteArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecStaticSite)(nil)).Elem()
+}
+
+func (i GetAppSpecStaticSiteArray) ToGetAppSpecStaticSiteArrayOutput() GetAppSpecStaticSiteArrayOutput {
+	return i.ToGetAppSpecStaticSiteArrayOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecStaticSiteArray) ToGetAppSpecStaticSiteArrayOutputWithContext(ctx context.Context) GetAppSpecStaticSiteArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecStaticSiteArrayOutput)
+}
+
+type GetAppSpecStaticSiteOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecStaticSiteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecStaticSite)(nil)).Elem()
+}
+
+func (o GetAppSpecStaticSiteOutput) ToGetAppSpecStaticSiteOutput() GetAppSpecStaticSiteOutput {
+	return o
+}
+
+func (o GetAppSpecStaticSiteOutput) ToGetAppSpecStaticSiteOutputWithContext(ctx context.Context) GetAppSpecStaticSiteOutput {
+	return o
+}
+
+// A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set. To read your repo, App Platform must be authorized to access your Bitbucket account. Go to this URL to link App Platform to your Bitbucket account: `https://cloud.digitalocean.com/apps/bitbucket/install`.
+func (o GetAppSpecStaticSiteOutput) Bitbucket() GetAppSpecStaticSiteBitbucketPtrOutput {
+	return o.ApplyT(func(v GetAppSpecStaticSite) *GetAppSpecStaticSiteBitbucket { return v.Bitbucket }).(GetAppSpecStaticSiteBitbucketPtrOutput)
+}
+
+// An optional build command to run while building this component from source.
+func (o GetAppSpecStaticSiteOutput) BuildCommand() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecStaticSite) *string { return v.BuildCommand }).(pulumi.StringPtrOutput)
+}
+
+// The name of the document to use as the fallback for any requests to documents that are not found when serving this static site.
+func (o GetAppSpecStaticSiteOutput) CatchallDocument() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecStaticSite) *string { return v.CatchallDocument }).(pulumi.StringPtrOutput)
+}
+
+// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+//
+// Deprecated: Service level CORS rules are deprecated in favor of ingresses
+func (o GetAppSpecStaticSiteOutput) Cors() GetAppSpecStaticSiteCorsPtrOutput {
+	return o.ApplyT(func(v GetAppSpecStaticSite) *GetAppSpecStaticSiteCors { return v.Cors }).(GetAppSpecStaticSiteCorsPtrOutput)
+}
+
+// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
+func (o GetAppSpecStaticSiteOutput) DockerfilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecStaticSite) *string { return v.DockerfilePath }).(pulumi.StringPtrOutput)
+}
+
+// An environment slug describing the type of this app.
+func (o GetAppSpecStaticSiteOutput) EnvironmentSlug() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecStaticSite) *string { return v.EnvironmentSlug }).(pulumi.StringPtrOutput)
+}
+
+// Describes an environment variable made available to an app competent.
+func (o GetAppSpecStaticSiteOutput) Envs() GetAppSpecStaticSiteEnvArrayOutput {
+	return o.ApplyT(func(v GetAppSpecStaticSite) []GetAppSpecStaticSiteEnv { return v.Envs }).(GetAppSpecStaticSiteEnvArrayOutput)
+}
+
+// The name of the error document to use when serving this static site.
+func (o GetAppSpecStaticSiteOutput) ErrorDocument() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecStaticSite) *string { return v.ErrorDocument }).(pulumi.StringPtrOutput)
+}
+
+// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+func (o GetAppSpecStaticSiteOutput) Git() GetAppSpecStaticSiteGitPtrOutput {
+	return o.ApplyT(func(v GetAppSpecStaticSite) *GetAppSpecStaticSiteGit { return v.Git }).(GetAppSpecStaticSiteGitPtrOutput)
+}
+
+// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+func (o GetAppSpecStaticSiteOutput) Github() GetAppSpecStaticSiteGithubPtrOutput {
+	return o.ApplyT(func(v GetAppSpecStaticSite) *GetAppSpecStaticSiteGithub { return v.Github }).(GetAppSpecStaticSiteGithubPtrOutput)
+}
+
+// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+func (o GetAppSpecStaticSiteOutput) Gitlab() GetAppSpecStaticSiteGitlabPtrOutput {
+	return o.ApplyT(func(v GetAppSpecStaticSite) *GetAppSpecStaticSiteGitlab { return v.Gitlab }).(GetAppSpecStaticSiteGitlabPtrOutput)
+}
+
+// The name of the index document to use when serving this static site.
+func (o GetAppSpecStaticSiteOutput) IndexDocument() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecStaticSite) *string { return v.IndexDocument }).(pulumi.StringPtrOutput)
+}
+
+// The name of the component.
+func (o GetAppSpecStaticSiteOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppSpecStaticSite) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// An optional path to where the built assets will be located, relative to the build context. If not set, App Platform will automatically scan for these directory names: `_static`, `dist`, `public`.
+func (o GetAppSpecStaticSiteOutput) OutputDir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecStaticSite) *string { return v.OutputDir }).(pulumi.StringPtrOutput)
+}
+
+// Deprecated: Service level routes are deprecated in favor of ingresses
+func (o GetAppSpecStaticSiteOutput) Routes() GetAppSpecStaticSiteRouteArrayOutput {
+	return o.ApplyT(func(v GetAppSpecStaticSite) []GetAppSpecStaticSiteRoute { return v.Routes }).(GetAppSpecStaticSiteRouteArrayOutput)
+}
+
+// An optional path to the working directory to use for the build.
+func (o GetAppSpecStaticSiteOutput) SourceDir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecStaticSite) *string { return v.SourceDir }).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecStaticSiteArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecStaticSiteArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecStaticSite)(nil)).Elem()
+}
+
+func (o GetAppSpecStaticSiteArrayOutput) ToGetAppSpecStaticSiteArrayOutput() GetAppSpecStaticSiteArrayOutput {
+	return o
+}
+
+func (o GetAppSpecStaticSiteArrayOutput) ToGetAppSpecStaticSiteArrayOutputWithContext(ctx context.Context) GetAppSpecStaticSiteArrayOutput {
+	return o
+}
+
+func (o GetAppSpecStaticSiteArrayOutput) Index(i pulumi.IntInput) GetAppSpecStaticSiteOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppSpecStaticSite {
+		return vs[0].([]GetAppSpecStaticSite)[vs[1].(int)]
+	}).(GetAppSpecStaticSiteOutput)
+}
+
 type GetAppSpecStaticSiteBitbucket struct {
 	// The name of the branch to use.
 	Branch *string `pulumi:"branch"`
@@ -35797,6 +36590,1977 @@ func (o GetLoadBalancerStickySessionArrayOutput) Index(i pulumi.IntInput) GetLoa
 	}).(GetLoadBalancerStickySessionOutput)
 }
 
+type GetMicrovmAutoPause struct {
+	// Whether auto-pause is enabled.
+	Enabled bool `pulumi:"enabled"`
+	// How long the MicroVM must be idle before it pauses.
+	IdleTimeout string `pulumi:"idleTimeout"`
+}
+
+// GetMicrovmAutoPauseInput is an input type that accepts GetMicrovmAutoPauseArgs and GetMicrovmAutoPauseOutput values.
+// You can construct a concrete instance of `GetMicrovmAutoPauseInput` via:
+//
+//	GetMicrovmAutoPauseArgs{...}
+type GetMicrovmAutoPauseInput interface {
+	pulumi.Input
+
+	ToGetMicrovmAutoPauseOutput() GetMicrovmAutoPauseOutput
+	ToGetMicrovmAutoPauseOutputWithContext(context.Context) GetMicrovmAutoPauseOutput
+}
+
+type GetMicrovmAutoPauseArgs struct {
+	// Whether auto-pause is enabled.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// How long the MicroVM must be idle before it pauses.
+	IdleTimeout pulumi.StringInput `pulumi:"idleTimeout"`
+}
+
+func (GetMicrovmAutoPauseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMicrovmAutoPause)(nil)).Elem()
+}
+
+func (i GetMicrovmAutoPauseArgs) ToGetMicrovmAutoPauseOutput() GetMicrovmAutoPauseOutput {
+	return i.ToGetMicrovmAutoPauseOutputWithContext(context.Background())
+}
+
+func (i GetMicrovmAutoPauseArgs) ToGetMicrovmAutoPauseOutputWithContext(ctx context.Context) GetMicrovmAutoPauseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMicrovmAutoPauseOutput)
+}
+
+// GetMicrovmAutoPauseArrayInput is an input type that accepts GetMicrovmAutoPauseArray and GetMicrovmAutoPauseArrayOutput values.
+// You can construct a concrete instance of `GetMicrovmAutoPauseArrayInput` via:
+//
+//	GetMicrovmAutoPauseArray{ GetMicrovmAutoPauseArgs{...} }
+type GetMicrovmAutoPauseArrayInput interface {
+	pulumi.Input
+
+	ToGetMicrovmAutoPauseArrayOutput() GetMicrovmAutoPauseArrayOutput
+	ToGetMicrovmAutoPauseArrayOutputWithContext(context.Context) GetMicrovmAutoPauseArrayOutput
+}
+
+type GetMicrovmAutoPauseArray []GetMicrovmAutoPauseInput
+
+func (GetMicrovmAutoPauseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMicrovmAutoPause)(nil)).Elem()
+}
+
+func (i GetMicrovmAutoPauseArray) ToGetMicrovmAutoPauseArrayOutput() GetMicrovmAutoPauseArrayOutput {
+	return i.ToGetMicrovmAutoPauseArrayOutputWithContext(context.Background())
+}
+
+func (i GetMicrovmAutoPauseArray) ToGetMicrovmAutoPauseArrayOutputWithContext(ctx context.Context) GetMicrovmAutoPauseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMicrovmAutoPauseArrayOutput)
+}
+
+type GetMicrovmAutoPauseOutput struct{ *pulumi.OutputState }
+
+func (GetMicrovmAutoPauseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMicrovmAutoPause)(nil)).Elem()
+}
+
+func (o GetMicrovmAutoPauseOutput) ToGetMicrovmAutoPauseOutput() GetMicrovmAutoPauseOutput {
+	return o
+}
+
+func (o GetMicrovmAutoPauseOutput) ToGetMicrovmAutoPauseOutputWithContext(ctx context.Context) GetMicrovmAutoPauseOutput {
+	return o
+}
+
+// Whether auto-pause is enabled.
+func (o GetMicrovmAutoPauseOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetMicrovmAutoPause) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// How long the MicroVM must be idle before it pauses.
+func (o GetMicrovmAutoPauseOutput) IdleTimeout() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrovmAutoPause) string { return v.IdleTimeout }).(pulumi.StringOutput)
+}
+
+type GetMicrovmAutoPauseArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMicrovmAutoPauseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMicrovmAutoPause)(nil)).Elem()
+}
+
+func (o GetMicrovmAutoPauseArrayOutput) ToGetMicrovmAutoPauseArrayOutput() GetMicrovmAutoPauseArrayOutput {
+	return o
+}
+
+func (o GetMicrovmAutoPauseArrayOutput) ToGetMicrovmAutoPauseArrayOutputWithContext(ctx context.Context) GetMicrovmAutoPauseArrayOutput {
+	return o
+}
+
+func (o GetMicrovmAutoPauseArrayOutput) Index(i pulumi.IntInput) GetMicrovmAutoPauseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMicrovmAutoPause {
+		return vs[0].([]GetMicrovmAutoPause)[vs[1].(int)]
+	}).(GetMicrovmAutoPauseOutput)
+}
+
+type GetMicrovmCheckpointsCheckpoint struct {
+	// The date and time the checkpoint was created.
+	CreatedAt string `pulumi:"createdAt"`
+	// The size of the persisted disk image in bytes.
+	DiskBytes int `pulumi:"diskBytes"`
+	// The ID of the checkpoint.
+	Id string `pulumi:"id"`
+	// The size of the persisted memory image in bytes.
+	MemoryBytes int `pulumi:"memoryBytes"`
+	// Only return checkpoints captured from this MicroVM.
+	MicrovmId string `pulumi:"microvmId"`
+	// The name of the MicroVM the checkpoint was captured from.
+	MicrovmName string `pulumi:"microvmName"`
+	// The name of the checkpoint.
+	Name string `pulumi:"name"`
+	// The slug of the region the checkpoint is stored in.
+	Region string `pulumi:"region"`
+	// The size a MicroVM restored from this checkpoint inherits (`cpu`, `memory`, `disk`). Empty when the checkpoint does not record one.
+	Sizes []GetMicrovmCheckpointsCheckpointSize `pulumi:"sizes"`
+	// The status of the checkpoint, such as `CHECKPOINT_AVAILABLE`.
+	Status string `pulumi:"status"`
+}
+
+// GetMicrovmCheckpointsCheckpointInput is an input type that accepts GetMicrovmCheckpointsCheckpointArgs and GetMicrovmCheckpointsCheckpointOutput values.
+// You can construct a concrete instance of `GetMicrovmCheckpointsCheckpointInput` via:
+//
+//	GetMicrovmCheckpointsCheckpointArgs{...}
+type GetMicrovmCheckpointsCheckpointInput interface {
+	pulumi.Input
+
+	ToGetMicrovmCheckpointsCheckpointOutput() GetMicrovmCheckpointsCheckpointOutput
+	ToGetMicrovmCheckpointsCheckpointOutputWithContext(context.Context) GetMicrovmCheckpointsCheckpointOutput
+}
+
+type GetMicrovmCheckpointsCheckpointArgs struct {
+	// The date and time the checkpoint was created.
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// The size of the persisted disk image in bytes.
+	DiskBytes pulumi.IntInput `pulumi:"diskBytes"`
+	// The ID of the checkpoint.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The size of the persisted memory image in bytes.
+	MemoryBytes pulumi.IntInput `pulumi:"memoryBytes"`
+	// Only return checkpoints captured from this MicroVM.
+	MicrovmId pulumi.StringInput `pulumi:"microvmId"`
+	// The name of the MicroVM the checkpoint was captured from.
+	MicrovmName pulumi.StringInput `pulumi:"microvmName"`
+	// The name of the checkpoint.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The slug of the region the checkpoint is stored in.
+	Region pulumi.StringInput `pulumi:"region"`
+	// The size a MicroVM restored from this checkpoint inherits (`cpu`, `memory`, `disk`). Empty when the checkpoint does not record one.
+	Sizes GetMicrovmCheckpointsCheckpointSizeArrayInput `pulumi:"sizes"`
+	// The status of the checkpoint, such as `CHECKPOINT_AVAILABLE`.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetMicrovmCheckpointsCheckpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMicrovmCheckpointsCheckpoint)(nil)).Elem()
+}
+
+func (i GetMicrovmCheckpointsCheckpointArgs) ToGetMicrovmCheckpointsCheckpointOutput() GetMicrovmCheckpointsCheckpointOutput {
+	return i.ToGetMicrovmCheckpointsCheckpointOutputWithContext(context.Background())
+}
+
+func (i GetMicrovmCheckpointsCheckpointArgs) ToGetMicrovmCheckpointsCheckpointOutputWithContext(ctx context.Context) GetMicrovmCheckpointsCheckpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMicrovmCheckpointsCheckpointOutput)
+}
+
+// GetMicrovmCheckpointsCheckpointArrayInput is an input type that accepts GetMicrovmCheckpointsCheckpointArray and GetMicrovmCheckpointsCheckpointArrayOutput values.
+// You can construct a concrete instance of `GetMicrovmCheckpointsCheckpointArrayInput` via:
+//
+//	GetMicrovmCheckpointsCheckpointArray{ GetMicrovmCheckpointsCheckpointArgs{...} }
+type GetMicrovmCheckpointsCheckpointArrayInput interface {
+	pulumi.Input
+
+	ToGetMicrovmCheckpointsCheckpointArrayOutput() GetMicrovmCheckpointsCheckpointArrayOutput
+	ToGetMicrovmCheckpointsCheckpointArrayOutputWithContext(context.Context) GetMicrovmCheckpointsCheckpointArrayOutput
+}
+
+type GetMicrovmCheckpointsCheckpointArray []GetMicrovmCheckpointsCheckpointInput
+
+func (GetMicrovmCheckpointsCheckpointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMicrovmCheckpointsCheckpoint)(nil)).Elem()
+}
+
+func (i GetMicrovmCheckpointsCheckpointArray) ToGetMicrovmCheckpointsCheckpointArrayOutput() GetMicrovmCheckpointsCheckpointArrayOutput {
+	return i.ToGetMicrovmCheckpointsCheckpointArrayOutputWithContext(context.Background())
+}
+
+func (i GetMicrovmCheckpointsCheckpointArray) ToGetMicrovmCheckpointsCheckpointArrayOutputWithContext(ctx context.Context) GetMicrovmCheckpointsCheckpointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMicrovmCheckpointsCheckpointArrayOutput)
+}
+
+type GetMicrovmCheckpointsCheckpointOutput struct{ *pulumi.OutputState }
+
+func (GetMicrovmCheckpointsCheckpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMicrovmCheckpointsCheckpoint)(nil)).Elem()
+}
+
+func (o GetMicrovmCheckpointsCheckpointOutput) ToGetMicrovmCheckpointsCheckpointOutput() GetMicrovmCheckpointsCheckpointOutput {
+	return o
+}
+
+func (o GetMicrovmCheckpointsCheckpointOutput) ToGetMicrovmCheckpointsCheckpointOutputWithContext(ctx context.Context) GetMicrovmCheckpointsCheckpointOutput {
+	return o
+}
+
+// The date and time the checkpoint was created.
+func (o GetMicrovmCheckpointsCheckpointOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrovmCheckpointsCheckpoint) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The size of the persisted disk image in bytes.
+func (o GetMicrovmCheckpointsCheckpointOutput) DiskBytes() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMicrovmCheckpointsCheckpoint) int { return v.DiskBytes }).(pulumi.IntOutput)
+}
+
+// The ID of the checkpoint.
+func (o GetMicrovmCheckpointsCheckpointOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrovmCheckpointsCheckpoint) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The size of the persisted memory image in bytes.
+func (o GetMicrovmCheckpointsCheckpointOutput) MemoryBytes() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMicrovmCheckpointsCheckpoint) int { return v.MemoryBytes }).(pulumi.IntOutput)
+}
+
+// Only return checkpoints captured from this MicroVM.
+func (o GetMicrovmCheckpointsCheckpointOutput) MicrovmId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrovmCheckpointsCheckpoint) string { return v.MicrovmId }).(pulumi.StringOutput)
+}
+
+// The name of the MicroVM the checkpoint was captured from.
+func (o GetMicrovmCheckpointsCheckpointOutput) MicrovmName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrovmCheckpointsCheckpoint) string { return v.MicrovmName }).(pulumi.StringOutput)
+}
+
+// The name of the checkpoint.
+func (o GetMicrovmCheckpointsCheckpointOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrovmCheckpointsCheckpoint) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The slug of the region the checkpoint is stored in.
+func (o GetMicrovmCheckpointsCheckpointOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrovmCheckpointsCheckpoint) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// The size a MicroVM restored from this checkpoint inherits (`cpu`, `memory`, `disk`). Empty when the checkpoint does not record one.
+func (o GetMicrovmCheckpointsCheckpointOutput) Sizes() GetMicrovmCheckpointsCheckpointSizeArrayOutput {
+	return o.ApplyT(func(v GetMicrovmCheckpointsCheckpoint) []GetMicrovmCheckpointsCheckpointSize { return v.Sizes }).(GetMicrovmCheckpointsCheckpointSizeArrayOutput)
+}
+
+// The status of the checkpoint, such as `CHECKPOINT_AVAILABLE`.
+func (o GetMicrovmCheckpointsCheckpointOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrovmCheckpointsCheckpoint) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetMicrovmCheckpointsCheckpointArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMicrovmCheckpointsCheckpointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMicrovmCheckpointsCheckpoint)(nil)).Elem()
+}
+
+func (o GetMicrovmCheckpointsCheckpointArrayOutput) ToGetMicrovmCheckpointsCheckpointArrayOutput() GetMicrovmCheckpointsCheckpointArrayOutput {
+	return o
+}
+
+func (o GetMicrovmCheckpointsCheckpointArrayOutput) ToGetMicrovmCheckpointsCheckpointArrayOutputWithContext(ctx context.Context) GetMicrovmCheckpointsCheckpointArrayOutput {
+	return o
+}
+
+func (o GetMicrovmCheckpointsCheckpointArrayOutput) Index(i pulumi.IntInput) GetMicrovmCheckpointsCheckpointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMicrovmCheckpointsCheckpoint {
+		return vs[0].([]GetMicrovmCheckpointsCheckpoint)[vs[1].(int)]
+	}).(GetMicrovmCheckpointsCheckpointOutput)
+}
+
+type GetMicrovmCheckpointsCheckpointSize struct {
+	// Number of vCPUs
+	Cpu int `pulumi:"cpu"`
+	// Attached disk in GB
+	Disk int `pulumi:"disk"`
+	// Memory in MiB
+	Memory int `pulumi:"memory"`
+}
+
+// GetMicrovmCheckpointsCheckpointSizeInput is an input type that accepts GetMicrovmCheckpointsCheckpointSizeArgs and GetMicrovmCheckpointsCheckpointSizeOutput values.
+// You can construct a concrete instance of `GetMicrovmCheckpointsCheckpointSizeInput` via:
+//
+//	GetMicrovmCheckpointsCheckpointSizeArgs{...}
+type GetMicrovmCheckpointsCheckpointSizeInput interface {
+	pulumi.Input
+
+	ToGetMicrovmCheckpointsCheckpointSizeOutput() GetMicrovmCheckpointsCheckpointSizeOutput
+	ToGetMicrovmCheckpointsCheckpointSizeOutputWithContext(context.Context) GetMicrovmCheckpointsCheckpointSizeOutput
+}
+
+type GetMicrovmCheckpointsCheckpointSizeArgs struct {
+	// Number of vCPUs
+	Cpu pulumi.IntInput `pulumi:"cpu"`
+	// Attached disk in GB
+	Disk pulumi.IntInput `pulumi:"disk"`
+	// Memory in MiB
+	Memory pulumi.IntInput `pulumi:"memory"`
+}
+
+func (GetMicrovmCheckpointsCheckpointSizeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMicrovmCheckpointsCheckpointSize)(nil)).Elem()
+}
+
+func (i GetMicrovmCheckpointsCheckpointSizeArgs) ToGetMicrovmCheckpointsCheckpointSizeOutput() GetMicrovmCheckpointsCheckpointSizeOutput {
+	return i.ToGetMicrovmCheckpointsCheckpointSizeOutputWithContext(context.Background())
+}
+
+func (i GetMicrovmCheckpointsCheckpointSizeArgs) ToGetMicrovmCheckpointsCheckpointSizeOutputWithContext(ctx context.Context) GetMicrovmCheckpointsCheckpointSizeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMicrovmCheckpointsCheckpointSizeOutput)
+}
+
+// GetMicrovmCheckpointsCheckpointSizeArrayInput is an input type that accepts GetMicrovmCheckpointsCheckpointSizeArray and GetMicrovmCheckpointsCheckpointSizeArrayOutput values.
+// You can construct a concrete instance of `GetMicrovmCheckpointsCheckpointSizeArrayInput` via:
+//
+//	GetMicrovmCheckpointsCheckpointSizeArray{ GetMicrovmCheckpointsCheckpointSizeArgs{...} }
+type GetMicrovmCheckpointsCheckpointSizeArrayInput interface {
+	pulumi.Input
+
+	ToGetMicrovmCheckpointsCheckpointSizeArrayOutput() GetMicrovmCheckpointsCheckpointSizeArrayOutput
+	ToGetMicrovmCheckpointsCheckpointSizeArrayOutputWithContext(context.Context) GetMicrovmCheckpointsCheckpointSizeArrayOutput
+}
+
+type GetMicrovmCheckpointsCheckpointSizeArray []GetMicrovmCheckpointsCheckpointSizeInput
+
+func (GetMicrovmCheckpointsCheckpointSizeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMicrovmCheckpointsCheckpointSize)(nil)).Elem()
+}
+
+func (i GetMicrovmCheckpointsCheckpointSizeArray) ToGetMicrovmCheckpointsCheckpointSizeArrayOutput() GetMicrovmCheckpointsCheckpointSizeArrayOutput {
+	return i.ToGetMicrovmCheckpointsCheckpointSizeArrayOutputWithContext(context.Background())
+}
+
+func (i GetMicrovmCheckpointsCheckpointSizeArray) ToGetMicrovmCheckpointsCheckpointSizeArrayOutputWithContext(ctx context.Context) GetMicrovmCheckpointsCheckpointSizeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMicrovmCheckpointsCheckpointSizeArrayOutput)
+}
+
+type GetMicrovmCheckpointsCheckpointSizeOutput struct{ *pulumi.OutputState }
+
+func (GetMicrovmCheckpointsCheckpointSizeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMicrovmCheckpointsCheckpointSize)(nil)).Elem()
+}
+
+func (o GetMicrovmCheckpointsCheckpointSizeOutput) ToGetMicrovmCheckpointsCheckpointSizeOutput() GetMicrovmCheckpointsCheckpointSizeOutput {
+	return o
+}
+
+func (o GetMicrovmCheckpointsCheckpointSizeOutput) ToGetMicrovmCheckpointsCheckpointSizeOutputWithContext(ctx context.Context) GetMicrovmCheckpointsCheckpointSizeOutput {
+	return o
+}
+
+// Number of vCPUs
+func (o GetMicrovmCheckpointsCheckpointSizeOutput) Cpu() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMicrovmCheckpointsCheckpointSize) int { return v.Cpu }).(pulumi.IntOutput)
+}
+
+// Attached disk in GB
+func (o GetMicrovmCheckpointsCheckpointSizeOutput) Disk() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMicrovmCheckpointsCheckpointSize) int { return v.Disk }).(pulumi.IntOutput)
+}
+
+// Memory in MiB
+func (o GetMicrovmCheckpointsCheckpointSizeOutput) Memory() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMicrovmCheckpointsCheckpointSize) int { return v.Memory }).(pulumi.IntOutput)
+}
+
+type GetMicrovmCheckpointsCheckpointSizeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMicrovmCheckpointsCheckpointSizeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMicrovmCheckpointsCheckpointSize)(nil)).Elem()
+}
+
+func (o GetMicrovmCheckpointsCheckpointSizeArrayOutput) ToGetMicrovmCheckpointsCheckpointSizeArrayOutput() GetMicrovmCheckpointsCheckpointSizeArrayOutput {
+	return o
+}
+
+func (o GetMicrovmCheckpointsCheckpointSizeArrayOutput) ToGetMicrovmCheckpointsCheckpointSizeArrayOutputWithContext(ctx context.Context) GetMicrovmCheckpointsCheckpointSizeArrayOutput {
+	return o
+}
+
+func (o GetMicrovmCheckpointsCheckpointSizeArrayOutput) Index(i pulumi.IntInput) GetMicrovmCheckpointsCheckpointSizeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMicrovmCheckpointsCheckpointSize {
+		return vs[0].([]GetMicrovmCheckpointsCheckpointSize)[vs[1].(int)]
+	}).(GetMicrovmCheckpointsCheckpointSizeOutput)
+}
+
+type GetMicrovmCheckpointsFilter struct {
+	// Set to `true` to require that a field match all of the
+	// `values` instead of just one or more of them.
+	All *bool `pulumi:"all"`
+	// Filter the checkpoints by this key. This may be one of
+	// `id`, `name`, `microvmId`, `microvmName`, `region`, `status`,
+	// `memoryBytes`, `diskBytes`, or `createdAt`.
+	Key string `pulumi:"key"`
+	// One of `exact` (default), `re`, or `substring`.
+	MatchBy *string `pulumi:"matchBy"`
+	// A list of values to match against the `key` field.
+	Values []string `pulumi:"values"`
+}
+
+// GetMicrovmCheckpointsFilterInput is an input type that accepts GetMicrovmCheckpointsFilterArgs and GetMicrovmCheckpointsFilterOutput values.
+// You can construct a concrete instance of `GetMicrovmCheckpointsFilterInput` via:
+//
+//	GetMicrovmCheckpointsFilterArgs{...}
+type GetMicrovmCheckpointsFilterInput interface {
+	pulumi.Input
+
+	ToGetMicrovmCheckpointsFilterOutput() GetMicrovmCheckpointsFilterOutput
+	ToGetMicrovmCheckpointsFilterOutputWithContext(context.Context) GetMicrovmCheckpointsFilterOutput
+}
+
+type GetMicrovmCheckpointsFilterArgs struct {
+	// Set to `true` to require that a field match all of the
+	// `values` instead of just one or more of them.
+	All pulumi.BoolPtrInput `pulumi:"all"`
+	// Filter the checkpoints by this key. This may be one of
+	// `id`, `name`, `microvmId`, `microvmName`, `region`, `status`,
+	// `memoryBytes`, `diskBytes`, or `createdAt`.
+	Key pulumi.StringInput `pulumi:"key"`
+	// One of `exact` (default), `re`, or `substring`.
+	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
+	// A list of values to match against the `key` field.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetMicrovmCheckpointsFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMicrovmCheckpointsFilter)(nil)).Elem()
+}
+
+func (i GetMicrovmCheckpointsFilterArgs) ToGetMicrovmCheckpointsFilterOutput() GetMicrovmCheckpointsFilterOutput {
+	return i.ToGetMicrovmCheckpointsFilterOutputWithContext(context.Background())
+}
+
+func (i GetMicrovmCheckpointsFilterArgs) ToGetMicrovmCheckpointsFilterOutputWithContext(ctx context.Context) GetMicrovmCheckpointsFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMicrovmCheckpointsFilterOutput)
+}
+
+// GetMicrovmCheckpointsFilterArrayInput is an input type that accepts GetMicrovmCheckpointsFilterArray and GetMicrovmCheckpointsFilterArrayOutput values.
+// You can construct a concrete instance of `GetMicrovmCheckpointsFilterArrayInput` via:
+//
+//	GetMicrovmCheckpointsFilterArray{ GetMicrovmCheckpointsFilterArgs{...} }
+type GetMicrovmCheckpointsFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetMicrovmCheckpointsFilterArrayOutput() GetMicrovmCheckpointsFilterArrayOutput
+	ToGetMicrovmCheckpointsFilterArrayOutputWithContext(context.Context) GetMicrovmCheckpointsFilterArrayOutput
+}
+
+type GetMicrovmCheckpointsFilterArray []GetMicrovmCheckpointsFilterInput
+
+func (GetMicrovmCheckpointsFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMicrovmCheckpointsFilter)(nil)).Elem()
+}
+
+func (i GetMicrovmCheckpointsFilterArray) ToGetMicrovmCheckpointsFilterArrayOutput() GetMicrovmCheckpointsFilterArrayOutput {
+	return i.ToGetMicrovmCheckpointsFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetMicrovmCheckpointsFilterArray) ToGetMicrovmCheckpointsFilterArrayOutputWithContext(ctx context.Context) GetMicrovmCheckpointsFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMicrovmCheckpointsFilterArrayOutput)
+}
+
+type GetMicrovmCheckpointsFilterOutput struct{ *pulumi.OutputState }
+
+func (GetMicrovmCheckpointsFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMicrovmCheckpointsFilter)(nil)).Elem()
+}
+
+func (o GetMicrovmCheckpointsFilterOutput) ToGetMicrovmCheckpointsFilterOutput() GetMicrovmCheckpointsFilterOutput {
+	return o
+}
+
+func (o GetMicrovmCheckpointsFilterOutput) ToGetMicrovmCheckpointsFilterOutputWithContext(ctx context.Context) GetMicrovmCheckpointsFilterOutput {
+	return o
+}
+
+// Set to `true` to require that a field match all of the
+// `values` instead of just one or more of them.
+func (o GetMicrovmCheckpointsFilterOutput) All() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetMicrovmCheckpointsFilter) *bool { return v.All }).(pulumi.BoolPtrOutput)
+}
+
+// Filter the checkpoints by this key. This may be one of
+// `id`, `name`, `microvmId`, `microvmName`, `region`, `status`,
+// `memoryBytes`, `diskBytes`, or `createdAt`.
+func (o GetMicrovmCheckpointsFilterOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrovmCheckpointsFilter) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// One of `exact` (default), `re`, or `substring`.
+func (o GetMicrovmCheckpointsFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMicrovmCheckpointsFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
+}
+
+// A list of values to match against the `key` field.
+func (o GetMicrovmCheckpointsFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetMicrovmCheckpointsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetMicrovmCheckpointsFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMicrovmCheckpointsFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMicrovmCheckpointsFilter)(nil)).Elem()
+}
+
+func (o GetMicrovmCheckpointsFilterArrayOutput) ToGetMicrovmCheckpointsFilterArrayOutput() GetMicrovmCheckpointsFilterArrayOutput {
+	return o
+}
+
+func (o GetMicrovmCheckpointsFilterArrayOutput) ToGetMicrovmCheckpointsFilterArrayOutputWithContext(ctx context.Context) GetMicrovmCheckpointsFilterArrayOutput {
+	return o
+}
+
+func (o GetMicrovmCheckpointsFilterArrayOutput) Index(i pulumi.IntInput) GetMicrovmCheckpointsFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMicrovmCheckpointsFilter {
+		return vs[0].([]GetMicrovmCheckpointsFilter)[vs[1].(int)]
+	}).(GetMicrovmCheckpointsFilterOutput)
+}
+
+type GetMicrovmCheckpointsSort struct {
+	// The sort direction. This may be either `asc` or `desc`.
+	Direction *string `pulumi:"direction"`
+	// Sort the checkpoints by this key. This may be one of `id`,
+	// `name`, `microvmId`, `microvmName`, `region`, `status`, `memoryBytes`,
+	// `diskBytes`, or `createdAt`.
+	Key string `pulumi:"key"`
+}
+
+// GetMicrovmCheckpointsSortInput is an input type that accepts GetMicrovmCheckpointsSortArgs and GetMicrovmCheckpointsSortOutput values.
+// You can construct a concrete instance of `GetMicrovmCheckpointsSortInput` via:
+//
+//	GetMicrovmCheckpointsSortArgs{...}
+type GetMicrovmCheckpointsSortInput interface {
+	pulumi.Input
+
+	ToGetMicrovmCheckpointsSortOutput() GetMicrovmCheckpointsSortOutput
+	ToGetMicrovmCheckpointsSortOutputWithContext(context.Context) GetMicrovmCheckpointsSortOutput
+}
+
+type GetMicrovmCheckpointsSortArgs struct {
+	// The sort direction. This may be either `asc` or `desc`.
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
+	// Sort the checkpoints by this key. This may be one of `id`,
+	// `name`, `microvmId`, `microvmName`, `region`, `status`, `memoryBytes`,
+	// `diskBytes`, or `createdAt`.
+	Key pulumi.StringInput `pulumi:"key"`
+}
+
+func (GetMicrovmCheckpointsSortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMicrovmCheckpointsSort)(nil)).Elem()
+}
+
+func (i GetMicrovmCheckpointsSortArgs) ToGetMicrovmCheckpointsSortOutput() GetMicrovmCheckpointsSortOutput {
+	return i.ToGetMicrovmCheckpointsSortOutputWithContext(context.Background())
+}
+
+func (i GetMicrovmCheckpointsSortArgs) ToGetMicrovmCheckpointsSortOutputWithContext(ctx context.Context) GetMicrovmCheckpointsSortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMicrovmCheckpointsSortOutput)
+}
+
+// GetMicrovmCheckpointsSortArrayInput is an input type that accepts GetMicrovmCheckpointsSortArray and GetMicrovmCheckpointsSortArrayOutput values.
+// You can construct a concrete instance of `GetMicrovmCheckpointsSortArrayInput` via:
+//
+//	GetMicrovmCheckpointsSortArray{ GetMicrovmCheckpointsSortArgs{...} }
+type GetMicrovmCheckpointsSortArrayInput interface {
+	pulumi.Input
+
+	ToGetMicrovmCheckpointsSortArrayOutput() GetMicrovmCheckpointsSortArrayOutput
+	ToGetMicrovmCheckpointsSortArrayOutputWithContext(context.Context) GetMicrovmCheckpointsSortArrayOutput
+}
+
+type GetMicrovmCheckpointsSortArray []GetMicrovmCheckpointsSortInput
+
+func (GetMicrovmCheckpointsSortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMicrovmCheckpointsSort)(nil)).Elem()
+}
+
+func (i GetMicrovmCheckpointsSortArray) ToGetMicrovmCheckpointsSortArrayOutput() GetMicrovmCheckpointsSortArrayOutput {
+	return i.ToGetMicrovmCheckpointsSortArrayOutputWithContext(context.Background())
+}
+
+func (i GetMicrovmCheckpointsSortArray) ToGetMicrovmCheckpointsSortArrayOutputWithContext(ctx context.Context) GetMicrovmCheckpointsSortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMicrovmCheckpointsSortArrayOutput)
+}
+
+type GetMicrovmCheckpointsSortOutput struct{ *pulumi.OutputState }
+
+func (GetMicrovmCheckpointsSortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMicrovmCheckpointsSort)(nil)).Elem()
+}
+
+func (o GetMicrovmCheckpointsSortOutput) ToGetMicrovmCheckpointsSortOutput() GetMicrovmCheckpointsSortOutput {
+	return o
+}
+
+func (o GetMicrovmCheckpointsSortOutput) ToGetMicrovmCheckpointsSortOutputWithContext(ctx context.Context) GetMicrovmCheckpointsSortOutput {
+	return o
+}
+
+// The sort direction. This may be either `asc` or `desc`.
+func (o GetMicrovmCheckpointsSortOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMicrovmCheckpointsSort) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
+// Sort the checkpoints by this key. This may be one of `id`,
+// `name`, `microvmId`, `microvmName`, `region`, `status`, `memoryBytes`,
+// `diskBytes`, or `createdAt`.
+func (o GetMicrovmCheckpointsSortOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrovmCheckpointsSort) string { return v.Key }).(pulumi.StringOutput)
+}
+
+type GetMicrovmCheckpointsSortArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMicrovmCheckpointsSortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMicrovmCheckpointsSort)(nil)).Elem()
+}
+
+func (o GetMicrovmCheckpointsSortArrayOutput) ToGetMicrovmCheckpointsSortArrayOutput() GetMicrovmCheckpointsSortArrayOutput {
+	return o
+}
+
+func (o GetMicrovmCheckpointsSortArrayOutput) ToGetMicrovmCheckpointsSortArrayOutputWithContext(ctx context.Context) GetMicrovmCheckpointsSortArrayOutput {
+	return o
+}
+
+func (o GetMicrovmCheckpointsSortArrayOutput) Index(i pulumi.IntInput) GetMicrovmCheckpointsSortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMicrovmCheckpointsSort {
+		return vs[0].([]GetMicrovmCheckpointsSort)[vs[1].(int)]
+	}).(GetMicrovmCheckpointsSortOutput)
+}
+
+type GetMicrovmSize struct {
+	// The number of vCPUs.
+	Cpu int `pulumi:"cpu"`
+	// The size of the attached disk in GB.
+	Disk int `pulumi:"disk"`
+	// The amount of memory in MiB.
+	Memory int `pulumi:"memory"`
+}
+
+// GetMicrovmSizeInput is an input type that accepts GetMicrovmSizeArgs and GetMicrovmSizeOutput values.
+// You can construct a concrete instance of `GetMicrovmSizeInput` via:
+//
+//	GetMicrovmSizeArgs{...}
+type GetMicrovmSizeInput interface {
+	pulumi.Input
+
+	ToGetMicrovmSizeOutput() GetMicrovmSizeOutput
+	ToGetMicrovmSizeOutputWithContext(context.Context) GetMicrovmSizeOutput
+}
+
+type GetMicrovmSizeArgs struct {
+	// The number of vCPUs.
+	Cpu pulumi.IntInput `pulumi:"cpu"`
+	// The size of the attached disk in GB.
+	Disk pulumi.IntInput `pulumi:"disk"`
+	// The amount of memory in MiB.
+	Memory pulumi.IntInput `pulumi:"memory"`
+}
+
+func (GetMicrovmSizeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMicrovmSize)(nil)).Elem()
+}
+
+func (i GetMicrovmSizeArgs) ToGetMicrovmSizeOutput() GetMicrovmSizeOutput {
+	return i.ToGetMicrovmSizeOutputWithContext(context.Background())
+}
+
+func (i GetMicrovmSizeArgs) ToGetMicrovmSizeOutputWithContext(ctx context.Context) GetMicrovmSizeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMicrovmSizeOutput)
+}
+
+// GetMicrovmSizeArrayInput is an input type that accepts GetMicrovmSizeArray and GetMicrovmSizeArrayOutput values.
+// You can construct a concrete instance of `GetMicrovmSizeArrayInput` via:
+//
+//	GetMicrovmSizeArray{ GetMicrovmSizeArgs{...} }
+type GetMicrovmSizeArrayInput interface {
+	pulumi.Input
+
+	ToGetMicrovmSizeArrayOutput() GetMicrovmSizeArrayOutput
+	ToGetMicrovmSizeArrayOutputWithContext(context.Context) GetMicrovmSizeArrayOutput
+}
+
+type GetMicrovmSizeArray []GetMicrovmSizeInput
+
+func (GetMicrovmSizeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMicrovmSize)(nil)).Elem()
+}
+
+func (i GetMicrovmSizeArray) ToGetMicrovmSizeArrayOutput() GetMicrovmSizeArrayOutput {
+	return i.ToGetMicrovmSizeArrayOutputWithContext(context.Background())
+}
+
+func (i GetMicrovmSizeArray) ToGetMicrovmSizeArrayOutputWithContext(ctx context.Context) GetMicrovmSizeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMicrovmSizeArrayOutput)
+}
+
+type GetMicrovmSizeOutput struct{ *pulumi.OutputState }
+
+func (GetMicrovmSizeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMicrovmSize)(nil)).Elem()
+}
+
+func (o GetMicrovmSizeOutput) ToGetMicrovmSizeOutput() GetMicrovmSizeOutput {
+	return o
+}
+
+func (o GetMicrovmSizeOutput) ToGetMicrovmSizeOutputWithContext(ctx context.Context) GetMicrovmSizeOutput {
+	return o
+}
+
+// The number of vCPUs.
+func (o GetMicrovmSizeOutput) Cpu() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMicrovmSize) int { return v.Cpu }).(pulumi.IntOutput)
+}
+
+// The size of the attached disk in GB.
+func (o GetMicrovmSizeOutput) Disk() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMicrovmSize) int { return v.Disk }).(pulumi.IntOutput)
+}
+
+// The amount of memory in MiB.
+func (o GetMicrovmSizeOutput) Memory() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMicrovmSize) int { return v.Memory }).(pulumi.IntOutput)
+}
+
+type GetMicrovmSizeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMicrovmSizeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMicrovmSize)(nil)).Elem()
+}
+
+func (o GetMicrovmSizeArrayOutput) ToGetMicrovmSizeArrayOutput() GetMicrovmSizeArrayOutput {
+	return o
+}
+
+func (o GetMicrovmSizeArrayOutput) ToGetMicrovmSizeArrayOutputWithContext(ctx context.Context) GetMicrovmSizeArrayOutput {
+	return o
+}
+
+func (o GetMicrovmSizeArrayOutput) Index(i pulumi.IntInput) GetMicrovmSizeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMicrovmSize {
+		return vs[0].([]GetMicrovmSize)[vs[1].(int)]
+	}).(GetMicrovmSizeOutput)
+}
+
+type GetMicrovmSource struct {
+	// The ID of the checkpoint the MicroVM was restored from.
+	CheckpointId *string `pulumi:"checkpointId"`
+	// The OCI reference of the workload container image.
+	OciRef *string `pulumi:"ociRef"`
+}
+
+// GetMicrovmSourceInput is an input type that accepts GetMicrovmSourceArgs and GetMicrovmSourceOutput values.
+// You can construct a concrete instance of `GetMicrovmSourceInput` via:
+//
+//	GetMicrovmSourceArgs{...}
+type GetMicrovmSourceInput interface {
+	pulumi.Input
+
+	ToGetMicrovmSourceOutput() GetMicrovmSourceOutput
+	ToGetMicrovmSourceOutputWithContext(context.Context) GetMicrovmSourceOutput
+}
+
+type GetMicrovmSourceArgs struct {
+	// The ID of the checkpoint the MicroVM was restored from.
+	CheckpointId pulumi.StringPtrInput `pulumi:"checkpointId"`
+	// The OCI reference of the workload container image.
+	OciRef pulumi.StringPtrInput `pulumi:"ociRef"`
+}
+
+func (GetMicrovmSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMicrovmSource)(nil)).Elem()
+}
+
+func (i GetMicrovmSourceArgs) ToGetMicrovmSourceOutput() GetMicrovmSourceOutput {
+	return i.ToGetMicrovmSourceOutputWithContext(context.Background())
+}
+
+func (i GetMicrovmSourceArgs) ToGetMicrovmSourceOutputWithContext(ctx context.Context) GetMicrovmSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMicrovmSourceOutput)
+}
+
+// GetMicrovmSourceArrayInput is an input type that accepts GetMicrovmSourceArray and GetMicrovmSourceArrayOutput values.
+// You can construct a concrete instance of `GetMicrovmSourceArrayInput` via:
+//
+//	GetMicrovmSourceArray{ GetMicrovmSourceArgs{...} }
+type GetMicrovmSourceArrayInput interface {
+	pulumi.Input
+
+	ToGetMicrovmSourceArrayOutput() GetMicrovmSourceArrayOutput
+	ToGetMicrovmSourceArrayOutputWithContext(context.Context) GetMicrovmSourceArrayOutput
+}
+
+type GetMicrovmSourceArray []GetMicrovmSourceInput
+
+func (GetMicrovmSourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMicrovmSource)(nil)).Elem()
+}
+
+func (i GetMicrovmSourceArray) ToGetMicrovmSourceArrayOutput() GetMicrovmSourceArrayOutput {
+	return i.ToGetMicrovmSourceArrayOutputWithContext(context.Background())
+}
+
+func (i GetMicrovmSourceArray) ToGetMicrovmSourceArrayOutputWithContext(ctx context.Context) GetMicrovmSourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMicrovmSourceArrayOutput)
+}
+
+type GetMicrovmSourceOutput struct{ *pulumi.OutputState }
+
+func (GetMicrovmSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMicrovmSource)(nil)).Elem()
+}
+
+func (o GetMicrovmSourceOutput) ToGetMicrovmSourceOutput() GetMicrovmSourceOutput {
+	return o
+}
+
+func (o GetMicrovmSourceOutput) ToGetMicrovmSourceOutputWithContext(ctx context.Context) GetMicrovmSourceOutput {
+	return o
+}
+
+// The ID of the checkpoint the MicroVM was restored from.
+func (o GetMicrovmSourceOutput) CheckpointId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMicrovmSource) *string { return v.CheckpointId }).(pulumi.StringPtrOutput)
+}
+
+// The OCI reference of the workload container image.
+func (o GetMicrovmSourceOutput) OciRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMicrovmSource) *string { return v.OciRef }).(pulumi.StringPtrOutput)
+}
+
+type GetMicrovmSourceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMicrovmSourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMicrovmSource)(nil)).Elem()
+}
+
+func (o GetMicrovmSourceArrayOutput) ToGetMicrovmSourceArrayOutput() GetMicrovmSourceArrayOutput {
+	return o
+}
+
+func (o GetMicrovmSourceArrayOutput) ToGetMicrovmSourceArrayOutputWithContext(ctx context.Context) GetMicrovmSourceArrayOutput {
+	return o
+}
+
+func (o GetMicrovmSourceArrayOutput) Index(i pulumi.IntInput) GetMicrovmSourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMicrovmSource {
+		return vs[0].([]GetMicrovmSource)[vs[1].(int)]
+	}).(GetMicrovmSourceOutput)
+}
+
+type GetMicrovmUrl struct {
+	// Whether this is the default URL.
+	Default bool `pulumi:"default"`
+	// The hostname, without a scheme.
+	Hostname string `pulumi:"hostname"`
+	// The guest port the URL forwards to.
+	Port int `pulumi:"port"`
+	// The URL status: `PENDING` or `ACTIVE`.
+	Status string `pulumi:"status"`
+}
+
+// GetMicrovmUrlInput is an input type that accepts GetMicrovmUrlArgs and GetMicrovmUrlOutput values.
+// You can construct a concrete instance of `GetMicrovmUrlInput` via:
+//
+//	GetMicrovmUrlArgs{...}
+type GetMicrovmUrlInput interface {
+	pulumi.Input
+
+	ToGetMicrovmUrlOutput() GetMicrovmUrlOutput
+	ToGetMicrovmUrlOutputWithContext(context.Context) GetMicrovmUrlOutput
+}
+
+type GetMicrovmUrlArgs struct {
+	// Whether this is the default URL.
+	Default pulumi.BoolInput `pulumi:"default"`
+	// The hostname, without a scheme.
+	Hostname pulumi.StringInput `pulumi:"hostname"`
+	// The guest port the URL forwards to.
+	Port pulumi.IntInput `pulumi:"port"`
+	// The URL status: `PENDING` or `ACTIVE`.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetMicrovmUrlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMicrovmUrl)(nil)).Elem()
+}
+
+func (i GetMicrovmUrlArgs) ToGetMicrovmUrlOutput() GetMicrovmUrlOutput {
+	return i.ToGetMicrovmUrlOutputWithContext(context.Background())
+}
+
+func (i GetMicrovmUrlArgs) ToGetMicrovmUrlOutputWithContext(ctx context.Context) GetMicrovmUrlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMicrovmUrlOutput)
+}
+
+// GetMicrovmUrlArrayInput is an input type that accepts GetMicrovmUrlArray and GetMicrovmUrlArrayOutput values.
+// You can construct a concrete instance of `GetMicrovmUrlArrayInput` via:
+//
+//	GetMicrovmUrlArray{ GetMicrovmUrlArgs{...} }
+type GetMicrovmUrlArrayInput interface {
+	pulumi.Input
+
+	ToGetMicrovmUrlArrayOutput() GetMicrovmUrlArrayOutput
+	ToGetMicrovmUrlArrayOutputWithContext(context.Context) GetMicrovmUrlArrayOutput
+}
+
+type GetMicrovmUrlArray []GetMicrovmUrlInput
+
+func (GetMicrovmUrlArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMicrovmUrl)(nil)).Elem()
+}
+
+func (i GetMicrovmUrlArray) ToGetMicrovmUrlArrayOutput() GetMicrovmUrlArrayOutput {
+	return i.ToGetMicrovmUrlArrayOutputWithContext(context.Background())
+}
+
+func (i GetMicrovmUrlArray) ToGetMicrovmUrlArrayOutputWithContext(ctx context.Context) GetMicrovmUrlArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMicrovmUrlArrayOutput)
+}
+
+type GetMicrovmUrlOutput struct{ *pulumi.OutputState }
+
+func (GetMicrovmUrlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMicrovmUrl)(nil)).Elem()
+}
+
+func (o GetMicrovmUrlOutput) ToGetMicrovmUrlOutput() GetMicrovmUrlOutput {
+	return o
+}
+
+func (o GetMicrovmUrlOutput) ToGetMicrovmUrlOutputWithContext(ctx context.Context) GetMicrovmUrlOutput {
+	return o
+}
+
+// Whether this is the default URL.
+func (o GetMicrovmUrlOutput) Default() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetMicrovmUrl) bool { return v.Default }).(pulumi.BoolOutput)
+}
+
+// The hostname, without a scheme.
+func (o GetMicrovmUrlOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrovmUrl) string { return v.Hostname }).(pulumi.StringOutput)
+}
+
+// The guest port the URL forwards to.
+func (o GetMicrovmUrlOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMicrovmUrl) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// The URL status: `PENDING` or `ACTIVE`.
+func (o GetMicrovmUrlOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrovmUrl) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetMicrovmUrlArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMicrovmUrlArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMicrovmUrl)(nil)).Elem()
+}
+
+func (o GetMicrovmUrlArrayOutput) ToGetMicrovmUrlArrayOutput() GetMicrovmUrlArrayOutput {
+	return o
+}
+
+func (o GetMicrovmUrlArrayOutput) ToGetMicrovmUrlArrayOutputWithContext(ctx context.Context) GetMicrovmUrlArrayOutput {
+	return o
+}
+
+func (o GetMicrovmUrlArrayOutput) Index(i pulumi.IntInput) GetMicrovmUrlOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMicrovmUrl {
+		return vs[0].([]GetMicrovmUrl)[vs[1].(int)]
+	}).(GetMicrovmUrlOutput)
+}
+
+type GetMicrovmsFilter struct {
+	// Set to `true` to require that a field match all of the
+	// `values` instead of just one or more of them. This is useful when matching
+	// against multi-valued fields such as lists or sets where you want to ensure
+	// that all of the `values` are present in the list or set.
+	All *bool `pulumi:"all"`
+	// Filter the MicroVMs by this key. This may be one of `id`,
+	// `name`, `region`, `networking`, `httpProtocol`, `currentState`,
+	// `failureReason`, `autoResume`, `ports`, `tags`, `urn`, or `createdAt`.
+	Key string `pulumi:"key"`
+	// One of `exact` (default), `re`, or `substring`. For
+	// string-typed fields, specify `re` to match by using the `values` as regular
+	// expressions, or specify `substring` to match by treating the `values` as
+	// substrings to find within the string field.
+	MatchBy *string `pulumi:"matchBy"`
+	// A list of values to match against the `key` field. Only
+	// retrieves MicroVMs where the `key` field takes on one or more of the values
+	// provided here.
+	Values []string `pulumi:"values"`
+}
+
+// GetMicrovmsFilterInput is an input type that accepts GetMicrovmsFilterArgs and GetMicrovmsFilterOutput values.
+// You can construct a concrete instance of `GetMicrovmsFilterInput` via:
+//
+//	GetMicrovmsFilterArgs{...}
+type GetMicrovmsFilterInput interface {
+	pulumi.Input
+
+	ToGetMicrovmsFilterOutput() GetMicrovmsFilterOutput
+	ToGetMicrovmsFilterOutputWithContext(context.Context) GetMicrovmsFilterOutput
+}
+
+type GetMicrovmsFilterArgs struct {
+	// Set to `true` to require that a field match all of the
+	// `values` instead of just one or more of them. This is useful when matching
+	// against multi-valued fields such as lists or sets where you want to ensure
+	// that all of the `values` are present in the list or set.
+	All pulumi.BoolPtrInput `pulumi:"all"`
+	// Filter the MicroVMs by this key. This may be one of `id`,
+	// `name`, `region`, `networking`, `httpProtocol`, `currentState`,
+	// `failureReason`, `autoResume`, `ports`, `tags`, `urn`, or `createdAt`.
+	Key pulumi.StringInput `pulumi:"key"`
+	// One of `exact` (default), `re`, or `substring`. For
+	// string-typed fields, specify `re` to match by using the `values` as regular
+	// expressions, or specify `substring` to match by treating the `values` as
+	// substrings to find within the string field.
+	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
+	// A list of values to match against the `key` field. Only
+	// retrieves MicroVMs where the `key` field takes on one or more of the values
+	// provided here.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetMicrovmsFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMicrovmsFilter)(nil)).Elem()
+}
+
+func (i GetMicrovmsFilterArgs) ToGetMicrovmsFilterOutput() GetMicrovmsFilterOutput {
+	return i.ToGetMicrovmsFilterOutputWithContext(context.Background())
+}
+
+func (i GetMicrovmsFilterArgs) ToGetMicrovmsFilterOutputWithContext(ctx context.Context) GetMicrovmsFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMicrovmsFilterOutput)
+}
+
+// GetMicrovmsFilterArrayInput is an input type that accepts GetMicrovmsFilterArray and GetMicrovmsFilterArrayOutput values.
+// You can construct a concrete instance of `GetMicrovmsFilterArrayInput` via:
+//
+//	GetMicrovmsFilterArray{ GetMicrovmsFilterArgs{...} }
+type GetMicrovmsFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetMicrovmsFilterArrayOutput() GetMicrovmsFilterArrayOutput
+	ToGetMicrovmsFilterArrayOutputWithContext(context.Context) GetMicrovmsFilterArrayOutput
+}
+
+type GetMicrovmsFilterArray []GetMicrovmsFilterInput
+
+func (GetMicrovmsFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMicrovmsFilter)(nil)).Elem()
+}
+
+func (i GetMicrovmsFilterArray) ToGetMicrovmsFilterArrayOutput() GetMicrovmsFilterArrayOutput {
+	return i.ToGetMicrovmsFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetMicrovmsFilterArray) ToGetMicrovmsFilterArrayOutputWithContext(ctx context.Context) GetMicrovmsFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMicrovmsFilterArrayOutput)
+}
+
+type GetMicrovmsFilterOutput struct{ *pulumi.OutputState }
+
+func (GetMicrovmsFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMicrovmsFilter)(nil)).Elem()
+}
+
+func (o GetMicrovmsFilterOutput) ToGetMicrovmsFilterOutput() GetMicrovmsFilterOutput {
+	return o
+}
+
+func (o GetMicrovmsFilterOutput) ToGetMicrovmsFilterOutputWithContext(ctx context.Context) GetMicrovmsFilterOutput {
+	return o
+}
+
+// Set to `true` to require that a field match all of the
+// `values` instead of just one or more of them. This is useful when matching
+// against multi-valued fields such as lists or sets where you want to ensure
+// that all of the `values` are present in the list or set.
+func (o GetMicrovmsFilterOutput) All() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetMicrovmsFilter) *bool { return v.All }).(pulumi.BoolPtrOutput)
+}
+
+// Filter the MicroVMs by this key. This may be one of `id`,
+// `name`, `region`, `networking`, `httpProtocol`, `currentState`,
+// `failureReason`, `autoResume`, `ports`, `tags`, `urn`, or `createdAt`.
+func (o GetMicrovmsFilterOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrovmsFilter) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// One of `exact` (default), `re`, or `substring`. For
+// string-typed fields, specify `re` to match by using the `values` as regular
+// expressions, or specify `substring` to match by treating the `values` as
+// substrings to find within the string field.
+func (o GetMicrovmsFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMicrovmsFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
+}
+
+// A list of values to match against the `key` field. Only
+// retrieves MicroVMs where the `key` field takes on one or more of the values
+// provided here.
+func (o GetMicrovmsFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetMicrovmsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetMicrovmsFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMicrovmsFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMicrovmsFilter)(nil)).Elem()
+}
+
+func (o GetMicrovmsFilterArrayOutput) ToGetMicrovmsFilterArrayOutput() GetMicrovmsFilterArrayOutput {
+	return o
+}
+
+func (o GetMicrovmsFilterArrayOutput) ToGetMicrovmsFilterArrayOutputWithContext(ctx context.Context) GetMicrovmsFilterArrayOutput {
+	return o
+}
+
+func (o GetMicrovmsFilterArrayOutput) Index(i pulumi.IntInput) GetMicrovmsFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMicrovmsFilter {
+		return vs[0].([]GetMicrovmsFilter)[vs[1].(int)]
+	}).(GetMicrovmsFilterOutput)
+}
+
+type GetMicrovmsMicroVm struct {
+	// Auto-pause configuration. Forces recreation on change: the MicroVMs API has no in-place update path for auto_pause.
+	AutoPauses []GetMicrovmsMicroVmAutoPause `pulumi:"autoPauses"`
+	// Whether the MicroVM should auto-resume on request. Forces recreation on change: the MicroVMs API has no in-place update path for auto_resume.
+	AutoResume bool `pulumi:"autoResume"`
+	// The creation timestamp for the MicroVM
+	CreatedAt string `pulumi:"createdAt"`
+	// Observed lifecycle state of the MicroVM
+	CurrentState string `pulumi:"currentState"`
+	// Environment variables passed to the MicroVM
+	Environment map[string]string `pulumi:"environment"`
+	// Human-readable explanation when currentState is failed
+	FailureReason string `pulumi:"failureReason"`
+	// Port the MicroVM exposes over HTTP
+	HttpPort int `pulumi:"httpPort"`
+	// HTTP protocol: 'http' or 'http2'
+	HttpProtocol string `pulumi:"httpProtocol"`
+	// MicroVM ID
+	Id string `pulumi:"id"`
+	// Only return MicroVMs with this exact name.
+	Name string `pulumi:"name"`
+	// Networking mode: 'public' or 'vpc'
+	Networking string `pulumi:"networking"`
+	// Guest ports open for ingress. Defaults to just httpPort when omitted.
+	Ports []int `pulumi:"ports"`
+	// Only return MicroVMs in this region.
+	Region string `pulumi:"region"`
+	// Compute size. Required when creating from oci_ref; optional when restoring from a checkpoint (inherited).
+	Sizes []GetMicrovmsMicroVmSize `pulumi:"sizes"`
+	// Workload source. Exactly one of ociRef or checkpointId must be set.
+	Sources []GetMicrovmsMicroVmSource `pulumi:"sources"`
+	// Desired lifecycle state: 'running' or 'paused'. Changes are applied by calling the microvm pause / resume action endpoints.
+	State string   `pulumi:"state"`
+	Tags  []string `pulumi:"tags"`
+	// Ingress URLs for the MicroVM
+	Urls []GetMicrovmsMicroVmUrl `pulumi:"urls"`
+	// The uniform resource name (URN) for the MicroVM
+	Urn string `pulumi:"urn"`
+	// UUID of the VPC to attach the MicroVM to. Only valid when networking is 'vpc'.
+	VpcUuid string `pulumi:"vpcUuid"`
+}
+
+// GetMicrovmsMicroVmInput is an input type that accepts GetMicrovmsMicroVmArgs and GetMicrovmsMicroVmOutput values.
+// You can construct a concrete instance of `GetMicrovmsMicroVmInput` via:
+//
+//	GetMicrovmsMicroVmArgs{...}
+type GetMicrovmsMicroVmInput interface {
+	pulumi.Input
+
+	ToGetMicrovmsMicroVmOutput() GetMicrovmsMicroVmOutput
+	ToGetMicrovmsMicroVmOutputWithContext(context.Context) GetMicrovmsMicroVmOutput
+}
+
+type GetMicrovmsMicroVmArgs struct {
+	// Auto-pause configuration. Forces recreation on change: the MicroVMs API has no in-place update path for auto_pause.
+	AutoPauses GetMicrovmsMicroVmAutoPauseArrayInput `pulumi:"autoPauses"`
+	// Whether the MicroVM should auto-resume on request. Forces recreation on change: the MicroVMs API has no in-place update path for auto_resume.
+	AutoResume pulumi.BoolInput `pulumi:"autoResume"`
+	// The creation timestamp for the MicroVM
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// Observed lifecycle state of the MicroVM
+	CurrentState pulumi.StringInput `pulumi:"currentState"`
+	// Environment variables passed to the MicroVM
+	Environment pulumi.StringMapInput `pulumi:"environment"`
+	// Human-readable explanation when currentState is failed
+	FailureReason pulumi.StringInput `pulumi:"failureReason"`
+	// Port the MicroVM exposes over HTTP
+	HttpPort pulumi.IntInput `pulumi:"httpPort"`
+	// HTTP protocol: 'http' or 'http2'
+	HttpProtocol pulumi.StringInput `pulumi:"httpProtocol"`
+	// MicroVM ID
+	Id pulumi.StringInput `pulumi:"id"`
+	// Only return MicroVMs with this exact name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Networking mode: 'public' or 'vpc'
+	Networking pulumi.StringInput `pulumi:"networking"`
+	// Guest ports open for ingress. Defaults to just httpPort when omitted.
+	Ports pulumi.IntArrayInput `pulumi:"ports"`
+	// Only return MicroVMs in this region.
+	Region pulumi.StringInput `pulumi:"region"`
+	// Compute size. Required when creating from oci_ref; optional when restoring from a checkpoint (inherited).
+	Sizes GetMicrovmsMicroVmSizeArrayInput `pulumi:"sizes"`
+	// Workload source. Exactly one of ociRef or checkpointId must be set.
+	Sources GetMicrovmsMicroVmSourceArrayInput `pulumi:"sources"`
+	// Desired lifecycle state: 'running' or 'paused'. Changes are applied by calling the microvm pause / resume action endpoints.
+	State pulumi.StringInput      `pulumi:"state"`
+	Tags  pulumi.StringArrayInput `pulumi:"tags"`
+	// Ingress URLs for the MicroVM
+	Urls GetMicrovmsMicroVmUrlArrayInput `pulumi:"urls"`
+	// The uniform resource name (URN) for the MicroVM
+	Urn pulumi.StringInput `pulumi:"urn"`
+	// UUID of the VPC to attach the MicroVM to. Only valid when networking is 'vpc'.
+	VpcUuid pulumi.StringInput `pulumi:"vpcUuid"`
+}
+
+func (GetMicrovmsMicroVmArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMicrovmsMicroVm)(nil)).Elem()
+}
+
+func (i GetMicrovmsMicroVmArgs) ToGetMicrovmsMicroVmOutput() GetMicrovmsMicroVmOutput {
+	return i.ToGetMicrovmsMicroVmOutputWithContext(context.Background())
+}
+
+func (i GetMicrovmsMicroVmArgs) ToGetMicrovmsMicroVmOutputWithContext(ctx context.Context) GetMicrovmsMicroVmOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMicrovmsMicroVmOutput)
+}
+
+// GetMicrovmsMicroVmArrayInput is an input type that accepts GetMicrovmsMicroVmArray and GetMicrovmsMicroVmArrayOutput values.
+// You can construct a concrete instance of `GetMicrovmsMicroVmArrayInput` via:
+//
+//	GetMicrovmsMicroVmArray{ GetMicrovmsMicroVmArgs{...} }
+type GetMicrovmsMicroVmArrayInput interface {
+	pulumi.Input
+
+	ToGetMicrovmsMicroVmArrayOutput() GetMicrovmsMicroVmArrayOutput
+	ToGetMicrovmsMicroVmArrayOutputWithContext(context.Context) GetMicrovmsMicroVmArrayOutput
+}
+
+type GetMicrovmsMicroVmArray []GetMicrovmsMicroVmInput
+
+func (GetMicrovmsMicroVmArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMicrovmsMicroVm)(nil)).Elem()
+}
+
+func (i GetMicrovmsMicroVmArray) ToGetMicrovmsMicroVmArrayOutput() GetMicrovmsMicroVmArrayOutput {
+	return i.ToGetMicrovmsMicroVmArrayOutputWithContext(context.Background())
+}
+
+func (i GetMicrovmsMicroVmArray) ToGetMicrovmsMicroVmArrayOutputWithContext(ctx context.Context) GetMicrovmsMicroVmArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMicrovmsMicroVmArrayOutput)
+}
+
+type GetMicrovmsMicroVmOutput struct{ *pulumi.OutputState }
+
+func (GetMicrovmsMicroVmOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMicrovmsMicroVm)(nil)).Elem()
+}
+
+func (o GetMicrovmsMicroVmOutput) ToGetMicrovmsMicroVmOutput() GetMicrovmsMicroVmOutput {
+	return o
+}
+
+func (o GetMicrovmsMicroVmOutput) ToGetMicrovmsMicroVmOutputWithContext(ctx context.Context) GetMicrovmsMicroVmOutput {
+	return o
+}
+
+// Auto-pause configuration. Forces recreation on change: the MicroVMs API has no in-place update path for auto_pause.
+func (o GetMicrovmsMicroVmOutput) AutoPauses() GetMicrovmsMicroVmAutoPauseArrayOutput {
+	return o.ApplyT(func(v GetMicrovmsMicroVm) []GetMicrovmsMicroVmAutoPause { return v.AutoPauses }).(GetMicrovmsMicroVmAutoPauseArrayOutput)
+}
+
+// Whether the MicroVM should auto-resume on request. Forces recreation on change: the MicroVMs API has no in-place update path for auto_resume.
+func (o GetMicrovmsMicroVmOutput) AutoResume() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetMicrovmsMicroVm) bool { return v.AutoResume }).(pulumi.BoolOutput)
+}
+
+// The creation timestamp for the MicroVM
+func (o GetMicrovmsMicroVmOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrovmsMicroVm) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Observed lifecycle state of the MicroVM
+func (o GetMicrovmsMicroVmOutput) CurrentState() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrovmsMicroVm) string { return v.CurrentState }).(pulumi.StringOutput)
+}
+
+// Environment variables passed to the MicroVM
+func (o GetMicrovmsMicroVmOutput) Environment() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetMicrovmsMicroVm) map[string]string { return v.Environment }).(pulumi.StringMapOutput)
+}
+
+// Human-readable explanation when currentState is failed
+func (o GetMicrovmsMicroVmOutput) FailureReason() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrovmsMicroVm) string { return v.FailureReason }).(pulumi.StringOutput)
+}
+
+// Port the MicroVM exposes over HTTP
+func (o GetMicrovmsMicroVmOutput) HttpPort() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMicrovmsMicroVm) int { return v.HttpPort }).(pulumi.IntOutput)
+}
+
+// HTTP protocol: 'http' or 'http2'
+func (o GetMicrovmsMicroVmOutput) HttpProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrovmsMicroVm) string { return v.HttpProtocol }).(pulumi.StringOutput)
+}
+
+// MicroVM ID
+func (o GetMicrovmsMicroVmOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrovmsMicroVm) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Only return MicroVMs with this exact name.
+func (o GetMicrovmsMicroVmOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrovmsMicroVm) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Networking mode: 'public' or 'vpc'
+func (o GetMicrovmsMicroVmOutput) Networking() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrovmsMicroVm) string { return v.Networking }).(pulumi.StringOutput)
+}
+
+// Guest ports open for ingress. Defaults to just httpPort when omitted.
+func (o GetMicrovmsMicroVmOutput) Ports() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v GetMicrovmsMicroVm) []int { return v.Ports }).(pulumi.IntArrayOutput)
+}
+
+// Only return MicroVMs in this region.
+func (o GetMicrovmsMicroVmOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrovmsMicroVm) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// Compute size. Required when creating from oci_ref; optional when restoring from a checkpoint (inherited).
+func (o GetMicrovmsMicroVmOutput) Sizes() GetMicrovmsMicroVmSizeArrayOutput {
+	return o.ApplyT(func(v GetMicrovmsMicroVm) []GetMicrovmsMicroVmSize { return v.Sizes }).(GetMicrovmsMicroVmSizeArrayOutput)
+}
+
+// Workload source. Exactly one of ociRef or checkpointId must be set.
+func (o GetMicrovmsMicroVmOutput) Sources() GetMicrovmsMicroVmSourceArrayOutput {
+	return o.ApplyT(func(v GetMicrovmsMicroVm) []GetMicrovmsMicroVmSource { return v.Sources }).(GetMicrovmsMicroVmSourceArrayOutput)
+}
+
+// Desired lifecycle state: 'running' or 'paused'. Changes are applied by calling the microvm pause / resume action endpoints.
+func (o GetMicrovmsMicroVmOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrovmsMicroVm) string { return v.State }).(pulumi.StringOutput)
+}
+
+func (o GetMicrovmsMicroVmOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetMicrovmsMicroVm) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// Ingress URLs for the MicroVM
+func (o GetMicrovmsMicroVmOutput) Urls() GetMicrovmsMicroVmUrlArrayOutput {
+	return o.ApplyT(func(v GetMicrovmsMicroVm) []GetMicrovmsMicroVmUrl { return v.Urls }).(GetMicrovmsMicroVmUrlArrayOutput)
+}
+
+// The uniform resource name (URN) for the MicroVM
+func (o GetMicrovmsMicroVmOutput) Urn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrovmsMicroVm) string { return v.Urn }).(pulumi.StringOutput)
+}
+
+// UUID of the VPC to attach the MicroVM to. Only valid when networking is 'vpc'.
+func (o GetMicrovmsMicroVmOutput) VpcUuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrovmsMicroVm) string { return v.VpcUuid }).(pulumi.StringOutput)
+}
+
+type GetMicrovmsMicroVmArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMicrovmsMicroVmArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMicrovmsMicroVm)(nil)).Elem()
+}
+
+func (o GetMicrovmsMicroVmArrayOutput) ToGetMicrovmsMicroVmArrayOutput() GetMicrovmsMicroVmArrayOutput {
+	return o
+}
+
+func (o GetMicrovmsMicroVmArrayOutput) ToGetMicrovmsMicroVmArrayOutputWithContext(ctx context.Context) GetMicrovmsMicroVmArrayOutput {
+	return o
+}
+
+func (o GetMicrovmsMicroVmArrayOutput) Index(i pulumi.IntInput) GetMicrovmsMicroVmOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMicrovmsMicroVm {
+		return vs[0].([]GetMicrovmsMicroVm)[vs[1].(int)]
+	}).(GetMicrovmsMicroVmOutput)
+}
+
+type GetMicrovmsMicroVmAutoPause struct {
+	// Whether auto-pause is enabled. Forces recreation on change (no in-place API path).
+	Enabled bool `pulumi:"enabled"`
+	// Idle timeout as a Go duration string (e.g. '5m', '30s'). Forces recreation on change (no in-place API path).
+	IdleTimeout string `pulumi:"idleTimeout"`
+}
+
+// GetMicrovmsMicroVmAutoPauseInput is an input type that accepts GetMicrovmsMicroVmAutoPauseArgs and GetMicrovmsMicroVmAutoPauseOutput values.
+// You can construct a concrete instance of `GetMicrovmsMicroVmAutoPauseInput` via:
+//
+//	GetMicrovmsMicroVmAutoPauseArgs{...}
+type GetMicrovmsMicroVmAutoPauseInput interface {
+	pulumi.Input
+
+	ToGetMicrovmsMicroVmAutoPauseOutput() GetMicrovmsMicroVmAutoPauseOutput
+	ToGetMicrovmsMicroVmAutoPauseOutputWithContext(context.Context) GetMicrovmsMicroVmAutoPauseOutput
+}
+
+type GetMicrovmsMicroVmAutoPauseArgs struct {
+	// Whether auto-pause is enabled. Forces recreation on change (no in-place API path).
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Idle timeout as a Go duration string (e.g. '5m', '30s'). Forces recreation on change (no in-place API path).
+	IdleTimeout pulumi.StringInput `pulumi:"idleTimeout"`
+}
+
+func (GetMicrovmsMicroVmAutoPauseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMicrovmsMicroVmAutoPause)(nil)).Elem()
+}
+
+func (i GetMicrovmsMicroVmAutoPauseArgs) ToGetMicrovmsMicroVmAutoPauseOutput() GetMicrovmsMicroVmAutoPauseOutput {
+	return i.ToGetMicrovmsMicroVmAutoPauseOutputWithContext(context.Background())
+}
+
+func (i GetMicrovmsMicroVmAutoPauseArgs) ToGetMicrovmsMicroVmAutoPauseOutputWithContext(ctx context.Context) GetMicrovmsMicroVmAutoPauseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMicrovmsMicroVmAutoPauseOutput)
+}
+
+// GetMicrovmsMicroVmAutoPauseArrayInput is an input type that accepts GetMicrovmsMicroVmAutoPauseArray and GetMicrovmsMicroVmAutoPauseArrayOutput values.
+// You can construct a concrete instance of `GetMicrovmsMicroVmAutoPauseArrayInput` via:
+//
+//	GetMicrovmsMicroVmAutoPauseArray{ GetMicrovmsMicroVmAutoPauseArgs{...} }
+type GetMicrovmsMicroVmAutoPauseArrayInput interface {
+	pulumi.Input
+
+	ToGetMicrovmsMicroVmAutoPauseArrayOutput() GetMicrovmsMicroVmAutoPauseArrayOutput
+	ToGetMicrovmsMicroVmAutoPauseArrayOutputWithContext(context.Context) GetMicrovmsMicroVmAutoPauseArrayOutput
+}
+
+type GetMicrovmsMicroVmAutoPauseArray []GetMicrovmsMicroVmAutoPauseInput
+
+func (GetMicrovmsMicroVmAutoPauseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMicrovmsMicroVmAutoPause)(nil)).Elem()
+}
+
+func (i GetMicrovmsMicroVmAutoPauseArray) ToGetMicrovmsMicroVmAutoPauseArrayOutput() GetMicrovmsMicroVmAutoPauseArrayOutput {
+	return i.ToGetMicrovmsMicroVmAutoPauseArrayOutputWithContext(context.Background())
+}
+
+func (i GetMicrovmsMicroVmAutoPauseArray) ToGetMicrovmsMicroVmAutoPauseArrayOutputWithContext(ctx context.Context) GetMicrovmsMicroVmAutoPauseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMicrovmsMicroVmAutoPauseArrayOutput)
+}
+
+type GetMicrovmsMicroVmAutoPauseOutput struct{ *pulumi.OutputState }
+
+func (GetMicrovmsMicroVmAutoPauseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMicrovmsMicroVmAutoPause)(nil)).Elem()
+}
+
+func (o GetMicrovmsMicroVmAutoPauseOutput) ToGetMicrovmsMicroVmAutoPauseOutput() GetMicrovmsMicroVmAutoPauseOutput {
+	return o
+}
+
+func (o GetMicrovmsMicroVmAutoPauseOutput) ToGetMicrovmsMicroVmAutoPauseOutputWithContext(ctx context.Context) GetMicrovmsMicroVmAutoPauseOutput {
+	return o
+}
+
+// Whether auto-pause is enabled. Forces recreation on change (no in-place API path).
+func (o GetMicrovmsMicroVmAutoPauseOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetMicrovmsMicroVmAutoPause) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Idle timeout as a Go duration string (e.g. '5m', '30s'). Forces recreation on change (no in-place API path).
+func (o GetMicrovmsMicroVmAutoPauseOutput) IdleTimeout() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrovmsMicroVmAutoPause) string { return v.IdleTimeout }).(pulumi.StringOutput)
+}
+
+type GetMicrovmsMicroVmAutoPauseArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMicrovmsMicroVmAutoPauseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMicrovmsMicroVmAutoPause)(nil)).Elem()
+}
+
+func (o GetMicrovmsMicroVmAutoPauseArrayOutput) ToGetMicrovmsMicroVmAutoPauseArrayOutput() GetMicrovmsMicroVmAutoPauseArrayOutput {
+	return o
+}
+
+func (o GetMicrovmsMicroVmAutoPauseArrayOutput) ToGetMicrovmsMicroVmAutoPauseArrayOutputWithContext(ctx context.Context) GetMicrovmsMicroVmAutoPauseArrayOutput {
+	return o
+}
+
+func (o GetMicrovmsMicroVmAutoPauseArrayOutput) Index(i pulumi.IntInput) GetMicrovmsMicroVmAutoPauseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMicrovmsMicroVmAutoPause {
+		return vs[0].([]GetMicrovmsMicroVmAutoPause)[vs[1].(int)]
+	}).(GetMicrovmsMicroVmAutoPauseOutput)
+}
+
+type GetMicrovmsMicroVmSize struct {
+	// Number of vCPUs
+	Cpu int `pulumi:"cpu"`
+	// Attached disk in GB (provisioned with the size)
+	Disk int `pulumi:"disk"`
+	// Memory in MiB
+	Memory int `pulumi:"memory"`
+}
+
+// GetMicrovmsMicroVmSizeInput is an input type that accepts GetMicrovmsMicroVmSizeArgs and GetMicrovmsMicroVmSizeOutput values.
+// You can construct a concrete instance of `GetMicrovmsMicroVmSizeInput` via:
+//
+//	GetMicrovmsMicroVmSizeArgs{...}
+type GetMicrovmsMicroVmSizeInput interface {
+	pulumi.Input
+
+	ToGetMicrovmsMicroVmSizeOutput() GetMicrovmsMicroVmSizeOutput
+	ToGetMicrovmsMicroVmSizeOutputWithContext(context.Context) GetMicrovmsMicroVmSizeOutput
+}
+
+type GetMicrovmsMicroVmSizeArgs struct {
+	// Number of vCPUs
+	Cpu pulumi.IntInput `pulumi:"cpu"`
+	// Attached disk in GB (provisioned with the size)
+	Disk pulumi.IntInput `pulumi:"disk"`
+	// Memory in MiB
+	Memory pulumi.IntInput `pulumi:"memory"`
+}
+
+func (GetMicrovmsMicroVmSizeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMicrovmsMicroVmSize)(nil)).Elem()
+}
+
+func (i GetMicrovmsMicroVmSizeArgs) ToGetMicrovmsMicroVmSizeOutput() GetMicrovmsMicroVmSizeOutput {
+	return i.ToGetMicrovmsMicroVmSizeOutputWithContext(context.Background())
+}
+
+func (i GetMicrovmsMicroVmSizeArgs) ToGetMicrovmsMicroVmSizeOutputWithContext(ctx context.Context) GetMicrovmsMicroVmSizeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMicrovmsMicroVmSizeOutput)
+}
+
+// GetMicrovmsMicroVmSizeArrayInput is an input type that accepts GetMicrovmsMicroVmSizeArray and GetMicrovmsMicroVmSizeArrayOutput values.
+// You can construct a concrete instance of `GetMicrovmsMicroVmSizeArrayInput` via:
+//
+//	GetMicrovmsMicroVmSizeArray{ GetMicrovmsMicroVmSizeArgs{...} }
+type GetMicrovmsMicroVmSizeArrayInput interface {
+	pulumi.Input
+
+	ToGetMicrovmsMicroVmSizeArrayOutput() GetMicrovmsMicroVmSizeArrayOutput
+	ToGetMicrovmsMicroVmSizeArrayOutputWithContext(context.Context) GetMicrovmsMicroVmSizeArrayOutput
+}
+
+type GetMicrovmsMicroVmSizeArray []GetMicrovmsMicroVmSizeInput
+
+func (GetMicrovmsMicroVmSizeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMicrovmsMicroVmSize)(nil)).Elem()
+}
+
+func (i GetMicrovmsMicroVmSizeArray) ToGetMicrovmsMicroVmSizeArrayOutput() GetMicrovmsMicroVmSizeArrayOutput {
+	return i.ToGetMicrovmsMicroVmSizeArrayOutputWithContext(context.Background())
+}
+
+func (i GetMicrovmsMicroVmSizeArray) ToGetMicrovmsMicroVmSizeArrayOutputWithContext(ctx context.Context) GetMicrovmsMicroVmSizeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMicrovmsMicroVmSizeArrayOutput)
+}
+
+type GetMicrovmsMicroVmSizeOutput struct{ *pulumi.OutputState }
+
+func (GetMicrovmsMicroVmSizeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMicrovmsMicroVmSize)(nil)).Elem()
+}
+
+func (o GetMicrovmsMicroVmSizeOutput) ToGetMicrovmsMicroVmSizeOutput() GetMicrovmsMicroVmSizeOutput {
+	return o
+}
+
+func (o GetMicrovmsMicroVmSizeOutput) ToGetMicrovmsMicroVmSizeOutputWithContext(ctx context.Context) GetMicrovmsMicroVmSizeOutput {
+	return o
+}
+
+// Number of vCPUs
+func (o GetMicrovmsMicroVmSizeOutput) Cpu() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMicrovmsMicroVmSize) int { return v.Cpu }).(pulumi.IntOutput)
+}
+
+// Attached disk in GB (provisioned with the size)
+func (o GetMicrovmsMicroVmSizeOutput) Disk() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMicrovmsMicroVmSize) int { return v.Disk }).(pulumi.IntOutput)
+}
+
+// Memory in MiB
+func (o GetMicrovmsMicroVmSizeOutput) Memory() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMicrovmsMicroVmSize) int { return v.Memory }).(pulumi.IntOutput)
+}
+
+type GetMicrovmsMicroVmSizeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMicrovmsMicroVmSizeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMicrovmsMicroVmSize)(nil)).Elem()
+}
+
+func (o GetMicrovmsMicroVmSizeArrayOutput) ToGetMicrovmsMicroVmSizeArrayOutput() GetMicrovmsMicroVmSizeArrayOutput {
+	return o
+}
+
+func (o GetMicrovmsMicroVmSizeArrayOutput) ToGetMicrovmsMicroVmSizeArrayOutputWithContext(ctx context.Context) GetMicrovmsMicroVmSizeArrayOutput {
+	return o
+}
+
+func (o GetMicrovmsMicroVmSizeArrayOutput) Index(i pulumi.IntInput) GetMicrovmsMicroVmSizeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMicrovmsMicroVmSize {
+		return vs[0].([]GetMicrovmsMicroVmSize)[vs[1].(int)]
+	}).(GetMicrovmsMicroVmSizeOutput)
+}
+
+type GetMicrovmsMicroVmSource struct {
+	// Checkpoint UUID to restore
+	CheckpointId *string `pulumi:"checkpointId"`
+	// OCI reference for the workload container
+	OciRef *string `pulumi:"ociRef"`
+}
+
+// GetMicrovmsMicroVmSourceInput is an input type that accepts GetMicrovmsMicroVmSourceArgs and GetMicrovmsMicroVmSourceOutput values.
+// You can construct a concrete instance of `GetMicrovmsMicroVmSourceInput` via:
+//
+//	GetMicrovmsMicroVmSourceArgs{...}
+type GetMicrovmsMicroVmSourceInput interface {
+	pulumi.Input
+
+	ToGetMicrovmsMicroVmSourceOutput() GetMicrovmsMicroVmSourceOutput
+	ToGetMicrovmsMicroVmSourceOutputWithContext(context.Context) GetMicrovmsMicroVmSourceOutput
+}
+
+type GetMicrovmsMicroVmSourceArgs struct {
+	// Checkpoint UUID to restore
+	CheckpointId pulumi.StringPtrInput `pulumi:"checkpointId"`
+	// OCI reference for the workload container
+	OciRef pulumi.StringPtrInput `pulumi:"ociRef"`
+}
+
+func (GetMicrovmsMicroVmSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMicrovmsMicroVmSource)(nil)).Elem()
+}
+
+func (i GetMicrovmsMicroVmSourceArgs) ToGetMicrovmsMicroVmSourceOutput() GetMicrovmsMicroVmSourceOutput {
+	return i.ToGetMicrovmsMicroVmSourceOutputWithContext(context.Background())
+}
+
+func (i GetMicrovmsMicroVmSourceArgs) ToGetMicrovmsMicroVmSourceOutputWithContext(ctx context.Context) GetMicrovmsMicroVmSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMicrovmsMicroVmSourceOutput)
+}
+
+// GetMicrovmsMicroVmSourceArrayInput is an input type that accepts GetMicrovmsMicroVmSourceArray and GetMicrovmsMicroVmSourceArrayOutput values.
+// You can construct a concrete instance of `GetMicrovmsMicroVmSourceArrayInput` via:
+//
+//	GetMicrovmsMicroVmSourceArray{ GetMicrovmsMicroVmSourceArgs{...} }
+type GetMicrovmsMicroVmSourceArrayInput interface {
+	pulumi.Input
+
+	ToGetMicrovmsMicroVmSourceArrayOutput() GetMicrovmsMicroVmSourceArrayOutput
+	ToGetMicrovmsMicroVmSourceArrayOutputWithContext(context.Context) GetMicrovmsMicroVmSourceArrayOutput
+}
+
+type GetMicrovmsMicroVmSourceArray []GetMicrovmsMicroVmSourceInput
+
+func (GetMicrovmsMicroVmSourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMicrovmsMicroVmSource)(nil)).Elem()
+}
+
+func (i GetMicrovmsMicroVmSourceArray) ToGetMicrovmsMicroVmSourceArrayOutput() GetMicrovmsMicroVmSourceArrayOutput {
+	return i.ToGetMicrovmsMicroVmSourceArrayOutputWithContext(context.Background())
+}
+
+func (i GetMicrovmsMicroVmSourceArray) ToGetMicrovmsMicroVmSourceArrayOutputWithContext(ctx context.Context) GetMicrovmsMicroVmSourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMicrovmsMicroVmSourceArrayOutput)
+}
+
+type GetMicrovmsMicroVmSourceOutput struct{ *pulumi.OutputState }
+
+func (GetMicrovmsMicroVmSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMicrovmsMicroVmSource)(nil)).Elem()
+}
+
+func (o GetMicrovmsMicroVmSourceOutput) ToGetMicrovmsMicroVmSourceOutput() GetMicrovmsMicroVmSourceOutput {
+	return o
+}
+
+func (o GetMicrovmsMicroVmSourceOutput) ToGetMicrovmsMicroVmSourceOutputWithContext(ctx context.Context) GetMicrovmsMicroVmSourceOutput {
+	return o
+}
+
+// Checkpoint UUID to restore
+func (o GetMicrovmsMicroVmSourceOutput) CheckpointId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMicrovmsMicroVmSource) *string { return v.CheckpointId }).(pulumi.StringPtrOutput)
+}
+
+// OCI reference for the workload container
+func (o GetMicrovmsMicroVmSourceOutput) OciRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMicrovmsMicroVmSource) *string { return v.OciRef }).(pulumi.StringPtrOutput)
+}
+
+type GetMicrovmsMicroVmSourceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMicrovmsMicroVmSourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMicrovmsMicroVmSource)(nil)).Elem()
+}
+
+func (o GetMicrovmsMicroVmSourceArrayOutput) ToGetMicrovmsMicroVmSourceArrayOutput() GetMicrovmsMicroVmSourceArrayOutput {
+	return o
+}
+
+func (o GetMicrovmsMicroVmSourceArrayOutput) ToGetMicrovmsMicroVmSourceArrayOutputWithContext(ctx context.Context) GetMicrovmsMicroVmSourceArrayOutput {
+	return o
+}
+
+func (o GetMicrovmsMicroVmSourceArrayOutput) Index(i pulumi.IntInput) GetMicrovmsMicroVmSourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMicrovmsMicroVmSource {
+		return vs[0].([]GetMicrovmsMicroVmSource)[vs[1].(int)]
+	}).(GetMicrovmsMicroVmSourceOutput)
+}
+
+type GetMicrovmsMicroVmUrl struct {
+	// Whether this is the system default URL
+	Default bool `pulumi:"default"`
+	// Hostname (no scheme)
+	Hostname string `pulumi:"hostname"`
+	// Guest port this URL forwards to
+	Port int `pulumi:"port"`
+	// URL lifecycle status (PENDING or ACTIVE)
+	Status string `pulumi:"status"`
+}
+
+// GetMicrovmsMicroVmUrlInput is an input type that accepts GetMicrovmsMicroVmUrlArgs and GetMicrovmsMicroVmUrlOutput values.
+// You can construct a concrete instance of `GetMicrovmsMicroVmUrlInput` via:
+//
+//	GetMicrovmsMicroVmUrlArgs{...}
+type GetMicrovmsMicroVmUrlInput interface {
+	pulumi.Input
+
+	ToGetMicrovmsMicroVmUrlOutput() GetMicrovmsMicroVmUrlOutput
+	ToGetMicrovmsMicroVmUrlOutputWithContext(context.Context) GetMicrovmsMicroVmUrlOutput
+}
+
+type GetMicrovmsMicroVmUrlArgs struct {
+	// Whether this is the system default URL
+	Default pulumi.BoolInput `pulumi:"default"`
+	// Hostname (no scheme)
+	Hostname pulumi.StringInput `pulumi:"hostname"`
+	// Guest port this URL forwards to
+	Port pulumi.IntInput `pulumi:"port"`
+	// URL lifecycle status (PENDING or ACTIVE)
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetMicrovmsMicroVmUrlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMicrovmsMicroVmUrl)(nil)).Elem()
+}
+
+func (i GetMicrovmsMicroVmUrlArgs) ToGetMicrovmsMicroVmUrlOutput() GetMicrovmsMicroVmUrlOutput {
+	return i.ToGetMicrovmsMicroVmUrlOutputWithContext(context.Background())
+}
+
+func (i GetMicrovmsMicroVmUrlArgs) ToGetMicrovmsMicroVmUrlOutputWithContext(ctx context.Context) GetMicrovmsMicroVmUrlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMicrovmsMicroVmUrlOutput)
+}
+
+// GetMicrovmsMicroVmUrlArrayInput is an input type that accepts GetMicrovmsMicroVmUrlArray and GetMicrovmsMicroVmUrlArrayOutput values.
+// You can construct a concrete instance of `GetMicrovmsMicroVmUrlArrayInput` via:
+//
+//	GetMicrovmsMicroVmUrlArray{ GetMicrovmsMicroVmUrlArgs{...} }
+type GetMicrovmsMicroVmUrlArrayInput interface {
+	pulumi.Input
+
+	ToGetMicrovmsMicroVmUrlArrayOutput() GetMicrovmsMicroVmUrlArrayOutput
+	ToGetMicrovmsMicroVmUrlArrayOutputWithContext(context.Context) GetMicrovmsMicroVmUrlArrayOutput
+}
+
+type GetMicrovmsMicroVmUrlArray []GetMicrovmsMicroVmUrlInput
+
+func (GetMicrovmsMicroVmUrlArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMicrovmsMicroVmUrl)(nil)).Elem()
+}
+
+func (i GetMicrovmsMicroVmUrlArray) ToGetMicrovmsMicroVmUrlArrayOutput() GetMicrovmsMicroVmUrlArrayOutput {
+	return i.ToGetMicrovmsMicroVmUrlArrayOutputWithContext(context.Background())
+}
+
+func (i GetMicrovmsMicroVmUrlArray) ToGetMicrovmsMicroVmUrlArrayOutputWithContext(ctx context.Context) GetMicrovmsMicroVmUrlArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMicrovmsMicroVmUrlArrayOutput)
+}
+
+type GetMicrovmsMicroVmUrlOutput struct{ *pulumi.OutputState }
+
+func (GetMicrovmsMicroVmUrlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMicrovmsMicroVmUrl)(nil)).Elem()
+}
+
+func (o GetMicrovmsMicroVmUrlOutput) ToGetMicrovmsMicroVmUrlOutput() GetMicrovmsMicroVmUrlOutput {
+	return o
+}
+
+func (o GetMicrovmsMicroVmUrlOutput) ToGetMicrovmsMicroVmUrlOutputWithContext(ctx context.Context) GetMicrovmsMicroVmUrlOutput {
+	return o
+}
+
+// Whether this is the system default URL
+func (o GetMicrovmsMicroVmUrlOutput) Default() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetMicrovmsMicroVmUrl) bool { return v.Default }).(pulumi.BoolOutput)
+}
+
+// Hostname (no scheme)
+func (o GetMicrovmsMicroVmUrlOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrovmsMicroVmUrl) string { return v.Hostname }).(pulumi.StringOutput)
+}
+
+// Guest port this URL forwards to
+func (o GetMicrovmsMicroVmUrlOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMicrovmsMicroVmUrl) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// URL lifecycle status (PENDING or ACTIVE)
+func (o GetMicrovmsMicroVmUrlOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrovmsMicroVmUrl) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetMicrovmsMicroVmUrlArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMicrovmsMicroVmUrlArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMicrovmsMicroVmUrl)(nil)).Elem()
+}
+
+func (o GetMicrovmsMicroVmUrlArrayOutput) ToGetMicrovmsMicroVmUrlArrayOutput() GetMicrovmsMicroVmUrlArrayOutput {
+	return o
+}
+
+func (o GetMicrovmsMicroVmUrlArrayOutput) ToGetMicrovmsMicroVmUrlArrayOutputWithContext(ctx context.Context) GetMicrovmsMicroVmUrlArrayOutput {
+	return o
+}
+
+func (o GetMicrovmsMicroVmUrlArrayOutput) Index(i pulumi.IntInput) GetMicrovmsMicroVmUrlOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMicrovmsMicroVmUrl {
+		return vs[0].([]GetMicrovmsMicroVmUrl)[vs[1].(int)]
+	}).(GetMicrovmsMicroVmUrlOutput)
+}
+
+type GetMicrovmsSort struct {
+	// The sort direction. This may be either `asc` or `desc`.
+	Direction *string `pulumi:"direction"`
+	// Sort the MicroVMs by this key. This may be one of `id`,
+	// `name`, `region`, `networking`, `httpProtocol`, `currentState`,
+	// `autoResume`, `urn`, or `createdAt`.
+	Key string `pulumi:"key"`
+}
+
+// GetMicrovmsSortInput is an input type that accepts GetMicrovmsSortArgs and GetMicrovmsSortOutput values.
+// You can construct a concrete instance of `GetMicrovmsSortInput` via:
+//
+//	GetMicrovmsSortArgs{...}
+type GetMicrovmsSortInput interface {
+	pulumi.Input
+
+	ToGetMicrovmsSortOutput() GetMicrovmsSortOutput
+	ToGetMicrovmsSortOutputWithContext(context.Context) GetMicrovmsSortOutput
+}
+
+type GetMicrovmsSortArgs struct {
+	// The sort direction. This may be either `asc` or `desc`.
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
+	// Sort the MicroVMs by this key. This may be one of `id`,
+	// `name`, `region`, `networking`, `httpProtocol`, `currentState`,
+	// `autoResume`, `urn`, or `createdAt`.
+	Key pulumi.StringInput `pulumi:"key"`
+}
+
+func (GetMicrovmsSortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMicrovmsSort)(nil)).Elem()
+}
+
+func (i GetMicrovmsSortArgs) ToGetMicrovmsSortOutput() GetMicrovmsSortOutput {
+	return i.ToGetMicrovmsSortOutputWithContext(context.Background())
+}
+
+func (i GetMicrovmsSortArgs) ToGetMicrovmsSortOutputWithContext(ctx context.Context) GetMicrovmsSortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMicrovmsSortOutput)
+}
+
+// GetMicrovmsSortArrayInput is an input type that accepts GetMicrovmsSortArray and GetMicrovmsSortArrayOutput values.
+// You can construct a concrete instance of `GetMicrovmsSortArrayInput` via:
+//
+//	GetMicrovmsSortArray{ GetMicrovmsSortArgs{...} }
+type GetMicrovmsSortArrayInput interface {
+	pulumi.Input
+
+	ToGetMicrovmsSortArrayOutput() GetMicrovmsSortArrayOutput
+	ToGetMicrovmsSortArrayOutputWithContext(context.Context) GetMicrovmsSortArrayOutput
+}
+
+type GetMicrovmsSortArray []GetMicrovmsSortInput
+
+func (GetMicrovmsSortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMicrovmsSort)(nil)).Elem()
+}
+
+func (i GetMicrovmsSortArray) ToGetMicrovmsSortArrayOutput() GetMicrovmsSortArrayOutput {
+	return i.ToGetMicrovmsSortArrayOutputWithContext(context.Background())
+}
+
+func (i GetMicrovmsSortArray) ToGetMicrovmsSortArrayOutputWithContext(ctx context.Context) GetMicrovmsSortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMicrovmsSortArrayOutput)
+}
+
+type GetMicrovmsSortOutput struct{ *pulumi.OutputState }
+
+func (GetMicrovmsSortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMicrovmsSort)(nil)).Elem()
+}
+
+func (o GetMicrovmsSortOutput) ToGetMicrovmsSortOutput() GetMicrovmsSortOutput {
+	return o
+}
+
+func (o GetMicrovmsSortOutput) ToGetMicrovmsSortOutputWithContext(ctx context.Context) GetMicrovmsSortOutput {
+	return o
+}
+
+// The sort direction. This may be either `asc` or `desc`.
+func (o GetMicrovmsSortOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMicrovmsSort) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
+// Sort the MicroVMs by this key. This may be one of `id`,
+// `name`, `region`, `networking`, `httpProtocol`, `currentState`,
+// `autoResume`, `urn`, or `createdAt`.
+func (o GetMicrovmsSortOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrovmsSort) string { return v.Key }).(pulumi.StringOutput)
+}
+
+type GetMicrovmsSortArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMicrovmsSortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMicrovmsSort)(nil)).Elem()
+}
+
+func (o GetMicrovmsSortArrayOutput) ToGetMicrovmsSortArrayOutput() GetMicrovmsSortArrayOutput {
+	return o
+}
+
+func (o GetMicrovmsSortArrayOutput) ToGetMicrovmsSortArrayOutputWithContext(ctx context.Context) GetMicrovmsSortArrayOutput {
+	return o
+}
+
+func (o GetMicrovmsSortArrayOutput) Index(i pulumi.IntInput) GetMicrovmsSortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMicrovmsSort {
+		return vs[0].([]GetMicrovmsSort)[vs[1].(int)]
+	}).(GetMicrovmsSortOutput)
+}
+
 type GetNfsAccessPointAccessPolicy struct {
 	Anongid                    int      `pulumi:"anongid"`
 	Anonuid                    int      `pulumi:"anonuid"`
@@ -39765,6 +42529,16 @@ func (o GetVpcNatGatewayVpcArrayOutput) Index(i pulumi.IntInput) GetVpcNatGatewa
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceLogDestinationOpenSearchBasicAuthInput)(nil)).Elem(), GetAppSpecServiceLogDestinationOpenSearchBasicAuthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrInput)(nil)).Elem(), GetAppSpecServiceLogDestinationOpenSearchBasicAuthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceLogDestinationPapertrailInput)(nil)).Elem(), GetAppSpecServiceLogDestinationPapertrailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceLogDestinationPapertrailPtrInput)(nil)).Elem(), GetAppSpecServiceLogDestinationPapertrailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceRouteInput)(nil)).Elem(), GetAppSpecServiceRouteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceRouteArrayInput)(nil)).Elem(), GetAppSpecServiceRouteArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceTerminationInput)(nil)).Elem(), GetAppSpecServiceTerminationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceTerminationPtrInput)(nil)).Elem(), GetAppSpecServiceTerminationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecStaticSiteInput)(nil)).Elem(), GetAppSpecStaticSiteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecStaticSiteArrayInput)(nil)).Elem(), GetAppSpecStaticSiteArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecStaticSiteBitbucketInput)(nil)).Elem(), GetAppSpecStaticSiteBitbucketArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecStaticSiteBitbucketPtrInput)(nil)).Elem(), GetAppSpecStaticSiteBitbucketArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecStaticSiteCorsInput)(nil)).Elem(), GetAppSpecStaticSiteCorsArgs{})
@@ -40237,6 +43011,36 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerHealthcheckArrayInput)(nil)).Elem(), GetLoadBalancerHealthcheckArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerStickySessionInput)(nil)).Elem(), GetLoadBalancerStickySessionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerStickySessionArrayInput)(nil)).Elem(), GetLoadBalancerStickySessionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrovmAutoPauseInput)(nil)).Elem(), GetMicrovmAutoPauseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrovmAutoPauseArrayInput)(nil)).Elem(), GetMicrovmAutoPauseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrovmCheckpointsCheckpointInput)(nil)).Elem(), GetMicrovmCheckpointsCheckpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrovmCheckpointsCheckpointArrayInput)(nil)).Elem(), GetMicrovmCheckpointsCheckpointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrovmCheckpointsCheckpointSizeInput)(nil)).Elem(), GetMicrovmCheckpointsCheckpointSizeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrovmCheckpointsCheckpointSizeArrayInput)(nil)).Elem(), GetMicrovmCheckpointsCheckpointSizeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrovmCheckpointsFilterInput)(nil)).Elem(), GetMicrovmCheckpointsFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrovmCheckpointsFilterArrayInput)(nil)).Elem(), GetMicrovmCheckpointsFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrovmCheckpointsSortInput)(nil)).Elem(), GetMicrovmCheckpointsSortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrovmCheckpointsSortArrayInput)(nil)).Elem(), GetMicrovmCheckpointsSortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrovmSizeInput)(nil)).Elem(), GetMicrovmSizeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrovmSizeArrayInput)(nil)).Elem(), GetMicrovmSizeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrovmSourceInput)(nil)).Elem(), GetMicrovmSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrovmSourceArrayInput)(nil)).Elem(), GetMicrovmSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrovmUrlInput)(nil)).Elem(), GetMicrovmUrlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrovmUrlArrayInput)(nil)).Elem(), GetMicrovmUrlArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrovmsFilterInput)(nil)).Elem(), GetMicrovmsFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrovmsFilterArrayInput)(nil)).Elem(), GetMicrovmsFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrovmsMicroVmInput)(nil)).Elem(), GetMicrovmsMicroVmArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrovmsMicroVmArrayInput)(nil)).Elem(), GetMicrovmsMicroVmArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrovmsMicroVmAutoPauseInput)(nil)).Elem(), GetMicrovmsMicroVmAutoPauseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrovmsMicroVmAutoPauseArrayInput)(nil)).Elem(), GetMicrovmsMicroVmAutoPauseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrovmsMicroVmSizeInput)(nil)).Elem(), GetMicrovmsMicroVmSizeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrovmsMicroVmSizeArrayInput)(nil)).Elem(), GetMicrovmsMicroVmSizeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrovmsMicroVmSourceInput)(nil)).Elem(), GetMicrovmsMicroVmSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrovmsMicroVmSourceArrayInput)(nil)).Elem(), GetMicrovmsMicroVmSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrovmsMicroVmUrlInput)(nil)).Elem(), GetMicrovmsMicroVmUrlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrovmsMicroVmUrlArrayInput)(nil)).Elem(), GetMicrovmsMicroVmUrlArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrovmsSortInput)(nil)).Elem(), GetMicrovmsSortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrovmsSortArrayInput)(nil)).Elem(), GetMicrovmsSortArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNfsAccessPointAccessPolicyInput)(nil)).Elem(), GetNfsAccessPointAccessPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNfsAccessPointAccessPolicyArrayInput)(nil)).Elem(), GetNfsAccessPointAccessPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPartnerAttachmentBgpInput)(nil)).Elem(), GetPartnerAttachmentBgpArgs{})
@@ -40299,6 +43103,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcNatGatewayEgressPublicGatewayArrayInput)(nil)).Elem(), GetVpcNatGatewayEgressPublicGatewayArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcNatGatewayVpcInput)(nil)).Elem(), GetVpcNatGatewayVpcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcNatGatewayVpcArrayInput)(nil)).Elem(), GetVpcNatGatewayVpcArray{})
+	pulumi.RegisterOutputType(GetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceLogDestinationPapertrailOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceLogDestinationPapertrailPtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceRouteOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceRouteArrayOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceTerminationOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceTerminationPtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecStaticSiteOutput{})
+	pulumi.RegisterOutputType(GetAppSpecStaticSiteArrayOutput{})
 	pulumi.RegisterOutputType(GetAppSpecStaticSiteBitbucketOutput{})
 	pulumi.RegisterOutputType(GetAppSpecStaticSiteBitbucketPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecStaticSiteCorsOutput{})
@@ -40771,6 +43585,36 @@ func init() {
 	pulumi.RegisterOutputType(GetLoadBalancerHealthcheckArrayOutput{})
 	pulumi.RegisterOutputType(GetLoadBalancerStickySessionOutput{})
 	pulumi.RegisterOutputType(GetLoadBalancerStickySessionArrayOutput{})
+	pulumi.RegisterOutputType(GetMicrovmAutoPauseOutput{})
+	pulumi.RegisterOutputType(GetMicrovmAutoPauseArrayOutput{})
+	pulumi.RegisterOutputType(GetMicrovmCheckpointsCheckpointOutput{})
+	pulumi.RegisterOutputType(GetMicrovmCheckpointsCheckpointArrayOutput{})
+	pulumi.RegisterOutputType(GetMicrovmCheckpointsCheckpointSizeOutput{})
+	pulumi.RegisterOutputType(GetMicrovmCheckpointsCheckpointSizeArrayOutput{})
+	pulumi.RegisterOutputType(GetMicrovmCheckpointsFilterOutput{})
+	pulumi.RegisterOutputType(GetMicrovmCheckpointsFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetMicrovmCheckpointsSortOutput{})
+	pulumi.RegisterOutputType(GetMicrovmCheckpointsSortArrayOutput{})
+	pulumi.RegisterOutputType(GetMicrovmSizeOutput{})
+	pulumi.RegisterOutputType(GetMicrovmSizeArrayOutput{})
+	pulumi.RegisterOutputType(GetMicrovmSourceOutput{})
+	pulumi.RegisterOutputType(GetMicrovmSourceArrayOutput{})
+	pulumi.RegisterOutputType(GetMicrovmUrlOutput{})
+	pulumi.RegisterOutputType(GetMicrovmUrlArrayOutput{})
+	pulumi.RegisterOutputType(GetMicrovmsFilterOutput{})
+	pulumi.RegisterOutputType(GetMicrovmsFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetMicrovmsMicroVmOutput{})
+	pulumi.RegisterOutputType(GetMicrovmsMicroVmArrayOutput{})
+	pulumi.RegisterOutputType(GetMicrovmsMicroVmAutoPauseOutput{})
+	pulumi.RegisterOutputType(GetMicrovmsMicroVmAutoPauseArrayOutput{})
+	pulumi.RegisterOutputType(GetMicrovmsMicroVmSizeOutput{})
+	pulumi.RegisterOutputType(GetMicrovmsMicroVmSizeArrayOutput{})
+	pulumi.RegisterOutputType(GetMicrovmsMicroVmSourceOutput{})
+	pulumi.RegisterOutputType(GetMicrovmsMicroVmSourceArrayOutput{})
+	pulumi.RegisterOutputType(GetMicrovmsMicroVmUrlOutput{})
+	pulumi.RegisterOutputType(GetMicrovmsMicroVmUrlArrayOutput{})
+	pulumi.RegisterOutputType(GetMicrovmsSortOutput{})
+	pulumi.RegisterOutputType(GetMicrovmsSortArrayOutput{})
 	pulumi.RegisterOutputType(GetNfsAccessPointAccessPolicyOutput{})
 	pulumi.RegisterOutputType(GetNfsAccessPointAccessPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetPartnerAttachmentBgpOutput{})

@@ -116,6 +116,9 @@ from .get_images import *
 from .get_kubernetes_cluster import *
 from .get_kubernetes_versions import *
 from .get_load_balancer import *
+from .get_microvm import *
+from .get_microvm_checkpoints import *
+from .get_microvms import *
 from .get_nfs import *
 from .get_nfs_access_point import *
 from .get_nfs_snapshot import *
@@ -156,6 +159,8 @@ from .gradientai_openai_api_key import *
 from .kubernetes_cluster import *
 from .kubernetes_node_pool import *
 from .load_balancer import *
+from .microvm import *
+from .microvm_checkpoint import *
 from .monitor_alert import *
 from .nfs import *
 from .nfs_access_point import *
@@ -661,6 +666,22 @@ _utilities.register(
   "fqn": "pulumi_digitalocean",
   "classes": {
    "digitalocean:index/loadBalancer:LoadBalancer": "LoadBalancer"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/microvm",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/microvm:Microvm": "Microvm"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/microvmCheckpoint",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/microvmCheckpoint:MicrovmCheckpoint": "MicrovmCheckpoint"
   }
  },
  {

@@ -137,6 +137,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &KubernetesNodePool{}
 	case "digitalocean:index/loadBalancer:LoadBalancer":
 		r = &LoadBalancer{}
+	case "digitalocean:index/microvm:Microvm":
+		r = &Microvm{}
+	case "digitalocean:index/microvmCheckpoint:MicrovmCheckpoint":
+		r = &MicrovmCheckpoint{}
 	case "digitalocean:index/monitorAlert:MonitorAlert":
 		r = &MonitorAlert{}
 	case "digitalocean:index/nfs:Nfs":
@@ -514,6 +518,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"digitalocean",
 		"index/loadBalancer",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
+		"index/microvm",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
+		"index/microvmCheckpoint",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

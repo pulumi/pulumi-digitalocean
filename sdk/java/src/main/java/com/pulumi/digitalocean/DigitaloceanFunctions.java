@@ -125,6 +125,12 @@ import com.pulumi.digitalocean.inputs.GetKubernetesVersionsArgs;
 import com.pulumi.digitalocean.inputs.GetKubernetesVersionsPlainArgs;
 import com.pulumi.digitalocean.inputs.GetLoadBalancerArgs;
 import com.pulumi.digitalocean.inputs.GetLoadBalancerPlainArgs;
+import com.pulumi.digitalocean.inputs.GetMicrovmArgs;
+import com.pulumi.digitalocean.inputs.GetMicrovmCheckpointsArgs;
+import com.pulumi.digitalocean.inputs.GetMicrovmCheckpointsPlainArgs;
+import com.pulumi.digitalocean.inputs.GetMicrovmPlainArgs;
+import com.pulumi.digitalocean.inputs.GetMicrovmsArgs;
+import com.pulumi.digitalocean.inputs.GetMicrovmsPlainArgs;
 import com.pulumi.digitalocean.inputs.GetNfsAccessPointArgs;
 import com.pulumi.digitalocean.inputs.GetNfsAccessPointPlainArgs;
 import com.pulumi.digitalocean.inputs.GetNfsArgs;
@@ -245,6 +251,9 @@ import com.pulumi.digitalocean.outputs.GetImagesResult;
 import com.pulumi.digitalocean.outputs.GetKubernetesClusterResult;
 import com.pulumi.digitalocean.outputs.GetKubernetesVersionsResult;
 import com.pulumi.digitalocean.outputs.GetLoadBalancerResult;
+import com.pulumi.digitalocean.outputs.GetMicrovmCheckpointsResult;
+import com.pulumi.digitalocean.outputs.GetMicrovmResult;
+import com.pulumi.digitalocean.outputs.GetMicrovmsResult;
 import com.pulumi.digitalocean.outputs.GetNfsAccessPointResult;
 import com.pulumi.digitalocean.outputs.GetNfsResult;
 import com.pulumi.digitalocean.outputs.GetNfsSnapshotResult;
@@ -13835,6 +13844,1721 @@ public final class DigitaloceanFunctions {
      */
     public static CompletableFuture<GetLoadBalancerResult> getLoadBalancerPlain(GetLoadBalancerPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getLoadBalancer:getLoadBalancer", TypeShape.of(GetLoadBalancerResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information on a MicroVM for use in other resources. This is useful if the
+     * MicroVM is not managed by Terraform or you need to use any of its data.
+     * 
+     * **Note:** This data source returns a single MicroVM. When looking up by `name`,
+     * an error is triggered if more than one MicroVM has that name.
+     * 
+     * &gt; **Note:** MicroVMs are in public preview.
+     * 
+     * ## Example Usage
+     * 
+     * Get the MicroVM by name:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetMicrovmArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getMicrovm(GetMicrovmArgs.builder()
+     *             .name("example-microvm")
+     *             .build());
+     * 
+     *         ctx.export("hostname", example.urls()[0].hostname());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * Get the MicroVM by ID:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetMicrovmArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getMicrovm(GetMicrovmArgs.builder()
+     *             .id("506f78a4-e098-11e5-ad9f-000f53306ae1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetMicrovmResult> getMicrovm() {
+        return getMicrovm(GetMicrovmArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Get information on a MicroVM for use in other resources. This is useful if the
+     * MicroVM is not managed by Terraform or you need to use any of its data.
+     * 
+     * **Note:** This data source returns a single MicroVM. When looking up by `name`,
+     * an error is triggered if more than one MicroVM has that name.
+     * 
+     * &gt; **Note:** MicroVMs are in public preview.
+     * 
+     * ## Example Usage
+     * 
+     * Get the MicroVM by name:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetMicrovmArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getMicrovm(GetMicrovmArgs.builder()
+     *             .name("example-microvm")
+     *             .build());
+     * 
+     *         ctx.export("hostname", example.urls()[0].hostname());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * Get the MicroVM by ID:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetMicrovmArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getMicrovm(GetMicrovmArgs.builder()
+     *             .id("506f78a4-e098-11e5-ad9f-000f53306ae1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetMicrovmResult> getMicrovmPlain() {
+        return getMicrovmPlain(GetMicrovmPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Get information on a MicroVM for use in other resources. This is useful if the
+     * MicroVM is not managed by Terraform or you need to use any of its data.
+     * 
+     * **Note:** This data source returns a single MicroVM. When looking up by `name`,
+     * an error is triggered if more than one MicroVM has that name.
+     * 
+     * &gt; **Note:** MicroVMs are in public preview.
+     * 
+     * ## Example Usage
+     * 
+     * Get the MicroVM by name:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetMicrovmArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getMicrovm(GetMicrovmArgs.builder()
+     *             .name("example-microvm")
+     *             .build());
+     * 
+     *         ctx.export("hostname", example.urls()[0].hostname());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * Get the MicroVM by ID:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetMicrovmArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getMicrovm(GetMicrovmArgs.builder()
+     *             .id("506f78a4-e098-11e5-ad9f-000f53306ae1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetMicrovmResult> getMicrovm(GetMicrovmArgs args) {
+        return getMicrovm(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information on a MicroVM for use in other resources. This is useful if the
+     * MicroVM is not managed by Terraform or you need to use any of its data.
+     * 
+     * **Note:** This data source returns a single MicroVM. When looking up by `name`,
+     * an error is triggered if more than one MicroVM has that name.
+     * 
+     * &gt; **Note:** MicroVMs are in public preview.
+     * 
+     * ## Example Usage
+     * 
+     * Get the MicroVM by name:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetMicrovmArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getMicrovm(GetMicrovmArgs.builder()
+     *             .name("example-microvm")
+     *             .build());
+     * 
+     *         ctx.export("hostname", example.urls()[0].hostname());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * Get the MicroVM by ID:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetMicrovmArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getMicrovm(GetMicrovmArgs.builder()
+     *             .id("506f78a4-e098-11e5-ad9f-000f53306ae1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetMicrovmResult> getMicrovmPlain(GetMicrovmPlainArgs args) {
+        return getMicrovmPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information on a MicroVM for use in other resources. This is useful if the
+     * MicroVM is not managed by Terraform or you need to use any of its data.
+     * 
+     * **Note:** This data source returns a single MicroVM. When looking up by `name`,
+     * an error is triggered if more than one MicroVM has that name.
+     * 
+     * &gt; **Note:** MicroVMs are in public preview.
+     * 
+     * ## Example Usage
+     * 
+     * Get the MicroVM by name:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetMicrovmArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getMicrovm(GetMicrovmArgs.builder()
+     *             .name("example-microvm")
+     *             .build());
+     * 
+     *         ctx.export("hostname", example.urls()[0].hostname());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * Get the MicroVM by ID:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetMicrovmArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getMicrovm(GetMicrovmArgs.builder()
+     *             .id("506f78a4-e098-11e5-ad9f-000f53306ae1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetMicrovmResult> getMicrovm(GetMicrovmArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getMicrovm:getMicrovm", TypeShape.of(GetMicrovmResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information on a MicroVM for use in other resources. This is useful if the
+     * MicroVM is not managed by Terraform or you need to use any of its data.
+     * 
+     * **Note:** This data source returns a single MicroVM. When looking up by `name`,
+     * an error is triggered if more than one MicroVM has that name.
+     * 
+     * &gt; **Note:** MicroVMs are in public preview.
+     * 
+     * ## Example Usage
+     * 
+     * Get the MicroVM by name:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetMicrovmArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getMicrovm(GetMicrovmArgs.builder()
+     *             .name("example-microvm")
+     *             .build());
+     * 
+     *         ctx.export("hostname", example.urls()[0].hostname());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * Get the MicroVM by ID:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetMicrovmArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getMicrovm(GetMicrovmArgs.builder()
+     *             .id("506f78a4-e098-11e5-ad9f-000f53306ae1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetMicrovmResult> getMicrovm(GetMicrovmArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getMicrovm:getMicrovm", TypeShape.of(GetMicrovmResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information on a MicroVM for use in other resources. This is useful if the
+     * MicroVM is not managed by Terraform or you need to use any of its data.
+     * 
+     * **Note:** This data source returns a single MicroVM. When looking up by `name`,
+     * an error is triggered if more than one MicroVM has that name.
+     * 
+     * &gt; **Note:** MicroVMs are in public preview.
+     * 
+     * ## Example Usage
+     * 
+     * Get the MicroVM by name:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetMicrovmArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getMicrovm(GetMicrovmArgs.builder()
+     *             .name("example-microvm")
+     *             .build());
+     * 
+     *         ctx.export("hostname", example.urls()[0].hostname());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * Get the MicroVM by ID:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetMicrovmArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getMicrovm(GetMicrovmArgs.builder()
+     *             .id("506f78a4-e098-11e5-ad9f-000f53306ae1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetMicrovmResult> getMicrovmPlain(GetMicrovmPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getMicrovm:getMicrovm", TypeShape.of(GetMicrovmResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information on MicroVM checkpoints for use in other resources, with the
+     * ability to filter and sort the results. If no arguments are specified, all
+     * checkpoints on the account are returned.
+     * 
+     * &gt; **Note:** MicroVMs are in public preview.
+     * 
+     * ## Example Usage
+     * 
+     * Get the checkpoints captured from a MicroVM and restore the newest one:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetMicrovmCheckpointsArgs;
+     * import com.pulumi.digitalocean.inputs.GetMicrovmCheckpointsFilterArgs;
+     * import com.pulumi.digitalocean.inputs.GetMicrovmCheckpointsSortArgs;
+     * import com.pulumi.digitalocean.Microvm;
+     * import com.pulumi.digitalocean.MicrovmArgs;
+     * import com.pulumi.digitalocean.inputs.MicrovmSourceArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var web = DigitaloceanFunctions.getMicrovmCheckpoints(GetMicrovmCheckpointsArgs.builder()
+     *             .microvmId(webDigitaloceanMicrovm.id())
+     *             .filters(GetMicrovmCheckpointsFilterArgs.builder()
+     *                 .key("status")
+     *                 .values("CHECKPOINT_AVAILABLE")
+     *                 .build())
+     *             .sorts(GetMicrovmCheckpointsSortArgs.builder()
+     *                 .key("created_at")
+     *                 .direction("desc")
+     *                 .build())
+     *             .build());
+     * 
+     *         var restored = new Microvm("restored", MicrovmArgs.builder()
+     *             .name("example-restored")
+     *             .source(MicrovmSourceArgs.builder()
+     *                 .checkpointId(web.checkpoints()[0].id())
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetMicrovmCheckpointsResult> getMicrovmCheckpoints() {
+        return getMicrovmCheckpoints(GetMicrovmCheckpointsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Get information on MicroVM checkpoints for use in other resources, with the
+     * ability to filter and sort the results. If no arguments are specified, all
+     * checkpoints on the account are returned.
+     * 
+     * &gt; **Note:** MicroVMs are in public preview.
+     * 
+     * ## Example Usage
+     * 
+     * Get the checkpoints captured from a MicroVM and restore the newest one:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetMicrovmCheckpointsArgs;
+     * import com.pulumi.digitalocean.inputs.GetMicrovmCheckpointsFilterArgs;
+     * import com.pulumi.digitalocean.inputs.GetMicrovmCheckpointsSortArgs;
+     * import com.pulumi.digitalocean.Microvm;
+     * import com.pulumi.digitalocean.MicrovmArgs;
+     * import com.pulumi.digitalocean.inputs.MicrovmSourceArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var web = DigitaloceanFunctions.getMicrovmCheckpoints(GetMicrovmCheckpointsArgs.builder()
+     *             .microvmId(webDigitaloceanMicrovm.id())
+     *             .filters(GetMicrovmCheckpointsFilterArgs.builder()
+     *                 .key("status")
+     *                 .values("CHECKPOINT_AVAILABLE")
+     *                 .build())
+     *             .sorts(GetMicrovmCheckpointsSortArgs.builder()
+     *                 .key("created_at")
+     *                 .direction("desc")
+     *                 .build())
+     *             .build());
+     * 
+     *         var restored = new Microvm("restored", MicrovmArgs.builder()
+     *             .name("example-restored")
+     *             .source(MicrovmSourceArgs.builder()
+     *                 .checkpointId(web.checkpoints()[0].id())
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetMicrovmCheckpointsResult> getMicrovmCheckpointsPlain() {
+        return getMicrovmCheckpointsPlain(GetMicrovmCheckpointsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Get information on MicroVM checkpoints for use in other resources, with the
+     * ability to filter and sort the results. If no arguments are specified, all
+     * checkpoints on the account are returned.
+     * 
+     * &gt; **Note:** MicroVMs are in public preview.
+     * 
+     * ## Example Usage
+     * 
+     * Get the checkpoints captured from a MicroVM and restore the newest one:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetMicrovmCheckpointsArgs;
+     * import com.pulumi.digitalocean.inputs.GetMicrovmCheckpointsFilterArgs;
+     * import com.pulumi.digitalocean.inputs.GetMicrovmCheckpointsSortArgs;
+     * import com.pulumi.digitalocean.Microvm;
+     * import com.pulumi.digitalocean.MicrovmArgs;
+     * import com.pulumi.digitalocean.inputs.MicrovmSourceArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var web = DigitaloceanFunctions.getMicrovmCheckpoints(GetMicrovmCheckpointsArgs.builder()
+     *             .microvmId(webDigitaloceanMicrovm.id())
+     *             .filters(GetMicrovmCheckpointsFilterArgs.builder()
+     *                 .key("status")
+     *                 .values("CHECKPOINT_AVAILABLE")
+     *                 .build())
+     *             .sorts(GetMicrovmCheckpointsSortArgs.builder()
+     *                 .key("created_at")
+     *                 .direction("desc")
+     *                 .build())
+     *             .build());
+     * 
+     *         var restored = new Microvm("restored", MicrovmArgs.builder()
+     *             .name("example-restored")
+     *             .source(MicrovmSourceArgs.builder()
+     *                 .checkpointId(web.checkpoints()[0].id())
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetMicrovmCheckpointsResult> getMicrovmCheckpoints(GetMicrovmCheckpointsArgs args) {
+        return getMicrovmCheckpoints(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information on MicroVM checkpoints for use in other resources, with the
+     * ability to filter and sort the results. If no arguments are specified, all
+     * checkpoints on the account are returned.
+     * 
+     * &gt; **Note:** MicroVMs are in public preview.
+     * 
+     * ## Example Usage
+     * 
+     * Get the checkpoints captured from a MicroVM and restore the newest one:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetMicrovmCheckpointsArgs;
+     * import com.pulumi.digitalocean.inputs.GetMicrovmCheckpointsFilterArgs;
+     * import com.pulumi.digitalocean.inputs.GetMicrovmCheckpointsSortArgs;
+     * import com.pulumi.digitalocean.Microvm;
+     * import com.pulumi.digitalocean.MicrovmArgs;
+     * import com.pulumi.digitalocean.inputs.MicrovmSourceArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var web = DigitaloceanFunctions.getMicrovmCheckpoints(GetMicrovmCheckpointsArgs.builder()
+     *             .microvmId(webDigitaloceanMicrovm.id())
+     *             .filters(GetMicrovmCheckpointsFilterArgs.builder()
+     *                 .key("status")
+     *                 .values("CHECKPOINT_AVAILABLE")
+     *                 .build())
+     *             .sorts(GetMicrovmCheckpointsSortArgs.builder()
+     *                 .key("created_at")
+     *                 .direction("desc")
+     *                 .build())
+     *             .build());
+     * 
+     *         var restored = new Microvm("restored", MicrovmArgs.builder()
+     *             .name("example-restored")
+     *             .source(MicrovmSourceArgs.builder()
+     *                 .checkpointId(web.checkpoints()[0].id())
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetMicrovmCheckpointsResult> getMicrovmCheckpointsPlain(GetMicrovmCheckpointsPlainArgs args) {
+        return getMicrovmCheckpointsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information on MicroVM checkpoints for use in other resources, with the
+     * ability to filter and sort the results. If no arguments are specified, all
+     * checkpoints on the account are returned.
+     * 
+     * &gt; **Note:** MicroVMs are in public preview.
+     * 
+     * ## Example Usage
+     * 
+     * Get the checkpoints captured from a MicroVM and restore the newest one:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetMicrovmCheckpointsArgs;
+     * import com.pulumi.digitalocean.inputs.GetMicrovmCheckpointsFilterArgs;
+     * import com.pulumi.digitalocean.inputs.GetMicrovmCheckpointsSortArgs;
+     * import com.pulumi.digitalocean.Microvm;
+     * import com.pulumi.digitalocean.MicrovmArgs;
+     * import com.pulumi.digitalocean.inputs.MicrovmSourceArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var web = DigitaloceanFunctions.getMicrovmCheckpoints(GetMicrovmCheckpointsArgs.builder()
+     *             .microvmId(webDigitaloceanMicrovm.id())
+     *             .filters(GetMicrovmCheckpointsFilterArgs.builder()
+     *                 .key("status")
+     *                 .values("CHECKPOINT_AVAILABLE")
+     *                 .build())
+     *             .sorts(GetMicrovmCheckpointsSortArgs.builder()
+     *                 .key("created_at")
+     *                 .direction("desc")
+     *                 .build())
+     *             .build());
+     * 
+     *         var restored = new Microvm("restored", MicrovmArgs.builder()
+     *             .name("example-restored")
+     *             .source(MicrovmSourceArgs.builder()
+     *                 .checkpointId(web.checkpoints()[0].id())
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetMicrovmCheckpointsResult> getMicrovmCheckpoints(GetMicrovmCheckpointsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getMicrovmCheckpoints:getMicrovmCheckpoints", TypeShape.of(GetMicrovmCheckpointsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information on MicroVM checkpoints for use in other resources, with the
+     * ability to filter and sort the results. If no arguments are specified, all
+     * checkpoints on the account are returned.
+     * 
+     * &gt; **Note:** MicroVMs are in public preview.
+     * 
+     * ## Example Usage
+     * 
+     * Get the checkpoints captured from a MicroVM and restore the newest one:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetMicrovmCheckpointsArgs;
+     * import com.pulumi.digitalocean.inputs.GetMicrovmCheckpointsFilterArgs;
+     * import com.pulumi.digitalocean.inputs.GetMicrovmCheckpointsSortArgs;
+     * import com.pulumi.digitalocean.Microvm;
+     * import com.pulumi.digitalocean.MicrovmArgs;
+     * import com.pulumi.digitalocean.inputs.MicrovmSourceArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var web = DigitaloceanFunctions.getMicrovmCheckpoints(GetMicrovmCheckpointsArgs.builder()
+     *             .microvmId(webDigitaloceanMicrovm.id())
+     *             .filters(GetMicrovmCheckpointsFilterArgs.builder()
+     *                 .key("status")
+     *                 .values("CHECKPOINT_AVAILABLE")
+     *                 .build())
+     *             .sorts(GetMicrovmCheckpointsSortArgs.builder()
+     *                 .key("created_at")
+     *                 .direction("desc")
+     *                 .build())
+     *             .build());
+     * 
+     *         var restored = new Microvm("restored", MicrovmArgs.builder()
+     *             .name("example-restored")
+     *             .source(MicrovmSourceArgs.builder()
+     *                 .checkpointId(web.checkpoints()[0].id())
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetMicrovmCheckpointsResult> getMicrovmCheckpoints(GetMicrovmCheckpointsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getMicrovmCheckpoints:getMicrovmCheckpoints", TypeShape.of(GetMicrovmCheckpointsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information on MicroVM checkpoints for use in other resources, with the
+     * ability to filter and sort the results. If no arguments are specified, all
+     * checkpoints on the account are returned.
+     * 
+     * &gt; **Note:** MicroVMs are in public preview.
+     * 
+     * ## Example Usage
+     * 
+     * Get the checkpoints captured from a MicroVM and restore the newest one:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetMicrovmCheckpointsArgs;
+     * import com.pulumi.digitalocean.inputs.GetMicrovmCheckpointsFilterArgs;
+     * import com.pulumi.digitalocean.inputs.GetMicrovmCheckpointsSortArgs;
+     * import com.pulumi.digitalocean.Microvm;
+     * import com.pulumi.digitalocean.MicrovmArgs;
+     * import com.pulumi.digitalocean.inputs.MicrovmSourceArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var web = DigitaloceanFunctions.getMicrovmCheckpoints(GetMicrovmCheckpointsArgs.builder()
+     *             .microvmId(webDigitaloceanMicrovm.id())
+     *             .filters(GetMicrovmCheckpointsFilterArgs.builder()
+     *                 .key("status")
+     *                 .values("CHECKPOINT_AVAILABLE")
+     *                 .build())
+     *             .sorts(GetMicrovmCheckpointsSortArgs.builder()
+     *                 .key("created_at")
+     *                 .direction("desc")
+     *                 .build())
+     *             .build());
+     * 
+     *         var restored = new Microvm("restored", MicrovmArgs.builder()
+     *             .name("example-restored")
+     *             .source(MicrovmSourceArgs.builder()
+     *                 .checkpointId(web.checkpoints()[0].id())
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetMicrovmCheckpointsResult> getMicrovmCheckpointsPlain(GetMicrovmCheckpointsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getMicrovmCheckpoints:getMicrovmCheckpoints", TypeShape.of(GetMicrovmCheckpointsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information on MicroVMs for use in other resources, with the ability to
+     * filter and sort the results. If no filters are specified, all MicroVMs are
+     * returned.
+     * 
+     * The `region`, `name`, and `tagName` arguments are applied by the API and
+     * combine with logical AND. The `filter` and `sort` blocks are applied to the
+     * results afterwards.
+     * 
+     * Note: You can use the `digitalocean.Microvm` data source to obtain
+     * metadata about a single MicroVM if you already know its `id` or unique `name`.
+     * 
+     * &gt; **Note:** MicroVMs are in public preview.
+     * 
+     * ## Example Usage
+     * 
+     * Get all MicroVMs in a region that carry a tag:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetMicrovmsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var web = DigitaloceanFunctions.getMicrovms(GetMicrovmsArgs.builder()
+     *             .region("nyc3")
+     *             .tagName("web")
+     *             .build());
+     * 
+     *         ctx.export("names", web.microVms().stream().map(element -> element.name()).collect(toList()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * Get all running MicroVMs, sorted by creation time:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetMicrovmsArgs;
+     * import com.pulumi.digitalocean.inputs.GetMicrovmsFilterArgs;
+     * import com.pulumi.digitalocean.inputs.GetMicrovmsSortArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var running = DigitaloceanFunctions.getMicrovms(GetMicrovmsArgs.builder()
+     *             .filters(GetMicrovmsFilterArgs.builder()
+     *                 .key("current_state")
+     *                 .values("running")
+     *                 .build())
+     *             .sorts(GetMicrovmsSortArgs.builder()
+     *                 .key("created_at")
+     *                 .direction("desc")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetMicrovmsResult> getMicrovms() {
+        return getMicrovms(GetMicrovmsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Get information on MicroVMs for use in other resources, with the ability to
+     * filter and sort the results. If no filters are specified, all MicroVMs are
+     * returned.
+     * 
+     * The `region`, `name`, and `tagName` arguments are applied by the API and
+     * combine with logical AND. The `filter` and `sort` blocks are applied to the
+     * results afterwards.
+     * 
+     * Note: You can use the `digitalocean.Microvm` data source to obtain
+     * metadata about a single MicroVM if you already know its `id` or unique `name`.
+     * 
+     * &gt; **Note:** MicroVMs are in public preview.
+     * 
+     * ## Example Usage
+     * 
+     * Get all MicroVMs in a region that carry a tag:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetMicrovmsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var web = DigitaloceanFunctions.getMicrovms(GetMicrovmsArgs.builder()
+     *             .region("nyc3")
+     *             .tagName("web")
+     *             .build());
+     * 
+     *         ctx.export("names", web.microVms().stream().map(element -> element.name()).collect(toList()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * Get all running MicroVMs, sorted by creation time:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetMicrovmsArgs;
+     * import com.pulumi.digitalocean.inputs.GetMicrovmsFilterArgs;
+     * import com.pulumi.digitalocean.inputs.GetMicrovmsSortArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var running = DigitaloceanFunctions.getMicrovms(GetMicrovmsArgs.builder()
+     *             .filters(GetMicrovmsFilterArgs.builder()
+     *                 .key("current_state")
+     *                 .values("running")
+     *                 .build())
+     *             .sorts(GetMicrovmsSortArgs.builder()
+     *                 .key("created_at")
+     *                 .direction("desc")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetMicrovmsResult> getMicrovmsPlain() {
+        return getMicrovmsPlain(GetMicrovmsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Get information on MicroVMs for use in other resources, with the ability to
+     * filter and sort the results. If no filters are specified, all MicroVMs are
+     * returned.
+     * 
+     * The `region`, `name`, and `tagName` arguments are applied by the API and
+     * combine with logical AND. The `filter` and `sort` blocks are applied to the
+     * results afterwards.
+     * 
+     * Note: You can use the `digitalocean.Microvm` data source to obtain
+     * metadata about a single MicroVM if you already know its `id` or unique `name`.
+     * 
+     * &gt; **Note:** MicroVMs are in public preview.
+     * 
+     * ## Example Usage
+     * 
+     * Get all MicroVMs in a region that carry a tag:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetMicrovmsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var web = DigitaloceanFunctions.getMicrovms(GetMicrovmsArgs.builder()
+     *             .region("nyc3")
+     *             .tagName("web")
+     *             .build());
+     * 
+     *         ctx.export("names", web.microVms().stream().map(element -> element.name()).collect(toList()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * Get all running MicroVMs, sorted by creation time:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetMicrovmsArgs;
+     * import com.pulumi.digitalocean.inputs.GetMicrovmsFilterArgs;
+     * import com.pulumi.digitalocean.inputs.GetMicrovmsSortArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var running = DigitaloceanFunctions.getMicrovms(GetMicrovmsArgs.builder()
+     *             .filters(GetMicrovmsFilterArgs.builder()
+     *                 .key("current_state")
+     *                 .values("running")
+     *                 .build())
+     *             .sorts(GetMicrovmsSortArgs.builder()
+     *                 .key("created_at")
+     *                 .direction("desc")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetMicrovmsResult> getMicrovms(GetMicrovmsArgs args) {
+        return getMicrovms(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information on MicroVMs for use in other resources, with the ability to
+     * filter and sort the results. If no filters are specified, all MicroVMs are
+     * returned.
+     * 
+     * The `region`, `name`, and `tagName` arguments are applied by the API and
+     * combine with logical AND. The `filter` and `sort` blocks are applied to the
+     * results afterwards.
+     * 
+     * Note: You can use the `digitalocean.Microvm` data source to obtain
+     * metadata about a single MicroVM if you already know its `id` or unique `name`.
+     * 
+     * &gt; **Note:** MicroVMs are in public preview.
+     * 
+     * ## Example Usage
+     * 
+     * Get all MicroVMs in a region that carry a tag:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetMicrovmsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var web = DigitaloceanFunctions.getMicrovms(GetMicrovmsArgs.builder()
+     *             .region("nyc3")
+     *             .tagName("web")
+     *             .build());
+     * 
+     *         ctx.export("names", web.microVms().stream().map(element -> element.name()).collect(toList()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * Get all running MicroVMs, sorted by creation time:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetMicrovmsArgs;
+     * import com.pulumi.digitalocean.inputs.GetMicrovmsFilterArgs;
+     * import com.pulumi.digitalocean.inputs.GetMicrovmsSortArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var running = DigitaloceanFunctions.getMicrovms(GetMicrovmsArgs.builder()
+     *             .filters(GetMicrovmsFilterArgs.builder()
+     *                 .key("current_state")
+     *                 .values("running")
+     *                 .build())
+     *             .sorts(GetMicrovmsSortArgs.builder()
+     *                 .key("created_at")
+     *                 .direction("desc")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetMicrovmsResult> getMicrovmsPlain(GetMicrovmsPlainArgs args) {
+        return getMicrovmsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information on MicroVMs for use in other resources, with the ability to
+     * filter and sort the results. If no filters are specified, all MicroVMs are
+     * returned.
+     * 
+     * The `region`, `name`, and `tagName` arguments are applied by the API and
+     * combine with logical AND. The `filter` and `sort` blocks are applied to the
+     * results afterwards.
+     * 
+     * Note: You can use the `digitalocean.Microvm` data source to obtain
+     * metadata about a single MicroVM if you already know its `id` or unique `name`.
+     * 
+     * &gt; **Note:** MicroVMs are in public preview.
+     * 
+     * ## Example Usage
+     * 
+     * Get all MicroVMs in a region that carry a tag:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetMicrovmsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var web = DigitaloceanFunctions.getMicrovms(GetMicrovmsArgs.builder()
+     *             .region("nyc3")
+     *             .tagName("web")
+     *             .build());
+     * 
+     *         ctx.export("names", web.microVms().stream().map(element -> element.name()).collect(toList()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * Get all running MicroVMs, sorted by creation time:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetMicrovmsArgs;
+     * import com.pulumi.digitalocean.inputs.GetMicrovmsFilterArgs;
+     * import com.pulumi.digitalocean.inputs.GetMicrovmsSortArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var running = DigitaloceanFunctions.getMicrovms(GetMicrovmsArgs.builder()
+     *             .filters(GetMicrovmsFilterArgs.builder()
+     *                 .key("current_state")
+     *                 .values("running")
+     *                 .build())
+     *             .sorts(GetMicrovmsSortArgs.builder()
+     *                 .key("created_at")
+     *                 .direction("desc")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetMicrovmsResult> getMicrovms(GetMicrovmsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getMicrovms:getMicrovms", TypeShape.of(GetMicrovmsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information on MicroVMs for use in other resources, with the ability to
+     * filter and sort the results. If no filters are specified, all MicroVMs are
+     * returned.
+     * 
+     * The `region`, `name`, and `tagName` arguments are applied by the API and
+     * combine with logical AND. The `filter` and `sort` blocks are applied to the
+     * results afterwards.
+     * 
+     * Note: You can use the `digitalocean.Microvm` data source to obtain
+     * metadata about a single MicroVM if you already know its `id` or unique `name`.
+     * 
+     * &gt; **Note:** MicroVMs are in public preview.
+     * 
+     * ## Example Usage
+     * 
+     * Get all MicroVMs in a region that carry a tag:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetMicrovmsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var web = DigitaloceanFunctions.getMicrovms(GetMicrovmsArgs.builder()
+     *             .region("nyc3")
+     *             .tagName("web")
+     *             .build());
+     * 
+     *         ctx.export("names", web.microVms().stream().map(element -> element.name()).collect(toList()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * Get all running MicroVMs, sorted by creation time:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetMicrovmsArgs;
+     * import com.pulumi.digitalocean.inputs.GetMicrovmsFilterArgs;
+     * import com.pulumi.digitalocean.inputs.GetMicrovmsSortArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var running = DigitaloceanFunctions.getMicrovms(GetMicrovmsArgs.builder()
+     *             .filters(GetMicrovmsFilterArgs.builder()
+     *                 .key("current_state")
+     *                 .values("running")
+     *                 .build())
+     *             .sorts(GetMicrovmsSortArgs.builder()
+     *                 .key("created_at")
+     *                 .direction("desc")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetMicrovmsResult> getMicrovms(GetMicrovmsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getMicrovms:getMicrovms", TypeShape.of(GetMicrovmsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information on MicroVMs for use in other resources, with the ability to
+     * filter and sort the results. If no filters are specified, all MicroVMs are
+     * returned.
+     * 
+     * The `region`, `name`, and `tagName` arguments are applied by the API and
+     * combine with logical AND. The `filter` and `sort` blocks are applied to the
+     * results afterwards.
+     * 
+     * Note: You can use the `digitalocean.Microvm` data source to obtain
+     * metadata about a single MicroVM if you already know its `id` or unique `name`.
+     * 
+     * &gt; **Note:** MicroVMs are in public preview.
+     * 
+     * ## Example Usage
+     * 
+     * Get all MicroVMs in a region that carry a tag:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetMicrovmsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var web = DigitaloceanFunctions.getMicrovms(GetMicrovmsArgs.builder()
+     *             .region("nyc3")
+     *             .tagName("web")
+     *             .build());
+     * 
+     *         ctx.export("names", web.microVms().stream().map(element -> element.name()).collect(toList()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * Get all running MicroVMs, sorted by creation time:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetMicrovmsArgs;
+     * import com.pulumi.digitalocean.inputs.GetMicrovmsFilterArgs;
+     * import com.pulumi.digitalocean.inputs.GetMicrovmsSortArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var running = DigitaloceanFunctions.getMicrovms(GetMicrovmsArgs.builder()
+     *             .filters(GetMicrovmsFilterArgs.builder()
+     *                 .key("current_state")
+     *                 .values("running")
+     *                 .build())
+     *             .sorts(GetMicrovmsSortArgs.builder()
+     *                 .key("created_at")
+     *                 .direction("desc")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetMicrovmsResult> getMicrovmsPlain(GetMicrovmsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getMicrovms:getMicrovms", TypeShape.of(GetMicrovmsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Get information about a DigitalOcean NFS share.

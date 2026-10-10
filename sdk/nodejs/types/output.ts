@@ -15990,6 +15990,333 @@ export interface GetLoadBalancerStickySession {
     type: string;
 }
 
+export interface GetMicrovmAutoPause {
+    /**
+     * Whether auto-pause is enabled.
+     */
+    enabled: boolean;
+    /**
+     * How long the MicroVM must be idle before it pauses.
+     */
+    idleTimeout: string;
+}
+
+export interface GetMicrovmCheckpointsCheckpoint {
+    /**
+     * The date and time the checkpoint was created.
+     */
+    createdAt: string;
+    /**
+     * The size of the persisted disk image in bytes.
+     */
+    diskBytes: number;
+    /**
+     * The ID of the checkpoint.
+     */
+    id: string;
+    /**
+     * The size of the persisted memory image in bytes.
+     */
+    memoryBytes: number;
+    /**
+     * Only return checkpoints captured from this MicroVM.
+     */
+    microvmId: string;
+    /**
+     * The name of the MicroVM the checkpoint was captured from.
+     */
+    microvmName: string;
+    /**
+     * The name of the checkpoint.
+     */
+    name: string;
+    /**
+     * The slug of the region the checkpoint is stored in.
+     */
+    region: string;
+    /**
+     * The size a MicroVM restored from this checkpoint inherits (`cpu`, `memory`, `disk`). Empty when the checkpoint does not record one.
+     */
+    sizes: outputs.GetMicrovmCheckpointsCheckpointSize[];
+    /**
+     * The status of the checkpoint, such as `CHECKPOINT_AVAILABLE`.
+     */
+    status: string;
+}
+
+export interface GetMicrovmCheckpointsCheckpointSize {
+    /**
+     * Number of vCPUs
+     */
+    cpu: number;
+    /**
+     * Attached disk in GB
+     */
+    disk: number;
+    /**
+     * Memory in MiB
+     */
+    memory: number;
+}
+
+export interface GetMicrovmCheckpointsFilter {
+    /**
+     * Set to `true` to require that a field match all of the
+     * `values` instead of just one or more of them.
+     */
+    all?: boolean;
+    /**
+     * Filter the checkpoints by this key. This may be one of
+     * `id`, `name`, `microvmId`, `microvmName`, `region`, `status`,
+     * `memoryBytes`, `diskBytes`, or `createdAt`.
+     */
+    key: string;
+    /**
+     * One of `exact` (default), `re`, or `substring`.
+     */
+    matchBy?: string;
+    /**
+     * A list of values to match against the `key` field.
+     */
+    values: string[];
+}
+
+export interface GetMicrovmCheckpointsSort {
+    /**
+     * The sort direction. This may be either `asc` or `desc`.
+     */
+    direction?: string;
+    /**
+     * Sort the checkpoints by this key. This may be one of `id`,
+     * `name`, `microvmId`, `microvmName`, `region`, `status`, `memoryBytes`,
+     * `diskBytes`, or `createdAt`.
+     */
+    key: string;
+}
+
+export interface GetMicrovmSize {
+    /**
+     * The number of vCPUs.
+     */
+    cpu: number;
+    /**
+     * The size of the attached disk in GB.
+     */
+    disk: number;
+    /**
+     * The amount of memory in MiB.
+     */
+    memory: number;
+}
+
+export interface GetMicrovmSource {
+    /**
+     * The ID of the checkpoint the MicroVM was restored from.
+     */
+    checkpointId?: string;
+    /**
+     * The OCI reference of the workload container image.
+     */
+    ociRef?: string;
+}
+
+export interface GetMicrovmUrl {
+    /**
+     * Whether this is the default URL.
+     */
+    default: boolean;
+    /**
+     * The hostname, without a scheme.
+     */
+    hostname: string;
+    /**
+     * The guest port the URL forwards to.
+     */
+    port: number;
+    /**
+     * The URL status: `PENDING` or `ACTIVE`.
+     */
+    status: string;
+}
+
+export interface GetMicrovmsFilter {
+    /**
+     * Set to `true` to require that a field match all of the
+     * `values` instead of just one or more of them. This is useful when matching
+     * against multi-valued fields such as lists or sets where you want to ensure
+     * that all of the `values` are present in the list or set.
+     */
+    all?: boolean;
+    /**
+     * Filter the MicroVMs by this key. This may be one of `id`,
+     * `name`, `region`, `networking`, `httpProtocol`, `currentState`,
+     * `failureReason`, `autoResume`, `ports`, `tags`, `urn`, or `createdAt`.
+     */
+    key: string;
+    /**
+     * One of `exact` (default), `re`, or `substring`. For
+     * string-typed fields, specify `re` to match by using the `values` as regular
+     * expressions, or specify `substring` to match by treating the `values` as
+     * substrings to find within the string field.
+     */
+    matchBy?: string;
+    /**
+     * A list of values to match against the `key` field. Only
+     * retrieves MicroVMs where the `key` field takes on one or more of the values
+     * provided here.
+     */
+    values: string[];
+}
+
+export interface GetMicrovmsMicroVm {
+    /**
+     * Auto-pause configuration. Forces recreation on change: the MicroVMs API has no in-place update path for auto_pause.
+     */
+    autoPauses: outputs.GetMicrovmsMicroVmAutoPause[];
+    /**
+     * Whether the MicroVM should auto-resume on request. Forces recreation on change: the MicroVMs API has no in-place update path for auto_resume.
+     */
+    autoResume: boolean;
+    /**
+     * The creation timestamp for the MicroVM
+     */
+    createdAt: string;
+    /**
+     * Observed lifecycle state of the MicroVM
+     */
+    currentState: string;
+    /**
+     * Environment variables passed to the MicroVM
+     */
+    environment: {[key: string]: string};
+    /**
+     * Human-readable explanation when currentState is failed
+     */
+    failureReason: string;
+    /**
+     * Port the MicroVM exposes over HTTP
+     */
+    httpPort: number;
+    /**
+     * HTTP protocol: 'http' or 'http2'
+     */
+    httpProtocol: string;
+    /**
+     * MicroVM ID
+     */
+    id: string;
+    /**
+     * Only return MicroVMs with this exact name.
+     */
+    name: string;
+    /**
+     * Networking mode: 'public' or 'vpc'
+     */
+    networking: string;
+    /**
+     * Guest ports open for ingress. Defaults to just httpPort when omitted.
+     */
+    ports: number[];
+    /**
+     * Only return MicroVMs in this region.
+     */
+    region: string;
+    /**
+     * Compute size. Required when creating from oci_ref; optional when restoring from a checkpoint (inherited).
+     */
+    sizes: outputs.GetMicrovmsMicroVmSize[];
+    /**
+     * Workload source. Exactly one of ociRef or checkpointId must be set.
+     */
+    sources: outputs.GetMicrovmsMicroVmSource[];
+    /**
+     * Desired lifecycle state: 'running' or 'paused'. Changes are applied by calling the microvm pause / resume action endpoints.
+     */
+    state: string;
+    tags: string[];
+    /**
+     * Ingress URLs for the MicroVM
+     */
+    urls: outputs.GetMicrovmsMicroVmUrl[];
+    /**
+     * The uniform resource name (URN) for the MicroVM
+     */
+    urn: string;
+    /**
+     * UUID of the VPC to attach the MicroVM to. Only valid when networking is 'vpc'.
+     */
+    vpcUuid: string;
+}
+
+export interface GetMicrovmsMicroVmAutoPause {
+    /**
+     * Whether auto-pause is enabled. Forces recreation on change (no in-place API path).
+     */
+    enabled: boolean;
+    /**
+     * Idle timeout as a Go duration string (e.g. '5m', '30s'). Forces recreation on change (no in-place API path).
+     */
+    idleTimeout: string;
+}
+
+export interface GetMicrovmsMicroVmSize {
+    /**
+     * Number of vCPUs
+     */
+    cpu: number;
+    /**
+     * Attached disk in GB (provisioned with the size)
+     */
+    disk: number;
+    /**
+     * Memory in MiB
+     */
+    memory: number;
+}
+
+export interface GetMicrovmsMicroVmSource {
+    /**
+     * Checkpoint UUID to restore
+     */
+    checkpointId?: string;
+    /**
+     * OCI reference for the workload container
+     */
+    ociRef?: string;
+}
+
+export interface GetMicrovmsMicroVmUrl {
+    /**
+     * Whether this is the system default URL
+     */
+    default: boolean;
+    /**
+     * Hostname (no scheme)
+     */
+    hostname: string;
+    /**
+     * Guest port this URL forwards to
+     */
+    port: number;
+    /**
+     * URL lifecycle status (PENDING or ACTIVE)
+     */
+    status: string;
+}
+
+export interface GetMicrovmsSort {
+    /**
+     * The sort direction. This may be either `asc` or `desc`.
+     */
+    direction?: string;
+    /**
+     * Sort the MicroVMs by this key. This may be one of `id`,
+     * `name`, `region`, `networking`, `httpProtocol`, `currentState`,
+     * `autoResume`, `urn`, or `createdAt`.
+     */
+    key: string;
+}
+
 export interface GetNfsAccessPointAccessPolicy {
     anongid: number;
     anonuid: number;
@@ -18231,6 +18558,77 @@ export interface LoadBalancerStickySessions {
      * An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
      */
     type?: string;
+}
+
+export interface MicrovmAutoPause {
+    /**
+     * Whether the MicroVM pauses after it has been idle for `idleTimeout`.
+     */
+    enabled: boolean;
+    /**
+     * How long the MicroVM must be idle before it pauses, as a duration such as `5m` or `30s`.
+     */
+    idleTimeout: string;
+}
+
+export interface MicrovmCheckpointSize {
+    /**
+     * The number of vCPUs.
+     */
+    cpu: number;
+    /**
+     * The size of the disk in GB.
+     */
+    disk: number;
+    /**
+     * The amount of memory in MiB.
+     */
+    memory: number;
+}
+
+export interface MicrovmSize {
+    /**
+     * The number of vCPUs.
+     */
+    cpu: number;
+    /**
+     * The size of the attached disk in GB.
+     */
+    disk: number;
+    /**
+     * The amount of memory in MiB.
+     */
+    memory: number;
+}
+
+export interface MicrovmSource {
+    /**
+     * The ID of a checkpoint to restore.
+     */
+    checkpointId?: string;
+    /**
+     * The OCI reference of the workload container image, such as `docker.io/library/nginx:latest`.
+     */
+    ociRef?: string;
+}
+
+export interface MicrovmUrl {
+    /**
+     * Whether this is the default URL.
+     */
+    default: boolean;
+    /**
+     * The hostname, without a scheme.
+     */
+    hostname: string;
+    /**
+     * The guest port the URL forwards to.
+     */
+    port: number;
+    /**
+     * The URL status: `PENDING` or `ACTIVE`.
+     */
+    status: string;
 }
 
 export interface MonitorAlertAlerts {
