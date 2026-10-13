@@ -114,7 +114,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var autoscale_pool_01 = new KubernetesNodePool("autoscale-pool-01", KubernetesNodePoolArgs.builder()
- *             .clusterId(foo.id())
+ *             .clusterId(foo.get("id"))
  *             .name("autoscale-pool-01")
  *             .size("s-1vcpu-2gb")
  *             .autoScale(true)

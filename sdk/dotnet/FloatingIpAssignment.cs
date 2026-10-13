@@ -44,7 +44,7 @@ namespace Pulumi.DigitalOcean
     ///     var foobarFloatingIpAssignment = new DigitalOcean.FloatingIpAssignment("foobar", new()
     ///     {
     ///         IpAddress = foobar.IpAddress,
-    ///         DropletId = foobarDroplet.Id,
+    ///         DropletId = foobarDroplet.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///     });
     /// 
     /// });

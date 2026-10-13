@@ -159,12 +159,12 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var foobarTopic = new DatabaseKafkaTopic("foobarTopic", DatabaseKafkaTopicArgs.builder()
- *             .clusterId(foobar.id())
+ *             .clusterId(foobar.get("id"))
  *             .name("topic-1")
  *             .build());
  * 
  *         var foobarUser = new DatabaseUser("foobarUser", DatabaseUserArgs.builder()
- *             .clusterId(foobar.id())
+ *             .clusterId(foobar.get("id"))
  *             .name("example-user")
  *             .settings(DatabaseUserSettingArgs.builder()
  *                 .acls(                

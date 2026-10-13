@@ -3724,7 +3724,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getDedicatedInferenceAccelerators(GetDedicatedInferenceAcceleratorsArgs.builder()
-     *             .dedicatedInferenceId(exampleDigitaloceanDedicatedInference.id())
+     *             .dedicatedInferenceId(exampleDigitaloceanDedicatedInference.get("id"))
      *             .build());
      * 
      *         ctx.export("accelerators", example.accelerators());
@@ -3759,7 +3759,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var filtered = DigitaloceanFunctions.getDedicatedInferenceAccelerators(GetDedicatedInferenceAcceleratorsArgs.builder()
-     *             .dedicatedInferenceId(example.id())
+     *             .dedicatedInferenceId(example.get("id"))
      *             .filters(GetDedicatedInferenceAcceleratorsFilterArgs.builder()
      *                 .key("slug")
      *                 .values("gpu-h100x1-80gb")
@@ -3804,7 +3804,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getDedicatedInferenceAccelerators(GetDedicatedInferenceAcceleratorsArgs.builder()
-     *             .dedicatedInferenceId(exampleDigitaloceanDedicatedInference.id())
+     *             .dedicatedInferenceId(exampleDigitaloceanDedicatedInference.get("id"))
      *             .build());
      * 
      *         ctx.export("accelerators", example.accelerators());
@@ -3839,7 +3839,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var filtered = DigitaloceanFunctions.getDedicatedInferenceAccelerators(GetDedicatedInferenceAcceleratorsArgs.builder()
-     *             .dedicatedInferenceId(example.id())
+     *             .dedicatedInferenceId(example.get("id"))
      *             .filters(GetDedicatedInferenceAcceleratorsFilterArgs.builder()
      *                 .key("slug")
      *                 .values("gpu-h100x1-80gb")
@@ -3884,7 +3884,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getDedicatedInferenceAccelerators(GetDedicatedInferenceAcceleratorsArgs.builder()
-     *             .dedicatedInferenceId(exampleDigitaloceanDedicatedInference.id())
+     *             .dedicatedInferenceId(exampleDigitaloceanDedicatedInference.get("id"))
      *             .build());
      * 
      *         ctx.export("accelerators", example.accelerators());
@@ -3919,7 +3919,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var filtered = DigitaloceanFunctions.getDedicatedInferenceAccelerators(GetDedicatedInferenceAcceleratorsArgs.builder()
-     *             .dedicatedInferenceId(example.id())
+     *             .dedicatedInferenceId(example.get("id"))
      *             .filters(GetDedicatedInferenceAcceleratorsFilterArgs.builder()
      *                 .key("slug")
      *                 .values("gpu-h100x1-80gb")
@@ -3964,7 +3964,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getDedicatedInferenceAccelerators(GetDedicatedInferenceAcceleratorsArgs.builder()
-     *             .dedicatedInferenceId(exampleDigitaloceanDedicatedInference.id())
+     *             .dedicatedInferenceId(exampleDigitaloceanDedicatedInference.get("id"))
      *             .build());
      * 
      *         ctx.export("accelerators", example.accelerators());
@@ -3999,7 +3999,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var filtered = DigitaloceanFunctions.getDedicatedInferenceAccelerators(GetDedicatedInferenceAcceleratorsArgs.builder()
-     *             .dedicatedInferenceId(example.id())
+     *             .dedicatedInferenceId(example.get("id"))
      *             .filters(GetDedicatedInferenceAcceleratorsFilterArgs.builder()
      *                 .key("slug")
      *                 .values("gpu-h100x1-80gb")
@@ -4044,7 +4044,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getDedicatedInferenceAccelerators(GetDedicatedInferenceAcceleratorsArgs.builder()
-     *             .dedicatedInferenceId(exampleDigitaloceanDedicatedInference.id())
+     *             .dedicatedInferenceId(exampleDigitaloceanDedicatedInference.get("id"))
      *             .build());
      * 
      *         ctx.export("accelerators", example.accelerators());
@@ -4079,7 +4079,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var filtered = DigitaloceanFunctions.getDedicatedInferenceAccelerators(GetDedicatedInferenceAcceleratorsArgs.builder()
-     *             .dedicatedInferenceId(example.id())
+     *             .dedicatedInferenceId(example.get("id"))
      *             .filters(GetDedicatedInferenceAcceleratorsFilterArgs.builder()
      *                 .key("slug")
      *                 .values("gpu-h100x1-80gb")
@@ -4687,7 +4687,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getDedicatedInferenceTokens(GetDedicatedInferenceTokensArgs.builder()
-     *             .dedicatedInferenceId(exampleDigitaloceanDedicatedInference.id())
+     *             .dedicatedInferenceId(exampleDigitaloceanDedicatedInference.get("id"))
      *             .build());
      * 
      *         ctx.export("tokens", example.tokens());
@@ -4722,7 +4722,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var filtered = DigitaloceanFunctions.getDedicatedInferenceTokens(GetDedicatedInferenceTokensArgs.builder()
-     *             .dedicatedInferenceId(example.id())
+     *             .dedicatedInferenceId(example.get("id"))
      *             .filters(GetDedicatedInferenceTokensFilterArgs.builder()
      *                 .key("name")
      *                 .values("my-token")
@@ -4770,7 +4770,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getDedicatedInferenceTokens(GetDedicatedInferenceTokensArgs.builder()
-     *             .dedicatedInferenceId(exampleDigitaloceanDedicatedInference.id())
+     *             .dedicatedInferenceId(exampleDigitaloceanDedicatedInference.get("id"))
      *             .build());
      * 
      *         ctx.export("tokens", example.tokens());
@@ -4805,7 +4805,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var filtered = DigitaloceanFunctions.getDedicatedInferenceTokens(GetDedicatedInferenceTokensArgs.builder()
-     *             .dedicatedInferenceId(example.id())
+     *             .dedicatedInferenceId(example.get("id"))
      *             .filters(GetDedicatedInferenceTokensFilterArgs.builder()
      *                 .key("name")
      *                 .values("my-token")
@@ -4853,7 +4853,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getDedicatedInferenceTokens(GetDedicatedInferenceTokensArgs.builder()
-     *             .dedicatedInferenceId(exampleDigitaloceanDedicatedInference.id())
+     *             .dedicatedInferenceId(exampleDigitaloceanDedicatedInference.get("id"))
      *             .build());
      * 
      *         ctx.export("tokens", example.tokens());
@@ -4888,7 +4888,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var filtered = DigitaloceanFunctions.getDedicatedInferenceTokens(GetDedicatedInferenceTokensArgs.builder()
-     *             .dedicatedInferenceId(example.id())
+     *             .dedicatedInferenceId(example.get("id"))
      *             .filters(GetDedicatedInferenceTokensFilterArgs.builder()
      *                 .key("name")
      *                 .values("my-token")
@@ -4936,7 +4936,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getDedicatedInferenceTokens(GetDedicatedInferenceTokensArgs.builder()
-     *             .dedicatedInferenceId(exampleDigitaloceanDedicatedInference.id())
+     *             .dedicatedInferenceId(exampleDigitaloceanDedicatedInference.get("id"))
      *             .build());
      * 
      *         ctx.export("tokens", example.tokens());
@@ -4971,7 +4971,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var filtered = DigitaloceanFunctions.getDedicatedInferenceTokens(GetDedicatedInferenceTokensArgs.builder()
-     *             .dedicatedInferenceId(example.id())
+     *             .dedicatedInferenceId(example.get("id"))
      *             .filters(GetDedicatedInferenceTokensFilterArgs.builder()
      *                 .key("name")
      *                 .values("my-token")
@@ -5019,7 +5019,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getDedicatedInferenceTokens(GetDedicatedInferenceTokensArgs.builder()
-     *             .dedicatedInferenceId(exampleDigitaloceanDedicatedInference.id())
+     *             .dedicatedInferenceId(exampleDigitaloceanDedicatedInference.get("id"))
      *             .build());
      * 
      *         ctx.export("tokens", example.tokens());
@@ -5054,7 +5054,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var filtered = DigitaloceanFunctions.getDedicatedInferenceTokens(GetDedicatedInferenceTokensArgs.builder()
-     *             .dedicatedInferenceId(example.id())
+     *             .dedicatedInferenceId(example.get("id"))
      *             .filters(GetDedicatedInferenceTokensFilterArgs.builder()
      *                 .key("name")
      *                 .values("my-token")
@@ -6650,7 +6650,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getDroplet(GetDropletArgs.builder()
-     *             .id(exampleDigitaloceanKubernetesCluster.nodePool()[0].nodes()[0].dropletId())
+     *             .id(exampleDigitaloceanKubernetesCluster.get("nodePool")[0].get("nodes")[0].get("dropletId"))
      *             .build());
      * 
      *     }
@@ -6765,7 +6765,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getDroplet(GetDropletArgs.builder()
-     *             .id(exampleDigitaloceanKubernetesCluster.nodePool()[0].nodes()[0].dropletId())
+     *             .id(exampleDigitaloceanKubernetesCluster.get("nodePool")[0].get("nodes")[0].get("dropletId"))
      *             .build());
      * 
      *     }
@@ -6880,7 +6880,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getDroplet(GetDropletArgs.builder()
-     *             .id(exampleDigitaloceanKubernetesCluster.nodePool()[0].nodes()[0].dropletId())
+     *             .id(exampleDigitaloceanKubernetesCluster.get("nodePool")[0].get("nodes")[0].get("dropletId"))
      *             .build());
      * 
      *     }
@@ -6995,7 +6995,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getDroplet(GetDropletArgs.builder()
-     *             .id(exampleDigitaloceanKubernetesCluster.nodePool()[0].nodes()[0].dropletId())
+     *             .id(exampleDigitaloceanKubernetesCluster.get("nodePool")[0].get("nodes")[0].get("dropletId"))
      *             .build());
      * 
      *     }
@@ -7110,7 +7110,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getDroplet(GetDropletArgs.builder()
-     *             .id(exampleDigitaloceanKubernetesCluster.nodePool()[0].nodes()[0].dropletId())
+     *             .id(exampleDigitaloceanKubernetesCluster.get("nodePool")[0].get("nodes")[0].get("dropletId"))
      *             .build());
      * 
      *     }
@@ -7225,7 +7225,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getDroplet(GetDropletArgs.builder()
-     *             .id(exampleDigitaloceanKubernetesCluster.nodePool()[0].nodes()[0].dropletId())
+     *             .id(exampleDigitaloceanKubernetesCluster.get("nodePool")[0].get("nodes")[0].get("dropletId"))
      *             .build());
      * 
      *     }
@@ -7340,7 +7340,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getDroplet(GetDropletArgs.builder()
-     *             .id(exampleDigitaloceanKubernetesCluster.nodePool()[0].nodes()[0].dropletId())
+     *             .id(exampleDigitaloceanKubernetesCluster.get("nodePool")[0].get("nodes")[0].get("dropletId"))
      *             .build());
      * 
      *     }
@@ -7385,7 +7385,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-imported-autoscale-pool = DigitaloceanFunctions.getDropletAutoscale(GetDropletAutoscaleArgs.builder()
-     *             .name(my_existing_autoscale_pool.name())
+     *             .name(my_existing_autoscale_pool.get("name"))
      *             .build());
      * 
      *     }
@@ -7418,7 +7418,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-imported-autoscale-pool = DigitaloceanFunctions.getDropletAutoscale(GetDropletAutoscaleArgs.builder()
-     *             .id(my_existing_autoscale_pool.id())
+     *             .id(my_existing_autoscale_pool.get("id"))
      *             .build());
      * 
      *     }
@@ -7463,7 +7463,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-imported-autoscale-pool = DigitaloceanFunctions.getDropletAutoscale(GetDropletAutoscaleArgs.builder()
-     *             .name(my_existing_autoscale_pool.name())
+     *             .name(my_existing_autoscale_pool.get("name"))
      *             .build());
      * 
      *     }
@@ -7496,7 +7496,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-imported-autoscale-pool = DigitaloceanFunctions.getDropletAutoscale(GetDropletAutoscaleArgs.builder()
-     *             .id(my_existing_autoscale_pool.id())
+     *             .id(my_existing_autoscale_pool.get("id"))
      *             .build());
      * 
      *     }
@@ -7541,7 +7541,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-imported-autoscale-pool = DigitaloceanFunctions.getDropletAutoscale(GetDropletAutoscaleArgs.builder()
-     *             .name(my_existing_autoscale_pool.name())
+     *             .name(my_existing_autoscale_pool.get("name"))
      *             .build());
      * 
      *     }
@@ -7574,7 +7574,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-imported-autoscale-pool = DigitaloceanFunctions.getDropletAutoscale(GetDropletAutoscaleArgs.builder()
-     *             .id(my_existing_autoscale_pool.id())
+     *             .id(my_existing_autoscale_pool.get("id"))
      *             .build());
      * 
      *     }
@@ -7619,7 +7619,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-imported-autoscale-pool = DigitaloceanFunctions.getDropletAutoscale(GetDropletAutoscaleArgs.builder()
-     *             .name(my_existing_autoscale_pool.name())
+     *             .name(my_existing_autoscale_pool.get("name"))
      *             .build());
      * 
      *     }
@@ -7652,7 +7652,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-imported-autoscale-pool = DigitaloceanFunctions.getDropletAutoscale(GetDropletAutoscaleArgs.builder()
-     *             .id(my_existing_autoscale_pool.id())
+     *             .id(my_existing_autoscale_pool.get("id"))
      *             .build());
      * 
      *     }
@@ -7697,7 +7697,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-imported-autoscale-pool = DigitaloceanFunctions.getDropletAutoscale(GetDropletAutoscaleArgs.builder()
-     *             .name(my_existing_autoscale_pool.name())
+     *             .name(my_existing_autoscale_pool.get("name"))
      *             .build());
      * 
      *     }
@@ -7730,7 +7730,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-imported-autoscale-pool = DigitaloceanFunctions.getDropletAutoscale(GetDropletAutoscaleArgs.builder()
-     *             .id(my_existing_autoscale_pool.id())
+     *             .id(my_existing_autoscale_pool.get("id"))
      *             .build());
      * 
      *     }
@@ -7775,7 +7775,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-imported-autoscale-pool = DigitaloceanFunctions.getDropletAutoscale(GetDropletAutoscaleArgs.builder()
-     *             .name(my_existing_autoscale_pool.name())
+     *             .name(my_existing_autoscale_pool.get("name"))
      *             .build());
      * 
      *     }
@@ -7808,7 +7808,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-imported-autoscale-pool = DigitaloceanFunctions.getDropletAutoscale(GetDropletAutoscaleArgs.builder()
-     *             .id(my_existing_autoscale_pool.id())
+     *             .id(my_existing_autoscale_pool.get("id"))
      *             .build());
      * 
      *     }
@@ -7853,7 +7853,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-imported-autoscale-pool = DigitaloceanFunctions.getDropletAutoscale(GetDropletAutoscaleArgs.builder()
-     *             .name(my_existing_autoscale_pool.name())
+     *             .name(my_existing_autoscale_pool.get("name"))
      *             .build());
      * 
      *     }
@@ -7886,7 +7886,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-imported-autoscale-pool = DigitaloceanFunctions.getDropletAutoscale(GetDropletAutoscaleArgs.builder()
-     *             .id(my_existing_autoscale_pool.id())
+     *             .id(my_existing_autoscale_pool.get("id"))
      *             .build());
      * 
      *     }
@@ -9515,7 +9515,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var publicIp = config.require("publicIp");
+     *         final var publicIp = config.requireObject("publicIp", com.pulumi.core.TypeShape.map(String.class, Object.class));
      *         final var example = DigitaloceanFunctions.getFloatingIp(GetFloatingIpArgs.builder()
      *             .ipAddress(publicIp)
      *             .build());
@@ -9567,7 +9567,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var publicIp = config.require("publicIp");
+     *         final var publicIp = config.requireObject("publicIp", com.pulumi.core.TypeShape.map(String.class, Object.class));
      *         final var example = DigitaloceanFunctions.getFloatingIp(GetFloatingIpArgs.builder()
      *             .ipAddress(publicIp)
      *             .build());
@@ -9619,7 +9619,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var publicIp = config.require("publicIp");
+     *         final var publicIp = config.requireObject("publicIp", com.pulumi.core.TypeShape.map(String.class, Object.class));
      *         final var example = DigitaloceanFunctions.getFloatingIp(GetFloatingIpArgs.builder()
      *             .ipAddress(publicIp)
      *             .build());
@@ -9671,7 +9671,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var publicIp = config.require("publicIp");
+     *         final var publicIp = config.requireObject("publicIp", com.pulumi.core.TypeShape.map(String.class, Object.class));
      *         final var example = DigitaloceanFunctions.getFloatingIp(GetFloatingIpArgs.builder()
      *             .ipAddress(publicIp)
      *             .build());
@@ -9723,7 +9723,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var publicIp = config.require("publicIp");
+     *         final var publicIp = config.requireObject("publicIp", com.pulumi.core.TypeShape.map(String.class, Object.class));
      *         final var example = DigitaloceanFunctions.getFloatingIp(GetFloatingIpArgs.builder()
      *             .ipAddress(publicIp)
      *             .build());
@@ -14458,7 +14458,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var web = DigitaloceanFunctions.getMicrovmCheckpoints(GetMicrovmCheckpointsArgs.builder()
-     *             .microvmId(webDigitaloceanMicrovm.id())
+     *             .microvmId(webDigitaloceanMicrovm.get("id"))
      *             .filters(GetMicrovmCheckpointsFilterArgs.builder()
      *                 .key("status")
      *                 .values("CHECKPOINT_AVAILABLE")
@@ -14524,7 +14524,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var web = DigitaloceanFunctions.getMicrovmCheckpoints(GetMicrovmCheckpointsArgs.builder()
-     *             .microvmId(webDigitaloceanMicrovm.id())
+     *             .microvmId(webDigitaloceanMicrovm.get("id"))
      *             .filters(GetMicrovmCheckpointsFilterArgs.builder()
      *                 .key("status")
      *                 .values("CHECKPOINT_AVAILABLE")
@@ -14590,7 +14590,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var web = DigitaloceanFunctions.getMicrovmCheckpoints(GetMicrovmCheckpointsArgs.builder()
-     *             .microvmId(webDigitaloceanMicrovm.id())
+     *             .microvmId(webDigitaloceanMicrovm.get("id"))
      *             .filters(GetMicrovmCheckpointsFilterArgs.builder()
      *                 .key("status")
      *                 .values("CHECKPOINT_AVAILABLE")
@@ -14656,7 +14656,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var web = DigitaloceanFunctions.getMicrovmCheckpoints(GetMicrovmCheckpointsArgs.builder()
-     *             .microvmId(webDigitaloceanMicrovm.id())
+     *             .microvmId(webDigitaloceanMicrovm.get("id"))
      *             .filters(GetMicrovmCheckpointsFilterArgs.builder()
      *                 .key("status")
      *                 .values("CHECKPOINT_AVAILABLE")
@@ -14722,7 +14722,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var web = DigitaloceanFunctions.getMicrovmCheckpoints(GetMicrovmCheckpointsArgs.builder()
-     *             .microvmId(webDigitaloceanMicrovm.id())
+     *             .microvmId(webDigitaloceanMicrovm.get("id"))
      *             .filters(GetMicrovmCheckpointsFilterArgs.builder()
      *                 .key("status")
      *                 .values("CHECKPOINT_AVAILABLE")
@@ -14788,7 +14788,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var web = DigitaloceanFunctions.getMicrovmCheckpoints(GetMicrovmCheckpointsArgs.builder()
-     *             .microvmId(webDigitaloceanMicrovm.id())
+     *             .microvmId(webDigitaloceanMicrovm.get("id"))
      *             .filters(GetMicrovmCheckpointsFilterArgs.builder()
      *                 .key("status")
      *                 .values("CHECKPOINT_AVAILABLE")
@@ -14854,7 +14854,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var web = DigitaloceanFunctions.getMicrovmCheckpoints(GetMicrovmCheckpointsArgs.builder()
-     *             .microvmId(webDigitaloceanMicrovm.id())
+     *             .microvmId(webDigitaloceanMicrovm.get("id"))
      *             .filters(GetMicrovmCheckpointsFilterArgs.builder()
      *                 .key("status")
      *                 .values("CHECKPOINT_AVAILABLE")
@@ -15839,8 +15839,8 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getNfsAccessPoint(GetNfsAccessPointArgs.builder()
      *             .name("example-access-point")
-     *             .shareId(foobar.id())
-     *             .vpcId(foobarDigitaloceanVpc.id())
+     *             .shareId(foobar.get("id"))
+     *             .vpcId(foobarDigitaloceanVpc.get("id"))
      *             .build());
      * 
      *     }
@@ -15916,8 +15916,8 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getNfsAccessPoint(GetNfsAccessPointArgs.builder()
      *             .name("example-access-point")
-     *             .shareId(foobar.id())
-     *             .vpcId(foobarDigitaloceanVpc.id())
+     *             .shareId(foobar.get("id"))
+     *             .vpcId(foobarDigitaloceanVpc.get("id"))
      *             .build());
      * 
      *     }
@@ -15993,8 +15993,8 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getNfsAccessPoint(GetNfsAccessPointArgs.builder()
      *             .name("example-access-point")
-     *             .shareId(foobar.id())
-     *             .vpcId(foobarDigitaloceanVpc.id())
+     *             .shareId(foobar.get("id"))
+     *             .vpcId(foobarDigitaloceanVpc.get("id"))
      *             .build());
      * 
      *     }
@@ -16070,8 +16070,8 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getNfsAccessPoint(GetNfsAccessPointArgs.builder()
      *             .name("example-access-point")
-     *             .shareId(foobar.id())
-     *             .vpcId(foobarDigitaloceanVpc.id())
+     *             .shareId(foobar.get("id"))
+     *             .vpcId(foobarDigitaloceanVpc.get("id"))
      *             .build());
      * 
      *     }
@@ -16147,8 +16147,8 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getNfsAccessPoint(GetNfsAccessPointArgs.builder()
      *             .name("example-access-point")
-     *             .shareId(foobar.id())
-     *             .vpcId(foobarDigitaloceanVpc.id())
+     *             .shareId(foobar.get("id"))
+     *             .vpcId(foobarDigitaloceanVpc.get("id"))
      *             .build());
      * 
      *     }
@@ -16224,8 +16224,8 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getNfsAccessPoint(GetNfsAccessPointArgs.builder()
      *             .name("example-access-point")
-     *             .shareId(foobar.id())
-     *             .vpcId(foobarDigitaloceanVpc.id())
+     *             .shareId(foobar.get("id"))
+     *             .vpcId(foobarDigitaloceanVpc.get("id"))
      *             .build());
      * 
      *     }
@@ -16301,8 +16301,8 @@ public final class DigitaloceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = DigitaloceanFunctions.getNfsAccessPoint(GetNfsAccessPointArgs.builder()
      *             .name("example-access-point")
-     *             .shareId(foobar.id())
-     *             .vpcId(foobarDigitaloceanVpc.id())
+     *             .shareId(foobar.get("id"))
+     *             .vpcId(foobarDigitaloceanVpc.get("id"))
      *             .build());
      * 
      *     }
@@ -18878,7 +18878,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var publicIp = config.require("publicIp");
+     *         final var publicIp = config.requireObject("publicIp", com.pulumi.core.TypeShape.map(String.class, Object.class));
      *         final var example = DigitaloceanFunctions.getReservedIp(GetReservedIpArgs.builder()
      *             .ipAddress(publicIp)
      *             .build());
@@ -18928,7 +18928,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var publicIp = config.require("publicIp");
+     *         final var publicIp = config.requireObject("publicIp", com.pulumi.core.TypeShape.map(String.class, Object.class));
      *         final var example = DigitaloceanFunctions.getReservedIp(GetReservedIpArgs.builder()
      *             .ipAddress(publicIp)
      *             .build());
@@ -18978,7 +18978,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var publicIp = config.require("publicIp");
+     *         final var publicIp = config.requireObject("publicIp", com.pulumi.core.TypeShape.map(String.class, Object.class));
      *         final var example = DigitaloceanFunctions.getReservedIp(GetReservedIpArgs.builder()
      *             .ipAddress(publicIp)
      *             .build());
@@ -19028,7 +19028,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var publicIp = config.require("publicIp");
+     *         final var publicIp = config.requireObject("publicIp", com.pulumi.core.TypeShape.map(String.class, Object.class));
      *         final var example = DigitaloceanFunctions.getReservedIp(GetReservedIpArgs.builder()
      *             .ipAddress(publicIp)
      *             .build());
@@ -19078,7 +19078,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var publicIp = config.require("publicIp");
+     *         final var publicIp = config.requireObject("publicIp", com.pulumi.core.TypeShape.map(String.class, Object.class));
      *         final var example = DigitaloceanFunctions.getReservedIp(GetReservedIpArgs.builder()
      *             .ipAddress(publicIp)
      *             .build());
@@ -19393,7 +19393,7 @@ public final class DigitaloceanFunctions {
      *             .image("ubuntu-18-04-x64")
      *             .name("web-1")
      *             .region("sgp1")
-     *             .size(main.sizes()[0].slug())
+     *             .size(main.sizes()[0].get("slug"))
      *             .build());
      * 
      *     }
@@ -19451,7 +19451,7 @@ public final class DigitaloceanFunctions {
      *             .image("ubuntu-18-04-x64")
      *             .name("web-1")
      *             .region("sgp1")
-     *             .size(main.sizes()[0].slug())
+     *             .size(main.sizes()[0].get("slug"))
      *             .build());
      * 
      *     }
@@ -19550,7 +19550,7 @@ public final class DigitaloceanFunctions {
      *             .image("ubuntu-18-04-x64")
      *             .name("web-1")
      *             .region("sgp1")
-     *             .size(main.sizes()[0].slug())
+     *             .size(main.sizes()[0].get("slug"))
      *             .build());
      * 
      *     }
@@ -19608,7 +19608,7 @@ public final class DigitaloceanFunctions {
      *             .image("ubuntu-18-04-x64")
      *             .name("web-1")
      *             .region("sgp1")
-     *             .size(main.sizes()[0].slug())
+     *             .size(main.sizes()[0].get("slug"))
      *             .build());
      * 
      *     }
@@ -19707,7 +19707,7 @@ public final class DigitaloceanFunctions {
      *             .image("ubuntu-18-04-x64")
      *             .name("web-1")
      *             .region("sgp1")
-     *             .size(main.sizes()[0].slug())
+     *             .size(main.sizes()[0].get("slug"))
      *             .build());
      * 
      *     }
@@ -19765,7 +19765,7 @@ public final class DigitaloceanFunctions {
      *             .image("ubuntu-18-04-x64")
      *             .name("web-1")
      *             .region("sgp1")
-     *             .size(main.sizes()[0].slug())
+     *             .size(main.sizes()[0].get("slug"))
      *             .build());
      * 
      *     }
@@ -19864,7 +19864,7 @@ public final class DigitaloceanFunctions {
      *             .image("ubuntu-18-04-x64")
      *             .name("web-1")
      *             .region("sgp1")
-     *             .size(main.sizes()[0].slug())
+     *             .size(main.sizes()[0].get("slug"))
      *             .build());
      * 
      *     }
@@ -19922,7 +19922,7 @@ public final class DigitaloceanFunctions {
      *             .image("ubuntu-18-04-x64")
      *             .name("web-1")
      *             .region("sgp1")
-     *             .size(main.sizes()[0].slug())
+     *             .size(main.sizes()[0].get("slug"))
      *             .build());
      * 
      *     }
@@ -20021,7 +20021,7 @@ public final class DigitaloceanFunctions {
      *             .image("ubuntu-18-04-x64")
      *             .name("web-1")
      *             .region("sgp1")
-     *             .size(main.sizes()[0].slug())
+     *             .size(main.sizes()[0].get("slug"))
      *             .build());
      * 
      *     }
@@ -20079,7 +20079,7 @@ public final class DigitaloceanFunctions {
      *             .image("ubuntu-18-04-x64")
      *             .name("web-1")
      *             .region("sgp1")
-     *             .size(main.sizes()[0].slug())
+     *             .size(main.sizes()[0].get("slug"))
      *             .build());
      * 
      *     }
@@ -20178,7 +20178,7 @@ public final class DigitaloceanFunctions {
      *             .image("ubuntu-18-04-x64")
      *             .name("web-1")
      *             .region("sgp1")
-     *             .size(main.sizes()[0].slug())
+     *             .size(main.sizes()[0].get("slug"))
      *             .build());
      * 
      *     }
@@ -20236,7 +20236,7 @@ public final class DigitaloceanFunctions {
      *             .image("ubuntu-18-04-x64")
      *             .name("web-1")
      *             .region("sgp1")
-     *             .size(main.sizes()[0].slug())
+     *             .size(main.sizes()[0].get("slug"))
      *             .build());
      * 
      *     }
@@ -20335,7 +20335,7 @@ public final class DigitaloceanFunctions {
      *             .image("ubuntu-18-04-x64")
      *             .name("web-1")
      *             .region("sgp1")
-     *             .size(main.sizes()[0].slug())
+     *             .size(main.sizes()[0].get("slug"))
      *             .build());
      * 
      *     }
@@ -20393,7 +20393,7 @@ public final class DigitaloceanFunctions {
      *             .image("ubuntu-18-04-x64")
      *             .name("web-1")
      *             .region("sgp1")
-     *             .size(main.sizes()[0].slug())
+     *             .size(main.sizes()[0].get("slug"))
      *             .build());
      * 
      *     }
@@ -25735,7 +25735,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-imported-vpc-nat-gateway = DigitaloceanFunctions.getVpcNatGateway(GetVpcNatGatewayArgs.builder()
-     *             .name(my_existing_vpc_nat_gateway.name())
+     *             .name(my_existing_vpc_nat_gateway.get("name"))
      *             .build());
      * 
      *     }
@@ -25768,7 +25768,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-imported-vpc-nat-gateway = DigitaloceanFunctions.getVpcNatGateway(GetVpcNatGatewayArgs.builder()
-     *             .id(my_existing_vpc_nat_gateway.id())
+     *             .id(my_existing_vpc_nat_gateway.get("id"))
      *             .build());
      * 
      *     }
@@ -25814,7 +25814,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-imported-vpc-nat-gateway = DigitaloceanFunctions.getVpcNatGateway(GetVpcNatGatewayArgs.builder()
-     *             .name(my_existing_vpc_nat_gateway.name())
+     *             .name(my_existing_vpc_nat_gateway.get("name"))
      *             .build());
      * 
      *     }
@@ -25847,7 +25847,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-imported-vpc-nat-gateway = DigitaloceanFunctions.getVpcNatGateway(GetVpcNatGatewayArgs.builder()
-     *             .id(my_existing_vpc_nat_gateway.id())
+     *             .id(my_existing_vpc_nat_gateway.get("id"))
      *             .build());
      * 
      *     }
@@ -25893,7 +25893,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-imported-vpc-nat-gateway = DigitaloceanFunctions.getVpcNatGateway(GetVpcNatGatewayArgs.builder()
-     *             .name(my_existing_vpc_nat_gateway.name())
+     *             .name(my_existing_vpc_nat_gateway.get("name"))
      *             .build());
      * 
      *     }
@@ -25926,7 +25926,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-imported-vpc-nat-gateway = DigitaloceanFunctions.getVpcNatGateway(GetVpcNatGatewayArgs.builder()
-     *             .id(my_existing_vpc_nat_gateway.id())
+     *             .id(my_existing_vpc_nat_gateway.get("id"))
      *             .build());
      * 
      *     }
@@ -25972,7 +25972,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-imported-vpc-nat-gateway = DigitaloceanFunctions.getVpcNatGateway(GetVpcNatGatewayArgs.builder()
-     *             .name(my_existing_vpc_nat_gateway.name())
+     *             .name(my_existing_vpc_nat_gateway.get("name"))
      *             .build());
      * 
      *     }
@@ -26005,7 +26005,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-imported-vpc-nat-gateway = DigitaloceanFunctions.getVpcNatGateway(GetVpcNatGatewayArgs.builder()
-     *             .id(my_existing_vpc_nat_gateway.id())
+     *             .id(my_existing_vpc_nat_gateway.get("id"))
      *             .build());
      * 
      *     }
@@ -26051,7 +26051,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-imported-vpc-nat-gateway = DigitaloceanFunctions.getVpcNatGateway(GetVpcNatGatewayArgs.builder()
-     *             .name(my_existing_vpc_nat_gateway.name())
+     *             .name(my_existing_vpc_nat_gateway.get("name"))
      *             .build());
      * 
      *     }
@@ -26084,7 +26084,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-imported-vpc-nat-gateway = DigitaloceanFunctions.getVpcNatGateway(GetVpcNatGatewayArgs.builder()
-     *             .id(my_existing_vpc_nat_gateway.id())
+     *             .id(my_existing_vpc_nat_gateway.get("id"))
      *             .build());
      * 
      *     }
@@ -26130,7 +26130,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-imported-vpc-nat-gateway = DigitaloceanFunctions.getVpcNatGateway(GetVpcNatGatewayArgs.builder()
-     *             .name(my_existing_vpc_nat_gateway.name())
+     *             .name(my_existing_vpc_nat_gateway.get("name"))
      *             .build());
      * 
      *     }
@@ -26163,7 +26163,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-imported-vpc-nat-gateway = DigitaloceanFunctions.getVpcNatGateway(GetVpcNatGatewayArgs.builder()
-     *             .id(my_existing_vpc_nat_gateway.id())
+     *             .id(my_existing_vpc_nat_gateway.get("id"))
      *             .build());
      * 
      *     }
@@ -26209,7 +26209,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-imported-vpc-nat-gateway = DigitaloceanFunctions.getVpcNatGateway(GetVpcNatGatewayArgs.builder()
-     *             .name(my_existing_vpc_nat_gateway.name())
+     *             .name(my_existing_vpc_nat_gateway.get("name"))
      *             .build());
      * 
      *     }
@@ -26242,7 +26242,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-imported-vpc-nat-gateway = DigitaloceanFunctions.getVpcNatGateway(GetVpcNatGatewayArgs.builder()
-     *             .id(my_existing_vpc_nat_gateway.id())
+     *             .id(my_existing_vpc_nat_gateway.get("id"))
      *             .build());
      * 
      *     }

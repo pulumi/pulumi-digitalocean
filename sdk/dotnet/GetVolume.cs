@@ -66,7 +66,7 @@ namespace Pulumi.DigitalOcean
         /// 
         ///     var foobar = new DigitalOcean.VolumeAttachment("foobar", new()
         ///     {
-        ///         DropletId = exampleDroplet.Id,
+        ///         DropletId = exampleDroplet.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
         ///         VolumeId = example.Apply(getVolumeResult =&gt; getVolumeResult.Id),
         ///     });
         /// 
@@ -131,7 +131,7 @@ namespace Pulumi.DigitalOcean
         /// 
         ///     var foobar = new DigitalOcean.VolumeAttachment("foobar", new()
         ///     {
-        ///         DropletId = exampleDroplet.Id,
+        ///         DropletId = exampleDroplet.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
         ///         VolumeId = example.Apply(getVolumeResult =&gt; getVolumeResult.Id),
         ///     });
         /// 
@@ -196,7 +196,7 @@ namespace Pulumi.DigitalOcean
         /// 
         ///     var foobar = new DigitalOcean.VolumeAttachment("foobar", new()
         ///     {
-        ///         DropletId = exampleDroplet.Id,
+        ///         DropletId = exampleDroplet.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
         ///         VolumeId = example.Apply(getVolumeResult =&gt; getVolumeResult.Id),
         ///     });
         /// 

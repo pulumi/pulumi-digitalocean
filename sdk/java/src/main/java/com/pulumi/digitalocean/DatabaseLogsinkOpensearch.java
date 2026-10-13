@@ -107,7 +107,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var example_secure = new DatabaseLogsinkOpensearch("example-secure", DatabaseLogsinkOpensearchArgs.builder()
- *             .clusterId(postgres_example.id())
+ *             .clusterId(postgres_example.get("id"))
  *             .name("opensearch-secure")
  *             .endpoint("https://user:password}{@literal @}{@code opensearch.example.com:9200")
  *             .indexPrefix("secure-logs")
@@ -148,7 +148,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var elasticsearch = new DatabaseLogsinkOpensearch("elasticsearch", DatabaseLogsinkOpensearchArgs.builder()
- *             .clusterId(postgres_example.id())
+ *             .clusterId(postgres_example.get("id"))
  *             .name("elasticsearch-logs")
  *             .endpoint("https://elasticsearch.example.com:9243")
  *             .indexPrefix("es-logs")

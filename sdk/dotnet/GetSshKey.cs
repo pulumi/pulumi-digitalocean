@@ -44,7 +44,7 @@ namespace Pulumi.DigitalOcean
         ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
         ///         SshKeys = new[]
         ///         {
-        ///             example.Apply(getSshKeyResult =&gt; getSshKeyResult.Id),
+        ///             Output.Create(example.Apply(getSshKeyResult =&gt; getSshKeyResult.Id)).Apply(x =&gt; x.ToString(System.Globalization.CultureInfo.InvariantCulture)),
         ///         },
         ///     });
         /// 
@@ -87,7 +87,7 @@ namespace Pulumi.DigitalOcean
         ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
         ///         SshKeys = new[]
         ///         {
-        ///             example.Apply(getSshKeyResult =&gt; getSshKeyResult.Id),
+        ///             Output.Create(example.Apply(getSshKeyResult =&gt; getSshKeyResult.Id)).Apply(x =&gt; x.ToString(System.Globalization.CultureInfo.InvariantCulture)),
         ///         },
         ///     });
         /// 
@@ -130,7 +130,7 @@ namespace Pulumi.DigitalOcean
         ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
         ///         SshKeys = new[]
         ///         {
-        ///             example.Apply(getSshKeyResult =&gt; getSshKeyResult.Id),
+        ///             Output.Create(example.Apply(getSshKeyResult =&gt; getSshKeyResult.Id)).Apply(x =&gt; x.ToString(System.Globalization.CultureInfo.InvariantCulture)),
         ///         },
         ///     });
         /// 

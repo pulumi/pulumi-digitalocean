@@ -47,8 +47,8 @@ import javax.annotation.Nullable;
  *         var example = new VpcPeering("example", VpcPeeringArgs.builder()
  *             .name("example-peering")
  *             .vpcIds(            
- *                 vpc1.id(),
- *                 vpc2.id())
+ *                 vpc1.get("id"),
+ *                 vpc2.get("id"))
  *             .build());
  * 
  *     }

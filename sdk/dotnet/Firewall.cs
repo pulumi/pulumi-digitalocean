@@ -36,7 +36,7 @@ namespace Pulumi.DigitalOcean
     ///         Name = "only-22-80-and-443",
     ///         DropletIds = new[]
     ///         {
-    ///             web.Id,
+    ///             web.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         },
     ///         InboundRules = new[]
     ///         {

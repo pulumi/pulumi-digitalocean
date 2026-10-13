@@ -38,7 +38,7 @@ namespace Pulumi.DigitalOcean
     /// 
     ///     var foobarFloatingIp = new DigitalOcean.FloatingIp("foobar", new()
     ///     {
-    ///         DropletId = foobar.Id,
+    ///         DropletId = foobar.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         Region = foobar.Region,
     ///     });
     /// 

@@ -30,7 +30,7 @@ import * as utilities from "./utilities";
  *     image: "ubuntu-18-04-x64",
  *     name: "web-1",
  *     region: digitalocean.Region.SGP1,
- *     size: digitalocean.DropletSlug[main.then(main => main.sizes)[0].slug],
+ *     size: main.then(main => main.sizes)[0].slug,
  * });
  * ```
  *
@@ -63,7 +63,7 @@ import * as utilities from "./utilities";
  *     image: "ubuntu-18-04-x64",
  *     name: "web-1",
  *     region: digitalocean.Region.SGP1,
- *     size: digitalocean.DropletSlug[main.then(main => main.sizes)[0].slug],
+ *     size: main.then(main => main.sizes)[0].slug,
  * });
  * ```
  *
@@ -147,7 +147,7 @@ export interface GetSizesResult {
  *     image: "ubuntu-18-04-x64",
  *     name: "web-1",
  *     region: digitalocean.Region.SGP1,
- *     size: digitalocean.DropletSlug[main.then(main => main.sizes)[0].slug],
+ *     size: main.then(main => main.sizes)[0].slug,
  * });
  * ```
  *
@@ -180,7 +180,7 @@ export interface GetSizesResult {
  *     image: "ubuntu-18-04-x64",
  *     name: "web-1",
  *     region: digitalocean.Region.SGP1,
- *     size: digitalocean.DropletSlug[main.then(main => main.sizes)[0].slug],
+ *     size: main.then(main => main.sizes)[0].slug,
  * });
  * ```
  *

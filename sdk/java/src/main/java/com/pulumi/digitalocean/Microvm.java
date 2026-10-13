@@ -76,7 +76,7 @@ import javax.annotation.Nullable;
  *             .tags("web")
  *             .build());
  * 
- *         ctx.export("url", web.urls().applyValue(_urls -> _urls[0].hostname()));
+ *         ctx.export("url", web.urls().applyValue(_urls -> _urls.get(0).hostname()));
  *     }
  * }
  * }
@@ -161,7 +161,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var snapshot = new MicrovmCheckpoint("snapshot", MicrovmCheckpointArgs.builder()
- *             .microvmId(web.id())
+ *             .microvmId(web.get("id"))
  *             .name("web-checkpoint")
  *             .build());
  * 

@@ -402,7 +402,7 @@ def get_droplet(gpu: Optional[_builtins.bool] = None,
     import pulumi
     import pulumi_digitalocean as digitalocean
 
-    example = digitalocean.get_droplet(id=int(example_digitalocean_kubernetes_cluster["nodePool"][0]["nodes"][0]["dropletId"]))
+    example = digitalocean.get_droplet(id=example_digitalocean_kubernetes_cluster["nodePool"][0]["nodes"][0]["dropletId"])
     ```
 
 
@@ -491,7 +491,7 @@ def get_droplet_output(gpu: pulumi.Input[Optional[Optional[_builtins.bool]]] = N
     import pulumi
     import pulumi_digitalocean as digitalocean
 
-    example = digitalocean.get_droplet(id=int(example_digitalocean_kubernetes_cluster["nodePool"][0]["nodes"][0]["dropletId"]))
+    example = digitalocean.get_droplet(id=example_digitalocean_kubernetes_cluster["nodePool"][0]["nodes"][0]["dropletId"])
     ```
 
 

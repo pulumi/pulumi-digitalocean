@@ -106,7 +106,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example_tls = new DatabaseLogsinkRsyslog("example-tls", DatabaseLogsinkRsyslogArgs.builder()
- *             .clusterId(postgres_example.id())
+ *             .clusterId(postgres_example.get("id"))
  *             .name("rsyslog-secure")
  *             .server("logs.example.com")
  *             .port(6514)
@@ -149,7 +149,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example_mtls = new DatabaseLogsinkRsyslog("example-mtls", DatabaseLogsinkRsyslogArgs.builder()
- *             .clusterId(postgres_example.id())
+ *             .clusterId(postgres_example.get("id"))
  *             .name("rsyslog-mtls")
  *             .server("secure-logs.example.com")
  *             .port(6514)
@@ -196,7 +196,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var example_custom = new DatabaseLogsinkRsyslog("example-custom", DatabaseLogsinkRsyslogArgs.builder()
- *             .clusterId(postgres_example.id())
+ *             .clusterId(postgres_example.get("id"))
  *             .name("rsyslog-custom")
  *             .server("192.0.2.10")
  *             .port(514)

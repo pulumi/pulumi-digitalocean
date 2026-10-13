@@ -190,7 +190,7 @@ public class App {
 
     public static void stack(Context ctx) {
         final var config = ctx.config();
-        final var doToken = config.require("doToken");
+        final var doToken = config.requireObject("doToken", com.pulumi.core.TypeShape.map(String.class, Object.class));
         // Create a web server
         var web = new Droplet("web");
 
@@ -201,7 +201,7 @@ public class App {
 {{% /choosable %}}
 {{% choosable language hcl %}}
 ```hcl
-pulumi {
+terraform {
   required_providers {
     digitalocean = {
       source = "pulumi/digitalocean"
@@ -211,10 +211,14 @@ pulumi {
 
 # Create a web server
 resource "digitalocean_droplet" "web" {
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 # Set the variable value in *.tfvars file
 # or using -var="do_token=..." CLI option
 variable "doToken" {
+  type = any
 }
 ```
 
