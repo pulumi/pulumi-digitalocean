@@ -226,7 +226,7 @@ import javax.annotation.Nullable;
  *             .region("nyc1")
  *             .version("latest")
  *             .isolatedWorkers(true)
- *             .vpcUuid(example.id())
+ *             .vpcUuid(example.get("id"))
  *             .nodePool(KubernetesClusterNodePoolArgs.builder()
  *                 .name("worker-pool")
  *                 .size("s-2vcpu-2gb")

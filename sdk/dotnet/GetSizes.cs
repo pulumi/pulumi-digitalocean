@@ -48,7 +48,7 @@ namespace Pulumi.DigitalOcean
         ///         Image = "ubuntu-18-04-x64",
         ///         Name = "web-1",
         ///         Region = DigitalOcean.Region.SGP1,
-        ///         Size = System.Enum.Parse&lt;DigitalOcean.DropletSlug&gt;(main.Apply(getSizesResult =&gt; getSizesResult.Sizes)[0].Slug),
+        ///         Size = main.Apply(getSizesResult =&gt; getSizesResult.Sizes)[0].Slug,
         ///     });
         /// 
         /// });
@@ -101,7 +101,7 @@ namespace Pulumi.DigitalOcean
         ///         Image = "ubuntu-18-04-x64",
         ///         Name = "web-1",
         ///         Region = DigitalOcean.Region.SGP1,
-        ///         Size = System.Enum.Parse&lt;DigitalOcean.DropletSlug&gt;(main.Apply(getSizesResult =&gt; getSizesResult.Sizes)[0].Slug),
+        ///         Size = main.Apply(getSizesResult =&gt; getSizesResult.Sizes)[0].Slug,
         ///     });
         /// 
         /// });
@@ -177,7 +177,7 @@ namespace Pulumi.DigitalOcean
         ///         Image = "ubuntu-18-04-x64",
         ///         Name = "web-1",
         ///         Region = DigitalOcean.Region.SGP1,
-        ///         Size = System.Enum.Parse&lt;DigitalOcean.DropletSlug&gt;(main.Apply(getSizesResult =&gt; getSizesResult.Sizes)[0].Slug),
+        ///         Size = main.Apply(getSizesResult =&gt; getSizesResult.Sizes)[0].Slug,
         ///     });
         /// 
         /// });
@@ -230,7 +230,7 @@ namespace Pulumi.DigitalOcean
         ///         Image = "ubuntu-18-04-x64",
         ///         Name = "web-1",
         ///         Region = DigitalOcean.Region.SGP1,
-        ///         Size = System.Enum.Parse&lt;DigitalOcean.DropletSlug&gt;(main.Apply(getSizesResult =&gt; getSizesResult.Sizes)[0].Slug),
+        ///         Size = main.Apply(getSizesResult =&gt; getSizesResult.Sizes)[0].Slug,
         ///     });
         /// 
         /// });
@@ -306,7 +306,7 @@ namespace Pulumi.DigitalOcean
         ///         Image = "ubuntu-18-04-x64",
         ///         Name = "web-1",
         ///         Region = DigitalOcean.Region.SGP1,
-        ///         Size = System.Enum.Parse&lt;DigitalOcean.DropletSlug&gt;(main.Apply(getSizesResult =&gt; getSizesResult.Sizes)[0].Slug),
+        ///         Size = main.Apply(getSizesResult =&gt; getSizesResult.Sizes)[0].Slug,
         ///     });
         /// 
         /// });
@@ -359,7 +359,7 @@ namespace Pulumi.DigitalOcean
         ///         Image = "ubuntu-18-04-x64",
         ///         Name = "web-1",
         ///         Region = DigitalOcean.Region.SGP1,
-        ///         Size = System.Enum.Parse&lt;DigitalOcean.DropletSlug&gt;(main.Apply(getSizesResult =&gt; getSizesResult.Sizes)[0].Slug),
+        ///         Size = main.Apply(getSizesResult =&gt; getSizesResult.Sizes)[0].Slug,
         ///     });
         /// 
         /// });

@@ -43,7 +43,7 @@ namespace Pulumi.DigitalOcean
     /// 
     ///     var foobarVolumeAttachment = new DigitalOcean.VolumeAttachment("foobar", new()
     ///     {
-    ///         DropletId = foobarDroplet.Id,
+    ///         DropletId = foobarDroplet.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         VolumeId = foobar.Id,
     ///     });
     /// 

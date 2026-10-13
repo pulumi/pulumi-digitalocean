@@ -142,7 +142,7 @@ import javax.annotation.Nullable;
  *         var private_ = new DedicatedInference("private", DedicatedInferenceArgs.builder()
  *             .name("my-private-inference")
  *             .region("tor1")
- *             .vpcUuid(example.id())
+ *             .vpcUuid(example.get("id"))
  *             .modelDeployments(DedicatedInferenceModelDeploymentArgs.builder()
  *                 .modelSlug("deepseek-r1-distill-qwen-14b")
  *                 .modelProvider("digitalocean")

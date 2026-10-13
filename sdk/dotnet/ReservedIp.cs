@@ -36,7 +36,7 @@ namespace Pulumi.DigitalOcean
     /// 
     ///     var exampleReservedIp = new DigitalOcean.ReservedIp("example", new()
     ///     {
-    ///         DropletId = example.Id,
+    ///         DropletId = example.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         Region = example.Region,
     ///     });
     /// 

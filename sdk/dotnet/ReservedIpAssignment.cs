@@ -42,7 +42,7 @@ namespace Pulumi.DigitalOcean
     ///     var exampleReservedIpAssignment = new DigitalOcean.ReservedIpAssignment("example", new()
     ///     {
     ///         IpAddress = example.IpAddress,
-    ///         DropletId = exampleDroplet.Id,
+    ///         DropletId = exampleDroplet.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///     });
     /// 
     /// });

@@ -56,7 +56,7 @@ namespace Pulumi.DigitalOcean
         /// 
         ///     var exampleDroplet = new DigitalOcean.Droplet("example", new()
         ///     {
-        ///         Image = example.Apply(getImageResult =&gt; getImageResult.Id),
+        ///         Image = Output.Create(example.Apply(getImageResult =&gt; getImageResult.Id)).Apply(x =&gt; x.ToString(System.Globalization.CultureInfo.InvariantCulture)),
         ///         Name = "example-1",
         ///         Region = DigitalOcean.Region.NYC2,
         ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
@@ -131,7 +131,7 @@ namespace Pulumi.DigitalOcean
         /// 
         ///     var exampleDroplet = new DigitalOcean.Droplet("example", new()
         ///     {
-        ///         Image = example.Apply(getImageResult =&gt; getImageResult.Id),
+        ///         Image = Output.Create(example.Apply(getImageResult =&gt; getImageResult.Id)).Apply(x =&gt; x.ToString(System.Globalization.CultureInfo.InvariantCulture)),
         ///         Name = "example-1",
         ///         Region = DigitalOcean.Region.NYC2,
         ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
@@ -206,7 +206,7 @@ namespace Pulumi.DigitalOcean
         /// 
         ///     var exampleDroplet = new DigitalOcean.Droplet("example", new()
         ///     {
-        ///         Image = example.Apply(getImageResult =&gt; getImageResult.Id),
+        ///         Image = Output.Create(example.Apply(getImageResult =&gt; getImageResult.Id)).Apply(x =&gt; x.ToString(System.Globalization.CultureInfo.InvariantCulture)),
         ///         Name = "example-1",
         ///         Region = DigitalOcean.Region.NYC2,
         ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,

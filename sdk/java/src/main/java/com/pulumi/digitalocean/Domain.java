@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  *         // Create a new domain
  *         var default_ = new Domain("default", DomainArgs.builder()
  *             .name("example.com")
- *             .ipAddress(foo.ipv4Address())
+ *             .ipAddress(foo.get("ipv4Address"))
  *             .build());
  * 
  *     }

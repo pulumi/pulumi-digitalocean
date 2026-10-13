@@ -52,7 +52,7 @@ namespace Pulumi.DigitalOcean
     ///         },
     ///         DropletIds = new[]
     ///         {
-    ///             web.Id,
+    ///             web.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         },
     ///     });
     /// 

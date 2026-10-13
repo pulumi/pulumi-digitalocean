@@ -42,7 +42,7 @@ import * as utilities from "./utilities";
  *     prefix: example.then(example => example.prefix),
  *     region: example.then(example => example.region),
  *     status: example.then(example => example.status),
- *     assignedCount: exampleGetByoipPrefixResources.then(exampleGetByoipPrefixResources => exampleGetByoipPrefixResources.addresses).length,
+ *     assignedCount: exampleGetByoipPrefixResources.then(exampleGetByoipPrefixResources => exampleGetByoipPrefixResources.addresses.length),
  * };
  * ```
  */
@@ -134,7 +134,7 @@ export interface GetByoipPrefixResult {
  *     prefix: example.then(example => example.prefix),
  *     region: example.then(example => example.region),
  *     status: example.then(example => example.status),
- *     assignedCount: exampleGetByoipPrefixResources.then(exampleGetByoipPrefixResources => exampleGetByoipPrefixResources.addresses).length,
+ *     assignedCount: exampleGetByoipPrefixResources.then(exampleGetByoipPrefixResources => exampleGetByoipPrefixResources.addresses.length),
  * };
  * ```
  */

@@ -62,12 +62,12 @@ namespace Pulumi.DigitalOcean
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["byoipInfo"] = 
+        ///         ["byoipInfo"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "prefix", example.Apply(getByoipPrefixResult =&gt; getByoipPrefixResult.Prefix) },
-        ///             { "region", example.Apply(getByoipPrefixResult =&gt; getByoipPrefixResult.Region) },
-        ///             { "status", example.Apply(getByoipPrefixResult =&gt; getByoipPrefixResult.Status) },
-        ///             { "assignedCount", exampleGetByoipPrefixResources.Apply(getByoipPrefixResourcesResult =&gt; getByoipPrefixResourcesResult.Addresses).Length() },
+        ///             ["prefix"] = example.Apply(getByoipPrefixResult =&gt; getByoipPrefixResult.Prefix),
+        ///             ["region"] = example.Apply(getByoipPrefixResult =&gt; getByoipPrefixResult.Region),
+        ///             ["status"] = example.Apply(getByoipPrefixResult =&gt; getByoipPrefixResult.Status),
+        ///             ["assignedCount"] = exampleGetByoipPrefixResources.Apply(getByoipPrefixResourcesResult =&gt; getByoipPrefixResourcesResult.Addresses).Length,
         ///         },
         ///     };
         /// });
@@ -127,12 +127,12 @@ namespace Pulumi.DigitalOcean
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["byoipInfo"] = 
+        ///         ["byoipInfo"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "prefix", example.Apply(getByoipPrefixResult =&gt; getByoipPrefixResult.Prefix) },
-        ///             { "region", example.Apply(getByoipPrefixResult =&gt; getByoipPrefixResult.Region) },
-        ///             { "status", example.Apply(getByoipPrefixResult =&gt; getByoipPrefixResult.Status) },
-        ///             { "assignedCount", exampleGetByoipPrefixResources.Apply(getByoipPrefixResourcesResult =&gt; getByoipPrefixResourcesResult.Addresses).Length() },
+        ///             ["prefix"] = example.Apply(getByoipPrefixResult =&gt; getByoipPrefixResult.Prefix),
+        ///             ["region"] = example.Apply(getByoipPrefixResult =&gt; getByoipPrefixResult.Region),
+        ///             ["status"] = example.Apply(getByoipPrefixResult =&gt; getByoipPrefixResult.Status),
+        ///             ["assignedCount"] = exampleGetByoipPrefixResources.Apply(getByoipPrefixResourcesResult =&gt; getByoipPrefixResourcesResult.Addresses).Length,
         ///         },
         ///     };
         /// });
@@ -192,12 +192,12 @@ namespace Pulumi.DigitalOcean
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["byoipInfo"] = 
+        ///         ["byoipInfo"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "prefix", example.Apply(getByoipPrefixResult =&gt; getByoipPrefixResult.Prefix) },
-        ///             { "region", example.Apply(getByoipPrefixResult =&gt; getByoipPrefixResult.Region) },
-        ///             { "status", example.Apply(getByoipPrefixResult =&gt; getByoipPrefixResult.Status) },
-        ///             { "assignedCount", exampleGetByoipPrefixResources.Apply(getByoipPrefixResourcesResult =&gt; getByoipPrefixResourcesResult.Addresses).Length() },
+        ///             ["prefix"] = example.Apply(getByoipPrefixResult =&gt; getByoipPrefixResult.Prefix),
+        ///             ["region"] = example.Apply(getByoipPrefixResult =&gt; getByoipPrefixResult.Region),
+        ///             ["status"] = example.Apply(getByoipPrefixResult =&gt; getByoipPrefixResult.Status),
+        ///             ["assignedCount"] = exampleGetByoipPrefixResources.Apply(getByoipPrefixResourcesResult =&gt; getByoipPrefixResourcesResult.Addresses).Length,
         ///         },
         ///     };
         /// });

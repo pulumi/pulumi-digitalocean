@@ -48,7 +48,7 @@ import (
 //				Image:  pulumi.String("ubuntu-18-04-x64"),
 //				Name:   pulumi.String("web-1"),
 //				Region: pulumi.String(digitalocean.RegionSGP1),
-//				Size:   digitalocean.DropletSlug(main.Sizes[0].Slug),
+//				Size:   main.Sizes[0].Slug.(pulumi.String),
 //			})
 //			if err != nil {
 //				return err
@@ -103,7 +103,7 @@ import (
 //				Image:  pulumi.String("ubuntu-18-04-x64"),
 //				Name:   pulumi.String("web-1"),
 //				Region: pulumi.String(digitalocean.RegionSGP1),
-//				Size:   digitalocean.DropletSlug(main.Sizes[0].Slug),
+//				Size:   main.Sizes[0].Slug.(pulumi.String),
 //			})
 //			if err != nil {
 //				return err
