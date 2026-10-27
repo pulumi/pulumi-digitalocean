@@ -47,7 +47,7 @@ import (
 //				return err
 //			}
 //			_, err = digitalocean.NewMicrovmCheckpoint(ctx, "web", &digitalocean.MicrovmCheckpointArgs{
-//				MicrovmId: web.ID().ToIDOutput().ToStringOutput(),
+//				MicrovmId: web.ID(),
 //				Name:      pulumi.String("web-checkpoint"),
 //			})
 //			if err != nil {

@@ -133,6 +133,13 @@ def get_nfs_snapshot(name: Optional[_builtins.str] = None,
 
     Get the NFS snapshot by ID:
 
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    example = digitalocean.get_nfs_snapshot(id="506f78a4-e098-11e5-ad9f-000f53306ae1")
+    ```
+
 
     :param _builtins.str region: The region where the NFS snapshot is located.
     """
@@ -165,6 +172,13 @@ def get_nfs_snapshot_output(name: pulumi.Input[Optional[Optional[_builtins.str]]
     ## Example Usage
 
     Get the NFS snapshot by ID:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    example = digitalocean.get_nfs_snapshot(id="506f78a4-e098-11e5-ad9f-000f53306ae1")
+    ```
 
 
     :param _builtins.str region: The region where the NFS snapshot is located.

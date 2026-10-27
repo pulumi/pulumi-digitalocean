@@ -53,7 +53,7 @@ import (
 //			}
 //			_, err = digitalocean.NewFloatingIpAssignment(ctx, "foobar", &digitalocean.FloatingIpAssignmentArgs{
 //				IpAddress: foobar.IpAddress,
-//				DropletId: foobarDroplet.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+//				DropletId: foobarDroplet.ID().ToStringOutput().ApplyT(strconv.Atoi).(pulumi.IntOutput),
 //			})
 //			if err != nil {
 //				return err

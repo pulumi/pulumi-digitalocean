@@ -39,7 +39,7 @@ import (
 //				Region:          pulumi.String("nyc1"),
 //				Name:            pulumi.String("example-nfs"),
 //				Size:            pulumi.Int(50),
-//				VpcId:           foobar.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:           foobar.ID(),
 //				PerformanceTier: pulumi.String("high"),
 //			})
 //			if err != nil {
@@ -47,7 +47,7 @@ import (
 //			}
 //			_, err = digitalocean.NewNfsSnapshot(ctx, "foobar", &digitalocean.NfsSnapshotArgs{
 //				Name:    pulumi.String("example-snapshot"),
-//				ShareId: foobarNfs.ID().ToIDOutput().ToStringOutput(),
+//				ShareId: foobarNfs.ID(),
 //				Region:  pulumi.String("nyc1"),
 //			})
 //			if err != nil {

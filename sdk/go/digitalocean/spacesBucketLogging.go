@@ -81,8 +81,8 @@ import (
 //			}
 //			_, err = digitalocean.NewSpacesBucketLogging(ctx, "example", &digitalocean.SpacesBucketLoggingArgs{
 //				Region:       pulumi.String("%s"),
-//				Bucket:       assets.ID().ToIDOutput().ToStringOutput(),
-//				TargetBucket: logs.ID().ToIDOutput().ToStringOutput(),
+//				Bucket:       assets.ID(),
+//				TargetBucket: logs.ID(),
 //				TargetPrefix: pulumi.String("access-logs/"),
 //			})
 //			if err != nil {

@@ -133,7 +133,7 @@ import (
 //			_, err = digitalocean.NewMicrovm(ctx, "restored", &digitalocean.MicrovmArgs{
 //				Name: pulumi.String("example-restored"),
 //				Source: &digitalocean.MicrovmSourceArgs{
-//					CheckpointId: snapshot.ID().ToIDOutput().ToStringOutput(),
+//					CheckpointId: snapshot.ID(),
 //				},
 //			})
 //			if err != nil {

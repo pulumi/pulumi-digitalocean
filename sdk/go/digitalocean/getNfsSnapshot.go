@@ -16,6 +16,30 @@ import (
 // ## Example Usage
 //
 // Get the NFS snapshot by ID:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := digitalocean.GetNfsSnapshot(ctx, &digitalocean.LookupNfsSnapshotArgs{
+//				Id: "506f78a4-e098-11e5-ad9f-000f53306ae1",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupNfsSnapshot(ctx *pulumi.Context, args *LookupNfsSnapshotArgs, opts ...pulumi.InvokeOption) (*LookupNfsSnapshotResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupNfsSnapshotResult

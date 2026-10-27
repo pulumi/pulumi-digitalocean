@@ -44,7 +44,7 @@ import (
 //				return err
 //			}
 //			_, err = digitalocean.NewKubernetesNodePool(ctx, "bar", &digitalocean.KubernetesNodePoolArgs{
-//				ClusterId: foo.ID().ToIDOutput().ToStringOutput(),
+//				ClusterId: foo.ID(),
 //				Name:      pulumi.String("backend-pool"),
 //				Size:      pulumi.String(digitalocean.DropletSlugDropletC2),
 //				NodeCount: pulumi.Int(2),

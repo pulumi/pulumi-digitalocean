@@ -43,7 +43,7 @@ import (
 //				return err
 //			}
 //			_, err = digitalocean.NewDatabaseKafkaConfig(ctx, "example", &digitalocean.DatabaseKafkaConfigArgs{
-//				ClusterId:                          exampleDatabaseCluster.ID().ToIDOutput().ToStringOutput(),
+//				ClusterId:                          exampleDatabaseCluster.ID(),
 //				GroupInitialRebalanceDelayMs:       pulumi.Int(3000),
 //				GroupMinSessionTimeoutMs:           pulumi.Int(6000),
 //				GroupMaxSessionTimeoutMs:           pulumi.Int(1800000),

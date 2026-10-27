@@ -41,7 +41,7 @@ import (
 //				return err
 //			}
 //			_, err = digitalocean.NewDatabaseDb(ctx, "database-example", &digitalocean.DatabaseDbArgs{
-//				ClusterId: postgres_example.ID().ToIDOutput().ToStringOutput(),
+//				ClusterId: postgres_example.ID(),
 //				Name:      pulumi.String("foobar"),
 //			})
 //			if err != nil {

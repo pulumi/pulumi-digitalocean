@@ -116,7 +116,7 @@ import (
 //						"name": "docker-cfg",
 //					},
 //				},
-//				Data: map[string]pulumi.String{
+//				Data: pulumi.StringMap{
 //					".dockerconfigjson": exampleContainerRegistryDockerCredentials.DockerCredentials,
 //				},
 //				Type: "kubernetes.io/dockerconfigjson",

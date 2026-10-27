@@ -42,7 +42,7 @@ import (
 //			_, err = digitalocean.NewFirewall(ctx, "web", &digitalocean.FirewallArgs{
 //				Name: pulumi.String("only-22-80-and-443"),
 //				DropletIds: pulumi.IntArray{
-//					web.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+//					web.ID().ToStringOutput().ApplyT(strconv.Atoi).(pulumi.IntOutput),
 //				},
 //				InboundRules: digitalocean.FirewallInboundRuleArray{
 //					&digitalocean.FirewallInboundRuleArgs{

@@ -44,7 +44,7 @@ import (
 //				return err
 //			}
 //			_, err = digitalocean.NewDatabaseKafkaTopic(ctx, "topic-01", &digitalocean.DatabaseKafkaTopicArgs{
-//				ClusterId:         kafka_example.ID().ToIDOutput().ToStringOutput(),
+//				ClusterId:         kafka_example.ID(),
 //				Name:              pulumi.String("topic-01"),
 //				PartitionCount:    pulumi.Int(3),
 //				ReplicationFactor: pulumi.Int(2),

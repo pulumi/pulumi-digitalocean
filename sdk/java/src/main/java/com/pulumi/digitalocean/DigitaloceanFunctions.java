@@ -16321,6 +16321,37 @@ public final class DigitaloceanFunctions {
      * 
      * Get the NFS snapshot by ID:
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetNfsSnapshotArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getNfsSnapshot(GetNfsSnapshotArgs.builder()
+     *             .id("506f78a4-e098-11e5-ad9f-000f53306ae1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetNfsSnapshotResult> getNfsSnapshot(GetNfsSnapshotArgs args) {
         return getNfsSnapshot(args, InvokeOptions.Empty);
@@ -16331,6 +16362,37 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the NFS snapshot by ID:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetNfsSnapshotArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getNfsSnapshot(GetNfsSnapshotArgs.builder()
+     *             .id("506f78a4-e098-11e5-ad9f-000f53306ae1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetNfsSnapshotResult> getNfsSnapshotPlain(GetNfsSnapshotPlainArgs args) {
@@ -16343,6 +16405,37 @@ public final class DigitaloceanFunctions {
      * 
      * Get the NFS snapshot by ID:
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetNfsSnapshotArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getNfsSnapshot(GetNfsSnapshotArgs.builder()
+     *             .id("506f78a4-e098-11e5-ad9f-000f53306ae1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetNfsSnapshotResult> getNfsSnapshot(GetNfsSnapshotArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("digitalocean:index/getNfsSnapshot:getNfsSnapshot", TypeShape.of(GetNfsSnapshotResult.class), args, Utilities.withVersion(options));
@@ -16354,6 +16447,37 @@ public final class DigitaloceanFunctions {
      * 
      * Get the NFS snapshot by ID:
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetNfsSnapshotArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getNfsSnapshot(GetNfsSnapshotArgs.builder()
+     *             .id("506f78a4-e098-11e5-ad9f-000f53306ae1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetNfsSnapshotResult> getNfsSnapshot(GetNfsSnapshotArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("digitalocean:index/getNfsSnapshot:getNfsSnapshot", TypeShape.of(GetNfsSnapshotResult.class), args, Utilities.withVersion(options));
@@ -16364,6 +16488,37 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Get the NFS snapshot by ID:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetNfsSnapshotArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getNfsSnapshot(GetNfsSnapshotArgs.builder()
+     *             .id("506f78a4-e098-11e5-ad9f-000f53306ae1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetNfsSnapshotResult> getNfsSnapshotPlain(GetNfsSnapshotPlainArgs args, InvokeOptions options) {
