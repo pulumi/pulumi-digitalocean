@@ -43,7 +43,7 @@ import (
 //				return err
 //			}
 //			_, err = digitalocean.NewDatabaseMysqlConfig(ctx, "example", &digitalocean.DatabaseMysqlConfigArgs{
-//				ClusterId:       exampleDatabaseCluster.ID().ToIDOutput().ToStringOutput(),
+//				ClusterId:       exampleDatabaseCluster.ID(),
 //				ConnectTimeout:  pulumi.Int(10),
 //				DefaultTimeZone: pulumi.String("UTC"),
 //			})

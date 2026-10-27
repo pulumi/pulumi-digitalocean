@@ -45,7 +45,7 @@ import (
 //				return err
 //			}
 //			_, err = digitalocean.NewDatabaseRedisConfig(ctx, "example", &digitalocean.DatabaseRedisConfigArgs{
-//				ClusterId:            exampleDatabaseCluster.ID().ToIDOutput().ToStringOutput(),
+//				ClusterId:            exampleDatabaseCluster.ID(),
 //				MaxmemoryPolicy:      pulumi.String("allkeys-lru"),
 //				NotifyKeyspaceEvents: pulumi.String("KEA"),
 //				Timeout:              pulumi.Int(90),

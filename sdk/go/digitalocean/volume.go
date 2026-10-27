@@ -50,8 +50,8 @@ import (
 //				return err
 //			}
 //			_, err = digitalocean.NewVolumeAttachment(ctx, "foobar", &digitalocean.VolumeAttachmentArgs{
-//				DropletId: foobarDroplet.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
-//				VolumeId:  foobar.ID().ToIDOutput().ToStringOutput(),
+//				DropletId: foobarDroplet.ID().ToStringOutput().ApplyT(strconv.Atoi).(pulumi.IntOutput),
+//				VolumeId:  foobar.ID(),
 //			})
 //			if err != nil {
 //				return err

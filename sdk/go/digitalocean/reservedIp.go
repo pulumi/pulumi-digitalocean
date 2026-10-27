@@ -44,7 +44,7 @@ import (
 //				return err
 //			}
 //			_, err = digitalocean.NewReservedIp(ctx, "example", &digitalocean.ReservedIpArgs{
-//				DropletId: example.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+//				DropletId: example.ID().ToStringOutput().ApplyT(strconv.Atoi).(pulumi.IntOutput),
 //				Region:    example.Region,
 //			})
 //			if err != nil {

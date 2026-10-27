@@ -80,7 +80,7 @@ import (
 //				return err
 //			}
 //			_, err = digitalocean.NewVolumeAttachment(ctx, "foobar", &digitalocean.VolumeAttachmentArgs{
-//				DropletId: exampleDroplet.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+//				DropletId: exampleDroplet.ID().ToStringOutput().ApplyT(strconv.Atoi).(pulumi.IntOutput),
 //				VolumeId:  pulumi.String(example.Id),
 //			})
 //			if err != nil {

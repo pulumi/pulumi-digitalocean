@@ -43,7 +43,7 @@ import (
 //				return err
 //			}
 //			_, err = digitalocean.NewDatabasePostgresqlConfig(ctx, "example", &digitalocean.DatabasePostgresqlConfigArgs{
-//				ClusterId: exampleDatabaseCluster.ID().ToIDOutput().ToStringOutput(),
+//				ClusterId: exampleDatabaseCluster.ID(),
 //				Timezone:  pulumi.String("UTC"),
 //				WorkMem:   pulumi.Int(16),
 //			})

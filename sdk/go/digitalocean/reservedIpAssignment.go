@@ -51,7 +51,7 @@ import (
 //			}
 //			_, err = digitalocean.NewReservedIpAssignment(ctx, "example", &digitalocean.ReservedIpAssignmentArgs{
 //				IpAddress: example.IpAddress,
-//				DropletId: exampleDroplet.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+//				DropletId: exampleDroplet.ID().ToStringOutput().ApplyT(strconv.Atoi).(pulumi.IntOutput),
 //			})
 //			if err != nil {
 //				return err

@@ -55,7 +55,7 @@ import (
 //					Protocol: pulumi.String("tcp"),
 //				},
 //				DropletIds: pulumi.IntArray{
-//					web.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+//					web.ID().ToStringOutput().ApplyT(strconv.Atoi).(pulumi.IntOutput),
 //				},
 //			})
 //			if err != nil {

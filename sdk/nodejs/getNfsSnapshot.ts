@@ -10,6 +10,15 @@ import * as utilities from "./utilities";
  * ## Example Usage
  *
  * Get the NFS snapshot by ID:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const example = digitalocean.getNfsSnapshot({
+ *     id: "506f78a4-e098-11e5-ad9f-000f53306ae1",
+ * });
+ * ```
  */
 export function getNfsSnapshot(args: GetNfsSnapshotArgs, opts?: pulumi.InvokeOptions): Promise<GetNfsSnapshotResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -57,6 +66,15 @@ export interface GetNfsSnapshotResult {
  * ## Example Usage
  *
  * Get the NFS snapshot by ID:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const example = digitalocean.getNfsSnapshot({
+ *     id: "506f78a4-e098-11e5-ad9f-000f53306ae1",
+ * });
+ * ```
  */
 export function getNfsSnapshotOutput(args: GetNfsSnapshotOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNfsSnapshotResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

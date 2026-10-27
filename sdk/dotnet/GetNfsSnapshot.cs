@@ -17,6 +17,22 @@ namespace Pulumi.DigitalOcean
         /// ## Example Usage
         /// 
         /// Get the NFS snapshot by ID:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = DigitalOcean.GetNfsSnapshot.Invoke(new()
+        ///     {
+        ///         Id = "506f78a4-e098-11e5-ad9f-000f53306ae1",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetNfsSnapshotResult> InvokeAsync(GetNfsSnapshotArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNfsSnapshotResult>("digitalocean:index/getNfsSnapshot:getNfsSnapshot", args ?? new GetNfsSnapshotArgs(), options.WithDefaults());
@@ -27,6 +43,22 @@ namespace Pulumi.DigitalOcean
         /// ## Example Usage
         /// 
         /// Get the NFS snapshot by ID:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = DigitalOcean.GetNfsSnapshot.Invoke(new()
+        ///     {
+        ///         Id = "506f78a4-e098-11e5-ad9f-000f53306ae1",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetNfsSnapshotResult> Invoke(GetNfsSnapshotInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNfsSnapshotResult>("digitalocean:index/getNfsSnapshot:getNfsSnapshot", args ?? new GetNfsSnapshotInvokeArgs(), options.WithDefaults());
@@ -37,6 +69,22 @@ namespace Pulumi.DigitalOcean
         /// ## Example Usage
         /// 
         /// Get the NFS snapshot by ID:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = DigitalOcean.GetNfsSnapshot.Invoke(new()
+        ///     {
+        ///         Id = "506f78a4-e098-11e5-ad9f-000f53306ae1",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetNfsSnapshotResult> Invoke(GetNfsSnapshotInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetNfsSnapshotResult>("digitalocean:index/getNfsSnapshot:getNfsSnapshot", args ?? new GetNfsSnapshotInvokeArgs(), options.WithDefaults());

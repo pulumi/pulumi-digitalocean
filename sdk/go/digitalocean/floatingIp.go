@@ -46,7 +46,7 @@ import (
 //				return err
 //			}
 //			_, err = digitalocean.NewFloatingIp(ctx, "foobar", &digitalocean.FloatingIpArgs{
-//				DropletId: foobar.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+//				DropletId: foobar.ID().ToStringOutput().ApplyT(strconv.Atoi).(pulumi.IntOutput),
 //				Region:    foobar.Region,
 //			})
 //			if err != nil {
