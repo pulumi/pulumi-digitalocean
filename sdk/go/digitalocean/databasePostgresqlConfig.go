@@ -422,6 +422,12 @@ func (DatabasePostgresqlConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*databasePostgresqlConfigState)(nil)).Elem()
 }
 
+// DatabasePostgresqlConfigExists checks whether an existing DatabasePostgresqlConfig resource with the given ID exists.
+func DatabasePostgresqlConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DatabasePostgresqlConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("digitalocean:index/databasePostgresqlConfig:DatabasePostgresqlConfig", id, state, "", opts...)
+}
+
 type databasePostgresqlConfigArgs struct {
 	// Specifies a fraction, in a decimal value, of the table size to add to autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size).
 	AutovacuumAnalyzeScaleFactor *float64 `pulumi:"autovacuumAnalyzeScaleFactor"`

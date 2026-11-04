@@ -134,6 +134,12 @@ func (ReservedIpState) ElementType() reflect.Type {
 	return reflect.TypeOf((*reservedIpState)(nil)).Elem()
 }
 
+// ReservedIpExists checks whether an existing ReservedIp resource with the given ID exists.
+func ReservedIpExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ReservedIpState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("digitalocean:index/reservedIp:ReservedIp", id, state, "", opts...)
+}
+
 type reservedIpArgs struct {
 	// The ID of Droplet that the reserved IP will be assigned to.
 	DropletId *int `pulumi:"dropletId"`

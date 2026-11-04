@@ -748,6 +748,36 @@ class DatabaseLogsinkRsyslog(pulumi.CustomResource):
         __props__.__dict__["tls"] = tls
         return DatabaseLogsinkRsyslog(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            ca_cert: pulumi.Input[Optional[_builtins.str]] = None,
+            client_cert: pulumi.Input[Optional[_builtins.str]] = None,
+            client_key: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            format: pulumi.Input[Optional[_builtins.str]] = None,
+            logline: pulumi.Input[Optional[_builtins.str]] = None,
+            logsink_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            port: pulumi.Input[Optional[_builtins.int]] = None,
+            server: pulumi.Input[Optional[_builtins.str]] = None,
+            structured_data: pulumi.Input[Optional[_builtins.str]] = None,
+            tls: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["caCert"] = ca_cert
+        __props__["clientCert"] = client_cert
+        __props__["clientKey"] = client_key
+        __props__["clusterId"] = cluster_id
+        __props__["format"] = format
+        __props__["logline"] = logline
+        __props__["logsinkId"] = logsink_id
+        __props__["name"] = name
+        __props__["port"] = port
+        __props__["server"] = server
+        __props__["structuredData"] = structured_data
+        __props__["tls"] = tls
+        return pulumi.runtime.exists_resource(None, 'digitalocean:index/databaseLogsinkRsyslog:DatabaseLogsinkRsyslog', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="caCert")
     def ca_cert(self) -> pulumi.Output[Optional[_builtins.str]]:

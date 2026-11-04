@@ -139,6 +139,12 @@ func (ContainerRegistryState) ElementType() reflect.Type {
 	return reflect.TypeOf((*containerRegistryState)(nil)).Elem()
 }
 
+// ContainerRegistryExists checks whether an existing ContainerRegistry resource with the given ID exists.
+func ContainerRegistryExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ContainerRegistryState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("digitalocean:index/containerRegistry:ContainerRegistry", id, state, "", opts...)
+}
+
 type containerRegistryArgs struct {
 	// The name of the container_registry
 	Name *string `pulumi:"name"`

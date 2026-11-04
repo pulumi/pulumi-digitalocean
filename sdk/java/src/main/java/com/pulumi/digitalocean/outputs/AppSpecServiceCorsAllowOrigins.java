@@ -19,11 +19,10 @@ public final class AppSpecServiceCorsAllowOrigins {
     /**
      * @return Prefix-based match.
      * 
-     * @deprecated
-     * Prefix-based matching has been deprecated in favor of regex-based matching.
+     * @deprecated Prefix-based matching has been deprecated in favor of regex-based matching.
      * 
      */
-    @Deprecated /* Prefix-based matching has been deprecated in favor of regex-based matching. */
+    @Deprecated
     private @Nullable String prefix;
     /**
      * @return RE2 style regex-based match.
@@ -42,11 +41,10 @@ public final class AppSpecServiceCorsAllowOrigins {
     /**
      * @return Prefix-based match.
      * 
-     * @deprecated
-     * Prefix-based matching has been deprecated in favor of regex-based matching.
+     * @deprecated Prefix-based matching has been deprecated in favor of regex-based matching.
      * 
      */
-    @Deprecated /* Prefix-based matching has been deprecated in favor of regex-based matching. */
+    @Deprecated
     public Optional<String> prefix() {
         return Optional.ofNullable(this.prefix);
     }

@@ -155,6 +155,12 @@ func (AgentPlatformIndexingJobCancelState) ElementType() reflect.Type {
 	return reflect.TypeOf((*agentPlatformIndexingJobCancelState)(nil)).Elem()
 }
 
+// AgentPlatformIndexingJobCancelExists checks whether an existing AgentPlatformIndexingJobCancel resource with the given ID exists.
+func AgentPlatformIndexingJobCancelExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AgentPlatformIndexingJobCancelState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("digitalocean:index/agentPlatformIndexingJobCancel:AgentPlatformIndexingJobCancel", id, state, "", opts...)
+}
+
 type agentPlatformIndexingJobCancelArgs struct {
 	// The UUID of the indexing job to cancel.
 	Uuid string `pulumi:"uuid"`

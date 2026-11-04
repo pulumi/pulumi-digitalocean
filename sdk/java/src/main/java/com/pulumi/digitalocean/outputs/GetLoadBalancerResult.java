@@ -22,11 +22,10 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetLoadBalancerResult {
     /**
-     * @deprecated
-     * This field has been deprecated. You can no longer specify an algorithm for load balancers.
+     * @deprecated This field has been deprecated. You can no longer specify an algorithm for load balancers.
      * 
      */
-    @Deprecated /* This field has been deprecated. You can no longer specify an algorithm for load balancers. */
+    @Deprecated
     private String algorithm;
     private Boolean disableLetsEncryptDnsRecords;
     private List<GetLoadBalancerDomain> domains;
@@ -59,11 +58,10 @@ public final class GetLoadBalancerResult {
 
     private GetLoadBalancerResult() {}
     /**
-     * @deprecated
-     * This field has been deprecated. You can no longer specify an algorithm for load balancers.
+     * @deprecated This field has been deprecated. You can no longer specify an algorithm for load balancers.
      * 
      */
-    @Deprecated /* This field has been deprecated. You can no longer specify an algorithm for load balancers. */
+    @Deprecated
     public String algorithm() {
         return this.algorithm;
     }

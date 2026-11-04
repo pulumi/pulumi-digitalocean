@@ -149,6 +149,12 @@ func (NfsSnapshotState) ElementType() reflect.Type {
 	return reflect.TypeOf((*nfsSnapshotState)(nil)).Elem()
 }
 
+// NfsSnapshotExists checks whether an existing NfsSnapshot resource with the given ID exists.
+func NfsSnapshotExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NfsSnapshotState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("digitalocean:index/nfsSnapshot:NfsSnapshot", id, state, "", opts...)
+}
+
 type nfsSnapshotArgs struct {
 	// A name for the NFS snapshot. Must be lowercase and composed only of numbers, letters, and "-", up to a limit of 64 characters.
 	Name *string `pulumi:"name"`

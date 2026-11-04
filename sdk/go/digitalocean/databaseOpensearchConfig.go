@@ -382,6 +382,12 @@ func (DatabaseOpensearchConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*databaseOpensearchConfigState)(nil)).Elem()
 }
 
+// DatabaseOpensearchConfigExists checks whether an existing DatabaseOpensearchConfig resource with the given ID exists.
+func DatabaseOpensearchConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DatabaseOpensearchConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("digitalocean:index/databaseOpensearchConfig:DatabaseOpensearchConfig", id, state, "", opts...)
+}
+
 type databaseOpensearchConfigArgs struct {
 	// Specifices whether to allow automatic creation of indices. Default: `true`
 	ActionAutoCreateIndexEnabled *bool `pulumi:"actionAutoCreateIndexEnabled"`

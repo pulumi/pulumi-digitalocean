@@ -203,6 +203,12 @@ func (VectorDatabaseState) ElementType() reflect.Type {
 	return reflect.TypeOf((*vectorDatabaseState)(nil)).Elem()
 }
 
+// VectorDatabaseExists checks whether an existing VectorDatabase resource with the given ID exists.
+func VectorDatabaseExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VectorDatabaseState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("digitalocean:index/vectorDatabase:VectorDatabase", id, state, "", opts...)
+}
+
 type vectorDatabaseArgs struct {
 	// Advanced configuration for the vector database. The structure is documented below.
 	Config *VectorDatabaseConfig `pulumi:"config"`

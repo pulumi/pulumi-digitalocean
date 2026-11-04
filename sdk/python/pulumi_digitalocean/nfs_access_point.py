@@ -461,6 +461,30 @@ class NfsAccessPoint(pulumi.CustomResource):
         __props__.__dict__["vpc_id"] = vpc_id
         return NfsAccessPoint(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_policy: pulumi.Input[Optional[Union['NfsAccessPointAccessPolicyArgs', 'NfsAccessPointAccessPolicyArgsDict', 'outputs.NfsAccessPointAccessPolicy']]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            is_default: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            path: pulumi.Input[Optional[_builtins.str]] = None,
+            share_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessPolicy"] = access_policy
+        __props__["createdAt"] = created_at
+        __props__["isDefault"] = is_default
+        __props__["name"] = name
+        __props__["path"] = path
+        __props__["shareId"] = share_id
+        __props__["status"] = status
+        __props__["updatedAt"] = updated_at
+        __props__["vpcId"] = vpc_id
+        return pulumi.runtime.exists_resource(None, 'digitalocean:index/nfsAccessPoint:NfsAccessPoint', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessPolicy")
     def access_policy(self) -> pulumi.Output['outputs.NfsAccessPointAccessPolicy']:

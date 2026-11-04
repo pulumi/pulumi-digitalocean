@@ -407,6 +407,24 @@ class DatabaseMongodbConfig(pulumi.CustomResource):
         __props__.__dict__["verbosity"] = verbosity
         return DatabaseMongodbConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            default_read_concern: pulumi.Input[Optional[_builtins.str]] = None,
+            default_write_concern: pulumi.Input[Optional[_builtins.str]] = None,
+            slow_op_threshold_ms: pulumi.Input[Optional[_builtins.int]] = None,
+            transaction_lifetime_limit_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            verbosity: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["clusterId"] = cluster_id
+        __props__["defaultReadConcern"] = default_read_concern
+        __props__["defaultWriteConcern"] = default_write_concern
+        __props__["slowOpThresholdMs"] = slow_op_threshold_ms
+        __props__["transactionLifetimeLimitSeconds"] = transaction_lifetime_limit_seconds
+        __props__["verbosity"] = verbosity
+        return pulumi.runtime.exists_resource(None, 'digitalocean:index/databaseMongodbConfig:DatabaseMongodbConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Output[_builtins.str]:

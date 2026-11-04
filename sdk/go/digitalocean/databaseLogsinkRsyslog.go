@@ -335,6 +335,12 @@ func (DatabaseLogsinkRsyslogState) ElementType() reflect.Type {
 	return reflect.TypeOf((*databaseLogsinkRsyslogState)(nil)).Elem()
 }
 
+// DatabaseLogsinkRsyslogExists checks whether an existing DatabaseLogsinkRsyslog resource with the given ID exists.
+func DatabaseLogsinkRsyslogExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DatabaseLogsinkRsyslogState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("digitalocean:index/databaseLogsinkRsyslog:DatabaseLogsinkRsyslog", id, state, "", opts...)
+}
+
 type databaseLogsinkRsyslogArgs struct {
 	// CA certificate for TLS verification in PEM format. Can be specified using `file()` function.
 	CaCert *string `pulumi:"caCert"`

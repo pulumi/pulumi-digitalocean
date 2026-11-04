@@ -80,6 +80,12 @@ func (AgentPlatformAgentKnowledgeBaseAttachmentState) ElementType() reflect.Type
 	return reflect.TypeOf((*agentPlatformAgentKnowledgeBaseAttachmentState)(nil)).Elem()
 }
 
+// AgentPlatformAgentKnowledgeBaseAttachmentExists checks whether an existing AgentPlatformAgentKnowledgeBaseAttachment resource with the given ID exists.
+func AgentPlatformAgentKnowledgeBaseAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AgentPlatformAgentKnowledgeBaseAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("digitalocean:index/agentPlatformAgentKnowledgeBaseAttachment:AgentPlatformAgentKnowledgeBaseAttachment", id, state, "", opts...)
+}
+
 type agentPlatformAgentKnowledgeBaseAttachmentArgs struct {
 	// A unique identifier for an agent.
 	AgentUuid string `pulumi:"agentUuid"`

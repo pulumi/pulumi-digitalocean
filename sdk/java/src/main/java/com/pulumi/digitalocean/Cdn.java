@@ -132,11 +132,10 @@ public class Cdn extends com.pulumi.resources.CustomResource {
     /**
      * **Deprecated** The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
      * 
-     * @deprecated
-     * Certificate IDs may change, for example when a Let&#39;s Encrypt certificate is auto-renewed. Please specify &#39;certificate_name&#39; instead.
+     * @deprecated Certificate IDs may change, for example when a Let&#39;s Encrypt certificate is auto-renewed. Please specify &#39;certificate_name&#39; instead.
      * 
      */
-    @Deprecated /* Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead. */
+    @Deprecated
     @Export(name="certificateId", refs={String.class}, tree="[0]")
     private Output<String> certificateId;
 

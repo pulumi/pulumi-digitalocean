@@ -210,6 +210,12 @@ func (ContainerRegistryDockerCredentialsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*containerRegistryDockerCredentialsState)(nil)).Elem()
 }
 
+// ContainerRegistryDockerCredentialsExists checks whether an existing ContainerRegistryDockerCredentials resource with the given ID exists.
+func ContainerRegistryDockerCredentialsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ContainerRegistryDockerCredentialsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("digitalocean:index/containerRegistryDockerCredentials:ContainerRegistryDockerCredentials", id, state, "", opts...)
+}
+
 type containerRegistryDockerCredentialsArgs struct {
 	// The amount of time to pass before the Docker credentials expire in seconds. Defaults to 1576800000, or roughly 50 years. Must be greater than 0 and less than 1576800000.
 	ExpirySeconds *int `pulumi:"expirySeconds"`

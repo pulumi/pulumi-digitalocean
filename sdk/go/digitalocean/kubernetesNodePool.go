@@ -253,6 +253,12 @@ func (KubernetesNodePoolState) ElementType() reflect.Type {
 	return reflect.TypeOf((*kubernetesNodePoolState)(nil)).Elem()
 }
 
+// KubernetesNodePoolExists checks whether an existing KubernetesNodePool resource with the given ID exists.
+func KubernetesNodePoolExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *KubernetesNodePoolState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("digitalocean:index/kubernetesNodePool:KubernetesNodePool", id, state, "", opts...)
+}
+
 type kubernetesNodePoolArgs struct {
 	// Enable auto-scaling of the number of nodes in the node pool within the given min/max range.
 	AutoScale *bool `pulumi:"autoScale"`

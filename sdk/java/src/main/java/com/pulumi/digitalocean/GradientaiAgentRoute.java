@@ -16,11 +16,10 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * @deprecated
- * digitalocean.GradientaiAgentRoute has been deprecated in favor of digitalocean.AgentPlatformAgentRoute
+ * @deprecated digitalocean.GradientaiAgentRoute has been deprecated in favor of digitalocean.AgentPlatformAgentRoute
  * 
  */
-@Deprecated /* digitalocean.GradientaiAgentRoute has been deprecated in favor of digitalocean.AgentPlatformAgentRoute */
+@Deprecated
 @ResourceType(type="digitalocean:index/gradientaiAgentRoute:GradientaiAgentRoute")
 public class GradientaiAgentRoute extends com.pulumi.resources.CustomResource {
     /**

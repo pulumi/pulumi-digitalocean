@@ -35,11 +35,10 @@ public final class GetAppSpecFunction {
     /**
      * @return The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
      * 
-     * @deprecated
-     * Service level CORS rules are deprecated in favor of ingresses
+     * @deprecated Service level CORS rules are deprecated in favor of ingresses
      * 
      */
-    @Deprecated /* Service level CORS rules are deprecated in favor of ingresses */
+    @Deprecated
     private @Nullable GetAppSpecFunctionCors cors;
     /**
      * @return Describes an environment variable made available to an app competent.
@@ -72,11 +71,10 @@ public final class GetAppSpecFunction {
      */
     private String name;
     /**
-     * @deprecated
-     * Service level routes are deprecated in favor of ingresses
+     * @deprecated Service level routes are deprecated in favor of ingresses
      * 
      */
-    @Deprecated /* Service level routes are deprecated in favor of ingresses */
+    @Deprecated
     private List<GetAppSpecFunctionRoute> routes;
     /**
      * @return An optional path to the working directory to use for the build.
@@ -102,11 +100,10 @@ public final class GetAppSpecFunction {
     /**
      * @return The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
      * 
-     * @deprecated
-     * Service level CORS rules are deprecated in favor of ingresses
+     * @deprecated Service level CORS rules are deprecated in favor of ingresses
      * 
      */
-    @Deprecated /* Service level CORS rules are deprecated in favor of ingresses */
+    @Deprecated
     public Optional<GetAppSpecFunctionCors> cors() {
         return Optional.ofNullable(this.cors);
     }
@@ -153,11 +150,10 @@ public final class GetAppSpecFunction {
         return this.name;
     }
     /**
-     * @deprecated
-     * Service level routes are deprecated in favor of ingresses
+     * @deprecated Service level routes are deprecated in favor of ingresses
      * 
      */
-    @Deprecated /* Service level routes are deprecated in favor of ingresses */
+    @Deprecated
     public List<GetAppSpecFunctionRoute> routes() {
         return this.routes;
     }

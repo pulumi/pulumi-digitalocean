@@ -131,6 +131,12 @@ func (PartnerAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*partnerAttachmentState)(nil)).Elem()
 }
 
+// PartnerAttachmentExists checks whether an existing PartnerAttachment resource with the given ID exists.
+func PartnerAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PartnerAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("digitalocean:index/partnerAttachment:PartnerAttachment", id, state, "", opts...)
+}
+
 type partnerAttachmentArgs struct {
 	Bgp *PartnerAttachmentBgp `pulumi:"bgp"`
 	// The connection bandwidth in Mbps

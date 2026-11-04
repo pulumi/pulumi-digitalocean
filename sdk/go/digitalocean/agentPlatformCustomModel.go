@@ -206,6 +206,12 @@ func (AgentPlatformCustomModelState) ElementType() reflect.Type {
 	return reflect.TypeOf((*agentPlatformCustomModelState)(nil)).Elem()
 }
 
+// AgentPlatformCustomModelExists checks whether an existing AgentPlatformCustomModel resource with the given ID exists.
+func AgentPlatformCustomModelExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AgentPlatformCustomModelState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("digitalocean:index/agentPlatformCustomModel:AgentPlatformCustomModel", id, state, "", opts...)
+}
+
 type agentPlatformCustomModelArgs struct {
 	// Whether the caller accepts the model provider's terms and conditions. Write-only.
 	AcceptTermsAndConditions *bool `pulumi:"acceptTermsAndConditions"`

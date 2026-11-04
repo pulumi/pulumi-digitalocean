@@ -85,6 +85,12 @@ func (ReservedIpv6AssignmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*reservedIpv6AssignmentState)(nil)).Elem()
 }
 
+// ReservedIpv6AssignmentExists checks whether an existing ReservedIpv6Assignment resource with the given ID exists.
+func ReservedIpv6AssignmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ReservedIpv6AssignmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("digitalocean:index/reservedIpv6Assignment:ReservedIpv6Assignment", id, state, "", opts...)
+}
+
 type reservedIpv6AssignmentArgs struct {
 	// The ID of Droplet that the reserved IPv6 will be assigned to.
 	DropletId int `pulumi:"dropletId"`

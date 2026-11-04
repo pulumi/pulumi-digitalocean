@@ -148,6 +148,12 @@ func (DedicatedInferenceTokenState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dedicatedInferenceTokenState)(nil)).Elem()
 }
 
+// DedicatedInferenceTokenExists checks whether an existing DedicatedInferenceToken resource with the given ID exists.
+func DedicatedInferenceTokenExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DedicatedInferenceTokenState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("digitalocean:index/dedicatedInferenceToken:DedicatedInferenceToken", id, state, "", opts...)
+}
+
 type dedicatedInferenceTokenArgs struct {
 	// The ID of the dedicated inference endpoint this token belongs to. Changing this forces a new resource.
 	DedicatedInferenceId string `pulumi:"dedicatedInferenceId"`

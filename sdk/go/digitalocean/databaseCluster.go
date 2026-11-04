@@ -506,6 +506,12 @@ func (DatabaseClusterState) ElementType() reflect.Type {
 	return reflect.TypeOf((*databaseClusterState)(nil)).Elem()
 }
 
+// DatabaseClusterExists checks whether an existing DatabaseCluster resource with the given ID exists.
+func DatabaseClusterExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DatabaseClusterState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("digitalocean:index/databaseCluster:DatabaseCluster", id, state, "", opts...)
+}
+
 type databaseClusterArgs struct {
 	BackupRestore *DatabaseClusterBackupRestore `pulumi:"backupRestore"`
 	// Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `valkey` for Valkey, `mongodb` for MongoDB, or `kafka` for Kafka).

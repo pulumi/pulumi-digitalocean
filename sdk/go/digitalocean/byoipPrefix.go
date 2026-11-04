@@ -157,6 +157,12 @@ func (ByoipPrefixState) ElementType() reflect.Type {
 	return reflect.TypeOf((*byoipPrefixState)(nil)).Elem()
 }
 
+// ByoipPrefixExists checks whether an existing ByoipPrefix resource with the given ID exists.
+func ByoipPrefixExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ByoipPrefixState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("digitalocean:index/byoipPrefix:ByoipPrefix", id, state, "", opts...)
+}
+
 type byoipPrefixArgs struct {
 	// A boolean indicating whether the prefix should be advertised.
 	// Defaults to `false`.

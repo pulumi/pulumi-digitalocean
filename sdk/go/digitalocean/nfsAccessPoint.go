@@ -186,6 +186,12 @@ func (NfsAccessPointState) ElementType() reflect.Type {
 	return reflect.TypeOf((*nfsAccessPointState)(nil)).Elem()
 }
 
+// NfsAccessPointExists checks whether an existing NfsAccessPoint resource with the given ID exists.
+func NfsAccessPointExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NfsAccessPointState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("digitalocean:index/nfsAccessPoint:NfsAccessPoint", id, state, "", opts...)
+}
+
 type nfsAccessPointArgs struct {
 	// Access policy configuration for the access point. See Access Policy below.
 	AccessPolicy NfsAccessPointAccessPolicy `pulumi:"accessPolicy"`

@@ -271,6 +271,20 @@ class Domain(pulumi.CustomResource):
         __props__.__dict__["ttl"] = ttl
         return Domain(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            domain_urn: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            ttl: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["domainUrn"] = domain_urn
+        __props__["ipAddress"] = ip_address
+        __props__["name"] = name
+        __props__["ttl"] = ttl
+        return pulumi.runtime.exists_resource(None, 'digitalocean:index/domain:Domain', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="domainUrn")
     def domain_urn(self) -> pulumi.Output[_builtins.str]:

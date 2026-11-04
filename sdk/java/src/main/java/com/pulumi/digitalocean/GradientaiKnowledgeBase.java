@@ -19,11 +19,10 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * @deprecated
- * digitalocean.GradientaiKnowledgeBase has been deprecated in favor of digitalocean.AgentPlatformKnowledgeBase
+ * @deprecated digitalocean.GradientaiKnowledgeBase has been deprecated in favor of digitalocean.AgentPlatformKnowledgeBase
  * 
  */
-@Deprecated /* digitalocean.GradientaiKnowledgeBase has been deprecated in favor of digitalocean.AgentPlatformKnowledgeBase */
+@Deprecated
 @ResourceType(type="digitalocean:index/gradientaiKnowledgeBase:GradientaiKnowledgeBase")
 public class GradientaiKnowledgeBase extends com.pulumi.resources.CustomResource {
     /**

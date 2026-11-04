@@ -375,11 +375,10 @@ public class Droplet extends com.pulumi.resources.CustomResource {
      * **Deprecated** Boolean controlling if private networking
      * is enabled. This parameter has been deprecated. Use `vpcUuid` instead to specify a VPC network for the Droplet. If no `vpcUuid` is provided, the Droplet will be placed in your account&#39;s default VPC for the region.
      * 
-     * @deprecated
-     * This parameter has been deprecated. Use `vpcUuid` instead to specify a VPC network for the Droplet. If no `vpcUuid` is provided, the Droplet will be placed in your account&#39;s default VPC for the region.
+     * @deprecated This parameter has been deprecated. Use `vpcUuid` instead to specify a VPC network for the Droplet. If no `vpcUuid` is provided, the Droplet will be placed in your account&#39;s default VPC for the region.
      * 
      */
-    @Deprecated /* This parameter has been deprecated. Use `vpcUuid` instead to specify a VPC network for the Droplet. If no `vpcUuid` is provided, the Droplet will be placed in your account's default VPC for the region. */
+    @Deprecated
     @Export(name="privateNetworking", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> privateNetworking;
 

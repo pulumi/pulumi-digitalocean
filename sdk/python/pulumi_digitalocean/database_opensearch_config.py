@@ -1760,6 +1760,90 @@ class DatabaseOpensearchConfig(pulumi.CustomResource):
         __props__.__dict__["thread_pool_write_size"] = thread_pool_write_size
         return DatabaseOpensearchConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            action_auto_create_index_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            action_destructive_requires_name: pulumi.Input[Optional[_builtins.bool]] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_max_shards_per_node: pulumi.Input[Optional[_builtins.int]] = None,
+            cluster_routing_allocation_node_concurrent_recoveries: pulumi.Input[Optional[_builtins.int]] = None,
+            enable_security_audit: pulumi.Input[Optional[_builtins.bool]] = None,
+            http_max_content_length_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+            http_max_header_size_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+            http_max_initial_line_length_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+            indices_fielddata_cache_size_percentage: pulumi.Input[Optional[_builtins.int]] = None,
+            indices_memory_index_buffer_size_percentage: pulumi.Input[Optional[_builtins.int]] = None,
+            indices_memory_max_index_buffer_size_mb: pulumi.Input[Optional[_builtins.int]] = None,
+            indices_memory_min_index_buffer_size_mb: pulumi.Input[Optional[_builtins.int]] = None,
+            indices_queries_cache_size_percentage: pulumi.Input[Optional[_builtins.int]] = None,
+            indices_query_bool_max_clause_count: pulumi.Input[Optional[_builtins.int]] = None,
+            indices_recovery_max_concurrent_file_chunks: pulumi.Input[Optional[_builtins.int]] = None,
+            indices_recovery_max_mb_per_sec: pulumi.Input[Optional[_builtins.int]] = None,
+            ism_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            ism_history_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            ism_history_max_age_hours: pulumi.Input[Optional[_builtins.int]] = None,
+            ism_history_max_docs: pulumi.Input[Optional[_builtins.int]] = None,
+            ism_history_rollover_check_period_hours: pulumi.Input[Optional[_builtins.int]] = None,
+            ism_history_rollover_retention_period_days: pulumi.Input[Optional[_builtins.int]] = None,
+            override_main_response_version: pulumi.Input[Optional[_builtins.bool]] = None,
+            plugins_alerting_filter_by_backend_roles_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            reindex_remote_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            script_max_compilations_rate: pulumi.Input[Optional[_builtins.str]] = None,
+            search_max_buckets: pulumi.Input[Optional[_builtins.int]] = None,
+            thread_pool_analyze_queue_size: pulumi.Input[Optional[_builtins.int]] = None,
+            thread_pool_analyze_size: pulumi.Input[Optional[_builtins.int]] = None,
+            thread_pool_force_merge_size: pulumi.Input[Optional[_builtins.int]] = None,
+            thread_pool_get_queue_size: pulumi.Input[Optional[_builtins.int]] = None,
+            thread_pool_get_size: pulumi.Input[Optional[_builtins.int]] = None,
+            thread_pool_search_queue_size: pulumi.Input[Optional[_builtins.int]] = None,
+            thread_pool_search_size: pulumi.Input[Optional[_builtins.int]] = None,
+            thread_pool_search_throttled_queue_size: pulumi.Input[Optional[_builtins.int]] = None,
+            thread_pool_search_throttled_size: pulumi.Input[Optional[_builtins.int]] = None,
+            thread_pool_write_queue_size: pulumi.Input[Optional[_builtins.int]] = None,
+            thread_pool_write_size: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["actionAutoCreateIndexEnabled"] = action_auto_create_index_enabled
+        __props__["actionDestructiveRequiresName"] = action_destructive_requires_name
+        __props__["clusterId"] = cluster_id
+        __props__["clusterMaxShardsPerNode"] = cluster_max_shards_per_node
+        __props__["clusterRoutingAllocationNodeConcurrentRecoveries"] = cluster_routing_allocation_node_concurrent_recoveries
+        __props__["enableSecurityAudit"] = enable_security_audit
+        __props__["httpMaxContentLengthBytes"] = http_max_content_length_bytes
+        __props__["httpMaxHeaderSizeBytes"] = http_max_header_size_bytes
+        __props__["httpMaxInitialLineLengthBytes"] = http_max_initial_line_length_bytes
+        __props__["indicesFielddataCacheSizePercentage"] = indices_fielddata_cache_size_percentage
+        __props__["indicesMemoryIndexBufferSizePercentage"] = indices_memory_index_buffer_size_percentage
+        __props__["indicesMemoryMaxIndexBufferSizeMb"] = indices_memory_max_index_buffer_size_mb
+        __props__["indicesMemoryMinIndexBufferSizeMb"] = indices_memory_min_index_buffer_size_mb
+        __props__["indicesQueriesCacheSizePercentage"] = indices_queries_cache_size_percentage
+        __props__["indicesQueryBoolMaxClauseCount"] = indices_query_bool_max_clause_count
+        __props__["indicesRecoveryMaxConcurrentFileChunks"] = indices_recovery_max_concurrent_file_chunks
+        __props__["indicesRecoveryMaxMbPerSec"] = indices_recovery_max_mb_per_sec
+        __props__["ismEnabled"] = ism_enabled
+        __props__["ismHistoryEnabled"] = ism_history_enabled
+        __props__["ismHistoryMaxAgeHours"] = ism_history_max_age_hours
+        __props__["ismHistoryMaxDocs"] = ism_history_max_docs
+        __props__["ismHistoryRolloverCheckPeriodHours"] = ism_history_rollover_check_period_hours
+        __props__["ismHistoryRolloverRetentionPeriodDays"] = ism_history_rollover_retention_period_days
+        __props__["overrideMainResponseVersion"] = override_main_response_version
+        __props__["pluginsAlertingFilterByBackendRolesEnabled"] = plugins_alerting_filter_by_backend_roles_enabled
+        __props__["reindexRemoteWhitelists"] = reindex_remote_whitelists
+        __props__["scriptMaxCompilationsRate"] = script_max_compilations_rate
+        __props__["searchMaxBuckets"] = search_max_buckets
+        __props__["threadPoolAnalyzeQueueSize"] = thread_pool_analyze_queue_size
+        __props__["threadPoolAnalyzeSize"] = thread_pool_analyze_size
+        __props__["threadPoolForceMergeSize"] = thread_pool_force_merge_size
+        __props__["threadPoolGetQueueSize"] = thread_pool_get_queue_size
+        __props__["threadPoolGetSize"] = thread_pool_get_size
+        __props__["threadPoolSearchQueueSize"] = thread_pool_search_queue_size
+        __props__["threadPoolSearchSize"] = thread_pool_search_size
+        __props__["threadPoolSearchThrottledQueueSize"] = thread_pool_search_throttled_queue_size
+        __props__["threadPoolSearchThrottledSize"] = thread_pool_search_throttled_size
+        __props__["threadPoolWriteQueueSize"] = thread_pool_write_queue_size
+        __props__["threadPoolWriteSize"] = thread_pool_write_size
+        return pulumi.runtime.exists_resource(None, 'digitalocean:index/databaseOpensearchConfig:DatabaseOpensearchConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="actionAutoCreateIndexEnabled")
     def action_auto_create_index_enabled(self) -> pulumi.Output[_builtins.bool]:

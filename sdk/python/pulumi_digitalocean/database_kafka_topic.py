@@ -440,6 +440,24 @@ class DatabaseKafkaTopic(pulumi.CustomResource):
         __props__.__dict__["state"] = state
         return DatabaseKafkaTopic(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabaseKafkaTopicConfigArgs', 'DatabaseKafkaTopicConfigArgsDict', 'outputs.DatabaseKafkaTopicConfig']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            partition_count: pulumi.Input[Optional[_builtins.int]] = None,
+            replication_factor: pulumi.Input[Optional[_builtins.int]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["clusterId"] = cluster_id
+        __props__["configs"] = configs
+        __props__["name"] = name
+        __props__["partitionCount"] = partition_count
+        __props__["replicationFactor"] = replication_factor
+        __props__["state"] = state
+        return pulumi.runtime.exists_resource(None, 'digitalocean:index/databaseKafkaTopic:DatabaseKafkaTopic', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Output[_builtins.str]:

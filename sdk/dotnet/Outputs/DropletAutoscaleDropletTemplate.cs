@@ -46,7 +46,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Tags;
         /// <summary>
-        /// Custom user data that can be added to the Droplet Autoscale pool underlying resource(s). This can be a 
+        /// Custom user data that can be added to the Droplet Autoscale pool underlying resource(s). This can be a
         /// cloud init script that user may configure to setup their application workload.
         /// </summary>
         public readonly string? UserData;

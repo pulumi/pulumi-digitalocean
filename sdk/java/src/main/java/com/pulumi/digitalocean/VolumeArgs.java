@@ -39,22 +39,20 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Filesystem type (`xfs` or `ext4`) for the block storage volume.
      * 
-     * @deprecated
-     * This fields functionality has been replaced by `initialFilesystemType`. The property will still remain as a computed attribute representing the current volumes filesystem type.
+     * @deprecated This fields functionality has been replaced by `initialFilesystemType`. The property will still remain as a computed attribute representing the current volumes filesystem type.
      * 
      */
-    @Deprecated /* This fields functionality has been replaced by `initialFilesystemType`. The property will still remain as a computed attribute representing the current volumes filesystem type. */
+    @Deprecated
     @Import(name="filesystemType")
     private @Nullable Output<String> filesystemType;
 
     /**
      * @return Filesystem type (`xfs` or `ext4`) for the block storage volume.
      * 
-     * @deprecated
-     * This fields functionality has been replaced by `initialFilesystemType`. The property will still remain as a computed attribute representing the current volumes filesystem type.
+     * @deprecated This fields functionality has been replaced by `initialFilesystemType`. The property will still remain as a computed attribute representing the current volumes filesystem type.
      * 
      */
-    @Deprecated /* This fields functionality has been replaced by `initialFilesystemType`. The property will still remain as a computed attribute representing the current volumes filesystem type. */
+    @Deprecated
     public Optional<Output<String>> filesystemType() {
         return Optional.ofNullable(this.filesystemType);
     }
@@ -222,11 +220,10 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * This fields functionality has been replaced by `initialFilesystemType`. The property will still remain as a computed attribute representing the current volumes filesystem type.
+         * @deprecated This fields functionality has been replaced by `initialFilesystemType`. The property will still remain as a computed attribute representing the current volumes filesystem type.
          * 
          */
-        @Deprecated /* This fields functionality has been replaced by `initialFilesystemType`. The property will still remain as a computed attribute representing the current volumes filesystem type. */
+        @Deprecated
         public Builder filesystemType(@Nullable Output<String> filesystemType) {
             $.filesystemType = filesystemType;
             return this;
@@ -237,11 +234,10 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * This fields functionality has been replaced by `initialFilesystemType`. The property will still remain as a computed attribute representing the current volumes filesystem type.
+         * @deprecated This fields functionality has been replaced by `initialFilesystemType`. The property will still remain as a computed attribute representing the current volumes filesystem type.
          * 
          */
-        @Deprecated /* This fields functionality has been replaced by `initialFilesystemType`. The property will still remain as a computed attribute representing the current volumes filesystem type. */
+        @Deprecated
         public Builder filesystemType(String filesystemType) {
             return filesystemType(Output.of(filesystemType));
         }

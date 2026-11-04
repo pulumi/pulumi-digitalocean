@@ -31,11 +31,10 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
      * **Deprecated** This field has been deprecated. You can no longer specify an algorithm for load balancers.
      * or `leastConnections`. The default value is `roundRobin`.
      * 
-     * @deprecated
-     * This field has been deprecated. You can no longer specify an algorithm for load balancers.
+     * @deprecated This field has been deprecated. You can no longer specify an algorithm for load balancers.
      * 
      */
-    @Deprecated /* This field has been deprecated. You can no longer specify an algorithm for load balancers. */
+    @Deprecated
     @Import(name="algorithm")
     private @Nullable Output<Either<String,Algorithm>> algorithm;
 
@@ -43,11 +42,10 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
      * @return **Deprecated** This field has been deprecated. You can no longer specify an algorithm for load balancers.
      * or `leastConnections`. The default value is `roundRobin`.
      * 
-     * @deprecated
-     * This field has been deprecated. You can no longer specify an algorithm for load balancers.
+     * @deprecated This field has been deprecated. You can no longer specify an algorithm for load balancers.
      * 
      */
-    @Deprecated /* This field has been deprecated. You can no longer specify an algorithm for load balancers. */
+    @Deprecated
     public Optional<Output<Either<String,Algorithm>>> algorithm() {
         return Optional.ofNullable(this.algorithm);
     }
@@ -544,11 +542,10 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * This field has been deprecated. You can no longer specify an algorithm for load balancers.
+         * @deprecated This field has been deprecated. You can no longer specify an algorithm for load balancers.
          * 
          */
-        @Deprecated /* This field has been deprecated. You can no longer specify an algorithm for load balancers. */
+        @Deprecated
         public Builder algorithm(@Nullable Output<Either<String,Algorithm>> algorithm) {
             $.algorithm = algorithm;
             return this;
@@ -560,11 +557,10 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * This field has been deprecated. You can no longer specify an algorithm for load balancers.
+         * @deprecated This field has been deprecated. You can no longer specify an algorithm for load balancers.
          * 
          */
-        @Deprecated /* This field has been deprecated. You can no longer specify an algorithm for load balancers. */
+        @Deprecated
         public Builder algorithm(Either<String,Algorithm> algorithm) {
             return algorithm(Output.of(algorithm));
         }
@@ -575,11 +571,10 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * This field has been deprecated. You can no longer specify an algorithm for load balancers.
+         * @deprecated This field has been deprecated. You can no longer specify an algorithm for load balancers.
          * 
          */
-        @Deprecated /* This field has been deprecated. You can no longer specify an algorithm for load balancers. */
+        @Deprecated
         public Builder algorithm(String algorithm) {
             return algorithm(Either.ofLeft(algorithm));
         }
@@ -590,11 +585,10 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * This field has been deprecated. You can no longer specify an algorithm for load balancers.
+         * @deprecated This field has been deprecated. You can no longer specify an algorithm for load balancers.
          * 
          */
-        @Deprecated /* This field has been deprecated. You can no longer specify an algorithm for load balancers. */
+        @Deprecated
         public Builder algorithm(Algorithm algorithm) {
             return algorithm(Either.ofRight(algorithm));
         }

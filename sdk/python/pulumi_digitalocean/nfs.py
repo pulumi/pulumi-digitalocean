@@ -539,6 +539,32 @@ class Nfs(pulumi.CustomResource):
         __props__.__dict__["vpc_ids"] = vpc_ids
         return Nfs(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            host: pulumi.Input[Optional[_builtins.str]] = None,
+            mount_path: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            performance_tier: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            size: pulumi.Input[Optional[_builtins.int]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["host"] = host
+        __props__["mountPath"] = mount_path
+        __props__["name"] = name
+        __props__["performanceTier"] = performance_tier
+        __props__["region"] = region
+        __props__["size"] = size
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["vpcId"] = vpc_id
+        __props__["vpcIds"] = vpc_ids
+        return pulumi.runtime.exists_resource(None, 'digitalocean:index/nfs:Nfs', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def host(self) -> pulumi.Output[_builtins.str]:

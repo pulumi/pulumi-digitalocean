@@ -618,6 +618,28 @@ class DatabaseLogsinkOpensearch(pulumi.CustomResource):
         __props__.__dict__["timeout_seconds"] = timeout_seconds
         return DatabaseLogsinkOpensearch(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            ca_cert: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            index_days_max: pulumi.Input[Optional[_builtins.int]] = None,
+            index_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            logsink_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["caCert"] = ca_cert
+        __props__["clusterId"] = cluster_id
+        __props__["endpoint"] = endpoint
+        __props__["indexDaysMax"] = index_days_max
+        __props__["indexPrefix"] = index_prefix
+        __props__["logsinkId"] = logsink_id
+        __props__["name"] = name
+        __props__["timeoutSeconds"] = timeout_seconds
+        return pulumi.runtime.exists_resource(None, 'digitalocean:index/databaseLogsinkOpensearch:DatabaseLogsinkOpensearch', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="caCert")
     def ca_cert(self) -> pulumi.Output[Optional[_builtins.str]]:

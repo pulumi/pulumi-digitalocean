@@ -250,6 +250,12 @@ func (SpacesBucketState) ElementType() reflect.Type {
 	return reflect.TypeOf((*spacesBucketState)(nil)).Elem()
 }
 
+// SpacesBucketExists checks whether an existing SpacesBucket resource with the given ID exists.
+func SpacesBucketExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SpacesBucketState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("digitalocean:index/spacesBucket:SpacesBucket", id, state, "", opts...)
+}
+
 type spacesBucketArgs struct {
 	// Canned ACL applied on bucket creation: `private` or `public-read` (Defaults to `private`)
 	Acl *string `pulumi:"acl"`

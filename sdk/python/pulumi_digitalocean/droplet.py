@@ -1361,6 +1361,74 @@ class Droplet(pulumi.CustomResource):
         __props__.__dict__["vpc_uuid"] = vpc_uuid
         return Droplet(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            backup_policy: pulumi.Input[Optional[Union['DropletBackupPolicyArgs', 'DropletBackupPolicyArgsDict', 'outputs.DropletBackupPolicy']]] = None,
+            backups: pulumi.Input[Optional[_builtins.bool]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            disk: pulumi.Input[Optional[_builtins.int]] = None,
+            droplet_agent: pulumi.Input[Optional[_builtins.bool]] = None,
+            droplet_urn: pulumi.Input[Optional[_builtins.str]] = None,
+            gpu_partition_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            graceful_shutdown: pulumi.Input[Optional[_builtins.bool]] = None,
+            image: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv4_address: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv4_address_private: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
+            ipv6_address: pulumi.Input[Optional[_builtins.str]] = None,
+            locked: pulumi.Input[Optional[_builtins.bool]] = None,
+            memory: pulumi.Input[Optional[_builtins.int]] = None,
+            monitoring: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            price_hourly: pulumi.Input[Optional[_builtins.float]] = None,
+            price_monthly: pulumi.Input[Optional[_builtins.float]] = None,
+            private_networking: pulumi.Input[Optional[_builtins.bool]] = None,
+            public_networking: pulumi.Input[Optional[_builtins.bool]] = None,
+            region: pulumi.Input[Optional[Union[_builtins.str, 'Region']]] = None,
+            resize_disk: pulumi.Input[Optional[_builtins.bool]] = None,
+            size: pulumi.Input[Optional[Union[_builtins.str, 'DropletSlug']]] = None,
+            ssh_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            user_data: pulumi.Input[Optional[_builtins.str]] = None,
+            vcpus: pulumi.Input[Optional[_builtins.int]] = None,
+            volume_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            vpc_uuid: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["backupPolicy"] = backup_policy
+        __props__["backups"] = backups
+        __props__["createdAt"] = created_at
+        __props__["disk"] = disk
+        __props__["dropletAgent"] = droplet_agent
+        __props__["dropletUrn"] = droplet_urn
+        __props__["gpuPartitionMode"] = gpu_partition_mode
+        __props__["gracefulShutdown"] = graceful_shutdown
+        __props__["image"] = image
+        __props__["ipv4Address"] = ipv4_address
+        __props__["ipv4AddressPrivate"] = ipv4_address_private
+        __props__["ipv6"] = ipv6
+        __props__["ipv6Address"] = ipv6_address
+        __props__["locked"] = locked
+        __props__["memory"] = memory
+        __props__["monitoring"] = monitoring
+        __props__["name"] = name
+        __props__["priceHourly"] = price_hourly
+        __props__["priceMonthly"] = price_monthly
+        __props__["privateNetworking"] = private_networking
+        __props__["publicNetworking"] = public_networking
+        __props__["region"] = region
+        __props__["resizeDisk"] = resize_disk
+        __props__["size"] = size
+        __props__["sshKeys"] = ssh_keys
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["userData"] = user_data
+        __props__["vcpus"] = vcpus
+        __props__["volumeIds"] = volume_ids
+        __props__["vpcUuid"] = vpc_uuid
+        return pulumi.runtime.exists_resource(None, 'digitalocean:index/droplet:Droplet', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="backupPolicy")
     def backup_policy(self) -> pulumi.Output[Optional['outputs.DropletBackupPolicy']]:

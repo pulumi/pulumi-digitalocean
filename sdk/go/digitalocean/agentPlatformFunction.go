@@ -125,6 +125,12 @@ func (AgentPlatformFunctionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*agentPlatformFunctionState)(nil)).Elem()
 }
 
+// AgentPlatformFunctionExists checks whether an existing AgentPlatformFunction resource with the given ID exists.
+func AgentPlatformFunctionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AgentPlatformFunctionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("digitalocean:index/agentPlatformFunction:AgentPlatformFunction", id, state, "", opts...)
+}
+
 type agentPlatformFunctionArgs struct {
 	// The name of the Agent Platform resource.
 	AgentId string `pulumi:"agentId"`

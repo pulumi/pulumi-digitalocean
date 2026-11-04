@@ -192,6 +192,12 @@ func (VpcPeeringState) ElementType() reflect.Type {
 	return reflect.TypeOf((*vpcPeeringState)(nil)).Elem()
 }
 
+// VpcPeeringExists checks whether an existing VpcPeering resource with the given ID exists.
+func VpcPeeringExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VpcPeeringState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("digitalocean:index/vpcPeering:VpcPeering", id, state, "", opts...)
+}
+
 type vpcPeeringArgs struct {
 	// A name for the VPC Peering. Must be unique and contain alphanumeric characters, dashes, and periods only.
 	Name *string `pulumi:"name"`

@@ -183,6 +183,12 @@ func (SpacesBucketCorsConfigurationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*spacesBucketCorsConfigurationState)(nil)).Elem()
 }
 
+// SpacesBucketCorsConfigurationExists checks whether an existing SpacesBucketCorsConfiguration resource with the given ID exists.
+func SpacesBucketCorsConfigurationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SpacesBucketCorsConfigurationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("digitalocean:index/spacesBucketCorsConfiguration:SpacesBucketCorsConfiguration", id, state, "", opts...)
+}
+
 type spacesBucketCorsConfigurationArgs struct {
 	// The name of the bucket to which to apply the CORS configuration.
 	Bucket string `pulumi:"bucket"`

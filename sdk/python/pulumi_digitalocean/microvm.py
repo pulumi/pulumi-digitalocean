@@ -921,6 +921,50 @@ class Microvm(pulumi.CustomResource):
         __props__.__dict__["vpc_uuid"] = vpc_uuid
         return Microvm(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auto_pause: pulumi.Input[Optional[Union['MicrovmAutoPauseArgs', 'MicrovmAutoPauseArgsDict', 'outputs.MicrovmAutoPause']]] = None,
+            auto_resume: pulumi.Input[Optional[_builtins.bool]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            current_state: pulumi.Input[Optional[_builtins.str]] = None,
+            digitalocean_urn: pulumi.Input[Optional[_builtins.str]] = None,
+            environment: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            failure_reason: pulumi.Input[Optional[_builtins.str]] = None,
+            http_port: pulumi.Input[Optional[_builtins.int]] = None,
+            http_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            networking: pulumi.Input[Optional[_builtins.str]] = None,
+            ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            size: pulumi.Input[Optional[Union['MicrovmSizeArgs', 'MicrovmSizeArgsDict', 'outputs.MicrovmSize']]] = None,
+            source: pulumi.Input[Optional[Union['MicrovmSourceArgs', 'MicrovmSourceArgsDict', 'outputs.MicrovmSource']]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            urls: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MicrovmUrlArgs', 'MicrovmUrlArgsDict', 'outputs.MicrovmUrl']]]]] = None,
+            vpc_uuid: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["autoPause"] = auto_pause
+        __props__["autoResume"] = auto_resume
+        __props__["createdAt"] = created_at
+        __props__["currentState"] = current_state
+        __props__["digitaloceanUrn"] = digitalocean_urn
+        __props__["environment"] = environment
+        __props__["failureReason"] = failure_reason
+        __props__["httpPort"] = http_port
+        __props__["httpProtocol"] = http_protocol
+        __props__["name"] = name
+        __props__["networking"] = networking
+        __props__["ports"] = ports
+        __props__["region"] = region
+        __props__["size"] = size
+        __props__["source"] = source
+        __props__["state"] = state
+        __props__["tags"] = tags
+        __props__["urls"] = urls
+        __props__["vpcUuid"] = vpc_uuid
+        return pulumi.runtime.exists_resource(None, 'digitalocean:index/microvm:Microvm', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="autoPause")
     def auto_pause(self) -> pulumi.Output['outputs.MicrovmAutoPause']:

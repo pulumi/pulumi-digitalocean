@@ -1259,6 +1259,68 @@ class DatabaseMysqlConfig(pulumi.CustomResource):
         __props__.__dict__["wait_timeout"] = wait_timeout
         return DatabaseMysqlConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            backup_hour: pulumi.Input[Optional[_builtins.int]] = None,
+            backup_minute: pulumi.Input[Optional[_builtins.int]] = None,
+            binlog_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            connect_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            default_time_zone: pulumi.Input[Optional[_builtins.str]] = None,
+            group_concat_max_len: pulumi.Input[Optional[_builtins.int]] = None,
+            information_schema_stats_expiry: pulumi.Input[Optional[_builtins.int]] = None,
+            innodb_ft_min_token_size: pulumi.Input[Optional[_builtins.int]] = None,
+            innodb_ft_server_stopword_table: pulumi.Input[Optional[_builtins.str]] = None,
+            innodb_lock_wait_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            innodb_log_buffer_size: pulumi.Input[Optional[_builtins.int]] = None,
+            innodb_online_alter_log_max_size: pulumi.Input[Optional[_builtins.int]] = None,
+            innodb_print_all_deadlocks: pulumi.Input[Optional[_builtins.bool]] = None,
+            innodb_rollback_on_timeout: pulumi.Input[Optional[_builtins.bool]] = None,
+            interactive_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            internal_tmp_mem_storage_engine: pulumi.Input[Optional[_builtins.str]] = None,
+            long_query_time: pulumi.Input[Optional[_builtins.float]] = None,
+            max_allowed_packet: pulumi.Input[Optional[_builtins.int]] = None,
+            max_heap_table_size: pulumi.Input[Optional[_builtins.int]] = None,
+            net_read_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            net_write_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            slow_query_log: pulumi.Input[Optional[_builtins.bool]] = None,
+            sort_buffer_size: pulumi.Input[Optional[_builtins.int]] = None,
+            sql_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            sql_require_primary_key: pulumi.Input[Optional[_builtins.bool]] = None,
+            tmp_table_size: pulumi.Input[Optional[_builtins.int]] = None,
+            wait_timeout: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["backupHour"] = backup_hour
+        __props__["backupMinute"] = backup_minute
+        __props__["binlogRetentionPeriod"] = binlog_retention_period
+        __props__["clusterId"] = cluster_id
+        __props__["connectTimeout"] = connect_timeout
+        __props__["defaultTimeZone"] = default_time_zone
+        __props__["groupConcatMaxLen"] = group_concat_max_len
+        __props__["informationSchemaStatsExpiry"] = information_schema_stats_expiry
+        __props__["innodbFtMinTokenSize"] = innodb_ft_min_token_size
+        __props__["innodbFtServerStopwordTable"] = innodb_ft_server_stopword_table
+        __props__["innodbLockWaitTimeout"] = innodb_lock_wait_timeout
+        __props__["innodbLogBufferSize"] = innodb_log_buffer_size
+        __props__["innodbOnlineAlterLogMaxSize"] = innodb_online_alter_log_max_size
+        __props__["innodbPrintAllDeadlocks"] = innodb_print_all_deadlocks
+        __props__["innodbRollbackOnTimeout"] = innodb_rollback_on_timeout
+        __props__["interactiveTimeout"] = interactive_timeout
+        __props__["internalTmpMemStorageEngine"] = internal_tmp_mem_storage_engine
+        __props__["longQueryTime"] = long_query_time
+        __props__["maxAllowedPacket"] = max_allowed_packet
+        __props__["maxHeapTableSize"] = max_heap_table_size
+        __props__["netReadTimeout"] = net_read_timeout
+        __props__["netWriteTimeout"] = net_write_timeout
+        __props__["slowQueryLog"] = slow_query_log
+        __props__["sortBufferSize"] = sort_buffer_size
+        __props__["sqlMode"] = sql_mode
+        __props__["sqlRequirePrimaryKey"] = sql_require_primary_key
+        __props__["tmpTableSize"] = tmp_table_size
+        __props__["waitTimeout"] = wait_timeout
+        return pulumi.runtime.exists_resource(None, 'digitalocean:index/databaseMysqlConfig:DatabaseMysqlConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="backupHour")
     def backup_hour(self) -> pulumi.Output[_builtins.int]:

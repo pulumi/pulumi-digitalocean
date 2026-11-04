@@ -120,6 +120,12 @@ func (GradientaiFunctionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*gradientaiFunctionState)(nil)).Elem()
 }
 
+// GradientaiFunctionExists checks whether an existing GradientaiFunction resource with the given ID exists.
+func GradientaiFunctionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GradientaiFunctionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("digitalocean:index/gradientaiFunction:GradientaiFunction", id, state, "", opts...)
+}
+
 type gradientaiFunctionArgs struct {
 	// The name of the Agent Platform resource.
 	AgentId string `pulumi:"agentId"`

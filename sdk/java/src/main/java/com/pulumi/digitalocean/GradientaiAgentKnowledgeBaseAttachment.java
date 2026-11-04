@@ -14,11 +14,10 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * @deprecated
- * digitalocean.GradientaiAgentKnowledgeBaseAttachment has been deprecated in favor of digitalocean.AgentPlatformAgentKnowledgeBaseAttachment
+ * @deprecated digitalocean.GradientaiAgentKnowledgeBaseAttachment has been deprecated in favor of digitalocean.AgentPlatformAgentKnowledgeBaseAttachment
  * 
  */
-@Deprecated /* digitalocean.GradientaiAgentKnowledgeBaseAttachment has been deprecated in favor of digitalocean.AgentPlatformAgentKnowledgeBaseAttachment */
+@Deprecated
 @ResourceType(type="digitalocean:index/gradientaiAgentKnowledgeBaseAttachment:GradientaiAgentKnowledgeBaseAttachment")
 public class GradientaiAgentKnowledgeBaseAttachment extends com.pulumi.resources.CustomResource {
     /**

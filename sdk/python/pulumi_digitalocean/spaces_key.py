@@ -350,6 +350,22 @@ class SpacesKey(pulumi.CustomResource):
         __props__.__dict__["secret_key"] = secret_key
         return SpacesKey(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_key: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            grants: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SpacesKeyGrantArgs', 'SpacesKeyGrantArgsDict', 'outputs.SpacesKeyGrant']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            secret_key: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessKey"] = access_key
+        __props__["createdAt"] = created_at
+        __props__["grants"] = grants
+        __props__["name"] = name
+        __props__["secretKey"] = secret_key
+        return pulumi.runtime.exists_resource(None, 'digitalocean:index/spacesKey:SpacesKey', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessKey")
     def access_key(self) -> pulumi.Output[_builtins.str]:

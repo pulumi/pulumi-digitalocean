@@ -640,6 +640,38 @@ class VpcNatGateway(pulumi.CustomResource):
         __props__.__dict__["vpcs"] = vpcs
         return VpcNatGateway(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            egresses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VpcNatGatewayEgressArgs', 'VpcNatGatewayEgressArgsDict', 'outputs.VpcNatGatewayEgress']]]]] = None,
+            icmp_timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            size: pulumi.Input[Optional[_builtins.int]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            tcp_timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            udp_timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+            vpcs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VpcNatGatewayVpcArgs', 'VpcNatGatewayVpcArgsDict', 'outputs.VpcNatGatewayVpc']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createdAt"] = created_at
+        __props__["egresses"] = egresses
+        __props__["icmpTimeoutSeconds"] = icmp_timeout_seconds
+        __props__["name"] = name
+        __props__["projectId"] = project_id
+        __props__["region"] = region
+        __props__["size"] = size
+        __props__["state"] = state
+        __props__["tcpTimeoutSeconds"] = tcp_timeout_seconds
+        __props__["type"] = type
+        __props__["udpTimeoutSeconds"] = udp_timeout_seconds
+        __props__["updatedAt"] = updated_at
+        __props__["vpcs"] = vpcs
+        return pulumi.runtime.exists_resource(None, 'digitalocean:index/vpcNatGateway:VpcNatGateway', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[_builtins.str]:

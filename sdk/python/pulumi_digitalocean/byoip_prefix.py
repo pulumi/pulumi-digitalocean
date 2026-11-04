@@ -396,6 +396,26 @@ class ByoipPrefix(pulumi.CustomResource):
         __props__.__dict__["uuid"] = uuid
         return ByoipPrefix(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            advertised: pulumi.Input[Optional[_builtins.bool]] = None,
+            failure_reason: pulumi.Input[Optional[_builtins.str]] = None,
+            prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            signature: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            uuid: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["advertised"] = advertised
+        __props__["failureReason"] = failure_reason
+        __props__["prefix"] = prefix
+        __props__["region"] = region
+        __props__["signature"] = signature
+        __props__["status"] = status
+        __props__["uuid"] = uuid
+        return pulumi.runtime.exists_resource(None, 'digitalocean:index/byoipPrefix:ByoipPrefix', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def advertised(self) -> pulumi.Output[Optional[_builtins.bool]]:

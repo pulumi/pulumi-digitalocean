@@ -1734,6 +1734,86 @@ class KubernetesCluster(pulumi.CustomResource):
         __props__.__dict__["worker_subnet_uuid"] = worker_subnet_uuid
         return KubernetesCluster(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            amd_gpu_device_metrics_exporter_plugin: pulumi.Input[Optional[Union['KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs', 'KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgsDict', 'outputs.KubernetesClusterAmdGpuDeviceMetricsExporterPlugin']]] = None,
+            amd_gpu_device_plugin: pulumi.Input[Optional[Union['KubernetesClusterAmdGpuDevicePluginArgs', 'KubernetesClusterAmdGpuDevicePluginArgsDict', 'outputs.KubernetesClusterAmdGpuDevicePlugin']]] = None,
+            amd_gpu_dra_driver: pulumi.Input[Optional[Union['KubernetesClusterAmdGpuDraDriverArgs', 'KubernetesClusterAmdGpuDraDriverArgsDict', 'outputs.KubernetesClusterAmdGpuDraDriver']]] = None,
+            auto_upgrade: pulumi.Input[Optional[_builtins.bool]] = None,
+            cluster_autoscaler_configurations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KubernetesClusterClusterAutoscalerConfigurationArgs', 'KubernetesClusterClusterAutoscalerConfigurationArgsDict', 'outputs.KubernetesClusterClusterAutoscalerConfiguration']]]]] = None,
+            cluster_subnet: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_urn: pulumi.Input[Optional[_builtins.str]] = None,
+            control_plane_firewall: pulumi.Input[Optional[Union['KubernetesClusterControlPlaneFirewallArgs', 'KubernetesClusterControlPlaneFirewallArgsDict', 'outputs.KubernetesClusterControlPlaneFirewall']]] = None,
+            coredns_autoscaler: pulumi.Input[Optional[Union['KubernetesClusterCorednsAutoscalerArgs', 'KubernetesClusterCorednsAutoscalerArgsDict', 'outputs.KubernetesClusterCorednsAutoscaler']]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            destroy_all_associated_resources: pulumi.Input[Optional[_builtins.bool]] = None,
+            endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            ha: pulumi.Input[Optional[_builtins.bool]] = None,
+            ipv4_address: pulumi.Input[Optional[_builtins.str]] = None,
+            isolated_workers: pulumi.Input[Optional[_builtins.bool]] = None,
+            kube_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KubernetesClusterKubeConfigArgs', 'KubernetesClusterKubeConfigArgsDict', 'outputs.KubernetesClusterKubeConfig']]]]] = None,
+            kubeconfig_expire_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            maintenance_policy: pulumi.Input[Optional[Union['KubernetesClusterMaintenancePolicyArgs', 'KubernetesClusterMaintenancePolicyArgsDict', 'outputs.KubernetesClusterMaintenancePolicy']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            nfs_csi_plugin: pulumi.Input[Optional[Union['KubernetesClusterNfsCsiPluginArgs', 'KubernetesClusterNfsCsiPluginArgsDict', 'outputs.KubernetesClusterNfsCsiPlugin']]] = None,
+            node_pool: pulumi.Input[Optional[Union['KubernetesClusterNodePoolArgs', 'KubernetesClusterNodePoolArgsDict', 'outputs.KubernetesClusterNodePool']]] = None,
+            nvidia_gpu_device_plugin: pulumi.Input[Optional[Union['KubernetesClusterNvidiaGpuDevicePluginArgs', 'KubernetesClusterNvidiaGpuDevicePluginArgsDict', 'outputs.KubernetesClusterNvidiaGpuDevicePlugin']]] = None,
+            nvidia_gpu_dra_driver: pulumi.Input[Optional[Union['KubernetesClusterNvidiaGpuDraDriverArgs', 'KubernetesClusterNvidiaGpuDraDriverArgsDict', 'outputs.KubernetesClusterNvidiaGpuDraDriver']]] = None,
+            p2p_oci_registry_plugin: pulumi.Input[Optional[Union['KubernetesClusterP2pOciRegistryPluginArgs', 'KubernetesClusterP2pOciRegistryPluginArgsDict', 'outputs.KubernetesClusterP2pOciRegistryPlugin']]] = None,
+            rdma_shared_device_plugin: pulumi.Input[Optional[Union['KubernetesClusterRdmaSharedDevicePluginArgs', 'KubernetesClusterRdmaSharedDevicePluginArgsDict', 'outputs.KubernetesClusterRdmaSharedDevicePlugin']]] = None,
+            region: pulumi.Input[Optional[Union[_builtins.str, 'Region']]] = None,
+            registry_integration: pulumi.Input[Optional[_builtins.bool]] = None,
+            routing_agent: pulumi.Input[Optional[Union['KubernetesClusterRoutingAgentArgs', 'KubernetesClusterRoutingAgentArgsDict', 'outputs.KubernetesClusterRoutingAgent']]] = None,
+            service_subnet: pulumi.Input[Optional[_builtins.str]] = None,
+            ssos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KubernetesClusterSsoArgs', 'KubernetesClusterSsoArgsDict', 'outputs.KubernetesClusterSso']]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            surge_upgrade: pulumi.Input[Optional[_builtins.bool]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+            version: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+            worker_subnet_uuid: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["amdGpuDeviceMetricsExporterPlugin"] = amd_gpu_device_metrics_exporter_plugin
+        __props__["amdGpuDevicePlugin"] = amd_gpu_device_plugin
+        __props__["amdGpuDraDriver"] = amd_gpu_dra_driver
+        __props__["autoUpgrade"] = auto_upgrade
+        __props__["clusterAutoscalerConfigurations"] = cluster_autoscaler_configurations
+        __props__["clusterSubnet"] = cluster_subnet
+        __props__["clusterUrn"] = cluster_urn
+        __props__["controlPlaneFirewall"] = control_plane_firewall
+        __props__["corednsAutoscaler"] = coredns_autoscaler
+        __props__["createdAt"] = created_at
+        __props__["destroyAllAssociatedResources"] = destroy_all_associated_resources
+        __props__["endpoint"] = endpoint
+        __props__["ha"] = ha
+        __props__["ipv4Address"] = ipv4_address
+        __props__["isolatedWorkers"] = isolated_workers
+        __props__["kubeConfigs"] = kube_configs
+        __props__["kubeconfigExpireSeconds"] = kubeconfig_expire_seconds
+        __props__["maintenancePolicy"] = maintenance_policy
+        __props__["name"] = name
+        __props__["nfsCsiPlugin"] = nfs_csi_plugin
+        __props__["nodePool"] = node_pool
+        __props__["nvidiaGpuDevicePlugin"] = nvidia_gpu_device_plugin
+        __props__["nvidiaGpuDraDriver"] = nvidia_gpu_dra_driver
+        __props__["p2pOciRegistryPlugin"] = p2p_oci_registry_plugin
+        __props__["rdmaSharedDevicePlugin"] = rdma_shared_device_plugin
+        __props__["region"] = region
+        __props__["registryIntegration"] = registry_integration
+        __props__["routingAgent"] = routing_agent
+        __props__["serviceSubnet"] = service_subnet
+        __props__["ssos"] = ssos
+        __props__["status"] = status
+        __props__["surgeUpgrade"] = surge_upgrade
+        __props__["tags"] = tags
+        __props__["updatedAt"] = updated_at
+        __props__["version"] = version
+        __props__["vpcUuid"] = vpc_uuid
+        __props__["workerSubnetUuid"] = worker_subnet_uuid
+        return pulumi.runtime.exists_resource(None, 'digitalocean:index/kubernetesCluster:KubernetesCluster', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="amdGpuDeviceMetricsExporterPlugin")
     def amd_gpu_device_metrics_exporter_plugin(self) -> pulumi.Output['outputs.KubernetesClusterAmdGpuDeviceMetricsExporterPlugin']:

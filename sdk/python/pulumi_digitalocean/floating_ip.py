@@ -304,6 +304,20 @@ class FloatingIp(pulumi.CustomResource):
         __props__.__dict__["region"] = region
         return FloatingIp(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            droplet_id: pulumi.Input[Optional[_builtins.int]] = None,
+            floating_ip_urn: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["dropletId"] = droplet_id
+        __props__["floatingIpUrn"] = floating_ip_urn
+        __props__["ipAddress"] = ip_address
+        __props__["region"] = region
+        return pulumi.runtime.exists_resource(None, 'digitalocean:index/floatingIp:FloatingIp', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="dropletId")
     def droplet_id(self) -> pulumi.Output[Optional[_builtins.int]]:

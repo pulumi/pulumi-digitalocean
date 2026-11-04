@@ -588,6 +588,34 @@ class DnsRecord(pulumi.CustomResource):
         __props__.__dict__["weight"] = weight
         return DnsRecord(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            domain: pulumi.Input[Optional[_builtins.str]] = None,
+            flags: pulumi.Input[Optional[_builtins.int]] = None,
+            fqdn: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            port: pulumi.Input[Optional[_builtins.int]] = None,
+            priority: pulumi.Input[Optional[_builtins.int]] = None,
+            tag: pulumi.Input[Optional[_builtins.str]] = None,
+            ttl: pulumi.Input[Optional[_builtins.int]] = None,
+            type: pulumi.Input[Optional[Union[_builtins.str, 'RecordType']]] = None,
+            value: pulumi.Input[Optional[_builtins.str]] = None,
+            weight: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["domain"] = domain
+        __props__["flags"] = flags
+        __props__["fqdn"] = fqdn
+        __props__["name"] = name
+        __props__["port"] = port
+        __props__["priority"] = priority
+        __props__["tag"] = tag
+        __props__["ttl"] = ttl
+        __props__["type"] = type
+        __props__["value"] = value
+        __props__["weight"] = weight
+        return pulumi.runtime.exists_resource(None, 'digitalocean:index/dnsRecord:DnsRecord', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def domain(self) -> pulumi.Output[_builtins.str]:

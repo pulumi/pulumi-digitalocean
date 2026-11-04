@@ -238,6 +238,12 @@ func (FirewallState) ElementType() reflect.Type {
 	return reflect.TypeOf((*firewallState)(nil)).Elem()
 }
 
+// FirewallExists checks whether an existing Firewall resource with the given ID exists.
+func FirewallExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FirewallState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("digitalocean:index/firewall:Firewall", id, state, "", opts...)
+}
+
 type firewallArgs struct {
 	// The list of the IDs of the Droplets assigned
 	// to the Firewall (max. 10). If you want to assign more droplets to the

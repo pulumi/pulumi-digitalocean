@@ -558,6 +558,40 @@ class CustomImage(pulumi.CustomResource):
         __props__.__dict__["url"] = url
         return CustomImage(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            distribution: pulumi.Input[Optional[_builtins.str]] = None,
+            image_id: pulumi.Input[Optional[_builtins.int]] = None,
+            min_disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            public: pulumi.Input[Optional[_builtins.bool]] = None,
+            regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            size_gigabytes: pulumi.Input[Optional[_builtins.float]] = None,
+            slug: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createdAt"] = created_at
+        __props__["description"] = description
+        __props__["distribution"] = distribution
+        __props__["imageId"] = image_id
+        __props__["minDiskSize"] = min_disk_size
+        __props__["name"] = name
+        __props__["public"] = public
+        __props__["regions"] = regions
+        __props__["sizeGigabytes"] = size_gigabytes
+        __props__["slug"] = slug
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["type"] = type
+        __props__["url"] = url
+        return pulumi.runtime.exists_resource(None, 'digitalocean:index/customImage:CustomImage', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[_builtins.str]:

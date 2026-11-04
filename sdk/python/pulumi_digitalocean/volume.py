@@ -616,6 +616,36 @@ class Volume(pulumi.CustomResource):
         __props__.__dict__["volume_urn"] = volume_urn
         return Volume(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            droplet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+            filesystem_label: pulumi.Input[Optional[_builtins.str]] = None,
+            filesystem_type: pulumi.Input[Optional[_builtins.str]] = None,
+            initial_filesystem_label: pulumi.Input[Optional[_builtins.str]] = None,
+            initial_filesystem_type: pulumi.Input[Optional[Union[_builtins.str, 'FileSystemType']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[Union[_builtins.str, 'Region']]] = None,
+            size: pulumi.Input[Optional[_builtins.int]] = None,
+            snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            volume_urn: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["description"] = description
+        __props__["dropletIds"] = droplet_ids
+        __props__["filesystemLabel"] = filesystem_label
+        __props__["filesystemType"] = filesystem_type
+        __props__["initialFilesystemLabel"] = initial_filesystem_label
+        __props__["initialFilesystemType"] = initial_filesystem_type
+        __props__["name"] = name
+        __props__["region"] = region
+        __props__["size"] = size
+        __props__["snapshotId"] = snapshot_id
+        __props__["tags"] = tags
+        __props__["volumeUrn"] = volume_urn
+        return pulumi.runtime.exists_resource(None, 'digitalocean:index/volume:Volume', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:

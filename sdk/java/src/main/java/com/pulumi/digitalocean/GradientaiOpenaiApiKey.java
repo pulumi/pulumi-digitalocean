@@ -16,11 +16,10 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 /**
- * @deprecated
- * digitalocean.GradientaiOpenaiApiKey has been deprecated in favor of digitalocean.AgentPlatformOpenaiApiKey
+ * @deprecated digitalocean.GradientaiOpenaiApiKey has been deprecated in favor of digitalocean.AgentPlatformOpenaiApiKey
  * 
  */
-@Deprecated /* digitalocean.GradientaiOpenaiApiKey has been deprecated in favor of digitalocean.AgentPlatformOpenaiApiKey */
+@Deprecated
 @ResourceType(type="digitalocean:index/gradientaiOpenaiApiKey:GradientaiOpenaiApiKey")
 public class GradientaiOpenaiApiKey extends com.pulumi.resources.CustomResource {
     /**

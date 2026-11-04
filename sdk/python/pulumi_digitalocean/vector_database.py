@@ -524,6 +524,34 @@ class VectorDatabase(pulumi.CustomResource):
         __props__.__dict__["updated_at"] = updated_at
         return VectorDatabase(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            config: pulumi.Input[Optional[Union['VectorDatabaseConfigArgs', 'VectorDatabaseConfigArgsDict', 'outputs.VectorDatabaseConfig']]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VectorDatabaseEndpointArgs', 'VectorDatabaseEndpointArgsDict', 'outputs.VectorDatabaseEndpoint']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            owner_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            size: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["config"] = config
+        __props__["createdAt"] = created_at
+        __props__["endpoints"] = endpoints
+        __props__["name"] = name
+        __props__["ownerUuid"] = owner_uuid
+        __props__["projectId"] = project_id
+        __props__["region"] = region
+        __props__["size"] = size
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["updatedAt"] = updated_at
+        return pulumi.runtime.exists_resource(None, 'digitalocean:index/vectorDatabase:VectorDatabase', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def config(self) -> pulumi.Output['outputs.VectorDatabaseConfig']:

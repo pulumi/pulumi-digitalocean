@@ -568,6 +568,28 @@ class Firewall(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         return Firewall(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            droplet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+            inbound_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallInboundRuleArgs', 'FirewallInboundRuleArgsDict', 'outputs.FirewallInboundRule']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            outbound_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallOutboundRuleArgs', 'FirewallOutboundRuleArgsDict', 'outputs.FirewallOutboundRule']]]]] = None,
+            pending_changes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallPendingChangeArgs', 'FirewallPendingChangeArgsDict', 'outputs.FirewallPendingChange']]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createdAt"] = created_at
+        __props__["dropletIds"] = droplet_ids
+        __props__["inboundRules"] = inbound_rules
+        __props__["name"] = name
+        __props__["outboundRules"] = outbound_rules
+        __props__["pendingChanges"] = pending_changes
+        __props__["status"] = status
+        __props__["tags"] = tags
+        return pulumi.runtime.exists_resource(None, 'digitalocean:index/firewall:Firewall', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[_builtins.str]:

@@ -541,6 +541,36 @@ class AgentPlatformKnowledgeBase(pulumi.CustomResource):
         __props__.__dict__["vpc_uuid"] = vpc_uuid
         return AgentPlatformKnowledgeBase(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            added_to_agent_at: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            database_id: pulumi.Input[Optional[_builtins.str]] = None,
+            datasources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentPlatformKnowledgeBaseDataSourceArgs', 'AgentPlatformKnowledgeBaseDataSourceArgsDict', 'outputs.AgentPlatformKnowledgeBaseDataSource']]]]] = None,
+            embedding_model_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+            is_public: pulumi.Input[Optional[_builtins.bool]] = None,
+            last_indexing_jobs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentPlatformKnowledgeBaseLastIndexingJobArgs', 'AgentPlatformKnowledgeBaseLastIndexingJobArgsDict', 'outputs.AgentPlatformKnowledgeBaseLastIndexingJob']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            vpc_uuid: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["addedToAgentAt"] = added_to_agent_at
+        __props__["createdAt"] = created_at
+        __props__["databaseId"] = database_id
+        __props__["datasources"] = datasources
+        __props__["embeddingModelUuid"] = embedding_model_uuid
+        __props__["isPublic"] = is_public
+        __props__["lastIndexingJobs"] = last_indexing_jobs
+        __props__["name"] = name
+        __props__["projectId"] = project_id
+        __props__["region"] = region
+        __props__["tags"] = tags
+        __props__["vpcUuid"] = vpc_uuid
+        return pulumi.runtime.exists_resource(None, 'digitalocean:index/agentPlatformKnowledgeBase:AgentPlatformKnowledgeBase', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="addedToAgentAt")
     def added_to_agent_at(self) -> pulumi.Output[Optional[_builtins.str]]:

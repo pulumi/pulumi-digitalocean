@@ -116,6 +116,12 @@ func (ReservedIpv6State) ElementType() reflect.Type {
 	return reflect.TypeOf((*reservedIpv6State)(nil)).Elem()
 }
 
+// ReservedIpv6Exists checks whether an existing ReservedIpv6 resource with the given ID exists.
+func ReservedIpv6Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ReservedIpv6State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("digitalocean:index/reservedIpv6:ReservedIpv6", id, state, "", opts...)
+}
+
 type reservedIpv6Args struct {
 	DropletId *int    `pulumi:"dropletId"`
 	Ip        *string `pulumi:"ip"`

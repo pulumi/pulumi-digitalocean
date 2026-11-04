@@ -239,6 +239,12 @@ func (NfsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*nfsState)(nil)).Elem()
 }
 
+// NfsExists checks whether an existing Nfs resource with the given ID exists.
+func NfsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NfsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("digitalocean:index/nfs:Nfs", id, state, "", opts...)
+}
+
 type nfsArgs struct {
 	// A name for the NFS share. Must be lowercase and composed only of numbers, letters, and "-", up to a limit of 64 characters. The name must begin with a letter.
 	Name *string `pulumi:"name"`

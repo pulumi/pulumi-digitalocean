@@ -598,6 +598,32 @@ class Certificate(pulumi.CustomResource):
         __props__.__dict__["uuid"] = uuid
         return Certificate(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            certificate_chain: pulumi.Input[Optional[_builtins.str]] = None,
+            domains: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            leaf_certificate: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            not_after: pulumi.Input[Optional[_builtins.str]] = None,
+            private_key: pulumi.Input[Optional[_builtins.str]] = None,
+            sha1_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[Union[_builtins.str, 'CertificateType']]] = None,
+            uuid: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["certificateChain"] = certificate_chain
+        __props__["domains"] = domains
+        __props__["leafCertificate"] = leaf_certificate
+        __props__["name"] = name
+        __props__["notAfter"] = not_after
+        __props__["privateKey"] = private_key
+        __props__["sha1Fingerprint"] = sha1_fingerprint
+        __props__["state"] = state
+        __props__["type"] = type
+        __props__["uuid"] = uuid
+        return pulumi.runtime.exists_resource(None, 'digitalocean:index/certificate:Certificate', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="certificateChain")
     def certificate_chain(self) -> pulumi.Output[Optional[_builtins.str]]:

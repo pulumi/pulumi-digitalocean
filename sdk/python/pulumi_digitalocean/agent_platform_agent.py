@@ -1634,6 +1634,92 @@ class AgentPlatformAgent(pulumi.CustomResource):
         __props__.__dict__["workspace_uuid"] = workspace_uuid
         return AgentPlatformAgent(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            agent_guardrails: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentPlatformAgentAgentGuardrailArgs', 'AgentPlatformAgentAgentGuardrailArgsDict', 'outputs.AgentPlatformAgentAgentGuardrail']]]]] = None,
+            anthropic_api_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentPlatformAgentAnthropicApiKeyArgs', 'AgentPlatformAgentAnthropicApiKeyArgsDict', 'outputs.AgentPlatformAgentAnthropicApiKey']]]]] = None,
+            anthropic_key_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+            api_key_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentPlatformAgentApiKeyInfoArgs', 'AgentPlatformAgentApiKeyInfoArgsDict', 'outputs.AgentPlatformAgentApiKeyInfo']]]]] = None,
+            api_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentPlatformAgentApiKeyArgs', 'AgentPlatformAgentApiKeyArgsDict', 'outputs.AgentPlatformAgentApiKey']]]]] = None,
+            chatbot_identifiers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentPlatformAgentChatbotIdentifierArgs', 'AgentPlatformAgentChatbotIdentifierArgsDict', 'outputs.AgentPlatformAgentChatbotIdentifier']]]]] = None,
+            chatbots: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentPlatformAgentChatbotArgs', 'AgentPlatformAgentChatbotArgsDict', 'outputs.AgentPlatformAgentChatbot']]]]] = None,
+            child_agents: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentPlatformAgentChildAgentArgs', 'AgentPlatformAgentChildAgentArgsDict', 'outputs.AgentPlatformAgentChildAgent']]]]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            deployments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentPlatformAgentDeploymentArgs', 'AgentPlatformAgentDeploymentArgsDict', 'outputs.AgentPlatformAgentDeployment']]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            functions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentPlatformAgentFunctionArgs', 'AgentPlatformAgentFunctionArgsDict', 'outputs.AgentPlatformAgentFunction']]]]] = None,
+            if_case: pulumi.Input[Optional[_builtins.str]] = None,
+            instruction: pulumi.Input[Optional[_builtins.str]] = None,
+            k: pulumi.Input[Optional[_builtins.int]] = None,
+            knowledge_base_uuids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            knowledge_bases: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentPlatformAgentKnowledgeBaseArgs', 'AgentPlatformAgentKnowledgeBaseArgsDict', 'outputs.AgentPlatformAgentKnowledgeBase']]]]] = None,
+            max_tokens: pulumi.Input[Optional[_builtins.int]] = None,
+            model_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+            models: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentPlatformAgentModelArgs', 'AgentPlatformAgentModelArgsDict', 'outputs.AgentPlatformAgentModel']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            open_ai_api_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentPlatformAgentOpenAiApiKeyArgs', 'AgentPlatformAgentOpenAiApiKeyArgsDict', 'outputs.AgentPlatformAgentOpenAiApiKey']]]]] = None,
+            open_ai_key_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+            parent_agents: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentPlatformAgentParentAgentArgs', 'AgentPlatformAgentParentAgentArgsDict', 'outputs.AgentPlatformAgentParentAgent']]]]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            provide_citations: pulumi.Input[Optional[_builtins.bool]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            retrieval_method: pulumi.Input[Optional[_builtins.str]] = None,
+            route_created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            route_created_by: pulumi.Input[Optional[_builtins.str]] = None,
+            route_name: pulumi.Input[Optional[_builtins.str]] = None,
+            route_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            temperature: pulumi.Input[Optional[_builtins.float]] = None,
+            templates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentPlatformAgentTemplateArgs', 'AgentPlatformAgentTemplateArgsDict', 'outputs.AgentPlatformAgentTemplate']]]]] = None,
+            top_p: pulumi.Input[Optional[_builtins.float]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None,
+            user_id: pulumi.Input[Optional[_builtins.str]] = None,
+            workspace_uuid: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["agentGuardrails"] = agent_guardrails
+        __props__["anthropicApiKeys"] = anthropic_api_keys
+        __props__["anthropicKeyUuid"] = anthropic_key_uuid
+        __props__["apiKeyInfos"] = api_key_infos
+        __props__["apiKeys"] = api_keys
+        __props__["chatbotIdentifiers"] = chatbot_identifiers
+        __props__["chatbots"] = chatbots
+        __props__["childAgents"] = child_agents
+        __props__["createdAt"] = created_at
+        __props__["deployments"] = deployments
+        __props__["description"] = description
+        __props__["functions"] = functions
+        __props__["ifCase"] = if_case
+        __props__["instruction"] = instruction
+        __props__["k"] = k
+        __props__["knowledgeBaseUuids"] = knowledge_base_uuids
+        __props__["knowledgeBases"] = knowledge_bases
+        __props__["maxTokens"] = max_tokens
+        __props__["modelUuid"] = model_uuid
+        __props__["models"] = models
+        __props__["name"] = name
+        __props__["openAiApiKeys"] = open_ai_api_keys
+        __props__["openAiKeyUuid"] = open_ai_key_uuid
+        __props__["parentAgents"] = parent_agents
+        __props__["projectId"] = project_id
+        __props__["provideCitations"] = provide_citations
+        __props__["region"] = region
+        __props__["retrievalMethod"] = retrieval_method
+        __props__["routeCreatedAt"] = route_created_at
+        __props__["routeCreatedBy"] = route_created_by
+        __props__["routeName"] = route_name
+        __props__["routeUuid"] = route_uuid
+        __props__["tags"] = tags
+        __props__["temperature"] = temperature
+        __props__["templates"] = templates
+        __props__["topP"] = top_p
+        __props__["updatedAt"] = updated_at
+        __props__["url"] = url
+        __props__["userId"] = user_id
+        __props__["workspaceUuid"] = workspace_uuid
+        return pulumi.runtime.exists_resource(None, 'digitalocean:index/agentPlatformAgent:AgentPlatformAgent', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="agentGuardrails")
     def agent_guardrails(self) -> pulumi.Output[Optional[Sequence['outputs.AgentPlatformAgentAgentGuardrail']]]:

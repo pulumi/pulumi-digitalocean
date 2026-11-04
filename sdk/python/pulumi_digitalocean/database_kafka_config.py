@@ -899,6 +899,48 @@ class DatabaseKafkaConfig(pulumi.CustomResource):
         __props__.__dict__["message_max_bytes"] = message_max_bytes
         return DatabaseKafkaConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auto_create_topics_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            group_initial_rebalance_delay_ms: pulumi.Input[Optional[_builtins.int]] = None,
+            group_max_session_timeout_ms: pulumi.Input[Optional[_builtins.int]] = None,
+            group_min_session_timeout_ms: pulumi.Input[Optional[_builtins.int]] = None,
+            log_cleaner_delete_retention_ms: pulumi.Input[Optional[_builtins.int]] = None,
+            log_cleaner_min_compaction_lag_ms: pulumi.Input[Optional[_builtins.str]] = None,
+            log_flush_interval_ms: pulumi.Input[Optional[_builtins.str]] = None,
+            log_index_interval_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+            log_message_downconversion_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+            log_message_timestamp_difference_max_ms: pulumi.Input[Optional[_builtins.str]] = None,
+            log_preallocate: pulumi.Input[Optional[_builtins.bool]] = None,
+            log_retention_bytes: pulumi.Input[Optional[_builtins.str]] = None,
+            log_retention_hours: pulumi.Input[Optional[_builtins.int]] = None,
+            log_retention_ms: pulumi.Input[Optional[_builtins.str]] = None,
+            log_roll_jitter_ms: pulumi.Input[Optional[_builtins.str]] = None,
+            log_segment_delete_delay_ms: pulumi.Input[Optional[_builtins.int]] = None,
+            message_max_bytes: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["autoCreateTopicsEnable"] = auto_create_topics_enable
+        __props__["clusterId"] = cluster_id
+        __props__["groupInitialRebalanceDelayMs"] = group_initial_rebalance_delay_ms
+        __props__["groupMaxSessionTimeoutMs"] = group_max_session_timeout_ms
+        __props__["groupMinSessionTimeoutMs"] = group_min_session_timeout_ms
+        __props__["logCleanerDeleteRetentionMs"] = log_cleaner_delete_retention_ms
+        __props__["logCleanerMinCompactionLagMs"] = log_cleaner_min_compaction_lag_ms
+        __props__["logFlushIntervalMs"] = log_flush_interval_ms
+        __props__["logIndexIntervalBytes"] = log_index_interval_bytes
+        __props__["logMessageDownconversionEnable"] = log_message_downconversion_enable
+        __props__["logMessageTimestampDifferenceMaxMs"] = log_message_timestamp_difference_max_ms
+        __props__["logPreallocate"] = log_preallocate
+        __props__["logRetentionBytes"] = log_retention_bytes
+        __props__["logRetentionHours"] = log_retention_hours
+        __props__["logRetentionMs"] = log_retention_ms
+        __props__["logRollJitterMs"] = log_roll_jitter_ms
+        __props__["logSegmentDeleteDelayMs"] = log_segment_delete_delay_ms
+        __props__["messageMaxBytes"] = message_max_bytes
+        return pulumi.runtime.exists_resource(None, 'digitalocean:index/databaseKafkaConfig:DatabaseKafkaConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="autoCreateTopicsEnable")
     def auto_create_topics_enable(self) -> pulumi.Output[_builtins.bool]:

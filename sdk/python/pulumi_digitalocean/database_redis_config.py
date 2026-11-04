@@ -653,6 +653,36 @@ class DatabaseRedisConfig(pulumi.CustomResource):
         __props__.__dict__["timeout"] = timeout
         return DatabaseRedisConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            acl_channels_default: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            io_threads: pulumi.Input[Optional[_builtins.int]] = None,
+            lfu_decay_time: pulumi.Input[Optional[_builtins.int]] = None,
+            lfu_log_factor: pulumi.Input[Optional[_builtins.int]] = None,
+            maxmemory_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            notify_keyspace_events: pulumi.Input[Optional[_builtins.str]] = None,
+            number_of_databases: pulumi.Input[Optional[_builtins.int]] = None,
+            persistence: pulumi.Input[Optional[_builtins.str]] = None,
+            pubsub_client_output_buffer_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            ssl: pulumi.Input[Optional[_builtins.bool]] = None,
+            timeout: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["aclChannelsDefault"] = acl_channels_default
+        __props__["clusterId"] = cluster_id
+        __props__["ioThreads"] = io_threads
+        __props__["lfuDecayTime"] = lfu_decay_time
+        __props__["lfuLogFactor"] = lfu_log_factor
+        __props__["maxmemoryPolicy"] = maxmemory_policy
+        __props__["notifyKeyspaceEvents"] = notify_keyspace_events
+        __props__["numberOfDatabases"] = number_of_databases
+        __props__["persistence"] = persistence
+        __props__["pubsubClientOutputBufferLimit"] = pubsub_client_output_buffer_limit
+        __props__["ssl"] = ssl
+        __props__["timeout"] = timeout
+        return pulumi.runtime.exists_resource(None, 'digitalocean:index/databaseRedisConfig:DatabaseRedisConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="aclChannelsDefault")
     def acl_channels_default(self) -> pulumi.Output[_builtins.str]:

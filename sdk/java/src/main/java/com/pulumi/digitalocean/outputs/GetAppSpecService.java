@@ -51,11 +51,10 @@ public final class GetAppSpecService {
     /**
      * @return The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
      * 
-     * @deprecated
-     * Service level CORS rules are deprecated in favor of ingresses
+     * @deprecated Service level CORS rules are deprecated in favor of ingresses
      * 
      */
-    @Deprecated /* Service level CORS rules are deprecated in favor of ingresses */
+    @Deprecated
     private @Nullable GetAppSpecServiceCors cors;
     /**
      * @return The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
@@ -129,11 +128,10 @@ public final class GetAppSpecService {
      */
     private String name;
     /**
-     * @deprecated
-     * Service level routes are deprecated in favor of ingresses
+     * @deprecated Service level routes are deprecated in favor of ingresses
      * 
      */
-    @Deprecated /* Service level routes are deprecated in favor of ingresses */
+    @Deprecated
     private List<GetAppSpecServiceRoute> routes;
     /**
      * @return An optional run command to override the component&#39;s default.
@@ -183,11 +181,10 @@ public final class GetAppSpecService {
     /**
      * @return The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
      * 
-     * @deprecated
-     * Service level CORS rules are deprecated in favor of ingresses
+     * @deprecated Service level CORS rules are deprecated in favor of ingresses
      * 
      */
-    @Deprecated /* Service level CORS rules are deprecated in favor of ingresses */
+    @Deprecated
     public Optional<GetAppSpecServiceCors> cors() {
         return Optional.ofNullable(this.cors);
     }
@@ -293,11 +290,10 @@ public final class GetAppSpecService {
         return this.name;
     }
     /**
-     * @deprecated
-     * Service level routes are deprecated in favor of ingresses
+     * @deprecated Service level routes are deprecated in favor of ingresses
      * 
      */
-    @Deprecated /* Service level routes are deprecated in favor of ingresses */
+    @Deprecated
     public List<GetAppSpecServiceRoute> routes() {
         return this.routes;
     }

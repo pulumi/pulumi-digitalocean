@@ -206,6 +206,18 @@ class AgentPlatformKnowledgeBaseDataSource(pulumi.CustomResource):
         __props__.__dict__["web_crawler_data_source"] = web_crawler_data_source
         return AgentPlatformKnowledgeBaseDataSource(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            knowledge_base_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+            spaces_data_source: pulumi.Input[Optional[Union['AgentPlatformKnowledgeBaseDataSourceSpacesDataSourceArgs', 'AgentPlatformKnowledgeBaseDataSourceSpacesDataSourceArgsDict', 'outputs.AgentPlatformKnowledgeBaseDataSourceSpacesDataSource']]] = None,
+            web_crawler_data_source: pulumi.Input[Optional[Union['AgentPlatformKnowledgeBaseDataSourceWebCrawlerDataSourceArgs', 'AgentPlatformKnowledgeBaseDataSourceWebCrawlerDataSourceArgsDict', 'outputs.AgentPlatformKnowledgeBaseDataSourceWebCrawlerDataSource']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["knowledgeBaseUuid"] = knowledge_base_uuid
+        __props__["spacesDataSource"] = spaces_data_source
+        __props__["webCrawlerDataSource"] = web_crawler_data_source
+        return pulumi.runtime.exists_resource(None, 'digitalocean:index/agentPlatformKnowledgeBaseDataSource:AgentPlatformKnowledgeBaseDataSource', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="knowledgeBaseUuid")
     def knowledge_base_uuid(self) -> pulumi.Output[_builtins.str]:

@@ -104,11 +104,10 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * **Deprecated** This field has been deprecated. You can no longer specify an algorithm for load balancers.
      * or `leastConnections`. The default value is `roundRobin`.
      * 
-     * @deprecated
-     * This field has been deprecated. You can no longer specify an algorithm for load balancers.
+     * @deprecated This field has been deprecated. You can no longer specify an algorithm for load balancers.
      * 
      */
-    @Deprecated /* This field has been deprecated. You can no longer specify an algorithm for load balancers. */
+    @Deprecated
     @Export(name="algorithm", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> algorithm;
 

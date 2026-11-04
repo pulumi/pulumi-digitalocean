@@ -18,7 +18,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly string? BaseUrl;
         /// <summary>
-        /// Options for specifying how URLs found on pages should be handled. 
+        /// Options for specifying how URLs found on pages should be handled.
         /// - UNKNOWN: Default unknown value
         /// - SCOPED: Only include the base URL.
         /// - PATH: Crawl the base URL and linked pages within the URL path.

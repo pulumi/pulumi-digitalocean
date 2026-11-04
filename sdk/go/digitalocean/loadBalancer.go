@@ -328,6 +328,12 @@ func (LoadBalancerState) ElementType() reflect.Type {
 	return reflect.TypeOf((*loadBalancerState)(nil)).Elem()
 }
 
+// LoadBalancerExists checks whether an existing LoadBalancer resource with the given ID exists.
+func LoadBalancerExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LoadBalancerState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("digitalocean:index/loadBalancer:LoadBalancer", id, state, "", opts...)
+}
+
 type loadBalancerArgs struct {
 	// **Deprecated** This field has been deprecated. You can no longer specify an algorithm for load balancers.
 	// or `leastConnections`. The default value is `roundRobin`.

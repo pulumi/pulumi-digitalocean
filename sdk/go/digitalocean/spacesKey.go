@@ -194,6 +194,12 @@ func (SpacesKeyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*spacesKeyState)(nil)).Elem()
 }
 
+// SpacesKeyExists checks whether an existing SpacesKey resource with the given ID exists.
+func SpacesKeyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SpacesKeyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("digitalocean:index/spacesKey:SpacesKey", id, state, "", opts...)
+}
+
 type spacesKeyArgs struct {
 	// A grant for the key (documented below).
 	Grants []SpacesKeyGrant `pulumi:"grants"`

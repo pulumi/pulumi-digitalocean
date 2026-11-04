@@ -21,22 +21,20 @@ public final class LoadBalancerForwardingRuleArgs extends com.pulumi.resources.R
     /**
      * **Deprecated** The ID of the TLS certificate to be used for SSL termination. Use `certificateName` instead.
      * 
-     * @deprecated
-     * Certificate IDs may change, for example when a Let&#39;s Encrypt certificate is auto-renewed. Please specify &#39;certificate_name&#39; instead.
+     * @deprecated Certificate IDs may change, for example when a Let&#39;s Encrypt certificate is auto-renewed. Please specify &#39;certificate_name&#39; instead.
      * 
      */
-    @Deprecated /* Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead. */
+    @Deprecated
     @Import(name="certificateId")
     private @Nullable Output<String> certificateId;
 
     /**
      * @return **Deprecated** The ID of the TLS certificate to be used for SSL termination. Use `certificateName` instead.
      * 
-     * @deprecated
-     * Certificate IDs may change, for example when a Let&#39;s Encrypt certificate is auto-renewed. Please specify &#39;certificate_name&#39; instead.
+     * @deprecated Certificate IDs may change, for example when a Let&#39;s Encrypt certificate is auto-renewed. Please specify &#39;certificate_name&#39; instead.
      * 
      */
-    @Deprecated /* Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead. */
+    @Deprecated
     public Optional<Output<String>> certificateId() {
         return Optional.ofNullable(this.certificateId);
     }
@@ -166,11 +164,10 @@ public final class LoadBalancerForwardingRuleArgs extends com.pulumi.resources.R
          * 
          * @return builder
          * 
-         * @deprecated
-         * Certificate IDs may change, for example when a Let&#39;s Encrypt certificate is auto-renewed. Please specify &#39;certificate_name&#39; instead.
+         * @deprecated Certificate IDs may change, for example when a Let&#39;s Encrypt certificate is auto-renewed. Please specify &#39;certificate_name&#39; instead.
          * 
          */
-        @Deprecated /* Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead. */
+        @Deprecated
         public Builder certificateId(@Nullable Output<String> certificateId) {
             $.certificateId = certificateId;
             return this;
@@ -181,11 +178,10 @@ public final class LoadBalancerForwardingRuleArgs extends com.pulumi.resources.R
          * 
          * @return builder
          * 
-         * @deprecated
-         * Certificate IDs may change, for example when a Let&#39;s Encrypt certificate is auto-renewed. Please specify &#39;certificate_name&#39; instead.
+         * @deprecated Certificate IDs may change, for example when a Let&#39;s Encrypt certificate is auto-renewed. Please specify &#39;certificate_name&#39; instead.
          * 
          */
-        @Deprecated /* Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead. */
+        @Deprecated
         public Builder certificateId(String certificateId) {
             return certificateId(Output.of(certificateId));
         }

@@ -199,6 +199,12 @@ func (DatabaseConnectionPoolState) ElementType() reflect.Type {
 	return reflect.TypeOf((*databaseConnectionPoolState)(nil)).Elem()
 }
 
+// DatabaseConnectionPoolExists checks whether an existing DatabaseConnectionPool resource with the given ID exists.
+func DatabaseConnectionPoolExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DatabaseConnectionPoolState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("digitalocean:index/databaseConnectionPool:DatabaseConnectionPool", id, state, "", opts...)
+}
+
 type databaseConnectionPoolArgs struct {
 	// The ID of the source database cluster. Note: This must be a PostgreSQL cluster.
 	ClusterId string `pulumi:"clusterId"`

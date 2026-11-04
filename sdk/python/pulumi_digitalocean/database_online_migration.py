@@ -414,6 +414,24 @@ class DatabaseOnlineMigration(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return DatabaseOnlineMigration(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            disable_ssl: pulumi.Input[Optional[_builtins.bool]] = None,
+            ignore_dbs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            source: pulumi.Input[Optional[Union['DatabaseOnlineMigrationSourceArgs', 'DatabaseOnlineMigrationSourceArgsDict', 'outputs.DatabaseOnlineMigrationSource']]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["clusterId"] = cluster_id
+        __props__["createdAt"] = created_at
+        __props__["disableSsl"] = disable_ssl
+        __props__["ignoreDbs"] = ignore_dbs
+        __props__["source"] = source
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'digitalocean:index/databaseOnlineMigration:DatabaseOnlineMigration', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Output[_builtins.str]:

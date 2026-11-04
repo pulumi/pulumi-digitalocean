@@ -218,11 +218,10 @@ public final class DropletArgs extends com.pulumi.resources.ResourceArgs {
      * **Deprecated** Boolean controlling if private networking
      * is enabled. This parameter has been deprecated. Use `vpcUuid` instead to specify a VPC network for the Droplet. If no `vpcUuid` is provided, the Droplet will be placed in your account&#39;s default VPC for the region.
      * 
-     * @deprecated
-     * This parameter has been deprecated. Use `vpcUuid` instead to specify a VPC network for the Droplet. If no `vpcUuid` is provided, the Droplet will be placed in your account&#39;s default VPC for the region.
+     * @deprecated This parameter has been deprecated. Use `vpcUuid` instead to specify a VPC network for the Droplet. If no `vpcUuid` is provided, the Droplet will be placed in your account&#39;s default VPC for the region.
      * 
      */
-    @Deprecated /* This parameter has been deprecated. Use `vpcUuid` instead to specify a VPC network for the Droplet. If no `vpcUuid` is provided, the Droplet will be placed in your account's default VPC for the region. */
+    @Deprecated
     @Import(name="privateNetworking")
     private @Nullable Output<Boolean> privateNetworking;
 
@@ -230,11 +229,10 @@ public final class DropletArgs extends com.pulumi.resources.ResourceArgs {
      * @return **Deprecated** Boolean controlling if private networking
      * is enabled. This parameter has been deprecated. Use `vpcUuid` instead to specify a VPC network for the Droplet. If no `vpcUuid` is provided, the Droplet will be placed in your account&#39;s default VPC for the region.
      * 
-     * @deprecated
-     * This parameter has been deprecated. Use `vpcUuid` instead to specify a VPC network for the Droplet. If no `vpcUuid` is provided, the Droplet will be placed in your account&#39;s default VPC for the region.
+     * @deprecated This parameter has been deprecated. Use `vpcUuid` instead to specify a VPC network for the Droplet. If no `vpcUuid` is provided, the Droplet will be placed in your account&#39;s default VPC for the region.
      * 
      */
-    @Deprecated /* This parameter has been deprecated. Use `vpcUuid` instead to specify a VPC network for the Droplet. If no `vpcUuid` is provided, the Droplet will be placed in your account's default VPC for the region. */
+    @Deprecated
     public Optional<Output<Boolean>> privateNetworking() {
         return Optional.ofNullable(this.privateNetworking);
     }
@@ -695,11 +693,10 @@ public final class DropletArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * This parameter has been deprecated. Use `vpcUuid` instead to specify a VPC network for the Droplet. If no `vpcUuid` is provided, the Droplet will be placed in your account&#39;s default VPC for the region.
+         * @deprecated This parameter has been deprecated. Use `vpcUuid` instead to specify a VPC network for the Droplet. If no `vpcUuid` is provided, the Droplet will be placed in your account&#39;s default VPC for the region.
          * 
          */
-        @Deprecated /* This parameter has been deprecated. Use `vpcUuid` instead to specify a VPC network for the Droplet. If no `vpcUuid` is provided, the Droplet will be placed in your account's default VPC for the region. */
+        @Deprecated
         public Builder privateNetworking(@Nullable Output<Boolean> privateNetworking) {
             $.privateNetworking = privateNetworking;
             return this;
@@ -711,11 +708,10 @@ public final class DropletArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * This parameter has been deprecated. Use `vpcUuid` instead to specify a VPC network for the Droplet. If no `vpcUuid` is provided, the Droplet will be placed in your account&#39;s default VPC for the region.
+         * @deprecated This parameter has been deprecated. Use `vpcUuid` instead to specify a VPC network for the Droplet. If no `vpcUuid` is provided, the Droplet will be placed in your account&#39;s default VPC for the region.
          * 
          */
-        @Deprecated /* This parameter has been deprecated. Use `vpcUuid` instead to specify a VPC network for the Droplet. If no `vpcUuid` is provided, the Droplet will be placed in your account's default VPC for the region. */
+        @Deprecated
         public Builder privateNetworking(Boolean privateNetworking) {
             return privateNetworking(Output.of(privateNetworking));
         }

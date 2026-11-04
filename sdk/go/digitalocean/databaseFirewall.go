@@ -240,6 +240,12 @@ func (DatabaseFirewallState) ElementType() reflect.Type {
 	return reflect.TypeOf((*databaseFirewallState)(nil)).Elem()
 }
 
+// DatabaseFirewallExists checks whether an existing DatabaseFirewall resource with the given ID exists.
+func DatabaseFirewallExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DatabaseFirewallState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("digitalocean:index/databaseFirewall:DatabaseFirewall", id, state, "", opts...)
+}
+
 type databaseFirewallArgs struct {
 	// The ID of the target database cluster.
 	ClusterId string `pulumi:"clusterId"`

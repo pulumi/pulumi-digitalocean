@@ -101,6 +101,12 @@ func (AgentPlatformAgentRouteState) ElementType() reflect.Type {
 	return reflect.TypeOf((*agentPlatformAgentRouteState)(nil)).Elem()
 }
 
+// AgentPlatformAgentRouteExists checks whether an existing AgentPlatformAgentRoute resource with the given ID exists.
+func AgentPlatformAgentRouteExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AgentPlatformAgentRouteState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("digitalocean:index/agentPlatformAgentRoute:AgentPlatformAgentRoute", id, state, "", opts...)
+}
+
 type agentPlatformAgentRouteArgs struct {
 	// The UUID of the child agent.
 	ChildAgentUuid string `pulumi:"childAgentUuid"`

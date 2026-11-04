@@ -90,7 +90,7 @@ import javax.annotation.Nullable;
  * * `autovacuumVacuumScaleFactor` - (Optional) Number of tuple updates or deletes prior to vacuum as a fraction of reltuples. Default: `0.2`.
  * * `autovacuumVacuumThreshold` - (Optional) Minimum number of tuple updates or deletes prior to vacuum. Default: `50`.
  * * `backendFlushAfter` - (Optional) Number of pages after which previously performed writes are flushed to disk. Default: `0`.
- * * `backslashQuote` - (Optional) Sets whether &#34;\&#39;&#34; is allowed in string literals. Default: `safeEncoding`.
+ * * `backslashQuote` - (Optional) Sets whether &#34;&#92;&#39;&#34; is allowed in string literals. Default: `safeEncoding`.
  * * `bgwriterDelay` - (Optional) Background writer sleep time between rounds. Default: `200`.
  * * `bgwriterFlushAfter` - (Optional) Number of pages after which previously performed writes are flushed to disk. Default: `64`.
  * * `bgwriterLruMaxpages` - (Optional) Background writer maximum number of LRU pages to flush per round. Default: `100`.

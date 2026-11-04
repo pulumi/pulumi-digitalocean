@@ -533,6 +533,28 @@ class DatabaseUser(pulumi.CustomResource):
         __props__.__dict__["settings"] = settings
         return DatabaseUser(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_cert: pulumi.Input[Optional[_builtins.str]] = None,
+            access_key: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            mysql_auth_plugin: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            role: pulumi.Input[Optional[_builtins.str]] = None,
+            settings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabaseUserSettingArgs', 'DatabaseUserSettingArgsDict', 'outputs.DatabaseUserSetting']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessCert"] = access_cert
+        __props__["accessKey"] = access_key
+        __props__["clusterId"] = cluster_id
+        __props__["mysqlAuthPlugin"] = mysql_auth_plugin
+        __props__["name"] = name
+        __props__["password"] = password
+        __props__["role"] = role
+        __props__["settings"] = settings
+        return pulumi.runtime.exists_resource(None, 'digitalocean:index/databaseUser:DatabaseUser', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessCert")
     def access_cert(self) -> pulumi.Output[_builtins.str]:

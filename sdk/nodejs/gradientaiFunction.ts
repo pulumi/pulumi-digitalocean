@@ -22,6 +22,17 @@ export class GradientaiFunction extends pulumi.CustomResource {
         return new GradientaiFunction(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing GradientaiFunction resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: GradientaiFunctionState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("digitalocean:index/gradientaiFunction:GradientaiFunction", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'digitalocean:index/gradientaiFunction:GradientaiFunction';
 
