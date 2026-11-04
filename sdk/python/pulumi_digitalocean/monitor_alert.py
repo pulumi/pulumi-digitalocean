@@ -609,6 +609,32 @@ class MonitorAlert(pulumi.CustomResource):
         __props__.__dict__["window"] = window
         return MonitorAlert(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            alerts: pulumi.Input[Optional[Union['MonitorAlertAlertsArgs', 'MonitorAlertAlertsArgsDict', 'outputs.MonitorAlertAlerts']]] = None,
+            compare: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            entities: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            uuid: pulumi.Input[Optional[_builtins.str]] = None,
+            value: pulumi.Input[Optional[_builtins.float]] = None,
+            window: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["alerts"] = alerts
+        __props__["compare"] = compare
+        __props__["description"] = description
+        __props__["enabled"] = enabled
+        __props__["entities"] = entities
+        __props__["tags"] = tags
+        __props__["type"] = type
+        __props__["uuid"] = uuid
+        __props__["value"] = value
+        __props__["window"] = window
+        return pulumi.runtime.exists_resource(None, 'digitalocean:index/monitorAlert:MonitorAlert', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def alerts(self) -> pulumi.Output['outputs.MonitorAlertAlerts']:

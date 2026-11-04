@@ -45,11 +45,10 @@ public final class GetAppSpec {
     private @Nullable Boolean disableEmailObfuscation;
     private List<GetAppSpecDomain> domain;
     /**
-     * @deprecated
-     * This attribute has been replaced by `domain` which supports additional functionality.
+     * @deprecated This attribute has been replaced by `domain` which supports additional functionality.
      * 
      */
-    @Deprecated /* This attribute has been replaced by `domain` which supports additional functionality. */
+    @Deprecated
     private List<String> domains;
     private @Nullable List<GetAppSpecEgress> egresses;
     /**
@@ -119,11 +118,10 @@ public final class GetAppSpec {
         return this.domain;
     }
     /**
-     * @deprecated
-     * This attribute has been replaced by `domain` which supports additional functionality.
+     * @deprecated This attribute has been replaced by `domain` which supports additional functionality.
      * 
      */
-    @Deprecated /* This attribute has been replaced by `domain` which supports additional functionality. */
+    @Deprecated
     public List<String> domains() {
         return this.domains;
     }

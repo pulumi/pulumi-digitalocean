@@ -314,6 +314,12 @@ func (AgentPlatformAgentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*agentPlatformAgentState)(nil)).Elem()
 }
 
+// AgentPlatformAgentExists checks whether an existing AgentPlatformAgent resource with the given ID exists.
+func AgentPlatformAgentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AgentPlatformAgentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("digitalocean:index/agentPlatformAgent:AgentPlatformAgent", id, state, "", opts...)
+}
+
 type agentPlatformAgentArgs struct {
 	// AgentGuardrail represents a Guardrail attached to Gen AI Agent
 	AgentGuardrails []AgentPlatformAgentAgentGuardrail `pulumi:"agentGuardrails"`

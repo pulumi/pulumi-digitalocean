@@ -321,6 +321,26 @@ class Tag(pulumi.CustomResource):
         __props__.__dict__["volumes_count"] = volumes_count
         return Tag(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            databases_count: pulumi.Input[Optional[_builtins.int]] = None,
+            droplets_count: pulumi.Input[Optional[_builtins.int]] = None,
+            images_count: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            total_resource_count: pulumi.Input[Optional[_builtins.int]] = None,
+            volume_snapshots_count: pulumi.Input[Optional[_builtins.int]] = None,
+            volumes_count: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["databasesCount"] = databases_count
+        __props__["dropletsCount"] = droplets_count
+        __props__["imagesCount"] = images_count
+        __props__["name"] = name
+        __props__["totalResourceCount"] = total_resource_count
+        __props__["volumeSnapshotsCount"] = volume_snapshots_count
+        __props__["volumesCount"] = volumes_count
+        return pulumi.runtime.exists_resource(None, 'digitalocean:index/tag:Tag', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="databasesCount")
     def databases_count(self) -> pulumi.Output[_builtins.int]:

@@ -195,6 +195,12 @@ func (DatabaseValkeyConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*databaseValkeyConfigState)(nil)).Elem()
 }
 
+// DatabaseValkeyConfigExists checks whether an existing DatabaseValkeyConfig resource with the given ID exists.
+func DatabaseValkeyConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DatabaseValkeyConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("digitalocean:index/databaseValkeyConfig:DatabaseValkeyConfig", id, state, "", opts...)
+}
+
 type databaseValkeyConfigArgs struct {
 	// Determines default pub/sub channels' ACL for new users if an ACL is not supplied. When this option is not defined, `allchannels` is assumed to keep backward compatibility. This option doesn't affect Valkey' `acl-pubsub-default` configuration. Supported values are: `allchannels` and `resetchannels`
 	AclChannelsDefault *string `pulumi:"aclChannelsDefault"`

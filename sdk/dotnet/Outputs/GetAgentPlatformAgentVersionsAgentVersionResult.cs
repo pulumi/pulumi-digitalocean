@@ -82,7 +82,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly bool ProvideCitations;
         /// <summary>
-        /// Retrieval method used. 
+        /// Retrieval method used.
         /// - RETRIEVAL_METHOD_UNKNOWN: The retrieval method is unknown
         /// - RETRIEVAL_METHOD_REWRITE: The retrieval method is rewrite
         /// - RETRIEVAL_METHOD_STEP_BACK: The retrieval method is step back

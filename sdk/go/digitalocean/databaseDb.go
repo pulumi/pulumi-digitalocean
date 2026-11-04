@@ -120,6 +120,12 @@ func (DatabaseDbState) ElementType() reflect.Type {
 	return reflect.TypeOf((*databaseDbState)(nil)).Elem()
 }
 
+// DatabaseDbExists checks whether an existing DatabaseDb resource with the given ID exists.
+func DatabaseDbExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DatabaseDbState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("digitalocean:index/databaseDb:DatabaseDb", id, state, "", opts...)
+}
+
 type databaseDbArgs struct {
 	// The ID of the original source database cluster.
 	ClusterId string `pulumi:"clusterId"`

@@ -530,6 +530,36 @@ class DatabaseConnectionPool(pulumi.CustomResource):
         __props__.__dict__["user"] = user
         return DatabaseConnectionPool(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            db_name: pulumi.Input[Optional[_builtins.str]] = None,
+            host: pulumi.Input[Optional[_builtins.str]] = None,
+            mode: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            port: pulumi.Input[Optional[_builtins.int]] = None,
+            private_host: pulumi.Input[Optional[_builtins.str]] = None,
+            private_uri: pulumi.Input[Optional[_builtins.str]] = None,
+            size: pulumi.Input[Optional[_builtins.int]] = None,
+            uri: pulumi.Input[Optional[_builtins.str]] = None,
+            user: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["clusterId"] = cluster_id
+        __props__["dbName"] = db_name
+        __props__["host"] = host
+        __props__["mode"] = mode
+        __props__["name"] = name
+        __props__["password"] = password
+        __props__["port"] = port
+        __props__["privateHost"] = private_host
+        __props__["privateUri"] = private_uri
+        __props__["size"] = size
+        __props__["uri"] = uri
+        __props__["user"] = user
+        return pulumi.runtime.exists_resource(None, 'digitalocean:index/databaseConnectionPool:DatabaseConnectionPool', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Output[_builtins.str]:

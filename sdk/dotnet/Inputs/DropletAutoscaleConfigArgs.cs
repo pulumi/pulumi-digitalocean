@@ -37,7 +37,7 @@ namespace Pulumi.DigitalOcean.Inputs
         public Input<double>? TargetCpuUtilization { get; set; }
 
         /// <summary>
-        /// The target average Memory load (in range `[0, 1]`) to maintain in the Droplet Autoscale 
+        /// The target average Memory load (in range `[0, 1]`) to maintain in the Droplet Autoscale
         /// pool.
         /// </summary>
         [Input("targetMemoryUtilization")]

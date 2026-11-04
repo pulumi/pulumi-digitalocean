@@ -197,6 +197,12 @@ func (MonitorAlertState) ElementType() reflect.Type {
 	return reflect.TypeOf((*monitorAlertState)(nil)).Elem()
 }
 
+// MonitorAlertExists checks whether an existing MonitorAlert resource with the given ID exists.
+func MonitorAlertExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MonitorAlertState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("digitalocean:index/monitorAlert:MonitorAlert", id, state, "", opts...)
+}
+
 type monitorAlertArgs struct {
 	// How to send notifications about the alerts. This is a list with one element, .
 	// Note that for Slack, the DigitalOcean app needs to have permissions for your workspace. You can

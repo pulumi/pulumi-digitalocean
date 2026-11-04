@@ -300,6 +300,20 @@ class ReservedIp(pulumi.CustomResource):
         __props__.__dict__["reserved_ip_urn"] = reserved_ip_urn
         return ReservedIp(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            droplet_id: pulumi.Input[Optional[_builtins.int]] = None,
+            ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            reserved_ip_urn: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["dropletId"] = droplet_id
+        __props__["ipAddress"] = ip_address
+        __props__["region"] = region
+        __props__["reservedIpUrn"] = reserved_ip_urn
+        return pulumi.runtime.exists_resource(None, 'digitalocean:index/reservedIp:ReservedIp', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="dropletId")
     def droplet_id(self) -> pulumi.Output[Optional[_builtins.int]]:

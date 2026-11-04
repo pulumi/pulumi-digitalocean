@@ -208,6 +208,12 @@ func (VpcNatGatewayState) ElementType() reflect.Type {
 	return reflect.TypeOf((*vpcNatGatewayState)(nil)).Elem()
 }
 
+// VpcNatGatewayExists checks whether an existing VpcNatGateway resource with the given ID exists.
+func VpcNatGatewayExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VpcNatGatewayState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("digitalocean:index/vpcNatGateway:VpcNatGateway", id, state, "", opts...)
+}
+
 type vpcNatGatewayArgs struct {
 	// Embeds the list of public egresses assigned to the VPC NAT Gateway: resolves as list of
 	// `publicGateways` embedding the reserved `ipv4` addresses.

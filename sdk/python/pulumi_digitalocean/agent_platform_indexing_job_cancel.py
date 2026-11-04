@@ -426,6 +426,42 @@ class AgentPlatformIndexingJobCancel(pulumi.CustomResource):
         __props__.__dict__["uuid"] = uuid
         return AgentPlatformIndexingJobCancel(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            completed_datasources: pulumi.Input[Optional[_builtins.int]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            data_source_uuids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            finished_at: pulumi.Input[Optional[_builtins.str]] = None,
+            knowledge_base_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+            phase: pulumi.Input[Optional[_builtins.str]] = None,
+            started_at: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tokens: pulumi.Input[Optional[_builtins.int]] = None,
+            total_datasources: pulumi.Input[Optional[_builtins.int]] = None,
+            total_items_failed: pulumi.Input[Optional[_builtins.int]] = None,
+            total_items_indexed: pulumi.Input[Optional[_builtins.int]] = None,
+            total_items_skipped: pulumi.Input[Optional[_builtins.int]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+            uuid: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["completedDatasources"] = completed_datasources
+        __props__["createdAt"] = created_at
+        __props__["dataSourceUuids"] = data_source_uuids
+        __props__["finishedAt"] = finished_at
+        __props__["knowledgeBaseUuid"] = knowledge_base_uuid
+        __props__["phase"] = phase
+        __props__["startedAt"] = started_at
+        __props__["status"] = status
+        __props__["tokens"] = tokens
+        __props__["totalDatasources"] = total_datasources
+        __props__["totalItemsFailed"] = total_items_failed
+        __props__["totalItemsIndexed"] = total_items_indexed
+        __props__["totalItemsSkipped"] = total_items_skipped
+        __props__["updatedAt"] = updated_at
+        __props__["uuid"] = uuid
+        return pulumi.runtime.exists_resource(None, 'digitalocean:index/agentPlatformIndexingJobCancel:AgentPlatformIndexingJobCancel', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="completedDatasources")
     def completed_datasources(self) -> pulumi.Output[_builtins.int]:

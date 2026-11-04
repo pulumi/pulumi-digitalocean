@@ -335,6 +335,12 @@ func (DatabaseAdvancedPostgresqlConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*databaseAdvancedPostgresqlConfigState)(nil)).Elem()
 }
 
+// DatabaseAdvancedPostgresqlConfigExists checks whether an existing DatabaseAdvancedPostgresqlConfig resource with the given ID exists.
+func DatabaseAdvancedPostgresqlConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DatabaseAdvancedPostgresqlConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("digitalocean:index/databaseAdvancedPostgresqlConfig:DatabaseAdvancedPostgresqlConfig", id, state, "", opts...)
+}
+
 type databaseAdvancedPostgresqlConfigArgs struct {
 	// The ID of the target PostgreSQL Advanced Edition cluster.
 	ClusterId string `pulumi:"clusterId"`

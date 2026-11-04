@@ -408,6 +408,28 @@ class GradientaiFunction(pulumi.CustomResource):
         __props__.__dict__["output_schema"] = output_schema
         return GradientaiFunction(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            faas_name: pulumi.Input[Optional[_builtins.str]] = None,
+            faas_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            function_name: pulumi.Input[Optional[_builtins.str]] = None,
+            function_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+            input_schema: pulumi.Input[Optional[_builtins.str]] = None,
+            output_schema: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["agentId"] = agent_id
+        __props__["description"] = description
+        __props__["faasName"] = faas_name
+        __props__["faasNamespace"] = faas_namespace
+        __props__["functionName"] = function_name
+        __props__["functionUuid"] = function_uuid
+        __props__["inputSchema"] = input_schema
+        __props__["outputSchema"] = output_schema
+        return pulumi.runtime.exists_resource(None, 'digitalocean:index/gradientaiFunction:GradientaiFunction', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="agentId")
     def agent_id(self) -> pulumi.Output[_builtins.str]:

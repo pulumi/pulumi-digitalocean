@@ -181,6 +181,12 @@ func (SpacesBucketLoggingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*spacesBucketLoggingState)(nil)).Elem()
 }
 
+// SpacesBucketLoggingExists checks whether an existing SpacesBucketLogging resource with the given ID exists.
+func SpacesBucketLoggingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SpacesBucketLoggingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("digitalocean:index/spacesBucketLogging:SpacesBucketLogging", id, state, "", opts...)
+}
+
 type spacesBucketLoggingArgs struct {
 	// The name of the bucket which will be logged.
 	Bucket string `pulumi:"bucket"`

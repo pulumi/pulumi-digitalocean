@@ -268,6 +268,12 @@ func (DedicatedInferenceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dedicatedInferenceState)(nil)).Elem()
 }
 
+// DedicatedInferenceExists checks whether an existing DedicatedInference resource with the given ID exists.
+func DedicatedInferenceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DedicatedInferenceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("digitalocean:index/dedicatedInference:DedicatedInference", id, state, "", opts...)
+}
+
 type dedicatedInferenceArgs struct {
 	// Whether to enable a public HTTPS endpoint for the dedicated inference endpoint. Defaults to `false`. This field is immutable after creation and changing it forces a new resource.
 	EnablePublicEndpoint *bool `pulumi:"enablePublicEndpoint"`

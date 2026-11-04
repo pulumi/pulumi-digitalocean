@@ -724,6 +724,38 @@ class KubernetesNodePool(pulumi.CustomResource):
         __props__.__dict__["taints"] = taints
         return KubernetesNodePool(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            actual_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+            auto_scale: pulumi.Input[Optional[_builtins.bool]] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            gpu_partition_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            max_nodes: pulumi.Input[Optional[_builtins.int]] = None,
+            min_nodes: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            node_count: pulumi.Input[Optional[_builtins.int]] = None,
+            nodes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KubernetesNodePoolNodeArgs', 'KubernetesNodePoolNodeArgsDict', 'outputs.KubernetesNodePoolNode']]]]] = None,
+            size: pulumi.Input[Optional[Union[_builtins.str, 'DropletSlug']]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            taints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KubernetesNodePoolTaintArgs', 'KubernetesNodePoolTaintArgsDict', 'outputs.KubernetesNodePoolTaint']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["actualNodeCount"] = actual_node_count
+        __props__["autoScale"] = auto_scale
+        __props__["clusterId"] = cluster_id
+        __props__["gpuPartitionMode"] = gpu_partition_mode
+        __props__["labels"] = labels
+        __props__["maxNodes"] = max_nodes
+        __props__["minNodes"] = min_nodes
+        __props__["name"] = name
+        __props__["nodeCount"] = node_count
+        __props__["nodes"] = nodes
+        __props__["size"] = size
+        __props__["tags"] = tags
+        __props__["taints"] = taints
+        return pulumi.runtime.exists_resource(None, 'digitalocean:index/kubernetesNodePool:KubernetesNodePool', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="actualNodeCount")
     def actual_node_count(self) -> pulumi.Output[_builtins.int]:

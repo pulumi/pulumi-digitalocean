@@ -99,6 +99,12 @@ func (UptimeCheckState) ElementType() reflect.Type {
 	return reflect.TypeOf((*uptimeCheckState)(nil)).Elem()
 }
 
+// UptimeCheckExists checks whether an existing UptimeCheck resource with the given ID exists.
+func UptimeCheckExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *UptimeCheckState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("digitalocean:index/uptimeCheck:UptimeCheck", id, state, "", opts...)
+}
+
 type uptimeCheckArgs struct {
 	// A boolean value indicating whether the check is enabled/disabled.
 	Enabled *bool `pulumi:"enabled"`

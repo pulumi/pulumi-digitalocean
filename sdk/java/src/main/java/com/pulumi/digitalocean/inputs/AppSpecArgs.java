@@ -99,20 +99,18 @@ public final class AppSpecArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * @deprecated
-     * This attribute has been replaced by `domain` which supports additional functionality.
+     * @deprecated This attribute has been replaced by `domain` which supports additional functionality.
      * 
      */
-    @Deprecated /* This attribute has been replaced by `domain` which supports additional functionality. */
+    @Deprecated
     @Import(name="domains")
     private @Nullable Output<List<String>> domains;
 
     /**
-     * @deprecated
-     * This attribute has been replaced by `domain` which supports additional functionality.
+     * @deprecated This attribute has been replaced by `domain` which supports additional functionality.
      * 
      */
-    @Deprecated /* This attribute has been replaced by `domain` which supports additional functionality. */
+    @Deprecated
     public Optional<Output<List<String>>> domains() {
         return Optional.ofNullable(this.domains);
     }
@@ -450,11 +448,10 @@ public final class AppSpecArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * This attribute has been replaced by `domain` which supports additional functionality.
+         * @deprecated This attribute has been replaced by `domain` which supports additional functionality.
          * 
          */
-        @Deprecated /* This attribute has been replaced by `domain` which supports additional functionality. */
+        @Deprecated
         public Builder domains(@Nullable Output<List<String>> domains) {
             $.domains = domains;
             return this;
@@ -463,11 +460,10 @@ public final class AppSpecArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * This attribute has been replaced by `domain` which supports additional functionality.
+         * @deprecated This attribute has been replaced by `domain` which supports additional functionality.
          * 
          */
-        @Deprecated /* This attribute has been replaced by `domain` which supports additional functionality. */
+        @Deprecated
         public Builder domains(List<String> domains) {
             return domains(Output.of(domains));
         }
@@ -475,11 +471,10 @@ public final class AppSpecArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * This attribute has been replaced by `domain` which supports additional functionality.
+         * @deprecated This attribute has been replaced by `domain` which supports additional functionality.
          * 
          */
-        @Deprecated /* This attribute has been replaced by `domain` which supports additional functionality. */
+        @Deprecated
         public Builder domains(String... domains) {
             return domains(List.of(domains));
         }

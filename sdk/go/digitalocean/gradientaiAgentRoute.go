@@ -96,6 +96,12 @@ func (GradientaiAgentRouteState) ElementType() reflect.Type {
 	return reflect.TypeOf((*gradientaiAgentRouteState)(nil)).Elem()
 }
 
+// GradientaiAgentRouteExists checks whether an existing GradientaiAgentRoute resource with the given ID exists.
+func GradientaiAgentRouteExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GradientaiAgentRouteState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("digitalocean:index/gradientaiAgentRoute:GradientaiAgentRoute", id, state, "", opts...)
+}
+
 type gradientaiAgentRouteArgs struct {
 	// The UUID of the child agent.
 	ChildAgentUuid string `pulumi:"childAgentUuid"`

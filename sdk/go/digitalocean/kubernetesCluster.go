@@ -548,6 +548,12 @@ func (KubernetesClusterState) ElementType() reflect.Type {
 	return reflect.TypeOf((*kubernetesClusterState)(nil)).Elem()
 }
 
+// KubernetesClusterExists checks whether an existing KubernetesCluster resource with the given ID exists.
+func KubernetesClusterExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *KubernetesClusterState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("digitalocean:index/kubernetesCluster:KubernetesCluster", id, state, "", opts...)
+}
+
 type kubernetesClusterArgs struct {
 	// Block containing options for the AMD GPU device metrics exporter component. If not specified, the component will not be installed in the cluster.
 	AmdGpuDeviceMetricsExporterPlugin *KubernetesClusterAmdGpuDeviceMetricsExporterPlugin `pulumi:"amdGpuDeviceMetricsExporterPlugin"`

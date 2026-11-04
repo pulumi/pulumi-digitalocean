@@ -223,6 +223,12 @@ func (DatabaseReplicaState) ElementType() reflect.Type {
 	return reflect.TypeOf((*databaseReplicaState)(nil)).Elem()
 }
 
+// DatabaseReplicaExists checks whether an existing DatabaseReplica resource with the given ID exists.
+func DatabaseReplicaExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DatabaseReplicaState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("digitalocean:index/databaseReplica:DatabaseReplica", id, state, "", opts...)
+}
+
 type databaseReplicaArgs struct {
 	// The ID of the original source database cluster.
 	ClusterId string `pulumi:"clusterId"`

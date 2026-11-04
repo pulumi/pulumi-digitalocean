@@ -12,11 +12,11 @@ namespace Pulumi.DigitalOcean
     public static class GetByoipPrefixResources
     {
         /// <summary>
-        /// Get information about IP addresses that have been **already assigned** from a 
-        /// BYOIP (Bring Your Own IP) prefix. This data source provides a list of all IP addresses 
+        /// Get information about IP addresses that have been **already assigned** from a
+        /// BYOIP (Bring Your Own IP) prefix. This data source provides a list of all IP addresses
         /// that are currently assigned to resources from a specific BYOIP prefix.
         /// 
-        /// **Note:** This data source only lists IPs that are already assigned to resources (like Droplets). 
+        /// **Note:** This data source only lists IPs that are already assigned to resources (like Droplets).
         /// To allocate new IPs from the BYOIP prefix, you need to use `digitalocean.ReservedIpAssignment` resource.
         /// 
         /// ## Example Usage
@@ -60,11 +60,11 @@ namespace Pulumi.DigitalOcean
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetByoipPrefixResourcesResult>("digitalocean:index/getByoipPrefixResources:getByoipPrefixResources", args ?? new GetByoipPrefixResourcesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Get information about IP addresses that have been **already assigned** from a 
-        /// BYOIP (Bring Your Own IP) prefix. This data source provides a list of all IP addresses 
+        /// Get information about IP addresses that have been **already assigned** from a
+        /// BYOIP (Bring Your Own IP) prefix. This data source provides a list of all IP addresses
         /// that are currently assigned to resources from a specific BYOIP prefix.
         /// 
-        /// **Note:** This data source only lists IPs that are already assigned to resources (like Droplets). 
+        /// **Note:** This data source only lists IPs that are already assigned to resources (like Droplets).
         /// To allocate new IPs from the BYOIP prefix, you need to use `digitalocean.ReservedIpAssignment` resource.
         /// 
         /// ## Example Usage
@@ -108,11 +108,11 @@ namespace Pulumi.DigitalOcean
             => global::Pulumi.Deployment.Instance.Invoke<GetByoipPrefixResourcesResult>("digitalocean:index/getByoipPrefixResources:getByoipPrefixResources", args ?? new GetByoipPrefixResourcesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Get information about IP addresses that have been **already assigned** from a 
-        /// BYOIP (Bring Your Own IP) prefix. This data source provides a list of all IP addresses 
+        /// Get information about IP addresses that have been **already assigned** from a
+        /// BYOIP (Bring Your Own IP) prefix. This data source provides a list of all IP addresses
         /// that are currently assigned to resources from a specific BYOIP prefix.
         /// 
-        /// **Note:** This data source only lists IPs that are already assigned to resources (like Droplets). 
+        /// **Note:** This data source only lists IPs that are already assigned to resources (like Droplets).
         /// To allocate new IPs from the BYOIP prefix, you need to use `digitalocean.ReservedIpAssignment` resource.
         /// 
         /// ## Example Usage

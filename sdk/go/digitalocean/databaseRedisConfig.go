@@ -191,6 +191,12 @@ func (DatabaseRedisConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*databaseRedisConfigState)(nil)).Elem()
 }
 
+// DatabaseRedisConfigExists checks whether an existing DatabaseRedisConfig resource with the given ID exists.
+func DatabaseRedisConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DatabaseRedisConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("digitalocean:index/databaseRedisConfig:DatabaseRedisConfig", id, state, "", opts...)
+}
+
 type databaseRedisConfigArgs struct {
 	// Determines default pub/sub channels' ACL for new users if an ACL is not supplied. When this option is not defined, `allchannels` is assumed to keep backward compatibility. This option doesn't affect Redis' `acl-pubsub-default` configuration. Supported values are: `allchannels` and `resetchannels`
 	AclChannelsDefault *string `pulumi:"aclChannelsDefault"`

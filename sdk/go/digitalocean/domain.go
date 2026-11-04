@@ -123,6 +123,12 @@ func (DomainState) ElementType() reflect.Type {
 	return reflect.TypeOf((*domainState)(nil)).Elem()
 }
 
+// DomainExists checks whether an existing Domain resource with the given ID exists.
+func DomainExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DomainState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("digitalocean:index/domain:Domain", id, state, "", opts...)
+}
+
 type domainArgs struct {
 	// The IP address of the domain. If specified, this IP
 	// is used to created an initial A record for the domain.

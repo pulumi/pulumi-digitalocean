@@ -184,6 +184,12 @@ func (DatabaseOnlineMigrationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*databaseOnlineMigrationState)(nil)).Elem()
 }
 
+// DatabaseOnlineMigrationExists checks whether an existing DatabaseOnlineMigration resource with the given ID exists.
+func DatabaseOnlineMigrationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DatabaseOnlineMigrationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("digitalocean:index/databaseOnlineMigration:DatabaseOnlineMigration", id, state, "", opts...)
+}
+
 type databaseOnlineMigrationArgs struct {
 	// The ID of the target MySQL cluster.
 	ClusterId string `pulumi:"clusterId"`

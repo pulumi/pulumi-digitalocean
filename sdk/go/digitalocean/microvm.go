@@ -313,6 +313,12 @@ func (MicrovmState) ElementType() reflect.Type {
 	return reflect.TypeOf((*microvmState)(nil)).Elem()
 }
 
+// MicrovmExists checks whether an existing Microvm resource with the given ID exists.
+func MicrovmExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MicrovmState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("digitalocean:index/microvm:Microvm", id, state, "", opts...)
+}
+
 type microvmArgs struct {
 	// Auto-pause configuration. When omitted, the product default (enabled) applies.
 	AutoPause *MicrovmAutoPause `pulumi:"autoPause"`

@@ -592,6 +592,32 @@ class SpacesBucket(pulumi.CustomResource):
         __props__.__dict__["versioning"] = versioning
         return SpacesBucket(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            acl: pulumi.Input[Optional[_builtins.str]] = None,
+            bucket_domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+            bucket_urn: pulumi.Input[Optional[_builtins.str]] = None,
+            cors_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SpacesBucketCorsRuleArgs', 'SpacesBucketCorsRuleArgsDict', 'outputs.SpacesBucketCorsRule']]]]] = None,
+            endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            lifecycle_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SpacesBucketLifecycleRuleArgs', 'SpacesBucketLifecycleRuleArgsDict', 'outputs.SpacesBucketLifecycleRule']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[Union[_builtins.str, 'Region']]] = None,
+            versioning: pulumi.Input[Optional[Union['SpacesBucketVersioningArgs', 'SpacesBucketVersioningArgsDict', 'outputs.SpacesBucketVersioning']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["acl"] = acl
+        __props__["bucketDomainName"] = bucket_domain_name
+        __props__["bucketUrn"] = bucket_urn
+        __props__["corsRules"] = cors_rules
+        __props__["endpoint"] = endpoint
+        __props__["forceDestroy"] = force_destroy
+        __props__["lifecycleRules"] = lifecycle_rules
+        __props__["name"] = name
+        __props__["region"] = region
+        __props__["versioning"] = versioning
+        return pulumi.runtime.exists_resource(None, 'digitalocean:index/spacesBucket:SpacesBucket', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def acl(self) -> pulumi.Output[Optional[_builtins.str]]:

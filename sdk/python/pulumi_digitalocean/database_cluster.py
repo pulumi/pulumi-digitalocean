@@ -1260,6 +1260,74 @@ class DatabaseCluster(pulumi.CustomResource):
         __props__.__dict__["version"] = version
         return DatabaseCluster(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            backup_restore: pulumi.Input[Optional[Union['DatabaseClusterBackupRestoreArgs', 'DatabaseClusterBackupRestoreArgsDict', 'outputs.DatabaseClusterBackupRestore']]] = None,
+            cluster_urn: pulumi.Input[Optional[_builtins.str]] = None,
+            database: pulumi.Input[Optional[_builtins.str]] = None,
+            engine: pulumi.Input[Optional[_builtins.str]] = None,
+            eviction_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            host: pulumi.Input[Optional[_builtins.str]] = None,
+            maintenance_windows: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabaseClusterMaintenanceWindowArgs', 'DatabaseClusterMaintenanceWindowArgsDict', 'outputs.DatabaseClusterMaintenanceWindow']]]]] = None,
+            metrics_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            node_count: pulumi.Input[Optional[_builtins.int]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            port: pulumi.Input[Optional[_builtins.int]] = None,
+            private_host: pulumi.Input[Optional[_builtins.str]] = None,
+            private_network_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+            private_uri: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[Union[_builtins.str, 'Region']]] = None,
+            size: pulumi.Input[Optional[Union[_builtins.str, 'DatabaseSlug']]] = None,
+            sql_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_autoscale: pulumi.Input[Optional[Union['DatabaseClusterStorageAutoscaleArgs', 'DatabaseClusterStorageAutoscaleArgsDict', 'outputs.DatabaseClusterStorageAutoscale']]] = None,
+            storage_size_mib: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            ui_database: pulumi.Input[Optional[_builtins.str]] = None,
+            ui_host: pulumi.Input[Optional[_builtins.str]] = None,
+            ui_password: pulumi.Input[Optional[_builtins.str]] = None,
+            ui_port: pulumi.Input[Optional[_builtins.int]] = None,
+            ui_uri: pulumi.Input[Optional[_builtins.str]] = None,
+            ui_user: pulumi.Input[Optional[_builtins.str]] = None,
+            uri: pulumi.Input[Optional[_builtins.str]] = None,
+            user: pulumi.Input[Optional[_builtins.str]] = None,
+            version: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["backupRestore"] = backup_restore
+        __props__["clusterUrn"] = cluster_urn
+        __props__["database"] = database
+        __props__["engine"] = engine
+        __props__["evictionPolicy"] = eviction_policy
+        __props__["host"] = host
+        __props__["maintenanceWindows"] = maintenance_windows
+        __props__["metricsEndpoints"] = metrics_endpoints
+        __props__["name"] = name
+        __props__["nodeCount"] = node_count
+        __props__["password"] = password
+        __props__["port"] = port
+        __props__["privateHost"] = private_host
+        __props__["privateNetworkUuid"] = private_network_uuid
+        __props__["privateUri"] = private_uri
+        __props__["projectId"] = project_id
+        __props__["region"] = region
+        __props__["size"] = size
+        __props__["sqlMode"] = sql_mode
+        __props__["storageAutoscale"] = storage_autoscale
+        __props__["storageSizeMib"] = storage_size_mib
+        __props__["tags"] = tags
+        __props__["uiDatabase"] = ui_database
+        __props__["uiHost"] = ui_host
+        __props__["uiPassword"] = ui_password
+        __props__["uiPort"] = ui_port
+        __props__["uiUri"] = ui_uri
+        __props__["uiUser"] = ui_user
+        __props__["uri"] = uri
+        __props__["user"] = user
+        __props__["version"] = version
+        return pulumi.runtime.exists_resource(None, 'digitalocean:index/databaseCluster:DatabaseCluster', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="backupRestore")
     def backup_restore(self) -> pulumi.Output[Optional['outputs.DatabaseClusterBackupRestore']]:

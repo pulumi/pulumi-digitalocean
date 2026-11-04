@@ -313,6 +313,24 @@ class AgentPlatformAgentRoute(pulumi.CustomResource):
         __props__.__dict__["uuid"] = uuid
         return AgentPlatformAgentRoute(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            child_agent_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+            if_case: pulumi.Input[Optional[_builtins.str]] = None,
+            parent_agent_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+            rollback: pulumi.Input[Optional[_builtins.bool]] = None,
+            route_name: pulumi.Input[Optional[_builtins.str]] = None,
+            uuid: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["childAgentUuid"] = child_agent_uuid
+        __props__["ifCase"] = if_case
+        __props__["parentAgentUuid"] = parent_agent_uuid
+        __props__["rollback"] = rollback
+        __props__["routeName"] = route_name
+        __props__["uuid"] = uuid
+        return pulumi.runtime.exists_resource(None, 'digitalocean:index/agentPlatformAgentRoute:AgentPlatformAgentRoute', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="childAgentUuid")
     def child_agent_uuid(self) -> pulumi.Output[_builtins.str]:

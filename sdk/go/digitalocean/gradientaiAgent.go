@@ -309,6 +309,12 @@ func (GradientaiAgentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*gradientaiAgentState)(nil)).Elem()
 }
 
+// GradientaiAgentExists checks whether an existing GradientaiAgent resource with the given ID exists.
+func GradientaiAgentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GradientaiAgentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("digitalocean:index/gradientaiAgent:GradientaiAgent", id, state, "", opts...)
+}
+
 type gradientaiAgentArgs struct {
 	// AgentGuardrail represents a Guardrail attached to Gen AI Agent
 	AgentGuardrails []GradientaiAgentAgentGuardrail `pulumi:"agentGuardrails"`

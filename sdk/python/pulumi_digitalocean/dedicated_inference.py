@@ -590,6 +590,34 @@ class DedicatedInference(pulumi.CustomResource):
         __props__.__dict__["vpc_uuid"] = vpc_uuid
         return DedicatedInference(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_public_endpoint: pulumi.Input[Optional[_builtins.bool]] = None,
+            hugging_face_token: pulumi.Input[Optional[_builtins.str]] = None,
+            model_deployments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DedicatedInferenceModelDeploymentArgs', 'DedicatedInferenceModelDeploymentArgsDict', 'outputs.DedicatedInferenceModelDeployment']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            private_endpoint_fqdn: pulumi.Input[Optional[_builtins.str]] = None,
+            public_endpoint_fqdn: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_uuid: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createdAt"] = created_at
+        __props__["enablePublicEndpoint"] = enable_public_endpoint
+        __props__["huggingFaceToken"] = hugging_face_token
+        __props__["modelDeployments"] = model_deployments
+        __props__["name"] = name
+        __props__["privateEndpointFqdn"] = private_endpoint_fqdn
+        __props__["publicEndpointFqdn"] = public_endpoint_fqdn
+        __props__["region"] = region
+        __props__["status"] = status
+        __props__["updatedAt"] = updated_at
+        __props__["vpcUuid"] = vpc_uuid
+        return pulumi.runtime.exists_resource(None, 'digitalocean:index/dedicatedInference:DedicatedInference', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[_builtins.str]:

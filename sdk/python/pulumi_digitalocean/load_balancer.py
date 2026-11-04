@@ -1352,6 +1352,72 @@ class LoadBalancer(pulumi.CustomResource):
         __props__.__dict__["vpc_uuid"] = vpc_uuid
         return LoadBalancer(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            algorithm: pulumi.Input[Optional[Union[_builtins.str, 'Algorithm']]] = None,
+            disable_lets_encrypt_dns_records: pulumi.Input[Optional[_builtins.bool]] = None,
+            domains: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerDomainArgs', 'LoadBalancerDomainArgsDict', 'outputs.LoadBalancerDomain']]]]] = None,
+            droplet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+            droplet_tag: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_backend_keepalive: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_proxy_protocol: pulumi.Input[Optional[_builtins.bool]] = None,
+            firewall: pulumi.Input[Optional[Union['LoadBalancerFirewallArgs', 'LoadBalancerFirewallArgsDict', 'outputs.LoadBalancerFirewall']]] = None,
+            forwarding_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerForwardingRuleArgs', 'LoadBalancerForwardingRuleArgsDict', 'outputs.LoadBalancerForwardingRule']]]]] = None,
+            glb_settings: pulumi.Input[Optional[Union['LoadBalancerGlbSettingsArgs', 'LoadBalancerGlbSettingsArgsDict', 'outputs.LoadBalancerGlbSettings']]] = None,
+            healthcheck: pulumi.Input[Optional[Union['LoadBalancerHealthcheckArgs', 'LoadBalancerHealthcheckArgsDict', 'outputs.LoadBalancerHealthcheck']]] = None,
+            http_idle_timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            ip: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv6: pulumi.Input[Optional[_builtins.str]] = None,
+            load_balancer_urn: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network: pulumi.Input[Optional[_builtins.str]] = None,
+            network_stack: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            redirect_http_to_https: pulumi.Input[Optional[_builtins.bool]] = None,
+            region: pulumi.Input[Optional[Union[_builtins.str, 'Region']]] = None,
+            size: pulumi.Input[Optional[_builtins.str]] = None,
+            size_unit: pulumi.Input[Optional[_builtins.int]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            sticky_sessions: pulumi.Input[Optional[Union['LoadBalancerStickySessionsArgs', 'LoadBalancerStickySessionsArgsDict', 'outputs.LoadBalancerStickySessions']]] = None,
+            subnet_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+            target_load_balancer_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            tls_cipher_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_uuid: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["algorithm"] = algorithm
+        __props__["disableLetsEncryptDnsRecords"] = disable_lets_encrypt_dns_records
+        __props__["domains"] = domains
+        __props__["dropletIds"] = droplet_ids
+        __props__["dropletTag"] = droplet_tag
+        __props__["enableBackendKeepalive"] = enable_backend_keepalive
+        __props__["enableProxyProtocol"] = enable_proxy_protocol
+        __props__["firewall"] = firewall
+        __props__["forwardingRules"] = forwarding_rules
+        __props__["glbSettings"] = glb_settings
+        __props__["healthcheck"] = healthcheck
+        __props__["httpIdleTimeoutSeconds"] = http_idle_timeout_seconds
+        __props__["ip"] = ip
+        __props__["ipv6"] = ipv6
+        __props__["loadBalancerUrn"] = load_balancer_urn
+        __props__["name"] = name
+        __props__["network"] = network
+        __props__["networkStack"] = network_stack
+        __props__["projectId"] = project_id
+        __props__["redirectHttpToHttps"] = redirect_http_to_https
+        __props__["region"] = region
+        __props__["size"] = size
+        __props__["sizeUnit"] = size_unit
+        __props__["status"] = status
+        __props__["stickySessions"] = sticky_sessions
+        __props__["subnetUuid"] = subnet_uuid
+        __props__["targetLoadBalancerIds"] = target_load_balancer_ids
+        __props__["tlsCipherPolicy"] = tls_cipher_policy
+        __props__["type"] = type
+        __props__["vpcUuid"] = vpc_uuid
+        return pulumi.runtime.exists_resource(None, 'digitalocean:index/loadBalancer:LoadBalancer', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""This field has been deprecated. You can no longer specify an algorithm for load balancers.""")

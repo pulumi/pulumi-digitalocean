@@ -201,6 +201,12 @@ func (DropletAutoscaleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dropletAutoscaleState)(nil)).Elem()
 }
 
+// DropletAutoscaleExists checks whether an existing DropletAutoscale resource with the given ID exists.
+func DropletAutoscaleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DropletAutoscaleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("digitalocean:index/dropletAutoscale:DropletAutoscale", id, state, "", opts...)
+}
+
 type dropletAutoscaleArgs struct {
 	// The configuration parameters for Droplet Autoscale pool, the supported arguments are
 	// documented below.

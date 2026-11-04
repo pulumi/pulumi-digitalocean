@@ -472,6 +472,34 @@ class PartnerAttachment(pulumi.CustomResource):
         __props__.__dict__["vpc_ids"] = vpc_ids
         return PartnerAttachment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bgp: pulumi.Input[Optional[Union['PartnerAttachmentBgpArgs', 'PartnerAttachmentBgpArgsDict', 'outputs.PartnerAttachmentBgp']]] = None,
+            childrens: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            connection_bandwidth_in_mbps: pulumi.Input[Optional[_builtins.int]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            naas_provider: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+            redundancy_zone: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bgp"] = bgp
+        __props__["childrens"] = childrens
+        __props__["connectionBandwidthInMbps"] = connection_bandwidth_in_mbps
+        __props__["createdAt"] = created_at
+        __props__["naasProvider"] = naas_provider
+        __props__["name"] = name
+        __props__["parentUuid"] = parent_uuid
+        __props__["redundancyZone"] = redundancy_zone
+        __props__["region"] = region
+        __props__["state"] = state
+        __props__["vpcIds"] = vpc_ids
+        return pulumi.runtime.exists_resource(None, 'digitalocean:index/partnerAttachment:PartnerAttachment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def bgp(self) -> pulumi.Output['outputs.PartnerAttachmentBgp']:

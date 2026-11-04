@@ -134,6 +134,12 @@ func (FloatingIpAssignmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*floatingIpAssignmentState)(nil)).Elem()
 }
 
+// FloatingIpAssignmentExists checks whether an existing FloatingIpAssignment resource with the given ID exists.
+func FloatingIpAssignmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FloatingIpAssignmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("digitalocean:index/floatingIpAssignment:FloatingIpAssignment", id, state, "", opts...)
+}
+
 type floatingIpAssignmentArgs struct {
 	// The ID of Droplet that the Floating IP will be assigned to.
 	DropletId int `pulumi:"dropletId"`

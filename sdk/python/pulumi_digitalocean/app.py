@@ -700,6 +700,34 @@ class App(pulumi.CustomResource):
         __props__.__dict__["updated_at"] = updated_at
         return App(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            active_deployment_id: pulumi.Input[Optional[_builtins.str]] = None,
+            app_urn: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            dedicated_ips: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppDedicatedIpArgs', 'AppDedicatedIpArgsDict', 'outputs.AppDedicatedIp']]]]] = None,
+            default_ingress: pulumi.Input[Optional[_builtins.str]] = None,
+            deployment_per_page: pulumi.Input[Optional[_builtins.int]] = None,
+            live_domain: pulumi.Input[Optional[_builtins.str]] = None,
+            live_url: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            spec: pulumi.Input[Optional[Union['AppSpecArgs', 'AppSpecArgsDict', 'outputs.AppSpec']]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["activeDeploymentId"] = active_deployment_id
+        __props__["appUrn"] = app_urn
+        __props__["createdAt"] = created_at
+        __props__["dedicatedIps"] = dedicated_ips
+        __props__["defaultIngress"] = default_ingress
+        __props__["deploymentPerPage"] = deployment_per_page
+        __props__["liveDomain"] = live_domain
+        __props__["liveUrl"] = live_url
+        __props__["projectId"] = project_id
+        __props__["spec"] = spec
+        __props__["updatedAt"] = updated_at
+        return pulumi.runtime.exists_resource(None, 'digitalocean:index/app:App', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="activeDeploymentId")
     def active_deployment_id(self) -> pulumi.Output[_builtins.str]:

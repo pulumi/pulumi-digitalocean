@@ -234,6 +234,16 @@ class VolumeAttachment(pulumi.CustomResource):
         __props__.__dict__["volume_id"] = volume_id
         return VolumeAttachment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            droplet_id: pulumi.Input[Optional[_builtins.int]] = None,
+            volume_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["dropletId"] = droplet_id
+        __props__["volumeId"] = volume_id
+        return pulumi.runtime.exists_resource(None, 'digitalocean:index/volumeAttachment:VolumeAttachment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="dropletId")
     def droplet_id(self) -> pulumi.Output[_builtins.int]:

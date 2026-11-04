@@ -72,6 +72,12 @@ func (GradientaiKnowledgeBaseDataSourceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*gradientaiKnowledgeBaseDataSourceState)(nil)).Elem()
 }
 
+// GradientaiKnowledgeBaseDataSourceExists checks whether an existing GradientaiKnowledgeBaseDataSource resource with the given ID exists.
+func GradientaiKnowledgeBaseDataSourceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GradientaiKnowledgeBaseDataSourceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("digitalocean:index/gradientaiKnowledgeBaseDataSource:GradientaiKnowledgeBaseDataSource", id, state, "", opts...)
+}
+
 type gradientaiKnowledgeBaseDataSourceArgs struct {
 	// UUID of the Knowledge Base
 	KnowledgeBaseUuid    string                                                 `pulumi:"knowledgeBaseUuid"`

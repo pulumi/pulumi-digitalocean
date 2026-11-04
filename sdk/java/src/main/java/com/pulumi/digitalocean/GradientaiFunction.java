@@ -15,11 +15,10 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * @deprecated
- * digitalocean.GradientaiFunction has been deprecated in favor of digitalocean.AgentPlatformFunction
+ * @deprecated digitalocean.GradientaiFunction has been deprecated in favor of digitalocean.AgentPlatformFunction
  * 
  */
-@Deprecated /* digitalocean.GradientaiFunction has been deprecated in favor of digitalocean.AgentPlatformFunction */
+@Deprecated
 @ResourceType(type="digitalocean:index/gradientaiFunction:GradientaiFunction")
 public class GradientaiFunction extends com.pulumi.resources.CustomResource {
     /**

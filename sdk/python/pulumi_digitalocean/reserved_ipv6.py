@@ -266,6 +266,20 @@ class ReservedIpv6(pulumi.CustomResource):
         __props__.__dict__["reserved_ipv6_urn"] = reserved_ipv6_urn
         return ReservedIpv6(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            droplet_id: pulumi.Input[Optional[_builtins.int]] = None,
+            ip: pulumi.Input[Optional[_builtins.str]] = None,
+            region_slug: pulumi.Input[Optional[_builtins.str]] = None,
+            reserved_ipv6_urn: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["dropletId"] = droplet_id
+        __props__["ip"] = ip
+        __props__["regionSlug"] = region_slug
+        __props__["reservedIpv6Urn"] = reserved_ipv6_urn
+        return pulumi.runtime.exists_resource(None, 'digitalocean:index/reservedIpv6:ReservedIpv6', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="dropletId")
     def droplet_id(self) -> pulumi.Output[_builtins.int]:

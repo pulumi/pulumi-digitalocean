@@ -135,6 +135,12 @@ func (GradientaiKnowledgeBaseState) ElementType() reflect.Type {
 	return reflect.TypeOf((*gradientaiKnowledgeBaseState)(nil)).Elem()
 }
 
+// GradientaiKnowledgeBaseExists checks whether an existing GradientaiKnowledgeBase resource with the given ID exists.
+func GradientaiKnowledgeBaseExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GradientaiKnowledgeBaseState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("digitalocean:index/gradientaiKnowledgeBase:GradientaiKnowledgeBase", id, state, "", opts...)
+}
+
 type gradientaiKnowledgeBaseArgs struct {
 	// The time when the knowledge base was added to the agent.
 	AddedToAgentAt *string `pulumi:"addedToAgentAt"`

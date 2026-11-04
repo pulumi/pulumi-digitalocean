@@ -59,6 +59,17 @@ export class VpcNatGateway extends pulumi.CustomResource {
         return new VpcNatGateway(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing VpcNatGateway resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: VpcNatGatewayState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("digitalocean:index/vpcNatGateway:VpcNatGateway", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'digitalocean:index/vpcNatGateway:VpcNatGateway';
 

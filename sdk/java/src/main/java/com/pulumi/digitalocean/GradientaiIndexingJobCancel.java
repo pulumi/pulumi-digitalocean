@@ -16,11 +16,10 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 /**
- * @deprecated
- * digitalocean.GradientaiIndexingJobCancel has been deprecated in favor of digitalocean.AgentPlatformIndexingJobCancel
+ * @deprecated digitalocean.GradientaiIndexingJobCancel has been deprecated in favor of digitalocean.AgentPlatformIndexingJobCancel
  * 
  */
-@Deprecated /* digitalocean.GradientaiIndexingJobCancel has been deprecated in favor of digitalocean.AgentPlatformIndexingJobCancel */
+@Deprecated
 @ResourceType(type="digitalocean:index/gradientaiIndexingJobCancel:GradientaiIndexingJobCancel")
 public class GradientaiIndexingJobCancel extends com.pulumi.resources.CustomResource {
     /**

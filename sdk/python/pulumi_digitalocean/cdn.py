@@ -448,6 +448,26 @@ class Cdn(pulumi.CustomResource):
         __props__.__dict__["ttl"] = ttl
         return Cdn(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
+            certificate_name: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_domain: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            origin: pulumi.Input[Optional[_builtins.str]] = None,
+            ttl: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["certificateId"] = certificate_id
+        __props__["certificateName"] = certificate_name
+        __props__["createdAt"] = created_at
+        __props__["customDomain"] = custom_domain
+        __props__["endpoint"] = endpoint
+        __props__["origin"] = origin
+        __props__["ttl"] = ttl
+        return pulumi.runtime.exists_resource(None, 'digitalocean:index/cdn:Cdn', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="certificateId")
     @_utilities.deprecated("""Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.""")

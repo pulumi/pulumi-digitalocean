@@ -167,6 +167,12 @@ func (MicrovmCheckpointState) ElementType() reflect.Type {
 	return reflect.TypeOf((*microvmCheckpointState)(nil)).Elem()
 }
 
+// MicrovmCheckpointExists checks whether an existing MicrovmCheckpoint resource with the given ID exists.
+func MicrovmCheckpointExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MicrovmCheckpointState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("digitalocean:index/microvmCheckpoint:MicrovmCheckpoint", id, state, "", opts...)
+}
+
 type microvmCheckpointArgs struct {
 	// The ID of the running MicroVM to checkpoint. Changing this forces a new checkpoint.
 	MicrovmId string `pulumi:"microvmId"`

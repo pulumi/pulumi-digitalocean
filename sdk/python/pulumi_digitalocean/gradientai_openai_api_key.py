@@ -330,6 +330,28 @@ class GradientaiOpenaiApiKey(pulumi.CustomResource):
         __props__.__dict__["uuid"] = uuid
         return GradientaiOpenaiApiKey(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            api_key: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            created_by: pulumi.Input[Optional[_builtins.str]] = None,
+            deleted_at: pulumi.Input[Optional[_builtins.str]] = None,
+            models: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GradientaiOpenaiApiKeyModelArgs', 'GradientaiOpenaiApiKeyModelArgsDict', 'outputs.GradientaiOpenaiApiKeyModel']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+            uuid: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["apiKey"] = api_key
+        __props__["createdAt"] = created_at
+        __props__["createdBy"] = created_by
+        __props__["deletedAt"] = deleted_at
+        __props__["models"] = models
+        __props__["name"] = name
+        __props__["updatedAt"] = updated_at
+        __props__["uuid"] = uuid
+        return pulumi.runtime.exists_resource(None, 'digitalocean:index/gradientaiOpenaiApiKey:GradientaiOpenaiApiKey', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="apiKey")
     def api_key(self) -> pulumi.Output[_builtins.str]:

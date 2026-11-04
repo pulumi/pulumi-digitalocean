@@ -149,6 +149,12 @@ func (DatabaseKafkaSchemaRegistryState) ElementType() reflect.Type {
 	return reflect.TypeOf((*databaseKafkaSchemaRegistryState)(nil)).Elem()
 }
 
+// DatabaseKafkaSchemaRegistryExists checks whether an existing DatabaseKafkaSchemaRegistry resource with the given ID exists.
+func DatabaseKafkaSchemaRegistryExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DatabaseKafkaSchemaRegistryState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("digitalocean:index/databaseKafkaSchemaRegistry:DatabaseKafkaSchemaRegistry", id, state, "", opts...)
+}
+
 type databaseKafkaSchemaRegistryArgs struct {
 	// The ID of the target Kafka cluster.
 	ClusterId string `pulumi:"clusterId"`

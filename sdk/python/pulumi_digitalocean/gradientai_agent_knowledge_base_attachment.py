@@ -190,6 +190,16 @@ class GradientaiAgentKnowledgeBaseAttachment(pulumi.CustomResource):
         __props__.__dict__["knowledge_base_uuid"] = knowledge_base_uuid
         return GradientaiAgentKnowledgeBaseAttachment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            agent_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+            knowledge_base_uuid: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["agentUuid"] = agent_uuid
+        __props__["knowledgeBaseUuid"] = knowledge_base_uuid
+        return pulumi.runtime.exists_resource(None, 'digitalocean:index/gradientaiAgentKnowledgeBaseAttachment:GradientaiAgentKnowledgeBaseAttachment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="agentUuid")
     def agent_uuid(self) -> pulumi.Output[_builtins.str]:

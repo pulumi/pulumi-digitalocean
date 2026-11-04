@@ -108,6 +108,12 @@ func (GradientaiOpenaiApiKeyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*gradientaiOpenaiApiKeyState)(nil)).Elem()
 }
 
+// GradientaiOpenaiApiKeyExists checks whether an existing GradientaiOpenaiApiKey resource with the given ID exists.
+func GradientaiOpenaiApiKeyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GradientaiOpenaiApiKeyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("digitalocean:index/gradientaiOpenaiApiKey:GradientaiOpenaiApiKey", id, state, "", opts...)
+}
+
 type gradientaiOpenaiApiKeyArgs struct {
 	// The OpenAI API key.
 	ApiKey string `pulumi:"apiKey"`

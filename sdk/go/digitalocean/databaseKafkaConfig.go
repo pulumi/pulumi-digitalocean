@@ -233,6 +233,12 @@ func (DatabaseKafkaConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*databaseKafkaConfigState)(nil)).Elem()
 }
 
+// DatabaseKafkaConfigExists checks whether an existing DatabaseKafkaConfig resource with the given ID exists.
+func DatabaseKafkaConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DatabaseKafkaConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("digitalocean:index/databaseKafkaConfig:DatabaseKafkaConfig", id, state, "", opts...)
+}
+
 type databaseKafkaConfigArgs struct {
 	// Enable auto creation of topics.
 	AutoCreateTopicsEnable *bool `pulumi:"autoCreateTopicsEnable"`

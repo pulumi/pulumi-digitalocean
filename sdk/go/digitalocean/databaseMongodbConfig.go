@@ -149,6 +149,12 @@ func (DatabaseMongodbConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*databaseMongodbConfigState)(nil)).Elem()
 }
 
+// DatabaseMongodbConfigExists checks whether an existing DatabaseMongodbConfig resource with the given ID exists.
+func DatabaseMongodbConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DatabaseMongodbConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("digitalocean:index/databaseMongodbConfig:DatabaseMongodbConfig", id, state, "", opts...)
+}
+
 type databaseMongodbConfigArgs struct {
 	// The ID of the target MongoDB cluster.
 	ClusterId string `pulumi:"clusterId"`

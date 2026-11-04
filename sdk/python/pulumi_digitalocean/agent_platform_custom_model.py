@@ -797,6 +797,60 @@ class AgentPlatformCustomModel(pulumi.CustomResource):
         __props__.__dict__["uuid"] = uuid
         return AgentPlatformCustomModel(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            accept_terms_and_conditions: pulumi.Input[Optional[_builtins.bool]] = None,
+            active_deployments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentPlatformCustomModelActiveDeploymentArgs', 'AgentPlatformCustomModelActiveDeploymentArgsDict', 'outputs.AgentPlatformCustomModelActiveDeployment']]]]] = None,
+            architecture: pulumi.Input[Optional[_builtins.str]] = None,
+            context_length: pulumi.Input[Optional[_builtins.int]] = None,
+            cost_estimate_per_month: pulumi.Input[Optional[_builtins.int]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            error_message: pulumi.Input[Optional[_builtins.str]] = None,
+            file_count: pulumi.Input[Optional[_builtins.int]] = None,
+            input_modalities: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            license: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            output_modalities: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            parameters: pulumi.Input[Optional[_builtins.str]] = None,
+            preferred_gpu_region: pulumi.Input[Optional[_builtins.str]] = None,
+            source_ref: pulumi.Input[Optional[Union['AgentPlatformCustomModelSourceRefArgs', 'AgentPlatformCustomModelSourceRefArgsDict', 'outputs.AgentPlatformCustomModelSourceRef']]] = None,
+            source_type: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_region: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            team_id: pulumi.Input[Optional[_builtins.str]] = None,
+            total_size_bytes: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+            uuid: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["acceptTermsAndConditions"] = accept_terms_and_conditions
+        __props__["activeDeployments"] = active_deployments
+        __props__["architecture"] = architecture
+        __props__["contextLength"] = context_length
+        __props__["costEstimatePerMonth"] = cost_estimate_per_month
+        __props__["createdAt"] = created_at
+        __props__["description"] = description
+        __props__["errorMessage"] = error_message
+        __props__["fileCount"] = file_count
+        __props__["inputModalities"] = input_modalities
+        __props__["license"] = license
+        __props__["name"] = name
+        __props__["outputModalities"] = output_modalities
+        __props__["parameters"] = parameters
+        __props__["preferredGpuRegion"] = preferred_gpu_region
+        __props__["sourceRef"] = source_ref
+        __props__["sourceType"] = source_type
+        __props__["status"] = status
+        __props__["storageRegion"] = storage_region
+        __props__["tags"] = tags
+        __props__["teamId"] = team_id
+        __props__["totalSizeBytes"] = total_size_bytes
+        __props__["updatedAt"] = updated_at
+        __props__["uuid"] = uuid
+        return pulumi.runtime.exists_resource(None, 'digitalocean:index/agentPlatformCustomModel:AgentPlatformCustomModel', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="acceptTermsAndConditions")
     def accept_terms_and_conditions(self) -> pulumi.Output[Optional[_builtins.bool]]:

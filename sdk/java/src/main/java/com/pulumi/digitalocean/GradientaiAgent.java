@@ -33,11 +33,10 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * @deprecated
- * digitalocean.GradientaiAgent has been deprecated in favor of digitalocean.AgentPlatformAgent
+ * @deprecated digitalocean.GradientaiAgent has been deprecated in favor of digitalocean.AgentPlatformAgent
  * 
  */
-@Deprecated /* digitalocean.GradientaiAgent has been deprecated in favor of digitalocean.AgentPlatformAgent */
+@Deprecated
 @ResourceType(type="digitalocean:index/gradientaiAgent:GradientaiAgent")
 public class GradientaiAgent extends com.pulumi.resources.CustomResource {
     /**

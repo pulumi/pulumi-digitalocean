@@ -178,6 +178,12 @@ func (DatabaseKafkaTopicState) ElementType() reflect.Type {
 	return reflect.TypeOf((*databaseKafkaTopicState)(nil)).Elem()
 }
 
+// DatabaseKafkaTopicExists checks whether an existing DatabaseKafkaTopic resource with the given ID exists.
+func DatabaseKafkaTopicExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DatabaseKafkaTopicState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("digitalocean:index/databaseKafkaTopic:DatabaseKafkaTopic", id, state, "", opts...)
+}
+
 type databaseKafkaTopicArgs struct {
 	// The ID of the source database cluster. Note: This must be a Kafka cluster.
 	ClusterId string `pulumi:"clusterId"`

@@ -75,6 +75,12 @@ func (GradientaiAgentKnowledgeBaseAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*gradientaiAgentKnowledgeBaseAttachmentState)(nil)).Elem()
 }
 
+// GradientaiAgentKnowledgeBaseAttachmentExists checks whether an existing GradientaiAgentKnowledgeBaseAttachment resource with the given ID exists.
+func GradientaiAgentKnowledgeBaseAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GradientaiAgentKnowledgeBaseAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("digitalocean:index/gradientaiAgentKnowledgeBaseAttachment:GradientaiAgentKnowledgeBaseAttachment", id, state, "", opts...)
+}
+
 type gradientaiAgentKnowledgeBaseAttachmentArgs struct {
 	// A unique identifier for an agent.
 	AgentUuid string `pulumi:"agentUuid"`

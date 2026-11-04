@@ -37,12 +37,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var kafka_example = new DatabaseCluster("kafka-example", DatabaseClusterArgs.builder()
  *             .name("example-kafka-cluster")
  *             .engine("kafka")
@@ -58,21 +58,21 @@ import javax.annotation.Nullable;
  *             .subjectName("test-schema")
  *             .schemaType("avro")
  *             .schema("""
- * {
- *   \"type\": \"record\",
- *   \"namespace\": \"example\",
- *   \"name\": \"TestRecord\",
- *   \"fields\": [
- *     {\"name\": \"id\", \"type\": \"string\"},
- *     {\"name\": \"name\", \"type\": \"string\"},
- *     {\"name\": \"value\", \"type\": \"int\"}
+ * }{{@code
+ *   }&#92;{@code "type}&#92;{@code ": }&#92;{@code "record}&#92;{@code ",
+ *   }&#92;{@code "namespace}&#92;{@code ": }&#92;{@code "example}&#92;{@code ",
+ *   }&#92;{@code "name}&#92;{@code ": }&#92;{@code "TestRecord}&#92;{@code ",
+ *   }&#92;{@code "fields}&#92;{@code ": [
+ *     }{&#92;{@code "name}&#92;{@code ": }&#92;{@code "id}&#92;{@code ", }&#92;{@code "type}&#92;{@code ": }&#92;{@code "string}&#92;{@code "}}{@code ,
+ *     }{&#92;{@code "name}&#92;{@code ": }&#92;{@code "name}&#92;{@code ", }&#92;{@code "type}&#92;{@code ": }&#92;{@code "string}&#92;{@code "}}{@code ,
+ *     }{&#92;{@code "name}&#92;{@code ": }&#92;{@code "value}&#92;{@code ", }&#92;{@code "type}&#92;{@code ": }&#92;{@code "int}&#92;{@code "}}{@code
  *   ]
- * }
+ * }}{@code
  *             """)
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

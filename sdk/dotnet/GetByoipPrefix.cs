@@ -17,7 +17,7 @@ namespace Pulumi.DigitalOcean
         /// DigitalOcean account. This is useful if the BYOIP prefix in question is not managed
         /// by Terraform or you need to utilize any of the prefix's data.
         /// 
-        /// **Note:** If you need to manage BYOIP prefixes using Terraform, `digitalocean.ByoipPrefix` 
+        /// **Note:** If you need to manage BYOIP prefixes using Terraform, `digitalocean.ByoipPrefix`
         /// resource can be utilised instead. This data source is read-only.
         /// 
         /// ## Example Usage
@@ -82,7 +82,7 @@ namespace Pulumi.DigitalOcean
         /// DigitalOcean account. This is useful if the BYOIP prefix in question is not managed
         /// by Terraform or you need to utilize any of the prefix's data.
         /// 
-        /// **Note:** If you need to manage BYOIP prefixes using Terraform, `digitalocean.ByoipPrefix` 
+        /// **Note:** If you need to manage BYOIP prefixes using Terraform, `digitalocean.ByoipPrefix`
         /// resource can be utilised instead. This data source is read-only.
         /// 
         /// ## Example Usage
@@ -147,7 +147,7 @@ namespace Pulumi.DigitalOcean
         /// DigitalOcean account. This is useful if the BYOIP prefix in question is not managed
         /// by Terraform or you need to utilize any of the prefix's data.
         /// 
-        /// **Note:** If you need to manage BYOIP prefixes using Terraform, `digitalocean.ByoipPrefix` 
+        /// **Note:** If you need to manage BYOIP prefixes using Terraform, `digitalocean.ByoipPrefix`
         /// resource can be utilised instead. This data source is read-only.
         /// 
         /// ## Example Usage

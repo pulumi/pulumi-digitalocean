@@ -204,6 +204,12 @@ func (CdnState) ElementType() reflect.Type {
 	return reflect.TypeOf((*cdnState)(nil)).Elem()
 }
 
+// CdnExists checks whether an existing Cdn resource with the given ID exists.
+func CdnExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CdnState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("digitalocean:index/cdn:Cdn", id, state, "", opts...)
+}
+
 type cdnArgs struct {
 	// **Deprecated** The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
 	//

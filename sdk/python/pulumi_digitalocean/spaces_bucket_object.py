@@ -875,6 +875,46 @@ class SpacesBucketObject(pulumi.CustomResource):
         __props__.__dict__["website_redirect"] = website_redirect
         return SpacesBucketObject(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            acl: pulumi.Input[Optional[_builtins.str]] = None,
+            bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            cache_control: pulumi.Input[Optional[_builtins.str]] = None,
+            content: pulumi.Input[Optional[_builtins.str]] = None,
+            content_base64: pulumi.Input[Optional[_builtins.str]] = None,
+            content_disposition: pulumi.Input[Optional[_builtins.str]] = None,
+            content_encoding: pulumi.Input[Optional[_builtins.str]] = None,
+            content_language: pulumi.Input[Optional[_builtins.str]] = None,
+            content_type: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            key: pulumi.Input[Optional[_builtins.str]] = None,
+            metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            source: pulumi.Input[Optional[_builtins.str]] = None,
+            version_id: pulumi.Input[Optional[_builtins.str]] = None,
+            website_redirect: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["acl"] = acl
+        __props__["bucket"] = bucket
+        __props__["cacheControl"] = cache_control
+        __props__["content"] = content
+        __props__["contentBase64"] = content_base64
+        __props__["contentDisposition"] = content_disposition
+        __props__["contentEncoding"] = content_encoding
+        __props__["contentLanguage"] = content_language
+        __props__["contentType"] = content_type
+        __props__["etag"] = etag
+        __props__["forceDestroy"] = force_destroy
+        __props__["key"] = key
+        __props__["metadata"] = metadata
+        __props__["region"] = region
+        __props__["source"] = source
+        __props__["versionId"] = version_id
+        __props__["websiteRedirect"] = website_redirect
+        return pulumi.runtime.exists_resource(None, 'digitalocean:index/spacesBucketObject:SpacesBucketObject', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def acl(self) -> pulumi.Output[Optional[_builtins.str]]:

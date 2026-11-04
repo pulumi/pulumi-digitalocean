@@ -199,6 +199,12 @@ func (SpacesBucketPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*spacesBucketPolicyState)(nil)).Elem()
 }
 
+// SpacesBucketPolicyExists checks whether an existing SpacesBucketPolicy resource with the given ID exists.
+func SpacesBucketPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SpacesBucketPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("digitalocean:index/spacesBucketPolicy:SpacesBucketPolicy", id, state, "", opts...)
+}
+
 type spacesBucketPolicyArgs struct {
 	// The name of the bucket to which to apply the policy.
 	Bucket string `pulumi:"bucket"`

@@ -118,6 +118,12 @@ func (UptimeAlertState) ElementType() reflect.Type {
 	return reflect.TypeOf((*uptimeAlertState)(nil)).Elem()
 }
 
+// UptimeAlertExists checks whether an existing UptimeAlert resource with the given ID exists.
+func UptimeAlertExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *UptimeAlertState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("digitalocean:index/uptimeAlert:UptimeAlert", id, state, "", opts...)
+}
+
 type uptimeAlertArgs struct {
 	// A unique identifier for a check
 	CheckId string `pulumi:"checkId"`

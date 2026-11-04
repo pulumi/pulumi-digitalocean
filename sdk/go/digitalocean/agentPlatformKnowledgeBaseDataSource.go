@@ -77,6 +77,12 @@ func (AgentPlatformKnowledgeBaseDataSourceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*agentPlatformKnowledgeBaseDataSourceState)(nil)).Elem()
 }
 
+// AgentPlatformKnowledgeBaseDataSourceExists checks whether an existing AgentPlatformKnowledgeBaseDataSource resource with the given ID exists.
+func AgentPlatformKnowledgeBaseDataSourceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AgentPlatformKnowledgeBaseDataSourceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("digitalocean:index/agentPlatformKnowledgeBaseDataSource:AgentPlatformKnowledgeBaseDataSource", id, state, "", opts...)
+}
+
 type agentPlatformKnowledgeBaseDataSourceArgs struct {
 	// UUID of the Knowledge Base
 	KnowledgeBaseUuid    string                                                    `pulumi:"knowledgeBaseUuid"`

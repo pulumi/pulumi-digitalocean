@@ -89,7 +89,7 @@ namespace Pulumi.DigitalOcean
     public partial class DropletAutoscale : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The configuration parameters for Droplet Autoscale pool, the supported arguments are 
+        /// The configuration parameters for Droplet Autoscale pool, the supported arguments are
         /// documented below.
         /// </summary>
         [Output("config")]
@@ -109,7 +109,7 @@ namespace Pulumi.DigitalOcean
         public Output<ImmutableArray<Outputs.DropletAutoscaleCurrentUtilization>> CurrentUtilizations { get; private set; } = null!;
 
         /// <summary>
-        /// The droplet template parameters for Droplet Autoscale pool, the supported arguments 
+        /// The droplet template parameters for Droplet Autoscale pool, the supported arguments
         /// are documented below.
         /// </summary>
         [Output("dropletTemplate")]
@@ -181,14 +181,14 @@ namespace Pulumi.DigitalOcean
     public sealed class DropletAutoscaleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The configuration parameters for Droplet Autoscale pool, the supported arguments are 
+        /// The configuration parameters for Droplet Autoscale pool, the supported arguments are
         /// documented below.
         /// </summary>
         [Input("config", required: true)]
         public Input<Inputs.DropletAutoscaleConfigArgs> Config { get; set; } = null!;
 
         /// <summary>
-        /// The droplet template parameters for Droplet Autoscale pool, the supported arguments 
+        /// The droplet template parameters for Droplet Autoscale pool, the supported arguments
         /// are documented below.
         /// </summary>
         [Input("dropletTemplate", required: true)]
@@ -209,7 +209,7 @@ namespace Pulumi.DigitalOcean
     public sealed class DropletAutoscaleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The configuration parameters for Droplet Autoscale pool, the supported arguments are 
+        /// The configuration parameters for Droplet Autoscale pool, the supported arguments are
         /// documented below.
         /// </summary>
         [Input("config")]
@@ -235,7 +235,7 @@ namespace Pulumi.DigitalOcean
         }
 
         /// <summary>
-        /// The droplet template parameters for Droplet Autoscale pool, the supported arguments 
+        /// The droplet template parameters for Droplet Autoscale pool, the supported arguments
         /// are documented below.
         /// </summary>
         [Input("dropletTemplate")]

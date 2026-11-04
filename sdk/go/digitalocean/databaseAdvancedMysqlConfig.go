@@ -288,6 +288,12 @@ func (DatabaseAdvancedMysqlConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*databaseAdvancedMysqlConfigState)(nil)).Elem()
 }
 
+// DatabaseAdvancedMysqlConfigExists checks whether an existing DatabaseAdvancedMysqlConfig resource with the given ID exists.
+func DatabaseAdvancedMysqlConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DatabaseAdvancedMysqlConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("digitalocean:index/databaseAdvancedMysqlConfig:DatabaseAdvancedMysqlConfig", id, state, "", opts...)
+}
+
 type databaseAdvancedMysqlConfigArgs struct {
 	// The ID of the target MySQL Advanced Edition cluster.
 	ClusterId string `pulumi:"clusterId"`

@@ -38,11 +38,10 @@ public final class AppSpecStaticSite {
     /**
      * @return The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
      * 
-     * @deprecated
-     * Service level CORS rules are deprecated in favor of ingresses
+     * @deprecated Service level CORS rules are deprecated in favor of ingresses
      * 
      */
-    @Deprecated /* Service level CORS rules are deprecated in favor of ingresses */
+    @Deprecated
     private @Nullable AppSpecStaticSiteCors cors;
     /**
      * @return The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
@@ -97,11 +96,10 @@ public final class AppSpecStaticSite {
     /**
      * @return An HTTP paths that should be routed to this component.
      * 
-     * @deprecated
-     * Service level routes are deprecated in favor of ingresses
+     * @deprecated Service level routes are deprecated in favor of ingresses
      * 
      */
-    @Deprecated /* Service level routes are deprecated in favor of ingresses */
+    @Deprecated
     private @Nullable List<AppSpecStaticSiteRoute> routes;
     /**
      * @return An optional path to the working directory to use for the build.
@@ -134,11 +132,10 @@ public final class AppSpecStaticSite {
     /**
      * @return The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
      * 
-     * @deprecated
-     * Service level CORS rules are deprecated in favor of ingresses
+     * @deprecated Service level CORS rules are deprecated in favor of ingresses
      * 
      */
-    @Deprecated /* Service level CORS rules are deprecated in favor of ingresses */
+    @Deprecated
     public Optional<AppSpecStaticSiteCors> cors() {
         return Optional.ofNullable(this.cors);
     }
@@ -215,11 +212,10 @@ public final class AppSpecStaticSite {
     /**
      * @return An HTTP paths that should be routed to this component.
      * 
-     * @deprecated
-     * Service level routes are deprecated in favor of ingresses
+     * @deprecated Service level routes are deprecated in favor of ingresses
      * 
      */
-    @Deprecated /* Service level routes are deprecated in favor of ingresses */
+    @Deprecated
     public List<AppSpecStaticSiteRoute> routes() {
         return this.routes == null ? List.of() : this.routes;
     }

@@ -203,6 +203,12 @@ func (NfsAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*nfsAttachmentState)(nil)).Elem()
 }
 
+// NfsAttachmentExists checks whether an existing NfsAttachment resource with the given ID exists.
+func NfsAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NfsAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("digitalocean:index/nfsAttachment:NfsAttachment", id, state, "", opts...)
+}
+
 type nfsAttachmentArgs struct {
 	// The region of the NFS share.
 	Region string `pulumi:"region"`

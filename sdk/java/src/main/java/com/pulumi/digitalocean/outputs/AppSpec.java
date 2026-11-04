@@ -49,11 +49,10 @@ public final class AppSpec {
      */
     private @Nullable List<AppSpecDomainName> domainNames;
     /**
-     * @deprecated
-     * This attribute has been replaced by `domain` which supports additional functionality.
+     * @deprecated This attribute has been replaced by `domain` which supports additional functionality.
      * 
      */
-    @Deprecated /* This attribute has been replaced by `domain` which supports additional functionality. */
+    @Deprecated
     private @Nullable List<String> domains;
     /**
      * @return Specification for app egress configurations.
@@ -139,11 +138,10 @@ public final class AppSpec {
         return this.domainNames == null ? List.of() : this.domainNames;
     }
     /**
-     * @deprecated
-     * This attribute has been replaced by `domain` which supports additional functionality.
+     * @deprecated This attribute has been replaced by `domain` which supports additional functionality.
      * 
      */
-    @Deprecated /* This attribute has been replaced by `domain` which supports additional functionality. */
+    @Deprecated
     public List<String> domains() {
         return this.domains == null ? List.of() : this.domains;
     }

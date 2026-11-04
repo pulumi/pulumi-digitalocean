@@ -278,6 +278,12 @@ func (DatabaseMysqlConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*databaseMysqlConfigState)(nil)).Elem()
 }
 
+// DatabaseMysqlConfigExists checks whether an existing DatabaseMysqlConfig resource with the given ID exists.
+func DatabaseMysqlConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DatabaseMysqlConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("digitalocean:index/databaseMysqlConfig:DatabaseMysqlConfig", id, state, "", opts...)
+}
+
 type databaseMysqlConfigArgs struct {
 	// The hour of day (in UTC) when backup for the service starts. New backup only starts if previous backup has already completed.
 	BackupHour *int `pulumi:"backupHour"`

@@ -19,7 +19,7 @@ namespace Pulumi.DigitalOcean.Inputs
         public Input<string>? BaseUrl { get; set; }
 
         /// <summary>
-        /// Options for specifying how URLs found on pages should be handled. 
+        /// Options for specifying how URLs found on pages should be handled.
         /// - UNKNOWN: Default unknown value
         /// - SCOPED: Only include the base URL.
         /// - PATH: Crawl the base URL and linked pages within the URL path.

@@ -202,7 +202,7 @@ import javax.annotation.Nullable;
  *             .port(514)
  *             .format("custom")
  *             .logline("<%pri%>%timestamp:::date-rfc3339% %HOSTNAME% %app-name% %msg%")
- *             .structuredData("[example}{@literal @}{@code 41058 iut=\"3\"]")
+ *             .structuredData("[example}{@literal @}{@code 41058 iut=}&#92;{@code "3}&#92;{@code "]")
  *             .build());
  * 
  *     }}{@code

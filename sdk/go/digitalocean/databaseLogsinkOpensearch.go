@@ -306,6 +306,12 @@ func (DatabaseLogsinkOpensearchState) ElementType() reflect.Type {
 	return reflect.TypeOf((*databaseLogsinkOpensearchState)(nil)).Elem()
 }
 
+// DatabaseLogsinkOpensearchExists checks whether an existing DatabaseLogsinkOpensearch resource with the given ID exists.
+func DatabaseLogsinkOpensearchExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DatabaseLogsinkOpensearchState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("digitalocean:index/databaseLogsinkOpensearch:DatabaseLogsinkOpensearch", id, state, "", opts...)
+}
+
 type databaseLogsinkOpensearchArgs struct {
 	// CA certificate for TLS verification in PEM format. Can be specified using `file()` function. This field is marked as sensitive.
 	CaCert *string `pulumi:"caCert"`

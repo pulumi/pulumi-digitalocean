@@ -150,6 +150,12 @@ func (GradientaiIndexingJobCancelState) ElementType() reflect.Type {
 	return reflect.TypeOf((*gradientaiIndexingJobCancelState)(nil)).Elem()
 }
 
+// GradientaiIndexingJobCancelExists checks whether an existing GradientaiIndexingJobCancel resource with the given ID exists.
+func GradientaiIndexingJobCancelExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GradientaiIndexingJobCancelState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("digitalocean:index/gradientaiIndexingJobCancel:GradientaiIndexingJobCancel", id, state, "", opts...)
+}
+
 type gradientaiIndexingJobCancelArgs struct {
 	// The UUID of the indexing job to cancel.
 	Uuid string `pulumi:"uuid"`

@@ -113,6 +113,12 @@ func (AgentPlatformOpenaiApiKeyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*agentPlatformOpenaiApiKeyState)(nil)).Elem()
 }
 
+// AgentPlatformOpenaiApiKeyExists checks whether an existing AgentPlatformOpenaiApiKey resource with the given ID exists.
+func AgentPlatformOpenaiApiKeyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AgentPlatformOpenaiApiKeyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("digitalocean:index/agentPlatformOpenaiApiKey:AgentPlatformOpenaiApiKey", id, state, "", opts...)
+}
+
 type agentPlatformOpenaiApiKeyArgs struct {
 	// The OpenAI API key.
 	ApiKey string `pulumi:"apiKey"`

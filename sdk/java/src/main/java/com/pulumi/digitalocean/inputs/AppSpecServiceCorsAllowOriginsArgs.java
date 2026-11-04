@@ -33,22 +33,20 @@ public final class AppSpecServiceCorsAllowOriginsArgs extends com.pulumi.resourc
     /**
      * Prefix-based match.
      * 
-     * @deprecated
-     * Prefix-based matching has been deprecated in favor of regex-based matching.
+     * @deprecated Prefix-based matching has been deprecated in favor of regex-based matching.
      * 
      */
-    @Deprecated /* Prefix-based matching has been deprecated in favor of regex-based matching. */
+    @Deprecated
     @Import(name="prefix")
     private @Nullable Output<String> prefix;
 
     /**
      * @return Prefix-based match.
      * 
-     * @deprecated
-     * Prefix-based matching has been deprecated in favor of regex-based matching.
+     * @deprecated Prefix-based matching has been deprecated in favor of regex-based matching.
      * 
      */
-    @Deprecated /* Prefix-based matching has been deprecated in favor of regex-based matching. */
+    @Deprecated
     public Optional<Output<String>> prefix() {
         return Optional.ofNullable(this.prefix);
     }
@@ -120,11 +118,10 @@ public final class AppSpecServiceCorsAllowOriginsArgs extends com.pulumi.resourc
          * 
          * @return builder
          * 
-         * @deprecated
-         * Prefix-based matching has been deprecated in favor of regex-based matching.
+         * @deprecated Prefix-based matching has been deprecated in favor of regex-based matching.
          * 
          */
-        @Deprecated /* Prefix-based matching has been deprecated in favor of regex-based matching. */
+        @Deprecated
         public Builder prefix(@Nullable Output<String> prefix) {
             $.prefix = prefix;
             return this;
@@ -135,11 +132,10 @@ public final class AppSpecServiceCorsAllowOriginsArgs extends com.pulumi.resourc
          * 
          * @return builder
          * 
-         * @deprecated
-         * Prefix-based matching has been deprecated in favor of regex-based matching.
+         * @deprecated Prefix-based matching has been deprecated in favor of regex-based matching.
          * 
          */
-        @Deprecated /* Prefix-based matching has been deprecated in favor of regex-based matching. */
+        @Deprecated
         public Builder prefix(String prefix) {
             return prefix(Output.of(prefix));
         }
