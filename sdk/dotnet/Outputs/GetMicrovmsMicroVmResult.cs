@@ -30,6 +30,10 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly string CurrentState;
         /// <summary>
+        /// Outbound allow list for the MicroVM. Omit for unrestricted egress. Public networking only; fixed at create, so a change forces recreation. With a policy set, only HTTP and HTTPS through the platform proxy to allowed destinations works. A MicroVM restored from a checkpoint inherits the origin's policy.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetMicrovmsMicroVmEgressPolicyResult> EgressPolicies;
+        /// <summary>
         /// Environment variables passed to the MicroVM
         /// </summary>
         public readonly ImmutableDictionary<string, string> Environment;
@@ -49,6 +53,10 @@ namespace Pulumi.DigitalOcean.Outputs
         /// MicroVM ID
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Whether the MicroVM is created with a default public ingress URL. Defaults to true. Set to false to create the MicroVM without a default URL; additional URLs can be added later with the digitalocean.MicrovmIngress resource. This is a create-time option, so a change forces recreation.
+        /// </summary>
+        public readonly bool IngressEnabled;
         /// <summary>
         /// Only return MicroVMs with this exact name.
         /// </summary>
@@ -101,6 +109,8 @@ namespace Pulumi.DigitalOcean.Outputs
 
             string currentState,
 
+            ImmutableArray<Outputs.GetMicrovmsMicroVmEgressPolicyResult> egressPolicies,
+
             ImmutableDictionary<string, string> environment,
 
             string failureReason,
@@ -110,6 +120,8 @@ namespace Pulumi.DigitalOcean.Outputs
             string httpProtocol,
 
             string id,
+
+            bool ingressEnabled,
 
             string name,
 
@@ -137,11 +149,13 @@ namespace Pulumi.DigitalOcean.Outputs
             AutoResume = autoResume;
             CreatedAt = createdAt;
             CurrentState = currentState;
+            EgressPolicies = egressPolicies;
             Environment = environment;
             FailureReason = failureReason;
             HttpPort = httpPort;
             HttpProtocol = httpProtocol;
             Id = id;
+            IngressEnabled = ingressEnabled;
             Name = name;
             Networking = networking;
             Ports = ports;

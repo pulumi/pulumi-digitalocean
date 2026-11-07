@@ -27,7 +27,7 @@ class GetMicrovmResult:
     """
     A collection of values returned by getMicrovm.
     """
-    def __init__(__self__, auto_pauses=None, auto_resume=None, created_at=None, current_state=None, environment=None, failure_reason=None, http_port=None, http_protocol=None, id=None, name=None, networking=None, ports=None, region=None, sizes=None, sources=None, state=None, tags=None, urls=None, urn=None, vpc_uuid=None):
+    def __init__(__self__, auto_pauses=None, auto_resume=None, created_at=None, current_state=None, egress_policies=None, environment=None, failure_reason=None, http_port=None, http_protocol=None, id=None, ingress_enabled=None, name=None, networking=None, ports=None, region=None, sizes=None, sources=None, state=None, tags=None, urls=None, urn=None, vpc_uuid=None):
         if auto_pauses and not isinstance(auto_pauses, list):
             raise TypeError("Expected argument 'auto_pauses' to be a list")
         pulumi.set(__self__, "auto_pauses", auto_pauses)
@@ -40,6 +40,9 @@ class GetMicrovmResult:
         if current_state and not isinstance(current_state, str):
             raise TypeError("Expected argument 'current_state' to be a str")
         pulumi.set(__self__, "current_state", current_state)
+        if egress_policies and not isinstance(egress_policies, list):
+            raise TypeError("Expected argument 'egress_policies' to be a list")
+        pulumi.set(__self__, "egress_policies", egress_policies)
         if environment and not isinstance(environment, dict):
             raise TypeError("Expected argument 'environment' to be a dict")
         pulumi.set(__self__, "environment", environment)
@@ -55,6 +58,9 @@ class GetMicrovmResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if ingress_enabled and not isinstance(ingress_enabled, bool):
+            raise TypeError("Expected argument 'ingress_enabled' to be a bool")
+        pulumi.set(__self__, "ingress_enabled", ingress_enabled)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -122,6 +128,14 @@ class GetMicrovmResult:
         return pulumi.get(self, "current_state")
 
     @_builtins.property
+    @pulumi.getter(name="egressPolicies")
+    def egress_policies(self) -> Sequence['outputs.GetMicrovmEgressPolicyResult']:
+        """
+        The outbound allow list set at create. Empty when egress is unrestricted:
+        """
+        return pulumi.get(self, "egress_policies")
+
+    @_builtins.property
     @pulumi.getter
     def environment(self) -> Mapping[str, _builtins.str]:
         return pulumi.get(self, "environment")
@@ -154,6 +168,11 @@ class GetMicrovmResult:
         The ID of the MicroVM.
         """
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="ingressEnabled")
+    def ingress_enabled(self) -> _builtins.bool:
+        return pulumi.get(self, "ingress_enabled")
 
     @_builtins.property
     @pulumi.getter
@@ -248,11 +267,13 @@ class AwaitableGetMicrovmResult(GetMicrovmResult):
             auto_resume=self.auto_resume,
             created_at=self.created_at,
             current_state=self.current_state,
+            egress_policies=self.egress_policies,
             environment=self.environment,
             failure_reason=self.failure_reason,
             http_port=self.http_port,
             http_protocol=self.http_protocol,
             id=self.id,
+            ingress_enabled=self.ingress_enabled,
             name=self.name,
             networking=self.networking,
             ports=self.ports,
@@ -314,11 +335,13 @@ def get_microvm(id: Optional[_builtins.str] = None,
         auto_resume=pulumi.get(__ret__, 'auto_resume'),
         created_at=pulumi.get(__ret__, 'created_at'),
         current_state=pulumi.get(__ret__, 'current_state'),
+        egress_policies=pulumi.get(__ret__, 'egress_policies'),
         environment=pulumi.get(__ret__, 'environment'),
         failure_reason=pulumi.get(__ret__, 'failure_reason'),
         http_port=pulumi.get(__ret__, 'http_port'),
         http_protocol=pulumi.get(__ret__, 'http_protocol'),
         id=pulumi.get(__ret__, 'id'),
+        ingress_enabled=pulumi.get(__ret__, 'ingress_enabled'),
         name=pulumi.get(__ret__, 'name'),
         networking=pulumi.get(__ret__, 'networking'),
         ports=pulumi.get(__ret__, 'ports'),
@@ -377,11 +400,13 @@ def get_microvm_output(id: pulumi.Input[Optional[Optional[_builtins.str]]] = Non
         auto_resume=pulumi.get(__response__, 'auto_resume'),
         created_at=pulumi.get(__response__, 'created_at'),
         current_state=pulumi.get(__response__, 'current_state'),
+        egress_policies=pulumi.get(__response__, 'egress_policies'),
         environment=pulumi.get(__response__, 'environment'),
         failure_reason=pulumi.get(__response__, 'failure_reason'),
         http_port=pulumi.get(__response__, 'http_port'),
         http_protocol=pulumi.get(__response__, 'http_protocol'),
         id=pulumi.get(__response__, 'id'),
+        ingress_enabled=pulumi.get(__response__, 'ingress_enabled'),
         name=pulumi.get(__response__, 'name'),
         networking=pulumi.get(__response__, 'networking'),
         ports=pulumi.get(__response__, 'ports'),

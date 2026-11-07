@@ -1,6 +1,62 @@
 {
     "auto-aliasing": {
         "resources": {
+            "digitalocean_action_gateway_connection": {
+                "current": "digitalocean:index/actionGatewayConnection:ActionGatewayConnection",
+                "majorVersion": 4,
+                "fields": {
+                    "authorization": {
+                        "maxItemsOne": false
+                    },
+                    "scopes": {
+                        "maxItemsOne": false
+                    },
+                    "vpc": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "destination": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "allowed_ip_cidrs": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "digitalocean_action_gateway_mcp_server": {
+                "current": "digitalocean:index/actionGatewayMcpServer:ActionGatewayMcpServer",
+                "majorVersion": 4,
+                "fields": {
+                    "discovered_tools": {
+                        "maxItemsOne": false
+                    },
+                    "enabled_tools": {
+                        "maxItemsOne": false
+                    },
+                    "oauth_scopes": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "digitalocean_action_gateway_toolbelt": {
+                "current": "digitalocean:index/actionGatewayToolbelt:ActionGatewayToolbelt",
+                "majorVersion": 4,
+                "fields": {
+                    "pinned_tools": {
+                        "maxItemsOne": false
+                    },
+                    "tools": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "digitalocean_agent_platform_agent": {
                 "current": "digitalocean:index/agentPlatformAgent:AgentPlatformAgent",
                 "majorVersion": 4,
@@ -1359,6 +1415,16 @@
                     "auto_pause": {
                         "maxItemsOne": true
                     },
+                    "egress_policy": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "rule": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "ports": {
                         "maxItemsOne": false
                     },
@@ -1384,6 +1450,10 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "digitalocean_microvm_ingress": {
+                "current": "digitalocean:index/microvmIngress:MicrovmIngress",
+                "majorVersion": 4
             },
             "digitalocean_monitor_alert": {
                 "current": "digitalocean:index/monitorAlert:MonitorAlert",
@@ -1699,6 +1769,86 @@
             "digitalocean_account": {
                 "current": "digitalocean:index/getAccount:getAccount",
                 "majorVersion": 4
+            },
+            "digitalocean_action_gateway_connection": {
+                "current": "digitalocean:index/getActionGatewayConnection:getActionGatewayConnection",
+                "majorVersion": 4,
+                "fields": {
+                    "authorization": {
+                        "maxItemsOne": false
+                    },
+                    "scopes": {
+                        "maxItemsOne": false
+                    },
+                    "vpc": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "destination": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "allowed_ip_cidrs": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "digitalocean_action_gateway_providers": {
+                "current": "digitalocean:index/getActionGatewayProviders:getActionGatewayProviders",
+                "majorVersion": 4,
+                "fields": {
+                    "filter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "providers": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "auth_types": {
+                                    "maxItemsOne": false
+                                },
+                                "connection_parameters": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "allowed_values": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "scopes": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "sort": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "digitalocean_action_gateway_toolbelt": {
+                "current": "digitalocean:index/getActionGatewayToolbelt:getActionGatewayToolbelt",
+                "majorVersion": 4,
+                "fields": {
+                    "tools": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "digitalocean_agent_platform_agent": {
                 "current": "digitalocean:index/getAgentPlatformAgent:getAgentPlatformAgent",
@@ -3733,6 +3883,16 @@
                     "auto_pause": {
                         "maxItemsOne": false
                     },
+                    "egress_policy": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "rule": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "ports": {
                         "maxItemsOne": false
                     },
@@ -3799,6 +3959,16 @@
                             "fields": {
                                 "auto_pause": {
                                     "maxItemsOne": false
+                                },
+                                "egress_policy": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "rule": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
                                 },
                                 "ports": {
                                     "maxItemsOne": false

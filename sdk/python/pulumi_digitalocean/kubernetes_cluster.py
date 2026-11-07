@@ -34,6 +34,7 @@ class KubernetesClusterArgs:
                  control_plane_firewall: pulumi.Input[Optional['KubernetesClusterControlPlaneFirewallArgs']] = None,
                  coredns_autoscaler: pulumi.Input[Optional['KubernetesClusterCorednsAutoscalerArgs']] = None,
                  destroy_all_associated_resources: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gpu_operator_ready: pulumi.Input[Optional[_builtins.bool]] = None,
                  ha: pulumi.Input[Optional[_builtins.bool]] = None,
                  isolated_workers: pulumi.Input[Optional[_builtins.bool]] = None,
                  kubeconfig_expire_seconds: pulumi.Input[Optional[_builtins.int]] = None,
@@ -67,6 +68,7 @@ class KubernetesClusterArgs:
         :param pulumi.Input['KubernetesClusterControlPlaneFirewallArgs'] control_plane_firewall: A block representing the cluster's control plane firewall
         :param pulumi.Input['KubernetesClusterCorednsAutoscalerArgs'] coredns_autoscaler: Block containing options for the CoreDNS Autoscaler component, which scales CoreDNS replicas in proportion to the cluster's size. Default: true (for 1.36.0 and later)
         :param pulumi.Input[_builtins.bool] destroy_all_associated_resources: **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
+        :param pulumi.Input[_builtins.bool] gpu_operator_ready: Enable/disable launching GPU nodes in the cluster with images without GPU drivers, allowing GPU operators to manage drivers. Mutually exclusive with other GPU-related cluster options, such as `nvidia_gpu_dra_driver` and `amd_gpu_dra_driver`. Default: false
         :param pulumi.Input[_builtins.bool] ha: Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: true (for 1.36.0 and later)
         :param pulumi.Input[_builtins.bool] isolated_workers: Enable/disable isolated worker nodes for the cluster. When enabled, each worker node runs on dedicated hardware. This can only be set at creation time. The cluster's VPC must have a NAT gateway attached. Default: false
         :param pulumi.Input[_builtins.int] kubeconfig_expire_seconds: The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
@@ -107,6 +109,8 @@ class KubernetesClusterArgs:
             pulumi.set(__self__, "coredns_autoscaler", coredns_autoscaler)
         if destroy_all_associated_resources is not None:
             pulumi.set(__self__, "destroy_all_associated_resources", destroy_all_associated_resources)
+        if gpu_operator_ready is not None:
+            pulumi.set(__self__, "gpu_operator_ready", gpu_operator_ready)
         if ha is not None:
             pulumi.set(__self__, "ha", ha)
         if isolated_workers is not None:
@@ -287,6 +291,18 @@ class KubernetesClusterArgs:
     @destroy_all_associated_resources.setter
     def destroy_all_associated_resources(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "destroy_all_associated_resources", value)
+
+    @_builtins.property
+    @pulumi.getter(name="gpuOperatorReady")
+    def gpu_operator_ready(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Enable/disable launching GPU nodes in the cluster with images without GPU drivers, allowing GPU operators to manage drivers. Mutually exclusive with other GPU-related cluster options, such as `nvidia_gpu_dra_driver` and `amd_gpu_dra_driver`. Default: false
+        """
+        return pulumi.get(self, "gpu_operator_ready")
+
+    @gpu_operator_ready.setter
+    def gpu_operator_ready(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "gpu_operator_ready", value)
 
     @_builtins.property
     @pulumi.getter
@@ -520,6 +536,7 @@ class _KubernetesClusterState:
                  created_at: pulumi.Input[Optional[_builtins.str]] = None,
                  destroy_all_associated_resources: pulumi.Input[Optional[_builtins.bool]] = None,
                  endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 gpu_operator_ready: pulumi.Input[Optional[_builtins.bool]] = None,
                  ha: pulumi.Input[Optional[_builtins.bool]] = None,
                  ipv4_address: pulumi.Input[Optional[_builtins.str]] = None,
                  isolated_workers: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -560,6 +577,7 @@ class _KubernetesClusterState:
         :param pulumi.Input[_builtins.str] created_at: The date and time when the node was created.
         :param pulumi.Input[_builtins.bool] destroy_all_associated_resources: **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
         :param pulumi.Input[_builtins.str] endpoint: The base URL of the API server on the Kubernetes master node.
+        :param pulumi.Input[_builtins.bool] gpu_operator_ready: Enable/disable launching GPU nodes in the cluster with images without GPU drivers, allowing GPU operators to manage drivers. Mutually exclusive with other GPU-related cluster options, such as `nvidia_gpu_dra_driver` and `amd_gpu_dra_driver`. Default: false
         :param pulumi.Input[_builtins.bool] ha: Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: true (for 1.36.0 and later)
         :param pulumi.Input[_builtins.str] ipv4_address: The public IPv4 address of the Kubernetes master node. This will not be set if high availability is configured on the cluster (v1.21+)
         :param pulumi.Input[_builtins.bool] isolated_workers: Enable/disable isolated worker nodes for the cluster. When enabled, each worker node runs on dedicated hardware. This can only be set at creation time. The cluster's VPC must have a NAT gateway attached. Default: false
@@ -610,6 +628,8 @@ class _KubernetesClusterState:
             pulumi.set(__self__, "destroy_all_associated_resources", destroy_all_associated_resources)
         if endpoint is not None:
             pulumi.set(__self__, "endpoint", endpoint)
+        if gpu_operator_ready is not None:
+            pulumi.set(__self__, "gpu_operator_ready", gpu_operator_ready)
         if ha is not None:
             pulumi.set(__self__, "ha", ha)
         if ipv4_address is not None:
@@ -804,6 +824,18 @@ class _KubernetesClusterState:
     @endpoint.setter
     def endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint", value)
+
+    @_builtins.property
+    @pulumi.getter(name="gpuOperatorReady")
+    def gpu_operator_ready(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Enable/disable launching GPU nodes in the cluster with images without GPU drivers, allowing GPU operators to manage drivers. Mutually exclusive with other GPU-related cluster options, such as `nvidia_gpu_dra_driver` and `amd_gpu_dra_driver`. Default: false
+        """
+        return pulumi.get(self, "gpu_operator_ready")
+
+    @gpu_operator_ready.setter
+    def gpu_operator_ready(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "gpu_operator_ready", value)
 
     @_builtins.property
     @pulumi.getter
@@ -1121,6 +1153,7 @@ class KubernetesCluster(pulumi.CustomResource):
                  control_plane_firewall: pulumi.Input[Optional[Union['KubernetesClusterControlPlaneFirewallArgs', 'KubernetesClusterControlPlaneFirewallArgsDict', 'outputs.KubernetesClusterControlPlaneFirewall']]] = None,
                  coredns_autoscaler: pulumi.Input[Optional[Union['KubernetesClusterCorednsAutoscalerArgs', 'KubernetesClusterCorednsAutoscalerArgsDict', 'outputs.KubernetesClusterCorednsAutoscaler']]] = None,
                  destroy_all_associated_resources: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gpu_operator_ready: pulumi.Input[Optional[_builtins.bool]] = None,
                  ha: pulumi.Input[Optional[_builtins.bool]] = None,
                  isolated_workers: pulumi.Input[Optional[_builtins.bool]] = None,
                  kubeconfig_expire_seconds: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1313,6 +1346,7 @@ class KubernetesCluster(pulumi.CustomResource):
         :param pulumi.Input[Union['KubernetesClusterControlPlaneFirewallArgs', 'KubernetesClusterControlPlaneFirewallArgsDict', 'outputs.KubernetesClusterControlPlaneFirewall']] control_plane_firewall: A block representing the cluster's control plane firewall
         :param pulumi.Input[Union['KubernetesClusterCorednsAutoscalerArgs', 'KubernetesClusterCorednsAutoscalerArgsDict', 'outputs.KubernetesClusterCorednsAutoscaler']] coredns_autoscaler: Block containing options for the CoreDNS Autoscaler component, which scales CoreDNS replicas in proportion to the cluster's size. Default: true (for 1.36.0 and later)
         :param pulumi.Input[_builtins.bool] destroy_all_associated_resources: **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
+        :param pulumi.Input[_builtins.bool] gpu_operator_ready: Enable/disable launching GPU nodes in the cluster with images without GPU drivers, allowing GPU operators to manage drivers. Mutually exclusive with other GPU-related cluster options, such as `nvidia_gpu_dra_driver` and `amd_gpu_dra_driver`. Default: false
         :param pulumi.Input[_builtins.bool] ha: Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: true (for 1.36.0 and later)
         :param pulumi.Input[_builtins.bool] isolated_workers: Enable/disable isolated worker nodes for the cluster. When enabled, each worker node runs on dedicated hardware. This can only be set at creation time. The cluster's VPC must have a NAT gateway attached. Default: false
         :param pulumi.Input[_builtins.int] kubeconfig_expire_seconds: The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
@@ -1524,6 +1558,7 @@ class KubernetesCluster(pulumi.CustomResource):
                  control_plane_firewall: pulumi.Input[Optional[Union['KubernetesClusterControlPlaneFirewallArgs', 'KubernetesClusterControlPlaneFirewallArgsDict', 'outputs.KubernetesClusterControlPlaneFirewall']]] = None,
                  coredns_autoscaler: pulumi.Input[Optional[Union['KubernetesClusterCorednsAutoscalerArgs', 'KubernetesClusterCorednsAutoscalerArgsDict', 'outputs.KubernetesClusterCorednsAutoscaler']]] = None,
                  destroy_all_associated_resources: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gpu_operator_ready: pulumi.Input[Optional[_builtins.bool]] = None,
                  ha: pulumi.Input[Optional[_builtins.bool]] = None,
                  isolated_workers: pulumi.Input[Optional[_builtins.bool]] = None,
                  kubeconfig_expire_seconds: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1563,6 +1598,7 @@ class KubernetesCluster(pulumi.CustomResource):
             __props__.__dict__["control_plane_firewall"] = control_plane_firewall
             __props__.__dict__["coredns_autoscaler"] = coredns_autoscaler
             __props__.__dict__["destroy_all_associated_resources"] = destroy_all_associated_resources
+            __props__.__dict__["gpu_operator_ready"] = gpu_operator_ready
             __props__.__dict__["ha"] = ha
             __props__.__dict__["isolated_workers"] = isolated_workers
             __props__.__dict__["kubeconfig_expire_seconds"] = kubeconfig_expire_seconds
@@ -1621,6 +1657,7 @@ class KubernetesCluster(pulumi.CustomResource):
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
             destroy_all_associated_resources: pulumi.Input[Optional[_builtins.bool]] = None,
             endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            gpu_operator_ready: pulumi.Input[Optional[_builtins.bool]] = None,
             ha: pulumi.Input[Optional[_builtins.bool]] = None,
             ipv4_address: pulumi.Input[Optional[_builtins.str]] = None,
             isolated_workers: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1665,6 +1702,7 @@ class KubernetesCluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] created_at: The date and time when the node was created.
         :param pulumi.Input[_builtins.bool] destroy_all_associated_resources: **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
         :param pulumi.Input[_builtins.str] endpoint: The base URL of the API server on the Kubernetes master node.
+        :param pulumi.Input[_builtins.bool] gpu_operator_ready: Enable/disable launching GPU nodes in the cluster with images without GPU drivers, allowing GPU operators to manage drivers. Mutually exclusive with other GPU-related cluster options, such as `nvidia_gpu_dra_driver` and `amd_gpu_dra_driver`. Default: false
         :param pulumi.Input[_builtins.bool] ha: Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: true (for 1.36.0 and later)
         :param pulumi.Input[_builtins.str] ipv4_address: The public IPv4 address of the Kubernetes master node. This will not be set if high availability is configured on the cluster (v1.21+)
         :param pulumi.Input[_builtins.bool] isolated_workers: Enable/disable isolated worker nodes for the cluster. When enabled, each worker node runs on dedicated hardware. This can only be set at creation time. The cluster's VPC must have a NAT gateway attached. Default: false
@@ -1707,6 +1745,7 @@ class KubernetesCluster(pulumi.CustomResource):
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["destroy_all_associated_resources"] = destroy_all_associated_resources
         __props__.__dict__["endpoint"] = endpoint
+        __props__.__dict__["gpu_operator_ready"] = gpu_operator_ready
         __props__.__dict__["ha"] = ha
         __props__.__dict__["ipv4_address"] = ipv4_address
         __props__.__dict__["isolated_workers"] = isolated_workers
@@ -1749,6 +1788,7 @@ class KubernetesCluster(pulumi.CustomResource):
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
             destroy_all_associated_resources: pulumi.Input[Optional[_builtins.bool]] = None,
             endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            gpu_operator_ready: pulumi.Input[Optional[_builtins.bool]] = None,
             ha: pulumi.Input[Optional[_builtins.bool]] = None,
             ipv4_address: pulumi.Input[Optional[_builtins.str]] = None,
             isolated_workers: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1787,6 +1827,7 @@ class KubernetesCluster(pulumi.CustomResource):
         __props__["createdAt"] = created_at
         __props__["destroyAllAssociatedResources"] = destroy_all_associated_resources
         __props__["endpoint"] = endpoint
+        __props__["gpuOperatorReady"] = gpu_operator_ready
         __props__["ha"] = ha
         __props__["ipv4Address"] = ipv4_address
         __props__["isolatedWorkers"] = isolated_workers
@@ -1909,6 +1950,14 @@ class KubernetesCluster(pulumi.CustomResource):
         The base URL of the API server on the Kubernetes master node.
         """
         return pulumi.get(self, "endpoint")
+
+    @_builtins.property
+    @pulumi.getter(name="gpuOperatorReady")
+    def gpu_operator_ready(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Enable/disable launching GPU nodes in the cluster with images without GPU drivers, allowing GPU operators to manage drivers. Mutually exclusive with other GPU-related cluster options, such as `nvidia_gpu_dra_driver` and `amd_gpu_dra_driver`. Default: false
+        """
+        return pulumi.get(self, "gpu_operator_ready")
 
     @_builtins.property
     @pulumi.getter

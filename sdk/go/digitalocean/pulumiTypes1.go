@@ -13,6 +13,2295 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetAppSpecServiceCorsAllowOrigins struct {
+	// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+	Exact *string `pulumi:"exact"`
+	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+	//
+	// Deprecated: Prefix-based matching has been deprecated in favor of regex-based matching.
+	Prefix *string `pulumi:"prefix"`
+	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+	Regex *string `pulumi:"regex"`
+}
+
+// GetAppSpecServiceCorsAllowOriginsInput is an input type that accepts GetAppSpecServiceCorsAllowOriginsArgs and GetAppSpecServiceCorsAllowOriginsOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceCorsAllowOriginsInput` via:
+//
+//	GetAppSpecServiceCorsAllowOriginsArgs{...}
+type GetAppSpecServiceCorsAllowOriginsInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceCorsAllowOriginsOutput() GetAppSpecServiceCorsAllowOriginsOutput
+	ToGetAppSpecServiceCorsAllowOriginsOutputWithContext(context.Context) GetAppSpecServiceCorsAllowOriginsOutput
+}
+
+type GetAppSpecServiceCorsAllowOriginsArgs struct {
+	// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+	Exact pulumi.StringPtrInput `pulumi:"exact"`
+	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+	//
+	// Deprecated: Prefix-based matching has been deprecated in favor of regex-based matching.
+	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
+	// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+	Regex pulumi.StringPtrInput `pulumi:"regex"`
+}
+
+func (GetAppSpecServiceCorsAllowOriginsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceCorsAllowOrigins)(nil)).Elem()
+}
+
+func (i GetAppSpecServiceCorsAllowOriginsArgs) ToGetAppSpecServiceCorsAllowOriginsOutput() GetAppSpecServiceCorsAllowOriginsOutput {
+	return i.ToGetAppSpecServiceCorsAllowOriginsOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceCorsAllowOriginsArgs) ToGetAppSpecServiceCorsAllowOriginsOutputWithContext(ctx context.Context) GetAppSpecServiceCorsAllowOriginsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceCorsAllowOriginsOutput)
+}
+
+func (i GetAppSpecServiceCorsAllowOriginsArgs) ToGetAppSpecServiceCorsAllowOriginsPtrOutput() GetAppSpecServiceCorsAllowOriginsPtrOutput {
+	return i.ToGetAppSpecServiceCorsAllowOriginsPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceCorsAllowOriginsArgs) ToGetAppSpecServiceCorsAllowOriginsPtrOutputWithContext(ctx context.Context) GetAppSpecServiceCorsAllowOriginsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceCorsAllowOriginsOutput).ToGetAppSpecServiceCorsAllowOriginsPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecServiceCorsAllowOriginsPtrInput is an input type that accepts GetAppSpecServiceCorsAllowOriginsArgs, GetAppSpecServiceCorsAllowOriginsPtr and GetAppSpecServiceCorsAllowOriginsPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceCorsAllowOriginsPtrInput` via:
+//
+//	        GetAppSpecServiceCorsAllowOriginsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetAppSpecServiceCorsAllowOriginsPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceCorsAllowOriginsPtrOutput() GetAppSpecServiceCorsAllowOriginsPtrOutput
+	ToGetAppSpecServiceCorsAllowOriginsPtrOutputWithContext(context.Context) GetAppSpecServiceCorsAllowOriginsPtrOutput
+}
+
+type getAppSpecServiceCorsAllowOriginsPtrType GetAppSpecServiceCorsAllowOriginsArgs
+
+func GetAppSpecServiceCorsAllowOriginsPtr(v *GetAppSpecServiceCorsAllowOriginsArgs) GetAppSpecServiceCorsAllowOriginsPtrInput {
+	return (*getAppSpecServiceCorsAllowOriginsPtrType)(v)
+}
+
+func (*getAppSpecServiceCorsAllowOriginsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceCorsAllowOrigins)(nil)).Elem()
+}
+
+func (i *getAppSpecServiceCorsAllowOriginsPtrType) ToGetAppSpecServiceCorsAllowOriginsPtrOutput() GetAppSpecServiceCorsAllowOriginsPtrOutput {
+	return i.ToGetAppSpecServiceCorsAllowOriginsPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecServiceCorsAllowOriginsPtrType) ToGetAppSpecServiceCorsAllowOriginsPtrOutputWithContext(ctx context.Context) GetAppSpecServiceCorsAllowOriginsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceCorsAllowOriginsPtrOutput)
+}
+
+type GetAppSpecServiceCorsAllowOriginsOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceCorsAllowOriginsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceCorsAllowOrigins)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceCorsAllowOriginsOutput) ToGetAppSpecServiceCorsAllowOriginsOutput() GetAppSpecServiceCorsAllowOriginsOutput {
+	return o
+}
+
+func (o GetAppSpecServiceCorsAllowOriginsOutput) ToGetAppSpecServiceCorsAllowOriginsOutputWithContext(ctx context.Context) GetAppSpecServiceCorsAllowOriginsOutput {
+	return o
+}
+
+func (o GetAppSpecServiceCorsAllowOriginsOutput) ToGetAppSpecServiceCorsAllowOriginsPtrOutput() GetAppSpecServiceCorsAllowOriginsPtrOutput {
+	return o.ToGetAppSpecServiceCorsAllowOriginsPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecServiceCorsAllowOriginsOutput) ToGetAppSpecServiceCorsAllowOriginsPtrOutputWithContext(ctx context.Context) GetAppSpecServiceCorsAllowOriginsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecServiceCorsAllowOrigins) *GetAppSpecServiceCorsAllowOrigins {
+		return &v
+	}).(GetAppSpecServiceCorsAllowOriginsPtrOutput)
+}
+
+// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+func (o GetAppSpecServiceCorsAllowOriginsOutput) Exact() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceCorsAllowOrigins) *string { return v.Exact }).(pulumi.StringPtrOutput)
+}
+
+// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+//
+// Deprecated: Prefix-based matching has been deprecated in favor of regex-based matching.
+func (o GetAppSpecServiceCorsAllowOriginsOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceCorsAllowOrigins) *string { return v.Prefix }).(pulumi.StringPtrOutput)
+}
+
+// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+func (o GetAppSpecServiceCorsAllowOriginsOutput) Regex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceCorsAllowOrigins) *string { return v.Regex }).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecServiceCorsAllowOriginsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceCorsAllowOriginsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceCorsAllowOrigins)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceCorsAllowOriginsPtrOutput) ToGetAppSpecServiceCorsAllowOriginsPtrOutput() GetAppSpecServiceCorsAllowOriginsPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceCorsAllowOriginsPtrOutput) ToGetAppSpecServiceCorsAllowOriginsPtrOutputWithContext(ctx context.Context) GetAppSpecServiceCorsAllowOriginsPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceCorsAllowOriginsPtrOutput) Elem() GetAppSpecServiceCorsAllowOriginsOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceCorsAllowOrigins) GetAppSpecServiceCorsAllowOrigins {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecServiceCorsAllowOrigins
+		return ret
+	}).(GetAppSpecServiceCorsAllowOriginsOutput)
+}
+
+// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+func (o GetAppSpecServiceCorsAllowOriginsPtrOutput) Exact() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceCorsAllowOrigins) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Exact
+	}).(pulumi.StringPtrOutput)
+}
+
+// The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+//
+// Deprecated: Prefix-based matching has been deprecated in favor of regex-based matching.
+func (o GetAppSpecServiceCorsAllowOriginsPtrOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceCorsAllowOrigins) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Prefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+func (o GetAppSpecServiceCorsAllowOriginsPtrOutput) Regex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceCorsAllowOrigins) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Regex
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecServiceEnv struct {
+	// The name of the environment variable.
+	Key *string `pulumi:"key"`
+	// The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+	Scope *string `pulumi:"scope"`
+	// The type of the environment variable, `GENERAL` or `SECRET`.
+	Type string `pulumi:"type"`
+	// The threshold for the type of the warning.
+	Value *string `pulumi:"value"`
+}
+
+// GetAppSpecServiceEnvInput is an input type that accepts GetAppSpecServiceEnvArgs and GetAppSpecServiceEnvOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceEnvInput` via:
+//
+//	GetAppSpecServiceEnvArgs{...}
+type GetAppSpecServiceEnvInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceEnvOutput() GetAppSpecServiceEnvOutput
+	ToGetAppSpecServiceEnvOutputWithContext(context.Context) GetAppSpecServiceEnvOutput
+}
+
+type GetAppSpecServiceEnvArgs struct {
+	// The name of the environment variable.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+	Scope pulumi.StringPtrInput `pulumi:"scope"`
+	// The type of the environment variable, `GENERAL` or `SECRET`.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The threshold for the type of the warning.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (GetAppSpecServiceEnvArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceEnv)(nil)).Elem()
+}
+
+func (i GetAppSpecServiceEnvArgs) ToGetAppSpecServiceEnvOutput() GetAppSpecServiceEnvOutput {
+	return i.ToGetAppSpecServiceEnvOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceEnvArgs) ToGetAppSpecServiceEnvOutputWithContext(ctx context.Context) GetAppSpecServiceEnvOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceEnvOutput)
+}
+
+// GetAppSpecServiceEnvArrayInput is an input type that accepts GetAppSpecServiceEnvArray and GetAppSpecServiceEnvArrayOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceEnvArrayInput` via:
+//
+//	GetAppSpecServiceEnvArray{ GetAppSpecServiceEnvArgs{...} }
+type GetAppSpecServiceEnvArrayInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceEnvArrayOutput() GetAppSpecServiceEnvArrayOutput
+	ToGetAppSpecServiceEnvArrayOutputWithContext(context.Context) GetAppSpecServiceEnvArrayOutput
+}
+
+type GetAppSpecServiceEnvArray []GetAppSpecServiceEnvInput
+
+func (GetAppSpecServiceEnvArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecServiceEnv)(nil)).Elem()
+}
+
+func (i GetAppSpecServiceEnvArray) ToGetAppSpecServiceEnvArrayOutput() GetAppSpecServiceEnvArrayOutput {
+	return i.ToGetAppSpecServiceEnvArrayOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceEnvArray) ToGetAppSpecServiceEnvArrayOutputWithContext(ctx context.Context) GetAppSpecServiceEnvArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceEnvArrayOutput)
+}
+
+type GetAppSpecServiceEnvOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceEnvOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceEnv)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceEnvOutput) ToGetAppSpecServiceEnvOutput() GetAppSpecServiceEnvOutput {
+	return o
+}
+
+func (o GetAppSpecServiceEnvOutput) ToGetAppSpecServiceEnvOutputWithContext(ctx context.Context) GetAppSpecServiceEnvOutput {
+	return o
+}
+
+// The name of the environment variable.
+func (o GetAppSpecServiceEnvOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceEnv) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+func (o GetAppSpecServiceEnvOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceEnv) *string { return v.Scope }).(pulumi.StringPtrOutput)
+}
+
+// The type of the environment variable, `GENERAL` or `SECRET`.
+func (o GetAppSpecServiceEnvOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppSpecServiceEnv) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The threshold for the type of the warning.
+func (o GetAppSpecServiceEnvOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceEnv) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecServiceEnvArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceEnvArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecServiceEnv)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceEnvArrayOutput) ToGetAppSpecServiceEnvArrayOutput() GetAppSpecServiceEnvArrayOutput {
+	return o
+}
+
+func (o GetAppSpecServiceEnvArrayOutput) ToGetAppSpecServiceEnvArrayOutputWithContext(ctx context.Context) GetAppSpecServiceEnvArrayOutput {
+	return o
+}
+
+func (o GetAppSpecServiceEnvArrayOutput) Index(i pulumi.IntInput) GetAppSpecServiceEnvOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppSpecServiceEnv {
+		return vs[0].([]GetAppSpecServiceEnv)[vs[1].(int)]
+	}).(GetAppSpecServiceEnvOutput)
+}
+
+type GetAppSpecServiceGit struct {
+	// The name of the branch to use.
+	Branch *string `pulumi:"branch"`
+	// The clone URL of the repo.
+	RepoCloneUrl *string `pulumi:"repoCloneUrl"`
+}
+
+// GetAppSpecServiceGitInput is an input type that accepts GetAppSpecServiceGitArgs and GetAppSpecServiceGitOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceGitInput` via:
+//
+//	GetAppSpecServiceGitArgs{...}
+type GetAppSpecServiceGitInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceGitOutput() GetAppSpecServiceGitOutput
+	ToGetAppSpecServiceGitOutputWithContext(context.Context) GetAppSpecServiceGitOutput
+}
+
+type GetAppSpecServiceGitArgs struct {
+	// The name of the branch to use.
+	Branch pulumi.StringPtrInput `pulumi:"branch"`
+	// The clone URL of the repo.
+	RepoCloneUrl pulumi.StringPtrInput `pulumi:"repoCloneUrl"`
+}
+
+func (GetAppSpecServiceGitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceGit)(nil)).Elem()
+}
+
+func (i GetAppSpecServiceGitArgs) ToGetAppSpecServiceGitOutput() GetAppSpecServiceGitOutput {
+	return i.ToGetAppSpecServiceGitOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceGitArgs) ToGetAppSpecServiceGitOutputWithContext(ctx context.Context) GetAppSpecServiceGitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceGitOutput)
+}
+
+func (i GetAppSpecServiceGitArgs) ToGetAppSpecServiceGitPtrOutput() GetAppSpecServiceGitPtrOutput {
+	return i.ToGetAppSpecServiceGitPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceGitArgs) ToGetAppSpecServiceGitPtrOutputWithContext(ctx context.Context) GetAppSpecServiceGitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceGitOutput).ToGetAppSpecServiceGitPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecServiceGitPtrInput is an input type that accepts GetAppSpecServiceGitArgs, GetAppSpecServiceGitPtr and GetAppSpecServiceGitPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceGitPtrInput` via:
+//
+//	        GetAppSpecServiceGitArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetAppSpecServiceGitPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceGitPtrOutput() GetAppSpecServiceGitPtrOutput
+	ToGetAppSpecServiceGitPtrOutputWithContext(context.Context) GetAppSpecServiceGitPtrOutput
+}
+
+type getAppSpecServiceGitPtrType GetAppSpecServiceGitArgs
+
+func GetAppSpecServiceGitPtr(v *GetAppSpecServiceGitArgs) GetAppSpecServiceGitPtrInput {
+	return (*getAppSpecServiceGitPtrType)(v)
+}
+
+func (*getAppSpecServiceGitPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceGit)(nil)).Elem()
+}
+
+func (i *getAppSpecServiceGitPtrType) ToGetAppSpecServiceGitPtrOutput() GetAppSpecServiceGitPtrOutput {
+	return i.ToGetAppSpecServiceGitPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecServiceGitPtrType) ToGetAppSpecServiceGitPtrOutputWithContext(ctx context.Context) GetAppSpecServiceGitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceGitPtrOutput)
+}
+
+type GetAppSpecServiceGitOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceGitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceGit)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceGitOutput) ToGetAppSpecServiceGitOutput() GetAppSpecServiceGitOutput {
+	return o
+}
+
+func (o GetAppSpecServiceGitOutput) ToGetAppSpecServiceGitOutputWithContext(ctx context.Context) GetAppSpecServiceGitOutput {
+	return o
+}
+
+func (o GetAppSpecServiceGitOutput) ToGetAppSpecServiceGitPtrOutput() GetAppSpecServiceGitPtrOutput {
+	return o.ToGetAppSpecServiceGitPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecServiceGitOutput) ToGetAppSpecServiceGitPtrOutputWithContext(ctx context.Context) GetAppSpecServiceGitPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecServiceGit) *GetAppSpecServiceGit {
+		return &v
+	}).(GetAppSpecServiceGitPtrOutput)
+}
+
+// The name of the branch to use.
+func (o GetAppSpecServiceGitOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceGit) *string { return v.Branch }).(pulumi.StringPtrOutput)
+}
+
+// The clone URL of the repo.
+func (o GetAppSpecServiceGitOutput) RepoCloneUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceGit) *string { return v.RepoCloneUrl }).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecServiceGitPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceGitPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceGit)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceGitPtrOutput) ToGetAppSpecServiceGitPtrOutput() GetAppSpecServiceGitPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceGitPtrOutput) ToGetAppSpecServiceGitPtrOutputWithContext(ctx context.Context) GetAppSpecServiceGitPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceGitPtrOutput) Elem() GetAppSpecServiceGitOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceGit) GetAppSpecServiceGit {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecServiceGit
+		return ret
+	}).(GetAppSpecServiceGitOutput)
+}
+
+// The name of the branch to use.
+func (o GetAppSpecServiceGitPtrOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceGit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Branch
+	}).(pulumi.StringPtrOutput)
+}
+
+// The clone URL of the repo.
+func (o GetAppSpecServiceGitPtrOutput) RepoCloneUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceGit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RepoCloneUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecServiceGithub struct {
+	// The name of the branch to use.
+	Branch *string `pulumi:"branch"`
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPush *bool `pulumi:"deployOnPush"`
+	// The name of the repo in the format `owner/repo`.
+	Repo *string `pulumi:"repo"`
+}
+
+// GetAppSpecServiceGithubInput is an input type that accepts GetAppSpecServiceGithubArgs and GetAppSpecServiceGithubOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceGithubInput` via:
+//
+//	GetAppSpecServiceGithubArgs{...}
+type GetAppSpecServiceGithubInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceGithubOutput() GetAppSpecServiceGithubOutput
+	ToGetAppSpecServiceGithubOutputWithContext(context.Context) GetAppSpecServiceGithubOutput
+}
+
+type GetAppSpecServiceGithubArgs struct {
+	// The name of the branch to use.
+	Branch pulumi.StringPtrInput `pulumi:"branch"`
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPush pulumi.BoolPtrInput `pulumi:"deployOnPush"`
+	// The name of the repo in the format `owner/repo`.
+	Repo pulumi.StringPtrInput `pulumi:"repo"`
+}
+
+func (GetAppSpecServiceGithubArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceGithub)(nil)).Elem()
+}
+
+func (i GetAppSpecServiceGithubArgs) ToGetAppSpecServiceGithubOutput() GetAppSpecServiceGithubOutput {
+	return i.ToGetAppSpecServiceGithubOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceGithubArgs) ToGetAppSpecServiceGithubOutputWithContext(ctx context.Context) GetAppSpecServiceGithubOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceGithubOutput)
+}
+
+func (i GetAppSpecServiceGithubArgs) ToGetAppSpecServiceGithubPtrOutput() GetAppSpecServiceGithubPtrOutput {
+	return i.ToGetAppSpecServiceGithubPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceGithubArgs) ToGetAppSpecServiceGithubPtrOutputWithContext(ctx context.Context) GetAppSpecServiceGithubPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceGithubOutput).ToGetAppSpecServiceGithubPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecServiceGithubPtrInput is an input type that accepts GetAppSpecServiceGithubArgs, GetAppSpecServiceGithubPtr and GetAppSpecServiceGithubPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceGithubPtrInput` via:
+//
+//	        GetAppSpecServiceGithubArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetAppSpecServiceGithubPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceGithubPtrOutput() GetAppSpecServiceGithubPtrOutput
+	ToGetAppSpecServiceGithubPtrOutputWithContext(context.Context) GetAppSpecServiceGithubPtrOutput
+}
+
+type getAppSpecServiceGithubPtrType GetAppSpecServiceGithubArgs
+
+func GetAppSpecServiceGithubPtr(v *GetAppSpecServiceGithubArgs) GetAppSpecServiceGithubPtrInput {
+	return (*getAppSpecServiceGithubPtrType)(v)
+}
+
+func (*getAppSpecServiceGithubPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceGithub)(nil)).Elem()
+}
+
+func (i *getAppSpecServiceGithubPtrType) ToGetAppSpecServiceGithubPtrOutput() GetAppSpecServiceGithubPtrOutput {
+	return i.ToGetAppSpecServiceGithubPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecServiceGithubPtrType) ToGetAppSpecServiceGithubPtrOutputWithContext(ctx context.Context) GetAppSpecServiceGithubPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceGithubPtrOutput)
+}
+
+type GetAppSpecServiceGithubOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceGithubOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceGithub)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceGithubOutput) ToGetAppSpecServiceGithubOutput() GetAppSpecServiceGithubOutput {
+	return o
+}
+
+func (o GetAppSpecServiceGithubOutput) ToGetAppSpecServiceGithubOutputWithContext(ctx context.Context) GetAppSpecServiceGithubOutput {
+	return o
+}
+
+func (o GetAppSpecServiceGithubOutput) ToGetAppSpecServiceGithubPtrOutput() GetAppSpecServiceGithubPtrOutput {
+	return o.ToGetAppSpecServiceGithubPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecServiceGithubOutput) ToGetAppSpecServiceGithubPtrOutputWithContext(ctx context.Context) GetAppSpecServiceGithubPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecServiceGithub) *GetAppSpecServiceGithub {
+		return &v
+	}).(GetAppSpecServiceGithubPtrOutput)
+}
+
+// The name of the branch to use.
+func (o GetAppSpecServiceGithubOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceGithub) *string { return v.Branch }).(pulumi.StringPtrOutput)
+}
+
+// Whether to automatically deploy new commits made to the repo.
+func (o GetAppSpecServiceGithubOutput) DeployOnPush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceGithub) *bool { return v.DeployOnPush }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the repo in the format `owner/repo`.
+func (o GetAppSpecServiceGithubOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceGithub) *string { return v.Repo }).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecServiceGithubPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceGithubPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceGithub)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceGithubPtrOutput) ToGetAppSpecServiceGithubPtrOutput() GetAppSpecServiceGithubPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceGithubPtrOutput) ToGetAppSpecServiceGithubPtrOutputWithContext(ctx context.Context) GetAppSpecServiceGithubPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceGithubPtrOutput) Elem() GetAppSpecServiceGithubOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceGithub) GetAppSpecServiceGithub {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecServiceGithub
+		return ret
+	}).(GetAppSpecServiceGithubOutput)
+}
+
+// The name of the branch to use.
+func (o GetAppSpecServiceGithubPtrOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceGithub) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Branch
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to automatically deploy new commits made to the repo.
+func (o GetAppSpecServiceGithubPtrOutput) DeployOnPush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceGithub) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DeployOnPush
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The name of the repo in the format `owner/repo`.
+func (o GetAppSpecServiceGithubPtrOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceGithub) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Repo
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecServiceGitlab struct {
+	// The name of the branch to use.
+	Branch *string `pulumi:"branch"`
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPush *bool `pulumi:"deployOnPush"`
+	// The name of the repo in the format `owner/repo`.
+	Repo *string `pulumi:"repo"`
+}
+
+// GetAppSpecServiceGitlabInput is an input type that accepts GetAppSpecServiceGitlabArgs and GetAppSpecServiceGitlabOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceGitlabInput` via:
+//
+//	GetAppSpecServiceGitlabArgs{...}
+type GetAppSpecServiceGitlabInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceGitlabOutput() GetAppSpecServiceGitlabOutput
+	ToGetAppSpecServiceGitlabOutputWithContext(context.Context) GetAppSpecServiceGitlabOutput
+}
+
+type GetAppSpecServiceGitlabArgs struct {
+	// The name of the branch to use.
+	Branch pulumi.StringPtrInput `pulumi:"branch"`
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPush pulumi.BoolPtrInput `pulumi:"deployOnPush"`
+	// The name of the repo in the format `owner/repo`.
+	Repo pulumi.StringPtrInput `pulumi:"repo"`
+}
+
+func (GetAppSpecServiceGitlabArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceGitlab)(nil)).Elem()
+}
+
+func (i GetAppSpecServiceGitlabArgs) ToGetAppSpecServiceGitlabOutput() GetAppSpecServiceGitlabOutput {
+	return i.ToGetAppSpecServiceGitlabOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceGitlabArgs) ToGetAppSpecServiceGitlabOutputWithContext(ctx context.Context) GetAppSpecServiceGitlabOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceGitlabOutput)
+}
+
+func (i GetAppSpecServiceGitlabArgs) ToGetAppSpecServiceGitlabPtrOutput() GetAppSpecServiceGitlabPtrOutput {
+	return i.ToGetAppSpecServiceGitlabPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceGitlabArgs) ToGetAppSpecServiceGitlabPtrOutputWithContext(ctx context.Context) GetAppSpecServiceGitlabPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceGitlabOutput).ToGetAppSpecServiceGitlabPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecServiceGitlabPtrInput is an input type that accepts GetAppSpecServiceGitlabArgs, GetAppSpecServiceGitlabPtr and GetAppSpecServiceGitlabPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceGitlabPtrInput` via:
+//
+//	        GetAppSpecServiceGitlabArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetAppSpecServiceGitlabPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceGitlabPtrOutput() GetAppSpecServiceGitlabPtrOutput
+	ToGetAppSpecServiceGitlabPtrOutputWithContext(context.Context) GetAppSpecServiceGitlabPtrOutput
+}
+
+type getAppSpecServiceGitlabPtrType GetAppSpecServiceGitlabArgs
+
+func GetAppSpecServiceGitlabPtr(v *GetAppSpecServiceGitlabArgs) GetAppSpecServiceGitlabPtrInput {
+	return (*getAppSpecServiceGitlabPtrType)(v)
+}
+
+func (*getAppSpecServiceGitlabPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceGitlab)(nil)).Elem()
+}
+
+func (i *getAppSpecServiceGitlabPtrType) ToGetAppSpecServiceGitlabPtrOutput() GetAppSpecServiceGitlabPtrOutput {
+	return i.ToGetAppSpecServiceGitlabPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecServiceGitlabPtrType) ToGetAppSpecServiceGitlabPtrOutputWithContext(ctx context.Context) GetAppSpecServiceGitlabPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceGitlabPtrOutput)
+}
+
+type GetAppSpecServiceGitlabOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceGitlabOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceGitlab)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceGitlabOutput) ToGetAppSpecServiceGitlabOutput() GetAppSpecServiceGitlabOutput {
+	return o
+}
+
+func (o GetAppSpecServiceGitlabOutput) ToGetAppSpecServiceGitlabOutputWithContext(ctx context.Context) GetAppSpecServiceGitlabOutput {
+	return o
+}
+
+func (o GetAppSpecServiceGitlabOutput) ToGetAppSpecServiceGitlabPtrOutput() GetAppSpecServiceGitlabPtrOutput {
+	return o.ToGetAppSpecServiceGitlabPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecServiceGitlabOutput) ToGetAppSpecServiceGitlabPtrOutputWithContext(ctx context.Context) GetAppSpecServiceGitlabPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecServiceGitlab) *GetAppSpecServiceGitlab {
+		return &v
+	}).(GetAppSpecServiceGitlabPtrOutput)
+}
+
+// The name of the branch to use.
+func (o GetAppSpecServiceGitlabOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceGitlab) *string { return v.Branch }).(pulumi.StringPtrOutput)
+}
+
+// Whether to automatically deploy new commits made to the repo.
+func (o GetAppSpecServiceGitlabOutput) DeployOnPush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceGitlab) *bool { return v.DeployOnPush }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the repo in the format `owner/repo`.
+func (o GetAppSpecServiceGitlabOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceGitlab) *string { return v.Repo }).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecServiceGitlabPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceGitlabPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceGitlab)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceGitlabPtrOutput) ToGetAppSpecServiceGitlabPtrOutput() GetAppSpecServiceGitlabPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceGitlabPtrOutput) ToGetAppSpecServiceGitlabPtrOutputWithContext(ctx context.Context) GetAppSpecServiceGitlabPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceGitlabPtrOutput) Elem() GetAppSpecServiceGitlabOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceGitlab) GetAppSpecServiceGitlab {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecServiceGitlab
+		return ret
+	}).(GetAppSpecServiceGitlabOutput)
+}
+
+// The name of the branch to use.
+func (o GetAppSpecServiceGitlabPtrOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceGitlab) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Branch
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to automatically deploy new commits made to the repo.
+func (o GetAppSpecServiceGitlabPtrOutput) DeployOnPush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceGitlab) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DeployOnPush
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The name of the repo in the format `owner/repo`.
+func (o GetAppSpecServiceGitlabPtrOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceGitlab) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Repo
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecServiceHealthCheck struct {
+	// The number of failed health checks before considered unhealthy.
+	FailureThreshold *int `pulumi:"failureThreshold"`
+	// The route path used for the HTTP health check ping.
+	HttpPath *string `pulumi:"httpPath"`
+	// The number of seconds to wait before beginning health checks.
+	InitialDelaySeconds *int `pulumi:"initialDelaySeconds"`
+	// The number of seconds to wait between health checks.
+	PeriodSeconds *int `pulumi:"periodSeconds"`
+	// The port on which the health check will be performed. If not set, the health check will be performed on the component's http_port.
+	Port *int `pulumi:"port"`
+	// The number of successful health checks before considered healthy.
+	SuccessThreshold *int `pulumi:"successThreshold"`
+	// The number of seconds after which the check times out.
+	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
+}
+
+// GetAppSpecServiceHealthCheckInput is an input type that accepts GetAppSpecServiceHealthCheckArgs and GetAppSpecServiceHealthCheckOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceHealthCheckInput` via:
+//
+//	GetAppSpecServiceHealthCheckArgs{...}
+type GetAppSpecServiceHealthCheckInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceHealthCheckOutput() GetAppSpecServiceHealthCheckOutput
+	ToGetAppSpecServiceHealthCheckOutputWithContext(context.Context) GetAppSpecServiceHealthCheckOutput
+}
+
+type GetAppSpecServiceHealthCheckArgs struct {
+	// The number of failed health checks before considered unhealthy.
+	FailureThreshold pulumi.IntPtrInput `pulumi:"failureThreshold"`
+	// The route path used for the HTTP health check ping.
+	HttpPath pulumi.StringPtrInput `pulumi:"httpPath"`
+	// The number of seconds to wait before beginning health checks.
+	InitialDelaySeconds pulumi.IntPtrInput `pulumi:"initialDelaySeconds"`
+	// The number of seconds to wait between health checks.
+	PeriodSeconds pulumi.IntPtrInput `pulumi:"periodSeconds"`
+	// The port on which the health check will be performed. If not set, the health check will be performed on the component's http_port.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// The number of successful health checks before considered healthy.
+	SuccessThreshold pulumi.IntPtrInput `pulumi:"successThreshold"`
+	// The number of seconds after which the check times out.
+	TimeoutSeconds pulumi.IntPtrInput `pulumi:"timeoutSeconds"`
+}
+
+func (GetAppSpecServiceHealthCheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceHealthCheck)(nil)).Elem()
+}
+
+func (i GetAppSpecServiceHealthCheckArgs) ToGetAppSpecServiceHealthCheckOutput() GetAppSpecServiceHealthCheckOutput {
+	return i.ToGetAppSpecServiceHealthCheckOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceHealthCheckArgs) ToGetAppSpecServiceHealthCheckOutputWithContext(ctx context.Context) GetAppSpecServiceHealthCheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceHealthCheckOutput)
+}
+
+func (i GetAppSpecServiceHealthCheckArgs) ToGetAppSpecServiceHealthCheckPtrOutput() GetAppSpecServiceHealthCheckPtrOutput {
+	return i.ToGetAppSpecServiceHealthCheckPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceHealthCheckArgs) ToGetAppSpecServiceHealthCheckPtrOutputWithContext(ctx context.Context) GetAppSpecServiceHealthCheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceHealthCheckOutput).ToGetAppSpecServiceHealthCheckPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecServiceHealthCheckPtrInput is an input type that accepts GetAppSpecServiceHealthCheckArgs, GetAppSpecServiceHealthCheckPtr and GetAppSpecServiceHealthCheckPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceHealthCheckPtrInput` via:
+//
+//	        GetAppSpecServiceHealthCheckArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetAppSpecServiceHealthCheckPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceHealthCheckPtrOutput() GetAppSpecServiceHealthCheckPtrOutput
+	ToGetAppSpecServiceHealthCheckPtrOutputWithContext(context.Context) GetAppSpecServiceHealthCheckPtrOutput
+}
+
+type getAppSpecServiceHealthCheckPtrType GetAppSpecServiceHealthCheckArgs
+
+func GetAppSpecServiceHealthCheckPtr(v *GetAppSpecServiceHealthCheckArgs) GetAppSpecServiceHealthCheckPtrInput {
+	return (*getAppSpecServiceHealthCheckPtrType)(v)
+}
+
+func (*getAppSpecServiceHealthCheckPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceHealthCheck)(nil)).Elem()
+}
+
+func (i *getAppSpecServiceHealthCheckPtrType) ToGetAppSpecServiceHealthCheckPtrOutput() GetAppSpecServiceHealthCheckPtrOutput {
+	return i.ToGetAppSpecServiceHealthCheckPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecServiceHealthCheckPtrType) ToGetAppSpecServiceHealthCheckPtrOutputWithContext(ctx context.Context) GetAppSpecServiceHealthCheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceHealthCheckPtrOutput)
+}
+
+type GetAppSpecServiceHealthCheckOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceHealthCheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceHealthCheck)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceHealthCheckOutput) ToGetAppSpecServiceHealthCheckOutput() GetAppSpecServiceHealthCheckOutput {
+	return o
+}
+
+func (o GetAppSpecServiceHealthCheckOutput) ToGetAppSpecServiceHealthCheckOutputWithContext(ctx context.Context) GetAppSpecServiceHealthCheckOutput {
+	return o
+}
+
+func (o GetAppSpecServiceHealthCheckOutput) ToGetAppSpecServiceHealthCheckPtrOutput() GetAppSpecServiceHealthCheckPtrOutput {
+	return o.ToGetAppSpecServiceHealthCheckPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecServiceHealthCheckOutput) ToGetAppSpecServiceHealthCheckPtrOutputWithContext(ctx context.Context) GetAppSpecServiceHealthCheckPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecServiceHealthCheck) *GetAppSpecServiceHealthCheck {
+		return &v
+	}).(GetAppSpecServiceHealthCheckPtrOutput)
+}
+
+// The number of failed health checks before considered unhealthy.
+func (o GetAppSpecServiceHealthCheckOutput) FailureThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceHealthCheck) *int { return v.FailureThreshold }).(pulumi.IntPtrOutput)
+}
+
+// The route path used for the HTTP health check ping.
+func (o GetAppSpecServiceHealthCheckOutput) HttpPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceHealthCheck) *string { return v.HttpPath }).(pulumi.StringPtrOutput)
+}
+
+// The number of seconds to wait before beginning health checks.
+func (o GetAppSpecServiceHealthCheckOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceHealthCheck) *int { return v.InitialDelaySeconds }).(pulumi.IntPtrOutput)
+}
+
+// The number of seconds to wait between health checks.
+func (o GetAppSpecServiceHealthCheckOutput) PeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceHealthCheck) *int { return v.PeriodSeconds }).(pulumi.IntPtrOutput)
+}
+
+// The port on which the health check will be performed. If not set, the health check will be performed on the component's http_port.
+func (o GetAppSpecServiceHealthCheckOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceHealthCheck) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// The number of successful health checks before considered healthy.
+func (o GetAppSpecServiceHealthCheckOutput) SuccessThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceHealthCheck) *int { return v.SuccessThreshold }).(pulumi.IntPtrOutput)
+}
+
+// The number of seconds after which the check times out.
+func (o GetAppSpecServiceHealthCheckOutput) TimeoutSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceHealthCheck) *int { return v.TimeoutSeconds }).(pulumi.IntPtrOutput)
+}
+
+type GetAppSpecServiceHealthCheckPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceHealthCheckPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceHealthCheck)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceHealthCheckPtrOutput) ToGetAppSpecServiceHealthCheckPtrOutput() GetAppSpecServiceHealthCheckPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceHealthCheckPtrOutput) ToGetAppSpecServiceHealthCheckPtrOutputWithContext(ctx context.Context) GetAppSpecServiceHealthCheckPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceHealthCheckPtrOutput) Elem() GetAppSpecServiceHealthCheckOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceHealthCheck) GetAppSpecServiceHealthCheck {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecServiceHealthCheck
+		return ret
+	}).(GetAppSpecServiceHealthCheckOutput)
+}
+
+// The number of failed health checks before considered unhealthy.
+func (o GetAppSpecServiceHealthCheckPtrOutput) FailureThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceHealthCheck) *int {
+		if v == nil {
+			return nil
+		}
+		return v.FailureThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// The route path used for the HTTP health check ping.
+func (o GetAppSpecServiceHealthCheckPtrOutput) HttpPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceHealthCheck) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HttpPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// The number of seconds to wait before beginning health checks.
+func (o GetAppSpecServiceHealthCheckPtrOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceHealthCheck) *int {
+		if v == nil {
+			return nil
+		}
+		return v.InitialDelaySeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of seconds to wait between health checks.
+func (o GetAppSpecServiceHealthCheckPtrOutput) PeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceHealthCheck) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PeriodSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// The port on which the health check will be performed. If not set, the health check will be performed on the component's http_port.
+func (o GetAppSpecServiceHealthCheckPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceHealthCheck) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of successful health checks before considered healthy.
+func (o GetAppSpecServiceHealthCheckPtrOutput) SuccessThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceHealthCheck) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SuccessThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of seconds after which the check times out.
+func (o GetAppSpecServiceHealthCheckPtrOutput) TimeoutSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceHealthCheck) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TimeoutSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+type GetAppSpecServiceImage struct {
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPushes []GetAppSpecServiceImageDeployOnPush `pulumi:"deployOnPushes"`
+	// The image digest. Cannot be specified if `tag` is provided.
+	Digest *string `pulumi:"digest"`
+	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
+	Registry *string `pulumi:"registry"`
+	// Access credentials for third-party registries
+	RegistryCredentials *string `pulumi:"registryCredentials"`
+	// The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
+	RegistryType string `pulumi:"registryType"`
+	// The repository name.
+	Repository string `pulumi:"repository"`
+	// The repository tag. Defaults to `latest` if not provided.
+	Tag *string `pulumi:"tag"`
+}
+
+// GetAppSpecServiceImageInput is an input type that accepts GetAppSpecServiceImageArgs and GetAppSpecServiceImageOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceImageInput` via:
+//
+//	GetAppSpecServiceImageArgs{...}
+type GetAppSpecServiceImageInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceImageOutput() GetAppSpecServiceImageOutput
+	ToGetAppSpecServiceImageOutputWithContext(context.Context) GetAppSpecServiceImageOutput
+}
+
+type GetAppSpecServiceImageArgs struct {
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPushes GetAppSpecServiceImageDeployOnPushArrayInput `pulumi:"deployOnPushes"`
+	// The image digest. Cannot be specified if `tag` is provided.
+	Digest pulumi.StringPtrInput `pulumi:"digest"`
+	// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
+	Registry pulumi.StringPtrInput `pulumi:"registry"`
+	// Access credentials for third-party registries
+	RegistryCredentials pulumi.StringPtrInput `pulumi:"registryCredentials"`
+	// The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
+	RegistryType pulumi.StringInput `pulumi:"registryType"`
+	// The repository name.
+	Repository pulumi.StringInput `pulumi:"repository"`
+	// The repository tag. Defaults to `latest` if not provided.
+	Tag pulumi.StringPtrInput `pulumi:"tag"`
+}
+
+func (GetAppSpecServiceImageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceImage)(nil)).Elem()
+}
+
+func (i GetAppSpecServiceImageArgs) ToGetAppSpecServiceImageOutput() GetAppSpecServiceImageOutput {
+	return i.ToGetAppSpecServiceImageOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceImageArgs) ToGetAppSpecServiceImageOutputWithContext(ctx context.Context) GetAppSpecServiceImageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceImageOutput)
+}
+
+func (i GetAppSpecServiceImageArgs) ToGetAppSpecServiceImagePtrOutput() GetAppSpecServiceImagePtrOutput {
+	return i.ToGetAppSpecServiceImagePtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceImageArgs) ToGetAppSpecServiceImagePtrOutputWithContext(ctx context.Context) GetAppSpecServiceImagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceImageOutput).ToGetAppSpecServiceImagePtrOutputWithContext(ctx)
+}
+
+// GetAppSpecServiceImagePtrInput is an input type that accepts GetAppSpecServiceImageArgs, GetAppSpecServiceImagePtr and GetAppSpecServiceImagePtrOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceImagePtrInput` via:
+//
+//	        GetAppSpecServiceImageArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetAppSpecServiceImagePtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceImagePtrOutput() GetAppSpecServiceImagePtrOutput
+	ToGetAppSpecServiceImagePtrOutputWithContext(context.Context) GetAppSpecServiceImagePtrOutput
+}
+
+type getAppSpecServiceImagePtrType GetAppSpecServiceImageArgs
+
+func GetAppSpecServiceImagePtr(v *GetAppSpecServiceImageArgs) GetAppSpecServiceImagePtrInput {
+	return (*getAppSpecServiceImagePtrType)(v)
+}
+
+func (*getAppSpecServiceImagePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceImage)(nil)).Elem()
+}
+
+func (i *getAppSpecServiceImagePtrType) ToGetAppSpecServiceImagePtrOutput() GetAppSpecServiceImagePtrOutput {
+	return i.ToGetAppSpecServiceImagePtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecServiceImagePtrType) ToGetAppSpecServiceImagePtrOutputWithContext(ctx context.Context) GetAppSpecServiceImagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceImagePtrOutput)
+}
+
+type GetAppSpecServiceImageOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceImageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceImage)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceImageOutput) ToGetAppSpecServiceImageOutput() GetAppSpecServiceImageOutput {
+	return o
+}
+
+func (o GetAppSpecServiceImageOutput) ToGetAppSpecServiceImageOutputWithContext(ctx context.Context) GetAppSpecServiceImageOutput {
+	return o
+}
+
+func (o GetAppSpecServiceImageOutput) ToGetAppSpecServiceImagePtrOutput() GetAppSpecServiceImagePtrOutput {
+	return o.ToGetAppSpecServiceImagePtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecServiceImageOutput) ToGetAppSpecServiceImagePtrOutputWithContext(ctx context.Context) GetAppSpecServiceImagePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecServiceImage) *GetAppSpecServiceImage {
+		return &v
+	}).(GetAppSpecServiceImagePtrOutput)
+}
+
+// Whether to automatically deploy new commits made to the repo.
+func (o GetAppSpecServiceImageOutput) DeployOnPushes() GetAppSpecServiceImageDeployOnPushArrayOutput {
+	return o.ApplyT(func(v GetAppSpecServiceImage) []GetAppSpecServiceImageDeployOnPush { return v.DeployOnPushes }).(GetAppSpecServiceImageDeployOnPushArrayOutput)
+}
+
+// The image digest. Cannot be specified if `tag` is provided.
+func (o GetAppSpecServiceImageOutput) Digest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceImage) *string { return v.Digest }).(pulumi.StringPtrOutput)
+}
+
+// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
+func (o GetAppSpecServiceImageOutput) Registry() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceImage) *string { return v.Registry }).(pulumi.StringPtrOutput)
+}
+
+// Access credentials for third-party registries
+func (o GetAppSpecServiceImageOutput) RegistryCredentials() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceImage) *string { return v.RegistryCredentials }).(pulumi.StringPtrOutput)
+}
+
+// The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
+func (o GetAppSpecServiceImageOutput) RegistryType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppSpecServiceImage) string { return v.RegistryType }).(pulumi.StringOutput)
+}
+
+// The repository name.
+func (o GetAppSpecServiceImageOutput) Repository() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppSpecServiceImage) string { return v.Repository }).(pulumi.StringOutput)
+}
+
+// The repository tag. Defaults to `latest` if not provided.
+func (o GetAppSpecServiceImageOutput) Tag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceImage) *string { return v.Tag }).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecServiceImagePtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceImagePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceImage)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceImagePtrOutput) ToGetAppSpecServiceImagePtrOutput() GetAppSpecServiceImagePtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceImagePtrOutput) ToGetAppSpecServiceImagePtrOutputWithContext(ctx context.Context) GetAppSpecServiceImagePtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceImagePtrOutput) Elem() GetAppSpecServiceImageOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceImage) GetAppSpecServiceImage {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecServiceImage
+		return ret
+	}).(GetAppSpecServiceImageOutput)
+}
+
+// Whether to automatically deploy new commits made to the repo.
+func (o GetAppSpecServiceImagePtrOutput) DeployOnPushes() GetAppSpecServiceImageDeployOnPushArrayOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceImage) []GetAppSpecServiceImageDeployOnPush {
+		if v == nil {
+			return nil
+		}
+		return v.DeployOnPushes
+	}).(GetAppSpecServiceImageDeployOnPushArrayOutput)
+}
+
+// The image digest. Cannot be specified if `tag` is provided.
+func (o GetAppSpecServiceImagePtrOutput) Digest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceImage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Digest
+	}).(pulumi.StringPtrOutput)
+}
+
+// The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
+func (o GetAppSpecServiceImagePtrOutput) Registry() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceImage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Registry
+	}).(pulumi.StringPtrOutput)
+}
+
+// Access credentials for third-party registries
+func (o GetAppSpecServiceImagePtrOutput) RegistryCredentials() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceImage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RegistryCredentials
+	}).(pulumi.StringPtrOutput)
+}
+
+// The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
+func (o GetAppSpecServiceImagePtrOutput) RegistryType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceImage) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RegistryType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The repository name.
+func (o GetAppSpecServiceImagePtrOutput) Repository() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceImage) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Repository
+	}).(pulumi.StringPtrOutput)
+}
+
+// The repository tag. Defaults to `latest` if not provided.
+func (o GetAppSpecServiceImagePtrOutput) Tag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceImage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Tag
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecServiceImageDeployOnPush struct {
+	// Whether to automatically deploy images pushed to DOCR.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// GetAppSpecServiceImageDeployOnPushInput is an input type that accepts GetAppSpecServiceImageDeployOnPushArgs and GetAppSpecServiceImageDeployOnPushOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceImageDeployOnPushInput` via:
+//
+//	GetAppSpecServiceImageDeployOnPushArgs{...}
+type GetAppSpecServiceImageDeployOnPushInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceImageDeployOnPushOutput() GetAppSpecServiceImageDeployOnPushOutput
+	ToGetAppSpecServiceImageDeployOnPushOutputWithContext(context.Context) GetAppSpecServiceImageDeployOnPushOutput
+}
+
+type GetAppSpecServiceImageDeployOnPushArgs struct {
+	// Whether to automatically deploy images pushed to DOCR.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (GetAppSpecServiceImageDeployOnPushArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceImageDeployOnPush)(nil)).Elem()
+}
+
+func (i GetAppSpecServiceImageDeployOnPushArgs) ToGetAppSpecServiceImageDeployOnPushOutput() GetAppSpecServiceImageDeployOnPushOutput {
+	return i.ToGetAppSpecServiceImageDeployOnPushOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceImageDeployOnPushArgs) ToGetAppSpecServiceImageDeployOnPushOutputWithContext(ctx context.Context) GetAppSpecServiceImageDeployOnPushOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceImageDeployOnPushOutput)
+}
+
+// GetAppSpecServiceImageDeployOnPushArrayInput is an input type that accepts GetAppSpecServiceImageDeployOnPushArray and GetAppSpecServiceImageDeployOnPushArrayOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceImageDeployOnPushArrayInput` via:
+//
+//	GetAppSpecServiceImageDeployOnPushArray{ GetAppSpecServiceImageDeployOnPushArgs{...} }
+type GetAppSpecServiceImageDeployOnPushArrayInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceImageDeployOnPushArrayOutput() GetAppSpecServiceImageDeployOnPushArrayOutput
+	ToGetAppSpecServiceImageDeployOnPushArrayOutputWithContext(context.Context) GetAppSpecServiceImageDeployOnPushArrayOutput
+}
+
+type GetAppSpecServiceImageDeployOnPushArray []GetAppSpecServiceImageDeployOnPushInput
+
+func (GetAppSpecServiceImageDeployOnPushArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecServiceImageDeployOnPush)(nil)).Elem()
+}
+
+func (i GetAppSpecServiceImageDeployOnPushArray) ToGetAppSpecServiceImageDeployOnPushArrayOutput() GetAppSpecServiceImageDeployOnPushArrayOutput {
+	return i.ToGetAppSpecServiceImageDeployOnPushArrayOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceImageDeployOnPushArray) ToGetAppSpecServiceImageDeployOnPushArrayOutputWithContext(ctx context.Context) GetAppSpecServiceImageDeployOnPushArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceImageDeployOnPushArrayOutput)
+}
+
+type GetAppSpecServiceImageDeployOnPushOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceImageDeployOnPushOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceImageDeployOnPush)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceImageDeployOnPushOutput) ToGetAppSpecServiceImageDeployOnPushOutput() GetAppSpecServiceImageDeployOnPushOutput {
+	return o
+}
+
+func (o GetAppSpecServiceImageDeployOnPushOutput) ToGetAppSpecServiceImageDeployOnPushOutputWithContext(ctx context.Context) GetAppSpecServiceImageDeployOnPushOutput {
+	return o
+}
+
+// Whether to automatically deploy images pushed to DOCR.
+func (o GetAppSpecServiceImageDeployOnPushOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceImageDeployOnPush) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type GetAppSpecServiceImageDeployOnPushArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceImageDeployOnPushArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecServiceImageDeployOnPush)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceImageDeployOnPushArrayOutput) ToGetAppSpecServiceImageDeployOnPushArrayOutput() GetAppSpecServiceImageDeployOnPushArrayOutput {
+	return o
+}
+
+func (o GetAppSpecServiceImageDeployOnPushArrayOutput) ToGetAppSpecServiceImageDeployOnPushArrayOutputWithContext(ctx context.Context) GetAppSpecServiceImageDeployOnPushArrayOutput {
+	return o
+}
+
+func (o GetAppSpecServiceImageDeployOnPushArrayOutput) Index(i pulumi.IntInput) GetAppSpecServiceImageDeployOnPushOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppSpecServiceImageDeployOnPush {
+		return vs[0].([]GetAppSpecServiceImageDeployOnPush)[vs[1].(int)]
+	}).(GetAppSpecServiceImageDeployOnPushOutput)
+}
+
+type GetAppSpecServiceLivenessHealthCheck struct {
+	// The number of failed health checks before considered unhealthy.
+	FailureThreshold *int `pulumi:"failureThreshold"`
+	// The route path used for the HTTP health check ping.
+	HttpPath *string `pulumi:"httpPath"`
+	// The number of seconds to wait before beginning health checks.
+	InitialDelaySeconds *int `pulumi:"initialDelaySeconds"`
+	// The number of seconds to wait between health checks.
+	PeriodSeconds *int `pulumi:"periodSeconds"`
+	// The port on which the health check will be performed. If not set, the health check will be performed on the component's http_port.
+	Port *int `pulumi:"port"`
+	// The number of successful health checks before considered healthy.
+	SuccessThreshold *int `pulumi:"successThreshold"`
+	// The number of seconds after which the check times out.
+	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
+}
+
+// GetAppSpecServiceLivenessHealthCheckInput is an input type that accepts GetAppSpecServiceLivenessHealthCheckArgs and GetAppSpecServiceLivenessHealthCheckOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceLivenessHealthCheckInput` via:
+//
+//	GetAppSpecServiceLivenessHealthCheckArgs{...}
+type GetAppSpecServiceLivenessHealthCheckInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceLivenessHealthCheckOutput() GetAppSpecServiceLivenessHealthCheckOutput
+	ToGetAppSpecServiceLivenessHealthCheckOutputWithContext(context.Context) GetAppSpecServiceLivenessHealthCheckOutput
+}
+
+type GetAppSpecServiceLivenessHealthCheckArgs struct {
+	// The number of failed health checks before considered unhealthy.
+	FailureThreshold pulumi.IntPtrInput `pulumi:"failureThreshold"`
+	// The route path used for the HTTP health check ping.
+	HttpPath pulumi.StringPtrInput `pulumi:"httpPath"`
+	// The number of seconds to wait before beginning health checks.
+	InitialDelaySeconds pulumi.IntPtrInput `pulumi:"initialDelaySeconds"`
+	// The number of seconds to wait between health checks.
+	PeriodSeconds pulumi.IntPtrInput `pulumi:"periodSeconds"`
+	// The port on which the health check will be performed. If not set, the health check will be performed on the component's http_port.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// The number of successful health checks before considered healthy.
+	SuccessThreshold pulumi.IntPtrInput `pulumi:"successThreshold"`
+	// The number of seconds after which the check times out.
+	TimeoutSeconds pulumi.IntPtrInput `pulumi:"timeoutSeconds"`
+}
+
+func (GetAppSpecServiceLivenessHealthCheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceLivenessHealthCheck)(nil)).Elem()
+}
+
+func (i GetAppSpecServiceLivenessHealthCheckArgs) ToGetAppSpecServiceLivenessHealthCheckOutput() GetAppSpecServiceLivenessHealthCheckOutput {
+	return i.ToGetAppSpecServiceLivenessHealthCheckOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceLivenessHealthCheckArgs) ToGetAppSpecServiceLivenessHealthCheckOutputWithContext(ctx context.Context) GetAppSpecServiceLivenessHealthCheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceLivenessHealthCheckOutput)
+}
+
+func (i GetAppSpecServiceLivenessHealthCheckArgs) ToGetAppSpecServiceLivenessHealthCheckPtrOutput() GetAppSpecServiceLivenessHealthCheckPtrOutput {
+	return i.ToGetAppSpecServiceLivenessHealthCheckPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceLivenessHealthCheckArgs) ToGetAppSpecServiceLivenessHealthCheckPtrOutputWithContext(ctx context.Context) GetAppSpecServiceLivenessHealthCheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceLivenessHealthCheckOutput).ToGetAppSpecServiceLivenessHealthCheckPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecServiceLivenessHealthCheckPtrInput is an input type that accepts GetAppSpecServiceLivenessHealthCheckArgs, GetAppSpecServiceLivenessHealthCheckPtr and GetAppSpecServiceLivenessHealthCheckPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceLivenessHealthCheckPtrInput` via:
+//
+//	        GetAppSpecServiceLivenessHealthCheckArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetAppSpecServiceLivenessHealthCheckPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceLivenessHealthCheckPtrOutput() GetAppSpecServiceLivenessHealthCheckPtrOutput
+	ToGetAppSpecServiceLivenessHealthCheckPtrOutputWithContext(context.Context) GetAppSpecServiceLivenessHealthCheckPtrOutput
+}
+
+type getAppSpecServiceLivenessHealthCheckPtrType GetAppSpecServiceLivenessHealthCheckArgs
+
+func GetAppSpecServiceLivenessHealthCheckPtr(v *GetAppSpecServiceLivenessHealthCheckArgs) GetAppSpecServiceLivenessHealthCheckPtrInput {
+	return (*getAppSpecServiceLivenessHealthCheckPtrType)(v)
+}
+
+func (*getAppSpecServiceLivenessHealthCheckPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceLivenessHealthCheck)(nil)).Elem()
+}
+
+func (i *getAppSpecServiceLivenessHealthCheckPtrType) ToGetAppSpecServiceLivenessHealthCheckPtrOutput() GetAppSpecServiceLivenessHealthCheckPtrOutput {
+	return i.ToGetAppSpecServiceLivenessHealthCheckPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecServiceLivenessHealthCheckPtrType) ToGetAppSpecServiceLivenessHealthCheckPtrOutputWithContext(ctx context.Context) GetAppSpecServiceLivenessHealthCheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceLivenessHealthCheckPtrOutput)
+}
+
+type GetAppSpecServiceLivenessHealthCheckOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceLivenessHealthCheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceLivenessHealthCheck)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceLivenessHealthCheckOutput) ToGetAppSpecServiceLivenessHealthCheckOutput() GetAppSpecServiceLivenessHealthCheckOutput {
+	return o
+}
+
+func (o GetAppSpecServiceLivenessHealthCheckOutput) ToGetAppSpecServiceLivenessHealthCheckOutputWithContext(ctx context.Context) GetAppSpecServiceLivenessHealthCheckOutput {
+	return o
+}
+
+func (o GetAppSpecServiceLivenessHealthCheckOutput) ToGetAppSpecServiceLivenessHealthCheckPtrOutput() GetAppSpecServiceLivenessHealthCheckPtrOutput {
+	return o.ToGetAppSpecServiceLivenessHealthCheckPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecServiceLivenessHealthCheckOutput) ToGetAppSpecServiceLivenessHealthCheckPtrOutputWithContext(ctx context.Context) GetAppSpecServiceLivenessHealthCheckPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecServiceLivenessHealthCheck) *GetAppSpecServiceLivenessHealthCheck {
+		return &v
+	}).(GetAppSpecServiceLivenessHealthCheckPtrOutput)
+}
+
+// The number of failed health checks before considered unhealthy.
+func (o GetAppSpecServiceLivenessHealthCheckOutput) FailureThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceLivenessHealthCheck) *int { return v.FailureThreshold }).(pulumi.IntPtrOutput)
+}
+
+// The route path used for the HTTP health check ping.
+func (o GetAppSpecServiceLivenessHealthCheckOutput) HttpPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceLivenessHealthCheck) *string { return v.HttpPath }).(pulumi.StringPtrOutput)
+}
+
+// The number of seconds to wait before beginning health checks.
+func (o GetAppSpecServiceLivenessHealthCheckOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceLivenessHealthCheck) *int { return v.InitialDelaySeconds }).(pulumi.IntPtrOutput)
+}
+
+// The number of seconds to wait between health checks.
+func (o GetAppSpecServiceLivenessHealthCheckOutput) PeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceLivenessHealthCheck) *int { return v.PeriodSeconds }).(pulumi.IntPtrOutput)
+}
+
+// The port on which the health check will be performed. If not set, the health check will be performed on the component's http_port.
+func (o GetAppSpecServiceLivenessHealthCheckOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceLivenessHealthCheck) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// The number of successful health checks before considered healthy.
+func (o GetAppSpecServiceLivenessHealthCheckOutput) SuccessThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceLivenessHealthCheck) *int { return v.SuccessThreshold }).(pulumi.IntPtrOutput)
+}
+
+// The number of seconds after which the check times out.
+func (o GetAppSpecServiceLivenessHealthCheckOutput) TimeoutSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceLivenessHealthCheck) *int { return v.TimeoutSeconds }).(pulumi.IntPtrOutput)
+}
+
+type GetAppSpecServiceLivenessHealthCheckPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceLivenessHealthCheckPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceLivenessHealthCheck)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceLivenessHealthCheckPtrOutput) ToGetAppSpecServiceLivenessHealthCheckPtrOutput() GetAppSpecServiceLivenessHealthCheckPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceLivenessHealthCheckPtrOutput) ToGetAppSpecServiceLivenessHealthCheckPtrOutputWithContext(ctx context.Context) GetAppSpecServiceLivenessHealthCheckPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceLivenessHealthCheckPtrOutput) Elem() GetAppSpecServiceLivenessHealthCheckOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceLivenessHealthCheck) GetAppSpecServiceLivenessHealthCheck {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecServiceLivenessHealthCheck
+		return ret
+	}).(GetAppSpecServiceLivenessHealthCheckOutput)
+}
+
+// The number of failed health checks before considered unhealthy.
+func (o GetAppSpecServiceLivenessHealthCheckPtrOutput) FailureThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceLivenessHealthCheck) *int {
+		if v == nil {
+			return nil
+		}
+		return v.FailureThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// The route path used for the HTTP health check ping.
+func (o GetAppSpecServiceLivenessHealthCheckPtrOutput) HttpPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceLivenessHealthCheck) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HttpPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// The number of seconds to wait before beginning health checks.
+func (o GetAppSpecServiceLivenessHealthCheckPtrOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceLivenessHealthCheck) *int {
+		if v == nil {
+			return nil
+		}
+		return v.InitialDelaySeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of seconds to wait between health checks.
+func (o GetAppSpecServiceLivenessHealthCheckPtrOutput) PeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceLivenessHealthCheck) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PeriodSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// The port on which the health check will be performed. If not set, the health check will be performed on the component's http_port.
+func (o GetAppSpecServiceLivenessHealthCheckPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceLivenessHealthCheck) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of successful health checks before considered healthy.
+func (o GetAppSpecServiceLivenessHealthCheckPtrOutput) SuccessThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceLivenessHealthCheck) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SuccessThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of seconds after which the check times out.
+func (o GetAppSpecServiceLivenessHealthCheckPtrOutput) TimeoutSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceLivenessHealthCheck) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TimeoutSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+type GetAppSpecServiceLogDestination struct {
+	// Datadog configuration.
+	Datadog *GetAppSpecServiceLogDestinationDatadog `pulumi:"datadog"`
+	// Logtail configuration.
+	Logtail *GetAppSpecServiceLogDestinationLogtail `pulumi:"logtail"`
+	// The name of the component.
+	Name string `pulumi:"name"`
+	// OpenSearch configuration.
+	OpenSearch *GetAppSpecServiceLogDestinationOpenSearch `pulumi:"openSearch"`
+	// Papertrail configuration.
+	Papertrail *GetAppSpecServiceLogDestinationPapertrail `pulumi:"papertrail"`
+}
+
+// GetAppSpecServiceLogDestinationInput is an input type that accepts GetAppSpecServiceLogDestinationArgs and GetAppSpecServiceLogDestinationOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceLogDestinationInput` via:
+//
+//	GetAppSpecServiceLogDestinationArgs{...}
+type GetAppSpecServiceLogDestinationInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceLogDestinationOutput() GetAppSpecServiceLogDestinationOutput
+	ToGetAppSpecServiceLogDestinationOutputWithContext(context.Context) GetAppSpecServiceLogDestinationOutput
+}
+
+type GetAppSpecServiceLogDestinationArgs struct {
+	// Datadog configuration.
+	Datadog GetAppSpecServiceLogDestinationDatadogPtrInput `pulumi:"datadog"`
+	// Logtail configuration.
+	Logtail GetAppSpecServiceLogDestinationLogtailPtrInput `pulumi:"logtail"`
+	// The name of the component.
+	Name pulumi.StringInput `pulumi:"name"`
+	// OpenSearch configuration.
+	OpenSearch GetAppSpecServiceLogDestinationOpenSearchPtrInput `pulumi:"openSearch"`
+	// Papertrail configuration.
+	Papertrail GetAppSpecServiceLogDestinationPapertrailPtrInput `pulumi:"papertrail"`
+}
+
+func (GetAppSpecServiceLogDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceLogDestination)(nil)).Elem()
+}
+
+func (i GetAppSpecServiceLogDestinationArgs) ToGetAppSpecServiceLogDestinationOutput() GetAppSpecServiceLogDestinationOutput {
+	return i.ToGetAppSpecServiceLogDestinationOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceLogDestinationArgs) ToGetAppSpecServiceLogDestinationOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceLogDestinationOutput)
+}
+
+// GetAppSpecServiceLogDestinationArrayInput is an input type that accepts GetAppSpecServiceLogDestinationArray and GetAppSpecServiceLogDestinationArrayOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceLogDestinationArrayInput` via:
+//
+//	GetAppSpecServiceLogDestinationArray{ GetAppSpecServiceLogDestinationArgs{...} }
+type GetAppSpecServiceLogDestinationArrayInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceLogDestinationArrayOutput() GetAppSpecServiceLogDestinationArrayOutput
+	ToGetAppSpecServiceLogDestinationArrayOutputWithContext(context.Context) GetAppSpecServiceLogDestinationArrayOutput
+}
+
+type GetAppSpecServiceLogDestinationArray []GetAppSpecServiceLogDestinationInput
+
+func (GetAppSpecServiceLogDestinationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecServiceLogDestination)(nil)).Elem()
+}
+
+func (i GetAppSpecServiceLogDestinationArray) ToGetAppSpecServiceLogDestinationArrayOutput() GetAppSpecServiceLogDestinationArrayOutput {
+	return i.ToGetAppSpecServiceLogDestinationArrayOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceLogDestinationArray) ToGetAppSpecServiceLogDestinationArrayOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceLogDestinationArrayOutput)
+}
+
+type GetAppSpecServiceLogDestinationOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceLogDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceLogDestination)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceLogDestinationOutput) ToGetAppSpecServiceLogDestinationOutput() GetAppSpecServiceLogDestinationOutput {
+	return o
+}
+
+func (o GetAppSpecServiceLogDestinationOutput) ToGetAppSpecServiceLogDestinationOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationOutput {
+	return o
+}
+
+// Datadog configuration.
+func (o GetAppSpecServiceLogDestinationOutput) Datadog() GetAppSpecServiceLogDestinationDatadogPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceLogDestination) *GetAppSpecServiceLogDestinationDatadog { return v.Datadog }).(GetAppSpecServiceLogDestinationDatadogPtrOutput)
+}
+
+// Logtail configuration.
+func (o GetAppSpecServiceLogDestinationOutput) Logtail() GetAppSpecServiceLogDestinationLogtailPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceLogDestination) *GetAppSpecServiceLogDestinationLogtail { return v.Logtail }).(GetAppSpecServiceLogDestinationLogtailPtrOutput)
+}
+
+// The name of the component.
+func (o GetAppSpecServiceLogDestinationOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppSpecServiceLogDestination) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// OpenSearch configuration.
+func (o GetAppSpecServiceLogDestinationOutput) OpenSearch() GetAppSpecServiceLogDestinationOpenSearchPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceLogDestination) *GetAppSpecServiceLogDestinationOpenSearch {
+		return v.OpenSearch
+	}).(GetAppSpecServiceLogDestinationOpenSearchPtrOutput)
+}
+
+// Papertrail configuration.
+func (o GetAppSpecServiceLogDestinationOutput) Papertrail() GetAppSpecServiceLogDestinationPapertrailPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceLogDestination) *GetAppSpecServiceLogDestinationPapertrail {
+		return v.Papertrail
+	}).(GetAppSpecServiceLogDestinationPapertrailPtrOutput)
+}
+
+type GetAppSpecServiceLogDestinationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceLogDestinationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecServiceLogDestination)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceLogDestinationArrayOutput) ToGetAppSpecServiceLogDestinationArrayOutput() GetAppSpecServiceLogDestinationArrayOutput {
+	return o
+}
+
+func (o GetAppSpecServiceLogDestinationArrayOutput) ToGetAppSpecServiceLogDestinationArrayOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationArrayOutput {
+	return o
+}
+
+func (o GetAppSpecServiceLogDestinationArrayOutput) Index(i pulumi.IntInput) GetAppSpecServiceLogDestinationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppSpecServiceLogDestination {
+		return vs[0].([]GetAppSpecServiceLogDestination)[vs[1].(int)]
+	}).(GetAppSpecServiceLogDestinationOutput)
+}
+
+type GetAppSpecServiceLogDestinationDatadog struct {
+	// Datadog API key.
+	ApiKey string `pulumi:"apiKey"`
+	// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
+	Endpoint *string `pulumi:"endpoint"`
+}
+
+// GetAppSpecServiceLogDestinationDatadogInput is an input type that accepts GetAppSpecServiceLogDestinationDatadogArgs and GetAppSpecServiceLogDestinationDatadogOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceLogDestinationDatadogInput` via:
+//
+//	GetAppSpecServiceLogDestinationDatadogArgs{...}
+type GetAppSpecServiceLogDestinationDatadogInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceLogDestinationDatadogOutput() GetAppSpecServiceLogDestinationDatadogOutput
+	ToGetAppSpecServiceLogDestinationDatadogOutputWithContext(context.Context) GetAppSpecServiceLogDestinationDatadogOutput
+}
+
+type GetAppSpecServiceLogDestinationDatadogArgs struct {
+	// Datadog API key.
+	ApiKey pulumi.StringInput `pulumi:"apiKey"`
+	// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
+	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
+}
+
+func (GetAppSpecServiceLogDestinationDatadogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceLogDestinationDatadog)(nil)).Elem()
+}
+
+func (i GetAppSpecServiceLogDestinationDatadogArgs) ToGetAppSpecServiceLogDestinationDatadogOutput() GetAppSpecServiceLogDestinationDatadogOutput {
+	return i.ToGetAppSpecServiceLogDestinationDatadogOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceLogDestinationDatadogArgs) ToGetAppSpecServiceLogDestinationDatadogOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationDatadogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceLogDestinationDatadogOutput)
+}
+
+func (i GetAppSpecServiceLogDestinationDatadogArgs) ToGetAppSpecServiceLogDestinationDatadogPtrOutput() GetAppSpecServiceLogDestinationDatadogPtrOutput {
+	return i.ToGetAppSpecServiceLogDestinationDatadogPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceLogDestinationDatadogArgs) ToGetAppSpecServiceLogDestinationDatadogPtrOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationDatadogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceLogDestinationDatadogOutput).ToGetAppSpecServiceLogDestinationDatadogPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecServiceLogDestinationDatadogPtrInput is an input type that accepts GetAppSpecServiceLogDestinationDatadogArgs, GetAppSpecServiceLogDestinationDatadogPtr and GetAppSpecServiceLogDestinationDatadogPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceLogDestinationDatadogPtrInput` via:
+//
+//	        GetAppSpecServiceLogDestinationDatadogArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetAppSpecServiceLogDestinationDatadogPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceLogDestinationDatadogPtrOutput() GetAppSpecServiceLogDestinationDatadogPtrOutput
+	ToGetAppSpecServiceLogDestinationDatadogPtrOutputWithContext(context.Context) GetAppSpecServiceLogDestinationDatadogPtrOutput
+}
+
+type getAppSpecServiceLogDestinationDatadogPtrType GetAppSpecServiceLogDestinationDatadogArgs
+
+func GetAppSpecServiceLogDestinationDatadogPtr(v *GetAppSpecServiceLogDestinationDatadogArgs) GetAppSpecServiceLogDestinationDatadogPtrInput {
+	return (*getAppSpecServiceLogDestinationDatadogPtrType)(v)
+}
+
+func (*getAppSpecServiceLogDestinationDatadogPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceLogDestinationDatadog)(nil)).Elem()
+}
+
+func (i *getAppSpecServiceLogDestinationDatadogPtrType) ToGetAppSpecServiceLogDestinationDatadogPtrOutput() GetAppSpecServiceLogDestinationDatadogPtrOutput {
+	return i.ToGetAppSpecServiceLogDestinationDatadogPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecServiceLogDestinationDatadogPtrType) ToGetAppSpecServiceLogDestinationDatadogPtrOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationDatadogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceLogDestinationDatadogPtrOutput)
+}
+
+type GetAppSpecServiceLogDestinationDatadogOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceLogDestinationDatadogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceLogDestinationDatadog)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceLogDestinationDatadogOutput) ToGetAppSpecServiceLogDestinationDatadogOutput() GetAppSpecServiceLogDestinationDatadogOutput {
+	return o
+}
+
+func (o GetAppSpecServiceLogDestinationDatadogOutput) ToGetAppSpecServiceLogDestinationDatadogOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationDatadogOutput {
+	return o
+}
+
+func (o GetAppSpecServiceLogDestinationDatadogOutput) ToGetAppSpecServiceLogDestinationDatadogPtrOutput() GetAppSpecServiceLogDestinationDatadogPtrOutput {
+	return o.ToGetAppSpecServiceLogDestinationDatadogPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecServiceLogDestinationDatadogOutput) ToGetAppSpecServiceLogDestinationDatadogPtrOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationDatadogPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecServiceLogDestinationDatadog) *GetAppSpecServiceLogDestinationDatadog {
+		return &v
+	}).(GetAppSpecServiceLogDestinationDatadogPtrOutput)
+}
+
+// Datadog API key.
+func (o GetAppSpecServiceLogDestinationDatadogOutput) ApiKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppSpecServiceLogDestinationDatadog) string { return v.ApiKey }).(pulumi.StringOutput)
+}
+
+// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
+func (o GetAppSpecServiceLogDestinationDatadogOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceLogDestinationDatadog) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecServiceLogDestinationDatadogPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceLogDestinationDatadogPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceLogDestinationDatadog)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceLogDestinationDatadogPtrOutput) ToGetAppSpecServiceLogDestinationDatadogPtrOutput() GetAppSpecServiceLogDestinationDatadogPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceLogDestinationDatadogPtrOutput) ToGetAppSpecServiceLogDestinationDatadogPtrOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationDatadogPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceLogDestinationDatadogPtrOutput) Elem() GetAppSpecServiceLogDestinationDatadogOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceLogDestinationDatadog) GetAppSpecServiceLogDestinationDatadog {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecServiceLogDestinationDatadog
+		return ret
+	}).(GetAppSpecServiceLogDestinationDatadogOutput)
+}
+
+// Datadog API key.
+func (o GetAppSpecServiceLogDestinationDatadogPtrOutput) ApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceLogDestinationDatadog) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ApiKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
+func (o GetAppSpecServiceLogDestinationDatadogPtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceLogDestinationDatadog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecServiceLogDestinationLogtail struct {
+	// Logtail token.
+	Token string `pulumi:"token"`
+}
+
+// GetAppSpecServiceLogDestinationLogtailInput is an input type that accepts GetAppSpecServiceLogDestinationLogtailArgs and GetAppSpecServiceLogDestinationLogtailOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceLogDestinationLogtailInput` via:
+//
+//	GetAppSpecServiceLogDestinationLogtailArgs{...}
+type GetAppSpecServiceLogDestinationLogtailInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceLogDestinationLogtailOutput() GetAppSpecServiceLogDestinationLogtailOutput
+	ToGetAppSpecServiceLogDestinationLogtailOutputWithContext(context.Context) GetAppSpecServiceLogDestinationLogtailOutput
+}
+
+type GetAppSpecServiceLogDestinationLogtailArgs struct {
+	// Logtail token.
+	Token pulumi.StringInput `pulumi:"token"`
+}
+
+func (GetAppSpecServiceLogDestinationLogtailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceLogDestinationLogtail)(nil)).Elem()
+}
+
+func (i GetAppSpecServiceLogDestinationLogtailArgs) ToGetAppSpecServiceLogDestinationLogtailOutput() GetAppSpecServiceLogDestinationLogtailOutput {
+	return i.ToGetAppSpecServiceLogDestinationLogtailOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceLogDestinationLogtailArgs) ToGetAppSpecServiceLogDestinationLogtailOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationLogtailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceLogDestinationLogtailOutput)
+}
+
+func (i GetAppSpecServiceLogDestinationLogtailArgs) ToGetAppSpecServiceLogDestinationLogtailPtrOutput() GetAppSpecServiceLogDestinationLogtailPtrOutput {
+	return i.ToGetAppSpecServiceLogDestinationLogtailPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceLogDestinationLogtailArgs) ToGetAppSpecServiceLogDestinationLogtailPtrOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationLogtailPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceLogDestinationLogtailOutput).ToGetAppSpecServiceLogDestinationLogtailPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecServiceLogDestinationLogtailPtrInput is an input type that accepts GetAppSpecServiceLogDestinationLogtailArgs, GetAppSpecServiceLogDestinationLogtailPtr and GetAppSpecServiceLogDestinationLogtailPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceLogDestinationLogtailPtrInput` via:
+//
+//	        GetAppSpecServiceLogDestinationLogtailArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetAppSpecServiceLogDestinationLogtailPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceLogDestinationLogtailPtrOutput() GetAppSpecServiceLogDestinationLogtailPtrOutput
+	ToGetAppSpecServiceLogDestinationLogtailPtrOutputWithContext(context.Context) GetAppSpecServiceLogDestinationLogtailPtrOutput
+}
+
+type getAppSpecServiceLogDestinationLogtailPtrType GetAppSpecServiceLogDestinationLogtailArgs
+
+func GetAppSpecServiceLogDestinationLogtailPtr(v *GetAppSpecServiceLogDestinationLogtailArgs) GetAppSpecServiceLogDestinationLogtailPtrInput {
+	return (*getAppSpecServiceLogDestinationLogtailPtrType)(v)
+}
+
+func (*getAppSpecServiceLogDestinationLogtailPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceLogDestinationLogtail)(nil)).Elem()
+}
+
+func (i *getAppSpecServiceLogDestinationLogtailPtrType) ToGetAppSpecServiceLogDestinationLogtailPtrOutput() GetAppSpecServiceLogDestinationLogtailPtrOutput {
+	return i.ToGetAppSpecServiceLogDestinationLogtailPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecServiceLogDestinationLogtailPtrType) ToGetAppSpecServiceLogDestinationLogtailPtrOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationLogtailPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceLogDestinationLogtailPtrOutput)
+}
+
+type GetAppSpecServiceLogDestinationLogtailOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceLogDestinationLogtailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceLogDestinationLogtail)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceLogDestinationLogtailOutput) ToGetAppSpecServiceLogDestinationLogtailOutput() GetAppSpecServiceLogDestinationLogtailOutput {
+	return o
+}
+
+func (o GetAppSpecServiceLogDestinationLogtailOutput) ToGetAppSpecServiceLogDestinationLogtailOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationLogtailOutput {
+	return o
+}
+
+func (o GetAppSpecServiceLogDestinationLogtailOutput) ToGetAppSpecServiceLogDestinationLogtailPtrOutput() GetAppSpecServiceLogDestinationLogtailPtrOutput {
+	return o.ToGetAppSpecServiceLogDestinationLogtailPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecServiceLogDestinationLogtailOutput) ToGetAppSpecServiceLogDestinationLogtailPtrOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationLogtailPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecServiceLogDestinationLogtail) *GetAppSpecServiceLogDestinationLogtail {
+		return &v
+	}).(GetAppSpecServiceLogDestinationLogtailPtrOutput)
+}
+
+// Logtail token.
+func (o GetAppSpecServiceLogDestinationLogtailOutput) Token() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppSpecServiceLogDestinationLogtail) string { return v.Token }).(pulumi.StringOutput)
+}
+
+type GetAppSpecServiceLogDestinationLogtailPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceLogDestinationLogtailPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceLogDestinationLogtail)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceLogDestinationLogtailPtrOutput) ToGetAppSpecServiceLogDestinationLogtailPtrOutput() GetAppSpecServiceLogDestinationLogtailPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceLogDestinationLogtailPtrOutput) ToGetAppSpecServiceLogDestinationLogtailPtrOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationLogtailPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceLogDestinationLogtailPtrOutput) Elem() GetAppSpecServiceLogDestinationLogtailOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceLogDestinationLogtail) GetAppSpecServiceLogDestinationLogtail {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecServiceLogDestinationLogtail
+		return ret
+	}).(GetAppSpecServiceLogDestinationLogtailOutput)
+}
+
+// Logtail token.
+func (o GetAppSpecServiceLogDestinationLogtailPtrOutput) Token() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceLogDestinationLogtail) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Token
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecServiceLogDestinationOpenSearch struct {
+	// OpenSearch basic auth
+	BasicAuth GetAppSpecServiceLogDestinationOpenSearchBasicAuth `pulumi:"basicAuth"`
+	// The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
+	ClusterName *string `pulumi:"clusterName"`
+	// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
+	Endpoint *string `pulumi:"endpoint"`
+	// The index name to use for the logs. If not set, the default index name is `logs`.
+	IndexName *string `pulumi:"indexName"`
+}
+
+// GetAppSpecServiceLogDestinationOpenSearchInput is an input type that accepts GetAppSpecServiceLogDestinationOpenSearchArgs and GetAppSpecServiceLogDestinationOpenSearchOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceLogDestinationOpenSearchInput` via:
+//
+//	GetAppSpecServiceLogDestinationOpenSearchArgs{...}
+type GetAppSpecServiceLogDestinationOpenSearchInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceLogDestinationOpenSearchOutput() GetAppSpecServiceLogDestinationOpenSearchOutput
+	ToGetAppSpecServiceLogDestinationOpenSearchOutputWithContext(context.Context) GetAppSpecServiceLogDestinationOpenSearchOutput
+}
+
+type GetAppSpecServiceLogDestinationOpenSearchArgs struct {
+	// OpenSearch basic auth
+	BasicAuth GetAppSpecServiceLogDestinationOpenSearchBasicAuthInput `pulumi:"basicAuth"`
+	// The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
+	ClusterName pulumi.StringPtrInput `pulumi:"clusterName"`
+	// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
+	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
+	// The index name to use for the logs. If not set, the default index name is `logs`.
+	IndexName pulumi.StringPtrInput `pulumi:"indexName"`
+}
+
+func (GetAppSpecServiceLogDestinationOpenSearchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceLogDestinationOpenSearch)(nil)).Elem()
+}
+
+func (i GetAppSpecServiceLogDestinationOpenSearchArgs) ToGetAppSpecServiceLogDestinationOpenSearchOutput() GetAppSpecServiceLogDestinationOpenSearchOutput {
+	return i.ToGetAppSpecServiceLogDestinationOpenSearchOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceLogDestinationOpenSearchArgs) ToGetAppSpecServiceLogDestinationOpenSearchOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationOpenSearchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceLogDestinationOpenSearchOutput)
+}
+
+func (i GetAppSpecServiceLogDestinationOpenSearchArgs) ToGetAppSpecServiceLogDestinationOpenSearchPtrOutput() GetAppSpecServiceLogDestinationOpenSearchPtrOutput {
+	return i.ToGetAppSpecServiceLogDestinationOpenSearchPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceLogDestinationOpenSearchArgs) ToGetAppSpecServiceLogDestinationOpenSearchPtrOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationOpenSearchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceLogDestinationOpenSearchOutput).ToGetAppSpecServiceLogDestinationOpenSearchPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecServiceLogDestinationOpenSearchPtrInput is an input type that accepts GetAppSpecServiceLogDestinationOpenSearchArgs, GetAppSpecServiceLogDestinationOpenSearchPtr and GetAppSpecServiceLogDestinationOpenSearchPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceLogDestinationOpenSearchPtrInput` via:
+//
+//	        GetAppSpecServiceLogDestinationOpenSearchArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetAppSpecServiceLogDestinationOpenSearchPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceLogDestinationOpenSearchPtrOutput() GetAppSpecServiceLogDestinationOpenSearchPtrOutput
+	ToGetAppSpecServiceLogDestinationOpenSearchPtrOutputWithContext(context.Context) GetAppSpecServiceLogDestinationOpenSearchPtrOutput
+}
+
+type getAppSpecServiceLogDestinationOpenSearchPtrType GetAppSpecServiceLogDestinationOpenSearchArgs
+
+func GetAppSpecServiceLogDestinationOpenSearchPtr(v *GetAppSpecServiceLogDestinationOpenSearchArgs) GetAppSpecServiceLogDestinationOpenSearchPtrInput {
+	return (*getAppSpecServiceLogDestinationOpenSearchPtrType)(v)
+}
+
+func (*getAppSpecServiceLogDestinationOpenSearchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceLogDestinationOpenSearch)(nil)).Elem()
+}
+
+func (i *getAppSpecServiceLogDestinationOpenSearchPtrType) ToGetAppSpecServiceLogDestinationOpenSearchPtrOutput() GetAppSpecServiceLogDestinationOpenSearchPtrOutput {
+	return i.ToGetAppSpecServiceLogDestinationOpenSearchPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecServiceLogDestinationOpenSearchPtrType) ToGetAppSpecServiceLogDestinationOpenSearchPtrOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationOpenSearchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceLogDestinationOpenSearchPtrOutput)
+}
+
+type GetAppSpecServiceLogDestinationOpenSearchOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceLogDestinationOpenSearchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceLogDestinationOpenSearch)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceLogDestinationOpenSearchOutput) ToGetAppSpecServiceLogDestinationOpenSearchOutput() GetAppSpecServiceLogDestinationOpenSearchOutput {
+	return o
+}
+
+func (o GetAppSpecServiceLogDestinationOpenSearchOutput) ToGetAppSpecServiceLogDestinationOpenSearchOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationOpenSearchOutput {
+	return o
+}
+
+func (o GetAppSpecServiceLogDestinationOpenSearchOutput) ToGetAppSpecServiceLogDestinationOpenSearchPtrOutput() GetAppSpecServiceLogDestinationOpenSearchPtrOutput {
+	return o.ToGetAppSpecServiceLogDestinationOpenSearchPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecServiceLogDestinationOpenSearchOutput) ToGetAppSpecServiceLogDestinationOpenSearchPtrOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationOpenSearchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecServiceLogDestinationOpenSearch) *GetAppSpecServiceLogDestinationOpenSearch {
+		return &v
+	}).(GetAppSpecServiceLogDestinationOpenSearchPtrOutput)
+}
+
+// OpenSearch basic auth
+func (o GetAppSpecServiceLogDestinationOpenSearchOutput) BasicAuth() GetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput {
+	return o.ApplyT(func(v GetAppSpecServiceLogDestinationOpenSearch) GetAppSpecServiceLogDestinationOpenSearchBasicAuth {
+		return v.BasicAuth
+	}).(GetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput)
+}
+
+// The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
+func (o GetAppSpecServiceLogDestinationOpenSearchOutput) ClusterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceLogDestinationOpenSearch) *string { return v.ClusterName }).(pulumi.StringPtrOutput)
+}
+
+// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
+func (o GetAppSpecServiceLogDestinationOpenSearchOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceLogDestinationOpenSearch) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
+}
+
+// The index name to use for the logs. If not set, the default index name is `logs`.
+func (o GetAppSpecServiceLogDestinationOpenSearchOutput) IndexName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceLogDestinationOpenSearch) *string { return v.IndexName }).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecServiceLogDestinationOpenSearchPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceLogDestinationOpenSearchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceLogDestinationOpenSearch)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceLogDestinationOpenSearchPtrOutput) ToGetAppSpecServiceLogDestinationOpenSearchPtrOutput() GetAppSpecServiceLogDestinationOpenSearchPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceLogDestinationOpenSearchPtrOutput) ToGetAppSpecServiceLogDestinationOpenSearchPtrOutputWithContext(ctx context.Context) GetAppSpecServiceLogDestinationOpenSearchPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceLogDestinationOpenSearchPtrOutput) Elem() GetAppSpecServiceLogDestinationOpenSearchOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceLogDestinationOpenSearch) GetAppSpecServiceLogDestinationOpenSearch {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecServiceLogDestinationOpenSearch
+		return ret
+	}).(GetAppSpecServiceLogDestinationOpenSearchOutput)
+}
+
+// OpenSearch basic auth
+func (o GetAppSpecServiceLogDestinationOpenSearchPtrOutput) BasicAuth() GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceLogDestinationOpenSearch) *GetAppSpecServiceLogDestinationOpenSearchBasicAuth {
+		if v == nil {
+			return nil
+		}
+		return &v.BasicAuth
+	}).(GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput)
+}
+
+// The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
+func (o GetAppSpecServiceLogDestinationOpenSearchPtrOutput) ClusterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceLogDestinationOpenSearch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterName
+	}).(pulumi.StringPtrOutput)
+}
+
+// OpenSearch API Endpoint. Only HTTPS is supported. Format: https://<host>:<port>.
+func (o GetAppSpecServiceLogDestinationOpenSearchPtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceLogDestinationOpenSearch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// The index name to use for the logs. If not set, the default index name is `logs`.
+func (o GetAppSpecServiceLogDestinationOpenSearchPtrOutput) IndexName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceLogDestinationOpenSearch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IndexName
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetAppSpecServiceLogDestinationOpenSearchBasicAuth struct {
 	// Password for user defined in User. Is required when endpoint is set. Cannot be set if using a DigitalOcean DBaaS OpenSearch cluster.
 	Password *string `pulumi:"password"`
@@ -37234,6 +39523,218 @@ func (o GetMicrovmCheckpointsSortArrayOutput) Index(i pulumi.IntInput) GetMicrov
 	}).(GetMicrovmCheckpointsSortOutput)
 }
 
+type GetMicrovmEgressPolicy struct {
+	// What happens to a destination no rule matches: `deny` or `allow`.
+	DefaultAction string `pulumi:"defaultAction"`
+	// The allowed destinations. Each has a `domain` or an `ip`.
+	Rules []GetMicrovmEgressPolicyRule `pulumi:"rules"`
+}
+
+// GetMicrovmEgressPolicyInput is an input type that accepts GetMicrovmEgressPolicyArgs and GetMicrovmEgressPolicyOutput values.
+// You can construct a concrete instance of `GetMicrovmEgressPolicyInput` via:
+//
+//	GetMicrovmEgressPolicyArgs{...}
+type GetMicrovmEgressPolicyInput interface {
+	pulumi.Input
+
+	ToGetMicrovmEgressPolicyOutput() GetMicrovmEgressPolicyOutput
+	ToGetMicrovmEgressPolicyOutputWithContext(context.Context) GetMicrovmEgressPolicyOutput
+}
+
+type GetMicrovmEgressPolicyArgs struct {
+	// What happens to a destination no rule matches: `deny` or `allow`.
+	DefaultAction pulumi.StringInput `pulumi:"defaultAction"`
+	// The allowed destinations. Each has a `domain` or an `ip`.
+	Rules GetMicrovmEgressPolicyRuleArrayInput `pulumi:"rules"`
+}
+
+func (GetMicrovmEgressPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMicrovmEgressPolicy)(nil)).Elem()
+}
+
+func (i GetMicrovmEgressPolicyArgs) ToGetMicrovmEgressPolicyOutput() GetMicrovmEgressPolicyOutput {
+	return i.ToGetMicrovmEgressPolicyOutputWithContext(context.Background())
+}
+
+func (i GetMicrovmEgressPolicyArgs) ToGetMicrovmEgressPolicyOutputWithContext(ctx context.Context) GetMicrovmEgressPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMicrovmEgressPolicyOutput)
+}
+
+// GetMicrovmEgressPolicyArrayInput is an input type that accepts GetMicrovmEgressPolicyArray and GetMicrovmEgressPolicyArrayOutput values.
+// You can construct a concrete instance of `GetMicrovmEgressPolicyArrayInput` via:
+//
+//	GetMicrovmEgressPolicyArray{ GetMicrovmEgressPolicyArgs{...} }
+type GetMicrovmEgressPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetMicrovmEgressPolicyArrayOutput() GetMicrovmEgressPolicyArrayOutput
+	ToGetMicrovmEgressPolicyArrayOutputWithContext(context.Context) GetMicrovmEgressPolicyArrayOutput
+}
+
+type GetMicrovmEgressPolicyArray []GetMicrovmEgressPolicyInput
+
+func (GetMicrovmEgressPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMicrovmEgressPolicy)(nil)).Elem()
+}
+
+func (i GetMicrovmEgressPolicyArray) ToGetMicrovmEgressPolicyArrayOutput() GetMicrovmEgressPolicyArrayOutput {
+	return i.ToGetMicrovmEgressPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetMicrovmEgressPolicyArray) ToGetMicrovmEgressPolicyArrayOutputWithContext(ctx context.Context) GetMicrovmEgressPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMicrovmEgressPolicyArrayOutput)
+}
+
+type GetMicrovmEgressPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetMicrovmEgressPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMicrovmEgressPolicy)(nil)).Elem()
+}
+
+func (o GetMicrovmEgressPolicyOutput) ToGetMicrovmEgressPolicyOutput() GetMicrovmEgressPolicyOutput {
+	return o
+}
+
+func (o GetMicrovmEgressPolicyOutput) ToGetMicrovmEgressPolicyOutputWithContext(ctx context.Context) GetMicrovmEgressPolicyOutput {
+	return o
+}
+
+// What happens to a destination no rule matches: `deny` or `allow`.
+func (o GetMicrovmEgressPolicyOutput) DefaultAction() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrovmEgressPolicy) string { return v.DefaultAction }).(pulumi.StringOutput)
+}
+
+// The allowed destinations. Each has a `domain` or an `ip`.
+func (o GetMicrovmEgressPolicyOutput) Rules() GetMicrovmEgressPolicyRuleArrayOutput {
+	return o.ApplyT(func(v GetMicrovmEgressPolicy) []GetMicrovmEgressPolicyRule { return v.Rules }).(GetMicrovmEgressPolicyRuleArrayOutput)
+}
+
+type GetMicrovmEgressPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMicrovmEgressPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMicrovmEgressPolicy)(nil)).Elem()
+}
+
+func (o GetMicrovmEgressPolicyArrayOutput) ToGetMicrovmEgressPolicyArrayOutput() GetMicrovmEgressPolicyArrayOutput {
+	return o
+}
+
+func (o GetMicrovmEgressPolicyArrayOutput) ToGetMicrovmEgressPolicyArrayOutputWithContext(ctx context.Context) GetMicrovmEgressPolicyArrayOutput {
+	return o
+}
+
+func (o GetMicrovmEgressPolicyArrayOutput) Index(i pulumi.IntInput) GetMicrovmEgressPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMicrovmEgressPolicy {
+		return vs[0].([]GetMicrovmEgressPolicy)[vs[1].(int)]
+	}).(GetMicrovmEgressPolicyOutput)
+}
+
+type GetMicrovmEgressPolicyRule struct {
+	// An exact host such as 'api.example.com', or a wildcard such as '*.example.com'.
+	Domain *string `pulumi:"domain"`
+	// An exact IP address. CIDR ranges are not supported.
+	Ip *string `pulumi:"ip"`
+}
+
+// GetMicrovmEgressPolicyRuleInput is an input type that accepts GetMicrovmEgressPolicyRuleArgs and GetMicrovmEgressPolicyRuleOutput values.
+// You can construct a concrete instance of `GetMicrovmEgressPolicyRuleInput` via:
+//
+//	GetMicrovmEgressPolicyRuleArgs{...}
+type GetMicrovmEgressPolicyRuleInput interface {
+	pulumi.Input
+
+	ToGetMicrovmEgressPolicyRuleOutput() GetMicrovmEgressPolicyRuleOutput
+	ToGetMicrovmEgressPolicyRuleOutputWithContext(context.Context) GetMicrovmEgressPolicyRuleOutput
+}
+
+type GetMicrovmEgressPolicyRuleArgs struct {
+	// An exact host such as 'api.example.com', or a wildcard such as '*.example.com'.
+	Domain pulumi.StringPtrInput `pulumi:"domain"`
+	// An exact IP address. CIDR ranges are not supported.
+	Ip pulumi.StringPtrInput `pulumi:"ip"`
+}
+
+func (GetMicrovmEgressPolicyRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMicrovmEgressPolicyRule)(nil)).Elem()
+}
+
+func (i GetMicrovmEgressPolicyRuleArgs) ToGetMicrovmEgressPolicyRuleOutput() GetMicrovmEgressPolicyRuleOutput {
+	return i.ToGetMicrovmEgressPolicyRuleOutputWithContext(context.Background())
+}
+
+func (i GetMicrovmEgressPolicyRuleArgs) ToGetMicrovmEgressPolicyRuleOutputWithContext(ctx context.Context) GetMicrovmEgressPolicyRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMicrovmEgressPolicyRuleOutput)
+}
+
+// GetMicrovmEgressPolicyRuleArrayInput is an input type that accepts GetMicrovmEgressPolicyRuleArray and GetMicrovmEgressPolicyRuleArrayOutput values.
+// You can construct a concrete instance of `GetMicrovmEgressPolicyRuleArrayInput` via:
+//
+//	GetMicrovmEgressPolicyRuleArray{ GetMicrovmEgressPolicyRuleArgs{...} }
+type GetMicrovmEgressPolicyRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetMicrovmEgressPolicyRuleArrayOutput() GetMicrovmEgressPolicyRuleArrayOutput
+	ToGetMicrovmEgressPolicyRuleArrayOutputWithContext(context.Context) GetMicrovmEgressPolicyRuleArrayOutput
+}
+
+type GetMicrovmEgressPolicyRuleArray []GetMicrovmEgressPolicyRuleInput
+
+func (GetMicrovmEgressPolicyRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMicrovmEgressPolicyRule)(nil)).Elem()
+}
+
+func (i GetMicrovmEgressPolicyRuleArray) ToGetMicrovmEgressPolicyRuleArrayOutput() GetMicrovmEgressPolicyRuleArrayOutput {
+	return i.ToGetMicrovmEgressPolicyRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetMicrovmEgressPolicyRuleArray) ToGetMicrovmEgressPolicyRuleArrayOutputWithContext(ctx context.Context) GetMicrovmEgressPolicyRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMicrovmEgressPolicyRuleArrayOutput)
+}
+
+type GetMicrovmEgressPolicyRuleOutput struct{ *pulumi.OutputState }
+
+func (GetMicrovmEgressPolicyRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMicrovmEgressPolicyRule)(nil)).Elem()
+}
+
+func (o GetMicrovmEgressPolicyRuleOutput) ToGetMicrovmEgressPolicyRuleOutput() GetMicrovmEgressPolicyRuleOutput {
+	return o
+}
+
+func (o GetMicrovmEgressPolicyRuleOutput) ToGetMicrovmEgressPolicyRuleOutputWithContext(ctx context.Context) GetMicrovmEgressPolicyRuleOutput {
+	return o
+}
+
+// An exact host such as 'api.example.com', or a wildcard such as '*.example.com'.
+func (o GetMicrovmEgressPolicyRuleOutput) Domain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMicrovmEgressPolicyRule) *string { return v.Domain }).(pulumi.StringPtrOutput)
+}
+
+// An exact IP address. CIDR ranges are not supported.
+func (o GetMicrovmEgressPolicyRuleOutput) Ip() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMicrovmEgressPolicyRule) *string { return v.Ip }).(pulumi.StringPtrOutput)
+}
+
+type GetMicrovmEgressPolicyRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMicrovmEgressPolicyRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMicrovmEgressPolicyRule)(nil)).Elem()
+}
+
+func (o GetMicrovmEgressPolicyRuleArrayOutput) ToGetMicrovmEgressPolicyRuleArrayOutput() GetMicrovmEgressPolicyRuleArrayOutput {
+	return o
+}
+
+func (o GetMicrovmEgressPolicyRuleArrayOutput) ToGetMicrovmEgressPolicyRuleArrayOutputWithContext(ctx context.Context) GetMicrovmEgressPolicyRuleArrayOutput {
+	return o
+}
+
+func (o GetMicrovmEgressPolicyRuleArrayOutput) Index(i pulumi.IntInput) GetMicrovmEgressPolicyRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMicrovmEgressPolicyRule {
+		return vs[0].([]GetMicrovmEgressPolicyRule)[vs[1].(int)]
+	}).(GetMicrovmEgressPolicyRuleOutput)
+}
+
 type GetMicrovmSize struct {
 	// The number of vCPUs.
 	Cpu int `pulumi:"cpu"`
@@ -37460,6 +39961,8 @@ type GetMicrovmUrl struct {
 	Default bool `pulumi:"default"`
 	// The hostname, without a scheme.
 	Hostname string `pulumi:"hostname"`
+	// The ID of the MicroVM.
+	Id string `pulumi:"id"`
 	// The guest port the URL forwards to.
 	Port int `pulumi:"port"`
 	// The URL status: `PENDING` or `ACTIVE`.
@@ -37482,6 +39985,8 @@ type GetMicrovmUrlArgs struct {
 	Default pulumi.BoolInput `pulumi:"default"`
 	// The hostname, without a scheme.
 	Hostname pulumi.StringInput `pulumi:"hostname"`
+	// The ID of the MicroVM.
+	Id pulumi.StringInput `pulumi:"id"`
 	// The guest port the URL forwards to.
 	Port pulumi.IntInput `pulumi:"port"`
 	// The URL status: `PENDING` or `ACTIVE`.
@@ -37547,6 +40052,11 @@ func (o GetMicrovmUrlOutput) Default() pulumi.BoolOutput {
 // The hostname, without a scheme.
 func (o GetMicrovmUrlOutput) Hostname() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMicrovmUrl) string { return v.Hostname }).(pulumi.StringOutput)
+}
+
+// The ID of the MicroVM.
+func (o GetMicrovmUrlOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrovmUrl) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The guest port the URL forwards to.
@@ -37742,6 +40252,8 @@ type GetMicrovmsMicroVm struct {
 	CreatedAt string `pulumi:"createdAt"`
 	// Observed lifecycle state of the MicroVM
 	CurrentState string `pulumi:"currentState"`
+	// Outbound allow list for the MicroVM. Omit for unrestricted egress. Public networking only; fixed at create, so a change forces recreation. With a policy set, only HTTP and HTTPS through the platform proxy to allowed destinations works. A MicroVM restored from a checkpoint inherits the origin's policy.
+	EgressPolicies []GetMicrovmsMicroVmEgressPolicy `pulumi:"egressPolicies"`
 	// Environment variables passed to the MicroVM
 	Environment map[string]string `pulumi:"environment"`
 	// Human-readable explanation when currentState is failed
@@ -37752,6 +40264,8 @@ type GetMicrovmsMicroVm struct {
 	HttpProtocol string `pulumi:"httpProtocol"`
 	// MicroVM ID
 	Id string `pulumi:"id"`
+	// Whether the MicroVM is created with a default public ingress URL. Defaults to true. Set to false to create the MicroVM without a default URL; additional URLs can be added later with the MicrovmIngress resource. This is a create-time option, so a change forces recreation.
+	IngressEnabled bool `pulumi:"ingressEnabled"`
 	// Only return MicroVMs with this exact name.
 	Name string `pulumi:"name"`
 	// Networking mode: 'public' or 'vpc'
@@ -37795,6 +40309,8 @@ type GetMicrovmsMicroVmArgs struct {
 	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
 	// Observed lifecycle state of the MicroVM
 	CurrentState pulumi.StringInput `pulumi:"currentState"`
+	// Outbound allow list for the MicroVM. Omit for unrestricted egress. Public networking only; fixed at create, so a change forces recreation. With a policy set, only HTTP and HTTPS through the platform proxy to allowed destinations works. A MicroVM restored from a checkpoint inherits the origin's policy.
+	EgressPolicies GetMicrovmsMicroVmEgressPolicyArrayInput `pulumi:"egressPolicies"`
 	// Environment variables passed to the MicroVM
 	Environment pulumi.StringMapInput `pulumi:"environment"`
 	// Human-readable explanation when currentState is failed
@@ -37805,6 +40321,8 @@ type GetMicrovmsMicroVmArgs struct {
 	HttpProtocol pulumi.StringInput `pulumi:"httpProtocol"`
 	// MicroVM ID
 	Id pulumi.StringInput `pulumi:"id"`
+	// Whether the MicroVM is created with a default public ingress URL. Defaults to true. Set to false to create the MicroVM without a default URL; additional URLs can be added later with the MicrovmIngress resource. This is a create-time option, so a change forces recreation.
+	IngressEnabled pulumi.BoolInput `pulumi:"ingressEnabled"`
 	// Only return MicroVMs with this exact name.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Networking mode: 'public' or 'vpc'
@@ -37899,6 +40417,11 @@ func (o GetMicrovmsMicroVmOutput) CurrentState() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMicrovmsMicroVm) string { return v.CurrentState }).(pulumi.StringOutput)
 }
 
+// Outbound allow list for the MicroVM. Omit for unrestricted egress. Public networking only; fixed at create, so a change forces recreation. With a policy set, only HTTP and HTTPS through the platform proxy to allowed destinations works. A MicroVM restored from a checkpoint inherits the origin's policy.
+func (o GetMicrovmsMicroVmOutput) EgressPolicies() GetMicrovmsMicroVmEgressPolicyArrayOutput {
+	return o.ApplyT(func(v GetMicrovmsMicroVm) []GetMicrovmsMicroVmEgressPolicy { return v.EgressPolicies }).(GetMicrovmsMicroVmEgressPolicyArrayOutput)
+}
+
 // Environment variables passed to the MicroVM
 func (o GetMicrovmsMicroVmOutput) Environment() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetMicrovmsMicroVm) map[string]string { return v.Environment }).(pulumi.StringMapOutput)
@@ -37922,6 +40445,11 @@ func (o GetMicrovmsMicroVmOutput) HttpProtocol() pulumi.StringOutput {
 // MicroVM ID
 func (o GetMicrovmsMicroVmOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMicrovmsMicroVm) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Whether the MicroVM is created with a default public ingress URL. Defaults to true. Set to false to create the MicroVM without a default URL; additional URLs can be added later with the MicrovmIngress resource. This is a create-time option, so a change forces recreation.
+func (o GetMicrovmsMicroVmOutput) IngressEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetMicrovmsMicroVm) bool { return v.IngressEnabled }).(pulumi.BoolOutput)
 }
 
 // Only return MicroVMs with this exact name.
@@ -38102,6 +40630,218 @@ func (o GetMicrovmsMicroVmAutoPauseArrayOutput) Index(i pulumi.IntInput) GetMicr
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMicrovmsMicroVmAutoPause {
 		return vs[0].([]GetMicrovmsMicroVmAutoPause)[vs[1].(int)]
 	}).(GetMicrovmsMicroVmAutoPauseOutput)
+}
+
+type GetMicrovmsMicroVmEgressPolicy struct {
+	// What to do with a destination no rule matches: 'deny' or 'allow'. Defaults to 'deny'.
+	DefaultAction string `pulumi:"defaultAction"`
+	// An allowed destination. Set exactly one of domain or ip.
+	Rules []GetMicrovmsMicroVmEgressPolicyRule `pulumi:"rules"`
+}
+
+// GetMicrovmsMicroVmEgressPolicyInput is an input type that accepts GetMicrovmsMicroVmEgressPolicyArgs and GetMicrovmsMicroVmEgressPolicyOutput values.
+// You can construct a concrete instance of `GetMicrovmsMicroVmEgressPolicyInput` via:
+//
+//	GetMicrovmsMicroVmEgressPolicyArgs{...}
+type GetMicrovmsMicroVmEgressPolicyInput interface {
+	pulumi.Input
+
+	ToGetMicrovmsMicroVmEgressPolicyOutput() GetMicrovmsMicroVmEgressPolicyOutput
+	ToGetMicrovmsMicroVmEgressPolicyOutputWithContext(context.Context) GetMicrovmsMicroVmEgressPolicyOutput
+}
+
+type GetMicrovmsMicroVmEgressPolicyArgs struct {
+	// What to do with a destination no rule matches: 'deny' or 'allow'. Defaults to 'deny'.
+	DefaultAction pulumi.StringInput `pulumi:"defaultAction"`
+	// An allowed destination. Set exactly one of domain or ip.
+	Rules GetMicrovmsMicroVmEgressPolicyRuleArrayInput `pulumi:"rules"`
+}
+
+func (GetMicrovmsMicroVmEgressPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMicrovmsMicroVmEgressPolicy)(nil)).Elem()
+}
+
+func (i GetMicrovmsMicroVmEgressPolicyArgs) ToGetMicrovmsMicroVmEgressPolicyOutput() GetMicrovmsMicroVmEgressPolicyOutput {
+	return i.ToGetMicrovmsMicroVmEgressPolicyOutputWithContext(context.Background())
+}
+
+func (i GetMicrovmsMicroVmEgressPolicyArgs) ToGetMicrovmsMicroVmEgressPolicyOutputWithContext(ctx context.Context) GetMicrovmsMicroVmEgressPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMicrovmsMicroVmEgressPolicyOutput)
+}
+
+// GetMicrovmsMicroVmEgressPolicyArrayInput is an input type that accepts GetMicrovmsMicroVmEgressPolicyArray and GetMicrovmsMicroVmEgressPolicyArrayOutput values.
+// You can construct a concrete instance of `GetMicrovmsMicroVmEgressPolicyArrayInput` via:
+//
+//	GetMicrovmsMicroVmEgressPolicyArray{ GetMicrovmsMicroVmEgressPolicyArgs{...} }
+type GetMicrovmsMicroVmEgressPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetMicrovmsMicroVmEgressPolicyArrayOutput() GetMicrovmsMicroVmEgressPolicyArrayOutput
+	ToGetMicrovmsMicroVmEgressPolicyArrayOutputWithContext(context.Context) GetMicrovmsMicroVmEgressPolicyArrayOutput
+}
+
+type GetMicrovmsMicroVmEgressPolicyArray []GetMicrovmsMicroVmEgressPolicyInput
+
+func (GetMicrovmsMicroVmEgressPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMicrovmsMicroVmEgressPolicy)(nil)).Elem()
+}
+
+func (i GetMicrovmsMicroVmEgressPolicyArray) ToGetMicrovmsMicroVmEgressPolicyArrayOutput() GetMicrovmsMicroVmEgressPolicyArrayOutput {
+	return i.ToGetMicrovmsMicroVmEgressPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetMicrovmsMicroVmEgressPolicyArray) ToGetMicrovmsMicroVmEgressPolicyArrayOutputWithContext(ctx context.Context) GetMicrovmsMicroVmEgressPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMicrovmsMicroVmEgressPolicyArrayOutput)
+}
+
+type GetMicrovmsMicroVmEgressPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetMicrovmsMicroVmEgressPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMicrovmsMicroVmEgressPolicy)(nil)).Elem()
+}
+
+func (o GetMicrovmsMicroVmEgressPolicyOutput) ToGetMicrovmsMicroVmEgressPolicyOutput() GetMicrovmsMicroVmEgressPolicyOutput {
+	return o
+}
+
+func (o GetMicrovmsMicroVmEgressPolicyOutput) ToGetMicrovmsMicroVmEgressPolicyOutputWithContext(ctx context.Context) GetMicrovmsMicroVmEgressPolicyOutput {
+	return o
+}
+
+// What to do with a destination no rule matches: 'deny' or 'allow'. Defaults to 'deny'.
+func (o GetMicrovmsMicroVmEgressPolicyOutput) DefaultAction() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrovmsMicroVmEgressPolicy) string { return v.DefaultAction }).(pulumi.StringOutput)
+}
+
+// An allowed destination. Set exactly one of domain or ip.
+func (o GetMicrovmsMicroVmEgressPolicyOutput) Rules() GetMicrovmsMicroVmEgressPolicyRuleArrayOutput {
+	return o.ApplyT(func(v GetMicrovmsMicroVmEgressPolicy) []GetMicrovmsMicroVmEgressPolicyRule { return v.Rules }).(GetMicrovmsMicroVmEgressPolicyRuleArrayOutput)
+}
+
+type GetMicrovmsMicroVmEgressPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMicrovmsMicroVmEgressPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMicrovmsMicroVmEgressPolicy)(nil)).Elem()
+}
+
+func (o GetMicrovmsMicroVmEgressPolicyArrayOutput) ToGetMicrovmsMicroVmEgressPolicyArrayOutput() GetMicrovmsMicroVmEgressPolicyArrayOutput {
+	return o
+}
+
+func (o GetMicrovmsMicroVmEgressPolicyArrayOutput) ToGetMicrovmsMicroVmEgressPolicyArrayOutputWithContext(ctx context.Context) GetMicrovmsMicroVmEgressPolicyArrayOutput {
+	return o
+}
+
+func (o GetMicrovmsMicroVmEgressPolicyArrayOutput) Index(i pulumi.IntInput) GetMicrovmsMicroVmEgressPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMicrovmsMicroVmEgressPolicy {
+		return vs[0].([]GetMicrovmsMicroVmEgressPolicy)[vs[1].(int)]
+	}).(GetMicrovmsMicroVmEgressPolicyOutput)
+}
+
+type GetMicrovmsMicroVmEgressPolicyRule struct {
+	// An exact host such as 'api.example.com', or a wildcard such as '*.example.com'.
+	Domain *string `pulumi:"domain"`
+	// An exact IP address. CIDR ranges are not supported.
+	Ip *string `pulumi:"ip"`
+}
+
+// GetMicrovmsMicroVmEgressPolicyRuleInput is an input type that accepts GetMicrovmsMicroVmEgressPolicyRuleArgs and GetMicrovmsMicroVmEgressPolicyRuleOutput values.
+// You can construct a concrete instance of `GetMicrovmsMicroVmEgressPolicyRuleInput` via:
+//
+//	GetMicrovmsMicroVmEgressPolicyRuleArgs{...}
+type GetMicrovmsMicroVmEgressPolicyRuleInput interface {
+	pulumi.Input
+
+	ToGetMicrovmsMicroVmEgressPolicyRuleOutput() GetMicrovmsMicroVmEgressPolicyRuleOutput
+	ToGetMicrovmsMicroVmEgressPolicyRuleOutputWithContext(context.Context) GetMicrovmsMicroVmEgressPolicyRuleOutput
+}
+
+type GetMicrovmsMicroVmEgressPolicyRuleArgs struct {
+	// An exact host such as 'api.example.com', or a wildcard such as '*.example.com'.
+	Domain pulumi.StringPtrInput `pulumi:"domain"`
+	// An exact IP address. CIDR ranges are not supported.
+	Ip pulumi.StringPtrInput `pulumi:"ip"`
+}
+
+func (GetMicrovmsMicroVmEgressPolicyRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMicrovmsMicroVmEgressPolicyRule)(nil)).Elem()
+}
+
+func (i GetMicrovmsMicroVmEgressPolicyRuleArgs) ToGetMicrovmsMicroVmEgressPolicyRuleOutput() GetMicrovmsMicroVmEgressPolicyRuleOutput {
+	return i.ToGetMicrovmsMicroVmEgressPolicyRuleOutputWithContext(context.Background())
+}
+
+func (i GetMicrovmsMicroVmEgressPolicyRuleArgs) ToGetMicrovmsMicroVmEgressPolicyRuleOutputWithContext(ctx context.Context) GetMicrovmsMicroVmEgressPolicyRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMicrovmsMicroVmEgressPolicyRuleOutput)
+}
+
+// GetMicrovmsMicroVmEgressPolicyRuleArrayInput is an input type that accepts GetMicrovmsMicroVmEgressPolicyRuleArray and GetMicrovmsMicroVmEgressPolicyRuleArrayOutput values.
+// You can construct a concrete instance of `GetMicrovmsMicroVmEgressPolicyRuleArrayInput` via:
+//
+//	GetMicrovmsMicroVmEgressPolicyRuleArray{ GetMicrovmsMicroVmEgressPolicyRuleArgs{...} }
+type GetMicrovmsMicroVmEgressPolicyRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetMicrovmsMicroVmEgressPolicyRuleArrayOutput() GetMicrovmsMicroVmEgressPolicyRuleArrayOutput
+	ToGetMicrovmsMicroVmEgressPolicyRuleArrayOutputWithContext(context.Context) GetMicrovmsMicroVmEgressPolicyRuleArrayOutput
+}
+
+type GetMicrovmsMicroVmEgressPolicyRuleArray []GetMicrovmsMicroVmEgressPolicyRuleInput
+
+func (GetMicrovmsMicroVmEgressPolicyRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMicrovmsMicroVmEgressPolicyRule)(nil)).Elem()
+}
+
+func (i GetMicrovmsMicroVmEgressPolicyRuleArray) ToGetMicrovmsMicroVmEgressPolicyRuleArrayOutput() GetMicrovmsMicroVmEgressPolicyRuleArrayOutput {
+	return i.ToGetMicrovmsMicroVmEgressPolicyRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetMicrovmsMicroVmEgressPolicyRuleArray) ToGetMicrovmsMicroVmEgressPolicyRuleArrayOutputWithContext(ctx context.Context) GetMicrovmsMicroVmEgressPolicyRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMicrovmsMicroVmEgressPolicyRuleArrayOutput)
+}
+
+type GetMicrovmsMicroVmEgressPolicyRuleOutput struct{ *pulumi.OutputState }
+
+func (GetMicrovmsMicroVmEgressPolicyRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMicrovmsMicroVmEgressPolicyRule)(nil)).Elem()
+}
+
+func (o GetMicrovmsMicroVmEgressPolicyRuleOutput) ToGetMicrovmsMicroVmEgressPolicyRuleOutput() GetMicrovmsMicroVmEgressPolicyRuleOutput {
+	return o
+}
+
+func (o GetMicrovmsMicroVmEgressPolicyRuleOutput) ToGetMicrovmsMicroVmEgressPolicyRuleOutputWithContext(ctx context.Context) GetMicrovmsMicroVmEgressPolicyRuleOutput {
+	return o
+}
+
+// An exact host such as 'api.example.com', or a wildcard such as '*.example.com'.
+func (o GetMicrovmsMicroVmEgressPolicyRuleOutput) Domain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMicrovmsMicroVmEgressPolicyRule) *string { return v.Domain }).(pulumi.StringPtrOutput)
+}
+
+// An exact IP address. CIDR ranges are not supported.
+func (o GetMicrovmsMicroVmEgressPolicyRuleOutput) Ip() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMicrovmsMicroVmEgressPolicyRule) *string { return v.Ip }).(pulumi.StringPtrOutput)
+}
+
+type GetMicrovmsMicroVmEgressPolicyRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMicrovmsMicroVmEgressPolicyRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMicrovmsMicroVmEgressPolicyRule)(nil)).Elem()
+}
+
+func (o GetMicrovmsMicroVmEgressPolicyRuleArrayOutput) ToGetMicrovmsMicroVmEgressPolicyRuleArrayOutput() GetMicrovmsMicroVmEgressPolicyRuleArrayOutput {
+	return o
+}
+
+func (o GetMicrovmsMicroVmEgressPolicyRuleArrayOutput) ToGetMicrovmsMicroVmEgressPolicyRuleArrayOutputWithContext(ctx context.Context) GetMicrovmsMicroVmEgressPolicyRuleArrayOutput {
+	return o
+}
+
+func (o GetMicrovmsMicroVmEgressPolicyRuleArrayOutput) Index(i pulumi.IntInput) GetMicrovmsMicroVmEgressPolicyRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMicrovmsMicroVmEgressPolicyRule {
+		return vs[0].([]GetMicrovmsMicroVmEgressPolicyRule)[vs[1].(int)]
+	}).(GetMicrovmsMicroVmEgressPolicyRuleOutput)
 }
 
 type GetMicrovmsMicroVmSize struct {
@@ -38330,6 +41070,8 @@ type GetMicrovmsMicroVmUrl struct {
 	Default bool `pulumi:"default"`
 	// Hostname (no scheme)
 	Hostname string `pulumi:"hostname"`
+	// Stable identifier of the URL
+	Id string `pulumi:"id"`
 	// Guest port this URL forwards to
 	Port int `pulumi:"port"`
 	// URL lifecycle status (PENDING or ACTIVE)
@@ -38352,6 +41094,8 @@ type GetMicrovmsMicroVmUrlArgs struct {
 	Default pulumi.BoolInput `pulumi:"default"`
 	// Hostname (no scheme)
 	Hostname pulumi.StringInput `pulumi:"hostname"`
+	// Stable identifier of the URL
+	Id pulumi.StringInput `pulumi:"id"`
 	// Guest port this URL forwards to
 	Port pulumi.IntInput `pulumi:"port"`
 	// URL lifecycle status (PENDING or ACTIVE)
@@ -38417,6 +41161,11 @@ func (o GetMicrovmsMicroVmUrlOutput) Default() pulumi.BoolOutput {
 // Hostname (no scheme)
 func (o GetMicrovmsMicroVmUrlOutput) Hostname() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMicrovmsMicroVmUrl) string { return v.Hostname }).(pulumi.StringOutput)
+}
+
+// Stable identifier of the URL
+func (o GetMicrovmsMicroVmUrlOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMicrovmsMicroVmUrl) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Guest port this URL forwards to
@@ -42529,6 +45278,32 @@ func (o GetVpcNatGatewayVpcArrayOutput) Index(i pulumi.IntInput) GetVpcNatGatewa
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceCorsAllowOriginsInput)(nil)).Elem(), GetAppSpecServiceCorsAllowOriginsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceCorsAllowOriginsPtrInput)(nil)).Elem(), GetAppSpecServiceCorsAllowOriginsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceEnvInput)(nil)).Elem(), GetAppSpecServiceEnvArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceEnvArrayInput)(nil)).Elem(), GetAppSpecServiceEnvArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceGitInput)(nil)).Elem(), GetAppSpecServiceGitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceGitPtrInput)(nil)).Elem(), GetAppSpecServiceGitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceGithubInput)(nil)).Elem(), GetAppSpecServiceGithubArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceGithubPtrInput)(nil)).Elem(), GetAppSpecServiceGithubArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceGitlabInput)(nil)).Elem(), GetAppSpecServiceGitlabArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceGitlabPtrInput)(nil)).Elem(), GetAppSpecServiceGitlabArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceHealthCheckInput)(nil)).Elem(), GetAppSpecServiceHealthCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceHealthCheckPtrInput)(nil)).Elem(), GetAppSpecServiceHealthCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceImageInput)(nil)).Elem(), GetAppSpecServiceImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceImagePtrInput)(nil)).Elem(), GetAppSpecServiceImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceImageDeployOnPushInput)(nil)).Elem(), GetAppSpecServiceImageDeployOnPushArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceImageDeployOnPushArrayInput)(nil)).Elem(), GetAppSpecServiceImageDeployOnPushArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceLivenessHealthCheckInput)(nil)).Elem(), GetAppSpecServiceLivenessHealthCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceLivenessHealthCheckPtrInput)(nil)).Elem(), GetAppSpecServiceLivenessHealthCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceLogDestinationInput)(nil)).Elem(), GetAppSpecServiceLogDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceLogDestinationArrayInput)(nil)).Elem(), GetAppSpecServiceLogDestinationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceLogDestinationDatadogInput)(nil)).Elem(), GetAppSpecServiceLogDestinationDatadogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceLogDestinationDatadogPtrInput)(nil)).Elem(), GetAppSpecServiceLogDestinationDatadogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceLogDestinationLogtailInput)(nil)).Elem(), GetAppSpecServiceLogDestinationLogtailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceLogDestinationLogtailPtrInput)(nil)).Elem(), GetAppSpecServiceLogDestinationLogtailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceLogDestinationOpenSearchInput)(nil)).Elem(), GetAppSpecServiceLogDestinationOpenSearchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceLogDestinationOpenSearchPtrInput)(nil)).Elem(), GetAppSpecServiceLogDestinationOpenSearchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceLogDestinationOpenSearchBasicAuthInput)(nil)).Elem(), GetAppSpecServiceLogDestinationOpenSearchBasicAuthArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrInput)(nil)).Elem(), GetAppSpecServiceLogDestinationOpenSearchBasicAuthArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceLogDestinationPapertrailInput)(nil)).Elem(), GetAppSpecServiceLogDestinationPapertrailArgs{})
@@ -43021,6 +45796,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrovmCheckpointsFilterArrayInput)(nil)).Elem(), GetMicrovmCheckpointsFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrovmCheckpointsSortInput)(nil)).Elem(), GetMicrovmCheckpointsSortArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrovmCheckpointsSortArrayInput)(nil)).Elem(), GetMicrovmCheckpointsSortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrovmEgressPolicyInput)(nil)).Elem(), GetMicrovmEgressPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrovmEgressPolicyArrayInput)(nil)).Elem(), GetMicrovmEgressPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrovmEgressPolicyRuleInput)(nil)).Elem(), GetMicrovmEgressPolicyRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrovmEgressPolicyRuleArrayInput)(nil)).Elem(), GetMicrovmEgressPolicyRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrovmSizeInput)(nil)).Elem(), GetMicrovmSizeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrovmSizeArrayInput)(nil)).Elem(), GetMicrovmSizeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrovmSourceInput)(nil)).Elem(), GetMicrovmSourceArgs{})
@@ -43033,6 +45812,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrovmsMicroVmArrayInput)(nil)).Elem(), GetMicrovmsMicroVmArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrovmsMicroVmAutoPauseInput)(nil)).Elem(), GetMicrovmsMicroVmAutoPauseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrovmsMicroVmAutoPauseArrayInput)(nil)).Elem(), GetMicrovmsMicroVmAutoPauseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrovmsMicroVmEgressPolicyInput)(nil)).Elem(), GetMicrovmsMicroVmEgressPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrovmsMicroVmEgressPolicyArrayInput)(nil)).Elem(), GetMicrovmsMicroVmEgressPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrovmsMicroVmEgressPolicyRuleInput)(nil)).Elem(), GetMicrovmsMicroVmEgressPolicyRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrovmsMicroVmEgressPolicyRuleArrayInput)(nil)).Elem(), GetMicrovmsMicroVmEgressPolicyRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrovmsMicroVmSizeInput)(nil)).Elem(), GetMicrovmsMicroVmSizeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrovmsMicroVmSizeArrayInput)(nil)).Elem(), GetMicrovmsMicroVmSizeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMicrovmsMicroVmSourceInput)(nil)).Elem(), GetMicrovmsMicroVmSourceArgs{})
@@ -43103,6 +45886,32 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcNatGatewayEgressPublicGatewayArrayInput)(nil)).Elem(), GetVpcNatGatewayEgressPublicGatewayArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcNatGatewayVpcInput)(nil)).Elem(), GetVpcNatGatewayVpcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcNatGatewayVpcArrayInput)(nil)).Elem(), GetVpcNatGatewayVpcArray{})
+	pulumi.RegisterOutputType(GetAppSpecServiceCorsAllowOriginsOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceCorsAllowOriginsPtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceEnvOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceEnvArrayOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceGitOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceGitPtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceGithubOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceGithubPtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceGitlabOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceGitlabPtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceHealthCheckOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceHealthCheckPtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceImageOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceImagePtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceImageDeployOnPushOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceImageDeployOnPushArrayOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceLivenessHealthCheckOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceLivenessHealthCheckPtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceLogDestinationOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceLogDestinationArrayOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceLogDestinationDatadogOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceLogDestinationDatadogPtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceLogDestinationLogtailOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceLogDestinationLogtailPtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceLogDestinationOpenSearchOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceLogDestinationOpenSearchPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecServiceLogDestinationOpenSearchBasicAuthOutput{})
 	pulumi.RegisterOutputType(GetAppSpecServiceLogDestinationOpenSearchBasicAuthPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecServiceLogDestinationPapertrailOutput{})
@@ -43595,6 +46404,10 @@ func init() {
 	pulumi.RegisterOutputType(GetMicrovmCheckpointsFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetMicrovmCheckpointsSortOutput{})
 	pulumi.RegisterOutputType(GetMicrovmCheckpointsSortArrayOutput{})
+	pulumi.RegisterOutputType(GetMicrovmEgressPolicyOutput{})
+	pulumi.RegisterOutputType(GetMicrovmEgressPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetMicrovmEgressPolicyRuleOutput{})
+	pulumi.RegisterOutputType(GetMicrovmEgressPolicyRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetMicrovmSizeOutput{})
 	pulumi.RegisterOutputType(GetMicrovmSizeArrayOutput{})
 	pulumi.RegisterOutputType(GetMicrovmSourceOutput{})
@@ -43607,6 +46420,10 @@ func init() {
 	pulumi.RegisterOutputType(GetMicrovmsMicroVmArrayOutput{})
 	pulumi.RegisterOutputType(GetMicrovmsMicroVmAutoPauseOutput{})
 	pulumi.RegisterOutputType(GetMicrovmsMicroVmAutoPauseArrayOutput{})
+	pulumi.RegisterOutputType(GetMicrovmsMicroVmEgressPolicyOutput{})
+	pulumi.RegisterOutputType(GetMicrovmsMicroVmEgressPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetMicrovmsMicroVmEgressPolicyRuleOutput{})
+	pulumi.RegisterOutputType(GetMicrovmsMicroVmEgressPolicyRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetMicrovmsMicroVmSizeOutput{})
 	pulumi.RegisterOutputType(GetMicrovmsMicroVmSizeArrayOutput{})
 	pulumi.RegisterOutputType(GetMicrovmsMicroVmSourceOutput{})

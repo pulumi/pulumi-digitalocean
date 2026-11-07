@@ -6,6 +6,82 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as enums from "../types/enums";
 
+export interface ActionGatewayConnectionAuthorization {
+    /**
+     * (Sensitive) The URL the account holder opens to authorize the provider. Share it only with the intended account holder.
+     */
+    connectUrl: string;
+    /**
+     * When the authorization link expires.
+     */
+    expiresAt: string;
+    /**
+     * The status of the authorization.
+     */
+    status: string;
+    /**
+     * (Sensitive) The code the account holder confirms during authorization.
+     */
+    verificationCode: string;
+}
+
+export interface ActionGatewayConnectionVpc {
+    /**
+     * One or more private hosts the connection's calls may reach.
+     */
+    destinations: outputs.ActionGatewayConnectionVpcDestination[];
+    /**
+     * The region of the connection's VPC.
+     */
+    region: string;
+    /**
+     * The UUID of a VPC owned by your team.
+     */
+    vpcUuid: string;
+}
+
+export interface ActionGatewayConnectionVpcDestination {
+    /**
+     * CIDR ranges that every address the host resolves to must fall within.
+     */
+    allowedIpCidrs?: string[];
+    /**
+     * A host name or IP address that resolves only to private addresses.
+     */
+    host: string;
+    /**
+     * The destination port.
+     */
+    port: number;
+}
+
+export interface ActionGatewayMcpServerDiscoveredTool {
+    /**
+     * The description shown on the server's catalog card, at most 1024 characters.
+     */
+    description: string;
+    /**
+     * Whether the tool is enabled.
+     */
+    enabled: boolean;
+    /**
+     * The tool's name on the server.
+     */
+    name: string;
+    /**
+     * Why the tool is quarantined.
+     */
+    quarantineReason: string;
+    /**
+     * Whether the tool is quarantined.
+     */
+    quarantined: boolean;
+    /**
+     * The tool's catalog slug, used in `enabledTools`.
+     */
+    toolSlug: string;
+}
+
 export interface AgentPlatformAgentAgentGuardrail {
     /**
      * Agent UUID for the Guardrail
@@ -3936,6 +4012,144 @@ export interface FirewallPendingChange {
      * This can be "waiting", "succeeded", or "failed".
      */
     status?: string;
+}
+
+export interface GetActionGatewayConnectionAuthorization {
+    /**
+     * (Sensitive) The URL the account holder opens to authorize the provider.
+     */
+    connectUrl: string;
+    /**
+     * When the authorization link expires.
+     */
+    expiresAt: string;
+    /**
+     * The status of the authorization.
+     */
+    status: string;
+    /**
+     * (Sensitive) The code the account holder confirms during authorization.
+     */
+    verificationCode: string;
+}
+
+export interface GetActionGatewayConnectionVpc {
+    /**
+     * The private hosts the connection's calls may reach, each with `host`, `port`, and `allowedIpCidrs`.
+     */
+    destinations: outputs.GetActionGatewayConnectionVpcDestination[];
+    /**
+     * The region of the VPC.
+     */
+    region: string;
+    /**
+     * The UUID of the VPC.
+     */
+    vpcUuid: string;
+}
+
+export interface GetActionGatewayConnectionVpcDestination {
+    /**
+     * CIDR ranges that every address the host resolves to must fall within
+     */
+    allowedIpCidrs: string[];
+    /**
+     * Host name or IP address that resolves only to private addresses
+     */
+    host: string;
+    /**
+     * Destination port
+     */
+    port: number;
+}
+
+export interface GetActionGatewayProvidersFilter {
+    /**
+     * Set to `true` to require that a field match all of the `values` instead of just one or more of
+     * them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+     * that all of the `values` are present in the list or set.
+     */
+    all?: boolean;
+    /**
+     * Filter the providers by this key. This may be one of `name`, `displayName`, `description`, `authTypes`, and `scopes`.
+     */
+    key: string;
+    /**
+     * One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+     * match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+     * substrings to find within the string field.
+     */
+    matchBy?: string;
+    /**
+     * A list of values to match against the `key` field. Only retrieves providers
+     * where the `key` field takes on one or more of the values provided here.
+     */
+    values: string[];
+}
+
+export interface GetActionGatewayProvidersProvider {
+    /**
+     * The credential kinds the provider accepts.
+     */
+    authTypes: string[];
+    /**
+     * The parameters a connection to the provider accepts.
+     */
+    connectionParameters: outputs.GetActionGatewayProvidersProviderConnectionParameter[];
+    /**
+     * The parameter's description.
+     */
+    description: string;
+    /**
+     * The human-readable name of the provider.
+     */
+    displayName: string;
+    /**
+     * The provider slug, used as `toolProvider` on connections.
+     */
+    name: string;
+    /**
+     * The OAuth scopes the provider offers.
+     */
+    scopes: string[];
+}
+
+export interface GetActionGatewayProvidersProviderConnectionParameter {
+    /**
+     * The values the parameter accepts, when restricted.
+     */
+    allowedValues: string[];
+    /**
+     * The parameter's description.
+     */
+    description: string;
+    /**
+     * The kind of input the parameter takes.
+     */
+    inputKind: string;
+    /**
+     * The parameter's key in `connectionParameters`.
+     */
+    key: string;
+    /**
+     * The parameter's label.
+     */
+    label: string;
+    /**
+     * Whether the parameter is required.
+     */
+    required: boolean;
+}
+
+export interface GetActionGatewayProvidersSort {
+    /**
+     * The sort direction. This may be either `asc` or `desc`.
+     */
+    direction?: string;
+    /**
+     * Sort the providers by this key. This may be one of `name`, `displayName`, and `description`.
+     */
+    key: string;
 }
 
 export interface GetAgentPlatformAgentAgentGuardrail {
@@ -16094,6 +16308,28 @@ export interface GetMicrovmCheckpointsSort {
     key: string;
 }
 
+export interface GetMicrovmEgressPolicy {
+    /**
+     * What happens to a destination no rule matches: `deny` or `allow`.
+     */
+    defaultAction: string;
+    /**
+     * The allowed destinations. Each has a `domain` or an `ip`.
+     */
+    rules?: outputs.GetMicrovmEgressPolicyRule[];
+}
+
+export interface GetMicrovmEgressPolicyRule {
+    /**
+     * An exact host such as 'api.example.com', or a wildcard such as '*.example.com'.
+     */
+    domain?: string;
+    /**
+     * An exact IP address. CIDR ranges are not supported.
+     */
+    ip?: string;
+}
+
 export interface GetMicrovmSize {
     /**
      * The number of vCPUs.
@@ -16129,6 +16365,10 @@ export interface GetMicrovmUrl {
      * The hostname, without a scheme.
      */
     hostname: string;
+    /**
+     * The ID of the MicroVM.
+     */
+    id: string;
     /**
      * The guest port the URL forwards to.
      */
@@ -16186,6 +16426,10 @@ export interface GetMicrovmsMicroVm {
      */
     currentState: string;
     /**
+     * Outbound allow list for the MicroVM. Omit for unrestricted egress. Public networking only; fixed at create, so a change forces recreation. With a policy set, only HTTP and HTTPS through the platform proxy to allowed destinations works. A MicroVM restored from a checkpoint inherits the origin's policy.
+     */
+    egressPolicies: outputs.GetMicrovmsMicroVmEgressPolicy[];
+    /**
      * Environment variables passed to the MicroVM
      */
     environment: {[key: string]: string};
@@ -16205,6 +16449,10 @@ export interface GetMicrovmsMicroVm {
      * MicroVM ID
      */
     id: string;
+    /**
+     * Whether the MicroVM is created with a default public ingress URL. Defaults to true. Set to false to create the MicroVM without a default URL; additional URLs can be added later with the digitalocean.MicrovmIngress resource. This is a create-time option, so a change forces recreation.
+     */
+    ingressEnabled: boolean;
     /**
      * Only return MicroVMs with this exact name.
      */
@@ -16259,6 +16507,28 @@ export interface GetMicrovmsMicroVmAutoPause {
     idleTimeout: string;
 }
 
+export interface GetMicrovmsMicroVmEgressPolicy {
+    /**
+     * What to do with a destination no rule matches: 'deny' or 'allow'. Defaults to 'deny'.
+     */
+    defaultAction: string;
+    /**
+     * An allowed destination. Set exactly one of domain or ip.
+     */
+    rules?: outputs.GetMicrovmsMicroVmEgressPolicyRule[];
+}
+
+export interface GetMicrovmsMicroVmEgressPolicyRule {
+    /**
+     * An exact host such as 'api.example.com', or a wildcard such as '*.example.com'.
+     */
+    domain?: string;
+    /**
+     * An exact IP address. CIDR ranges are not supported.
+     */
+    ip?: string;
+}
+
 export interface GetMicrovmsMicroVmSize {
     /**
      * Number of vCPUs
@@ -16294,6 +16564,10 @@ export interface GetMicrovmsMicroVmUrl {
      * Hostname (no scheme)
      */
     hostname: string;
+    /**
+     * Stable identifier of the URL
+     */
+    id: string;
     /**
      * Guest port this URL forwards to
      */
@@ -18586,6 +18860,28 @@ export interface MicrovmCheckpointSize {
     memory: number;
 }
 
+export interface MicrovmEgressPolicy {
+    /**
+     * What to do with a destination no `rule` matches: `deny` or `allow`. Defaults to `deny`.
+     */
+    defaultAction: string;
+    /**
+     * An allowed destination. Up to 50 rules. Rules match the host only: port, path and method are not considered, and a hostname that resolves to an IP is not matched by an `ip` rule. Each rule sets exactly one of:
+     */
+    rules?: outputs.MicrovmEgressPolicyRule[];
+}
+
+export interface MicrovmEgressPolicyRule {
+    /**
+     * An exact host such as `api.example.com`, or a wildcard such as `*.example.com`.
+     */
+    domain?: string;
+    /**
+     * An exact IP address. CIDR ranges are not supported.
+     */
+    ip?: string;
+}
+
 export interface MicrovmSize {
     /**
      * The number of vCPUs.
@@ -18621,6 +18917,10 @@ export interface MicrovmUrl {
      * The hostname, without a scheme.
      */
     hostname: string;
+    /**
+     * The stable identifier of the URL.
+     */
+    id: string;
     /**
      * The guest port the URL forwards to.
      */

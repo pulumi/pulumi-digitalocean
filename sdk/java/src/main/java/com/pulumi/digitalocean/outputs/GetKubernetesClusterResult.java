@@ -57,6 +57,11 @@ public final class GetKubernetesClusterResult {
      * 
      */
     private String endpoint;
+    /**
+     * @return A boolean value indicating whether GPU nodes in the cluster are launched with images without GPU drivers, allowing GPU operators to manage drivers.
+     * 
+     */
+    private Boolean gpuOperatorReady;
     private Boolean ha;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -190,6 +195,13 @@ public final class GetKubernetesClusterResult {
      */
     public String endpoint() {
         return this.endpoint;
+    }
+    /**
+     * @return A boolean value indicating whether GPU nodes in the cluster are launched with images without GPU drivers, allowing GPU operators to manage drivers.
+     * 
+     */
+    public Boolean gpuOperatorReady() {
+        return this.gpuOperatorReady;
     }
     public Boolean ha() {
         return this.ha;
@@ -349,6 +361,7 @@ public final class GetKubernetesClusterResult {
         private GetKubernetesClusterCorednsAutoscaler corednsAutoscaler;
         private String createdAt;
         private String endpoint;
+        private Boolean gpuOperatorReady;
         private Boolean ha;
         private String id;
         private String ipv4Address;
@@ -388,6 +401,7 @@ public final class GetKubernetesClusterResult {
     	      this.corednsAutoscaler = defaults.corednsAutoscaler;
     	      this.createdAt = defaults.createdAt;
     	      this.endpoint = defaults.endpoint;
+    	      this.gpuOperatorReady = defaults.gpuOperatorReady;
     	      this.ha = defaults.ha;
     	      this.id = defaults.id;
     	      this.ipv4Address = defaults.ipv4Address;
@@ -498,6 +512,14 @@ public final class GetKubernetesClusterResult {
               throw new MissingRequiredPropertyException("GetKubernetesClusterResult", "endpoint");
             }
             this.endpoint = endpoint;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder gpuOperatorReady(Boolean gpuOperatorReady) {
+            if (gpuOperatorReady == null) {
+              throw new MissingRequiredPropertyException("GetKubernetesClusterResult", "gpuOperatorReady");
+            }
+            this.gpuOperatorReady = gpuOperatorReady;
             return this;
         }
         @CustomType.Setter
@@ -731,6 +753,7 @@ public final class GetKubernetesClusterResult {
             _resultValue.corednsAutoscaler = corednsAutoscaler;
             _resultValue.createdAt = createdAt;
             _resultValue.endpoint = endpoint;
+            _resultValue.gpuOperatorReady = gpuOperatorReady;
             _resultValue.ha = ha;
             _resultValue.id = id;
             _resultValue.ipv4Address = ipv4Address;

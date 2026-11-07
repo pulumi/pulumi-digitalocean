@@ -6,6 +6,82 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as enums from "../types/enums";
 
+export interface ActionGatewayConnectionAuthorization {
+    /**
+     * (Sensitive) The URL the account holder opens to authorize the provider. Share it only with the intended account holder.
+     */
+    connectUrl?: pulumi.Input<string | undefined>;
+    /**
+     * When the authorization link expires.
+     */
+    expiresAt?: pulumi.Input<string | undefined>;
+    /**
+     * The status of the authorization.
+     */
+    status?: pulumi.Input<string | undefined>;
+    /**
+     * (Sensitive) The code the account holder confirms during authorization.
+     */
+    verificationCode?: pulumi.Input<string | undefined>;
+}
+
+export interface ActionGatewayConnectionVpc {
+    /**
+     * One or more private hosts the connection's calls may reach.
+     */
+    destinations: pulumi.Input<pulumi.Input<inputs.ActionGatewayConnectionVpcDestination>[]>;
+    /**
+     * The region of the connection's VPC.
+     */
+    region?: pulumi.Input<string | undefined>;
+    /**
+     * The UUID of a VPC owned by your team.
+     */
+    vpcUuid: pulumi.Input<string>;
+}
+
+export interface ActionGatewayConnectionVpcDestination {
+    /**
+     * CIDR ranges that every address the host resolves to must fall within.
+     */
+    allowedIpCidrs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * A host name or IP address that resolves only to private addresses.
+     */
+    host: pulumi.Input<string>;
+    /**
+     * The destination port.
+     */
+    port: pulumi.Input<number>;
+}
+
+export interface ActionGatewayMcpServerDiscoveredTool {
+    /**
+     * The description shown on the server's catalog card, at most 1024 characters.
+     */
+    description?: pulumi.Input<string | undefined>;
+    /**
+     * Whether the tool is enabled.
+     */
+    enabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * The tool's name on the server.
+     */
+    name?: pulumi.Input<string | undefined>;
+    /**
+     * Why the tool is quarantined.
+     */
+    quarantineReason?: pulumi.Input<string | undefined>;
+    /**
+     * Whether the tool is quarantined.
+     */
+    quarantined?: pulumi.Input<boolean | undefined>;
+    /**
+     * The tool's catalog slug, used in `enabledTools`.
+     */
+    toolSlug?: pulumi.Input<string | undefined>;
+}
+
 export interface AgentPlatformAgentAgentGuardrail {
     /**
      * Agent UUID for the Guardrail
@@ -3936,6 +4012,76 @@ export interface FirewallPendingChange {
      * This can be "waiting", "succeeded", or "failed".
      */
     status?: pulumi.Input<string | undefined>;
+}
+
+export interface GetActionGatewayProvidersFilter {
+    /**
+     * Set to `true` to require that a field match all of the `values` instead of just one or more of
+     * them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+     * that all of the `values` are present in the list or set.
+     */
+    all?: boolean;
+    /**
+     * Filter the providers by this key. This may be one of `name`, `displayName`, `description`, `authTypes`, and `scopes`.
+     */
+    key: string;
+    /**
+     * One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+     * match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+     * substrings to find within the string field.
+     */
+    matchBy?: string;
+    /**
+     * A list of values to match against the `key` field. Only retrieves providers
+     * where the `key` field takes on one or more of the values provided here.
+     */
+    values: string[];
+}
+
+export interface GetActionGatewayProvidersFilterArgs {
+    /**
+     * Set to `true` to require that a field match all of the `values` instead of just one or more of
+     * them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+     * that all of the `values` are present in the list or set.
+     */
+    all?: pulumi.Input<boolean | undefined>;
+    /**
+     * Filter the providers by this key. This may be one of `name`, `displayName`, `description`, `authTypes`, and `scopes`.
+     */
+    key: pulumi.Input<string>;
+    /**
+     * One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+     * match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+     * substrings to find within the string field.
+     */
+    matchBy?: pulumi.Input<string | undefined>;
+    /**
+     * A list of values to match against the `key` field. Only retrieves providers
+     * where the `key` field takes on one or more of the values provided here.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetActionGatewayProvidersSort {
+    /**
+     * The sort direction. This may be either `asc` or `desc`.
+     */
+    direction?: string;
+    /**
+     * Sort the providers by this key. This may be one of `name`, `displayName`, and `description`.
+     */
+    key: string;
+}
+
+export interface GetActionGatewayProvidersSortArgs {
+    /**
+     * The sort direction. This may be either `asc` or `desc`.
+     */
+    direction?: pulumi.Input<string | undefined>;
+    /**
+     * Sort the providers by this key. This may be one of `name`, `displayName`, and `description`.
+     */
+    key: pulumi.Input<string>;
 }
 
 export interface GetAgentPlatformAgentAgentGuardrail {
@@ -10128,6 +10274,28 @@ export interface MicrovmCheckpointSize {
     memory?: pulumi.Input<number | undefined>;
 }
 
+export interface MicrovmEgressPolicy {
+    /**
+     * What to do with a destination no `rule` matches: `deny` or `allow`. Defaults to `deny`.
+     */
+    defaultAction?: pulumi.Input<string | undefined>;
+    /**
+     * An allowed destination. Up to 50 rules. Rules match the host only: port, path and method are not considered, and a hostname that resolves to an IP is not matched by an `ip` rule. Each rule sets exactly one of:
+     */
+    rules?: pulumi.Input<pulumi.Input<inputs.MicrovmEgressPolicyRule>[] | undefined>;
+}
+
+export interface MicrovmEgressPolicyRule {
+    /**
+     * An exact host such as `api.example.com`, or a wildcard such as `*.example.com`.
+     */
+    domain?: pulumi.Input<string | undefined>;
+    /**
+     * An exact IP address. CIDR ranges are not supported.
+     */
+    ip?: pulumi.Input<string | undefined>;
+}
+
 export interface MicrovmSize {
     /**
      * The number of vCPUs.
@@ -10163,6 +10331,10 @@ export interface MicrovmUrl {
      * The hostname, without a scheme.
      */
     hostname?: pulumi.Input<string | undefined>;
+    /**
+     * The stable identifier of the URL.
+     */
+    id?: pulumi.Input<string | undefined>;
     /**
      * The guest port the URL forwards to.
      */

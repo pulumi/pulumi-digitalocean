@@ -84,6 +84,10 @@ export interface GetMicrovmResult {
      * The observed lifecycle state of the MicroVM, such as `running` or `paused`.
      */
     readonly currentState: string;
+    /**
+     * The outbound allow list set at create. Empty when egress is unrestricted:
+     */
+    readonly egressPolicies: outputs.GetMicrovmEgressPolicy[];
     readonly environment: {[key: string]: string};
     /**
      * A description of the failure when `currentState` is `failed`.
@@ -98,6 +102,7 @@ export interface GetMicrovmResult {
      * The ID of the MicroVM.
      */
     readonly id: string;
+    readonly ingressEnabled: boolean;
     /**
      * The name of the MicroVM.
      */

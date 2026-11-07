@@ -511,6 +511,20 @@ public class KubernetesCluster extends com.pulumi.resources.CustomResource {
         return this.endpoint;
     }
     /**
+     * Enable/disable launching GPU nodes in the cluster with images without GPU drivers, allowing GPU operators to manage drivers. Mutually exclusive with other GPU-related cluster options, such as `nvidiaGpuDraDriver` and `amdGpuDraDriver`. Default: false
+     * 
+     */
+    @Export(name="gpuOperatorReady", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> gpuOperatorReady;
+
+    /**
+     * @return Enable/disable launching GPU nodes in the cluster with images without GPU drivers, allowing GPU operators to manage drivers. Mutually exclusive with other GPU-related cluster options, such as `nvidiaGpuDraDriver` and `amdGpuDraDriver`. Default: false
+     * 
+     */
+    public Output<Optional<Boolean>> gpuOperatorReady() {
+        return Codegen.optional(this.gpuOperatorReady);
+    }
+    /**
      * Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: true (for 1.36.0 and later)
      * 
      */

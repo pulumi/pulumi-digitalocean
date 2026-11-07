@@ -85,7 +85,9 @@ type LookupKubernetesClusterResult struct {
 	CreatedAt string `pulumi:"createdAt"`
 	// The base URL of the API server on the Kubernetes master node.
 	Endpoint string `pulumi:"endpoint"`
-	Ha       bool   `pulumi:"ha"`
+	// A boolean value indicating whether GPU nodes in the cluster are launched with images without GPU drivers, allowing GPU operators to manage drivers.
+	GpuOperatorReady bool `pulumi:"gpuOperatorReady"`
+	Ha               bool `pulumi:"ha"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The public IPv4 address of the Kubernetes master node.
@@ -225,6 +227,11 @@ func (o LookupKubernetesClusterResultOutput) CreatedAt() pulumi.StringOutput {
 // The base URL of the API server on the Kubernetes master node.
 func (o LookupKubernetesClusterResultOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKubernetesClusterResult) string { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+// A boolean value indicating whether GPU nodes in the cluster are launched with images without GPU drivers, allowing GPU operators to manage drivers.
+func (o LookupKubernetesClusterResultOutput) GpuOperatorReady() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupKubernetesClusterResult) bool { return v.GpuOperatorReady }).(pulumi.BoolOutput)
 }
 
 func (o LookupKubernetesClusterResultOutput) Ha() pulumi.BoolOutput {

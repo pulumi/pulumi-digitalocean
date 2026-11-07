@@ -261,6 +261,10 @@ namespace Pulumi.DigitalOcean
         /// The base URL of the API server on the Kubernetes master node.
         /// </summary>
         public readonly string Endpoint;
+        /// <summary>
+        /// A boolean value indicating whether GPU nodes in the cluster are launched with images without GPU drivers, allowing GPU operators to manage drivers.
+        /// </summary>
+        public readonly bool GpuOperatorReady;
         public readonly bool Ha;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -355,6 +359,8 @@ namespace Pulumi.DigitalOcean
 
             string endpoint,
 
+            bool gpuOperatorReady,
+
             bool ha,
 
             string id,
@@ -417,6 +423,7 @@ namespace Pulumi.DigitalOcean
             CorednsAutoscaler = corednsAutoscaler;
             CreatedAt = createdAt;
             Endpoint = endpoint;
+            GpuOperatorReady = gpuOperatorReady;
             Ha = ha;
             Id = id;
             Ipv4Address = ipv4Address;

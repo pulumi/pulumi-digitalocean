@@ -24,9 +24,11 @@ class MicrovmArgs:
                  source: pulumi.Input['MicrovmSourceArgs'],
                  auto_pause: pulumi.Input[Optional['MicrovmAutoPauseArgs']] = None,
                  auto_resume: pulumi.Input[Optional[_builtins.bool]] = None,
+                 egress_policy: pulumi.Input[Optional['MicrovmEgressPolicyArgs']] = None,
                  environment: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  http_port: pulumi.Input[Optional[_builtins.int]] = None,
                  http_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 ingress_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  networking: pulumi.Input[Optional[_builtins.str]] = None,
                  ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
@@ -41,9 +43,11 @@ class MicrovmArgs:
         :param pulumi.Input['MicrovmSourceArgs'] source: What the MicroVM runs. Exactly one of the following must be set:
         :param pulumi.Input['MicrovmAutoPauseArgs'] auto_pause: Auto-pause configuration. When omitted, the product default (enabled) applies.
         :param pulumi.Input[_builtins.bool] auto_resume: Whether the MicroVM resumes automatically on incoming HTTP traffic. When omitted, the product default (enabled) applies.
+        :param pulumi.Input['MicrovmEgressPolicyArgs'] egress_policy: An outbound allow list. When omitted, egress is unrestricted; a MicroVM restored from a checkpoint inherits its origin's policy. Only valid with public networking, and a change forces a new MicroVM.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] environment: A map of environment variables to pass to the workload.
         :param pulumi.Input[_builtins.int] http_port: The port the workload serves HTTP on.
         :param pulumi.Input[_builtins.str] http_protocol: The HTTP protocol the workload serves: `http` or `http2`.
+        :param pulumi.Input[_builtins.bool] ingress_enabled: Whether the MicroVM is created with a default public ingress URL. Defaults to `true`. Set to `false` to create the MicroVM without a default URL; additional URLs can be added later with the `MicrovmIngress` resource. This is a create-time option, so a change forces a new MicroVM.
         :param pulumi.Input[_builtins.str] name: The name of the MicroVM.
         :param pulumi.Input[_builtins.str] networking: The networking mode: `public` or `vpc`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] ports: A list of guest ports to open for ingress. Defaults to `http_port` only.
@@ -58,12 +62,16 @@ class MicrovmArgs:
             pulumi.set(__self__, "auto_pause", auto_pause)
         if auto_resume is not None:
             pulumi.set(__self__, "auto_resume", auto_resume)
+        if egress_policy is not None:
+            pulumi.set(__self__, "egress_policy", egress_policy)
         if environment is not None:
             pulumi.set(__self__, "environment", environment)
         if http_port is not None:
             pulumi.set(__self__, "http_port", http_port)
         if http_protocol is not None:
             pulumi.set(__self__, "http_protocol", http_protocol)
+        if ingress_enabled is not None:
+            pulumi.set(__self__, "ingress_enabled", ingress_enabled)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if networking is not None:
@@ -118,6 +126,18 @@ class MicrovmArgs:
         pulumi.set(self, "auto_resume", value)
 
     @_builtins.property
+    @pulumi.getter(name="egressPolicy")
+    def egress_policy(self) -> pulumi.Input[Optional['MicrovmEgressPolicyArgs']]:
+        """
+        An outbound allow list. When omitted, egress is unrestricted; a MicroVM restored from a checkpoint inherits its origin's policy. Only valid with public networking, and a change forces a new MicroVM.
+        """
+        return pulumi.get(self, "egress_policy")
+
+    @egress_policy.setter
+    def egress_policy(self, value: pulumi.Input[Optional['MicrovmEgressPolicyArgs']]):
+        pulumi.set(self, "egress_policy", value)
+
+    @_builtins.property
     @pulumi.getter
     def environment(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
@@ -152,6 +172,18 @@ class MicrovmArgs:
     @http_protocol.setter
     def http_protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "http_protocol", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ingressEnabled")
+    def ingress_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether the MicroVM is created with a default public ingress URL. Defaults to `true`. Set to `false` to create the MicroVM without a default URL; additional URLs can be added later with the `MicrovmIngress` resource. This is a create-time option, so a change forces a new MicroVM.
+        """
+        return pulumi.get(self, "ingress_enabled")
+
+    @ingress_enabled.setter
+    def ingress_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "ingress_enabled", value)
 
     @_builtins.property
     @pulumi.getter
@@ -258,10 +290,12 @@ class _MicrovmState:
                  created_at: pulumi.Input[Optional[_builtins.str]] = None,
                  current_state: pulumi.Input[Optional[_builtins.str]] = None,
                  digitalocean_urn: pulumi.Input[Optional[_builtins.str]] = None,
+                 egress_policy: pulumi.Input[Optional['MicrovmEgressPolicyArgs']] = None,
                  environment: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  failure_reason: pulumi.Input[Optional[_builtins.str]] = None,
                  http_port: pulumi.Input[Optional[_builtins.int]] = None,
                  http_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 ingress_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  networking: pulumi.Input[Optional[_builtins.str]] = None,
                  ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
@@ -280,10 +314,12 @@ class _MicrovmState:
         :param pulumi.Input[_builtins.str] created_at: The date and time the MicroVM was created.
         :param pulumi.Input[_builtins.str] current_state: The observed lifecycle state of the MicroVM, such as `running` or `paused`.
         :param pulumi.Input[_builtins.str] digitalocean_urn: The uniform resource name (URN) for the MicroVM.
+        :param pulumi.Input['MicrovmEgressPolicyArgs'] egress_policy: An outbound allow list. When omitted, egress is unrestricted; a MicroVM restored from a checkpoint inherits its origin's policy. Only valid with public networking, and a change forces a new MicroVM.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] environment: A map of environment variables to pass to the workload.
         :param pulumi.Input[_builtins.str] failure_reason: A description of the failure when `current_state` is `failed`.
         :param pulumi.Input[_builtins.int] http_port: The port the workload serves HTTP on.
         :param pulumi.Input[_builtins.str] http_protocol: The HTTP protocol the workload serves: `http` or `http2`.
+        :param pulumi.Input[_builtins.bool] ingress_enabled: Whether the MicroVM is created with a default public ingress URL. Defaults to `true`. Set to `false` to create the MicroVM without a default URL; additional URLs can be added later with the `MicrovmIngress` resource. This is a create-time option, so a change forces a new MicroVM.
         :param pulumi.Input[_builtins.str] name: The name of the MicroVM.
         :param pulumi.Input[_builtins.str] networking: The networking mode: `public` or `vpc`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] ports: A list of guest ports to open for ingress. Defaults to `http_port` only.
@@ -305,6 +341,8 @@ class _MicrovmState:
             pulumi.set(__self__, "current_state", current_state)
         if digitalocean_urn is not None:
             pulumi.set(__self__, "digitalocean_urn", digitalocean_urn)
+        if egress_policy is not None:
+            pulumi.set(__self__, "egress_policy", egress_policy)
         if environment is not None:
             pulumi.set(__self__, "environment", environment)
         if failure_reason is not None:
@@ -313,6 +351,8 @@ class _MicrovmState:
             pulumi.set(__self__, "http_port", http_port)
         if http_protocol is not None:
             pulumi.set(__self__, "http_protocol", http_protocol)
+        if ingress_enabled is not None:
+            pulumi.set(__self__, "ingress_enabled", ingress_enabled)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if networking is not None:
@@ -395,6 +435,18 @@ class _MicrovmState:
         pulumi.set(self, "digitalocean_urn", value)
 
     @_builtins.property
+    @pulumi.getter(name="egressPolicy")
+    def egress_policy(self) -> pulumi.Input[Optional['MicrovmEgressPolicyArgs']]:
+        """
+        An outbound allow list. When omitted, egress is unrestricted; a MicroVM restored from a checkpoint inherits its origin's policy. Only valid with public networking, and a change forces a new MicroVM.
+        """
+        return pulumi.get(self, "egress_policy")
+
+    @egress_policy.setter
+    def egress_policy(self, value: pulumi.Input[Optional['MicrovmEgressPolicyArgs']]):
+        pulumi.set(self, "egress_policy", value)
+
+    @_builtins.property
     @pulumi.getter
     def environment(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
@@ -441,6 +493,18 @@ class _MicrovmState:
     @http_protocol.setter
     def http_protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "http_protocol", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ingressEnabled")
+    def ingress_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether the MicroVM is created with a default public ingress URL. Defaults to `true`. Set to `false` to create the MicroVM without a default URL; additional URLs can be added later with the `MicrovmIngress` resource. This is a create-time option, so a change forces a new MicroVM.
+        """
+        return pulumi.get(self, "ingress_enabled")
+
+    @ingress_enabled.setter
+    def ingress_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "ingress_enabled", value)
 
     @_builtins.property
     @pulumi.getter
@@ -571,9 +635,11 @@ class Microvm(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_pause: pulumi.Input[Optional[Union['MicrovmAutoPauseArgs', 'MicrovmAutoPauseArgsDict', 'outputs.MicrovmAutoPause']]] = None,
                  auto_resume: pulumi.Input[Optional[_builtins.bool]] = None,
+                 egress_policy: pulumi.Input[Optional[Union['MicrovmEgressPolicyArgs', 'MicrovmEgressPolicyArgsDict', 'outputs.MicrovmEgressPolicy']]] = None,
                  environment: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  http_port: pulumi.Input[Optional[_builtins.int]] = None,
                  http_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 ingress_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  networking: pulumi.Input[Optional[_builtins.str]] = None,
                  ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
@@ -662,6 +728,47 @@ class Microvm(pulumi.CustomResource):
             })
         ```
 
+        ### Restrict Outbound Traffic
+
+        Set `egress_policy` to limit where code in the MicroVM can connect. Only the
+        listed destinations are reachable, and the policy is fixed at create, so any
+        change forces a new MicroVM. It requires `networking = "public"`.
+
+        With a policy set, direct connections out of the MicroVM are dropped. Only HTTP
+        and HTTPS through the platform proxy to allowed destinations works, so clients
+        must honor the injected `HTTP_PROXY` / `HTTPS_PROXY` environment. The registries
+        needed to pull the workload image are allowed automatically.
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        locked_down = digitalocean.Microvm("locked_down",
+            name="example-locked-down",
+            region="nyc3",
+            size={
+                "cpu": 1,
+                "memory": 2048,
+            },
+            source={
+                "oci_ref": "docker.io/library/alpine:latest",
+            },
+            egress_policy={
+                "default_action": "deny",
+                "rules": [
+                    {
+                        "domain": "api.example.com",
+                    },
+                    {
+                        "domain": "*.example.org",
+                    },
+                    {
+                        "ip": "203.0.113.5",
+                    },
+                ],
+            })
+        ```
+
         ## Import
 
         A MicroVM can be imported using its `id`, e.g.
@@ -675,9 +782,11 @@ class Microvm(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['MicrovmAutoPauseArgs', 'MicrovmAutoPauseArgsDict', 'outputs.MicrovmAutoPause']] auto_pause: Auto-pause configuration. When omitted, the product default (enabled) applies.
         :param pulumi.Input[_builtins.bool] auto_resume: Whether the MicroVM resumes automatically on incoming HTTP traffic. When omitted, the product default (enabled) applies.
+        :param pulumi.Input[Union['MicrovmEgressPolicyArgs', 'MicrovmEgressPolicyArgsDict', 'outputs.MicrovmEgressPolicy']] egress_policy: An outbound allow list. When omitted, egress is unrestricted; a MicroVM restored from a checkpoint inherits its origin's policy. Only valid with public networking, and a change forces a new MicroVM.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] environment: A map of environment variables to pass to the workload.
         :param pulumi.Input[_builtins.int] http_port: The port the workload serves HTTP on.
         :param pulumi.Input[_builtins.str] http_protocol: The HTTP protocol the workload serves: `http` or `http2`.
+        :param pulumi.Input[_builtins.bool] ingress_enabled: Whether the MicroVM is created with a default public ingress URL. Defaults to `true`. Set to `false` to create the MicroVM without a default URL; additional URLs can be added later with the `MicrovmIngress` resource. This is a create-time option, so a change forces a new MicroVM.
         :param pulumi.Input[_builtins.str] name: The name of the MicroVM.
         :param pulumi.Input[_builtins.str] networking: The networking mode: `public` or `vpc`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] ports: A list of guest ports to open for ingress. Defaults to `http_port` only.
@@ -772,6 +881,47 @@ class Microvm(pulumi.CustomResource):
             })
         ```
 
+        ### Restrict Outbound Traffic
+
+        Set `egress_policy` to limit where code in the MicroVM can connect. Only the
+        listed destinations are reachable, and the policy is fixed at create, so any
+        change forces a new MicroVM. It requires `networking = "public"`.
+
+        With a policy set, direct connections out of the MicroVM are dropped. Only HTTP
+        and HTTPS through the platform proxy to allowed destinations works, so clients
+        must honor the injected `HTTP_PROXY` / `HTTPS_PROXY` environment. The registries
+        needed to pull the workload image are allowed automatically.
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        locked_down = digitalocean.Microvm("locked_down",
+            name="example-locked-down",
+            region="nyc3",
+            size={
+                "cpu": 1,
+                "memory": 2048,
+            },
+            source={
+                "oci_ref": "docker.io/library/alpine:latest",
+            },
+            egress_policy={
+                "default_action": "deny",
+                "rules": [
+                    {
+                        "domain": "api.example.com",
+                    },
+                    {
+                        "domain": "*.example.org",
+                    },
+                    {
+                        "ip": "203.0.113.5",
+                    },
+                ],
+            })
+        ```
+
         ## Import
 
         A MicroVM can be imported using its `id`, e.g.
@@ -798,9 +948,11 @@ class Microvm(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_pause: pulumi.Input[Optional[Union['MicrovmAutoPauseArgs', 'MicrovmAutoPauseArgsDict', 'outputs.MicrovmAutoPause']]] = None,
                  auto_resume: pulumi.Input[Optional[_builtins.bool]] = None,
+                 egress_policy: pulumi.Input[Optional[Union['MicrovmEgressPolicyArgs', 'MicrovmEgressPolicyArgsDict', 'outputs.MicrovmEgressPolicy']]] = None,
                  environment: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  http_port: pulumi.Input[Optional[_builtins.int]] = None,
                  http_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 ingress_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  networking: pulumi.Input[Optional[_builtins.str]] = None,
                  ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
@@ -821,9 +973,11 @@ class Microvm(pulumi.CustomResource):
 
             __props__.__dict__["auto_pause"] = auto_pause
             __props__.__dict__["auto_resume"] = auto_resume
+            __props__.__dict__["egress_policy"] = egress_policy
             __props__.__dict__["environment"] = environment
             __props__.__dict__["http_port"] = http_port
             __props__.__dict__["http_protocol"] = http_protocol
+            __props__.__dict__["ingress_enabled"] = ingress_enabled
             __props__.__dict__["name"] = name
             __props__.__dict__["networking"] = networking
             __props__.__dict__["ports"] = ports
@@ -855,10 +1009,12 @@ class Microvm(pulumi.CustomResource):
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
             current_state: pulumi.Input[Optional[_builtins.str]] = None,
             digitalocean_urn: pulumi.Input[Optional[_builtins.str]] = None,
+            egress_policy: pulumi.Input[Optional[Union['MicrovmEgressPolicyArgs', 'MicrovmEgressPolicyArgsDict', 'outputs.MicrovmEgressPolicy']]] = None,
             environment: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             failure_reason: pulumi.Input[Optional[_builtins.str]] = None,
             http_port: pulumi.Input[Optional[_builtins.int]] = None,
             http_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            ingress_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             networking: pulumi.Input[Optional[_builtins.str]] = None,
             ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
@@ -881,10 +1037,12 @@ class Microvm(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] created_at: The date and time the MicroVM was created.
         :param pulumi.Input[_builtins.str] current_state: The observed lifecycle state of the MicroVM, such as `running` or `paused`.
         :param pulumi.Input[_builtins.str] digitalocean_urn: The uniform resource name (URN) for the MicroVM.
+        :param pulumi.Input[Union['MicrovmEgressPolicyArgs', 'MicrovmEgressPolicyArgsDict', 'outputs.MicrovmEgressPolicy']] egress_policy: An outbound allow list. When omitted, egress is unrestricted; a MicroVM restored from a checkpoint inherits its origin's policy. Only valid with public networking, and a change forces a new MicroVM.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] environment: A map of environment variables to pass to the workload.
         :param pulumi.Input[_builtins.str] failure_reason: A description of the failure when `current_state` is `failed`.
         :param pulumi.Input[_builtins.int] http_port: The port the workload serves HTTP on.
         :param pulumi.Input[_builtins.str] http_protocol: The HTTP protocol the workload serves: `http` or `http2`.
+        :param pulumi.Input[_builtins.bool] ingress_enabled: Whether the MicroVM is created with a default public ingress URL. Defaults to `true`. Set to `false` to create the MicroVM without a default URL; additional URLs can be added later with the `MicrovmIngress` resource. This is a create-time option, so a change forces a new MicroVM.
         :param pulumi.Input[_builtins.str] name: The name of the MicroVM.
         :param pulumi.Input[_builtins.str] networking: The networking mode: `public` or `vpc`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] ports: A list of guest ports to open for ingress. Defaults to `http_port` only.
@@ -905,10 +1063,12 @@ class Microvm(pulumi.CustomResource):
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["current_state"] = current_state
         __props__.__dict__["digitalocean_urn"] = digitalocean_urn
+        __props__.__dict__["egress_policy"] = egress_policy
         __props__.__dict__["environment"] = environment
         __props__.__dict__["failure_reason"] = failure_reason
         __props__.__dict__["http_port"] = http_port
         __props__.__dict__["http_protocol"] = http_protocol
+        __props__.__dict__["ingress_enabled"] = ingress_enabled
         __props__.__dict__["name"] = name
         __props__.__dict__["networking"] = networking
         __props__.__dict__["ports"] = ports
@@ -929,10 +1089,12 @@ class Microvm(pulumi.CustomResource):
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
             current_state: pulumi.Input[Optional[_builtins.str]] = None,
             digitalocean_urn: pulumi.Input[Optional[_builtins.str]] = None,
+            egress_policy: pulumi.Input[Optional[Union['MicrovmEgressPolicyArgs', 'MicrovmEgressPolicyArgsDict', 'outputs.MicrovmEgressPolicy']]] = None,
             environment: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             failure_reason: pulumi.Input[Optional[_builtins.str]] = None,
             http_port: pulumi.Input[Optional[_builtins.int]] = None,
             http_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            ingress_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             networking: pulumi.Input[Optional[_builtins.str]] = None,
             ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
@@ -949,10 +1111,12 @@ class Microvm(pulumi.CustomResource):
         __props__["createdAt"] = created_at
         __props__["currentState"] = current_state
         __props__["digitaloceanUrn"] = digitalocean_urn
+        __props__["egressPolicy"] = egress_policy
         __props__["environment"] = environment
         __props__["failureReason"] = failure_reason
         __props__["httpPort"] = http_port
         __props__["httpProtocol"] = http_protocol
+        __props__["ingressEnabled"] = ingress_enabled
         __props__["name"] = name
         __props__["networking"] = networking
         __props__["ports"] = ports
@@ -1006,6 +1170,14 @@ class Microvm(pulumi.CustomResource):
         return pulumi.get(self, "digitalocean_urn")
 
     @_builtins.property
+    @pulumi.getter(name="egressPolicy")
+    def egress_policy(self) -> pulumi.Output['outputs.MicrovmEgressPolicy']:
+        """
+        An outbound allow list. When omitted, egress is unrestricted; a MicroVM restored from a checkpoint inherits its origin's policy. Only valid with public networking, and a change forces a new MicroVM.
+        """
+        return pulumi.get(self, "egress_policy")
+
+    @_builtins.property
     @pulumi.getter
     def environment(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
         """
@@ -1036,6 +1208,14 @@ class Microvm(pulumi.CustomResource):
         The HTTP protocol the workload serves: `http` or `http2`.
         """
         return pulumi.get(self, "http_protocol")
+
+    @_builtins.property
+    @pulumi.getter(name="ingressEnabled")
+    def ingress_enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether the MicroVM is created with a default public ingress URL. Defaults to `true`. Set to `false` to create the MicroVM without a default URL; additional URLs can be added later with the `MicrovmIngress` resource. This is a create-time option, so a change forces a new MicroVM.
+        """
+        return pulumi.get(self, "ingress_enabled")
 
     @_builtins.property
     @pulumi.getter

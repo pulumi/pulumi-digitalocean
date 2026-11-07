@@ -89,6 +89,48 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
+ * ### Restrict Outbound Traffic
+ *
+ * Set `egressPolicy` to limit where code in the MicroVM can connect. Only the
+ * listed destinations are reachable, and the policy is fixed at create, so any
+ * change forces a new MicroVM. It requires `networking = "public"`.
+ *
+ * With a policy set, direct connections out of the MicroVM are dropped. Only HTTP
+ * and HTTPS through the platform proxy to allowed destinations works, so clients
+ * must honor the injected `HTTP_PROXY` / `HTTPS_PROXY` environment. The registries
+ * needed to pull the workload image are allowed automatically.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const lockedDown = new digitalocean.Microvm("locked_down", {
+ *     name: "example-locked-down",
+ *     region: "nyc3",
+ *     size: {
+ *         cpu: 1,
+ *         memory: 2048,
+ *     },
+ *     source: {
+ *         ociRef: "docker.io/library/alpine:latest",
+ *     },
+ *     egressPolicy: {
+ *         defaultAction: "deny",
+ *         rules: [
+ *             {
+ *                 domain: "api.example.com",
+ *             },
+ *             {
+ *                 domain: "*.example.org",
+ *             },
+ *             {
+ *                 ip: "203.0.113.5",
+ *             },
+ *         ],
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * A MicroVM can be imported using its `id`, e.g.
@@ -157,6 +199,10 @@ export class Microvm extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly digitaloceanUrn: pulumi.Output<string>;
     /**
+     * An outbound allow list. When omitted, egress is unrestricted; a MicroVM restored from a checkpoint inherits its origin's policy. Only valid with public networking, and a change forces a new MicroVM.
+     */
+    declare public readonly egressPolicy: pulumi.Output<outputs.MicrovmEgressPolicy>;
+    /**
      * A map of environment variables to pass to the workload.
      */
     declare public readonly environment: pulumi.Output<{[key: string]: string} | undefined>;
@@ -172,6 +218,10 @@ export class Microvm extends pulumi.CustomResource {
      * The HTTP protocol the workload serves: `http` or `http2`.
      */
     declare public readonly httpProtocol: pulumi.Output<string>;
+    /**
+     * Whether the MicroVM is created with a default public ingress URL. Defaults to `true`. Set to `false` to create the MicroVM without a default URL; additional URLs can be added later with the `digitalocean.MicrovmIngress` resource. This is a create-time option, so a change forces a new MicroVM.
+     */
+    declare public readonly ingressEnabled: pulumi.Output<boolean | undefined>;
     /**
      * The name of the MicroVM.
      */
@@ -231,10 +281,12 @@ export class Microvm extends pulumi.CustomResource {
             resourceInputs["createdAt"] = state?.createdAt;
             resourceInputs["currentState"] = state?.currentState;
             resourceInputs["digitaloceanUrn"] = state?.digitaloceanUrn;
+            resourceInputs["egressPolicy"] = state?.egressPolicy;
             resourceInputs["environment"] = state?.environment;
             resourceInputs["failureReason"] = state?.failureReason;
             resourceInputs["httpPort"] = state?.httpPort;
             resourceInputs["httpProtocol"] = state?.httpProtocol;
+            resourceInputs["ingressEnabled"] = state?.ingressEnabled;
             resourceInputs["name"] = state?.name;
             resourceInputs["networking"] = state?.networking;
             resourceInputs["ports"] = state?.ports;
@@ -252,9 +304,11 @@ export class Microvm extends pulumi.CustomResource {
             }
             resourceInputs["autoPause"] = args?.autoPause;
             resourceInputs["autoResume"] = args?.autoResume;
+            resourceInputs["egressPolicy"] = args?.egressPolicy;
             resourceInputs["environment"] = args?.environment;
             resourceInputs["httpPort"] = args?.httpPort;
             resourceInputs["httpProtocol"] = args?.httpProtocol;
+            resourceInputs["ingressEnabled"] = args?.ingressEnabled;
             resourceInputs["name"] = args?.name;
             resourceInputs["networking"] = args?.networking;
             resourceInputs["ports"] = args?.ports;
@@ -300,6 +354,10 @@ export interface MicrovmState {
      */
     digitaloceanUrn?: pulumi.Input<string | undefined>;
     /**
+     * An outbound allow list. When omitted, egress is unrestricted; a MicroVM restored from a checkpoint inherits its origin's policy. Only valid with public networking, and a change forces a new MicroVM.
+     */
+    egressPolicy?: pulumi.Input<inputs.MicrovmEgressPolicy | undefined>;
+    /**
      * A map of environment variables to pass to the workload.
      */
     environment?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
@@ -315,6 +373,10 @@ export interface MicrovmState {
      * The HTTP protocol the workload serves: `http` or `http2`.
      */
     httpProtocol?: pulumi.Input<string | undefined>;
+    /**
+     * Whether the MicroVM is created with a default public ingress URL. Defaults to `true`. Set to `false` to create the MicroVM without a default URL; additional URLs can be added later with the `digitalocean.MicrovmIngress` resource. This is a create-time option, so a change forces a new MicroVM.
+     */
+    ingressEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the MicroVM.
      */
@@ -370,6 +432,10 @@ export interface MicrovmArgs {
      */
     autoResume?: pulumi.Input<boolean | undefined>;
     /**
+     * An outbound allow list. When omitted, egress is unrestricted; a MicroVM restored from a checkpoint inherits its origin's policy. Only valid with public networking, and a change forces a new MicroVM.
+     */
+    egressPolicy?: pulumi.Input<inputs.MicrovmEgressPolicy | undefined>;
+    /**
      * A map of environment variables to pass to the workload.
      */
     environment?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
@@ -381,6 +447,10 @@ export interface MicrovmArgs {
      * The HTTP protocol the workload serves: `http` or `http2`.
      */
     httpProtocol?: pulumi.Input<string | undefined>;
+    /**
+     * Whether the MicroVM is created with a default public ingress URL. Defaults to `true`. Set to `false` to create the MicroVM without a default URL; additional URLs can be added later with the `digitalocean.MicrovmIngress` resource. This is a create-time option, so a change forces a new MicroVM.
+     */
+    ingressEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the MicroVM.
      */

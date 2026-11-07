@@ -95,6 +95,10 @@ export interface GetKubernetesClusterResult {
      * The base URL of the API server on the Kubernetes master node.
      */
     readonly endpoint: string;
+    /**
+     * A boolean value indicating whether GPU nodes in the cluster are launched with images without GPU drivers, allowing GPU operators to manage drivers.
+     */
+    readonly gpuOperatorReady: boolean;
     readonly ha: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.

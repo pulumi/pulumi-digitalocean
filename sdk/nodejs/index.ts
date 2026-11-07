@@ -5,6 +5,21 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
+export { ActionGatewayConnectionArgs, ActionGatewayConnectionState } from "./actionGatewayConnection";
+export type ActionGatewayConnection = import("./actionGatewayConnection").ActionGatewayConnection;
+export const ActionGatewayConnection: typeof import("./actionGatewayConnection").ActionGatewayConnection = null as any;
+utilities.lazyLoad(exports, ["ActionGatewayConnection"], () => require("./actionGatewayConnection"));
+
+export { ActionGatewayMcpServerArgs, ActionGatewayMcpServerState } from "./actionGatewayMcpServer";
+export type ActionGatewayMcpServer = import("./actionGatewayMcpServer").ActionGatewayMcpServer;
+export const ActionGatewayMcpServer: typeof import("./actionGatewayMcpServer").ActionGatewayMcpServer = null as any;
+utilities.lazyLoad(exports, ["ActionGatewayMcpServer"], () => require("./actionGatewayMcpServer"));
+
+export { ActionGatewayToolbeltArgs, ActionGatewayToolbeltState } from "./actionGatewayToolbelt";
+export type ActionGatewayToolbelt = import("./actionGatewayToolbelt").ActionGatewayToolbelt;
+export const ActionGatewayToolbelt: typeof import("./actionGatewayToolbelt").ActionGatewayToolbelt = null as any;
+utilities.lazyLoad(exports, ["ActionGatewayToolbelt"], () => require("./actionGatewayToolbelt"));
+
 export { AgentPlatformAgentArgs, AgentPlatformAgentState } from "./agentPlatformAgent";
 export type AgentPlatformAgent = import("./agentPlatformAgent").AgentPlatformAgent;
 export const AgentPlatformAgent: typeof import("./agentPlatformAgent").AgentPlatformAgent = null as any;
@@ -244,6 +259,21 @@ export { GetAccountResult } from "./getAccount";
 export const getAccount: typeof import("./getAccount").getAccount = null as any;
 export const getAccountOutput: typeof import("./getAccount").getAccountOutput = null as any;
 utilities.lazyLoad(exports, ["getAccount","getAccountOutput"], () => require("./getAccount"));
+
+export { GetActionGatewayConnectionArgs, GetActionGatewayConnectionResult, GetActionGatewayConnectionOutputArgs } from "./getActionGatewayConnection";
+export const getActionGatewayConnection: typeof import("./getActionGatewayConnection").getActionGatewayConnection = null as any;
+export const getActionGatewayConnectionOutput: typeof import("./getActionGatewayConnection").getActionGatewayConnectionOutput = null as any;
+utilities.lazyLoad(exports, ["getActionGatewayConnection","getActionGatewayConnectionOutput"], () => require("./getActionGatewayConnection"));
+
+export { GetActionGatewayProvidersArgs, GetActionGatewayProvidersResult, GetActionGatewayProvidersOutputArgs } from "./getActionGatewayProviders";
+export const getActionGatewayProviders: typeof import("./getActionGatewayProviders").getActionGatewayProviders = null as any;
+export const getActionGatewayProvidersOutput: typeof import("./getActionGatewayProviders").getActionGatewayProvidersOutput = null as any;
+utilities.lazyLoad(exports, ["getActionGatewayProviders","getActionGatewayProvidersOutput"], () => require("./getActionGatewayProviders"));
+
+export { GetActionGatewayToolbeltArgs, GetActionGatewayToolbeltResult, GetActionGatewayToolbeltOutputArgs } from "./getActionGatewayToolbelt";
+export const getActionGatewayToolbelt: typeof import("./getActionGatewayToolbelt").getActionGatewayToolbelt = null as any;
+export const getActionGatewayToolbeltOutput: typeof import("./getActionGatewayToolbelt").getActionGatewayToolbeltOutput = null as any;
+utilities.lazyLoad(exports, ["getActionGatewayToolbelt","getActionGatewayToolbeltOutput"], () => require("./getActionGatewayToolbelt"));
 
 export { GetAgentPlatformAgentArgs, GetAgentPlatformAgentResult, GetAgentPlatformAgentOutputArgs } from "./getAgentPlatformAgent";
 export const getAgentPlatformAgent: typeof import("./getAgentPlatformAgent").getAgentPlatformAgent = null as any;
@@ -775,6 +805,11 @@ export type MicrovmCheckpoint = import("./microvmCheckpoint").MicrovmCheckpoint;
 export const MicrovmCheckpoint: typeof import("./microvmCheckpoint").MicrovmCheckpoint = null as any;
 utilities.lazyLoad(exports, ["MicrovmCheckpoint"], () => require("./microvmCheckpoint"));
 
+export { MicrovmIngressArgs, MicrovmIngressState } from "./microvmIngress";
+export type MicrovmIngress = import("./microvmIngress").MicrovmIngress;
+export const MicrovmIngress: typeof import("./microvmIngress").MicrovmIngress = null as any;
+utilities.lazyLoad(exports, ["MicrovmIngress"], () => require("./microvmIngress"));
+
 export { MonitorAlertArgs, MonitorAlertState } from "./monitorAlert";
 export type MonitorAlert = import("./monitorAlert").MonitorAlert;
 export const MonitorAlert: typeof import("./monitorAlert").MonitorAlert = null as any;
@@ -940,6 +975,12 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "digitalocean:index/actionGatewayConnection:ActionGatewayConnection":
+                return new ActionGatewayConnection(name, <any>undefined, { urn })
+            case "digitalocean:index/actionGatewayMcpServer:ActionGatewayMcpServer":
+                return new ActionGatewayMcpServer(name, <any>undefined, { urn })
+            case "digitalocean:index/actionGatewayToolbelt:ActionGatewayToolbelt":
+                return new ActionGatewayToolbelt(name, <any>undefined, { urn })
             case "digitalocean:index/agentPlatformAgent:AgentPlatformAgent":
                 return new AgentPlatformAgent(name, <any>undefined, { urn })
             case "digitalocean:index/agentPlatformAgentKnowledgeBaseAttachment:AgentPlatformAgentKnowledgeBaseAttachment":
@@ -1060,6 +1101,8 @@ const _module = {
                 return new Microvm(name, <any>undefined, { urn })
             case "digitalocean:index/microvmCheckpoint:MicrovmCheckpoint":
                 return new MicrovmCheckpoint(name, <any>undefined, { urn })
+            case "digitalocean:index/microvmIngress:MicrovmIngress":
+                return new MicrovmIngress(name, <any>undefined, { urn })
             case "digitalocean:index/monitorAlert:MonitorAlert":
                 return new MonitorAlert(name, <any>undefined, { urn })
             case "digitalocean:index/nfs:Nfs":
@@ -1123,6 +1166,9 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("digitalocean", "index/actionGatewayConnection", _module)
+pulumi.runtime.registerResourceModule("digitalocean", "index/actionGatewayMcpServer", _module)
+pulumi.runtime.registerResourceModule("digitalocean", "index/actionGatewayToolbelt", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/agentPlatformAgent", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/agentPlatformAgentKnowledgeBaseAttachment", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/agentPlatformAgentRoute", _module)
@@ -1183,6 +1229,7 @@ pulumi.runtime.registerResourceModule("digitalocean", "index/kubernetesNodePool"
 pulumi.runtime.registerResourceModule("digitalocean", "index/loadBalancer", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/microvm", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/microvmCheckpoint", _module)
+pulumi.runtime.registerResourceModule("digitalocean", "index/microvmIngress", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/monitorAlert", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/nfs", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/nfsAccessPoint", _module)

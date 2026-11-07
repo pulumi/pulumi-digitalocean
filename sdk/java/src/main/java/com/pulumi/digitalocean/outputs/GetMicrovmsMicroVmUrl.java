@@ -23,6 +23,11 @@ public final class GetMicrovmsMicroVmUrl {
      */
     private String hostname;
     /**
+     * @return Stable identifier of the URL
+     * 
+     */
+    private String id;
+    /**
      * @return Guest port this URL forwards to
      * 
      */
@@ -47,6 +52,13 @@ public final class GetMicrovmsMicroVmUrl {
      */
     public String hostname() {
         return this.hostname;
+    }
+    /**
+     * @return Stable identifier of the URL
+     * 
+     */
+    public String id() {
+        return this.id;
     }
     /**
      * @return Guest port this URL forwards to
@@ -74,6 +86,7 @@ public final class GetMicrovmsMicroVmUrl {
     public static final class Builder {
         private Boolean default_;
         private String hostname;
+        private String id;
         private Integer port;
         private String status;
         public Builder() {}
@@ -81,6 +94,7 @@ public final class GetMicrovmsMicroVmUrl {
     	      Objects.requireNonNull(defaults);
     	      this.default_ = defaults.default_;
     	      this.hostname = defaults.hostname;
+    	      this.id = defaults.id;
     	      this.port = defaults.port;
     	      this.status = defaults.status;
         }
@@ -99,6 +113,14 @@ public final class GetMicrovmsMicroVmUrl {
               throw new MissingRequiredPropertyException("GetMicrovmsMicroVmUrl", "hostname");
             }
             this.hostname = hostname;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder id(String id) {
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetMicrovmsMicroVmUrl", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -121,6 +143,7 @@ public final class GetMicrovmsMicroVmUrl {
             final var _resultValue = new GetMicrovmsMicroVmUrl();
             _resultValue.default_ = default_;
             _resultValue.hostname = hostname;
+            _resultValue.id = id;
             _resultValue.port = port;
             _resultValue.status = status;
             return _resultValue;

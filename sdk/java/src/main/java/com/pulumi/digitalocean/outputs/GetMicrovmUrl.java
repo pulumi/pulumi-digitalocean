@@ -23,6 +23,11 @@ public final class GetMicrovmUrl {
      */
     private String hostname;
     /**
+     * @return The ID of the MicroVM.
+     * 
+     */
+    private String id;
+    /**
      * @return The guest port the URL forwards to.
      * 
      */
@@ -47,6 +52,13 @@ public final class GetMicrovmUrl {
      */
     public String hostname() {
         return this.hostname;
+    }
+    /**
+     * @return The ID of the MicroVM.
+     * 
+     */
+    public String id() {
+        return this.id;
     }
     /**
      * @return The guest port the URL forwards to.
@@ -74,6 +86,7 @@ public final class GetMicrovmUrl {
     public static final class Builder {
         private Boolean default_;
         private String hostname;
+        private String id;
         private Integer port;
         private String status;
         public Builder() {}
@@ -81,6 +94,7 @@ public final class GetMicrovmUrl {
     	      Objects.requireNonNull(defaults);
     	      this.default_ = defaults.default_;
     	      this.hostname = defaults.hostname;
+    	      this.id = defaults.id;
     	      this.port = defaults.port;
     	      this.status = defaults.status;
         }
@@ -99,6 +113,14 @@ public final class GetMicrovmUrl {
               throw new MissingRequiredPropertyException("GetMicrovmUrl", "hostname");
             }
             this.hostname = hostname;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder id(String id) {
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetMicrovmUrl", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -121,6 +143,7 @@ public final class GetMicrovmUrl {
             final var _resultValue = new GetMicrovmUrl();
             _resultValue.default_ = default_;
             _resultValue.hostname = hostname;
+            _resultValue.id = id;
             _resultValue.port = port;
             _resultValue.status = status;
             return _resultValue;

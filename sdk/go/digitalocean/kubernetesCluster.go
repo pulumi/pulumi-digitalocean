@@ -296,6 +296,8 @@ type KubernetesCluster struct {
 	DestroyAllAssociatedResources pulumi.BoolPtrOutput `pulumi:"destroyAllAssociatedResources"`
 	// The base URL of the API server on the Kubernetes master node.
 	Endpoint pulumi.StringOutput `pulumi:"endpoint"`
+	// Enable/disable launching GPU nodes in the cluster with images without GPU drivers, allowing GPU operators to manage drivers. Mutually exclusive with other GPU-related cluster options, such as `nvidiaGpuDraDriver` and `amdGpuDraDriver`. Default: false
+	GpuOperatorReady pulumi.BoolPtrOutput `pulumi:"gpuOperatorReady"`
 	// Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: true (for 1.36.0 and later)
 	Ha pulumi.BoolOutput `pulumi:"ha"`
 	// The public IPv4 address of the Kubernetes master node. This will not be set if high availability is configured on the cluster (v1.21+)
@@ -415,6 +417,8 @@ type kubernetesClusterState struct {
 	DestroyAllAssociatedResources *bool `pulumi:"destroyAllAssociatedResources"`
 	// The base URL of the API server on the Kubernetes master node.
 	Endpoint *string `pulumi:"endpoint"`
+	// Enable/disable launching GPU nodes in the cluster with images without GPU drivers, allowing GPU operators to manage drivers. Mutually exclusive with other GPU-related cluster options, such as `nvidiaGpuDraDriver` and `amdGpuDraDriver`. Default: false
+	GpuOperatorReady *bool `pulumi:"gpuOperatorReady"`
 	// Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: true (for 1.36.0 and later)
 	Ha *bool `pulumi:"ha"`
 	// The public IPv4 address of the Kubernetes master node. This will not be set if high availability is configured on the cluster (v1.21+)
@@ -492,6 +496,8 @@ type KubernetesClusterState struct {
 	DestroyAllAssociatedResources pulumi.BoolPtrInput
 	// The base URL of the API server on the Kubernetes master node.
 	Endpoint pulumi.StringPtrInput
+	// Enable/disable launching GPU nodes in the cluster with images without GPU drivers, allowing GPU operators to manage drivers. Mutually exclusive with other GPU-related cluster options, such as `nvidiaGpuDraDriver` and `amdGpuDraDriver`. Default: false
+	GpuOperatorReady pulumi.BoolPtrInput
 	// Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: true (for 1.36.0 and later)
 	Ha pulumi.BoolPtrInput
 	// The public IPv4 address of the Kubernetes master node. This will not be set if high availability is configured on the cluster (v1.21+)
@@ -573,6 +579,8 @@ type kubernetesClusterArgs struct {
 	CorednsAutoscaler *KubernetesClusterCorednsAutoscaler `pulumi:"corednsAutoscaler"`
 	// **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
 	DestroyAllAssociatedResources *bool `pulumi:"destroyAllAssociatedResources"`
+	// Enable/disable launching GPU nodes in the cluster with images without GPU drivers, allowing GPU operators to manage drivers. Mutually exclusive with other GPU-related cluster options, such as `nvidiaGpuDraDriver` and `amdGpuDraDriver`. Default: false
+	GpuOperatorReady *bool `pulumi:"gpuOperatorReady"`
 	// Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: true (for 1.36.0 and later)
 	Ha *bool `pulumi:"ha"`
 	// Enable/disable isolated worker nodes for the cluster. When enabled, each worker node runs on dedicated hardware. This can only be set at creation time. The cluster's VPC must have a NAT gateway attached. Default: false
@@ -637,6 +645,8 @@ type KubernetesClusterArgs struct {
 	CorednsAutoscaler KubernetesClusterCorednsAutoscalerPtrInput
 	// **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
 	DestroyAllAssociatedResources pulumi.BoolPtrInput
+	// Enable/disable launching GPU nodes in the cluster with images without GPU drivers, allowing GPU operators to manage drivers. Mutually exclusive with other GPU-related cluster options, such as `nvidiaGpuDraDriver` and `amdGpuDraDriver`. Default: false
+	GpuOperatorReady pulumi.BoolPtrInput
 	// Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: true (for 1.36.0 and later)
 	Ha pulumi.BoolPtrInput
 	// Enable/disable isolated worker nodes for the cluster. When enabled, each worker node runs on dedicated hardware. This can only be set at creation time. The cluster's VPC must have a NAT gateway attached. Default: false
@@ -830,6 +840,11 @@ func (o KubernetesClusterOutput) DestroyAllAssociatedResources() pulumi.BoolPtrO
 // The base URL of the API server on the Kubernetes master node.
 func (o KubernetesClusterOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v *KubernetesCluster) pulumi.StringOutput { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+// Enable/disable launching GPU nodes in the cluster with images without GPU drivers, allowing GPU operators to manage drivers. Mutually exclusive with other GPU-related cluster options, such as `nvidiaGpuDraDriver` and `amdGpuDraDriver`. Default: false
+func (o KubernetesClusterOutput) GpuOperatorReady() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *KubernetesCluster) pulumi.BoolPtrOutput { return v.GpuOperatorReady }).(pulumi.BoolPtrOutput)
 }
 
 // Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: true (for 1.36.0 and later)

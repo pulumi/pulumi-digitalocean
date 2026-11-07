@@ -25,6 +25,12 @@ namespace Pulumi.DigitalOcean.Inputs
         public Input<string>? Hostname { get; set; }
 
         /// <summary>
+        /// The stable identifier of the URL.
+        /// </summary>
+        [Input("id")]
+        public Input<string>? Id { get; set; }
+
+        /// <summary>
         /// The guest port the URL forwards to.
         /// </summary>
         [Input("port")]

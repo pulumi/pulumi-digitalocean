@@ -100,15 +100,18 @@ type LookupMicrovmResult struct {
 	// The date and time the MicroVM was created.
 	CreatedAt string `pulumi:"createdAt"`
 	// The observed lifecycle state of the MicroVM, such as `running` or `paused`.
-	CurrentState string            `pulumi:"currentState"`
-	Environment  map[string]string `pulumi:"environment"`
+	CurrentState string `pulumi:"currentState"`
+	// The outbound allow list set at create. Empty when egress is unrestricted:
+	EgressPolicies []GetMicrovmEgressPolicy `pulumi:"egressPolicies"`
+	Environment    map[string]string        `pulumi:"environment"`
 	// A description of the failure when `currentState` is `failed`.
 	FailureReason string `pulumi:"failureReason"`
 	HttpPort      int    `pulumi:"httpPort"`
 	// The HTTP protocol the workload serves: `http` or `http2`.
 	HttpProtocol string `pulumi:"httpProtocol"`
 	// The ID of the MicroVM.
-	Id string `pulumi:"id"`
+	Id             string `pulumi:"id"`
+	IngressEnabled bool   `pulumi:"ingressEnabled"`
 	// The name of the MicroVM.
 	Name string `pulumi:"name"`
 	// The networking mode: `public` or `vpc`.
@@ -183,6 +186,11 @@ func (o LookupMicrovmResultOutput) CurrentState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMicrovmResult) string { return v.CurrentState }).(pulumi.StringOutput)
 }
 
+// The outbound allow list set at create. Empty when egress is unrestricted:
+func (o LookupMicrovmResultOutput) EgressPolicies() GetMicrovmEgressPolicyArrayOutput {
+	return o.ApplyT(func(v LookupMicrovmResult) []GetMicrovmEgressPolicy { return v.EgressPolicies }).(GetMicrovmEgressPolicyArrayOutput)
+}
+
 func (o LookupMicrovmResultOutput) Environment() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupMicrovmResult) map[string]string { return v.Environment }).(pulumi.StringMapOutput)
 }
@@ -204,6 +212,10 @@ func (o LookupMicrovmResultOutput) HttpProtocol() pulumi.StringOutput {
 // The ID of the MicroVM.
 func (o LookupMicrovmResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMicrovmResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupMicrovmResultOutput) IngressEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupMicrovmResult) bool { return v.IngressEnabled }).(pulumi.BoolOutput)
 }
 
 // The name of the MicroVM.
