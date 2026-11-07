@@ -261,6 +261,10 @@ export class KubernetesCluster extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly endpoint: pulumi.Output<string>;
     /**
+     * Enable/disable launching GPU nodes in the cluster with images without GPU drivers, allowing GPU operators to manage drivers. Mutually exclusive with other GPU-related cluster options, such as `nvidiaGpuDraDriver` and `amdGpuDraDriver`. Default: false
+     */
+    declare public readonly gpuOperatorReady: pulumi.Output<boolean | undefined>;
+    /**
      * Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: true (for 1.36.0 and later)
      */
     declare public readonly ha: pulumi.Output<boolean>;
@@ -386,6 +390,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
             resourceInputs["createdAt"] = state?.createdAt;
             resourceInputs["destroyAllAssociatedResources"] = state?.destroyAllAssociatedResources;
             resourceInputs["endpoint"] = state?.endpoint;
+            resourceInputs["gpuOperatorReady"] = state?.gpuOperatorReady;
             resourceInputs["ha"] = state?.ha;
             resourceInputs["ipv4Address"] = state?.ipv4Address;
             resourceInputs["isolatedWorkers"] = state?.isolatedWorkers;
@@ -431,6 +436,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
             resourceInputs["controlPlaneFirewall"] = args?.controlPlaneFirewall;
             resourceInputs["corednsAutoscaler"] = args?.corednsAutoscaler;
             resourceInputs["destroyAllAssociatedResources"] = args?.destroyAllAssociatedResources;
+            resourceInputs["gpuOperatorReady"] = args?.gpuOperatorReady;
             resourceInputs["ha"] = args?.ha;
             resourceInputs["isolatedWorkers"] = args?.isolatedWorkers;
             resourceInputs["kubeconfigExpireSeconds"] = args?.kubeconfigExpireSeconds;
@@ -519,6 +525,10 @@ export interface KubernetesClusterState {
      * The base URL of the API server on the Kubernetes master node.
      */
     endpoint?: pulumi.Input<string | undefined>;
+    /**
+     * Enable/disable launching GPU nodes in the cluster with images without GPU drivers, allowing GPU operators to manage drivers. Mutually exclusive with other GPU-related cluster options, such as `nvidiaGpuDraDriver` and `amdGpuDraDriver`. Default: false
+     */
+    gpuOperatorReady?: pulumi.Input<boolean | undefined>;
     /**
      * Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: true (for 1.36.0 and later)
      */
@@ -661,6 +671,10 @@ export interface KubernetesClusterArgs {
      * **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
      */
     destroyAllAssociatedResources?: pulumi.Input<boolean | undefined>;
+    /**
+     * Enable/disable launching GPU nodes in the cluster with images without GPU drivers, allowing GPU operators to manage drivers. Mutually exclusive with other GPU-related cluster options, such as `nvidiaGpuDraDriver` and `amdGpuDraDriver`. Default: false
+     */
+    gpuOperatorReady?: pulumi.Input<boolean | undefined>;
     /**
      * Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: true (for 1.36.0 and later)
      */

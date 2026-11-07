@@ -24,6 +24,11 @@ public final class MicrovmUrl {
      */
     private @Nullable String hostname;
     /**
+     * @return The stable identifier of the URL.
+     * 
+     */
+    private @Nullable String id;
+    /**
      * @return The guest port the URL forwards to.
      * 
      */
@@ -48,6 +53,13 @@ public final class MicrovmUrl {
      */
     public Optional<String> hostname() {
         return Optional.ofNullable(this.hostname);
+    }
+    /**
+     * @return The stable identifier of the URL.
+     * 
+     */
+    public Optional<String> id() {
+        return Optional.ofNullable(this.id);
     }
     /**
      * @return The guest port the URL forwards to.
@@ -75,6 +87,7 @@ public final class MicrovmUrl {
     public static final class Builder {
         private @Nullable Boolean default_;
         private @Nullable String hostname;
+        private @Nullable String id;
         private @Nullable Integer port;
         private @Nullable String status;
         public Builder() {}
@@ -82,6 +95,7 @@ public final class MicrovmUrl {
     	      Objects.requireNonNull(defaults);
     	      this.default_ = defaults.default_;
     	      this.hostname = defaults.hostname;
+    	      this.id = defaults.id;
     	      this.port = defaults.port;
     	      this.status = defaults.status;
         }
@@ -96,6 +110,12 @@ public final class MicrovmUrl {
         public Builder hostname(@Nullable String hostname) {
 
             this.hostname = hostname;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder id(@Nullable String id) {
+
+            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -114,6 +134,7 @@ public final class MicrovmUrl {
             final var _resultValue = new MicrovmUrl();
             _resultValue.default_ = default_;
             _resultValue.hostname = hostname;
+            _resultValue.id = id;
             _resultValue.port = port;
             _resultValue.status = status;
             return _resultValue;

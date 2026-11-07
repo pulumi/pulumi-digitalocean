@@ -19,6 +19,9 @@
         "skipLibCheck": true
     },
     "files": [
+        "actionGatewayConnection.ts",
+        "actionGatewayMcpServer.ts",
+        "actionGatewayToolbelt.ts",
         "agentPlatformAgent.ts",
         "agentPlatformAgentKnowledgeBaseAttachment.ts",
         "agentPlatformAgentRoute.ts",
@@ -69,6 +72,9 @@
         "floatingIp.ts",
         "floatingIpAssignment.ts",
         "getAccount.ts",
+        "getActionGatewayConnection.ts",
+        "getActionGatewayProviders.ts",
+        "getActionGatewayToolbelt.ts",
         "getAgentPlatformAgent.ts",
         "getAgentPlatformAgentVersions.ts",
         "getAgentPlatformAgents.ts",
@@ -176,6 +182,7 @@
         "loadBalancer.ts",
         "microvm.ts",
         "microvmCheckpoint.ts",
+        "microvmIngress.ts",
         "monitorAlert.ts",
         "nfs.ts",
         "nfsAccessPoint.ts",

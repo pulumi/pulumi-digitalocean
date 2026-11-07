@@ -48,6 +48,21 @@ public final class MicrovmUrlArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The stable identifier of the URL.
+     * 
+     */
+    @Import(name="id")
+    private @Nullable Output<String> id;
+
+    /**
+     * @return The stable identifier of the URL.
+     * 
+     */
+    public Optional<Output<String>> id() {
+        return Optional.ofNullable(this.id);
+    }
+
+    /**
      * The guest port the URL forwards to.
      * 
      */
@@ -82,6 +97,7 @@ public final class MicrovmUrlArgs extends com.pulumi.resources.ResourceArgs {
     private MicrovmUrlArgs(MicrovmUrlArgs $) {
         this.default_ = $.default_;
         this.hostname = $.hostname;
+        this.id = $.id;
         this.port = $.port;
         this.status = $.status;
     }
@@ -144,6 +160,27 @@ public final class MicrovmUrlArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder hostname(String hostname) {
             return hostname(Output.of(hostname));
+        }
+
+        /**
+         * @param id The stable identifier of the URL.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder id(@Nullable Output<String> id) {
+            $.id = id;
+            return this;
+        }
+
+        /**
+         * @param id The stable identifier of the URL.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder id(String id) {
+            return id(Output.of(id));
         }
 
         /**

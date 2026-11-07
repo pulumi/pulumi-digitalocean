@@ -6,6 +6,7 @@ package com.pulumi.digitalocean;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.digitalocean.inputs.MicrovmAutoPauseArgs;
+import com.pulumi.digitalocean.inputs.MicrovmEgressPolicyArgs;
 import com.pulumi.digitalocean.inputs.MicrovmSizeArgs;
 import com.pulumi.digitalocean.inputs.MicrovmSourceArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -54,6 +55,21 @@ public final class MicrovmArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * An outbound allow list. When omitted, egress is unrestricted; a MicroVM restored from a checkpoint inherits its origin&#39;s policy. Only valid with public networking, and a change forces a new MicroVM.
+     * 
+     */
+    @Import(name="egressPolicy")
+    private @Nullable Output<MicrovmEgressPolicyArgs> egressPolicy;
+
+    /**
+     * @return An outbound allow list. When omitted, egress is unrestricted; a MicroVM restored from a checkpoint inherits its origin&#39;s policy. Only valid with public networking, and a change forces a new MicroVM.
+     * 
+     */
+    public Optional<Output<MicrovmEgressPolicyArgs>> egressPolicy() {
+        return Optional.ofNullable(this.egressPolicy);
+    }
+
+    /**
      * A map of environment variables to pass to the workload.
      * 
      */
@@ -96,6 +112,21 @@ public final class MicrovmArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> httpProtocol() {
         return Optional.ofNullable(this.httpProtocol);
+    }
+
+    /**
+     * Whether the MicroVM is created with a default public ingress URL. Defaults to `true`. Set to `false` to create the MicroVM without a default URL; additional URLs can be added later with the `digitalocean.MicrovmIngress` resource. This is a create-time option, so a change forces a new MicroVM.
+     * 
+     */
+    @Import(name="ingressEnabled")
+    private @Nullable Output<Boolean> ingressEnabled;
+
+    /**
+     * @return Whether the MicroVM is created with a default public ingress URL. Defaults to `true`. Set to `false` to create the MicroVM without a default URL; additional URLs can be added later with the `digitalocean.MicrovmIngress` resource. This is a create-time option, so a change forces a new MicroVM.
+     * 
+     */
+    public Optional<Output<Boolean>> ingressEnabled() {
+        return Optional.ofNullable(this.ingressEnabled);
     }
 
     /**
@@ -238,9 +269,11 @@ public final class MicrovmArgs extends com.pulumi.resources.ResourceArgs {
     private MicrovmArgs(MicrovmArgs $) {
         this.autoPause = $.autoPause;
         this.autoResume = $.autoResume;
+        this.egressPolicy = $.egressPolicy;
         this.environment = $.environment;
         this.httpPort = $.httpPort;
         this.httpProtocol = $.httpProtocol;
+        this.ingressEnabled = $.ingressEnabled;
         this.name = $.name;
         this.networking = $.networking;
         this.ports = $.ports;
@@ -313,6 +346,27 @@ public final class MicrovmArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param egressPolicy An outbound allow list. When omitted, egress is unrestricted; a MicroVM restored from a checkpoint inherits its origin&#39;s policy. Only valid with public networking, and a change forces a new MicroVM.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder egressPolicy(@Nullable Output<MicrovmEgressPolicyArgs> egressPolicy) {
+            $.egressPolicy = egressPolicy;
+            return this;
+        }
+
+        /**
+         * @param egressPolicy An outbound allow list. When omitted, egress is unrestricted; a MicroVM restored from a checkpoint inherits its origin&#39;s policy. Only valid with public networking, and a change forces a new MicroVM.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder egressPolicy(MicrovmEgressPolicyArgs egressPolicy) {
+            return egressPolicy(Output.of(egressPolicy));
+        }
+
+        /**
          * @param environment A map of environment variables to pass to the workload.
          * 
          * @return builder
@@ -373,6 +427,27 @@ public final class MicrovmArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder httpProtocol(String httpProtocol) {
             return httpProtocol(Output.of(httpProtocol));
+        }
+
+        /**
+         * @param ingressEnabled Whether the MicroVM is created with a default public ingress URL. Defaults to `true`. Set to `false` to create the MicroVM without a default URL; additional URLs can be added later with the `digitalocean.MicrovmIngress` resource. This is a create-time option, so a change forces a new MicroVM.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ingressEnabled(@Nullable Output<Boolean> ingressEnabled) {
+            $.ingressEnabled = ingressEnabled;
+            return this;
+        }
+
+        /**
+         * @param ingressEnabled Whether the MicroVM is created with a default public ingress URL. Defaults to `true`. Set to `false` to create the MicroVM without a default URL; additional URLs can be added later with the `digitalocean.MicrovmIngress` resource. This is a create-time option, so a change forces a new MicroVM.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ingressEnabled(Boolean ingressEnabled) {
+            return ingressEnabled(Output.of(ingressEnabled));
         }
 
         /**

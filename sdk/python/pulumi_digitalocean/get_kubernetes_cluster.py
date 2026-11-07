@@ -28,7 +28,7 @@ class GetKubernetesClusterResult:
     """
     A collection of values returned by getKubernetesCluster.
     """
-    def __init__(__self__, amd_gpu_device_metrics_exporter_plugin=None, amd_gpu_device_plugin=None, amd_gpu_dra_driver=None, auto_upgrade=None, cluster_autoscaler_configurations=None, cluster_subnet=None, control_plane_firewalls=None, coredns_autoscaler=None, created_at=None, endpoint=None, ha=None, id=None, ipv4_address=None, isolated_workers=None, kube_configs=None, kubeconfig_expire_seconds=None, maintenance_policies=None, name=None, nfs_csi_plugin=None, node_pools=None, nvidia_gpu_device_plugin=None, nvidia_gpu_dra_driver=None, p2p_oci_registry_plugin=None, rdma_shared_device_plugin=None, region=None, routing_agent=None, service_subnet=None, ssos=None, status=None, surge_upgrade=None, tags=None, updated_at=None, urn=None, version=None, vpc_uuid=None, worker_subnet_uuid=None):
+    def __init__(__self__, amd_gpu_device_metrics_exporter_plugin=None, amd_gpu_device_plugin=None, amd_gpu_dra_driver=None, auto_upgrade=None, cluster_autoscaler_configurations=None, cluster_subnet=None, control_plane_firewalls=None, coredns_autoscaler=None, created_at=None, endpoint=None, gpu_operator_ready=None, ha=None, id=None, ipv4_address=None, isolated_workers=None, kube_configs=None, kubeconfig_expire_seconds=None, maintenance_policies=None, name=None, nfs_csi_plugin=None, node_pools=None, nvidia_gpu_device_plugin=None, nvidia_gpu_dra_driver=None, p2p_oci_registry_plugin=None, rdma_shared_device_plugin=None, region=None, routing_agent=None, service_subnet=None, ssos=None, status=None, surge_upgrade=None, tags=None, updated_at=None, urn=None, version=None, vpc_uuid=None, worker_subnet_uuid=None):
         if amd_gpu_device_metrics_exporter_plugin and not isinstance(amd_gpu_device_metrics_exporter_plugin, dict):
             raise TypeError("Expected argument 'amd_gpu_device_metrics_exporter_plugin' to be a dict")
         pulumi.set(__self__, "amd_gpu_device_metrics_exporter_plugin", amd_gpu_device_metrics_exporter_plugin)
@@ -59,6 +59,9 @@ class GetKubernetesClusterResult:
         if endpoint and not isinstance(endpoint, str):
             raise TypeError("Expected argument 'endpoint' to be a str")
         pulumi.set(__self__, "endpoint", endpoint)
+        if gpu_operator_ready and not isinstance(gpu_operator_ready, bool):
+            raise TypeError("Expected argument 'gpu_operator_ready' to be a bool")
+        pulumi.set(__self__, "gpu_operator_ready", gpu_operator_ready)
         if ha and not isinstance(ha, bool):
             raise TypeError("Expected argument 'ha' to be a bool")
         pulumi.set(__self__, "ha", ha)
@@ -199,6 +202,14 @@ class GetKubernetesClusterResult:
         The base URL of the API server on the Kubernetes master node.
         """
         return pulumi.get(self, "endpoint")
+
+    @_builtins.property
+    @pulumi.getter(name="gpuOperatorReady")
+    def gpu_operator_ready(self) -> _builtins.bool:
+        """
+        A boolean value indicating whether GPU nodes in the cluster are launched with images without GPU drivers, allowing GPU operators to manage drivers.
+        """
+        return pulumi.get(self, "gpu_operator_ready")
 
     @_builtins.property
     @pulumi.getter
@@ -392,6 +403,7 @@ class AwaitableGetKubernetesClusterResult(GetKubernetesClusterResult):
             coredns_autoscaler=self.coredns_autoscaler,
             created_at=self.created_at,
             endpoint=self.endpoint,
+            gpu_operator_ready=self.gpu_operator_ready,
             ha=self.ha,
             id=self.id,
             ipv4_address=self.ipv4_address,
@@ -482,6 +494,7 @@ def get_kubernetes_cluster(amd_gpu_device_metrics_exporter_plugin: Optional[Unio
         coredns_autoscaler=pulumi.get(__ret__, 'coredns_autoscaler'),
         created_at=pulumi.get(__ret__, 'created_at'),
         endpoint=pulumi.get(__ret__, 'endpoint'),
+        gpu_operator_ready=pulumi.get(__ret__, 'gpu_operator_ready'),
         ha=pulumi.get(__ret__, 'ha'),
         id=pulumi.get(__ret__, 'id'),
         ipv4_address=pulumi.get(__ret__, 'ipv4_address'),
@@ -569,6 +582,7 @@ def get_kubernetes_cluster_output(amd_gpu_device_metrics_exporter_plugin: pulumi
         coredns_autoscaler=pulumi.get(__response__, 'coredns_autoscaler'),
         created_at=pulumi.get(__response__, 'created_at'),
         endpoint=pulumi.get(__response__, 'endpoint'),
+        gpu_operator_ready=pulumi.get(__response__, 'gpu_operator_ready'),
         ha=pulumi.get(__response__, 'ha'),
         id=pulumi.get(__response__, 'id'),
         ipv4_address=pulumi.get(__response__, 'ipv4_address'),

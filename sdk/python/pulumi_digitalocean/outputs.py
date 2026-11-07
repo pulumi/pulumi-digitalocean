@@ -17,6 +17,10 @@ from . import outputs
 from ._enums import *
 
 __all__ = [
+    'ActionGatewayConnectionAuthorization',
+    'ActionGatewayConnectionVpc',
+    'ActionGatewayConnectionVpcDestination',
+    'ActionGatewayMcpServerDiscoveredTool',
     'AgentPlatformAgentAgentGuardrail',
     'AgentPlatformAgentAnthropicApiKey',
     'AgentPlatformAgentApiKey',
@@ -266,6 +270,8 @@ __all__ = [
     'LoadBalancerStickySessions',
     'MicrovmAutoPause',
     'MicrovmCheckpointSize',
+    'MicrovmEgressPolicy',
+    'MicrovmEgressPolicyRule',
     'MicrovmSize',
     'MicrovmSource',
     'MicrovmUrl',
@@ -287,6 +293,13 @@ __all__ = [
     'VpcNatGatewayEgress',
     'VpcNatGatewayEgressPublicGateway',
     'VpcNatGatewayVpc',
+    'GetActionGatewayConnectionAuthorizationResult',
+    'GetActionGatewayConnectionVpcResult',
+    'GetActionGatewayConnectionVpcDestinationResult',
+    'GetActionGatewayProvidersFilterResult',
+    'GetActionGatewayProvidersProviderResult',
+    'GetActionGatewayProvidersProviderConnectionParameterResult',
+    'GetActionGatewayProvidersSortResult',
     'GetAgentPlatformAgentAgentGuardrailResult',
     'GetAgentPlatformAgentAnthropicApiKeyResult',
     'GetAgentPlatformAgentApiKeyResult',
@@ -763,12 +776,16 @@ __all__ = [
     'GetMicrovmCheckpointsCheckpointSizeResult',
     'GetMicrovmCheckpointsFilterResult',
     'GetMicrovmCheckpointsSortResult',
+    'GetMicrovmEgressPolicyResult',
+    'GetMicrovmEgressPolicyRuleResult',
     'GetMicrovmSizeResult',
     'GetMicrovmSourceResult',
     'GetMicrovmUrlResult',
     'GetMicrovmsFilterResult',
     'GetMicrovmsMicroVmResult',
     'GetMicrovmsMicroVmAutoPauseResult',
+    'GetMicrovmsMicroVmEgressPolicyResult',
+    'GetMicrovmsMicroVmEgressPolicyRuleResult',
     'GetMicrovmsMicroVmSizeResult',
     'GetMicrovmsMicroVmSourceResult',
     'GetMicrovmsMicroVmUrlResult',
@@ -805,6 +822,296 @@ __all__ = [
     'GetVpcNatGatewayEgressPublicGatewayResult',
     'GetVpcNatGatewayVpcResult',
 ]
+
+@pulumi.output_type
+class ActionGatewayConnectionAuthorization(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectUrl":
+            suggest = "connect_url"
+        elif key == "expiresAt":
+            suggest = "expires_at"
+        elif key == "verificationCode":
+            suggest = "verification_code"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ActionGatewayConnectionAuthorization. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ActionGatewayConnectionAuthorization.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ActionGatewayConnectionAuthorization.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 connect_url: Optional[_builtins.str] = None,
+                 expires_at: Optional[_builtins.str] = None,
+                 status: Optional[_builtins.str] = None,
+                 verification_code: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str connect_url: (Sensitive) The URL the account holder opens to authorize the provider. Share it only with the intended account holder.
+        :param _builtins.str expires_at: When the authorization link expires.
+        :param _builtins.str status: The status of the authorization.
+        :param _builtins.str verification_code: (Sensitive) The code the account holder confirms during authorization.
+        """
+        if connect_url is not None:
+            pulumi.set(__self__, "connect_url", connect_url)
+        if expires_at is not None:
+            pulumi.set(__self__, "expires_at", expires_at)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if verification_code is not None:
+            pulumi.set(__self__, "verification_code", verification_code)
+
+    @_builtins.property
+    @pulumi.getter(name="connectUrl")
+    def connect_url(self) -> Optional[_builtins.str]:
+        """
+        (Sensitive) The URL the account holder opens to authorize the provider. Share it only with the intended account holder.
+        """
+        return pulumi.get(self, "connect_url")
+
+    @_builtins.property
+    @pulumi.getter(name="expiresAt")
+    def expires_at(self) -> Optional[_builtins.str]:
+        """
+        When the authorization link expires.
+        """
+        return pulumi.get(self, "expires_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> Optional[_builtins.str]:
+        """
+        The status of the authorization.
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter(name="verificationCode")
+    def verification_code(self) -> Optional[_builtins.str]:
+        """
+        (Sensitive) The code the account holder confirms during authorization.
+        """
+        return pulumi.get(self, "verification_code")
+
+
+@pulumi.output_type
+class ActionGatewayConnectionVpc(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "vpcUuid":
+            suggest = "vpc_uuid"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ActionGatewayConnectionVpc. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ActionGatewayConnectionVpc.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ActionGatewayConnectionVpc.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 destinations: Sequence['outputs.ActionGatewayConnectionVpcDestination'],
+                 vpc_uuid: _builtins.str,
+                 region: Optional[_builtins.str] = None):
+        """
+        :param Sequence['ActionGatewayConnectionVpcDestinationArgs'] destinations: One or more private hosts the connection's calls may reach.
+        :param _builtins.str vpc_uuid: The UUID of a VPC owned by your team.
+        :param _builtins.str region: The region of the connection's VPC.
+        """
+        pulumi.set(__self__, "destinations", destinations)
+        pulumi.set(__self__, "vpc_uuid", vpc_uuid)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter
+    def destinations(self) -> Sequence['outputs.ActionGatewayConnectionVpcDestination']:
+        """
+        One or more private hosts the connection's calls may reach.
+        """
+        return pulumi.get(self, "destinations")
+
+    @_builtins.property
+    @pulumi.getter(name="vpcUuid")
+    def vpc_uuid(self) -> _builtins.str:
+        """
+        The UUID of a VPC owned by your team.
+        """
+        return pulumi.get(self, "vpc_uuid")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[_builtins.str]:
+        """
+        The region of the connection's VPC.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class ActionGatewayConnectionVpcDestination(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedIpCidrs":
+            suggest = "allowed_ip_cidrs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ActionGatewayConnectionVpcDestination. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ActionGatewayConnectionVpcDestination.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ActionGatewayConnectionVpcDestination.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 host: _builtins.str,
+                 port: _builtins.int,
+                 allowed_ip_cidrs: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str host: A host name or IP address that resolves only to private addresses.
+        :param _builtins.int port: The destination port.
+        :param Sequence[_builtins.str] allowed_ip_cidrs: CIDR ranges that every address the host resolves to must fall within.
+        """
+        pulumi.set(__self__, "host", host)
+        pulumi.set(__self__, "port", port)
+        if allowed_ip_cidrs is not None:
+            pulumi.set(__self__, "allowed_ip_cidrs", allowed_ip_cidrs)
+
+    @_builtins.property
+    @pulumi.getter
+    def host(self) -> _builtins.str:
+        """
+        A host name or IP address that resolves only to private addresses.
+        """
+        return pulumi.get(self, "host")
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> _builtins.int:
+        """
+        The destination port.
+        """
+        return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter(name="allowedIpCidrs")
+    def allowed_ip_cidrs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        CIDR ranges that every address the host resolves to must fall within.
+        """
+        return pulumi.get(self, "allowed_ip_cidrs")
+
+
+@pulumi.output_type
+class ActionGatewayMcpServerDiscoveredTool(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "quarantineReason":
+            suggest = "quarantine_reason"
+        elif key == "toolSlug":
+            suggest = "tool_slug"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ActionGatewayMcpServerDiscoveredTool. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ActionGatewayMcpServerDiscoveredTool.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ActionGatewayMcpServerDiscoveredTool.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 description: Optional[_builtins.str] = None,
+                 enabled: Optional[_builtins.bool] = None,
+                 name: Optional[_builtins.str] = None,
+                 quarantine_reason: Optional[_builtins.str] = None,
+                 quarantined: Optional[_builtins.bool] = None,
+                 tool_slug: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str description: The description shown on the server's catalog card, at most 1024 characters.
+        :param _builtins.bool enabled: Whether the tool is enabled.
+        :param _builtins.str name: The tool's name on the server.
+        :param _builtins.str quarantine_reason: Why the tool is quarantined.
+        :param _builtins.bool quarantined: Whether the tool is quarantined.
+        :param _builtins.str tool_slug: The tool's catalog slug, used in `enabled_tools`.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if quarantine_reason is not None:
+            pulumi.set(__self__, "quarantine_reason", quarantine_reason)
+        if quarantined is not None:
+            pulumi.set(__self__, "quarantined", quarantined)
+        if tool_slug is not None:
+            pulumi.set(__self__, "tool_slug", tool_slug)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        The description shown on the server's catalog card, at most 1024 characters.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether the tool is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        The tool's name on the server.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="quarantineReason")
+    def quarantine_reason(self) -> Optional[_builtins.str]:
+        """
+        Why the tool is quarantined.
+        """
+        return pulumi.get(self, "quarantine_reason")
+
+    @_builtins.property
+    @pulumi.getter
+    def quarantined(self) -> Optional[_builtins.bool]:
+        """
+        Whether the tool is quarantined.
+        """
+        return pulumi.get(self, "quarantined")
+
+    @_builtins.property
+    @pulumi.getter(name="toolSlug")
+    def tool_slug(self) -> Optional[_builtins.str]:
+        """
+        The tool's catalog slug, used in `enabled_tools`.
+        """
+        return pulumi.get(self, "tool_slug")
+
 
 @pulumi.output_type
 class AgentPlatformAgentAgentGuardrail(dict):
@@ -20757,6 +21064,85 @@ class MicrovmCheckpointSize(dict):
 
 
 @pulumi.output_type
+class MicrovmEgressPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultAction":
+            suggest = "default_action"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MicrovmEgressPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MicrovmEgressPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MicrovmEgressPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 default_action: Optional[_builtins.str] = None,
+                 rules: Optional[Sequence['outputs.MicrovmEgressPolicyRule']] = None):
+        """
+        :param _builtins.str default_action: What to do with a destination no `rule` matches: `deny` or `allow`. Defaults to `deny`.
+        :param Sequence['MicrovmEgressPolicyRuleArgs'] rules: An allowed destination. Up to 50 rules. Rules match the host only: port, path and method are not considered, and a hostname that resolves to an IP is not matched by an `ip` rule. Each rule sets exactly one of:
+        """
+        if default_action is not None:
+            pulumi.set(__self__, "default_action", default_action)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultAction")
+    def default_action(self) -> Optional[_builtins.str]:
+        """
+        What to do with a destination no `rule` matches: `deny` or `allow`. Defaults to `deny`.
+        """
+        return pulumi.get(self, "default_action")
+
+    @_builtins.property
+    @pulumi.getter
+    def rules(self) -> Optional[Sequence['outputs.MicrovmEgressPolicyRule']]:
+        """
+        An allowed destination. Up to 50 rules. Rules match the host only: port, path and method are not considered, and a hostname that resolves to an IP is not matched by an `ip` rule. Each rule sets exactly one of:
+        """
+        return pulumi.get(self, "rules")
+
+
+@pulumi.output_type
+class MicrovmEgressPolicyRule(dict):
+    def __init__(__self__, *,
+                 domain: Optional[_builtins.str] = None,
+                 ip: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str domain: An exact host such as `api.example.com`, or a wildcard such as `*.example.com`.
+        :param _builtins.str ip: An exact IP address. CIDR ranges are not supported.
+        """
+        if domain is not None:
+            pulumi.set(__self__, "domain", domain)
+        if ip is not None:
+            pulumi.set(__self__, "ip", ip)
+
+    @_builtins.property
+    @pulumi.getter
+    def domain(self) -> Optional[_builtins.str]:
+        """
+        An exact host such as `api.example.com`, or a wildcard such as `*.example.com`.
+        """
+        return pulumi.get(self, "domain")
+
+    @_builtins.property
+    @pulumi.getter
+    def ip(self) -> Optional[_builtins.str]:
+        """
+        An exact IP address. CIDR ranges are not supported.
+        """
+        return pulumi.get(self, "ip")
+
+
+@pulumi.output_type
 class MicrovmSize(dict):
     def __init__(__self__, *,
                  cpu: _builtins.int,
@@ -20852,11 +21238,13 @@ class MicrovmUrl(dict):
     def __init__(__self__, *,
                  default: Optional[_builtins.bool] = None,
                  hostname: Optional[_builtins.str] = None,
+                 id: Optional[_builtins.str] = None,
                  port: Optional[_builtins.int] = None,
                  status: Optional[_builtins.str] = None):
         """
         :param _builtins.bool default: Whether this is the default URL.
         :param _builtins.str hostname: The hostname, without a scheme.
+        :param _builtins.str id: The stable identifier of the URL.
         :param _builtins.int port: The guest port the URL forwards to.
         :param _builtins.str status: The URL status: `PENDING` or `ACTIVE`.
         """
@@ -20864,6 +21252,8 @@ class MicrovmUrl(dict):
             pulumi.set(__self__, "default", default)
         if hostname is not None:
             pulumi.set(__self__, "hostname", hostname)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
         if port is not None:
             pulumi.set(__self__, "port", port)
         if status is not None:
@@ -20884,6 +21274,14 @@ class MicrovmUrl(dict):
         The hostname, without a scheme.
         """
         return pulumi.get(self, "hostname")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.str]:
+        """
+        The stable identifier of the URL.
+        """
+        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
@@ -21799,6 +22197,376 @@ class VpcNatGatewayVpc(dict):
         The ID of the ingress subnet in the VPC
         """
         return pulumi.get(self, "subnet_uuid")
+
+
+@pulumi.output_type
+class GetActionGatewayConnectionAuthorizationResult(dict):
+    def __init__(__self__, *,
+                 connect_url: _builtins.str,
+                 expires_at: _builtins.str,
+                 status: _builtins.str,
+                 verification_code: _builtins.str):
+        """
+        :param _builtins.str connect_url: (Sensitive) The URL the account holder opens to authorize the provider.
+        :param _builtins.str expires_at: When the authorization link expires.
+        :param _builtins.str status: The status of the authorization.
+        :param _builtins.str verification_code: (Sensitive) The code the account holder confirms during authorization.
+        """
+        pulumi.set(__self__, "connect_url", connect_url)
+        pulumi.set(__self__, "expires_at", expires_at)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "verification_code", verification_code)
+
+    @_builtins.property
+    @pulumi.getter(name="connectUrl")
+    def connect_url(self) -> _builtins.str:
+        """
+        (Sensitive) The URL the account holder opens to authorize the provider.
+        """
+        return pulumi.get(self, "connect_url")
+
+    @_builtins.property
+    @pulumi.getter(name="expiresAt")
+    def expires_at(self) -> _builtins.str:
+        """
+        When the authorization link expires.
+        """
+        return pulumi.get(self, "expires_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        The status of the authorization.
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter(name="verificationCode")
+    def verification_code(self) -> _builtins.str:
+        """
+        (Sensitive) The code the account holder confirms during authorization.
+        """
+        return pulumi.get(self, "verification_code")
+
+
+@pulumi.output_type
+class GetActionGatewayConnectionVpcResult(dict):
+    def __init__(__self__, *,
+                 destinations: Sequence['outputs.GetActionGatewayConnectionVpcDestinationResult'],
+                 region: _builtins.str,
+                 vpc_uuid: _builtins.str):
+        """
+        :param Sequence['GetActionGatewayConnectionVpcDestinationArgs'] destinations: The private hosts the connection's calls may reach, each with `host`, `port`, and `allowed_ip_cidrs`.
+        :param _builtins.str region: The region of the VPC.
+        :param _builtins.str vpc_uuid: The UUID of the VPC.
+        """
+        pulumi.set(__self__, "destinations", destinations)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "vpc_uuid", vpc_uuid)
+
+    @_builtins.property
+    @pulumi.getter
+    def destinations(self) -> Sequence['outputs.GetActionGatewayConnectionVpcDestinationResult']:
+        """
+        The private hosts the connection's calls may reach, each with `host`, `port`, and `allowed_ip_cidrs`.
+        """
+        return pulumi.get(self, "destinations")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        The region of the VPC.
+        """
+        return pulumi.get(self, "region")
+
+    @_builtins.property
+    @pulumi.getter(name="vpcUuid")
+    def vpc_uuid(self) -> _builtins.str:
+        """
+        The UUID of the VPC.
+        """
+        return pulumi.get(self, "vpc_uuid")
+
+
+@pulumi.output_type
+class GetActionGatewayConnectionVpcDestinationResult(dict):
+    def __init__(__self__, *,
+                 allowed_ip_cidrs: Sequence[_builtins.str],
+                 host: _builtins.str,
+                 port: _builtins.int):
+        """
+        :param Sequence[_builtins.str] allowed_ip_cidrs: CIDR ranges that every address the host resolves to must fall within
+        :param _builtins.str host: Host name or IP address that resolves only to private addresses
+        :param _builtins.int port: Destination port
+        """
+        pulumi.set(__self__, "allowed_ip_cidrs", allowed_ip_cidrs)
+        pulumi.set(__self__, "host", host)
+        pulumi.set(__self__, "port", port)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedIpCidrs")
+    def allowed_ip_cidrs(self) -> Sequence[_builtins.str]:
+        """
+        CIDR ranges that every address the host resolves to must fall within
+        """
+        return pulumi.get(self, "allowed_ip_cidrs")
+
+    @_builtins.property
+    @pulumi.getter
+    def host(self) -> _builtins.str:
+        """
+        Host name or IP address that resolves only to private addresses
+        """
+        return pulumi.get(self, "host")
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> _builtins.int:
+        """
+        Destination port
+        """
+        return pulumi.get(self, "port")
+
+
+@pulumi.output_type
+class GetActionGatewayProvidersFilterResult(dict):
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 values: Sequence[_builtins.str],
+                 all: Optional[_builtins.bool] = None,
+                 match_by: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str key: Filter the providers by this key. This may be one of `name`, `display_name`, `description`, `auth_types`, and `scopes`.
+        :param Sequence[_builtins.str] values: A list of values to match against the `key` field. Only retrieves providers
+               where the `key` field takes on one or more of the values provided here.
+        :param _builtins.bool all: Set to `true` to require that a field match all of the `values` instead of just one or more of
+               them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+               that all of the `values` are present in the list or set.
+        :param _builtins.str match_by: One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+               match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+               substrings to find within the string field.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "values", values)
+        if all is not None:
+            pulumi.set(__self__, "all", all)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        Filter the providers by this key. This may be one of `name`, `display_name`, `description`, `auth_types`, and `scopes`.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        """
+        A list of values to match against the `key` field. Only retrieves providers
+        where the `key` field takes on one or more of the values provided here.
+        """
+        return pulumi.get(self, "values")
+
+    @_builtins.property
+    @pulumi.getter
+    def all(self) -> Optional[_builtins.bool]:
+        """
+        Set to `true` to require that a field match all of the `values` instead of just one or more of
+        them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+        that all of the `values` are present in the list or set.
+        """
+        return pulumi.get(self, "all")
+
+    @_builtins.property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[_builtins.str]:
+        """
+        One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+        match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+        substrings to find within the string field.
+        """
+        return pulumi.get(self, "match_by")
+
+
+@pulumi.output_type
+class GetActionGatewayProvidersProviderResult(dict):
+    def __init__(__self__, *,
+                 auth_types: Sequence[_builtins.str],
+                 connection_parameters: Sequence['outputs.GetActionGatewayProvidersProviderConnectionParameterResult'],
+                 description: _builtins.str,
+                 display_name: _builtins.str,
+                 name: _builtins.str,
+                 scopes: Sequence[_builtins.str]):
+        """
+        :param Sequence[_builtins.str] auth_types: The credential kinds the provider accepts.
+        :param Sequence['GetActionGatewayProvidersProviderConnectionParameterArgs'] connection_parameters: The parameters a connection to the provider accepts.
+        :param _builtins.str description: The parameter's description.
+        :param _builtins.str display_name: The human-readable name of the provider.
+        :param _builtins.str name: The provider slug, used as `tool_provider` on connections.
+        :param Sequence[_builtins.str] scopes: The OAuth scopes the provider offers.
+        """
+        pulumi.set(__self__, "auth_types", auth_types)
+        pulumi.set(__self__, "connection_parameters", connection_parameters)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "scopes", scopes)
+
+    @_builtins.property
+    @pulumi.getter(name="authTypes")
+    def auth_types(self) -> Sequence[_builtins.str]:
+        """
+        The credential kinds the provider accepts.
+        """
+        return pulumi.get(self, "auth_types")
+
+    @_builtins.property
+    @pulumi.getter(name="connectionParameters")
+    def connection_parameters(self) -> Sequence['outputs.GetActionGatewayProvidersProviderConnectionParameterResult']:
+        """
+        The parameters a connection to the provider accepts.
+        """
+        return pulumi.get(self, "connection_parameters")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        The parameter's description.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> _builtins.str:
+        """
+        The human-readable name of the provider.
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The provider slug, used as `tool_provider` on connections.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def scopes(self) -> Sequence[_builtins.str]:
+        """
+        The OAuth scopes the provider offers.
+        """
+        return pulumi.get(self, "scopes")
+
+
+@pulumi.output_type
+class GetActionGatewayProvidersProviderConnectionParameterResult(dict):
+    def __init__(__self__, *,
+                 allowed_values: Sequence[_builtins.str],
+                 description: _builtins.str,
+                 input_kind: _builtins.str,
+                 key: _builtins.str,
+                 label: _builtins.str,
+                 required: _builtins.bool):
+        """
+        :param Sequence[_builtins.str] allowed_values: The values the parameter accepts, when restricted.
+        :param _builtins.str description: The parameter's description.
+        :param _builtins.str input_kind: The kind of input the parameter takes.
+        :param _builtins.str key: The parameter's key in `connection_parameters`.
+        :param _builtins.str label: The parameter's label.
+        :param _builtins.bool required: Whether the parameter is required.
+        """
+        pulumi.set(__self__, "allowed_values", allowed_values)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "input_kind", input_kind)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "required", required)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedValues")
+    def allowed_values(self) -> Sequence[_builtins.str]:
+        """
+        The values the parameter accepts, when restricted.
+        """
+        return pulumi.get(self, "allowed_values")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        The parameter's description.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="inputKind")
+    def input_kind(self) -> _builtins.str:
+        """
+        The kind of input the parameter takes.
+        """
+        return pulumi.get(self, "input_kind")
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        The parameter's key in `connection_parameters`.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def label(self) -> _builtins.str:
+        """
+        The parameter's label.
+        """
+        return pulumi.get(self, "label")
+
+    @_builtins.property
+    @pulumi.getter
+    def required(self) -> _builtins.bool:
+        """
+        Whether the parameter is required.
+        """
+        return pulumi.get(self, "required")
+
+
+@pulumi.output_type
+class GetActionGatewayProvidersSortResult(dict):
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 direction: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str key: Sort the providers by this key. This may be one of `name`, `display_name`, and `description`.
+        :param _builtins.str direction: The sort direction. This may be either `asc` or `desc`.
+        """
+        pulumi.set(__self__, "key", key)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        Sort the providers by this key. This may be one of `name`, `display_name`, and `description`.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def direction(self) -> Optional[_builtins.str]:
+        """
+        The sort direction. This may be either `asc` or `desc`.
+        """
+        return pulumi.get(self, "direction")
 
 
 @pulumi.output_type
@@ -56706,6 +57474,67 @@ class GetMicrovmCheckpointsSortResult(dict):
 
 
 @pulumi.output_type
+class GetMicrovmEgressPolicyResult(dict):
+    def __init__(__self__, *,
+                 default_action: _builtins.str,
+                 rules: Optional[Sequence['outputs.GetMicrovmEgressPolicyRuleResult']] = None):
+        """
+        :param _builtins.str default_action: What happens to a destination no rule matches: `deny` or `allow`.
+        :param Sequence['GetMicrovmEgressPolicyRuleArgs'] rules: The allowed destinations. Each has a `domain` or an `ip`.
+        """
+        pulumi.set(__self__, "default_action", default_action)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultAction")
+    def default_action(self) -> _builtins.str:
+        """
+        What happens to a destination no rule matches: `deny` or `allow`.
+        """
+        return pulumi.get(self, "default_action")
+
+    @_builtins.property
+    @pulumi.getter
+    def rules(self) -> Optional[Sequence['outputs.GetMicrovmEgressPolicyRuleResult']]:
+        """
+        The allowed destinations. Each has a `domain` or an `ip`.
+        """
+        return pulumi.get(self, "rules")
+
+
+@pulumi.output_type
+class GetMicrovmEgressPolicyRuleResult(dict):
+    def __init__(__self__, *,
+                 domain: Optional[_builtins.str] = None,
+                 ip: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str domain: An exact host such as 'api.example.com', or a wildcard such as '*.example.com'.
+        :param _builtins.str ip: An exact IP address. CIDR ranges are not supported.
+        """
+        if domain is not None:
+            pulumi.set(__self__, "domain", domain)
+        if ip is not None:
+            pulumi.set(__self__, "ip", ip)
+
+    @_builtins.property
+    @pulumi.getter
+    def domain(self) -> Optional[_builtins.str]:
+        """
+        An exact host such as 'api.example.com', or a wildcard such as '*.example.com'.
+        """
+        return pulumi.get(self, "domain")
+
+    @_builtins.property
+    @pulumi.getter
+    def ip(self) -> Optional[_builtins.str]:
+        """
+        An exact IP address. CIDR ranges are not supported.
+        """
+        return pulumi.get(self, "ip")
+
+
+@pulumi.output_type
 class GetMicrovmSizeResult(dict):
     def __init__(__self__, *,
                  cpu: _builtins.int,
@@ -56781,16 +57610,19 @@ class GetMicrovmUrlResult(dict):
     def __init__(__self__, *,
                  default: _builtins.bool,
                  hostname: _builtins.str,
+                 id: _builtins.str,
                  port: _builtins.int,
                  status: _builtins.str):
         """
         :param _builtins.bool default: Whether this is the default URL.
         :param _builtins.str hostname: The hostname, without a scheme.
+        :param _builtins.str id: The ID of the MicroVM.
         :param _builtins.int port: The guest port the URL forwards to.
         :param _builtins.str status: The URL status: `PENDING` or `ACTIVE`.
         """
         pulumi.set(__self__, "default", default)
         pulumi.set(__self__, "hostname", hostname)
+        pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "status", status)
 
@@ -56809,6 +57641,14 @@ class GetMicrovmUrlResult(dict):
         The hostname, without a scheme.
         """
         return pulumi.get(self, "hostname")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the MicroVM.
+        """
+        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
@@ -56907,11 +57747,13 @@ class GetMicrovmsMicroVmResult(dict):
                  auto_resume: _builtins.bool,
                  created_at: _builtins.str,
                  current_state: _builtins.str,
+                 egress_policies: Sequence['outputs.GetMicrovmsMicroVmEgressPolicyResult'],
                  environment: Mapping[str, _builtins.str],
                  failure_reason: _builtins.str,
                  http_port: _builtins.int,
                  http_protocol: _builtins.str,
                  id: _builtins.str,
+                 ingress_enabled: _builtins.bool,
                  name: _builtins.str,
                  networking: _builtins.str,
                  ports: Sequence[_builtins.int],
@@ -56928,11 +57770,13 @@ class GetMicrovmsMicroVmResult(dict):
         :param _builtins.bool auto_resume: Whether the MicroVM should auto-resume on request. Forces recreation on change: the MicroVMs API has no in-place update path for auto_resume.
         :param _builtins.str created_at: The creation timestamp for the MicroVM
         :param _builtins.str current_state: Observed lifecycle state of the MicroVM
+        :param Sequence['GetMicrovmsMicroVmEgressPolicyArgs'] egress_policies: Outbound allow list for the MicroVM. Omit for unrestricted egress. Public networking only; fixed at create, so a change forces recreation. With a policy set, only HTTP and HTTPS through the platform proxy to allowed destinations works. A MicroVM restored from a checkpoint inherits the origin's policy.
         :param Mapping[str, _builtins.str] environment: Environment variables passed to the MicroVM
         :param _builtins.str failure_reason: Human-readable explanation when current_state is failed
         :param _builtins.int http_port: Port the MicroVM exposes over HTTP
         :param _builtins.str http_protocol: HTTP protocol: 'http' or 'http2'
         :param _builtins.str id: MicroVM ID
+        :param _builtins.bool ingress_enabled: Whether the MicroVM is created with a default public ingress URL. Defaults to true. Set to false to create the MicroVM without a default URL; additional URLs can be added later with the MicrovmIngress resource. This is a create-time option, so a change forces recreation.
         :param _builtins.str name: Only return MicroVMs with this exact name.
         :param _builtins.str networking: Networking mode: 'public' or 'vpc'
         :param Sequence[_builtins.int] ports: Guest ports open for ingress. Defaults to just http_port when omitted.
@@ -56948,11 +57792,13 @@ class GetMicrovmsMicroVmResult(dict):
         pulumi.set(__self__, "auto_resume", auto_resume)
         pulumi.set(__self__, "created_at", created_at)
         pulumi.set(__self__, "current_state", current_state)
+        pulumi.set(__self__, "egress_policies", egress_policies)
         pulumi.set(__self__, "environment", environment)
         pulumi.set(__self__, "failure_reason", failure_reason)
         pulumi.set(__self__, "http_port", http_port)
         pulumi.set(__self__, "http_protocol", http_protocol)
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ingress_enabled", ingress_enabled)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "networking", networking)
         pulumi.set(__self__, "ports", ports)
@@ -56998,6 +57844,14 @@ class GetMicrovmsMicroVmResult(dict):
         return pulumi.get(self, "current_state")
 
     @_builtins.property
+    @pulumi.getter(name="egressPolicies")
+    def egress_policies(self) -> Sequence['outputs.GetMicrovmsMicroVmEgressPolicyResult']:
+        """
+        Outbound allow list for the MicroVM. Omit for unrestricted egress. Public networking only; fixed at create, so a change forces recreation. With a policy set, only HTTP and HTTPS through the platform proxy to allowed destinations works. A MicroVM restored from a checkpoint inherits the origin's policy.
+        """
+        return pulumi.get(self, "egress_policies")
+
+    @_builtins.property
     @pulumi.getter
     def environment(self) -> Mapping[str, _builtins.str]:
         """
@@ -57036,6 +57890,14 @@ class GetMicrovmsMicroVmResult(dict):
         MicroVM ID
         """
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="ingressEnabled")
+    def ingress_enabled(self) -> _builtins.bool:
+        """
+        Whether the MicroVM is created with a default public ingress URL. Defaults to true. Set to false to create the MicroVM without a default URL; additional URLs can be added later with the MicrovmIngress resource. This is a create-time option, so a change forces recreation.
+        """
+        return pulumi.get(self, "ingress_enabled")
 
     @_builtins.property
     @pulumi.getter
@@ -57153,6 +58015,67 @@ class GetMicrovmsMicroVmAutoPauseResult(dict):
 
 
 @pulumi.output_type
+class GetMicrovmsMicroVmEgressPolicyResult(dict):
+    def __init__(__self__, *,
+                 default_action: _builtins.str,
+                 rules: Optional[Sequence['outputs.GetMicrovmsMicroVmEgressPolicyRuleResult']] = None):
+        """
+        :param _builtins.str default_action: What to do with a destination no rule matches: 'deny' or 'allow'. Defaults to 'deny'.
+        :param Sequence['GetMicrovmsMicroVmEgressPolicyRuleArgs'] rules: An allowed destination. Set exactly one of domain or ip.
+        """
+        pulumi.set(__self__, "default_action", default_action)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultAction")
+    def default_action(self) -> _builtins.str:
+        """
+        What to do with a destination no rule matches: 'deny' or 'allow'. Defaults to 'deny'.
+        """
+        return pulumi.get(self, "default_action")
+
+    @_builtins.property
+    @pulumi.getter
+    def rules(self) -> Optional[Sequence['outputs.GetMicrovmsMicroVmEgressPolicyRuleResult']]:
+        """
+        An allowed destination. Set exactly one of domain or ip.
+        """
+        return pulumi.get(self, "rules")
+
+
+@pulumi.output_type
+class GetMicrovmsMicroVmEgressPolicyRuleResult(dict):
+    def __init__(__self__, *,
+                 domain: Optional[_builtins.str] = None,
+                 ip: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str domain: An exact host such as 'api.example.com', or a wildcard such as '*.example.com'.
+        :param _builtins.str ip: An exact IP address. CIDR ranges are not supported.
+        """
+        if domain is not None:
+            pulumi.set(__self__, "domain", domain)
+        if ip is not None:
+            pulumi.set(__self__, "ip", ip)
+
+    @_builtins.property
+    @pulumi.getter
+    def domain(self) -> Optional[_builtins.str]:
+        """
+        An exact host such as 'api.example.com', or a wildcard such as '*.example.com'.
+        """
+        return pulumi.get(self, "domain")
+
+    @_builtins.property
+    @pulumi.getter
+    def ip(self) -> Optional[_builtins.str]:
+        """
+        An exact IP address. CIDR ranges are not supported.
+        """
+        return pulumi.get(self, "ip")
+
+
+@pulumi.output_type
 class GetMicrovmsMicroVmSizeResult(dict):
     def __init__(__self__, *,
                  cpu: _builtins.int,
@@ -57228,16 +58151,19 @@ class GetMicrovmsMicroVmUrlResult(dict):
     def __init__(__self__, *,
                  default: _builtins.bool,
                  hostname: _builtins.str,
+                 id: _builtins.str,
                  port: _builtins.int,
                  status: _builtins.str):
         """
         :param _builtins.bool default: Whether this is the system default URL
         :param _builtins.str hostname: Hostname (no scheme)
+        :param _builtins.str id: Stable identifier of the URL
         :param _builtins.int port: Guest port this URL forwards to
         :param _builtins.str status: URL lifecycle status (PENDING or ACTIVE)
         """
         pulumi.set(__self__, "default", default)
         pulumi.set(__self__, "hostname", hostname)
+        pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "status", status)
 
@@ -57256,6 +58182,14 @@ class GetMicrovmsMicroVmUrlResult(dict):
         Hostname (no scheme)
         """
         return pulumi.get(self, "hostname")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Stable identifier of the URL
+        """
+        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter

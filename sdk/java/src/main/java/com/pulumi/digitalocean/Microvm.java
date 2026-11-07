@@ -11,6 +11,7 @@ import com.pulumi.digitalocean.MicrovmArgs;
 import com.pulumi.digitalocean.Utilities;
 import com.pulumi.digitalocean.inputs.MicrovmState;
 import com.pulumi.digitalocean.outputs.MicrovmAutoPause;
+import com.pulumi.digitalocean.outputs.MicrovmEgressPolicy;
 import com.pulumi.digitalocean.outputs.MicrovmSize;
 import com.pulumi.digitalocean.outputs.MicrovmSource;
 import com.pulumi.digitalocean.outputs.MicrovmUrl;
@@ -177,6 +178,73 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * ### Restrict Outbound Traffic
+ * 
+ * Set `egressPolicy` to limit where code in the MicroVM can connect. Only the
+ * listed destinations are reachable, and the policy is fixed at create, so any
+ * change forces a new MicroVM. It requires `networking = &#34;public&#34;`.
+ * 
+ * With a policy set, direct connections out of the MicroVM are dropped. Only HTTP
+ * and HTTPS through the platform proxy to allowed destinations works, so clients
+ * must honor the injected `HTTP_PROXY` / `HTTPS_PROXY` environment. The registries
+ * needed to pull the workload image are allowed automatically.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.digitalocean.Microvm;
+ * import com.pulumi.digitalocean.MicrovmArgs;
+ * import com.pulumi.digitalocean.inputs.MicrovmSizeArgs;
+ * import com.pulumi.digitalocean.inputs.MicrovmSourceArgs;
+ * import com.pulumi.digitalocean.inputs.MicrovmEgressPolicyArgs;
+ * import com.pulumi.digitalocean.inputs.MicrovmEgressPolicyRuleArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var lockedDown = new Microvm("lockedDown", MicrovmArgs.builder()
+ *             .name("example-locked-down")
+ *             .region("nyc3")
+ *             .size(MicrovmSizeArgs.builder()
+ *                 .cpu(1)
+ *                 .memory(2048)
+ *                 .build())
+ *             .source(MicrovmSourceArgs.builder()
+ *                 .ociRef("docker.io/library/alpine:latest")
+ *                 .build())
+ *             .egressPolicy(MicrovmEgressPolicyArgs.builder()
+ *                 .defaultAction("deny")
+ *                 .rules(                
+ *                     MicrovmEgressPolicyRuleArgs.builder()
+ *                         .domain("api.example.com")
+ *                         .build(),
+ *                     MicrovmEgressPolicyRuleArgs.builder()
+ *                         .domain("*.example.org")
+ *                         .build(),
+ *                     MicrovmEgressPolicyRuleArgs.builder()
+ *                         .ip("203.0.113.5")
+ *                         .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * A MicroVM can be imported using its `id`, e.g.
@@ -259,6 +327,20 @@ public class Microvm extends com.pulumi.resources.CustomResource {
         return this.digitaloceanUrn;
     }
     /**
+     * An outbound allow list. When omitted, egress is unrestricted; a MicroVM restored from a checkpoint inherits its origin&#39;s policy. Only valid with public networking, and a change forces a new MicroVM.
+     * 
+     */
+    @Export(name="egressPolicy", refs={MicrovmEgressPolicy.class}, tree="[0]")
+    private Output<MicrovmEgressPolicy> egressPolicy;
+
+    /**
+     * @return An outbound allow list. When omitted, egress is unrestricted; a MicroVM restored from a checkpoint inherits its origin&#39;s policy. Only valid with public networking, and a change forces a new MicroVM.
+     * 
+     */
+    public Output<MicrovmEgressPolicy> egressPolicy() {
+        return this.egressPolicy;
+    }
+    /**
      * A map of environment variables to pass to the workload.
      * 
      */
@@ -313,6 +395,20 @@ public class Microvm extends com.pulumi.resources.CustomResource {
      */
     public Output<String> httpProtocol() {
         return this.httpProtocol;
+    }
+    /**
+     * Whether the MicroVM is created with a default public ingress URL. Defaults to `true`. Set to `false` to create the MicroVM without a default URL; additional URLs can be added later with the `digitalocean.MicrovmIngress` resource. This is a create-time option, so a change forces a new MicroVM.
+     * 
+     */
+    @Export(name="ingressEnabled", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> ingressEnabled;
+
+    /**
+     * @return Whether the MicroVM is created with a default public ingress URL. Defaults to `true`. Set to `false` to create the MicroVM without a default URL; additional URLs can be added later with the `digitalocean.MicrovmIngress` resource. This is a create-time option, so a change forces a new MicroVM.
+     * 
+     */
+    public Output<Optional<Boolean>> ingressEnabled() {
+        return Codegen.optional(this.ingressEnabled);
     }
     /**
      * The name of the MicroVM.

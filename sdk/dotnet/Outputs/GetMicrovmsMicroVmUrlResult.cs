@@ -22,6 +22,10 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly string Hostname;
         /// <summary>
+        /// Stable identifier of the URL
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// Guest port this URL forwards to
         /// </summary>
         public readonly int Port;
@@ -36,12 +40,15 @@ namespace Pulumi.DigitalOcean.Outputs
 
             string hostname,
 
+            string id,
+
             int port,
 
             string status)
         {
             Default = @default;
             Hostname = hostname;
+            Id = id;
             Port = port;
             Status = status;
         }

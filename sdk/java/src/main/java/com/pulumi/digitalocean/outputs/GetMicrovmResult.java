@@ -5,6 +5,7 @@ package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.digitalocean.outputs.GetMicrovmAutoPause;
+import com.pulumi.digitalocean.outputs.GetMicrovmEgressPolicy;
 import com.pulumi.digitalocean.outputs.GetMicrovmSize;
 import com.pulumi.digitalocean.outputs.GetMicrovmSource;
 import com.pulumi.digitalocean.outputs.GetMicrovmUrl;
@@ -38,6 +39,11 @@ public final class GetMicrovmResult {
      * 
      */
     private String currentState;
+    /**
+     * @return The outbound allow list set at create. Empty when egress is unrestricted:
+     * 
+     */
+    private List<GetMicrovmEgressPolicy> egressPolicies;
     private Map<String,String> environment;
     /**
      * @return A description of the failure when `currentState` is `failed`.
@@ -55,6 +61,7 @@ public final class GetMicrovmResult {
      * 
      */
     private String id;
+    private Boolean ingressEnabled;
     /**
      * @return The name of the MicroVM.
      * 
@@ -132,6 +139,13 @@ public final class GetMicrovmResult {
     public String currentState() {
         return this.currentState;
     }
+    /**
+     * @return The outbound allow list set at create. Empty when egress is unrestricted:
+     * 
+     */
+    public List<GetMicrovmEgressPolicy> egressPolicies() {
+        return this.egressPolicies;
+    }
     public Map<String,String> environment() {
         return this.environment;
     }
@@ -158,6 +172,9 @@ public final class GetMicrovmResult {
      */
     public String id() {
         return this.id;
+    }
+    public Boolean ingressEnabled() {
+        return this.ingressEnabled;
     }
     /**
      * @return The name of the MicroVM.
@@ -242,11 +259,13 @@ public final class GetMicrovmResult {
         private Boolean autoResume;
         private String createdAt;
         private String currentState;
+        private List<GetMicrovmEgressPolicy> egressPolicies;
         private Map<String,String> environment;
         private String failureReason;
         private Integer httpPort;
         private String httpProtocol;
         private String id;
+        private Boolean ingressEnabled;
         private String name;
         private String networking;
         private List<Integer> ports;
@@ -265,11 +284,13 @@ public final class GetMicrovmResult {
     	      this.autoResume = defaults.autoResume;
     	      this.createdAt = defaults.createdAt;
     	      this.currentState = defaults.currentState;
+    	      this.egressPolicies = defaults.egressPolicies;
     	      this.environment = defaults.environment;
     	      this.failureReason = defaults.failureReason;
     	      this.httpPort = defaults.httpPort;
     	      this.httpProtocol = defaults.httpProtocol;
     	      this.id = defaults.id;
+    	      this.ingressEnabled = defaults.ingressEnabled;
     	      this.name = defaults.name;
     	      this.networking = defaults.networking;
     	      this.ports = defaults.ports;
@@ -319,6 +340,17 @@ public final class GetMicrovmResult {
             return this;
         }
         @CustomType.Setter
+        public Builder egressPolicies(List<GetMicrovmEgressPolicy> egressPolicies) {
+            if (egressPolicies == null) {
+              throw new MissingRequiredPropertyException("GetMicrovmResult", "egressPolicies");
+            }
+            this.egressPolicies = egressPolicies;
+            return this;
+        }
+        public Builder egressPolicies(GetMicrovmEgressPolicy... egressPolicies) {
+            return egressPolicies(List.of(egressPolicies));
+        }
+        @CustomType.Setter
         public Builder environment(Map<String,String> environment) {
             if (environment == null) {
               throw new MissingRequiredPropertyException("GetMicrovmResult", "environment");
@@ -356,6 +388,14 @@ public final class GetMicrovmResult {
               throw new MissingRequiredPropertyException("GetMicrovmResult", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ingressEnabled(Boolean ingressEnabled) {
+            if (ingressEnabled == null) {
+              throw new MissingRequiredPropertyException("GetMicrovmResult", "ingressEnabled");
+            }
+            this.ingressEnabled = ingressEnabled;
             return this;
         }
         @CustomType.Setter
@@ -467,11 +507,13 @@ public final class GetMicrovmResult {
             _resultValue.autoResume = autoResume;
             _resultValue.createdAt = createdAt;
             _resultValue.currentState = currentState;
+            _resultValue.egressPolicies = egressPolicies;
             _resultValue.environment = environment;
             _resultValue.failureReason = failureReason;
             _resultValue.httpPort = httpPort;
             _resultValue.httpProtocol = httpProtocol;
             _resultValue.id = id;
+            _resultValue.ingressEnabled = ingressEnabled;
             _resultValue.name = name;
             _resultValue.networking = networking;
             _resultValue.ports = ports;

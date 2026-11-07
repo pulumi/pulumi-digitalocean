@@ -21,6 +21,12 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "digitalocean:index/actionGatewayConnection:ActionGatewayConnection":
+		r = &ActionGatewayConnection{}
+	case "digitalocean:index/actionGatewayMcpServer:ActionGatewayMcpServer":
+		r = &ActionGatewayMcpServer{}
+	case "digitalocean:index/actionGatewayToolbelt:ActionGatewayToolbelt":
+		r = &ActionGatewayToolbelt{}
 	case "digitalocean:index/agentPlatformAgent:AgentPlatformAgent":
 		r = &AgentPlatformAgent{}
 	case "digitalocean:index/agentPlatformAgentKnowledgeBaseAttachment:AgentPlatformAgentKnowledgeBaseAttachment":
@@ -141,6 +147,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Microvm{}
 	case "digitalocean:index/microvmCheckpoint:MicrovmCheckpoint":
 		r = &MicrovmCheckpoint{}
+	case "digitalocean:index/microvmIngress:MicrovmIngress":
+		r = &MicrovmIngress{}
 	case "digitalocean:index/monitorAlert:MonitorAlert":
 		r = &MonitorAlert{}
 	case "digitalocean:index/nfs:Nfs":
@@ -230,6 +238,21 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"digitalocean",
+		"index/actionGatewayConnection",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
+		"index/actionGatewayMcpServer",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
+		"index/actionGatewayToolbelt",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"digitalocean",
 		"index/agentPlatformAgent",
@@ -528,6 +551,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"digitalocean",
 		"index/microvmCheckpoint",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
+		"index/microvmIngress",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -127,6 +127,62 @@ namespace Pulumi.DigitalOcean
     /// });
     /// ```
     /// 
+    /// ### Restrict Outbound Traffic
+    /// 
+    /// Set `EgressPolicy` to limit where code in the MicroVM can connect. Only the
+    /// listed destinations are reachable, and the policy is fixed at create, so any
+    /// change forces a new MicroVM. It requires `networking = "public"`.
+    /// 
+    /// With a policy set, direct connections out of the MicroVM are dropped. Only HTTP
+    /// and HTTPS through the platform proxy to allowed destinations works, so clients
+    /// must honor the injected `HTTP_PROXY` / `HTTPS_PROXY` environment. The registries
+    /// needed to pull the workload image are allowed automatically.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var lockedDown = new DigitalOcean.Microvm("locked_down", new()
+    ///     {
+    ///         Name = "example-locked-down",
+    ///         Region = "nyc3",
+    ///         Size = new DigitalOcean.Inputs.MicrovmSizeArgs
+    ///         {
+    ///             Cpu = 1,
+    ///             Memory = 2048,
+    ///         },
+    ///         Source = new DigitalOcean.Inputs.MicrovmSourceArgs
+    ///         {
+    ///             OciRef = "docker.io/library/alpine:latest",
+    ///         },
+    ///         EgressPolicy = new DigitalOcean.Inputs.MicrovmEgressPolicyArgs
+    ///         {
+    ///             DefaultAction = "deny",
+    ///             Rules = new[]
+    ///             {
+    ///                 new DigitalOcean.Inputs.MicrovmEgressPolicyRuleArgs
+    ///                 {
+    ///                     Domain = "api.example.com",
+    ///                 },
+    ///                 new DigitalOcean.Inputs.MicrovmEgressPolicyRuleArgs
+    ///                 {
+    ///                     Domain = "*.example.org",
+    ///                 },
+    ///                 new DigitalOcean.Inputs.MicrovmEgressPolicyRuleArgs
+    ///                 {
+    ///                     Ip = "203.0.113.5",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// A MicroVM can be imported using its `Id`, e.g.
@@ -169,6 +225,12 @@ namespace Pulumi.DigitalOcean
         public Output<string> DigitaloceanUrn { get; private set; } = null!;
 
         /// <summary>
+        /// An outbound allow list. When omitted, egress is unrestricted; a MicroVM restored from a checkpoint inherits its origin's policy. Only valid with public networking, and a change forces a new MicroVM.
+        /// </summary>
+        [Output("egressPolicy")]
+        public Output<Outputs.MicrovmEgressPolicy> EgressPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// A map of environment variables to pass to the workload.
         /// </summary>
         [Output("environment")]
@@ -191,6 +253,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Output("httpProtocol")]
         public Output<string> HttpProtocol { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether the MicroVM is created with a default public ingress URL. Defaults to `True`. Set to `False` to create the MicroVM without a default URL; additional URLs can be added later with the `digitalocean.MicrovmIngress` resource. This is a create-time option, so a change forces a new MicroVM.
+        /// </summary>
+        [Output("ingressEnabled")]
+        public Output<bool?> IngressEnabled { get; private set; } = null!;
 
         /// <summary>
         /// The name of the MicroVM.
@@ -310,6 +378,12 @@ namespace Pulumi.DigitalOcean
         [Input("autoResume")]
         public Input<bool>? AutoResume { get; set; }
 
+        /// <summary>
+        /// An outbound allow list. When omitted, egress is unrestricted; a MicroVM restored from a checkpoint inherits its origin's policy. Only valid with public networking, and a change forces a new MicroVM.
+        /// </summary>
+        [Input("egressPolicy")]
+        public Input<Inputs.MicrovmEgressPolicyArgs>? EgressPolicy { get; set; }
+
         [Input("environment")]
         private InputMap<string>? _environment;
 
@@ -333,6 +407,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("httpProtocol")]
         public Input<string>? HttpProtocol { get; set; }
+
+        /// <summary>
+        /// Whether the MicroVM is created with a default public ingress URL. Defaults to `True`. Set to `False` to create the MicroVM without a default URL; additional URLs can be added later with the `digitalocean.MicrovmIngress` resource. This is a create-time option, so a change forces a new MicroVM.
+        /// </summary>
+        [Input("ingressEnabled")]
+        public Input<bool>? IngressEnabled { get; set; }
 
         /// <summary>
         /// The name of the MicroVM.
@@ -438,6 +518,12 @@ namespace Pulumi.DigitalOcean
         [Input("digitaloceanUrn")]
         public Input<string>? DigitaloceanUrn { get; set; }
 
+        /// <summary>
+        /// An outbound allow list. When omitted, egress is unrestricted; a MicroVM restored from a checkpoint inherits its origin's policy. Only valid with public networking, and a change forces a new MicroVM.
+        /// </summary>
+        [Input("egressPolicy")]
+        public Input<Inputs.MicrovmEgressPolicyGetArgs>? EgressPolicy { get; set; }
+
         [Input("environment")]
         private InputMap<string>? _environment;
 
@@ -467,6 +553,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("httpProtocol")]
         public Input<string>? HttpProtocol { get; set; }
+
+        /// <summary>
+        /// Whether the MicroVM is created with a default public ingress URL. Defaults to `True`. Set to `False` to create the MicroVM without a default URL; additional URLs can be added later with the `digitalocean.MicrovmIngress` resource. This is a create-time option, so a change forces a new MicroVM.
+        /// </summary>
+        [Input("ingressEnabled")]
+        public Input<bool>? IngressEnabled { get; set; }
 
         /// <summary>
         /// The name of the MicroVM.

@@ -7,6 +7,9 @@ from . import _utilities
 import typing
 # Export this package's modules as members:
 from ._enums import *
+from .action_gateway_connection import *
+from .action_gateway_mcp_server import *
+from .action_gateway_toolbelt import *
 from .agent_platform_agent import *
 from .agent_platform_agent_knowledge_base_attachment import *
 from .agent_platform_agent_route import *
@@ -55,6 +58,9 @@ from .firewall import *
 from .floating_ip import *
 from .floating_ip_assignment import *
 from .get_account import *
+from .get_action_gateway_connection import *
+from .get_action_gateway_providers import *
+from .get_action_gateway_toolbelt import *
 from .get_agent_platform_agent import *
 from .get_agent_platform_agent_versions import *
 from .get_agent_platform_agents import *
@@ -161,6 +167,7 @@ from .kubernetes_node_pool import *
 from .load_balancer import *
 from .microvm import *
 from .microvm_checkpoint import *
+from .microvm_ingress import *
 from .monitor_alert import *
 from .nfs import *
 from .nfs_access_point import *
@@ -204,6 +211,30 @@ else:
 _utilities.register(
     resource_modules="""
 [
+ {
+  "pkg": "digitalocean",
+  "mod": "index/actionGatewayConnection",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/actionGatewayConnection:ActionGatewayConnection": "ActionGatewayConnection"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/actionGatewayMcpServer",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/actionGatewayMcpServer:ActionGatewayMcpServer": "ActionGatewayMcpServer"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/actionGatewayToolbelt",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/actionGatewayToolbelt:ActionGatewayToolbelt": "ActionGatewayToolbelt"
+  }
+ },
  {
   "pkg": "digitalocean",
   "mod": "index/agentPlatformAgent",
@@ -682,6 +713,14 @@ _utilities.register(
   "fqn": "pulumi_digitalocean",
   "classes": {
    "digitalocean:index/microvmCheckpoint:MicrovmCheckpoint": "MicrovmCheckpoint"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/microvmIngress",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/microvmIngress:MicrovmIngress": "MicrovmIngress"
   }
  },
  {

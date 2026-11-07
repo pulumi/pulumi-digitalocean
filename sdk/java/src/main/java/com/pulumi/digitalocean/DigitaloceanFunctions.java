@@ -9,6 +9,12 @@ import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
 import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.digitalocean.Utilities;
+import com.pulumi.digitalocean.inputs.GetActionGatewayConnectionArgs;
+import com.pulumi.digitalocean.inputs.GetActionGatewayConnectionPlainArgs;
+import com.pulumi.digitalocean.inputs.GetActionGatewayProvidersArgs;
+import com.pulumi.digitalocean.inputs.GetActionGatewayProvidersPlainArgs;
+import com.pulumi.digitalocean.inputs.GetActionGatewayToolbeltArgs;
+import com.pulumi.digitalocean.inputs.GetActionGatewayToolbeltPlainArgs;
 import com.pulumi.digitalocean.inputs.GetAgentPlatformAgentArgs;
 import com.pulumi.digitalocean.inputs.GetAgentPlatformAgentPlainArgs;
 import com.pulumi.digitalocean.inputs.GetAgentPlatformAgentVersionsArgs;
@@ -190,6 +196,9 @@ import com.pulumi.digitalocean.inputs.GetVpcPeeringArgs;
 import com.pulumi.digitalocean.inputs.GetVpcPeeringPlainArgs;
 import com.pulumi.digitalocean.inputs.GetVpcPlainArgs;
 import com.pulumi.digitalocean.outputs.GetAccountResult;
+import com.pulumi.digitalocean.outputs.GetActionGatewayConnectionResult;
+import com.pulumi.digitalocean.outputs.GetActionGatewayProvidersResult;
+import com.pulumi.digitalocean.outputs.GetActionGatewayToolbeltResult;
 import com.pulumi.digitalocean.outputs.GetAgentPlatformAgentResult;
 import com.pulumi.digitalocean.outputs.GetAgentPlatformAgentVersionsResult;
 import com.pulumi.digitalocean.outputs.GetAgentPlatformAgentsByOpenaiApiKeyResult;
@@ -559,6 +568,893 @@ public final class DigitaloceanFunctions {
      */
     public static CompletableFuture<GetAccountResult> getAccountPlain(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getAccount:getAccount", TypeShape.of(GetAccountResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about an [Action Gateway](https://docs.digitalocean.com/products/managed-agents/action-gateway/)
+     * connection, such as one created in the control panel. Look a connection up by
+     * its `id`, or by its `toolProvider` and `userId`.
+     * 
+     * The lookup finds only connections visible to the DigitalOcean user who owns
+     * Terraform&#39;s API token. Revoked connections are never returned.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetActionGatewayConnectionArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var github = DigitaloceanFunctions.getActionGatewayConnection(GetActionGatewayConnectionArgs.builder()
+     *             .toolProvider("github")
+     *             .userId("user-123")
+     *             .build());
+     * 
+     *         ctx.export("githubConnectionStatus", github.status());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetActionGatewayConnectionResult> getActionGatewayConnection() {
+        return getActionGatewayConnection(GetActionGatewayConnectionArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about an [Action Gateway](https://docs.digitalocean.com/products/managed-agents/action-gateway/)
+     * connection, such as one created in the control panel. Look a connection up by
+     * its `id`, or by its `toolProvider` and `userId`.
+     * 
+     * The lookup finds only connections visible to the DigitalOcean user who owns
+     * Terraform&#39;s API token. Revoked connections are never returned.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetActionGatewayConnectionArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var github = DigitaloceanFunctions.getActionGatewayConnection(GetActionGatewayConnectionArgs.builder()
+     *             .toolProvider("github")
+     *             .userId("user-123")
+     *             .build());
+     * 
+     *         ctx.export("githubConnectionStatus", github.status());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetActionGatewayConnectionResult> getActionGatewayConnectionPlain() {
+        return getActionGatewayConnectionPlain(GetActionGatewayConnectionPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about an [Action Gateway](https://docs.digitalocean.com/products/managed-agents/action-gateway/)
+     * connection, such as one created in the control panel. Look a connection up by
+     * its `id`, or by its `toolProvider` and `userId`.
+     * 
+     * The lookup finds only connections visible to the DigitalOcean user who owns
+     * Terraform&#39;s API token. Revoked connections are never returned.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetActionGatewayConnectionArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var github = DigitaloceanFunctions.getActionGatewayConnection(GetActionGatewayConnectionArgs.builder()
+     *             .toolProvider("github")
+     *             .userId("user-123")
+     *             .build());
+     * 
+     *         ctx.export("githubConnectionStatus", github.status());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetActionGatewayConnectionResult> getActionGatewayConnection(GetActionGatewayConnectionArgs args) {
+        return getActionGatewayConnection(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about an [Action Gateway](https://docs.digitalocean.com/products/managed-agents/action-gateway/)
+     * connection, such as one created in the control panel. Look a connection up by
+     * its `id`, or by its `toolProvider` and `userId`.
+     * 
+     * The lookup finds only connections visible to the DigitalOcean user who owns
+     * Terraform&#39;s API token. Revoked connections are never returned.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetActionGatewayConnectionArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var github = DigitaloceanFunctions.getActionGatewayConnection(GetActionGatewayConnectionArgs.builder()
+     *             .toolProvider("github")
+     *             .userId("user-123")
+     *             .build());
+     * 
+     *         ctx.export("githubConnectionStatus", github.status());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetActionGatewayConnectionResult> getActionGatewayConnectionPlain(GetActionGatewayConnectionPlainArgs args) {
+        return getActionGatewayConnectionPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about an [Action Gateway](https://docs.digitalocean.com/products/managed-agents/action-gateway/)
+     * connection, such as one created in the control panel. Look a connection up by
+     * its `id`, or by its `toolProvider` and `userId`.
+     * 
+     * The lookup finds only connections visible to the DigitalOcean user who owns
+     * Terraform&#39;s API token. Revoked connections are never returned.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetActionGatewayConnectionArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var github = DigitaloceanFunctions.getActionGatewayConnection(GetActionGatewayConnectionArgs.builder()
+     *             .toolProvider("github")
+     *             .userId("user-123")
+     *             .build());
+     * 
+     *         ctx.export("githubConnectionStatus", github.status());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetActionGatewayConnectionResult> getActionGatewayConnection(GetActionGatewayConnectionArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getActionGatewayConnection:getActionGatewayConnection", TypeShape.of(GetActionGatewayConnectionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about an [Action Gateway](https://docs.digitalocean.com/products/managed-agents/action-gateway/)
+     * connection, such as one created in the control panel. Look a connection up by
+     * its `id`, or by its `toolProvider` and `userId`.
+     * 
+     * The lookup finds only connections visible to the DigitalOcean user who owns
+     * Terraform&#39;s API token. Revoked connections are never returned.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetActionGatewayConnectionArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var github = DigitaloceanFunctions.getActionGatewayConnection(GetActionGatewayConnectionArgs.builder()
+     *             .toolProvider("github")
+     *             .userId("user-123")
+     *             .build());
+     * 
+     *         ctx.export("githubConnectionStatus", github.status());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetActionGatewayConnectionResult> getActionGatewayConnection(GetActionGatewayConnectionArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getActionGatewayConnection:getActionGatewayConnection", TypeShape.of(GetActionGatewayConnectionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about an [Action Gateway](https://docs.digitalocean.com/products/managed-agents/action-gateway/)
+     * connection, such as one created in the control panel. Look a connection up by
+     * its `id`, or by its `toolProvider` and `userId`.
+     * 
+     * The lookup finds only connections visible to the DigitalOcean user who owns
+     * Terraform&#39;s API token. Revoked connections are never returned.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetActionGatewayConnectionArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var github = DigitaloceanFunctions.getActionGatewayConnection(GetActionGatewayConnectionArgs.builder()
+     *             .toolProvider("github")
+     *             .userId("user-123")
+     *             .build());
+     * 
+     *         ctx.export("githubConnectionStatus", github.status());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetActionGatewayConnectionResult> getActionGatewayConnectionPlain(GetActionGatewayConnectionPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getActionGatewayConnection:getActionGatewayConnection", TypeShape.of(GetActionGatewayConnectionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information on the [Action Gateway](https://docs.digitalocean.com/products/managed-agents/action-gateway/)
+     * tool providers, with the ability to filter and sort the results. Use it to
+     * find a provider&#39;s slug, the scopes it offers, and the connection parameters a
+     * `digitalocean.ActionGatewayConnection`
+     * needs. If no filters are specified, all providers are returned.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetActionGatewayProvidersArgs;
+     * import com.pulumi.digitalocean.inputs.GetActionGatewayProvidersFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var jira = DigitaloceanFunctions.getActionGatewayProviders(GetActionGatewayProvidersArgs.builder()
+     *             .filters(GetActionGatewayProvidersFilterArgs.builder()
+     *                 .key("name")
+     *                 .values("jira")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("jiraParameters", jira.providers()[0].connectionParameters().stream().map(element -> element.key()).collect(toList()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetActionGatewayProvidersResult> getActionGatewayProviders() {
+        return getActionGatewayProviders(GetActionGatewayProvidersArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Get information on the [Action Gateway](https://docs.digitalocean.com/products/managed-agents/action-gateway/)
+     * tool providers, with the ability to filter and sort the results. Use it to
+     * find a provider&#39;s slug, the scopes it offers, and the connection parameters a
+     * `digitalocean.ActionGatewayConnection`
+     * needs. If no filters are specified, all providers are returned.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetActionGatewayProvidersArgs;
+     * import com.pulumi.digitalocean.inputs.GetActionGatewayProvidersFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var jira = DigitaloceanFunctions.getActionGatewayProviders(GetActionGatewayProvidersArgs.builder()
+     *             .filters(GetActionGatewayProvidersFilterArgs.builder()
+     *                 .key("name")
+     *                 .values("jira")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("jiraParameters", jira.providers()[0].connectionParameters().stream().map(element -> element.key()).collect(toList()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetActionGatewayProvidersResult> getActionGatewayProvidersPlain() {
+        return getActionGatewayProvidersPlain(GetActionGatewayProvidersPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Get information on the [Action Gateway](https://docs.digitalocean.com/products/managed-agents/action-gateway/)
+     * tool providers, with the ability to filter and sort the results. Use it to
+     * find a provider&#39;s slug, the scopes it offers, and the connection parameters a
+     * `digitalocean.ActionGatewayConnection`
+     * needs. If no filters are specified, all providers are returned.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetActionGatewayProvidersArgs;
+     * import com.pulumi.digitalocean.inputs.GetActionGatewayProvidersFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var jira = DigitaloceanFunctions.getActionGatewayProviders(GetActionGatewayProvidersArgs.builder()
+     *             .filters(GetActionGatewayProvidersFilterArgs.builder()
+     *                 .key("name")
+     *                 .values("jira")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("jiraParameters", jira.providers()[0].connectionParameters().stream().map(element -> element.key()).collect(toList()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetActionGatewayProvidersResult> getActionGatewayProviders(GetActionGatewayProvidersArgs args) {
+        return getActionGatewayProviders(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information on the [Action Gateway](https://docs.digitalocean.com/products/managed-agents/action-gateway/)
+     * tool providers, with the ability to filter and sort the results. Use it to
+     * find a provider&#39;s slug, the scopes it offers, and the connection parameters a
+     * `digitalocean.ActionGatewayConnection`
+     * needs. If no filters are specified, all providers are returned.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetActionGatewayProvidersArgs;
+     * import com.pulumi.digitalocean.inputs.GetActionGatewayProvidersFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var jira = DigitaloceanFunctions.getActionGatewayProviders(GetActionGatewayProvidersArgs.builder()
+     *             .filters(GetActionGatewayProvidersFilterArgs.builder()
+     *                 .key("name")
+     *                 .values("jira")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("jiraParameters", jira.providers()[0].connectionParameters().stream().map(element -> element.key()).collect(toList()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetActionGatewayProvidersResult> getActionGatewayProvidersPlain(GetActionGatewayProvidersPlainArgs args) {
+        return getActionGatewayProvidersPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information on the [Action Gateway](https://docs.digitalocean.com/products/managed-agents/action-gateway/)
+     * tool providers, with the ability to filter and sort the results. Use it to
+     * find a provider&#39;s slug, the scopes it offers, and the connection parameters a
+     * `digitalocean.ActionGatewayConnection`
+     * needs. If no filters are specified, all providers are returned.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetActionGatewayProvidersArgs;
+     * import com.pulumi.digitalocean.inputs.GetActionGatewayProvidersFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var jira = DigitaloceanFunctions.getActionGatewayProviders(GetActionGatewayProvidersArgs.builder()
+     *             .filters(GetActionGatewayProvidersFilterArgs.builder()
+     *                 .key("name")
+     *                 .values("jira")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("jiraParameters", jira.providers()[0].connectionParameters().stream().map(element -> element.key()).collect(toList()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetActionGatewayProvidersResult> getActionGatewayProviders(GetActionGatewayProvidersArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getActionGatewayProviders:getActionGatewayProviders", TypeShape.of(GetActionGatewayProvidersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information on the [Action Gateway](https://docs.digitalocean.com/products/managed-agents/action-gateway/)
+     * tool providers, with the ability to filter and sort the results. Use it to
+     * find a provider&#39;s slug, the scopes it offers, and the connection parameters a
+     * `digitalocean.ActionGatewayConnection`
+     * needs. If no filters are specified, all providers are returned.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetActionGatewayProvidersArgs;
+     * import com.pulumi.digitalocean.inputs.GetActionGatewayProvidersFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var jira = DigitaloceanFunctions.getActionGatewayProviders(GetActionGatewayProvidersArgs.builder()
+     *             .filters(GetActionGatewayProvidersFilterArgs.builder()
+     *                 .key("name")
+     *                 .values("jira")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("jiraParameters", jira.providers()[0].connectionParameters().stream().map(element -> element.key()).collect(toList()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetActionGatewayProvidersResult> getActionGatewayProviders(GetActionGatewayProvidersArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getActionGatewayProviders:getActionGatewayProviders", TypeShape.of(GetActionGatewayProvidersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information on the [Action Gateway](https://docs.digitalocean.com/products/managed-agents/action-gateway/)
+     * tool providers, with the ability to filter and sort the results. Use it to
+     * find a provider&#39;s slug, the scopes it offers, and the connection parameters a
+     * `digitalocean.ActionGatewayConnection`
+     * needs. If no filters are specified, all providers are returned.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetActionGatewayProvidersArgs;
+     * import com.pulumi.digitalocean.inputs.GetActionGatewayProvidersFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var jira = DigitaloceanFunctions.getActionGatewayProviders(GetActionGatewayProvidersArgs.builder()
+     *             .filters(GetActionGatewayProvidersFilterArgs.builder()
+     *                 .key("name")
+     *                 .values("jira")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("jiraParameters", jira.providers()[0].connectionParameters().stream().map(element -> element.key()).collect(toList()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetActionGatewayProvidersResult> getActionGatewayProvidersPlain(GetActionGatewayProvidersPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getActionGatewayProviders:getActionGatewayProviders", TypeShape.of(GetActionGatewayProvidersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about the latest or a specific version of an
+     * [Action Gateway](https://docs.digitalocean.com/products/managed-agents/action-gateway/)
+     * toolbelt.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetActionGatewayToolbeltArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var search = DigitaloceanFunctions.getActionGatewayToolbelt(GetActionGatewayToolbeltArgs.builder()
+     *             .name("search-toolbelt")
+     *             .build());
+     * 
+     *         ctx.export("searchToolbelt", String.format("toolbelt:%s", search.reference()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetActionGatewayToolbeltResult> getActionGatewayToolbelt(GetActionGatewayToolbeltArgs args) {
+        return getActionGatewayToolbelt(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about the latest or a specific version of an
+     * [Action Gateway](https://docs.digitalocean.com/products/managed-agents/action-gateway/)
+     * toolbelt.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetActionGatewayToolbeltArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var search = DigitaloceanFunctions.getActionGatewayToolbelt(GetActionGatewayToolbeltArgs.builder()
+     *             .name("search-toolbelt")
+     *             .build());
+     * 
+     *         ctx.export("searchToolbelt", String.format("toolbelt:%s", search.reference()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetActionGatewayToolbeltResult> getActionGatewayToolbeltPlain(GetActionGatewayToolbeltPlainArgs args) {
+        return getActionGatewayToolbeltPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about the latest or a specific version of an
+     * [Action Gateway](https://docs.digitalocean.com/products/managed-agents/action-gateway/)
+     * toolbelt.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetActionGatewayToolbeltArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var search = DigitaloceanFunctions.getActionGatewayToolbelt(GetActionGatewayToolbeltArgs.builder()
+     *             .name("search-toolbelt")
+     *             .build());
+     * 
+     *         ctx.export("searchToolbelt", String.format("toolbelt:%s", search.reference()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetActionGatewayToolbeltResult> getActionGatewayToolbelt(GetActionGatewayToolbeltArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getActionGatewayToolbelt:getActionGatewayToolbelt", TypeShape.of(GetActionGatewayToolbeltResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about the latest or a specific version of an
+     * [Action Gateway](https://docs.digitalocean.com/products/managed-agents/action-gateway/)
+     * toolbelt.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetActionGatewayToolbeltArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var search = DigitaloceanFunctions.getActionGatewayToolbelt(GetActionGatewayToolbeltArgs.builder()
+     *             .name("search-toolbelt")
+     *             .build());
+     * 
+     *         ctx.export("searchToolbelt", String.format("toolbelt:%s", search.reference()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetActionGatewayToolbeltResult> getActionGatewayToolbelt(GetActionGatewayToolbeltArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getActionGatewayToolbelt:getActionGatewayToolbelt", TypeShape.of(GetActionGatewayToolbeltResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about the latest or a specific version of an
+     * [Action Gateway](https://docs.digitalocean.com/products/managed-agents/action-gateway/)
+     * toolbelt.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetActionGatewayToolbeltArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var search = DigitaloceanFunctions.getActionGatewayToolbelt(GetActionGatewayToolbeltArgs.builder()
+     *             .name("search-toolbelt")
+     *             .build());
+     * 
+     *         ctx.export("searchToolbelt", String.format("toolbelt:%s", search.reference()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetActionGatewayToolbeltResult> getActionGatewayToolbeltPlain(GetActionGatewayToolbeltPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getActionGatewayToolbelt:getActionGatewayToolbelt", TypeShape.of(GetActionGatewayToolbeltResult.class), args, Utilities.withVersion(options));
     }
     public static Output<GetAgentPlatformAgentResult> getAgentPlatformAgent(GetAgentPlatformAgentArgs args) {
         return getAgentPlatformAgent(args, InvokeOptions.Empty);

@@ -235,6 +235,10 @@ namespace Pulumi.DigitalOcean
         /// The observed lifecycle state of the MicroVM, such as `Running` or `Paused`.
         /// </summary>
         public readonly string CurrentState;
+        /// <summary>
+        /// The outbound allow list set at create. Empty when egress is unrestricted:
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetMicrovmEgressPolicyResult> EgressPolicies;
         public readonly ImmutableDictionary<string, string> Environment;
         /// <summary>
         /// A description of the failure when `CurrentState` is `Failed`.
@@ -249,6 +253,7 @@ namespace Pulumi.DigitalOcean
         /// The ID of the MicroVM.
         /// </summary>
         public readonly string Id;
+        public readonly bool IngressEnabled;
         /// <summary>
         /// The name of the MicroVM.
         /// </summary>
@@ -298,6 +303,8 @@ namespace Pulumi.DigitalOcean
 
             string currentState,
 
+            ImmutableArray<Outputs.GetMicrovmEgressPolicyResult> egressPolicies,
+
             ImmutableDictionary<string, string> environment,
 
             string failureReason,
@@ -307,6 +314,8 @@ namespace Pulumi.DigitalOcean
             string httpProtocol,
 
             string id,
+
+            bool ingressEnabled,
 
             string name,
 
@@ -334,11 +343,13 @@ namespace Pulumi.DigitalOcean
             AutoResume = autoResume;
             CreatedAt = createdAt;
             CurrentState = currentState;
+            EgressPolicies = egressPolicies;
             Environment = environment;
             FailureReason = failureReason;
             HttpPort = httpPort;
             HttpProtocol = httpProtocol;
             Id = id;
+            IngressEnabled = ingressEnabled;
             Name = name;
             Networking = networking;
             Ports = ports;

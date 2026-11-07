@@ -5,6 +5,7 @@ package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.digitalocean.outputs.GetMicrovmsMicroVmAutoPause;
+import com.pulumi.digitalocean.outputs.GetMicrovmsMicroVmEgressPolicy;
 import com.pulumi.digitalocean.outputs.GetMicrovmsMicroVmSize;
 import com.pulumi.digitalocean.outputs.GetMicrovmsMicroVmSource;
 import com.pulumi.digitalocean.outputs.GetMicrovmsMicroVmUrl;
@@ -39,6 +40,11 @@ public final class GetMicrovmsMicroVm {
      */
     private String currentState;
     /**
+     * @return Outbound allow list for the MicroVM. Omit for unrestricted egress. Public networking only; fixed at create, so a change forces recreation. With a policy set, only HTTP and HTTPS through the platform proxy to allowed destinations works. A MicroVM restored from a checkpoint inherits the origin&#39;s policy.
+     * 
+     */
+    private List<GetMicrovmsMicroVmEgressPolicy> egressPolicies;
+    /**
      * @return Environment variables passed to the MicroVM
      * 
      */
@@ -63,6 +69,11 @@ public final class GetMicrovmsMicroVm {
      * 
      */
     private String id;
+    /**
+     * @return Whether the MicroVM is created with a default public ingress URL. Defaults to true. Set to false to create the MicroVM without a default URL; additional URLs can be added later with the digitalocean.MicrovmIngress resource. This is a create-time option, so a change forces recreation.
+     * 
+     */
+    private Boolean ingressEnabled;
     /**
      * @return Only return MicroVMs with this exact name.
      * 
@@ -145,6 +156,13 @@ public final class GetMicrovmsMicroVm {
         return this.currentState;
     }
     /**
+     * @return Outbound allow list for the MicroVM. Omit for unrestricted egress. Public networking only; fixed at create, so a change forces recreation. With a policy set, only HTTP and HTTPS through the platform proxy to allowed destinations works. A MicroVM restored from a checkpoint inherits the origin&#39;s policy.
+     * 
+     */
+    public List<GetMicrovmsMicroVmEgressPolicy> egressPolicies() {
+        return this.egressPolicies;
+    }
+    /**
      * @return Environment variables passed to the MicroVM
      * 
      */
@@ -178,6 +196,13 @@ public final class GetMicrovmsMicroVm {
      */
     public String id() {
         return this.id;
+    }
+    /**
+     * @return Whether the MicroVM is created with a default public ingress URL. Defaults to true. Set to false to create the MicroVM without a default URL; additional URLs can be added later with the digitalocean.MicrovmIngress resource. This is a create-time option, so a change forces recreation.
+     * 
+     */
+    public Boolean ingressEnabled() {
+        return this.ingressEnabled;
     }
     /**
      * @return Only return MicroVMs with this exact name.
@@ -266,11 +291,13 @@ public final class GetMicrovmsMicroVm {
         private Boolean autoResume;
         private String createdAt;
         private String currentState;
+        private List<GetMicrovmsMicroVmEgressPolicy> egressPolicies;
         private Map<String,String> environment;
         private String failureReason;
         private Integer httpPort;
         private String httpProtocol;
         private String id;
+        private Boolean ingressEnabled;
         private String name;
         private String networking;
         private List<Integer> ports;
@@ -289,11 +316,13 @@ public final class GetMicrovmsMicroVm {
     	      this.autoResume = defaults.autoResume;
     	      this.createdAt = defaults.createdAt;
     	      this.currentState = defaults.currentState;
+    	      this.egressPolicies = defaults.egressPolicies;
     	      this.environment = defaults.environment;
     	      this.failureReason = defaults.failureReason;
     	      this.httpPort = defaults.httpPort;
     	      this.httpProtocol = defaults.httpProtocol;
     	      this.id = defaults.id;
+    	      this.ingressEnabled = defaults.ingressEnabled;
     	      this.name = defaults.name;
     	      this.networking = defaults.networking;
     	      this.ports = defaults.ports;
@@ -343,6 +372,17 @@ public final class GetMicrovmsMicroVm {
             return this;
         }
         @CustomType.Setter
+        public Builder egressPolicies(List<GetMicrovmsMicroVmEgressPolicy> egressPolicies) {
+            if (egressPolicies == null) {
+              throw new MissingRequiredPropertyException("GetMicrovmsMicroVm", "egressPolicies");
+            }
+            this.egressPolicies = egressPolicies;
+            return this;
+        }
+        public Builder egressPolicies(GetMicrovmsMicroVmEgressPolicy... egressPolicies) {
+            return egressPolicies(List.of(egressPolicies));
+        }
+        @CustomType.Setter
         public Builder environment(Map<String,String> environment) {
             if (environment == null) {
               throw new MissingRequiredPropertyException("GetMicrovmsMicroVm", "environment");
@@ -380,6 +420,14 @@ public final class GetMicrovmsMicroVm {
               throw new MissingRequiredPropertyException("GetMicrovmsMicroVm", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ingressEnabled(Boolean ingressEnabled) {
+            if (ingressEnabled == null) {
+              throw new MissingRequiredPropertyException("GetMicrovmsMicroVm", "ingressEnabled");
+            }
+            this.ingressEnabled = ingressEnabled;
             return this;
         }
         @CustomType.Setter
@@ -491,11 +539,13 @@ public final class GetMicrovmsMicroVm {
             _resultValue.autoResume = autoResume;
             _resultValue.createdAt = createdAt;
             _resultValue.currentState = currentState;
+            _resultValue.egressPolicies = egressPolicies;
             _resultValue.environment = environment;
             _resultValue.failureReason = failureReason;
             _resultValue.httpPort = httpPort;
             _resultValue.httpProtocol = httpProtocol;
             _resultValue.id = id;
+            _resultValue.ingressEnabled = ingressEnabled;
             _resultValue.name = name;
             _resultValue.networking = networking;
             _resultValue.ports = ports;

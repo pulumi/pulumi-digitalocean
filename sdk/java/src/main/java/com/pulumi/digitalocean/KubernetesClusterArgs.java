@@ -172,6 +172,21 @@ public final class KubernetesClusterArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Enable/disable launching GPU nodes in the cluster with images without GPU drivers, allowing GPU operators to manage drivers. Mutually exclusive with other GPU-related cluster options, such as `nvidiaGpuDraDriver` and `amdGpuDraDriver`. Default: false
+     * 
+     */
+    @Import(name="gpuOperatorReady")
+    private @Nullable Output<Boolean> gpuOperatorReady;
+
+    /**
+     * @return Enable/disable launching GPU nodes in the cluster with images without GPU drivers, allowing GPU operators to manage drivers. Mutually exclusive with other GPU-related cluster options, such as `nvidiaGpuDraDriver` and `amdGpuDraDriver`. Default: false
+     * 
+     */
+    public Optional<Output<Boolean>> gpuOperatorReady() {
+        return Optional.ofNullable(this.gpuOperatorReady);
+    }
+
+    /**
      * Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: true (for 1.36.0 and later)
      * 
      */
@@ -498,6 +513,7 @@ public final class KubernetesClusterArgs extends com.pulumi.resources.ResourceAr
         this.controlPlaneFirewall = $.controlPlaneFirewall;
         this.corednsAutoscaler = $.corednsAutoscaler;
         this.destroyAllAssociatedResources = $.destroyAllAssociatedResources;
+        this.gpuOperatorReady = $.gpuOperatorReady;
         this.ha = $.ha;
         this.isolatedWorkers = $.isolatedWorkers;
         this.kubeconfigExpireSeconds = $.kubeconfigExpireSeconds;
@@ -736,6 +752,27 @@ public final class KubernetesClusterArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder destroyAllAssociatedResources(Boolean destroyAllAssociatedResources) {
             return destroyAllAssociatedResources(Output.of(destroyAllAssociatedResources));
+        }
+
+        /**
+         * @param gpuOperatorReady Enable/disable launching GPU nodes in the cluster with images without GPU drivers, allowing GPU operators to manage drivers. Mutually exclusive with other GPU-related cluster options, such as `nvidiaGpuDraDriver` and `amdGpuDraDriver`. Default: false
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gpuOperatorReady(@Nullable Output<Boolean> gpuOperatorReady) {
+            $.gpuOperatorReady = gpuOperatorReady;
+            return this;
+        }
+
+        /**
+         * @param gpuOperatorReady Enable/disable launching GPU nodes in the cluster with images without GPU drivers, allowing GPU operators to manage drivers. Mutually exclusive with other GPU-related cluster options, such as `nvidiaGpuDraDriver` and `amdGpuDraDriver`. Default: false
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gpuOperatorReady(Boolean gpuOperatorReady) {
+            return gpuOperatorReady(Output.of(gpuOperatorReady));
         }
 
         /**

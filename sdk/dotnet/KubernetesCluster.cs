@@ -303,6 +303,12 @@ namespace Pulumi.DigitalOcean
         public Output<string> Endpoint { get; private set; } = null!;
 
         /// <summary>
+        /// Enable/disable launching GPU nodes in the cluster with images without GPU drivers, allowing GPU operators to manage drivers. Mutually exclusive with other GPU-related cluster options, such as `NvidiaGpuDraDriver` and `AmdGpuDraDriver`. Default: false
+        /// </summary>
+        [Output("gpuOperatorReady")]
+        public Output<bool?> GpuOperatorReady { get; private set; } = null!;
+
+        /// <summary>
         /// Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: true (for 1.36.0 and later)
         /// </summary>
         [Output("ha")]
@@ -563,6 +569,12 @@ namespace Pulumi.DigitalOcean
         public Input<bool>? DestroyAllAssociatedResources { get; set; }
 
         /// <summary>
+        /// Enable/disable launching GPU nodes in the cluster with images without GPU drivers, allowing GPU operators to manage drivers. Mutually exclusive with other GPU-related cluster options, such as `NvidiaGpuDraDriver` and `AmdGpuDraDriver`. Default: false
+        /// </summary>
+        [Input("gpuOperatorReady")]
+        public Input<bool>? GpuOperatorReady { get; set; }
+
+        /// <summary>
         /// Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: true (for 1.36.0 and later)
         /// </summary>
         [Input("ha")]
@@ -785,6 +797,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("endpoint")]
         public Input<string>? Endpoint { get; set; }
+
+        /// <summary>
+        /// Enable/disable launching GPU nodes in the cluster with images without GPU drivers, allowing GPU operators to manage drivers. Mutually exclusive with other GPU-related cluster options, such as `NvidiaGpuDraDriver` and `AmdGpuDraDriver`. Default: false
+        /// </summary>
+        [Input("gpuOperatorReady")]
+        public Input<bool>? GpuOperatorReady { get; set; }
 
         /// <summary>
         /// Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: true (for 1.36.0 and later)
