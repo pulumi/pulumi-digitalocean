@@ -200,6 +200,161 @@
                 "port"
             ]
         },
+        "digitalocean:index/ActionGatewayEndpointInsights:ActionGatewayEndpointInsights": {
+            "properties": {
+                "logs": {
+                    "type": "boolean",
+                    "description": "Whether the endpoint's logs are sent to Insights. Your team can require this to be on for every endpoint; turning it off is then refused.\n"
+                },
+                "metrics": {
+                    "type": "boolean",
+                    "description": "Whether the endpoint's metrics are sent to Insights.\n"
+                },
+                "traces": {
+                    "type": "boolean",
+                    "description": "Whether the endpoint's traces are sent to Insights.\n\nEach signal is optional and computed, so an omitted signal keeps the value the\nendpoint already stores instead of resetting it.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "logs",
+                        "metrics",
+                        "traces"
+                    ]
+                }
+            }
+        },
+        "digitalocean:index/ActionGatewayEndpointVersion:ActionGatewayEndpointVersion": {
+            "properties": {
+                "actorId": {
+                    "type": "string",
+                    "description": "The actor the version's tool calls act as. It must contain 1 to 64 characters from `[A-Za-z0-9._-]`. No operation changes an endpoint's actor, so changing this forces a new endpoint.\n",
+                    "willReplaceOnChanges": true
+                },
+                "config": {
+                    "type": "string",
+                    "description": "A JSON object of options Gateway applies to the version, such as `preloadTools`, `customInstructions`, or `outputViews`. It is validated as JSON, normalized for comparison, and stored as supplied.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The ID of the head version, `\u003cendpoint UUID\u003e.v\u003cversion number\u003e`.\n"
+                },
+                "network": {
+                    "$ref": "#/types/digitalocean:index/ActionGatewayEndpointVersionNetwork:ActionGatewayEndpointVersionNetwork",
+                    "description": "A VPC the version's tool calls are routed through. See Network below.\n"
+                },
+                "pinnedTools": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The tools and toolbelts the head version enables, each pinned by the API as `\u003ctool_slug\u003e@\u003cversion\u003e` or `toolbelt:\u003cname\u003e@\u003cversion\u003e`. Empty when every tool is enabled.\n"
+                },
+                "policy": {
+                    "$ref": "#/types/digitalocean:index/ActionGatewayEndpointVersionPolicy:ActionGatewayEndpointVersionPolicy",
+                    "description": "The tool permission policy. Omitting it asks before every call. See Policy below.\n"
+                },
+                "promotedFromVersionNumber": {
+                    "type": "integer",
+                    "description": "The version number the head was promoted from, when it was created by a promotion rather than a publish.\n"
+                },
+                "tools": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The tools and toolbelts the version enables, each optionally pinned as `\u003ctool_slug\u003e@\u003cversion\u003e` or `toolbelt:\u003cname\u003e@\u003cversion\u003e`. **Omit the argument to enable every tool, and set an empty list to enable none.** The API distinguishes the two, and so does this resource.\n"
+                },
+                "versionNumber": {
+                    "type": "integer",
+                    "description": "The number of the head version.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "id",
+                        "pinnedTools",
+                        "promotedFromVersionNumber",
+                        "versionNumber"
+                    ]
+                }
+            }
+        },
+        "digitalocean:index/ActionGatewayEndpointVersionNetwork:ActionGatewayEndpointVersionNetwork": {
+            "properties": {
+                "region": {
+                    "type": "string",
+                    "description": "The region of the VPC the version is attached to.\n"
+                },
+                "vpcUuid": {
+                    "type": "string",
+                    "description": "The UUID of a VPC owned by your team.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "vpcUuid"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "region",
+                        "vpcUuid"
+                    ]
+                }
+            }
+        },
+        "digitalocean:index/ActionGatewayEndpointVersionPolicy:ActionGatewayEndpointVersionPolicy": {
+            "properties": {
+                "defaultAction": {
+                    "type": "string",
+                    "description": "The action for calls that no rule matches: \u003cspan pulumi-lang-nodejs=\"`allow`\" pulumi-lang-dotnet=\"`Allow`\" pulumi-lang-go=\"`allow`\" pulumi-lang-python=\"`allow`\" pulumi-lang-yaml=\"`allow`\" pulumi-lang-java=\"`allow`\" pulumi-lang-hcl=\"`allow`\"\u003e`allow`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`ask`\" pulumi-lang-dotnet=\"`Ask`\" pulumi-lang-go=\"`ask`\" pulumi-lang-python=\"`ask`\" pulumi-lang-yaml=\"`ask`\" pulumi-lang-java=\"`ask`\" pulumi-lang-hcl=\"`ask`\"\u003e`ask`\u003c/span\u003e, or \u003cspan pulumi-lang-nodejs=\"`deny`\" pulumi-lang-dotnet=\"`Deny`\" pulumi-lang-go=\"`deny`\" pulumi-lang-python=\"`deny`\" pulumi-lang-yaml=\"`deny`\" pulumi-lang-java=\"`deny`\" pulumi-lang-hcl=\"`deny`\"\u003e`deny`\u003c/span\u003e. Empty means \u003cspan pulumi-lang-nodejs=\"`ask`\" pulumi-lang-dotnet=\"`Ask`\" pulumi-lang-go=\"`ask`\" pulumi-lang-python=\"`ask`\" pulumi-lang-yaml=\"`ask`\" pulumi-lang-java=\"`ask`\" pulumi-lang-hcl=\"`ask`\"\u003e`ask`\u003c/span\u003e.\n"
+                },
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/ActionGatewayEndpointVersionPolicyRule:ActionGatewayEndpointVersionPolicyRule"
+                    },
+                    "description": "Rules for specific tools and toolbelts, in the order the configuration lists them. Each rule supports:\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "defaultAction"
+                    ]
+                }
+            }
+        },
+        "digitalocean:index/ActionGatewayEndpointVersionPolicyRule:ActionGatewayEndpointVersionPolicyRule": {
+            "properties": {
+                "action": {
+                    "type": "string",
+                    "description": "One of \u003cspan pulumi-lang-nodejs=\"`allow`\" pulumi-lang-dotnet=\"`Allow`\" pulumi-lang-go=\"`allow`\" pulumi-lang-python=\"`allow`\" pulumi-lang-yaml=\"`allow`\" pulumi-lang-java=\"`allow`\" pulumi-lang-hcl=\"`allow`\"\u003e`allow`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`ask`\" pulumi-lang-dotnet=\"`Ask`\" pulumi-lang-go=\"`ask`\" pulumi-lang-python=\"`ask`\" pulumi-lang-yaml=\"`ask`\" pulumi-lang-java=\"`ask`\" pulumi-lang-hcl=\"`ask`\"\u003e`ask`\u003c/span\u003e, or \u003cspan pulumi-lang-nodejs=\"`deny`\" pulumi-lang-dotnet=\"`Deny`\" pulumi-lang-go=\"`deny`\" pulumi-lang-python=\"`deny`\" pulumi-lang-yaml=\"`deny`\" pulumi-lang-java=\"`deny`\" pulumi-lang-hcl=\"`deny`\"\u003e`deny`\u003c/span\u003e.\n"
+                },
+                "match": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Argument values a call must match for the rule to apply, keyed by argument name.\n"
+                },
+                "tool": {
+                    "type": "string",
+                    "description": "A tool slug, optionally pinned as `\u003ctool_slug\u003e@\u003cversion\u003e`, or `toolbelt:\u003cname\u003e@\u003cversion\u003e`.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "action",
+                "tool"
+            ]
+        },
         "digitalocean:index/ActionGatewayMcpServerDiscoveredTool:ActionGatewayMcpServerDiscoveredTool": {
             "properties": {
                 "description": {
@@ -7868,13 +8023,12 @@
             "properties": {
                 "enabled": {
                     "type": "boolean",
-                    "description": "Whether the MicroVM pauses after it has been idle for \u003cspan pulumi-lang-nodejs=\"`idleTimeout`\" pulumi-lang-dotnet=\"`IdleTimeout`\" pulumi-lang-go=\"`idleTimeout`\" pulumi-lang-python=\"`idle_timeout`\" pulumi-lang-yaml=\"`idleTimeout`\" pulumi-lang-java=\"`idleTimeout`\" pulumi-lang-hcl=\"`idle_timeout`\"\u003e`idleTimeout`\u003c/span\u003e.\n",
+                    "description": "Whether the MicroVM pauses after it has been idle for \u003cspan pulumi-lang-nodejs=\"`idleTimeout`\" pulumi-lang-dotnet=\"`IdleTimeout`\" pulumi-lang-go=\"`idleTimeout`\" pulumi-lang-python=\"`idle_timeout`\" pulumi-lang-yaml=\"`idleTimeout`\" pulumi-lang-java=\"`idleTimeout`\" pulumi-lang-hcl=\"`idle_timeout`\"\u003e`idleTimeout`\u003c/span\u003e. A change forces a new MicroVM.\n",
                     "willReplaceOnChanges": true
                 },
                 "idleTimeout": {
                     "type": "string",
-                    "description": "How long the MicroVM must be idle before it pauses, as a duration such as \u003cspan pulumi-lang-nodejs=\"`5m`\" pulumi-lang-dotnet=\"`5m`\" pulumi-lang-go=\"`5m`\" pulumi-lang-python=\"`5m`\" pulumi-lang-yaml=\"`5m`\" pulumi-lang-java=\"`5m`\" pulumi-lang-hcl=\"`5m`\"\u003e`5m`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`30s`\" pulumi-lang-dotnet=\"`30s`\" pulumi-lang-go=\"`30s`\" pulumi-lang-python=\"`30s`\" pulumi-lang-yaml=\"`30s`\" pulumi-lang-java=\"`30s`\" pulumi-lang-hcl=\"`30s`\"\u003e`30s`\u003c/span\u003e.\n",
-                    "willReplaceOnChanges": true
+                    "description": "How long the MicroVM must be idle before it pauses, as a duration such as \u003cspan pulumi-lang-nodejs=\"`5m`\" pulumi-lang-dotnet=\"`5m`\" pulumi-lang-go=\"`5m`\" pulumi-lang-python=\"`5m`\" pulumi-lang-yaml=\"`5m`\" pulumi-lang-java=\"`5m`\" pulumi-lang-hcl=\"`5m`\"\u003e`5m`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`30s`\" pulumi-lang-dotnet=\"`30s`\" pulumi-lang-go=\"`30s`\" pulumi-lang-python=\"`30s`\" pulumi-lang-yaml=\"`30s`\" pulumi-lang-java=\"`30s`\" pulumi-lang-hcl=\"`30s`\"\u003e`30s`\u003c/span\u003e. A change is applied in place.\n"
                 }
             },
             "type": "object",
@@ -8530,6 +8684,179 @@
                 "allowedIpCidrs",
                 "host",
                 "port"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getActionGatewayEndpointInsight:getActionGatewayEndpointInsight": {
+            "properties": {
+                "logs": {
+                    "type": "boolean",
+                    "description": "Whether the endpoint's logs are sent to Insights. Your team can require this to be on.\n"
+                },
+                "metrics": {
+                    "type": "boolean",
+                    "description": "Whether the endpoint's metrics are sent to Insights\n"
+                },
+                "traces": {
+                    "type": "boolean",
+                    "description": "Whether the endpoint's traces are sent to Insights\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "logs",
+                "metrics",
+                "traces"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getActionGatewayEndpointVersion:getActionGatewayEndpointVersion": {
+            "properties": {
+                "actorId": {
+                    "type": "string",
+                    "description": "An actor ID to filter a \u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\" pulumi-lang-hcl=\"`name`\"\u003e`name`\u003c/span\u003e lookup by. Endpoints bound to a different actor are ignored.\n"
+                },
+                "config": {
+                    "type": "string",
+                    "description": "JSON object of options Gateway applies to the version, such as preloadTools or customInstructions\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The ID of the endpoint. Conflicts with \u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\" pulumi-lang-hcl=\"`name`\"\u003e`name`\u003c/span\u003e.\n"
+                },
+                "networks": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/getActionGatewayEndpointVersionNetwork:getActionGatewayEndpointVersionNetwork"
+                    },
+                    "description": "VPC the version's tool calls are routed through\n"
+                },
+                "pinnedTools": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Tools and toolbelts the head version enables, each pinned by the API as \u003ctool_slug\u003e@\u003cversion\u003e or toolbelt:\u003cname\u003e@\u003cversion\u003e. Empty when every tool is enabled.\n"
+                },
+                "policies": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/getActionGatewayEndpointVersionPolicy:getActionGatewayEndpointVersionPolicy"
+                    },
+                    "description": "Tool permission policy. Omitting it asks before every call.\n"
+                },
+                "promotedFromVersionNumber": {
+                    "type": "integer",
+                    "description": "Version number the head was promoted from, when it was created by a promotion rather than a publish\n"
+                },
+                "tools": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Tools and toolbelts the version enables, each optionally pinned as \u003ctool_slug\u003e@\u003cversion\u003e or toolbelt:\u003cname\u003e@\u003cversion\u003e. Omit to enable every tool; set an empty list to enable none.\n"
+                },
+                "versionNumber": {
+                    "type": "integer",
+                    "description": "Version number of the head version\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "actorId",
+                "config",
+                "id",
+                "networks",
+                "pinnedTools",
+                "policies",
+                "promotedFromVersionNumber",
+                "tools",
+                "versionNumber"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getActionGatewayEndpointVersionNetwork:getActionGatewayEndpointVersionNetwork": {
+            "properties": {
+                "region": {
+                    "type": "string",
+                    "description": "Region of the VPC\n"
+                },
+                "vpcUuid": {
+                    "type": "string",
+                    "description": "UUID of a VPC owned by your team\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "region",
+                "vpcUuid"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getActionGatewayEndpointVersionPolicy:getActionGatewayEndpointVersionPolicy": {
+            "properties": {
+                "defaultAction": {
+                    "type": "string",
+                    "description": "Action for calls no rule matches: allow, ask, or deny. Empty means ask.\n"
+                },
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/getActionGatewayEndpointVersionPolicyRule:getActionGatewayEndpointVersionPolicyRule"
+                    },
+                    "description": "Rules for specific tools and toolbelts, in the order the configuration lists them\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "defaultAction",
+                "rules"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getActionGatewayEndpointVersionPolicyRule:getActionGatewayEndpointVersionPolicyRule": {
+            "properties": {
+                "action": {
+                    "type": "string",
+                    "description": "allow, ask, or deny\n"
+                },
+                "match": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Argument values a call must match for the rule to apply, keyed by argument name\n"
+                },
+                "tool": {
+                    "type": "string",
+                    "description": "Tool slug, optionally pinned as \u003ctool_slug\u003e@\u003cversion\u003e, or toolbelt:\u003cname\u003e@\u003cversion\u003e\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "action",
+                "match",
+                "tool"
             ],
             "language": {
                 "nodejs": {
@@ -26519,7 +26846,7 @@
                     "items": {
                         "$ref": "#/types/digitalocean:index/getMicrovmsMicroVmAutoPause:getMicrovmsMicroVmAutoPause"
                     },
-                    "description": "Auto-pause configuration. Forces recreation on change: the MicroVMs API has no in-place update path for auto_pause.\n"
+                    "description": "Auto-pause configuration.\u003cspan pulumi-lang-nodejs=\" idleTimeout \" pulumi-lang-dotnet=\" IdleTimeout \" pulumi-lang-go=\" idleTimeout \" pulumi-lang-python=\" idle_timeout \" pulumi-lang-yaml=\" idleTimeout \" pulumi-lang-java=\" idleTimeout \" pulumi-lang-hcl=\" idle_timeout \"\u003e idleTimeout \u003c/span\u003eupdates in place; changing enabled forces recreation.\n"
                 },
                 "autoResume": {
                     "type": "boolean",
@@ -26665,7 +26992,7 @@
                 },
                 "idleTimeout": {
                     "type": "string",
-                    "description": "Idle timeout as a Go duration string (e.g. '5m', '30s'). Forces recreation on change (no in-place API path).\n"
+                    "description": "Idle timeout as a Go duration string (e.g. '5m', '30s'). Updates in place.\n"
                 }
             },
             "type": "object",
@@ -28889,6 +29216,108 @@
                         "$ref": "#/types/digitalocean:index/ActionGatewayConnectionVpc:ActionGatewayConnectionVpc",
                         "description": "Routes the connection's calls through a VPC. VPC networking must be enabled for your team.\n",
                         "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "digitalocean:index/actionGatewayEndpoint:ActionGatewayEndpoint": {
+            "description": "Provides a DigitalOcean [Action Gateway](https://docs.digitalocean.com/products/managed-agents/action-gateway/)\nendpoint resource. An endpoint is a named lineage of immutable versions, and a\nversion is the tool selection, permission policy, and configuration that\nGateway applies to a request. This resource owns an endpoint and publishes the\nversion its \u003cspan pulumi-lang-nodejs=\"`version`\" pulumi-lang-dotnet=\"`Version`\" pulumi-lang-go=\"`version`\" pulumi-lang-python=\"`version`\" pulumi-lang-yaml=\"`version`\" pulumi-lang-java=\"`version`\" pulumi-lang-hcl=\"`version`\"\u003e`version`\u003c/span\u003e block describes.\n\nChanging the \u003cspan pulumi-lang-nodejs=\"`version`\" pulumi-lang-dotnet=\"`Version`\" pulumi-lang-go=\"`version`\" pulumi-lang-python=\"`version`\" pulumi-lang-yaml=\"`version`\" pulumi-lang-java=\"`version`\" pulumi-lang-hcl=\"`version`\"\u003e`version`\u003c/span\u003e block publishes a new head version in place. The\nendpoint keeps its ID, the previous version stays live and reachable through its\nown pinned URL, and nothing is deleted. A revert is another apply with the\nearlier configuration.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst support = new digitalocean.ActionGatewayEndpoint(\"support\", {\n    name: \"support-agent\",\n    insights: {\n        logs: true,\n        traces: false,\n    },\n    version: {\n        actorId: \"user-123\",\n        tools: [\n            \"jira_get_issue\",\n            \"exa_web_search\",\n            \"toolbelt:read-only@1\",\n        ],\n        policy: {\n            defaultAction: \"ask\",\n            rules: [{\n                tool: \"jira_get_issue\",\n                action: \"allow\",\n            }],\n        },\n        config: JSON.stringify({\n            customInstructions: \"Answer in the customer's language.\",\n        }),\n    },\n});\nexport const mcpUrl = support.mcpUrl;\nexport const pinnedMcpUrl = support.versionMcpUrl;\n```\n```python\nimport pulumi\nimport json\nimport pulumi_digitalocean as digitalocean\n\nsupport = digitalocean.ActionGatewayEndpoint(\"support\",\n    name=\"support-agent\",\n    insights={\n        \"logs\": True,\n        \"traces\": False,\n    },\n    version={\n        \"actor_id\": \"user-123\",\n        \"tools\": [\n            \"jira_get_issue\",\n            \"exa_web_search\",\n            \"toolbelt:read-only@1\",\n        ],\n        \"policy\": {\n            \"default_action\": \"ask\",\n            \"rules\": [{\n                \"tool\": \"jira_get_issue\",\n                \"action\": \"allow\",\n            }],\n        },\n        \"config\": json.dumps({\n            \"customInstructions\": \"Answer in the customer's language.\",\n        }),\n    })\npulumi.export(\"mcpUrl\", support.mcp_url)\npulumi.export(\"pinnedMcpUrl\", support.version_mcp_url)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing System.Text.Json;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var support = new DigitalOcean.ActionGatewayEndpoint(\"support\", new()\n    {\n        Name = \"support-agent\",\n        Insights = new DigitalOcean.Inputs.ActionGatewayEndpointInsightsArgs\n        {\n            Logs = true,\n            Traces = false,\n        },\n        Version = new DigitalOcean.Inputs.ActionGatewayEndpointVersionArgs\n        {\n            ActorId = \"user-123\",\n            Tools = new[]\n            {\n                \"jira_get_issue\",\n                \"exa_web_search\",\n                \"toolbelt:read-only@1\",\n            },\n            Policy = new DigitalOcean.Inputs.ActionGatewayEndpointVersionPolicyArgs\n            {\n                DefaultAction = \"ask\",\n                Rules = new[]\n                {\n                    new DigitalOcean.Inputs.ActionGatewayEndpointVersionPolicyRuleArgs\n                    {\n                        Tool = \"jira_get_issue\",\n                        Action = \"allow\",\n                    },\n                },\n            },\n            Config = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n            {\n                [\"customInstructions\"] = \"Answer in the customer's language.\",\n            }),\n        },\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"mcpUrl\"] = support.McpUrl,\n        [\"pinnedMcpUrl\"] = support.VersionMcpUrl,\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"encoding/json\"\n\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\ttmpJSON0, err := json.Marshal(map[string]string{\n\t\t\t\"customInstructions\": \"Answer in the customer's language.\",\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson0 := string(tmpJSON0)\n\t\tsupport, err := digitalocean.NewActionGatewayEndpoint(ctx, \"support\", \u0026digitalocean.ActionGatewayEndpointArgs{\n\t\t\tName: pulumi.String(\"support-agent\"),\n\t\t\tInsights: \u0026digitalocean.ActionGatewayEndpointInsightsArgs{\n\t\t\t\tLogs:   pulumi.Bool(true),\n\t\t\t\tTraces: pulumi.Bool(false),\n\t\t\t},\n\t\t\tVersion: \u0026digitalocean.ActionGatewayEndpointVersionArgs{\n\t\t\t\tActorId: pulumi.String(\"user-123\"),\n\t\t\t\tTools: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"jira_get_issue\"),\n\t\t\t\t\tpulumi.String(\"exa_web_search\"),\n\t\t\t\t\tpulumi.String(\"toolbelt:read-only@1\"),\n\t\t\t\t},\n\t\t\t\tPolicy: \u0026digitalocean.ActionGatewayEndpointVersionPolicyArgs{\n\t\t\t\t\tDefaultAction: pulumi.String(\"ask\"),\n\t\t\t\t\tRules: digitalocean.ActionGatewayEndpointVersionPolicyRuleArray{\n\t\t\t\t\t\t\u0026digitalocean.ActionGatewayEndpointVersionPolicyRuleArgs{\n\t\t\t\t\t\t\tTool:   pulumi.String(\"jira_get_issue\"),\n\t\t\t\t\t\t\tAction: pulumi.String(\"allow\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\tConfig: pulumi.String(json0),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"mcpUrl\", support.McpUrl)\n\t\tctx.Export(\"pinnedMcpUrl\", support.VersionMcpUrl)\n\t\treturn nil\n\t})\n}\n```\n```hcl\nterraform {\n  required_providers {\n    digitalocean = {\n      source = \"pulumi/digitalocean\"\n    }\n  }\n}\n\nresource \"digitalocean_action_gateway_endpoint\" \"support\" {\n  lifecycle {\n    create_before_destroy = true\n  }\n  name = \"support-agent\"\n  insights {\n    logs   = true\n    traces = false\n  }\n  version {\n    actor_id = \"user-123\"\n    tools    = [\"jira_get_issue\", \"exa_web_search\", \"toolbelt:read-only@1\"]\n    policy {\n      default_action = \"ask\"\n      rules {\n        tool   = \"jira_get_issue\"\n        action = \"allow\"\n      }\n    }\n    config = jsonencode({\n      \"customInstructions\" = \"Answer in the customer's language.\"\n    })\n  }\n}\noutput \"mcpUrl\" {\n  value = digitalocean_action_gateway_endpoint.support.mcp_url\n}\noutput \"pinnedMcpUrl\" {\n  value = digitalocean_action_gateway_endpoint.support.version_mcp_url\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.ActionGatewayEndpoint;\nimport com.pulumi.digitalocean.ActionGatewayEndpointArgs;\nimport com.pulumi.digitalocean.inputs.ActionGatewayEndpointInsightsArgs;\nimport com.pulumi.digitalocean.inputs.ActionGatewayEndpointVersionArgs;\nimport com.pulumi.digitalocean.inputs.ActionGatewayEndpointVersionPolicyArgs;\nimport com.pulumi.digitalocean.inputs.ActionGatewayEndpointVersionPolicyRuleArgs;\nimport static com.pulumi.codegen.internal.Serialization.*;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var support = new ActionGatewayEndpoint(\"support\", ActionGatewayEndpointArgs.builder()\n            .name(\"support-agent\")\n            .insights(ActionGatewayEndpointInsightsArgs.builder()\n                .logs(true)\n                .traces(false)\n                .build())\n            .version(ActionGatewayEndpointVersionArgs.builder()\n                .actorId(\"user-123\")\n                .tools(                \n                    \"jira_get_issue\",\n                    \"exa_web_search\",\n                    \"toolbelt:read-only@1\")\n                .policy(ActionGatewayEndpointVersionPolicyArgs.builder()\n                    .defaultAction(\"ask\")\n                    .rules(ActionGatewayEndpointVersionPolicyRuleArgs.builder()\n                        .tool(\"jira_get_issue\")\n                        .action(\"allow\")\n                        .build())\n                    .build())\n                .config(serializeJson(\n                    jsonObject(\n                        jsonProperty(\"customInstructions\", \"Answer in the customer's language.\")\n                    )))\n                .build())\n            .build());\n\n        ctx.export(\"mcpUrl\", support.mcpUrl());\n        ctx.export(\"pinnedMcpUrl\", support.versionMcpUrl());\n    }\n}\n```\n```yaml\nresources:\n  support:\n    type: digitalocean:ActionGatewayEndpoint\n    properties:\n      name: support-agent\n      insights:\n        logs: true\n        traces: false\n      version:\n        actorId: user-123\n        tools:\n          - jira_get_issue\n          - exa_web_search\n          - toolbelt:read-only@1\n        policy:\n          defaultAction: ask\n          rules:\n            - tool: jira_get_issue\n              action: allow\n        config:\n          fn::toJSON:\n            customInstructions: Answer in the customer's language.\noutputs:\n  mcpUrl: ${support.mcpUrl}\n  pinnedMcpUrl: ${support.versionMcpUrl}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Drift\n\n`pulumi preview` reads the endpoint's head version into the \u003cspan pulumi-lang-nodejs=\"`version`\" pulumi-lang-dotnet=\"`Version`\" pulumi-lang-go=\"`version`\" pulumi-lang-python=\"`version`\" pulumi-lang-yaml=\"`version`\" pulumi-lang-java=\"`version`\" pulumi-lang-hcl=\"`version`\"\u003e`version`\u003c/span\u003e block. A\nversion published from the console, PyDo, another workspace, or a promotion\ntherefore appears as a diff, and the next apply converges by publishing the\nconfigured version as a new head. The resource never adopts an out-of-band\nconfiguration silently, and it never deletes a version it did not publish.\n\n## Limit on live versions\n\nThe resource never prunes versions. Each applied configuration change adds one\nlive version, an endpoint keeps at most 100 live versions, and the next publish\nbeyond that limit is refused with \u003cspan pulumi-lang-nodejs=\"`endpointVersionLimitExceeded`\" pulumi-lang-dotnet=\"`EndpointVersionLimitExceeded`\" pulumi-lang-go=\"`endpointVersionLimitExceeded`\" pulumi-lang-python=\"`endpoint_version_limit_exceeded`\" pulumi-lang-yaml=\"`endpointVersionLimitExceeded`\" pulumi-lang-java=\"`endpointVersionLimitExceeded`\" pulumi-lang-hcl=\"`endpoint_version_limit_exceeded`\"\u003e`endpointVersionLimitExceeded`\u003c/span\u003e. Deleting\nhistory is an out-of-band action, because a version identity is never reused.\n\n## Promotion\n\nPromotion is not modeled, because a promotion creates a new head whose identity\nthe caller cannot predict. Reverting the configuration to an earlier one\npublishes it again as a new head, which has the same effect; only the\n\u003cspan pulumi-lang-nodejs=\"`promotedFromVersionNumber`\" pulumi-lang-dotnet=\"`PromotedFromVersionNumber`\" pulumi-lang-go=\"`promotedFromVersionNumber`\" pulumi-lang-python=\"`promoted_from_version_number`\" pulumi-lang-yaml=\"`promotedFromVersionNumber`\" pulumi-lang-java=\"`promotedFromVersionNumber`\" pulumi-lang-hcl=\"`promoted_from_version_number`\"\u003e`promotedFromVersionNumber`\u003c/span\u003e provenance marker is out of reach.\n\n## Import\n\nAn endpoint can be imported using its UUID, e.g.\n\n```sh\n$ pulumi import digitalocean:index/actionGatewayEndpoint:ActionGatewayEndpoint support 1b4d4e0f-9a7c-4d5b-8f3c-2a6e6e8f0a13\n```\n\nAn imported endpoint plans no change when its head version matches the\nconfiguration, and one publish when it does not. An import reports \u003cspan pulumi-lang-nodejs=\"`tools`\" pulumi-lang-dotnet=\"`Tools`\" pulumi-lang-go=\"`tools`\" pulumi-lang-python=\"`tools`\" pulumi-lang-yaml=\"`tools`\" pulumi-lang-java=\"`tools`\" pulumi-lang-hcl=\"`tools`\"\u003e`tools`\u003c/span\u003e and\n\u003cspan pulumi-lang-nodejs=\"`pinnedTools`\" pulumi-lang-dotnet=\"`PinnedTools`\" pulumi-lang-go=\"`pinnedTools`\" pulumi-lang-python=\"`pinned_tools`\" pulumi-lang-yaml=\"`pinnedTools`\" pulumi-lang-java=\"`pinnedTools`\" pulumi-lang-hcl=\"`pinned_tools`\"\u003e`pinnedTools`\u003c/span\u003e in the API's pinned spelling, such as `exa_web_search@1`, so a\nconfiguration that matches an imported head names the pins too. An imported\n**default** endpoint is managed like any other, but deleting it makes the next\ngeneric `/mcp` request create a new default endpoint with a new ID, so a client\npinned to the deleted endpoint's own URL stops working.\n\n",
+            "properties": {
+                "createdAt": {
+                    "type": "string",
+                    "description": "When the endpoint was created.\n"
+                },
+                "insights": {
+                    "$ref": "#/types/digitalocean:index/ActionGatewayEndpointInsights:ActionGatewayEndpointInsights",
+                    "description": "Insights consent, which applies to every version of the endpoint. See Insights below.\n"
+                },
+                "isDefault": {
+                    "type": "boolean",
+                    "description": "Whether this is the default endpoint that a generic `/mcp` request resolves to for your user.\n"
+                },
+                "mcpUrl": {
+                    "type": "string",
+                    "description": "The MCP URL that follows the endpoint's current head version. Its host can change when a new head version moves the endpoint to a VPC in another region, so do not treat it as a stable hostname.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the endpoint, unique among your team's active endpoints. It must contain 1 to 64 characters from `[A-Za-z0-9._-]`. Changing the name renames the endpoint in place.\n"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "description": "When the endpoint was last modified.\n"
+                },
+                "version": {
+                    "$ref": "#/types/digitalocean:index/ActionGatewayEndpointVersion:ActionGatewayEndpointVersion",
+                    "description": "The version the configuration describes. See Version below. Changing it publishes a new head version.\n"
+                },
+                "versionMcpUrl": {
+                    "type": "string",
+                    "description": "The MCP URL pinned to the current head version. It is stable only while Terraform owns the head.\n"
+                }
+            },
+            "required": [
+                "createdAt",
+                "insights",
+                "isDefault",
+                "mcpUrl",
+                "name",
+                "updatedAt",
+                "version",
+                "versionMcpUrl"
+            ],
+            "inputProperties": {
+                "insights": {
+                    "$ref": "#/types/digitalocean:index/ActionGatewayEndpointInsights:ActionGatewayEndpointInsights",
+                    "description": "Insights consent, which applies to every version of the endpoint. See Insights below.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the endpoint, unique among your team's active endpoints. It must contain 1 to 64 characters from `[A-Za-z0-9._-]`. Changing the name renames the endpoint in place.\n"
+                },
+                "version": {
+                    "$ref": "#/types/digitalocean:index/ActionGatewayEndpointVersion:ActionGatewayEndpointVersion",
+                    "description": "The version the configuration describes. See Version below. Changing it publishes a new head version.\n"
+                }
+            },
+            "requiredInputs": [
+                "version"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ActionGatewayEndpoint resources.\n",
+                "properties": {
+                    "createdAt": {
+                        "type": "string",
+                        "description": "When the endpoint was created.\n"
+                    },
+                    "insights": {
+                        "$ref": "#/types/digitalocean:index/ActionGatewayEndpointInsights:ActionGatewayEndpointInsights",
+                        "description": "Insights consent, which applies to every version of the endpoint. See Insights below.\n"
+                    },
+                    "isDefault": {
+                        "type": "boolean",
+                        "description": "Whether this is the default endpoint that a generic `/mcp` request resolves to for your user.\n"
+                    },
+                    "mcpUrl": {
+                        "type": "string",
+                        "description": "The MCP URL that follows the endpoint's current head version. Its host can change when a new head version moves the endpoint to a VPC in another region, so do not treat it as a stable hostname.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the endpoint, unique among your team's active endpoints. It must contain 1 to 64 characters from `[A-Za-z0-9._-]`. Changing the name renames the endpoint in place.\n"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "description": "When the endpoint was last modified.\n"
+                    },
+                    "version": {
+                        "$ref": "#/types/digitalocean:index/ActionGatewayEndpointVersion:ActionGatewayEndpointVersion",
+                        "description": "The version the configuration describes. See Version below. Changing it publishes a new head version.\n"
+                    },
+                    "versionMcpUrl": {
+                        "type": "string",
+                        "description": "The MCP URL pinned to the current head version. It is stable only while Terraform owns the head.\n"
                     }
                 },
                 "type": "object"
@@ -40248,7 +40677,7 @@
             }
         },
         "digitalocean:index/microvm:Microvm": {
-            "description": "Provides a DigitalOcean MicroVM resource. MicroVMs are lightweight sandboxes\nthat run an OCI container image, pause when idle, and resume on demand.\n\n\u003e **Note:** MicroVMs are in public preview.\n\n## Example Usage\n\nCreate a MicroVM from an OCI image:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst web = new digitalocean.Microvm(\"web\", {\n    name: \"example-microvm\",\n    region: \"nyc3\",\n    httpPort: 8080,\n    size: {\n        cpu: 2,\n        memory: 4096,\n    },\n    source: {\n        ociRef: \"docker.io/library/nginx:latest\",\n    },\n    autoPause: {\n        enabled: true,\n        idleTimeout: \"5m\",\n    },\n    environment: {\n        LOG_LEVEL: \"info\",\n    },\n    tags: [\"web\"],\n});\nexport const url = web.urls[0].hostname;\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nweb = digitalocean.Microvm(\"web\",\n    name=\"example-microvm\",\n    region=\"nyc3\",\n    http_port=8080,\n    size={\n        \"cpu\": 2,\n        \"memory\": 4096,\n    },\n    source={\n        \"oci_ref\": \"docker.io/library/nginx:latest\",\n    },\n    auto_pause={\n        \"enabled\": True,\n        \"idle_timeout\": \"5m\",\n    },\n    environment={\n        \"LOG_LEVEL\": \"info\",\n    },\n    tags=[\"web\"])\npulumi.export(\"url\", web.urls[0].hostname)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var web = new DigitalOcean.Microvm(\"web\", new()\n    {\n        Name = \"example-microvm\",\n        Region = \"nyc3\",\n        HttpPort = 8080,\n        Size = new DigitalOcean.Inputs.MicrovmSizeArgs\n        {\n            Cpu = 2,\n            Memory = 4096,\n        },\n        Source = new DigitalOcean.Inputs.MicrovmSourceArgs\n        {\n            OciRef = \"docker.io/library/nginx:latest\",\n        },\n        AutoPause = new DigitalOcean.Inputs.MicrovmAutoPauseArgs\n        {\n            Enabled = true,\n            IdleTimeout = \"5m\",\n        },\n        Environment = \n        {\n            { \"LOG_LEVEL\", \"info\" },\n        },\n        Tags = new[]\n        {\n            \"web\",\n        },\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"url\"] = web.Urls.Apply(urls =\u003e urls[0].Hostname),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tweb, err := digitalocean.NewMicrovm(ctx, \"web\", \u0026digitalocean.MicrovmArgs{\n\t\t\tName:     pulumi.String(\"example-microvm\"),\n\t\t\tRegion:   pulumi.String(\"nyc3\"),\n\t\t\tHttpPort: pulumi.Int(8080),\n\t\t\tSize: \u0026digitalocean.MicrovmSizeArgs{\n\t\t\t\tCpu:    pulumi.Int(2),\n\t\t\t\tMemory: pulumi.Int(4096),\n\t\t\t},\n\t\t\tSource: \u0026digitalocean.MicrovmSourceArgs{\n\t\t\t\tOciRef: pulumi.String(\"docker.io/library/nginx:latest\"),\n\t\t\t},\n\t\t\tAutoPause: \u0026digitalocean.MicrovmAutoPauseArgs{\n\t\t\t\tEnabled:     pulumi.Bool(true),\n\t\t\t\tIdleTimeout: pulumi.String(\"5m\"),\n\t\t\t},\n\t\t\tEnvironment: pulumi.StringMap{\n\t\t\t\t\"LOG_LEVEL\": pulumi.String(\"info\"),\n\t\t\t},\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"web\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"url\", web.Urls.ApplyT(func(urls []digitalocean.MicrovmUrl) (*string, error) {\n\t\t\treturn urls[0].Hostname, nil\n\t\t}).(pulumi.StringPtrOutput))\n\t\treturn nil\n\t})\n}\n```\n```hcl\nterraform {\n  required_providers {\n    digitalocean = {\n      source = \"pulumi/digitalocean\"\n    }\n  }\n}\n\nresource \"digitalocean_microvm\" \"web\" {\n  lifecycle {\n    create_before_destroy = true\n  }\n  name      = \"example-microvm\"\n  region    = \"nyc3\"\n  http_port = 8080\n  size {\n    cpu    = 2\n    memory = 4096\n  }\n  source {\n    oci_ref = \"docker.io/library/nginx:latest\"\n  }\n  auto_pause {\n    enabled      = true\n    idle_timeout = \"5m\"\n  }\n  environment = {\n    \"LOG_LEVEL\" = \"info\"\n  }\n  tags = [\"web\"]\n}\noutput \"url\" {\n  value = digitalocean_microvm.web.urls[0].hostname\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.Microvm;\nimport com.pulumi.digitalocean.MicrovmArgs;\nimport com.pulumi.digitalocean.inputs.MicrovmSizeArgs;\nimport com.pulumi.digitalocean.inputs.MicrovmSourceArgs;\nimport com.pulumi.digitalocean.inputs.MicrovmAutoPauseArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var web = new Microvm(\"web\", MicrovmArgs.builder()\n            .name(\"example-microvm\")\n            .region(\"nyc3\")\n            .httpPort(8080)\n            .size(MicrovmSizeArgs.builder()\n                .cpu(2)\n                .memory(4096)\n                .build())\n            .source(MicrovmSourceArgs.builder()\n                .ociRef(\"docker.io/library/nginx:latest\")\n                .build())\n            .autoPause(MicrovmAutoPauseArgs.builder()\n                .enabled(true)\n                .idleTimeout(\"5m\")\n                .build())\n            .environment(Map.of(\"LOG_LEVEL\", \"info\"))\n            .tags(\"web\")\n            .build());\n\n        ctx.export(\"url\", web.urls().applyValue(_urls -\u003e _urls.get(0).hostname()));\n    }\n}\n```\n```yaml\nresources:\n  web:\n    type: digitalocean:Microvm\n    properties:\n      name: example-microvm\n      region: nyc3\n      httpPort: 8080\n      size:\n        cpu: 2\n        memory: 4096\n      source:\n        ociRef: docker.io/library/nginx:latest\n      autoPause:\n        enabled: true\n        idleTimeout: 5m\n      environment:\n        LOG_LEVEL: info\n      tags:\n        - web\noutputs:\n  url: ${web.urls[0].hostname}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Pause and Resume\n\nSet \u003cspan pulumi-lang-nodejs=\"`state`\" pulumi-lang-dotnet=\"`State`\" pulumi-lang-go=\"`state`\" pulumi-lang-python=\"`state`\" pulumi-lang-yaml=\"`state`\" pulumi-lang-java=\"`state`\" pulumi-lang-hcl=\"`state`\"\u003e`state`\u003c/span\u003e to \u003cspan pulumi-lang-nodejs=\"`paused`\" pulumi-lang-dotnet=\"`Paused`\" pulumi-lang-go=\"`paused`\" pulumi-lang-python=\"`paused`\" pulumi-lang-yaml=\"`paused`\" pulumi-lang-java=\"`paused`\" pulumi-lang-hcl=\"`paused`\"\u003e`paused`\u003c/span\u003e to pause a running MicroVM, and back to \u003cspan pulumi-lang-nodejs=\"`running`\" pulumi-lang-dotnet=\"`Running`\" pulumi-lang-go=\"`running`\" pulumi-lang-python=\"`running`\" pulumi-lang-yaml=\"`running`\" pulumi-lang-java=\"`running`\" pulumi-lang-hcl=\"`running`\"\u003e`running`\u003c/span\u003e to\nresume it. This is the only change that is applied in place; every other\nargument forces a new MicroVM.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst worker = new digitalocean.Microvm(\"worker\", {\n    name: \"example-worker\",\n    region: \"nyc3\",\n    state: \"paused\",\n    size: {\n        cpu: 1,\n        memory: 2048,\n    },\n    source: {\n        ociRef: \"docker.io/library/alpine:latest\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nworker = digitalocean.Microvm(\"worker\",\n    name=\"example-worker\",\n    region=\"nyc3\",\n    state=\"paused\",\n    size={\n        \"cpu\": 1,\n        \"memory\": 2048,\n    },\n    source={\n        \"oci_ref\": \"docker.io/library/alpine:latest\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var worker = new DigitalOcean.Microvm(\"worker\", new()\n    {\n        Name = \"example-worker\",\n        Region = \"nyc3\",\n        State = \"paused\",\n        Size = new DigitalOcean.Inputs.MicrovmSizeArgs\n        {\n            Cpu = 1,\n            Memory = 2048,\n        },\n        Source = new DigitalOcean.Inputs.MicrovmSourceArgs\n        {\n            OciRef = \"docker.io/library/alpine:latest\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewMicrovm(ctx, \"worker\", \u0026digitalocean.MicrovmArgs{\n\t\t\tName:   pulumi.String(\"example-worker\"),\n\t\t\tRegion: pulumi.String(\"nyc3\"),\n\t\t\tState:  pulumi.String(\"paused\"),\n\t\t\tSize: \u0026digitalocean.MicrovmSizeArgs{\n\t\t\t\tCpu:    pulumi.Int(1),\n\t\t\t\tMemory: pulumi.Int(2048),\n\t\t\t},\n\t\t\tSource: \u0026digitalocean.MicrovmSourceArgs{\n\t\t\t\tOciRef: pulumi.String(\"docker.io/library/alpine:latest\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\nterraform {\n  required_providers {\n    digitalocean = {\n      source = \"pulumi/digitalocean\"\n    }\n  }\n}\n\nresource \"digitalocean_microvm\" \"worker\" {\n  lifecycle {\n    create_before_destroy = true\n  }\n  name   = \"example-worker\"\n  region = \"nyc3\"\n  state  = \"paused\"\n  size {\n    cpu    = 1\n    memory = 2048\n  }\n  source {\n    oci_ref = \"docker.io/library/alpine:latest\"\n  }\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.Microvm;\nimport com.pulumi.digitalocean.MicrovmArgs;\nimport com.pulumi.digitalocean.inputs.MicrovmSizeArgs;\nimport com.pulumi.digitalocean.inputs.MicrovmSourceArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var worker = new Microvm(\"worker\", MicrovmArgs.builder()\n            .name(\"example-worker\")\n            .region(\"nyc3\")\n            .state(\"paused\")\n            .size(MicrovmSizeArgs.builder()\n                .cpu(1)\n                .memory(2048)\n                .build())\n            .source(MicrovmSourceArgs.builder()\n                .ociRef(\"docker.io/library/alpine:latest\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  worker:\n    type: digitalocean:Microvm\n    properties:\n      name: example-worker\n      region: nyc3\n      state: paused\n      size:\n        cpu: 1\n        memory: 2048\n      source:\n        ociRef: docker.io/library/alpine:latest\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Restore from a Checkpoint\n\nWhen `source.checkpoint_id` is set, \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\" pulumi-lang-hcl=\"`region`\"\u003e`region`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`size`\" pulumi-lang-dotnet=\"`Size`\" pulumi-lang-go=\"`size`\" pulumi-lang-python=\"`size`\" pulumi-lang-yaml=\"`size`\" pulumi-lang-java=\"`size`\" pulumi-lang-hcl=\"`size`\"\u003e`size`\u003c/span\u003e may be omitted and are\ninherited from the checkpoint.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst snapshot = new digitalocean.MicrovmCheckpoint(\"snapshot\", {\n    microvmId: web.id,\n    name: \"web-checkpoint\",\n});\nconst restored = new digitalocean.Microvm(\"restored\", {\n    name: \"example-restored\",\n    source: {\n        checkpointId: snapshot.id,\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nsnapshot = digitalocean.MicrovmCheckpoint(\"snapshot\",\n    microvm_id=web[\"id\"],\n    name=\"web-checkpoint\")\nrestored = digitalocean.Microvm(\"restored\",\n    name=\"example-restored\",\n    source={\n        \"checkpoint_id\": snapshot.id,\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var snapshot = new DigitalOcean.MicrovmCheckpoint(\"snapshot\", new()\n    {\n        MicrovmId = web.Id,\n        Name = \"web-checkpoint\",\n    });\n\n    var restored = new DigitalOcean.Microvm(\"restored\", new()\n    {\n        Name = \"example-restored\",\n        Source = new DigitalOcean.Inputs.MicrovmSourceArgs\n        {\n            CheckpointId = snapshot.Id,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tsnapshot, err := digitalocean.NewMicrovmCheckpoint(ctx, \"snapshot\", \u0026digitalocean.MicrovmCheckpointArgs{\n\t\t\tMicrovmId: pulumi.Any(web.Id),\n\t\t\tName:      pulumi.String(\"web-checkpoint\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewMicrovm(ctx, \"restored\", \u0026digitalocean.MicrovmArgs{\n\t\t\tName: pulumi.String(\"example-restored\"),\n\t\t\tSource: \u0026digitalocean.MicrovmSourceArgs{\n\t\t\t\tCheckpointId: snapshot.ID(),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\nterraform {\n  required_providers {\n    digitalocean = {\n      source = \"pulumi/digitalocean\"\n    }\n  }\n}\n\nresource \"digitalocean_microvm_checkpoint\" \"snapshot\" {\n  lifecycle {\n    create_before_destroy = true\n  }\n  microvm_id = web.id\n  name       = \"web-checkpoint\"\n}\nresource \"digitalocean_microvm\" \"restored\" {\n  lifecycle {\n    create_before_destroy = true\n  }\n  name = \"example-restored\"\n  source {\n    checkpoint_id = digitalocean_microvm_checkpoint.snapshot.id\n  }\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.MicrovmCheckpoint;\nimport com.pulumi.digitalocean.MicrovmCheckpointArgs;\nimport com.pulumi.digitalocean.Microvm;\nimport com.pulumi.digitalocean.MicrovmArgs;\nimport com.pulumi.digitalocean.inputs.MicrovmSourceArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var snapshot = new MicrovmCheckpoint(\"snapshot\", MicrovmCheckpointArgs.builder()\n            .microvmId(web.get(\"id\"))\n            .name(\"web-checkpoint\")\n            .build());\n\n        var restored = new Microvm(\"restored\", MicrovmArgs.builder()\n            .name(\"example-restored\")\n            .source(MicrovmSourceArgs.builder()\n                .checkpointId(snapshot.id())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  snapshot:\n    type: digitalocean:MicrovmCheckpoint\n    properties:\n      microvmId: ${web.id}\n      name: web-checkpoint\n  restored:\n    type: digitalocean:Microvm\n    properties:\n      name: example-restored\n      source:\n        checkpointId: ${snapshot.id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Restrict Outbound Traffic\n\nSet \u003cspan pulumi-lang-nodejs=\"`egressPolicy`\" pulumi-lang-dotnet=\"`EgressPolicy`\" pulumi-lang-go=\"`egressPolicy`\" pulumi-lang-python=\"`egress_policy`\" pulumi-lang-yaml=\"`egressPolicy`\" pulumi-lang-java=\"`egressPolicy`\" pulumi-lang-hcl=\"`egress_policy`\"\u003e`egressPolicy`\u003c/span\u003e to limit where code in the MicroVM can connect. Only the\nlisted destinations are reachable, and the policy is fixed at create, so any\nchange forces a new MicroVM. It requires `networking = \"public\"`.\n\nWith a policy set, direct connections out of the MicroVM are dropped. Only HTTP\nand HTTPS through the platform proxy to allowed destinations works, so clients\nmust honor the injected `HTTP_PROXY` / `HTTPS_PROXY` environment. The registries\nneeded to pull the workload image are allowed automatically.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst lockedDown = new digitalocean.Microvm(\"locked_down\", {\n    name: \"example-locked-down\",\n    region: \"nyc3\",\n    size: {\n        cpu: 1,\n        memory: 2048,\n    },\n    source: {\n        ociRef: \"docker.io/library/alpine:latest\",\n    },\n    egressPolicy: {\n        defaultAction: \"deny\",\n        rules: [\n            {\n                domain: \"api.example.com\",\n            },\n            {\n                domain: \"*.example.org\",\n            },\n            {\n                ip: \"203.0.113.5\",\n            },\n        ],\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nlocked_down = digitalocean.Microvm(\"locked_down\",\n    name=\"example-locked-down\",\n    region=\"nyc3\",\n    size={\n        \"cpu\": 1,\n        \"memory\": 2048,\n    },\n    source={\n        \"oci_ref\": \"docker.io/library/alpine:latest\",\n    },\n    egress_policy={\n        \"default_action\": \"deny\",\n        \"rules\": [\n            {\n                \"domain\": \"api.example.com\",\n            },\n            {\n                \"domain\": \"*.example.org\",\n            },\n            {\n                \"ip\": \"203.0.113.5\",\n            },\n        ],\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var lockedDown = new DigitalOcean.Microvm(\"locked_down\", new()\n    {\n        Name = \"example-locked-down\",\n        Region = \"nyc3\",\n        Size = new DigitalOcean.Inputs.MicrovmSizeArgs\n        {\n            Cpu = 1,\n            Memory = 2048,\n        },\n        Source = new DigitalOcean.Inputs.MicrovmSourceArgs\n        {\n            OciRef = \"docker.io/library/alpine:latest\",\n        },\n        EgressPolicy = new DigitalOcean.Inputs.MicrovmEgressPolicyArgs\n        {\n            DefaultAction = \"deny\",\n            Rules = new[]\n            {\n                new DigitalOcean.Inputs.MicrovmEgressPolicyRuleArgs\n                {\n                    Domain = \"api.example.com\",\n                },\n                new DigitalOcean.Inputs.MicrovmEgressPolicyRuleArgs\n                {\n                    Domain = \"*.example.org\",\n                },\n                new DigitalOcean.Inputs.MicrovmEgressPolicyRuleArgs\n                {\n                    Ip = \"203.0.113.5\",\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewMicrovm(ctx, \"locked_down\", \u0026digitalocean.MicrovmArgs{\n\t\t\tName:   pulumi.String(\"example-locked-down\"),\n\t\t\tRegion: pulumi.String(\"nyc3\"),\n\t\t\tSize: \u0026digitalocean.MicrovmSizeArgs{\n\t\t\t\tCpu:    pulumi.Int(1),\n\t\t\t\tMemory: pulumi.Int(2048),\n\t\t\t},\n\t\t\tSource: \u0026digitalocean.MicrovmSourceArgs{\n\t\t\t\tOciRef: pulumi.String(\"docker.io/library/alpine:latest\"),\n\t\t\t},\n\t\t\tEgressPolicy: \u0026digitalocean.MicrovmEgressPolicyArgs{\n\t\t\t\tDefaultAction: pulumi.String(\"deny\"),\n\t\t\t\tRules: digitalocean.MicrovmEgressPolicyRuleArray{\n\t\t\t\t\t\u0026digitalocean.MicrovmEgressPolicyRuleArgs{\n\t\t\t\t\t\tDomain: pulumi.String(\"api.example.com\"),\n\t\t\t\t\t},\n\t\t\t\t\t\u0026digitalocean.MicrovmEgressPolicyRuleArgs{\n\t\t\t\t\t\tDomain: pulumi.String(\"*.example.org\"),\n\t\t\t\t\t},\n\t\t\t\t\t\u0026digitalocean.MicrovmEgressPolicyRuleArgs{\n\t\t\t\t\t\tIp: pulumi.String(\"203.0.113.5\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\nterraform {\n  required_providers {\n    digitalocean = {\n      source = \"pulumi/digitalocean\"\n    }\n  }\n}\n\nresource \"digitalocean_microvm\" \"locked_down\" {\n  lifecycle {\n    create_before_destroy = true\n  }\n  name   = \"example-locked-down\"\n  region = \"nyc3\"\n  size {\n    cpu    = 1\n    memory = 2048\n  }\n  source {\n    oci_ref = \"docker.io/library/alpine:latest\"\n  }\n  egress_policy {\n    default_action = \"deny\"\n    rule {\n      domain = \"api.example.com\"\n    }\n    rule {\n      domain = \"*.example.org\"\n    }\n    rule {\n      ip = \"203.0.113.5\"\n    }\n  }\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.Microvm;\nimport com.pulumi.digitalocean.MicrovmArgs;\nimport com.pulumi.digitalocean.inputs.MicrovmSizeArgs;\nimport com.pulumi.digitalocean.inputs.MicrovmSourceArgs;\nimport com.pulumi.digitalocean.inputs.MicrovmEgressPolicyArgs;\nimport com.pulumi.digitalocean.inputs.MicrovmEgressPolicyRuleArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var lockedDown = new Microvm(\"lockedDown\", MicrovmArgs.builder()\n            .name(\"example-locked-down\")\n            .region(\"nyc3\")\n            .size(MicrovmSizeArgs.builder()\n                .cpu(1)\n                .memory(2048)\n                .build())\n            .source(MicrovmSourceArgs.builder()\n                .ociRef(\"docker.io/library/alpine:latest\")\n                .build())\n            .egressPolicy(MicrovmEgressPolicyArgs.builder()\n                .defaultAction(\"deny\")\n                .rules(                \n                    MicrovmEgressPolicyRuleArgs.builder()\n                        .domain(\"api.example.com\")\n                        .build(),\n                    MicrovmEgressPolicyRuleArgs.builder()\n                        .domain(\"*.example.org\")\n                        .build(),\n                    MicrovmEgressPolicyRuleArgs.builder()\n                        .ip(\"203.0.113.5\")\n                        .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  lockedDown:\n    type: digitalocean:Microvm\n    name: locked_down\n    properties:\n      name: example-locked-down\n      region: nyc3\n      size:\n        cpu: 1\n        memory: 2048\n      source:\n        ociRef: docker.io/library/alpine:latest\n      egressPolicy:\n        defaultAction: deny\n        rules:\n          - domain: api.example.com\n          - domain: '*.example.org'\n          - ip: 203.0.113.5\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nA MicroVM can be imported using its \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\" pulumi-lang-hcl=\"`id`\"\u003e`id`\u003c/span\u003e, e.g.\n\n```sh\n$ pulumi import digitalocean:index/microvm:Microvm web 506f78a4-e098-11e5-ad9f-000f53306ae1\n```\n\n",
+            "description": "Provides a DigitalOcean MicroVM resource. MicroVMs are lightweight sandboxes\nthat run an OCI container image, pause when idle, and resume on demand.\n\n\u003e **Note:** MicroVMs are in public preview.\n\n## Example Usage\n\nCreate a MicroVM from an OCI image:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst web = new digitalocean.Microvm(\"web\", {\n    name: \"example-microvm\",\n    region: \"nyc3\",\n    httpPort: 8080,\n    size: {\n        cpu: 2,\n        memory: 4096,\n    },\n    source: {\n        ociRef: \"docker.io/library/nginx:latest\",\n    },\n    autoPause: {\n        enabled: true,\n        idleTimeout: \"5m\",\n    },\n    environment: {\n        LOG_LEVEL: \"info\",\n    },\n    tags: [\"web\"],\n});\nexport const url = web.urls[0].hostname;\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nweb = digitalocean.Microvm(\"web\",\n    name=\"example-microvm\",\n    region=\"nyc3\",\n    http_port=8080,\n    size={\n        \"cpu\": 2,\n        \"memory\": 4096,\n    },\n    source={\n        \"oci_ref\": \"docker.io/library/nginx:latest\",\n    },\n    auto_pause={\n        \"enabled\": True,\n        \"idle_timeout\": \"5m\",\n    },\n    environment={\n        \"LOG_LEVEL\": \"info\",\n    },\n    tags=[\"web\"])\npulumi.export(\"url\", web.urls[0].hostname)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var web = new DigitalOcean.Microvm(\"web\", new()\n    {\n        Name = \"example-microvm\",\n        Region = \"nyc3\",\n        HttpPort = 8080,\n        Size = new DigitalOcean.Inputs.MicrovmSizeArgs\n        {\n            Cpu = 2,\n            Memory = 4096,\n        },\n        Source = new DigitalOcean.Inputs.MicrovmSourceArgs\n        {\n            OciRef = \"docker.io/library/nginx:latest\",\n        },\n        AutoPause = new DigitalOcean.Inputs.MicrovmAutoPauseArgs\n        {\n            Enabled = true,\n            IdleTimeout = \"5m\",\n        },\n        Environment = \n        {\n            { \"LOG_LEVEL\", \"info\" },\n        },\n        Tags = new[]\n        {\n            \"web\",\n        },\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"url\"] = web.Urls.Apply(urls =\u003e urls[0].Hostname),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tweb, err := digitalocean.NewMicrovm(ctx, \"web\", \u0026digitalocean.MicrovmArgs{\n\t\t\tName:     pulumi.String(\"example-microvm\"),\n\t\t\tRegion:   pulumi.String(\"nyc3\"),\n\t\t\tHttpPort: pulumi.Int(8080),\n\t\t\tSize: \u0026digitalocean.MicrovmSizeArgs{\n\t\t\t\tCpu:    pulumi.Int(2),\n\t\t\t\tMemory: pulumi.Int(4096),\n\t\t\t},\n\t\t\tSource: \u0026digitalocean.MicrovmSourceArgs{\n\t\t\t\tOciRef: pulumi.String(\"docker.io/library/nginx:latest\"),\n\t\t\t},\n\t\t\tAutoPause: \u0026digitalocean.MicrovmAutoPauseArgs{\n\t\t\t\tEnabled:     pulumi.Bool(true),\n\t\t\t\tIdleTimeout: pulumi.String(\"5m\"),\n\t\t\t},\n\t\t\tEnvironment: pulumi.StringMap{\n\t\t\t\t\"LOG_LEVEL\": pulumi.String(\"info\"),\n\t\t\t},\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"web\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"url\", web.Urls.ApplyT(func(urls []digitalocean.MicrovmUrl) (*string, error) {\n\t\t\treturn urls[0].Hostname, nil\n\t\t}).(pulumi.StringPtrOutput))\n\t\treturn nil\n\t})\n}\n```\n```hcl\nterraform {\n  required_providers {\n    digitalocean = {\n      source = \"pulumi/digitalocean\"\n    }\n  }\n}\n\nresource \"digitalocean_microvm\" \"web\" {\n  lifecycle {\n    create_before_destroy = true\n  }\n  name      = \"example-microvm\"\n  region    = \"nyc3\"\n  http_port = 8080\n  size {\n    cpu    = 2\n    memory = 4096\n  }\n  source {\n    oci_ref = \"docker.io/library/nginx:latest\"\n  }\n  auto_pause {\n    enabled      = true\n    idle_timeout = \"5m\"\n  }\n  environment = {\n    \"LOG_LEVEL\" = \"info\"\n  }\n  tags = [\"web\"]\n}\noutput \"url\" {\n  value = digitalocean_microvm.web.urls[0].hostname\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.Microvm;\nimport com.pulumi.digitalocean.MicrovmArgs;\nimport com.pulumi.digitalocean.inputs.MicrovmSizeArgs;\nimport com.pulumi.digitalocean.inputs.MicrovmSourceArgs;\nimport com.pulumi.digitalocean.inputs.MicrovmAutoPauseArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var web = new Microvm(\"web\", MicrovmArgs.builder()\n            .name(\"example-microvm\")\n            .region(\"nyc3\")\n            .httpPort(8080)\n            .size(MicrovmSizeArgs.builder()\n                .cpu(2)\n                .memory(4096)\n                .build())\n            .source(MicrovmSourceArgs.builder()\n                .ociRef(\"docker.io/library/nginx:latest\")\n                .build())\n            .autoPause(MicrovmAutoPauseArgs.builder()\n                .enabled(true)\n                .idleTimeout(\"5m\")\n                .build())\n            .environment(Map.of(\"LOG_LEVEL\", \"info\"))\n            .tags(\"web\")\n            .build());\n\n        ctx.export(\"url\", web.urls().applyValue(_urls -\u003e _urls.get(0).hostname()));\n    }\n}\n```\n```yaml\nresources:\n  web:\n    type: digitalocean:Microvm\n    properties:\n      name: example-microvm\n      region: nyc3\n      httpPort: 8080\n      size:\n        cpu: 2\n        memory: 4096\n      source:\n        ociRef: docker.io/library/nginx:latest\n      autoPause:\n        enabled: true\n        idleTimeout: 5m\n      environment:\n        LOG_LEVEL: info\n      tags:\n        - web\noutputs:\n  url: ${web.urls[0].hostname}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Pause and Resume\n\nSet \u003cspan pulumi-lang-nodejs=\"`state`\" pulumi-lang-dotnet=\"`State`\" pulumi-lang-go=\"`state`\" pulumi-lang-python=\"`state`\" pulumi-lang-yaml=\"`state`\" pulumi-lang-java=\"`state`\" pulumi-lang-hcl=\"`state`\"\u003e`state`\u003c/span\u003e to \u003cspan pulumi-lang-nodejs=\"`paused`\" pulumi-lang-dotnet=\"`Paused`\" pulumi-lang-go=\"`paused`\" pulumi-lang-python=\"`paused`\" pulumi-lang-yaml=\"`paused`\" pulumi-lang-java=\"`paused`\" pulumi-lang-hcl=\"`paused`\"\u003e`paused`\u003c/span\u003e to pause a running MicroVM, and back to \u003cspan pulumi-lang-nodejs=\"`running`\" pulumi-lang-dotnet=\"`Running`\" pulumi-lang-go=\"`running`\" pulumi-lang-python=\"`running`\" pulumi-lang-yaml=\"`running`\" pulumi-lang-java=\"`running`\" pulumi-lang-hcl=\"`running`\"\u003e`running`\u003c/span\u003e to\nresume it. \u003cspan pulumi-lang-nodejs=\"`state`\" pulumi-lang-dotnet=\"`State`\" pulumi-lang-go=\"`state`\" pulumi-lang-python=\"`state`\" pulumi-lang-yaml=\"`state`\" pulumi-lang-java=\"`state`\" pulumi-lang-hcl=\"`state`\"\u003e`state`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\" pulumi-lang-hcl=\"`name`\"\u003e`name`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`tags`\" pulumi-lang-dotnet=\"`Tags`\" pulumi-lang-go=\"`tags`\" pulumi-lang-python=\"`tags`\" pulumi-lang-yaml=\"`tags`\" pulumi-lang-java=\"`tags`\" pulumi-lang-hcl=\"`tags`\"\u003e`tags`\u003c/span\u003e, and `auto_pause.idle_timeout` are applied\nin place; every other argument forces a new MicroVM.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst worker = new digitalocean.Microvm(\"worker\", {\n    name: \"example-worker\",\n    region: \"nyc3\",\n    state: \"paused\",\n    size: {\n        cpu: 1,\n        memory: 2048,\n    },\n    source: {\n        ociRef: \"docker.io/library/alpine:latest\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nworker = digitalocean.Microvm(\"worker\",\n    name=\"example-worker\",\n    region=\"nyc3\",\n    state=\"paused\",\n    size={\n        \"cpu\": 1,\n        \"memory\": 2048,\n    },\n    source={\n        \"oci_ref\": \"docker.io/library/alpine:latest\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var worker = new DigitalOcean.Microvm(\"worker\", new()\n    {\n        Name = \"example-worker\",\n        Region = \"nyc3\",\n        State = \"paused\",\n        Size = new DigitalOcean.Inputs.MicrovmSizeArgs\n        {\n            Cpu = 1,\n            Memory = 2048,\n        },\n        Source = new DigitalOcean.Inputs.MicrovmSourceArgs\n        {\n            OciRef = \"docker.io/library/alpine:latest\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewMicrovm(ctx, \"worker\", \u0026digitalocean.MicrovmArgs{\n\t\t\tName:   pulumi.String(\"example-worker\"),\n\t\t\tRegion: pulumi.String(\"nyc3\"),\n\t\t\tState:  pulumi.String(\"paused\"),\n\t\t\tSize: \u0026digitalocean.MicrovmSizeArgs{\n\t\t\t\tCpu:    pulumi.Int(1),\n\t\t\t\tMemory: pulumi.Int(2048),\n\t\t\t},\n\t\t\tSource: \u0026digitalocean.MicrovmSourceArgs{\n\t\t\t\tOciRef: pulumi.String(\"docker.io/library/alpine:latest\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\nterraform {\n  required_providers {\n    digitalocean = {\n      source = \"pulumi/digitalocean\"\n    }\n  }\n}\n\nresource \"digitalocean_microvm\" \"worker\" {\n  lifecycle {\n    create_before_destroy = true\n  }\n  name   = \"example-worker\"\n  region = \"nyc3\"\n  state  = \"paused\"\n  size {\n    cpu    = 1\n    memory = 2048\n  }\n  source {\n    oci_ref = \"docker.io/library/alpine:latest\"\n  }\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.Microvm;\nimport com.pulumi.digitalocean.MicrovmArgs;\nimport com.pulumi.digitalocean.inputs.MicrovmSizeArgs;\nimport com.pulumi.digitalocean.inputs.MicrovmSourceArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var worker = new Microvm(\"worker\", MicrovmArgs.builder()\n            .name(\"example-worker\")\n            .region(\"nyc3\")\n            .state(\"paused\")\n            .size(MicrovmSizeArgs.builder()\n                .cpu(1)\n                .memory(2048)\n                .build())\n            .source(MicrovmSourceArgs.builder()\n                .ociRef(\"docker.io/library/alpine:latest\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  worker:\n    type: digitalocean:Microvm\n    properties:\n      name: example-worker\n      region: nyc3\n      state: paused\n      size:\n        cpu: 1\n        memory: 2048\n      source:\n        ociRef: docker.io/library/alpine:latest\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Restore from a Checkpoint\n\nWhen `source.checkpoint_id` is set, \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\" pulumi-lang-hcl=\"`region`\"\u003e`region`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`size`\" pulumi-lang-dotnet=\"`Size`\" pulumi-lang-go=\"`size`\" pulumi-lang-python=\"`size`\" pulumi-lang-yaml=\"`size`\" pulumi-lang-java=\"`size`\" pulumi-lang-hcl=\"`size`\"\u003e`size`\u003c/span\u003e may be omitted and are\ninherited from the checkpoint.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst snapshot = new digitalocean.MicrovmCheckpoint(\"snapshot\", {\n    microvmId: web.id,\n    name: \"web-checkpoint\",\n});\nconst restored = new digitalocean.Microvm(\"restored\", {\n    name: \"example-restored\",\n    source: {\n        checkpointId: snapshot.id,\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nsnapshot = digitalocean.MicrovmCheckpoint(\"snapshot\",\n    microvm_id=web[\"id\"],\n    name=\"web-checkpoint\")\nrestored = digitalocean.Microvm(\"restored\",\n    name=\"example-restored\",\n    source={\n        \"checkpoint_id\": snapshot.id,\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var snapshot = new DigitalOcean.MicrovmCheckpoint(\"snapshot\", new()\n    {\n        MicrovmId = web.Id,\n        Name = \"web-checkpoint\",\n    });\n\n    var restored = new DigitalOcean.Microvm(\"restored\", new()\n    {\n        Name = \"example-restored\",\n        Source = new DigitalOcean.Inputs.MicrovmSourceArgs\n        {\n            CheckpointId = snapshot.Id,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tsnapshot, err := digitalocean.NewMicrovmCheckpoint(ctx, \"snapshot\", \u0026digitalocean.MicrovmCheckpointArgs{\n\t\t\tMicrovmId: pulumi.Any(web.Id),\n\t\t\tName:      pulumi.String(\"web-checkpoint\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewMicrovm(ctx, \"restored\", \u0026digitalocean.MicrovmArgs{\n\t\t\tName: pulumi.String(\"example-restored\"),\n\t\t\tSource: \u0026digitalocean.MicrovmSourceArgs{\n\t\t\t\tCheckpointId: snapshot.ID(),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\nterraform {\n  required_providers {\n    digitalocean = {\n      source = \"pulumi/digitalocean\"\n    }\n  }\n}\n\nresource \"digitalocean_microvm_checkpoint\" \"snapshot\" {\n  lifecycle {\n    create_before_destroy = true\n  }\n  microvm_id = web.id\n  name       = \"web-checkpoint\"\n}\nresource \"digitalocean_microvm\" \"restored\" {\n  lifecycle {\n    create_before_destroy = true\n  }\n  name = \"example-restored\"\n  source {\n    checkpoint_id = digitalocean_microvm_checkpoint.snapshot.id\n  }\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.MicrovmCheckpoint;\nimport com.pulumi.digitalocean.MicrovmCheckpointArgs;\nimport com.pulumi.digitalocean.Microvm;\nimport com.pulumi.digitalocean.MicrovmArgs;\nimport com.pulumi.digitalocean.inputs.MicrovmSourceArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var snapshot = new MicrovmCheckpoint(\"snapshot\", MicrovmCheckpointArgs.builder()\n            .microvmId(web.get(\"id\"))\n            .name(\"web-checkpoint\")\n            .build());\n\n        var restored = new Microvm(\"restored\", MicrovmArgs.builder()\n            .name(\"example-restored\")\n            .source(MicrovmSourceArgs.builder()\n                .checkpointId(snapshot.id())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  snapshot:\n    type: digitalocean:MicrovmCheckpoint\n    properties:\n      microvmId: ${web.id}\n      name: web-checkpoint\n  restored:\n    type: digitalocean:Microvm\n    properties:\n      name: example-restored\n      source:\n        checkpointId: ${snapshot.id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Restrict Outbound Traffic\n\nSet \u003cspan pulumi-lang-nodejs=\"`egressPolicy`\" pulumi-lang-dotnet=\"`EgressPolicy`\" pulumi-lang-go=\"`egressPolicy`\" pulumi-lang-python=\"`egress_policy`\" pulumi-lang-yaml=\"`egressPolicy`\" pulumi-lang-java=\"`egressPolicy`\" pulumi-lang-hcl=\"`egress_policy`\"\u003e`egressPolicy`\u003c/span\u003e to limit where code in the MicroVM can connect. Only the\nlisted destinations are reachable, and the policy is fixed at create, so any\nchange forces a new MicroVM. It requires `networking = \"public\"`.\n\nWith a policy set, direct connections out of the MicroVM are dropped. Only HTTP\nand HTTPS through the platform proxy to allowed destinations works, so clients\nmust honor the injected `HTTP_PROXY` / `HTTPS_PROXY` environment. The registries\nneeded to pull the workload image are allowed automatically.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst lockedDown = new digitalocean.Microvm(\"locked_down\", {\n    name: \"example-locked-down\",\n    region: \"nyc3\",\n    size: {\n        cpu: 1,\n        memory: 2048,\n    },\n    source: {\n        ociRef: \"docker.io/library/alpine:latest\",\n    },\n    egressPolicy: {\n        defaultAction: \"deny\",\n        rules: [\n            {\n                domain: \"api.example.com\",\n            },\n            {\n                domain: \"*.example.org\",\n            },\n            {\n                ip: \"203.0.113.5\",\n            },\n        ],\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nlocked_down = digitalocean.Microvm(\"locked_down\",\n    name=\"example-locked-down\",\n    region=\"nyc3\",\n    size={\n        \"cpu\": 1,\n        \"memory\": 2048,\n    },\n    source={\n        \"oci_ref\": \"docker.io/library/alpine:latest\",\n    },\n    egress_policy={\n        \"default_action\": \"deny\",\n        \"rules\": [\n            {\n                \"domain\": \"api.example.com\",\n            },\n            {\n                \"domain\": \"*.example.org\",\n            },\n            {\n                \"ip\": \"203.0.113.5\",\n            },\n        ],\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var lockedDown = new DigitalOcean.Microvm(\"locked_down\", new()\n    {\n        Name = \"example-locked-down\",\n        Region = \"nyc3\",\n        Size = new DigitalOcean.Inputs.MicrovmSizeArgs\n        {\n            Cpu = 1,\n            Memory = 2048,\n        },\n        Source = new DigitalOcean.Inputs.MicrovmSourceArgs\n        {\n            OciRef = \"docker.io/library/alpine:latest\",\n        },\n        EgressPolicy = new DigitalOcean.Inputs.MicrovmEgressPolicyArgs\n        {\n            DefaultAction = \"deny\",\n            Rules = new[]\n            {\n                new DigitalOcean.Inputs.MicrovmEgressPolicyRuleArgs\n                {\n                    Domain = \"api.example.com\",\n                },\n                new DigitalOcean.Inputs.MicrovmEgressPolicyRuleArgs\n                {\n                    Domain = \"*.example.org\",\n                },\n                new DigitalOcean.Inputs.MicrovmEgressPolicyRuleArgs\n                {\n                    Ip = \"203.0.113.5\",\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewMicrovm(ctx, \"locked_down\", \u0026digitalocean.MicrovmArgs{\n\t\t\tName:   pulumi.String(\"example-locked-down\"),\n\t\t\tRegion: pulumi.String(\"nyc3\"),\n\t\t\tSize: \u0026digitalocean.MicrovmSizeArgs{\n\t\t\t\tCpu:    pulumi.Int(1),\n\t\t\t\tMemory: pulumi.Int(2048),\n\t\t\t},\n\t\t\tSource: \u0026digitalocean.MicrovmSourceArgs{\n\t\t\t\tOciRef: pulumi.String(\"docker.io/library/alpine:latest\"),\n\t\t\t},\n\t\t\tEgressPolicy: \u0026digitalocean.MicrovmEgressPolicyArgs{\n\t\t\t\tDefaultAction: pulumi.String(\"deny\"),\n\t\t\t\tRules: digitalocean.MicrovmEgressPolicyRuleArray{\n\t\t\t\t\t\u0026digitalocean.MicrovmEgressPolicyRuleArgs{\n\t\t\t\t\t\tDomain: pulumi.String(\"api.example.com\"),\n\t\t\t\t\t},\n\t\t\t\t\t\u0026digitalocean.MicrovmEgressPolicyRuleArgs{\n\t\t\t\t\t\tDomain: pulumi.String(\"*.example.org\"),\n\t\t\t\t\t},\n\t\t\t\t\t\u0026digitalocean.MicrovmEgressPolicyRuleArgs{\n\t\t\t\t\t\tIp: pulumi.String(\"203.0.113.5\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\nterraform {\n  required_providers {\n    digitalocean = {\n      source = \"pulumi/digitalocean\"\n    }\n  }\n}\n\nresource \"digitalocean_microvm\" \"locked_down\" {\n  lifecycle {\n    create_before_destroy = true\n  }\n  name   = \"example-locked-down\"\n  region = \"nyc3\"\n  size {\n    cpu    = 1\n    memory = 2048\n  }\n  source {\n    oci_ref = \"docker.io/library/alpine:latest\"\n  }\n  egress_policy {\n    default_action = \"deny\"\n    rule {\n      domain = \"api.example.com\"\n    }\n    rule {\n      domain = \"*.example.org\"\n    }\n    rule {\n      ip = \"203.0.113.5\"\n    }\n  }\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.Microvm;\nimport com.pulumi.digitalocean.MicrovmArgs;\nimport com.pulumi.digitalocean.inputs.MicrovmSizeArgs;\nimport com.pulumi.digitalocean.inputs.MicrovmSourceArgs;\nimport com.pulumi.digitalocean.inputs.MicrovmEgressPolicyArgs;\nimport com.pulumi.digitalocean.inputs.MicrovmEgressPolicyRuleArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var lockedDown = new Microvm(\"lockedDown\", MicrovmArgs.builder()\n            .name(\"example-locked-down\")\n            .region(\"nyc3\")\n            .size(MicrovmSizeArgs.builder()\n                .cpu(1)\n                .memory(2048)\n                .build())\n            .source(MicrovmSourceArgs.builder()\n                .ociRef(\"docker.io/library/alpine:latest\")\n                .build())\n            .egressPolicy(MicrovmEgressPolicyArgs.builder()\n                .defaultAction(\"deny\")\n                .rules(                \n                    MicrovmEgressPolicyRuleArgs.builder()\n                        .domain(\"api.example.com\")\n                        .build(),\n                    MicrovmEgressPolicyRuleArgs.builder()\n                        .domain(\"*.example.org\")\n                        .build(),\n                    MicrovmEgressPolicyRuleArgs.builder()\n                        .ip(\"203.0.113.5\")\n                        .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  lockedDown:\n    type: digitalocean:Microvm\n    name: locked_down\n    properties:\n      name: example-locked-down\n      region: nyc3\n      size:\n        cpu: 1\n        memory: 2048\n      source:\n        ociRef: docker.io/library/alpine:latest\n      egressPolicy:\n        defaultAction: deny\n        rules:\n          - domain: api.example.com\n          - domain: '*.example.org'\n          - ip: 203.0.113.5\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nA MicroVM can be imported using its \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\" pulumi-lang-hcl=\"`id`\"\u003e`id`\u003c/span\u003e, e.g.\n\n```sh\n$ pulumi import digitalocean:index/microvm:Microvm web 506f78a4-e098-11e5-ad9f-000f53306ae1\n```\n\n",
             "properties": {
                 "autoPause": {
                     "$ref": "#/types/digitalocean:index/MicrovmAutoPause:MicrovmAutoPause",
@@ -40299,7 +40728,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the MicroVM.\n"
+                    "description": "The name of the MicroVM. A change renames the MicroVM in place.\n"
                 },
                 "networking": {
                     "type": "string",
@@ -40333,7 +40762,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of tag names to apply to the MicroVM.\n"
+                    "description": "A list of tag names to apply to the MicroVM. A change replaces the tag set in place.\n"
                 },
                 "urls": {
                     "type": "array",
@@ -40368,8 +40797,7 @@
             "inputProperties": {
                 "autoPause": {
                     "$ref": "#/types/digitalocean:index/MicrovmAutoPause:MicrovmAutoPause",
-                    "description": "Auto-pause configuration. When omitted, the product default (enabled) applies.\n",
-                    "willReplaceOnChanges": true
+                    "description": "Auto-pause configuration. When omitted, the product default (enabled) applies.\n"
                 },
                 "autoResume": {
                     "type": "boolean",
@@ -40406,8 +40834,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the MicroVM.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The name of the MicroVM. A change renames the MicroVM in place.\n"
                 },
                 "networking": {
                     "type": "string",
@@ -40446,8 +40873,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of tag names to apply to the MicroVM.\n",
-                    "willReplaceOnChanges": true
+                    "description": "A list of tag names to apply to the MicroVM. A change replaces the tag set in place.\n"
                 },
                 "vpcUuid": {
                     "type": "string",
@@ -40463,8 +40889,7 @@
                 "properties": {
                     "autoPause": {
                         "$ref": "#/types/digitalocean:index/MicrovmAutoPause:MicrovmAutoPause",
-                        "description": "Auto-pause configuration. When omitted, the product default (enabled) applies.\n",
-                        "willReplaceOnChanges": true
+                        "description": "Auto-pause configuration. When omitted, the product default (enabled) applies.\n"
                     },
                     "autoResume": {
                         "type": "boolean",
@@ -40517,8 +40942,7 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "The name of the MicroVM.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The name of the MicroVM. A change renames the MicroVM in place.\n"
                     },
                     "networking": {
                         "type": "string",
@@ -40557,8 +40981,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "A list of tag names to apply to the MicroVM.\n",
-                        "willReplaceOnChanges": true
+                        "description": "A list of tag names to apply to the MicroVM. A change replaces the tag set in place.\n"
                     },
                     "urls": {
                         "type": "array",
@@ -44084,6 +44507,87 @@
                     "updatedAt",
                     "userId",
                     "vpcs"
+                ],
+                "type": "object"
+            }
+        },
+        "digitalocean:index/getActionGatewayEndpoint:getActionGatewayEndpoint": {
+            "description": "Get information about an [Action Gateway](https://docs.digitalocean.com/products/managed-agents/action-gateway/)\nendpoint and the version its head resolves to, by \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\" pulumi-lang-hcl=\"`id`\"\u003e`id`\u003c/span\u003e or by \u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\" pulumi-lang-hcl=\"`name`\"\u003e`name`\u003c/span\u003e.\n\n## Example Usage\n\n### By name\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst support = digitalocean.getActionGatewayEndpoint({\n    name: \"support-agent\",\n});\nexport const mcpUrl = support.then(support =\u003e support.mcpUrl);\nexport const pinnedMcpUrl = support.then(support =\u003e support.versionMcpUrl);\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nsupport = digitalocean.get_action_gateway_endpoint(name=\"support-agent\")\npulumi.export(\"mcpUrl\", support.mcp_url)\npulumi.export(\"pinnedMcpUrl\", support.version_mcp_url)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var support = DigitalOcean.GetActionGatewayEndpoint.Invoke(new()\n    {\n        Name = \"support-agent\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"mcpUrl\"] = support.Apply(getActionGatewayEndpointResult =\u003e getActionGatewayEndpointResult.McpUrl),\n        [\"pinnedMcpUrl\"] = support.Apply(getActionGatewayEndpointResult =\u003e getActionGatewayEndpointResult.VersionMcpUrl),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tsupport, err := digitalocean.GetActionGatewayEndpoint(ctx, \u0026digitalocean.LookupActionGatewayEndpointArgs{\n\t\t\tName: pulumi.StringRef(\"support-agent\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"mcpUrl\", support.McpUrl)\n\t\tctx.Export(\"pinnedMcpUrl\", support.VersionMcpUrl)\n\t\treturn nil\n\t})\n}\n```\n```hcl\nterraform {\n  required_providers {\n    digitalocean = {\n      source = \"pulumi/digitalocean\"\n    }\n  }\n}\n\ndata \"digitalocean_action_gateway_endpoint\" \"support\" {\n  name = \"support-agent\"\n}\n\noutput \"mcpUrl\" {\n  value = data.digitalocean_action_gateway_endpoint.support.mcp_url\n}\noutput \"pinnedMcpUrl\" {\n  value = data.digitalocean_action_gateway_endpoint.support.version_mcp_url\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DigitaloceanFunctions;\nimport com.pulumi.digitalocean.inputs.GetActionGatewayEndpointArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var support = DigitaloceanFunctions.getActionGatewayEndpoint(GetActionGatewayEndpointArgs.builder()\n            .name(\"support-agent\")\n            .build());\n\n        ctx.export(\"mcpUrl\", support.mcpUrl());\n        ctx.export(\"pinnedMcpUrl\", support.versionMcpUrl());\n    }\n}\n```\n```yaml\nvariables:\n  support:\n    fn::invoke:\n      function: digitalocean:getActionGatewayEndpoint\n      arguments:\n        name: support-agent\noutputs:\n  mcpUrl: ${support.mcpUrl}\n  pinnedMcpUrl: ${support.versionMcpUrl}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### By name, filtered by actor\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst support = digitalocean.getActionGatewayEndpoint({\n    name: \"support-agent\",\n    actorId: \"user-123\",\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nsupport = digitalocean.get_action_gateway_endpoint(name=\"support-agent\",\n    actor_id=\"user-123\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var support = DigitalOcean.GetActionGatewayEndpoint.Invoke(new()\n    {\n        Name = \"support-agent\",\n        ActorId = \"user-123\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.GetActionGatewayEndpoint(ctx, \u0026digitalocean.LookupActionGatewayEndpointArgs{\n\t\t\tName:    pulumi.StringRef(\"support-agent\"),\n\t\t\tActorId: pulumi.StringRef(\"user-123\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\nterraform {\n  required_providers {\n    digitalocean = {\n      source = \"pulumi/digitalocean\"\n    }\n  }\n}\n\ndata \"digitalocean_action_gateway_endpoint\" \"support\" {\n  name     = \"support-agent\"\n  actor_id = \"user-123\"\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DigitaloceanFunctions;\nimport com.pulumi.digitalocean.inputs.GetActionGatewayEndpointArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var support = DigitaloceanFunctions.getActionGatewayEndpoint(GetActionGatewayEndpointArgs.builder()\n            .name(\"support-agent\")\n            .actorId(\"user-123\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  support:\n    fn::invoke:\n      function: digitalocean:getActionGatewayEndpoint\n      arguments:\n        name: support-agent\n        actorId: user-123\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### By ID\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst support = digitalocean.getActionGatewayEndpoint({\n    id: supportDigitaloceanActionGatewayEndpoint.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nsupport = digitalocean.get_action_gateway_endpoint(id=support_digitalocean_action_gateway_endpoint[\"id\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var support = DigitalOcean.GetActionGatewayEndpoint.Invoke(new()\n    {\n        Id = supportDigitaloceanActionGatewayEndpoint.Id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.GetActionGatewayEndpoint(ctx, \u0026digitalocean.LookupActionGatewayEndpointArgs{\n\t\t\tId: pulumi.StringRef(supportDigitaloceanActionGatewayEndpoint.Id),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\nterraform {\n  required_providers {\n    digitalocean = {\n      source = \"pulumi/digitalocean\"\n    }\n  }\n}\n\ndata \"digitalocean_action_gateway_endpoint\" \"support\" {\n  id = supportDigitaloceanActionGatewayEndpoint.id\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DigitaloceanFunctions;\nimport com.pulumi.digitalocean.inputs.GetActionGatewayEndpointArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var support = DigitaloceanFunctions.getActionGatewayEndpoint(GetActionGatewayEndpointArgs.builder()\n            .id(supportDigitaloceanActionGatewayEndpoint.get(\"id\"))\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  support:\n    fn::invoke:\n      function: digitalocean:getActionGatewayEndpoint\n      arguments:\n        id: ${supportDigitaloceanActionGatewayEndpoint.id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getActionGatewayEndpoint.\n",
+                "properties": {
+                    "actorId": {
+                        "type": "string",
+                        "description": "An actor ID to filter a \u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\" pulumi-lang-hcl=\"`name`\"\u003e`name`\u003c/span\u003e lookup by. Endpoints bound to a different actor are ignored.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The ID of the endpoint. Conflicts with \u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\" pulumi-lang-hcl=\"`name`\"\u003e`name`\u003c/span\u003e.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the endpoint. Conflicts with \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\" pulumi-lang-hcl=\"`id`\"\u003e`id`\u003c/span\u003e. Exactly one endpoint must carry the name; when several do, the lookup lists their IDs instead of picking one.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getActionGatewayEndpoint.\n",
+                "properties": {
+                    "actorId": {
+                        "type": "string"
+                    },
+                    "createdAt": {
+                        "description": "When the endpoint was created.\n",
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "insights": {
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getActionGatewayEndpointInsight:getActionGatewayEndpointInsight"
+                        },
+                        "type": "array"
+                    },
+                    "isDefault": {
+                        "description": "Whether this is the default endpoint that a generic `/mcp` request resolves to for your user.\n",
+                        "type": "boolean"
+                    },
+                    "mcpUrl": {
+                        "description": "The MCP URL that follows the endpoint's current head version.\n",
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "updatedAt": {
+                        "description": "When the endpoint was last modified.\n",
+                        "type": "string"
+                    },
+                    "versionMcpUrl": {
+                        "description": "The MCP URL pinned to the current head version.\n",
+                        "type": "string"
+                    },
+                    "versions": {
+                        "description": "The head version the endpoint resolves to, with \u003cspan pulumi-lang-nodejs=\"`actorId`\" pulumi-lang-dotnet=\"`ActorId`\" pulumi-lang-go=\"`actorId`\" pulumi-lang-python=\"`actor_id`\" pulumi-lang-yaml=\"`actorId`\" pulumi-lang-java=\"`actorId`\" pulumi-lang-hcl=\"`actor_id`\"\u003e`actorId`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`tools`\" pulumi-lang-dotnet=\"`Tools`\" pulumi-lang-go=\"`tools`\" pulumi-lang-python=\"`tools`\" pulumi-lang-yaml=\"`tools`\" pulumi-lang-java=\"`tools`\" pulumi-lang-hcl=\"`tools`\"\u003e`tools`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`pinnedTools`\" pulumi-lang-dotnet=\"`PinnedTools`\" pulumi-lang-go=\"`pinnedTools`\" pulumi-lang-python=\"`pinned_tools`\" pulumi-lang-yaml=\"`pinnedTools`\" pulumi-lang-java=\"`pinnedTools`\" pulumi-lang-hcl=\"`pinned_tools`\"\u003e`pinnedTools`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`policy`\" pulumi-lang-dotnet=\"`Policy`\" pulumi-lang-go=\"`policy`\" pulumi-lang-python=\"`policy`\" pulumi-lang-yaml=\"`policy`\" pulumi-lang-java=\"`policy`\" pulumi-lang-hcl=\"`policy`\"\u003e`policy`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`config`\" pulumi-lang-dotnet=\"`Config`\" pulumi-lang-go=\"`config`\" pulumi-lang-python=\"`config`\" pulumi-lang-yaml=\"`config`\" pulumi-lang-java=\"`config`\" pulumi-lang-hcl=\"`config`\"\u003e`config`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`network`\" pulumi-lang-dotnet=\"`Network`\" pulumi-lang-go=\"`network`\" pulumi-lang-python=\"`network`\" pulumi-lang-yaml=\"`network`\" pulumi-lang-java=\"`network`\" pulumi-lang-hcl=\"`network`\"\u003e`network`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\" pulumi-lang-hcl=\"`id`\"\u003e`id`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`versionNumber`\" pulumi-lang-dotnet=\"`VersionNumber`\" pulumi-lang-go=\"`versionNumber`\" pulumi-lang-python=\"`version_number`\" pulumi-lang-yaml=\"`versionNumber`\" pulumi-lang-java=\"`versionNumber`\" pulumi-lang-hcl=\"`version_number`\"\u003e`versionNumber`\u003c/span\u003e, and \u003cspan pulumi-lang-nodejs=\"`promotedFromVersionNumber`\" pulumi-lang-dotnet=\"`PromotedFromVersionNumber`\" pulumi-lang-go=\"`promotedFromVersionNumber`\" pulumi-lang-python=\"`promoted_from_version_number`\" pulumi-lang-yaml=\"`promotedFromVersionNumber`\" pulumi-lang-java=\"`promotedFromVersionNumber`\" pulumi-lang-hcl=\"`promoted_from_version_number`\"\u003e`promotedFromVersionNumber`\u003c/span\u003e as described on the \u003cspan pulumi-lang-nodejs=\"`digitalocean.ActionGatewayEndpoint`\" pulumi-lang-dotnet=\"`digitalocean.ActionGatewayEndpoint`\" pulumi-lang-go=\"`ActionGatewayEndpoint`\" pulumi-lang-python=\"`ActionGatewayEndpoint`\" pulumi-lang-yaml=\"`digitalocean.ActionGatewayEndpoint`\" pulumi-lang-java=\"`digitalocean.ActionGatewayEndpoint`\" pulumi-lang-hcl=\"`digitalocean_action_gateway_endpoint`\"\u003e`digitalocean.ActionGatewayEndpoint`\u003c/span\u003e resource page. An endpoint with no live version exports no \u003cspan pulumi-lang-nodejs=\"`version`\" pulumi-lang-dotnet=\"`Version`\" pulumi-lang-go=\"`version`\" pulumi-lang-python=\"`version`\" pulumi-lang-yaml=\"`version`\" pulumi-lang-java=\"`version`\" pulumi-lang-hcl=\"`version`\"\u003e`version`\u003c/span\u003e block.\n",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getActionGatewayEndpointVersion:getActionGatewayEndpointVersion"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "actorId",
+                    "createdAt",
+                    "id",
+                    "insights",
+                    "isDefault",
+                    "mcpUrl",
+                    "name",
+                    "updatedAt",
+                    "versions",
+                    "versionMcpUrl"
                 ],
                 "type": "object"
             }
