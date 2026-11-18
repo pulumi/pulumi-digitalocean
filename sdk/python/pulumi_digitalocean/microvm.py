@@ -48,13 +48,13 @@ class MicrovmArgs:
         :param pulumi.Input[_builtins.int] http_port: The port the workload serves HTTP on.
         :param pulumi.Input[_builtins.str] http_protocol: The HTTP protocol the workload serves: `http` or `http2`.
         :param pulumi.Input[_builtins.bool] ingress_enabled: Whether the MicroVM is created with a default public ingress URL. Defaults to `true`. Set to `false` to create the MicroVM without a default URL; additional URLs can be added later with the `MicrovmIngress` resource. This is a create-time option, so a change forces a new MicroVM.
-        :param pulumi.Input[_builtins.str] name: The name of the MicroVM.
+        :param pulumi.Input[_builtins.str] name: The name of the MicroVM. A change renames the MicroVM in place.
         :param pulumi.Input[_builtins.str] networking: The networking mode: `public` or `vpc`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] ports: A list of guest ports to open for ingress. Defaults to `http_port` only.
         :param pulumi.Input[_builtins.str] region: The slug of the region to create the MicroVM in. Required when creating from `source.oci_ref`; inherited from the checkpoint when omitted on a restore.
         :param pulumi.Input['MicrovmSizeArgs'] size: The compute size of the MicroVM. Required when creating from `source.oci_ref`; inherited from the checkpoint when omitted on a restore.
         :param pulumi.Input[_builtins.str] state: The desired lifecycle state: `running` or `paused`. Defaults to `running`. When `auto_pause` is enabled, a MicroVM that the platform has paused is not resumed to match `running`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A list of tag names to apply to the MicroVM.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A list of tag names to apply to the MicroVM. A change replaces the tag set in place.
         :param pulumi.Input[_builtins.str] vpc_uuid: The ID of the VPC to place the MicroVM in. Only valid when `networking` is `vpc`.
         """
         pulumi.set(__self__, "source", source)
@@ -189,7 +189,7 @@ class MicrovmArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The name of the MicroVM.
+        The name of the MicroVM. A change renames the MicroVM in place.
         """
         return pulumi.get(self, "name")
 
@@ -261,7 +261,7 @@ class MicrovmArgs:
     @pulumi.getter
     def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        A list of tag names to apply to the MicroVM.
+        A list of tag names to apply to the MicroVM. A change replaces the tag set in place.
         """
         return pulumi.get(self, "tags")
 
@@ -320,14 +320,14 @@ class _MicrovmState:
         :param pulumi.Input[_builtins.int] http_port: The port the workload serves HTTP on.
         :param pulumi.Input[_builtins.str] http_protocol: The HTTP protocol the workload serves: `http` or `http2`.
         :param pulumi.Input[_builtins.bool] ingress_enabled: Whether the MicroVM is created with a default public ingress URL. Defaults to `true`. Set to `false` to create the MicroVM without a default URL; additional URLs can be added later with the `MicrovmIngress` resource. This is a create-time option, so a change forces a new MicroVM.
-        :param pulumi.Input[_builtins.str] name: The name of the MicroVM.
+        :param pulumi.Input[_builtins.str] name: The name of the MicroVM. A change renames the MicroVM in place.
         :param pulumi.Input[_builtins.str] networking: The networking mode: `public` or `vpc`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] ports: A list of guest ports to open for ingress. Defaults to `http_port` only.
         :param pulumi.Input[_builtins.str] region: The slug of the region to create the MicroVM in. Required when creating from `source.oci_ref`; inherited from the checkpoint when omitted on a restore.
         :param pulumi.Input['MicrovmSizeArgs'] size: The compute size of the MicroVM. Required when creating from `source.oci_ref`; inherited from the checkpoint when omitted on a restore.
         :param pulumi.Input['MicrovmSourceArgs'] source: What the MicroVM runs. Exactly one of the following must be set:
         :param pulumi.Input[_builtins.str] state: The desired lifecycle state: `running` or `paused`. Defaults to `running`. When `auto_pause` is enabled, a MicroVM that the platform has paused is not resumed to match `running`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A list of tag names to apply to the MicroVM.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A list of tag names to apply to the MicroVM. A change replaces the tag set in place.
         :param pulumi.Input[Sequence[pulumi.Input['MicrovmUrlArgs']]] urls: A list of ingress URLs for the MicroVM:
         :param pulumi.Input[_builtins.str] vpc_uuid: The ID of the VPC to place the MicroVM in. Only valid when `networking` is `vpc`.
         """
@@ -510,7 +510,7 @@ class _MicrovmState:
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The name of the MicroVM.
+        The name of the MicroVM. A change renames the MicroVM in place.
         """
         return pulumi.get(self, "name")
 
@@ -594,7 +594,7 @@ class _MicrovmState:
     @pulumi.getter
     def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        A list of tag names to apply to the MicroVM.
+        A list of tag names to apply to the MicroVM. A change replaces the tag set in place.
         """
         return pulumi.get(self, "tags")
 
@@ -689,8 +689,8 @@ class Microvm(pulumi.CustomResource):
         ### Pause and Resume
 
         Set `state` to `paused` to pause a running MicroVM, and back to `running` to
-        resume it. This is the only change that is applied in place; every other
-        argument forces a new MicroVM.
+        resume it. `state`, `name`, `tags`, and `auto_pause.idle_timeout` are applied
+        in place; every other argument forces a new MicroVM.
 
         ```python
         import pulumi
@@ -787,14 +787,14 @@ class Microvm(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] http_port: The port the workload serves HTTP on.
         :param pulumi.Input[_builtins.str] http_protocol: The HTTP protocol the workload serves: `http` or `http2`.
         :param pulumi.Input[_builtins.bool] ingress_enabled: Whether the MicroVM is created with a default public ingress URL. Defaults to `true`. Set to `false` to create the MicroVM without a default URL; additional URLs can be added later with the `MicrovmIngress` resource. This is a create-time option, so a change forces a new MicroVM.
-        :param pulumi.Input[_builtins.str] name: The name of the MicroVM.
+        :param pulumi.Input[_builtins.str] name: The name of the MicroVM. A change renames the MicroVM in place.
         :param pulumi.Input[_builtins.str] networking: The networking mode: `public` or `vpc`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] ports: A list of guest ports to open for ingress. Defaults to `http_port` only.
         :param pulumi.Input[_builtins.str] region: The slug of the region to create the MicroVM in. Required when creating from `source.oci_ref`; inherited from the checkpoint when omitted on a restore.
         :param pulumi.Input[Union['MicrovmSizeArgs', 'MicrovmSizeArgsDict', 'outputs.MicrovmSize']] size: The compute size of the MicroVM. Required when creating from `source.oci_ref`; inherited from the checkpoint when omitted on a restore.
         :param pulumi.Input[Union['MicrovmSourceArgs', 'MicrovmSourceArgsDict', 'outputs.MicrovmSource']] source: What the MicroVM runs. Exactly one of the following must be set:
         :param pulumi.Input[_builtins.str] state: The desired lifecycle state: `running` or `paused`. Defaults to `running`. When `auto_pause` is enabled, a MicroVM that the platform has paused is not resumed to match `running`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A list of tag names to apply to the MicroVM.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A list of tag names to apply to the MicroVM. A change replaces the tag set in place.
         :param pulumi.Input[_builtins.str] vpc_uuid: The ID of the VPC to place the MicroVM in. Only valid when `networking` is `vpc`.
         """
         ...
@@ -842,8 +842,8 @@ class Microvm(pulumi.CustomResource):
         ### Pause and Resume
 
         Set `state` to `paused` to pause a running MicroVM, and back to `running` to
-        resume it. This is the only change that is applied in place; every other
-        argument forces a new MicroVM.
+        resume it. `state`, `name`, `tags`, and `auto_pause.idle_timeout` are applied
+        in place; every other argument forces a new MicroVM.
 
         ```python
         import pulumi
@@ -1043,14 +1043,14 @@ class Microvm(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] http_port: The port the workload serves HTTP on.
         :param pulumi.Input[_builtins.str] http_protocol: The HTTP protocol the workload serves: `http` or `http2`.
         :param pulumi.Input[_builtins.bool] ingress_enabled: Whether the MicroVM is created with a default public ingress URL. Defaults to `true`. Set to `false` to create the MicroVM without a default URL; additional URLs can be added later with the `MicrovmIngress` resource. This is a create-time option, so a change forces a new MicroVM.
-        :param pulumi.Input[_builtins.str] name: The name of the MicroVM.
+        :param pulumi.Input[_builtins.str] name: The name of the MicroVM. A change renames the MicroVM in place.
         :param pulumi.Input[_builtins.str] networking: The networking mode: `public` or `vpc`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] ports: A list of guest ports to open for ingress. Defaults to `http_port` only.
         :param pulumi.Input[_builtins.str] region: The slug of the region to create the MicroVM in. Required when creating from `source.oci_ref`; inherited from the checkpoint when omitted on a restore.
         :param pulumi.Input[Union['MicrovmSizeArgs', 'MicrovmSizeArgsDict', 'outputs.MicrovmSize']] size: The compute size of the MicroVM. Required when creating from `source.oci_ref`; inherited from the checkpoint when omitted on a restore.
         :param pulumi.Input[Union['MicrovmSourceArgs', 'MicrovmSourceArgsDict', 'outputs.MicrovmSource']] source: What the MicroVM runs. Exactly one of the following must be set:
         :param pulumi.Input[_builtins.str] state: The desired lifecycle state: `running` or `paused`. Defaults to `running`. When `auto_pause` is enabled, a MicroVM that the platform has paused is not resumed to match `running`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A list of tag names to apply to the MicroVM.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A list of tag names to apply to the MicroVM. A change replaces the tag set in place.
         :param pulumi.Input[Sequence[pulumi.Input[Union['MicrovmUrlArgs', 'MicrovmUrlArgsDict', 'outputs.MicrovmUrl']]]] urls: A list of ingress URLs for the MicroVM:
         :param pulumi.Input[_builtins.str] vpc_uuid: The ID of the VPC to place the MicroVM in. Only valid when `networking` is `vpc`.
         """
@@ -1221,7 +1221,7 @@ class Microvm(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the MicroVM.
+        The name of the MicroVM. A change renames the MicroVM in place.
         """
         return pulumi.get(self, "name")
 
@@ -1277,7 +1277,7 @@ class Microvm(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        A list of tag names to apply to the MicroVM.
+        A list of tag names to apply to the MicroVM. A change replaces the tag set in place.
         """
         return pulumi.get(self, "tags")
 

@@ -86,8 +86,8 @@ import javax.annotation.Nullable;
  * ### Pause and Resume
  * 
  * Set `state` to `paused` to pause a running MicroVM, and back to `running` to
- * resume it. This is the only change that is applied in place; every other
- * argument forces a new MicroVM.
+ * resume it. `state`, `name`, `tags`, and `auto_pause.idle_timeout` are applied
+ * in place; every other argument forces a new MicroVM.
  * 
  * <pre>
  * {@code
@@ -411,14 +411,14 @@ public class Microvm extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.ingressEnabled);
     }
     /**
-     * The name of the MicroVM.
+     * The name of the MicroVM. A change renames the MicroVM in place.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of the MicroVM.
+     * @return The name of the MicroVM. A change renames the MicroVM in place.
      * 
      */
     public Output<String> name() {
@@ -509,14 +509,14 @@ public class Microvm extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.state);
     }
     /**
-     * A list of tag names to apply to the MicroVM.
+     * A list of tag names to apply to the MicroVM. A change replaces the tag set in place.
      * 
      */
     @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
-     * @return A list of tag names to apply to the MicroVM.
+     * @return A list of tag names to apply to the MicroVM. A change replaces the tag set in place.
      * 
      */
     public Output<Optional<List<String>>> tags() {

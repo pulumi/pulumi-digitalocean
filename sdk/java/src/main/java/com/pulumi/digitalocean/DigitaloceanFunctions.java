@@ -11,6 +11,8 @@ import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.digitalocean.Utilities;
 import com.pulumi.digitalocean.inputs.GetActionGatewayConnectionArgs;
 import com.pulumi.digitalocean.inputs.GetActionGatewayConnectionPlainArgs;
+import com.pulumi.digitalocean.inputs.GetActionGatewayEndpointArgs;
+import com.pulumi.digitalocean.inputs.GetActionGatewayEndpointPlainArgs;
 import com.pulumi.digitalocean.inputs.GetActionGatewayProvidersArgs;
 import com.pulumi.digitalocean.inputs.GetActionGatewayProvidersPlainArgs;
 import com.pulumi.digitalocean.inputs.GetActionGatewayToolbeltArgs;
@@ -197,6 +199,7 @@ import com.pulumi.digitalocean.inputs.GetVpcPeeringPlainArgs;
 import com.pulumi.digitalocean.inputs.GetVpcPlainArgs;
 import com.pulumi.digitalocean.outputs.GetAccountResult;
 import com.pulumi.digitalocean.outputs.GetActionGatewayConnectionResult;
+import com.pulumi.digitalocean.outputs.GetActionGatewayEndpointResult;
 import com.pulumi.digitalocean.outputs.GetActionGatewayProvidersResult;
 import com.pulumi.digitalocean.outputs.GetActionGatewayToolbeltResult;
 import com.pulumi.digitalocean.outputs.GetAgentPlatformAgentResult;
@@ -897,6 +900,790 @@ public final class DigitaloceanFunctions {
      */
     public static CompletableFuture<GetActionGatewayConnectionResult> getActionGatewayConnectionPlain(GetActionGatewayConnectionPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getActionGatewayConnection:getActionGatewayConnection", TypeShape.of(GetActionGatewayConnectionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about an [Action Gateway](https://docs.digitalocean.com/products/managed-agents/action-gateway/)
+     * endpoint and the version its head resolves to, by `id` or by `name`.
+     * 
+     * ## Example Usage
+     * 
+     * ### By name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetActionGatewayEndpointArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var support = DigitaloceanFunctions.getActionGatewayEndpoint(GetActionGatewayEndpointArgs.builder()
+     *             .name("support-agent")
+     *             .build());
+     * 
+     *         ctx.export("mcpUrl", support.mcpUrl());
+     *         ctx.export("pinnedMcpUrl", support.versionMcpUrl());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### By name, filtered by actor
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetActionGatewayEndpointArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var support = DigitaloceanFunctions.getActionGatewayEndpoint(GetActionGatewayEndpointArgs.builder()
+     *             .name("support-agent")
+     *             .actorId("user-123")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### By ID
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetActionGatewayEndpointArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var support = DigitaloceanFunctions.getActionGatewayEndpoint(GetActionGatewayEndpointArgs.builder()
+     *             .id(supportDigitaloceanActionGatewayEndpoint.get("id"))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetActionGatewayEndpointResult> getActionGatewayEndpoint() {
+        return getActionGatewayEndpoint(GetActionGatewayEndpointArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about an [Action Gateway](https://docs.digitalocean.com/products/managed-agents/action-gateway/)
+     * endpoint and the version its head resolves to, by `id` or by `name`.
+     * 
+     * ## Example Usage
+     * 
+     * ### By name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetActionGatewayEndpointArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var support = DigitaloceanFunctions.getActionGatewayEndpoint(GetActionGatewayEndpointArgs.builder()
+     *             .name("support-agent")
+     *             .build());
+     * 
+     *         ctx.export("mcpUrl", support.mcpUrl());
+     *         ctx.export("pinnedMcpUrl", support.versionMcpUrl());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### By name, filtered by actor
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetActionGatewayEndpointArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var support = DigitaloceanFunctions.getActionGatewayEndpoint(GetActionGatewayEndpointArgs.builder()
+     *             .name("support-agent")
+     *             .actorId("user-123")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### By ID
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetActionGatewayEndpointArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var support = DigitaloceanFunctions.getActionGatewayEndpoint(GetActionGatewayEndpointArgs.builder()
+     *             .id(supportDigitaloceanActionGatewayEndpoint.get("id"))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetActionGatewayEndpointResult> getActionGatewayEndpointPlain() {
+        return getActionGatewayEndpointPlain(GetActionGatewayEndpointPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about an [Action Gateway](https://docs.digitalocean.com/products/managed-agents/action-gateway/)
+     * endpoint and the version its head resolves to, by `id` or by `name`.
+     * 
+     * ## Example Usage
+     * 
+     * ### By name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetActionGatewayEndpointArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var support = DigitaloceanFunctions.getActionGatewayEndpoint(GetActionGatewayEndpointArgs.builder()
+     *             .name("support-agent")
+     *             .build());
+     * 
+     *         ctx.export("mcpUrl", support.mcpUrl());
+     *         ctx.export("pinnedMcpUrl", support.versionMcpUrl());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### By name, filtered by actor
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetActionGatewayEndpointArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var support = DigitaloceanFunctions.getActionGatewayEndpoint(GetActionGatewayEndpointArgs.builder()
+     *             .name("support-agent")
+     *             .actorId("user-123")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### By ID
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetActionGatewayEndpointArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var support = DigitaloceanFunctions.getActionGatewayEndpoint(GetActionGatewayEndpointArgs.builder()
+     *             .id(supportDigitaloceanActionGatewayEndpoint.get("id"))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetActionGatewayEndpointResult> getActionGatewayEndpoint(GetActionGatewayEndpointArgs args) {
+        return getActionGatewayEndpoint(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about an [Action Gateway](https://docs.digitalocean.com/products/managed-agents/action-gateway/)
+     * endpoint and the version its head resolves to, by `id` or by `name`.
+     * 
+     * ## Example Usage
+     * 
+     * ### By name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetActionGatewayEndpointArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var support = DigitaloceanFunctions.getActionGatewayEndpoint(GetActionGatewayEndpointArgs.builder()
+     *             .name("support-agent")
+     *             .build());
+     * 
+     *         ctx.export("mcpUrl", support.mcpUrl());
+     *         ctx.export("pinnedMcpUrl", support.versionMcpUrl());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### By name, filtered by actor
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetActionGatewayEndpointArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var support = DigitaloceanFunctions.getActionGatewayEndpoint(GetActionGatewayEndpointArgs.builder()
+     *             .name("support-agent")
+     *             .actorId("user-123")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### By ID
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetActionGatewayEndpointArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var support = DigitaloceanFunctions.getActionGatewayEndpoint(GetActionGatewayEndpointArgs.builder()
+     *             .id(supportDigitaloceanActionGatewayEndpoint.get("id"))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetActionGatewayEndpointResult> getActionGatewayEndpointPlain(GetActionGatewayEndpointPlainArgs args) {
+        return getActionGatewayEndpointPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about an [Action Gateway](https://docs.digitalocean.com/products/managed-agents/action-gateway/)
+     * endpoint and the version its head resolves to, by `id` or by `name`.
+     * 
+     * ## Example Usage
+     * 
+     * ### By name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetActionGatewayEndpointArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var support = DigitaloceanFunctions.getActionGatewayEndpoint(GetActionGatewayEndpointArgs.builder()
+     *             .name("support-agent")
+     *             .build());
+     * 
+     *         ctx.export("mcpUrl", support.mcpUrl());
+     *         ctx.export("pinnedMcpUrl", support.versionMcpUrl());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### By name, filtered by actor
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetActionGatewayEndpointArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var support = DigitaloceanFunctions.getActionGatewayEndpoint(GetActionGatewayEndpointArgs.builder()
+     *             .name("support-agent")
+     *             .actorId("user-123")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### By ID
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetActionGatewayEndpointArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var support = DigitaloceanFunctions.getActionGatewayEndpoint(GetActionGatewayEndpointArgs.builder()
+     *             .id(supportDigitaloceanActionGatewayEndpoint.get("id"))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetActionGatewayEndpointResult> getActionGatewayEndpoint(GetActionGatewayEndpointArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getActionGatewayEndpoint:getActionGatewayEndpoint", TypeShape.of(GetActionGatewayEndpointResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about an [Action Gateway](https://docs.digitalocean.com/products/managed-agents/action-gateway/)
+     * endpoint and the version its head resolves to, by `id` or by `name`.
+     * 
+     * ## Example Usage
+     * 
+     * ### By name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetActionGatewayEndpointArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var support = DigitaloceanFunctions.getActionGatewayEndpoint(GetActionGatewayEndpointArgs.builder()
+     *             .name("support-agent")
+     *             .build());
+     * 
+     *         ctx.export("mcpUrl", support.mcpUrl());
+     *         ctx.export("pinnedMcpUrl", support.versionMcpUrl());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### By name, filtered by actor
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetActionGatewayEndpointArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var support = DigitaloceanFunctions.getActionGatewayEndpoint(GetActionGatewayEndpointArgs.builder()
+     *             .name("support-agent")
+     *             .actorId("user-123")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### By ID
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetActionGatewayEndpointArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var support = DigitaloceanFunctions.getActionGatewayEndpoint(GetActionGatewayEndpointArgs.builder()
+     *             .id(supportDigitaloceanActionGatewayEndpoint.get("id"))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetActionGatewayEndpointResult> getActionGatewayEndpoint(GetActionGatewayEndpointArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getActionGatewayEndpoint:getActionGatewayEndpoint", TypeShape.of(GetActionGatewayEndpointResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about an [Action Gateway](https://docs.digitalocean.com/products/managed-agents/action-gateway/)
+     * endpoint and the version its head resolves to, by `id` or by `name`.
+     * 
+     * ## Example Usage
+     * 
+     * ### By name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetActionGatewayEndpointArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var support = DigitaloceanFunctions.getActionGatewayEndpoint(GetActionGatewayEndpointArgs.builder()
+     *             .name("support-agent")
+     *             .build());
+     * 
+     *         ctx.export("mcpUrl", support.mcpUrl());
+     *         ctx.export("pinnedMcpUrl", support.versionMcpUrl());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### By name, filtered by actor
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetActionGatewayEndpointArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var support = DigitaloceanFunctions.getActionGatewayEndpoint(GetActionGatewayEndpointArgs.builder()
+     *             .name("support-agent")
+     *             .actorId("user-123")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### By ID
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetActionGatewayEndpointArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var support = DigitaloceanFunctions.getActionGatewayEndpoint(GetActionGatewayEndpointArgs.builder()
+     *             .id(supportDigitaloceanActionGatewayEndpoint.get("id"))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetActionGatewayEndpointResult> getActionGatewayEndpointPlain(GetActionGatewayEndpointPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getActionGatewayEndpoint:getActionGatewayEndpoint", TypeShape.of(GetActionGatewayEndpointResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Get information on the [Action Gateway](https://docs.digitalocean.com/products/managed-agents/action-gateway/)

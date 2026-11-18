@@ -17,7 +17,7 @@ public final class GetMicrovmsMicroVmAutoPause {
      */
     private Boolean enabled;
     /**
-     * @return Idle timeout as a Go duration string (e.g. &#39;5m&#39;, &#39;30s&#39;). Forces recreation on change (no in-place API path).
+     * @return Idle timeout as a Go duration string (e.g. &#39;5m&#39;, &#39;30s&#39;). Updates in place.
      * 
      */
     private String idleTimeout;
@@ -31,7 +31,7 @@ public final class GetMicrovmsMicroVmAutoPause {
         return this.enabled;
     }
     /**
-     * @return Idle timeout as a Go duration string (e.g. &#39;5m&#39;, &#39;30s&#39;). Forces recreation on change (no in-place API path).
+     * @return Idle timeout as a Go duration string (e.g. &#39;5m&#39;, &#39;30s&#39;). Updates in place.
      * 
      */
     public String idleTimeout() {

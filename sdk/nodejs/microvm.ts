@@ -47,8 +47,8 @@ import * as utilities from "./utilities";
  * ### Pause and Resume
  *
  * Set `state` to `paused` to pause a running MicroVM, and back to `running` to
- * resume it. This is the only change that is applied in place; every other
- * argument forces a new MicroVM.
+ * resume it. `state`, `name`, `tags`, and `auto_pause.idle_timeout` are applied
+ * in place; every other argument forces a new MicroVM.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -223,7 +223,7 @@ export class Microvm extends pulumi.CustomResource {
      */
     declare public readonly ingressEnabled: pulumi.Output<boolean | undefined>;
     /**
-     * The name of the MicroVM.
+     * The name of the MicroVM. A change renames the MicroVM in place.
      */
     declare public readonly name: pulumi.Output<string>;
     /**
@@ -251,7 +251,7 @@ export class Microvm extends pulumi.CustomResource {
      */
     declare public readonly state: pulumi.Output<string | undefined>;
     /**
-     * A list of tag names to apply to the MicroVM.
+     * A list of tag names to apply to the MicroVM. A change replaces the tag set in place.
      */
     declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
@@ -378,7 +378,7 @@ export interface MicrovmState {
      */
     ingressEnabled?: pulumi.Input<boolean | undefined>;
     /**
-     * The name of the MicroVM.
+     * The name of the MicroVM. A change renames the MicroVM in place.
      */
     name?: pulumi.Input<string | undefined>;
     /**
@@ -406,7 +406,7 @@ export interface MicrovmState {
      */
     state?: pulumi.Input<string | undefined>;
     /**
-     * A list of tag names to apply to the MicroVM.
+     * A list of tag names to apply to the MicroVM. A change replaces the tag set in place.
      */
     tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -452,7 +452,7 @@ export interface MicrovmArgs {
      */
     ingressEnabled?: pulumi.Input<boolean | undefined>;
     /**
-     * The name of the MicroVM.
+     * The name of the MicroVM. A change renames the MicroVM in place.
      */
     name?: pulumi.Input<string | undefined>;
     /**
@@ -480,7 +480,7 @@ export interface MicrovmArgs {
      */
     state?: pulumi.Input<string | undefined>;
     /**
-     * A list of tag names to apply to the MicroVM.
+     * A list of tag names to apply to the MicroVM. A change replaces the tag set in place.
      */
     tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**

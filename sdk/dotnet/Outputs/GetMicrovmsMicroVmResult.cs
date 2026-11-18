@@ -14,7 +14,7 @@ namespace Pulumi.DigitalOcean.Outputs
     public sealed class GetMicrovmsMicroVmResult
     {
         /// <summary>
-        /// Auto-pause configuration. Forces recreation on change: the MicroVMs API has no in-place update path for auto_pause.
+        /// Auto-pause configuration. IdleTimeout updates in place; changing enabled forces recreation.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetMicrovmsMicroVmAutoPauseResult> AutoPauses;
         /// <summary>

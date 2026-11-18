@@ -18,7 +18,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
-        /// Idle timeout as a Go duration string (e.g. '5m', '30s'). Forces recreation on change (no in-place API path).
+        /// Idle timeout as a Go duration string (e.g. '5m', '30s'). Updates in place.
         /// </summary>
         public readonly string IdleTimeout;
 

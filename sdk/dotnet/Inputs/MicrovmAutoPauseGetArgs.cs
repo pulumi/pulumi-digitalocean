@@ -13,13 +13,13 @@ namespace Pulumi.DigitalOcean.Inputs
     public sealed class MicrovmAutoPauseGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether the MicroVM pauses after it has been idle for `IdleTimeout`.
+        /// Whether the MicroVM pauses after it has been idle for `IdleTimeout`. A change forces a new MicroVM.
         /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
 
         /// <summary>
-        /// How long the MicroVM must be idle before it pauses, as a duration such as `5m` or `30s`.
+        /// How long the MicroVM must be idle before it pauses, as a duration such as `5m` or `30s`. A change is applied in place.
         /// </summary>
         [Input("idleTimeout")]
         public Input<string>? IdleTimeout { get; set; }

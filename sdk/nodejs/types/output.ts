@@ -55,6 +55,100 @@ export interface ActionGatewayConnectionVpcDestination {
     port: number;
 }
 
+export interface ActionGatewayEndpointInsights {
+    /**
+     * Whether the endpoint's logs are sent to Insights. Your team can require this to be on for every endpoint; turning it off is then refused.
+     */
+    logs: boolean;
+    /**
+     * Whether the endpoint's metrics are sent to Insights.
+     */
+    metrics: boolean;
+    /**
+     * Whether the endpoint's traces are sent to Insights.
+     *
+     * Each signal is optional and computed, so an omitted signal keeps the value the
+     * endpoint already stores instead of resetting it.
+     */
+    traces: boolean;
+}
+
+export interface ActionGatewayEndpointVersion {
+    /**
+     * The actor the version's tool calls act as. It must contain 1 to 64 characters from `[A-Za-z0-9._-]`. No operation changes an endpoint's actor, so changing this forces a new endpoint.
+     */
+    actorId?: string;
+    /**
+     * A JSON object of options Gateway applies to the version, such as `preloadTools`, `customInstructions`, or `outputViews`. It is validated as JSON, normalized for comparison, and stored as supplied.
+     */
+    config?: string;
+    /**
+     * The ID of the head version, `<endpoint UUID>.v<version number>`.
+     */
+    id: string;
+    /**
+     * A VPC the version's tool calls are routed through. See Network below.
+     */
+    network?: outputs.ActionGatewayEndpointVersionNetwork;
+    /**
+     * The tools and toolbelts the head version enables, each pinned by the API as `<tool_slug>@<version>` or `toolbelt:<name>@<version>`. Empty when every tool is enabled.
+     */
+    pinnedTools: string[];
+    /**
+     * The tool permission policy. Omitting it asks before every call. See Policy below.
+     */
+    policy?: outputs.ActionGatewayEndpointVersionPolicy;
+    /**
+     * The version number the head was promoted from, when it was created by a promotion rather than a publish.
+     */
+    promotedFromVersionNumber: number;
+    /**
+     * The tools and toolbelts the version enables, each optionally pinned as `<tool_slug>@<version>` or `toolbelt:<name>@<version>`. **Omit the argument to enable every tool, and set an empty list to enable none.** The API distinguishes the two, and so does this resource.
+     */
+    tools?: string[];
+    /**
+     * The number of the head version.
+     */
+    versionNumber: number;
+}
+
+export interface ActionGatewayEndpointVersionNetwork {
+    /**
+     * The region of the VPC the version is attached to.
+     */
+    region: string;
+    /**
+     * The UUID of a VPC owned by your team.
+     */
+    vpcUuid: string;
+}
+
+export interface ActionGatewayEndpointVersionPolicy {
+    /**
+     * The action for calls that no rule matches: `allow`, `ask`, or `deny`. Empty means `ask`.
+     */
+    defaultAction: string;
+    /**
+     * Rules for specific tools and toolbelts, in the order the configuration lists them. Each rule supports:
+     */
+    rules?: outputs.ActionGatewayEndpointVersionPolicyRule[];
+}
+
+export interface ActionGatewayEndpointVersionPolicyRule {
+    /**
+     * One of `allow`, `ask`, or `deny`.
+     */
+    action: string;
+    /**
+     * Argument values a call must match for the rule to apply, keyed by argument name.
+     */
+    match?: {[key: string]: string};
+    /**
+     * A tool slug, optionally pinned as `<tool_slug>@<version>`, or `toolbelt:<name>@<version>`.
+     */
+    tool: string;
+}
+
 export interface ActionGatewayMcpServerDiscoveredTool {
     /**
      * The description shown on the server's catalog card, at most 1024 characters.
@@ -4061,6 +4155,97 @@ export interface GetActionGatewayConnectionVpcDestination {
      * Destination port
      */
     port: number;
+}
+
+export interface GetActionGatewayEndpointInsight {
+    /**
+     * Whether the endpoint's logs are sent to Insights. Your team can require this to be on.
+     */
+    logs: boolean;
+    /**
+     * Whether the endpoint's metrics are sent to Insights
+     */
+    metrics: boolean;
+    /**
+     * Whether the endpoint's traces are sent to Insights
+     */
+    traces: boolean;
+}
+
+export interface GetActionGatewayEndpointVersion {
+    /**
+     * An actor ID to filter a `name` lookup by. Endpoints bound to a different actor are ignored.
+     */
+    actorId: string;
+    /**
+     * JSON object of options Gateway applies to the version, such as preloadTools or customInstructions
+     */
+    config: string;
+    /**
+     * The ID of the endpoint. Conflicts with `name`.
+     */
+    id: string;
+    /**
+     * VPC the version's tool calls are routed through
+     */
+    networks: outputs.GetActionGatewayEndpointVersionNetwork[];
+    /**
+     * Tools and toolbelts the head version enables, each pinned by the API as <tool_slug>@<version> or toolbelt:<name>@<version>. Empty when every tool is enabled.
+     */
+    pinnedTools: string[];
+    /**
+     * Tool permission policy. Omitting it asks before every call.
+     */
+    policies: outputs.GetActionGatewayEndpointVersionPolicy[];
+    /**
+     * Version number the head was promoted from, when it was created by a promotion rather than a publish
+     */
+    promotedFromVersionNumber: number;
+    /**
+     * Tools and toolbelts the version enables, each optionally pinned as <tool_slug>@<version> or toolbelt:<name>@<version>. Omit to enable every tool; set an empty list to enable none.
+     */
+    tools: string[];
+    /**
+     * Version number of the head version
+     */
+    versionNumber: number;
+}
+
+export interface GetActionGatewayEndpointVersionNetwork {
+    /**
+     * Region of the VPC
+     */
+    region: string;
+    /**
+     * UUID of a VPC owned by your team
+     */
+    vpcUuid: string;
+}
+
+export interface GetActionGatewayEndpointVersionPolicy {
+    /**
+     * Action for calls no rule matches: allow, ask, or deny. Empty means ask.
+     */
+    defaultAction: string;
+    /**
+     * Rules for specific tools and toolbelts, in the order the configuration lists them
+     */
+    rules: outputs.GetActionGatewayEndpointVersionPolicyRule[];
+}
+
+export interface GetActionGatewayEndpointVersionPolicyRule {
+    /**
+     * allow, ask, or deny
+     */
+    action: string;
+    /**
+     * Argument values a call must match for the rule to apply, keyed by argument name
+     */
+    match: {[key: string]: string};
+    /**
+     * Tool slug, optionally pinned as <tool_slug>@<version>, or toolbelt:<name>@<version>
+     */
+    tool: string;
 }
 
 export interface GetActionGatewayProvidersFilter {
@@ -16410,7 +16595,7 @@ export interface GetMicrovmsFilter {
 
 export interface GetMicrovmsMicroVm {
     /**
-     * Auto-pause configuration. Forces recreation on change: the MicroVMs API has no in-place update path for auto_pause.
+     * Auto-pause configuration. idleTimeout updates in place; changing enabled forces recreation.
      */
     autoPauses: outputs.GetMicrovmsMicroVmAutoPause[];
     /**
@@ -16502,7 +16687,7 @@ export interface GetMicrovmsMicroVmAutoPause {
      */
     enabled: boolean;
     /**
-     * Idle timeout as a Go duration string (e.g. '5m', '30s'). Forces recreation on change (no in-place API path).
+     * Idle timeout as a Go duration string (e.g. '5m', '30s'). Updates in place.
      */
     idleTimeout: string;
 }
@@ -18836,11 +19021,11 @@ export interface LoadBalancerStickySessions {
 
 export interface MicrovmAutoPause {
     /**
-     * Whether the MicroVM pauses after it has been idle for `idleTimeout`.
+     * Whether the MicroVM pauses after it has been idle for `idleTimeout`. A change forces a new MicroVM.
      */
     enabled: boolean;
     /**
-     * How long the MicroVM must be idle before it pauses, as a duration such as `5m` or `30s`.
+     * How long the MicroVM must be idle before it pauses, as a duration such as `5m` or `30s`. A change is applied in place.
      */
     idleTimeout: string;
 }

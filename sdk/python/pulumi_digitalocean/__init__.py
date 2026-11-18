@@ -8,6 +8,7 @@ import typing
 # Export this package's modules as members:
 from ._enums import *
 from .action_gateway_connection import *
+from .action_gateway_endpoint import *
 from .action_gateway_mcp_server import *
 from .action_gateway_toolbelt import *
 from .agent_platform_agent import *
@@ -59,6 +60,7 @@ from .floating_ip import *
 from .floating_ip_assignment import *
 from .get_account import *
 from .get_action_gateway_connection import *
+from .get_action_gateway_endpoint import *
 from .get_action_gateway_providers import *
 from .get_action_gateway_toolbelt import *
 from .get_agent_platform_agent import *
@@ -217,6 +219,14 @@ _utilities.register(
   "fqn": "pulumi_digitalocean",
   "classes": {
    "digitalocean:index/actionGatewayConnection:ActionGatewayConnection": "ActionGatewayConnection"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/actionGatewayEndpoint",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/actionGatewayEndpoint:ActionGatewayEndpoint": "ActionGatewayEndpoint"
   }
  },
  {

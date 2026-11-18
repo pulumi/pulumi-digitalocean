@@ -20,7 +20,7 @@ import java.util.Objects;
 @CustomType
 public final class GetMicrovmsMicroVm {
     /**
-     * @return Auto-pause configuration. Forces recreation on change: the MicroVMs API has no in-place update path for auto_pause.
+     * @return Auto-pause configuration. idleTimeout updates in place; changing enabled forces recreation.
      * 
      */
     private List<GetMicrovmsMicroVmAutoPause> autoPauses;
@@ -128,7 +128,7 @@ public final class GetMicrovmsMicroVm {
 
     private GetMicrovmsMicroVm() {}
     /**
-     * @return Auto-pause configuration. Forces recreation on change: the MicroVMs API has no in-place update path for auto_pause.
+     * @return Auto-pause configuration. idleTimeout updates in place; changing enabled forces recreation.
      * 
      */
     public List<GetMicrovmsMicroVmAutoPause> autoPauses() {
