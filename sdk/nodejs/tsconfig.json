@@ -20,6 +20,7 @@
     },
     "files": [
         "actionGatewayConnection.ts",
+        "actionGatewayEndpoint.ts",
         "actionGatewayMcpServer.ts",
         "actionGatewayToolbelt.ts",
         "agentPlatformAgent.ts",
@@ -73,6 +74,7 @@
         "floatingIpAssignment.ts",
         "getAccount.ts",
         "getActionGatewayConnection.ts",
+        "getActionGatewayEndpoint.ts",
         "getActionGatewayProviders.ts",
         "getActionGatewayToolbelt.ts",
         "getAgentPlatformAgent.ts",

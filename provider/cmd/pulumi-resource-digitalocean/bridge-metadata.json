@@ -30,6 +30,41 @@
                     }
                 }
             },
+            "digitalocean_action_gateway_endpoint": {
+                "current": "digitalocean:index/actionGatewayEndpoint:ActionGatewayEndpoint",
+                "majorVersion": 4,
+                "fields": {
+                    "insights": {
+                        "maxItemsOne": true
+                    },
+                    "version": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "network": {
+                                    "maxItemsOne": true
+                                },
+                                "pinned_tools": {
+                                    "maxItemsOne": false
+                                },
+                                "policy": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "rules": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "tools": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "digitalocean_action_gateway_mcp_server": {
                 "current": "digitalocean:index/actionGatewayMcpServer:ActionGatewayMcpServer",
                 "majorVersion": 4,
@@ -1793,6 +1828,41 @@
                                             }
                                         }
                                     }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "digitalocean_action_gateway_endpoint": {
+                "current": "digitalocean:index/getActionGatewayEndpoint:getActionGatewayEndpoint",
+                "majorVersion": 4,
+                "fields": {
+                    "insights": {
+                        "maxItemsOne": false
+                    },
+                    "version": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "network": {
+                                    "maxItemsOne": false
+                                },
+                                "pinned_tools": {
+                                    "maxItemsOne": false
+                                },
+                                "policy": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "rules": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "tools": {
+                                    "maxItemsOne": false
                                 }
                             }
                         }

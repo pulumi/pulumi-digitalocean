@@ -190,14 +190,14 @@ public final class MicrovmState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the MicroVM.
+     * The name of the MicroVM. A change renames the MicroVM in place.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the MicroVM.
+     * @return The name of the MicroVM. A change renames the MicroVM in place.
      * 
      */
     public Optional<Output<String>> name() {
@@ -295,14 +295,14 @@ public final class MicrovmState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A list of tag names to apply to the MicroVM.
+     * A list of tag names to apply to the MicroVM. A change replaces the tag set in place.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
-     * @return A list of tag names to apply to the MicroVM.
+     * @return A list of tag names to apply to the MicroVM. A change replaces the tag set in place.
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -615,7 +615,7 @@ public final class MicrovmState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the MicroVM.
+         * @param name The name of the MicroVM. A change renames the MicroVM in place.
          * 
          * @return builder
          * 
@@ -626,7 +626,7 @@ public final class MicrovmState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the MicroVM.
+         * @param name The name of the MicroVM. A change renames the MicroVM in place.
          * 
          * @return builder
          * 
@@ -772,7 +772,7 @@ public final class MicrovmState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags A list of tag names to apply to the MicroVM.
+         * @param tags A list of tag names to apply to the MicroVM. A change replaces the tag set in place.
          * 
          * @return builder
          * 
@@ -783,7 +783,7 @@ public final class MicrovmState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags A list of tag names to apply to the MicroVM.
+         * @param tags A list of tag names to apply to the MicroVM. A change replaces the tag set in place.
          * 
          * @return builder
          * 
@@ -793,7 +793,7 @@ public final class MicrovmState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags A list of tag names to apply to the MicroVM.
+         * @param tags A list of tag names to apply to the MicroVM. A change replaces the tag set in place.
          * 
          * @return builder
          * 

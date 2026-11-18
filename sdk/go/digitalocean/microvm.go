@@ -70,8 +70,8 @@ import (
 // ### Pause and Resume
 //
 // Set `state` to `paused` to pause a running MicroVM, and back to `running` to
-// resume it. This is the only change that is applied in place; every other
-// argument forces a new MicroVM.
+// resume it. `state`, `name`, `tags`, and `auto_pause.idle_timeout` are applied
+// in place; every other argument forces a new MicroVM.
 //
 // ```go
 // package main
@@ -234,7 +234,7 @@ type Microvm struct {
 	HttpProtocol pulumi.StringOutput `pulumi:"httpProtocol"`
 	// Whether the MicroVM is created with a default public ingress URL. Defaults to `true`. Set to `false` to create the MicroVM without a default URL; additional URLs can be added later with the `MicrovmIngress` resource. This is a create-time option, so a change forces a new MicroVM.
 	IngressEnabled pulumi.BoolPtrOutput `pulumi:"ingressEnabled"`
-	// The name of the MicroVM.
+	// The name of the MicroVM. A change renames the MicroVM in place.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The networking mode: `public` or `vpc`.
 	Networking pulumi.StringOutput `pulumi:"networking"`
@@ -248,7 +248,7 @@ type Microvm struct {
 	Source MicrovmSourceOutput `pulumi:"source"`
 	// The desired lifecycle state: `running` or `paused`. Defaults to `running`. When `autoPause` is enabled, a MicroVM that the platform has paused is not resumed to match `running`.
 	State pulumi.StringPtrOutput `pulumi:"state"`
-	// A list of tag names to apply to the MicroVM.
+	// A list of tag names to apply to the MicroVM. A change replaces the tag set in place.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// A list of ingress URLs for the MicroVM:
 	Urls MicrovmUrlArrayOutput `pulumi:"urls"`
@@ -311,7 +311,7 @@ type microvmState struct {
 	HttpProtocol *string `pulumi:"httpProtocol"`
 	// Whether the MicroVM is created with a default public ingress URL. Defaults to `true`. Set to `false` to create the MicroVM without a default URL; additional URLs can be added later with the `MicrovmIngress` resource. This is a create-time option, so a change forces a new MicroVM.
 	IngressEnabled *bool `pulumi:"ingressEnabled"`
-	// The name of the MicroVM.
+	// The name of the MicroVM. A change renames the MicroVM in place.
 	Name *string `pulumi:"name"`
 	// The networking mode: `public` or `vpc`.
 	Networking *string `pulumi:"networking"`
@@ -325,7 +325,7 @@ type microvmState struct {
 	Source *MicrovmSource `pulumi:"source"`
 	// The desired lifecycle state: `running` or `paused`. Defaults to `running`. When `autoPause` is enabled, a MicroVM that the platform has paused is not resumed to match `running`.
 	State *string `pulumi:"state"`
-	// A list of tag names to apply to the MicroVM.
+	// A list of tag names to apply to the MicroVM. A change replaces the tag set in place.
 	Tags []string `pulumi:"tags"`
 	// A list of ingress URLs for the MicroVM:
 	Urls []MicrovmUrl `pulumi:"urls"`
@@ -356,7 +356,7 @@ type MicrovmState struct {
 	HttpProtocol pulumi.StringPtrInput
 	// Whether the MicroVM is created with a default public ingress URL. Defaults to `true`. Set to `false` to create the MicroVM without a default URL; additional URLs can be added later with the `MicrovmIngress` resource. This is a create-time option, so a change forces a new MicroVM.
 	IngressEnabled pulumi.BoolPtrInput
-	// The name of the MicroVM.
+	// The name of the MicroVM. A change renames the MicroVM in place.
 	Name pulumi.StringPtrInput
 	// The networking mode: `public` or `vpc`.
 	Networking pulumi.StringPtrInput
@@ -370,7 +370,7 @@ type MicrovmState struct {
 	Source MicrovmSourcePtrInput
 	// The desired lifecycle state: `running` or `paused`. Defaults to `running`. When `autoPause` is enabled, a MicroVM that the platform has paused is not resumed to match `running`.
 	State pulumi.StringPtrInput
-	// A list of tag names to apply to the MicroVM.
+	// A list of tag names to apply to the MicroVM. A change replaces the tag set in place.
 	Tags pulumi.StringArrayInput
 	// A list of ingress URLs for the MicroVM:
 	Urls MicrovmUrlArrayInput
@@ -403,7 +403,7 @@ type microvmArgs struct {
 	HttpProtocol *string `pulumi:"httpProtocol"`
 	// Whether the MicroVM is created with a default public ingress URL. Defaults to `true`. Set to `false` to create the MicroVM without a default URL; additional URLs can be added later with the `MicrovmIngress` resource. This is a create-time option, so a change forces a new MicroVM.
 	IngressEnabled *bool `pulumi:"ingressEnabled"`
-	// The name of the MicroVM.
+	// The name of the MicroVM. A change renames the MicroVM in place.
 	Name *string `pulumi:"name"`
 	// The networking mode: `public` or `vpc`.
 	Networking *string `pulumi:"networking"`
@@ -417,7 +417,7 @@ type microvmArgs struct {
 	Source MicrovmSource `pulumi:"source"`
 	// The desired lifecycle state: `running` or `paused`. Defaults to `running`. When `autoPause` is enabled, a MicroVM that the platform has paused is not resumed to match `running`.
 	State *string `pulumi:"state"`
-	// A list of tag names to apply to the MicroVM.
+	// A list of tag names to apply to the MicroVM. A change replaces the tag set in place.
 	Tags []string `pulumi:"tags"`
 	// The ID of the VPC to place the MicroVM in. Only valid when `networking` is `vpc`.
 	VpcUuid *string `pulumi:"vpcUuid"`
@@ -439,7 +439,7 @@ type MicrovmArgs struct {
 	HttpProtocol pulumi.StringPtrInput
 	// Whether the MicroVM is created with a default public ingress URL. Defaults to `true`. Set to `false` to create the MicroVM without a default URL; additional URLs can be added later with the `MicrovmIngress` resource. This is a create-time option, so a change forces a new MicroVM.
 	IngressEnabled pulumi.BoolPtrInput
-	// The name of the MicroVM.
+	// The name of the MicroVM. A change renames the MicroVM in place.
 	Name pulumi.StringPtrInput
 	// The networking mode: `public` or `vpc`.
 	Networking pulumi.StringPtrInput
@@ -453,7 +453,7 @@ type MicrovmArgs struct {
 	Source MicrovmSourceInput
 	// The desired lifecycle state: `running` or `paused`. Defaults to `running`. When `autoPause` is enabled, a MicroVM that the platform has paused is not resumed to match `running`.
 	State pulumi.StringPtrInput
-	// A list of tag names to apply to the MicroVM.
+	// A list of tag names to apply to the MicroVM. A change replaces the tag set in place.
 	Tags pulumi.StringArrayInput
 	// The ID of the VPC to place the MicroVM in. Only valid when `networking` is `vpc`.
 	VpcUuid pulumi.StringPtrInput
@@ -601,7 +601,7 @@ func (o MicrovmOutput) IngressEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Microvm) pulumi.BoolPtrOutput { return v.IngressEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// The name of the MicroVM.
+// The name of the MicroVM. A change renames the MicroVM in place.
 func (o MicrovmOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Microvm) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -636,7 +636,7 @@ func (o MicrovmOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Microvm) pulumi.StringPtrOutput { return v.State }).(pulumi.StringPtrOutput)
 }
 
-// A list of tag names to apply to the MicroVM.
+// A list of tag names to apply to the MicroVM. A change replaces the tag set in place.
 func (o MicrovmOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Microvm) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }

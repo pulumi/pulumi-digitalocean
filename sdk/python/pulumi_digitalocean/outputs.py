@@ -20,6 +20,11 @@ __all__ = [
     'ActionGatewayConnectionAuthorization',
     'ActionGatewayConnectionVpc',
     'ActionGatewayConnectionVpcDestination',
+    'ActionGatewayEndpointInsights',
+    'ActionGatewayEndpointVersion',
+    'ActionGatewayEndpointVersionNetwork',
+    'ActionGatewayEndpointVersionPolicy',
+    'ActionGatewayEndpointVersionPolicyRule',
     'ActionGatewayMcpServerDiscoveredTool',
     'AgentPlatformAgentAgentGuardrail',
     'AgentPlatformAgentAnthropicApiKey',
@@ -296,6 +301,11 @@ __all__ = [
     'GetActionGatewayConnectionAuthorizationResult',
     'GetActionGatewayConnectionVpcResult',
     'GetActionGatewayConnectionVpcDestinationResult',
+    'GetActionGatewayEndpointInsightResult',
+    'GetActionGatewayEndpointVersionResult',
+    'GetActionGatewayEndpointVersionNetworkResult',
+    'GetActionGatewayEndpointVersionPolicyResult',
+    'GetActionGatewayEndpointVersionPolicyRuleResult',
     'GetActionGatewayProvidersFilterResult',
     'GetActionGatewayProvidersProviderResult',
     'GetActionGatewayProvidersProviderConnectionParameterResult',
@@ -1013,6 +1023,329 @@ class ActionGatewayConnectionVpcDestination(dict):
         CIDR ranges that every address the host resolves to must fall within.
         """
         return pulumi.get(self, "allowed_ip_cidrs")
+
+
+@pulumi.output_type
+class ActionGatewayEndpointInsights(dict):
+    def __init__(__self__, *,
+                 logs: Optional[_builtins.bool] = None,
+                 metrics: Optional[_builtins.bool] = None,
+                 traces: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.bool logs: Whether the endpoint's logs are sent to Insights. Your team can require this to be on for every endpoint; turning it off is then refused.
+        :param _builtins.bool metrics: Whether the endpoint's metrics are sent to Insights.
+        :param _builtins.bool traces: Whether the endpoint's traces are sent to Insights.
+               
+               Each signal is optional and computed, so an omitted signal keeps the value the
+               endpoint already stores instead of resetting it.
+        """
+        if logs is not None:
+            pulumi.set(__self__, "logs", logs)
+        if metrics is not None:
+            pulumi.set(__self__, "metrics", metrics)
+        if traces is not None:
+            pulumi.set(__self__, "traces", traces)
+
+    @_builtins.property
+    @pulumi.getter
+    def logs(self) -> Optional[_builtins.bool]:
+        """
+        Whether the endpoint's logs are sent to Insights. Your team can require this to be on for every endpoint; turning it off is then refused.
+        """
+        return pulumi.get(self, "logs")
+
+    @_builtins.property
+    @pulumi.getter
+    def metrics(self) -> Optional[_builtins.bool]:
+        """
+        Whether the endpoint's metrics are sent to Insights.
+        """
+        return pulumi.get(self, "metrics")
+
+    @_builtins.property
+    @pulumi.getter
+    def traces(self) -> Optional[_builtins.bool]:
+        """
+        Whether the endpoint's traces are sent to Insights.
+
+        Each signal is optional and computed, so an omitted signal keeps the value the
+        endpoint already stores instead of resetting it.
+        """
+        return pulumi.get(self, "traces")
+
+
+@pulumi.output_type
+class ActionGatewayEndpointVersion(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "actorId":
+            suggest = "actor_id"
+        elif key == "pinnedTools":
+            suggest = "pinned_tools"
+        elif key == "promotedFromVersionNumber":
+            suggest = "promoted_from_version_number"
+        elif key == "versionNumber":
+            suggest = "version_number"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ActionGatewayEndpointVersion. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ActionGatewayEndpointVersion.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ActionGatewayEndpointVersion.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 actor_id: Optional[_builtins.str] = None,
+                 config: Optional[_builtins.str] = None,
+                 id: Optional[_builtins.str] = None,
+                 network: Optional['outputs.ActionGatewayEndpointVersionNetwork'] = None,
+                 pinned_tools: Optional[Sequence[_builtins.str]] = None,
+                 policy: Optional['outputs.ActionGatewayEndpointVersionPolicy'] = None,
+                 promoted_from_version_number: Optional[_builtins.int] = None,
+                 tools: Optional[Sequence[_builtins.str]] = None,
+                 version_number: Optional[_builtins.int] = None):
+        """
+        :param _builtins.str actor_id: The actor the version's tool calls act as. It must contain 1 to 64 characters from `[A-Za-z0-9._-]`. No operation changes an endpoint's actor, so changing this forces a new endpoint.
+        :param _builtins.str config: A JSON object of options Gateway applies to the version, such as `preloadTools`, `customInstructions`, or `outputViews`. It is validated as JSON, normalized for comparison, and stored as supplied.
+        :param _builtins.str id: The ID of the head version, `<endpoint UUID>.v<version number>`.
+        :param 'ActionGatewayEndpointVersionNetworkArgs' network: A VPC the version's tool calls are routed through. See Network below.
+        :param Sequence[_builtins.str] pinned_tools: The tools and toolbelts the head version enables, each pinned by the API as `<tool_slug>@<version>` or `toolbelt:<name>@<version>`. Empty when every tool is enabled.
+        :param 'ActionGatewayEndpointVersionPolicyArgs' policy: The tool permission policy. Omitting it asks before every call. See Policy below.
+        :param _builtins.int promoted_from_version_number: The version number the head was promoted from, when it was created by a promotion rather than a publish.
+        :param Sequence[_builtins.str] tools: The tools and toolbelts the version enables, each optionally pinned as `<tool_slug>@<version>` or `toolbelt:<name>@<version>`. **Omit the argument to enable every tool, and set an empty list to enable none.** The API distinguishes the two, and so does this resource.
+        :param _builtins.int version_number: The number of the head version.
+        """
+        if actor_id is not None:
+            pulumi.set(__self__, "actor_id", actor_id)
+        if config is not None:
+            pulumi.set(__self__, "config", config)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if pinned_tools is not None:
+            pulumi.set(__self__, "pinned_tools", pinned_tools)
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
+        if promoted_from_version_number is not None:
+            pulumi.set(__self__, "promoted_from_version_number", promoted_from_version_number)
+        if tools is not None:
+            pulumi.set(__self__, "tools", tools)
+        if version_number is not None:
+            pulumi.set(__self__, "version_number", version_number)
+
+    @_builtins.property
+    @pulumi.getter(name="actorId")
+    def actor_id(self) -> Optional[_builtins.str]:
+        """
+        The actor the version's tool calls act as. It must contain 1 to 64 characters from `[A-Za-z0-9._-]`. No operation changes an endpoint's actor, so changing this forces a new endpoint.
+        """
+        return pulumi.get(self, "actor_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def config(self) -> Optional[_builtins.str]:
+        """
+        A JSON object of options Gateway applies to the version, such as `preloadTools`, `customInstructions`, or `outputViews`. It is validated as JSON, normalized for comparison, and stored as supplied.
+        """
+        return pulumi.get(self, "config")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the head version, `<endpoint UUID>.v<version number>`.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def network(self) -> Optional['outputs.ActionGatewayEndpointVersionNetwork']:
+        """
+        A VPC the version's tool calls are routed through. See Network below.
+        """
+        return pulumi.get(self, "network")
+
+    @_builtins.property
+    @pulumi.getter(name="pinnedTools")
+    def pinned_tools(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The tools and toolbelts the head version enables, each pinned by the API as `<tool_slug>@<version>` or `toolbelt:<name>@<version>`. Empty when every tool is enabled.
+        """
+        return pulumi.get(self, "pinned_tools")
+
+    @_builtins.property
+    @pulumi.getter
+    def policy(self) -> Optional['outputs.ActionGatewayEndpointVersionPolicy']:
+        """
+        The tool permission policy. Omitting it asks before every call. See Policy below.
+        """
+        return pulumi.get(self, "policy")
+
+    @_builtins.property
+    @pulumi.getter(name="promotedFromVersionNumber")
+    def promoted_from_version_number(self) -> Optional[_builtins.int]:
+        """
+        The version number the head was promoted from, when it was created by a promotion rather than a publish.
+        """
+        return pulumi.get(self, "promoted_from_version_number")
+
+    @_builtins.property
+    @pulumi.getter
+    def tools(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The tools and toolbelts the version enables, each optionally pinned as `<tool_slug>@<version>` or `toolbelt:<name>@<version>`. **Omit the argument to enable every tool, and set an empty list to enable none.** The API distinguishes the two, and so does this resource.
+        """
+        return pulumi.get(self, "tools")
+
+    @_builtins.property
+    @pulumi.getter(name="versionNumber")
+    def version_number(self) -> Optional[_builtins.int]:
+        """
+        The number of the head version.
+        """
+        return pulumi.get(self, "version_number")
+
+
+@pulumi.output_type
+class ActionGatewayEndpointVersionNetwork(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "vpcUuid":
+            suggest = "vpc_uuid"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ActionGatewayEndpointVersionNetwork. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ActionGatewayEndpointVersionNetwork.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ActionGatewayEndpointVersionNetwork.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 vpc_uuid: _builtins.str,
+                 region: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str vpc_uuid: The UUID of a VPC owned by your team.
+        :param _builtins.str region: The region of the VPC the version is attached to.
+        """
+        pulumi.set(__self__, "vpc_uuid", vpc_uuid)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="vpcUuid")
+    def vpc_uuid(self) -> _builtins.str:
+        """
+        The UUID of a VPC owned by your team.
+        """
+        return pulumi.get(self, "vpc_uuid")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[_builtins.str]:
+        """
+        The region of the VPC the version is attached to.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class ActionGatewayEndpointVersionPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultAction":
+            suggest = "default_action"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ActionGatewayEndpointVersionPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ActionGatewayEndpointVersionPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ActionGatewayEndpointVersionPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 default_action: Optional[_builtins.str] = None,
+                 rules: Optional[Sequence['outputs.ActionGatewayEndpointVersionPolicyRule']] = None):
+        """
+        :param _builtins.str default_action: The action for calls that no rule matches: `allow`, `ask`, or `deny`. Empty means `ask`.
+        :param Sequence['ActionGatewayEndpointVersionPolicyRuleArgs'] rules: Rules for specific tools and toolbelts, in the order the configuration lists them. Each rule supports:
+        """
+        if default_action is not None:
+            pulumi.set(__self__, "default_action", default_action)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultAction")
+    def default_action(self) -> Optional[_builtins.str]:
+        """
+        The action for calls that no rule matches: `allow`, `ask`, or `deny`. Empty means `ask`.
+        """
+        return pulumi.get(self, "default_action")
+
+    @_builtins.property
+    @pulumi.getter
+    def rules(self) -> Optional[Sequence['outputs.ActionGatewayEndpointVersionPolicyRule']]:
+        """
+        Rules for specific tools and toolbelts, in the order the configuration lists them. Each rule supports:
+        """
+        return pulumi.get(self, "rules")
+
+
+@pulumi.output_type
+class ActionGatewayEndpointVersionPolicyRule(dict):
+    def __init__(__self__, *,
+                 action: _builtins.str,
+                 tool: _builtins.str,
+                 match: Optional[Mapping[str, _builtins.str]] = None):
+        """
+        :param _builtins.str action: One of `allow`, `ask`, or `deny`.
+        :param _builtins.str tool: A tool slug, optionally pinned as `<tool_slug>@<version>`, or `toolbelt:<name>@<version>`.
+        :param Mapping[str, _builtins.str] match: Argument values a call must match for the rule to apply, keyed by argument name.
+        """
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "tool", tool)
+        if match is not None:
+            pulumi.set(__self__, "match", match)
+
+    @_builtins.property
+    @pulumi.getter
+    def action(self) -> _builtins.str:
+        """
+        One of `allow`, `ask`, or `deny`.
+        """
+        return pulumi.get(self, "action")
+
+    @_builtins.property
+    @pulumi.getter
+    def tool(self) -> _builtins.str:
+        """
+        A tool slug, optionally pinned as `<tool_slug>@<version>`, or `toolbelt:<name>@<version>`.
+        """
+        return pulumi.get(self, "tool")
+
+    @_builtins.property
+    @pulumi.getter
+    def match(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Argument values a call must match for the rule to apply, keyed by argument name.
+        """
+        return pulumi.get(self, "match")
 
 
 @pulumi.output_type
@@ -20996,8 +21329,8 @@ class MicrovmAutoPause(dict):
                  enabled: _builtins.bool,
                  idle_timeout: Optional[_builtins.str] = None):
         """
-        :param _builtins.bool enabled: Whether the MicroVM pauses after it has been idle for `idle_timeout`.
-        :param _builtins.str idle_timeout: How long the MicroVM must be idle before it pauses, as a duration such as `5m` or `30s`.
+        :param _builtins.bool enabled: Whether the MicroVM pauses after it has been idle for `idle_timeout`. A change forces a new MicroVM.
+        :param _builtins.str idle_timeout: How long the MicroVM must be idle before it pauses, as a duration such as `5m` or `30s`. A change is applied in place.
         """
         pulumi.set(__self__, "enabled", enabled)
         if idle_timeout is not None:
@@ -21007,7 +21340,7 @@ class MicrovmAutoPause(dict):
     @pulumi.getter
     def enabled(self) -> _builtins.bool:
         """
-        Whether the MicroVM pauses after it has been idle for `idle_timeout`.
+        Whether the MicroVM pauses after it has been idle for `idle_timeout`. A change forces a new MicroVM.
         """
         return pulumi.get(self, "enabled")
 
@@ -21015,7 +21348,7 @@ class MicrovmAutoPause(dict):
     @pulumi.getter(name="idleTimeout")
     def idle_timeout(self) -> Optional[_builtins.str]:
         """
-        How long the MicroVM must be idle before it pauses, as a duration such as `5m` or `30s`.
+        How long the MicroVM must be idle before it pauses, as a duration such as `5m` or `30s`. A change is applied in place.
         """
         return pulumi.get(self, "idle_timeout")
 
@@ -22328,6 +22661,250 @@ class GetActionGatewayConnectionVpcDestinationResult(dict):
         Destination port
         """
         return pulumi.get(self, "port")
+
+
+@pulumi.output_type
+class GetActionGatewayEndpointInsightResult(dict):
+    def __init__(__self__, *,
+                 logs: _builtins.bool,
+                 metrics: _builtins.bool,
+                 traces: _builtins.bool):
+        """
+        :param _builtins.bool logs: Whether the endpoint's logs are sent to Insights. Your team can require this to be on.
+        :param _builtins.bool metrics: Whether the endpoint's metrics are sent to Insights
+        :param _builtins.bool traces: Whether the endpoint's traces are sent to Insights
+        """
+        pulumi.set(__self__, "logs", logs)
+        pulumi.set(__self__, "metrics", metrics)
+        pulumi.set(__self__, "traces", traces)
+
+    @_builtins.property
+    @pulumi.getter
+    def logs(self) -> _builtins.bool:
+        """
+        Whether the endpoint's logs are sent to Insights. Your team can require this to be on.
+        """
+        return pulumi.get(self, "logs")
+
+    @_builtins.property
+    @pulumi.getter
+    def metrics(self) -> _builtins.bool:
+        """
+        Whether the endpoint's metrics are sent to Insights
+        """
+        return pulumi.get(self, "metrics")
+
+    @_builtins.property
+    @pulumi.getter
+    def traces(self) -> _builtins.bool:
+        """
+        Whether the endpoint's traces are sent to Insights
+        """
+        return pulumi.get(self, "traces")
+
+
+@pulumi.output_type
+class GetActionGatewayEndpointVersionResult(dict):
+    def __init__(__self__, *,
+                 actor_id: _builtins.str,
+                 config: _builtins.str,
+                 id: _builtins.str,
+                 networks: Sequence['outputs.GetActionGatewayEndpointVersionNetworkResult'],
+                 pinned_tools: Sequence[_builtins.str],
+                 policies: Sequence['outputs.GetActionGatewayEndpointVersionPolicyResult'],
+                 promoted_from_version_number: _builtins.int,
+                 tools: Sequence[_builtins.str],
+                 version_number: _builtins.int):
+        """
+        :param _builtins.str actor_id: An actor ID to filter a `name` lookup by. Endpoints bound to a different actor are ignored.
+        :param _builtins.str config: JSON object of options Gateway applies to the version, such as preloadTools or customInstructions
+        :param _builtins.str id: The ID of the endpoint. Conflicts with `name`.
+        :param Sequence['GetActionGatewayEndpointVersionNetworkArgs'] networks: VPC the version's tool calls are routed through
+        :param Sequence[_builtins.str] pinned_tools: Tools and toolbelts the head version enables, each pinned by the API as <tool_slug>@<version> or toolbelt:<name>@<version>. Empty when every tool is enabled.
+        :param Sequence['GetActionGatewayEndpointVersionPolicyArgs'] policies: Tool permission policy. Omitting it asks before every call.
+        :param _builtins.int promoted_from_version_number: Version number the head was promoted from, when it was created by a promotion rather than a publish
+        :param Sequence[_builtins.str] tools: Tools and toolbelts the version enables, each optionally pinned as <tool_slug>@<version> or toolbelt:<name>@<version>. Omit to enable every tool; set an empty list to enable none.
+        :param _builtins.int version_number: Version number of the head version
+        """
+        pulumi.set(__self__, "actor_id", actor_id)
+        pulumi.set(__self__, "config", config)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "networks", networks)
+        pulumi.set(__self__, "pinned_tools", pinned_tools)
+        pulumi.set(__self__, "policies", policies)
+        pulumi.set(__self__, "promoted_from_version_number", promoted_from_version_number)
+        pulumi.set(__self__, "tools", tools)
+        pulumi.set(__self__, "version_number", version_number)
+
+    @_builtins.property
+    @pulumi.getter(name="actorId")
+    def actor_id(self) -> _builtins.str:
+        """
+        An actor ID to filter a `name` lookup by. Endpoints bound to a different actor are ignored.
+        """
+        return pulumi.get(self, "actor_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def config(self) -> _builtins.str:
+        """
+        JSON object of options Gateway applies to the version, such as preloadTools or customInstructions
+        """
+        return pulumi.get(self, "config")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the endpoint. Conflicts with `name`.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def networks(self) -> Sequence['outputs.GetActionGatewayEndpointVersionNetworkResult']:
+        """
+        VPC the version's tool calls are routed through
+        """
+        return pulumi.get(self, "networks")
+
+    @_builtins.property
+    @pulumi.getter(name="pinnedTools")
+    def pinned_tools(self) -> Sequence[_builtins.str]:
+        """
+        Tools and toolbelts the head version enables, each pinned by the API as <tool_slug>@<version> or toolbelt:<name>@<version>. Empty when every tool is enabled.
+        """
+        return pulumi.get(self, "pinned_tools")
+
+    @_builtins.property
+    @pulumi.getter
+    def policies(self) -> Sequence['outputs.GetActionGatewayEndpointVersionPolicyResult']:
+        """
+        Tool permission policy. Omitting it asks before every call.
+        """
+        return pulumi.get(self, "policies")
+
+    @_builtins.property
+    @pulumi.getter(name="promotedFromVersionNumber")
+    def promoted_from_version_number(self) -> _builtins.int:
+        """
+        Version number the head was promoted from, when it was created by a promotion rather than a publish
+        """
+        return pulumi.get(self, "promoted_from_version_number")
+
+    @_builtins.property
+    @pulumi.getter
+    def tools(self) -> Sequence[_builtins.str]:
+        """
+        Tools and toolbelts the version enables, each optionally pinned as <tool_slug>@<version> or toolbelt:<name>@<version>. Omit to enable every tool; set an empty list to enable none.
+        """
+        return pulumi.get(self, "tools")
+
+    @_builtins.property
+    @pulumi.getter(name="versionNumber")
+    def version_number(self) -> _builtins.int:
+        """
+        Version number of the head version
+        """
+        return pulumi.get(self, "version_number")
+
+
+@pulumi.output_type
+class GetActionGatewayEndpointVersionNetworkResult(dict):
+    def __init__(__self__, *,
+                 region: _builtins.str,
+                 vpc_uuid: _builtins.str):
+        """
+        :param _builtins.str region: Region of the VPC
+        :param _builtins.str vpc_uuid: UUID of a VPC owned by your team
+        """
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "vpc_uuid", vpc_uuid)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Region of the VPC
+        """
+        return pulumi.get(self, "region")
+
+    @_builtins.property
+    @pulumi.getter(name="vpcUuid")
+    def vpc_uuid(self) -> _builtins.str:
+        """
+        UUID of a VPC owned by your team
+        """
+        return pulumi.get(self, "vpc_uuid")
+
+
+@pulumi.output_type
+class GetActionGatewayEndpointVersionPolicyResult(dict):
+    def __init__(__self__, *,
+                 default_action: _builtins.str,
+                 rules: Sequence['outputs.GetActionGatewayEndpointVersionPolicyRuleResult']):
+        """
+        :param _builtins.str default_action: Action for calls no rule matches: allow, ask, or deny. Empty means ask.
+        :param Sequence['GetActionGatewayEndpointVersionPolicyRuleArgs'] rules: Rules for specific tools and toolbelts, in the order the configuration lists them
+        """
+        pulumi.set(__self__, "default_action", default_action)
+        pulumi.set(__self__, "rules", rules)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultAction")
+    def default_action(self) -> _builtins.str:
+        """
+        Action for calls no rule matches: allow, ask, or deny. Empty means ask.
+        """
+        return pulumi.get(self, "default_action")
+
+    @_builtins.property
+    @pulumi.getter
+    def rules(self) -> Sequence['outputs.GetActionGatewayEndpointVersionPolicyRuleResult']:
+        """
+        Rules for specific tools and toolbelts, in the order the configuration lists them
+        """
+        return pulumi.get(self, "rules")
+
+
+@pulumi.output_type
+class GetActionGatewayEndpointVersionPolicyRuleResult(dict):
+    def __init__(__self__, *,
+                 action: _builtins.str,
+                 match: Mapping[str, _builtins.str],
+                 tool: _builtins.str):
+        """
+        :param _builtins.str action: allow, ask, or deny
+        :param Mapping[str, _builtins.str] match: Argument values a call must match for the rule to apply, keyed by argument name
+        :param _builtins.str tool: Tool slug, optionally pinned as <tool_slug>@<version>, or toolbelt:<name>@<version>
+        """
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "match", match)
+        pulumi.set(__self__, "tool", tool)
+
+    @_builtins.property
+    @pulumi.getter
+    def action(self) -> _builtins.str:
+        """
+        allow, ask, or deny
+        """
+        return pulumi.get(self, "action")
+
+    @_builtins.property
+    @pulumi.getter
+    def match(self) -> Mapping[str, _builtins.str]:
+        """
+        Argument values a call must match for the rule to apply, keyed by argument name
+        """
+        return pulumi.get(self, "match")
+
+    @_builtins.property
+    @pulumi.getter
+    def tool(self) -> _builtins.str:
+        """
+        Tool slug, optionally pinned as <tool_slug>@<version>, or toolbelt:<name>@<version>
+        """
+        return pulumi.get(self, "tool")
 
 
 @pulumi.output_type
@@ -57766,7 +58343,7 @@ class GetMicrovmsMicroVmResult(dict):
                  urn: _builtins.str,
                  vpc_uuid: _builtins.str):
         """
-        :param Sequence['GetMicrovmsMicroVmAutoPauseArgs'] auto_pauses: Auto-pause configuration. Forces recreation on change: the MicroVMs API has no in-place update path for auto_pause.
+        :param Sequence['GetMicrovmsMicroVmAutoPauseArgs'] auto_pauses: Auto-pause configuration. idle_timeout updates in place; changing enabled forces recreation.
         :param _builtins.bool auto_resume: Whether the MicroVM should auto-resume on request. Forces recreation on change: the MicroVMs API has no in-place update path for auto_resume.
         :param _builtins.str created_at: The creation timestamp for the MicroVM
         :param _builtins.str current_state: Observed lifecycle state of the MicroVM
@@ -57815,7 +58392,7 @@ class GetMicrovmsMicroVmResult(dict):
     @pulumi.getter(name="autoPauses")
     def auto_pauses(self) -> Sequence['outputs.GetMicrovmsMicroVmAutoPauseResult']:
         """
-        Auto-pause configuration. Forces recreation on change: the MicroVMs API has no in-place update path for auto_pause.
+        Auto-pause configuration. idle_timeout updates in place; changing enabled forces recreation.
         """
         return pulumi.get(self, "auto_pauses")
 
@@ -57992,7 +58569,7 @@ class GetMicrovmsMicroVmAutoPauseResult(dict):
                  idle_timeout: _builtins.str):
         """
         :param _builtins.bool enabled: Whether auto-pause is enabled. Forces recreation on change (no in-place API path).
-        :param _builtins.str idle_timeout: Idle timeout as a Go duration string (e.g. '5m', '30s'). Forces recreation on change (no in-place API path).
+        :param _builtins.str idle_timeout: Idle timeout as a Go duration string (e.g. '5m', '30s'). Updates in place.
         """
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "idle_timeout", idle_timeout)
@@ -58009,7 +58586,7 @@ class GetMicrovmsMicroVmAutoPauseResult(dict):
     @pulumi.getter(name="idleTimeout")
     def idle_timeout(self) -> _builtins.str:
         """
-        Idle timeout as a Go duration string (e.g. '5m', '30s'). Forces recreation on change (no in-place API path).
+        Idle timeout as a Go duration string (e.g. '5m', '30s'). Updates in place.
         """
         return pulumi.get(self, "idle_timeout")
 

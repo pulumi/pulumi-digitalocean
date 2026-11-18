@@ -18,14 +18,14 @@ public final class MicrovmAutoPauseArgs extends com.pulumi.resources.ResourceArg
     public static final MicrovmAutoPauseArgs Empty = new MicrovmAutoPauseArgs();
 
     /**
-     * Whether the MicroVM pauses after it has been idle for `idleTimeout`.
+     * Whether the MicroVM pauses after it has been idle for `idleTimeout`. A change forces a new MicroVM.
      * 
      */
     @Import(name="enabled", required=true)
     private Output<Boolean> enabled;
 
     /**
-     * @return Whether the MicroVM pauses after it has been idle for `idleTimeout`.
+     * @return Whether the MicroVM pauses after it has been idle for `idleTimeout`. A change forces a new MicroVM.
      * 
      */
     public Output<Boolean> enabled() {
@@ -33,14 +33,14 @@ public final class MicrovmAutoPauseArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * How long the MicroVM must be idle before it pauses, as a duration such as `5m` or `30s`.
+     * How long the MicroVM must be idle before it pauses, as a duration such as `5m` or `30s`. A change is applied in place.
      * 
      */
     @Import(name="idleTimeout")
     private @Nullable Output<String> idleTimeout;
 
     /**
-     * @return How long the MicroVM must be idle before it pauses, as a duration such as `5m` or `30s`.
+     * @return How long the MicroVM must be idle before it pauses, as a duration such as `5m` or `30s`. A change is applied in place.
      * 
      */
     public Optional<Output<String>> idleTimeout() {
@@ -73,7 +73,7 @@ public final class MicrovmAutoPauseArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param enabled Whether the MicroVM pauses after it has been idle for `idleTimeout`.
+         * @param enabled Whether the MicroVM pauses after it has been idle for `idleTimeout`. A change forces a new MicroVM.
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class MicrovmAutoPauseArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param enabled Whether the MicroVM pauses after it has been idle for `idleTimeout`.
+         * @param enabled Whether the MicroVM pauses after it has been idle for `idleTimeout`. A change forces a new MicroVM.
          * 
          * @return builder
          * 
@@ -94,7 +94,7 @@ public final class MicrovmAutoPauseArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param idleTimeout How long the MicroVM must be idle before it pauses, as a duration such as `5m` or `30s`.
+         * @param idleTimeout How long the MicroVM must be idle before it pauses, as a duration such as `5m` or `30s`. A change is applied in place.
          * 
          * @return builder
          * 
@@ -105,7 +105,7 @@ public final class MicrovmAutoPauseArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param idleTimeout How long the MicroVM must be idle before it pauses, as a duration such as `5m` or `30s`.
+         * @param idleTimeout How long the MicroVM must be idle before it pauses, as a duration such as `5m` or `30s`. A change is applied in place.
          * 
          * @return builder
          * 

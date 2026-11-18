@@ -55,6 +55,100 @@ export interface ActionGatewayConnectionVpcDestination {
     port: pulumi.Input<number>;
 }
 
+export interface ActionGatewayEndpointInsights {
+    /**
+     * Whether the endpoint's logs are sent to Insights. Your team can require this to be on for every endpoint; turning it off is then refused.
+     */
+    logs?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether the endpoint's metrics are sent to Insights.
+     */
+    metrics?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether the endpoint's traces are sent to Insights.
+     *
+     * Each signal is optional and computed, so an omitted signal keeps the value the
+     * endpoint already stores instead of resetting it.
+     */
+    traces?: pulumi.Input<boolean | undefined>;
+}
+
+export interface ActionGatewayEndpointVersion {
+    /**
+     * The actor the version's tool calls act as. It must contain 1 to 64 characters from `[A-Za-z0-9._-]`. No operation changes an endpoint's actor, so changing this forces a new endpoint.
+     */
+    actorId?: pulumi.Input<string | undefined>;
+    /**
+     * A JSON object of options Gateway applies to the version, such as `preloadTools`, `customInstructions`, or `outputViews`. It is validated as JSON, normalized for comparison, and stored as supplied.
+     */
+    config?: pulumi.Input<string | undefined>;
+    /**
+     * The ID of the head version, `<endpoint UUID>.v<version number>`.
+     */
+    id?: pulumi.Input<string | undefined>;
+    /**
+     * A VPC the version's tool calls are routed through. See Network below.
+     */
+    network?: pulumi.Input<inputs.ActionGatewayEndpointVersionNetwork | undefined>;
+    /**
+     * The tools and toolbelts the head version enables, each pinned by the API as `<tool_slug>@<version>` or `toolbelt:<name>@<version>`. Empty when every tool is enabled.
+     */
+    pinnedTools?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * The tool permission policy. Omitting it asks before every call. See Policy below.
+     */
+    policy?: pulumi.Input<inputs.ActionGatewayEndpointVersionPolicy | undefined>;
+    /**
+     * The version number the head was promoted from, when it was created by a promotion rather than a publish.
+     */
+    promotedFromVersionNumber?: pulumi.Input<number | undefined>;
+    /**
+     * The tools and toolbelts the version enables, each optionally pinned as `<tool_slug>@<version>` or `toolbelt:<name>@<version>`. **Omit the argument to enable every tool, and set an empty list to enable none.** The API distinguishes the two, and so does this resource.
+     */
+    tools?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * The number of the head version.
+     */
+    versionNumber?: pulumi.Input<number | undefined>;
+}
+
+export interface ActionGatewayEndpointVersionNetwork {
+    /**
+     * The region of the VPC the version is attached to.
+     */
+    region?: pulumi.Input<string | undefined>;
+    /**
+     * The UUID of a VPC owned by your team.
+     */
+    vpcUuid: pulumi.Input<string>;
+}
+
+export interface ActionGatewayEndpointVersionPolicy {
+    /**
+     * The action for calls that no rule matches: `allow`, `ask`, or `deny`. Empty means `ask`.
+     */
+    defaultAction?: pulumi.Input<string | undefined>;
+    /**
+     * Rules for specific tools and toolbelts, in the order the configuration lists them. Each rule supports:
+     */
+    rules?: pulumi.Input<pulumi.Input<inputs.ActionGatewayEndpointVersionPolicyRule>[] | undefined>;
+}
+
+export interface ActionGatewayEndpointVersionPolicyRule {
+    /**
+     * One of `allow`, `ask`, or `deny`.
+     */
+    action: pulumi.Input<string>;
+    /**
+     * Argument values a call must match for the rule to apply, keyed by argument name.
+     */
+    match?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * A tool slug, optionally pinned as `<tool_slug>@<version>`, or `toolbelt:<name>@<version>`.
+     */
+    tool: pulumi.Input<string>;
+}
+
 export interface ActionGatewayMcpServerDiscoveredTool {
     /**
      * The description shown on the server's catalog card, at most 1024 characters.
@@ -10250,11 +10344,11 @@ export interface LoadBalancerStickySessions {
 
 export interface MicrovmAutoPause {
     /**
-     * Whether the MicroVM pauses after it has been idle for `idleTimeout`.
+     * Whether the MicroVM pauses after it has been idle for `idleTimeout`. A change forces a new MicroVM.
      */
     enabled: pulumi.Input<boolean>;
     /**
-     * How long the MicroVM must be idle before it pauses, as a duration such as `5m` or `30s`.
+     * How long the MicroVM must be idle before it pauses, as a duration such as `5m` or `30s`. A change is applied in place.
      */
     idleTimeout?: pulumi.Input<string | undefined>;
 }

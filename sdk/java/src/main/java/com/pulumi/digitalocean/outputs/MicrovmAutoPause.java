@@ -14,26 +14,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class MicrovmAutoPause {
     /**
-     * @return Whether the MicroVM pauses after it has been idle for `idleTimeout`.
+     * @return Whether the MicroVM pauses after it has been idle for `idleTimeout`. A change forces a new MicroVM.
      * 
      */
     private Boolean enabled;
     /**
-     * @return How long the MicroVM must be idle before it pauses, as a duration such as `5m` or `30s`.
+     * @return How long the MicroVM must be idle before it pauses, as a duration such as `5m` or `30s`. A change is applied in place.
      * 
      */
     private @Nullable String idleTimeout;
 
     private MicrovmAutoPause() {}
     /**
-     * @return Whether the MicroVM pauses after it has been idle for `idleTimeout`.
+     * @return Whether the MicroVM pauses after it has been idle for `idleTimeout`. A change forces a new MicroVM.
      * 
      */
     public Boolean enabled() {
         return this.enabled;
     }
     /**
-     * @return How long the MicroVM must be idle before it pauses, as a duration such as `5m` or `30s`.
+     * @return How long the MicroVM must be idle before it pauses, as a duration such as `5m` or `30s`. A change is applied in place.
      * 
      */
     public Optional<String> idleTimeout() {

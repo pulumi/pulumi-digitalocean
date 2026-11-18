@@ -427,6 +427,909 @@ func (o ActionGatewayConnectionVpcDestinationArrayOutput) Index(i pulumi.IntInpu
 	}).(ActionGatewayConnectionVpcDestinationOutput)
 }
 
+type ActionGatewayEndpointInsights struct {
+	// Whether the endpoint's logs are sent to Insights. Your team can require this to be on for every endpoint; turning it off is then refused.
+	Logs *bool `pulumi:"logs"`
+	// Whether the endpoint's metrics are sent to Insights.
+	Metrics *bool `pulumi:"metrics"`
+	// Whether the endpoint's traces are sent to Insights.
+	//
+	// Each signal is optional and computed, so an omitted signal keeps the value the
+	// endpoint already stores instead of resetting it.
+	Traces *bool `pulumi:"traces"`
+}
+
+// ActionGatewayEndpointInsightsInput is an input type that accepts ActionGatewayEndpointInsightsArgs and ActionGatewayEndpointInsightsOutput values.
+// You can construct a concrete instance of `ActionGatewayEndpointInsightsInput` via:
+//
+//	ActionGatewayEndpointInsightsArgs{...}
+type ActionGatewayEndpointInsightsInput interface {
+	pulumi.Input
+
+	ToActionGatewayEndpointInsightsOutput() ActionGatewayEndpointInsightsOutput
+	ToActionGatewayEndpointInsightsOutputWithContext(context.Context) ActionGatewayEndpointInsightsOutput
+}
+
+type ActionGatewayEndpointInsightsArgs struct {
+	// Whether the endpoint's logs are sent to Insights. Your team can require this to be on for every endpoint; turning it off is then refused.
+	Logs pulumi.BoolPtrInput `pulumi:"logs"`
+	// Whether the endpoint's metrics are sent to Insights.
+	Metrics pulumi.BoolPtrInput `pulumi:"metrics"`
+	// Whether the endpoint's traces are sent to Insights.
+	//
+	// Each signal is optional and computed, so an omitted signal keeps the value the
+	// endpoint already stores instead of resetting it.
+	Traces pulumi.BoolPtrInput `pulumi:"traces"`
+}
+
+func (ActionGatewayEndpointInsightsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionGatewayEndpointInsights)(nil)).Elem()
+}
+
+func (i ActionGatewayEndpointInsightsArgs) ToActionGatewayEndpointInsightsOutput() ActionGatewayEndpointInsightsOutput {
+	return i.ToActionGatewayEndpointInsightsOutputWithContext(context.Background())
+}
+
+func (i ActionGatewayEndpointInsightsArgs) ToActionGatewayEndpointInsightsOutputWithContext(ctx context.Context) ActionGatewayEndpointInsightsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionGatewayEndpointInsightsOutput)
+}
+
+func (i ActionGatewayEndpointInsightsArgs) ToActionGatewayEndpointInsightsPtrOutput() ActionGatewayEndpointInsightsPtrOutput {
+	return i.ToActionGatewayEndpointInsightsPtrOutputWithContext(context.Background())
+}
+
+func (i ActionGatewayEndpointInsightsArgs) ToActionGatewayEndpointInsightsPtrOutputWithContext(ctx context.Context) ActionGatewayEndpointInsightsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionGatewayEndpointInsightsOutput).ToActionGatewayEndpointInsightsPtrOutputWithContext(ctx)
+}
+
+// ActionGatewayEndpointInsightsPtrInput is an input type that accepts ActionGatewayEndpointInsightsArgs, ActionGatewayEndpointInsightsPtr and ActionGatewayEndpointInsightsPtrOutput values.
+// You can construct a concrete instance of `ActionGatewayEndpointInsightsPtrInput` via:
+//
+//	        ActionGatewayEndpointInsightsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ActionGatewayEndpointInsightsPtrInput interface {
+	pulumi.Input
+
+	ToActionGatewayEndpointInsightsPtrOutput() ActionGatewayEndpointInsightsPtrOutput
+	ToActionGatewayEndpointInsightsPtrOutputWithContext(context.Context) ActionGatewayEndpointInsightsPtrOutput
+}
+
+type actionGatewayEndpointInsightsPtrType ActionGatewayEndpointInsightsArgs
+
+func ActionGatewayEndpointInsightsPtr(v *ActionGatewayEndpointInsightsArgs) ActionGatewayEndpointInsightsPtrInput {
+	return (*actionGatewayEndpointInsightsPtrType)(v)
+}
+
+func (*actionGatewayEndpointInsightsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionGatewayEndpointInsights)(nil)).Elem()
+}
+
+func (i *actionGatewayEndpointInsightsPtrType) ToActionGatewayEndpointInsightsPtrOutput() ActionGatewayEndpointInsightsPtrOutput {
+	return i.ToActionGatewayEndpointInsightsPtrOutputWithContext(context.Background())
+}
+
+func (i *actionGatewayEndpointInsightsPtrType) ToActionGatewayEndpointInsightsPtrOutputWithContext(ctx context.Context) ActionGatewayEndpointInsightsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionGatewayEndpointInsightsPtrOutput)
+}
+
+type ActionGatewayEndpointInsightsOutput struct{ *pulumi.OutputState }
+
+func (ActionGatewayEndpointInsightsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionGatewayEndpointInsights)(nil)).Elem()
+}
+
+func (o ActionGatewayEndpointInsightsOutput) ToActionGatewayEndpointInsightsOutput() ActionGatewayEndpointInsightsOutput {
+	return o
+}
+
+func (o ActionGatewayEndpointInsightsOutput) ToActionGatewayEndpointInsightsOutputWithContext(ctx context.Context) ActionGatewayEndpointInsightsOutput {
+	return o
+}
+
+func (o ActionGatewayEndpointInsightsOutput) ToActionGatewayEndpointInsightsPtrOutput() ActionGatewayEndpointInsightsPtrOutput {
+	return o.ToActionGatewayEndpointInsightsPtrOutputWithContext(context.Background())
+}
+
+func (o ActionGatewayEndpointInsightsOutput) ToActionGatewayEndpointInsightsPtrOutputWithContext(ctx context.Context) ActionGatewayEndpointInsightsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActionGatewayEndpointInsights) *ActionGatewayEndpointInsights {
+		return &v
+	}).(ActionGatewayEndpointInsightsPtrOutput)
+}
+
+// Whether the endpoint's logs are sent to Insights. Your team can require this to be on for every endpoint; turning it off is then refused.
+func (o ActionGatewayEndpointInsightsOutput) Logs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ActionGatewayEndpointInsights) *bool { return v.Logs }).(pulumi.BoolPtrOutput)
+}
+
+// Whether the endpoint's metrics are sent to Insights.
+func (o ActionGatewayEndpointInsightsOutput) Metrics() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ActionGatewayEndpointInsights) *bool { return v.Metrics }).(pulumi.BoolPtrOutput)
+}
+
+// Whether the endpoint's traces are sent to Insights.
+//
+// Each signal is optional and computed, so an omitted signal keeps the value the
+// endpoint already stores instead of resetting it.
+func (o ActionGatewayEndpointInsightsOutput) Traces() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ActionGatewayEndpointInsights) *bool { return v.Traces }).(pulumi.BoolPtrOutput)
+}
+
+type ActionGatewayEndpointInsightsPtrOutput struct{ *pulumi.OutputState }
+
+func (ActionGatewayEndpointInsightsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionGatewayEndpointInsights)(nil)).Elem()
+}
+
+func (o ActionGatewayEndpointInsightsPtrOutput) ToActionGatewayEndpointInsightsPtrOutput() ActionGatewayEndpointInsightsPtrOutput {
+	return o
+}
+
+func (o ActionGatewayEndpointInsightsPtrOutput) ToActionGatewayEndpointInsightsPtrOutputWithContext(ctx context.Context) ActionGatewayEndpointInsightsPtrOutput {
+	return o
+}
+
+func (o ActionGatewayEndpointInsightsPtrOutput) Elem() ActionGatewayEndpointInsightsOutput {
+	return o.ApplyT(func(v *ActionGatewayEndpointInsights) ActionGatewayEndpointInsights {
+		if v != nil {
+			return *v
+		}
+		var ret ActionGatewayEndpointInsights
+		return ret
+	}).(ActionGatewayEndpointInsightsOutput)
+}
+
+// Whether the endpoint's logs are sent to Insights. Your team can require this to be on for every endpoint; turning it off is then refused.
+func (o ActionGatewayEndpointInsightsPtrOutput) Logs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ActionGatewayEndpointInsights) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Logs
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether the endpoint's metrics are sent to Insights.
+func (o ActionGatewayEndpointInsightsPtrOutput) Metrics() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ActionGatewayEndpointInsights) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Metrics
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether the endpoint's traces are sent to Insights.
+//
+// Each signal is optional and computed, so an omitted signal keeps the value the
+// endpoint already stores instead of resetting it.
+func (o ActionGatewayEndpointInsightsPtrOutput) Traces() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ActionGatewayEndpointInsights) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Traces
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ActionGatewayEndpointVersion struct {
+	// The actor the version's tool calls act as. It must contain 1 to 64 characters from `[A-Za-z0-9._-]`. No operation changes an endpoint's actor, so changing this forces a new endpoint.
+	ActorId *string `pulumi:"actorId"`
+	// A JSON object of options Gateway applies to the version, such as `preloadTools`, `customInstructions`, or `outputViews`. It is validated as JSON, normalized for comparison, and stored as supplied.
+	Config *string `pulumi:"config"`
+	// The ID of the head version, `<endpoint UUID>.v<version number>`.
+	Id *string `pulumi:"id"`
+	// A VPC the version's tool calls are routed through. See Network below.
+	Network *ActionGatewayEndpointVersionNetwork `pulumi:"network"`
+	// The tools and toolbelts the head version enables, each pinned by the API as `<tool_slug>@<version>` or `toolbelt:<name>@<version>`. Empty when every tool is enabled.
+	PinnedTools []string `pulumi:"pinnedTools"`
+	// The tool permission policy. Omitting it asks before every call. See Policy below.
+	Policy *ActionGatewayEndpointVersionPolicy `pulumi:"policy"`
+	// The version number the head was promoted from, when it was created by a promotion rather than a publish.
+	PromotedFromVersionNumber *int `pulumi:"promotedFromVersionNumber"`
+	// The tools and toolbelts the version enables, each optionally pinned as `<tool_slug>@<version>` or `toolbelt:<name>@<version>`. **Omit the argument to enable every tool, and set an empty list to enable none.** The API distinguishes the two, and so does this resource.
+	Tools []string `pulumi:"tools"`
+	// The number of the head version.
+	VersionNumber *int `pulumi:"versionNumber"`
+}
+
+// ActionGatewayEndpointVersionInput is an input type that accepts ActionGatewayEndpointVersionArgs and ActionGatewayEndpointVersionOutput values.
+// You can construct a concrete instance of `ActionGatewayEndpointVersionInput` via:
+//
+//	ActionGatewayEndpointVersionArgs{...}
+type ActionGatewayEndpointVersionInput interface {
+	pulumi.Input
+
+	ToActionGatewayEndpointVersionOutput() ActionGatewayEndpointVersionOutput
+	ToActionGatewayEndpointVersionOutputWithContext(context.Context) ActionGatewayEndpointVersionOutput
+}
+
+type ActionGatewayEndpointVersionArgs struct {
+	// The actor the version's tool calls act as. It must contain 1 to 64 characters from `[A-Za-z0-9._-]`. No operation changes an endpoint's actor, so changing this forces a new endpoint.
+	ActorId pulumi.StringPtrInput `pulumi:"actorId"`
+	// A JSON object of options Gateway applies to the version, such as `preloadTools`, `customInstructions`, or `outputViews`. It is validated as JSON, normalized for comparison, and stored as supplied.
+	Config pulumi.StringPtrInput `pulumi:"config"`
+	// The ID of the head version, `<endpoint UUID>.v<version number>`.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// A VPC the version's tool calls are routed through. See Network below.
+	Network ActionGatewayEndpointVersionNetworkPtrInput `pulumi:"network"`
+	// The tools and toolbelts the head version enables, each pinned by the API as `<tool_slug>@<version>` or `toolbelt:<name>@<version>`. Empty when every tool is enabled.
+	PinnedTools pulumi.StringArrayInput `pulumi:"pinnedTools"`
+	// The tool permission policy. Omitting it asks before every call. See Policy below.
+	Policy ActionGatewayEndpointVersionPolicyPtrInput `pulumi:"policy"`
+	// The version number the head was promoted from, when it was created by a promotion rather than a publish.
+	PromotedFromVersionNumber pulumi.IntPtrInput `pulumi:"promotedFromVersionNumber"`
+	// The tools and toolbelts the version enables, each optionally pinned as `<tool_slug>@<version>` or `toolbelt:<name>@<version>`. **Omit the argument to enable every tool, and set an empty list to enable none.** The API distinguishes the two, and so does this resource.
+	Tools pulumi.StringArrayInput `pulumi:"tools"`
+	// The number of the head version.
+	VersionNumber pulumi.IntPtrInput `pulumi:"versionNumber"`
+}
+
+func (ActionGatewayEndpointVersionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionGatewayEndpointVersion)(nil)).Elem()
+}
+
+func (i ActionGatewayEndpointVersionArgs) ToActionGatewayEndpointVersionOutput() ActionGatewayEndpointVersionOutput {
+	return i.ToActionGatewayEndpointVersionOutputWithContext(context.Background())
+}
+
+func (i ActionGatewayEndpointVersionArgs) ToActionGatewayEndpointVersionOutputWithContext(ctx context.Context) ActionGatewayEndpointVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionGatewayEndpointVersionOutput)
+}
+
+func (i ActionGatewayEndpointVersionArgs) ToActionGatewayEndpointVersionPtrOutput() ActionGatewayEndpointVersionPtrOutput {
+	return i.ToActionGatewayEndpointVersionPtrOutputWithContext(context.Background())
+}
+
+func (i ActionGatewayEndpointVersionArgs) ToActionGatewayEndpointVersionPtrOutputWithContext(ctx context.Context) ActionGatewayEndpointVersionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionGatewayEndpointVersionOutput).ToActionGatewayEndpointVersionPtrOutputWithContext(ctx)
+}
+
+// ActionGatewayEndpointVersionPtrInput is an input type that accepts ActionGatewayEndpointVersionArgs, ActionGatewayEndpointVersionPtr and ActionGatewayEndpointVersionPtrOutput values.
+// You can construct a concrete instance of `ActionGatewayEndpointVersionPtrInput` via:
+//
+//	        ActionGatewayEndpointVersionArgs{...}
+//
+//	or:
+//
+//	        nil
+type ActionGatewayEndpointVersionPtrInput interface {
+	pulumi.Input
+
+	ToActionGatewayEndpointVersionPtrOutput() ActionGatewayEndpointVersionPtrOutput
+	ToActionGatewayEndpointVersionPtrOutputWithContext(context.Context) ActionGatewayEndpointVersionPtrOutput
+}
+
+type actionGatewayEndpointVersionPtrType ActionGatewayEndpointVersionArgs
+
+func ActionGatewayEndpointVersionPtr(v *ActionGatewayEndpointVersionArgs) ActionGatewayEndpointVersionPtrInput {
+	return (*actionGatewayEndpointVersionPtrType)(v)
+}
+
+func (*actionGatewayEndpointVersionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionGatewayEndpointVersion)(nil)).Elem()
+}
+
+func (i *actionGatewayEndpointVersionPtrType) ToActionGatewayEndpointVersionPtrOutput() ActionGatewayEndpointVersionPtrOutput {
+	return i.ToActionGatewayEndpointVersionPtrOutputWithContext(context.Background())
+}
+
+func (i *actionGatewayEndpointVersionPtrType) ToActionGatewayEndpointVersionPtrOutputWithContext(ctx context.Context) ActionGatewayEndpointVersionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionGatewayEndpointVersionPtrOutput)
+}
+
+type ActionGatewayEndpointVersionOutput struct{ *pulumi.OutputState }
+
+func (ActionGatewayEndpointVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionGatewayEndpointVersion)(nil)).Elem()
+}
+
+func (o ActionGatewayEndpointVersionOutput) ToActionGatewayEndpointVersionOutput() ActionGatewayEndpointVersionOutput {
+	return o
+}
+
+func (o ActionGatewayEndpointVersionOutput) ToActionGatewayEndpointVersionOutputWithContext(ctx context.Context) ActionGatewayEndpointVersionOutput {
+	return o
+}
+
+func (o ActionGatewayEndpointVersionOutput) ToActionGatewayEndpointVersionPtrOutput() ActionGatewayEndpointVersionPtrOutput {
+	return o.ToActionGatewayEndpointVersionPtrOutputWithContext(context.Background())
+}
+
+func (o ActionGatewayEndpointVersionOutput) ToActionGatewayEndpointVersionPtrOutputWithContext(ctx context.Context) ActionGatewayEndpointVersionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActionGatewayEndpointVersion) *ActionGatewayEndpointVersion {
+		return &v
+	}).(ActionGatewayEndpointVersionPtrOutput)
+}
+
+// The actor the version's tool calls act as. It must contain 1 to 64 characters from `[A-Za-z0-9._-]`. No operation changes an endpoint's actor, so changing this forces a new endpoint.
+func (o ActionGatewayEndpointVersionOutput) ActorId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionGatewayEndpointVersion) *string { return v.ActorId }).(pulumi.StringPtrOutput)
+}
+
+// A JSON object of options Gateway applies to the version, such as `preloadTools`, `customInstructions`, or `outputViews`. It is validated as JSON, normalized for comparison, and stored as supplied.
+func (o ActionGatewayEndpointVersionOutput) Config() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionGatewayEndpointVersion) *string { return v.Config }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the head version, `<endpoint UUID>.v<version number>`.
+func (o ActionGatewayEndpointVersionOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionGatewayEndpointVersion) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// A VPC the version's tool calls are routed through. See Network below.
+func (o ActionGatewayEndpointVersionOutput) Network() ActionGatewayEndpointVersionNetworkPtrOutput {
+	return o.ApplyT(func(v ActionGatewayEndpointVersion) *ActionGatewayEndpointVersionNetwork { return v.Network }).(ActionGatewayEndpointVersionNetworkPtrOutput)
+}
+
+// The tools and toolbelts the head version enables, each pinned by the API as `<tool_slug>@<version>` or `toolbelt:<name>@<version>`. Empty when every tool is enabled.
+func (o ActionGatewayEndpointVersionOutput) PinnedTools() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ActionGatewayEndpointVersion) []string { return v.PinnedTools }).(pulumi.StringArrayOutput)
+}
+
+// The tool permission policy. Omitting it asks before every call. See Policy below.
+func (o ActionGatewayEndpointVersionOutput) Policy() ActionGatewayEndpointVersionPolicyPtrOutput {
+	return o.ApplyT(func(v ActionGatewayEndpointVersion) *ActionGatewayEndpointVersionPolicy { return v.Policy }).(ActionGatewayEndpointVersionPolicyPtrOutput)
+}
+
+// The version number the head was promoted from, when it was created by a promotion rather than a publish.
+func (o ActionGatewayEndpointVersionOutput) PromotedFromVersionNumber() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ActionGatewayEndpointVersion) *int { return v.PromotedFromVersionNumber }).(pulumi.IntPtrOutput)
+}
+
+// The tools and toolbelts the version enables, each optionally pinned as `<tool_slug>@<version>` or `toolbelt:<name>@<version>`. **Omit the argument to enable every tool, and set an empty list to enable none.** The API distinguishes the two, and so does this resource.
+func (o ActionGatewayEndpointVersionOutput) Tools() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ActionGatewayEndpointVersion) []string { return v.Tools }).(pulumi.StringArrayOutput)
+}
+
+// The number of the head version.
+func (o ActionGatewayEndpointVersionOutput) VersionNumber() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ActionGatewayEndpointVersion) *int { return v.VersionNumber }).(pulumi.IntPtrOutput)
+}
+
+type ActionGatewayEndpointVersionPtrOutput struct{ *pulumi.OutputState }
+
+func (ActionGatewayEndpointVersionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionGatewayEndpointVersion)(nil)).Elem()
+}
+
+func (o ActionGatewayEndpointVersionPtrOutput) ToActionGatewayEndpointVersionPtrOutput() ActionGatewayEndpointVersionPtrOutput {
+	return o
+}
+
+func (o ActionGatewayEndpointVersionPtrOutput) ToActionGatewayEndpointVersionPtrOutputWithContext(ctx context.Context) ActionGatewayEndpointVersionPtrOutput {
+	return o
+}
+
+func (o ActionGatewayEndpointVersionPtrOutput) Elem() ActionGatewayEndpointVersionOutput {
+	return o.ApplyT(func(v *ActionGatewayEndpointVersion) ActionGatewayEndpointVersion {
+		if v != nil {
+			return *v
+		}
+		var ret ActionGatewayEndpointVersion
+		return ret
+	}).(ActionGatewayEndpointVersionOutput)
+}
+
+// The actor the version's tool calls act as. It must contain 1 to 64 characters from `[A-Za-z0-9._-]`. No operation changes an endpoint's actor, so changing this forces a new endpoint.
+func (o ActionGatewayEndpointVersionPtrOutput) ActorId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionGatewayEndpointVersion) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ActorId
+	}).(pulumi.StringPtrOutput)
+}
+
+// A JSON object of options Gateway applies to the version, such as `preloadTools`, `customInstructions`, or `outputViews`. It is validated as JSON, normalized for comparison, and stored as supplied.
+func (o ActionGatewayEndpointVersionPtrOutput) Config() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionGatewayEndpointVersion) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Config
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the head version, `<endpoint UUID>.v<version number>`.
+func (o ActionGatewayEndpointVersionPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionGatewayEndpointVersion) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// A VPC the version's tool calls are routed through. See Network below.
+func (o ActionGatewayEndpointVersionPtrOutput) Network() ActionGatewayEndpointVersionNetworkPtrOutput {
+	return o.ApplyT(func(v *ActionGatewayEndpointVersion) *ActionGatewayEndpointVersionNetwork {
+		if v == nil {
+			return nil
+		}
+		return v.Network
+	}).(ActionGatewayEndpointVersionNetworkPtrOutput)
+}
+
+// The tools and toolbelts the head version enables, each pinned by the API as `<tool_slug>@<version>` or `toolbelt:<name>@<version>`. Empty when every tool is enabled.
+func (o ActionGatewayEndpointVersionPtrOutput) PinnedTools() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ActionGatewayEndpointVersion) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PinnedTools
+	}).(pulumi.StringArrayOutput)
+}
+
+// The tool permission policy. Omitting it asks before every call. See Policy below.
+func (o ActionGatewayEndpointVersionPtrOutput) Policy() ActionGatewayEndpointVersionPolicyPtrOutput {
+	return o.ApplyT(func(v *ActionGatewayEndpointVersion) *ActionGatewayEndpointVersionPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.Policy
+	}).(ActionGatewayEndpointVersionPolicyPtrOutput)
+}
+
+// The version number the head was promoted from, when it was created by a promotion rather than a publish.
+func (o ActionGatewayEndpointVersionPtrOutput) PromotedFromVersionNumber() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ActionGatewayEndpointVersion) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PromotedFromVersionNumber
+	}).(pulumi.IntPtrOutput)
+}
+
+// The tools and toolbelts the version enables, each optionally pinned as `<tool_slug>@<version>` or `toolbelt:<name>@<version>`. **Omit the argument to enable every tool, and set an empty list to enable none.** The API distinguishes the two, and so does this resource.
+func (o ActionGatewayEndpointVersionPtrOutput) Tools() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ActionGatewayEndpointVersion) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Tools
+	}).(pulumi.StringArrayOutput)
+}
+
+// The number of the head version.
+func (o ActionGatewayEndpointVersionPtrOutput) VersionNumber() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ActionGatewayEndpointVersion) *int {
+		if v == nil {
+			return nil
+		}
+		return v.VersionNumber
+	}).(pulumi.IntPtrOutput)
+}
+
+type ActionGatewayEndpointVersionNetwork struct {
+	// The region of the VPC the version is attached to.
+	Region *string `pulumi:"region"`
+	// The UUID of a VPC owned by your team.
+	VpcUuid string `pulumi:"vpcUuid"`
+}
+
+// ActionGatewayEndpointVersionNetworkInput is an input type that accepts ActionGatewayEndpointVersionNetworkArgs and ActionGatewayEndpointVersionNetworkOutput values.
+// You can construct a concrete instance of `ActionGatewayEndpointVersionNetworkInput` via:
+//
+//	ActionGatewayEndpointVersionNetworkArgs{...}
+type ActionGatewayEndpointVersionNetworkInput interface {
+	pulumi.Input
+
+	ToActionGatewayEndpointVersionNetworkOutput() ActionGatewayEndpointVersionNetworkOutput
+	ToActionGatewayEndpointVersionNetworkOutputWithContext(context.Context) ActionGatewayEndpointVersionNetworkOutput
+}
+
+type ActionGatewayEndpointVersionNetworkArgs struct {
+	// The region of the VPC the version is attached to.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// The UUID of a VPC owned by your team.
+	VpcUuid pulumi.StringInput `pulumi:"vpcUuid"`
+}
+
+func (ActionGatewayEndpointVersionNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionGatewayEndpointVersionNetwork)(nil)).Elem()
+}
+
+func (i ActionGatewayEndpointVersionNetworkArgs) ToActionGatewayEndpointVersionNetworkOutput() ActionGatewayEndpointVersionNetworkOutput {
+	return i.ToActionGatewayEndpointVersionNetworkOutputWithContext(context.Background())
+}
+
+func (i ActionGatewayEndpointVersionNetworkArgs) ToActionGatewayEndpointVersionNetworkOutputWithContext(ctx context.Context) ActionGatewayEndpointVersionNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionGatewayEndpointVersionNetworkOutput)
+}
+
+func (i ActionGatewayEndpointVersionNetworkArgs) ToActionGatewayEndpointVersionNetworkPtrOutput() ActionGatewayEndpointVersionNetworkPtrOutput {
+	return i.ToActionGatewayEndpointVersionNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i ActionGatewayEndpointVersionNetworkArgs) ToActionGatewayEndpointVersionNetworkPtrOutputWithContext(ctx context.Context) ActionGatewayEndpointVersionNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionGatewayEndpointVersionNetworkOutput).ToActionGatewayEndpointVersionNetworkPtrOutputWithContext(ctx)
+}
+
+// ActionGatewayEndpointVersionNetworkPtrInput is an input type that accepts ActionGatewayEndpointVersionNetworkArgs, ActionGatewayEndpointVersionNetworkPtr and ActionGatewayEndpointVersionNetworkPtrOutput values.
+// You can construct a concrete instance of `ActionGatewayEndpointVersionNetworkPtrInput` via:
+//
+//	        ActionGatewayEndpointVersionNetworkArgs{...}
+//
+//	or:
+//
+//	        nil
+type ActionGatewayEndpointVersionNetworkPtrInput interface {
+	pulumi.Input
+
+	ToActionGatewayEndpointVersionNetworkPtrOutput() ActionGatewayEndpointVersionNetworkPtrOutput
+	ToActionGatewayEndpointVersionNetworkPtrOutputWithContext(context.Context) ActionGatewayEndpointVersionNetworkPtrOutput
+}
+
+type actionGatewayEndpointVersionNetworkPtrType ActionGatewayEndpointVersionNetworkArgs
+
+func ActionGatewayEndpointVersionNetworkPtr(v *ActionGatewayEndpointVersionNetworkArgs) ActionGatewayEndpointVersionNetworkPtrInput {
+	return (*actionGatewayEndpointVersionNetworkPtrType)(v)
+}
+
+func (*actionGatewayEndpointVersionNetworkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionGatewayEndpointVersionNetwork)(nil)).Elem()
+}
+
+func (i *actionGatewayEndpointVersionNetworkPtrType) ToActionGatewayEndpointVersionNetworkPtrOutput() ActionGatewayEndpointVersionNetworkPtrOutput {
+	return i.ToActionGatewayEndpointVersionNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i *actionGatewayEndpointVersionNetworkPtrType) ToActionGatewayEndpointVersionNetworkPtrOutputWithContext(ctx context.Context) ActionGatewayEndpointVersionNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionGatewayEndpointVersionNetworkPtrOutput)
+}
+
+type ActionGatewayEndpointVersionNetworkOutput struct{ *pulumi.OutputState }
+
+func (ActionGatewayEndpointVersionNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionGatewayEndpointVersionNetwork)(nil)).Elem()
+}
+
+func (o ActionGatewayEndpointVersionNetworkOutput) ToActionGatewayEndpointVersionNetworkOutput() ActionGatewayEndpointVersionNetworkOutput {
+	return o
+}
+
+func (o ActionGatewayEndpointVersionNetworkOutput) ToActionGatewayEndpointVersionNetworkOutputWithContext(ctx context.Context) ActionGatewayEndpointVersionNetworkOutput {
+	return o
+}
+
+func (o ActionGatewayEndpointVersionNetworkOutput) ToActionGatewayEndpointVersionNetworkPtrOutput() ActionGatewayEndpointVersionNetworkPtrOutput {
+	return o.ToActionGatewayEndpointVersionNetworkPtrOutputWithContext(context.Background())
+}
+
+func (o ActionGatewayEndpointVersionNetworkOutput) ToActionGatewayEndpointVersionNetworkPtrOutputWithContext(ctx context.Context) ActionGatewayEndpointVersionNetworkPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActionGatewayEndpointVersionNetwork) *ActionGatewayEndpointVersionNetwork {
+		return &v
+	}).(ActionGatewayEndpointVersionNetworkPtrOutput)
+}
+
+// The region of the VPC the version is attached to.
+func (o ActionGatewayEndpointVersionNetworkOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionGatewayEndpointVersionNetwork) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// The UUID of a VPC owned by your team.
+func (o ActionGatewayEndpointVersionNetworkOutput) VpcUuid() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionGatewayEndpointVersionNetwork) string { return v.VpcUuid }).(pulumi.StringOutput)
+}
+
+type ActionGatewayEndpointVersionNetworkPtrOutput struct{ *pulumi.OutputState }
+
+func (ActionGatewayEndpointVersionNetworkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionGatewayEndpointVersionNetwork)(nil)).Elem()
+}
+
+func (o ActionGatewayEndpointVersionNetworkPtrOutput) ToActionGatewayEndpointVersionNetworkPtrOutput() ActionGatewayEndpointVersionNetworkPtrOutput {
+	return o
+}
+
+func (o ActionGatewayEndpointVersionNetworkPtrOutput) ToActionGatewayEndpointVersionNetworkPtrOutputWithContext(ctx context.Context) ActionGatewayEndpointVersionNetworkPtrOutput {
+	return o
+}
+
+func (o ActionGatewayEndpointVersionNetworkPtrOutput) Elem() ActionGatewayEndpointVersionNetworkOutput {
+	return o.ApplyT(func(v *ActionGatewayEndpointVersionNetwork) ActionGatewayEndpointVersionNetwork {
+		if v != nil {
+			return *v
+		}
+		var ret ActionGatewayEndpointVersionNetwork
+		return ret
+	}).(ActionGatewayEndpointVersionNetworkOutput)
+}
+
+// The region of the VPC the version is attached to.
+func (o ActionGatewayEndpointVersionNetworkPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionGatewayEndpointVersionNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+// The UUID of a VPC owned by your team.
+func (o ActionGatewayEndpointVersionNetworkPtrOutput) VpcUuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionGatewayEndpointVersionNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.VpcUuid
+	}).(pulumi.StringPtrOutput)
+}
+
+type ActionGatewayEndpointVersionPolicy struct {
+	// The action for calls that no rule matches: `allow`, `ask`, or `deny`. Empty means `ask`.
+	DefaultAction *string `pulumi:"defaultAction"`
+	// Rules for specific tools and toolbelts, in the order the configuration lists them. Each rule supports:
+	Rules []ActionGatewayEndpointVersionPolicyRule `pulumi:"rules"`
+}
+
+// ActionGatewayEndpointVersionPolicyInput is an input type that accepts ActionGatewayEndpointVersionPolicyArgs and ActionGatewayEndpointVersionPolicyOutput values.
+// You can construct a concrete instance of `ActionGatewayEndpointVersionPolicyInput` via:
+//
+//	ActionGatewayEndpointVersionPolicyArgs{...}
+type ActionGatewayEndpointVersionPolicyInput interface {
+	pulumi.Input
+
+	ToActionGatewayEndpointVersionPolicyOutput() ActionGatewayEndpointVersionPolicyOutput
+	ToActionGatewayEndpointVersionPolicyOutputWithContext(context.Context) ActionGatewayEndpointVersionPolicyOutput
+}
+
+type ActionGatewayEndpointVersionPolicyArgs struct {
+	// The action for calls that no rule matches: `allow`, `ask`, or `deny`. Empty means `ask`.
+	DefaultAction pulumi.StringPtrInput `pulumi:"defaultAction"`
+	// Rules for specific tools and toolbelts, in the order the configuration lists them. Each rule supports:
+	Rules ActionGatewayEndpointVersionPolicyRuleArrayInput `pulumi:"rules"`
+}
+
+func (ActionGatewayEndpointVersionPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionGatewayEndpointVersionPolicy)(nil)).Elem()
+}
+
+func (i ActionGatewayEndpointVersionPolicyArgs) ToActionGatewayEndpointVersionPolicyOutput() ActionGatewayEndpointVersionPolicyOutput {
+	return i.ToActionGatewayEndpointVersionPolicyOutputWithContext(context.Background())
+}
+
+func (i ActionGatewayEndpointVersionPolicyArgs) ToActionGatewayEndpointVersionPolicyOutputWithContext(ctx context.Context) ActionGatewayEndpointVersionPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionGatewayEndpointVersionPolicyOutput)
+}
+
+func (i ActionGatewayEndpointVersionPolicyArgs) ToActionGatewayEndpointVersionPolicyPtrOutput() ActionGatewayEndpointVersionPolicyPtrOutput {
+	return i.ToActionGatewayEndpointVersionPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i ActionGatewayEndpointVersionPolicyArgs) ToActionGatewayEndpointVersionPolicyPtrOutputWithContext(ctx context.Context) ActionGatewayEndpointVersionPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionGatewayEndpointVersionPolicyOutput).ToActionGatewayEndpointVersionPolicyPtrOutputWithContext(ctx)
+}
+
+// ActionGatewayEndpointVersionPolicyPtrInput is an input type that accepts ActionGatewayEndpointVersionPolicyArgs, ActionGatewayEndpointVersionPolicyPtr and ActionGatewayEndpointVersionPolicyPtrOutput values.
+// You can construct a concrete instance of `ActionGatewayEndpointVersionPolicyPtrInput` via:
+//
+//	        ActionGatewayEndpointVersionPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type ActionGatewayEndpointVersionPolicyPtrInput interface {
+	pulumi.Input
+
+	ToActionGatewayEndpointVersionPolicyPtrOutput() ActionGatewayEndpointVersionPolicyPtrOutput
+	ToActionGatewayEndpointVersionPolicyPtrOutputWithContext(context.Context) ActionGatewayEndpointVersionPolicyPtrOutput
+}
+
+type actionGatewayEndpointVersionPolicyPtrType ActionGatewayEndpointVersionPolicyArgs
+
+func ActionGatewayEndpointVersionPolicyPtr(v *ActionGatewayEndpointVersionPolicyArgs) ActionGatewayEndpointVersionPolicyPtrInput {
+	return (*actionGatewayEndpointVersionPolicyPtrType)(v)
+}
+
+func (*actionGatewayEndpointVersionPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionGatewayEndpointVersionPolicy)(nil)).Elem()
+}
+
+func (i *actionGatewayEndpointVersionPolicyPtrType) ToActionGatewayEndpointVersionPolicyPtrOutput() ActionGatewayEndpointVersionPolicyPtrOutput {
+	return i.ToActionGatewayEndpointVersionPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *actionGatewayEndpointVersionPolicyPtrType) ToActionGatewayEndpointVersionPolicyPtrOutputWithContext(ctx context.Context) ActionGatewayEndpointVersionPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionGatewayEndpointVersionPolicyPtrOutput)
+}
+
+type ActionGatewayEndpointVersionPolicyOutput struct{ *pulumi.OutputState }
+
+func (ActionGatewayEndpointVersionPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionGatewayEndpointVersionPolicy)(nil)).Elem()
+}
+
+func (o ActionGatewayEndpointVersionPolicyOutput) ToActionGatewayEndpointVersionPolicyOutput() ActionGatewayEndpointVersionPolicyOutput {
+	return o
+}
+
+func (o ActionGatewayEndpointVersionPolicyOutput) ToActionGatewayEndpointVersionPolicyOutputWithContext(ctx context.Context) ActionGatewayEndpointVersionPolicyOutput {
+	return o
+}
+
+func (o ActionGatewayEndpointVersionPolicyOutput) ToActionGatewayEndpointVersionPolicyPtrOutput() ActionGatewayEndpointVersionPolicyPtrOutput {
+	return o.ToActionGatewayEndpointVersionPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o ActionGatewayEndpointVersionPolicyOutput) ToActionGatewayEndpointVersionPolicyPtrOutputWithContext(ctx context.Context) ActionGatewayEndpointVersionPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActionGatewayEndpointVersionPolicy) *ActionGatewayEndpointVersionPolicy {
+		return &v
+	}).(ActionGatewayEndpointVersionPolicyPtrOutput)
+}
+
+// The action for calls that no rule matches: `allow`, `ask`, or `deny`. Empty means `ask`.
+func (o ActionGatewayEndpointVersionPolicyOutput) DefaultAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionGatewayEndpointVersionPolicy) *string { return v.DefaultAction }).(pulumi.StringPtrOutput)
+}
+
+// Rules for specific tools and toolbelts, in the order the configuration lists them. Each rule supports:
+func (o ActionGatewayEndpointVersionPolicyOutput) Rules() ActionGatewayEndpointVersionPolicyRuleArrayOutput {
+	return o.ApplyT(func(v ActionGatewayEndpointVersionPolicy) []ActionGatewayEndpointVersionPolicyRule { return v.Rules }).(ActionGatewayEndpointVersionPolicyRuleArrayOutput)
+}
+
+type ActionGatewayEndpointVersionPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (ActionGatewayEndpointVersionPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionGatewayEndpointVersionPolicy)(nil)).Elem()
+}
+
+func (o ActionGatewayEndpointVersionPolicyPtrOutput) ToActionGatewayEndpointVersionPolicyPtrOutput() ActionGatewayEndpointVersionPolicyPtrOutput {
+	return o
+}
+
+func (o ActionGatewayEndpointVersionPolicyPtrOutput) ToActionGatewayEndpointVersionPolicyPtrOutputWithContext(ctx context.Context) ActionGatewayEndpointVersionPolicyPtrOutput {
+	return o
+}
+
+func (o ActionGatewayEndpointVersionPolicyPtrOutput) Elem() ActionGatewayEndpointVersionPolicyOutput {
+	return o.ApplyT(func(v *ActionGatewayEndpointVersionPolicy) ActionGatewayEndpointVersionPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret ActionGatewayEndpointVersionPolicy
+		return ret
+	}).(ActionGatewayEndpointVersionPolicyOutput)
+}
+
+// The action for calls that no rule matches: `allow`, `ask`, or `deny`. Empty means `ask`.
+func (o ActionGatewayEndpointVersionPolicyPtrOutput) DefaultAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionGatewayEndpointVersionPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultAction
+	}).(pulumi.StringPtrOutput)
+}
+
+// Rules for specific tools and toolbelts, in the order the configuration lists them. Each rule supports:
+func (o ActionGatewayEndpointVersionPolicyPtrOutput) Rules() ActionGatewayEndpointVersionPolicyRuleArrayOutput {
+	return o.ApplyT(func(v *ActionGatewayEndpointVersionPolicy) []ActionGatewayEndpointVersionPolicyRule {
+		if v == nil {
+			return nil
+		}
+		return v.Rules
+	}).(ActionGatewayEndpointVersionPolicyRuleArrayOutput)
+}
+
+type ActionGatewayEndpointVersionPolicyRule struct {
+	// One of `allow`, `ask`, or `deny`.
+	Action string `pulumi:"action"`
+	// Argument values a call must match for the rule to apply, keyed by argument name.
+	Match map[string]string `pulumi:"match"`
+	// A tool slug, optionally pinned as `<tool_slug>@<version>`, or `toolbelt:<name>@<version>`.
+	Tool string `pulumi:"tool"`
+}
+
+// ActionGatewayEndpointVersionPolicyRuleInput is an input type that accepts ActionGatewayEndpointVersionPolicyRuleArgs and ActionGatewayEndpointVersionPolicyRuleOutput values.
+// You can construct a concrete instance of `ActionGatewayEndpointVersionPolicyRuleInput` via:
+//
+//	ActionGatewayEndpointVersionPolicyRuleArgs{...}
+type ActionGatewayEndpointVersionPolicyRuleInput interface {
+	pulumi.Input
+
+	ToActionGatewayEndpointVersionPolicyRuleOutput() ActionGatewayEndpointVersionPolicyRuleOutput
+	ToActionGatewayEndpointVersionPolicyRuleOutputWithContext(context.Context) ActionGatewayEndpointVersionPolicyRuleOutput
+}
+
+type ActionGatewayEndpointVersionPolicyRuleArgs struct {
+	// One of `allow`, `ask`, or `deny`.
+	Action pulumi.StringInput `pulumi:"action"`
+	// Argument values a call must match for the rule to apply, keyed by argument name.
+	Match pulumi.StringMapInput `pulumi:"match"`
+	// A tool slug, optionally pinned as `<tool_slug>@<version>`, or `toolbelt:<name>@<version>`.
+	Tool pulumi.StringInput `pulumi:"tool"`
+}
+
+func (ActionGatewayEndpointVersionPolicyRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionGatewayEndpointVersionPolicyRule)(nil)).Elem()
+}
+
+func (i ActionGatewayEndpointVersionPolicyRuleArgs) ToActionGatewayEndpointVersionPolicyRuleOutput() ActionGatewayEndpointVersionPolicyRuleOutput {
+	return i.ToActionGatewayEndpointVersionPolicyRuleOutputWithContext(context.Background())
+}
+
+func (i ActionGatewayEndpointVersionPolicyRuleArgs) ToActionGatewayEndpointVersionPolicyRuleOutputWithContext(ctx context.Context) ActionGatewayEndpointVersionPolicyRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionGatewayEndpointVersionPolicyRuleOutput)
+}
+
+// ActionGatewayEndpointVersionPolicyRuleArrayInput is an input type that accepts ActionGatewayEndpointVersionPolicyRuleArray and ActionGatewayEndpointVersionPolicyRuleArrayOutput values.
+// You can construct a concrete instance of `ActionGatewayEndpointVersionPolicyRuleArrayInput` via:
+//
+//	ActionGatewayEndpointVersionPolicyRuleArray{ ActionGatewayEndpointVersionPolicyRuleArgs{...} }
+type ActionGatewayEndpointVersionPolicyRuleArrayInput interface {
+	pulumi.Input
+
+	ToActionGatewayEndpointVersionPolicyRuleArrayOutput() ActionGatewayEndpointVersionPolicyRuleArrayOutput
+	ToActionGatewayEndpointVersionPolicyRuleArrayOutputWithContext(context.Context) ActionGatewayEndpointVersionPolicyRuleArrayOutput
+}
+
+type ActionGatewayEndpointVersionPolicyRuleArray []ActionGatewayEndpointVersionPolicyRuleInput
+
+func (ActionGatewayEndpointVersionPolicyRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ActionGatewayEndpointVersionPolicyRule)(nil)).Elem()
+}
+
+func (i ActionGatewayEndpointVersionPolicyRuleArray) ToActionGatewayEndpointVersionPolicyRuleArrayOutput() ActionGatewayEndpointVersionPolicyRuleArrayOutput {
+	return i.ToActionGatewayEndpointVersionPolicyRuleArrayOutputWithContext(context.Background())
+}
+
+func (i ActionGatewayEndpointVersionPolicyRuleArray) ToActionGatewayEndpointVersionPolicyRuleArrayOutputWithContext(ctx context.Context) ActionGatewayEndpointVersionPolicyRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionGatewayEndpointVersionPolicyRuleArrayOutput)
+}
+
+type ActionGatewayEndpointVersionPolicyRuleOutput struct{ *pulumi.OutputState }
+
+func (ActionGatewayEndpointVersionPolicyRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionGatewayEndpointVersionPolicyRule)(nil)).Elem()
+}
+
+func (o ActionGatewayEndpointVersionPolicyRuleOutput) ToActionGatewayEndpointVersionPolicyRuleOutput() ActionGatewayEndpointVersionPolicyRuleOutput {
+	return o
+}
+
+func (o ActionGatewayEndpointVersionPolicyRuleOutput) ToActionGatewayEndpointVersionPolicyRuleOutputWithContext(ctx context.Context) ActionGatewayEndpointVersionPolicyRuleOutput {
+	return o
+}
+
+// One of `allow`, `ask`, or `deny`.
+func (o ActionGatewayEndpointVersionPolicyRuleOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionGatewayEndpointVersionPolicyRule) string { return v.Action }).(pulumi.StringOutput)
+}
+
+// Argument values a call must match for the rule to apply, keyed by argument name.
+func (o ActionGatewayEndpointVersionPolicyRuleOutput) Match() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ActionGatewayEndpointVersionPolicyRule) map[string]string { return v.Match }).(pulumi.StringMapOutput)
+}
+
+// A tool slug, optionally pinned as `<tool_slug>@<version>`, or `toolbelt:<name>@<version>`.
+func (o ActionGatewayEndpointVersionPolicyRuleOutput) Tool() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionGatewayEndpointVersionPolicyRule) string { return v.Tool }).(pulumi.StringOutput)
+}
+
+type ActionGatewayEndpointVersionPolicyRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (ActionGatewayEndpointVersionPolicyRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ActionGatewayEndpointVersionPolicyRule)(nil)).Elem()
+}
+
+func (o ActionGatewayEndpointVersionPolicyRuleArrayOutput) ToActionGatewayEndpointVersionPolicyRuleArrayOutput() ActionGatewayEndpointVersionPolicyRuleArrayOutput {
+	return o
+}
+
+func (o ActionGatewayEndpointVersionPolicyRuleArrayOutput) ToActionGatewayEndpointVersionPolicyRuleArrayOutputWithContext(ctx context.Context) ActionGatewayEndpointVersionPolicyRuleArrayOutput {
+	return o
+}
+
+func (o ActionGatewayEndpointVersionPolicyRuleArrayOutput) Index(i pulumi.IntInput) ActionGatewayEndpointVersionPolicyRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ActionGatewayEndpointVersionPolicyRule {
+		return vs[0].([]ActionGatewayEndpointVersionPolicyRule)[vs[1].(int)]
+	}).(ActionGatewayEndpointVersionPolicyRuleOutput)
+}
+
 type ActionGatewayMcpServerDiscoveredTool struct {
 	// The description shown on the server's catalog card, at most 1024 characters.
 	Description *string `pulumi:"description"`
@@ -40608,9 +41511,9 @@ func (o LoadBalancerStickySessionsPtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 type MicrovmAutoPause struct {
-	// Whether the MicroVM pauses after it has been idle for `idleTimeout`.
+	// Whether the MicroVM pauses after it has been idle for `idleTimeout`. A change forces a new MicroVM.
 	Enabled bool `pulumi:"enabled"`
-	// How long the MicroVM must be idle before it pauses, as a duration such as `5m` or `30s`.
+	// How long the MicroVM must be idle before it pauses, as a duration such as `5m` or `30s`. A change is applied in place.
 	IdleTimeout *string `pulumi:"idleTimeout"`
 }
 
@@ -40626,9 +41529,9 @@ type MicrovmAutoPauseInput interface {
 }
 
 type MicrovmAutoPauseArgs struct {
-	// Whether the MicroVM pauses after it has been idle for `idleTimeout`.
+	// Whether the MicroVM pauses after it has been idle for `idleTimeout`. A change forces a new MicroVM.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// How long the MicroVM must be idle before it pauses, as a duration such as `5m` or `30s`.
+	// How long the MicroVM must be idle before it pauses, as a duration such as `5m` or `30s`. A change is applied in place.
 	IdleTimeout pulumi.StringPtrInput `pulumi:"idleTimeout"`
 }
 
@@ -40709,12 +41612,12 @@ func (o MicrovmAutoPauseOutput) ToMicrovmAutoPausePtrOutputWithContext(ctx conte
 	}).(MicrovmAutoPausePtrOutput)
 }
 
-// Whether the MicroVM pauses after it has been idle for `idleTimeout`.
+// Whether the MicroVM pauses after it has been idle for `idleTimeout`. A change forces a new MicroVM.
 func (o MicrovmAutoPauseOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v MicrovmAutoPause) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// How long the MicroVM must be idle before it pauses, as a duration such as `5m` or `30s`.
+// How long the MicroVM must be idle before it pauses, as a duration such as `5m` or `30s`. A change is applied in place.
 func (o MicrovmAutoPauseOutput) IdleTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MicrovmAutoPause) *string { return v.IdleTimeout }).(pulumi.StringPtrOutput)
 }
@@ -40743,7 +41646,7 @@ func (o MicrovmAutoPausePtrOutput) Elem() MicrovmAutoPauseOutput {
 	}).(MicrovmAutoPauseOutput)
 }
 
-// Whether the MicroVM pauses after it has been idle for `idleTimeout`.
+// Whether the MicroVM pauses after it has been idle for `idleTimeout`. A change forces a new MicroVM.
 func (o MicrovmAutoPausePtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *MicrovmAutoPause) *bool {
 		if v == nil {
@@ -40753,7 +41656,7 @@ func (o MicrovmAutoPausePtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// How long the MicroVM must be idle before it pauses, as a duration such as `5m` or `30s`.
+// How long the MicroVM must be idle before it pauses, as a duration such as `5m` or `30s`. A change is applied in place.
 func (o MicrovmAutoPausePtrOutput) IdleTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MicrovmAutoPause) *string {
 		if v == nil {
@@ -44401,6 +45304,619 @@ func (o GetActionGatewayConnectionVpcDestinationArrayOutput) Index(i pulumi.IntI
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetActionGatewayConnectionVpcDestination {
 		return vs[0].([]GetActionGatewayConnectionVpcDestination)[vs[1].(int)]
 	}).(GetActionGatewayConnectionVpcDestinationOutput)
+}
+
+type GetActionGatewayEndpointInsight struct {
+	// Whether the endpoint's logs are sent to Insights. Your team can require this to be on.
+	Logs bool `pulumi:"logs"`
+	// Whether the endpoint's metrics are sent to Insights
+	Metrics bool `pulumi:"metrics"`
+	// Whether the endpoint's traces are sent to Insights
+	Traces bool `pulumi:"traces"`
+}
+
+// GetActionGatewayEndpointInsightInput is an input type that accepts GetActionGatewayEndpointInsightArgs and GetActionGatewayEndpointInsightOutput values.
+// You can construct a concrete instance of `GetActionGatewayEndpointInsightInput` via:
+//
+//	GetActionGatewayEndpointInsightArgs{...}
+type GetActionGatewayEndpointInsightInput interface {
+	pulumi.Input
+
+	ToGetActionGatewayEndpointInsightOutput() GetActionGatewayEndpointInsightOutput
+	ToGetActionGatewayEndpointInsightOutputWithContext(context.Context) GetActionGatewayEndpointInsightOutput
+}
+
+type GetActionGatewayEndpointInsightArgs struct {
+	// Whether the endpoint's logs are sent to Insights. Your team can require this to be on.
+	Logs pulumi.BoolInput `pulumi:"logs"`
+	// Whether the endpoint's metrics are sent to Insights
+	Metrics pulumi.BoolInput `pulumi:"metrics"`
+	// Whether the endpoint's traces are sent to Insights
+	Traces pulumi.BoolInput `pulumi:"traces"`
+}
+
+func (GetActionGatewayEndpointInsightArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetActionGatewayEndpointInsight)(nil)).Elem()
+}
+
+func (i GetActionGatewayEndpointInsightArgs) ToGetActionGatewayEndpointInsightOutput() GetActionGatewayEndpointInsightOutput {
+	return i.ToGetActionGatewayEndpointInsightOutputWithContext(context.Background())
+}
+
+func (i GetActionGatewayEndpointInsightArgs) ToGetActionGatewayEndpointInsightOutputWithContext(ctx context.Context) GetActionGatewayEndpointInsightOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetActionGatewayEndpointInsightOutput)
+}
+
+// GetActionGatewayEndpointInsightArrayInput is an input type that accepts GetActionGatewayEndpointInsightArray and GetActionGatewayEndpointInsightArrayOutput values.
+// You can construct a concrete instance of `GetActionGatewayEndpointInsightArrayInput` via:
+//
+//	GetActionGatewayEndpointInsightArray{ GetActionGatewayEndpointInsightArgs{...} }
+type GetActionGatewayEndpointInsightArrayInput interface {
+	pulumi.Input
+
+	ToGetActionGatewayEndpointInsightArrayOutput() GetActionGatewayEndpointInsightArrayOutput
+	ToGetActionGatewayEndpointInsightArrayOutputWithContext(context.Context) GetActionGatewayEndpointInsightArrayOutput
+}
+
+type GetActionGatewayEndpointInsightArray []GetActionGatewayEndpointInsightInput
+
+func (GetActionGatewayEndpointInsightArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetActionGatewayEndpointInsight)(nil)).Elem()
+}
+
+func (i GetActionGatewayEndpointInsightArray) ToGetActionGatewayEndpointInsightArrayOutput() GetActionGatewayEndpointInsightArrayOutput {
+	return i.ToGetActionGatewayEndpointInsightArrayOutputWithContext(context.Background())
+}
+
+func (i GetActionGatewayEndpointInsightArray) ToGetActionGatewayEndpointInsightArrayOutputWithContext(ctx context.Context) GetActionGatewayEndpointInsightArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetActionGatewayEndpointInsightArrayOutput)
+}
+
+type GetActionGatewayEndpointInsightOutput struct{ *pulumi.OutputState }
+
+func (GetActionGatewayEndpointInsightOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetActionGatewayEndpointInsight)(nil)).Elem()
+}
+
+func (o GetActionGatewayEndpointInsightOutput) ToGetActionGatewayEndpointInsightOutput() GetActionGatewayEndpointInsightOutput {
+	return o
+}
+
+func (o GetActionGatewayEndpointInsightOutput) ToGetActionGatewayEndpointInsightOutputWithContext(ctx context.Context) GetActionGatewayEndpointInsightOutput {
+	return o
+}
+
+// Whether the endpoint's logs are sent to Insights. Your team can require this to be on.
+func (o GetActionGatewayEndpointInsightOutput) Logs() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetActionGatewayEndpointInsight) bool { return v.Logs }).(pulumi.BoolOutput)
+}
+
+// Whether the endpoint's metrics are sent to Insights
+func (o GetActionGatewayEndpointInsightOutput) Metrics() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetActionGatewayEndpointInsight) bool { return v.Metrics }).(pulumi.BoolOutput)
+}
+
+// Whether the endpoint's traces are sent to Insights
+func (o GetActionGatewayEndpointInsightOutput) Traces() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetActionGatewayEndpointInsight) bool { return v.Traces }).(pulumi.BoolOutput)
+}
+
+type GetActionGatewayEndpointInsightArrayOutput struct{ *pulumi.OutputState }
+
+func (GetActionGatewayEndpointInsightArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetActionGatewayEndpointInsight)(nil)).Elem()
+}
+
+func (o GetActionGatewayEndpointInsightArrayOutput) ToGetActionGatewayEndpointInsightArrayOutput() GetActionGatewayEndpointInsightArrayOutput {
+	return o
+}
+
+func (o GetActionGatewayEndpointInsightArrayOutput) ToGetActionGatewayEndpointInsightArrayOutputWithContext(ctx context.Context) GetActionGatewayEndpointInsightArrayOutput {
+	return o
+}
+
+func (o GetActionGatewayEndpointInsightArrayOutput) Index(i pulumi.IntInput) GetActionGatewayEndpointInsightOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetActionGatewayEndpointInsight {
+		return vs[0].([]GetActionGatewayEndpointInsight)[vs[1].(int)]
+	}).(GetActionGatewayEndpointInsightOutput)
+}
+
+type GetActionGatewayEndpointVersion struct {
+	// An actor ID to filter a `name` lookup by. Endpoints bound to a different actor are ignored.
+	ActorId string `pulumi:"actorId"`
+	// JSON object of options Gateway applies to the version, such as preloadTools or customInstructions
+	Config string `pulumi:"config"`
+	// The ID of the endpoint. Conflicts with `name`.
+	Id string `pulumi:"id"`
+	// VPC the version's tool calls are routed through
+	Networks []GetActionGatewayEndpointVersionNetwork `pulumi:"networks"`
+	// Tools and toolbelts the head version enables, each pinned by the API as <tool_slug>@<version> or toolbelt:<name>@<version>. Empty when every tool is enabled.
+	PinnedTools []string `pulumi:"pinnedTools"`
+	// Tool permission policy. Omitting it asks before every call.
+	Policies []GetActionGatewayEndpointVersionPolicy `pulumi:"policies"`
+	// Version number the head was promoted from, when it was created by a promotion rather than a publish
+	PromotedFromVersionNumber int `pulumi:"promotedFromVersionNumber"`
+	// Tools and toolbelts the version enables, each optionally pinned as <tool_slug>@<version> or toolbelt:<name>@<version>. Omit to enable every tool; set an empty list to enable none.
+	Tools []string `pulumi:"tools"`
+	// Version number of the head version
+	VersionNumber int `pulumi:"versionNumber"`
+}
+
+// GetActionGatewayEndpointVersionInput is an input type that accepts GetActionGatewayEndpointVersionArgs and GetActionGatewayEndpointVersionOutput values.
+// You can construct a concrete instance of `GetActionGatewayEndpointVersionInput` via:
+//
+//	GetActionGatewayEndpointVersionArgs{...}
+type GetActionGatewayEndpointVersionInput interface {
+	pulumi.Input
+
+	ToGetActionGatewayEndpointVersionOutput() GetActionGatewayEndpointVersionOutput
+	ToGetActionGatewayEndpointVersionOutputWithContext(context.Context) GetActionGatewayEndpointVersionOutput
+}
+
+type GetActionGatewayEndpointVersionArgs struct {
+	// An actor ID to filter a `name` lookup by. Endpoints bound to a different actor are ignored.
+	ActorId pulumi.StringInput `pulumi:"actorId"`
+	// JSON object of options Gateway applies to the version, such as preloadTools or customInstructions
+	Config pulumi.StringInput `pulumi:"config"`
+	// The ID of the endpoint. Conflicts with `name`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// VPC the version's tool calls are routed through
+	Networks GetActionGatewayEndpointVersionNetworkArrayInput `pulumi:"networks"`
+	// Tools and toolbelts the head version enables, each pinned by the API as <tool_slug>@<version> or toolbelt:<name>@<version>. Empty when every tool is enabled.
+	PinnedTools pulumi.StringArrayInput `pulumi:"pinnedTools"`
+	// Tool permission policy. Omitting it asks before every call.
+	Policies GetActionGatewayEndpointVersionPolicyArrayInput `pulumi:"policies"`
+	// Version number the head was promoted from, when it was created by a promotion rather than a publish
+	PromotedFromVersionNumber pulumi.IntInput `pulumi:"promotedFromVersionNumber"`
+	// Tools and toolbelts the version enables, each optionally pinned as <tool_slug>@<version> or toolbelt:<name>@<version>. Omit to enable every tool; set an empty list to enable none.
+	Tools pulumi.StringArrayInput `pulumi:"tools"`
+	// Version number of the head version
+	VersionNumber pulumi.IntInput `pulumi:"versionNumber"`
+}
+
+func (GetActionGatewayEndpointVersionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetActionGatewayEndpointVersion)(nil)).Elem()
+}
+
+func (i GetActionGatewayEndpointVersionArgs) ToGetActionGatewayEndpointVersionOutput() GetActionGatewayEndpointVersionOutput {
+	return i.ToGetActionGatewayEndpointVersionOutputWithContext(context.Background())
+}
+
+func (i GetActionGatewayEndpointVersionArgs) ToGetActionGatewayEndpointVersionOutputWithContext(ctx context.Context) GetActionGatewayEndpointVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetActionGatewayEndpointVersionOutput)
+}
+
+// GetActionGatewayEndpointVersionArrayInput is an input type that accepts GetActionGatewayEndpointVersionArray and GetActionGatewayEndpointVersionArrayOutput values.
+// You can construct a concrete instance of `GetActionGatewayEndpointVersionArrayInput` via:
+//
+//	GetActionGatewayEndpointVersionArray{ GetActionGatewayEndpointVersionArgs{...} }
+type GetActionGatewayEndpointVersionArrayInput interface {
+	pulumi.Input
+
+	ToGetActionGatewayEndpointVersionArrayOutput() GetActionGatewayEndpointVersionArrayOutput
+	ToGetActionGatewayEndpointVersionArrayOutputWithContext(context.Context) GetActionGatewayEndpointVersionArrayOutput
+}
+
+type GetActionGatewayEndpointVersionArray []GetActionGatewayEndpointVersionInput
+
+func (GetActionGatewayEndpointVersionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetActionGatewayEndpointVersion)(nil)).Elem()
+}
+
+func (i GetActionGatewayEndpointVersionArray) ToGetActionGatewayEndpointVersionArrayOutput() GetActionGatewayEndpointVersionArrayOutput {
+	return i.ToGetActionGatewayEndpointVersionArrayOutputWithContext(context.Background())
+}
+
+func (i GetActionGatewayEndpointVersionArray) ToGetActionGatewayEndpointVersionArrayOutputWithContext(ctx context.Context) GetActionGatewayEndpointVersionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetActionGatewayEndpointVersionArrayOutput)
+}
+
+type GetActionGatewayEndpointVersionOutput struct{ *pulumi.OutputState }
+
+func (GetActionGatewayEndpointVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetActionGatewayEndpointVersion)(nil)).Elem()
+}
+
+func (o GetActionGatewayEndpointVersionOutput) ToGetActionGatewayEndpointVersionOutput() GetActionGatewayEndpointVersionOutput {
+	return o
+}
+
+func (o GetActionGatewayEndpointVersionOutput) ToGetActionGatewayEndpointVersionOutputWithContext(ctx context.Context) GetActionGatewayEndpointVersionOutput {
+	return o
+}
+
+// An actor ID to filter a `name` lookup by. Endpoints bound to a different actor are ignored.
+func (o GetActionGatewayEndpointVersionOutput) ActorId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetActionGatewayEndpointVersion) string { return v.ActorId }).(pulumi.StringOutput)
+}
+
+// JSON object of options Gateway applies to the version, such as preloadTools or customInstructions
+func (o GetActionGatewayEndpointVersionOutput) Config() pulumi.StringOutput {
+	return o.ApplyT(func(v GetActionGatewayEndpointVersion) string { return v.Config }).(pulumi.StringOutput)
+}
+
+// The ID of the endpoint. Conflicts with `name`.
+func (o GetActionGatewayEndpointVersionOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetActionGatewayEndpointVersion) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// VPC the version's tool calls are routed through
+func (o GetActionGatewayEndpointVersionOutput) Networks() GetActionGatewayEndpointVersionNetworkArrayOutput {
+	return o.ApplyT(func(v GetActionGatewayEndpointVersion) []GetActionGatewayEndpointVersionNetwork { return v.Networks }).(GetActionGatewayEndpointVersionNetworkArrayOutput)
+}
+
+// Tools and toolbelts the head version enables, each pinned by the API as <tool_slug>@<version> or toolbelt:<name>@<version>. Empty when every tool is enabled.
+func (o GetActionGatewayEndpointVersionOutput) PinnedTools() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetActionGatewayEndpointVersion) []string { return v.PinnedTools }).(pulumi.StringArrayOutput)
+}
+
+// Tool permission policy. Omitting it asks before every call.
+func (o GetActionGatewayEndpointVersionOutput) Policies() GetActionGatewayEndpointVersionPolicyArrayOutput {
+	return o.ApplyT(func(v GetActionGatewayEndpointVersion) []GetActionGatewayEndpointVersionPolicy { return v.Policies }).(GetActionGatewayEndpointVersionPolicyArrayOutput)
+}
+
+// Version number the head was promoted from, when it was created by a promotion rather than a publish
+func (o GetActionGatewayEndpointVersionOutput) PromotedFromVersionNumber() pulumi.IntOutput {
+	return o.ApplyT(func(v GetActionGatewayEndpointVersion) int { return v.PromotedFromVersionNumber }).(pulumi.IntOutput)
+}
+
+// Tools and toolbelts the version enables, each optionally pinned as <tool_slug>@<version> or toolbelt:<name>@<version>. Omit to enable every tool; set an empty list to enable none.
+func (o GetActionGatewayEndpointVersionOutput) Tools() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetActionGatewayEndpointVersion) []string { return v.Tools }).(pulumi.StringArrayOutput)
+}
+
+// Version number of the head version
+func (o GetActionGatewayEndpointVersionOutput) VersionNumber() pulumi.IntOutput {
+	return o.ApplyT(func(v GetActionGatewayEndpointVersion) int { return v.VersionNumber }).(pulumi.IntOutput)
+}
+
+type GetActionGatewayEndpointVersionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetActionGatewayEndpointVersionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetActionGatewayEndpointVersion)(nil)).Elem()
+}
+
+func (o GetActionGatewayEndpointVersionArrayOutput) ToGetActionGatewayEndpointVersionArrayOutput() GetActionGatewayEndpointVersionArrayOutput {
+	return o
+}
+
+func (o GetActionGatewayEndpointVersionArrayOutput) ToGetActionGatewayEndpointVersionArrayOutputWithContext(ctx context.Context) GetActionGatewayEndpointVersionArrayOutput {
+	return o
+}
+
+func (o GetActionGatewayEndpointVersionArrayOutput) Index(i pulumi.IntInput) GetActionGatewayEndpointVersionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetActionGatewayEndpointVersion {
+		return vs[0].([]GetActionGatewayEndpointVersion)[vs[1].(int)]
+	}).(GetActionGatewayEndpointVersionOutput)
+}
+
+type GetActionGatewayEndpointVersionNetwork struct {
+	// Region of the VPC
+	Region string `pulumi:"region"`
+	// UUID of a VPC owned by your team
+	VpcUuid string `pulumi:"vpcUuid"`
+}
+
+// GetActionGatewayEndpointVersionNetworkInput is an input type that accepts GetActionGatewayEndpointVersionNetworkArgs and GetActionGatewayEndpointVersionNetworkOutput values.
+// You can construct a concrete instance of `GetActionGatewayEndpointVersionNetworkInput` via:
+//
+//	GetActionGatewayEndpointVersionNetworkArgs{...}
+type GetActionGatewayEndpointVersionNetworkInput interface {
+	pulumi.Input
+
+	ToGetActionGatewayEndpointVersionNetworkOutput() GetActionGatewayEndpointVersionNetworkOutput
+	ToGetActionGatewayEndpointVersionNetworkOutputWithContext(context.Context) GetActionGatewayEndpointVersionNetworkOutput
+}
+
+type GetActionGatewayEndpointVersionNetworkArgs struct {
+	// Region of the VPC
+	Region pulumi.StringInput `pulumi:"region"`
+	// UUID of a VPC owned by your team
+	VpcUuid pulumi.StringInput `pulumi:"vpcUuid"`
+}
+
+func (GetActionGatewayEndpointVersionNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetActionGatewayEndpointVersionNetwork)(nil)).Elem()
+}
+
+func (i GetActionGatewayEndpointVersionNetworkArgs) ToGetActionGatewayEndpointVersionNetworkOutput() GetActionGatewayEndpointVersionNetworkOutput {
+	return i.ToGetActionGatewayEndpointVersionNetworkOutputWithContext(context.Background())
+}
+
+func (i GetActionGatewayEndpointVersionNetworkArgs) ToGetActionGatewayEndpointVersionNetworkOutputWithContext(ctx context.Context) GetActionGatewayEndpointVersionNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetActionGatewayEndpointVersionNetworkOutput)
+}
+
+// GetActionGatewayEndpointVersionNetworkArrayInput is an input type that accepts GetActionGatewayEndpointVersionNetworkArray and GetActionGatewayEndpointVersionNetworkArrayOutput values.
+// You can construct a concrete instance of `GetActionGatewayEndpointVersionNetworkArrayInput` via:
+//
+//	GetActionGatewayEndpointVersionNetworkArray{ GetActionGatewayEndpointVersionNetworkArgs{...} }
+type GetActionGatewayEndpointVersionNetworkArrayInput interface {
+	pulumi.Input
+
+	ToGetActionGatewayEndpointVersionNetworkArrayOutput() GetActionGatewayEndpointVersionNetworkArrayOutput
+	ToGetActionGatewayEndpointVersionNetworkArrayOutputWithContext(context.Context) GetActionGatewayEndpointVersionNetworkArrayOutput
+}
+
+type GetActionGatewayEndpointVersionNetworkArray []GetActionGatewayEndpointVersionNetworkInput
+
+func (GetActionGatewayEndpointVersionNetworkArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetActionGatewayEndpointVersionNetwork)(nil)).Elem()
+}
+
+func (i GetActionGatewayEndpointVersionNetworkArray) ToGetActionGatewayEndpointVersionNetworkArrayOutput() GetActionGatewayEndpointVersionNetworkArrayOutput {
+	return i.ToGetActionGatewayEndpointVersionNetworkArrayOutputWithContext(context.Background())
+}
+
+func (i GetActionGatewayEndpointVersionNetworkArray) ToGetActionGatewayEndpointVersionNetworkArrayOutputWithContext(ctx context.Context) GetActionGatewayEndpointVersionNetworkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetActionGatewayEndpointVersionNetworkArrayOutput)
+}
+
+type GetActionGatewayEndpointVersionNetworkOutput struct{ *pulumi.OutputState }
+
+func (GetActionGatewayEndpointVersionNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetActionGatewayEndpointVersionNetwork)(nil)).Elem()
+}
+
+func (o GetActionGatewayEndpointVersionNetworkOutput) ToGetActionGatewayEndpointVersionNetworkOutput() GetActionGatewayEndpointVersionNetworkOutput {
+	return o
+}
+
+func (o GetActionGatewayEndpointVersionNetworkOutput) ToGetActionGatewayEndpointVersionNetworkOutputWithContext(ctx context.Context) GetActionGatewayEndpointVersionNetworkOutput {
+	return o
+}
+
+// Region of the VPC
+func (o GetActionGatewayEndpointVersionNetworkOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetActionGatewayEndpointVersionNetwork) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// UUID of a VPC owned by your team
+func (o GetActionGatewayEndpointVersionNetworkOutput) VpcUuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetActionGatewayEndpointVersionNetwork) string { return v.VpcUuid }).(pulumi.StringOutput)
+}
+
+type GetActionGatewayEndpointVersionNetworkArrayOutput struct{ *pulumi.OutputState }
+
+func (GetActionGatewayEndpointVersionNetworkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetActionGatewayEndpointVersionNetwork)(nil)).Elem()
+}
+
+func (o GetActionGatewayEndpointVersionNetworkArrayOutput) ToGetActionGatewayEndpointVersionNetworkArrayOutput() GetActionGatewayEndpointVersionNetworkArrayOutput {
+	return o
+}
+
+func (o GetActionGatewayEndpointVersionNetworkArrayOutput) ToGetActionGatewayEndpointVersionNetworkArrayOutputWithContext(ctx context.Context) GetActionGatewayEndpointVersionNetworkArrayOutput {
+	return o
+}
+
+func (o GetActionGatewayEndpointVersionNetworkArrayOutput) Index(i pulumi.IntInput) GetActionGatewayEndpointVersionNetworkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetActionGatewayEndpointVersionNetwork {
+		return vs[0].([]GetActionGatewayEndpointVersionNetwork)[vs[1].(int)]
+	}).(GetActionGatewayEndpointVersionNetworkOutput)
+}
+
+type GetActionGatewayEndpointVersionPolicy struct {
+	// Action for calls no rule matches: allow, ask, or deny. Empty means ask.
+	DefaultAction string `pulumi:"defaultAction"`
+	// Rules for specific tools and toolbelts, in the order the configuration lists them
+	Rules []GetActionGatewayEndpointVersionPolicyRule `pulumi:"rules"`
+}
+
+// GetActionGatewayEndpointVersionPolicyInput is an input type that accepts GetActionGatewayEndpointVersionPolicyArgs and GetActionGatewayEndpointVersionPolicyOutput values.
+// You can construct a concrete instance of `GetActionGatewayEndpointVersionPolicyInput` via:
+//
+//	GetActionGatewayEndpointVersionPolicyArgs{...}
+type GetActionGatewayEndpointVersionPolicyInput interface {
+	pulumi.Input
+
+	ToGetActionGatewayEndpointVersionPolicyOutput() GetActionGatewayEndpointVersionPolicyOutput
+	ToGetActionGatewayEndpointVersionPolicyOutputWithContext(context.Context) GetActionGatewayEndpointVersionPolicyOutput
+}
+
+type GetActionGatewayEndpointVersionPolicyArgs struct {
+	// Action for calls no rule matches: allow, ask, or deny. Empty means ask.
+	DefaultAction pulumi.StringInput `pulumi:"defaultAction"`
+	// Rules for specific tools and toolbelts, in the order the configuration lists them
+	Rules GetActionGatewayEndpointVersionPolicyRuleArrayInput `pulumi:"rules"`
+}
+
+func (GetActionGatewayEndpointVersionPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetActionGatewayEndpointVersionPolicy)(nil)).Elem()
+}
+
+func (i GetActionGatewayEndpointVersionPolicyArgs) ToGetActionGatewayEndpointVersionPolicyOutput() GetActionGatewayEndpointVersionPolicyOutput {
+	return i.ToGetActionGatewayEndpointVersionPolicyOutputWithContext(context.Background())
+}
+
+func (i GetActionGatewayEndpointVersionPolicyArgs) ToGetActionGatewayEndpointVersionPolicyOutputWithContext(ctx context.Context) GetActionGatewayEndpointVersionPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetActionGatewayEndpointVersionPolicyOutput)
+}
+
+// GetActionGatewayEndpointVersionPolicyArrayInput is an input type that accepts GetActionGatewayEndpointVersionPolicyArray and GetActionGatewayEndpointVersionPolicyArrayOutput values.
+// You can construct a concrete instance of `GetActionGatewayEndpointVersionPolicyArrayInput` via:
+//
+//	GetActionGatewayEndpointVersionPolicyArray{ GetActionGatewayEndpointVersionPolicyArgs{...} }
+type GetActionGatewayEndpointVersionPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetActionGatewayEndpointVersionPolicyArrayOutput() GetActionGatewayEndpointVersionPolicyArrayOutput
+	ToGetActionGatewayEndpointVersionPolicyArrayOutputWithContext(context.Context) GetActionGatewayEndpointVersionPolicyArrayOutput
+}
+
+type GetActionGatewayEndpointVersionPolicyArray []GetActionGatewayEndpointVersionPolicyInput
+
+func (GetActionGatewayEndpointVersionPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetActionGatewayEndpointVersionPolicy)(nil)).Elem()
+}
+
+func (i GetActionGatewayEndpointVersionPolicyArray) ToGetActionGatewayEndpointVersionPolicyArrayOutput() GetActionGatewayEndpointVersionPolicyArrayOutput {
+	return i.ToGetActionGatewayEndpointVersionPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetActionGatewayEndpointVersionPolicyArray) ToGetActionGatewayEndpointVersionPolicyArrayOutputWithContext(ctx context.Context) GetActionGatewayEndpointVersionPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetActionGatewayEndpointVersionPolicyArrayOutput)
+}
+
+type GetActionGatewayEndpointVersionPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetActionGatewayEndpointVersionPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetActionGatewayEndpointVersionPolicy)(nil)).Elem()
+}
+
+func (o GetActionGatewayEndpointVersionPolicyOutput) ToGetActionGatewayEndpointVersionPolicyOutput() GetActionGatewayEndpointVersionPolicyOutput {
+	return o
+}
+
+func (o GetActionGatewayEndpointVersionPolicyOutput) ToGetActionGatewayEndpointVersionPolicyOutputWithContext(ctx context.Context) GetActionGatewayEndpointVersionPolicyOutput {
+	return o
+}
+
+// Action for calls no rule matches: allow, ask, or deny. Empty means ask.
+func (o GetActionGatewayEndpointVersionPolicyOutput) DefaultAction() pulumi.StringOutput {
+	return o.ApplyT(func(v GetActionGatewayEndpointVersionPolicy) string { return v.DefaultAction }).(pulumi.StringOutput)
+}
+
+// Rules for specific tools and toolbelts, in the order the configuration lists them
+func (o GetActionGatewayEndpointVersionPolicyOutput) Rules() GetActionGatewayEndpointVersionPolicyRuleArrayOutput {
+	return o.ApplyT(func(v GetActionGatewayEndpointVersionPolicy) []GetActionGatewayEndpointVersionPolicyRule {
+		return v.Rules
+	}).(GetActionGatewayEndpointVersionPolicyRuleArrayOutput)
+}
+
+type GetActionGatewayEndpointVersionPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetActionGatewayEndpointVersionPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetActionGatewayEndpointVersionPolicy)(nil)).Elem()
+}
+
+func (o GetActionGatewayEndpointVersionPolicyArrayOutput) ToGetActionGatewayEndpointVersionPolicyArrayOutput() GetActionGatewayEndpointVersionPolicyArrayOutput {
+	return o
+}
+
+func (o GetActionGatewayEndpointVersionPolicyArrayOutput) ToGetActionGatewayEndpointVersionPolicyArrayOutputWithContext(ctx context.Context) GetActionGatewayEndpointVersionPolicyArrayOutput {
+	return o
+}
+
+func (o GetActionGatewayEndpointVersionPolicyArrayOutput) Index(i pulumi.IntInput) GetActionGatewayEndpointVersionPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetActionGatewayEndpointVersionPolicy {
+		return vs[0].([]GetActionGatewayEndpointVersionPolicy)[vs[1].(int)]
+	}).(GetActionGatewayEndpointVersionPolicyOutput)
+}
+
+type GetActionGatewayEndpointVersionPolicyRule struct {
+	// allow, ask, or deny
+	Action string `pulumi:"action"`
+	// Argument values a call must match for the rule to apply, keyed by argument name
+	Match map[string]string `pulumi:"match"`
+	// Tool slug, optionally pinned as <tool_slug>@<version>, or toolbelt:<name>@<version>
+	Tool string `pulumi:"tool"`
+}
+
+// GetActionGatewayEndpointVersionPolicyRuleInput is an input type that accepts GetActionGatewayEndpointVersionPolicyRuleArgs and GetActionGatewayEndpointVersionPolicyRuleOutput values.
+// You can construct a concrete instance of `GetActionGatewayEndpointVersionPolicyRuleInput` via:
+//
+//	GetActionGatewayEndpointVersionPolicyRuleArgs{...}
+type GetActionGatewayEndpointVersionPolicyRuleInput interface {
+	pulumi.Input
+
+	ToGetActionGatewayEndpointVersionPolicyRuleOutput() GetActionGatewayEndpointVersionPolicyRuleOutput
+	ToGetActionGatewayEndpointVersionPolicyRuleOutputWithContext(context.Context) GetActionGatewayEndpointVersionPolicyRuleOutput
+}
+
+type GetActionGatewayEndpointVersionPolicyRuleArgs struct {
+	// allow, ask, or deny
+	Action pulumi.StringInput `pulumi:"action"`
+	// Argument values a call must match for the rule to apply, keyed by argument name
+	Match pulumi.StringMapInput `pulumi:"match"`
+	// Tool slug, optionally pinned as <tool_slug>@<version>, or toolbelt:<name>@<version>
+	Tool pulumi.StringInput `pulumi:"tool"`
+}
+
+func (GetActionGatewayEndpointVersionPolicyRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetActionGatewayEndpointVersionPolicyRule)(nil)).Elem()
+}
+
+func (i GetActionGatewayEndpointVersionPolicyRuleArgs) ToGetActionGatewayEndpointVersionPolicyRuleOutput() GetActionGatewayEndpointVersionPolicyRuleOutput {
+	return i.ToGetActionGatewayEndpointVersionPolicyRuleOutputWithContext(context.Background())
+}
+
+func (i GetActionGatewayEndpointVersionPolicyRuleArgs) ToGetActionGatewayEndpointVersionPolicyRuleOutputWithContext(ctx context.Context) GetActionGatewayEndpointVersionPolicyRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetActionGatewayEndpointVersionPolicyRuleOutput)
+}
+
+// GetActionGatewayEndpointVersionPolicyRuleArrayInput is an input type that accepts GetActionGatewayEndpointVersionPolicyRuleArray and GetActionGatewayEndpointVersionPolicyRuleArrayOutput values.
+// You can construct a concrete instance of `GetActionGatewayEndpointVersionPolicyRuleArrayInput` via:
+//
+//	GetActionGatewayEndpointVersionPolicyRuleArray{ GetActionGatewayEndpointVersionPolicyRuleArgs{...} }
+type GetActionGatewayEndpointVersionPolicyRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetActionGatewayEndpointVersionPolicyRuleArrayOutput() GetActionGatewayEndpointVersionPolicyRuleArrayOutput
+	ToGetActionGatewayEndpointVersionPolicyRuleArrayOutputWithContext(context.Context) GetActionGatewayEndpointVersionPolicyRuleArrayOutput
+}
+
+type GetActionGatewayEndpointVersionPolicyRuleArray []GetActionGatewayEndpointVersionPolicyRuleInput
+
+func (GetActionGatewayEndpointVersionPolicyRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetActionGatewayEndpointVersionPolicyRule)(nil)).Elem()
+}
+
+func (i GetActionGatewayEndpointVersionPolicyRuleArray) ToGetActionGatewayEndpointVersionPolicyRuleArrayOutput() GetActionGatewayEndpointVersionPolicyRuleArrayOutput {
+	return i.ToGetActionGatewayEndpointVersionPolicyRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetActionGatewayEndpointVersionPolicyRuleArray) ToGetActionGatewayEndpointVersionPolicyRuleArrayOutputWithContext(ctx context.Context) GetActionGatewayEndpointVersionPolicyRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetActionGatewayEndpointVersionPolicyRuleArrayOutput)
+}
+
+type GetActionGatewayEndpointVersionPolicyRuleOutput struct{ *pulumi.OutputState }
+
+func (GetActionGatewayEndpointVersionPolicyRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetActionGatewayEndpointVersionPolicyRule)(nil)).Elem()
+}
+
+func (o GetActionGatewayEndpointVersionPolicyRuleOutput) ToGetActionGatewayEndpointVersionPolicyRuleOutput() GetActionGatewayEndpointVersionPolicyRuleOutput {
+	return o
+}
+
+func (o GetActionGatewayEndpointVersionPolicyRuleOutput) ToGetActionGatewayEndpointVersionPolicyRuleOutputWithContext(ctx context.Context) GetActionGatewayEndpointVersionPolicyRuleOutput {
+	return o
+}
+
+// allow, ask, or deny
+func (o GetActionGatewayEndpointVersionPolicyRuleOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v GetActionGatewayEndpointVersionPolicyRule) string { return v.Action }).(pulumi.StringOutput)
+}
+
+// Argument values a call must match for the rule to apply, keyed by argument name
+func (o GetActionGatewayEndpointVersionPolicyRuleOutput) Match() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetActionGatewayEndpointVersionPolicyRule) map[string]string { return v.Match }).(pulumi.StringMapOutput)
+}
+
+// Tool slug, optionally pinned as <tool_slug>@<version>, or toolbelt:<name>@<version>
+func (o GetActionGatewayEndpointVersionPolicyRuleOutput) Tool() pulumi.StringOutput {
+	return o.ApplyT(func(v GetActionGatewayEndpointVersionPolicyRule) string { return v.Tool }).(pulumi.StringOutput)
+}
+
+type GetActionGatewayEndpointVersionPolicyRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetActionGatewayEndpointVersionPolicyRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetActionGatewayEndpointVersionPolicyRule)(nil)).Elem()
+}
+
+func (o GetActionGatewayEndpointVersionPolicyRuleArrayOutput) ToGetActionGatewayEndpointVersionPolicyRuleArrayOutput() GetActionGatewayEndpointVersionPolicyRuleArrayOutput {
+	return o
+}
+
+func (o GetActionGatewayEndpointVersionPolicyRuleArrayOutput) ToGetActionGatewayEndpointVersionPolicyRuleArrayOutputWithContext(ctx context.Context) GetActionGatewayEndpointVersionPolicyRuleArrayOutput {
+	return o
+}
+
+func (o GetActionGatewayEndpointVersionPolicyRuleArrayOutput) Index(i pulumi.IntInput) GetActionGatewayEndpointVersionPolicyRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetActionGatewayEndpointVersionPolicyRule {
+		return vs[0].([]GetActionGatewayEndpointVersionPolicyRule)[vs[1].(int)]
+	}).(GetActionGatewayEndpointVersionPolicyRuleOutput)
 }
 
 type GetActionGatewayProvidersFilter struct {
@@ -77280,1739 +78796,6 @@ func (o GetAppSpecJobTerminationPtrOutput) GracePeriodSeconds() pulumi.IntPtrOut
 	}).(pulumi.IntPtrOutput)
 }
 
-type GetAppSpecMaintenance struct {
-	// Indicates whether the app should be archived. Setting this to true implies that enabled is set to true.
-	Archive *bool `pulumi:"archive"`
-	// Whether to automatically deploy images pushed to DOCR.
-	Enabled *bool `pulumi:"enabled"`
-	// A custom offline page to display when maintenance mode is enabled or the app is archived.
-	OfflinePageUrl *string `pulumi:"offlinePageUrl"`
-}
-
-// GetAppSpecMaintenanceInput is an input type that accepts GetAppSpecMaintenanceArgs and GetAppSpecMaintenanceOutput values.
-// You can construct a concrete instance of `GetAppSpecMaintenanceInput` via:
-//
-//	GetAppSpecMaintenanceArgs{...}
-type GetAppSpecMaintenanceInput interface {
-	pulumi.Input
-
-	ToGetAppSpecMaintenanceOutput() GetAppSpecMaintenanceOutput
-	ToGetAppSpecMaintenanceOutputWithContext(context.Context) GetAppSpecMaintenanceOutput
-}
-
-type GetAppSpecMaintenanceArgs struct {
-	// Indicates whether the app should be archived. Setting this to true implies that enabled is set to true.
-	Archive pulumi.BoolPtrInput `pulumi:"archive"`
-	// Whether to automatically deploy images pushed to DOCR.
-	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// A custom offline page to display when maintenance mode is enabled or the app is archived.
-	OfflinePageUrl pulumi.StringPtrInput `pulumi:"offlinePageUrl"`
-}
-
-func (GetAppSpecMaintenanceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppSpecMaintenance)(nil)).Elem()
-}
-
-func (i GetAppSpecMaintenanceArgs) ToGetAppSpecMaintenanceOutput() GetAppSpecMaintenanceOutput {
-	return i.ToGetAppSpecMaintenanceOutputWithContext(context.Background())
-}
-
-func (i GetAppSpecMaintenanceArgs) ToGetAppSpecMaintenanceOutputWithContext(ctx context.Context) GetAppSpecMaintenanceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecMaintenanceOutput)
-}
-
-func (i GetAppSpecMaintenanceArgs) ToGetAppSpecMaintenancePtrOutput() GetAppSpecMaintenancePtrOutput {
-	return i.ToGetAppSpecMaintenancePtrOutputWithContext(context.Background())
-}
-
-func (i GetAppSpecMaintenanceArgs) ToGetAppSpecMaintenancePtrOutputWithContext(ctx context.Context) GetAppSpecMaintenancePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecMaintenanceOutput).ToGetAppSpecMaintenancePtrOutputWithContext(ctx)
-}
-
-// GetAppSpecMaintenancePtrInput is an input type that accepts GetAppSpecMaintenanceArgs, GetAppSpecMaintenancePtr and GetAppSpecMaintenancePtrOutput values.
-// You can construct a concrete instance of `GetAppSpecMaintenancePtrInput` via:
-//
-//	        GetAppSpecMaintenanceArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetAppSpecMaintenancePtrInput interface {
-	pulumi.Input
-
-	ToGetAppSpecMaintenancePtrOutput() GetAppSpecMaintenancePtrOutput
-	ToGetAppSpecMaintenancePtrOutputWithContext(context.Context) GetAppSpecMaintenancePtrOutput
-}
-
-type getAppSpecMaintenancePtrType GetAppSpecMaintenanceArgs
-
-func GetAppSpecMaintenancePtr(v *GetAppSpecMaintenanceArgs) GetAppSpecMaintenancePtrInput {
-	return (*getAppSpecMaintenancePtrType)(v)
-}
-
-func (*getAppSpecMaintenancePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAppSpecMaintenance)(nil)).Elem()
-}
-
-func (i *getAppSpecMaintenancePtrType) ToGetAppSpecMaintenancePtrOutput() GetAppSpecMaintenancePtrOutput {
-	return i.ToGetAppSpecMaintenancePtrOutputWithContext(context.Background())
-}
-
-func (i *getAppSpecMaintenancePtrType) ToGetAppSpecMaintenancePtrOutputWithContext(ctx context.Context) GetAppSpecMaintenancePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecMaintenancePtrOutput)
-}
-
-type GetAppSpecMaintenanceOutput struct{ *pulumi.OutputState }
-
-func (GetAppSpecMaintenanceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppSpecMaintenance)(nil)).Elem()
-}
-
-func (o GetAppSpecMaintenanceOutput) ToGetAppSpecMaintenanceOutput() GetAppSpecMaintenanceOutput {
-	return o
-}
-
-func (o GetAppSpecMaintenanceOutput) ToGetAppSpecMaintenanceOutputWithContext(ctx context.Context) GetAppSpecMaintenanceOutput {
-	return o
-}
-
-func (o GetAppSpecMaintenanceOutput) ToGetAppSpecMaintenancePtrOutput() GetAppSpecMaintenancePtrOutput {
-	return o.ToGetAppSpecMaintenancePtrOutputWithContext(context.Background())
-}
-
-func (o GetAppSpecMaintenanceOutput) ToGetAppSpecMaintenancePtrOutputWithContext(ctx context.Context) GetAppSpecMaintenancePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecMaintenance) *GetAppSpecMaintenance {
-		return &v
-	}).(GetAppSpecMaintenancePtrOutput)
-}
-
-// Indicates whether the app should be archived. Setting this to true implies that enabled is set to true.
-func (o GetAppSpecMaintenanceOutput) Archive() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetAppSpecMaintenance) *bool { return v.Archive }).(pulumi.BoolPtrOutput)
-}
-
-// Whether to automatically deploy images pushed to DOCR.
-func (o GetAppSpecMaintenanceOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetAppSpecMaintenance) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
-}
-
-// A custom offline page to display when maintenance mode is enabled or the app is archived.
-func (o GetAppSpecMaintenanceOutput) OfflinePageUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetAppSpecMaintenance) *string { return v.OfflinePageUrl }).(pulumi.StringPtrOutput)
-}
-
-type GetAppSpecMaintenancePtrOutput struct{ *pulumi.OutputState }
-
-func (GetAppSpecMaintenancePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAppSpecMaintenance)(nil)).Elem()
-}
-
-func (o GetAppSpecMaintenancePtrOutput) ToGetAppSpecMaintenancePtrOutput() GetAppSpecMaintenancePtrOutput {
-	return o
-}
-
-func (o GetAppSpecMaintenancePtrOutput) ToGetAppSpecMaintenancePtrOutputWithContext(ctx context.Context) GetAppSpecMaintenancePtrOutput {
-	return o
-}
-
-func (o GetAppSpecMaintenancePtrOutput) Elem() GetAppSpecMaintenanceOutput {
-	return o.ApplyT(func(v *GetAppSpecMaintenance) GetAppSpecMaintenance {
-		if v != nil {
-			return *v
-		}
-		var ret GetAppSpecMaintenance
-		return ret
-	}).(GetAppSpecMaintenanceOutput)
-}
-
-// Indicates whether the app should be archived. Setting this to true implies that enabled is set to true.
-func (o GetAppSpecMaintenancePtrOutput) Archive() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GetAppSpecMaintenance) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Archive
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Whether to automatically deploy images pushed to DOCR.
-func (o GetAppSpecMaintenancePtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GetAppSpecMaintenance) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Enabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-// A custom offline page to display when maintenance mode is enabled or the app is archived.
-func (o GetAppSpecMaintenancePtrOutput) OfflinePageUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetAppSpecMaintenance) *string {
-		if v == nil {
-			return nil
-		}
-		return v.OfflinePageUrl
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetAppSpecService struct {
-	// Describes an alert policy for the component.
-	Alerts []GetAppSpecServiceAlert `pulumi:"alerts"`
-	// Configuration for automatically scaling this component based on metrics.
-	Autoscaling *GetAppSpecServiceAutoscaling `pulumi:"autoscaling"`
-	// A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set. To read your repo, App Platform must be authorized to access your Bitbucket account. Go to this URL to link App Platform to your Bitbucket account: `https://cloud.digitalocean.com/apps/bitbucket/install`.
-	Bitbucket *GetAppSpecServiceBitbucket `pulumi:"bitbucket"`
-	// An optional build command to run while building this component from source.
-	BuildCommand *string `pulumi:"buildCommand"`
-	// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
-	//
-	// Deprecated: Service level CORS rules are deprecated in favor of ingresses
-	Cors *GetAppSpecServiceCors `pulumi:"cors"`
-	// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
-	DockerfilePath *string `pulumi:"dockerfilePath"`
-	// An environment slug describing the type of this app.
-	EnvironmentSlug *string `pulumi:"environmentSlug"`
-	// Describes an environment variable made available to an app competent.
-	Envs []GetAppSpecServiceEnv `pulumi:"envs"`
-	// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
-	Git *GetAppSpecServiceGit `pulumi:"git"`
-	// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
-	Github *GetAppSpecServiceGithub `pulumi:"github"`
-	// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
-	Gitlab *GetAppSpecServiceGitlab `pulumi:"gitlab"`
-	// A health check to determine the availability of this component.
-	HealthCheck *GetAppSpecServiceHealthCheck `pulumi:"healthCheck"`
-	// The internal port on which this service's run command will listen.
-	HttpPort int `pulumi:"httpPort"`
-	// An image to use as the component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
-	Image *GetAppSpecServiceImage `pulumi:"image"`
-	// The amount of instances that this component should be scaled to.
-	InstanceCount *int `pulumi:"instanceCount"`
-	// The instance size to use for this component.
-	InstanceSizeSlug *string `pulumi:"instanceSizeSlug"`
-	// A list of ports on which this service will listen for internal traffic.
-	InternalPorts       []int                                 `pulumi:"internalPorts"`
-	LivenessHealthCheck *GetAppSpecServiceLivenessHealthCheck `pulumi:"livenessHealthCheck"`
-	// Describes a log forwarding destination.
-	LogDestinations []GetAppSpecServiceLogDestination `pulumi:"logDestinations"`
-	// The name of the component.
-	Name string `pulumi:"name"`
-	// Deprecated: Service level routes are deprecated in favor of ingresses
-	Routes []GetAppSpecServiceRoute `pulumi:"routes"`
-	// An optional run command to override the component's default.
-	RunCommand *string `pulumi:"runCommand"`
-	// An optional path to the working directory to use for the build.
-	SourceDir *string `pulumi:"sourceDir"`
-	// Contains a component's termination parameters.
-	Termination *GetAppSpecServiceTermination `pulumi:"termination"`
-}
-
-// GetAppSpecServiceInput is an input type that accepts GetAppSpecServiceArgs and GetAppSpecServiceOutput values.
-// You can construct a concrete instance of `GetAppSpecServiceInput` via:
-//
-//	GetAppSpecServiceArgs{...}
-type GetAppSpecServiceInput interface {
-	pulumi.Input
-
-	ToGetAppSpecServiceOutput() GetAppSpecServiceOutput
-	ToGetAppSpecServiceOutputWithContext(context.Context) GetAppSpecServiceOutput
-}
-
-type GetAppSpecServiceArgs struct {
-	// Describes an alert policy for the component.
-	Alerts GetAppSpecServiceAlertArrayInput `pulumi:"alerts"`
-	// Configuration for automatically scaling this component based on metrics.
-	Autoscaling GetAppSpecServiceAutoscalingPtrInput `pulumi:"autoscaling"`
-	// A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set. To read your repo, App Platform must be authorized to access your Bitbucket account. Go to this URL to link App Platform to your Bitbucket account: `https://cloud.digitalocean.com/apps/bitbucket/install`.
-	Bitbucket GetAppSpecServiceBitbucketPtrInput `pulumi:"bitbucket"`
-	// An optional build command to run while building this component from source.
-	BuildCommand pulumi.StringPtrInput `pulumi:"buildCommand"`
-	// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
-	//
-	// Deprecated: Service level CORS rules are deprecated in favor of ingresses
-	Cors GetAppSpecServiceCorsPtrInput `pulumi:"cors"`
-	// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
-	DockerfilePath pulumi.StringPtrInput `pulumi:"dockerfilePath"`
-	// An environment slug describing the type of this app.
-	EnvironmentSlug pulumi.StringPtrInput `pulumi:"environmentSlug"`
-	// Describes an environment variable made available to an app competent.
-	Envs GetAppSpecServiceEnvArrayInput `pulumi:"envs"`
-	// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
-	Git GetAppSpecServiceGitPtrInput `pulumi:"git"`
-	// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
-	Github GetAppSpecServiceGithubPtrInput `pulumi:"github"`
-	// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
-	Gitlab GetAppSpecServiceGitlabPtrInput `pulumi:"gitlab"`
-	// A health check to determine the availability of this component.
-	HealthCheck GetAppSpecServiceHealthCheckPtrInput `pulumi:"healthCheck"`
-	// The internal port on which this service's run command will listen.
-	HttpPort pulumi.IntInput `pulumi:"httpPort"`
-	// An image to use as the component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
-	Image GetAppSpecServiceImagePtrInput `pulumi:"image"`
-	// The amount of instances that this component should be scaled to.
-	InstanceCount pulumi.IntPtrInput `pulumi:"instanceCount"`
-	// The instance size to use for this component.
-	InstanceSizeSlug pulumi.StringPtrInput `pulumi:"instanceSizeSlug"`
-	// A list of ports on which this service will listen for internal traffic.
-	InternalPorts       pulumi.IntArrayInput                         `pulumi:"internalPorts"`
-	LivenessHealthCheck GetAppSpecServiceLivenessHealthCheckPtrInput `pulumi:"livenessHealthCheck"`
-	// Describes a log forwarding destination.
-	LogDestinations GetAppSpecServiceLogDestinationArrayInput `pulumi:"logDestinations"`
-	// The name of the component.
-	Name pulumi.StringInput `pulumi:"name"`
-	// Deprecated: Service level routes are deprecated in favor of ingresses
-	Routes GetAppSpecServiceRouteArrayInput `pulumi:"routes"`
-	// An optional run command to override the component's default.
-	RunCommand pulumi.StringPtrInput `pulumi:"runCommand"`
-	// An optional path to the working directory to use for the build.
-	SourceDir pulumi.StringPtrInput `pulumi:"sourceDir"`
-	// Contains a component's termination parameters.
-	Termination GetAppSpecServiceTerminationPtrInput `pulumi:"termination"`
-}
-
-func (GetAppSpecServiceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppSpecService)(nil)).Elem()
-}
-
-func (i GetAppSpecServiceArgs) ToGetAppSpecServiceOutput() GetAppSpecServiceOutput {
-	return i.ToGetAppSpecServiceOutputWithContext(context.Background())
-}
-
-func (i GetAppSpecServiceArgs) ToGetAppSpecServiceOutputWithContext(ctx context.Context) GetAppSpecServiceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceOutput)
-}
-
-// GetAppSpecServiceArrayInput is an input type that accepts GetAppSpecServiceArray and GetAppSpecServiceArrayOutput values.
-// You can construct a concrete instance of `GetAppSpecServiceArrayInput` via:
-//
-//	GetAppSpecServiceArray{ GetAppSpecServiceArgs{...} }
-type GetAppSpecServiceArrayInput interface {
-	pulumi.Input
-
-	ToGetAppSpecServiceArrayOutput() GetAppSpecServiceArrayOutput
-	ToGetAppSpecServiceArrayOutputWithContext(context.Context) GetAppSpecServiceArrayOutput
-}
-
-type GetAppSpecServiceArray []GetAppSpecServiceInput
-
-func (GetAppSpecServiceArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetAppSpecService)(nil)).Elem()
-}
-
-func (i GetAppSpecServiceArray) ToGetAppSpecServiceArrayOutput() GetAppSpecServiceArrayOutput {
-	return i.ToGetAppSpecServiceArrayOutputWithContext(context.Background())
-}
-
-func (i GetAppSpecServiceArray) ToGetAppSpecServiceArrayOutputWithContext(ctx context.Context) GetAppSpecServiceArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceArrayOutput)
-}
-
-type GetAppSpecServiceOutput struct{ *pulumi.OutputState }
-
-func (GetAppSpecServiceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppSpecService)(nil)).Elem()
-}
-
-func (o GetAppSpecServiceOutput) ToGetAppSpecServiceOutput() GetAppSpecServiceOutput {
-	return o
-}
-
-func (o GetAppSpecServiceOutput) ToGetAppSpecServiceOutputWithContext(ctx context.Context) GetAppSpecServiceOutput {
-	return o
-}
-
-// Describes an alert policy for the component.
-func (o GetAppSpecServiceOutput) Alerts() GetAppSpecServiceAlertArrayOutput {
-	return o.ApplyT(func(v GetAppSpecService) []GetAppSpecServiceAlert { return v.Alerts }).(GetAppSpecServiceAlertArrayOutput)
-}
-
-// Configuration for automatically scaling this component based on metrics.
-func (o GetAppSpecServiceOutput) Autoscaling() GetAppSpecServiceAutoscalingPtrOutput {
-	return o.ApplyT(func(v GetAppSpecService) *GetAppSpecServiceAutoscaling { return v.Autoscaling }).(GetAppSpecServiceAutoscalingPtrOutput)
-}
-
-// A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set. To read your repo, App Platform must be authorized to access your Bitbucket account. Go to this URL to link App Platform to your Bitbucket account: `https://cloud.digitalocean.com/apps/bitbucket/install`.
-func (o GetAppSpecServiceOutput) Bitbucket() GetAppSpecServiceBitbucketPtrOutput {
-	return o.ApplyT(func(v GetAppSpecService) *GetAppSpecServiceBitbucket { return v.Bitbucket }).(GetAppSpecServiceBitbucketPtrOutput)
-}
-
-// An optional build command to run while building this component from source.
-func (o GetAppSpecServiceOutput) BuildCommand() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetAppSpecService) *string { return v.BuildCommand }).(pulumi.StringPtrOutput)
-}
-
-// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
-//
-// Deprecated: Service level CORS rules are deprecated in favor of ingresses
-func (o GetAppSpecServiceOutput) Cors() GetAppSpecServiceCorsPtrOutput {
-	return o.ApplyT(func(v GetAppSpecService) *GetAppSpecServiceCors { return v.Cors }).(GetAppSpecServiceCorsPtrOutput)
-}
-
-// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
-func (o GetAppSpecServiceOutput) DockerfilePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetAppSpecService) *string { return v.DockerfilePath }).(pulumi.StringPtrOutput)
-}
-
-// An environment slug describing the type of this app.
-func (o GetAppSpecServiceOutput) EnvironmentSlug() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetAppSpecService) *string { return v.EnvironmentSlug }).(pulumi.StringPtrOutput)
-}
-
-// Describes an environment variable made available to an app competent.
-func (o GetAppSpecServiceOutput) Envs() GetAppSpecServiceEnvArrayOutput {
-	return o.ApplyT(func(v GetAppSpecService) []GetAppSpecServiceEnv { return v.Envs }).(GetAppSpecServiceEnvArrayOutput)
-}
-
-// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
-func (o GetAppSpecServiceOutput) Git() GetAppSpecServiceGitPtrOutput {
-	return o.ApplyT(func(v GetAppSpecService) *GetAppSpecServiceGit { return v.Git }).(GetAppSpecServiceGitPtrOutput)
-}
-
-// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
-func (o GetAppSpecServiceOutput) Github() GetAppSpecServiceGithubPtrOutput {
-	return o.ApplyT(func(v GetAppSpecService) *GetAppSpecServiceGithub { return v.Github }).(GetAppSpecServiceGithubPtrOutput)
-}
-
-// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
-func (o GetAppSpecServiceOutput) Gitlab() GetAppSpecServiceGitlabPtrOutput {
-	return o.ApplyT(func(v GetAppSpecService) *GetAppSpecServiceGitlab { return v.Gitlab }).(GetAppSpecServiceGitlabPtrOutput)
-}
-
-// A health check to determine the availability of this component.
-func (o GetAppSpecServiceOutput) HealthCheck() GetAppSpecServiceHealthCheckPtrOutput {
-	return o.ApplyT(func(v GetAppSpecService) *GetAppSpecServiceHealthCheck { return v.HealthCheck }).(GetAppSpecServiceHealthCheckPtrOutput)
-}
-
-// The internal port on which this service's run command will listen.
-func (o GetAppSpecServiceOutput) HttpPort() pulumi.IntOutput {
-	return o.ApplyT(func(v GetAppSpecService) int { return v.HttpPort }).(pulumi.IntOutput)
-}
-
-// An image to use as the component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
-func (o GetAppSpecServiceOutput) Image() GetAppSpecServiceImagePtrOutput {
-	return o.ApplyT(func(v GetAppSpecService) *GetAppSpecServiceImage { return v.Image }).(GetAppSpecServiceImagePtrOutput)
-}
-
-// The amount of instances that this component should be scaled to.
-func (o GetAppSpecServiceOutput) InstanceCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetAppSpecService) *int { return v.InstanceCount }).(pulumi.IntPtrOutput)
-}
-
-// The instance size to use for this component.
-func (o GetAppSpecServiceOutput) InstanceSizeSlug() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetAppSpecService) *string { return v.InstanceSizeSlug }).(pulumi.StringPtrOutput)
-}
-
-// A list of ports on which this service will listen for internal traffic.
-func (o GetAppSpecServiceOutput) InternalPorts() pulumi.IntArrayOutput {
-	return o.ApplyT(func(v GetAppSpecService) []int { return v.InternalPorts }).(pulumi.IntArrayOutput)
-}
-
-func (o GetAppSpecServiceOutput) LivenessHealthCheck() GetAppSpecServiceLivenessHealthCheckPtrOutput {
-	return o.ApplyT(func(v GetAppSpecService) *GetAppSpecServiceLivenessHealthCheck { return v.LivenessHealthCheck }).(GetAppSpecServiceLivenessHealthCheckPtrOutput)
-}
-
-// Describes a log forwarding destination.
-func (o GetAppSpecServiceOutput) LogDestinations() GetAppSpecServiceLogDestinationArrayOutput {
-	return o.ApplyT(func(v GetAppSpecService) []GetAppSpecServiceLogDestination { return v.LogDestinations }).(GetAppSpecServiceLogDestinationArrayOutput)
-}
-
-// The name of the component.
-func (o GetAppSpecServiceOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAppSpecService) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// Deprecated: Service level routes are deprecated in favor of ingresses
-func (o GetAppSpecServiceOutput) Routes() GetAppSpecServiceRouteArrayOutput {
-	return o.ApplyT(func(v GetAppSpecService) []GetAppSpecServiceRoute { return v.Routes }).(GetAppSpecServiceRouteArrayOutput)
-}
-
-// An optional run command to override the component's default.
-func (o GetAppSpecServiceOutput) RunCommand() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetAppSpecService) *string { return v.RunCommand }).(pulumi.StringPtrOutput)
-}
-
-// An optional path to the working directory to use for the build.
-func (o GetAppSpecServiceOutput) SourceDir() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetAppSpecService) *string { return v.SourceDir }).(pulumi.StringPtrOutput)
-}
-
-// Contains a component's termination parameters.
-func (o GetAppSpecServiceOutput) Termination() GetAppSpecServiceTerminationPtrOutput {
-	return o.ApplyT(func(v GetAppSpecService) *GetAppSpecServiceTermination { return v.Termination }).(GetAppSpecServiceTerminationPtrOutput)
-}
-
-type GetAppSpecServiceArrayOutput struct{ *pulumi.OutputState }
-
-func (GetAppSpecServiceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetAppSpecService)(nil)).Elem()
-}
-
-func (o GetAppSpecServiceArrayOutput) ToGetAppSpecServiceArrayOutput() GetAppSpecServiceArrayOutput {
-	return o
-}
-
-func (o GetAppSpecServiceArrayOutput) ToGetAppSpecServiceArrayOutputWithContext(ctx context.Context) GetAppSpecServiceArrayOutput {
-	return o
-}
-
-func (o GetAppSpecServiceArrayOutput) Index(i pulumi.IntInput) GetAppSpecServiceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppSpecService {
-		return vs[0].([]GetAppSpecService)[vs[1].(int)]
-	}).(GetAppSpecServiceOutput)
-}
-
-type GetAppSpecServiceAlert struct {
-	Destinations *GetAppSpecServiceAlertDestinations `pulumi:"destinations"`
-	// Determines whether or not the alert is disabled (default: `false`).
-	Disabled *bool `pulumi:"disabled"`
-	// The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
-	Operator string `pulumi:"operator"`
-	// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
-	Rule string `pulumi:"rule"`
-	// The threshold for the type of the warning.
-	Value float64 `pulumi:"value"`
-	// The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
-	Window string `pulumi:"window"`
-}
-
-// GetAppSpecServiceAlertInput is an input type that accepts GetAppSpecServiceAlertArgs and GetAppSpecServiceAlertOutput values.
-// You can construct a concrete instance of `GetAppSpecServiceAlertInput` via:
-//
-//	GetAppSpecServiceAlertArgs{...}
-type GetAppSpecServiceAlertInput interface {
-	pulumi.Input
-
-	ToGetAppSpecServiceAlertOutput() GetAppSpecServiceAlertOutput
-	ToGetAppSpecServiceAlertOutputWithContext(context.Context) GetAppSpecServiceAlertOutput
-}
-
-type GetAppSpecServiceAlertArgs struct {
-	Destinations GetAppSpecServiceAlertDestinationsPtrInput `pulumi:"destinations"`
-	// Determines whether or not the alert is disabled (default: `false`).
-	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
-	// The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
-	Operator pulumi.StringInput `pulumi:"operator"`
-	// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
-	Rule pulumi.StringInput `pulumi:"rule"`
-	// The threshold for the type of the warning.
-	Value pulumi.Float64Input `pulumi:"value"`
-	// The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
-	Window pulumi.StringInput `pulumi:"window"`
-}
-
-func (GetAppSpecServiceAlertArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppSpecServiceAlert)(nil)).Elem()
-}
-
-func (i GetAppSpecServiceAlertArgs) ToGetAppSpecServiceAlertOutput() GetAppSpecServiceAlertOutput {
-	return i.ToGetAppSpecServiceAlertOutputWithContext(context.Background())
-}
-
-func (i GetAppSpecServiceAlertArgs) ToGetAppSpecServiceAlertOutputWithContext(ctx context.Context) GetAppSpecServiceAlertOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceAlertOutput)
-}
-
-// GetAppSpecServiceAlertArrayInput is an input type that accepts GetAppSpecServiceAlertArray and GetAppSpecServiceAlertArrayOutput values.
-// You can construct a concrete instance of `GetAppSpecServiceAlertArrayInput` via:
-//
-//	GetAppSpecServiceAlertArray{ GetAppSpecServiceAlertArgs{...} }
-type GetAppSpecServiceAlertArrayInput interface {
-	pulumi.Input
-
-	ToGetAppSpecServiceAlertArrayOutput() GetAppSpecServiceAlertArrayOutput
-	ToGetAppSpecServiceAlertArrayOutputWithContext(context.Context) GetAppSpecServiceAlertArrayOutput
-}
-
-type GetAppSpecServiceAlertArray []GetAppSpecServiceAlertInput
-
-func (GetAppSpecServiceAlertArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetAppSpecServiceAlert)(nil)).Elem()
-}
-
-func (i GetAppSpecServiceAlertArray) ToGetAppSpecServiceAlertArrayOutput() GetAppSpecServiceAlertArrayOutput {
-	return i.ToGetAppSpecServiceAlertArrayOutputWithContext(context.Background())
-}
-
-func (i GetAppSpecServiceAlertArray) ToGetAppSpecServiceAlertArrayOutputWithContext(ctx context.Context) GetAppSpecServiceAlertArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceAlertArrayOutput)
-}
-
-type GetAppSpecServiceAlertOutput struct{ *pulumi.OutputState }
-
-func (GetAppSpecServiceAlertOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppSpecServiceAlert)(nil)).Elem()
-}
-
-func (o GetAppSpecServiceAlertOutput) ToGetAppSpecServiceAlertOutput() GetAppSpecServiceAlertOutput {
-	return o
-}
-
-func (o GetAppSpecServiceAlertOutput) ToGetAppSpecServiceAlertOutputWithContext(ctx context.Context) GetAppSpecServiceAlertOutput {
-	return o
-}
-
-func (o GetAppSpecServiceAlertOutput) Destinations() GetAppSpecServiceAlertDestinationsPtrOutput {
-	return o.ApplyT(func(v GetAppSpecServiceAlert) *GetAppSpecServiceAlertDestinations { return v.Destinations }).(GetAppSpecServiceAlertDestinationsPtrOutput)
-}
-
-// Determines whether or not the alert is disabled (default: `false`).
-func (o GetAppSpecServiceAlertOutput) Disabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetAppSpecServiceAlert) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
-}
-
-// The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
-func (o GetAppSpecServiceAlertOutput) Operator() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAppSpecServiceAlert) string { return v.Operator }).(pulumi.StringOutput)
-}
-
-// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
-func (o GetAppSpecServiceAlertOutput) Rule() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAppSpecServiceAlert) string { return v.Rule }).(pulumi.StringOutput)
-}
-
-// The threshold for the type of the warning.
-func (o GetAppSpecServiceAlertOutput) Value() pulumi.Float64Output {
-	return o.ApplyT(func(v GetAppSpecServiceAlert) float64 { return v.Value }).(pulumi.Float64Output)
-}
-
-// The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
-func (o GetAppSpecServiceAlertOutput) Window() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAppSpecServiceAlert) string { return v.Window }).(pulumi.StringOutput)
-}
-
-type GetAppSpecServiceAlertArrayOutput struct{ *pulumi.OutputState }
-
-func (GetAppSpecServiceAlertArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetAppSpecServiceAlert)(nil)).Elem()
-}
-
-func (o GetAppSpecServiceAlertArrayOutput) ToGetAppSpecServiceAlertArrayOutput() GetAppSpecServiceAlertArrayOutput {
-	return o
-}
-
-func (o GetAppSpecServiceAlertArrayOutput) ToGetAppSpecServiceAlertArrayOutputWithContext(ctx context.Context) GetAppSpecServiceAlertArrayOutput {
-	return o
-}
-
-func (o GetAppSpecServiceAlertArrayOutput) Index(i pulumi.IntInput) GetAppSpecServiceAlertOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppSpecServiceAlert {
-		return vs[0].([]GetAppSpecServiceAlert)[vs[1].(int)]
-	}).(GetAppSpecServiceAlertOutput)
-}
-
-type GetAppSpecServiceAlertDestinations struct {
-	Emails        []string                                         `pulumi:"emails"`
-	SlackWebhooks []GetAppSpecServiceAlertDestinationsSlackWebhook `pulumi:"slackWebhooks"`
-}
-
-// GetAppSpecServiceAlertDestinationsInput is an input type that accepts GetAppSpecServiceAlertDestinationsArgs and GetAppSpecServiceAlertDestinationsOutput values.
-// You can construct a concrete instance of `GetAppSpecServiceAlertDestinationsInput` via:
-//
-//	GetAppSpecServiceAlertDestinationsArgs{...}
-type GetAppSpecServiceAlertDestinationsInput interface {
-	pulumi.Input
-
-	ToGetAppSpecServiceAlertDestinationsOutput() GetAppSpecServiceAlertDestinationsOutput
-	ToGetAppSpecServiceAlertDestinationsOutputWithContext(context.Context) GetAppSpecServiceAlertDestinationsOutput
-}
-
-type GetAppSpecServiceAlertDestinationsArgs struct {
-	Emails        pulumi.StringArrayInput                                  `pulumi:"emails"`
-	SlackWebhooks GetAppSpecServiceAlertDestinationsSlackWebhookArrayInput `pulumi:"slackWebhooks"`
-}
-
-func (GetAppSpecServiceAlertDestinationsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppSpecServiceAlertDestinations)(nil)).Elem()
-}
-
-func (i GetAppSpecServiceAlertDestinationsArgs) ToGetAppSpecServiceAlertDestinationsOutput() GetAppSpecServiceAlertDestinationsOutput {
-	return i.ToGetAppSpecServiceAlertDestinationsOutputWithContext(context.Background())
-}
-
-func (i GetAppSpecServiceAlertDestinationsArgs) ToGetAppSpecServiceAlertDestinationsOutputWithContext(ctx context.Context) GetAppSpecServiceAlertDestinationsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceAlertDestinationsOutput)
-}
-
-func (i GetAppSpecServiceAlertDestinationsArgs) ToGetAppSpecServiceAlertDestinationsPtrOutput() GetAppSpecServiceAlertDestinationsPtrOutput {
-	return i.ToGetAppSpecServiceAlertDestinationsPtrOutputWithContext(context.Background())
-}
-
-func (i GetAppSpecServiceAlertDestinationsArgs) ToGetAppSpecServiceAlertDestinationsPtrOutputWithContext(ctx context.Context) GetAppSpecServiceAlertDestinationsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceAlertDestinationsOutput).ToGetAppSpecServiceAlertDestinationsPtrOutputWithContext(ctx)
-}
-
-// GetAppSpecServiceAlertDestinationsPtrInput is an input type that accepts GetAppSpecServiceAlertDestinationsArgs, GetAppSpecServiceAlertDestinationsPtr and GetAppSpecServiceAlertDestinationsPtrOutput values.
-// You can construct a concrete instance of `GetAppSpecServiceAlertDestinationsPtrInput` via:
-//
-//	        GetAppSpecServiceAlertDestinationsArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetAppSpecServiceAlertDestinationsPtrInput interface {
-	pulumi.Input
-
-	ToGetAppSpecServiceAlertDestinationsPtrOutput() GetAppSpecServiceAlertDestinationsPtrOutput
-	ToGetAppSpecServiceAlertDestinationsPtrOutputWithContext(context.Context) GetAppSpecServiceAlertDestinationsPtrOutput
-}
-
-type getAppSpecServiceAlertDestinationsPtrType GetAppSpecServiceAlertDestinationsArgs
-
-func GetAppSpecServiceAlertDestinationsPtr(v *GetAppSpecServiceAlertDestinationsArgs) GetAppSpecServiceAlertDestinationsPtrInput {
-	return (*getAppSpecServiceAlertDestinationsPtrType)(v)
-}
-
-func (*getAppSpecServiceAlertDestinationsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAppSpecServiceAlertDestinations)(nil)).Elem()
-}
-
-func (i *getAppSpecServiceAlertDestinationsPtrType) ToGetAppSpecServiceAlertDestinationsPtrOutput() GetAppSpecServiceAlertDestinationsPtrOutput {
-	return i.ToGetAppSpecServiceAlertDestinationsPtrOutputWithContext(context.Background())
-}
-
-func (i *getAppSpecServiceAlertDestinationsPtrType) ToGetAppSpecServiceAlertDestinationsPtrOutputWithContext(ctx context.Context) GetAppSpecServiceAlertDestinationsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceAlertDestinationsPtrOutput)
-}
-
-type GetAppSpecServiceAlertDestinationsOutput struct{ *pulumi.OutputState }
-
-func (GetAppSpecServiceAlertDestinationsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppSpecServiceAlertDestinations)(nil)).Elem()
-}
-
-func (o GetAppSpecServiceAlertDestinationsOutput) ToGetAppSpecServiceAlertDestinationsOutput() GetAppSpecServiceAlertDestinationsOutput {
-	return o
-}
-
-func (o GetAppSpecServiceAlertDestinationsOutput) ToGetAppSpecServiceAlertDestinationsOutputWithContext(ctx context.Context) GetAppSpecServiceAlertDestinationsOutput {
-	return o
-}
-
-func (o GetAppSpecServiceAlertDestinationsOutput) ToGetAppSpecServiceAlertDestinationsPtrOutput() GetAppSpecServiceAlertDestinationsPtrOutput {
-	return o.ToGetAppSpecServiceAlertDestinationsPtrOutputWithContext(context.Background())
-}
-
-func (o GetAppSpecServiceAlertDestinationsOutput) ToGetAppSpecServiceAlertDestinationsPtrOutputWithContext(ctx context.Context) GetAppSpecServiceAlertDestinationsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecServiceAlertDestinations) *GetAppSpecServiceAlertDestinations {
-		return &v
-	}).(GetAppSpecServiceAlertDestinationsPtrOutput)
-}
-
-func (o GetAppSpecServiceAlertDestinationsOutput) Emails() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetAppSpecServiceAlertDestinations) []string { return v.Emails }).(pulumi.StringArrayOutput)
-}
-
-func (o GetAppSpecServiceAlertDestinationsOutput) SlackWebhooks() GetAppSpecServiceAlertDestinationsSlackWebhookArrayOutput {
-	return o.ApplyT(func(v GetAppSpecServiceAlertDestinations) []GetAppSpecServiceAlertDestinationsSlackWebhook {
-		return v.SlackWebhooks
-	}).(GetAppSpecServiceAlertDestinationsSlackWebhookArrayOutput)
-}
-
-type GetAppSpecServiceAlertDestinationsPtrOutput struct{ *pulumi.OutputState }
-
-func (GetAppSpecServiceAlertDestinationsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAppSpecServiceAlertDestinations)(nil)).Elem()
-}
-
-func (o GetAppSpecServiceAlertDestinationsPtrOutput) ToGetAppSpecServiceAlertDestinationsPtrOutput() GetAppSpecServiceAlertDestinationsPtrOutput {
-	return o
-}
-
-func (o GetAppSpecServiceAlertDestinationsPtrOutput) ToGetAppSpecServiceAlertDestinationsPtrOutputWithContext(ctx context.Context) GetAppSpecServiceAlertDestinationsPtrOutput {
-	return o
-}
-
-func (o GetAppSpecServiceAlertDestinationsPtrOutput) Elem() GetAppSpecServiceAlertDestinationsOutput {
-	return o.ApplyT(func(v *GetAppSpecServiceAlertDestinations) GetAppSpecServiceAlertDestinations {
-		if v != nil {
-			return *v
-		}
-		var ret GetAppSpecServiceAlertDestinations
-		return ret
-	}).(GetAppSpecServiceAlertDestinationsOutput)
-}
-
-func (o GetAppSpecServiceAlertDestinationsPtrOutput) Emails() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GetAppSpecServiceAlertDestinations) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Emails
-	}).(pulumi.StringArrayOutput)
-}
-
-func (o GetAppSpecServiceAlertDestinationsPtrOutput) SlackWebhooks() GetAppSpecServiceAlertDestinationsSlackWebhookArrayOutput {
-	return o.ApplyT(func(v *GetAppSpecServiceAlertDestinations) []GetAppSpecServiceAlertDestinationsSlackWebhook {
-		if v == nil {
-			return nil
-		}
-		return v.SlackWebhooks
-	}).(GetAppSpecServiceAlertDestinationsSlackWebhookArrayOutput)
-}
-
-type GetAppSpecServiceAlertDestinationsSlackWebhook struct {
-	// The Slack channel to send notifications to.
-	Channel string `pulumi:"channel"`
-	// The Slack webhook URL.
-	Url string `pulumi:"url"`
-}
-
-// GetAppSpecServiceAlertDestinationsSlackWebhookInput is an input type that accepts GetAppSpecServiceAlertDestinationsSlackWebhookArgs and GetAppSpecServiceAlertDestinationsSlackWebhookOutput values.
-// You can construct a concrete instance of `GetAppSpecServiceAlertDestinationsSlackWebhookInput` via:
-//
-//	GetAppSpecServiceAlertDestinationsSlackWebhookArgs{...}
-type GetAppSpecServiceAlertDestinationsSlackWebhookInput interface {
-	pulumi.Input
-
-	ToGetAppSpecServiceAlertDestinationsSlackWebhookOutput() GetAppSpecServiceAlertDestinationsSlackWebhookOutput
-	ToGetAppSpecServiceAlertDestinationsSlackWebhookOutputWithContext(context.Context) GetAppSpecServiceAlertDestinationsSlackWebhookOutput
-}
-
-type GetAppSpecServiceAlertDestinationsSlackWebhookArgs struct {
-	// The Slack channel to send notifications to.
-	Channel pulumi.StringInput `pulumi:"channel"`
-	// The Slack webhook URL.
-	Url pulumi.StringInput `pulumi:"url"`
-}
-
-func (GetAppSpecServiceAlertDestinationsSlackWebhookArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppSpecServiceAlertDestinationsSlackWebhook)(nil)).Elem()
-}
-
-func (i GetAppSpecServiceAlertDestinationsSlackWebhookArgs) ToGetAppSpecServiceAlertDestinationsSlackWebhookOutput() GetAppSpecServiceAlertDestinationsSlackWebhookOutput {
-	return i.ToGetAppSpecServiceAlertDestinationsSlackWebhookOutputWithContext(context.Background())
-}
-
-func (i GetAppSpecServiceAlertDestinationsSlackWebhookArgs) ToGetAppSpecServiceAlertDestinationsSlackWebhookOutputWithContext(ctx context.Context) GetAppSpecServiceAlertDestinationsSlackWebhookOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceAlertDestinationsSlackWebhookOutput)
-}
-
-// GetAppSpecServiceAlertDestinationsSlackWebhookArrayInput is an input type that accepts GetAppSpecServiceAlertDestinationsSlackWebhookArray and GetAppSpecServiceAlertDestinationsSlackWebhookArrayOutput values.
-// You can construct a concrete instance of `GetAppSpecServiceAlertDestinationsSlackWebhookArrayInput` via:
-//
-//	GetAppSpecServiceAlertDestinationsSlackWebhookArray{ GetAppSpecServiceAlertDestinationsSlackWebhookArgs{...} }
-type GetAppSpecServiceAlertDestinationsSlackWebhookArrayInput interface {
-	pulumi.Input
-
-	ToGetAppSpecServiceAlertDestinationsSlackWebhookArrayOutput() GetAppSpecServiceAlertDestinationsSlackWebhookArrayOutput
-	ToGetAppSpecServiceAlertDestinationsSlackWebhookArrayOutputWithContext(context.Context) GetAppSpecServiceAlertDestinationsSlackWebhookArrayOutput
-}
-
-type GetAppSpecServiceAlertDestinationsSlackWebhookArray []GetAppSpecServiceAlertDestinationsSlackWebhookInput
-
-func (GetAppSpecServiceAlertDestinationsSlackWebhookArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetAppSpecServiceAlertDestinationsSlackWebhook)(nil)).Elem()
-}
-
-func (i GetAppSpecServiceAlertDestinationsSlackWebhookArray) ToGetAppSpecServiceAlertDestinationsSlackWebhookArrayOutput() GetAppSpecServiceAlertDestinationsSlackWebhookArrayOutput {
-	return i.ToGetAppSpecServiceAlertDestinationsSlackWebhookArrayOutputWithContext(context.Background())
-}
-
-func (i GetAppSpecServiceAlertDestinationsSlackWebhookArray) ToGetAppSpecServiceAlertDestinationsSlackWebhookArrayOutputWithContext(ctx context.Context) GetAppSpecServiceAlertDestinationsSlackWebhookArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceAlertDestinationsSlackWebhookArrayOutput)
-}
-
-type GetAppSpecServiceAlertDestinationsSlackWebhookOutput struct{ *pulumi.OutputState }
-
-func (GetAppSpecServiceAlertDestinationsSlackWebhookOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppSpecServiceAlertDestinationsSlackWebhook)(nil)).Elem()
-}
-
-func (o GetAppSpecServiceAlertDestinationsSlackWebhookOutput) ToGetAppSpecServiceAlertDestinationsSlackWebhookOutput() GetAppSpecServiceAlertDestinationsSlackWebhookOutput {
-	return o
-}
-
-func (o GetAppSpecServiceAlertDestinationsSlackWebhookOutput) ToGetAppSpecServiceAlertDestinationsSlackWebhookOutputWithContext(ctx context.Context) GetAppSpecServiceAlertDestinationsSlackWebhookOutput {
-	return o
-}
-
-// The Slack channel to send notifications to.
-func (o GetAppSpecServiceAlertDestinationsSlackWebhookOutput) Channel() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAppSpecServiceAlertDestinationsSlackWebhook) string { return v.Channel }).(pulumi.StringOutput)
-}
-
-// The Slack webhook URL.
-func (o GetAppSpecServiceAlertDestinationsSlackWebhookOutput) Url() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAppSpecServiceAlertDestinationsSlackWebhook) string { return v.Url }).(pulumi.StringOutput)
-}
-
-type GetAppSpecServiceAlertDestinationsSlackWebhookArrayOutput struct{ *pulumi.OutputState }
-
-func (GetAppSpecServiceAlertDestinationsSlackWebhookArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetAppSpecServiceAlertDestinationsSlackWebhook)(nil)).Elem()
-}
-
-func (o GetAppSpecServiceAlertDestinationsSlackWebhookArrayOutput) ToGetAppSpecServiceAlertDestinationsSlackWebhookArrayOutput() GetAppSpecServiceAlertDestinationsSlackWebhookArrayOutput {
-	return o
-}
-
-func (o GetAppSpecServiceAlertDestinationsSlackWebhookArrayOutput) ToGetAppSpecServiceAlertDestinationsSlackWebhookArrayOutputWithContext(ctx context.Context) GetAppSpecServiceAlertDestinationsSlackWebhookArrayOutput {
-	return o
-}
-
-func (o GetAppSpecServiceAlertDestinationsSlackWebhookArrayOutput) Index(i pulumi.IntInput) GetAppSpecServiceAlertDestinationsSlackWebhookOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppSpecServiceAlertDestinationsSlackWebhook {
-		return vs[0].([]GetAppSpecServiceAlertDestinationsSlackWebhook)[vs[1].(int)]
-	}).(GetAppSpecServiceAlertDestinationsSlackWebhookOutput)
-}
-
-type GetAppSpecServiceAutoscaling struct {
-	// The maximum amount of instances for this component. Must be more than min_instance_count.
-	MaxInstanceCount int `pulumi:"maxInstanceCount"`
-	// The metrics that the component is scaled on.
-	Metrics GetAppSpecServiceAutoscalingMetrics `pulumi:"metrics"`
-	// The minimum amount of instances for this component. Must be less than max_instance_count.
-	MinInstanceCount int `pulumi:"minInstanceCount"`
-}
-
-// GetAppSpecServiceAutoscalingInput is an input type that accepts GetAppSpecServiceAutoscalingArgs and GetAppSpecServiceAutoscalingOutput values.
-// You can construct a concrete instance of `GetAppSpecServiceAutoscalingInput` via:
-//
-//	GetAppSpecServiceAutoscalingArgs{...}
-type GetAppSpecServiceAutoscalingInput interface {
-	pulumi.Input
-
-	ToGetAppSpecServiceAutoscalingOutput() GetAppSpecServiceAutoscalingOutput
-	ToGetAppSpecServiceAutoscalingOutputWithContext(context.Context) GetAppSpecServiceAutoscalingOutput
-}
-
-type GetAppSpecServiceAutoscalingArgs struct {
-	// The maximum amount of instances for this component. Must be more than min_instance_count.
-	MaxInstanceCount pulumi.IntInput `pulumi:"maxInstanceCount"`
-	// The metrics that the component is scaled on.
-	Metrics GetAppSpecServiceAutoscalingMetricsInput `pulumi:"metrics"`
-	// The minimum amount of instances for this component. Must be less than max_instance_count.
-	MinInstanceCount pulumi.IntInput `pulumi:"minInstanceCount"`
-}
-
-func (GetAppSpecServiceAutoscalingArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppSpecServiceAutoscaling)(nil)).Elem()
-}
-
-func (i GetAppSpecServiceAutoscalingArgs) ToGetAppSpecServiceAutoscalingOutput() GetAppSpecServiceAutoscalingOutput {
-	return i.ToGetAppSpecServiceAutoscalingOutputWithContext(context.Background())
-}
-
-func (i GetAppSpecServiceAutoscalingArgs) ToGetAppSpecServiceAutoscalingOutputWithContext(ctx context.Context) GetAppSpecServiceAutoscalingOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceAutoscalingOutput)
-}
-
-func (i GetAppSpecServiceAutoscalingArgs) ToGetAppSpecServiceAutoscalingPtrOutput() GetAppSpecServiceAutoscalingPtrOutput {
-	return i.ToGetAppSpecServiceAutoscalingPtrOutputWithContext(context.Background())
-}
-
-func (i GetAppSpecServiceAutoscalingArgs) ToGetAppSpecServiceAutoscalingPtrOutputWithContext(ctx context.Context) GetAppSpecServiceAutoscalingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceAutoscalingOutput).ToGetAppSpecServiceAutoscalingPtrOutputWithContext(ctx)
-}
-
-// GetAppSpecServiceAutoscalingPtrInput is an input type that accepts GetAppSpecServiceAutoscalingArgs, GetAppSpecServiceAutoscalingPtr and GetAppSpecServiceAutoscalingPtrOutput values.
-// You can construct a concrete instance of `GetAppSpecServiceAutoscalingPtrInput` via:
-//
-//	        GetAppSpecServiceAutoscalingArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetAppSpecServiceAutoscalingPtrInput interface {
-	pulumi.Input
-
-	ToGetAppSpecServiceAutoscalingPtrOutput() GetAppSpecServiceAutoscalingPtrOutput
-	ToGetAppSpecServiceAutoscalingPtrOutputWithContext(context.Context) GetAppSpecServiceAutoscalingPtrOutput
-}
-
-type getAppSpecServiceAutoscalingPtrType GetAppSpecServiceAutoscalingArgs
-
-func GetAppSpecServiceAutoscalingPtr(v *GetAppSpecServiceAutoscalingArgs) GetAppSpecServiceAutoscalingPtrInput {
-	return (*getAppSpecServiceAutoscalingPtrType)(v)
-}
-
-func (*getAppSpecServiceAutoscalingPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAppSpecServiceAutoscaling)(nil)).Elem()
-}
-
-func (i *getAppSpecServiceAutoscalingPtrType) ToGetAppSpecServiceAutoscalingPtrOutput() GetAppSpecServiceAutoscalingPtrOutput {
-	return i.ToGetAppSpecServiceAutoscalingPtrOutputWithContext(context.Background())
-}
-
-func (i *getAppSpecServiceAutoscalingPtrType) ToGetAppSpecServiceAutoscalingPtrOutputWithContext(ctx context.Context) GetAppSpecServiceAutoscalingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceAutoscalingPtrOutput)
-}
-
-type GetAppSpecServiceAutoscalingOutput struct{ *pulumi.OutputState }
-
-func (GetAppSpecServiceAutoscalingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppSpecServiceAutoscaling)(nil)).Elem()
-}
-
-func (o GetAppSpecServiceAutoscalingOutput) ToGetAppSpecServiceAutoscalingOutput() GetAppSpecServiceAutoscalingOutput {
-	return o
-}
-
-func (o GetAppSpecServiceAutoscalingOutput) ToGetAppSpecServiceAutoscalingOutputWithContext(ctx context.Context) GetAppSpecServiceAutoscalingOutput {
-	return o
-}
-
-func (o GetAppSpecServiceAutoscalingOutput) ToGetAppSpecServiceAutoscalingPtrOutput() GetAppSpecServiceAutoscalingPtrOutput {
-	return o.ToGetAppSpecServiceAutoscalingPtrOutputWithContext(context.Background())
-}
-
-func (o GetAppSpecServiceAutoscalingOutput) ToGetAppSpecServiceAutoscalingPtrOutputWithContext(ctx context.Context) GetAppSpecServiceAutoscalingPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecServiceAutoscaling) *GetAppSpecServiceAutoscaling {
-		return &v
-	}).(GetAppSpecServiceAutoscalingPtrOutput)
-}
-
-// The maximum amount of instances for this component. Must be more than min_instance_count.
-func (o GetAppSpecServiceAutoscalingOutput) MaxInstanceCount() pulumi.IntOutput {
-	return o.ApplyT(func(v GetAppSpecServiceAutoscaling) int { return v.MaxInstanceCount }).(pulumi.IntOutput)
-}
-
-// The metrics that the component is scaled on.
-func (o GetAppSpecServiceAutoscalingOutput) Metrics() GetAppSpecServiceAutoscalingMetricsOutput {
-	return o.ApplyT(func(v GetAppSpecServiceAutoscaling) GetAppSpecServiceAutoscalingMetrics { return v.Metrics }).(GetAppSpecServiceAutoscalingMetricsOutput)
-}
-
-// The minimum amount of instances for this component. Must be less than max_instance_count.
-func (o GetAppSpecServiceAutoscalingOutput) MinInstanceCount() pulumi.IntOutput {
-	return o.ApplyT(func(v GetAppSpecServiceAutoscaling) int { return v.MinInstanceCount }).(pulumi.IntOutput)
-}
-
-type GetAppSpecServiceAutoscalingPtrOutput struct{ *pulumi.OutputState }
-
-func (GetAppSpecServiceAutoscalingPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAppSpecServiceAutoscaling)(nil)).Elem()
-}
-
-func (o GetAppSpecServiceAutoscalingPtrOutput) ToGetAppSpecServiceAutoscalingPtrOutput() GetAppSpecServiceAutoscalingPtrOutput {
-	return o
-}
-
-func (o GetAppSpecServiceAutoscalingPtrOutput) ToGetAppSpecServiceAutoscalingPtrOutputWithContext(ctx context.Context) GetAppSpecServiceAutoscalingPtrOutput {
-	return o
-}
-
-func (o GetAppSpecServiceAutoscalingPtrOutput) Elem() GetAppSpecServiceAutoscalingOutput {
-	return o.ApplyT(func(v *GetAppSpecServiceAutoscaling) GetAppSpecServiceAutoscaling {
-		if v != nil {
-			return *v
-		}
-		var ret GetAppSpecServiceAutoscaling
-		return ret
-	}).(GetAppSpecServiceAutoscalingOutput)
-}
-
-// The maximum amount of instances for this component. Must be more than min_instance_count.
-func (o GetAppSpecServiceAutoscalingPtrOutput) MaxInstanceCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetAppSpecServiceAutoscaling) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.MaxInstanceCount
-	}).(pulumi.IntPtrOutput)
-}
-
-// The metrics that the component is scaled on.
-func (o GetAppSpecServiceAutoscalingPtrOutput) Metrics() GetAppSpecServiceAutoscalingMetricsPtrOutput {
-	return o.ApplyT(func(v *GetAppSpecServiceAutoscaling) *GetAppSpecServiceAutoscalingMetrics {
-		if v == nil {
-			return nil
-		}
-		return &v.Metrics
-	}).(GetAppSpecServiceAutoscalingMetricsPtrOutput)
-}
-
-// The minimum amount of instances for this component. Must be less than max_instance_count.
-func (o GetAppSpecServiceAutoscalingPtrOutput) MinInstanceCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetAppSpecServiceAutoscaling) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.MinInstanceCount
-	}).(pulumi.IntPtrOutput)
-}
-
-type GetAppSpecServiceAutoscalingMetrics struct {
-	// Settings for scaling the component based on CPU utilization.
-	Cpu *GetAppSpecServiceAutoscalingMetricsCpu `pulumi:"cpu"`
-}
-
-// GetAppSpecServiceAutoscalingMetricsInput is an input type that accepts GetAppSpecServiceAutoscalingMetricsArgs and GetAppSpecServiceAutoscalingMetricsOutput values.
-// You can construct a concrete instance of `GetAppSpecServiceAutoscalingMetricsInput` via:
-//
-//	GetAppSpecServiceAutoscalingMetricsArgs{...}
-type GetAppSpecServiceAutoscalingMetricsInput interface {
-	pulumi.Input
-
-	ToGetAppSpecServiceAutoscalingMetricsOutput() GetAppSpecServiceAutoscalingMetricsOutput
-	ToGetAppSpecServiceAutoscalingMetricsOutputWithContext(context.Context) GetAppSpecServiceAutoscalingMetricsOutput
-}
-
-type GetAppSpecServiceAutoscalingMetricsArgs struct {
-	// Settings for scaling the component based on CPU utilization.
-	Cpu GetAppSpecServiceAutoscalingMetricsCpuPtrInput `pulumi:"cpu"`
-}
-
-func (GetAppSpecServiceAutoscalingMetricsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppSpecServiceAutoscalingMetrics)(nil)).Elem()
-}
-
-func (i GetAppSpecServiceAutoscalingMetricsArgs) ToGetAppSpecServiceAutoscalingMetricsOutput() GetAppSpecServiceAutoscalingMetricsOutput {
-	return i.ToGetAppSpecServiceAutoscalingMetricsOutputWithContext(context.Background())
-}
-
-func (i GetAppSpecServiceAutoscalingMetricsArgs) ToGetAppSpecServiceAutoscalingMetricsOutputWithContext(ctx context.Context) GetAppSpecServiceAutoscalingMetricsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceAutoscalingMetricsOutput)
-}
-
-func (i GetAppSpecServiceAutoscalingMetricsArgs) ToGetAppSpecServiceAutoscalingMetricsPtrOutput() GetAppSpecServiceAutoscalingMetricsPtrOutput {
-	return i.ToGetAppSpecServiceAutoscalingMetricsPtrOutputWithContext(context.Background())
-}
-
-func (i GetAppSpecServiceAutoscalingMetricsArgs) ToGetAppSpecServiceAutoscalingMetricsPtrOutputWithContext(ctx context.Context) GetAppSpecServiceAutoscalingMetricsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceAutoscalingMetricsOutput).ToGetAppSpecServiceAutoscalingMetricsPtrOutputWithContext(ctx)
-}
-
-// GetAppSpecServiceAutoscalingMetricsPtrInput is an input type that accepts GetAppSpecServiceAutoscalingMetricsArgs, GetAppSpecServiceAutoscalingMetricsPtr and GetAppSpecServiceAutoscalingMetricsPtrOutput values.
-// You can construct a concrete instance of `GetAppSpecServiceAutoscalingMetricsPtrInput` via:
-//
-//	        GetAppSpecServiceAutoscalingMetricsArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetAppSpecServiceAutoscalingMetricsPtrInput interface {
-	pulumi.Input
-
-	ToGetAppSpecServiceAutoscalingMetricsPtrOutput() GetAppSpecServiceAutoscalingMetricsPtrOutput
-	ToGetAppSpecServiceAutoscalingMetricsPtrOutputWithContext(context.Context) GetAppSpecServiceAutoscalingMetricsPtrOutput
-}
-
-type getAppSpecServiceAutoscalingMetricsPtrType GetAppSpecServiceAutoscalingMetricsArgs
-
-func GetAppSpecServiceAutoscalingMetricsPtr(v *GetAppSpecServiceAutoscalingMetricsArgs) GetAppSpecServiceAutoscalingMetricsPtrInput {
-	return (*getAppSpecServiceAutoscalingMetricsPtrType)(v)
-}
-
-func (*getAppSpecServiceAutoscalingMetricsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAppSpecServiceAutoscalingMetrics)(nil)).Elem()
-}
-
-func (i *getAppSpecServiceAutoscalingMetricsPtrType) ToGetAppSpecServiceAutoscalingMetricsPtrOutput() GetAppSpecServiceAutoscalingMetricsPtrOutput {
-	return i.ToGetAppSpecServiceAutoscalingMetricsPtrOutputWithContext(context.Background())
-}
-
-func (i *getAppSpecServiceAutoscalingMetricsPtrType) ToGetAppSpecServiceAutoscalingMetricsPtrOutputWithContext(ctx context.Context) GetAppSpecServiceAutoscalingMetricsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceAutoscalingMetricsPtrOutput)
-}
-
-type GetAppSpecServiceAutoscalingMetricsOutput struct{ *pulumi.OutputState }
-
-func (GetAppSpecServiceAutoscalingMetricsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppSpecServiceAutoscalingMetrics)(nil)).Elem()
-}
-
-func (o GetAppSpecServiceAutoscalingMetricsOutput) ToGetAppSpecServiceAutoscalingMetricsOutput() GetAppSpecServiceAutoscalingMetricsOutput {
-	return o
-}
-
-func (o GetAppSpecServiceAutoscalingMetricsOutput) ToGetAppSpecServiceAutoscalingMetricsOutputWithContext(ctx context.Context) GetAppSpecServiceAutoscalingMetricsOutput {
-	return o
-}
-
-func (o GetAppSpecServiceAutoscalingMetricsOutput) ToGetAppSpecServiceAutoscalingMetricsPtrOutput() GetAppSpecServiceAutoscalingMetricsPtrOutput {
-	return o.ToGetAppSpecServiceAutoscalingMetricsPtrOutputWithContext(context.Background())
-}
-
-func (o GetAppSpecServiceAutoscalingMetricsOutput) ToGetAppSpecServiceAutoscalingMetricsPtrOutputWithContext(ctx context.Context) GetAppSpecServiceAutoscalingMetricsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecServiceAutoscalingMetrics) *GetAppSpecServiceAutoscalingMetrics {
-		return &v
-	}).(GetAppSpecServiceAutoscalingMetricsPtrOutput)
-}
-
-// Settings for scaling the component based on CPU utilization.
-func (o GetAppSpecServiceAutoscalingMetricsOutput) Cpu() GetAppSpecServiceAutoscalingMetricsCpuPtrOutput {
-	return o.ApplyT(func(v GetAppSpecServiceAutoscalingMetrics) *GetAppSpecServiceAutoscalingMetricsCpu { return v.Cpu }).(GetAppSpecServiceAutoscalingMetricsCpuPtrOutput)
-}
-
-type GetAppSpecServiceAutoscalingMetricsPtrOutput struct{ *pulumi.OutputState }
-
-func (GetAppSpecServiceAutoscalingMetricsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAppSpecServiceAutoscalingMetrics)(nil)).Elem()
-}
-
-func (o GetAppSpecServiceAutoscalingMetricsPtrOutput) ToGetAppSpecServiceAutoscalingMetricsPtrOutput() GetAppSpecServiceAutoscalingMetricsPtrOutput {
-	return o
-}
-
-func (o GetAppSpecServiceAutoscalingMetricsPtrOutput) ToGetAppSpecServiceAutoscalingMetricsPtrOutputWithContext(ctx context.Context) GetAppSpecServiceAutoscalingMetricsPtrOutput {
-	return o
-}
-
-func (o GetAppSpecServiceAutoscalingMetricsPtrOutput) Elem() GetAppSpecServiceAutoscalingMetricsOutput {
-	return o.ApplyT(func(v *GetAppSpecServiceAutoscalingMetrics) GetAppSpecServiceAutoscalingMetrics {
-		if v != nil {
-			return *v
-		}
-		var ret GetAppSpecServiceAutoscalingMetrics
-		return ret
-	}).(GetAppSpecServiceAutoscalingMetricsOutput)
-}
-
-// Settings for scaling the component based on CPU utilization.
-func (o GetAppSpecServiceAutoscalingMetricsPtrOutput) Cpu() GetAppSpecServiceAutoscalingMetricsCpuPtrOutput {
-	return o.ApplyT(func(v *GetAppSpecServiceAutoscalingMetrics) *GetAppSpecServiceAutoscalingMetricsCpu {
-		if v == nil {
-			return nil
-		}
-		return v.Cpu
-	}).(GetAppSpecServiceAutoscalingMetricsCpuPtrOutput)
-}
-
-type GetAppSpecServiceAutoscalingMetricsCpu struct {
-	// The average target CPU utilization for the component.
-	Percent int `pulumi:"percent"`
-}
-
-// GetAppSpecServiceAutoscalingMetricsCpuInput is an input type that accepts GetAppSpecServiceAutoscalingMetricsCpuArgs and GetAppSpecServiceAutoscalingMetricsCpuOutput values.
-// You can construct a concrete instance of `GetAppSpecServiceAutoscalingMetricsCpuInput` via:
-//
-//	GetAppSpecServiceAutoscalingMetricsCpuArgs{...}
-type GetAppSpecServiceAutoscalingMetricsCpuInput interface {
-	pulumi.Input
-
-	ToGetAppSpecServiceAutoscalingMetricsCpuOutput() GetAppSpecServiceAutoscalingMetricsCpuOutput
-	ToGetAppSpecServiceAutoscalingMetricsCpuOutputWithContext(context.Context) GetAppSpecServiceAutoscalingMetricsCpuOutput
-}
-
-type GetAppSpecServiceAutoscalingMetricsCpuArgs struct {
-	// The average target CPU utilization for the component.
-	Percent pulumi.IntInput `pulumi:"percent"`
-}
-
-func (GetAppSpecServiceAutoscalingMetricsCpuArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppSpecServiceAutoscalingMetricsCpu)(nil)).Elem()
-}
-
-func (i GetAppSpecServiceAutoscalingMetricsCpuArgs) ToGetAppSpecServiceAutoscalingMetricsCpuOutput() GetAppSpecServiceAutoscalingMetricsCpuOutput {
-	return i.ToGetAppSpecServiceAutoscalingMetricsCpuOutputWithContext(context.Background())
-}
-
-func (i GetAppSpecServiceAutoscalingMetricsCpuArgs) ToGetAppSpecServiceAutoscalingMetricsCpuOutputWithContext(ctx context.Context) GetAppSpecServiceAutoscalingMetricsCpuOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceAutoscalingMetricsCpuOutput)
-}
-
-func (i GetAppSpecServiceAutoscalingMetricsCpuArgs) ToGetAppSpecServiceAutoscalingMetricsCpuPtrOutput() GetAppSpecServiceAutoscalingMetricsCpuPtrOutput {
-	return i.ToGetAppSpecServiceAutoscalingMetricsCpuPtrOutputWithContext(context.Background())
-}
-
-func (i GetAppSpecServiceAutoscalingMetricsCpuArgs) ToGetAppSpecServiceAutoscalingMetricsCpuPtrOutputWithContext(ctx context.Context) GetAppSpecServiceAutoscalingMetricsCpuPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceAutoscalingMetricsCpuOutput).ToGetAppSpecServiceAutoscalingMetricsCpuPtrOutputWithContext(ctx)
-}
-
-// GetAppSpecServiceAutoscalingMetricsCpuPtrInput is an input type that accepts GetAppSpecServiceAutoscalingMetricsCpuArgs, GetAppSpecServiceAutoscalingMetricsCpuPtr and GetAppSpecServiceAutoscalingMetricsCpuPtrOutput values.
-// You can construct a concrete instance of `GetAppSpecServiceAutoscalingMetricsCpuPtrInput` via:
-//
-//	        GetAppSpecServiceAutoscalingMetricsCpuArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetAppSpecServiceAutoscalingMetricsCpuPtrInput interface {
-	pulumi.Input
-
-	ToGetAppSpecServiceAutoscalingMetricsCpuPtrOutput() GetAppSpecServiceAutoscalingMetricsCpuPtrOutput
-	ToGetAppSpecServiceAutoscalingMetricsCpuPtrOutputWithContext(context.Context) GetAppSpecServiceAutoscalingMetricsCpuPtrOutput
-}
-
-type getAppSpecServiceAutoscalingMetricsCpuPtrType GetAppSpecServiceAutoscalingMetricsCpuArgs
-
-func GetAppSpecServiceAutoscalingMetricsCpuPtr(v *GetAppSpecServiceAutoscalingMetricsCpuArgs) GetAppSpecServiceAutoscalingMetricsCpuPtrInput {
-	return (*getAppSpecServiceAutoscalingMetricsCpuPtrType)(v)
-}
-
-func (*getAppSpecServiceAutoscalingMetricsCpuPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAppSpecServiceAutoscalingMetricsCpu)(nil)).Elem()
-}
-
-func (i *getAppSpecServiceAutoscalingMetricsCpuPtrType) ToGetAppSpecServiceAutoscalingMetricsCpuPtrOutput() GetAppSpecServiceAutoscalingMetricsCpuPtrOutput {
-	return i.ToGetAppSpecServiceAutoscalingMetricsCpuPtrOutputWithContext(context.Background())
-}
-
-func (i *getAppSpecServiceAutoscalingMetricsCpuPtrType) ToGetAppSpecServiceAutoscalingMetricsCpuPtrOutputWithContext(ctx context.Context) GetAppSpecServiceAutoscalingMetricsCpuPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceAutoscalingMetricsCpuPtrOutput)
-}
-
-type GetAppSpecServiceAutoscalingMetricsCpuOutput struct{ *pulumi.OutputState }
-
-func (GetAppSpecServiceAutoscalingMetricsCpuOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppSpecServiceAutoscalingMetricsCpu)(nil)).Elem()
-}
-
-func (o GetAppSpecServiceAutoscalingMetricsCpuOutput) ToGetAppSpecServiceAutoscalingMetricsCpuOutput() GetAppSpecServiceAutoscalingMetricsCpuOutput {
-	return o
-}
-
-func (o GetAppSpecServiceAutoscalingMetricsCpuOutput) ToGetAppSpecServiceAutoscalingMetricsCpuOutputWithContext(ctx context.Context) GetAppSpecServiceAutoscalingMetricsCpuOutput {
-	return o
-}
-
-func (o GetAppSpecServiceAutoscalingMetricsCpuOutput) ToGetAppSpecServiceAutoscalingMetricsCpuPtrOutput() GetAppSpecServiceAutoscalingMetricsCpuPtrOutput {
-	return o.ToGetAppSpecServiceAutoscalingMetricsCpuPtrOutputWithContext(context.Background())
-}
-
-func (o GetAppSpecServiceAutoscalingMetricsCpuOutput) ToGetAppSpecServiceAutoscalingMetricsCpuPtrOutputWithContext(ctx context.Context) GetAppSpecServiceAutoscalingMetricsCpuPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecServiceAutoscalingMetricsCpu) *GetAppSpecServiceAutoscalingMetricsCpu {
-		return &v
-	}).(GetAppSpecServiceAutoscalingMetricsCpuPtrOutput)
-}
-
-// The average target CPU utilization for the component.
-func (o GetAppSpecServiceAutoscalingMetricsCpuOutput) Percent() pulumi.IntOutput {
-	return o.ApplyT(func(v GetAppSpecServiceAutoscalingMetricsCpu) int { return v.Percent }).(pulumi.IntOutput)
-}
-
-type GetAppSpecServiceAutoscalingMetricsCpuPtrOutput struct{ *pulumi.OutputState }
-
-func (GetAppSpecServiceAutoscalingMetricsCpuPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAppSpecServiceAutoscalingMetricsCpu)(nil)).Elem()
-}
-
-func (o GetAppSpecServiceAutoscalingMetricsCpuPtrOutput) ToGetAppSpecServiceAutoscalingMetricsCpuPtrOutput() GetAppSpecServiceAutoscalingMetricsCpuPtrOutput {
-	return o
-}
-
-func (o GetAppSpecServiceAutoscalingMetricsCpuPtrOutput) ToGetAppSpecServiceAutoscalingMetricsCpuPtrOutputWithContext(ctx context.Context) GetAppSpecServiceAutoscalingMetricsCpuPtrOutput {
-	return o
-}
-
-func (o GetAppSpecServiceAutoscalingMetricsCpuPtrOutput) Elem() GetAppSpecServiceAutoscalingMetricsCpuOutput {
-	return o.ApplyT(func(v *GetAppSpecServiceAutoscalingMetricsCpu) GetAppSpecServiceAutoscalingMetricsCpu {
-		if v != nil {
-			return *v
-		}
-		var ret GetAppSpecServiceAutoscalingMetricsCpu
-		return ret
-	}).(GetAppSpecServiceAutoscalingMetricsCpuOutput)
-}
-
-// The average target CPU utilization for the component.
-func (o GetAppSpecServiceAutoscalingMetricsCpuPtrOutput) Percent() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetAppSpecServiceAutoscalingMetricsCpu) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Percent
-	}).(pulumi.IntPtrOutput)
-}
-
-type GetAppSpecServiceBitbucket struct {
-	// The name of the branch to use.
-	Branch *string `pulumi:"branch"`
-	// Whether to automatically deploy new commits made to the repo.
-	DeployOnPush *bool `pulumi:"deployOnPush"`
-	// The name of the repo in the format `owner/repo`.
-	Repo *string `pulumi:"repo"`
-}
-
-// GetAppSpecServiceBitbucketInput is an input type that accepts GetAppSpecServiceBitbucketArgs and GetAppSpecServiceBitbucketOutput values.
-// You can construct a concrete instance of `GetAppSpecServiceBitbucketInput` via:
-//
-//	GetAppSpecServiceBitbucketArgs{...}
-type GetAppSpecServiceBitbucketInput interface {
-	pulumi.Input
-
-	ToGetAppSpecServiceBitbucketOutput() GetAppSpecServiceBitbucketOutput
-	ToGetAppSpecServiceBitbucketOutputWithContext(context.Context) GetAppSpecServiceBitbucketOutput
-}
-
-type GetAppSpecServiceBitbucketArgs struct {
-	// The name of the branch to use.
-	Branch pulumi.StringPtrInput `pulumi:"branch"`
-	// Whether to automatically deploy new commits made to the repo.
-	DeployOnPush pulumi.BoolPtrInput `pulumi:"deployOnPush"`
-	// The name of the repo in the format `owner/repo`.
-	Repo pulumi.StringPtrInput `pulumi:"repo"`
-}
-
-func (GetAppSpecServiceBitbucketArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppSpecServiceBitbucket)(nil)).Elem()
-}
-
-func (i GetAppSpecServiceBitbucketArgs) ToGetAppSpecServiceBitbucketOutput() GetAppSpecServiceBitbucketOutput {
-	return i.ToGetAppSpecServiceBitbucketOutputWithContext(context.Background())
-}
-
-func (i GetAppSpecServiceBitbucketArgs) ToGetAppSpecServiceBitbucketOutputWithContext(ctx context.Context) GetAppSpecServiceBitbucketOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceBitbucketOutput)
-}
-
-func (i GetAppSpecServiceBitbucketArgs) ToGetAppSpecServiceBitbucketPtrOutput() GetAppSpecServiceBitbucketPtrOutput {
-	return i.ToGetAppSpecServiceBitbucketPtrOutputWithContext(context.Background())
-}
-
-func (i GetAppSpecServiceBitbucketArgs) ToGetAppSpecServiceBitbucketPtrOutputWithContext(ctx context.Context) GetAppSpecServiceBitbucketPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceBitbucketOutput).ToGetAppSpecServiceBitbucketPtrOutputWithContext(ctx)
-}
-
-// GetAppSpecServiceBitbucketPtrInput is an input type that accepts GetAppSpecServiceBitbucketArgs, GetAppSpecServiceBitbucketPtr and GetAppSpecServiceBitbucketPtrOutput values.
-// You can construct a concrete instance of `GetAppSpecServiceBitbucketPtrInput` via:
-//
-//	        GetAppSpecServiceBitbucketArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetAppSpecServiceBitbucketPtrInput interface {
-	pulumi.Input
-
-	ToGetAppSpecServiceBitbucketPtrOutput() GetAppSpecServiceBitbucketPtrOutput
-	ToGetAppSpecServiceBitbucketPtrOutputWithContext(context.Context) GetAppSpecServiceBitbucketPtrOutput
-}
-
-type getAppSpecServiceBitbucketPtrType GetAppSpecServiceBitbucketArgs
-
-func GetAppSpecServiceBitbucketPtr(v *GetAppSpecServiceBitbucketArgs) GetAppSpecServiceBitbucketPtrInput {
-	return (*getAppSpecServiceBitbucketPtrType)(v)
-}
-
-func (*getAppSpecServiceBitbucketPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAppSpecServiceBitbucket)(nil)).Elem()
-}
-
-func (i *getAppSpecServiceBitbucketPtrType) ToGetAppSpecServiceBitbucketPtrOutput() GetAppSpecServiceBitbucketPtrOutput {
-	return i.ToGetAppSpecServiceBitbucketPtrOutputWithContext(context.Background())
-}
-
-func (i *getAppSpecServiceBitbucketPtrType) ToGetAppSpecServiceBitbucketPtrOutputWithContext(ctx context.Context) GetAppSpecServiceBitbucketPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceBitbucketPtrOutput)
-}
-
-type GetAppSpecServiceBitbucketOutput struct{ *pulumi.OutputState }
-
-func (GetAppSpecServiceBitbucketOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppSpecServiceBitbucket)(nil)).Elem()
-}
-
-func (o GetAppSpecServiceBitbucketOutput) ToGetAppSpecServiceBitbucketOutput() GetAppSpecServiceBitbucketOutput {
-	return o
-}
-
-func (o GetAppSpecServiceBitbucketOutput) ToGetAppSpecServiceBitbucketOutputWithContext(ctx context.Context) GetAppSpecServiceBitbucketOutput {
-	return o
-}
-
-func (o GetAppSpecServiceBitbucketOutput) ToGetAppSpecServiceBitbucketPtrOutput() GetAppSpecServiceBitbucketPtrOutput {
-	return o.ToGetAppSpecServiceBitbucketPtrOutputWithContext(context.Background())
-}
-
-func (o GetAppSpecServiceBitbucketOutput) ToGetAppSpecServiceBitbucketPtrOutputWithContext(ctx context.Context) GetAppSpecServiceBitbucketPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecServiceBitbucket) *GetAppSpecServiceBitbucket {
-		return &v
-	}).(GetAppSpecServiceBitbucketPtrOutput)
-}
-
-// The name of the branch to use.
-func (o GetAppSpecServiceBitbucketOutput) Branch() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetAppSpecServiceBitbucket) *string { return v.Branch }).(pulumi.StringPtrOutput)
-}
-
-// Whether to automatically deploy new commits made to the repo.
-func (o GetAppSpecServiceBitbucketOutput) DeployOnPush() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetAppSpecServiceBitbucket) *bool { return v.DeployOnPush }).(pulumi.BoolPtrOutput)
-}
-
-// The name of the repo in the format `owner/repo`.
-func (o GetAppSpecServiceBitbucketOutput) Repo() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetAppSpecServiceBitbucket) *string { return v.Repo }).(pulumi.StringPtrOutput)
-}
-
-type GetAppSpecServiceBitbucketPtrOutput struct{ *pulumi.OutputState }
-
-func (GetAppSpecServiceBitbucketPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAppSpecServiceBitbucket)(nil)).Elem()
-}
-
-func (o GetAppSpecServiceBitbucketPtrOutput) ToGetAppSpecServiceBitbucketPtrOutput() GetAppSpecServiceBitbucketPtrOutput {
-	return o
-}
-
-func (o GetAppSpecServiceBitbucketPtrOutput) ToGetAppSpecServiceBitbucketPtrOutputWithContext(ctx context.Context) GetAppSpecServiceBitbucketPtrOutput {
-	return o
-}
-
-func (o GetAppSpecServiceBitbucketPtrOutput) Elem() GetAppSpecServiceBitbucketOutput {
-	return o.ApplyT(func(v *GetAppSpecServiceBitbucket) GetAppSpecServiceBitbucket {
-		if v != nil {
-			return *v
-		}
-		var ret GetAppSpecServiceBitbucket
-		return ret
-	}).(GetAppSpecServiceBitbucketOutput)
-}
-
-// The name of the branch to use.
-func (o GetAppSpecServiceBitbucketPtrOutput) Branch() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetAppSpecServiceBitbucket) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Branch
-	}).(pulumi.StringPtrOutput)
-}
-
-// Whether to automatically deploy new commits made to the repo.
-func (o GetAppSpecServiceBitbucketPtrOutput) DeployOnPush() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GetAppSpecServiceBitbucket) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.DeployOnPush
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The name of the repo in the format `owner/repo`.
-func (o GetAppSpecServiceBitbucketPtrOutput) Repo() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetAppSpecServiceBitbucket) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Repo
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetAppSpecServiceCors struct {
-	// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
-	AllowCredentials *bool `pulumi:"allowCredentials"`
-	// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
-	AllowHeaders []string `pulumi:"allowHeaders"`
-	// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
-	AllowMethods []string `pulumi:"allowMethods"`
-	// The `Access-Control-Allow-Origin` can be
-	AllowOrigins *GetAppSpecServiceCorsAllowOrigins `pulumi:"allowOrigins"`
-	// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
-	ExposeHeaders []string `pulumi:"exposeHeaders"`
-	// An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
-	MaxAge *string `pulumi:"maxAge"`
-}
-
-// GetAppSpecServiceCorsInput is an input type that accepts GetAppSpecServiceCorsArgs and GetAppSpecServiceCorsOutput values.
-// You can construct a concrete instance of `GetAppSpecServiceCorsInput` via:
-//
-//	GetAppSpecServiceCorsArgs{...}
-type GetAppSpecServiceCorsInput interface {
-	pulumi.Input
-
-	ToGetAppSpecServiceCorsOutput() GetAppSpecServiceCorsOutput
-	ToGetAppSpecServiceCorsOutputWithContext(context.Context) GetAppSpecServiceCorsOutput
-}
-
-type GetAppSpecServiceCorsArgs struct {
-	// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
-	AllowCredentials pulumi.BoolPtrInput `pulumi:"allowCredentials"`
-	// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
-	AllowHeaders pulumi.StringArrayInput `pulumi:"allowHeaders"`
-	// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
-	AllowMethods pulumi.StringArrayInput `pulumi:"allowMethods"`
-	// The `Access-Control-Allow-Origin` can be
-	AllowOrigins GetAppSpecServiceCorsAllowOriginsPtrInput `pulumi:"allowOrigins"`
-	// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
-	ExposeHeaders pulumi.StringArrayInput `pulumi:"exposeHeaders"`
-	// An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
-	MaxAge pulumi.StringPtrInput `pulumi:"maxAge"`
-}
-
-func (GetAppSpecServiceCorsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppSpecServiceCors)(nil)).Elem()
-}
-
-func (i GetAppSpecServiceCorsArgs) ToGetAppSpecServiceCorsOutput() GetAppSpecServiceCorsOutput {
-	return i.ToGetAppSpecServiceCorsOutputWithContext(context.Background())
-}
-
-func (i GetAppSpecServiceCorsArgs) ToGetAppSpecServiceCorsOutputWithContext(ctx context.Context) GetAppSpecServiceCorsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceCorsOutput)
-}
-
-func (i GetAppSpecServiceCorsArgs) ToGetAppSpecServiceCorsPtrOutput() GetAppSpecServiceCorsPtrOutput {
-	return i.ToGetAppSpecServiceCorsPtrOutputWithContext(context.Background())
-}
-
-func (i GetAppSpecServiceCorsArgs) ToGetAppSpecServiceCorsPtrOutputWithContext(ctx context.Context) GetAppSpecServiceCorsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceCorsOutput).ToGetAppSpecServiceCorsPtrOutputWithContext(ctx)
-}
-
-// GetAppSpecServiceCorsPtrInput is an input type that accepts GetAppSpecServiceCorsArgs, GetAppSpecServiceCorsPtr and GetAppSpecServiceCorsPtrOutput values.
-// You can construct a concrete instance of `GetAppSpecServiceCorsPtrInput` via:
-//
-//	        GetAppSpecServiceCorsArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetAppSpecServiceCorsPtrInput interface {
-	pulumi.Input
-
-	ToGetAppSpecServiceCorsPtrOutput() GetAppSpecServiceCorsPtrOutput
-	ToGetAppSpecServiceCorsPtrOutputWithContext(context.Context) GetAppSpecServiceCorsPtrOutput
-}
-
-type getAppSpecServiceCorsPtrType GetAppSpecServiceCorsArgs
-
-func GetAppSpecServiceCorsPtr(v *GetAppSpecServiceCorsArgs) GetAppSpecServiceCorsPtrInput {
-	return (*getAppSpecServiceCorsPtrType)(v)
-}
-
-func (*getAppSpecServiceCorsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAppSpecServiceCors)(nil)).Elem()
-}
-
-func (i *getAppSpecServiceCorsPtrType) ToGetAppSpecServiceCorsPtrOutput() GetAppSpecServiceCorsPtrOutput {
-	return i.ToGetAppSpecServiceCorsPtrOutputWithContext(context.Background())
-}
-
-func (i *getAppSpecServiceCorsPtrType) ToGetAppSpecServiceCorsPtrOutputWithContext(ctx context.Context) GetAppSpecServiceCorsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceCorsPtrOutput)
-}
-
-type GetAppSpecServiceCorsOutput struct{ *pulumi.OutputState }
-
-func (GetAppSpecServiceCorsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppSpecServiceCors)(nil)).Elem()
-}
-
-func (o GetAppSpecServiceCorsOutput) ToGetAppSpecServiceCorsOutput() GetAppSpecServiceCorsOutput {
-	return o
-}
-
-func (o GetAppSpecServiceCorsOutput) ToGetAppSpecServiceCorsOutputWithContext(ctx context.Context) GetAppSpecServiceCorsOutput {
-	return o
-}
-
-func (o GetAppSpecServiceCorsOutput) ToGetAppSpecServiceCorsPtrOutput() GetAppSpecServiceCorsPtrOutput {
-	return o.ToGetAppSpecServiceCorsPtrOutputWithContext(context.Background())
-}
-
-func (o GetAppSpecServiceCorsOutput) ToGetAppSpecServiceCorsPtrOutputWithContext(ctx context.Context) GetAppSpecServiceCorsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecServiceCors) *GetAppSpecServiceCors {
-		return &v
-	}).(GetAppSpecServiceCorsPtrOutput)
-}
-
-// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
-func (o GetAppSpecServiceCorsOutput) AllowCredentials() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetAppSpecServiceCors) *bool { return v.AllowCredentials }).(pulumi.BoolPtrOutput)
-}
-
-// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
-func (o GetAppSpecServiceCorsOutput) AllowHeaders() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetAppSpecServiceCors) []string { return v.AllowHeaders }).(pulumi.StringArrayOutput)
-}
-
-// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
-func (o GetAppSpecServiceCorsOutput) AllowMethods() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetAppSpecServiceCors) []string { return v.AllowMethods }).(pulumi.StringArrayOutput)
-}
-
-// The `Access-Control-Allow-Origin` can be
-func (o GetAppSpecServiceCorsOutput) AllowOrigins() GetAppSpecServiceCorsAllowOriginsPtrOutput {
-	return o.ApplyT(func(v GetAppSpecServiceCors) *GetAppSpecServiceCorsAllowOrigins { return v.AllowOrigins }).(GetAppSpecServiceCorsAllowOriginsPtrOutput)
-}
-
-// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
-func (o GetAppSpecServiceCorsOutput) ExposeHeaders() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetAppSpecServiceCors) []string { return v.ExposeHeaders }).(pulumi.StringArrayOutput)
-}
-
-// An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
-func (o GetAppSpecServiceCorsOutput) MaxAge() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetAppSpecServiceCors) *string { return v.MaxAge }).(pulumi.StringPtrOutput)
-}
-
-type GetAppSpecServiceCorsPtrOutput struct{ *pulumi.OutputState }
-
-func (GetAppSpecServiceCorsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAppSpecServiceCors)(nil)).Elem()
-}
-
-func (o GetAppSpecServiceCorsPtrOutput) ToGetAppSpecServiceCorsPtrOutput() GetAppSpecServiceCorsPtrOutput {
-	return o
-}
-
-func (o GetAppSpecServiceCorsPtrOutput) ToGetAppSpecServiceCorsPtrOutputWithContext(ctx context.Context) GetAppSpecServiceCorsPtrOutput {
-	return o
-}
-
-func (o GetAppSpecServiceCorsPtrOutput) Elem() GetAppSpecServiceCorsOutput {
-	return o.ApplyT(func(v *GetAppSpecServiceCors) GetAppSpecServiceCors {
-		if v != nil {
-			return *v
-		}
-		var ret GetAppSpecServiceCors
-		return ret
-	}).(GetAppSpecServiceCorsOutput)
-}
-
-// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
-func (o GetAppSpecServiceCorsPtrOutput) AllowCredentials() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GetAppSpecServiceCors) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.AllowCredentials
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
-func (o GetAppSpecServiceCorsPtrOutput) AllowHeaders() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GetAppSpecServiceCors) []string {
-		if v == nil {
-			return nil
-		}
-		return v.AllowHeaders
-	}).(pulumi.StringArrayOutput)
-}
-
-// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
-func (o GetAppSpecServiceCorsPtrOutput) AllowMethods() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GetAppSpecServiceCors) []string {
-		if v == nil {
-			return nil
-		}
-		return v.AllowMethods
-	}).(pulumi.StringArrayOutput)
-}
-
-// The `Access-Control-Allow-Origin` can be
-func (o GetAppSpecServiceCorsPtrOutput) AllowOrigins() GetAppSpecServiceCorsAllowOriginsPtrOutput {
-	return o.ApplyT(func(v *GetAppSpecServiceCors) *GetAppSpecServiceCorsAllowOrigins {
-		if v == nil {
-			return nil
-		}
-		return v.AllowOrigins
-	}).(GetAppSpecServiceCorsAllowOriginsPtrOutput)
-}
-
-// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
-func (o GetAppSpecServiceCorsPtrOutput) ExposeHeaders() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GetAppSpecServiceCors) []string {
-		if v == nil {
-			return nil
-		}
-		return v.ExposeHeaders
-	}).(pulumi.StringArrayOutput)
-}
-
-// An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
-func (o GetAppSpecServiceCorsPtrOutput) MaxAge() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetAppSpecServiceCors) *string {
-		if v == nil {
-			return nil
-		}
-		return v.MaxAge
-	}).(pulumi.StringPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionGatewayConnectionAuthorizationInput)(nil)).Elem(), ActionGatewayConnectionAuthorizationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionGatewayConnectionAuthorizationArrayInput)(nil)).Elem(), ActionGatewayConnectionAuthorizationArray{})
@@ -79020,6 +78803,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionGatewayConnectionVpcPtrInput)(nil)).Elem(), ActionGatewayConnectionVpcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionGatewayConnectionVpcDestinationInput)(nil)).Elem(), ActionGatewayConnectionVpcDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionGatewayConnectionVpcDestinationArrayInput)(nil)).Elem(), ActionGatewayConnectionVpcDestinationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionGatewayEndpointInsightsInput)(nil)).Elem(), ActionGatewayEndpointInsightsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionGatewayEndpointInsightsPtrInput)(nil)).Elem(), ActionGatewayEndpointInsightsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionGatewayEndpointVersionInput)(nil)).Elem(), ActionGatewayEndpointVersionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionGatewayEndpointVersionPtrInput)(nil)).Elem(), ActionGatewayEndpointVersionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionGatewayEndpointVersionNetworkInput)(nil)).Elem(), ActionGatewayEndpointVersionNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionGatewayEndpointVersionNetworkPtrInput)(nil)).Elem(), ActionGatewayEndpointVersionNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionGatewayEndpointVersionPolicyInput)(nil)).Elem(), ActionGatewayEndpointVersionPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionGatewayEndpointVersionPolicyPtrInput)(nil)).Elem(), ActionGatewayEndpointVersionPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionGatewayEndpointVersionPolicyRuleInput)(nil)).Elem(), ActionGatewayEndpointVersionPolicyRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionGatewayEndpointVersionPolicyRuleArrayInput)(nil)).Elem(), ActionGatewayEndpointVersionPolicyRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionGatewayMcpServerDiscoveredToolInput)(nil)).Elem(), ActionGatewayMcpServerDiscoveredToolArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionGatewayMcpServerDiscoveredToolArrayInput)(nil)).Elem(), ActionGatewayMcpServerDiscoveredToolArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AgentPlatformAgentAgentGuardrailInput)(nil)).Elem(), AgentPlatformAgentAgentGuardrailArgs{})
@@ -79574,6 +79367,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetActionGatewayConnectionVpcArrayInput)(nil)).Elem(), GetActionGatewayConnectionVpcArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetActionGatewayConnectionVpcDestinationInput)(nil)).Elem(), GetActionGatewayConnectionVpcDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetActionGatewayConnectionVpcDestinationArrayInput)(nil)).Elem(), GetActionGatewayConnectionVpcDestinationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetActionGatewayEndpointInsightInput)(nil)).Elem(), GetActionGatewayEndpointInsightArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetActionGatewayEndpointInsightArrayInput)(nil)).Elem(), GetActionGatewayEndpointInsightArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetActionGatewayEndpointVersionInput)(nil)).Elem(), GetActionGatewayEndpointVersionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetActionGatewayEndpointVersionArrayInput)(nil)).Elem(), GetActionGatewayEndpointVersionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetActionGatewayEndpointVersionNetworkInput)(nil)).Elem(), GetActionGatewayEndpointVersionNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetActionGatewayEndpointVersionNetworkArrayInput)(nil)).Elem(), GetActionGatewayEndpointVersionNetworkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetActionGatewayEndpointVersionPolicyInput)(nil)).Elem(), GetActionGatewayEndpointVersionPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetActionGatewayEndpointVersionPolicyArrayInput)(nil)).Elem(), GetActionGatewayEndpointVersionPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetActionGatewayEndpointVersionPolicyRuleInput)(nil)).Elem(), GetActionGatewayEndpointVersionPolicyRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetActionGatewayEndpointVersionPolicyRuleArrayInput)(nil)).Elem(), GetActionGatewayEndpointVersionPolicyRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetActionGatewayProvidersFilterInput)(nil)).Elem(), GetActionGatewayProvidersFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetActionGatewayProvidersFilterArrayInput)(nil)).Elem(), GetActionGatewayProvidersFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetActionGatewayProvidersProviderInput)(nil)).Elem(), GetActionGatewayProvidersProviderArgs{})
@@ -79995,32 +79798,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobLogDestinationPapertrailPtrInput)(nil)).Elem(), GetAppSpecJobLogDestinationPapertrailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobTerminationInput)(nil)).Elem(), GetAppSpecJobTerminationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobTerminationPtrInput)(nil)).Elem(), GetAppSpecJobTerminationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecMaintenanceInput)(nil)).Elem(), GetAppSpecMaintenanceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecMaintenancePtrInput)(nil)).Elem(), GetAppSpecMaintenanceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceInput)(nil)).Elem(), GetAppSpecServiceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceArrayInput)(nil)).Elem(), GetAppSpecServiceArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceAlertInput)(nil)).Elem(), GetAppSpecServiceAlertArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceAlertArrayInput)(nil)).Elem(), GetAppSpecServiceAlertArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceAlertDestinationsInput)(nil)).Elem(), GetAppSpecServiceAlertDestinationsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceAlertDestinationsPtrInput)(nil)).Elem(), GetAppSpecServiceAlertDestinationsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceAlertDestinationsSlackWebhookInput)(nil)).Elem(), GetAppSpecServiceAlertDestinationsSlackWebhookArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceAlertDestinationsSlackWebhookArrayInput)(nil)).Elem(), GetAppSpecServiceAlertDestinationsSlackWebhookArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceAutoscalingInput)(nil)).Elem(), GetAppSpecServiceAutoscalingArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceAutoscalingPtrInput)(nil)).Elem(), GetAppSpecServiceAutoscalingArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceAutoscalingMetricsInput)(nil)).Elem(), GetAppSpecServiceAutoscalingMetricsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceAutoscalingMetricsPtrInput)(nil)).Elem(), GetAppSpecServiceAutoscalingMetricsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceAutoscalingMetricsCpuInput)(nil)).Elem(), GetAppSpecServiceAutoscalingMetricsCpuArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceAutoscalingMetricsCpuPtrInput)(nil)).Elem(), GetAppSpecServiceAutoscalingMetricsCpuArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceBitbucketInput)(nil)).Elem(), GetAppSpecServiceBitbucketArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceBitbucketPtrInput)(nil)).Elem(), GetAppSpecServiceBitbucketArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceCorsInput)(nil)).Elem(), GetAppSpecServiceCorsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceCorsPtrInput)(nil)).Elem(), GetAppSpecServiceCorsArgs{})
 	pulumi.RegisterOutputType(ActionGatewayConnectionAuthorizationOutput{})
 	pulumi.RegisterOutputType(ActionGatewayConnectionAuthorizationArrayOutput{})
 	pulumi.RegisterOutputType(ActionGatewayConnectionVpcOutput{})
 	pulumi.RegisterOutputType(ActionGatewayConnectionVpcPtrOutput{})
 	pulumi.RegisterOutputType(ActionGatewayConnectionVpcDestinationOutput{})
 	pulumi.RegisterOutputType(ActionGatewayConnectionVpcDestinationArrayOutput{})
+	pulumi.RegisterOutputType(ActionGatewayEndpointInsightsOutput{})
+	pulumi.RegisterOutputType(ActionGatewayEndpointInsightsPtrOutput{})
+	pulumi.RegisterOutputType(ActionGatewayEndpointVersionOutput{})
+	pulumi.RegisterOutputType(ActionGatewayEndpointVersionPtrOutput{})
+	pulumi.RegisterOutputType(ActionGatewayEndpointVersionNetworkOutput{})
+	pulumi.RegisterOutputType(ActionGatewayEndpointVersionNetworkPtrOutput{})
+	pulumi.RegisterOutputType(ActionGatewayEndpointVersionPolicyOutput{})
+	pulumi.RegisterOutputType(ActionGatewayEndpointVersionPolicyPtrOutput{})
+	pulumi.RegisterOutputType(ActionGatewayEndpointVersionPolicyRuleOutput{})
+	pulumi.RegisterOutputType(ActionGatewayEndpointVersionPolicyRuleArrayOutput{})
 	pulumi.RegisterOutputType(ActionGatewayMcpServerDiscoveredToolOutput{})
 	pulumi.RegisterOutputType(ActionGatewayMcpServerDiscoveredToolArrayOutput{})
 	pulumi.RegisterOutputType(AgentPlatformAgentAgentGuardrailOutput{})
@@ -80575,6 +80368,16 @@ func init() {
 	pulumi.RegisterOutputType(GetActionGatewayConnectionVpcArrayOutput{})
 	pulumi.RegisterOutputType(GetActionGatewayConnectionVpcDestinationOutput{})
 	pulumi.RegisterOutputType(GetActionGatewayConnectionVpcDestinationArrayOutput{})
+	pulumi.RegisterOutputType(GetActionGatewayEndpointInsightOutput{})
+	pulumi.RegisterOutputType(GetActionGatewayEndpointInsightArrayOutput{})
+	pulumi.RegisterOutputType(GetActionGatewayEndpointVersionOutput{})
+	pulumi.RegisterOutputType(GetActionGatewayEndpointVersionArrayOutput{})
+	pulumi.RegisterOutputType(GetActionGatewayEndpointVersionNetworkOutput{})
+	pulumi.RegisterOutputType(GetActionGatewayEndpointVersionNetworkArrayOutput{})
+	pulumi.RegisterOutputType(GetActionGatewayEndpointVersionPolicyOutput{})
+	pulumi.RegisterOutputType(GetActionGatewayEndpointVersionPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetActionGatewayEndpointVersionPolicyRuleOutput{})
+	pulumi.RegisterOutputType(GetActionGatewayEndpointVersionPolicyRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetActionGatewayProvidersFilterOutput{})
 	pulumi.RegisterOutputType(GetActionGatewayProvidersFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetActionGatewayProvidersProviderOutput{})
@@ -80996,24 +80799,4 @@ func init() {
 	pulumi.RegisterOutputType(GetAppSpecJobLogDestinationPapertrailPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecJobTerminationOutput{})
 	pulumi.RegisterOutputType(GetAppSpecJobTerminationPtrOutput{})
-	pulumi.RegisterOutputType(GetAppSpecMaintenanceOutput{})
-	pulumi.RegisterOutputType(GetAppSpecMaintenancePtrOutput{})
-	pulumi.RegisterOutputType(GetAppSpecServiceOutput{})
-	pulumi.RegisterOutputType(GetAppSpecServiceArrayOutput{})
-	pulumi.RegisterOutputType(GetAppSpecServiceAlertOutput{})
-	pulumi.RegisterOutputType(GetAppSpecServiceAlertArrayOutput{})
-	pulumi.RegisterOutputType(GetAppSpecServiceAlertDestinationsOutput{})
-	pulumi.RegisterOutputType(GetAppSpecServiceAlertDestinationsPtrOutput{})
-	pulumi.RegisterOutputType(GetAppSpecServiceAlertDestinationsSlackWebhookOutput{})
-	pulumi.RegisterOutputType(GetAppSpecServiceAlertDestinationsSlackWebhookArrayOutput{})
-	pulumi.RegisterOutputType(GetAppSpecServiceAutoscalingOutput{})
-	pulumi.RegisterOutputType(GetAppSpecServiceAutoscalingPtrOutput{})
-	pulumi.RegisterOutputType(GetAppSpecServiceAutoscalingMetricsOutput{})
-	pulumi.RegisterOutputType(GetAppSpecServiceAutoscalingMetricsPtrOutput{})
-	pulumi.RegisterOutputType(GetAppSpecServiceAutoscalingMetricsCpuOutput{})
-	pulumi.RegisterOutputType(GetAppSpecServiceAutoscalingMetricsCpuPtrOutput{})
-	pulumi.RegisterOutputType(GetAppSpecServiceBitbucketOutput{})
-	pulumi.RegisterOutputType(GetAppSpecServiceBitbucketPtrOutput{})
-	pulumi.RegisterOutputType(GetAppSpecServiceCorsOutput{})
-	pulumi.RegisterOutputType(GetAppSpecServiceCorsPtrOutput{})
 }

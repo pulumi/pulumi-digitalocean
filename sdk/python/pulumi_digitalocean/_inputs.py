@@ -22,6 +22,16 @@ __all__ = [
     'ActionGatewayConnectionVpcArgsDict',
     'ActionGatewayConnectionVpcDestinationArgs',
     'ActionGatewayConnectionVpcDestinationArgsDict',
+    'ActionGatewayEndpointInsightsArgs',
+    'ActionGatewayEndpointInsightsArgsDict',
+    'ActionGatewayEndpointVersionArgs',
+    'ActionGatewayEndpointVersionArgsDict',
+    'ActionGatewayEndpointVersionNetworkArgs',
+    'ActionGatewayEndpointVersionNetworkArgsDict',
+    'ActionGatewayEndpointVersionPolicyArgs',
+    'ActionGatewayEndpointVersionPolicyArgsDict',
+    'ActionGatewayEndpointVersionPolicyRuleArgs',
+    'ActionGatewayEndpointVersionPolicyRuleArgsDict',
     'ActionGatewayMcpServerDiscoveredToolArgs',
     'ActionGatewayMcpServerDiscoveredToolArgsDict',
     'AgentPlatformAgentAgentGuardrailArgs',
@@ -1023,6 +1033,437 @@ class ActionGatewayConnectionVpcDestinationArgs:
     @allowed_ip_cidrs.setter
     def allowed_ip_cidrs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_ip_cidrs", value)
+
+
+class ActionGatewayEndpointInsightsArgsDict(TypedDict):
+    logs: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether the endpoint's logs are sent to Insights. Your team can require this to be on for every endpoint; turning it off is then refused.
+    """
+    metrics: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether the endpoint's metrics are sent to Insights.
+    """
+    traces: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether the endpoint's traces are sent to Insights.
+
+    Each signal is optional and computed, so an omitted signal keeps the value the
+    endpoint already stores instead of resetting it.
+    """
+
+@pulumi.input_type
+class ActionGatewayEndpointInsightsArgs:
+    def __init__(__self__, *,
+                 logs: pulumi.Input[Optional[_builtins.bool]] = None,
+                 metrics: pulumi.Input[Optional[_builtins.bool]] = None,
+                 traces: pulumi.Input[Optional[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] logs: Whether the endpoint's logs are sent to Insights. Your team can require this to be on for every endpoint; turning it off is then refused.
+        :param pulumi.Input[_builtins.bool] metrics: Whether the endpoint's metrics are sent to Insights.
+        :param pulumi.Input[_builtins.bool] traces: Whether the endpoint's traces are sent to Insights.
+               
+               Each signal is optional and computed, so an omitted signal keeps the value the
+               endpoint already stores instead of resetting it.
+        """
+        if logs is not None:
+            pulumi.set(__self__, "logs", logs)
+        if metrics is not None:
+            pulumi.set(__self__, "metrics", metrics)
+        if traces is not None:
+            pulumi.set(__self__, "traces", traces)
+
+    @_builtins.property
+    @pulumi.getter
+    def logs(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether the endpoint's logs are sent to Insights. Your team can require this to be on for every endpoint; turning it off is then refused.
+        """
+        return pulumi.get(self, "logs")
+
+    @logs.setter
+    def logs(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "logs", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def metrics(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether the endpoint's metrics are sent to Insights.
+        """
+        return pulumi.get(self, "metrics")
+
+    @metrics.setter
+    def metrics(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "metrics", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def traces(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether the endpoint's traces are sent to Insights.
+
+        Each signal is optional and computed, so an omitted signal keeps the value the
+        endpoint already stores instead of resetting it.
+        """
+        return pulumi.get(self, "traces")
+
+    @traces.setter
+    def traces(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "traces", value)
+
+
+class ActionGatewayEndpointVersionArgsDict(TypedDict):
+    actor_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The actor the version's tool calls act as. It must contain 1 to 64 characters from `[A-Za-z0-9._-]`. No operation changes an endpoint's actor, so changing this forces a new endpoint.
+    """
+    config: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    A JSON object of options Gateway applies to the version, such as `preloadTools`, `customInstructions`, or `outputViews`. It is validated as JSON, normalized for comparison, and stored as supplied.
+    """
+    id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The ID of the head version, `<endpoint UUID>.v<version number>`.
+    """
+    network: NotRequired[pulumi.Input[Optional['ActionGatewayEndpointVersionNetworkArgsDict']]]
+    """
+    A VPC the version's tool calls are routed through. See Network below.
+    """
+    pinned_tools: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    The tools and toolbelts the head version enables, each pinned by the API as `<tool_slug>@<version>` or `toolbelt:<name>@<version>`. Empty when every tool is enabled.
+    """
+    policy: NotRequired[pulumi.Input[Optional['ActionGatewayEndpointVersionPolicyArgsDict']]]
+    """
+    The tool permission policy. Omitting it asks before every call. See Policy below.
+    """
+    promoted_from_version_number: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The version number the head was promoted from, when it was created by a promotion rather than a publish.
+    """
+    tools: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    The tools and toolbelts the version enables, each optionally pinned as `<tool_slug>@<version>` or `toolbelt:<name>@<version>`. **Omit the argument to enable every tool, and set an empty list to enable none.** The API distinguishes the two, and so does this resource.
+    """
+    version_number: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The number of the head version.
+    """
+
+@pulumi.input_type
+class ActionGatewayEndpointVersionArgs:
+    def __init__(__self__, *,
+                 actor_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 config: pulumi.Input[Optional[_builtins.str]] = None,
+                 id: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional['ActionGatewayEndpointVersionNetworkArgs']] = None,
+                 pinned_tools: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 policy: pulumi.Input[Optional['ActionGatewayEndpointVersionPolicyArgs']] = None,
+                 promoted_from_version_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 tools: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 version_number: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.str] actor_id: The actor the version's tool calls act as. It must contain 1 to 64 characters from `[A-Za-z0-9._-]`. No operation changes an endpoint's actor, so changing this forces a new endpoint.
+        :param pulumi.Input[_builtins.str] config: A JSON object of options Gateway applies to the version, such as `preloadTools`, `customInstructions`, or `outputViews`. It is validated as JSON, normalized for comparison, and stored as supplied.
+        :param pulumi.Input[_builtins.str] id: The ID of the head version, `<endpoint UUID>.v<version number>`.
+        :param pulumi.Input['ActionGatewayEndpointVersionNetworkArgs'] network: A VPC the version's tool calls are routed through. See Network below.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] pinned_tools: The tools and toolbelts the head version enables, each pinned by the API as `<tool_slug>@<version>` or `toolbelt:<name>@<version>`. Empty when every tool is enabled.
+        :param pulumi.Input['ActionGatewayEndpointVersionPolicyArgs'] policy: The tool permission policy. Omitting it asks before every call. See Policy below.
+        :param pulumi.Input[_builtins.int] promoted_from_version_number: The version number the head was promoted from, when it was created by a promotion rather than a publish.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tools: The tools and toolbelts the version enables, each optionally pinned as `<tool_slug>@<version>` or `toolbelt:<name>@<version>`. **Omit the argument to enable every tool, and set an empty list to enable none.** The API distinguishes the two, and so does this resource.
+        :param pulumi.Input[_builtins.int] version_number: The number of the head version.
+        """
+        if actor_id is not None:
+            pulumi.set(__self__, "actor_id", actor_id)
+        if config is not None:
+            pulumi.set(__self__, "config", config)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if pinned_tools is not None:
+            pulumi.set(__self__, "pinned_tools", pinned_tools)
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
+        if promoted_from_version_number is not None:
+            pulumi.set(__self__, "promoted_from_version_number", promoted_from_version_number)
+        if tools is not None:
+            pulumi.set(__self__, "tools", tools)
+        if version_number is not None:
+            pulumi.set(__self__, "version_number", version_number)
+
+    @_builtins.property
+    @pulumi.getter(name="actorId")
+    def actor_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The actor the version's tool calls act as. It must contain 1 to 64 characters from `[A-Za-z0-9._-]`. No operation changes an endpoint's actor, so changing this forces a new endpoint.
+        """
+        return pulumi.get(self, "actor_id")
+
+    @actor_id.setter
+    def actor_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "actor_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def config(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        A JSON object of options Gateway applies to the version, such as `preloadTools`, `customInstructions`, or `outputViews`. It is validated as JSON, normalized for comparison, and stored as supplied.
+        """
+        return pulumi.get(self, "config")
+
+    @config.setter
+    def config(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "config", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the head version, `<endpoint UUID>.v<version number>`.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def network(self) -> pulumi.Input[Optional['ActionGatewayEndpointVersionNetworkArgs']]:
+        """
+        A VPC the version's tool calls are routed through. See Network below.
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: pulumi.Input[Optional['ActionGatewayEndpointVersionNetworkArgs']]):
+        pulumi.set(self, "network", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pinnedTools")
+    def pinned_tools(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The tools and toolbelts the head version enables, each pinned by the API as `<tool_slug>@<version>` or `toolbelt:<name>@<version>`. Empty when every tool is enabled.
+        """
+        return pulumi.get(self, "pinned_tools")
+
+    @pinned_tools.setter
+    def pinned_tools(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "pinned_tools", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def policy(self) -> pulumi.Input[Optional['ActionGatewayEndpointVersionPolicyArgs']]:
+        """
+        The tool permission policy. Omitting it asks before every call. See Policy below.
+        """
+        return pulumi.get(self, "policy")
+
+    @policy.setter
+    def policy(self, value: pulumi.Input[Optional['ActionGatewayEndpointVersionPolicyArgs']]):
+        pulumi.set(self, "policy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="promotedFromVersionNumber")
+    def promoted_from_version_number(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The version number the head was promoted from, when it was created by a promotion rather than a publish.
+        """
+        return pulumi.get(self, "promoted_from_version_number")
+
+    @promoted_from_version_number.setter
+    def promoted_from_version_number(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "promoted_from_version_number", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tools(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The tools and toolbelts the version enables, each optionally pinned as `<tool_slug>@<version>` or `toolbelt:<name>@<version>`. **Omit the argument to enable every tool, and set an empty list to enable none.** The API distinguishes the two, and so does this resource.
+        """
+        return pulumi.get(self, "tools")
+
+    @tools.setter
+    def tools(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tools", value)
+
+    @_builtins.property
+    @pulumi.getter(name="versionNumber")
+    def version_number(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The number of the head version.
+        """
+        return pulumi.get(self, "version_number")
+
+    @version_number.setter
+    def version_number(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "version_number", value)
+
+
+class ActionGatewayEndpointVersionNetworkArgsDict(TypedDict):
+    vpc_uuid: pulumi.Input[_builtins.str]
+    """
+    The UUID of a VPC owned by your team.
+    """
+    region: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The region of the VPC the version is attached to.
+    """
+
+@pulumi.input_type
+class ActionGatewayEndpointVersionNetworkArgs:
+    def __init__(__self__, *,
+                 vpc_uuid: pulumi.Input[_builtins.str],
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] vpc_uuid: The UUID of a VPC owned by your team.
+        :param pulumi.Input[_builtins.str] region: The region of the VPC the version is attached to.
+        """
+        pulumi.set(__self__, "vpc_uuid", vpc_uuid)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="vpcUuid")
+    def vpc_uuid(self) -> pulumi.Input[_builtins.str]:
+        """
+        The UUID of a VPC owned by your team.
+        """
+        return pulumi.get(self, "vpc_uuid")
+
+    @vpc_uuid.setter
+    def vpc_uuid(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "vpc_uuid", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The region of the VPC the version is attached to.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "region", value)
+
+
+class ActionGatewayEndpointVersionPolicyArgsDict(TypedDict):
+    default_action: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The action for calls that no rule matches: `allow`, `ask`, or `deny`. Empty means `ask`.
+    """
+    rules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ActionGatewayEndpointVersionPolicyRuleArgsDict']]]]]
+    """
+    Rules for specific tools and toolbelts, in the order the configuration lists them. Each rule supports:
+    """
+
+@pulumi.input_type
+class ActionGatewayEndpointVersionPolicyArgs:
+    def __init__(__self__, *,
+                 default_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input['ActionGatewayEndpointVersionPolicyRuleArgs']]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] default_action: The action for calls that no rule matches: `allow`, `ask`, or `deny`. Empty means `ask`.
+        :param pulumi.Input[Sequence[pulumi.Input['ActionGatewayEndpointVersionPolicyRuleArgs']]] rules: Rules for specific tools and toolbelts, in the order the configuration lists them. Each rule supports:
+        """
+        if default_action is not None:
+            pulumi.set(__self__, "default_action", default_action)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultAction")
+    def default_action(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The action for calls that no rule matches: `allow`, `ask`, or `deny`. Empty means `ask`.
+        """
+        return pulumi.get(self, "default_action")
+
+    @default_action.setter
+    def default_action(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "default_action", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ActionGatewayEndpointVersionPolicyRuleArgs']]]]:
+        """
+        Rules for specific tools and toolbelts, in the order the configuration lists them. Each rule supports:
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ActionGatewayEndpointVersionPolicyRuleArgs']]]]):
+        pulumi.set(self, "rules", value)
+
+
+class ActionGatewayEndpointVersionPolicyRuleArgsDict(TypedDict):
+    action: pulumi.Input[_builtins.str]
+    """
+    One of `allow`, `ask`, or `deny`.
+    """
+    tool: pulumi.Input[_builtins.str]
+    """
+    A tool slug, optionally pinned as `<tool_slug>@<version>`, or `toolbelt:<name>@<version>`.
+    """
+    match: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
+    """
+    Argument values a call must match for the rule to apply, keyed by argument name.
+    """
+
+@pulumi.input_type
+class ActionGatewayEndpointVersionPolicyRuleArgs:
+    def __init__(__self__, *,
+                 action: pulumi.Input[_builtins.str],
+                 tool: pulumi.Input[_builtins.str],
+                 match: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] action: One of `allow`, `ask`, or `deny`.
+        :param pulumi.Input[_builtins.str] tool: A tool slug, optionally pinned as `<tool_slug>@<version>`, or `toolbelt:<name>@<version>`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] match: Argument values a call must match for the rule to apply, keyed by argument name.
+        """
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "tool", tool)
+        if match is not None:
+            pulumi.set(__self__, "match", match)
+
+    @_builtins.property
+    @pulumi.getter
+    def action(self) -> pulumi.Input[_builtins.str]:
+        """
+        One of `allow`, `ask`, or `deny`.
+        """
+        return pulumi.get(self, "action")
+
+    @action.setter
+    def action(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "action", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tool(self) -> pulumi.Input[_builtins.str]:
+        """
+        A tool slug, optionally pinned as `<tool_slug>@<version>`, or `toolbelt:<name>@<version>`.
+        """
+        return pulumi.get(self, "tool")
+
+    @tool.setter
+    def tool(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "tool", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def match(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Argument values a call must match for the rule to apply, keyed by argument name.
+        """
+        return pulumi.get(self, "match")
+
+    @match.setter
+    def match(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "match", value)
 
 
 class ActionGatewayMcpServerDiscoveredToolArgsDict(TypedDict):
@@ -27480,11 +27921,11 @@ class LoadBalancerStickySessionsArgs:
 class MicrovmAutoPauseArgsDict(TypedDict):
     enabled: pulumi.Input[_builtins.bool]
     """
-    Whether the MicroVM pauses after it has been idle for `idle_timeout`.
+    Whether the MicroVM pauses after it has been idle for `idle_timeout`. A change forces a new MicroVM.
     """
     idle_timeout: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    How long the MicroVM must be idle before it pauses, as a duration such as `5m` or `30s`.
+    How long the MicroVM must be idle before it pauses, as a duration such as `5m` or `30s`. A change is applied in place.
     """
 
 @pulumi.input_type
@@ -27493,8 +27934,8 @@ class MicrovmAutoPauseArgs:
                  enabled: pulumi.Input[_builtins.bool],
                  idle_timeout: pulumi.Input[Optional[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.bool] enabled: Whether the MicroVM pauses after it has been idle for `idle_timeout`.
-        :param pulumi.Input[_builtins.str] idle_timeout: How long the MicroVM must be idle before it pauses, as a duration such as `5m` or `30s`.
+        :param pulumi.Input[_builtins.bool] enabled: Whether the MicroVM pauses after it has been idle for `idle_timeout`. A change forces a new MicroVM.
+        :param pulumi.Input[_builtins.str] idle_timeout: How long the MicroVM must be idle before it pauses, as a duration such as `5m` or `30s`. A change is applied in place.
         """
         pulumi.set(__self__, "enabled", enabled)
         if idle_timeout is not None:
@@ -27504,7 +27945,7 @@ class MicrovmAutoPauseArgs:
     @pulumi.getter
     def enabled(self) -> pulumi.Input[_builtins.bool]:
         """
-        Whether the MicroVM pauses after it has been idle for `idle_timeout`.
+        Whether the MicroVM pauses after it has been idle for `idle_timeout`. A change forces a new MicroVM.
         """
         return pulumi.get(self, "enabled")
 
@@ -27516,7 +27957,7 @@ class MicrovmAutoPauseArgs:
     @pulumi.getter(name="idleTimeout")
     def idle_timeout(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        How long the MicroVM must be idle before it pauses, as a duration such as `5m` or `30s`.
+        How long the MicroVM must be idle before it pauses, as a duration such as `5m` or `30s`. A change is applied in place.
         """
         return pulumi.get(self, "idle_timeout")
 

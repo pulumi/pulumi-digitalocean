@@ -66,8 +66,8 @@ namespace Pulumi.DigitalOcean
     /// ### Pause and Resume
     /// 
     /// Set `State` to `Paused` to pause a running MicroVM, and back to `Running` to
-    /// resume it. This is the only change that is applied in place; every other
-    /// argument forces a new MicroVM.
+    /// resume it. `State`, `Name`, `Tags`, and `auto_pause.idle_timeout` are applied
+    /// in place; every other argument forces a new MicroVM.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -261,7 +261,7 @@ namespace Pulumi.DigitalOcean
         public Output<bool?> IngressEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the MicroVM.
+        /// The name of the MicroVM. A change renames the MicroVM in place.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -303,7 +303,7 @@ namespace Pulumi.DigitalOcean
         public Output<string?> State { get; private set; } = null!;
 
         /// <summary>
-        /// A list of tag names to apply to the MicroVM.
+        /// A list of tag names to apply to the MicroVM. A change replaces the tag set in place.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
@@ -415,7 +415,7 @@ namespace Pulumi.DigitalOcean
         public Input<bool>? IngressEnabled { get; set; }
 
         /// <summary>
-        /// The name of the MicroVM.
+        /// The name of the MicroVM. A change renames the MicroVM in place.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -466,7 +466,7 @@ namespace Pulumi.DigitalOcean
         private InputList<string>? _tags;
 
         /// <summary>
-        /// A list of tag names to apply to the MicroVM.
+        /// A list of tag names to apply to the MicroVM. A change replaces the tag set in place.
         /// </summary>
         public InputList<string> Tags
         {
@@ -561,7 +561,7 @@ namespace Pulumi.DigitalOcean
         public Input<bool>? IngressEnabled { get; set; }
 
         /// <summary>
-        /// The name of the MicroVM.
+        /// The name of the MicroVM. A change renames the MicroVM in place.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -612,7 +612,7 @@ namespace Pulumi.DigitalOcean
         private InputList<string>? _tags;
 
         /// <summary>
-        /// A list of tag names to apply to the MicroVM.
+        /// A list of tag names to apply to the MicroVM. A change replaces the tag set in place.
         /// </summary>
         public InputList<string> Tags
         {

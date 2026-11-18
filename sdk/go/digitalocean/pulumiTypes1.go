@@ -13,6 +13,1739 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetAppSpecMaintenance struct {
+	// Indicates whether the app should be archived. Setting this to true implies that enabled is set to true.
+	Archive *bool `pulumi:"archive"`
+	// Whether to automatically deploy images pushed to DOCR.
+	Enabled *bool `pulumi:"enabled"`
+	// A custom offline page to display when maintenance mode is enabled or the app is archived.
+	OfflinePageUrl *string `pulumi:"offlinePageUrl"`
+}
+
+// GetAppSpecMaintenanceInput is an input type that accepts GetAppSpecMaintenanceArgs and GetAppSpecMaintenanceOutput values.
+// You can construct a concrete instance of `GetAppSpecMaintenanceInput` via:
+//
+//	GetAppSpecMaintenanceArgs{...}
+type GetAppSpecMaintenanceInput interface {
+	pulumi.Input
+
+	ToGetAppSpecMaintenanceOutput() GetAppSpecMaintenanceOutput
+	ToGetAppSpecMaintenanceOutputWithContext(context.Context) GetAppSpecMaintenanceOutput
+}
+
+type GetAppSpecMaintenanceArgs struct {
+	// Indicates whether the app should be archived. Setting this to true implies that enabled is set to true.
+	Archive pulumi.BoolPtrInput `pulumi:"archive"`
+	// Whether to automatically deploy images pushed to DOCR.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// A custom offline page to display when maintenance mode is enabled or the app is archived.
+	OfflinePageUrl pulumi.StringPtrInput `pulumi:"offlinePageUrl"`
+}
+
+func (GetAppSpecMaintenanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecMaintenance)(nil)).Elem()
+}
+
+func (i GetAppSpecMaintenanceArgs) ToGetAppSpecMaintenanceOutput() GetAppSpecMaintenanceOutput {
+	return i.ToGetAppSpecMaintenanceOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecMaintenanceArgs) ToGetAppSpecMaintenanceOutputWithContext(ctx context.Context) GetAppSpecMaintenanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecMaintenanceOutput)
+}
+
+func (i GetAppSpecMaintenanceArgs) ToGetAppSpecMaintenancePtrOutput() GetAppSpecMaintenancePtrOutput {
+	return i.ToGetAppSpecMaintenancePtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecMaintenanceArgs) ToGetAppSpecMaintenancePtrOutputWithContext(ctx context.Context) GetAppSpecMaintenancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecMaintenanceOutput).ToGetAppSpecMaintenancePtrOutputWithContext(ctx)
+}
+
+// GetAppSpecMaintenancePtrInput is an input type that accepts GetAppSpecMaintenanceArgs, GetAppSpecMaintenancePtr and GetAppSpecMaintenancePtrOutput values.
+// You can construct a concrete instance of `GetAppSpecMaintenancePtrInput` via:
+//
+//	        GetAppSpecMaintenanceArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetAppSpecMaintenancePtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecMaintenancePtrOutput() GetAppSpecMaintenancePtrOutput
+	ToGetAppSpecMaintenancePtrOutputWithContext(context.Context) GetAppSpecMaintenancePtrOutput
+}
+
+type getAppSpecMaintenancePtrType GetAppSpecMaintenanceArgs
+
+func GetAppSpecMaintenancePtr(v *GetAppSpecMaintenanceArgs) GetAppSpecMaintenancePtrInput {
+	return (*getAppSpecMaintenancePtrType)(v)
+}
+
+func (*getAppSpecMaintenancePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecMaintenance)(nil)).Elem()
+}
+
+func (i *getAppSpecMaintenancePtrType) ToGetAppSpecMaintenancePtrOutput() GetAppSpecMaintenancePtrOutput {
+	return i.ToGetAppSpecMaintenancePtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecMaintenancePtrType) ToGetAppSpecMaintenancePtrOutputWithContext(ctx context.Context) GetAppSpecMaintenancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecMaintenancePtrOutput)
+}
+
+type GetAppSpecMaintenanceOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecMaintenanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecMaintenance)(nil)).Elem()
+}
+
+func (o GetAppSpecMaintenanceOutput) ToGetAppSpecMaintenanceOutput() GetAppSpecMaintenanceOutput {
+	return o
+}
+
+func (o GetAppSpecMaintenanceOutput) ToGetAppSpecMaintenanceOutputWithContext(ctx context.Context) GetAppSpecMaintenanceOutput {
+	return o
+}
+
+func (o GetAppSpecMaintenanceOutput) ToGetAppSpecMaintenancePtrOutput() GetAppSpecMaintenancePtrOutput {
+	return o.ToGetAppSpecMaintenancePtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecMaintenanceOutput) ToGetAppSpecMaintenancePtrOutputWithContext(ctx context.Context) GetAppSpecMaintenancePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecMaintenance) *GetAppSpecMaintenance {
+		return &v
+	}).(GetAppSpecMaintenancePtrOutput)
+}
+
+// Indicates whether the app should be archived. Setting this to true implies that enabled is set to true.
+func (o GetAppSpecMaintenanceOutput) Archive() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetAppSpecMaintenance) *bool { return v.Archive }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to automatically deploy images pushed to DOCR.
+func (o GetAppSpecMaintenanceOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetAppSpecMaintenance) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// A custom offline page to display when maintenance mode is enabled or the app is archived.
+func (o GetAppSpecMaintenanceOutput) OfflinePageUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecMaintenance) *string { return v.OfflinePageUrl }).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecMaintenancePtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecMaintenancePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecMaintenance)(nil)).Elem()
+}
+
+func (o GetAppSpecMaintenancePtrOutput) ToGetAppSpecMaintenancePtrOutput() GetAppSpecMaintenancePtrOutput {
+	return o
+}
+
+func (o GetAppSpecMaintenancePtrOutput) ToGetAppSpecMaintenancePtrOutputWithContext(ctx context.Context) GetAppSpecMaintenancePtrOutput {
+	return o
+}
+
+func (o GetAppSpecMaintenancePtrOutput) Elem() GetAppSpecMaintenanceOutput {
+	return o.ApplyT(func(v *GetAppSpecMaintenance) GetAppSpecMaintenance {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecMaintenance
+		return ret
+	}).(GetAppSpecMaintenanceOutput)
+}
+
+// Indicates whether the app should be archived. Setting this to true implies that enabled is set to true.
+func (o GetAppSpecMaintenancePtrOutput) Archive() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecMaintenance) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Archive
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to automatically deploy images pushed to DOCR.
+func (o GetAppSpecMaintenancePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecMaintenance) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A custom offline page to display when maintenance mode is enabled or the app is archived.
+func (o GetAppSpecMaintenancePtrOutput) OfflinePageUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecMaintenance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OfflinePageUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecService struct {
+	// Describes an alert policy for the component.
+	Alerts []GetAppSpecServiceAlert `pulumi:"alerts"`
+	// Configuration for automatically scaling this component based on metrics.
+	Autoscaling *GetAppSpecServiceAutoscaling `pulumi:"autoscaling"`
+	// A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set. To read your repo, App Platform must be authorized to access your Bitbucket account. Go to this URL to link App Platform to your Bitbucket account: `https://cloud.digitalocean.com/apps/bitbucket/install`.
+	Bitbucket *GetAppSpecServiceBitbucket `pulumi:"bitbucket"`
+	// An optional build command to run while building this component from source.
+	BuildCommand *string `pulumi:"buildCommand"`
+	// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+	//
+	// Deprecated: Service level CORS rules are deprecated in favor of ingresses
+	Cors *GetAppSpecServiceCors `pulumi:"cors"`
+	// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
+	DockerfilePath *string `pulumi:"dockerfilePath"`
+	// An environment slug describing the type of this app.
+	EnvironmentSlug *string `pulumi:"environmentSlug"`
+	// Describes an environment variable made available to an app competent.
+	Envs []GetAppSpecServiceEnv `pulumi:"envs"`
+	// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+	Git *GetAppSpecServiceGit `pulumi:"git"`
+	// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+	Github *GetAppSpecServiceGithub `pulumi:"github"`
+	// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+	Gitlab *GetAppSpecServiceGitlab `pulumi:"gitlab"`
+	// A health check to determine the availability of this component.
+	HealthCheck *GetAppSpecServiceHealthCheck `pulumi:"healthCheck"`
+	// The internal port on which this service's run command will listen.
+	HttpPort int `pulumi:"httpPort"`
+	// An image to use as the component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+	Image *GetAppSpecServiceImage `pulumi:"image"`
+	// The amount of instances that this component should be scaled to.
+	InstanceCount *int `pulumi:"instanceCount"`
+	// The instance size to use for this component.
+	InstanceSizeSlug *string `pulumi:"instanceSizeSlug"`
+	// A list of ports on which this service will listen for internal traffic.
+	InternalPorts       []int                                 `pulumi:"internalPorts"`
+	LivenessHealthCheck *GetAppSpecServiceLivenessHealthCheck `pulumi:"livenessHealthCheck"`
+	// Describes a log forwarding destination.
+	LogDestinations []GetAppSpecServiceLogDestination `pulumi:"logDestinations"`
+	// The name of the component.
+	Name string `pulumi:"name"`
+	// Deprecated: Service level routes are deprecated in favor of ingresses
+	Routes []GetAppSpecServiceRoute `pulumi:"routes"`
+	// An optional run command to override the component's default.
+	RunCommand *string `pulumi:"runCommand"`
+	// An optional path to the working directory to use for the build.
+	SourceDir *string `pulumi:"sourceDir"`
+	// Contains a component's termination parameters.
+	Termination *GetAppSpecServiceTermination `pulumi:"termination"`
+}
+
+// GetAppSpecServiceInput is an input type that accepts GetAppSpecServiceArgs and GetAppSpecServiceOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceInput` via:
+//
+//	GetAppSpecServiceArgs{...}
+type GetAppSpecServiceInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceOutput() GetAppSpecServiceOutput
+	ToGetAppSpecServiceOutputWithContext(context.Context) GetAppSpecServiceOutput
+}
+
+type GetAppSpecServiceArgs struct {
+	// Describes an alert policy for the component.
+	Alerts GetAppSpecServiceAlertArrayInput `pulumi:"alerts"`
+	// Configuration for automatically scaling this component based on metrics.
+	Autoscaling GetAppSpecServiceAutoscalingPtrInput `pulumi:"autoscaling"`
+	// A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set. To read your repo, App Platform must be authorized to access your Bitbucket account. Go to this URL to link App Platform to your Bitbucket account: `https://cloud.digitalocean.com/apps/bitbucket/install`.
+	Bitbucket GetAppSpecServiceBitbucketPtrInput `pulumi:"bitbucket"`
+	// An optional build command to run while building this component from source.
+	BuildCommand pulumi.StringPtrInput `pulumi:"buildCommand"`
+	// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+	//
+	// Deprecated: Service level CORS rules are deprecated in favor of ingresses
+	Cors GetAppSpecServiceCorsPtrInput `pulumi:"cors"`
+	// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
+	DockerfilePath pulumi.StringPtrInput `pulumi:"dockerfilePath"`
+	// An environment slug describing the type of this app.
+	EnvironmentSlug pulumi.StringPtrInput `pulumi:"environmentSlug"`
+	// Describes an environment variable made available to an app competent.
+	Envs GetAppSpecServiceEnvArrayInput `pulumi:"envs"`
+	// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+	Git GetAppSpecServiceGitPtrInput `pulumi:"git"`
+	// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+	Github GetAppSpecServiceGithubPtrInput `pulumi:"github"`
+	// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+	Gitlab GetAppSpecServiceGitlabPtrInput `pulumi:"gitlab"`
+	// A health check to determine the availability of this component.
+	HealthCheck GetAppSpecServiceHealthCheckPtrInput `pulumi:"healthCheck"`
+	// The internal port on which this service's run command will listen.
+	HttpPort pulumi.IntInput `pulumi:"httpPort"`
+	// An image to use as the component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+	Image GetAppSpecServiceImagePtrInput `pulumi:"image"`
+	// The amount of instances that this component should be scaled to.
+	InstanceCount pulumi.IntPtrInput `pulumi:"instanceCount"`
+	// The instance size to use for this component.
+	InstanceSizeSlug pulumi.StringPtrInput `pulumi:"instanceSizeSlug"`
+	// A list of ports on which this service will listen for internal traffic.
+	InternalPorts       pulumi.IntArrayInput                         `pulumi:"internalPorts"`
+	LivenessHealthCheck GetAppSpecServiceLivenessHealthCheckPtrInput `pulumi:"livenessHealthCheck"`
+	// Describes a log forwarding destination.
+	LogDestinations GetAppSpecServiceLogDestinationArrayInput `pulumi:"logDestinations"`
+	// The name of the component.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Deprecated: Service level routes are deprecated in favor of ingresses
+	Routes GetAppSpecServiceRouteArrayInput `pulumi:"routes"`
+	// An optional run command to override the component's default.
+	RunCommand pulumi.StringPtrInput `pulumi:"runCommand"`
+	// An optional path to the working directory to use for the build.
+	SourceDir pulumi.StringPtrInput `pulumi:"sourceDir"`
+	// Contains a component's termination parameters.
+	Termination GetAppSpecServiceTerminationPtrInput `pulumi:"termination"`
+}
+
+func (GetAppSpecServiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecService)(nil)).Elem()
+}
+
+func (i GetAppSpecServiceArgs) ToGetAppSpecServiceOutput() GetAppSpecServiceOutput {
+	return i.ToGetAppSpecServiceOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceArgs) ToGetAppSpecServiceOutputWithContext(ctx context.Context) GetAppSpecServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceOutput)
+}
+
+// GetAppSpecServiceArrayInput is an input type that accepts GetAppSpecServiceArray and GetAppSpecServiceArrayOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceArrayInput` via:
+//
+//	GetAppSpecServiceArray{ GetAppSpecServiceArgs{...} }
+type GetAppSpecServiceArrayInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceArrayOutput() GetAppSpecServiceArrayOutput
+	ToGetAppSpecServiceArrayOutputWithContext(context.Context) GetAppSpecServiceArrayOutput
+}
+
+type GetAppSpecServiceArray []GetAppSpecServiceInput
+
+func (GetAppSpecServiceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecService)(nil)).Elem()
+}
+
+func (i GetAppSpecServiceArray) ToGetAppSpecServiceArrayOutput() GetAppSpecServiceArrayOutput {
+	return i.ToGetAppSpecServiceArrayOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceArray) ToGetAppSpecServiceArrayOutputWithContext(ctx context.Context) GetAppSpecServiceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceArrayOutput)
+}
+
+type GetAppSpecServiceOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecService)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceOutput) ToGetAppSpecServiceOutput() GetAppSpecServiceOutput {
+	return o
+}
+
+func (o GetAppSpecServiceOutput) ToGetAppSpecServiceOutputWithContext(ctx context.Context) GetAppSpecServiceOutput {
+	return o
+}
+
+// Describes an alert policy for the component.
+func (o GetAppSpecServiceOutput) Alerts() GetAppSpecServiceAlertArrayOutput {
+	return o.ApplyT(func(v GetAppSpecService) []GetAppSpecServiceAlert { return v.Alerts }).(GetAppSpecServiceAlertArrayOutput)
+}
+
+// Configuration for automatically scaling this component based on metrics.
+func (o GetAppSpecServiceOutput) Autoscaling() GetAppSpecServiceAutoscalingPtrOutput {
+	return o.ApplyT(func(v GetAppSpecService) *GetAppSpecServiceAutoscaling { return v.Autoscaling }).(GetAppSpecServiceAutoscalingPtrOutput)
+}
+
+// A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set. To read your repo, App Platform must be authorized to access your Bitbucket account. Go to this URL to link App Platform to your Bitbucket account: `https://cloud.digitalocean.com/apps/bitbucket/install`.
+func (o GetAppSpecServiceOutput) Bitbucket() GetAppSpecServiceBitbucketPtrOutput {
+	return o.ApplyT(func(v GetAppSpecService) *GetAppSpecServiceBitbucket { return v.Bitbucket }).(GetAppSpecServiceBitbucketPtrOutput)
+}
+
+// An optional build command to run while building this component from source.
+func (o GetAppSpecServiceOutput) BuildCommand() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecService) *string { return v.BuildCommand }).(pulumi.StringPtrOutput)
+}
+
+// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+//
+// Deprecated: Service level CORS rules are deprecated in favor of ingresses
+func (o GetAppSpecServiceOutput) Cors() GetAppSpecServiceCorsPtrOutput {
+	return o.ApplyT(func(v GetAppSpecService) *GetAppSpecServiceCors { return v.Cors }).(GetAppSpecServiceCorsPtrOutput)
+}
+
+// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
+func (o GetAppSpecServiceOutput) DockerfilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecService) *string { return v.DockerfilePath }).(pulumi.StringPtrOutput)
+}
+
+// An environment slug describing the type of this app.
+func (o GetAppSpecServiceOutput) EnvironmentSlug() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecService) *string { return v.EnvironmentSlug }).(pulumi.StringPtrOutput)
+}
+
+// Describes an environment variable made available to an app competent.
+func (o GetAppSpecServiceOutput) Envs() GetAppSpecServiceEnvArrayOutput {
+	return o.ApplyT(func(v GetAppSpecService) []GetAppSpecServiceEnv { return v.Envs }).(GetAppSpecServiceEnvArrayOutput)
+}
+
+// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+func (o GetAppSpecServiceOutput) Git() GetAppSpecServiceGitPtrOutput {
+	return o.ApplyT(func(v GetAppSpecService) *GetAppSpecServiceGit { return v.Git }).(GetAppSpecServiceGitPtrOutput)
+}
+
+// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+func (o GetAppSpecServiceOutput) Github() GetAppSpecServiceGithubPtrOutput {
+	return o.ApplyT(func(v GetAppSpecService) *GetAppSpecServiceGithub { return v.Github }).(GetAppSpecServiceGithubPtrOutput)
+}
+
+// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+func (o GetAppSpecServiceOutput) Gitlab() GetAppSpecServiceGitlabPtrOutput {
+	return o.ApplyT(func(v GetAppSpecService) *GetAppSpecServiceGitlab { return v.Gitlab }).(GetAppSpecServiceGitlabPtrOutput)
+}
+
+// A health check to determine the availability of this component.
+func (o GetAppSpecServiceOutput) HealthCheck() GetAppSpecServiceHealthCheckPtrOutput {
+	return o.ApplyT(func(v GetAppSpecService) *GetAppSpecServiceHealthCheck { return v.HealthCheck }).(GetAppSpecServiceHealthCheckPtrOutput)
+}
+
+// The internal port on which this service's run command will listen.
+func (o GetAppSpecServiceOutput) HttpPort() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAppSpecService) int { return v.HttpPort }).(pulumi.IntOutput)
+}
+
+// An image to use as the component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+func (o GetAppSpecServiceOutput) Image() GetAppSpecServiceImagePtrOutput {
+	return o.ApplyT(func(v GetAppSpecService) *GetAppSpecServiceImage { return v.Image }).(GetAppSpecServiceImagePtrOutput)
+}
+
+// The amount of instances that this component should be scaled to.
+func (o GetAppSpecServiceOutput) InstanceCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetAppSpecService) *int { return v.InstanceCount }).(pulumi.IntPtrOutput)
+}
+
+// The instance size to use for this component.
+func (o GetAppSpecServiceOutput) InstanceSizeSlug() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecService) *string { return v.InstanceSizeSlug }).(pulumi.StringPtrOutput)
+}
+
+// A list of ports on which this service will listen for internal traffic.
+func (o GetAppSpecServiceOutput) InternalPorts() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v GetAppSpecService) []int { return v.InternalPorts }).(pulumi.IntArrayOutput)
+}
+
+func (o GetAppSpecServiceOutput) LivenessHealthCheck() GetAppSpecServiceLivenessHealthCheckPtrOutput {
+	return o.ApplyT(func(v GetAppSpecService) *GetAppSpecServiceLivenessHealthCheck { return v.LivenessHealthCheck }).(GetAppSpecServiceLivenessHealthCheckPtrOutput)
+}
+
+// Describes a log forwarding destination.
+func (o GetAppSpecServiceOutput) LogDestinations() GetAppSpecServiceLogDestinationArrayOutput {
+	return o.ApplyT(func(v GetAppSpecService) []GetAppSpecServiceLogDestination { return v.LogDestinations }).(GetAppSpecServiceLogDestinationArrayOutput)
+}
+
+// The name of the component.
+func (o GetAppSpecServiceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppSpecService) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Deprecated: Service level routes are deprecated in favor of ingresses
+func (o GetAppSpecServiceOutput) Routes() GetAppSpecServiceRouteArrayOutput {
+	return o.ApplyT(func(v GetAppSpecService) []GetAppSpecServiceRoute { return v.Routes }).(GetAppSpecServiceRouteArrayOutput)
+}
+
+// An optional run command to override the component's default.
+func (o GetAppSpecServiceOutput) RunCommand() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecService) *string { return v.RunCommand }).(pulumi.StringPtrOutput)
+}
+
+// An optional path to the working directory to use for the build.
+func (o GetAppSpecServiceOutput) SourceDir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecService) *string { return v.SourceDir }).(pulumi.StringPtrOutput)
+}
+
+// Contains a component's termination parameters.
+func (o GetAppSpecServiceOutput) Termination() GetAppSpecServiceTerminationPtrOutput {
+	return o.ApplyT(func(v GetAppSpecService) *GetAppSpecServiceTermination { return v.Termination }).(GetAppSpecServiceTerminationPtrOutput)
+}
+
+type GetAppSpecServiceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecService)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceArrayOutput) ToGetAppSpecServiceArrayOutput() GetAppSpecServiceArrayOutput {
+	return o
+}
+
+func (o GetAppSpecServiceArrayOutput) ToGetAppSpecServiceArrayOutputWithContext(ctx context.Context) GetAppSpecServiceArrayOutput {
+	return o
+}
+
+func (o GetAppSpecServiceArrayOutput) Index(i pulumi.IntInput) GetAppSpecServiceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppSpecService {
+		return vs[0].([]GetAppSpecService)[vs[1].(int)]
+	}).(GetAppSpecServiceOutput)
+}
+
+type GetAppSpecServiceAlert struct {
+	Destinations *GetAppSpecServiceAlertDestinations `pulumi:"destinations"`
+	// Determines whether or not the alert is disabled (default: `false`).
+	Disabled *bool `pulumi:"disabled"`
+	// The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
+	Operator string `pulumi:"operator"`
+	// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+	Rule string `pulumi:"rule"`
+	// The threshold for the type of the warning.
+	Value float64 `pulumi:"value"`
+	// The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+	Window string `pulumi:"window"`
+}
+
+// GetAppSpecServiceAlertInput is an input type that accepts GetAppSpecServiceAlertArgs and GetAppSpecServiceAlertOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceAlertInput` via:
+//
+//	GetAppSpecServiceAlertArgs{...}
+type GetAppSpecServiceAlertInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceAlertOutput() GetAppSpecServiceAlertOutput
+	ToGetAppSpecServiceAlertOutputWithContext(context.Context) GetAppSpecServiceAlertOutput
+}
+
+type GetAppSpecServiceAlertArgs struct {
+	Destinations GetAppSpecServiceAlertDestinationsPtrInput `pulumi:"destinations"`
+	// Determines whether or not the alert is disabled (default: `false`).
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	// The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+	Rule pulumi.StringInput `pulumi:"rule"`
+	// The threshold for the type of the warning.
+	Value pulumi.Float64Input `pulumi:"value"`
+	// The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+	Window pulumi.StringInput `pulumi:"window"`
+}
+
+func (GetAppSpecServiceAlertArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceAlert)(nil)).Elem()
+}
+
+func (i GetAppSpecServiceAlertArgs) ToGetAppSpecServiceAlertOutput() GetAppSpecServiceAlertOutput {
+	return i.ToGetAppSpecServiceAlertOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceAlertArgs) ToGetAppSpecServiceAlertOutputWithContext(ctx context.Context) GetAppSpecServiceAlertOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceAlertOutput)
+}
+
+// GetAppSpecServiceAlertArrayInput is an input type that accepts GetAppSpecServiceAlertArray and GetAppSpecServiceAlertArrayOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceAlertArrayInput` via:
+//
+//	GetAppSpecServiceAlertArray{ GetAppSpecServiceAlertArgs{...} }
+type GetAppSpecServiceAlertArrayInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceAlertArrayOutput() GetAppSpecServiceAlertArrayOutput
+	ToGetAppSpecServiceAlertArrayOutputWithContext(context.Context) GetAppSpecServiceAlertArrayOutput
+}
+
+type GetAppSpecServiceAlertArray []GetAppSpecServiceAlertInput
+
+func (GetAppSpecServiceAlertArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecServiceAlert)(nil)).Elem()
+}
+
+func (i GetAppSpecServiceAlertArray) ToGetAppSpecServiceAlertArrayOutput() GetAppSpecServiceAlertArrayOutput {
+	return i.ToGetAppSpecServiceAlertArrayOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceAlertArray) ToGetAppSpecServiceAlertArrayOutputWithContext(ctx context.Context) GetAppSpecServiceAlertArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceAlertArrayOutput)
+}
+
+type GetAppSpecServiceAlertOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceAlertOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceAlert)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceAlertOutput) ToGetAppSpecServiceAlertOutput() GetAppSpecServiceAlertOutput {
+	return o
+}
+
+func (o GetAppSpecServiceAlertOutput) ToGetAppSpecServiceAlertOutputWithContext(ctx context.Context) GetAppSpecServiceAlertOutput {
+	return o
+}
+
+func (o GetAppSpecServiceAlertOutput) Destinations() GetAppSpecServiceAlertDestinationsPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceAlert) *GetAppSpecServiceAlertDestinations { return v.Destinations }).(GetAppSpecServiceAlertDestinationsPtrOutput)
+}
+
+// Determines whether or not the alert is disabled (default: `false`).
+func (o GetAppSpecServiceAlertOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceAlert) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+// The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
+func (o GetAppSpecServiceAlertOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppSpecServiceAlert) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+func (o GetAppSpecServiceAlertOutput) Rule() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppSpecServiceAlert) string { return v.Rule }).(pulumi.StringOutput)
+}
+
+// The threshold for the type of the warning.
+func (o GetAppSpecServiceAlertOutput) Value() pulumi.Float64Output {
+	return o.ApplyT(func(v GetAppSpecServiceAlert) float64 { return v.Value }).(pulumi.Float64Output)
+}
+
+// The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+func (o GetAppSpecServiceAlertOutput) Window() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppSpecServiceAlert) string { return v.Window }).(pulumi.StringOutput)
+}
+
+type GetAppSpecServiceAlertArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceAlertArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecServiceAlert)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceAlertArrayOutput) ToGetAppSpecServiceAlertArrayOutput() GetAppSpecServiceAlertArrayOutput {
+	return o
+}
+
+func (o GetAppSpecServiceAlertArrayOutput) ToGetAppSpecServiceAlertArrayOutputWithContext(ctx context.Context) GetAppSpecServiceAlertArrayOutput {
+	return o
+}
+
+func (o GetAppSpecServiceAlertArrayOutput) Index(i pulumi.IntInput) GetAppSpecServiceAlertOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppSpecServiceAlert {
+		return vs[0].([]GetAppSpecServiceAlert)[vs[1].(int)]
+	}).(GetAppSpecServiceAlertOutput)
+}
+
+type GetAppSpecServiceAlertDestinations struct {
+	Emails        []string                                         `pulumi:"emails"`
+	SlackWebhooks []GetAppSpecServiceAlertDestinationsSlackWebhook `pulumi:"slackWebhooks"`
+}
+
+// GetAppSpecServiceAlertDestinationsInput is an input type that accepts GetAppSpecServiceAlertDestinationsArgs and GetAppSpecServiceAlertDestinationsOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceAlertDestinationsInput` via:
+//
+//	GetAppSpecServiceAlertDestinationsArgs{...}
+type GetAppSpecServiceAlertDestinationsInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceAlertDestinationsOutput() GetAppSpecServiceAlertDestinationsOutput
+	ToGetAppSpecServiceAlertDestinationsOutputWithContext(context.Context) GetAppSpecServiceAlertDestinationsOutput
+}
+
+type GetAppSpecServiceAlertDestinationsArgs struct {
+	Emails        pulumi.StringArrayInput                                  `pulumi:"emails"`
+	SlackWebhooks GetAppSpecServiceAlertDestinationsSlackWebhookArrayInput `pulumi:"slackWebhooks"`
+}
+
+func (GetAppSpecServiceAlertDestinationsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceAlertDestinations)(nil)).Elem()
+}
+
+func (i GetAppSpecServiceAlertDestinationsArgs) ToGetAppSpecServiceAlertDestinationsOutput() GetAppSpecServiceAlertDestinationsOutput {
+	return i.ToGetAppSpecServiceAlertDestinationsOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceAlertDestinationsArgs) ToGetAppSpecServiceAlertDestinationsOutputWithContext(ctx context.Context) GetAppSpecServiceAlertDestinationsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceAlertDestinationsOutput)
+}
+
+func (i GetAppSpecServiceAlertDestinationsArgs) ToGetAppSpecServiceAlertDestinationsPtrOutput() GetAppSpecServiceAlertDestinationsPtrOutput {
+	return i.ToGetAppSpecServiceAlertDestinationsPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceAlertDestinationsArgs) ToGetAppSpecServiceAlertDestinationsPtrOutputWithContext(ctx context.Context) GetAppSpecServiceAlertDestinationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceAlertDestinationsOutput).ToGetAppSpecServiceAlertDestinationsPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecServiceAlertDestinationsPtrInput is an input type that accepts GetAppSpecServiceAlertDestinationsArgs, GetAppSpecServiceAlertDestinationsPtr and GetAppSpecServiceAlertDestinationsPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceAlertDestinationsPtrInput` via:
+//
+//	        GetAppSpecServiceAlertDestinationsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetAppSpecServiceAlertDestinationsPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceAlertDestinationsPtrOutput() GetAppSpecServiceAlertDestinationsPtrOutput
+	ToGetAppSpecServiceAlertDestinationsPtrOutputWithContext(context.Context) GetAppSpecServiceAlertDestinationsPtrOutput
+}
+
+type getAppSpecServiceAlertDestinationsPtrType GetAppSpecServiceAlertDestinationsArgs
+
+func GetAppSpecServiceAlertDestinationsPtr(v *GetAppSpecServiceAlertDestinationsArgs) GetAppSpecServiceAlertDestinationsPtrInput {
+	return (*getAppSpecServiceAlertDestinationsPtrType)(v)
+}
+
+func (*getAppSpecServiceAlertDestinationsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceAlertDestinations)(nil)).Elem()
+}
+
+func (i *getAppSpecServiceAlertDestinationsPtrType) ToGetAppSpecServiceAlertDestinationsPtrOutput() GetAppSpecServiceAlertDestinationsPtrOutput {
+	return i.ToGetAppSpecServiceAlertDestinationsPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecServiceAlertDestinationsPtrType) ToGetAppSpecServiceAlertDestinationsPtrOutputWithContext(ctx context.Context) GetAppSpecServiceAlertDestinationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceAlertDestinationsPtrOutput)
+}
+
+type GetAppSpecServiceAlertDestinationsOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceAlertDestinationsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceAlertDestinations)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceAlertDestinationsOutput) ToGetAppSpecServiceAlertDestinationsOutput() GetAppSpecServiceAlertDestinationsOutput {
+	return o
+}
+
+func (o GetAppSpecServiceAlertDestinationsOutput) ToGetAppSpecServiceAlertDestinationsOutputWithContext(ctx context.Context) GetAppSpecServiceAlertDestinationsOutput {
+	return o
+}
+
+func (o GetAppSpecServiceAlertDestinationsOutput) ToGetAppSpecServiceAlertDestinationsPtrOutput() GetAppSpecServiceAlertDestinationsPtrOutput {
+	return o.ToGetAppSpecServiceAlertDestinationsPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecServiceAlertDestinationsOutput) ToGetAppSpecServiceAlertDestinationsPtrOutputWithContext(ctx context.Context) GetAppSpecServiceAlertDestinationsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecServiceAlertDestinations) *GetAppSpecServiceAlertDestinations {
+		return &v
+	}).(GetAppSpecServiceAlertDestinationsPtrOutput)
+}
+
+func (o GetAppSpecServiceAlertDestinationsOutput) Emails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAppSpecServiceAlertDestinations) []string { return v.Emails }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAppSpecServiceAlertDestinationsOutput) SlackWebhooks() GetAppSpecServiceAlertDestinationsSlackWebhookArrayOutput {
+	return o.ApplyT(func(v GetAppSpecServiceAlertDestinations) []GetAppSpecServiceAlertDestinationsSlackWebhook {
+		return v.SlackWebhooks
+	}).(GetAppSpecServiceAlertDestinationsSlackWebhookArrayOutput)
+}
+
+type GetAppSpecServiceAlertDestinationsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceAlertDestinationsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceAlertDestinations)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceAlertDestinationsPtrOutput) ToGetAppSpecServiceAlertDestinationsPtrOutput() GetAppSpecServiceAlertDestinationsPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceAlertDestinationsPtrOutput) ToGetAppSpecServiceAlertDestinationsPtrOutputWithContext(ctx context.Context) GetAppSpecServiceAlertDestinationsPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceAlertDestinationsPtrOutput) Elem() GetAppSpecServiceAlertDestinationsOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceAlertDestinations) GetAppSpecServiceAlertDestinations {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecServiceAlertDestinations
+		return ret
+	}).(GetAppSpecServiceAlertDestinationsOutput)
+}
+
+func (o GetAppSpecServiceAlertDestinationsPtrOutput) Emails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceAlertDestinations) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Emails
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o GetAppSpecServiceAlertDestinationsPtrOutput) SlackWebhooks() GetAppSpecServiceAlertDestinationsSlackWebhookArrayOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceAlertDestinations) []GetAppSpecServiceAlertDestinationsSlackWebhook {
+		if v == nil {
+			return nil
+		}
+		return v.SlackWebhooks
+	}).(GetAppSpecServiceAlertDestinationsSlackWebhookArrayOutput)
+}
+
+type GetAppSpecServiceAlertDestinationsSlackWebhook struct {
+	// The Slack channel to send notifications to.
+	Channel string `pulumi:"channel"`
+	// The Slack webhook URL.
+	Url string `pulumi:"url"`
+}
+
+// GetAppSpecServiceAlertDestinationsSlackWebhookInput is an input type that accepts GetAppSpecServiceAlertDestinationsSlackWebhookArgs and GetAppSpecServiceAlertDestinationsSlackWebhookOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceAlertDestinationsSlackWebhookInput` via:
+//
+//	GetAppSpecServiceAlertDestinationsSlackWebhookArgs{...}
+type GetAppSpecServiceAlertDestinationsSlackWebhookInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceAlertDestinationsSlackWebhookOutput() GetAppSpecServiceAlertDestinationsSlackWebhookOutput
+	ToGetAppSpecServiceAlertDestinationsSlackWebhookOutputWithContext(context.Context) GetAppSpecServiceAlertDestinationsSlackWebhookOutput
+}
+
+type GetAppSpecServiceAlertDestinationsSlackWebhookArgs struct {
+	// The Slack channel to send notifications to.
+	Channel pulumi.StringInput `pulumi:"channel"`
+	// The Slack webhook URL.
+	Url pulumi.StringInput `pulumi:"url"`
+}
+
+func (GetAppSpecServiceAlertDestinationsSlackWebhookArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceAlertDestinationsSlackWebhook)(nil)).Elem()
+}
+
+func (i GetAppSpecServiceAlertDestinationsSlackWebhookArgs) ToGetAppSpecServiceAlertDestinationsSlackWebhookOutput() GetAppSpecServiceAlertDestinationsSlackWebhookOutput {
+	return i.ToGetAppSpecServiceAlertDestinationsSlackWebhookOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceAlertDestinationsSlackWebhookArgs) ToGetAppSpecServiceAlertDestinationsSlackWebhookOutputWithContext(ctx context.Context) GetAppSpecServiceAlertDestinationsSlackWebhookOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceAlertDestinationsSlackWebhookOutput)
+}
+
+// GetAppSpecServiceAlertDestinationsSlackWebhookArrayInput is an input type that accepts GetAppSpecServiceAlertDestinationsSlackWebhookArray and GetAppSpecServiceAlertDestinationsSlackWebhookArrayOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceAlertDestinationsSlackWebhookArrayInput` via:
+//
+//	GetAppSpecServiceAlertDestinationsSlackWebhookArray{ GetAppSpecServiceAlertDestinationsSlackWebhookArgs{...} }
+type GetAppSpecServiceAlertDestinationsSlackWebhookArrayInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceAlertDestinationsSlackWebhookArrayOutput() GetAppSpecServiceAlertDestinationsSlackWebhookArrayOutput
+	ToGetAppSpecServiceAlertDestinationsSlackWebhookArrayOutputWithContext(context.Context) GetAppSpecServiceAlertDestinationsSlackWebhookArrayOutput
+}
+
+type GetAppSpecServiceAlertDestinationsSlackWebhookArray []GetAppSpecServiceAlertDestinationsSlackWebhookInput
+
+func (GetAppSpecServiceAlertDestinationsSlackWebhookArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecServiceAlertDestinationsSlackWebhook)(nil)).Elem()
+}
+
+func (i GetAppSpecServiceAlertDestinationsSlackWebhookArray) ToGetAppSpecServiceAlertDestinationsSlackWebhookArrayOutput() GetAppSpecServiceAlertDestinationsSlackWebhookArrayOutput {
+	return i.ToGetAppSpecServiceAlertDestinationsSlackWebhookArrayOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceAlertDestinationsSlackWebhookArray) ToGetAppSpecServiceAlertDestinationsSlackWebhookArrayOutputWithContext(ctx context.Context) GetAppSpecServiceAlertDestinationsSlackWebhookArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceAlertDestinationsSlackWebhookArrayOutput)
+}
+
+type GetAppSpecServiceAlertDestinationsSlackWebhookOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceAlertDestinationsSlackWebhookOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceAlertDestinationsSlackWebhook)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceAlertDestinationsSlackWebhookOutput) ToGetAppSpecServiceAlertDestinationsSlackWebhookOutput() GetAppSpecServiceAlertDestinationsSlackWebhookOutput {
+	return o
+}
+
+func (o GetAppSpecServiceAlertDestinationsSlackWebhookOutput) ToGetAppSpecServiceAlertDestinationsSlackWebhookOutputWithContext(ctx context.Context) GetAppSpecServiceAlertDestinationsSlackWebhookOutput {
+	return o
+}
+
+// The Slack channel to send notifications to.
+func (o GetAppSpecServiceAlertDestinationsSlackWebhookOutput) Channel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppSpecServiceAlertDestinationsSlackWebhook) string { return v.Channel }).(pulumi.StringOutput)
+}
+
+// The Slack webhook URL.
+func (o GetAppSpecServiceAlertDestinationsSlackWebhookOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppSpecServiceAlertDestinationsSlackWebhook) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type GetAppSpecServiceAlertDestinationsSlackWebhookArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceAlertDestinationsSlackWebhookArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecServiceAlertDestinationsSlackWebhook)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceAlertDestinationsSlackWebhookArrayOutput) ToGetAppSpecServiceAlertDestinationsSlackWebhookArrayOutput() GetAppSpecServiceAlertDestinationsSlackWebhookArrayOutput {
+	return o
+}
+
+func (o GetAppSpecServiceAlertDestinationsSlackWebhookArrayOutput) ToGetAppSpecServiceAlertDestinationsSlackWebhookArrayOutputWithContext(ctx context.Context) GetAppSpecServiceAlertDestinationsSlackWebhookArrayOutput {
+	return o
+}
+
+func (o GetAppSpecServiceAlertDestinationsSlackWebhookArrayOutput) Index(i pulumi.IntInput) GetAppSpecServiceAlertDestinationsSlackWebhookOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppSpecServiceAlertDestinationsSlackWebhook {
+		return vs[0].([]GetAppSpecServiceAlertDestinationsSlackWebhook)[vs[1].(int)]
+	}).(GetAppSpecServiceAlertDestinationsSlackWebhookOutput)
+}
+
+type GetAppSpecServiceAutoscaling struct {
+	// The maximum amount of instances for this component. Must be more than min_instance_count.
+	MaxInstanceCount int `pulumi:"maxInstanceCount"`
+	// The metrics that the component is scaled on.
+	Metrics GetAppSpecServiceAutoscalingMetrics `pulumi:"metrics"`
+	// The minimum amount of instances for this component. Must be less than max_instance_count.
+	MinInstanceCount int `pulumi:"minInstanceCount"`
+}
+
+// GetAppSpecServiceAutoscalingInput is an input type that accepts GetAppSpecServiceAutoscalingArgs and GetAppSpecServiceAutoscalingOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceAutoscalingInput` via:
+//
+//	GetAppSpecServiceAutoscalingArgs{...}
+type GetAppSpecServiceAutoscalingInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceAutoscalingOutput() GetAppSpecServiceAutoscalingOutput
+	ToGetAppSpecServiceAutoscalingOutputWithContext(context.Context) GetAppSpecServiceAutoscalingOutput
+}
+
+type GetAppSpecServiceAutoscalingArgs struct {
+	// The maximum amount of instances for this component. Must be more than min_instance_count.
+	MaxInstanceCount pulumi.IntInput `pulumi:"maxInstanceCount"`
+	// The metrics that the component is scaled on.
+	Metrics GetAppSpecServiceAutoscalingMetricsInput `pulumi:"metrics"`
+	// The minimum amount of instances for this component. Must be less than max_instance_count.
+	MinInstanceCount pulumi.IntInput `pulumi:"minInstanceCount"`
+}
+
+func (GetAppSpecServiceAutoscalingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceAutoscaling)(nil)).Elem()
+}
+
+func (i GetAppSpecServiceAutoscalingArgs) ToGetAppSpecServiceAutoscalingOutput() GetAppSpecServiceAutoscalingOutput {
+	return i.ToGetAppSpecServiceAutoscalingOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceAutoscalingArgs) ToGetAppSpecServiceAutoscalingOutputWithContext(ctx context.Context) GetAppSpecServiceAutoscalingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceAutoscalingOutput)
+}
+
+func (i GetAppSpecServiceAutoscalingArgs) ToGetAppSpecServiceAutoscalingPtrOutput() GetAppSpecServiceAutoscalingPtrOutput {
+	return i.ToGetAppSpecServiceAutoscalingPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceAutoscalingArgs) ToGetAppSpecServiceAutoscalingPtrOutputWithContext(ctx context.Context) GetAppSpecServiceAutoscalingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceAutoscalingOutput).ToGetAppSpecServiceAutoscalingPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecServiceAutoscalingPtrInput is an input type that accepts GetAppSpecServiceAutoscalingArgs, GetAppSpecServiceAutoscalingPtr and GetAppSpecServiceAutoscalingPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceAutoscalingPtrInput` via:
+//
+//	        GetAppSpecServiceAutoscalingArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetAppSpecServiceAutoscalingPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceAutoscalingPtrOutput() GetAppSpecServiceAutoscalingPtrOutput
+	ToGetAppSpecServiceAutoscalingPtrOutputWithContext(context.Context) GetAppSpecServiceAutoscalingPtrOutput
+}
+
+type getAppSpecServiceAutoscalingPtrType GetAppSpecServiceAutoscalingArgs
+
+func GetAppSpecServiceAutoscalingPtr(v *GetAppSpecServiceAutoscalingArgs) GetAppSpecServiceAutoscalingPtrInput {
+	return (*getAppSpecServiceAutoscalingPtrType)(v)
+}
+
+func (*getAppSpecServiceAutoscalingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceAutoscaling)(nil)).Elem()
+}
+
+func (i *getAppSpecServiceAutoscalingPtrType) ToGetAppSpecServiceAutoscalingPtrOutput() GetAppSpecServiceAutoscalingPtrOutput {
+	return i.ToGetAppSpecServiceAutoscalingPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecServiceAutoscalingPtrType) ToGetAppSpecServiceAutoscalingPtrOutputWithContext(ctx context.Context) GetAppSpecServiceAutoscalingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceAutoscalingPtrOutput)
+}
+
+type GetAppSpecServiceAutoscalingOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceAutoscalingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceAutoscaling)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceAutoscalingOutput) ToGetAppSpecServiceAutoscalingOutput() GetAppSpecServiceAutoscalingOutput {
+	return o
+}
+
+func (o GetAppSpecServiceAutoscalingOutput) ToGetAppSpecServiceAutoscalingOutputWithContext(ctx context.Context) GetAppSpecServiceAutoscalingOutput {
+	return o
+}
+
+func (o GetAppSpecServiceAutoscalingOutput) ToGetAppSpecServiceAutoscalingPtrOutput() GetAppSpecServiceAutoscalingPtrOutput {
+	return o.ToGetAppSpecServiceAutoscalingPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecServiceAutoscalingOutput) ToGetAppSpecServiceAutoscalingPtrOutputWithContext(ctx context.Context) GetAppSpecServiceAutoscalingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecServiceAutoscaling) *GetAppSpecServiceAutoscaling {
+		return &v
+	}).(GetAppSpecServiceAutoscalingPtrOutput)
+}
+
+// The maximum amount of instances for this component. Must be more than min_instance_count.
+func (o GetAppSpecServiceAutoscalingOutput) MaxInstanceCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAppSpecServiceAutoscaling) int { return v.MaxInstanceCount }).(pulumi.IntOutput)
+}
+
+// The metrics that the component is scaled on.
+func (o GetAppSpecServiceAutoscalingOutput) Metrics() GetAppSpecServiceAutoscalingMetricsOutput {
+	return o.ApplyT(func(v GetAppSpecServiceAutoscaling) GetAppSpecServiceAutoscalingMetrics { return v.Metrics }).(GetAppSpecServiceAutoscalingMetricsOutput)
+}
+
+// The minimum amount of instances for this component. Must be less than max_instance_count.
+func (o GetAppSpecServiceAutoscalingOutput) MinInstanceCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAppSpecServiceAutoscaling) int { return v.MinInstanceCount }).(pulumi.IntOutput)
+}
+
+type GetAppSpecServiceAutoscalingPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceAutoscalingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceAutoscaling)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceAutoscalingPtrOutput) ToGetAppSpecServiceAutoscalingPtrOutput() GetAppSpecServiceAutoscalingPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceAutoscalingPtrOutput) ToGetAppSpecServiceAutoscalingPtrOutputWithContext(ctx context.Context) GetAppSpecServiceAutoscalingPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceAutoscalingPtrOutput) Elem() GetAppSpecServiceAutoscalingOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceAutoscaling) GetAppSpecServiceAutoscaling {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecServiceAutoscaling
+		return ret
+	}).(GetAppSpecServiceAutoscalingOutput)
+}
+
+// The maximum amount of instances for this component. Must be more than min_instance_count.
+func (o GetAppSpecServiceAutoscalingPtrOutput) MaxInstanceCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceAutoscaling) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MaxInstanceCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// The metrics that the component is scaled on.
+func (o GetAppSpecServiceAutoscalingPtrOutput) Metrics() GetAppSpecServiceAutoscalingMetricsPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceAutoscaling) *GetAppSpecServiceAutoscalingMetrics {
+		if v == nil {
+			return nil
+		}
+		return &v.Metrics
+	}).(GetAppSpecServiceAutoscalingMetricsPtrOutput)
+}
+
+// The minimum amount of instances for this component. Must be less than max_instance_count.
+func (o GetAppSpecServiceAutoscalingPtrOutput) MinInstanceCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceAutoscaling) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MinInstanceCount
+	}).(pulumi.IntPtrOutput)
+}
+
+type GetAppSpecServiceAutoscalingMetrics struct {
+	// Settings for scaling the component based on CPU utilization.
+	Cpu *GetAppSpecServiceAutoscalingMetricsCpu `pulumi:"cpu"`
+}
+
+// GetAppSpecServiceAutoscalingMetricsInput is an input type that accepts GetAppSpecServiceAutoscalingMetricsArgs and GetAppSpecServiceAutoscalingMetricsOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceAutoscalingMetricsInput` via:
+//
+//	GetAppSpecServiceAutoscalingMetricsArgs{...}
+type GetAppSpecServiceAutoscalingMetricsInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceAutoscalingMetricsOutput() GetAppSpecServiceAutoscalingMetricsOutput
+	ToGetAppSpecServiceAutoscalingMetricsOutputWithContext(context.Context) GetAppSpecServiceAutoscalingMetricsOutput
+}
+
+type GetAppSpecServiceAutoscalingMetricsArgs struct {
+	// Settings for scaling the component based on CPU utilization.
+	Cpu GetAppSpecServiceAutoscalingMetricsCpuPtrInput `pulumi:"cpu"`
+}
+
+func (GetAppSpecServiceAutoscalingMetricsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceAutoscalingMetrics)(nil)).Elem()
+}
+
+func (i GetAppSpecServiceAutoscalingMetricsArgs) ToGetAppSpecServiceAutoscalingMetricsOutput() GetAppSpecServiceAutoscalingMetricsOutput {
+	return i.ToGetAppSpecServiceAutoscalingMetricsOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceAutoscalingMetricsArgs) ToGetAppSpecServiceAutoscalingMetricsOutputWithContext(ctx context.Context) GetAppSpecServiceAutoscalingMetricsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceAutoscalingMetricsOutput)
+}
+
+func (i GetAppSpecServiceAutoscalingMetricsArgs) ToGetAppSpecServiceAutoscalingMetricsPtrOutput() GetAppSpecServiceAutoscalingMetricsPtrOutput {
+	return i.ToGetAppSpecServiceAutoscalingMetricsPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceAutoscalingMetricsArgs) ToGetAppSpecServiceAutoscalingMetricsPtrOutputWithContext(ctx context.Context) GetAppSpecServiceAutoscalingMetricsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceAutoscalingMetricsOutput).ToGetAppSpecServiceAutoscalingMetricsPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecServiceAutoscalingMetricsPtrInput is an input type that accepts GetAppSpecServiceAutoscalingMetricsArgs, GetAppSpecServiceAutoscalingMetricsPtr and GetAppSpecServiceAutoscalingMetricsPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceAutoscalingMetricsPtrInput` via:
+//
+//	        GetAppSpecServiceAutoscalingMetricsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetAppSpecServiceAutoscalingMetricsPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceAutoscalingMetricsPtrOutput() GetAppSpecServiceAutoscalingMetricsPtrOutput
+	ToGetAppSpecServiceAutoscalingMetricsPtrOutputWithContext(context.Context) GetAppSpecServiceAutoscalingMetricsPtrOutput
+}
+
+type getAppSpecServiceAutoscalingMetricsPtrType GetAppSpecServiceAutoscalingMetricsArgs
+
+func GetAppSpecServiceAutoscalingMetricsPtr(v *GetAppSpecServiceAutoscalingMetricsArgs) GetAppSpecServiceAutoscalingMetricsPtrInput {
+	return (*getAppSpecServiceAutoscalingMetricsPtrType)(v)
+}
+
+func (*getAppSpecServiceAutoscalingMetricsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceAutoscalingMetrics)(nil)).Elem()
+}
+
+func (i *getAppSpecServiceAutoscalingMetricsPtrType) ToGetAppSpecServiceAutoscalingMetricsPtrOutput() GetAppSpecServiceAutoscalingMetricsPtrOutput {
+	return i.ToGetAppSpecServiceAutoscalingMetricsPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecServiceAutoscalingMetricsPtrType) ToGetAppSpecServiceAutoscalingMetricsPtrOutputWithContext(ctx context.Context) GetAppSpecServiceAutoscalingMetricsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceAutoscalingMetricsPtrOutput)
+}
+
+type GetAppSpecServiceAutoscalingMetricsOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceAutoscalingMetricsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceAutoscalingMetrics)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceAutoscalingMetricsOutput) ToGetAppSpecServiceAutoscalingMetricsOutput() GetAppSpecServiceAutoscalingMetricsOutput {
+	return o
+}
+
+func (o GetAppSpecServiceAutoscalingMetricsOutput) ToGetAppSpecServiceAutoscalingMetricsOutputWithContext(ctx context.Context) GetAppSpecServiceAutoscalingMetricsOutput {
+	return o
+}
+
+func (o GetAppSpecServiceAutoscalingMetricsOutput) ToGetAppSpecServiceAutoscalingMetricsPtrOutput() GetAppSpecServiceAutoscalingMetricsPtrOutput {
+	return o.ToGetAppSpecServiceAutoscalingMetricsPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecServiceAutoscalingMetricsOutput) ToGetAppSpecServiceAutoscalingMetricsPtrOutputWithContext(ctx context.Context) GetAppSpecServiceAutoscalingMetricsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecServiceAutoscalingMetrics) *GetAppSpecServiceAutoscalingMetrics {
+		return &v
+	}).(GetAppSpecServiceAutoscalingMetricsPtrOutput)
+}
+
+// Settings for scaling the component based on CPU utilization.
+func (o GetAppSpecServiceAutoscalingMetricsOutput) Cpu() GetAppSpecServiceAutoscalingMetricsCpuPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceAutoscalingMetrics) *GetAppSpecServiceAutoscalingMetricsCpu { return v.Cpu }).(GetAppSpecServiceAutoscalingMetricsCpuPtrOutput)
+}
+
+type GetAppSpecServiceAutoscalingMetricsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceAutoscalingMetricsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceAutoscalingMetrics)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceAutoscalingMetricsPtrOutput) ToGetAppSpecServiceAutoscalingMetricsPtrOutput() GetAppSpecServiceAutoscalingMetricsPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceAutoscalingMetricsPtrOutput) ToGetAppSpecServiceAutoscalingMetricsPtrOutputWithContext(ctx context.Context) GetAppSpecServiceAutoscalingMetricsPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceAutoscalingMetricsPtrOutput) Elem() GetAppSpecServiceAutoscalingMetricsOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceAutoscalingMetrics) GetAppSpecServiceAutoscalingMetrics {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecServiceAutoscalingMetrics
+		return ret
+	}).(GetAppSpecServiceAutoscalingMetricsOutput)
+}
+
+// Settings for scaling the component based on CPU utilization.
+func (o GetAppSpecServiceAutoscalingMetricsPtrOutput) Cpu() GetAppSpecServiceAutoscalingMetricsCpuPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceAutoscalingMetrics) *GetAppSpecServiceAutoscalingMetricsCpu {
+		if v == nil {
+			return nil
+		}
+		return v.Cpu
+	}).(GetAppSpecServiceAutoscalingMetricsCpuPtrOutput)
+}
+
+type GetAppSpecServiceAutoscalingMetricsCpu struct {
+	// The average target CPU utilization for the component.
+	Percent int `pulumi:"percent"`
+}
+
+// GetAppSpecServiceAutoscalingMetricsCpuInput is an input type that accepts GetAppSpecServiceAutoscalingMetricsCpuArgs and GetAppSpecServiceAutoscalingMetricsCpuOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceAutoscalingMetricsCpuInput` via:
+//
+//	GetAppSpecServiceAutoscalingMetricsCpuArgs{...}
+type GetAppSpecServiceAutoscalingMetricsCpuInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceAutoscalingMetricsCpuOutput() GetAppSpecServiceAutoscalingMetricsCpuOutput
+	ToGetAppSpecServiceAutoscalingMetricsCpuOutputWithContext(context.Context) GetAppSpecServiceAutoscalingMetricsCpuOutput
+}
+
+type GetAppSpecServiceAutoscalingMetricsCpuArgs struct {
+	// The average target CPU utilization for the component.
+	Percent pulumi.IntInput `pulumi:"percent"`
+}
+
+func (GetAppSpecServiceAutoscalingMetricsCpuArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceAutoscalingMetricsCpu)(nil)).Elem()
+}
+
+func (i GetAppSpecServiceAutoscalingMetricsCpuArgs) ToGetAppSpecServiceAutoscalingMetricsCpuOutput() GetAppSpecServiceAutoscalingMetricsCpuOutput {
+	return i.ToGetAppSpecServiceAutoscalingMetricsCpuOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceAutoscalingMetricsCpuArgs) ToGetAppSpecServiceAutoscalingMetricsCpuOutputWithContext(ctx context.Context) GetAppSpecServiceAutoscalingMetricsCpuOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceAutoscalingMetricsCpuOutput)
+}
+
+func (i GetAppSpecServiceAutoscalingMetricsCpuArgs) ToGetAppSpecServiceAutoscalingMetricsCpuPtrOutput() GetAppSpecServiceAutoscalingMetricsCpuPtrOutput {
+	return i.ToGetAppSpecServiceAutoscalingMetricsCpuPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceAutoscalingMetricsCpuArgs) ToGetAppSpecServiceAutoscalingMetricsCpuPtrOutputWithContext(ctx context.Context) GetAppSpecServiceAutoscalingMetricsCpuPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceAutoscalingMetricsCpuOutput).ToGetAppSpecServiceAutoscalingMetricsCpuPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecServiceAutoscalingMetricsCpuPtrInput is an input type that accepts GetAppSpecServiceAutoscalingMetricsCpuArgs, GetAppSpecServiceAutoscalingMetricsCpuPtr and GetAppSpecServiceAutoscalingMetricsCpuPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceAutoscalingMetricsCpuPtrInput` via:
+//
+//	        GetAppSpecServiceAutoscalingMetricsCpuArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetAppSpecServiceAutoscalingMetricsCpuPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceAutoscalingMetricsCpuPtrOutput() GetAppSpecServiceAutoscalingMetricsCpuPtrOutput
+	ToGetAppSpecServiceAutoscalingMetricsCpuPtrOutputWithContext(context.Context) GetAppSpecServiceAutoscalingMetricsCpuPtrOutput
+}
+
+type getAppSpecServiceAutoscalingMetricsCpuPtrType GetAppSpecServiceAutoscalingMetricsCpuArgs
+
+func GetAppSpecServiceAutoscalingMetricsCpuPtr(v *GetAppSpecServiceAutoscalingMetricsCpuArgs) GetAppSpecServiceAutoscalingMetricsCpuPtrInput {
+	return (*getAppSpecServiceAutoscalingMetricsCpuPtrType)(v)
+}
+
+func (*getAppSpecServiceAutoscalingMetricsCpuPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceAutoscalingMetricsCpu)(nil)).Elem()
+}
+
+func (i *getAppSpecServiceAutoscalingMetricsCpuPtrType) ToGetAppSpecServiceAutoscalingMetricsCpuPtrOutput() GetAppSpecServiceAutoscalingMetricsCpuPtrOutput {
+	return i.ToGetAppSpecServiceAutoscalingMetricsCpuPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecServiceAutoscalingMetricsCpuPtrType) ToGetAppSpecServiceAutoscalingMetricsCpuPtrOutputWithContext(ctx context.Context) GetAppSpecServiceAutoscalingMetricsCpuPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceAutoscalingMetricsCpuPtrOutput)
+}
+
+type GetAppSpecServiceAutoscalingMetricsCpuOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceAutoscalingMetricsCpuOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceAutoscalingMetricsCpu)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceAutoscalingMetricsCpuOutput) ToGetAppSpecServiceAutoscalingMetricsCpuOutput() GetAppSpecServiceAutoscalingMetricsCpuOutput {
+	return o
+}
+
+func (o GetAppSpecServiceAutoscalingMetricsCpuOutput) ToGetAppSpecServiceAutoscalingMetricsCpuOutputWithContext(ctx context.Context) GetAppSpecServiceAutoscalingMetricsCpuOutput {
+	return o
+}
+
+func (o GetAppSpecServiceAutoscalingMetricsCpuOutput) ToGetAppSpecServiceAutoscalingMetricsCpuPtrOutput() GetAppSpecServiceAutoscalingMetricsCpuPtrOutput {
+	return o.ToGetAppSpecServiceAutoscalingMetricsCpuPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecServiceAutoscalingMetricsCpuOutput) ToGetAppSpecServiceAutoscalingMetricsCpuPtrOutputWithContext(ctx context.Context) GetAppSpecServiceAutoscalingMetricsCpuPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecServiceAutoscalingMetricsCpu) *GetAppSpecServiceAutoscalingMetricsCpu {
+		return &v
+	}).(GetAppSpecServiceAutoscalingMetricsCpuPtrOutput)
+}
+
+// The average target CPU utilization for the component.
+func (o GetAppSpecServiceAutoscalingMetricsCpuOutput) Percent() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAppSpecServiceAutoscalingMetricsCpu) int { return v.Percent }).(pulumi.IntOutput)
+}
+
+type GetAppSpecServiceAutoscalingMetricsCpuPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceAutoscalingMetricsCpuPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceAutoscalingMetricsCpu)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceAutoscalingMetricsCpuPtrOutput) ToGetAppSpecServiceAutoscalingMetricsCpuPtrOutput() GetAppSpecServiceAutoscalingMetricsCpuPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceAutoscalingMetricsCpuPtrOutput) ToGetAppSpecServiceAutoscalingMetricsCpuPtrOutputWithContext(ctx context.Context) GetAppSpecServiceAutoscalingMetricsCpuPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceAutoscalingMetricsCpuPtrOutput) Elem() GetAppSpecServiceAutoscalingMetricsCpuOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceAutoscalingMetricsCpu) GetAppSpecServiceAutoscalingMetricsCpu {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecServiceAutoscalingMetricsCpu
+		return ret
+	}).(GetAppSpecServiceAutoscalingMetricsCpuOutput)
+}
+
+// The average target CPU utilization for the component.
+func (o GetAppSpecServiceAutoscalingMetricsCpuPtrOutput) Percent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceAutoscalingMetricsCpu) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Percent
+	}).(pulumi.IntPtrOutput)
+}
+
+type GetAppSpecServiceBitbucket struct {
+	// The name of the branch to use.
+	Branch *string `pulumi:"branch"`
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPush *bool `pulumi:"deployOnPush"`
+	// The name of the repo in the format `owner/repo`.
+	Repo *string `pulumi:"repo"`
+}
+
+// GetAppSpecServiceBitbucketInput is an input type that accepts GetAppSpecServiceBitbucketArgs and GetAppSpecServiceBitbucketOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceBitbucketInput` via:
+//
+//	GetAppSpecServiceBitbucketArgs{...}
+type GetAppSpecServiceBitbucketInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceBitbucketOutput() GetAppSpecServiceBitbucketOutput
+	ToGetAppSpecServiceBitbucketOutputWithContext(context.Context) GetAppSpecServiceBitbucketOutput
+}
+
+type GetAppSpecServiceBitbucketArgs struct {
+	// The name of the branch to use.
+	Branch pulumi.StringPtrInput `pulumi:"branch"`
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPush pulumi.BoolPtrInput `pulumi:"deployOnPush"`
+	// The name of the repo in the format `owner/repo`.
+	Repo pulumi.StringPtrInput `pulumi:"repo"`
+}
+
+func (GetAppSpecServiceBitbucketArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceBitbucket)(nil)).Elem()
+}
+
+func (i GetAppSpecServiceBitbucketArgs) ToGetAppSpecServiceBitbucketOutput() GetAppSpecServiceBitbucketOutput {
+	return i.ToGetAppSpecServiceBitbucketOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceBitbucketArgs) ToGetAppSpecServiceBitbucketOutputWithContext(ctx context.Context) GetAppSpecServiceBitbucketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceBitbucketOutput)
+}
+
+func (i GetAppSpecServiceBitbucketArgs) ToGetAppSpecServiceBitbucketPtrOutput() GetAppSpecServiceBitbucketPtrOutput {
+	return i.ToGetAppSpecServiceBitbucketPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceBitbucketArgs) ToGetAppSpecServiceBitbucketPtrOutputWithContext(ctx context.Context) GetAppSpecServiceBitbucketPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceBitbucketOutput).ToGetAppSpecServiceBitbucketPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecServiceBitbucketPtrInput is an input type that accepts GetAppSpecServiceBitbucketArgs, GetAppSpecServiceBitbucketPtr and GetAppSpecServiceBitbucketPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceBitbucketPtrInput` via:
+//
+//	        GetAppSpecServiceBitbucketArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetAppSpecServiceBitbucketPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceBitbucketPtrOutput() GetAppSpecServiceBitbucketPtrOutput
+	ToGetAppSpecServiceBitbucketPtrOutputWithContext(context.Context) GetAppSpecServiceBitbucketPtrOutput
+}
+
+type getAppSpecServiceBitbucketPtrType GetAppSpecServiceBitbucketArgs
+
+func GetAppSpecServiceBitbucketPtr(v *GetAppSpecServiceBitbucketArgs) GetAppSpecServiceBitbucketPtrInput {
+	return (*getAppSpecServiceBitbucketPtrType)(v)
+}
+
+func (*getAppSpecServiceBitbucketPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceBitbucket)(nil)).Elem()
+}
+
+func (i *getAppSpecServiceBitbucketPtrType) ToGetAppSpecServiceBitbucketPtrOutput() GetAppSpecServiceBitbucketPtrOutput {
+	return i.ToGetAppSpecServiceBitbucketPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecServiceBitbucketPtrType) ToGetAppSpecServiceBitbucketPtrOutputWithContext(ctx context.Context) GetAppSpecServiceBitbucketPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceBitbucketPtrOutput)
+}
+
+type GetAppSpecServiceBitbucketOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceBitbucketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceBitbucket)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceBitbucketOutput) ToGetAppSpecServiceBitbucketOutput() GetAppSpecServiceBitbucketOutput {
+	return o
+}
+
+func (o GetAppSpecServiceBitbucketOutput) ToGetAppSpecServiceBitbucketOutputWithContext(ctx context.Context) GetAppSpecServiceBitbucketOutput {
+	return o
+}
+
+func (o GetAppSpecServiceBitbucketOutput) ToGetAppSpecServiceBitbucketPtrOutput() GetAppSpecServiceBitbucketPtrOutput {
+	return o.ToGetAppSpecServiceBitbucketPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecServiceBitbucketOutput) ToGetAppSpecServiceBitbucketPtrOutputWithContext(ctx context.Context) GetAppSpecServiceBitbucketPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecServiceBitbucket) *GetAppSpecServiceBitbucket {
+		return &v
+	}).(GetAppSpecServiceBitbucketPtrOutput)
+}
+
+// The name of the branch to use.
+func (o GetAppSpecServiceBitbucketOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceBitbucket) *string { return v.Branch }).(pulumi.StringPtrOutput)
+}
+
+// Whether to automatically deploy new commits made to the repo.
+func (o GetAppSpecServiceBitbucketOutput) DeployOnPush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceBitbucket) *bool { return v.DeployOnPush }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the repo in the format `owner/repo`.
+func (o GetAppSpecServiceBitbucketOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceBitbucket) *string { return v.Repo }).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecServiceBitbucketPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceBitbucketPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceBitbucket)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceBitbucketPtrOutput) ToGetAppSpecServiceBitbucketPtrOutput() GetAppSpecServiceBitbucketPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceBitbucketPtrOutput) ToGetAppSpecServiceBitbucketPtrOutputWithContext(ctx context.Context) GetAppSpecServiceBitbucketPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceBitbucketPtrOutput) Elem() GetAppSpecServiceBitbucketOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceBitbucket) GetAppSpecServiceBitbucket {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecServiceBitbucket
+		return ret
+	}).(GetAppSpecServiceBitbucketOutput)
+}
+
+// The name of the branch to use.
+func (o GetAppSpecServiceBitbucketPtrOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceBitbucket) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Branch
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to automatically deploy new commits made to the repo.
+func (o GetAppSpecServiceBitbucketPtrOutput) DeployOnPush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceBitbucket) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DeployOnPush
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The name of the repo in the format `owner/repo`.
+func (o GetAppSpecServiceBitbucketPtrOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceBitbucket) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Repo
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecServiceCors struct {
+	// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+	AllowCredentials *bool `pulumi:"allowCredentials"`
+	// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+	AllowHeaders []string `pulumi:"allowHeaders"`
+	// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+	AllowMethods []string `pulumi:"allowMethods"`
+	// The `Access-Control-Allow-Origin` can be
+	AllowOrigins *GetAppSpecServiceCorsAllowOrigins `pulumi:"allowOrigins"`
+	// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+	ExposeHeaders []string `pulumi:"exposeHeaders"`
+	// An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+	MaxAge *string `pulumi:"maxAge"`
+}
+
+// GetAppSpecServiceCorsInput is an input type that accepts GetAppSpecServiceCorsArgs and GetAppSpecServiceCorsOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceCorsInput` via:
+//
+//	GetAppSpecServiceCorsArgs{...}
+type GetAppSpecServiceCorsInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceCorsOutput() GetAppSpecServiceCorsOutput
+	ToGetAppSpecServiceCorsOutputWithContext(context.Context) GetAppSpecServiceCorsOutput
+}
+
+type GetAppSpecServiceCorsArgs struct {
+	// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+	AllowCredentials pulumi.BoolPtrInput `pulumi:"allowCredentials"`
+	// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+	AllowHeaders pulumi.StringArrayInput `pulumi:"allowHeaders"`
+	// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+	AllowMethods pulumi.StringArrayInput `pulumi:"allowMethods"`
+	// The `Access-Control-Allow-Origin` can be
+	AllowOrigins GetAppSpecServiceCorsAllowOriginsPtrInput `pulumi:"allowOrigins"`
+	// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+	ExposeHeaders pulumi.StringArrayInput `pulumi:"exposeHeaders"`
+	// An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+	MaxAge pulumi.StringPtrInput `pulumi:"maxAge"`
+}
+
+func (GetAppSpecServiceCorsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceCors)(nil)).Elem()
+}
+
+func (i GetAppSpecServiceCorsArgs) ToGetAppSpecServiceCorsOutput() GetAppSpecServiceCorsOutput {
+	return i.ToGetAppSpecServiceCorsOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceCorsArgs) ToGetAppSpecServiceCorsOutputWithContext(ctx context.Context) GetAppSpecServiceCorsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceCorsOutput)
+}
+
+func (i GetAppSpecServiceCorsArgs) ToGetAppSpecServiceCorsPtrOutput() GetAppSpecServiceCorsPtrOutput {
+	return i.ToGetAppSpecServiceCorsPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceCorsArgs) ToGetAppSpecServiceCorsPtrOutputWithContext(ctx context.Context) GetAppSpecServiceCorsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceCorsOutput).ToGetAppSpecServiceCorsPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecServiceCorsPtrInput is an input type that accepts GetAppSpecServiceCorsArgs, GetAppSpecServiceCorsPtr and GetAppSpecServiceCorsPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceCorsPtrInput` via:
+//
+//	        GetAppSpecServiceCorsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetAppSpecServiceCorsPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceCorsPtrOutput() GetAppSpecServiceCorsPtrOutput
+	ToGetAppSpecServiceCorsPtrOutputWithContext(context.Context) GetAppSpecServiceCorsPtrOutput
+}
+
+type getAppSpecServiceCorsPtrType GetAppSpecServiceCorsArgs
+
+func GetAppSpecServiceCorsPtr(v *GetAppSpecServiceCorsArgs) GetAppSpecServiceCorsPtrInput {
+	return (*getAppSpecServiceCorsPtrType)(v)
+}
+
+func (*getAppSpecServiceCorsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceCors)(nil)).Elem()
+}
+
+func (i *getAppSpecServiceCorsPtrType) ToGetAppSpecServiceCorsPtrOutput() GetAppSpecServiceCorsPtrOutput {
+	return i.ToGetAppSpecServiceCorsPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecServiceCorsPtrType) ToGetAppSpecServiceCorsPtrOutputWithContext(ctx context.Context) GetAppSpecServiceCorsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceCorsPtrOutput)
+}
+
+type GetAppSpecServiceCorsOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceCorsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceCors)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceCorsOutput) ToGetAppSpecServiceCorsOutput() GetAppSpecServiceCorsOutput {
+	return o
+}
+
+func (o GetAppSpecServiceCorsOutput) ToGetAppSpecServiceCorsOutputWithContext(ctx context.Context) GetAppSpecServiceCorsOutput {
+	return o
+}
+
+func (o GetAppSpecServiceCorsOutput) ToGetAppSpecServiceCorsPtrOutput() GetAppSpecServiceCorsPtrOutput {
+	return o.ToGetAppSpecServiceCorsPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecServiceCorsOutput) ToGetAppSpecServiceCorsPtrOutputWithContext(ctx context.Context) GetAppSpecServiceCorsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecServiceCors) *GetAppSpecServiceCors {
+		return &v
+	}).(GetAppSpecServiceCorsPtrOutput)
+}
+
+// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+func (o GetAppSpecServiceCorsOutput) AllowCredentials() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceCors) *bool { return v.AllowCredentials }).(pulumi.BoolPtrOutput)
+}
+
+// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+func (o GetAppSpecServiceCorsOutput) AllowHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAppSpecServiceCors) []string { return v.AllowHeaders }).(pulumi.StringArrayOutput)
+}
+
+// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+func (o GetAppSpecServiceCorsOutput) AllowMethods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAppSpecServiceCors) []string { return v.AllowMethods }).(pulumi.StringArrayOutput)
+}
+
+// The `Access-Control-Allow-Origin` can be
+func (o GetAppSpecServiceCorsOutput) AllowOrigins() GetAppSpecServiceCorsAllowOriginsPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceCors) *GetAppSpecServiceCorsAllowOrigins { return v.AllowOrigins }).(GetAppSpecServiceCorsAllowOriginsPtrOutput)
+}
+
+// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+func (o GetAppSpecServiceCorsOutput) ExposeHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAppSpecServiceCors) []string { return v.ExposeHeaders }).(pulumi.StringArrayOutput)
+}
+
+// An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+func (o GetAppSpecServiceCorsOutput) MaxAge() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceCors) *string { return v.MaxAge }).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecServiceCorsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceCorsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceCors)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceCorsPtrOutput) ToGetAppSpecServiceCorsPtrOutput() GetAppSpecServiceCorsPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceCorsPtrOutput) ToGetAppSpecServiceCorsPtrOutputWithContext(ctx context.Context) GetAppSpecServiceCorsPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceCorsPtrOutput) Elem() GetAppSpecServiceCorsOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceCors) GetAppSpecServiceCors {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecServiceCors
+		return ret
+	}).(GetAppSpecServiceCorsOutput)
+}
+
+// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+func (o GetAppSpecServiceCorsPtrOutput) AllowCredentials() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceCors) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowCredentials
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+func (o GetAppSpecServiceCorsPtrOutput) AllowHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceCors) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowHeaders
+	}).(pulumi.StringArrayOutput)
+}
+
+// The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+func (o GetAppSpecServiceCorsPtrOutput) AllowMethods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceCors) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowMethods
+	}).(pulumi.StringArrayOutput)
+}
+
+// The `Access-Control-Allow-Origin` can be
+func (o GetAppSpecServiceCorsPtrOutput) AllowOrigins() GetAppSpecServiceCorsAllowOriginsPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceCors) *GetAppSpecServiceCorsAllowOrigins {
+		if v == nil {
+			return nil
+		}
+		return v.AllowOrigins
+	}).(GetAppSpecServiceCorsAllowOriginsPtrOutput)
+}
+
+// The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+func (o GetAppSpecServiceCorsPtrOutput) ExposeHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceCors) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExposeHeaders
+	}).(pulumi.StringArrayOutput)
+}
+
+// An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+func (o GetAppSpecServiceCorsPtrOutput) MaxAge() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceCors) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxAge
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetAppSpecServiceCorsAllowOrigins struct {
 	// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
 	Exact *string `pulumi:"exact"`
@@ -40244,7 +41977,7 @@ func (o GetMicrovmsFilterArrayOutput) Index(i pulumi.IntInput) GetMicrovmsFilter
 }
 
 type GetMicrovmsMicroVm struct {
-	// Auto-pause configuration. Forces recreation on change: the MicroVMs API has no in-place update path for auto_pause.
+	// Auto-pause configuration. idleTimeout updates in place; changing enabled forces recreation.
 	AutoPauses []GetMicrovmsMicroVmAutoPause `pulumi:"autoPauses"`
 	// Whether the MicroVM should auto-resume on request. Forces recreation on change: the MicroVMs API has no in-place update path for auto_resume.
 	AutoResume bool `pulumi:"autoResume"`
@@ -40301,7 +42034,7 @@ type GetMicrovmsMicroVmInput interface {
 }
 
 type GetMicrovmsMicroVmArgs struct {
-	// Auto-pause configuration. Forces recreation on change: the MicroVMs API has no in-place update path for auto_pause.
+	// Auto-pause configuration. idleTimeout updates in place; changing enabled forces recreation.
 	AutoPauses GetMicrovmsMicroVmAutoPauseArrayInput `pulumi:"autoPauses"`
 	// Whether the MicroVM should auto-resume on request. Forces recreation on change: the MicroVMs API has no in-place update path for auto_resume.
 	AutoResume pulumi.BoolInput `pulumi:"autoResume"`
@@ -40397,7 +42130,7 @@ func (o GetMicrovmsMicroVmOutput) ToGetMicrovmsMicroVmOutputWithContext(ctx cont
 	return o
 }
 
-// Auto-pause configuration. Forces recreation on change: the MicroVMs API has no in-place update path for auto_pause.
+// Auto-pause configuration. idleTimeout updates in place; changing enabled forces recreation.
 func (o GetMicrovmsMicroVmOutput) AutoPauses() GetMicrovmsMicroVmAutoPauseArrayOutput {
 	return o.ApplyT(func(v GetMicrovmsMicroVm) []GetMicrovmsMicroVmAutoPause { return v.AutoPauses }).(GetMicrovmsMicroVmAutoPauseArrayOutput)
 }
@@ -40529,7 +42262,7 @@ func (o GetMicrovmsMicroVmArrayOutput) Index(i pulumi.IntInput) GetMicrovmsMicro
 type GetMicrovmsMicroVmAutoPause struct {
 	// Whether auto-pause is enabled. Forces recreation on change (no in-place API path).
 	Enabled bool `pulumi:"enabled"`
-	// Idle timeout as a Go duration string (e.g. '5m', '30s'). Forces recreation on change (no in-place API path).
+	// Idle timeout as a Go duration string (e.g. '5m', '30s'). Updates in place.
 	IdleTimeout string `pulumi:"idleTimeout"`
 }
 
@@ -40547,7 +42280,7 @@ type GetMicrovmsMicroVmAutoPauseInput interface {
 type GetMicrovmsMicroVmAutoPauseArgs struct {
 	// Whether auto-pause is enabled. Forces recreation on change (no in-place API path).
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// Idle timeout as a Go duration string (e.g. '5m', '30s'). Forces recreation on change (no in-place API path).
+	// Idle timeout as a Go duration string (e.g. '5m', '30s'). Updates in place.
 	IdleTimeout pulumi.StringInput `pulumi:"idleTimeout"`
 }
 
@@ -40607,7 +42340,7 @@ func (o GetMicrovmsMicroVmAutoPauseOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetMicrovmsMicroVmAutoPause) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// Idle timeout as a Go duration string (e.g. '5m', '30s'). Forces recreation on change (no in-place API path).
+// Idle timeout as a Go duration string (e.g. '5m', '30s'). Updates in place.
 func (o GetMicrovmsMicroVmAutoPauseOutput) IdleTimeout() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMicrovmsMicroVmAutoPause) string { return v.IdleTimeout }).(pulumi.StringOutput)
 }
@@ -45278,6 +47011,26 @@ func (o GetVpcNatGatewayVpcArrayOutput) Index(i pulumi.IntInput) GetVpcNatGatewa
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecMaintenanceInput)(nil)).Elem(), GetAppSpecMaintenanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecMaintenancePtrInput)(nil)).Elem(), GetAppSpecMaintenanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceInput)(nil)).Elem(), GetAppSpecServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceArrayInput)(nil)).Elem(), GetAppSpecServiceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceAlertInput)(nil)).Elem(), GetAppSpecServiceAlertArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceAlertArrayInput)(nil)).Elem(), GetAppSpecServiceAlertArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceAlertDestinationsInput)(nil)).Elem(), GetAppSpecServiceAlertDestinationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceAlertDestinationsPtrInput)(nil)).Elem(), GetAppSpecServiceAlertDestinationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceAlertDestinationsSlackWebhookInput)(nil)).Elem(), GetAppSpecServiceAlertDestinationsSlackWebhookArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceAlertDestinationsSlackWebhookArrayInput)(nil)).Elem(), GetAppSpecServiceAlertDestinationsSlackWebhookArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceAutoscalingInput)(nil)).Elem(), GetAppSpecServiceAutoscalingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceAutoscalingPtrInput)(nil)).Elem(), GetAppSpecServiceAutoscalingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceAutoscalingMetricsInput)(nil)).Elem(), GetAppSpecServiceAutoscalingMetricsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceAutoscalingMetricsPtrInput)(nil)).Elem(), GetAppSpecServiceAutoscalingMetricsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceAutoscalingMetricsCpuInput)(nil)).Elem(), GetAppSpecServiceAutoscalingMetricsCpuArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceAutoscalingMetricsCpuPtrInput)(nil)).Elem(), GetAppSpecServiceAutoscalingMetricsCpuArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceBitbucketInput)(nil)).Elem(), GetAppSpecServiceBitbucketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceBitbucketPtrInput)(nil)).Elem(), GetAppSpecServiceBitbucketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceCorsInput)(nil)).Elem(), GetAppSpecServiceCorsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceCorsPtrInput)(nil)).Elem(), GetAppSpecServiceCorsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceCorsAllowOriginsInput)(nil)).Elem(), GetAppSpecServiceCorsAllowOriginsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceCorsAllowOriginsPtrInput)(nil)).Elem(), GetAppSpecServiceCorsAllowOriginsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceEnvInput)(nil)).Elem(), GetAppSpecServiceEnvArgs{})
@@ -45886,6 +47639,26 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcNatGatewayEgressPublicGatewayArrayInput)(nil)).Elem(), GetVpcNatGatewayEgressPublicGatewayArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcNatGatewayVpcInput)(nil)).Elem(), GetVpcNatGatewayVpcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcNatGatewayVpcArrayInput)(nil)).Elem(), GetVpcNatGatewayVpcArray{})
+	pulumi.RegisterOutputType(GetAppSpecMaintenanceOutput{})
+	pulumi.RegisterOutputType(GetAppSpecMaintenancePtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceArrayOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceAlertOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceAlertArrayOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceAlertDestinationsOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceAlertDestinationsPtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceAlertDestinationsSlackWebhookOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceAlertDestinationsSlackWebhookArrayOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceAutoscalingOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceAutoscalingPtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceAutoscalingMetricsOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceAutoscalingMetricsPtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceAutoscalingMetricsCpuOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceAutoscalingMetricsCpuPtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceBitbucketOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceBitbucketPtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceCorsOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceCorsPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecServiceCorsAllowOriginsOutput{})
 	pulumi.RegisterOutputType(GetAppSpecServiceCorsAllowOriginsPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecServiceEnvOutput{})

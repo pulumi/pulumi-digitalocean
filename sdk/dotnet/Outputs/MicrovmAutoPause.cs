@@ -14,11 +14,11 @@ namespace Pulumi.DigitalOcean.Outputs
     public sealed class MicrovmAutoPause
     {
         /// <summary>
-        /// Whether the MicroVM pauses after it has been idle for `IdleTimeout`.
+        /// Whether the MicroVM pauses after it has been idle for `IdleTimeout`. A change forces a new MicroVM.
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
-        /// How long the MicroVM must be idle before it pauses, as a duration such as `5m` or `30s`.
+        /// How long the MicroVM must be idle before it pauses, as a duration such as `5m` or `30s`. A change is applied in place.
         /// </summary>
         public readonly string? IdleTimeout;
 

@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "digitalocean:index/actionGatewayConnection:ActionGatewayConnection":
 		r = &ActionGatewayConnection{}
+	case "digitalocean:index/actionGatewayEndpoint:ActionGatewayEndpoint":
+		r = &ActionGatewayEndpoint{}
 	case "digitalocean:index/actionGatewayMcpServer:ActionGatewayMcpServer":
 		r = &ActionGatewayMcpServer{}
 	case "digitalocean:index/actionGatewayToolbelt:ActionGatewayToolbelt":
@@ -241,6 +243,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"digitalocean",
 		"index/actionGatewayConnection",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
+		"index/actionGatewayEndpoint",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
