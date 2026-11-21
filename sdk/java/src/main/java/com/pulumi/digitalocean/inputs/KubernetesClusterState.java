@@ -13,6 +13,7 @@ import com.pulumi.digitalocean.inputs.KubernetesClusterAmdGpuDraDriverArgs;
 import com.pulumi.digitalocean.inputs.KubernetesClusterClusterAutoscalerConfigurationArgs;
 import com.pulumi.digitalocean.inputs.KubernetesClusterControlPlaneFirewallArgs;
 import com.pulumi.digitalocean.inputs.KubernetesClusterCorednsAutoscalerArgs;
+import com.pulumi.digitalocean.inputs.KubernetesClusterInsightsArgs;
 import com.pulumi.digitalocean.inputs.KubernetesClusterKubeConfigArgs;
 import com.pulumi.digitalocean.inputs.KubernetesClusterMaintenancePolicyArgs;
 import com.pulumi.digitalocean.inputs.KubernetesClusterNfsCsiPluginArgs;
@@ -247,6 +248,21 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * Block containing the Insights telemetry the cluster opts in to. This can only be set when the cluster is created and is not returned by the API, so changes made after creation (or after importing the cluster) are ignored.
+     * 
+     */
+    @Import(name="insights")
+    private @Nullable Output<KubernetesClusterInsightsArgs> insights;
+
+    /**
+     * @return Block containing the Insights telemetry the cluster opts in to. This can only be set when the cluster is created and is not returned by the API, so changes made after creation (or after importing the cluster) are ignored.
+     * 
+     */
+    public Optional<Output<KubernetesClusterInsightsArgs>> insights() {
+        return Optional.ofNullable(this.insights);
+    }
+
+    /**
      * The public IPv4 address of the Kubernetes master node. This will not be set if high availability is configured on the cluster (v1.21+)
      * 
      */
@@ -277,14 +293,14 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * A representation of the Kubernetes cluster&#39;s kubeconfig with the following attributes:
+     * A representation of the Kubernetes cluster&#39;s kubeconfig with the following attributes. Empty when `sso.required` is `true`:
      * 
      */
     @Import(name="kubeConfigs")
     private @Nullable Output<List<KubernetesClusterKubeConfigArgs>> kubeConfigs;
 
     /**
-     * @return A representation of the Kubernetes cluster&#39;s kubeconfig with the following attributes:
+     * @return A representation of the Kubernetes cluster&#39;s kubeconfig with the following attributes. Empty when `sso.required` is `true`:
      * 
      */
     public Optional<Output<List<KubernetesClusterKubeConfigArgs>>> kubeConfigs() {
@@ -623,6 +639,7 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
         this.endpoint = $.endpoint;
         this.gpuOperatorReady = $.gpuOperatorReady;
         this.ha = $.ha;
+        this.insights = $.insights;
         this.ipv4Address = $.ipv4Address;
         this.isolatedWorkers = $.isolatedWorkers;
         this.kubeConfigs = $.kubeConfigs;
@@ -972,6 +989,27 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
         }
 
         /**
+         * @param insights Block containing the Insights telemetry the cluster opts in to. This can only be set when the cluster is created and is not returned by the API, so changes made after creation (or after importing the cluster) are ignored.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder insights(@Nullable Output<KubernetesClusterInsightsArgs> insights) {
+            $.insights = insights;
+            return this;
+        }
+
+        /**
+         * @param insights Block containing the Insights telemetry the cluster opts in to. This can only be set when the cluster is created and is not returned by the API, so changes made after creation (or after importing the cluster) are ignored.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder insights(KubernetesClusterInsightsArgs insights) {
+            return insights(Output.of(insights));
+        }
+
+        /**
          * @param ipv4Address The public IPv4 address of the Kubernetes master node. This will not be set if high availability is configured on the cluster (v1.21+)
          * 
          * @return builder
@@ -1014,7 +1052,7 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param kubeConfigs A representation of the Kubernetes cluster&#39;s kubeconfig with the following attributes:
+         * @param kubeConfigs A representation of the Kubernetes cluster&#39;s kubeconfig with the following attributes. Empty when `sso.required` is `true`:
          * 
          * @return builder
          * 
@@ -1025,7 +1063,7 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param kubeConfigs A representation of the Kubernetes cluster&#39;s kubeconfig with the following attributes:
+         * @param kubeConfigs A representation of the Kubernetes cluster&#39;s kubeconfig with the following attributes. Empty when `sso.required` is `true`:
          * 
          * @return builder
          * 
@@ -1035,7 +1073,7 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param kubeConfigs A representation of the Kubernetes cluster&#39;s kubeconfig with the following attributes:
+         * @param kubeConfigs A representation of the Kubernetes cluster&#39;s kubeconfig with the following attributes. Empty when `sso.required` is `true`:
          * 
          * @return builder
          * 

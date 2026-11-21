@@ -33,7 +33,7 @@ namespace Pulumi.DigitalOcean.Inputs
         public Input<string>? IssuerUrl { get; set; }
 
         /// <summary>
-        /// Boolean flag indicating whether SSO is required as the only authentication method for the cluster. Default: `False`
+        /// Boolean flag indicating whether SSO is required as the only authentication method for the cluster. When `True`, `KubeConfig` is empty because token credentials cannot be issued for the cluster. Default: `False`
         /// </summary>
         [Input("required")]
         public Input<bool>? Required { get; set; }

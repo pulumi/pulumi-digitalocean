@@ -79,7 +79,7 @@ public final class GetKubernetesClusterResult {
      */
     private Boolean isolatedWorkers;
     /**
-     * @return A representation of the Kubernetes cluster&#39;s kubeconfig with the following attributes:
+     * @return A representation of the Kubernetes cluster&#39;s kubeconfig with the following attributes. Empty when `sso.required` is `true`:
      * 
      */
     private List<GetKubernetesClusterKubeConfig> kubeConfigs;
@@ -228,7 +228,7 @@ public final class GetKubernetesClusterResult {
         return this.isolatedWorkers;
     }
     /**
-     * @return A representation of the Kubernetes cluster&#39;s kubeconfig with the following attributes:
+     * @return A representation of the Kubernetes cluster&#39;s kubeconfig with the following attributes. Empty when `sso.required` is `true`:
      * 
      */
     public List<GetKubernetesClusterKubeConfig> kubeConfigs() {

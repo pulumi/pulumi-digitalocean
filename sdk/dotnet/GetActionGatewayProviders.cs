@@ -16,7 +16,10 @@ namespace Pulumi.DigitalOcean
         /// tool providers, with the ability to filter and sort the results. Use it to
         /// find a provider's slug, the scopes it offers, and the connection parameters a
         /// `digitalocean.ActionGatewayConnection`
-        /// needs. If no filters are specified, all providers are returned.
+        /// needs. Its `AuthTypes` tell which kind of
+        /// `digitalocean.ActionGatewayProviderCredential`
+        /// a provider accepts: `UserOauthApp` for an OAuth client and `UserToken` for
+        /// an API key. If no filters are specified, all providers are returned.
         /// 
         /// ## Example Usage
         /// 
@@ -58,7 +61,10 @@ namespace Pulumi.DigitalOcean
         /// tool providers, with the ability to filter and sort the results. Use it to
         /// find a provider's slug, the scopes it offers, and the connection parameters a
         /// `digitalocean.ActionGatewayConnection`
-        /// needs. If no filters are specified, all providers are returned.
+        /// needs. Its `AuthTypes` tell which kind of
+        /// `digitalocean.ActionGatewayProviderCredential`
+        /// a provider accepts: `UserOauthApp` for an OAuth client and `UserToken` for
+        /// an API key. If no filters are specified, all providers are returned.
         /// 
         /// ## Example Usage
         /// 
@@ -100,7 +106,10 @@ namespace Pulumi.DigitalOcean
         /// tool providers, with the ability to filter and sort the results. Use it to
         /// find a provider's slug, the scopes it offers, and the connection parameters a
         /// `digitalocean.ActionGatewayConnection`
-        /// needs. If no filters are specified, all providers are returned.
+        /// needs. Its `AuthTypes` tell which kind of
+        /// `digitalocean.ActionGatewayProviderCredential`
+        /// a provider accepts: `UserOauthApp` for an OAuth client and `UserToken` for
+        /// an API key. If no filters are specified, all providers are returned.
         /// 
         /// ## Example Usage
         /// 

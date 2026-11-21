@@ -300,11 +300,13 @@ type KubernetesCluster struct {
 	GpuOperatorReady pulumi.BoolPtrOutput `pulumi:"gpuOperatorReady"`
 	// Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: true (for 1.36.0 and later)
 	Ha pulumi.BoolOutput `pulumi:"ha"`
+	// Block containing the Insights telemetry the cluster opts in to. This can only be set when the cluster is created and is not returned by the API, so changes made after creation (or after importing the cluster) are ignored.
+	Insights KubernetesClusterInsightsPtrOutput `pulumi:"insights"`
 	// The public IPv4 address of the Kubernetes master node. This will not be set if high availability is configured on the cluster (v1.21+)
 	Ipv4Address pulumi.StringOutput `pulumi:"ipv4Address"`
 	// Enable/disable isolated worker nodes for the cluster. When enabled, each worker node runs on dedicated hardware. This can only be set at creation time. The cluster's VPC must have a NAT gateway attached. Default: false
 	IsolatedWorkers pulumi.BoolPtrOutput `pulumi:"isolatedWorkers"`
-	// A representation of the Kubernetes cluster's kubeconfig with the following attributes:
+	// A representation of the Kubernetes cluster's kubeconfig with the following attributes. Empty when `sso.required` is `true`:
 	KubeConfigs KubernetesClusterKubeConfigArrayOutput `pulumi:"kubeConfigs"`
 	// The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
 	KubeconfigExpireSeconds pulumi.IntPtrOutput `pulumi:"kubeconfigExpireSeconds"`
@@ -421,11 +423,13 @@ type kubernetesClusterState struct {
 	GpuOperatorReady *bool `pulumi:"gpuOperatorReady"`
 	// Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: true (for 1.36.0 and later)
 	Ha *bool `pulumi:"ha"`
+	// Block containing the Insights telemetry the cluster opts in to. This can only be set when the cluster is created and is not returned by the API, so changes made after creation (or after importing the cluster) are ignored.
+	Insights *KubernetesClusterInsights `pulumi:"insights"`
 	// The public IPv4 address of the Kubernetes master node. This will not be set if high availability is configured on the cluster (v1.21+)
 	Ipv4Address *string `pulumi:"ipv4Address"`
 	// Enable/disable isolated worker nodes for the cluster. When enabled, each worker node runs on dedicated hardware. This can only be set at creation time. The cluster's VPC must have a NAT gateway attached. Default: false
 	IsolatedWorkers *bool `pulumi:"isolatedWorkers"`
-	// A representation of the Kubernetes cluster's kubeconfig with the following attributes:
+	// A representation of the Kubernetes cluster's kubeconfig with the following attributes. Empty when `sso.required` is `true`:
 	KubeConfigs []KubernetesClusterKubeConfig `pulumi:"kubeConfigs"`
 	// The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
 	KubeconfigExpireSeconds *int `pulumi:"kubeconfigExpireSeconds"`
@@ -500,11 +504,13 @@ type KubernetesClusterState struct {
 	GpuOperatorReady pulumi.BoolPtrInput
 	// Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: true (for 1.36.0 and later)
 	Ha pulumi.BoolPtrInput
+	// Block containing the Insights telemetry the cluster opts in to. This can only be set when the cluster is created and is not returned by the API, so changes made after creation (or after importing the cluster) are ignored.
+	Insights KubernetesClusterInsightsPtrInput
 	// The public IPv4 address of the Kubernetes master node. This will not be set if high availability is configured on the cluster (v1.21+)
 	Ipv4Address pulumi.StringPtrInput
 	// Enable/disable isolated worker nodes for the cluster. When enabled, each worker node runs on dedicated hardware. This can only be set at creation time. The cluster's VPC must have a NAT gateway attached. Default: false
 	IsolatedWorkers pulumi.BoolPtrInput
-	// A representation of the Kubernetes cluster's kubeconfig with the following attributes:
+	// A representation of the Kubernetes cluster's kubeconfig with the following attributes. Empty when `sso.required` is `true`:
 	KubeConfigs KubernetesClusterKubeConfigArrayInput
 	// The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
 	KubeconfigExpireSeconds pulumi.IntPtrInput
@@ -583,6 +589,8 @@ type kubernetesClusterArgs struct {
 	GpuOperatorReady *bool `pulumi:"gpuOperatorReady"`
 	// Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: true (for 1.36.0 and later)
 	Ha *bool `pulumi:"ha"`
+	// Block containing the Insights telemetry the cluster opts in to. This can only be set when the cluster is created and is not returned by the API, so changes made after creation (or after importing the cluster) are ignored.
+	Insights *KubernetesClusterInsights `pulumi:"insights"`
 	// Enable/disable isolated worker nodes for the cluster. When enabled, each worker node runs on dedicated hardware. This can only be set at creation time. The cluster's VPC must have a NAT gateway attached. Default: false
 	IsolatedWorkers *bool `pulumi:"isolatedWorkers"`
 	// The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
@@ -649,6 +657,8 @@ type KubernetesClusterArgs struct {
 	GpuOperatorReady pulumi.BoolPtrInput
 	// Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: true (for 1.36.0 and later)
 	Ha pulumi.BoolPtrInput
+	// Block containing the Insights telemetry the cluster opts in to. This can only be set when the cluster is created and is not returned by the API, so changes made after creation (or after importing the cluster) are ignored.
+	Insights KubernetesClusterInsightsPtrInput
 	// Enable/disable isolated worker nodes for the cluster. When enabled, each worker node runs on dedicated hardware. This can only be set at creation time. The cluster's VPC must have a NAT gateway attached. Default: false
 	IsolatedWorkers pulumi.BoolPtrInput
 	// The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
@@ -852,6 +862,11 @@ func (o KubernetesClusterOutput) Ha() pulumi.BoolOutput {
 	return o.ApplyT(func(v *KubernetesCluster) pulumi.BoolOutput { return v.Ha }).(pulumi.BoolOutput)
 }
 
+// Block containing the Insights telemetry the cluster opts in to. This can only be set when the cluster is created and is not returned by the API, so changes made after creation (or after importing the cluster) are ignored.
+func (o KubernetesClusterOutput) Insights() KubernetesClusterInsightsPtrOutput {
+	return o.ApplyT(func(v *KubernetesCluster) KubernetesClusterInsightsPtrOutput { return v.Insights }).(KubernetesClusterInsightsPtrOutput)
+}
+
 // The public IPv4 address of the Kubernetes master node. This will not be set if high availability is configured on the cluster (v1.21+)
 func (o KubernetesClusterOutput) Ipv4Address() pulumi.StringOutput {
 	return o.ApplyT(func(v *KubernetesCluster) pulumi.StringOutput { return v.Ipv4Address }).(pulumi.StringOutput)
@@ -862,7 +877,7 @@ func (o KubernetesClusterOutput) IsolatedWorkers() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *KubernetesCluster) pulumi.BoolPtrOutput { return v.IsolatedWorkers }).(pulumi.BoolPtrOutput)
 }
 
-// A representation of the Kubernetes cluster's kubeconfig with the following attributes:
+// A representation of the Kubernetes cluster's kubeconfig with the following attributes. Empty when `sso.required` is `true`:
 func (o KubernetesClusterOutput) KubeConfigs() KubernetesClusterKubeConfigArrayOutput {
 	return o.ApplyT(func(v *KubernetesCluster) KubernetesClusterKubeConfigArrayOutput { return v.KubeConfigs }).(KubernetesClusterKubeConfigArrayOutput)
 }

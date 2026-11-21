@@ -279,7 +279,7 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public readonly bool IsolatedWorkers;
         /// <summary>
-        /// A representation of the Kubernetes cluster's kubeconfig with the following attributes:
+        /// A representation of the Kubernetes cluster's kubeconfig with the following attributes. Empty when `sso.required` is `True`:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetKubernetesClusterKubeConfigResult> KubeConfigs;
         public readonly int? KubeconfigExpireSeconds;

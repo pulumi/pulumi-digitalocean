@@ -9944,6 +9944,13 @@ export interface KubernetesClusterCorednsAutoscaler {
     enabled: pulumi.Input<boolean>;
 }
 
+export interface KubernetesClusterInsights {
+    /**
+     * Boolean flag indicating whether the cluster's logs are sent to Insights. Setting this to `false` records an explicit opt-out. If not specified, the API does not record an opt-in and defaults to `false`.
+     */
+    logs?: pulumi.Input<boolean | undefined>;
+}
+
 export interface KubernetesClusterKubeConfig {
     /**
      * The base64 encoded public certificate used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
@@ -10145,7 +10152,7 @@ export interface KubernetesClusterSso {
      */
     issuerUrl?: pulumi.Input<string | undefined>;
     /**
-     * Boolean flag indicating whether SSO is required as the only authentication method for the cluster. Default: `false`
+     * Boolean flag indicating whether SSO is required as the only authentication method for the cluster. When `true`, `kubeConfig` is empty because token credentials cannot be issued for the cluster. Default: `false`
      */
     required?: pulumi.Input<boolean | undefined>;
 }

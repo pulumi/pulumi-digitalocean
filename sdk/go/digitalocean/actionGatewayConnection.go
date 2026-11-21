@@ -20,9 +20,9 @@ import (
 // > **Note:** A connection belongs to the DigitalOcean user who owns the API
 // token Terraform uses, within that token's team. Other team members cannot use
 // it, even with the same `userId`. To let team members create their own
-// connections from a shared credential, register the provider credential in the
-// control panel, make it reusable by the team, and pass its ID as
-// `credentialId`.
+// connections from a shared credential, register a
+// `ActionGatewayProviderCredential`
+// with `reusableByTeam` set, and pass its ID as `credentialId`.
 //
 // An OAuth connection starts `pending`. The account holder completes it by
 // opening `authorization.0.connect_url`, which is exported as a sensitive value
@@ -32,6 +32,12 @@ import (
 // ## Example Usage
 //
 // ### Team provider credential
+//
+// The credential in this example sets `reusableByTeam`, so everyone on the
+// team can connect through it. Sharing may require the team owner role and
+// cannot be undone. Leave `reusableByTeam` out to keep the credential private
+// to the DigitalOcean user who owns Terraform's API token, which is enough for
+// connections created with the same token.
 //
 // ```go
 // package main
@@ -45,10 +51,20 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := digitalocean.NewActionGatewayConnection(ctx, "linear", &digitalocean.ActionGatewayConnectionArgs{
+//			linear, err := digitalocean.NewActionGatewayProviderCredential(ctx, "linear", &digitalocean.ActionGatewayProviderCredentialArgs{
+//				ToolProvider:   pulumi.String("linear"),
+//				Kind:           pulumi.String("api_key"),
+//				DisplayName:    pulumi.String("Production key"),
+//				ApiKey:         pulumi.Any(linearApiKey),
+//				ReusableByTeam: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = digitalocean.NewActionGatewayConnection(ctx, "linear", &digitalocean.ActionGatewayConnectionArgs{
 //				ToolProvider: pulumi.String("linear"),
 //				UserId:       pulumi.String("support-bot"),
-//				CredentialId: pulumi.String("8d6f2b1a-3c4e-4d5f-9a8b-7c6d5e4f3a2b"),
+//				CredentialId: linear.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -131,7 +147,7 @@ type ActionGatewayConnection struct {
 	ConnectionParameters pulumi.StringMapOutput `pulumi:"connectionParameters"`
 	// When the connection was created.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	// The ID of a team provider credential, such as your own OAuth application or an API key, to connect through. When omitted, DigitalOcean's shared OAuth application is used.
+	// The ID of a `ActionGatewayProviderCredential`, such as your own OAuth application or an API key, to connect through. When omitted, DigitalOcean's shared OAuth application is used.
 	CredentialId pulumi.StringPtrOutput `pulumi:"credentialId"`
 	// The kind of credential the connection uses: `digitaloceanOauth`, `privateOauth`, or `teamApiKey`.
 	CredentialKind pulumi.StringOutput `pulumi:"credentialKind"`
@@ -197,7 +213,7 @@ type actionGatewayConnectionState struct {
 	ConnectionParameters map[string]string `pulumi:"connectionParameters"`
 	// When the connection was created.
 	CreatedAt *string `pulumi:"createdAt"`
-	// The ID of a team provider credential, such as your own OAuth application or an API key, to connect through. When omitted, DigitalOcean's shared OAuth application is used.
+	// The ID of a `ActionGatewayProviderCredential`, such as your own OAuth application or an API key, to connect through. When omitted, DigitalOcean's shared OAuth application is used.
 	CredentialId *string `pulumi:"credentialId"`
 	// The kind of credential the connection uses: `digitaloceanOauth`, `privateOauth`, or `teamApiKey`.
 	CredentialKind *string `pulumi:"credentialKind"`
@@ -228,7 +244,7 @@ type ActionGatewayConnectionState struct {
 	ConnectionParameters pulumi.StringMapInput
 	// When the connection was created.
 	CreatedAt pulumi.StringPtrInput
-	// The ID of a team provider credential, such as your own OAuth application or an API key, to connect through. When omitted, DigitalOcean's shared OAuth application is used.
+	// The ID of a `ActionGatewayProviderCredential`, such as your own OAuth application or an API key, to connect through. When omitted, DigitalOcean's shared OAuth application is used.
 	CredentialId pulumi.StringPtrInput
 	// The kind of credential the connection uses: `digitaloceanOauth`, `privateOauth`, or `teamApiKey`.
 	CredentialKind pulumi.StringPtrInput
@@ -265,7 +281,7 @@ func ActionGatewayConnectionExists(ctx *pulumi.Context,
 type actionGatewayConnectionArgs struct {
 	// A map of values for the provider's connection parameters, such as `siteUrl` for Jira.
 	ConnectionParameters map[string]string `pulumi:"connectionParameters"`
-	// The ID of a team provider credential, such as your own OAuth application or an API key, to connect through. When omitted, DigitalOcean's shared OAuth application is used.
+	// The ID of a `ActionGatewayProviderCredential`, such as your own OAuth application or an API key, to connect through. When omitted, DigitalOcean's shared OAuth application is used.
 	CredentialId *string `pulumi:"credentialId"`
 	// The OAuth scopes to request. When omitted or empty, every scope the provider offers is requested. Ignored for API-key credentials.
 	Scopes []string `pulumi:"scopes"`
@@ -281,7 +297,7 @@ type actionGatewayConnectionArgs struct {
 type ActionGatewayConnectionArgs struct {
 	// A map of values for the provider's connection parameters, such as `siteUrl` for Jira.
 	ConnectionParameters pulumi.StringMapInput
-	// The ID of a team provider credential, such as your own OAuth application or an API key, to connect through. When omitted, DigitalOcean's shared OAuth application is used.
+	// The ID of a `ActionGatewayProviderCredential`, such as your own OAuth application or an API key, to connect through. When omitted, DigitalOcean's shared OAuth application is used.
 	CredentialId pulumi.StringPtrInput
 	// The OAuth scopes to request. When omitted or empty, every scope the provider offers is requested. Ignored for API-key credentials.
 	Scopes pulumi.StringArrayInput
@@ -397,7 +413,7 @@ func (o ActionGatewayConnectionOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *ActionGatewayConnection) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// The ID of a team provider credential, such as your own OAuth application or an API key, to connect through. When omitted, DigitalOcean's shared OAuth application is used.
+// The ID of a `ActionGatewayProviderCredential`, such as your own OAuth application or an API key, to connect through. When omitted, DigitalOcean's shared OAuth application is used.
 func (o ActionGatewayConnectionOutput) CredentialId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ActionGatewayConnection) pulumi.StringPtrOutput { return v.CredentialId }).(pulumi.StringPtrOutput)
 }

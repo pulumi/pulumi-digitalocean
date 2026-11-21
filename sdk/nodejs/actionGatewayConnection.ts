@@ -16,9 +16,9 @@ import * as utilities from "./utilities";
  * > **Note:** A connection belongs to the DigitalOcean user who owns the API
  * token Terraform uses, within that token's team. Other team members cannot use
  * it, even with the same `userId`. To let team members create their own
- * connections from a shared credential, register the provider credential in the
- * control panel, make it reusable by the team, and pass its ID as
- * `credentialId`.
+ * connections from a shared credential, register a
+ * `digitalocean.ActionGatewayProviderCredential`
+ * with `reusableByTeam` set, and pass its ID as `credentialId`.
  *
  * An OAuth connection starts `pending`. The account holder completes it by
  * opening `authorization.0.connect_url`, which is exported as a sensitive value
@@ -29,14 +29,27 @@ import * as utilities from "./utilities";
  *
  * ### Team provider credential
  *
+ * The credential in this example sets `reusableByTeam`, so everyone on the
+ * team can connect through it. Sharing may require the team owner role and
+ * cannot be undone. Leave `reusableByTeam` out to keep the credential private
+ * to the DigitalOcean user who owns Terraform's API token, which is enough for
+ * connections created with the same token.
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const linear = new digitalocean.ActionGatewayConnection("linear", {
+ * const linear = new digitalocean.ActionGatewayProviderCredential("linear", {
+ *     toolProvider: "linear",
+ *     kind: "api_key",
+ *     displayName: "Production key",
+ *     apiKey: linearApiKey,
+ *     reusableByTeam: true,
+ * });
+ * const linearActionGatewayConnection = new digitalocean.ActionGatewayConnection("linear", {
  *     toolProvider: "linear",
  *     userId: "support-bot",
- *     credentialId: "8d6f2b1a-3c4e-4d5f-9a8b-7c6d5e4f3a2b",
+ *     credentialId: linear.id,
  * });
  * ```
  *
@@ -134,7 +147,7 @@ export class ActionGatewayConnection extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
-     * The ID of a team provider credential, such as your own OAuth application or an API key, to connect through. When omitted, DigitalOcean's shared OAuth application is used.
+     * The ID of a `digitalocean.ActionGatewayProviderCredential`, such as your own OAuth application or an API key, to connect through. When omitted, DigitalOcean's shared OAuth application is used.
      */
     declare public readonly credentialId: pulumi.Output<string | undefined>;
     /**
@@ -250,7 +263,7 @@ export interface ActionGatewayConnectionState {
      */
     createdAt?: pulumi.Input<string | undefined>;
     /**
-     * The ID of a team provider credential, such as your own OAuth application or an API key, to connect through. When omitted, DigitalOcean's shared OAuth application is used.
+     * The ID of a `digitalocean.ActionGatewayProviderCredential`, such as your own OAuth application or an API key, to connect through. When omitted, DigitalOcean's shared OAuth application is used.
      */
     credentialId?: pulumi.Input<string | undefined>;
     /**
@@ -304,7 +317,7 @@ export interface ActionGatewayConnectionArgs {
      */
     connectionParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
-     * The ID of a team provider credential, such as your own OAuth application or an API key, to connect through. When omitted, DigitalOcean's shared OAuth application is used.
+     * The ID of a `digitalocean.ActionGatewayProviderCredential`, such as your own OAuth application or an API key, to connect through. When omitted, DigitalOcean's shared OAuth application is used.
      */
     credentialId?: pulumi.Input<string | undefined>;
     /**

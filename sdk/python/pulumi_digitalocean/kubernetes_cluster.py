@@ -36,6 +36,7 @@ class KubernetesClusterArgs:
                  destroy_all_associated_resources: pulumi.Input[Optional[_builtins.bool]] = None,
                  gpu_operator_ready: pulumi.Input[Optional[_builtins.bool]] = None,
                  ha: pulumi.Input[Optional[_builtins.bool]] = None,
+                 insights: pulumi.Input[Optional['KubernetesClusterInsightsArgs']] = None,
                  isolated_workers: pulumi.Input[Optional[_builtins.bool]] = None,
                  kubeconfig_expire_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  maintenance_policy: pulumi.Input[Optional['KubernetesClusterMaintenancePolicyArgs']] = None,
@@ -70,6 +71,7 @@ class KubernetesClusterArgs:
         :param pulumi.Input[_builtins.bool] destroy_all_associated_resources: **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
         :param pulumi.Input[_builtins.bool] gpu_operator_ready: Enable/disable launching GPU nodes in the cluster with images without GPU drivers, allowing GPU operators to manage drivers. Mutually exclusive with other GPU-related cluster options, such as `nvidia_gpu_dra_driver` and `amd_gpu_dra_driver`. Default: false
         :param pulumi.Input[_builtins.bool] ha: Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: true (for 1.36.0 and later)
+        :param pulumi.Input['KubernetesClusterInsightsArgs'] insights: Block containing the Insights telemetry the cluster opts in to. This can only be set when the cluster is created and is not returned by the API, so changes made after creation (or after importing the cluster) are ignored.
         :param pulumi.Input[_builtins.bool] isolated_workers: Enable/disable isolated worker nodes for the cluster. When enabled, each worker node runs on dedicated hardware. This can only be set at creation time. The cluster's VPC must have a NAT gateway attached. Default: false
         :param pulumi.Input[_builtins.int] kubeconfig_expire_seconds: The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
         :param pulumi.Input['KubernetesClusterMaintenancePolicyArgs'] maintenance_policy: A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.
@@ -113,6 +115,8 @@ class KubernetesClusterArgs:
             pulumi.set(__self__, "gpu_operator_ready", gpu_operator_ready)
         if ha is not None:
             pulumi.set(__self__, "ha", ha)
+        if insights is not None:
+            pulumi.set(__self__, "insights", insights)
         if isolated_workers is not None:
             pulumi.set(__self__, "isolated_workers", isolated_workers)
         if kubeconfig_expire_seconds is not None:
@@ -315,6 +319,18 @@ class KubernetesClusterArgs:
     @ha.setter
     def ha(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ha", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def insights(self) -> pulumi.Input[Optional['KubernetesClusterInsightsArgs']]:
+        """
+        Block containing the Insights telemetry the cluster opts in to. This can only be set when the cluster is created and is not returned by the API, so changes made after creation (or after importing the cluster) are ignored.
+        """
+        return pulumi.get(self, "insights")
+
+    @insights.setter
+    def insights(self, value: pulumi.Input[Optional['KubernetesClusterInsightsArgs']]):
+        pulumi.set(self, "insights", value)
 
     @_builtins.property
     @pulumi.getter(name="isolatedWorkers")
@@ -538,6 +554,7 @@ class _KubernetesClusterState:
                  endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  gpu_operator_ready: pulumi.Input[Optional[_builtins.bool]] = None,
                  ha: pulumi.Input[Optional[_builtins.bool]] = None,
+                 insights: pulumi.Input[Optional['KubernetesClusterInsightsArgs']] = None,
                  ipv4_address: pulumi.Input[Optional[_builtins.str]] = None,
                  isolated_workers: pulumi.Input[Optional[_builtins.bool]] = None,
                  kube_configs: pulumi.Input[Optional[Sequence[pulumi.Input['KubernetesClusterKubeConfigArgs']]]] = None,
@@ -579,9 +596,10 @@ class _KubernetesClusterState:
         :param pulumi.Input[_builtins.str] endpoint: The base URL of the API server on the Kubernetes master node.
         :param pulumi.Input[_builtins.bool] gpu_operator_ready: Enable/disable launching GPU nodes in the cluster with images without GPU drivers, allowing GPU operators to manage drivers. Mutually exclusive with other GPU-related cluster options, such as `nvidia_gpu_dra_driver` and `amd_gpu_dra_driver`. Default: false
         :param pulumi.Input[_builtins.bool] ha: Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: true (for 1.36.0 and later)
+        :param pulumi.Input['KubernetesClusterInsightsArgs'] insights: Block containing the Insights telemetry the cluster opts in to. This can only be set when the cluster is created and is not returned by the API, so changes made after creation (or after importing the cluster) are ignored.
         :param pulumi.Input[_builtins.str] ipv4_address: The public IPv4 address of the Kubernetes master node. This will not be set if high availability is configured on the cluster (v1.21+)
         :param pulumi.Input[_builtins.bool] isolated_workers: Enable/disable isolated worker nodes for the cluster. When enabled, each worker node runs on dedicated hardware. This can only be set at creation time. The cluster's VPC must have a NAT gateway attached. Default: false
-        :param pulumi.Input[Sequence[pulumi.Input['KubernetesClusterKubeConfigArgs']]] kube_configs: A representation of the Kubernetes cluster's kubeconfig with the following attributes:
+        :param pulumi.Input[Sequence[pulumi.Input['KubernetesClusterKubeConfigArgs']]] kube_configs: A representation of the Kubernetes cluster's kubeconfig with the following attributes. Empty when `sso.required` is `true`:
         :param pulumi.Input[_builtins.int] kubeconfig_expire_seconds: The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
         :param pulumi.Input['KubernetesClusterMaintenancePolicyArgs'] maintenance_policy: A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.
         :param pulumi.Input[_builtins.str] name: A name for the Kubernetes cluster.
@@ -632,6 +650,8 @@ class _KubernetesClusterState:
             pulumi.set(__self__, "gpu_operator_ready", gpu_operator_ready)
         if ha is not None:
             pulumi.set(__self__, "ha", ha)
+        if insights is not None:
+            pulumi.set(__self__, "insights", insights)
         if ipv4_address is not None:
             pulumi.set(__self__, "ipv4_address", ipv4_address)
         if isolated_workers is not None:
@@ -850,6 +870,18 @@ class _KubernetesClusterState:
         pulumi.set(self, "ha", value)
 
     @_builtins.property
+    @pulumi.getter
+    def insights(self) -> pulumi.Input[Optional['KubernetesClusterInsightsArgs']]:
+        """
+        Block containing the Insights telemetry the cluster opts in to. This can only be set when the cluster is created and is not returned by the API, so changes made after creation (or after importing the cluster) are ignored.
+        """
+        return pulumi.get(self, "insights")
+
+    @insights.setter
+    def insights(self, value: pulumi.Input[Optional['KubernetesClusterInsightsArgs']]):
+        pulumi.set(self, "insights", value)
+
+    @_builtins.property
     @pulumi.getter(name="ipv4Address")
     def ipv4_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -877,7 +909,7 @@ class _KubernetesClusterState:
     @pulumi.getter(name="kubeConfigs")
     def kube_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['KubernetesClusterKubeConfigArgs']]]]:
         """
-        A representation of the Kubernetes cluster's kubeconfig with the following attributes:
+        A representation of the Kubernetes cluster's kubeconfig with the following attributes. Empty when `sso.required` is `true`:
         """
         return pulumi.get(self, "kube_configs")
 
@@ -1155,6 +1187,7 @@ class KubernetesCluster(pulumi.CustomResource):
                  destroy_all_associated_resources: pulumi.Input[Optional[_builtins.bool]] = None,
                  gpu_operator_ready: pulumi.Input[Optional[_builtins.bool]] = None,
                  ha: pulumi.Input[Optional[_builtins.bool]] = None,
+                 insights: pulumi.Input[Optional[Union['KubernetesClusterInsightsArgs', 'KubernetesClusterInsightsArgsDict', 'outputs.KubernetesClusterInsights']]] = None,
                  isolated_workers: pulumi.Input[Optional[_builtins.bool]] = None,
                  kubeconfig_expire_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  maintenance_policy: pulumi.Input[Optional[Union['KubernetesClusterMaintenancePolicyArgs', 'KubernetesClusterMaintenancePolicyArgsDict', 'outputs.KubernetesClusterMaintenancePolicy']]] = None,
@@ -1348,6 +1381,7 @@ class KubernetesCluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] destroy_all_associated_resources: **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
         :param pulumi.Input[_builtins.bool] gpu_operator_ready: Enable/disable launching GPU nodes in the cluster with images without GPU drivers, allowing GPU operators to manage drivers. Mutually exclusive with other GPU-related cluster options, such as `nvidia_gpu_dra_driver` and `amd_gpu_dra_driver`. Default: false
         :param pulumi.Input[_builtins.bool] ha: Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: true (for 1.36.0 and later)
+        :param pulumi.Input[Union['KubernetesClusterInsightsArgs', 'KubernetesClusterInsightsArgsDict', 'outputs.KubernetesClusterInsights']] insights: Block containing the Insights telemetry the cluster opts in to. This can only be set when the cluster is created and is not returned by the API, so changes made after creation (or after importing the cluster) are ignored.
         :param pulumi.Input[_builtins.bool] isolated_workers: Enable/disable isolated worker nodes for the cluster. When enabled, each worker node runs on dedicated hardware. This can only be set at creation time. The cluster's VPC must have a NAT gateway attached. Default: false
         :param pulumi.Input[_builtins.int] kubeconfig_expire_seconds: The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
         :param pulumi.Input[Union['KubernetesClusterMaintenancePolicyArgs', 'KubernetesClusterMaintenancePolicyArgsDict', 'outputs.KubernetesClusterMaintenancePolicy']] maintenance_policy: A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.
@@ -1560,6 +1594,7 @@ class KubernetesCluster(pulumi.CustomResource):
                  destroy_all_associated_resources: pulumi.Input[Optional[_builtins.bool]] = None,
                  gpu_operator_ready: pulumi.Input[Optional[_builtins.bool]] = None,
                  ha: pulumi.Input[Optional[_builtins.bool]] = None,
+                 insights: pulumi.Input[Optional[Union['KubernetesClusterInsightsArgs', 'KubernetesClusterInsightsArgsDict', 'outputs.KubernetesClusterInsights']]] = None,
                  isolated_workers: pulumi.Input[Optional[_builtins.bool]] = None,
                  kubeconfig_expire_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  maintenance_policy: pulumi.Input[Optional[Union['KubernetesClusterMaintenancePolicyArgs', 'KubernetesClusterMaintenancePolicyArgsDict', 'outputs.KubernetesClusterMaintenancePolicy']]] = None,
@@ -1600,6 +1635,7 @@ class KubernetesCluster(pulumi.CustomResource):
             __props__.__dict__["destroy_all_associated_resources"] = destroy_all_associated_resources
             __props__.__dict__["gpu_operator_ready"] = gpu_operator_ready
             __props__.__dict__["ha"] = ha
+            __props__.__dict__["insights"] = insights
             __props__.__dict__["isolated_workers"] = isolated_workers
             __props__.__dict__["kubeconfig_expire_seconds"] = kubeconfig_expire_seconds
             __props__.__dict__["maintenance_policy"] = maintenance_policy
@@ -1659,6 +1695,7 @@ class KubernetesCluster(pulumi.CustomResource):
             endpoint: pulumi.Input[Optional[_builtins.str]] = None,
             gpu_operator_ready: pulumi.Input[Optional[_builtins.bool]] = None,
             ha: pulumi.Input[Optional[_builtins.bool]] = None,
+            insights: pulumi.Input[Optional[Union['KubernetesClusterInsightsArgs', 'KubernetesClusterInsightsArgsDict', 'outputs.KubernetesClusterInsights']]] = None,
             ipv4_address: pulumi.Input[Optional[_builtins.str]] = None,
             isolated_workers: pulumi.Input[Optional[_builtins.bool]] = None,
             kube_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KubernetesClusterKubeConfigArgs', 'KubernetesClusterKubeConfigArgsDict', 'outputs.KubernetesClusterKubeConfig']]]]] = None,
@@ -1704,9 +1741,10 @@ class KubernetesCluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] endpoint: The base URL of the API server on the Kubernetes master node.
         :param pulumi.Input[_builtins.bool] gpu_operator_ready: Enable/disable launching GPU nodes in the cluster with images without GPU drivers, allowing GPU operators to manage drivers. Mutually exclusive with other GPU-related cluster options, such as `nvidia_gpu_dra_driver` and `amd_gpu_dra_driver`. Default: false
         :param pulumi.Input[_builtins.bool] ha: Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: true (for 1.36.0 and later)
+        :param pulumi.Input[Union['KubernetesClusterInsightsArgs', 'KubernetesClusterInsightsArgsDict', 'outputs.KubernetesClusterInsights']] insights: Block containing the Insights telemetry the cluster opts in to. This can only be set when the cluster is created and is not returned by the API, so changes made after creation (or after importing the cluster) are ignored.
         :param pulumi.Input[_builtins.str] ipv4_address: The public IPv4 address of the Kubernetes master node. This will not be set if high availability is configured on the cluster (v1.21+)
         :param pulumi.Input[_builtins.bool] isolated_workers: Enable/disable isolated worker nodes for the cluster. When enabled, each worker node runs on dedicated hardware. This can only be set at creation time. The cluster's VPC must have a NAT gateway attached. Default: false
-        :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesClusterKubeConfigArgs', 'KubernetesClusterKubeConfigArgsDict', 'outputs.KubernetesClusterKubeConfig']]]] kube_configs: A representation of the Kubernetes cluster's kubeconfig with the following attributes:
+        :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesClusterKubeConfigArgs', 'KubernetesClusterKubeConfigArgsDict', 'outputs.KubernetesClusterKubeConfig']]]] kube_configs: A representation of the Kubernetes cluster's kubeconfig with the following attributes. Empty when `sso.required` is `true`:
         :param pulumi.Input[_builtins.int] kubeconfig_expire_seconds: The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
         :param pulumi.Input[Union['KubernetesClusterMaintenancePolicyArgs', 'KubernetesClusterMaintenancePolicyArgsDict', 'outputs.KubernetesClusterMaintenancePolicy']] maintenance_policy: A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.
         :param pulumi.Input[_builtins.str] name: A name for the Kubernetes cluster.
@@ -1747,6 +1785,7 @@ class KubernetesCluster(pulumi.CustomResource):
         __props__.__dict__["endpoint"] = endpoint
         __props__.__dict__["gpu_operator_ready"] = gpu_operator_ready
         __props__.__dict__["ha"] = ha
+        __props__.__dict__["insights"] = insights
         __props__.__dict__["ipv4_address"] = ipv4_address
         __props__.__dict__["isolated_workers"] = isolated_workers
         __props__.__dict__["kube_configs"] = kube_configs
@@ -1790,6 +1829,7 @@ class KubernetesCluster(pulumi.CustomResource):
             endpoint: pulumi.Input[Optional[_builtins.str]] = None,
             gpu_operator_ready: pulumi.Input[Optional[_builtins.bool]] = None,
             ha: pulumi.Input[Optional[_builtins.bool]] = None,
+            insights: pulumi.Input[Optional[Union['KubernetesClusterInsightsArgs', 'KubernetesClusterInsightsArgsDict', 'outputs.KubernetesClusterInsights']]] = None,
             ipv4_address: pulumi.Input[Optional[_builtins.str]] = None,
             isolated_workers: pulumi.Input[Optional[_builtins.bool]] = None,
             kube_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KubernetesClusterKubeConfigArgs', 'KubernetesClusterKubeConfigArgsDict', 'outputs.KubernetesClusterKubeConfig']]]]] = None,
@@ -1829,6 +1869,7 @@ class KubernetesCluster(pulumi.CustomResource):
         __props__["endpoint"] = endpoint
         __props__["gpuOperatorReady"] = gpu_operator_ready
         __props__["ha"] = ha
+        __props__["insights"] = insights
         __props__["ipv4Address"] = ipv4_address
         __props__["isolatedWorkers"] = isolated_workers
         __props__["kubeConfigs"] = kube_configs
@@ -1968,6 +2009,14 @@ class KubernetesCluster(pulumi.CustomResource):
         return pulumi.get(self, "ha")
 
     @_builtins.property
+    @pulumi.getter
+    def insights(self) -> pulumi.Output[Optional['outputs.KubernetesClusterInsights']]:
+        """
+        Block containing the Insights telemetry the cluster opts in to. This can only be set when the cluster is created and is not returned by the API, so changes made after creation (or after importing the cluster) are ignored.
+        """
+        return pulumi.get(self, "insights")
+
+    @_builtins.property
     @pulumi.getter(name="ipv4Address")
     def ipv4_address(self) -> pulumi.Output[_builtins.str]:
         """
@@ -1987,7 +2036,7 @@ class KubernetesCluster(pulumi.CustomResource):
     @pulumi.getter(name="kubeConfigs")
     def kube_configs(self) -> pulumi.Output[Sequence['outputs.KubernetesClusterKubeConfig']]:
         """
-        A representation of the Kubernetes cluster's kubeconfig with the following attributes:
+        A representation of the Kubernetes cluster's kubeconfig with the following attributes. Empty when `sso.required` is `true`:
         """
         return pulumi.get(self, "kube_configs")
 

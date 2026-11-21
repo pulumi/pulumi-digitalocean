@@ -28,7 +28,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly string? IssuerUrl;
         /// <summary>
-        /// Boolean flag indicating whether SSO is required as the only authentication method for the cluster. Default: `False`
+        /// Boolean flag indicating whether SSO is required as the only authentication method for the cluster. When `True`, `KubeConfig` is empty because token credentials cannot be issued for the cluster. Default: `False`
         /// </summary>
         public readonly bool? Required;
 

@@ -20,6 +20,11 @@ export type ActionGatewayMcpServer = import("./actionGatewayMcpServer").ActionGa
 export const ActionGatewayMcpServer: typeof import("./actionGatewayMcpServer").ActionGatewayMcpServer = null as any;
 utilities.lazyLoad(exports, ["ActionGatewayMcpServer"], () => require("./actionGatewayMcpServer"));
 
+export { ActionGatewayProviderCredentialArgs, ActionGatewayProviderCredentialState } from "./actionGatewayProviderCredential";
+export type ActionGatewayProviderCredential = import("./actionGatewayProviderCredential").ActionGatewayProviderCredential;
+export const ActionGatewayProviderCredential: typeof import("./actionGatewayProviderCredential").ActionGatewayProviderCredential = null as any;
+utilities.lazyLoad(exports, ["ActionGatewayProviderCredential"], () => require("./actionGatewayProviderCredential"));
+
 export { ActionGatewayToolbeltArgs, ActionGatewayToolbeltState } from "./actionGatewayToolbelt";
 export type ActionGatewayToolbelt = import("./actionGatewayToolbelt").ActionGatewayToolbelt;
 export const ActionGatewayToolbelt: typeof import("./actionGatewayToolbelt").ActionGatewayToolbelt = null as any;
@@ -274,6 +279,11 @@ export { GetActionGatewayEndpointArgs, GetActionGatewayEndpointResult, GetAction
 export const getActionGatewayEndpoint: typeof import("./getActionGatewayEndpoint").getActionGatewayEndpoint = null as any;
 export const getActionGatewayEndpointOutput: typeof import("./getActionGatewayEndpoint").getActionGatewayEndpointOutput = null as any;
 utilities.lazyLoad(exports, ["getActionGatewayEndpoint","getActionGatewayEndpointOutput"], () => require("./getActionGatewayEndpoint"));
+
+export { GetActionGatewayProviderCredentialArgs, GetActionGatewayProviderCredentialResult, GetActionGatewayProviderCredentialOutputArgs } from "./getActionGatewayProviderCredential";
+export const getActionGatewayProviderCredential: typeof import("./getActionGatewayProviderCredential").getActionGatewayProviderCredential = null as any;
+export const getActionGatewayProviderCredentialOutput: typeof import("./getActionGatewayProviderCredential").getActionGatewayProviderCredentialOutput = null as any;
+utilities.lazyLoad(exports, ["getActionGatewayProviderCredential","getActionGatewayProviderCredentialOutput"], () => require("./getActionGatewayProviderCredential"));
 
 export { GetActionGatewayProvidersArgs, GetActionGatewayProvidersResult, GetActionGatewayProvidersOutputArgs } from "./getActionGatewayProviders";
 export const getActionGatewayProviders: typeof import("./getActionGatewayProviders").getActionGatewayProviders = null as any;
@@ -991,6 +1001,8 @@ const _module = {
                 return new ActionGatewayEndpoint(name, <any>undefined, { urn })
             case "digitalocean:index/actionGatewayMcpServer:ActionGatewayMcpServer":
                 return new ActionGatewayMcpServer(name, <any>undefined, { urn })
+            case "digitalocean:index/actionGatewayProviderCredential:ActionGatewayProviderCredential":
+                return new ActionGatewayProviderCredential(name, <any>undefined, { urn })
             case "digitalocean:index/actionGatewayToolbelt:ActionGatewayToolbelt":
                 return new ActionGatewayToolbelt(name, <any>undefined, { urn })
             case "digitalocean:index/agentPlatformAgent:AgentPlatformAgent":
@@ -1181,6 +1193,7 @@ const _module = {
 pulumi.runtime.registerResourceModule("digitalocean", "index/actionGatewayConnection", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/actionGatewayEndpoint", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/actionGatewayMcpServer", _module)
+pulumi.runtime.registerResourceModule("digitalocean", "index/actionGatewayProviderCredential", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/actionGatewayToolbelt", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/agentPlatformAgent", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/agentPlatformAgentKnowledgeBaseAttachment", _module)

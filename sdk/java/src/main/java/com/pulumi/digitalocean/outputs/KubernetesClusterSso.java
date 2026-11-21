@@ -31,7 +31,7 @@ public final class KubernetesClusterSso {
      */
     private @Nullable String issuerUrl;
     /**
-     * @return Boolean flag indicating whether SSO is required as the only authentication method for the cluster. Default: `false`
+     * @return Boolean flag indicating whether SSO is required as the only authentication method for the cluster. When `true`, `kubeConfig` is empty because token credentials cannot be issued for the cluster. Default: `false`
      * 
      */
     private @Nullable Boolean required;
@@ -61,7 +61,7 @@ public final class KubernetesClusterSso {
         return Optional.ofNullable(this.issuerUrl);
     }
     /**
-     * @return Boolean flag indicating whether SSO is required as the only authentication method for the cluster. Default: `false`
+     * @return Boolean flag indicating whether SSO is required as the only authentication method for the cluster. When `true`, `kubeConfig` is empty because token credentials cannot be issued for the cluster. Default: `false`
      * 
      */
     public Optional<Boolean> required() {

@@ -89,7 +89,10 @@ def get_action_gateway_providers(filters: Optional[Sequence[Union['GetActionGate
     tool providers, with the ability to filter and sort the results. Use it to
     find a provider's slug, the scopes it offers, and the connection parameters a
     `ActionGatewayConnection`
-    needs. If no filters are specified, all providers are returned.
+    needs. Its `auth_types` tell which kind of
+    `ActionGatewayProviderCredential`
+    a provider accepts: `user_oauth_app` for an OAuth client and `user_token` for
+    an API key. If no filters are specified, all providers are returned.
 
     ## Example Usage
 
@@ -129,7 +132,10 @@ def get_action_gateway_providers_output(filters: pulumi.Input[Optional[Optional[
     tool providers, with the ability to filter and sort the results. Use it to
     find a provider's slug, the scopes it offers, and the connection parameters a
     `ActionGatewayConnection`
-    needs. If no filters are specified, all providers are returned.
+    needs. Its `auth_types` tell which kind of
+    `ActionGatewayProviderCredential`
+    a provider accepts: `user_oauth_app` for an OAuth client and `user_token` for
+    an API key. If no filters are specified, all providers are returned.
 
     ## Example Usage
 

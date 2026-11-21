@@ -315,6 +315,12 @@ namespace Pulumi.DigitalOcean
         public Output<bool> Ha { get; private set; } = null!;
 
         /// <summary>
+        /// Block containing the Insights telemetry the cluster opts in to. This can only be set when the cluster is created and is not returned by the API, so changes made after creation (or after importing the cluster) are ignored.
+        /// </summary>
+        [Output("insights")]
+        public Output<Outputs.KubernetesClusterInsights?> Insights { get; private set; } = null!;
+
+        /// <summary>
         /// The public IPv4 address of the Kubernetes master node. This will not be set if high availability is configured on the cluster (v1.21+)
         /// </summary>
         [Output("ipv4Address")]
@@ -327,7 +333,7 @@ namespace Pulumi.DigitalOcean
         public Output<bool?> IsolatedWorkers { get; private set; } = null!;
 
         /// <summary>
-        /// A representation of the Kubernetes cluster's kubeconfig with the following attributes:
+        /// A representation of the Kubernetes cluster's kubeconfig with the following attributes. Empty when `sso.required` is `True`:
         /// </summary>
         [Output("kubeConfigs")]
         public Output<ImmutableArray<Outputs.KubernetesClusterKubeConfig>> KubeConfigs { get; private set; } = null!;
@@ -581,6 +587,12 @@ namespace Pulumi.DigitalOcean
         public Input<bool>? Ha { get; set; }
 
         /// <summary>
+        /// Block containing the Insights telemetry the cluster opts in to. This can only be set when the cluster is created and is not returned by the API, so changes made after creation (or after importing the cluster) are ignored.
+        /// </summary>
+        [Input("insights")]
+        public Input<Inputs.KubernetesClusterInsightsArgs>? Insights { get; set; }
+
+        /// <summary>
         /// Enable/disable isolated worker nodes for the cluster. When enabled, each worker node runs on dedicated hardware. This can only be set at creation time. The cluster's VPC must have a NAT gateway attached. Default: false
         /// </summary>
         [Input("isolatedWorkers")]
@@ -811,6 +823,12 @@ namespace Pulumi.DigitalOcean
         public Input<bool>? Ha { get; set; }
 
         /// <summary>
+        /// Block containing the Insights telemetry the cluster opts in to. This can only be set when the cluster is created and is not returned by the API, so changes made after creation (or after importing the cluster) are ignored.
+        /// </summary>
+        [Input("insights")]
+        public Input<Inputs.KubernetesClusterInsightsGetArgs>? Insights { get; set; }
+
+        /// <summary>
         /// The public IPv4 address of the Kubernetes master node. This will not be set if high availability is configured on the cluster (v1.21+)
         /// </summary>
         [Input("ipv4Address")]
@@ -826,7 +844,7 @@ namespace Pulumi.DigitalOcean
         private InputList<Inputs.KubernetesClusterKubeConfigGetArgs>? _kubeConfigs;
 
         /// <summary>
-        /// A representation of the Kubernetes cluster's kubeconfig with the following attributes:
+        /// A representation of the Kubernetes cluster's kubeconfig with the following attributes. Empty when `sso.required` is `True`:
         /// </summary>
         public InputList<Inputs.KubernetesClusterKubeConfigGetArgs> KubeConfigs
         {

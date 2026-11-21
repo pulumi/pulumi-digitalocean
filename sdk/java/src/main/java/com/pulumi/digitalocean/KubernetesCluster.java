@@ -16,6 +16,7 @@ import com.pulumi.digitalocean.outputs.KubernetesClusterAmdGpuDraDriver;
 import com.pulumi.digitalocean.outputs.KubernetesClusterClusterAutoscalerConfiguration;
 import com.pulumi.digitalocean.outputs.KubernetesClusterControlPlaneFirewall;
 import com.pulumi.digitalocean.outputs.KubernetesClusterCorednsAutoscaler;
+import com.pulumi.digitalocean.outputs.KubernetesClusterInsights;
 import com.pulumi.digitalocean.outputs.KubernetesClusterKubeConfig;
 import com.pulumi.digitalocean.outputs.KubernetesClusterMaintenancePolicy;
 import com.pulumi.digitalocean.outputs.KubernetesClusterNfsCsiPlugin;
@@ -539,6 +540,20 @@ public class KubernetesCluster extends com.pulumi.resources.CustomResource {
         return this.ha;
     }
     /**
+     * Block containing the Insights telemetry the cluster opts in to. This can only be set when the cluster is created and is not returned by the API, so changes made after creation (or after importing the cluster) are ignored.
+     * 
+     */
+    @Export(name="insights", refs={KubernetesClusterInsights.class}, tree="[0]")
+    private Output</* @Nullable */ KubernetesClusterInsights> insights;
+
+    /**
+     * @return Block containing the Insights telemetry the cluster opts in to. This can only be set when the cluster is created and is not returned by the API, so changes made after creation (or after importing the cluster) are ignored.
+     * 
+     */
+    public Output<Optional<KubernetesClusterInsights>> insights() {
+        return Codegen.optional(this.insights);
+    }
+    /**
      * The public IPv4 address of the Kubernetes master node. This will not be set if high availability is configured on the cluster (v1.21+)
      * 
      */
@@ -567,14 +582,14 @@ public class KubernetesCluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.isolatedWorkers);
     }
     /**
-     * A representation of the Kubernetes cluster&#39;s kubeconfig with the following attributes:
+     * A representation of the Kubernetes cluster&#39;s kubeconfig with the following attributes. Empty when `sso.required` is `true`:
      * 
      */
     @Export(name="kubeConfigs", refs={List.class,KubernetesClusterKubeConfig.class}, tree="[0,1]")
     private Output<List<KubernetesClusterKubeConfig>> kubeConfigs;
 
     /**
-     * @return A representation of the Kubernetes cluster&#39;s kubeconfig with the following attributes:
+     * @return A representation of the Kubernetes cluster&#39;s kubeconfig with the following attributes. Empty when `sso.required` is `true`:
      * 
      */
     public Output<List<KubernetesClusterKubeConfig>> kubeConfigs() {

@@ -27,9 +27,9 @@ import javax.annotation.Nullable;
  * &gt; **Note:** A connection belongs to the DigitalOcean user who owns the API
  * token Terraform uses, within that token&#39;s team. Other team members cannot use
  * it, even with the same `userId`. To let team members create their own
- * connections from a shared credential, register the provider credential in the
- * control panel, make it reusable by the team, and pass its ID as
- * `credentialId`.
+ * connections from a shared credential, register a
+ * `digitalocean.ActionGatewayProviderCredential`
+ * with `reusableByTeam` set, and pass its ID as `credentialId`.
  * 
  * An OAuth connection starts `pending`. The account holder completes it by
  * opening `authorization.0.connect_url`, which is exported as a sensitive value
@@ -40,6 +40,12 @@ import javax.annotation.Nullable;
  * 
  * ### Team provider credential
  * 
+ * The credential in this example sets `reusableByTeam`, so everyone on the
+ * team can connect through it. Sharing may require the team owner role and
+ * cannot be undone. Leave `reusableByTeam` out to keep the credential private
+ * to the DigitalOcean user who owns Terraform&#39;s API token, which is enough for
+ * connections created with the same token.
+ * 
  * <pre>
  * {@code
  * package generated_program;
@@ -47,6 +53,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.digitalocean.ActionGatewayProviderCredential;
+ * import com.pulumi.digitalocean.ActionGatewayProviderCredentialArgs;
  * import com.pulumi.digitalocean.ActionGatewayConnection;
  * import com.pulumi.digitalocean.ActionGatewayConnectionArgs;
  * import java.util.ArrayList;
@@ -62,10 +70,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var linear = new ActionGatewayConnection("linear", ActionGatewayConnectionArgs.builder()
+ *         var linear = new ActionGatewayProviderCredential("linear", ActionGatewayProviderCredentialArgs.builder()
+ *             .toolProvider("linear")
+ *             .kind("api_key")
+ *             .displayName("Production key")
+ *             .apiKey(linearApiKey)
+ *             .reusableByTeam(true)
+ *             .build());
+ * 
+ *         var linearActionGatewayConnection = new ActionGatewayConnection("linearActionGatewayConnection", ActionGatewayConnectionArgs.builder()
  *             .toolProvider("linear")
  *             .userId("support-bot")
- *             .credentialId("8d6f2b1a-3c4e-4d5f-9a8b-7c6d5e4f3a2b")
+ *             .credentialId(linear.id())
  *             .build());
  * 
  *     }
@@ -186,14 +202,14 @@ public class ActionGatewayConnection extends com.pulumi.resources.CustomResource
         return this.createdAt;
     }
     /**
-     * The ID of a team provider credential, such as your own OAuth application or an API key, to connect through. When omitted, DigitalOcean&#39;s shared OAuth application is used.
+     * The ID of a `digitalocean.ActionGatewayProviderCredential`, such as your own OAuth application or an API key, to connect through. When omitted, DigitalOcean&#39;s shared OAuth application is used.
      * 
      */
     @Export(name="credentialId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> credentialId;
 
     /**
-     * @return The ID of a team provider credential, such as your own OAuth application or an API key, to connect through. When omitted, DigitalOcean&#39;s shared OAuth application is used.
+     * @return The ID of a `digitalocean.ActionGatewayProviderCredential`, such as your own OAuth application or an API key, to connect through. When omitted, DigitalOcean&#39;s shared OAuth application is used.
      * 
      */
     public Output<Optional<String>> credentialId() {

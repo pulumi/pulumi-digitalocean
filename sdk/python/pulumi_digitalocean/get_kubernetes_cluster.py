@@ -244,7 +244,7 @@ class GetKubernetesClusterResult:
     @pulumi.getter(name="kubeConfigs")
     def kube_configs(self) -> Sequence['outputs.GetKubernetesClusterKubeConfigResult']:
         """
-        A representation of the Kubernetes cluster's kubeconfig with the following attributes:
+        A representation of the Kubernetes cluster's kubeconfig with the following attributes. Empty when `sso.required` is `true`:
         """
         return pulumi.get(self, "kube_configs")
 

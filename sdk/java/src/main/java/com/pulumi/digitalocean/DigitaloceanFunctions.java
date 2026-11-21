@@ -13,6 +13,8 @@ import com.pulumi.digitalocean.inputs.GetActionGatewayConnectionArgs;
 import com.pulumi.digitalocean.inputs.GetActionGatewayConnectionPlainArgs;
 import com.pulumi.digitalocean.inputs.GetActionGatewayEndpointArgs;
 import com.pulumi.digitalocean.inputs.GetActionGatewayEndpointPlainArgs;
+import com.pulumi.digitalocean.inputs.GetActionGatewayProviderCredentialArgs;
+import com.pulumi.digitalocean.inputs.GetActionGatewayProviderCredentialPlainArgs;
 import com.pulumi.digitalocean.inputs.GetActionGatewayProvidersArgs;
 import com.pulumi.digitalocean.inputs.GetActionGatewayProvidersPlainArgs;
 import com.pulumi.digitalocean.inputs.GetActionGatewayToolbeltArgs;
@@ -200,6 +202,7 @@ import com.pulumi.digitalocean.inputs.GetVpcPlainArgs;
 import com.pulumi.digitalocean.outputs.GetAccountResult;
 import com.pulumi.digitalocean.outputs.GetActionGatewayConnectionResult;
 import com.pulumi.digitalocean.outputs.GetActionGatewayEndpointResult;
+import com.pulumi.digitalocean.outputs.GetActionGatewayProviderCredentialResult;
 import com.pulumi.digitalocean.outputs.GetActionGatewayProvidersResult;
 import com.pulumi.digitalocean.outputs.GetActionGatewayToolbeltResult;
 import com.pulumi.digitalocean.outputs.GetAgentPlatformAgentResult;
@@ -1686,11 +1689,413 @@ public final class DigitaloceanFunctions {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getActionGatewayEndpoint:getActionGatewayEndpoint", TypeShape.of(GetActionGatewayEndpointResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Get information about an [Action Gateway](https://docs.digitalocean.com/products/managed-agents/action-gateway/)
+     * provider credential, such as one registered in the control panel, to pass its
+     * ID to a `digitalocean.ActionGatewayConnection`.
+     * Look a credential up by its `id`, or by its `toolProvider` and `displayName`.
+     * 
+     * The lookup finds only credentials visible to the DigitalOcean user who owns
+     * Terraform&#39;s API token: that user&#39;s own and those shared with the team. The API
+     * never returns a credential&#39;s API key, client ID, or client secret, so this data
+     * source does not export them.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetActionGatewayProviderCredentialArgs;
+     * import com.pulumi.digitalocean.ActionGatewayConnection;
+     * import com.pulumi.digitalocean.ActionGatewayConnectionArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var github = DigitaloceanFunctions.getActionGatewayProviderCredential(GetActionGatewayProviderCredentialArgs.builder()
+     *             .toolProvider("github")
+     *             .displayName("Production GitHub app")
+     *             .build());
+     * 
+     *         var githubActionGatewayConnection = new ActionGatewayConnection("githubActionGatewayConnection", ActionGatewayConnectionArgs.builder()
+     *             .toolProvider(github.toolProvider())
+     *             .userId("user-123")
+     *             .credentialId(github.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetActionGatewayProviderCredentialResult> getActionGatewayProviderCredential() {
+        return getActionGatewayProviderCredential(GetActionGatewayProviderCredentialArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about an [Action Gateway](https://docs.digitalocean.com/products/managed-agents/action-gateway/)
+     * provider credential, such as one registered in the control panel, to pass its
+     * ID to a `digitalocean.ActionGatewayConnection`.
+     * Look a credential up by its `id`, or by its `toolProvider` and `displayName`.
+     * 
+     * The lookup finds only credentials visible to the DigitalOcean user who owns
+     * Terraform&#39;s API token: that user&#39;s own and those shared with the team. The API
+     * never returns a credential&#39;s API key, client ID, or client secret, so this data
+     * source does not export them.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetActionGatewayProviderCredentialArgs;
+     * import com.pulumi.digitalocean.ActionGatewayConnection;
+     * import com.pulumi.digitalocean.ActionGatewayConnectionArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var github = DigitaloceanFunctions.getActionGatewayProviderCredential(GetActionGatewayProviderCredentialArgs.builder()
+     *             .toolProvider("github")
+     *             .displayName("Production GitHub app")
+     *             .build());
+     * 
+     *         var githubActionGatewayConnection = new ActionGatewayConnection("githubActionGatewayConnection", ActionGatewayConnectionArgs.builder()
+     *             .toolProvider(github.toolProvider())
+     *             .userId("user-123")
+     *             .credentialId(github.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetActionGatewayProviderCredentialResult> getActionGatewayProviderCredentialPlain() {
+        return getActionGatewayProviderCredentialPlain(GetActionGatewayProviderCredentialPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about an [Action Gateway](https://docs.digitalocean.com/products/managed-agents/action-gateway/)
+     * provider credential, such as one registered in the control panel, to pass its
+     * ID to a `digitalocean.ActionGatewayConnection`.
+     * Look a credential up by its `id`, or by its `toolProvider` and `displayName`.
+     * 
+     * The lookup finds only credentials visible to the DigitalOcean user who owns
+     * Terraform&#39;s API token: that user&#39;s own and those shared with the team. The API
+     * never returns a credential&#39;s API key, client ID, or client secret, so this data
+     * source does not export them.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetActionGatewayProviderCredentialArgs;
+     * import com.pulumi.digitalocean.ActionGatewayConnection;
+     * import com.pulumi.digitalocean.ActionGatewayConnectionArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var github = DigitaloceanFunctions.getActionGatewayProviderCredential(GetActionGatewayProviderCredentialArgs.builder()
+     *             .toolProvider("github")
+     *             .displayName("Production GitHub app")
+     *             .build());
+     * 
+     *         var githubActionGatewayConnection = new ActionGatewayConnection("githubActionGatewayConnection", ActionGatewayConnectionArgs.builder()
+     *             .toolProvider(github.toolProvider())
+     *             .userId("user-123")
+     *             .credentialId(github.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetActionGatewayProviderCredentialResult> getActionGatewayProviderCredential(GetActionGatewayProviderCredentialArgs args) {
+        return getActionGatewayProviderCredential(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about an [Action Gateway](https://docs.digitalocean.com/products/managed-agents/action-gateway/)
+     * provider credential, such as one registered in the control panel, to pass its
+     * ID to a `digitalocean.ActionGatewayConnection`.
+     * Look a credential up by its `id`, or by its `toolProvider` and `displayName`.
+     * 
+     * The lookup finds only credentials visible to the DigitalOcean user who owns
+     * Terraform&#39;s API token: that user&#39;s own and those shared with the team. The API
+     * never returns a credential&#39;s API key, client ID, or client secret, so this data
+     * source does not export them.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetActionGatewayProviderCredentialArgs;
+     * import com.pulumi.digitalocean.ActionGatewayConnection;
+     * import com.pulumi.digitalocean.ActionGatewayConnectionArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var github = DigitaloceanFunctions.getActionGatewayProviderCredential(GetActionGatewayProviderCredentialArgs.builder()
+     *             .toolProvider("github")
+     *             .displayName("Production GitHub app")
+     *             .build());
+     * 
+     *         var githubActionGatewayConnection = new ActionGatewayConnection("githubActionGatewayConnection", ActionGatewayConnectionArgs.builder()
+     *             .toolProvider(github.toolProvider())
+     *             .userId("user-123")
+     *             .credentialId(github.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetActionGatewayProviderCredentialResult> getActionGatewayProviderCredentialPlain(GetActionGatewayProviderCredentialPlainArgs args) {
+        return getActionGatewayProviderCredentialPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about an [Action Gateway](https://docs.digitalocean.com/products/managed-agents/action-gateway/)
+     * provider credential, such as one registered in the control panel, to pass its
+     * ID to a `digitalocean.ActionGatewayConnection`.
+     * Look a credential up by its `id`, or by its `toolProvider` and `displayName`.
+     * 
+     * The lookup finds only credentials visible to the DigitalOcean user who owns
+     * Terraform&#39;s API token: that user&#39;s own and those shared with the team. The API
+     * never returns a credential&#39;s API key, client ID, or client secret, so this data
+     * source does not export them.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetActionGatewayProviderCredentialArgs;
+     * import com.pulumi.digitalocean.ActionGatewayConnection;
+     * import com.pulumi.digitalocean.ActionGatewayConnectionArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var github = DigitaloceanFunctions.getActionGatewayProviderCredential(GetActionGatewayProviderCredentialArgs.builder()
+     *             .toolProvider("github")
+     *             .displayName("Production GitHub app")
+     *             .build());
+     * 
+     *         var githubActionGatewayConnection = new ActionGatewayConnection("githubActionGatewayConnection", ActionGatewayConnectionArgs.builder()
+     *             .toolProvider(github.toolProvider())
+     *             .userId("user-123")
+     *             .credentialId(github.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetActionGatewayProviderCredentialResult> getActionGatewayProviderCredential(GetActionGatewayProviderCredentialArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getActionGatewayProviderCredential:getActionGatewayProviderCredential", TypeShape.of(GetActionGatewayProviderCredentialResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about an [Action Gateway](https://docs.digitalocean.com/products/managed-agents/action-gateway/)
+     * provider credential, such as one registered in the control panel, to pass its
+     * ID to a `digitalocean.ActionGatewayConnection`.
+     * Look a credential up by its `id`, or by its `toolProvider` and `displayName`.
+     * 
+     * The lookup finds only credentials visible to the DigitalOcean user who owns
+     * Terraform&#39;s API token: that user&#39;s own and those shared with the team. The API
+     * never returns a credential&#39;s API key, client ID, or client secret, so this data
+     * source does not export them.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetActionGatewayProviderCredentialArgs;
+     * import com.pulumi.digitalocean.ActionGatewayConnection;
+     * import com.pulumi.digitalocean.ActionGatewayConnectionArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var github = DigitaloceanFunctions.getActionGatewayProviderCredential(GetActionGatewayProviderCredentialArgs.builder()
+     *             .toolProvider("github")
+     *             .displayName("Production GitHub app")
+     *             .build());
+     * 
+     *         var githubActionGatewayConnection = new ActionGatewayConnection("githubActionGatewayConnection", ActionGatewayConnectionArgs.builder()
+     *             .toolProvider(github.toolProvider())
+     *             .userId("user-123")
+     *             .credentialId(github.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetActionGatewayProviderCredentialResult> getActionGatewayProviderCredential(GetActionGatewayProviderCredentialArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getActionGatewayProviderCredential:getActionGatewayProviderCredential", TypeShape.of(GetActionGatewayProviderCredentialResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about an [Action Gateway](https://docs.digitalocean.com/products/managed-agents/action-gateway/)
+     * provider credential, such as one registered in the control panel, to pass its
+     * ID to a `digitalocean.ActionGatewayConnection`.
+     * Look a credential up by its `id`, or by its `toolProvider` and `displayName`.
+     * 
+     * The lookup finds only credentials visible to the DigitalOcean user who owns
+     * Terraform&#39;s API token: that user&#39;s own and those shared with the team. The API
+     * never returns a credential&#39;s API key, client ID, or client secret, so this data
+     * source does not export them.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetActionGatewayProviderCredentialArgs;
+     * import com.pulumi.digitalocean.ActionGatewayConnection;
+     * import com.pulumi.digitalocean.ActionGatewayConnectionArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var github = DigitaloceanFunctions.getActionGatewayProviderCredential(GetActionGatewayProviderCredentialArgs.builder()
+     *             .toolProvider("github")
+     *             .displayName("Production GitHub app")
+     *             .build());
+     * 
+     *         var githubActionGatewayConnection = new ActionGatewayConnection("githubActionGatewayConnection", ActionGatewayConnectionArgs.builder()
+     *             .toolProvider(github.toolProvider())
+     *             .userId("user-123")
+     *             .credentialId(github.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetActionGatewayProviderCredentialResult> getActionGatewayProviderCredentialPlain(GetActionGatewayProviderCredentialPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getActionGatewayProviderCredential:getActionGatewayProviderCredential", TypeShape.of(GetActionGatewayProviderCredentialResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * Get information on the [Action Gateway](https://docs.digitalocean.com/products/managed-agents/action-gateway/)
      * tool providers, with the ability to filter and sort the results. Use it to
      * find a provider&#39;s slug, the scopes it offers, and the connection parameters a
      * `digitalocean.ActionGatewayConnection`
-     * needs. If no filters are specified, all providers are returned.
+     * needs. Its `authTypes` tell which kind of
+     * `digitalocean.ActionGatewayProviderCredential`
+     * a provider accepts: `userOauthApp` for an OAuth client and `userToken` for
+     * an API key. If no filters are specified, all providers are returned.
      * 
      * ## Example Usage
      * 
@@ -1739,7 +2144,10 @@ public final class DigitaloceanFunctions {
      * tool providers, with the ability to filter and sort the results. Use it to
      * find a provider&#39;s slug, the scopes it offers, and the connection parameters a
      * `digitalocean.ActionGatewayConnection`
-     * needs. If no filters are specified, all providers are returned.
+     * needs. Its `authTypes` tell which kind of
+     * `digitalocean.ActionGatewayProviderCredential`
+     * a provider accepts: `userOauthApp` for an OAuth client and `userToken` for
+     * an API key. If no filters are specified, all providers are returned.
      * 
      * ## Example Usage
      * 
@@ -1788,7 +2196,10 @@ public final class DigitaloceanFunctions {
      * tool providers, with the ability to filter and sort the results. Use it to
      * find a provider&#39;s slug, the scopes it offers, and the connection parameters a
      * `digitalocean.ActionGatewayConnection`
-     * needs. If no filters are specified, all providers are returned.
+     * needs. Its `authTypes` tell which kind of
+     * `digitalocean.ActionGatewayProviderCredential`
+     * a provider accepts: `userOauthApp` for an OAuth client and `userToken` for
+     * an API key. If no filters are specified, all providers are returned.
      * 
      * ## Example Usage
      * 
@@ -1837,7 +2248,10 @@ public final class DigitaloceanFunctions {
      * tool providers, with the ability to filter and sort the results. Use it to
      * find a provider&#39;s slug, the scopes it offers, and the connection parameters a
      * `digitalocean.ActionGatewayConnection`
-     * needs. If no filters are specified, all providers are returned.
+     * needs. Its `authTypes` tell which kind of
+     * `digitalocean.ActionGatewayProviderCredential`
+     * a provider accepts: `userOauthApp` for an OAuth client and `userToken` for
+     * an API key. If no filters are specified, all providers are returned.
      * 
      * ## Example Usage
      * 
@@ -1886,7 +2300,10 @@ public final class DigitaloceanFunctions {
      * tool providers, with the ability to filter and sort the results. Use it to
      * find a provider&#39;s slug, the scopes it offers, and the connection parameters a
      * `digitalocean.ActionGatewayConnection`
-     * needs. If no filters are specified, all providers are returned.
+     * needs. Its `authTypes` tell which kind of
+     * `digitalocean.ActionGatewayProviderCredential`
+     * a provider accepts: `userOauthApp` for an OAuth client and `userToken` for
+     * an API key. If no filters are specified, all providers are returned.
      * 
      * ## Example Usage
      * 
@@ -1935,7 +2352,10 @@ public final class DigitaloceanFunctions {
      * tool providers, with the ability to filter and sort the results. Use it to
      * find a provider&#39;s slug, the scopes it offers, and the connection parameters a
      * `digitalocean.ActionGatewayConnection`
-     * needs. If no filters are specified, all providers are returned.
+     * needs. Its `authTypes` tell which kind of
+     * `digitalocean.ActionGatewayProviderCredential`
+     * a provider accepts: `userOauthApp` for an OAuth client and `userToken` for
+     * an API key. If no filters are specified, all providers are returned.
      * 
      * ## Example Usage
      * 
@@ -1984,7 +2404,10 @@ public final class DigitaloceanFunctions {
      * tool providers, with the ability to filter and sort the results. Use it to
      * find a provider&#39;s slug, the scopes it offers, and the connection parameters a
      * `digitalocean.ActionGatewayConnection`
-     * needs. If no filters are specified, all providers are returned.
+     * needs. Its `authTypes` tell which kind of
+     * `digitalocean.ActionGatewayProviderCredential`
+     * a provider accepts: `userOauthApp` for an OAuth client and `userToken` for
+     * an API key. If no filters are specified, all providers are returned.
      * 
      * ## Example Usage
      * 
