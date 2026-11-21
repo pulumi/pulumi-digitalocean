@@ -1,3 +1,0 @@
-name: database-cluster-digitalocean
-description: A simple database cluster on DigitalOcean.
-runtime: nodejs

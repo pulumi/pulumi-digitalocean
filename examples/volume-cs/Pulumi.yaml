@@ -1,3 +1,0 @@
-name: volume-cs
-runtime: dotnet
-description: A minimal C# Pulumi program
