@@ -10,6 +10,7 @@ from ._enums import *
 from .action_gateway_connection import *
 from .action_gateway_endpoint import *
 from .action_gateway_mcp_server import *
+from .action_gateway_provider_credential import *
 from .action_gateway_toolbelt import *
 from .agent_platform_agent import *
 from .agent_platform_agent_knowledge_base_attachment import *
@@ -61,6 +62,7 @@ from .floating_ip_assignment import *
 from .get_account import *
 from .get_action_gateway_connection import *
 from .get_action_gateway_endpoint import *
+from .get_action_gateway_provider_credential import *
 from .get_action_gateway_providers import *
 from .get_action_gateway_toolbelt import *
 from .get_agent_platform_agent import *
@@ -235,6 +237,14 @@ _utilities.register(
   "fqn": "pulumi_digitalocean",
   "classes": {
    "digitalocean:index/actionGatewayMcpServer:ActionGatewayMcpServer": "ActionGatewayMcpServer"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/actionGatewayProviderCredential",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/actionGatewayProviderCredential:ActionGatewayProviderCredential": "ActionGatewayProviderCredential"
   }
  },
  {

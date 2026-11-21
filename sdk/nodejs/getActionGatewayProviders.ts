@@ -12,7 +12,10 @@ import * as utilities from "./utilities";
  * tool providers, with the ability to filter and sort the results. Use it to
  * find a provider's slug, the scopes it offers, and the connection parameters a
  * `digitalocean.ActionGatewayConnection`
- * needs. If no filters are specified, all providers are returned.
+ * needs. Its `authTypes` tell which kind of
+ * `digitalocean.ActionGatewayProviderCredential`
+ * a provider accepts: `userOauthApp` for an OAuth client and `userToken` for
+ * an API key. If no filters are specified, all providers are returned.
  *
  * ## Example Usage
  *
@@ -74,7 +77,10 @@ export interface GetActionGatewayProvidersResult {
  * tool providers, with the ability to filter and sort the results. Use it to
  * find a provider's slug, the scopes it offers, and the connection parameters a
  * `digitalocean.ActionGatewayConnection`
- * needs. If no filters are specified, all providers are returned.
+ * needs. Its `authTypes` tell which kind of
+ * `digitalocean.ActionGatewayProviderCredential`
+ * a provider accepts: `userOauthApp` for an OAuth client and `userToken` for
+ * an API key. If no filters are specified, all providers are returned.
  *
  * ## Example Usage
  *

@@ -38112,6 +38112,143 @@ func (o KubernetesClusterCorednsAutoscalerPtrOutput) Enabled() pulumi.BoolPtrOut
 	}).(pulumi.BoolPtrOutput)
 }
 
+type KubernetesClusterInsights struct {
+	// Boolean flag indicating whether the cluster's logs are sent to Insights. Setting this to `false` records an explicit opt-out. If not specified, the API does not record an opt-in and defaults to `false`.
+	Logs *bool `pulumi:"logs"`
+}
+
+// KubernetesClusterInsightsInput is an input type that accepts KubernetesClusterInsightsArgs and KubernetesClusterInsightsOutput values.
+// You can construct a concrete instance of `KubernetesClusterInsightsInput` via:
+//
+//	KubernetesClusterInsightsArgs{...}
+type KubernetesClusterInsightsInput interface {
+	pulumi.Input
+
+	ToKubernetesClusterInsightsOutput() KubernetesClusterInsightsOutput
+	ToKubernetesClusterInsightsOutputWithContext(context.Context) KubernetesClusterInsightsOutput
+}
+
+type KubernetesClusterInsightsArgs struct {
+	// Boolean flag indicating whether the cluster's logs are sent to Insights. Setting this to `false` records an explicit opt-out. If not specified, the API does not record an opt-in and defaults to `false`.
+	Logs pulumi.BoolPtrInput `pulumi:"logs"`
+}
+
+func (KubernetesClusterInsightsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesClusterInsights)(nil)).Elem()
+}
+
+func (i KubernetesClusterInsightsArgs) ToKubernetesClusterInsightsOutput() KubernetesClusterInsightsOutput {
+	return i.ToKubernetesClusterInsightsOutputWithContext(context.Background())
+}
+
+func (i KubernetesClusterInsightsArgs) ToKubernetesClusterInsightsOutputWithContext(ctx context.Context) KubernetesClusterInsightsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterInsightsOutput)
+}
+
+func (i KubernetesClusterInsightsArgs) ToKubernetesClusterInsightsPtrOutput() KubernetesClusterInsightsPtrOutput {
+	return i.ToKubernetesClusterInsightsPtrOutputWithContext(context.Background())
+}
+
+func (i KubernetesClusterInsightsArgs) ToKubernetesClusterInsightsPtrOutputWithContext(ctx context.Context) KubernetesClusterInsightsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterInsightsOutput).ToKubernetesClusterInsightsPtrOutputWithContext(ctx)
+}
+
+// KubernetesClusterInsightsPtrInput is an input type that accepts KubernetesClusterInsightsArgs, KubernetesClusterInsightsPtr and KubernetesClusterInsightsPtrOutput values.
+// You can construct a concrete instance of `KubernetesClusterInsightsPtrInput` via:
+//
+//	        KubernetesClusterInsightsArgs{...}
+//
+//	or:
+//
+//	        nil
+type KubernetesClusterInsightsPtrInput interface {
+	pulumi.Input
+
+	ToKubernetesClusterInsightsPtrOutput() KubernetesClusterInsightsPtrOutput
+	ToKubernetesClusterInsightsPtrOutputWithContext(context.Context) KubernetesClusterInsightsPtrOutput
+}
+
+type kubernetesClusterInsightsPtrType KubernetesClusterInsightsArgs
+
+func KubernetesClusterInsightsPtr(v *KubernetesClusterInsightsArgs) KubernetesClusterInsightsPtrInput {
+	return (*kubernetesClusterInsightsPtrType)(v)
+}
+
+func (*kubernetesClusterInsightsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubernetesClusterInsights)(nil)).Elem()
+}
+
+func (i *kubernetesClusterInsightsPtrType) ToKubernetesClusterInsightsPtrOutput() KubernetesClusterInsightsPtrOutput {
+	return i.ToKubernetesClusterInsightsPtrOutputWithContext(context.Background())
+}
+
+func (i *kubernetesClusterInsightsPtrType) ToKubernetesClusterInsightsPtrOutputWithContext(ctx context.Context) KubernetesClusterInsightsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterInsightsPtrOutput)
+}
+
+type KubernetesClusterInsightsOutput struct{ *pulumi.OutputState }
+
+func (KubernetesClusterInsightsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesClusterInsights)(nil)).Elem()
+}
+
+func (o KubernetesClusterInsightsOutput) ToKubernetesClusterInsightsOutput() KubernetesClusterInsightsOutput {
+	return o
+}
+
+func (o KubernetesClusterInsightsOutput) ToKubernetesClusterInsightsOutputWithContext(ctx context.Context) KubernetesClusterInsightsOutput {
+	return o
+}
+
+func (o KubernetesClusterInsightsOutput) ToKubernetesClusterInsightsPtrOutput() KubernetesClusterInsightsPtrOutput {
+	return o.ToKubernetesClusterInsightsPtrOutputWithContext(context.Background())
+}
+
+func (o KubernetesClusterInsightsOutput) ToKubernetesClusterInsightsPtrOutputWithContext(ctx context.Context) KubernetesClusterInsightsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubernetesClusterInsights) *KubernetesClusterInsights {
+		return &v
+	}).(KubernetesClusterInsightsPtrOutput)
+}
+
+// Boolean flag indicating whether the cluster's logs are sent to Insights. Setting this to `false` records an explicit opt-out. If not specified, the API does not record an opt-in and defaults to `false`.
+func (o KubernetesClusterInsightsOutput) Logs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v KubernetesClusterInsights) *bool { return v.Logs }).(pulumi.BoolPtrOutput)
+}
+
+type KubernetesClusterInsightsPtrOutput struct{ *pulumi.OutputState }
+
+func (KubernetesClusterInsightsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubernetesClusterInsights)(nil)).Elem()
+}
+
+func (o KubernetesClusterInsightsPtrOutput) ToKubernetesClusterInsightsPtrOutput() KubernetesClusterInsightsPtrOutput {
+	return o
+}
+
+func (o KubernetesClusterInsightsPtrOutput) ToKubernetesClusterInsightsPtrOutputWithContext(ctx context.Context) KubernetesClusterInsightsPtrOutput {
+	return o
+}
+
+func (o KubernetesClusterInsightsPtrOutput) Elem() KubernetesClusterInsightsOutput {
+	return o.ApplyT(func(v *KubernetesClusterInsights) KubernetesClusterInsights {
+		if v != nil {
+			return *v
+		}
+		var ret KubernetesClusterInsights
+		return ret
+	}).(KubernetesClusterInsightsOutput)
+}
+
+// Boolean flag indicating whether the cluster's logs are sent to Insights. Setting this to `false` records an explicit opt-out. If not specified, the API does not record an opt-in and defaults to `false`.
+func (o KubernetesClusterInsightsPtrOutput) Logs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *KubernetesClusterInsights) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Logs
+	}).(pulumi.BoolPtrOutput)
+}
+
 type KubernetesClusterKubeConfig struct {
 	// The base64 encoded public certificate used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
 	ClientCertificate *string `pulumi:"clientCertificate"`
@@ -39891,7 +40028,7 @@ type KubernetesClusterSso struct {
 	Enabled bool `pulumi:"enabled"`
 	// The OIDC issuer URL for the cluster SSO configuration.
 	IssuerUrl *string `pulumi:"issuerUrl"`
-	// Boolean flag indicating whether SSO is required as the only authentication method for the cluster. Default: `false`
+	// Boolean flag indicating whether SSO is required as the only authentication method for the cluster. When `true`, `kubeConfig` is empty because token credentials cannot be issued for the cluster. Default: `false`
 	Required *bool `pulumi:"required"`
 }
 
@@ -39915,7 +40052,7 @@ type KubernetesClusterSsoArgs struct {
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 	// The OIDC issuer URL for the cluster SSO configuration.
 	IssuerUrl pulumi.StringPtrInput `pulumi:"issuerUrl"`
-	// Boolean flag indicating whether SSO is required as the only authentication method for the cluster. Default: `false`
+	// Boolean flag indicating whether SSO is required as the only authentication method for the cluster. When `true`, `kubeConfig` is empty because token credentials cannot be issued for the cluster. Default: `false`
 	Required pulumi.BoolPtrInput `pulumi:"required"`
 }
 
@@ -39987,7 +40124,7 @@ func (o KubernetesClusterSsoOutput) IssuerUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesClusterSso) *string { return v.IssuerUrl }).(pulumi.StringPtrOutput)
 }
 
-// Boolean flag indicating whether SSO is required as the only authentication method for the cluster. Default: `false`
+// Boolean flag indicating whether SSO is required as the only authentication method for the cluster. When `true`, `kubeConfig` is empty because token credentials cannot be issued for the cluster. Default: `false`
 func (o KubernetesClusterSsoOutput) Required() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v KubernetesClusterSso) *bool { return v.Required }).(pulumi.BoolPtrOutput)
 }
@@ -78659,143 +78796,6 @@ func (o GetAppSpecJobLogDestinationPapertrailPtrOutput) Endpoint() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-type GetAppSpecJobTermination struct {
-	// The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
-	GracePeriodSeconds *int `pulumi:"gracePeriodSeconds"`
-}
-
-// GetAppSpecJobTerminationInput is an input type that accepts GetAppSpecJobTerminationArgs and GetAppSpecJobTerminationOutput values.
-// You can construct a concrete instance of `GetAppSpecJobTerminationInput` via:
-//
-//	GetAppSpecJobTerminationArgs{...}
-type GetAppSpecJobTerminationInput interface {
-	pulumi.Input
-
-	ToGetAppSpecJobTerminationOutput() GetAppSpecJobTerminationOutput
-	ToGetAppSpecJobTerminationOutputWithContext(context.Context) GetAppSpecJobTerminationOutput
-}
-
-type GetAppSpecJobTerminationArgs struct {
-	// The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
-	GracePeriodSeconds pulumi.IntPtrInput `pulumi:"gracePeriodSeconds"`
-}
-
-func (GetAppSpecJobTerminationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppSpecJobTermination)(nil)).Elem()
-}
-
-func (i GetAppSpecJobTerminationArgs) ToGetAppSpecJobTerminationOutput() GetAppSpecJobTerminationOutput {
-	return i.ToGetAppSpecJobTerminationOutputWithContext(context.Background())
-}
-
-func (i GetAppSpecJobTerminationArgs) ToGetAppSpecJobTerminationOutputWithContext(ctx context.Context) GetAppSpecJobTerminationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecJobTerminationOutput)
-}
-
-func (i GetAppSpecJobTerminationArgs) ToGetAppSpecJobTerminationPtrOutput() GetAppSpecJobTerminationPtrOutput {
-	return i.ToGetAppSpecJobTerminationPtrOutputWithContext(context.Background())
-}
-
-func (i GetAppSpecJobTerminationArgs) ToGetAppSpecJobTerminationPtrOutputWithContext(ctx context.Context) GetAppSpecJobTerminationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecJobTerminationOutput).ToGetAppSpecJobTerminationPtrOutputWithContext(ctx)
-}
-
-// GetAppSpecJobTerminationPtrInput is an input type that accepts GetAppSpecJobTerminationArgs, GetAppSpecJobTerminationPtr and GetAppSpecJobTerminationPtrOutput values.
-// You can construct a concrete instance of `GetAppSpecJobTerminationPtrInput` via:
-//
-//	        GetAppSpecJobTerminationArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetAppSpecJobTerminationPtrInput interface {
-	pulumi.Input
-
-	ToGetAppSpecJobTerminationPtrOutput() GetAppSpecJobTerminationPtrOutput
-	ToGetAppSpecJobTerminationPtrOutputWithContext(context.Context) GetAppSpecJobTerminationPtrOutput
-}
-
-type getAppSpecJobTerminationPtrType GetAppSpecJobTerminationArgs
-
-func GetAppSpecJobTerminationPtr(v *GetAppSpecJobTerminationArgs) GetAppSpecJobTerminationPtrInput {
-	return (*getAppSpecJobTerminationPtrType)(v)
-}
-
-func (*getAppSpecJobTerminationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAppSpecJobTermination)(nil)).Elem()
-}
-
-func (i *getAppSpecJobTerminationPtrType) ToGetAppSpecJobTerminationPtrOutput() GetAppSpecJobTerminationPtrOutput {
-	return i.ToGetAppSpecJobTerminationPtrOutputWithContext(context.Background())
-}
-
-func (i *getAppSpecJobTerminationPtrType) ToGetAppSpecJobTerminationPtrOutputWithContext(ctx context.Context) GetAppSpecJobTerminationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecJobTerminationPtrOutput)
-}
-
-type GetAppSpecJobTerminationOutput struct{ *pulumi.OutputState }
-
-func (GetAppSpecJobTerminationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAppSpecJobTermination)(nil)).Elem()
-}
-
-func (o GetAppSpecJobTerminationOutput) ToGetAppSpecJobTerminationOutput() GetAppSpecJobTerminationOutput {
-	return o
-}
-
-func (o GetAppSpecJobTerminationOutput) ToGetAppSpecJobTerminationOutputWithContext(ctx context.Context) GetAppSpecJobTerminationOutput {
-	return o
-}
-
-func (o GetAppSpecJobTerminationOutput) ToGetAppSpecJobTerminationPtrOutput() GetAppSpecJobTerminationPtrOutput {
-	return o.ToGetAppSpecJobTerminationPtrOutputWithContext(context.Background())
-}
-
-func (o GetAppSpecJobTerminationOutput) ToGetAppSpecJobTerminationPtrOutputWithContext(ctx context.Context) GetAppSpecJobTerminationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecJobTermination) *GetAppSpecJobTermination {
-		return &v
-	}).(GetAppSpecJobTerminationPtrOutput)
-}
-
-// The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
-func (o GetAppSpecJobTerminationOutput) GracePeriodSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetAppSpecJobTermination) *int { return v.GracePeriodSeconds }).(pulumi.IntPtrOutput)
-}
-
-type GetAppSpecJobTerminationPtrOutput struct{ *pulumi.OutputState }
-
-func (GetAppSpecJobTerminationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetAppSpecJobTermination)(nil)).Elem()
-}
-
-func (o GetAppSpecJobTerminationPtrOutput) ToGetAppSpecJobTerminationPtrOutput() GetAppSpecJobTerminationPtrOutput {
-	return o
-}
-
-func (o GetAppSpecJobTerminationPtrOutput) ToGetAppSpecJobTerminationPtrOutputWithContext(ctx context.Context) GetAppSpecJobTerminationPtrOutput {
-	return o
-}
-
-func (o GetAppSpecJobTerminationPtrOutput) Elem() GetAppSpecJobTerminationOutput {
-	return o.ApplyT(func(v *GetAppSpecJobTermination) GetAppSpecJobTermination {
-		if v != nil {
-			return *v
-		}
-		var ret GetAppSpecJobTermination
-		return ret
-	}).(GetAppSpecJobTerminationOutput)
-}
-
-// The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
-func (o GetAppSpecJobTerminationPtrOutput) GracePeriodSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetAppSpecJobTermination) *int {
-		if v == nil {
-			return nil
-		}
-		return v.GracePeriodSeconds
-	}).(pulumi.IntPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionGatewayConnectionAuthorizationInput)(nil)).Elem(), ActionGatewayConnectionAuthorizationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionGatewayConnectionAuthorizationArrayInput)(nil)).Elem(), ActionGatewayConnectionAuthorizationArray{})
@@ -79269,6 +79269,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterControlPlaneFirewallPtrInput)(nil)).Elem(), KubernetesClusterControlPlaneFirewallArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterCorednsAutoscalerInput)(nil)).Elem(), KubernetesClusterCorednsAutoscalerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterCorednsAutoscalerPtrInput)(nil)).Elem(), KubernetesClusterCorednsAutoscalerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterInsightsInput)(nil)).Elem(), KubernetesClusterInsightsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterInsightsPtrInput)(nil)).Elem(), KubernetesClusterInsightsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterKubeConfigInput)(nil)).Elem(), KubernetesClusterKubeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterKubeConfigArrayInput)(nil)).Elem(), KubernetesClusterKubeConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterMaintenancePolicyInput)(nil)).Elem(), KubernetesClusterMaintenancePolicyArgs{})
@@ -79796,8 +79798,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobLogDestinationOpenSearchBasicAuthPtrInput)(nil)).Elem(), GetAppSpecJobLogDestinationOpenSearchBasicAuthArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobLogDestinationPapertrailInput)(nil)).Elem(), GetAppSpecJobLogDestinationPapertrailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobLogDestinationPapertrailPtrInput)(nil)).Elem(), GetAppSpecJobLogDestinationPapertrailArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobTerminationInput)(nil)).Elem(), GetAppSpecJobTerminationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobTerminationPtrInput)(nil)).Elem(), GetAppSpecJobTerminationArgs{})
 	pulumi.RegisterOutputType(ActionGatewayConnectionAuthorizationOutput{})
 	pulumi.RegisterOutputType(ActionGatewayConnectionAuthorizationArrayOutput{})
 	pulumi.RegisterOutputType(ActionGatewayConnectionVpcOutput{})
@@ -80270,6 +80270,8 @@ func init() {
 	pulumi.RegisterOutputType(KubernetesClusterControlPlaneFirewallPtrOutput{})
 	pulumi.RegisterOutputType(KubernetesClusterCorednsAutoscalerOutput{})
 	pulumi.RegisterOutputType(KubernetesClusterCorednsAutoscalerPtrOutput{})
+	pulumi.RegisterOutputType(KubernetesClusterInsightsOutput{})
+	pulumi.RegisterOutputType(KubernetesClusterInsightsPtrOutput{})
 	pulumi.RegisterOutputType(KubernetesClusterKubeConfigOutput{})
 	pulumi.RegisterOutputType(KubernetesClusterKubeConfigArrayOutput{})
 	pulumi.RegisterOutputType(KubernetesClusterMaintenancePolicyOutput{})
@@ -80797,6 +80799,4 @@ func init() {
 	pulumi.RegisterOutputType(GetAppSpecJobLogDestinationOpenSearchBasicAuthPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecJobLogDestinationPapertrailOutput{})
 	pulumi.RegisterOutputType(GetAppSpecJobLogDestinationPapertrailPtrOutput{})
-	pulumi.RegisterOutputType(GetAppSpecJobTerminationOutput{})
-	pulumi.RegisterOutputType(GetAppSpecJobTerminationPtrOutput{})
 }

@@ -486,6 +486,8 @@ __all__ = [
     'KubernetesClusterControlPlaneFirewallArgsDict',
     'KubernetesClusterCorednsAutoscalerArgs',
     'KubernetesClusterCorednsAutoscalerArgsDict',
+    'KubernetesClusterInsightsArgs',
+    'KubernetesClusterInsightsArgsDict',
     'KubernetesClusterKubeConfigArgs',
     'KubernetesClusterKubeConfigArgsDict',
     'KubernetesClusterMaintenancePolicyArgs',
@@ -26094,6 +26096,35 @@ class KubernetesClusterCorednsAutoscalerArgs:
         pulumi.set(self, "enabled", value)
 
 
+class KubernetesClusterInsightsArgsDict(TypedDict):
+    logs: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Boolean flag indicating whether the cluster's logs are sent to Insights. Setting this to `false` records an explicit opt-out. If not specified, the API does not record an opt-in and defaults to `false`.
+    """
+
+@pulumi.input_type
+class KubernetesClusterInsightsArgs:
+    def __init__(__self__, *,
+                 logs: pulumi.Input[Optional[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] logs: Boolean flag indicating whether the cluster's logs are sent to Insights. Setting this to `false` records an explicit opt-out. If not specified, the API does not record an opt-in and defaults to `false`.
+        """
+        if logs is not None:
+            pulumi.set(__self__, "logs", logs)
+
+    @_builtins.property
+    @pulumi.getter
+    def logs(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Boolean flag indicating whether the cluster's logs are sent to Insights. Setting this to `false` records an explicit opt-out. If not specified, the API does not record an opt-in and defaults to `false`.
+        """
+        return pulumi.get(self, "logs")
+
+    @logs.setter
+    def logs(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "logs", value)
+
+
 class KubernetesClusterKubeConfigArgsDict(TypedDict):
     client_certificate: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -26959,7 +26990,7 @@ class KubernetesClusterSsoArgsDict(TypedDict):
     """
     required: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
-    Boolean flag indicating whether SSO is required as the only authentication method for the cluster. Default: `false`
+    Boolean flag indicating whether SSO is required as the only authentication method for the cluster. When `true`, `kube_config` is empty because token credentials cannot be issued for the cluster. Default: `false`
     """
 
 @pulumi.input_type
@@ -26975,7 +27006,7 @@ class KubernetesClusterSsoArgs:
                
                This resource supports customized create timeouts. The default timeout is 30 minutes.
         :param pulumi.Input[_builtins.str] issuer_url: The OIDC issuer URL for the cluster SSO configuration.
-        :param pulumi.Input[_builtins.bool] required: Boolean flag indicating whether SSO is required as the only authentication method for the cluster. Default: `false`
+        :param pulumi.Input[_builtins.bool] required: Boolean flag indicating whether SSO is required as the only authentication method for the cluster. When `true`, `kube_config` is empty because token credentials cannot be issued for the cluster. Default: `false`
         """
         pulumi.set(__self__, "enabled", enabled)
         if client_id is not None:
@@ -27027,7 +27058,7 @@ class KubernetesClusterSsoArgs:
     @pulumi.getter
     def required(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Boolean flag indicating whether SSO is required as the only authentication method for the cluster. Default: `false`
+        Boolean flag indicating whether SSO is required as the only authentication method for the cluster. When `true`, `kube_config` is empty because token credentials cannot be issued for the cluster. Default: `false`
         """
         return pulumi.get(self, "required")
 

@@ -13,6 +13,7 @@ import com.pulumi.digitalocean.inputs.KubernetesClusterAmdGpuDraDriverArgs;
 import com.pulumi.digitalocean.inputs.KubernetesClusterClusterAutoscalerConfigurationArgs;
 import com.pulumi.digitalocean.inputs.KubernetesClusterControlPlaneFirewallArgs;
 import com.pulumi.digitalocean.inputs.KubernetesClusterCorednsAutoscalerArgs;
+import com.pulumi.digitalocean.inputs.KubernetesClusterInsightsArgs;
 import com.pulumi.digitalocean.inputs.KubernetesClusterMaintenancePolicyArgs;
 import com.pulumi.digitalocean.inputs.KubernetesClusterNfsCsiPluginArgs;
 import com.pulumi.digitalocean.inputs.KubernetesClusterNodePoolArgs;
@@ -199,6 +200,21 @@ public final class KubernetesClusterArgs extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<Boolean>> ha() {
         return Optional.ofNullable(this.ha);
+    }
+
+    /**
+     * Block containing the Insights telemetry the cluster opts in to. This can only be set when the cluster is created and is not returned by the API, so changes made after creation (or after importing the cluster) are ignored.
+     * 
+     */
+    @Import(name="insights")
+    private @Nullable Output<KubernetesClusterInsightsArgs> insights;
+
+    /**
+     * @return Block containing the Insights telemetry the cluster opts in to. This can only be set when the cluster is created and is not returned by the API, so changes made after creation (or after importing the cluster) are ignored.
+     * 
+     */
+    public Optional<Output<KubernetesClusterInsightsArgs>> insights() {
+        return Optional.ofNullable(this.insights);
     }
 
     /**
@@ -515,6 +531,7 @@ public final class KubernetesClusterArgs extends com.pulumi.resources.ResourceAr
         this.destroyAllAssociatedResources = $.destroyAllAssociatedResources;
         this.gpuOperatorReady = $.gpuOperatorReady;
         this.ha = $.ha;
+        this.insights = $.insights;
         this.isolatedWorkers = $.isolatedWorkers;
         this.kubeconfigExpireSeconds = $.kubeconfigExpireSeconds;
         this.maintenancePolicy = $.maintenancePolicy;
@@ -794,6 +811,27 @@ public final class KubernetesClusterArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder ha(Boolean ha) {
             return ha(Output.of(ha));
+        }
+
+        /**
+         * @param insights Block containing the Insights telemetry the cluster opts in to. This can only be set when the cluster is created and is not returned by the API, so changes made after creation (or after importing the cluster) are ignored.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder insights(@Nullable Output<KubernetesClusterInsightsArgs> insights) {
+            $.insights = insights;
+            return this;
+        }
+
+        /**
+         * @param insights Block containing the Insights telemetry the cluster opts in to. This can only be set when the cluster is created and is not returned by the API, so changes made after creation (or after importing the cluster) are ignored.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder insights(KubernetesClusterInsightsArgs insights) {
+            return insights(Output.of(insights));
         }
 
         /**

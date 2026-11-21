@@ -113,7 +113,7 @@ export interface GetKubernetesClusterResult {
      */
     readonly isolatedWorkers: boolean;
     /**
-     * A representation of the Kubernetes cluster's kubeconfig with the following attributes:
+     * A representation of the Kubernetes cluster's kubeconfig with the following attributes. Empty when `sso.required` is `true`:
      */
     readonly kubeConfigs: outputs.GetKubernetesClusterKubeConfig[];
     readonly kubeconfigExpireSeconds?: number;

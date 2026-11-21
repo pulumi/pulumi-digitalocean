@@ -18,9 +18,9 @@ namespace Pulumi.DigitalOcean
     /// &gt; **Note:** A connection belongs to the DigitalOcean user who owns the API
     /// token Terraform uses, within that token's team. Other team members cannot use
     /// it, even with the same `UserId`. To let team members create their own
-    /// connections from a shared credential, register the provider credential in the
-    /// control panel, make it reusable by the team, and pass its ID as
-    /// `CredentialId`.
+    /// connections from a shared credential, register a
+    /// `digitalocean.ActionGatewayProviderCredential`
+    /// with `ReusableByTeam` set, and pass its ID as `CredentialId`.
     /// 
     /// An OAuth connection starts `Pending`. The account holder completes it by
     /// opening `authorization.0.connect_url`, which is exported as a sensitive value
@@ -31,6 +31,12 @@ namespace Pulumi.DigitalOcean
     /// 
     /// ### Team provider credential
     /// 
+    /// The credential in this example sets `ReusableByTeam`, so everyone on the
+    /// team can connect through it. Sharing may require the team owner role and
+    /// cannot be undone. Leave `ReusableByTeam` out to keep the credential private
+    /// to the DigitalOcean user who owns Terraform's API token, which is enough for
+    /// connections created with the same token.
+    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -39,11 +45,20 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var linear = new DigitalOcean.ActionGatewayConnection("linear", new()
+    ///     var linear = new DigitalOcean.ActionGatewayProviderCredential("linear", new()
+    ///     {
+    ///         ToolProvider = "linear",
+    ///         Kind = "api_key",
+    ///         DisplayName = "Production key",
+    ///         ApiKey = linearApiKey,
+    ///         ReusableByTeam = true,
+    ///     });
+    /// 
+    ///     var linearActionGatewayConnection = new DigitalOcean.ActionGatewayConnection("linear", new()
     ///     {
     ///         ToolProvider = "linear",
     ///         UserId = "support-bot",
-    ///         CredentialId = "8d6f2b1a-3c4e-4d5f-9a8b-7c6d5e4f3a2b",
+    ///         CredentialId = linear.Id,
     ///     });
     /// 
     /// });
@@ -131,7 +146,7 @@ namespace Pulumi.DigitalOcean
         public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of a team provider credential, such as your own OAuth application or an API key, to connect through. When omitted, DigitalOcean's shared OAuth application is used.
+        /// The ID of a `digitalocean.ActionGatewayProviderCredential`, such as your own OAuth application or an API key, to connect through. When omitted, DigitalOcean's shared OAuth application is used.
         /// </summary>
         [Output("credentialId")]
         public Output<string?> CredentialId { get; private set; } = null!;
@@ -255,7 +270,7 @@ namespace Pulumi.DigitalOcean
         }
 
         /// <summary>
-        /// The ID of a team provider credential, such as your own OAuth application or an API key, to connect through. When omitted, DigitalOcean's shared OAuth application is used.
+        /// The ID of a `digitalocean.ActionGatewayProviderCredential`, such as your own OAuth application or an API key, to connect through. When omitted, DigitalOcean's shared OAuth application is used.
         /// </summary>
         [Input("credentialId")]
         public Input<string>? CredentialId { get; set; }
@@ -329,7 +344,7 @@ namespace Pulumi.DigitalOcean
         public Input<string>? CreatedAt { get; set; }
 
         /// <summary>
-        /// The ID of a team provider credential, such as your own OAuth application or an API key, to connect through. When omitted, DigitalOcean's shared OAuth application is used.
+        /// The ID of a `digitalocean.ActionGatewayProviderCredential`, such as your own OAuth application or an API key, to connect through. When omitted, DigitalOcean's shared OAuth application is used.
         /// </summary>
         [Input("credentialId")]
         public Input<string>? CredentialId { get; set; }

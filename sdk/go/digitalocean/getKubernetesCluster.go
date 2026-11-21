@@ -94,7 +94,7 @@ type LookupKubernetesClusterResult struct {
 	Ipv4Address string `pulumi:"ipv4Address"`
 	// A boolean value indicating whether the cluster has isolated worker nodes enabled.
 	IsolatedWorkers bool `pulumi:"isolatedWorkers"`
-	// A representation of the Kubernetes cluster's kubeconfig with the following attributes:
+	// A representation of the Kubernetes cluster's kubeconfig with the following attributes. Empty when `sso.required` is `true`:
 	KubeConfigs             []GetKubernetesClusterKubeConfig `pulumi:"kubeConfigs"`
 	KubeconfigExpireSeconds *int                             `pulumi:"kubeconfigExpireSeconds"`
 	// The maintenance policy of the Kubernetes cluster. Digital Ocean has a default maintenancen window.
@@ -253,7 +253,7 @@ func (o LookupKubernetesClusterResultOutput) IsolatedWorkers() pulumi.BoolOutput
 	return o.ApplyT(func(v LookupKubernetesClusterResult) bool { return v.IsolatedWorkers }).(pulumi.BoolOutput)
 }
 
-// A representation of the Kubernetes cluster's kubeconfig with the following attributes:
+// A representation of the Kubernetes cluster's kubeconfig with the following attributes. Empty when `sso.required` is `true`:
 func (o LookupKubernetesClusterResultOutput) KubeConfigs() GetKubernetesClusterKubeConfigArrayOutput {
 	return o.ApplyT(func(v LookupKubernetesClusterResult) []GetKubernetesClusterKubeConfig { return v.KubeConfigs }).(GetKubernetesClusterKubeConfigArrayOutput)
 }

@@ -27,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ActionGatewayEndpoint{}
 	case "digitalocean:index/actionGatewayMcpServer:ActionGatewayMcpServer":
 		r = &ActionGatewayMcpServer{}
+	case "digitalocean:index/actionGatewayProviderCredential:ActionGatewayProviderCredential":
+		r = &ActionGatewayProviderCredential{}
 	case "digitalocean:index/actionGatewayToolbelt:ActionGatewayToolbelt":
 		r = &ActionGatewayToolbelt{}
 	case "digitalocean:index/agentPlatformAgent:AgentPlatformAgent":
@@ -253,6 +255,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"digitalocean",
 		"index/actionGatewayMcpServer",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
+		"index/actionGatewayProviderCredential",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

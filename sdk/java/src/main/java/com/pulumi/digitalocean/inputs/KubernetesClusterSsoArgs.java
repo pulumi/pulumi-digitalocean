@@ -67,14 +67,14 @@ public final class KubernetesClusterSsoArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Boolean flag indicating whether SSO is required as the only authentication method for the cluster. Default: `false`
+     * Boolean flag indicating whether SSO is required as the only authentication method for the cluster. When `true`, `kubeConfig` is empty because token credentials cannot be issued for the cluster. Default: `false`
      * 
      */
     @Import(name="required")
     private @Nullable Output<Boolean> required;
 
     /**
-     * @return Boolean flag indicating whether SSO is required as the only authentication method for the cluster. Default: `false`
+     * @return Boolean flag indicating whether SSO is required as the only authentication method for the cluster. When `true`, `kubeConfig` is empty because token credentials cannot be issued for the cluster. Default: `false`
      * 
      */
     public Optional<Output<Boolean>> required() {
@@ -176,7 +176,7 @@ public final class KubernetesClusterSsoArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param required Boolean flag indicating whether SSO is required as the only authentication method for the cluster. Default: `false`
+         * @param required Boolean flag indicating whether SSO is required as the only authentication method for the cluster. When `true`, `kubeConfig` is empty because token credentials cannot be issued for the cluster. Default: `false`
          * 
          * @return builder
          * 
@@ -187,7 +187,7 @@ public final class KubernetesClusterSsoArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param required Boolean flag indicating whether SSO is required as the only authentication method for the cluster. Default: `false`
+         * @param required Boolean flag indicating whether SSO is required as the only authentication method for the cluster. When `true`, `kubeConfig` is empty because token credentials cannot be issued for the cluster. Default: `false`
          * 
          * @return builder
          * 

@@ -13,6 +13,143 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetAppSpecJobTermination struct {
+	// The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
+	GracePeriodSeconds *int `pulumi:"gracePeriodSeconds"`
+}
+
+// GetAppSpecJobTerminationInput is an input type that accepts GetAppSpecJobTerminationArgs and GetAppSpecJobTerminationOutput values.
+// You can construct a concrete instance of `GetAppSpecJobTerminationInput` via:
+//
+//	GetAppSpecJobTerminationArgs{...}
+type GetAppSpecJobTerminationInput interface {
+	pulumi.Input
+
+	ToGetAppSpecJobTerminationOutput() GetAppSpecJobTerminationOutput
+	ToGetAppSpecJobTerminationOutputWithContext(context.Context) GetAppSpecJobTerminationOutput
+}
+
+type GetAppSpecJobTerminationArgs struct {
+	// The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
+	GracePeriodSeconds pulumi.IntPtrInput `pulumi:"gracePeriodSeconds"`
+}
+
+func (GetAppSpecJobTerminationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecJobTermination)(nil)).Elem()
+}
+
+func (i GetAppSpecJobTerminationArgs) ToGetAppSpecJobTerminationOutput() GetAppSpecJobTerminationOutput {
+	return i.ToGetAppSpecJobTerminationOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecJobTerminationArgs) ToGetAppSpecJobTerminationOutputWithContext(ctx context.Context) GetAppSpecJobTerminationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecJobTerminationOutput)
+}
+
+func (i GetAppSpecJobTerminationArgs) ToGetAppSpecJobTerminationPtrOutput() GetAppSpecJobTerminationPtrOutput {
+	return i.ToGetAppSpecJobTerminationPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecJobTerminationArgs) ToGetAppSpecJobTerminationPtrOutputWithContext(ctx context.Context) GetAppSpecJobTerminationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecJobTerminationOutput).ToGetAppSpecJobTerminationPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecJobTerminationPtrInput is an input type that accepts GetAppSpecJobTerminationArgs, GetAppSpecJobTerminationPtr and GetAppSpecJobTerminationPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecJobTerminationPtrInput` via:
+//
+//	        GetAppSpecJobTerminationArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetAppSpecJobTerminationPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecJobTerminationPtrOutput() GetAppSpecJobTerminationPtrOutput
+	ToGetAppSpecJobTerminationPtrOutputWithContext(context.Context) GetAppSpecJobTerminationPtrOutput
+}
+
+type getAppSpecJobTerminationPtrType GetAppSpecJobTerminationArgs
+
+func GetAppSpecJobTerminationPtr(v *GetAppSpecJobTerminationArgs) GetAppSpecJobTerminationPtrInput {
+	return (*getAppSpecJobTerminationPtrType)(v)
+}
+
+func (*getAppSpecJobTerminationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecJobTermination)(nil)).Elem()
+}
+
+func (i *getAppSpecJobTerminationPtrType) ToGetAppSpecJobTerminationPtrOutput() GetAppSpecJobTerminationPtrOutput {
+	return i.ToGetAppSpecJobTerminationPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecJobTerminationPtrType) ToGetAppSpecJobTerminationPtrOutputWithContext(ctx context.Context) GetAppSpecJobTerminationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecJobTerminationPtrOutput)
+}
+
+type GetAppSpecJobTerminationOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecJobTerminationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecJobTermination)(nil)).Elem()
+}
+
+func (o GetAppSpecJobTerminationOutput) ToGetAppSpecJobTerminationOutput() GetAppSpecJobTerminationOutput {
+	return o
+}
+
+func (o GetAppSpecJobTerminationOutput) ToGetAppSpecJobTerminationOutputWithContext(ctx context.Context) GetAppSpecJobTerminationOutput {
+	return o
+}
+
+func (o GetAppSpecJobTerminationOutput) ToGetAppSpecJobTerminationPtrOutput() GetAppSpecJobTerminationPtrOutput {
+	return o.ToGetAppSpecJobTerminationPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecJobTerminationOutput) ToGetAppSpecJobTerminationPtrOutputWithContext(ctx context.Context) GetAppSpecJobTerminationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecJobTermination) *GetAppSpecJobTermination {
+		return &v
+	}).(GetAppSpecJobTerminationPtrOutput)
+}
+
+// The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
+func (o GetAppSpecJobTerminationOutput) GracePeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetAppSpecJobTermination) *int { return v.GracePeriodSeconds }).(pulumi.IntPtrOutput)
+}
+
+type GetAppSpecJobTerminationPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecJobTerminationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecJobTermination)(nil)).Elem()
+}
+
+func (o GetAppSpecJobTerminationPtrOutput) ToGetAppSpecJobTerminationPtrOutput() GetAppSpecJobTerminationPtrOutput {
+	return o
+}
+
+func (o GetAppSpecJobTerminationPtrOutput) ToGetAppSpecJobTerminationPtrOutputWithContext(ctx context.Context) GetAppSpecJobTerminationPtrOutput {
+	return o
+}
+
+func (o GetAppSpecJobTerminationPtrOutput) Elem() GetAppSpecJobTerminationOutput {
+	return o.ApplyT(func(v *GetAppSpecJobTermination) GetAppSpecJobTermination {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecJobTermination
+		return ret
+	}).(GetAppSpecJobTerminationOutput)
+}
+
+// The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
+func (o GetAppSpecJobTerminationPtrOutput) GracePeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecJobTermination) *int {
+		if v == nil {
+			return nil
+		}
+		return v.GracePeriodSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
 type GetAppSpecMaintenance struct {
 	// Indicates whether the app should be archived. Setting this to true implies that enabled is set to true.
 	Archive *bool `pulumi:"archive"`
@@ -47011,6 +47148,8 @@ func (o GetVpcNatGatewayVpcArrayOutput) Index(i pulumi.IntInput) GetVpcNatGatewa
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobTerminationInput)(nil)).Elem(), GetAppSpecJobTerminationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobTerminationPtrInput)(nil)).Elem(), GetAppSpecJobTerminationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecMaintenanceInput)(nil)).Elem(), GetAppSpecMaintenanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecMaintenancePtrInput)(nil)).Elem(), GetAppSpecMaintenanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceInput)(nil)).Elem(), GetAppSpecServiceArgs{})
@@ -47639,6 +47778,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcNatGatewayEgressPublicGatewayArrayInput)(nil)).Elem(), GetVpcNatGatewayEgressPublicGatewayArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcNatGatewayVpcInput)(nil)).Elem(), GetVpcNatGatewayVpcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcNatGatewayVpcArrayInput)(nil)).Elem(), GetVpcNatGatewayVpcArray{})
+	pulumi.RegisterOutputType(GetAppSpecJobTerminationOutput{})
+	pulumi.RegisterOutputType(GetAppSpecJobTerminationPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecMaintenanceOutput{})
 	pulumi.RegisterOutputType(GetAppSpecMaintenancePtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecServiceOutput{})

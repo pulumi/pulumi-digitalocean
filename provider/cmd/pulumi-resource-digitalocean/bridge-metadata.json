@@ -80,6 +80,10 @@
                     }
                 }
             },
+            "digitalocean_action_gateway_provider_credential": {
+                "current": "digitalocean:index/actionGatewayProviderCredential:ActionGatewayProviderCredential",
+                "majorVersion": 4
+            },
             "digitalocean_action_gateway_toolbelt": {
                 "current": "digitalocean:index/actionGatewayToolbelt:ActionGatewayToolbelt",
                 "majorVersion": 4,
@@ -1323,6 +1327,9 @@
                     "coredns_autoscaler": {
                         "maxItemsOne": true
                     },
+                    "insights": {
+                        "maxItemsOne": true
+                    },
                     "kube_config": {
                         "maxItemsOne": false
                     },
@@ -1868,6 +1875,10 @@
                         }
                     }
                 }
+            },
+            "digitalocean_action_gateway_provider_credential": {
+                "current": "digitalocean:index/getActionGatewayProviderCredential:getActionGatewayProviderCredential",
+                "majorVersion": 4
             },
             "digitalocean_action_gateway_providers": {
                 "current": "digitalocean:index/getActionGatewayProviders:getActionGatewayProviders",

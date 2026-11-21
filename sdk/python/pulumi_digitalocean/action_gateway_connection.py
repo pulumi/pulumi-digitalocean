@@ -33,7 +33,7 @@ class ActionGatewayConnectionArgs:
         :param pulumi.Input[_builtins.str] tool_provider: The slug of the tool provider, such as `github` or `jira`. The `get_action_gateway_providers` data source lists the available providers.
         :param pulumi.Input[_builtins.str] user_id: The actor ID the connection acts for: 1 to 64 characters from `[A-Za-z0-9._-]`. Use the actor ID of the sessions that need this account.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] connection_parameters: A map of values for the provider's connection parameters, such as `site_url` for Jira.
-        :param pulumi.Input[_builtins.str] credential_id: The ID of a team provider credential, such as your own OAuth application or an API key, to connect through. When omitted, DigitalOcean's shared OAuth application is used.
+        :param pulumi.Input[_builtins.str] credential_id: The ID of a `ActionGatewayProviderCredential`, such as your own OAuth application or an API key, to connect through. When omitted, DigitalOcean's shared OAuth application is used.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: The OAuth scopes to request. When omitted or empty, every scope the provider offers is requested. Ignored for API-key credentials.
         :param pulumi.Input['ActionGatewayConnectionVpcArgs'] vpc: Routes the connection's calls through a VPC. VPC networking must be enabled for your team.
         """
@@ -88,7 +88,7 @@ class ActionGatewayConnectionArgs:
     @pulumi.getter(name="credentialId")
     def credential_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The ID of a team provider credential, such as your own OAuth application or an API key, to connect through. When omitted, DigitalOcean's shared OAuth application is used.
+        The ID of a `ActionGatewayProviderCredential`, such as your own OAuth application or an API key, to connect through. When omitted, DigitalOcean's shared OAuth application is used.
         """
         return pulumi.get(self, "credential_id")
 
@@ -144,7 +144,7 @@ class _ActionGatewayConnectionState:
         :param pulumi.Input[Sequence[pulumi.Input['ActionGatewayConnectionAuthorizationArgs']]] authorizations: The authorization the account holder still has to complete. Set only while the connection is pending.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] connection_parameters: A map of values for the provider's connection parameters, such as `site_url` for Jira.
         :param pulumi.Input[_builtins.str] created_at: When the connection was created.
-        :param pulumi.Input[_builtins.str] credential_id: The ID of a team provider credential, such as your own OAuth application or an API key, to connect through. When omitted, DigitalOcean's shared OAuth application is used.
+        :param pulumi.Input[_builtins.str] credential_id: The ID of a `ActionGatewayProviderCredential`, such as your own OAuth application or an API key, to connect through. When omitted, DigitalOcean's shared OAuth application is used.
         :param pulumi.Input[_builtins.str] credential_kind: The kind of credential the connection uses: `digitalocean_oauth`, `private_oauth`, or `team_api_key`.
         :param pulumi.Input[_builtins.str] granted_at: When the account holder completed authorization.
         :param pulumi.Input[_builtins.str] owning_user_id: The DigitalOcean user ID of the user who created the connection.
@@ -225,7 +225,7 @@ class _ActionGatewayConnectionState:
     @pulumi.getter(name="credentialId")
     def credential_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The ID of a team provider credential, such as your own OAuth application or an API key, to connect through. When omitted, DigitalOcean's shared OAuth application is used.
+        The ID of a `ActionGatewayProviderCredential`, such as your own OAuth application or an API key, to connect through. When omitted, DigitalOcean's shared OAuth application is used.
         """
         return pulumi.get(self, "credential_id")
 
@@ -376,9 +376,9 @@ class ActionGatewayConnection(pulumi.CustomResource):
         > **Note:** A connection belongs to the DigitalOcean user who owns the API
         token Terraform uses, within that token's team. Other team members cannot use
         it, even with the same `user_id`. To let team members create their own
-        connections from a shared credential, register the provider credential in the
-        control panel, make it reusable by the team, and pass its ID as
-        `credential_id`.
+        connections from a shared credential, register a
+        `ActionGatewayProviderCredential`
+        with `reusable_by_team` set, and pass its ID as `credential_id`.
 
         An OAuth connection starts `pending`. The account holder completes it by
         opening `authorization.0.connect_url`, which is exported as a sensitive value
@@ -389,14 +389,26 @@ class ActionGatewayConnection(pulumi.CustomResource):
 
         ### Team provider credential
 
+        The credential in this example sets `reusable_by_team`, so everyone on the
+        team can connect through it. Sharing may require the team owner role and
+        cannot be undone. Leave `reusable_by_team` out to keep the credential private
+        to the DigitalOcean user who owns Terraform's API token, which is enough for
+        connections created with the same token.
+
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
-        linear = digitalocean.ActionGatewayConnection("linear",
+        linear = digitalocean.ActionGatewayProviderCredential("linear",
+            tool_provider="linear",
+            kind="api_key",
+            display_name="Production key",
+            api_key=linear_api_key,
+            reusable_by_team=True)
+        linear_action_gateway_connection = digitalocean.ActionGatewayConnection("linear",
             tool_provider="linear",
             user_id="support-bot",
-            credential_id="8d6f2b1a-3c4e-4d5f-9a8b-7c6d5e4f3a2b")
+            credential_id=linear.id)
         ```
 
         ### Private network
@@ -443,7 +455,7 @@ class ActionGatewayConnection(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] connection_parameters: A map of values for the provider's connection parameters, such as `site_url` for Jira.
-        :param pulumi.Input[_builtins.str] credential_id: The ID of a team provider credential, such as your own OAuth application or an API key, to connect through. When omitted, DigitalOcean's shared OAuth application is used.
+        :param pulumi.Input[_builtins.str] credential_id: The ID of a `ActionGatewayProviderCredential`, such as your own OAuth application or an API key, to connect through. When omitted, DigitalOcean's shared OAuth application is used.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: The OAuth scopes to request. When omitted or empty, every scope the provider offers is requested. Ignored for API-key credentials.
         :param pulumi.Input[_builtins.str] tool_provider: The slug of the tool provider, such as `github` or `jira`. The `get_action_gateway_providers` data source lists the available providers.
         :param pulumi.Input[_builtins.str] user_id: The actor ID the connection acts for: 1 to 64 characters from `[A-Za-z0-9._-]`. Use the actor ID of the sessions that need this account.
@@ -464,9 +476,9 @@ class ActionGatewayConnection(pulumi.CustomResource):
         > **Note:** A connection belongs to the DigitalOcean user who owns the API
         token Terraform uses, within that token's team. Other team members cannot use
         it, even with the same `user_id`. To let team members create their own
-        connections from a shared credential, register the provider credential in the
-        control panel, make it reusable by the team, and pass its ID as
-        `credential_id`.
+        connections from a shared credential, register a
+        `ActionGatewayProviderCredential`
+        with `reusable_by_team` set, and pass its ID as `credential_id`.
 
         An OAuth connection starts `pending`. The account holder completes it by
         opening `authorization.0.connect_url`, which is exported as a sensitive value
@@ -477,14 +489,26 @@ class ActionGatewayConnection(pulumi.CustomResource):
 
         ### Team provider credential
 
+        The credential in this example sets `reusable_by_team`, so everyone on the
+        team can connect through it. Sharing may require the team owner role and
+        cannot be undone. Leave `reusable_by_team` out to keep the credential private
+        to the DigitalOcean user who owns Terraform's API token, which is enough for
+        connections created with the same token.
+
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
-        linear = digitalocean.ActionGatewayConnection("linear",
+        linear = digitalocean.ActionGatewayProviderCredential("linear",
+            tool_provider="linear",
+            kind="api_key",
+            display_name="Production key",
+            api_key=linear_api_key,
+            reusable_by_team=True)
+        linear_action_gateway_connection = digitalocean.ActionGatewayConnection("linear",
             tool_provider="linear",
             user_id="support-bot",
-            credential_id="8d6f2b1a-3c4e-4d5f-9a8b-7c6d5e4f3a2b")
+            credential_id=linear.id)
         ```
 
         ### Private network
@@ -610,7 +634,7 @@ class ActionGatewayConnection(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ActionGatewayConnectionAuthorizationArgs', 'ActionGatewayConnectionAuthorizationArgsDict', 'outputs.ActionGatewayConnectionAuthorization']]]] authorizations: The authorization the account holder still has to complete. Set only while the connection is pending.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] connection_parameters: A map of values for the provider's connection parameters, such as `site_url` for Jira.
         :param pulumi.Input[_builtins.str] created_at: When the connection was created.
-        :param pulumi.Input[_builtins.str] credential_id: The ID of a team provider credential, such as your own OAuth application or an API key, to connect through. When omitted, DigitalOcean's shared OAuth application is used.
+        :param pulumi.Input[_builtins.str] credential_id: The ID of a `ActionGatewayProviderCredential`, such as your own OAuth application or an API key, to connect through. When omitted, DigitalOcean's shared OAuth application is used.
         :param pulumi.Input[_builtins.str] credential_kind: The kind of credential the connection uses: `digitalocean_oauth`, `private_oauth`, or `team_api_key`.
         :param pulumi.Input[_builtins.str] granted_at: When the account holder completed authorization.
         :param pulumi.Input[_builtins.str] owning_user_id: The DigitalOcean user ID of the user who created the connection.
@@ -704,7 +728,7 @@ class ActionGatewayConnection(pulumi.CustomResource):
     @pulumi.getter(name="credentialId")
     def credential_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The ID of a team provider credential, such as your own OAuth application or an API key, to connect through. When omitted, DigitalOcean's shared OAuth application is used.
+        The ID of a `ActionGatewayProviderCredential`, such as your own OAuth application or an API key, to connect through. When omitted, DigitalOcean's shared OAuth application is used.
         """
         return pulumi.get(self, "credential_id")
 

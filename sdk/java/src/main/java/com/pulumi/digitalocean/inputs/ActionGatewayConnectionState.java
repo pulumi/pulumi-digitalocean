@@ -65,14 +65,14 @@ public final class ActionGatewayConnectionState extends com.pulumi.resources.Res
     }
 
     /**
-     * The ID of a team provider credential, such as your own OAuth application or an API key, to connect through. When omitted, DigitalOcean&#39;s shared OAuth application is used.
+     * The ID of a `digitalocean.ActionGatewayProviderCredential`, such as your own OAuth application or an API key, to connect through. When omitted, DigitalOcean&#39;s shared OAuth application is used.
      * 
      */
     @Import(name="credentialId")
     private @Nullable Output<String> credentialId;
 
     /**
-     * @return The ID of a team provider credential, such as your own OAuth application or an API key, to connect through. When omitted, DigitalOcean&#39;s shared OAuth application is used.
+     * @return The ID of a `digitalocean.ActionGatewayProviderCredential`, such as your own OAuth application or an API key, to connect through. When omitted, DigitalOcean&#39;s shared OAuth application is used.
      * 
      */
     public Optional<Output<String>> credentialId() {
@@ -340,7 +340,7 @@ public final class ActionGatewayConnectionState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param credentialId The ID of a team provider credential, such as your own OAuth application or an API key, to connect through. When omitted, DigitalOcean&#39;s shared OAuth application is used.
+         * @param credentialId The ID of a `digitalocean.ActionGatewayProviderCredential`, such as your own OAuth application or an API key, to connect through. When omitted, DigitalOcean&#39;s shared OAuth application is used.
          * 
          * @return builder
          * 
@@ -351,7 +351,7 @@ public final class ActionGatewayConnectionState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param credentialId The ID of a team provider credential, such as your own OAuth application or an API key, to connect through. When omitted, DigitalOcean&#39;s shared OAuth application is used.
+         * @param credentialId The ID of a `digitalocean.ActionGatewayProviderCredential`, such as your own OAuth application or an API key, to connect through. When omitted, DigitalOcean&#39;s shared OAuth application is used.
          * 
          * @return builder
          * 

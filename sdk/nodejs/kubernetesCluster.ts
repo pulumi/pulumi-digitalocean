@@ -269,6 +269,10 @@ export class KubernetesCluster extends pulumi.CustomResource {
      */
     declare public readonly ha: pulumi.Output<boolean>;
     /**
+     * Block containing the Insights telemetry the cluster opts in to. This can only be set when the cluster is created and is not returned by the API, so changes made after creation (or after importing the cluster) are ignored.
+     */
+    declare public readonly insights: pulumi.Output<outputs.KubernetesClusterInsights | undefined>;
+    /**
      * The public IPv4 address of the Kubernetes master node. This will not be set if high availability is configured on the cluster (v1.21+)
      */
     declare public /*out*/ readonly ipv4Address: pulumi.Output<string>;
@@ -277,7 +281,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
      */
     declare public readonly isolatedWorkers: pulumi.Output<boolean | undefined>;
     /**
-     * A representation of the Kubernetes cluster's kubeconfig with the following attributes:
+     * A representation of the Kubernetes cluster's kubeconfig with the following attributes. Empty when `sso.required` is `true`:
      */
     declare public /*out*/ readonly kubeConfigs: pulumi.Output<outputs.KubernetesClusterKubeConfig[]>;
     /**
@@ -392,6 +396,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
             resourceInputs["endpoint"] = state?.endpoint;
             resourceInputs["gpuOperatorReady"] = state?.gpuOperatorReady;
             resourceInputs["ha"] = state?.ha;
+            resourceInputs["insights"] = state?.insights;
             resourceInputs["ipv4Address"] = state?.ipv4Address;
             resourceInputs["isolatedWorkers"] = state?.isolatedWorkers;
             resourceInputs["kubeConfigs"] = state?.kubeConfigs;
@@ -438,6 +443,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
             resourceInputs["destroyAllAssociatedResources"] = args?.destroyAllAssociatedResources;
             resourceInputs["gpuOperatorReady"] = args?.gpuOperatorReady;
             resourceInputs["ha"] = args?.ha;
+            resourceInputs["insights"] = args?.insights;
             resourceInputs["isolatedWorkers"] = args?.isolatedWorkers;
             resourceInputs["kubeconfigExpireSeconds"] = args?.kubeconfigExpireSeconds;
             resourceInputs["maintenancePolicy"] = args?.maintenancePolicy;
@@ -534,6 +540,10 @@ export interface KubernetesClusterState {
      */
     ha?: pulumi.Input<boolean | undefined>;
     /**
+     * Block containing the Insights telemetry the cluster opts in to. This can only be set when the cluster is created and is not returned by the API, so changes made after creation (or after importing the cluster) are ignored.
+     */
+    insights?: pulumi.Input<inputs.KubernetesClusterInsights | undefined>;
+    /**
      * The public IPv4 address of the Kubernetes master node. This will not be set if high availability is configured on the cluster (v1.21+)
      */
     ipv4Address?: pulumi.Input<string | undefined>;
@@ -542,7 +552,7 @@ export interface KubernetesClusterState {
      */
     isolatedWorkers?: pulumi.Input<boolean | undefined>;
     /**
-     * A representation of the Kubernetes cluster's kubeconfig with the following attributes:
+     * A representation of the Kubernetes cluster's kubeconfig with the following attributes. Empty when `sso.required` is `true`:
      */
     kubeConfigs?: pulumi.Input<pulumi.Input<inputs.KubernetesClusterKubeConfig>[] | undefined>;
     /**
@@ -679,6 +689,10 @@ export interface KubernetesClusterArgs {
      * Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: true (for 1.36.0 and later)
      */
     ha?: pulumi.Input<boolean | undefined>;
+    /**
+     * Block containing the Insights telemetry the cluster opts in to. This can only be set when the cluster is created and is not returned by the API, so changes made after creation (or after importing the cluster) are ignored.
+     */
+    insights?: pulumi.Input<inputs.KubernetesClusterInsights | undefined>;
     /**
      * Enable/disable isolated worker nodes for the cluster. When enabled, each worker node runs on dedicated hardware. This can only be set at creation time. The cluster's VPC must have a NAT gateway attached. Default: false
      */
